@@ -1,0 +1,39 @@
+name: Deploy to demo
+
+on:
+  repository_dispatch:
+    types: [deploy-demo]
+
+jobs:
+  deploy-demo:
+    name: Deploy latest production image to demo environment
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Apply Helm template
+        uses: stefanprodan/kube-tools@v1
+        with:
+          helm: 2.14.3
+          command: |
+            helm init --client-only
+            helm repo add fdk https://informasjonsforvaltning.github.io/helm-chart/
+            helm fetch --untar --untardir ./helm fdk/fdk-portal
+            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/fdk-infra/fdk-portal:${{ github.event.client_payload.sha }}" -f ./helm/fdk-portal/values/demo.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
+            cat ./kubectlapply.yaml
+            chmod o+w ./kubectlapply.yaml
+            cat kubectlapply.yaml
+      - name: Get kubeconfig file from GKE
+        uses: machine-learning-apps/gke-kubeconfig@master
+        with:
+          application_credentials: ${{ secrets.FDK_DEV_AUTODEPLOY }}
+          project_id: fdk-dev
+          location_zone: europe-north1-a
+          cluster_name: fdk-dev
+      - name: Deploy to demo
+        uses: docker://bitnami/kubectl:latest
+        env:
+          KUBECONFIG: '/github/workspace/.kube/config'
+        with:
+          args: "apply -f ./kubectlapply.yaml --force"
