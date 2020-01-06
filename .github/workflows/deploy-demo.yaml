@@ -24,6 +24,7 @@ jobs:
             cat ./kubectlapply.yaml
             chmod o+w ./kubectlapply.yaml
             cat kubectlapply.yaml
+
       - name: Get kubeconfig file from GKE
         uses: machine-learning-apps/gke-kubeconfig@master
         with:
@@ -31,6 +32,7 @@ jobs:
           project_id: fdk-dev
           location_zone: europe-north1-a
           cluster_name: fdk-dev
+          
       - name: Deploy to demo
         uses: docker://bitnami/kubectl:latest
         env:
