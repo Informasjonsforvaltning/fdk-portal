@@ -1,21 +1,5 @@
-.envrc
+dist/
+coverage/
+.nyc_output
 
-# IDE files
-*.iml
-.DS_Store
-.idea
-.project
-
-# linked volumes
-data
-tdb
-logs
-reports
-
-# compilation targets
-node_modules
-target
-bin
-
-# random ad hoc exclusions, not sorted
-phantomjsdriver.log
+.idea/

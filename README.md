@@ -1,257 +1,117 @@
+# Search application for DCAT-AP-NO 1.1
 
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+Docker image: [dcatno/search](https://hub.docker.com/r/dcatno/search/)
+Base image: [node:6.11]()
+Source: [Dockerfile](https://github.com/Informasjonsforvaltning/fdk/blob/master/applications/search/Dockerfile)
 
-# The National Data Directory (Felles datakatalog)
+Provides query and filtering capabilities for searching a collection of DCAT catalogs and concepts.
+The search application access a search-api and a database cluster (elasticsearch/fuseki) and presents search results to the user in a web ui.
 
-This repository contains the source code for the [National Data Directory](https://fellesdatakatalog.brreg.no) of Norway. 
-The work is led by the [Brønnøysund Register Centre](https://www.brreg.no/home/) and the Data Directory was launched November 2017. 
-The Data Directory contains metadata about the datasets that the various Governmental bodies maintain in their data catalogs. 
-We provide a search service that allow users to discover datasets and where they are kept. 
-The content of the data catalog is harvested once a day from several more specific data catalogs including the registration application.  
-The data catalogs are formatted according to the Norwegian profile [DCAT-AP-NO 1.1](https://doc.difi.no/dcat-ap-no/)
-of the [European profile](https://joinup.ec.europa.eu/release/dcat-ap-v11) of [W3C's Data Catalog standard](https://www.w3.org/TR/vocab-dcat/). 
 
-Three main applications are developed:
-  1. A Search Application that allow users to search and browse metadata about the datasets.
-  1. A Harvester Application that downloads data catalogs and makes them searchable.
-  1. A Registration Application that allow users to register metadata about their datasets.
+## License
+dcatno/search: [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-Norwegian description:
-> [Felles datakatalog](https://fellesdatakatalog.brreg.no) gir en oversikt over datasett fra virksomheter i Norge. Løsningen er
-utviklet av [Brønnøysundregistrene](https://www.brreg.no/) i perioden 2016 til desember 2017. Løsningen 
-ble lansert i november 2017. Det er en av flere felleskomponenten som
-utvikles i regi av [Skate](https://www.difi.no/fagomrader-og-tjenester/digitalisering-og-samordning/skate) 
-som skal bidra til å bedre integrasjon mellom offentlige virksomheter og bedre tjenester. 
-Systemet er basert på en norsk profil [DCAT-AP-NO 1.1](https://doc.difi.no/dcat-ap-no/),
-av en [Europeisk profil](https://joinup.ec.europa.eu/release/dcat-ap-v11) av [W3C Datakatalog standard](https://www.w3.org/TR/vocab-dcat/)
-for utveksling av datasettbeskrivelser. 
+## Use
 
-## Contact
+`docker run -p 8080:8080 dcatno/search`
 
-If you have any questions please send them to [fellesdatakatalog@brreg.no](mailto:fellesdatakatalog@brreg.no).
+To run locally:
 
-## Run application
-The search application is available [here](https://fellesdatakatalog.brreg.no). The two other applications
-are only available for registered users. 
-Any questions can be sent to [fellesdatakatalog@brreg.no](mailto:fellesdatakatalog@brreg.no).
+1. Run ```npm run dev``` or run ```npm run server``` to start server.
 
-The [search api](https://github.com/brreg/openAPI/blob/master/specs/fdk.yaml) can also be used.
+2. Open browser ```http://localhost:3000```
 
-## Set up your development environment
+3. Run ```npm run build``` to build webpack bundle.
 
-Prerequisite: Make sure you have local admin on your computer, as gitbash has to be run as an administrator
+4. Run ```npm run test``` to run tests.
 
-1) Clone this repo
+## Depends on
+
+  * search-api
+  * reference-data
+  * fuseki
   
-2) Install Java8, Maven and Docker. 
-   	
-    - If you are running Windows. Make sure you manually add the correct Maven path in windows "environment Variables"
-    - Also make sure you have set correct JAVA_HOME path to environment variables.
-    - After having installed Docker. Make sure you update the resource limits at Settings-Advanced. You need at least 4 CPU's and 		more than 8k MB of Memory.
-    
-    - If you have a Mac, running this script will install Java8 and Maven automatically: 
-    
-        ```
-        ./install-dependencies-mac.sh
-        ```
-3) Configure `.envrc` based on `.envrc.template`. Optionally install [direnv](https://direnv.net/docs/installation.md) to lock the variables to the main working directory
-    
-4) Compile, create docker images and run the entire project:
-
-    If you are running windows, you also need to make sure you have installed node.js:
-    https://nodejs.org/en/download/
-    
-    ```
-    ./runAll.sh
-    ```  
-    
-    If you only want to recompile one module ("search-api" in this example), use the following:     
-    
-    ```
-    ./runDocker.sh search-api
-    ```
-    
-     Frontend applications such as search and registration-react are built and run the following way:
-    
-     ```
-     docker-compose up -d --build registration-react
-     ```
-
-5) If images are already built, project can be run: 
-
-	```
-	docker-compose up -d
-	```
-
-	  Restart a specific module  after image rebuild,.
-
-	```
-	docker-compose up -d registration
-	```
-
-	Monitor logs 
-
-	```
-	docker-compose logs -f registration
-	```
-
-6)  Open solution
+## Search
   
-      Search site: [http://localhost:8080](http://localhost:8080)
+Frontend built on React 16 and Redux. Tests are written with Mocha and Enzyme. ESLint with AirBnB used for linting.
 
-      Registration site: [https://localhost:8098](https://localhost:8098)
+The search application do search by calling the RESTful service from search-api.
+
+## Universal design
+
+The design follows the WCAG 2.0 level A standard for the universal design of websites, see [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 
 
-## Run browser-based end-to-end tests
+Tar utgangspunkt i denne kravlisten som oppfyller Nivå A krav:
+Based on the demands in this list which fullfills the level A requirements:
 
-  In order to have maintainable tests, the tests must equally well run in all environment configurationds: 
 
-1) Brower in host machine (windowed+headless), services in docker-compose
+1.1 Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.
 
-	Make sure chromium is installed (for mac, TODO windows)
-	```
-	brew cask install chromium
-	```
+1.2.1 For prerecorded audio-only and prerecorded video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such
 
-	Make sure services are running in docker-compose network and exposed to localhost 
-	(beware of port conflicts with services running in intelliJ
+1.2.2 Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such.
 
-	```
-	./runAll.sh
-	# or
-	docker-compose up -d
-	```
+1.3.1  Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text. (tables and forms)
 
-	Ensure dependencies are installed
-	```
-	(cd applications/e2e ; npm i)
-	```
+1.3.2 When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined
 
-	Run tests    
+1.3.3  Instructions provided for understanding and operating content do not rely solely on sensory characteristics of components such as shape, size, visual location, orientation, or sound.
 
-	```
-	# run tests in chromim headless (no window, just report) 
-	(cd applications/e2e ; npm t)
+1.4.1 Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element. 
 
-	# run tests in chromium window opened
-	(cd applications/e2e ; npm run test:browser)
+1.4.2  If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level
 
-	```
-2) Browser in container (headless), services in docker-compose
-     
-	```
-	# run
-	docker-compose run e2e npm run test:in_container
+1.4.3 The visual presentation of text and images of text has a contrast ratio of at least 4.5:1
 
-	# build container (if changes in tests)
-	docker-compose build e2e 
+1.4.4 Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.
 
-	```
-      
-## Release
+1.4.5 If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text 
 
-Generate release notes and create release in GitHub:
+2.1.1 All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.
 
-```
-git checkout develop
-git pull
-npm run release
-git push --follow-tags origin
-```
+2.1.2 If keyboard focus can be moved to a component of the page using a keyboard interface, then focus can be moved away from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard exit methods, the user is advised of the method for moving focus away.
 
-## Modules 
+2.2.1 The user is allowed to adjust the time limit n
 
-![Architecture](/images/fdk-architecture-logic.png)
+2.2.2 For any moving, blinking or scrolling information that (1) starts automatically, (2) lasts more than five seconds, and (3) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it 
 
-The Registration Application consists of the following main modules:
-  * registration, a React application which allow users to log in and edit or register metadata about datasets.
-  * registration-api, a Java Spring Boot service which supports a REST API
-  * registration-db, a Elasticsearch document database
-  
-The Search Application consists of the following modules
-  * search, a React application which allow users to search and view dataset descriptions.
-  * search-api, an Java Spring Boot service whit a REST API 
-  * search-db, an Elasticsearch search and document database
+2.3.1  Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.
 
-The Harvester Application consist of the following modules
-  * harvester, a Java Spring Boot application which allow users to register which catalogs that should be harvested.
-  * harvester-api, a Java Spring Boot service which checks and harvests data catalogs and inserts them into the search-db
-  * harvester-db, a Fuseki RDF database which stores administration information about harvests and the incoming datasets
-  
-Common Services
-  * reference-data, a shared service which provides code lists, concepts and helptexts.
+2.4.1 A mechanism is available to bypass blocks of content that are repeated on multiple Web pages
 
-External Integrations
-  * Enhetsregisteret, for checking and collecting information about organizations
-  * IDPorten, for authentication of users
-  * Altinn, for authorization of users
+2.4.2 Web pages have titles that describe topic or purpose.
 
-## Start individual applications
-There is a couple of scripts that automates build and run the various models ondocker. The scripts are:
-  * `./runDocker.sh search-api` to compile, build and run the search-api module on docker
-  * `./runAll.sh` to run all the modules on docker, it actually downloads images from docker hub or builds them if
-   you have made changes to the code.
-  
+2.4.3 If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability
 
-### Search application:
->`docker-compose up -d search`
+2.4.4  The purpose of each link can be determined from the link text alone or from the link text together with its programmatically determined link context, except where the purpose of the link would be ambiguous to users in general.
 
-This starts DCAT repositories, fuseki and elasticsearch, as well as the search-api service. 
-To access the search application start a browser on [http://localhost:8080](http://localhost:8080). Be aware that 
-there is no data registered in the repositories (see the harvester application)
+2.4.5 More than one way is available to locate a Web page within a set of Web pages except where the Web Page is the result of, or a step in, a process.
 
-### Harvester application:
->`docker-compose up -d harvester`
+2.4.6 Headings and labels describe topic or purpose
 
-This starts the harvester application with the corresponding harvester-api. 
-  - Log in to the administration application on [http://localhost:8082](http://localhost:8082).
-      You will need a username and a password for the application (test_user, password). 
-  - Next you need to register a catalog to be harvested. You may use the registration application to register data about datasets which can be harvested here. 
-    [http://registration-api:8080/catalogs/123456699](http://registration-api:8080/catalogs/123456699) given your catalog has id 123456699.    
+2.4.7 Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.
 
-### Registration application:
->`docker-compose up -d registration`
+3.1.1 The default human language of each Web page can be programmatically determined.
 
-This starts the registration application with corresponding api services. 
-The application can be accessed on [http://localhost:8099](http://localhost:8099)
-The regstration application requires authentication. The following test-user identifiers 
-can be used: (03096000854, 01066800187, 23076102252)
+3.1.2 The human language of each passage or phrase in the content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text. 
 
-### Shut down all containers:
->`docker-compose down`
+3.2.1 When any component receives focus, it does not initiate a change of context.
 
-## Run end2end tests (java)
+3.2.2 Changing the setting of any user interface component does not automatically cause a change of context unless the user has been advised of the behavior before using the component. 
 
-In IntelliJ, select module applications/end2end-test and click "run tests"
+3.2.3 Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user.
 
-## Storage
-The repository is stored in a persistent volume, see [data/esdata5](data/esdata5) for elasticsearch 
-repository and [data/fuseki](data/fuseki) for the fuseki repository. 
-  * Elasticsearch stores the data in JSON denormalized for search
-  * Fuseki stores the data in RDF/DCAT format
+3.2.4 Components that have the same functionality within a set of Web pages are identified consistently.
 
-![Indexes in elasticsearch](/images/elastic-index.png)
+3.3.1 If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.
 
-## Common Docker Problems
+3.3.2  Labels or instructions are provided when content requires user input. 
 
-Some times docker can be a bit overworked and one might need to clean up.
+3.3.3 If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content.
 
-Solution: remove old containers
-> `bash: docker rm -f $(docker ps -aq)`
+3.3.4 For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses
 
-Remove old images
->  `bash: docker rmi -f $(docker images -q)`
+4.1.1 In content implemented using markup languages, elements have complete start and end tags, elements are nested according to their specifications, elements do not contain duplicate attributes, and any IDs are unique, except where the specifications allow these features.
 
-Docker is slow on mac:
-Docker needs at least 8G of memory
->  Docker -> Preferences -> Advanced -> Change memory to (8 GiB)
-
-## Common ElasticSearch Problems
-Error message: java.nio.file.AccessDeniedException: /usr/share/elasticsearch/data/nodes
-On windows platforms, this seems to be caused by some issue with credentials.
-
-Solution - reset and reeenter the credentials:
-    Rightclick docker->Settings->Shared Drives->Reset Credentials. Reselect the drive you want shared, and reenter
-    credentials, and do a docker-compose stop elasticsearch5 and a docker-compose up -d
-        
-    
+4.1.2 For all user interface components (including but not limited to: form elements, links and components generated by scripts), the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically set; and notification of changes to these items is available to user agents, including assistive technologies. 

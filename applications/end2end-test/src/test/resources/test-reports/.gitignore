@@ -1,2 +1,0 @@
-#ignore all test report files. They are sent to Jira
-./*.json
