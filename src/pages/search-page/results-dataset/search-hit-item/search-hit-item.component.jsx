@@ -112,19 +112,12 @@ export const SearchHitItem = props => {
   const { referenceData, dataset } = props;
   const { id, catalog, publisher, theme, provenance, accessRights } =
     dataset || {};
-  let { title, description, objective } = dataset || {};
+  let { title, description } = dataset || {};
   title = getTranslateText(title);
   description = getTranslateText(description);
-  objective = getTranslateText(objective);
 
   if (description && description.length > 220) {
     description = `${description.substr(0, 220)}...`;
-  } else if (description && description.length < 150 && objective) {
-    const freeLength = 200 - description.length;
-    const objectiveLength = objective.length;
-    description = `${description} ${objective.substr(0, 200 - freeLength)} ${
-      objectiveLength > freeLength ? '...' : ''
-    }`;
   }
   const link = `/datasets/${id}`;
 
