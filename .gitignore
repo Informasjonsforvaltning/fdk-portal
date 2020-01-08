@@ -1,5 +1,9 @@
-dist/
-coverage/
-.nyc_output
+# compilation targets
+node_modules
+dist
 
-.idea/
+# IDE files
+*.iml
+.DS_Store
+.idea
+.project
