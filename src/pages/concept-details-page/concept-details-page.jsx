@@ -38,14 +38,18 @@ const renderSource = ({ sourceRelationship, sources }) => {
     );
   }
 
-  if (!sourceRelationship || sources.length === 0) {
+  if (sources.length === 0) {
     return null;
   }
 
   return (
     <div className="fdk-ingress">
       <span>
-        {`${localization.compare.source}: ${localization.sourceRelationship[sourceRelationship]}`}
+        {`${localization.compare.source}: ${
+          sourceRelationship
+            ? localization.sourceRelationship[sourceRelationship]
+            : ''
+        }`}
       </span>
       {sources.map(({ text, uri }, index) => (
         <Fragment key={`${text}-${uri}`}>
