@@ -100,6 +100,14 @@ exports[`should render ConceptDetailsPage correctly with conceptItem 1`] = `
           >
             engelsk definition14
           </withStateHandlers(ShowMorePure)>
+          <div
+            className="fdk-ingress"
+          >
+            <span>
+              Source: 
+            </span>
+             
+          </div>
         </div>
         <ListRegular
           bottomMargin={true}

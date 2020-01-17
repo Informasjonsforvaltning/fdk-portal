@@ -66,5 +66,11 @@ exports[`should render ConceptsHitItem correctly 1`] = `
     </span>
     engelsk definition14
   </p>
+  <div>
+    <span>
+      Source: 
+    </span>
+     
+  </div>
 </article>
 `;
