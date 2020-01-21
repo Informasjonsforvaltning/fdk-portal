@@ -21,9 +21,9 @@ jobs:
             helm repo add fdk https://informasjonsforvaltning.github.io/helm-chart/
             helm fetch --untar --untardir ./helm fdk/fdk-portal
             helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/fdk-infra/fdk-portal:${{ github.event.client_payload.sha }}" -f ./helm/fdk-portal/values/demo.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
-            cat ./kubectlapply.yaml
             chmod o+w ./kubectlapply.yaml
             cat kubectlapply.yaml
+
       - name: Get kubeconfig file from GKE
         uses: machine-learning-apps/gke-kubeconfig@master
         with:
@@ -31,9 +31,17 @@ jobs:
           project_id: fdk-dev
           location_zone: europe-north1-a
           cluster_name: fdk-dev
+
       - name: Deploy to demo
         uses: docker://bitnami/kubectl:latest
         env:
           KUBECONFIG: '/github/workspace/.kube/config'
         with:
           args: "apply -f ./kubectlapply.yaml --force"
+
+      - name: Notify slack of deploy
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to demo\"}'
