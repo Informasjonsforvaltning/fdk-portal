@@ -18,9 +18,31 @@ exports[`should render DatasetDistribution correctly 1`] = `
         >
           <span>
             <strong>
-              Format
+              Distribution
             </strong>
           </span>
+        </div>
+        <div
+          className="col-8"
+        >
+          Markagrensen
+        </div>
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            className="fa fdk-color-link fa-chevron-down"
+          />
+        </button>
+      </div>
+      <div
+        className="d-flex list-regular--item text-left"
+      >
+        <div
+          className="col-4 pl-0 fdk-text-strong"
+        >
+          Format
         </div>
         <div
           className="col-8"
@@ -31,14 +53,6 @@ exports[`should render DatasetDistribution correctly 1`] = `
             GPX
           </span>
         </div>
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          <i
-            className="fa fdk-color-link fa-chevron-down"
-          />
-        </button>
       </div>
       <div
         className="d-flex list-regular--item text-left mb-2 closedCollapse"

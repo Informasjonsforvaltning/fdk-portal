@@ -256,6 +256,8 @@ const renderKeywords = keywordItems => {
   );
 };
 
+const getTitleText = (title, distributionIndex) => title || `${localization.dataset.distribution.title} ${distributionIndex + 1}`;
+
 const renderDistribution = (
   heading,
   showCount,
@@ -269,6 +271,7 @@ const renderDistribution = (
     distribution.map((item, index) => (
       <DatasetDistribution
         key={`dist-${index}`}
+        title={getTitleText(getTranslateText(item.title), index)}
         description={getTranslateText(item.description)}
         accessUrl={item.accessURL}
         format={item.format}
