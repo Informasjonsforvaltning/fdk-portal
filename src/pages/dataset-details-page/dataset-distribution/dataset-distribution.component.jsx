@@ -173,20 +173,20 @@ export class DatasetDistribution extends React.Component {
   }
 
   render() {
-    const { description, format } = this.props;
+    const { description, format, title } = this.props;
     const { openCollapse } = this.state;
     return (
       <section className="fdk-distribution-item mb-1">
         <ListRegular bottomMargin={false}>
           <div>
-            {format && (
+            {title && (
               <div className="d-flex list-regular--item text-left">
                 <div className="col-4 pl-0">
                   <span>
-                    <strong>{localization.dataset.distribution.format}</strong>
+                    <strong>{localization.dataset.distribution.title}</strong>
                   </span>
                 </div>
-                <div className="col-8">{formatItems(format)}</div>
+                <div className="col-8">{title}</div>
                 <button type="button" onClick={this.toggle}>
                   <i
                     className={`fa fdk-color-link ${
@@ -194,6 +194,14 @@ export class DatasetDistribution extends React.Component {
                     }`}
                   />
                 </button>
+              </div>
+            )}
+            {format && (
+              <div className="d-flex list-regular--item text-left">
+                <div className="col-4 pl-0 fdk-text-strong">
+                  {localization.dataset.distribution.format}
+                </div>
+                <div className="col-8">{formatItems(format)}</div>
               </div>
             )}
             {description && (
@@ -232,6 +240,7 @@ export class DatasetDistribution extends React.Component {
 }
 
 DatasetDistribution.defaultProps = {
+  title: null,
   description: null,
   accessUrl: null,
   format: null,
@@ -244,6 +253,7 @@ DatasetDistribution.defaultProps = {
 };
 
 DatasetDistribution.propTypes = {
+  title: PropTypes.string,
   description: PropTypes.string,
   accessUrl: PropTypes.array,
   format: PropTypes.array,

@@ -636,6 +636,7 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
             license={null}
             page={null}
             referenceData={null}
+            title="Geonorge nedlastning"
             type={null}
           />
           <DatasetDistribution
@@ -656,6 +657,7 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
             license={null}
             page={null}
             referenceData={null}
+            title="OGC:WFS"
             type={null}
           />
           <DatasetDistribution
@@ -676,6 +678,7 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
             license={null}
             page={null}
             referenceData={null}
+            title="Geonorge nedlastning"
             type={null}
           />
           <DatasetDistribution
@@ -696,6 +699,7 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
             license={null}
             page={null}
             referenceData={null}
+            title="Geonorge nedlastning"
             type={null}
           />
           <DatasetDistribution
@@ -716,6 +720,7 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
             license={null}
             page={null}
             referenceData={null}
+            title="OGC:WMS"
             type={null}
           />
           <DatasetDistribution
@@ -736,6 +741,7 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
             license={null}
             page={null}
             referenceData={null}
+            title="Geonorge nedlastning"
             type={null}
           />
           <DatasetDistribution
@@ -756,6 +762,7 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
             license={null}
             page={null}
             referenceData={null}
+            title="Geonorge nedlastning"
             type={null}
           />
         </div>
