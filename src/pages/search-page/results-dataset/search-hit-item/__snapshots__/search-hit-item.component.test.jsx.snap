@@ -144,6 +144,8 @@ exports[`should render SearchHitItem 1`] = `
         }
         title="Markagrensen"
         titleLink="/datasets/43dbbfe0-ae35-43dd-8411-2e8b1e9f9276"
+        validFromIncluding={null}
+        validToIncluding={null}
       />
     </header>
     <p

@@ -94,6 +94,8 @@ exports[`should render ConceptDetailsPage correctly with conceptItem 1`] = `
             theme={Array []}
             title="engelsk preflabel14"
             titleLink={null}
+            validFromIncluding={null}
+            validToIncluding={null}
           />
           <withStateHandlers(ShowMorePure)
             showMoreButtonText="Show the full description"

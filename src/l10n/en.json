@@ -43,6 +43,14 @@
     "title": "Concept relations",
     "seeAlso": "See also"
   },
+  "validity": {
+    "validFromIncluding": "Valid from and including",
+    "validToIncluding": "Valid to and including",
+    "expired": "expired",
+    "willBeValid": "will be valid",
+    "expiredInfo": "The concept expired on",
+    "willBeValidInfo": "The concept will be valid startring from"
+  },
   "app": {
     "menu": "Menu"
   },

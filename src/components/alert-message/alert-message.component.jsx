@@ -14,6 +14,7 @@ export const AlertMessage = props => {
     'alert-info': type === 'info'
   });
   const iconClassnames = cx('fa', 'mr-2', {
+    'fa-exclamation-circle': type === 'warning',
     'fa-exclamation-triangle': type === 'danger',
     'fa-check': type === 'success'
   });

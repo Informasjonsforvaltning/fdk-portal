@@ -49,3 +49,11 @@
   height: 1em;
   display: inline-block;
 }
+
+.fdk-expired {
+  color: $color-danger;
+}
+
+.fdk-will-be-valid {
+  color: $color-neutral-dark;
+}

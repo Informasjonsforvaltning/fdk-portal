@@ -129,6 +129,8 @@ exports[`should render ApiDetailsPage correctly with apiItem 1`] = `
             theme={Array []}
             title="National API Directory Search API"
             titleLink={null}
+            validFromIncluding={null}
+            validToIncluding={null}
           />
           <withStateHandlers(ShowMorePure)
             showMoreButtonText="Show the full description"
@@ -434,6 +436,8 @@ exports[`should render ApiDetailsPage correctly with missing api-properties 1`] 
             theme={Array []}
             title={null}
             titleLink={null}
+            validFromIncluding={null}
+            validToIncluding={null}
           />
           <div
             className="access-icons mb-5 d-flex justify-content-between"
