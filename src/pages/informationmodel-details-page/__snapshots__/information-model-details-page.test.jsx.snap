@@ -83,6 +83,7 @@ exports[`should render InformationModelDetailsPage correctly with informationMod
         />
         <ListRegular
           bottomMargin={true}
+          name={null}
           title="Information model"
         >
           <div

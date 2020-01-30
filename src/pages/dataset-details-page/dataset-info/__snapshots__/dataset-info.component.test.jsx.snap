@@ -4,6 +4,7 @@ exports[`should render DatasetInfo correctly 1`] = `
 <Fragment>
   <ListRegular
     bottomMargin={true}
+    name={null}
     title="Relations"
   >
     <div
@@ -28,6 +29,7 @@ exports[`should render DatasetInfo correctly 1`] = `
   </ListRegular>
   <ListRegular
     bottomMargin={true}
+    name={null}
     title="Restrictions"
   >
     <div

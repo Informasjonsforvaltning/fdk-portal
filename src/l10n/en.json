@@ -41,6 +41,7 @@
   "linkToNap": "Link to the National Access Point for Transport Data",
   "conceptReferences": {
     "title": "Concept relations",
+    "sideMenuTitle": "Related concepts",
     "seeAlso": "See also"
   },
   "app": {

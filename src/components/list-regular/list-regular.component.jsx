@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './list-regular.scss';
 
-export const ListRegular = ({ title, bottomMargin, children }) => {
+export const ListRegular = ({ title, name, bottomMargin, children }) => {
   return (
     <section
       className={`list-regular ${bottomMargin ? 'mb-5' : ''}`}
-      name={title}
+      name={name || title}
     >
       {title && (
         <div className="list-regular--item">
@@ -20,12 +20,14 @@ export const ListRegular = ({ title, bottomMargin, children }) => {
 
 ListRegular.defaultProps = {
   title: null,
+  name: null,
   children: null,
   bottomMargin: true
 };
 
 ListRegular.propTypes = {
   title: PropTypes.string,
+  name: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   bottomMargin: PropTypes.bool
 };

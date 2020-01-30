@@ -41,6 +41,7 @@
   "linkToNap": "Lenke til NAP",
   "conceptReferences": {
     "title": "Begreper relatert til",
+    "sideMenuTitle": "Relaterte begreper",
     "seeAlso": "Se også"
   },
   "app": {

@@ -111,6 +111,7 @@ exports[`should render ConceptDetailsPage correctly with conceptItem 1`] = `
         </div>
         <ListRegular
           bottomMargin={true}
+          name={null}
           title="Identifier"
         >
           <div
@@ -125,6 +126,7 @@ exports[`should render ConceptDetailsPage correctly with conceptItem 1`] = `
         </ListRegular>
         <ListRegular
           bottomMargin={true}
+          name={null}
           title="Contact information"
         >
           <TwoColRow

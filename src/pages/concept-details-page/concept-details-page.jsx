@@ -220,6 +220,7 @@ const renderConceptReferences = (
         title={`${localization.conceptReferences.title} ${getTranslateText(
           prefLabel
         )}`}
+        name={localization.conceptReferences.sideMenuTitle}
       >
         {seeAlsoReferences.map(({ id, prefLabel: seeAlsoConceptPrefLabel }) => (
           <li key={id} className="d-flex list-regular--item">
@@ -335,6 +336,13 @@ const renderStickyMenu = conceptItem => {
     });
   }
 
+  if (conceptItem.concepts && conceptItem.concepts.length > 0) {
+    menuItems.push({
+      name: localization.conceptReferences.sideMenuTitle,
+      prefLabel: localization.conceptReferences.sideMenuTitle
+    });
+  }
+
   if (
     _.get(conceptItem, 'contactPoint') &&
     !_.isEmpty(_.get(conceptItem, 'contactPoint'))
@@ -411,7 +419,8 @@ export const ConceptDetailsPage = ({
           <div className="col-12 col-lg-4 ">
             {renderStickyMenu({
               ...conceptItem,
-              datasets: conceptDatasetReferences
+              datasets: conceptDatasetReferences,
+              concepts: conceptReferences
             })}
           </div>
           <section className="col-12 col-lg-8 mt-3">
