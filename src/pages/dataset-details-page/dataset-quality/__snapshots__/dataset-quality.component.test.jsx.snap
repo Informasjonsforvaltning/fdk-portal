@@ -3,6 +3,7 @@
 exports[`should render DatasetQuality correctly 1`] = `
 <ListRegular
   bottomMargin={true}
+  name={null}
   title="Quality"
 >
   <TwoColRow

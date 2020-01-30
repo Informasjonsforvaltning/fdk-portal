@@ -6,6 +6,7 @@ exports[`should render DatasetDistribution correctly 1`] = `
 >
   <ListRegular
     bottomMargin={false}
+    name={null}
     title={null}
   >
     <div>
@@ -96,6 +97,7 @@ exports[`should render DatasetDistribution correctly with no props 1`] = `
 >
   <ListRegular
     bottomMargin={false}
+    name={null}
     title={null}
   >
     <div />

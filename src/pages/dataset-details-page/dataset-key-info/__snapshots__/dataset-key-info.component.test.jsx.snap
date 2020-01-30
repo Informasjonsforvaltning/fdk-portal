@@ -4,6 +4,7 @@ exports[`should render DatasetKeyInfo correctly 1`] = `
 <section>
   <ListRegular
     bottomMargin={true}
+    name={null}
     title="Use of dataset"
   >
     <div

@@ -222,6 +222,7 @@ exports[`should render ApiDetailsPage correctly with apiItem 1`] = `
         </div>
         <ListRegular
           bottomMargin={true}
+          name={null}
           title="Format"
         >
           <div
@@ -277,6 +278,7 @@ exports[`should render ApiDetailsPage correctly with apiItem 1`] = `
         />
         <ListRegular
           bottomMargin={true}
+          name={null}
           title="Terms and restrictions"
         >
           <TwoColRow
@@ -318,6 +320,7 @@ exports[`should render ApiDetailsPage correctly with apiItem 1`] = `
         </ListRegular>
         <ListRegular
           bottomMargin={true}
+          name={null}
           title="Contact information"
         >
           <TwoColRow
@@ -446,6 +449,7 @@ exports[`should render ApiDetailsPage correctly with missing api-properties 1`] 
         0
         <ListRegular
           bottomMargin={true}
+          name={null}
           title="Terms and restrictions"
         >
           <TwoColRow

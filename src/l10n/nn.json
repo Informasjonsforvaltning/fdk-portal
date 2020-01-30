@@ -41,6 +41,7 @@
   "linkToNap": "Lenke til NAP",
   "conceptReferences": {
     "title": "Omgrep relatert til",
+    "sideMenuTitle": "Relaterte omgrep",
     "seeAlso": "Sjå også"
   },
   "validity": {
