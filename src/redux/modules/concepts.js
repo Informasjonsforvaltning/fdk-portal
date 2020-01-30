@@ -11,6 +11,9 @@ import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
 export const CONCEPTS_REQUEST = 'CONCEPTS_REQUEST';
 export const CONCEPTS_SUCCESS = 'CONCEPTS_SUCCESS';
 export const CONCEPTS_FAILURE = 'CONCEPTS_FAILURE';
+export const CONCEPT_REFERENCES_REQUEST = 'CONCEPT_REFERENCES_REQUEST';
+export const CONCEPT_REFERENCES_SUCCESS = 'CONCEPT_REFERENCES_SUCCESS';
+export const CONCEPT_REFERENCES_FAILURE = 'CONCEPT_REFERENCES_FAILURE';
 
 const generateQueryKey = query => qs.stringify(query, { skipNulls: true });
 
@@ -35,6 +38,21 @@ export function fetchConceptsIfNeededAction(query) {
         onBeforeStart: { type: CONCEPTS_REQUEST, meta: { queryKey } },
         onSuccess: { type: CONCEPTS_SUCCESS, meta: { queryKey } },
         onError: { type: CONCEPTS_FAILURE, meta: { queryKey } }
+      })
+    );
+}
+
+export function fetchConceptReferencesAction(query) {
+  const queryKey = generateQueryKey(query);
+  const params = { ...query, aggregations: 'orgPath' };
+
+  return (dispatch, getState) =>
+    shouldFetch(_.get(getState(), ['concepts', 'meta']), queryKey) &&
+    dispatch(
+      reduxFsaThunk(() => conceptsSearch(params), {
+        onBeforeStart: { type: CONCEPT_REFERENCES_REQUEST, meta: { queryKey } },
+        onSuccess: { type: CONCEPT_REFERENCES_SUCCESS, meta: { queryKey } },
+        onError: { type: CONCEPT_REFERENCES_FAILURE, meta: { queryKey } }
       })
     );
 }
@@ -75,6 +93,36 @@ export function conceptReducer(state = initialState, action) {
           lastFetch: null, // retry on error
           queryKey: action.meta.queryKey,
           error: action.payload
+        }
+      };
+    case CONCEPT_REFERENCES_REQUEST:
+      return {
+        ...state,
+        conceptReferences: extractConcepts(action.payload),
+        meta: {
+          isFetching: false,
+          lastFetch: Date.now(),
+          queryKey: action.meta.queryKey
+        }
+      };
+    case CONCEPT_REFERENCES_SUCCESS:
+      return {
+        ...state,
+        conceptReferences: extractConcepts(action.payload),
+        meta: {
+          isFetching: false,
+          lastFetch: Date.now(),
+          queryKey: action.meta.queryKey
+        }
+      };
+    case CONCEPT_REFERENCES_FAILURE:
+      return {
+        ...state,
+        conceptReferences: extractConcepts(action.payload),
+        meta: {
+          isFetching: false,
+          lastFetch: Date.now(),
+          queryKey: action.meta.queryKey
         }
       };
     default:

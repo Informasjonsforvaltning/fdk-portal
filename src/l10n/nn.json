@@ -39,6 +39,10 @@
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
   "linkToNap": "Lenke til NAP",
+  "conceptReferences": {
+    "title": "Omgrep relatert til",
+    "seeAlso": "Sjå også"
+  },
   "app": {
     "menu": "Meny"
   },
