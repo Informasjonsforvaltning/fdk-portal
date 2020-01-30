@@ -11,7 +11,13 @@ import { getLosStructure } from '../../redux/modules/referenceData';
 import { getTranslateText } from '../../lib/translateText';
 import localization from '../../lib/localization';
 import './search-hit-header.scss';
+import {
+  dateStringToDate,
+  isDateBeforeToday,
+  isDateAfterToday
+} from '../../lib/date-utils';
 import { LabelNational } from '../label-national/label-national.component';
+import { AlertMessage } from '../alert-message/alert-message.component';
 import { LinkExternal } from '../link-external/link-external.component';
 import { getConfig } from '../../config';
 
@@ -64,10 +70,27 @@ const renderThemes = (themes, losItems, darkThemeBackground) => {
     .filter(Boolean);
 };
 
-const renderTitle = (Tag, title, titleLink, externalLink) => {
+const renderTitle = (
+  Tag,
+  title,
+  titleLink,
+  externalLink,
+  isExpired,
+  isWillBeValid
+) => {
   const titleTag = (Tag, title) => (
     <Tag className="mr-3" name={title}>
       {title}
+      {isExpired && (
+        <span className="fdk-expired">
+          &nbsp;({localization.validity.expired})
+        </span>
+      )}
+      {!isExpired && isWillBeValid && (
+        <span className="fdk-will-be-valid">
+          &nbsp;({localization.validity.willBeValid})
+        </span>
+      )}
     </Tag>
   );
   if (titleLink) {
@@ -107,15 +130,30 @@ export const SearchHitHeader = props => {
     statusCode,
     referenceData,
     darkThemeBackground,
-    externalLink
+    externalLink,
+    validFromIncluding,
+    validToIncluding
   } = props;
+
+  const validFromIncludingDate = dateStringToDate(validFromIncluding);
+  const validToIncludingDate = dateStringToDate(validToIncluding);
+
+  const isExpired = isDateBeforeToday(validToIncludingDate);
+  const isWillBeValid = isDateAfterToday(validFromIncludingDate);
 
   const losItems = getLosStructure(referenceData);
   return (
     <>
       {title && (
         <div className="mb-2 d-flex flex-wrap align-items-center">
-          {renderTitle(Tag, title, titleLink, externalLink)}
+          {renderTitle(
+            Tag,
+            title,
+            titleLink,
+            externalLink,
+            isExpired,
+            isWillBeValid
+          )}
           {statusCode && (
             <LabelStatus
               statusCode={statusCode}
@@ -138,6 +176,19 @@ export const SearchHitHeader = props => {
           />
         )}
       </div>
+
+      {(isExpired || isWillBeValid) && (
+        <AlertMessage type={isExpired ? 'danger' : 'warning'} classNames="mb-4">
+          {isExpired
+            ? localization.validity.expiredInfo
+            : localization.validity.willBeValidInfo}
+          &nbsp;
+          {(isExpired ? validToIncludingDate : validFromIncludingDate)
+            .toLocaleDateString('no-NB')
+            .split('/')
+            .join('.')}
+        </AlertMessage>
+      )}
 
       {(nationalComponent || !!themes.length) && (
         <div className="mb-4 d-flex flex-wrap align-items-baseline align-items-center">
@@ -162,7 +213,9 @@ SearchHitHeader.defaultProps = {
   statusCode: null,
   referenceData: null,
   darkThemeBackground: false,
-  externalLink: false
+  externalLink: false,
+  validFromIncluding: null,
+  validToIncluding: null
 };
 
 SearchHitHeader.propTypes = {
@@ -178,5 +231,7 @@ SearchHitHeader.propTypes = {
   statusCode: PropTypes.string,
   referenceData: PropTypes.object,
   darkThemeBackground: PropTypes.bool,
-  externalLink: PropTypes.bool
+  externalLink: PropTypes.bool,
+  validFromIncluding: PropTypes.string,
+  validToIncluding: PropTypes.string
 };

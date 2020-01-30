@@ -80,6 +80,8 @@ exports[`should render InformationModelDetailsPage correctly with informationMod
           theme={Array []}
           title="Åpne Data fra Enhetsregisteret - API Dokumentasjon"
           titleLink={null}
+          validFromIncluding={null}
+          validToIncluding={null}
         />
         <ListRegular
           bottomMargin={true}

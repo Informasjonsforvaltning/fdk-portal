@@ -5,6 +5,11 @@ import DocumentMeta from 'react-document-meta';
 
 import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
+import {
+  dateStringToDate,
+  isDateBeforeToday,
+  isDateAfterToday
+} from '../../lib/date-utils';
 import { ListRegular } from '../../components/list-regular/list-regular.component';
 import { TwoColRow } from '../../components/list-regular/twoColRow/twoColRow';
 import { HarvestDate } from '../../components/harvest-date/harvest-date.component';
@@ -64,6 +69,40 @@ const renderSource = ({ sourceRelationship, sources }) => {
       ))}
     </div>
   );
+};
+
+const renderValidity = (validFromIncluding, validToIncluding) => {
+  if (validFromIncluding || validToIncluding) {
+    const validFromIncludingDate = dateStringToDate(validFromIncluding);
+    const validToIncludinggDate = dateStringToDate(validToIncluding);
+    return (
+      <section className="fdk-validity mb-5">
+        <div>
+          <h4>{localization.validity.validFromIncluding}</h4>
+          <p>
+            {validFromIncludingDate
+              ? validFromIncludingDate
+                  .toLocaleDateString('no-NB')
+                  .split('/')
+                  .join('.')
+              : '-'}
+          </p>
+        </div>
+        <div>
+          <h4>{localization.validity.validToIncluding}</h4>
+          <p>
+            {validToIncludinggDate
+              ? validToIncludinggDate
+                  .toLocaleDateString('no-NB')
+                  .split('/')
+                  .join('.')
+              : '-'}
+          </p>
+        </div>
+      </section>
+    );
+  }
+  return null;
 };
 
 const renderRemark = remark => {
@@ -221,15 +260,34 @@ const renderConceptReferences = (
           prefLabel
         )}`}
       >
-        {seeAlsoReferences.map(({ id, prefLabel: seeAlsoConceptPrefLabel }) => (
-          <li key={id} className="d-flex list-regular--item">
-            {localization.conceptReferences.seeAlso}
-            &nbsp;
-            <a href={`/concepts/${id}`}>
-              {getTranslateText(seeAlsoConceptPrefLabel)}
-            </a>
-          </li>
-        ))}
+        {seeAlsoReferences.map(
+          ({
+            id,
+            prefLabel: seeAlsoConceptPrefLabel,
+            validFromIncluding,
+            validToIncluding
+          }) => {
+            const isExpired = isDateBeforeToday(
+              dateStringToDate(validToIncluding)
+            );
+            const isWillBeValid = isDateAfterToday(
+              dateStringToDate(validFromIncluding)
+            );
+            return (
+              <li key={id} className="d-flex list-regular--item">
+                {localization.conceptReferences.seeAlso}
+                &nbsp;
+                <a href={`/concepts/${id}`}>
+                  {getTranslateText(seeAlsoConceptPrefLabel)}
+                  {isExpired && <>&nbsp;({localization.validity.expired})</>}
+                  {!isExpired && isWillBeValid && (
+                    <>&nbsp;({localization.validity.willBeValid})</>
+                  )}
+                </a>
+              </li>
+            );
+          }
+        )}
       </ListRegular>
     );
   }
@@ -422,12 +480,18 @@ export const ConceptDetailsPage = ({
                 publisher={_.get(conceptItem, 'publisher')}
                 publisherTag="span"
                 publisherItems={publisherItems}
+                validFromIncluding={conceptItem.validFromIncluding}
+                validToIncluding={conceptItem.validToIncluding}
                 darkThemeBackground
               />
               {renderDescription(_.get(conceptItem, ['definition', 'text']))}
               {renderSource(source)}
             </div>
 
+            {renderValidity(
+              conceptItem.validFromIncluding,
+              conceptItem.validToIncluding
+            )}
             {renderRemark(_.get(conceptItem, ['definition', 'remark']))}
             {renderSample(_.get(conceptItem, 'example'))}
             {renderSubjectAndApplication(

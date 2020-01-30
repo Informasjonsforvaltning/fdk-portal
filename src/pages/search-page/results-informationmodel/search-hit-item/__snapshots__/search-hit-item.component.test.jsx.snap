@@ -48,6 +48,8 @@ exports[`should render informatiomModel-SearchHitItem correctly 1`] = `
       theme={Array []}
       title="Enhetsregisteret"
       titleLink="/informationmodels/eadda99c-781e-4900-8f54-8dd298168382"
+      validFromIncluding={null}
+      validToIncluding={null}
     />
   </header>
 </article>

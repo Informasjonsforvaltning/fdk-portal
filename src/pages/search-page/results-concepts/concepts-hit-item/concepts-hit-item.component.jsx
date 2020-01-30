@@ -6,9 +6,15 @@ import noop from 'lodash/noop';
 import { Link } from 'react-router-dom';
 
 import localization from '../../../../lib/localization';
+import {
+  dateStringToDate,
+  isDateBeforeToday,
+  isDateAfterToday
+} from '../../../../lib/date-utils';
 import { getTranslateText } from '../../../../lib/translateText';
 import { PublisherLabel } from '../../../../components/publisher-label/publisher-label.component';
 import { LinkExternal } from '../../../../components/link-external/link-external.component';
+import { AlertMessage } from '../../../../components/alert-message/alert-message.component';
 import './concepts-hit-item.scss';
 
 const renderAddRemoveCompareButton = (
@@ -45,7 +51,13 @@ const renderAddRemoveCompareButton = (
   );
 };
 
-const renderTitle = (title, id, deprecated = false) => {
+const renderTitle = (
+  title,
+  id,
+  isExpired,
+  isWillBeValid,
+  deprecated = false
+) => {
   if (!title) {
     return null;
   }
@@ -61,6 +73,16 @@ const renderTitle = (title, id, deprecated = false) => {
       >
         <h2 className="mr-3" name={title}>
           {title}
+          {isExpired && (
+            <span className="fdk-expired">
+              &nbsp;({localization.validity.expired})
+            </span>
+          )}
+          {!isExpired && isWillBeValid && (
+            <span className="fdk-will-be-valid">
+              &nbsp;({localization.validity.willBeValid})
+            </span>
+          )}
         </h2>
       </Link>
       {deprecated && (
@@ -161,6 +183,12 @@ export const ConceptsHitItem = props => {
     );
   }
 
+  const validFromIncludingDate = dateStringToDate(result.validFromIncluding);
+  const validToIncludingDate = dateStringToDate(result.validToIncluding);
+
+  const isExpired = isDateBeforeToday(validToIncludingDate);
+  const isWillBeValid = isDateAfterToday(validFromIncludingDate);
+
   const searchHitClass = cx('search-hit', {
     'fade-in-200': fadeInCounter === 0,
     'fade-in-300': fadeInCounter === 1,
@@ -179,7 +207,9 @@ export const ConceptsHitItem = props => {
       <div className="mb-2 d-flex flex-wrap align-items-baseline justify-content-between">
         {renderTitle(
           getTranslateText(_.get(result, 'prefLabel')),
-          _.get(result, 'id')
+          _.get(result, 'id'),
+          isExpired,
+          isWillBeValid
         )}
 
         {renderAddRemoveCompareButton(
@@ -191,6 +221,19 @@ export const ConceptsHitItem = props => {
       </div>
 
       {renderPublisher(_.get(result, 'publisher'))}
+
+      {(isExpired || isWillBeValid) && (
+        <AlertMessage type={isExpired ? 'danger' : 'warning'} classNames="mb-4">
+          {isExpired
+            ? localization.validity.expiredInfo
+            : localization.validity.willBeValidInfo}
+          &nbsp;
+          {(isExpired ? validToIncludingDate : validFromIncludingDate)
+            .toLocaleDateString('no-NB')
+            .split('/')
+            .join('.')}
+        </AlertMessage>
+      )}
 
       {renderDescription(_.get(result, ['definition', 'text']))}
 

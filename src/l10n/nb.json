@@ -43,6 +43,14 @@
     "title": "Begreper relatert til",
     "seeAlso": "Se også"
   },
+  "validity": {
+    "validFromIncluding": "Gyldig fra og med",
+    "validToIncluding": "Gyldig til og med",
+    "expired": "utgått",
+    "willBeValid": "blir gyldig",
+    "expiredInfo": "Dette begrepet utgikk",
+    "willBeValidInfo": "Dette begrepet blir gyldig"
+  },
   "app": {
     "menu": "Meny"
   },

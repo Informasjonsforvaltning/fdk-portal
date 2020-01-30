@@ -36,6 +36,8 @@ exports[`should render api-SearchHitItem correctly 1`] = `
       theme={Array []}
       title="REST-API for Kontakt- og reserversjonsregisteret (KRR)"
       titleLink="/apis/24fa3668-6ada-4a50-804e-1396f8470a24"
+      validFromIncluding={null}
+      validToIncluding={null}
     />
   </header>
   <div
@@ -106,6 +108,8 @@ exports[`should render api-SearchHitItem correctly with no props 1`] = `
       theme={Array []}
       title={null}
       titleLink="/apis/undefined"
+      validFromIncluding={null}
+      validToIncluding={null}
     />
   </header>
   <div
@@ -140,6 +144,8 @@ exports[`should render api-SearchHitItem with long description 1`] = `
       theme={Array []}
       title="National Data Directory Search API"
       titleLink="/apis/32690443-e926-4e52-9988-dbac45085102"
+      validFromIncluding={null}
+      validToIncluding={null}
     />
   </header>
   <div
