@@ -207,6 +207,35 @@ const renderDatasets = datasets =>
     </ListRegular>
   );
 
+const renderConceptReferences = (
+  { prefLabel, seeAlso = [] },
+  conceptReferences
+) => {
+  if (conceptReferences) {
+    const seeAlsoReferences = conceptReferences.filter(({ identifier }) =>
+      seeAlso.includes(identifier)
+    );
+    return (
+      <ListRegular
+        title={`${localization.conceptReferences.title} ${getTranslateText(
+          prefLabel
+        )}`}
+      >
+        {seeAlsoReferences.map(({ id, prefLabel: seeAlsoConceptPrefLabel }) => (
+          <li key={id} className="d-flex list-regular--item">
+            {localization.conceptReferences.seeAlso}
+            &nbsp;
+            <a href={`/concepts/${id}`}>
+              {getTranslateText(seeAlsoConceptPrefLabel)}
+            </a>
+          </li>
+        ))}
+      </ListRegular>
+    );
+  }
+  return null;
+};
+
 const renderContactPoint = contactPoint => {
   if (!(_.get(contactPoint, 'email') || _.get(contactPoint, 'telephone'))) {
     return null;
@@ -322,12 +351,26 @@ export const ConceptDetailsPage = ({
   conceptItem,
   conceptDatasetReferences,
   publisherItems,
-  fetchPublishersIfNeeded
+  conceptReferences,
+  fetchPublishersIfNeeded,
+  fetchConceptReferences
 }) => {
   fetchPublishersIfNeeded();
 
   if (!conceptItem) {
     return null;
+  }
+
+  if (!conceptReferences) {
+    const { seeAlso = [] } = conceptItem;
+    const identifiers = [...seeAlso];
+
+    if (identifiers.length > 0) {
+      fetchConceptReferences({
+        identifiers: identifiers.join(','),
+        size: identifiers.length
+      });
+    }
   }
 
   const meta = {
@@ -398,6 +441,7 @@ export const ConceptDetailsPage = ({
             {renderRange(_.get(conceptItem, ['definition', 'range']))}
             {renderIdentifiers(_.get(conceptItem, 'id'))}
             {renderDatasets(conceptDatasetReferences)}
+            {renderConceptReferences(conceptItem, conceptReferences)}
             {renderContactPoint(_.get(conceptItem, 'contactPoint'))}
             <div style={{ height: '75vh' }} />
           </section>

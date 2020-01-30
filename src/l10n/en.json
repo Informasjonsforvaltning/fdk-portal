@@ -39,6 +39,10 @@
   "goTo": "Go to",
   "linkToFdk": "Link to the National Data Catalog",
   "linkToNap": "Link to the National Access Point for Transport Data",
+  "conceptReferences": {
+    "title": "Concept relations",
+    "seeAlso": "See also"
+  },
   "app": {
     "menu": "Menu"
   },
