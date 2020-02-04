@@ -14,7 +14,8 @@ import './search-hit-header.scss';
 import {
   dateStringToDate,
   isDateBeforeToday,
-  isDateAfterToday
+  isDateAfterToday,
+  formatDate
 } from '../../lib/date-utils';
 import { LabelNational } from '../label-national/label-national.component';
 import { AlertMessage } from '../alert-message/alert-message.component';
@@ -183,10 +184,9 @@ export const SearchHitHeader = props => {
             ? localization.validity.expiredInfo
             : localization.validity.willBeValidInfo}
           &nbsp;
-          {(isExpired ? validToIncludingDate : validFromIncludingDate)
-            .toLocaleDateString('no-NB')
-            .split('/')
-            .join('.')}
+          {formatDate(
+            isExpired ? validToIncludingDate : validFromIncludingDate
+          )}
         </AlertMessage>
       )}
 

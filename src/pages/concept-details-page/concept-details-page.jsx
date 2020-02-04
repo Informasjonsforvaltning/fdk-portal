@@ -8,7 +8,8 @@ import { getTranslateText } from '../../lib/translateText';
 import {
   dateStringToDate,
   isDateBeforeToday,
-  isDateAfterToday
+  isDateAfterToday,
+  formatDate
 } from '../../lib/date-utils';
 import { ListRegular } from '../../components/list-regular/list-regular.component';
 import { TwoColRow } from '../../components/list-regular/twoColRow/twoColRow';
@@ -80,23 +81,13 @@ const renderValidity = (validFromIncluding, validToIncluding) => {
         <div>
           <h4>{localization.validity.validFromIncluding}</h4>
           <p>
-            {validFromIncludingDate
-              ? validFromIncludingDate
-                  .toLocaleDateString('no-NB')
-                  .split('/')
-                  .join('.')
-              : '-'}
+            {validFromIncludingDate ? formatDate(validFromIncludingDate) : '-'}
           </p>
         </div>
         <div>
           <h4>{localization.validity.validToIncluding}</h4>
           <p>
-            {validToIncludinggDate
-              ? validToIncludinggDate
-                  .toLocaleDateString('no-NB')
-                  .split('/')
-                  .join('.')
-              : '-'}
+            {validToIncludinggDate ? formatDate(validToIncludinggDate) : '-'}
           </p>
         </div>
       </section>
