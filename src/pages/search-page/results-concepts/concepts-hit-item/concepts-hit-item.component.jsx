@@ -9,7 +9,8 @@ import localization from '../../../../lib/localization';
 import {
   dateStringToDate,
   isDateBeforeToday,
-  isDateAfterToday
+  isDateAfterToday,
+  formatDate
 } from '../../../../lib/date-utils';
 import { getTranslateText } from '../../../../lib/translateText';
 import { PublisherLabel } from '../../../../components/publisher-label/publisher-label.component';
@@ -228,10 +229,9 @@ export const ConceptsHitItem = props => {
             ? localization.validity.expiredInfo
             : localization.validity.willBeValidInfo}
           &nbsp;
-          {(isExpired ? validToIncludingDate : validFromIncludingDate)
-            .toLocaleDateString('no-NB')
-            .split('/')
-            .join('.')}
+          {formatDate(
+            isExpired ? validToIncludingDate : validFromIncludingDate
+          )}
         </AlertMessage>
       )}
 

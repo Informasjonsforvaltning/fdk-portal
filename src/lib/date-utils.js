@@ -12,5 +12,18 @@ const isDateSameDayAsNow = date =>
 
 export const isDateBeforeToday = date =>
   date && date < Date.now() && !isDateSameDayAsNow(date);
+
 export const isDateAfterToday = date =>
   date && date > Date.now() && !isDateSameDayAsNow(date);
+
+export const formatDate = date =>
+  date &&
+  date instanceof Date &&
+  date
+    .toLocaleDateString('nb-NO', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    })
+    .split('/')
+    .join('.');
