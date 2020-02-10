@@ -12,14 +12,11 @@ import { ErrorBoundary } from './components/error-boundary/error-boundary';
 import { getConfig } from './config';
 
 if (window.location.hostname.indexOf('fellesdatakatalog.brreg.no') !== -1) {
-  ReactGA.initialize('UA-110098477-1'); // prod
+  ReactGA.initialize(
+    getConfig().themeNap ? 'UA-110098477-4' : 'UA-110098477-1'
+  ); // prod
   ReactGA.set({ anonymizeIp: true });
   hotjar.initialize(995327, 6);
-} else if (
-  window.location.hostname.indexOf('fellesdatakatalog.tt1.brreg.no') !== -1
-) {
-  ReactGA.initialize('UA-110098477-2'); // tt1
-  ReactGA.set({ anonymizeIp: true });
 } else if (window.location.hostname.indexOf('localhost') !== -1) {
   ReactGA.initialize('UA-41886511-1'); // localhost
   ReactGA.set({ anonymizeIp: true });
@@ -36,7 +33,6 @@ function Analytics(props) {
   const PAGEVIEW_TIMEOUT = 1000;
   if (
     window.location.hostname.indexOf('fellesdatakatalog.brreg.no') !== -1 ||
-    window.location.hostname.indexOf('fellesdatakatalog.tt1.brreg.no') !== -1 ||
     window.location.hostname.indexOf('localhost') !== -1
   ) {
     ReactGA.set({ page: props.location.pathname + props.location.search });
