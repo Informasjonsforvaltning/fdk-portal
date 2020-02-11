@@ -62,3 +62,12 @@ jobs:
         uses: pullreminders/slack-action@master
         with:
           args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to digdir-staging\"}'
+
+      - name: Create pull request to master
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "develop"
+          destination_branch: "master"
+          pr_title: "Pulling ${{ github.ref }} into master"
+          pr_body: ":gear: *Automated PR*"
+          github_token: ${{ secrets.DISPATCH_TOKEN }}
