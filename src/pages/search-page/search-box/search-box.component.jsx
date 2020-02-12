@@ -8,6 +8,8 @@ import localization from '../../../lib/localization';
 import { HitsStats } from './hits-stats/hits-stats.component';
 import './search-box.scss';
 
+import SearchIcon from '../../../img/icon-search-lg.svg';
+
 export const SearchBoxPure = props => {
   const {
     onSearchSubmit,
@@ -77,7 +79,7 @@ export const SearchBoxPure = props => {
           }}
           className="fdk-button-search btn btn-lg"
         >
-          <i className="fa fa-search mr-2" />
+          <img src={SearchIcon} alt="Søk" />
           {localization.query.do}
         </button>
       </div>
