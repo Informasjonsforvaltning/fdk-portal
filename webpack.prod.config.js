@@ -16,9 +16,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader'
+        test: /\.(js|ts)x?$/,
+        use: ['babel-loader', 'ts-loader'],
+        exclude: /(node_modules)/
       },
       {
         test: /\.s?css$/,
@@ -44,13 +44,7 @@ module.exports = {
     ]
   },
   resolve: {
-    alias: {
-      react: path.resolve('./node_modules/react')
-    },
-    extensions: ['.js', '.jsx', '.webpack.js', '.web.js']
-  },
-  resolveLoader: {
-    modules: [__dirname, 'node_modules']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   plugins: [
     new webpack.DefinePlugin({
