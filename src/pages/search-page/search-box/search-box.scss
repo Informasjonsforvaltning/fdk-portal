@@ -75,10 +75,19 @@
   }
 
   .fdk-button-search {
+    display: flex;
+    align-items: center;
     margin: 0;
     border-radius: 0 5px 5px 0;
     box-shadow: 0 4px 8px rgba(45, 55, 65, 0.2);
     height: 54px;
+
+    & > img {
+      height: 15px;
+      width: 15px;
+      margin-right: 4px;
+    }
+
     @include themify($themes) {
       background-color: themed('color-button-primary-1');
       color: themed('color-button-text-primary');
@@ -115,8 +124,15 @@
     }
 
     .fdk-button-search {
-      font-size: 2.5rem;
       height: 68px;
+      padding: 0 20px;
+      font-size: 2.3rem;
+
+      & > img {
+        height: 25px;
+        width: 25px;
+        margin-right: 6px;
+      }
     }
   }
 
