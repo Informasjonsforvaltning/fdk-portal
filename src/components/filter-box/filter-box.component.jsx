@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Collapse } from 'reactstrap';
-import cx from 'classnames';
 import _ from 'lodash';
 
 import localization from '../../lib/localization';
 import { FilterOption } from '../filter-option/filter-option.component';
 import './filter-box.scss';
+
+import CollapseIcon from '../../img/icon-collapse-md.svg';
+import ExpandIcon from '../../img/icon-expand-md.svg';
+import CollapseTextIcon from '../../img/icon-collapse-text-sm.svg';
+import ExpandTextIcon from '../../img/icon-expand-text-sm.svg';
 
 export class FilterBox extends React.Component {
   constructor(props) {
@@ -63,10 +67,7 @@ export class FilterBox extends React.Component {
 
     if (buckets) {
       const bucketsLength = buckets.length;
-      const openIconClass = cx('fa', 'mr-2', {
-        'fa-angle-double-down': !open,
-        'fa-angle-double-up': open
-      });
+
       return (
         <div>
           {options(buckets.slice(0, 5))}
@@ -80,7 +81,11 @@ export class FilterBox extends React.Component {
                 className="fdk-toggleList"
                 onClick={this.toggleList}
               >
-                <i className={openIconClass} />
+                <img
+                  src={open ? CollapseTextIcon : ExpandTextIcon}
+                  alt=""
+                  className="mr-2"
+                />
                 {open
                   ? localization.facet.showfewer
                   : localization.facet.showmore}
@@ -96,10 +101,7 @@ export class FilterBox extends React.Component {
   render() {
     const { openFilter } = this.state;
     const { title, filter, onClick, activeFilter } = this.props;
-    const collapseIconClass = cx('fa', {
-      'fa-angle-down': !openFilter,
-      'fa-angle-up': openFilter
-    });
+
     if (_.get(filter, 'buckets', []).length > 0) {
       return (
         <div className="fdk-panel--filter">
@@ -110,7 +112,7 @@ export class FilterBox extends React.Component {
               onClick={this.toggleFilter}
             >
               <span>{title}</span>
-              <i className={collapseIconClass} />
+              <img src={openFilter ? CollapseIcon : ExpandIcon} alt="" />
             </button>
           </div>
           <Collapse isOpen={openFilter}>

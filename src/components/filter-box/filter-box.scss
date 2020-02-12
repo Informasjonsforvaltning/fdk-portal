@@ -25,6 +25,11 @@
         }
         font-size: 2rem;
       }
+
+      & > img {
+        height: 16px;
+        width: 16px;
+      }
     }
   }
   .fdk-panel__content {
@@ -41,6 +46,11 @@
       .fdk-toggleList {
         @include themify($themes) {
           color: themed('color-text-link');
+        }
+
+        img {
+          height: 16px;
+          width: 16px;
         }
       }
     }
