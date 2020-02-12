@@ -81,6 +81,10 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
     "babel-jest": "^24.8.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
@@ -91,6 +95,8 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "resolve-url-loader": "^3.1.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.10.1"
