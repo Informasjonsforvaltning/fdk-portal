@@ -45,7 +45,21 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader'
+        loader: 'file-loader',
+        exclude: [path.resolve(__dirname, 'src', 'images')]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          'babel-loader',
+          {
+            loader: 'react-svg-loader',
+            options: {
+              jsx: true
+            }
+          }
+        ],
+        include: [path.resolve(__dirname, 'src', 'images')]
       },
       {
         test: /\.(png|jpg)$/,
