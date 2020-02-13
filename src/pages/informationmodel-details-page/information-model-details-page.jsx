@@ -25,32 +25,40 @@ const renderJSONSchema = schema => {
   );
 };
 
-const createTabsArray = schema => {
-  const tabsArray = [];
-
-  // only show structure-tab if schema is an object, not when schema is an array
-  if (schema && schema.definitions) {
-    tabsArray.push({
-      title: localization.infoMod.tabs.structure,
-      body: <Structure definitions={schema.definitions} />
-    });
-  }
-  tabsArray.push({
-    title: localization.infoMod.tabs.json,
-    body: renderJSONSchema(schema)
-  });
-  return tabsArray;
+const getSchema = model => {
+  const schemaJson = _.get(model, 'schema', null);
+  return JSON.parse(schemaJson);
 };
 
-const renderModels = schema => {
-  if (!schema) {
+const createTabsArray = informationModelItem => {
+  const tabsArray = [];
+  const parsedJsonSchema = getSchema(informationModelItem);
+
+  // only show structure-tab if schema is an object, not when schema is an array
+  if (parsedJsonSchema && parsedJsonSchema.definitions) {
+    tabsArray.push({
+      title: localization.infoMod.tabs.structure,
+      body: <Structure definitions={parsedJsonSchema.definitions} />
+    });
+  }
+  if (parsedJsonSchema) {
+    tabsArray.push({
+      title: localization.infoMod.tabs.json,
+      body: renderJSONSchema(parsedJsonSchema)
+    });
+    return tabsArray;
+  }
+};
+
+const renderModels = informationModelItem => {
+  if (!informationModelItem) {
     return null;
   }
 
   return (
     <ListRegular title={localization.infoMod.infoModHeader}>
       <div className="d-flex list-regular--item" />
-      <Tabs tabContent={createTabsArray(schema)} />
+      <Tabs tabContent={createTabsArray(informationModelItem)} />
     </ListRegular>
   );
 };
@@ -99,11 +107,6 @@ const renderStickyMenu = (informationModelItem, referencedApis) => {
 
   return <StickyMenu title={localization.goTo} menuItems={menuItems} />;
 };
-
-function getSchema(model) {
-  const schemaJson = _.get(model, 'schema');
-  return JSON.parse(schemaJson);
-}
 
 export const InformationModelDetailsPage = ({
   fetchPublishersIfNeeded,
@@ -157,7 +160,7 @@ export const InformationModelDetailsPage = ({
               darkThemeBackground
             />
 
-            {renderModels(getSchema(informationModelItem))}
+            {renderModels(informationModelItem)}
 
             {renderRelatedApi(referencedApis, publisherItems)}
             <div style={{ height: '75vh' }} />
