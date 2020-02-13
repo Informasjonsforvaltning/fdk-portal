@@ -6,11 +6,7 @@ module.exports = {
     '<rootDir>/test/fixtures/',
     '/target/'
   ],
-  setupFiles: [
-    '@babel/polyfill',
-    'raf/polyfill',
-    '<rootDir>/test/jestsetup.js'
-  ],
+  setupFiles: ['<rootDir>/test/jestsetup.js'],
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
     '^.+\\.svg$': 'jest-svg-transformer'
