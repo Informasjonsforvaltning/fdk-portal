@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode: 'production',
   context: path.join(__dirname),
-  entry: ['@babel/polyfill', 'whatwg-fetch', './src/index.jsx'],
+  entry: ['./src/index.jsx'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
