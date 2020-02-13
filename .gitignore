@@ -1,6 +1,7 @@
 # compilation targets
 node_modules
 dist
+coverage
 
 # IDE files
 *.iml
