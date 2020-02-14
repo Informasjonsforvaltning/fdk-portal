@@ -8,11 +8,13 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import { hotjar } from 'react-hotjar';
+import { ThemeProvider } from 'styled-components';
 
 import { configureStore } from './redux/configureStore';
 import { ConnectedApp } from './app/connected-app';
 import { ErrorBoundary } from './components/error-boundary/error-boundary';
 import { getConfig } from './config';
+import { theme } from './app/theme';
 
 if (window.location.hostname.indexOf('fellesdatakatalog.brreg.no') !== -1) {
   ReactGA.initialize('UA-110098477-1'); // prod
@@ -60,15 +62,17 @@ function Analytics(props) {
 const store = configureStore(getConfig().store);
 
 ReactDOM.render(
-  <ErrorBoundary>
-    <Provider store={store}>
-      <BrowserRouter>
-        <>
-          <Route path="/" component={Analytics} />
-          <Route path="/" component={ConnectedApp} />
-        </>
-      </BrowserRouter>
-    </Provider>
-  </ErrorBoundary>,
+  <ThemeProvider theme={theme}>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <BrowserRouter>
+          <>
+            <Route path="/" component={Analytics} />
+            <Route path="/" component={ConnectedApp} />
+          </>
+        </BrowserRouter>
+      </Provider>
+    </ErrorBoundary>
+  </ThemeProvider>,
   document.getElementById('root')
 );
