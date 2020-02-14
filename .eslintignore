@@ -7,3 +7,7 @@ nginx
 *.scss
 assets
 img
+images
+
+.huskyrc
+.lintstagedrc
