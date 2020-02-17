@@ -1,6 +1,6 @@
 module.exports = {
   preset: 'ts-jest/presets/js-with-babel',
-  setupFiles: ['<rootDir>/test/setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/test/setup.js'],
   transform: {
     '^.+\\.svg$': 'jest-svg-transformer'
   },
