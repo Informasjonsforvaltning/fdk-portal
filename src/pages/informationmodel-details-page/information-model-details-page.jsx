@@ -12,6 +12,7 @@ import { ListRegular } from '../../components/list-regular/list-regular.componen
 import { Tabs } from '../../components/tabs/tabs.component';
 import { Structure } from './structure/structure.component';
 import './information-model-details-page.scss';
+import { InfoModelStructure } from './infomodel-structure/infomodel-structure.component';
 
 const renderJSONSchema = schema => {
   if (!schema) {
@@ -32,8 +33,23 @@ const getSchema = model => {
 
 const createTabsArray = informationModelItem => {
   const tabsArray = [];
-  const parsedJsonSchema = getSchema(informationModelItem);
 
+  if (
+    informationModelItem.rootObject ||
+    informationModelItem.objectType ||
+    informationModelItem.codeType ||
+    informationModelItem.dataType ||
+    informationModelItem.simpleType
+  ) {
+    tabsArray.push({
+      title: localization.infoMod.tabs.structure,
+      body: (
+        <InfoModelStructure informationModelDocument={informationModelItem} />
+      )
+    });
+  }
+
+  const parsedJsonSchema = getSchema(informationModelItem);
   // only show structure-tab if schema is an object, not when schema is an array
   if (parsedJsonSchema && parsedJsonSchema.definitions) {
     tabsArray.push({

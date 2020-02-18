@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Description component should render with all props 1`] = `
+<styled.div>
+  <styled.div>
+    <strong>
+      Description
+      :
+    </strong>
+    test description
+  </styled.div>
+  <styled.div>
+    <strong>
+      Identifier
+      :
+    </strong>
+    <LinkExternal
+      openInNewTab={false}
+      prefLabel="test identifier"
+      uri="test identifier"
+    />
+  </styled.div>
+  <styled.div>
+    <strong>
+      Belongs to module
+      :
+    </strong>
+    test inntekt
+  </styled.div>
+  <styled.div>
+    <strong>
+      Preferred term
+      :
+    </strong>
+    anbefaltTerm
+  </styled.div>
+  <styled.div>
+    <strong>
+      Definition
+      :
+    </strong>
+    definition
+  </styled.div>
+  <styled.div>
+    <strong>
+      Concept reference
+      :
+    </strong>
+    <LinkExternal
+      openInNewTab={false}
+      prefLabel="conceptReference"
+      uri="conceptReference"
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Description component should render with some missing props 1`] = `
+<styled.div>
+  <styled.div>
+    <strong>
+      Description
+      :
+    </strong>
+    test description
+  </styled.div>
+  <styled.div>
+    <strong>
+      Belongs to module
+      :
+    </strong>
+    test inntekt
+  </styled.div>
+  <styled.div>
+    <strong>
+      Preferred term
+      :
+    </strong>
+    anbefaltTerm
+  </styled.div>
+</styled.div>
+`;

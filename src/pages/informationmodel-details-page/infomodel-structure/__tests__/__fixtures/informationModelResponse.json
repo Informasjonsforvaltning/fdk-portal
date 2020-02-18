@@ -1,0 +1,703 @@
+{
+    "id": "123",
+    "publisher": {},
+    "harvestSourceUri": "harvestSourceUri",
+    "harvest": {
+        "firstHarvested": "2020-01-14T13:05:49.916+0000",
+        "lastHarvested": "2020-02-13T05:10:11.242+0000"
+    },
+    "title": {
+        "nb": "Oppgave over pass og stell av barn"
+    },
+    "rootObject": {
+        "id": "111111",
+        "modelDescription": {
+            "name": {
+                "nb": "Leveranse"
+            },
+            "description": {
+                "nb": "norsk bokmål tekst",
+                "nn": "nynorsk tekst",
+                "en": "engelsk tekst"
+            },
+            "identifier": "identifier",
+            "belongsToModule": "inntekt",
+            "concept": {
+                "anbefaltTerm": {
+                    "nb": "Anbefalt term"
+                },
+                "definition": {
+                    "nb": "Definisjon"
+                },
+                "publisher": {
+                    "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                    "id": "974760673",
+                    "name": "REGISTERENHETEN I BRØNNØYSUND",
+                    "orgPath": "/STAT/912660680/974760673",
+                    "prefLabel": {
+                        "nb": "Brønnøysundregistrene"
+                    }
+                },
+                "conceptReference": "https://conceptreference.com"
+            }
+        },
+        "attributeList": [
+            {
+                "name": {
+                    "nb": "norsk bokmål tekst",
+                    "nn": "nynorsk tekst",
+                    "en": "engelsk tekst"
+                },
+                "referencedObject": {
+                    "refId": "refId-1",
+                    "name": {
+                        "nb": "norsk bokmål tekst",
+                        "nn": "nynorsk tekst",
+                        "en": "engelsk tekst"
+                    }
+                },
+                "range": "0..*",
+                "elementDescription": {
+                    "name": {
+                        "nb": "Leveranse"
+                    },
+                    "description": {
+                        "nb": "norsk bokmål tekst",
+                        "nn": "nynorsk tekst",
+                        "en": "engelsk tekst"
+                    },
+                    "identifier": "identifier",
+                    "belongsToModule": "inntekt",
+                    "concept": {
+                        "anbefaltTerm": {
+                            "nb": "Anbefalt term"
+                        },
+                        "definition": {
+                            "nb": "Definisjon"
+                        },
+                        "publisher": {
+                            "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                            "id": "974760673",
+                            "name": "REGISTERENHETEN I BRØNNØYSUND",
+                            "orgPath": "/STAT/912660680/974760673",
+                            "prefLabel": {
+                                "nb": "Brønnøysundregistrene"
+                            }
+                        },
+                        "conceptReference": "https://conceptreference.com"
+                    }
+                }
+            }
+        ]
+    },
+    "objectTypes": [
+        {
+            "id": "111111",
+            "modelDescription": {
+                "name": {
+                    "nb": "Leveranse"
+                },
+                "description": {
+                    "nb": "norsk bokmål tekst",
+                    "nn": "nynorsk tekst",
+                    "en": "engelsk tekst"
+                },
+                "identifier": "identifier",
+                "belongsToModule": "inntekt",
+                "concept": {
+                    "anbefaltTerm": {
+                        "nb": "Anbefalt term"
+                    },
+                    "definition": {
+                        "nb": "Definisjon"
+                    },
+                    "publisher": {
+                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                        "id": "974760673",
+                        "name": "REGISTERENHETEN I BRØNNØYSUND",
+                        "orgPath": "/STAT/912660680/974760673",
+                        "prefLabel": {
+                            "nb": "Brønnøysundregistrene"
+                        }
+                    },
+                    "conceptReference": "https://conceptreference.com"
+                }
+            },
+            "attributeList": [
+                {
+                    "name": {
+                        "nb": "norsk bokmål tekst",
+                        "nn": "nynorsk tekst",
+                        "en": "engelsk tekst"
+                    },
+                    "referencedObject": {
+                        "refId": "refId-1",
+                        "name": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        }
+                    },
+                    "range": "0..*",
+                    "elementDescription": {
+                        "name": {
+                            "nb": "Leveranse"
+                        },
+                        "description": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        },
+                        "identifier": "identifier",
+                        "belongsToModule": "inntekt",
+                        "concept": {
+                            "anbefaltTerm": {
+                                "nb": "Anbefalt term"
+                            },
+                            "definition": {
+                                "nb": "Definisjon"
+                            },
+                            "publisher": {
+                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                                "id": "974760673",
+                                "name": "REGISTERENHETEN I BRØNNØYSUND",
+                                "orgPath": "/STAT/912660680/974760673",
+                                "prefLabel": {
+                                    "nb": "Brønnøysundregistrene"
+                                }
+                            },
+                            "conceptReference": "https://conceptreference.com"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "111111",
+            "modelDescription": {
+                "name": {
+                    "nb": "Leveranse"
+                },
+                "description": {
+                    "nb": "norsk bokmål tekst",
+                    "nn": "nynorsk tekst",
+                    "en": "engelsk tekst"
+                },
+                "identifier": "identifier",
+                "belongsToModule": "inntekt",
+                "concept": {
+                    "anbefaltTerm": {
+                        "nb": "Anbefalt term"
+                    },
+                    "definition": {
+                        "nb": "Definisjon"
+                    },
+                    "publisher": {
+                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                        "id": "974760673",
+                        "name": "REGISTERENHETEN I BRØNNØYSUND",
+                        "orgPath": "/STAT/912660680/974760673",
+                        "prefLabel": {
+                            "nb": "Brønnøysundregistrene"
+                        }
+                    },
+                    "conceptReference": "https://conceptreference.com"
+                }
+            },
+            "attributeList": [
+                {
+                    "name": {
+                        "nb": "norsk bokmål tekst",
+                        "nn": "nynorsk tekst",
+                        "en": "engelsk tekst"
+                    },
+                    "referencedObject": {
+                        "refId": "refId-1",
+                        "name": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        }
+                    },
+                    "range": "0..*",
+                    "elementDescription": {
+                        "name": {
+                            "nb": "Leveranse"
+                        },
+                        "description": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        },
+                        "identifier": "identifier",
+                        "belongsToModule": "inntekt",
+                        "concept": {
+                            "anbefaltTerm": {
+                                "nb": "Anbefalt term"
+                            },
+                            "definition": {
+                                "nb": "Definisjon"
+                            },
+                            "publisher": {
+                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                                "id": "974760673",
+                                "name": "REGISTERENHETEN I BRØNNØYSUND",
+                                "orgPath": "/STAT/912660680/974760673",
+                                "prefLabel": {
+                                    "nb": "Brønnøysundregistrene"
+                                }
+                            },
+                            "conceptReference": "https://conceptreference.com"
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "codeTypes": [
+        {
+            "id": "id-codetype",
+            "modelDescription": {
+                "name": {
+                    "nb": "Leveranse"
+                },
+                "description": {
+                    "nb": "norsk bokmål tekst",
+                    "nn": "nynorsk tekst",
+                    "en": "engelsk tekst"
+                },
+                "identifier": "identifier",
+                "belongsToModule": "inntekt",
+                "concept": {
+                    "anbefaltTerm": {
+                        "nb": "Anbefalt term"
+                    },
+                    "definition": {
+                        "nb": "Definisjon"
+                    },
+                    "publisher": {
+                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                        "id": "974760673",
+                        "name": "REGISTERENHETEN I BRØNNØYSUND",
+                        "orgPath": "/STAT/912660680/974760673",
+                        "prefLabel": {
+                            "nb": "Brønnøysundregistrene"
+                        }
+                    },
+                    "conceptReference": "https://conceptreference.com"
+                }
+            },
+            "codeList": [
+                {
+                    "name": {
+                        "nb": "norsk bokmål tekst",
+                        "nn": "nynorsk tekst",
+                        "en": "engelsk tekst"
+                    },
+                    "referencedObject": {
+                        "refId": "refId-1",
+                        "name": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        }
+                    },
+                    "range": "0..*",
+                    "elementDescription": {
+                        "name": {
+                            "nb": "Leveranse"
+                        },
+                        "description": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        },
+                        "identifier": "identifier",
+                        "belongsToModule": "inntekt",
+                        "concept": {
+                            "anbefaltTerm": {
+                                "nb": "Anbefalt term"
+                            },
+                            "definition": {
+                                "nb": "Definisjon"
+                            },
+                            "publisher": {
+                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                                "id": "974760673",
+                                "name": "REGISTERENHETEN I BRØNNØYSUND",
+                                "orgPath": "/STAT/912660680/974760673",
+                                "prefLabel": {
+                                    "nb": "Brønnøysundregistrene"
+                                }
+                            },
+                            "conceptReference": "https://conceptreference.com"
+                        }
+                    }
+                },
+                {
+                    "name": {
+                        "nb": "norsk bokmål tekst",
+                        "nn": "nynorsk tekst",
+                        "en": "engelsk tekst"
+                    },
+                    "referencedObject": {
+                        "refId": "refId-1",
+                        "name": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        }
+                    },
+                    "range": "0..*",
+                    "elementDescription": {
+                        "name": {
+                            "nb": "Leveranse"
+                        },
+                        "description": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        },
+                        "identifier": "identifier",
+                        "belongsToModule": "inntekt",
+                        "concept": {
+                            "anbefaltTerm": {
+                                "nb": "Anbefalt term"
+                            },
+                            "definition": {
+                                "nb": "Definisjon"
+                            },
+                            "publisher": {
+                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                                "id": "974760673",
+                                "name": "REGISTERENHETEN I BRØNNØYSUND",
+                                "orgPath": "/STAT/912660680/974760673",
+                                "prefLabel": {
+                                    "nb": "Brønnøysundregistrene"
+                                }
+                            },
+                            "conceptReference": "https://conceptreference.com"
+                        }
+                    }
+                }
+            ],
+            "externalCodeList": [
+                "https://externalcodelist.com",
+                "https://externalcodelist2.com"
+            ]
+        }
+    ],
+    "dataTypes": [
+        {
+            "id": "id-datatype",
+            "modelDescription": {
+                "name": {
+                    "nb": "Leveranse"
+                },
+                "description": {
+                    "nb": "norsk bokmål tekst",
+                    "nn": "nynorsk tekst",
+                    "en": "engelsk tekst"
+                },
+                "identifier": "identifier",
+                "belongsToModule": "inntekt",
+                "concept": {
+                    "anbefaltTerm": {
+                        "nb": "Anbefalt term"
+                    },
+                    "definition": {
+                        "nb": "Definisjon"
+                    },
+                    "publisher": {
+                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                        "id": "974760673",
+                        "name": "REGISTERENHETEN I BRØNNØYSUND",
+                        "orgPath": "/STAT/912660680/974760673",
+                        "prefLabel": {
+                            "nb": "Brønnøysundregistrene"
+                        }
+                    },
+                    "conceptReference": "https://conceptreference.com"
+                }
+            },
+            "attributeList": [
+                {
+                    "name": {
+                        "nb": "norsk bokmål tekst",
+                        "nn": "nynorsk tekst",
+                        "en": "engelsk tekst"
+                    },
+                    "referencedObject": {
+                        "refId": "refId-1",
+                        "name": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        }
+                    },
+                    "range": "0..*",
+                    "elementDescription": {
+                        "name": {
+                            "nb": "Leveranse"
+                        },
+                        "description": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        },
+                        "identifier": "identifier",
+                        "belongsToModule": "inntekt",
+                        "concept": {
+                            "anbefaltTerm": {
+                                "nb": "Anbefalt term"
+                            },
+                            "definition": {
+                                "nb": "Definisjon"
+                            },
+                            "publisher": {
+                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                                "id": "974760673",
+                                "name": "REGISTERENHETEN I BRØNNØYSUND",
+                                "orgPath": "/STAT/912660680/974760673",
+                                "prefLabel": {
+                                    "nb": "Brønnøysundregistrene"
+                                }
+                            },
+                            "conceptReference": "https://conceptreference.com"
+                        }
+                    }
+                }
+            ],
+            "extendsFrom": {
+                "id": "111111",
+                "modelDescription": {
+                    "name": {
+                        "nb": "Leveranse"
+                    },
+                    "description": {
+                        "nb": "norsk bokmål tekst",
+                        "nn": "nynorsk tekst",
+                        "en": "engelsk tekst"
+                    },
+                    "identifier": "identifier",
+                    "belongsToModule": "inntekt",
+                    "concept": {
+                        "anbefaltTerm": {
+                            "nb": "Anbefalt term"
+                        },
+                        "definition": {
+                            "nb": "Definisjon"
+                        },
+                        "publisher": {
+                            "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                            "id": "974760673",
+                            "name": "REGISTERENHETEN I BRØNNØYSUND",
+                            "orgPath": "/STAT/912660680/974760673",
+                            "prefLabel": {
+                                "nb": "Brønnøysundregistrene"
+                            }
+                        },
+                        "conceptReference": "https://conceptreference.com"
+                    }
+                },
+                "attributeList": [
+                    {
+                        "name": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        },
+                        "referencedObject": {
+                            "refId": "refId-1",
+                            "name": {
+                                "nb": "norsk bokmål tekst",
+                                "nn": "nynorsk tekst",
+                                "en": "engelsk tekst"
+                            }
+                        },
+                        "range": "0..*",
+                        "elementDescription": {
+                            "name": {
+                                "nb": "Leveranse"
+                            },
+                            "description": {
+                                "nb": "norsk bokmål tekst",
+                                "nn": "nynorsk tekst",
+                                "en": "engelsk tekst"
+                            },
+                            "identifier": "identifier",
+                            "belongsToModule": "inntekt",
+                            "concept": {
+                                "anbefaltTerm": {
+                                    "nb": "Anbefalt term"
+                                },
+                                "definition": {
+                                    "nb": "Definisjon"
+                                },
+                                "publisher": {
+                                    "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                                    "id": "974760673",
+                                    "name": "REGISTERENHETEN I BRØNNØYSUND",
+                                    "orgPath": "/STAT/912660680/974760673",
+                                    "prefLabel": {
+                                        "nb": "Brønnøysundregistrene"
+                                    }
+                                },
+                                "conceptReference": "https://conceptreference.com"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "simpleTypes": [
+        {
+            "id": "id-simpletype",
+            "modelDescription": {
+                "name": {
+                    "nb": "Leveranse"
+                },
+                "description": {
+                    "nb": "norsk bokmål tekst",
+                    "nn": "nynorsk tekst",
+                    "en": "engelsk tekst"
+                },
+                "identifier": "identifier",
+                "belongsToModule": "inntekt",
+                "concept": {
+                    "anbefaltTerm": {
+                        "nb": "Anbefalt term"
+                    },
+                    "definition": {
+                        "nb": "Definisjon"
+                    },
+                    "publisher": {
+                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                        "id": "974760673",
+                        "name": "REGISTERENHETEN I BRØNNØYSUND",
+                        "orgPath": "/STAT/912660680/974760673",
+                        "prefLabel": {
+                            "nb": "Brønnøysundregistrene"
+                        }
+                    },
+                    "conceptReference": "https://conceptreference.com"
+                }
+            },
+            "extendsFrom": {
+                "id": "111111",
+                "modelDescription": {
+                    "name": {
+                        "nb": "Leveranse"
+                    },
+                    "description": {
+                        "nb": "norsk bokmål tekst",
+                        "nn": "nynorsk tekst",
+                        "en": "engelsk tekst"
+                    },
+                    "identifier": "identifier",
+                    "belongsToModule": "inntekt",
+                    "concept": {
+                        "anbefaltTerm": {
+                            "nb": "Anbefalt term"
+                        },
+                        "definition": {
+                            "nb": "Definisjon"
+                        },
+                        "publisher": {
+                            "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                            "id": "974760673",
+                            "name": "REGISTERENHETEN I BRØNNØYSUND",
+                            "orgPath": "/STAT/912660680/974760673",
+                            "prefLabel": {
+                                "nb": "Brønnøysundregistrene"
+                            }
+                        },
+                        "conceptReference": "https://conceptreference.com"
+                    }
+                },
+                "attributeList": [
+                    {
+                        "name": {
+                            "nb": "norsk bokmål tekst",
+                            "nn": "nynorsk tekst",
+                            "en": "engelsk tekst"
+                        },
+                        "referencedObject": {
+                            "refId": "refId-1",
+                            "name": {
+                                "nb": "norsk bokmål tekst",
+                                "nn": "nynorsk tekst",
+                                "en": "engelsk tekst"
+                            }
+                        },
+                        "range": "0..*",
+                        "elementDescription": {
+                            "name": {
+                                "nb": "Leveranse"
+                            },
+                            "description": {
+                                "nb": "norsk bokmål tekst",
+                                "nn": "nynorsk tekst",
+                                "en": "engelsk tekst"
+                            },
+                            "identifier": "identifier",
+                            "belongsToModule": "inntekt",
+                            "concept": {
+                                "anbefaltTerm": {
+                                    "nb": "Anbefalt term"
+                                },
+                                "definition": {
+                                    "nb": "Definisjon"
+                                },
+                                "publisher": {
+                                    "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                                    "id": "974760673",
+                                    "name": "REGISTERENHETEN I BRØNNØYSUND",
+                                    "orgPath": "/STAT/912660680/974760673",
+                                    "prefLabel": {
+                                        "nb": "Brønnøysundregistrene"
+                                    }
+                                },
+                                "conceptReference": "https://conceptreference.com"
+                            }
+                        }
+                    }
+                ]
+            },
+            "distributionReference": [
+                "https://distributionReference1.com",
+                "https://distributionReference2.com"
+            ]
+        }
+    ],
+    "informationModelDescription": {
+        "name": {
+            "nb": "OppgavePassOgStellAvBarn"
+        },
+        "description": {
+            "nb": "Testmodell som demonstrator for utvekslingsmodell"
+        },
+        "identifier": "identifier",
+        "belongsToModule": "inntekt",
+        "concept": {
+            "anbefaltTerm": {
+                "nb": "Anbefalt term"
+            },
+            "definition": {
+                "nb": "Definisjon"
+            },
+            "publisher": {
+                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+                "id": "974760673",
+                "name": "REGISTERENHETEN I BRØNNØYSUND",
+                "orgPath": "/STAT/912660680/974760673",
+                "prefLabel": {
+                    "nb": "Brønnøysundregistrene"
+                }
+            },
+            "conceptReference": "https://conceptreference.com"
+        }
+    },
+    "schema": "{\"$schema\":\"http://json-schema.org/draft-06/schema#\",\"$id\":\"https://fellesdatakatalog.brreg.no/informationmodels/c207ad40-cf59-47e6-b7a8-35d6c4692067/schema\",\"definitions\":{\"QueryResponse\":{\"type\":\"object\",\"properties\":{\"aggregations\":{\"$ref\":\"#/definitions/Aggregation\"},\"hits\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/ConceptDocument\"}},\"total\":{\"type\":\"integer\",\"format\":\"int64\"}}},\"Aggregation\":{\"type\":\"object\"},\"ConceptDocument\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"The id given by the harvest system\"},\"uri\":{\"type\":\"string\",\"description\":\"The uri of the concept [dct:identifier]\"},\"identifier\":{\"type\":\"string\",\"description\":\"Identifier\"},\"definition\":{\"$ref\":\"#/definitions/Definition\"},\"alternativeDefinition\":{\"$ref\":\"#/definitions/Definition\"},\"subject\":{\"$ref\":\"#/definitions/Subject\"},\"prefLabel\":{\"$ref\":\"#/definitions/PrefLabel\"},\"altLabel\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/AltLabel\"}},\"hiddenLabel\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/HiddenLabel\"}},\"contactPoint\":{\"$ref\":\"#/definitions/ContactPoint\"},\"publisher\":{\"$ref\":\"#/definitions/Publisher\"},\"harvestSourceUri\":{\"type\":\"string\",\"description\":\"The source where the record was harvested from\"},\"harvest\":{\"$ref\":\"#/definitions/HarvestMetadata\"}}},\"Definition\":{\"type\":\"object\",\"description\":\"The definition [skosno:Definisjon]\",\"properties\":{\"text\":{\"type\":\"object\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"the definition text in Norwegian Bokmål\"}}},\"remark\":{\"type\":\"object\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"the definition remark in Norwegian Bokmål\"}}},\"source\":{\"$ref\":\"#/definitions/Source\"},\"targetGroup\":{\"type\":\"string\",\"description\":\"Target group\"},\"lastUpdated\":{\"type\":\"string\",\"description\":\"Date when the definition was last updated\"}}},\"Subject\":{\"type\":\"object\",\"description\":\"Subject [dct:subject]\"},\"PrefLabel\":{\"type\":\"object\",\"description\":\"Preferred label [skosxl:prefLabel]\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"Preferred label [skosxl:prefLabel] in Norwegian Bokmål\"}}},\"AltLabel\":{\"type\":\"object\",\"description\":\"Alternative label [skosxl:altLabel]\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"Preferred label [skosxl:altLabel] in Norwegian Bokmål\"}}},\"HiddenLabel\":{\"type\":\"object\",\"description\":\"Hidden label [skos:hiddenLabel]\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"Hidden label [skosxl:altLabel] in Norwegian Bokmål\"}}},\"ContactPoint\":{\"type\":\"object\",\"description\":\"Hidden label [skos:hiddenLabel]\",\"properties\":{\"email\":{\"type\":\"string\"},\"telephone\":{\"type\":\"string\"}}},\"Publisher\":{\"type\":\"object\",\"description\":\"The publisher of the concept [dct:publisher]\",\"properties\":{\"uri\":{\"type\":\"string\",\"description\":\"Link to the organization entry in The Brønnøysund Register Centre\"},\"id\":{\"type\":\"string\",\"description\":\"Organization number\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the organization as given in the The Brønnøysund Register Centre\"},\"orgPath\":{\"type\":\"string\"},\"prefLabel\":{\"$ref\":\"#/definitions/PrefLabel\"}}},\"HarvestMetadata\":{\"type\":\"object\",\"description\":\"Information about when the concept was first and last harvested by the system\",\"properties\":{\"firstHarvested\":{\"type\":\"string\"},\"lastHarvested\":{\"type\":\"string\"},\"lastChanged\":{\"type\":\"string\"},\"changed\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}},\"Source\":{\"type\":\"object\",\"description\":\"The source of the definition\",\"properties\":{\"uri\":{\"type\":\"string\",\"description\":\"The uri to the source\"},\"prefLabel\":{\"type\":\"object\",\"description\":\"The label of the source\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"Label of the source in Norwegian Bokmål\"}}}}},\"ErrorMessage\":{\"type\":\"object\"}}}"
+}
