@@ -7,3 +7,4 @@ nginx
 *.scss
 assets
 img
+test/feature

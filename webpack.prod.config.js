@@ -75,6 +75,7 @@ module.exports = {
       {
         copyUnmodified: true
       }
-    )
+    ),
+    ['babel-plugin-jsx-remove-data-test-id', { attributes: 'data_test' }]
   ]
 };

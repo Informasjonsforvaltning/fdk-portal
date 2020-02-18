@@ -1,6 +1,7 @@
 # compilation targets
 node_modules
 dist
+test/feature/output
 
 # IDE files
 *.iml
