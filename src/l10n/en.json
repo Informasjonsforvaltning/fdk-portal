@@ -39,6 +39,8 @@
   "goTo": "Go to",
   "linkToFdk": "Link to the National Data Catalog",
   "linkToNap": "Link to the National Access Point for Transport Data",
+  "showDetails": "Show details",
+  "closeDetails": "Close details",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -381,7 +383,18 @@
       "json": "JSON Schema"
     },
     "relatedAPIHeader": "Belongs to API",
-    "informationModelDescription": "Information Model Description"
+    "informationModelDescription": "Information Model Description",
+    "structure": {
+      "rootObjectType": "Root object type",
+      "objectType": "Object type",
+      "codeList": "Codelist",
+      "dataType": "Data type",
+      "simpleType": "Simple type"
+    },
+    "modelDescription": {
+      "belongsToModule": "Belongs to module",
+      "conceptReference": "Concept reference"
+    }
   },
   "sourceRelationship": {
     "sitatFraKilde": "Cited in",

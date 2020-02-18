@@ -39,6 +39,8 @@
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
   "linkToNap": "Lenke til NAP",
+  "showDetails": "Vis detaljar",
+  "closeDetails": "Skjul detaljar",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -381,7 +383,18 @@
       "json": "JSON Schema"
     },
     "relatedAPIHeader": "Høyrer til API",
-    "informationModelDescription": "Informasjonsmodelbeskrivelse"
+    "informationModelDescription": "Informasjonsmodelbeskrivelse",
+    "structure": {
+      "rootObjectType": "Rotobjekttype",
+      "objectType": "Objekttype",
+      "codeList": "Kodeliste",
+      "dataType": "Datatype",
+      "simpleType": "Enkelttype"
+    },
+    "modelDescription": {
+      "belongsToModule": "Høyrer til modul",
+      "conceptReference": "Omgrepsreferanse"
+    }
   },
   "sourceRelationship": {
     "sitatFraKilde": "Sitat fra",
