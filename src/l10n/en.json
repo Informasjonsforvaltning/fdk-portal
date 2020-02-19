@@ -389,7 +389,14 @@
       "objectType": "Object type",
       "codeList": "Codelist",
       "dataType": "Data type",
-      "simpleType": "Simple type"
+      "simpleType": "Simple type",
+      "attribute": "Attribute",
+      "role": "Role",
+      "extendsFrom": "Extends from",
+      "code": "Code",
+      "externalCodelist": "External codelist",
+      "distributionReference": "Distribution reference",
+      "restrictions": "Value restrictions"
     },
     "modelDescription": {
       "belongsToModule": "Belongs to module",
