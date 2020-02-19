@@ -17,8 +17,8 @@
     "test:watch:verbose": "jest --watch --verbose",
     "test:watch:all:verbose": "jest --watch --verbose",
     "clean:coverage": "rm -rf coverage",
-    "lint:project": "eslint --ext tsx,ts,jsx,js,css,scss,json,md,html",
-    "lint:project:fix": "eslint --ext tsx,ts,jsx,js,css,scss,json,md,html --fix",
+    "lint:project": "eslint --ext tsx,ts,jsx,js,css,scss,json,md,html .",
+    "lint:project:fix": "eslint --ext tsx,ts,jsx,js,css,scss,json,md,html --fix .",
     "lint:staged:fix": "eslint --ext tsx,ts,jsx,js,css,scss,json,md,html --fix",
     "commit": "git-cz"
   },
