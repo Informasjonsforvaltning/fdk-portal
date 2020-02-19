@@ -14,7 +14,6 @@ const HeadExpansionIndicator = styled.div``;
 const Head = styled.div<{ shouldExpandOnHeadClick?: boolean }>`
   display: flex;
   justify-content: space-between;
-  padding: 15px 20px;
   user-select: none;
 
   ${({ shouldExpandOnHeadClick }) =>
@@ -39,9 +38,7 @@ const ExpandIcon = styled(ExpandIconBase)`
   width: 16px;
 `;
 
-const Body = styled.div`
-  padding: 15px 20px;
-`;
+const Body = styled.div``;
 
 export default {
   ExpansionPanel,
