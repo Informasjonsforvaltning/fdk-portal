@@ -1,8 +1,8 @@
-name: Deploy to demo
+name: Deploy to demo (digdir)
 
 on:
   repository_dispatch:
-    types: [deploy-demo]
+    types: [deploy-demo-digdir]
 
 jobs:
   deploy-demo:
@@ -20,17 +20,17 @@ jobs:
             helm init --client-only
             helm repo add fdk https://informasjonsforvaltning.github.io/helm-chart/
             helm fetch --untar --untardir ./helm fdk/fdk-portal
-            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/fdk-infra/fdk-portal:${{ github.event.client_payload.sha }}" -f ./helm/fdk-portal/values/demo.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
+            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/digdir-fdk-infra/fdk-portal:${{ github.event.client_payload.sha }}" -f ./helm/fdk-portal/values/demo-digdir.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
             chmod o+w ./kubectlapply.yaml
             cat kubectlapply.yaml
 
       - name: Get kubeconfig file from GKE
         uses: machine-learning-apps/gke-kubeconfig@master
         with:
-          application_credentials: ${{ secrets.FDK_DEV_AUTODEPLOY }}
-          project_id: fdk-dev
+          application_credentials: ${{ secrets.DIGDIR_FDK_DEV_AUTODEPLOY }}
+          project_id: digdir-fdk-dev
           location_zone: europe-north1-a
-          cluster_name: fdk-dev
+          cluster_name: digdir-fdk-dev
 
       - name: Deploy to demo
         uses: docker://bitnami/kubectl:latest
@@ -44,4 +44,4 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         uses: pullreminders/slack-action@master
         with:
-          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to demo\"}'
+          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to digdir-demo\"}'
