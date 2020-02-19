@@ -109,6 +109,14 @@ exports[`should render ResultsInformationModel correctly with hits 1`] = `
                 aggregations={Array []}
                 collapseItems={false}
                 handleFiltering={[Function]}
+                referenceDataItems={Object {}}
+                title="Theme"
+              />
+              <FilterTree
+                activeFilter={null}
+                aggregations={Array []}
+                collapseItems={false}
+                handleFiltering={[Function]}
                 referenceDataItems={null}
                 title="Responsible"
               />
@@ -127,6 +135,14 @@ exports[`should render ResultsInformationModel correctly with hits 1`] = `
             </Button>
           </ModalFooter>
         </Modal>
+        <FilterTree
+          activeFilter={null}
+          aggregations={Array []}
+          collapseItems={true}
+          handleFiltering={[Function]}
+          referenceDataItems={Object {}}
+          title="Theme"
+        />
         <FilterTree
           activeFilter={null}
           aggregations={Array []}
@@ -328,6 +344,7 @@ exports[`should render ResultsInformationModel correctly with hits 1`] = `
         }
         key="eadda99c-781e-4900-8f54-8dd298168382"
         publishers={null}
+        referenceData={null}
       />
       <div
         className="col-12 d-flex justify-content-center"

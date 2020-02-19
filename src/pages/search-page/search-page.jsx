@@ -101,7 +101,7 @@ export const SearchPage = props => {
     setSearchText(history, location, searchText);
   };
 
-  const handleDatasetFilterThemes = event => {
+  const handleFilterThemes = event => {
     const selectedValue = event.target.value;
     const add = event.target.checked;
     setMultiselectFilterValue(history, location, 'theme', selectedValue, add);
@@ -119,7 +119,7 @@ export const SearchPage = props => {
     );
   };
 
-  const handleDatasetFilterPublisherHierarchy = event => {
+  const handleFilterPublisherHierarchy = event => {
     const selectedValue = event.target.value;
 
     if (event.target.checked) {
@@ -153,7 +153,7 @@ export const SearchPage = props => {
     setMultiselectFilterValue(history, location, 'format', selectedValue, add);
   };
 
-  const handleDatasetFilterLos = event => {
+  const handleFilterLos = event => {
     const selectedValue = event.target.value;
     const add = event.target.checked;
     setMultiselectFilterValue(
@@ -206,12 +206,12 @@ export const SearchPage = props => {
               datasetItems={datasetItems}
               datasetAggregations={datasetAggregations}
               datasetTotal={datasetTotal}
-              onFilterTheme={handleDatasetFilterThemes}
+              onFilterTheme={handleFilterThemes}
               onFilterAccessRights={handleDatasetFilterAccessRights}
-              onFilterPublisherHierarchy={handleDatasetFilterPublisherHierarchy}
+              onFilterPublisherHierarchy={handleFilterPublisherHierarchy}
               onFilterProvenance={handleDatasetFilterProvenance}
               onFilterSpatial={handleDatasetFilterSpatial}
-              onFilterLos={handleDatasetFilterLos}
+              onFilterLos={handleFilterLos}
               publishers={publisherItems}
               referenceData={referenceData}
               hitsPerPage={HITS_PER_PAGE}
@@ -225,7 +225,7 @@ export const SearchPage = props => {
               apiTotal={apiTotal}
               apiAggregations={apiAggregations}
               onFilterAccessRights={handleDatasetFilterAccessRights}
-              onFilterPublisherHierarchy={handleDatasetFilterPublisherHierarchy}
+              onFilterPublisherHierarchy={handleFilterPublisherHierarchy}
               onFilterFormat={handleFilterFormat}
               publisherCounts={_.get(apiAggregations, 'orgPath.buckets')}
               publishers={publisherItems}
@@ -240,7 +240,7 @@ export const SearchPage = props => {
               conceptItems={conceptItems}
               conceptTotal={conceptTotal}
               conceptAggregations={conceptAggregations}
-              onFilterPublisherHierarchy={handleDatasetFilterPublisherHierarchy}
+              onFilterPublisherHierarchy={handleFilterPublisherHierarchy}
               publisherCounts={_.get(conceptAggregations, 'orgPath.buckets')}
               publishers={publisherItems}
               hitsPerPage={HITS_PER_PAGE}
@@ -256,7 +256,9 @@ export const SearchPage = props => {
               informationModelItems={informationModelItems}
               informationModelTotal={informationModelTotal}
               informationModelAggregations={informationModelAggregations}
-              onFilterPublisherHierarchy={handleDatasetFilterPublisherHierarchy}
+              onFilterPublisherHierarchy={handleFilterPublisherHierarchy}
+              onFilterLos={handleFilterLos}
+              referenceData={referenceData}
               publisherCounts={_.get(
                 informationModelAggregations,
                 'orgPath.buckets'
