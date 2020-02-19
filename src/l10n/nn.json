@@ -389,7 +389,14 @@
       "objectType": "Objekttype",
       "codeList": "Kodeliste",
       "dataType": "Datatype",
-      "simpleType": "Enkelttype"
+      "simpleType": "Enkelttype",
+      "attribute": "Attributt",
+      "role": "Rolle",
+      "extendsFrom": "Arver frå",
+      "code": "Kode",
+      "externalCodelist": "Ekstern kodeliste",
+      "distributionReference": "Referanse til distribusjon",
+      "restrictions": "Verdirestriksjonar"
     },
     "modelDescription": {
       "belongsToModule": "Høyrer til modul",
