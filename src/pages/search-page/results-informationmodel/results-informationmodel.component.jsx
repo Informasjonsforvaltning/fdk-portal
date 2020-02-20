@@ -12,37 +12,59 @@ import { FilterTree } from '../filter-tree/filter-tree.component';
 import { getSortfield, setPage, setSortfield } from '../search-location-helper';
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { FilterPills } from '../filter-pills/filter-pills.component';
+import { getLosStructure } from '../../../redux/modules/referenceData';
+import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 
 const renderFilterModal = ({
   showFilterModal,
   closeFilterModal,
+  informationModeloAggregations,
   locationSearch,
   publisherCounts,
   publishers,
-  onFilterPublisherHierarchy
-}) => (
-  <Modal isOpen={showFilterModal} toggle={closeFilterModal}>
-    <ModalHeader toggle={closeFilterModal}>{localization.filter}</ModalHeader>
-    <ModalBody>
-      <div className="search-filters">
-        <FilterTree
-          title={localization.responsible}
-          aggregations={publisherCounts}
-          handleFiltering={onFilterPublisherHierarchy}
-          activeFilter={locationSearch.orgPath}
-          referenceDataItems={publishers}
-        />
-      </div>
-    </ModalBody>
-    <ModalFooter>
-      <Button className="fdk-button" onClick={closeFilterModal} color="primary">
-        {localization.close}
-      </Button>
-    </ModalFooter>
-  </Modal>
-);
+  onFilterPublisherHierarchy,
+  onFilterLos,
+  referenceData
+}) => {
+  const losItems = getLosStructure(referenceData);
+  return (
+    <Modal isOpen={showFilterModal} toggle={closeFilterModal}>
+      <ModalHeader toggle={closeFilterModal}>{localization.filter}</ModalHeader>
+      <ModalBody>
+        <div className="search-filters">
+          <FilterTree
+            title={localization.facet.theme}
+            aggregations={filterLosThemesFromAggregation(
+              _.get(informationModeloAggregations, ['los', 'buckets']),
+              losItems
+            )}
+            handleFiltering={onFilterLos}
+            activeFilter={locationSearch.losTheme}
+            referenceDataItems={losItems}
+          />
+          <FilterTree
+            title={localization.responsible}
+            aggregations={publisherCounts}
+            handleFiltering={onFilterPublisherHierarchy}
+            activeFilter={locationSearch.orgPath}
+            referenceDataItems={publishers}
+          />
+        </div>
+      </ModalBody>
+      <ModalFooter>
+        <Button
+          className="fdk-button"
+          onClick={closeFilterModal}
+          color="primary"
+        >
+          {localization.close}
+        </Button>
+      </ModalFooter>
+    </Modal>
+  );
+};
 
-const renderHits = (hits, publishers) => {
+const renderHits = (hits, publishers, referenceData) => {
   if (hits && Array.isArray(hits)) {
     return hits.map((item, index) => (
       <SearchHitItem
@@ -50,6 +72,7 @@ const renderHits = (hits, publishers) => {
         item={item}
         fadeInCounter={index < 3 ? index : null}
         publishers={publishers}
+        referenceData={referenceData}
       />
     ));
   }
@@ -63,8 +86,10 @@ export const ResultsInformationModelPure = ({
   informationModelTotal,
   informationModelAggregations,
   onFilterPublisherHierarchy,
+  onFilterLos,
   publisherCounts,
   publishers,
+  referenceData,
   hitsPerPage,
   history,
   location
@@ -91,6 +116,8 @@ export const ResultsInformationModelPure = ({
     setPage(history, location, data.selected);
     window.scrollTo(0, 0);
   };
+
+  const losItems = getLosStructure(referenceData);
 
   return (
     <main data-test-id="informationModels" id="content">
@@ -133,11 +160,25 @@ export const ResultsInformationModelPure = ({
               {renderFilterModal({
                 showFilterModal,
                 closeFilterModal,
+                informationModelAggregations,
                 locationSearch,
                 publisherCounts,
                 publishers,
-                onFilterPublisherHierarchy
+                onFilterPublisherHierarchy,
+                onFilterLos,
+                referenceData
               })}
+              <FilterTree
+                title={localization.facet.theme}
+                aggregations={filterLosThemesFromAggregation(
+                  _.get(informationModelAggregations, ['los', 'buckets']),
+                  losItems
+                )}
+                handleFiltering={onFilterLos}
+                activeFilter={locationSearch.losTheme}
+                referenceDataItems={losItems}
+                collapseItems
+              />
               <FilterTree
                 title={localization.responsible}
                 aggregations={publisherCounts}
@@ -149,7 +190,7 @@ export const ResultsInformationModelPure = ({
           )}
         </aside>
         <div id="informationModels" className="col-12 col-lg-8">
-          {renderHits(informationModelItems, publishers)}
+          {renderHits(informationModelItems, publishers, referenceData)}
           <div className="col-12 d-flex justify-content-center">
             <span className="uu-invisible" aria-hidden="false">
               Sidepaginering.
@@ -185,9 +226,11 @@ ResultsInformationModelPure.defaultProps = {
   informationModelAggregations: null,
 
   onFilterPublisherHierarchy: _.noop,
+  onFilterLos: _.noop,
 
   publisherCounts: [],
   publishers: null,
+  referenceData: null,
 
   hitsPerPage: 10,
 
@@ -204,8 +247,10 @@ ResultsInformationModelPure.propTypes = {
   informationModelAggregations: PropTypes.object,
 
   onFilterPublisherHierarchy: PropTypes.func,
+  onFilterLos: PropTypes.func,
   publisherCounts: PropTypes.array,
   publishers: PropTypes.object,
+  referenceData: PropTypes.object,
 
   hitsPerPage: PropTypes.number,
 

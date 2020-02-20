@@ -29,7 +29,8 @@ export function fetchInformationModelsIfNeededAction(query) {
     shouldFetch(_.get(getState(), ['informationModels', 'meta']), queryKey) &&
     dispatch(
       reduxFsaThunk(
-        () => informationmodelsSearch({ ...query, aggregations: 'true' }),
+        () =>
+          informationmodelsSearch({ ...query, aggregations: 'orgPath,los' }),
         {
           onBeforeStart: {
             type: INFORMATIONMODELS_REQUEST,
