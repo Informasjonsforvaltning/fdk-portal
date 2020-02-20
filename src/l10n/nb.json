@@ -39,6 +39,8 @@
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
   "linkToNap": "Lenke til NAP",
+  "showDetails": "Se detaljer",
+  "closeDetails": "Skjul detaljer",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -381,7 +383,18 @@
       "json": "JSON Schema"
     },
     "relatedAPIHeader": "Tilhører API",
-    "informationModelDescription": "Informasjonsmodelbeskrivelse"
+    "informationModelDescription": "Informasjonsmodelbeskrivelse",
+    "structure": {
+      "rootObjectType": "Rotobjekttype",
+      "objectType": "Objekttype",
+      "codeList": "Kodeliste",
+      "dataType": "Datatype",
+      "simpleType": "Enkelttype"
+    },
+    "modelDescription": {
+      "belongsToModule": "Tilhører modul",
+      "conceptReference": "Begrepsreferanse"
+    }
   },
   "sourceRelationship": {
     "sitatFraKilde": "Sitat fra",
