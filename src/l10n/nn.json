@@ -382,6 +382,18 @@
       "structure": "Struktur",
       "json": "JSON Schema"
     },
+    "status": "Status",
+    "issued": "Utgjevingsdato",
+    "valid": "Gyldig",
+    "from": "fra",
+    "to": "til",
+    "version": "Versjon",
+    "lastModified": "Sist endra",
+    "changelog": "Endringar fra siste versjon",
+    "moreInfo": "Meir informasjon om informasjonsmodellen",
+    "identifier": "Identifikator",
+    "keyword": "Emneord",
+    "category": "Modellkategori",
     "relatedAPIHeader": "Høyrer til API",
     "informationModelDescription": "Informasjonsmodelbeskrivelse",
     "structure": {
