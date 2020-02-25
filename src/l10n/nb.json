@@ -180,7 +180,7 @@
     "firstHarvested": "publisert i Felles datakatalog",
     "lastChanged": "Sist endret i Felles datakatalog",
     "conformsTo": "Innholdsstandard",
-    "informationModel": "Informasjonsmodell",
+    "informationModel": "I samsvar med informasjonsmodell",
     "informationModelDefaultText": "Informasjonsmodell",
     "distributions": "Andre distribusjoner",
     "distributionsAPI": "API-distribusjoner ({0})",

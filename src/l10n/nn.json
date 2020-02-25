@@ -181,7 +181,7 @@
     "lastChanged": "Sist endra i Felles datakatalog",
     "conformsTo": "Innhaldsstandard",
     "informationModel": "Informasjonsmodell",
-    "informationModelDefaultText": "Informasjonsmodell",
+    "informationModelDefaultText": "I samsvar med informasjonsmodell",
     "distributions": "Andre distribusjonar",
     "distributionsAPI": "API-distribusjonar ({0})",
     "distibutionsAPILabel": "API-distribusjonar",
