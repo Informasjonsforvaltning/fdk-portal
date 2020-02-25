@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { ResultsConceptsPure } from './results-concepts.component';
-import concepts from '../../../mock/concepts.response';
+import concepts from '../../../mock/concepts.response.json';
 import {
   extractAggregations,
   extractConcepts,

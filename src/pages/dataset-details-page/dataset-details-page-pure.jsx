@@ -256,7 +256,9 @@ const renderKeywords = keywordItems => {
   );
 };
 
-const getTitleText = (title, distributionIndex) => title || `${localization.dataset.distribution.title} ${distributionIndex + 1}`;
+const getTitleText = (title, distributionIndex) =>
+  title ||
+  `${localization.dataset.distribution.title} ${distributionIndex + 1}`;
 
 const renderDistribution = (
   heading,
