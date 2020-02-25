@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import _ from 'lodash';
 
 import localization from '../../../../lib/localization';
 import './search-hit-item.scss';
