@@ -4,11 +4,15 @@ import _ from 'lodash';
 import DocumentMeta from 'react-document-meta';
 
 import localization from '../../lib/localization';
+import { formatDate, dateStringToDate } from '../../lib/date-utils';
 import { getTranslateText } from '../../lib/translateText';
 import { HarvestDate } from '../../components/harvest-date/harvest-date.component';
 import { SearchHitHeader } from '../../components/search-hit-header/search-hit-header.component';
 import { StickyMenu } from '../../components/sticky-menu/sticky-menu.component';
+import { TwoColRow } from '../../components/list-regular/twoColRow/twoColRow';
 import { ListRegular } from '../../components/list-regular/list-regular.component';
+import { LinkExternal } from '../../components/link-external/link-external.component';
+import { ShowMore } from '../../components/show-more/show-more';
 import { Tabs } from '../../components/tabs/tabs.component';
 import { Structure } from './structure/structure.component';
 import './information-model-details-page.scss';
@@ -31,16 +35,18 @@ const getSchema = model => {
   return JSON.parse(schemaJson);
 };
 
+const isNewInformationModel = ({
+  rootObjects,
+  objectTypes,
+  codeTypes,
+  dataTypes,
+  simpleTypes
+} = {}) => rootObjects || objectTypes || codeTypes || dataTypes || simpleTypes;
+
 const createTabsArray = informationModelItem => {
   const tabsArray = [];
 
-  if (
-    informationModelItem.rootObject ||
-    informationModelItem.objectType ||
-    informationModelItem.codeType ||
-    informationModelItem.dataType ||
-    informationModelItem.simpleType
-  ) {
+  if (isNewInformationModel(informationModelItem)) {
     tabsArray.push({
       title: localization.infoMod.tabs.structure,
       body: (
@@ -64,6 +70,7 @@ const createTabsArray = informationModelItem => {
     });
     return tabsArray;
   }
+  return null;
 };
 
 const renderModels = informationModelItem => {
@@ -78,6 +85,96 @@ const renderModels = informationModelItem => {
     </ListRegular>
   );
 };
+
+const renderDescription = description =>
+  description ? (
+    <ShowMore showMoreButtonText={localization.showFullDescription}>
+      {getTranslateText(description)}
+    </ShowMore>
+  ) : null;
+
+const renderStatus = ({
+  issued,
+  version,
+  lastModified,
+  validFromIncluding,
+  validToIncluding,
+  changelog,
+  landingPage
+}) => (
+  <ListRegular title={localization.infoMod.status}>
+    {issued && (
+      <TwoColRow
+        col1={localization.infoMod.issued}
+        col2={formatDate(dateStringToDate(issued))}
+      />
+    )}
+    {(validFromIncluding || validToIncluding) && (
+      <TwoColRow
+        col1={localization.infoMod.valid}
+        col2={`${validFromIncluding ? localization.infoMod.from : ''} ${
+          validFromIncluding
+            ? formatDate(dateStringToDate(validFromIncluding))
+            : ''
+        } ${validToIncluding ? localization.infoMod.to : ''} ${
+          validToIncluding ? formatDate(dateStringToDate(validToIncluding)) : ''
+        }`}
+      />
+    )}
+    {version && (
+      <TwoColRow col1={localization.infoMod.version} col2={version} />
+    )}
+    {lastModified && (
+      <TwoColRow
+        col1={localization.infoMod.lastModified}
+        col2={formatDate(dateStringToDate(lastModified))}
+      />
+    )}
+    {changelog && (
+      <TwoColRow col1={localization.infoMod.changelog} col2={changelog} />
+    )}
+    {landingPage && (
+      <div className="d-flex list-regular--item">
+        <LinkExternal
+          uri={landingPage}
+          prefLabel={localization.infoMod.moreInfo}
+          openInNewTab
+        />
+      </div>
+    )}
+  </ListRegular>
+);
+
+const renderIdentifier = id =>
+  id ? (
+    <ListRegular title={localization.infoMod.identifier}>
+      <div className="d-flex list-regular--item">
+        <a
+          href={`/api/informationmodels/${id}`}
+        >{`${location.origin}/api/informationmodels/${id}`}</a>
+      </div>
+    </ListRegular>
+  ) : null;
+
+const renderKeywords = keywords => {
+  const language = localization.getLanguage();
+  return keywords &&
+    Object.keys(keywords).length > 0 &&
+    language in keywords ? (
+    <ListRegular title={localization.infoMod.keywords}>
+      <div className="d-flex list-regular--item">
+        {(keywords[language] || []).join(', ')}
+      </div>
+    </ListRegular>
+  ) : null;
+};
+
+const renderInformationModelCategory = category =>
+  category ? (
+    <ListRegular title={localization.infoMod.category}>
+      <div className="d-flex list-regular--item">{category}</div>
+    </ListRegular>
+  ) : null;
 
 const renderRelatedApi = (referencedApis, publisherItems) => {
   if (!referencedApis || referencedApis.length === 0) {
@@ -105,19 +202,85 @@ const renderRelatedApi = (referencedApis, publisherItems) => {
   );
 };
 
-const renderStickyMenu = (informationModelItem, referencedApis) => {
-  const menuItems = [];
+const renderContactPoint = ({ name, email, telephone } = {}) =>
+  name || email || telephone ? (
+    <ListRegular title={localization.contactInfo}>
+      {name && (
+        <TwoColRow
+          col1={localization.contactPoint}
+          col2={getTranslateText(name)}
+        />
+      )}
+      {email && (
+        <TwoColRow
+          col1={localization.email}
+          col2={
+            <a title={email} href={`mailto:${email}`} rel="noopener noreferrer">
+              {email}
+            </a>
+          }
+        />
+      )}
+      {telephone && <TwoColRow col1={localization.phone} col2={telephone} />}
+    </ListRegular>
+  ) : null;
 
-  if (_.get(informationModelItem, 'schema')) {
+const renderStickyMenu = (
+  {
+    title,
+    contactPoint,
+    schema,
+    informationModelDescription: { keywords, category } = {}
+  } = {},
+  referencedApis
+) => {
+  const menuItems = [
+    {
+      name: getTranslateText(title),
+      prefLabel: localization.description
+    },
+    {
+      name: localization.infoMod.status,
+      prefLabel: localization.infoMod.status
+    },
+    {
+      name: localization.infoMod.identifier,
+      prefLabel: localization.infoMod.identifier
+    }
+  ];
+
+  if (schema) {
     menuItems.push({
       name: localization.infoMod.infoModHeader,
       prefLabel: localization.infoMod.infoModHeader
     });
   }
+
+  if (keywords && keywords.length > 0) {
+    menuItems.push({
+      name: localization.infoMod.keywords,
+      prefLabel: localization.infoMod.keywords
+    });
+  }
+
+  if (category) {
+    menuItems.push({
+      name: localization.infoMod.category,
+      prefLabel: localization.infoMod.category
+    });
+  }
+
   if (!_.isEmpty(referencedApis)) {
     menuItems.push({
       name: localization.infoMod.relatedAPIHeader,
       prefLabel: localization.infoMod.relatedAPIHeader
+    });
+  }
+
+  if (contactPoint) {
+    menuItems.push({
+      name: localization.contactInfo,
+      prefLabel: localization.contactInfo
     });
   }
 
@@ -126,11 +289,14 @@ const renderStickyMenu = (informationModelItem, referencedApis) => {
 
 export const InformationModelDetailsPage = ({
   fetchPublishersIfNeeded,
+  fetchReferenceDataIfNeeded,
   informationModelItem,
   publisherItems,
-  referencedApis
+  referencedApis,
+  referenceData
 }) => {
   fetchPublishersIfNeeded();
+  fetchReferenceDataIfNeeded('los');
 
   if (!informationModelItem) {
     return null;
@@ -140,6 +306,27 @@ export const InformationModelDetailsPage = ({
     title: getTranslateText(informationModelItem.title),
     description: getTranslateText(informationModelItem.description)
   };
+
+  const {
+    id,
+    title,
+    publisher,
+    harvest,
+    version,
+    issued,
+    validFromIncluding,
+    validToIncluding,
+    changelog,
+    contactPoint,
+    landingPage,
+    description,
+    themes,
+    keywords,
+    category,
+    schema
+  } = informationModelItem || {};
+
+  const hasModel = isNewInformationModel(informationModelItem) || schema;
 
   return (
     <main id="content" className="container">
@@ -153,10 +340,7 @@ export const InformationModelDetailsPage = ({
               <strong className="align-self-center">
                 {localization.infoMod.informationModelDescription}&nbsp;
               </strong>
-              <HarvestDate
-                className="align-self-center"
-                harvest={informationModelItem.harvest}
-              />
+              <HarvestDate className="align-self-center" harvest={harvest} />
             </div>
           </div>
         </div>
@@ -168,17 +352,38 @@ export const InformationModelDetailsPage = ({
 
           <section className="col-12 col-lg-9 mt-3">
             <SearchHitHeader
-              title={getTranslateText(informationModelItem.title)}
+              title={getTranslateText(title)}
               publisherLabel={`${localization.responsible}:`}
-              publisher={informationModelItem.publisher}
+              publisher={publisher}
               publisherItems={publisherItems}
-              nationalComponent={informationModelItem.nationalComponent}
+              theme={(themes || []).map(({ uri: id }) => ({ id }))}
+              referenceData={referenceData}
               darkThemeBackground
             />
 
-            {renderModels(informationModelItem)}
+            {renderDescription(description)}
+
+            {renderStatus({
+              issued,
+              version,
+              lastModified: harvest.lastChanged,
+              validFromIncluding,
+              validToIncluding,
+              changelog,
+              landingPage
+            })}
+
+            {renderIdentifier(id)}
+
+            {hasModel && renderModels(informationModelItem)}
+
+            {renderKeywords(keywords)}
+
+            {renderInformationModelCategory(category)}
 
             {renderRelatedApi(referencedApis, publisherItems)}
+
+            {renderContactPoint(contactPoint)}
             <div style={{ height: '75vh' }} />
           </section>
         </div>
@@ -190,13 +395,17 @@ export const InformationModelDetailsPage = ({
 InformationModelDetailsPage.defaultProps = {
   informationModelItem: null,
   publisherItems: null,
-  fetchPublishersIfNeeded: () => {},
-  referencedApis: []
+  fetchPublishersIfNeeded: _.noop,
+  fetchReferenceDataIfNeeded: _.noop,
+  referencedApis: [],
+  referenceData: null
 };
 
 InformationModelDetailsPage.propTypes = {
   informationModelItem: PropTypes.object,
   publisherItems: PropTypes.object,
   fetchPublishersIfNeeded: PropTypes.func,
-  referencedApis: PropTypes.array
+  fetchReferenceDataIfNeeded: PropTypes.func,
+  referencedApis: PropTypes.array,
+  referenceData: PropTypes.object
 };

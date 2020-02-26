@@ -382,6 +382,18 @@
       "structure": "Structure",
       "json": "JSON Schema"
     },
+    "status": "Status",
+    "issued": "Issued",
+    "valid": "Valid",
+    "from": "from",
+    "to": "to",
+    "version": "Version",
+    "lastModified": "Last modified",
+    "changelog": "Changes since last version",
+    "moreInfo": "More information about information models",
+    "identifier": "Identifier",
+    "keywords": "Keywords",
+    "category": "Model category",
     "relatedAPIHeader": "Belongs to API",
     "informationModelDescription": "Information Model Description",
     "structure": {
