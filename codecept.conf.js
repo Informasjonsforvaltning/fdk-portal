@@ -27,4 +27,4 @@ exports.config = {
   },
   tests: './test/feature/*_test.js',
   name: 'fdk-portal'
-}
+};

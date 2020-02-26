@@ -8,6 +8,8 @@ import localization from '../../../lib/localization';
 import { HitsStats } from './hits-stats/hits-stats.component';
 import './search-box.scss';
 
+import SearchIcon from '../../../img/icon-search-lg.svg';
+
 export const SearchBoxPure = props => {
   const {
     onSearchSubmit,
@@ -22,7 +24,8 @@ export const SearchBoxPure = props => {
     clearInputTextHandler,
     touched
   } = props;
-  let refSearchBox; // eslint-disable-line no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  let refSearchBox;
   return (
     <div className="container pt-5 pb-5">
       <div className="col-12 col-lg-10 offset-lg-1 fdk-search-flex d-flex">
@@ -77,7 +80,7 @@ export const SearchBoxPure = props => {
           }}
           className="fdk-button-search btn btn-lg"
         >
-          <i className="fa fa-search mr-2" />
+          <img src={SearchIcon} alt="Søk" />
           {localization.query.do}
         </button>
       </div>

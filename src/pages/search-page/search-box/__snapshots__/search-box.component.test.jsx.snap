@@ -53,8 +53,9 @@ exports[`should render SearchBoxPure correctly 1`] = `
       onClick={[Function]}
       type="button"
     >
-      <i
-        className="fa fa-search mr-2"
+      <img
+        alt="Søk"
+        src={[Function]}
       />
       Search
     </button>

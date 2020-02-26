@@ -20,10 +20,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const enhance = compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   datasetDetailsPageResolver
 );
 

@@ -2,6 +2,7 @@
 node_modules
 dist
 test/feature/output
+coverage
 
 # IDE files
 *.iml

@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { ResultsConceptsPure } from './results-concepts.component';
+// eslint-disable-next-line import/no-unresolved
 import concepts from '../../../mock/concepts.response';
 import {
   extractAggregations,

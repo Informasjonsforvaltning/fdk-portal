@@ -9,7 +9,7 @@ RUN npm set progress=false && \
 
 RUN npm audit
 
-COPY .babelrc ./
+COPY .babelrc tsconfig.json jest.config.js ./
 COPY webpack.* ./
 COPY src ./src
 COPY test ./test

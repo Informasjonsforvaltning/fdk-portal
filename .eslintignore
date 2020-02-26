@@ -8,3 +8,7 @@ nginx
 assets
 img
 test/feature
+images
+
+.huskyrc
+.lintstagedrc

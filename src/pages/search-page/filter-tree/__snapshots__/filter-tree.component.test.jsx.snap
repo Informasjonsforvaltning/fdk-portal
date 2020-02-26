@@ -15,8 +15,9 @@ exports[`should handle toggleFilter 1`] = `
       <span>
         title
       </span>
-      <i
-        className="fa fa-angle-down"
+      <img
+        alt=""
+        src={[Function]}
       />
     </button>
   </div>
@@ -1645,8 +1646,9 @@ exports[`should render FilterTree correctly with active filter 1`] = `
       <span>
         title
       </span>
-      <i
-        className="fa fa-angle-up"
+      <img
+        alt=""
+        src={[Function]}
       />
     </button>
   </div>
@@ -3275,8 +3277,9 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
       <span>
         title
       </span>
-      <i
-        className="fa fa-angle-up"
+      <img
+        alt=""
+        src={[Function]}
       />
     </button>
   </div>
@@ -4907,8 +4910,9 @@ exports[`should render FilterTree correctly with props 1`] = `
       <span>
         title
       </span>
-      <i
-        className="fa fa-angle-up"
+      <img
+        alt=""
+        src={[Function]}
       />
     </button>
   </div>

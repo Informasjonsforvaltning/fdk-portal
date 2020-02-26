@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TreeView from 'react-treeview';
-import cx from 'classnames';
 import { Collapse } from 'reactstrap';
 import _ from 'lodash';
 
@@ -10,6 +9,11 @@ import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
 import './filter-tree.scss';
 import { keyPrefixForest } from '../../../lib/key-prefix-forest';
+
+import CollapseIcon from '../../../img/icon-collapse-md.svg';
+import ExpandIcon from '../../../img/icon-expand-md.svg';
+import CollapseTextIcon from '../../../img/icon-collapse-text-sm.svg';
+import ExpandTextIcon from '../../../img/icon-expand-text-sm.svg';
 
 const isItemCollapsed = (itemOrgPath, chosenOrgPath, openArrows) => {
   if (chosenOrgPath && chosenOrgPath !== undefined) {
@@ -213,15 +217,7 @@ export const FilterTree = props => {
 
   const aggregationsForest = keyPrefixForest(aggregations);
 
-  const collapseIconClass = cx('fa', {
-    'fa-angle-down': !openFilter,
-    'fa-angle-up': openFilter
-  });
   if (Array.isArray(aggregations) && aggregations.length > 0) {
-    const openIconClass = cx('fa', 'mr-2', {
-      'fa-angle-double-down': !openList,
-      'fa-angle-double-up': openList
-    });
     return (
       <div className="fdk-filter-tree">
         <div className="fdk-panel__header">
@@ -231,7 +227,7 @@ export const FilterTree = props => {
             onClick={handleToggleOpenFilter}
           >
             <span>{title}</span>
-            <i className={collapseIconClass} />
+            <img src={openFilter ? CollapseIcon : ExpandIcon} alt="" />
           </button>
         </div>
         <Collapse isOpen={openFilter}>
@@ -266,7 +262,11 @@ export const FilterTree = props => {
                     className="fdk-toggleList"
                     onClick={handleToggleOpenList}
                   >
-                    <i className={openIconClass} />
+                    <img
+                      src={openList ? CollapseTextIcon : ExpandTextIcon}
+                      alt=""
+                      className="mr-2"
+                    />
                     {openList
                       ? localization.facet.showfewer
                       : localization.facet.showmore}

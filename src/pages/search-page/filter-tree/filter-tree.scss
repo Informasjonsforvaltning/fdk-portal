@@ -1,6 +1,14 @@
 @import '../../../../node_modules/designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
 
 .fdk-filter-tree {
+  .fdk-panel__header {
+    button {
+      img {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
 
   .tree-view {
     overflow-x: hidden;
@@ -52,5 +60,12 @@
 
   .pre-scrollable {
     max-height: 1000px !important;
+  }
+
+  button.fdk-toggleList {
+    img {
+      height: 16px;
+      width: 16px;
+    }
   }
 }

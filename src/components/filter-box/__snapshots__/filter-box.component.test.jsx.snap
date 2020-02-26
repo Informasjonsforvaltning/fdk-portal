@@ -15,8 +15,9 @@ exports[`should render FilterBox correctly 1`] = `
       <span>
         Testbox
       </span>
-      <i
-        className="fa fa-angle-up"
+      <img
+        alt=""
+        src={[Function]}
       />
     </button>
   </div>
@@ -250,8 +251,10 @@ exports[`should render FilterBox correctly 1`] = `
               onClick={[Function]}
               type="button"
             >
-              <i
-                className="fa mr-2 fa-angle-double-down"
+              <img
+                alt=""
+                className="mr-2"
+                src={[Function]}
               />
               Show more
             </button>
@@ -278,8 +281,9 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
       <span>
         Testbox
       </span>
-      <i
-        className="fa fa-angle-up"
+      <img
+        alt=""
+        src={[Function]}
       />
     </button>
   </div>
@@ -513,8 +517,10 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
               onClick={[Function]}
               type="button"
             >
-              <i
-                className="fa mr-2 fa-angle-double-down"
+              <img
+                alt=""
+                className="mr-2"
+                src={[Function]}
               />
               Show more
             </button>

@@ -1,12 +1,12 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: ['@babel/polyfill', 'whatwg-fetch', './src/index.jsx'],
+  entry: ['./src/index.jsx'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -20,9 +20,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader'
+        test: /\.(js|ts)x?$/,
+        use: ['babel-loader', 'ts-loader'],
+        exclude: /(node_modules)/
       },
       {
         test: /\.s?css$/,
@@ -45,7 +45,21 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader'
+        loader: 'file-loader',
+        exclude: [path.resolve(__dirname, 'src', 'images')]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          'babel-loader',
+          {
+            loader: 'react-svg-loader',
+            options: {
+              jsx: true
+            }
+          }
+        ],
+        include: [path.resolve(__dirname, 'src', 'images')]
       },
       {
         test: /\.(png|jpg)$/,
@@ -59,13 +73,7 @@ module.exports = {
     ]
   },
   resolve: {
-    alias: {
-      react: path.resolve('./node_modules/react')
-    },
-    extensions: ['.js', '.jsx', '.webpack.js', '.web.js']
-  },
-  resolveLoader: {
-    modules: [__dirname, 'node_modules']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   optimization: {
     minimize: false

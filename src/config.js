@@ -6,9 +6,8 @@ const env = window.env || {
 };
 
 // override all env variables to ut1 (inspired by https://www.ut1.fellesdatakatalog.brreg.no/config.js)
-// env.SEARCH_API_HOST = 'https://www.ut1.fellesdatakatalog.brreg.no';
-// env.SEARCH_API_AUTHORIZATION = 'Basic ZmRrOkJSUkVH';
-// env.SEARCH_HOST = 'https://www.ut1.fellesdatakatalog.brreg.no';
+// env.SEARCH_API_HOST = 'https://www.it1.fellesdatakatalog.brreg.no';
+// env.SEARCH_HOST = 'https://www.it1.fellesdatakatalog.brreg.no';
 // env.USE_DEMO_LOGO = true;
 
 const searchApi = {

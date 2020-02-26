@@ -46,15 +46,7 @@ export const FilterOption = props => {
 
   return (
     <div className={`checkbox ${displayClass}`}>
-      <label
-        className="checkbox_label"
-        onKeyPress={() => {
-          inputRef.click();
-        }}
-        tabIndex="0"
-        role="button"
-        htmlFor={id}
-      >
+      <label className="checkbox_label" htmlFor={id}>
         <input
           ref={input => {
             inputRef = input;
