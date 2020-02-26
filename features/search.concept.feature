@@ -5,10 +5,10 @@ So that I can find information about a given concept
 So that I can find information about concepts that are semantically related to a given concept
 
 Scenario Outline: Concept that has exists in chosen language
-  Given my chosen language is <language>
-  And  <searchTerm> exists in <language>
+  Given <searchTerm> exists in <language>
   And  <searchTerm> has <numberOf> exact match(es)
-  When I search for <searchTerm>
+  When I choose <language>
+  And I search for <searchTerm>
   Then I can see <searchTerm> in result list
   And <searchTerm> has <numberOf> exact hits
   And exact hits are on top of list
@@ -19,8 +19,7 @@ Scenario Outline: Concept that has exists in chosen language
     | dokument   | 1        | nn       |
 
 Scenario Outline: Concept that has hits containing chosen language and additional language(s)
-  Given my chosen language is <language>
-  And   there exists one hit with an exact match for <searchTerm> in <language>
+  Given there exists one hit with an exact match for <searchTerm> in <language>
   And   the hit is translated to <differentLang>
     When I search for <searchTerm>
       Then I see one hit for the desired concept

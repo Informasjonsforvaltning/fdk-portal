@@ -82,7 +82,6 @@ FilterOption.propTypes = {
   labelRaw: PropTypes.string,
   label: PropTypes.string,
   count: PropTypes.number,
-  onClick: PropTypes.func.isRequired,
   active: PropTypes.bool,
   themesItems: PropTypes.object,
   displayClass: PropTypes.string

@@ -7,9 +7,6 @@ exports[`should render FilterOption correctly 1`] = `
   <label
     className="checkbox_label"
     htmlFor="4AGRI"
-    onKeyPress={[Function]}
-    role="button"
-    tabIndex="0"
   >
     <input
       checked={false}
@@ -38,9 +35,6 @@ exports[`should render FilterOption correctly with no corresponding theme 1`] = 
   <label
     className="checkbox_label"
     htmlFor="4JUST"
-    onKeyPress={[Function]}
-    role="button"
-    tabIndex="0"
   >
     <input
       checked={false}
@@ -69,9 +63,6 @@ exports[`should render FilterOption correctly with no theme 1`] = `
   <label
     className="checkbox_label"
     htmlFor="0PUBLIC"
-    onKeyPress={[Function]}
-    role="button"
-    tabIndex="0"
   >
     <input
       checked={false}
