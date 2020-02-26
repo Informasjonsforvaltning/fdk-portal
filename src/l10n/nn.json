@@ -181,7 +181,7 @@
     "lastChanged": "Sist endra i Felles datakatalog",
     "conformsTo": "Innhaldsstandard",
     "informationModel": "Informasjonsmodell",
-    "informationModelDefaultText": "Informasjonsmodell",
+    "informationModelDefaultText": "I samsvar med informasjonsmodell",
     "distributions": "Andre distribusjonar",
     "distributionsAPI": "API-distribusjonar ({0})",
     "distibutionsAPILabel": "API-distribusjonar",
@@ -382,6 +382,18 @@
       "structure": "Struktur",
       "json": "JSON Schema"
     },
+    "status": "Status",
+    "issued": "Utgjevingsdato",
+    "valid": "Gyldig",
+    "from": "fra",
+    "to": "til",
+    "version": "Versjon",
+    "lastModified": "Sist endra",
+    "changelog": "Endringar fra siste versjon",
+    "moreInfo": "Meir informasjon om informasjonsmodellen",
+    "identifier": "Identifikator",
+    "keyword": "Emneord",
+    "category": "Modellkategori",
     "relatedAPIHeader": "Høyrer til API",
     "informationModelDescription": "Informasjonsmodelbeskrivelse",
     "structure": {
@@ -389,7 +401,14 @@
       "objectType": "Objekttype",
       "codeList": "Kodeliste",
       "dataType": "Datatype",
-      "simpleType": "Enkelttype"
+      "simpleType": "Enkelttype",
+      "attribute": "Attributt",
+      "role": "Rolle",
+      "extendsFrom": "Arver frå",
+      "code": "Kode",
+      "externalCodelist": "Ekstern kodeliste",
+      "distributionReference": "Referanse til distribusjon",
+      "restrictions": "Verdirestriksjonar"
     },
     "modelDescription": {
       "belongsToModule": "Høyrer til modul",

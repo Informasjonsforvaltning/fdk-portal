@@ -180,7 +180,7 @@
     "firstHarvested": "Published in The National Data Catalog",
     "lastChanged": "Last changed in The National Data Catalog",
     "conformsTo": "Conforms to",
-    "informationModel": "Information model",
+    "informationModel": "In accordance with information model",
     "informationModelDefaultText": "Information model",
     "distributions": "Other distributions",
     "distributionsAPI": "API distributions ({0})",
@@ -382,6 +382,18 @@
       "structure": "Structure",
       "json": "JSON Schema"
     },
+    "status": "Status",
+    "issued": "Issued",
+    "valid": "Valid",
+    "from": "from",
+    "to": "to",
+    "version": "Version",
+    "lastModified": "Last modified",
+    "changelog": "Changes since last version",
+    "moreInfo": "More information about information models",
+    "identifier": "Identifier",
+    "keywords": "Keywords",
+    "category": "Model category",
     "relatedAPIHeader": "Belongs to API",
     "informationModelDescription": "Information Model Description",
     "structure": {
@@ -389,7 +401,14 @@
       "objectType": "Object type",
       "codeList": "Codelist",
       "dataType": "Data type",
-      "simpleType": "Simple type"
+      "simpleType": "Simple type",
+      "attribute": "Attribute",
+      "role": "Role",
+      "extendsFrom": "Extends from",
+      "code": "Code",
+      "externalCodelist": "External codelist",
+      "distributionReference": "Distribution reference",
+      "restrictions": "Value restrictions"
     },
     "modelDescription": {
       "belongsToModule": "Belongs to module",

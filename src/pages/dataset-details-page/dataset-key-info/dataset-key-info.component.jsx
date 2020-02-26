@@ -114,14 +114,16 @@ const renderConformsTo = conformsTo => {
 const renderInformationModel = informationModel => {
   const children = items =>
     items.map(item => (
-      <LinkExternal
-        key={item.uri}
-        uri={item.uri}
-        prefLabel={
-          getTranslateText(item.prefLabel) ||
-          localization.dataset.informationModelDefaultText
-        }
-      />
+      <div>
+        <LinkExternal
+          key={item.uri}
+          uri={item.uri}
+          prefLabel={
+            getTranslateText(item.prefLabel) ||
+            localization.dataset.informationModelDefaultText
+          }
+        />
+      </div>
     ));
 
   if (!(informationModel && informationModel.length > 0)) {

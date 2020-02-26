@@ -22,7 +22,9 @@ const renderFormats = (source, referenceData) => {
       let { type } = item;
       if (
         type &&
-        (type !== 'API' && type !== 'Feed' && type !== 'Nedlastbar fil')
+        type !== 'API' &&
+        type !== 'Feed' &&
+        type !== 'Nedlastbar fil'
       ) {
         const distributionType = getReferenceDataByUri(
           referenceData,
