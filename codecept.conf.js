@@ -7,7 +7,9 @@ exports.config = {
     }
   },
   include: {
-    I: './test/feature/step_file.js'
+    I: './test/feature/step_file.js',
+    conceptsPage: './test/feature/pages/concept.page.js',
+    informationModelsPage: './test/feature/pages/informationmodels.page.js'
   },
   mocha: {},
   bootstrap: null,
@@ -15,7 +17,10 @@ exports.config = {
   hooks: [],
   gherkin: {
     features: './features/*.feature',
-    steps: ['./test/feature/step_definitions/steps.js']
+    steps: [
+      './test/feature/step_definitions/steps.js',
+      './test/feature/step_definitions/informationmodels.steps.js'
+    ]
   },
   plugins: {
     screenshotOnFail: {

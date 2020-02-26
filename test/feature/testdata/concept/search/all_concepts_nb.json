@@ -1,0 +1,454 @@
+{
+  "_embedded" : {
+    "concepts" : [ {
+      "id" : "fe70dfdf-a4bf-402c-bf79-b8e1f16d107b",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/fe70dfdf-a4bf-402c-bf79-b8e1f16d107b",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/c12f144e-e9d4-4581-9351-5af37abd8a68",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nn" : "ei logisk avgrensa informasjonsmengd som er lagra på eit medium for seinare lesing, lyding, framsyning eller overføring"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "lov 4. desember 1992 nr. 126 om arkiv"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "lov 4. desember 1992 nr. 126 om arkiv"
+          },
+          "uri" : "https://lovdata.no/lov/1992-12-04-126/§2"
+        } ]
+      },
+      "prefLabel" : {
+        "nn" : "dokument"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.170+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.170+0000"
+      }
+    }, {
+      "id" : "db0fbd02-f3f8-4d0c-b047-9901e21066da",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/db0fbd02-f3f8-4d0c-b047-9901e21066da",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/9f3850b8-6eaf-40f3-97b1-7e048d440197",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "lokaler som er spesielt tilpasset langtidslagring av ulike typer arkivmateriale"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "forskrift 19. desember 2017 nr. 2286 om utfyllende tekniske og arkivfaglige bestemmelser om behandling av offentlige arkiver"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "forskrift 19. desember 2017 nr. 2286 om utfyllende tekniske og arkivfaglige bestemmelser om behandling av offentlige arkiver"
+          },
+          "uri" : "https://lovdata.no/forskrift/2017-12-19-2286/§2-1"
+        } ]
+      },
+      "prefLabel" : {
+        "nb" : "spesialrom for arkiv"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.129+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.129+0000"
+      }
+    }, {
+      "id" : "2135fe30-36b4-4736-97e3-d530f9af8cf6",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/2135fe30-36b4-4736-97e3-d530f9af8cf6",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/e7e1a7b2-7463-4f7d-b1d9-b81d4bb6688b",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "dokument som skal inngå i et arkiv"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "forskrift 19. desember 2017 nr. 2286 om utfyllende tekniske og arkivfaglige bestemmelser om behandling av offentlige arkiver"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "forskrift 19. desember 2017 nr. 2286 om utfyllende tekniske og arkivfaglige bestemmelser om behandling av offentlige arkiver"
+          },
+          "uri" : "https://lovdata.no/forskrift/2017-12-19-2286/§3-1"
+        } ]
+      },
+      "prefLabel" : {
+        "nb" : "arkivdokument"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.077+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.077+0000"
+      }
+    }, {
+      "id" : "c73de33e-2f15-4b1e-8e1d-5125fe5022e0",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/c73de33e-2f15-4b1e-8e1d-5125fe5022e0",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/6461722f-7c99-4d8d-ab99-c67eaaab584d",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "dato for når et dokument er ført inn i journalen"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "Noark 5"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "Noark 5"
+          },
+          "uri" : ""
+        } ]
+      },
+      "prefLabel" : {
+        "nb" : "journalføringsdato"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.266+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.266+0000"
+      }
+    }, {
+      "id" : "63f46f3b-d921-479f-aedd-72f74d58dc04",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/63f46f3b-d921-479f-aedd-72f74d58dc04",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/991825827/26813bbf-0401-44bf-9e9f-448552cc534c",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "Informasjonsmodell til felles bruk på tvers av virksomheter,  forretningsområder og/eller applikasjonssegmenter"
+        },
+        "sources" : [ ]
+      },
+      "subject" : {
+        "nb" : "Informasjonsforvaltning"
+      },
+      "prefLabel" : {
+        "nb" : "Felles informasjonsmodell"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "informasjonsforvaltning@difi.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/991825827",
+        "name" : "DIGITALISERINGSDIREKTORATET",
+        "orgPath" : "/STAT/972417858/991825827",
+        "prefLabel" : {
+          "no" : "Direktoratet for forvaltning og IKT"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.317+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.317+0000"
+      }
+    }, {
+      "id" : "a80cde42-4741-49a6-8acd-35dd8d359939",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/a80cde42-4741-49a6-8acd-35dd8d359939",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/b7bf05aa-bc41-41d2-bacb-dc3b0079c0f1",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "institusjon hvor bevaringsverdig arkivmateriale oppbevares permanent"
+        },
+        "sourceRelationship" : "egendefinert",
+        "sources" : [ ]
+      },
+      "prefLabel" : {
+        "nb" : "arkivdepot"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:56:59.947+0000",
+        "lastHarvested" : "2020-02-18T07:56:59.947+0000"
+      }
+    }, {
+      "id" : "63a10320-e385-4377-8f6a-71f497b341c6",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/63a10320-e385-4377-8f6a-71f497b341c6",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/991825827/0a8f2ccf-2a5b-4412-bc6b-2071937d62f3",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "Informasjonsmodell for et avgrensbart/identifiserbart felt/område"
+        },
+        "sources" : [ ]
+      },
+      "subject" : {
+        "nb" : "Informasjonsforvaltning"
+      },
+      "prefLabel" : {
+        "nb" : "Domenemodell"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "informasjonsforvaltning@difi.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/991825827",
+        "name" : "DIGITALISERINGSDIREKTORATET",
+        "orgPath" : "/STAT/972417858/991825827",
+        "prefLabel" : {
+          "no" : "Direktoratet for forvaltning og IKT"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.146+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.146+0000"
+      }
+    }, {
+      "id" : "7015d999-6206-485b-86ae-17bd56e2766a",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/7015d999-6206-485b-86ae-17bd56e2766a",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/991825827/0a22ce03-8eca-4b9a-b1c1-87ab688b028e",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "Meldinger sendt digitalt til en virksomhets postboks hos Altinn"
+        },
+        "sources" : [ ]
+      },
+      "prefLabel" : {
+        "nb" : "Digital post til virksomhet"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/991825827",
+        "name" : "DIGITALISERINGSDIREKTORATET",
+        "orgPath" : "/STAT/972417858/991825827",
+        "prefLabel" : {
+          "no" : "Direktoratet for forvaltning og IKT"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.231+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.231+0000"
+      }
+    }, {
+      "id" : "c3d97f03-5cfe-44f6-a7dd-cdd9808d70a5",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/c3d97f03-5cfe-44f6-a7dd-cdd9808d70a5",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/ce7faf8b-3889-438d-8d5b-5aad689027d4",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "fysisk overføring av arkivmateriale uten overføring av råderetten"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "forskrift 19. desember 2017 nr. 2286 om utfyllende tekniske og arkivfaglige bestemmelser om behandling av offentlige arkiver"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "forskrift 19. desember 2017 nr. 2286 om utfyllende tekniske og arkivfaglige bestemmelser om behandling av offentlige arkiver"
+          },
+          "uri" : "https://lovdata.no/forskrift/2017-12-19-2286/§5-2"
+        } ]
+      },
+      "prefLabel" : {
+        "nb" : "deponering"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.533+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.533+0000"
+      }
+    }, {
+      "id" : "204e3f27-f7c7-43bd-b107-989f22615444",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/204e3f27-f7c7-43bd-b107-989f22615444",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/b1af69aa-0c56-40ca-ba2d-37f1e920efbf",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "dato som er påført selve dokumentet"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "Noark 5-standarden"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "Noark 5-standarden"
+          },
+          "uri" : ""
+        } ]
+      },
+      "prefLabel" : {
+        "nb" : "dokumentdato"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.444+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.444+0000"
+      }
+    } ]
+  },
+  "page" : {
+    "size" : 10,
+    "totalElements" : 3599,
+    "totalPages" : 360,
+    "number" : 0
+  },
+  "aggregations" : {
+    "orgPath" : {
+      "buckets" : [ {
+        "key" : "/STAT",
+        "count" : 3528
+      }, {
+        "key" : "/STAT/972417807",
+        "count" : 3245
+      }, {
+        "key" : "/STAT/972417807/974761076",
+        "count" : 3245
+      }, {
+        "key" : "/STAT/912660680",
+        "count" : 227
+      }, {
+        "key" : "/STAT/912660680/974760673",
+        "count" : 227
+      }, {
+        "key" : "/ANNET",
+        "count" : 66
+      }, {
+        "key" : "/STAT/972417866",
+        "count" : 41
+      }, {
+        "key" : "/STAT/972417866/961181399",
+        "count" : 41
+      }, {
+        "key" : "/ANNET/910244132",
+        "count" : 37
+      }, {
+        "key" : "/ANNET/910298062",
+        "count" : 21
+      }, {
+        "key" : "/STAT/972417858",
+        "count" : 15
+      }, {
+        "key" : "/STAT/972417858/991825827",
+        "count" : 15
+      }, {
+        "key" : "/ANNET/910258028",
+        "count" : 8
+      }, {
+        "key" : "MISSING",
+        "count" : 3
+      }, {
+        "key" : "/KOMMUNE",
+        "count" : 2
+      }, {
+        "key" : "/KOMMUNE/964338531",
+        "count" : 2
+      } ]
+    }
+  }
+}

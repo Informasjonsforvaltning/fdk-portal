@@ -1,0 +1,552 @@
+{
+  "_embedded" : {
+    "concepts" : [
+      {
+      "id" : "9df9a117-dffa-4b69-afe2-b67eb97f2707",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/9df9a117-dffa-4b69-afe2-b67eb97f2707",
+      "identifier" : "http://data.brreg.no/begrep/49220",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nn" : "\"[...] ei logisk avgrensa informasjonsmengd som er lagra på eit medium for seinare lesing, lytting, framsyning, overføring eller liknande\"",
+          "nb" : "logisk avgrenset informasjonsmengde som er lagret på et medium for senere lesing, lytting, framvisning, overføring eller lignende"
+        },
+        "remark" : {
+          "nb" : "Et dokument kan foreligge på papir, elektronisk medium, mikrofiche, mikrofilm eller et hvilket som helst annet medium som kan inneholde informasjon. Dokumenter kan inneholde tekst, tegninger, grafikk, fotografier, video, tale og så videre."
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "Offentleglova. _Lov 19. mai 2006 nr. 16 om rett til innsyn i dokument i offentleg verksemd §4._ Tilgjengelig fra: https://lovdata.no/NL/lov/2006-05-19-16/"
+          }
+        },
+        "sources" : [ {
+          "text" : {
+            "nb" : "Offentleglova. _Lov 19. mai 2006 nr. 16 om rett til innsyn i dokument i offentleg verksemd §4._ Tilgjengelig fra: https://lovdata.no/NL/lov/2006-05-19-16/"
+          }
+        } ]
+      },
+      "subject" : {
+        "nb" : "Arkiv"
+      },
+      "prefLabel" : {
+        "nb" : "dokument"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "informasjonsforvaltning@brreg.no",
+        "telephone" : "+4775007500"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974760673",
+        "name" : "REGISTERENHETEN I BRØNNØYSUND",
+        "orgPath" : "/STAT/912660680/974760673",
+        "prefLabel" : {
+          "no" : "Brønnøysundregistrene"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:56:53.216+0000",
+        "lastHarvested" : "2020-02-26T06:02:41.730+0000"
+      }
+    },
+      {
+      "id" : "d4616e4b-959c-434f-b496-14a482e20bf9",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/d4616e4b-959c-434f-b496-14a482e20bf9",
+      "identifier" : "http://begrepskatalogen/begrep/49e69804-5955-11e6-86bf-12156fd09fb5",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "logisk avgrenset informasjonsmengde som er lagret på et medium for senere lesing, lytting, framføring, overføring eller lignende"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "Forvaltningsloven Kap.1 §2 (f)"
+          }
+        },
+        "sources" : [ {
+          "text" : {
+            "nb" : "Forvaltningsloven Kap.1 §2 (f)"
+          }
+        } ]
+      },
+      "subject" : {
+        "nb" : "Arkiv"
+      },
+      "prefLabel" : {
+        "nb" : "dokument"
+      },
+      "altLabel" : [ {
+        "nb" : "elektronisk dokument"
+      } ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrepskatalogen@skatteetaten.no"
+      },
+      "validFromIncluding" : "2016-08-03",
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+        "name" : "SKATTEETATEN",
+        "orgPath" : "/STAT/972417807/974761076",
+        "prefLabel" : {
+          "no" : "SKATTEETATEN"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:55:06.417+0000",
+        "lastHarvested" : "2020-02-26T06:00:27.181+0000"
+      }
+    },
+      {
+        "id" : "d4616e4b-959c-434f-b496-14a482e20bf9",
+        "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/d4616e4b-959c-434f-b496-14a482e20bf9",
+        "identifier" : "http://begrepskatalogen/begrep/49e69804-5955-11e6-86bf-12156fd09fb5",
+        "application" : [ ],
+        "definition" : {
+          "text" : {
+            "nb" : "logisk avgrenset informasjonsmengde som er lagret på et medium for senere lesing, lytting, framføring, overføring eller lignende"
+          },
+          "source" : {
+            "prefLabel" : {
+              "nb" : "Forvaltningsloven Kap.1 §2 (f)"
+            }
+          },
+          "sources" : [ {
+            "text" : {
+              "nb" : "Forvaltningsloven Kap.1 §2 (f)"
+            }
+          } ]
+        },
+        "subject" : {
+          "nb" : "Arkiv"
+        },
+        "prefLabel" : {
+          "nb" : "dokument"
+        },
+        "altLabel" : [ {
+          "nb" : "elektronisk dokument"
+        } ],
+        "hiddenLabel" : [ ],
+        "contactPoint" : {
+          "email" : "begrepskatalogen@skatteetaten.no"
+        },
+        "validFromIncluding" : "2016-08-03",
+        "seeAlso" : [ ],
+        "publisher" : {
+          "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+          "name" : "SKATTEETATEN",
+          "orgPath" : "/STAT/972417807/974761076",
+          "prefLabel" : {
+            "no" : "SKATTEETATEN"
+          }
+        },
+        "harvest" : {
+          "firstHarvested" : "2020-02-18T07:55:06.417+0000",
+          "lastHarvested" : "2020-02-26T06:00:27.181+0000"
+        }
+      },
+      {
+        "id" : "d4616e4b-959c-434f-b496-14a482e20bf9",
+        "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/d4616e4b-959c-434f-b496-14a482e20bf9",
+        "identifier" : "http://begrepskatalogen/begrep/49e69804-5955-11e6-86bf-12156fd09fb5",
+        "application" : [ ],
+        "definition" : {
+          "text" : {
+            "nb" : "logisk avgrenset informasjonsmengde som er lagret på et medium for senere lesing, lytting, framføring, overføring eller lignende"
+          },
+          "source" : {
+            "prefLabel" : {
+              "nb" : "Forvaltningsloven Kap.1 §2 (f)"
+            }
+          },
+          "sources" : [ {
+            "text" : {
+              "nb" : "Forvaltningsloven Kap.1 §2 (f)"
+            }
+          } ]
+        },
+        "subject" : {
+          "nb" : "Arkiv"
+        },
+        "prefLabel" : {
+          "nb" : "dokument"
+        },
+        "altLabel" : [ {
+          "nb" : "elektronisk dokument"
+        } ],
+        "hiddenLabel" : [ ],
+        "contactPoint" : {
+          "email" : "begrepskatalogen@skatteetaten.no"
+        },
+        "validFromIncluding" : "2016-08-03",
+        "seeAlso" : [ ],
+        "publisher" : {
+          "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+          "name" : "SKATTEETATEN",
+          "orgPath" : "/STAT/972417807/974761076",
+          "prefLabel" : {
+            "no" : "SKATTEETATEN"
+          }
+        },
+        "harvest" : {
+          "firstHarvested" : "2020-02-18T07:55:06.417+0000",
+          "lastHarvested" : "2020-02-26T06:00:27.181+0000"
+        }
+      },
+      {
+      "id" : "fe70dfdf-a4bf-402c-bf79-b8e1f16d107b",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/fe70dfdf-a4bf-402c-bf79-b8e1f16d107b",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/c12f144e-e9d4-4581-9351-5af37abd8a68",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nn" : "ei logisk avgrensa informasjonsmengd som er lagra på eit medium for seinare lesing, lyding, framsyning eller overføring"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "lov 4. desember 1992 nr. 126 om arkiv"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "lov 4. desember 1992 nr. 126 om arkiv"
+          },
+          "uri" : "https://lovdata.no/lov/1992-12-04-126/§2"
+        } ]
+      },
+      "prefLabel" : {
+        "nn" : "dokument"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.170+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.170+0000"
+      }
+    }, {
+      "id" : "f62b1e5b-33c9-4077-9ecb-758aac4602f9",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/f62b1e5b-33c9-4077-9ecb-758aac4602f9",
+      "identifier" : "https://registrering-begrep-api.staging.fellesdatakatalog.digdir.no/910258028/9f25b5ad-8aa7-4233-853b-7434e20aeaef",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nn" : "eit skriftstykke, eit skriftleg utgreiing og inneheld informasjon. Eit dokument er meint for kommunikasjon eller lagring av data. "
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "Noe sted et sted"
+          }
+        },
+        "sourceRelationship" : "basertPåKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "Noe sted et sted"
+          },
+          "uri" : ""
+        } ]
+      },
+      "prefLabel" : {
+        "nn" : "dokument"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/910258028",
+        "name" : "LILAND OG ERDAL REVISJON",
+        "orgPath" : "/ANNET/910258028"
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T10:55:17.757+0000",
+        "lastHarvested" : "2020-02-26T06:02:49.704+0000"
+      }
+    }, {
+      "id" : "204e3f27-f7c7-43bd-b107-989f22615444",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/204e3f27-f7c7-43bd-b107-989f22615444",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/b1af69aa-0c56-40ca-ba2d-37f1e920efbf",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "dato som er påført selve dokumentet"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "Noark 5-standarden"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "Noark 5-standarden"
+          },
+          "uri" : ""
+        } ]
+      },
+      "prefLabel" : {
+        "nb" : "dokumentdato"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.444+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.444+0000"
+      }
+    }, {
+      "id" : "3ea68ae1-7449-4b0b-ae27-cc711b811dea",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/3ea68ae1-7449-4b0b-ae27-cc711b811dea",
+      "identifier" : "http://begrepskatalogen/begrep/8ef7c434-0ef8-11e7-a910-005056821322",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "trinn i behandlingsprosessen for dokumenter i et arkiv- og saksbehandlingssystem"
+        },
+        "sources" : [ ]
+      },
+      "subject" : {
+        "nb" : "Arkiv"
+      },
+      "prefLabel" : {
+        "nb" : "dokumentflyt"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrepskatalogen@skatteetaten.no"
+      },
+      "validFromIncluding" : "2017-03-01",
+      "validToIncluding" : "2022-03-01",
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+        "name" : "SKATTEETATEN",
+        "orgPath" : "/STAT/972417807/974761076",
+        "prefLabel" : {
+          "no" : "SKATTEETATEN"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:54:53.233+0000",
+        "lastHarvested" : "2020-02-26T06:00:15.071+0000"
+      }
+    }, {
+      "id" : "3aff83e2-096b-4694-b0ae-0b1aa64eb2b6",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/3aff83e2-096b-4694-b0ae-0b1aa64eb2b6",
+      "identifier" : "http://begrepskatalogen/begrep/20b52b15-9fe1-11e5-a9f8-e4115b280940",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "dataene som lagres som innhold i en dokumentrevisjon"
+        },
+        "remark" : {
+          "nb" : "Fullverdige XML-dokumenter som lagres som CDATA(eller encoded tekststreng) innhold i dokumentrevisjon. Omtales også som faktisk innhold, data og payload."
+        },
+        "sources" : [ ]
+      },
+      "subject" : {
+        "nb" : "Skatteinfo"
+      },
+      "prefLabel" : {
+        "nb" : "dokumentinnhold"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrepskatalogen@skatteetaten.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+        "name" : "SKATTEETATEN",
+        "orgPath" : "/STAT/972417807/974761076",
+        "prefLabel" : {
+          "no" : "SKATTEETATEN"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:54:57.868+0000",
+        "lastHarvested" : "2020-02-26T06:00:18.824+0000"
+      }
+    }, {
+      "id" : "1e53c687-4a4d-46c5-b32f-e743c90cf65c",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/1e53c687-4a4d-46c5-b32f-e743c90cf65c",
+      "identifier" : "http://begrepskatalogen/begrep/20b52b18-9fe1-11e5-a9f8-e4115b280940",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "tilstanden på dokumentrevisjonen og kan være \"opprettet\", eller \"slettet\""
+        },
+        "remark" : {
+          "nb" : "En dokumentrevisjon med tilstand \"slettet\" er markert som ikke (lenger) gjeldende informasjon, og skal fjernes av evt. nedstrøms systemer som opprinnelig har lest inn denne informasjonen."
+        },
+        "sources" : [ ]
+      },
+      "subject" : {
+        "nb" : "Skatteinfo"
+      },
+      "prefLabel" : {
+        "nb" : "dokumenttilstand"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrepskatalogen@skatteetaten.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+        "name" : "SKATTEETATEN",
+        "orgPath" : "/STAT/972417807/974761076",
+        "prefLabel" : {
+          "no" : "SKATTEETATEN"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:54:59.153+0000",
+        "lastHarvested" : "2020-02-26T06:00:20.163+0000"
+      }
+    }, {
+      "id" : "9e5d1fd1-edb1-4b84-b510-d2b4ae0f105b",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/9e5d1fd1-edb1-4b84-b510-d2b4ae0f105b",
+      "identifier" : "http://begrepskatalogen/begrep/8ef7c435-0ef8-11e7-a910-005056821322",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "inkluderer både det å registrere, lagre, gjenfinne og presentere dokumenter"
+        },
+        "sources" : [ ]
+      },
+      "subject" : {
+        "nb" : "Arkiv"
+      },
+      "prefLabel" : {
+        "nb" : "dokumenthåndtering"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrepskatalogen@skatteetaten.no"
+      },
+      "validFromIncluding" : "2017-03-01",
+      "validToIncluding" : "2022-03-01",
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+        "name" : "SKATTEETATEN",
+        "orgPath" : "/STAT/972417807/974761076",
+        "prefLabel" : {
+          "no" : "SKATTEETATEN"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:55:05.091+0000",
+        "lastHarvested" : "2020-02-26T06:00:25.763+0000"
+      }
+    }, {
+      "id" : "b3e6013f-60e2-4071-9313-6c6d07284547",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/b3e6013f-60e2-4071-9313-6c6d07284547",
+      "identifier" : "http://begrepskatalogen/begrep/20b52b17-9fe1-11e5-a9f8-e4115b280940",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "XML-dokument som representerer gjeldende informasjon for et logisk skatteinfodokument på et gitt tidspunkt"
+        },
+        "remark" : {
+          "nb" : "Dette er den grunnleggende informasjonsenhet i Skatteinfo. En dokumentrevisjon representerer gjeldende informasjon for et logisk skatteinfodokument (dokumentnavn) på et gitt tidspunkt."
+        },
+        "sources" : [ ]
+      },
+      "subject" : {
+        "nb" : "Skatteinfo"
+      },
+      "prefLabel" : {
+        "nb" : "dokumentrevisjon"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrepskatalogen@skatteetaten.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+        "name" : "SKATTEETATEN",
+        "orgPath" : "/STAT/972417807/974761076",
+        "prefLabel" : {
+          "no" : "SKATTEETATEN"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:55:07.528+0000",
+        "lastHarvested" : "2020-02-26T06:00:28.456+0000"
+      }
+    } ]
+  },
+  "page" : {
+    "size" : 10,
+    "totalElements" : 151,
+    "totalPages" : 16,
+    "number" : 0
+  },
+  "aggregations" : {
+    "orgPath" : {
+      "buckets" : [ {
+        "key" : "/STAT",
+        "count" : 146
+      }, {
+        "key" : "/STAT/972417807",
+        "count" : 115
+      }, {
+        "key" : "/STAT/972417807/974761076",
+        "count" : 115
+      }, {
+        "key" : "/STAT/912660680",
+        "count" : 25
+      }, {
+        "key" : "/STAT/912660680/974760673",
+        "count" : 25
+      }, {
+        "key" : "/STAT/972417866",
+        "count" : 6
+      }, {
+        "key" : "/STAT/972417866/961181399",
+        "count" : 6
+      }, {
+        "key" : "/ANNET",
+        "count" : 5
+      }, {
+        "key" : "/ANNET/910298062",
+        "count" : 4
+      }, {
+        "key" : "/ANNET/910258028",
+        "count" : 1
+      } ]
+    }
+  }
+}

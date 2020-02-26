@@ -1,0 +1,130 @@
+{
+  "_embedded" : {
+    "concepts" : [ {
+      "id" : "6058b15b-c220-4b72-83ad-43e6d3ed00ca",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/6058b15b-c220-4b72-83ad-43e6d3ed00ca",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/7a53f97c-54cc-4852-8233-c85897071eca",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "register over saksdokumenter som behandles i et organ"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "Noark 5"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "Noark 5"
+          },
+          "uri" : ""
+        } ]
+      },
+      "prefLabel" : {
+        "en" : "archive"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.672+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.672+0000"
+      }
+    },
+ {
+      "id" : "c73de33e-2f15-4b1e-8e1d-5125fe5022e0",
+      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/c73de33e-2f15-4b1e-8e1d-5125fe5022e0",
+      "identifier" : "https://registrering-begrep-api.fellesdatakatalog.brreg.no/961181399/6461722f-7c99-4d8d-ab99-c67eaaab584d",
+      "application" : [ ],
+      "definition" : {
+        "text" : {
+          "nb" : "dato for når et dokument er ført inn i journalen"
+        },
+        "source" : {
+          "prefLabel" : {
+            "nb" : "Noark 5"
+          }
+        },
+        "sourceRelationship" : "sitatFraKilde",
+        "sources" : [ {
+          "text" : {
+            "nb" : "Noark 5"
+          },
+          "uri" : ""
+        } ]
+      },
+      "prefLabel" : {
+        "nb" : "journalføringsdato"
+      },
+      "altLabel" : [ ],
+      "hiddenLabel" : [ ],
+      "contactPoint" : {
+        "email" : "begrep@arkivverket.no"
+      },
+      "seeAlso" : [ ],
+      "publisher" : {
+        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/961181399",
+        "name" : "ARKIVVERKET",
+        "orgPath" : "/STAT/972417866/961181399",
+        "prefLabel" : {
+          "no" : "Arkivverket"
+        }
+      },
+      "harvest" : {
+        "firstHarvested" : "2020-02-18T07:57:00.266+0000",
+        "lastHarvested" : "2020-02-18T07:57:00.266+0000"
+      }
+    }]
+  },
+  "page" : {
+    "size" : 10,
+    "totalElements" : 25,
+    "totalPages" : 3,
+    "number" : 0
+  },
+  "aggregations" : {
+    "orgPath" : {
+      "buckets" : [ {
+        "key" : "/STAT",
+        "count" : 25
+      }, {
+        "key" : "/STAT/972417807",
+        "count" : 18
+      }, {
+        "key" : "/STAT/972417807/974761076",
+        "count" : 18
+      }, {
+        "key" : "/STAT/912660680",
+        "count" : 3
+      }, {
+        "key" : "/STAT/912660680/974760673",
+        "count" : 3
+      }, {
+        "key" : "/STAT/972417866",
+        "count" : 3
+      }, {
+        "key" : "/STAT/972417866/961181399",
+        "count" : 3
+      }, {
+        "key" : "/STAT/972417858",
+        "count" : 1
+      }, {
+        "key" : "/STAT/972417858/991825827",
+        "count" : 1
+      } ]
+    }
+  }
+}

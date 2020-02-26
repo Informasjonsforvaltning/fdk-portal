@@ -1,10 +1,12 @@
+@concept
+
 Feature: Search functionality for concepts in Felles Datakatalog
 As a user
 I want a search functionality for concepts
 So that I can find information about a given concept
 So that I can find information about concepts that are semantically related to a given concept
 
-Scenario Outline: Concept that has exists in chosen language
+Scenario Outline: Concept that exists in chosen language
   Given <searchTerm> exists in <language>
   And  <searchTerm> has <numberOf> exact match(es)
   When I choose <language>
