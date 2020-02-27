@@ -103,7 +103,7 @@ exports[`should render InformationModelDetailsPage correctly with informationMod
           <TwoColRow
             col1="Last modified"
             col1Width={null}
-            col2="01.28.2019"
+            col2="28.01.2019"
             col2Width={null}
           />
         </ListRegular>
