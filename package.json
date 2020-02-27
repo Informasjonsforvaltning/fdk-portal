@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --config webpack.hostdev.config.js --config-register @babel/register",
     "build": "webpack --config webpack.prod.config.js --config-register @babel/register",
+    "test:feature:setup": "npm-run-all --parallel start test:jsonserver",
     "test:feature": "codeceptjs run --features",
     "test:feature:tag": "codeceptjs run --grep",
     "test:feature:debug": "codeceptjs run --debug",

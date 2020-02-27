@@ -2,13 +2,13 @@ exports.config = {
   output: './test/feature/output',
   helpers: {
     Puppeteer: {
-      url: 'https://fellesdatakatalog.brreg.no/',
-      show: true
+      url: 'http://localhost:3001/',
+      show: false
     }
   },
   include: {
     I: './test/feature/step_file.js',
-    conceptsPage: './test/feature/pages/concept.page.js',
+    conceptPage: './test/feature/concept/concept.page.js',
     informationModelsPage: './test/feature/pages/informationmodels.page.js'
   },
   mocha: {},
@@ -19,7 +19,8 @@ exports.config = {
     features: './features/*.feature',
     steps: [
       './test/feature/step_definitions/steps.js',
-      './test/feature/step_definitions/informationmodels.steps.js'
+      './test/feature/step_definitions/informationmodels.steps.js',
+      './test/feature/concept/concept.steps.js'
     ]
   },
   plugins: {
