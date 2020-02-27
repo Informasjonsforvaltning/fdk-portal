@@ -36,12 +36,11 @@ const getSchema = model => {
 };
 
 const isNewInformationModel = ({
-  rootObjects,
   objectTypes,
   codeTypes,
   dataTypes,
   simpleTypes
-} = {}) => rootObjects || objectTypes || codeTypes || dataTypes || simpleTypes;
+} = {}) => objectTypes || codeTypes || dataTypes || simpleTypes;
 
 const createTabsArray = informationModelItem => {
   const tabsArray = [];
@@ -68,9 +67,8 @@ const createTabsArray = informationModelItem => {
       title: localization.infoMod.tabs.json,
       body: renderJSONSchema(parsedJsonSchema)
     });
-    return tabsArray;
   }
-  return null;
+  return tabsArray;
 };
 
 const renderModels = informationModelItem => {
