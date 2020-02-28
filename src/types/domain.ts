@@ -13,7 +13,7 @@ export interface InformationModelDocument {
 }
 
 export interface Node {
-  id: string;
+  identifier: string;
   name: Partial<TextLanguage>;
   roles: Partial<Property>[];
   attributes: Partial<Property>[];
@@ -47,7 +47,14 @@ export interface LosTheme {
   uri: string;
 }
 
+export interface Type {
+  identifier: string;
+  name: Partial<TextLanguage>;
+}
+
 export interface Property {
   name: Partial<TextLanguage>;
   parameters: any;
+  type: Partial<Type>;
+  isDescribedByUri: string;
 }
