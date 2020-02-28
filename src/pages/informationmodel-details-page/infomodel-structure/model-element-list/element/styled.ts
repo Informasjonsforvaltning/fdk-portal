@@ -18,10 +18,18 @@ const ObjectTypeElementExpansionPanel = styled(ExpansionPanel)`
     font-weight: 400;
     display: flex;
     flex: 0 0 80%;
-    justify-content: space-between;
 
-    & > a {
-      cursor: pointer;
+    & > strong:first-of-type {
+      flex-basis: 60%;
+    }
+    & > div:first-of-type {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+
+      & > a {
+        cursor: pointer;
+      }
     }
   }
 `;

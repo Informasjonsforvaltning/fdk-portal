@@ -1,4 +1,5 @@
 import React, { FC, memo } from 'react';
+import Scroll from 'react-scroll';
 
 import SC from './styled';
 import { ExpansionPanelHead } from '../../../../../components/expansion-panel';
@@ -7,11 +8,13 @@ import { ExpansionIndicatorDetails } from '../../expansion-indicator-details/exp
 import { getTranslateText } from '../../../../../lib/translateText';
 import { createMultiplicityRange } from '../../../../../lib/multiplicity-range';
 
+const ScrollLink = Scroll.Link;
+
 interface Props {
   property: Partial<Property>;
 }
 
-const ElementPure: FC<Props> = ({ property: { name, parameters } }) => (
+const ElementPure: FC<Props> = ({ property: { name, parameters, type } }) => (
   <SC.ObjectTypeElementExpansionPanel
     shouldExpandOnHeadClick={false}
     expansionIndicator={{
@@ -21,7 +24,21 @@ const ElementPure: FC<Props> = ({ property: { name, parameters } }) => (
   >
     <ExpansionPanelHead>
       {name && <strong>{getTranslateText(name)}:</strong>}
-      <span>{createMultiplicityRange(parameters)}</span>
+      <div>
+        {type && type.identifier && (
+          <ScrollLink
+            to={type.identifier}
+            spy
+            smooth
+            isDynamic
+            offset={0}
+            duration={1500}
+          >
+            <span>{getTranslateText(type.name)}</span>
+          </ScrollLink>
+        )}
+        <span>{createMultiplicityRange(parameters)}</span>
+      </div>
     </ExpansionPanelHead>
   </SC.ObjectTypeElementExpansionPanel>
 );
