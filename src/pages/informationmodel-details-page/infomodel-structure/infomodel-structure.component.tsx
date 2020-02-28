@@ -52,7 +52,10 @@ export const InfoModelStructure: FC<Props> = ({
           {localization.infoMod.structure.objectType}
         </SC.SectionHeader>
         {objectTypes.map(node => (
-          <SC.ObjectTypeExpansionPanel key={node.id} id={node.id}>
+          <SC.ObjectTypeExpansionPanel
+            key={node.identifier}
+            id={node.identifier}
+          >
             <ExpansionPanelHead>
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
@@ -77,7 +80,10 @@ export const InfoModelStructure: FC<Props> = ({
           {localization.infoMod.structure.codeList}
         </SC.SectionHeader>
         {codeTypes.map(node => (
-          <SC.ObjectTypeExpansionPanel key={node.id} id={node.id}>
+          <SC.ObjectTypeExpansionPanel
+            key={node.identifier}
+            id={node.identifier}
+          >
             <ExpansionPanelHead>
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
@@ -102,7 +108,10 @@ export const InfoModelStructure: FC<Props> = ({
           {localization.infoMod.structure.dataType}
         </SC.SectionHeader>
         {dataTypes.map(node => (
-          <SC.ObjectTypeExpansionPanel key={node.id} id={node.id}>
+          <SC.ObjectTypeExpansionPanel
+            key={node.identifier}
+            id={node.identifier}
+          >
             <ExpansionPanelHead>
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
@@ -127,7 +136,10 @@ export const InfoModelStructure: FC<Props> = ({
           {localization.infoMod.structure.simpleType}
         </SC.SectionHeader>
         {simpleTypes.map(node => (
-          <SC.ObjectTypeExpansionPanel key={node.id} id={node.id}>
+          <SC.ObjectTypeExpansionPanel
+            key={node.identifier}
+            id={node.identifier}
+          >
             <ExpansionPanelHead>
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
