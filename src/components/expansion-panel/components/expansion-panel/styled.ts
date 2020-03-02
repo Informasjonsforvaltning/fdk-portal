@@ -9,7 +9,10 @@ const ExpansionPanel = styled.div`
 
 const HeadContent = styled.div``;
 
-const HeadExpansionIndicator = styled.div``;
+const HeadExpansionIndicator = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const Head = styled.div<{ shouldExpandOnHeadClick?: boolean }>`
   display: flex;
