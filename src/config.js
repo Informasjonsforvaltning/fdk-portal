@@ -5,9 +5,9 @@ const env = window.env || {
   USE_DEMO_LOGO: true
 };
 
-// override all env variables to ut1 (inspired by https://www.ut1.fellesdatakatalog.brreg.no/config.js)
-// env.SEARCH_API_HOST = 'https://www.it1.fellesdatakatalog.brreg.no';
-// env.SEARCH_HOST = 'https://www.it1.fellesdatakatalog.brreg.no';
+// override all env variables to staging (inspired by https://www.staging.fellesdatakatalog.digdir.no/config.js)
+// env.SEARCH_API_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
+// env.SEARCH_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
 // env.USE_DEMO_LOGO = true;
 
 const searchApi = {
