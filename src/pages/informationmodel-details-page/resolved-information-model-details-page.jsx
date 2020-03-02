@@ -3,6 +3,9 @@ import { resolve } from 'react-resolver';
 import { InformationModelDetailsPage } from './information-model-details-page';
 import { getInformationmodel } from '../../api/informationmodels';
 import { apisSearch, extractApis } from '../../api/apis';
+import { findAllByKey } from '../../lib/find-by-key';
+import { conceptsSearch, extractConcepts } from '../../api/concepts';
+import { addReferencedConceptToItem } from '../../lib/addReferencedConceptToItem';
 
 export const getApiByHarvestSourceUri = harvestSourceUri =>
   apisSearch({ harvestSourceUri })
@@ -11,10 +14,25 @@ export const getApiByHarvestSourceUri = harvestSourceUri =>
 
 const memoizedGetInformationModel = _.memoize(getInformationmodel);
 const memoizedGetApiByHarvestSourceUri = _.memoize(getApiByHarvestSourceUri);
+const memoizedSearchConcepts = _.memoize(conceptsSearch);
 
 const mapProps = {
-  informationModelItem: props =>
-    memoizedGetInformationModel(props.match.params.id),
+  informationModelItem: async props => {
+    const informationModelItem = await memoizedGetInformationModel(
+      props.match.params.id
+    );
+    const allReferencedConceptIds = findAllByKey(
+      informationModelItem,
+      'isDescribedByUri'
+    );
+    const allReferencedConcepts = await memoizedSearchConcepts({
+      uris: allReferencedConceptIds.join(),
+      returnfields: 'definition,publisher,uri'
+    }).then(result => extractConcepts(result));
+
+    addReferencedConceptToItem(informationModelItem, allReferencedConcepts);
+    return informationModelItem;
+  },
   referencedApis: async props => {
     const informationModelItem = await memoizedGetInformationModel(
       props.match.params.id

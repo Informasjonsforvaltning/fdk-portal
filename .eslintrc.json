@@ -67,7 +67,7 @@
     ],
     "react/no-array-index-key": "off",
     "react/jsx-props-no-spreading": "off",
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["accumulator"] }],
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["accumulator", "item"] }],
     "no-restricted-globals": ["error", "event", "fdescribe"],
     "react/no-danger": 0,
     "jsx-a11y/anchor-is-valid": [ "error", {
