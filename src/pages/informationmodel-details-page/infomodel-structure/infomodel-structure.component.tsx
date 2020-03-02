@@ -22,6 +22,7 @@ export const InfoModelStructure: FC<Props> = ({
     identifier,
     modelDescription,
     version,
+    concept,
     objectTypes,
     codeTypes,
     dataTypes,
@@ -45,6 +46,7 @@ export const InfoModelStructure: FC<Props> = ({
             description={modelDescription}
             identifier={identifier}
             version={version}
+            concept={concept}
           />
         </ExpansionPanelBody>
       </SC.ObjectTypeExpansionPanel>
@@ -64,7 +66,7 @@ export const InfoModelStructure: FC<Props> = ({
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
-              {node.identifier && (
+              {(node.identifier || node.concept) && (
                 <SC.ObjectTypeExpansionPanel
                   showWithoutHeadAndPadding
                   shouldExpandOnHeadClick={false}
@@ -74,7 +76,10 @@ export const InfoModelStructure: FC<Props> = ({
                   }}
                 >
                   <ExpansionPanelBody>
-                    <Description identifier={node.identifier} />
+                    <Description
+                      identifier={node.identifier}
+                      concept={node.concept}
+                    />
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
               )}
@@ -106,7 +111,7 @@ export const InfoModelStructure: FC<Props> = ({
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
-              {node.identifier && (
+              {(node.identifier || node.concept) && (
                 <SC.ObjectTypeExpansionPanel
                   showWithoutHeadAndPadding
                   shouldExpandOnHeadClick={false}
@@ -116,7 +121,10 @@ export const InfoModelStructure: FC<Props> = ({
                   }}
                 >
                   <ExpansionPanelBody>
-                    <Description identifier={node.identifier} />
+                    <Description
+                      identifier={node.identifier}
+                      concept={node.concept}
+                    />
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
               )}
@@ -148,7 +156,7 @@ export const InfoModelStructure: FC<Props> = ({
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
-              {node.identifier && (
+              {(node.identifier || node.concept) && (
                 <SC.ObjectTypeExpansionPanel
                   showWithoutHeadAndPadding
                   shouldExpandOnHeadClick={false}
@@ -158,7 +166,10 @@ export const InfoModelStructure: FC<Props> = ({
                   }}
                 >
                   <ExpansionPanelBody>
-                    <Description identifier={node.identifier} />
+                    <Description
+                      identifier={node.identifier}
+                      concept={node.concept}
+                    />
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
               )}
@@ -190,7 +201,7 @@ export const InfoModelStructure: FC<Props> = ({
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
-              {node.identifier && (
+              {(node.identifier || node.concept) && (
                 <SC.ObjectTypeExpansionPanel
                   showWithoutHeadAndPadding
                   shouldExpandOnHeadClick={false}
@@ -200,7 +211,10 @@ export const InfoModelStructure: FC<Props> = ({
                   }}
                 >
                   <ExpansionPanelBody>
-                    <Description identifier={node.identifier} />
+                    <Description
+                      identifier={node.identifier}
+                      concept={node.concept}
+                    />
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
               )}
