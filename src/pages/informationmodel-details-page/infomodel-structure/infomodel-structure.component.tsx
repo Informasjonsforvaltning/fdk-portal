@@ -20,7 +20,7 @@ export const InfoModelStructure: FC<Props> = ({
   informationModelDocument: {
     name,
     identifier,
-    description,
+    modelDescription,
     version,
     objectTypes,
     codeTypes,
@@ -42,7 +42,7 @@ export const InfoModelStructure: FC<Props> = ({
       >
         <ExpansionPanelBody>
           <Description
-            description={description}
+            description={modelDescription}
             identifier={identifier}
             version={version}
           />
