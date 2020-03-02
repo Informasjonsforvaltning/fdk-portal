@@ -3,7 +3,7 @@ name: Build, test and deploy to production (digdir) on merge to master branch
 on:
   push:
     branches:
-      - master
+      - some_branch
 
 jobs:
   build-test-and-deploy-production:

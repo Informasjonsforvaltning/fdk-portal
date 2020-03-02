@@ -141,6 +141,7 @@ export const InfoModelStructure: FC<Props> = ({
                     <LinkExternal
                       uri={node.codeListReference}
                       prefLabel={node.codeListReference}
+                      openInNewTab={false}
                     />
                   </ModelFieldSC.ModelField>
                 </>
@@ -241,6 +242,7 @@ export const InfoModelStructure: FC<Props> = ({
                     <LinkExternal
                       uri={node.typeDefinitionReference}
                       prefLabel={node.typeDefinitionReference}
+                      openInNewTab={false}
                     />
                   </ModelFieldSC.ModelField>
                 </>
