@@ -11,7 +11,6 @@ const ModelDescription = styled.div`
 
 const DescriptionField = styled.div`
   display: flex;
-  flex-wrap: wrap;
   margin-bottom: 0.3em;
   & > :first-child {
     flex: 0 0 25%;
