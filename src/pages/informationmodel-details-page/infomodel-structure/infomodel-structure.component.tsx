@@ -64,6 +64,20 @@ export const InfoModelStructure: FC<Props> = ({
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
+              {node.identifier && (
+                <SC.ObjectTypeExpansionPanel
+                  showWithoutHeadAndPadding
+                  shouldExpandOnHeadClick={false}
+                  expansionIndicator={{
+                    expand: <ExpansionIndicatorDetails />,
+                    collapse: <ExpansionIndicatorDetails isExpanded />
+                  }}
+                >
+                  <ExpansionPanelBody>
+                    <Description identifier={node.identifier} />
+                  </ExpansionPanelBody>
+                </SC.ObjectTypeExpansionPanel>
+              )}
               <ModelElementList
                 title={localization.infoMod.structure.attribute}
                 properties={node.attributes}
@@ -92,6 +106,20 @@ export const InfoModelStructure: FC<Props> = ({
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
+              {node.identifier && (
+                <SC.ObjectTypeExpansionPanel
+                  showWithoutHeadAndPadding
+                  shouldExpandOnHeadClick={false}
+                  expansionIndicator={{
+                    expand: <ExpansionIndicatorDetails />,
+                    collapse: <ExpansionIndicatorDetails isExpanded />
+                  }}
+                >
+                  <ExpansionPanelBody>
+                    <Description identifier={node.identifier} />
+                  </ExpansionPanelBody>
+                </SC.ObjectTypeExpansionPanel>
+              )}
               <ModelElementList
                 title={localization.infoMod.structure.attribute}
                 properties={node.attributes}
@@ -120,6 +148,20 @@ export const InfoModelStructure: FC<Props> = ({
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
+              {node.identifier && (
+                <SC.ObjectTypeExpansionPanel
+                  showWithoutHeadAndPadding
+                  shouldExpandOnHeadClick={false}
+                  expansionIndicator={{
+                    expand: <ExpansionIndicatorDetails />,
+                    collapse: <ExpansionIndicatorDetails isExpanded />
+                  }}
+                >
+                  <ExpansionPanelBody>
+                    <Description identifier={node.identifier} />
+                  </ExpansionPanelBody>
+                </SC.ObjectTypeExpansionPanel>
+              )}
               <ModelElementList
                 title={localization.infoMod.structure.attribute}
                 properties={node.attributes}
@@ -148,6 +190,20 @@ export const InfoModelStructure: FC<Props> = ({
               {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
+              {node.identifier && (
+                <SC.ObjectTypeExpansionPanel
+                  showWithoutHeadAndPadding
+                  shouldExpandOnHeadClick={false}
+                  expansionIndicator={{
+                    expand: <ExpansionIndicatorDetails />,
+                    collapse: <ExpansionIndicatorDetails isExpanded />
+                  }}
+                >
+                  <ExpansionPanelBody>
+                    <Description identifier={node.identifier} />
+                  </ExpansionPanelBody>
+                </SC.ObjectTypeExpansionPanel>
+              )}
               <ModelElementList
                 title={localization.infoMod.structure.attribute}
                 properties={node.attributes}
