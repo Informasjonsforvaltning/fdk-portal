@@ -2,7 +2,7 @@
 
 exports[`ExpansionIndicatorDetails component should with isExpanded like false 1`] = `
 <Fragment>
-  <Styled(SvgIconExpandMd) />
+  <Styled(SvgIconExpandTextSm) />
   <styled.span>
     Show details
   </styled.span>
@@ -11,7 +11,7 @@ exports[`ExpansionIndicatorDetails component should with isExpanded like false 1
 
 exports[`ExpansionIndicatorDetails component should with isExpanded like true 1`] = `
 <Fragment>
-  <Styled(SvgIconCollapseMd) />
+  <Styled(SvgIconCollapseTextSm) />
   <styled.span>
     Close details
   </styled.span>
