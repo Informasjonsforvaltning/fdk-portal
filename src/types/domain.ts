@@ -1,15 +1,21 @@
 export interface InformationModelDocument {
   id: string;
+  identifier?: string;
   publisher?: Partial<Publisher>;
   harvestSourceUri?: string;
   harvest?: Partial<Harvest>;
   title?: Partial<TextLanguage>;
+  name?: Partial<TextLanguage>;
+  version?: string;
   schema?: string;
   objectTypes?: Partial<Node>[];
   codeTypes?: Partial<Node>[];
   dataTypes?: Partial<Node>[];
   simpleTypes?: Partial<Node>[];
   description?: Partial<TextLanguage>;
+  modelDescription?: Partial<TextLanguage>;
+  isDescribedByUri?: string;
+  concept?: Partial<Concept>;
 }
 
 export interface Node {
@@ -20,8 +26,9 @@ export interface Node {
   properties: Partial<Property>[];
   isSubClassOf: string;
   modelElementType: string;
-  isDescribedByUrl: string;
+  isDescribedByUri: string;
   typeDefinitionReference: string;
+  concept?: Partial<Concept>;
 }
 
 export interface TextLanguage {
@@ -53,8 +60,18 @@ export interface Type {
 }
 
 export interface Property {
+  identifier: string;
   name: Partial<TextLanguage>;
   parameters: any;
   type: Partial<Type>;
   isDescribedByUri: string;
+  concept?: Partial<Concept>;
+}
+
+export interface Concept {
+  id: string;
+  uri: string;
+  prefLabel: Partial<TextLanguage>;
+  definition: any;
+  publisher: Partial<Publisher>;
 }
