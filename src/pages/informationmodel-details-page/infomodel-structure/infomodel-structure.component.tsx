@@ -129,12 +129,8 @@ export const InfoModelStructure: FC<Props> = ({
                 </SC.ObjectTypeExpansionPanel>
               )}
               <ModelElementList
-                title={localization.infoMod.structure.attribute}
-                properties={node.attributes}
-              />
-              <ModelElementList
-                title={localization.infoMod.structure.role}
-                properties={node.roles}
+                title={localization.infoMod.structure.code}
+                properties={node.properties}
               />
             </ExpansionPanelBody>
           </SC.ObjectTypeExpansionPanel>

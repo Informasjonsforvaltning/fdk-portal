@@ -145,10 +145,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementListPure)
-          title="Attribute"
-        />
-        <Memo(ModelElementListPure)
-          title="Role"
+          title="Code"
         />
       </Memo(ExpansionPanelBody)>
     </Styled(Component)>
