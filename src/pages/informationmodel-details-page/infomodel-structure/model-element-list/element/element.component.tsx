@@ -29,7 +29,7 @@ const ElementPure: FC<Props> = ({
     }}
   >
     <ExpansionPanelHead>
-      {name && <strong>{getTranslateText(name)}:</strong>}
+      {name && <strong>{getTranslateText(name)}</strong>}
       <div>
         {type && type.identifier && (
           <ScrollLink
