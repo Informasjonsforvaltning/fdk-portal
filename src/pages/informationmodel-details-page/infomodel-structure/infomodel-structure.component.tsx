@@ -18,7 +18,7 @@ interface Props {
 
 export const InfoModelStructure: FC<Props> = ({
   informationModelDocument: {
-    title,
+    name,
     description,
     objectTypes,
     codeTypes,
@@ -27,7 +27,7 @@ export const InfoModelStructure: FC<Props> = ({
   }
 }) => (
   <SC.InfoModelStructure>
-    <SC.Title>{getTranslateText(title)}</SC.Title>
+    <SC.Title>{getTranslateText(name)}</SC.Title>
 
     {description && (
       <SC.Section>
