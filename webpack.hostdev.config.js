@@ -1,3 +1,6 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -6,15 +9,23 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: ['./src/index.jsx'],
+  entry: {
+    main: './src/index.jsx',
+    maintenance: './src/entrypoints/maintenance/index.tsx'
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    publicPath: '/'
   },
   devServer: {
     host: '0.0.0.0',
     port: 3001,
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/maintenance/, to: '/maintenance.html' },
+        { from: /./, to: '/index.html' }
+      ]
+    },
     before: app => app.get('/config.js', (_, res) => res.status(204).send())
   },
   module: {
@@ -79,13 +90,38 @@ module.exports = {
     minimize: false
   },
   plugins: [
+    new (class ChunksFromEntryPlugin {
+      apply(compiler) {
+        compiler.hooks.emit.tap('ChunksFromEntryPlugin', compilation => {
+          compilation.hooks.htmlWebpackPluginAlterChunks.tap(
+            'ChunksFromEntryPlugin',
+            (_, { plugin }) =>
+              compilation.entrypoints
+                .get(plugin.options.entry)
+                .chunks.map(chunk => ({
+                  names: chunk.name ? [chunk.name] : [],
+                  files: chunk.files.slice(),
+                  size: chunk.modulesSize(),
+                  hash: chunk.hash
+                }))
+          );
+        });
+      }
+    })(),
     new HtmlWebpackPlugin({
+      entry: 'main',
       template: './src/index.html',
       filename: 'index.html',
       inject: true
     }),
+    new HtmlWebpackPlugin({
+      entry: 'maintenance',
+      template: './src/entrypoints/maintenance/index.html',
+      filename: 'maintenance.html',
+      inject: true
+    }),
     new MiniCssExtractPlugin({
-      filename: 'styles.css'
+      filename: '[name].styles.css'
     }),
     new CopyWebpackPlugin(
       [{ from: './src/img/*', to: './img', flatten: true }],
