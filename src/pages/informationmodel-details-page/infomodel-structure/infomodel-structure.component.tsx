@@ -131,6 +131,21 @@ export const InfoModelStructure: FC<Props> = ({
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
               )}
+
+              {node.codeListReference && (
+                <>
+                  <ListTitleSC.ListTitle>
+                    {localization.infoMod.structure.externalCodelist}
+                  </ListTitleSC.ListTitle>
+                  <ModelFieldSC.ModelField>
+                    <LinkExternal
+                      uri={node.codeListReference}
+                      prefLabel={node.codeListReference}
+                    />
+                  </ModelFieldSC.ModelField>
+                </>
+              )}
+
               <ModelElementList
                 title={localization.infoMod.structure.code}
                 properties={node.properties}

@@ -29,6 +29,7 @@ export interface Node {
   isDescribedByUri: string;
   typeDefinitionReference: string;
   concept?: Partial<Concept>;
+  codeListReference?: string;
 }
 
 export interface TextLanguage {
