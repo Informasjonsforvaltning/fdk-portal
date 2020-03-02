@@ -3,6 +3,24 @@
 exports[`InfoModelStructure component should render with missing information model properties 1`] = `
 <styled.div>
   <styled.h2 />
+  <styled.div>
+    <Styled(Component)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDetailsPure)
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+        }
+      }
+      shouldExpandOnHeadClick={false}
+      showWithoutHeadAndPadding={true}
+    >
+      <Memo(ExpansionPanelBody)>
+        <Component />
+      </Memo(ExpansionPanelBody)>
+    </Styled(Component)>
+  </styled.div>
 </styled.div>
 `;
 
@@ -11,6 +29,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
   <styled.h2>
     Oppgave over pass og stell av barn
   </styled.h2>
+  <styled.div>
+    <Styled(Component)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDetailsPure)
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+        }
+      }
+      shouldExpandOnHeadClick={false}
+      showWithoutHeadAndPadding={true}
+    >
+      <Memo(ExpansionPanelBody)>
+        <Component />
+      </Memo(ExpansionPanelBody)>
+    </Styled(Component)>
+  </styled.div>
   <styled.div>
     <styled.h3>
       Object type

@@ -19,7 +19,9 @@ interface Props {
 export const InfoModelStructure: FC<Props> = ({
   informationModelDocument: {
     name,
+    identifier,
     description,
+    version,
     objectTypes,
     codeTypes,
     dataTypes,
@@ -29,22 +31,24 @@ export const InfoModelStructure: FC<Props> = ({
   <SC.InfoModelStructure>
     <SC.Title>{getTranslateText(name)}</SC.Title>
 
-    {description && (
-      <SC.Section>
-        <SC.ObjectTypeExpansionPanel
-          showWithoutHeadAndPadding
-          shouldExpandOnHeadClick={false}
-          expansionIndicator={{
-            expand: <ExpansionIndicatorDetails />,
-            collapse: <ExpansionIndicatorDetails isExpanded />
-          }}
-        >
-          <ExpansionPanelBody>
-            <Description description={description} />
-          </ExpansionPanelBody>
-        </SC.ObjectTypeExpansionPanel>
-      </SC.Section>
-    )}
+    <SC.Section>
+      <SC.ObjectTypeExpansionPanel
+        showWithoutHeadAndPadding
+        shouldExpandOnHeadClick={false}
+        expansionIndicator={{
+          expand: <ExpansionIndicatorDetails />,
+          collapse: <ExpansionIndicatorDetails isExpanded />
+        }}
+      >
+        <ExpansionPanelBody>
+          <Description
+            description={description}
+            identifier={identifier}
+            version={version}
+          />
+        </ExpansionPanelBody>
+      </SC.ObjectTypeExpansionPanel>
+    </SC.Section>
 
     {objectTypes && (
       <SC.Section>
