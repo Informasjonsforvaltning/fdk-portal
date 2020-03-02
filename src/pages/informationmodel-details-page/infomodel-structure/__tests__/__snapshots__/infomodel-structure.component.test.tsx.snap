@@ -57,6 +57,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="111111"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
           title="Attribute"
         />
@@ -71,6 +89,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="111111"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
           title="Attribute"
         />
@@ -90,6 +126,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="id-codetype"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
           title="Attribute"
         />
@@ -109,6 +163,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="id-datatype"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
           title="Attribute"
         />
@@ -128,6 +200,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="id-simpletype"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
           title="Attribute"
         />
