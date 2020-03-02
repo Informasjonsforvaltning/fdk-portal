@@ -4,62 +4,24 @@ export interface InformationModelDocument {
   harvestSourceUri?: string;
   harvest?: Partial<Harvest>;
   title?: Partial<TextLanguage>;
-  informationModelDescription?: Partial<ModelDescription>;
-  rootObject?: Partial<ObjectType>;
-  objectTypes?: Partial<ObjectType>[];
-  codeTypes?: Partial<CodeType>[];
-  dataTypes?: Partial<DataType>[];
-  simpleTypes?: SimpleType[];
   schema?: string;
+  objectTypes?: Partial<Node>[];
+  codeTypes?: Partial<Node>[];
+  dataTypes?: Partial<Node>[];
+  simpleTypes?: Partial<Node>[];
+  description?: Partial<TextLanguage>;
 }
 
-export interface ObjectType {
-  id: string;
-  modelDescription: Partial<ModelDescription>;
-  attributeList: Partial<ModelElement>[];
-  roleList: Partial<ModelElement>[];
-  extendsFrom: ObjectType[];
-}
-
-export interface CodeType {
-  id: string;
-  modelDescription: ModelDescription;
-  codeList: ModelElement[];
-  externalCodeList: string[];
-}
-
-export interface DataType {
-  id: string;
-  modelDescription: Partial<ModelDescription>;
-  attributeList: Partial<ModelElement>[];
-  extendsFrom: ObjectType[];
-}
-
-export interface SimpleType {
-  id: string;
-  modelDescription: ModelDescription;
-  extendsFrom: ObjectType[];
-  distributionReference: string[];
-}
-
-export interface ModelElement {
-  name: Partial<TextLanguage>;
-  referencedObject: Partial<ReferencedObject>;
-  range: string;
-  elementDescription: Partial<ModelDescription>;
-}
-
-export interface ModelDescription {
-  name: Partial<TextLanguage>;
-  description: Partial<TextLanguage>;
+export interface Node {
   identifier: string;
-  belongsToModule?: string;
-  concept: Partial<Concept>;
-}
-
-export interface ReferencedObject {
-  refId: string;
   name: Partial<TextLanguage>;
+  roles: Partial<Property>[];
+  attributes: Partial<Property>[];
+  properties: Partial<Property>[];
+  isSubClassOf: string;
+  modelElementType: string;
+  isDescribedByUrl: string;
+  typeDefinitionReference: string;
 }
 
 export interface TextLanguage {
@@ -81,9 +43,18 @@ export interface Harvest {
   lastHarvested: string;
 }
 
-export interface Concept {
-  anbefaltTerm: Partial<TextLanguage>;
-  definition: Partial<TextLanguage>;
-  publisher: Partial<Publisher>;
-  conceptReference: string;
+export interface LosTheme {
+  uri: string;
+}
+
+export interface Type {
+  identifier: string;
+  name: Partial<TextLanguage>;
+}
+
+export interface Property {
+  name: Partial<TextLanguage>;
+  parameters: any;
+  type: Partial<Type>;
+  isDescribedByUri: string;
 }

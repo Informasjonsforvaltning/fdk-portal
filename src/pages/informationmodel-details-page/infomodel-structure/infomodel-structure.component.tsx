@@ -11,7 +11,6 @@ import {
   ExpansionPanelBody
 } from '../../../components/expansion-panel';
 import { ModelElementList } from './model-element-list/model-element-list.component';
-import { ReferenceList } from './reference-list/reference-list.component';
 
 interface Props {
   informationModelDocument: InformationModelDocument;
@@ -20,8 +19,7 @@ interface Props {
 export const InfoModelStructure: FC<Props> = ({
   informationModelDocument: {
     title,
-    informationModelDescription,
-    rootObject,
+    description,
     objectTypes,
     codeTypes,
     dataTypes,
@@ -31,7 +29,7 @@ export const InfoModelStructure: FC<Props> = ({
   <SC.InfoModelStructure>
     <SC.Title>{getTranslateText(title)}</SC.Title>
 
-    {informationModelDescription && (
+    {description && (
       <SC.Section>
         <SC.ObjectTypeExpansionPanel
           showWithoutHeadAndPadding
@@ -42,40 +40,7 @@ export const InfoModelStructure: FC<Props> = ({
           }}
         >
           <ExpansionPanelBody>
-            <Description modelDescription={informationModelDescription} />
-          </ExpansionPanelBody>
-        </SC.ObjectTypeExpansionPanel>
-      </SC.Section>
-    )}
-
-    {rootObject && (
-      <SC.Section>
-        <SC.SectionHeader>
-          {localization.infoMod.structure.rootObjectType}
-        </SC.SectionHeader>
-        <SC.ObjectTypeExpansionPanel id={rootObject.id}>
-          <ExpansionPanelHead>
-            {getTranslateText(rootObject.modelDescription?.name)}
-          </ExpansionPanelHead>
-          <ExpansionPanelBody>
-            {rootObject.modelDescription && (
-              <SC.ObjectTypeExpansionPanel
-                showWithoutHeadAndPadding
-                shouldExpandOnHeadClick={false}
-                expansionIndicator={{
-                  expand: <ExpansionIndicatorDetails />,
-                  collapse: <ExpansionIndicatorDetails isExpanded />
-                }}
-              >
-                <ExpansionPanelBody>
-                  <Description modelDescription={rootObject.modelDescription} />
-                </ExpansionPanelBody>
-              </SC.ObjectTypeExpansionPanel>
-            )}
-            <ModelElementList
-              title={localization.infoMod.structure.role}
-              listOfObjectTypes={rootObject.roleList}
-            />
+            <Description description={description} />
           </ExpansionPanelBody>
         </SC.ObjectTypeExpansionPanel>
       </SC.Section>
@@ -86,39 +51,22 @@ export const InfoModelStructure: FC<Props> = ({
         <SC.SectionHeader>
           {localization.infoMod.structure.objectType}
         </SC.SectionHeader>
-        {objectTypes.map(objectType => (
-          <SC.ObjectTypeExpansionPanel key={objectType.id} id={objectType.id}>
+        {objectTypes.map(node => (
+          <SC.ObjectTypeExpansionPanel
+            key={node.identifier}
+            id={node.identifier}
+          >
             <ExpansionPanelHead>
-              {getTranslateText(objectType.modelDescription?.name)}
+              {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
-              {objectType.modelDescription && (
-                <SC.ObjectTypeExpansionPanel
-                  showWithoutHeadAndPadding
-                  shouldExpandOnHeadClick={false}
-                  expansionIndicator={{
-                    expand: <ExpansionIndicatorDetails />,
-                    collapse: <ExpansionIndicatorDetails isExpanded />
-                  }}
-                >
-                  <ExpansionPanelBody>
-                    <Description
-                      modelDescription={objectType.modelDescription}
-                    />
-                  </ExpansionPanelBody>
-                </SC.ObjectTypeExpansionPanel>
-              )}
               <ModelElementList
                 title={localization.infoMod.structure.attribute}
-                listOfObjectTypes={objectType.attributeList}
+                properties={node.attributes}
               />
               <ModelElementList
                 title={localization.infoMod.structure.role}
-                listOfObjectTypes={objectType.roleList}
-              />
-              <ReferenceList
-                title={localization.infoMod.structure.extendsFrom}
-                extendsFromList={objectType.extendsFrom}
+                properties={node.roles}
               />
             </ExpansionPanelBody>
           </SC.ObjectTypeExpansionPanel>
@@ -131,33 +79,22 @@ export const InfoModelStructure: FC<Props> = ({
         <SC.SectionHeader>
           {localization.infoMod.structure.codeList}
         </SC.SectionHeader>
-        {codeTypes.map(codeType => (
-          <SC.ObjectTypeExpansionPanel key={codeType.id} id={codeType.id}>
+        {codeTypes.map(node => (
+          <SC.ObjectTypeExpansionPanel
+            key={node.identifier}
+            id={node.identifier}
+          >
             <ExpansionPanelHead>
-              {getTranslateText(codeType.modelDescription?.name)}
+              {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
-              {codeType.modelDescription && (
-                <SC.ObjectTypeExpansionPanel
-                  showWithoutHeadAndPadding
-                  shouldExpandOnHeadClick={false}
-                  expansionIndicator={{
-                    expand: <ExpansionIndicatorDetails />,
-                    collapse: <ExpansionIndicatorDetails isExpanded />
-                  }}
-                >
-                  <ExpansionPanelBody>
-                    <Description modelDescription={codeType.modelDescription} />
-                  </ExpansionPanelBody>
-                </SC.ObjectTypeExpansionPanel>
-              )}
               <ModelElementList
                 title={localization.infoMod.structure.attribute}
-                listOfObjectTypes={codeType.codeList}
+                properties={node.attributes}
               />
-              <ReferenceList
-                title={localization.infoMod.structure.externalCodelist}
-                referenceList={codeType.externalCodeList}
+              <ModelElementList
+                title={localization.infoMod.structure.role}
+                properties={node.roles}
               />
             </ExpansionPanelBody>
           </SC.ObjectTypeExpansionPanel>
@@ -170,33 +107,22 @@ export const InfoModelStructure: FC<Props> = ({
         <SC.SectionHeader>
           {localization.infoMod.structure.dataType}
         </SC.SectionHeader>
-        {dataTypes.map(dataType => (
-          <SC.ObjectTypeExpansionPanel key={dataType.id} id={dataType.id}>
+        {dataTypes.map(node => (
+          <SC.ObjectTypeExpansionPanel
+            key={node.identifier}
+            id={node.identifier}
+          >
             <ExpansionPanelHead>
-              {getTranslateText(dataType.modelDescription?.name)}
+              {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
-              {dataType.modelDescription && (
-                <SC.ObjectTypeExpansionPanel
-                  showWithoutHeadAndPadding
-                  shouldExpandOnHeadClick={false}
-                  expansionIndicator={{
-                    expand: <ExpansionIndicatorDetails />,
-                    collapse: <ExpansionIndicatorDetails isExpanded />
-                  }}
-                >
-                  <ExpansionPanelBody>
-                    <Description modelDescription={dataType.modelDescription} />
-                  </ExpansionPanelBody>
-                </SC.ObjectTypeExpansionPanel>
-              )}
               <ModelElementList
                 title={localization.infoMod.structure.attribute}
-                listOfObjectTypes={dataType.attributeList}
+                properties={node.attributes}
               />
-              <ReferenceList
-                title={localization.infoMod.structure.extendsFrom}
-                extendsFromList={dataType.extendsFrom}
+              <ModelElementList
+                title={localization.infoMod.structure.role}
+                properties={node.roles}
               />
             </ExpansionPanelBody>
           </SC.ObjectTypeExpansionPanel>
@@ -209,35 +135,22 @@ export const InfoModelStructure: FC<Props> = ({
         <SC.SectionHeader>
           {localization.infoMod.structure.simpleType}
         </SC.SectionHeader>
-        {simpleTypes.map(simpleType => (
-          <SC.ObjectTypeExpansionPanel key={simpleType.id} id={simpleType.id}>
+        {simpleTypes.map(node => (
+          <SC.ObjectTypeExpansionPanel
+            key={node.identifier}
+            id={node.identifier}
+          >
             <ExpansionPanelHead>
-              {getTranslateText(simpleType.modelDescription?.name)}
+              {getTranslateText(node.name)}
             </ExpansionPanelHead>
             <ExpansionPanelBody>
-              {simpleType.modelDescription && (
-                <SC.ObjectTypeExpansionPanel
-                  showWithoutHeadAndPadding
-                  shouldExpandOnHeadClick={false}
-                  expansionIndicator={{
-                    expand: <ExpansionIndicatorDetails />,
-                    collapse: <ExpansionIndicatorDetails isExpanded />
-                  }}
-                >
-                  <ExpansionPanelBody>
-                    <Description
-                      modelDescription={simpleType.modelDescription}
-                    />
-                  </ExpansionPanelBody>
-                </SC.ObjectTypeExpansionPanel>
-              )}
-              <ReferenceList
-                title={localization.infoMod.structure.extendsFrom}
-                extendsFromList={simpleType.extendsFrom}
+              <ModelElementList
+                title={localization.infoMod.structure.attribute}
+                properties={node.attributes}
               />
-              <ReferenceList
-                title={localization.infoMod.structure.distributionReference}
-                referenceList={simpleType.distributionReference}
+              <ModelElementList
+                title={localization.infoMod.structure.role}
+                properties={node.roles}
               />
             </ExpansionPanelBody>
           </SC.ObjectTypeExpansionPanel>

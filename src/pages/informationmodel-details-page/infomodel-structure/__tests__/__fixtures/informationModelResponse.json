@@ -9,90 +9,9 @@
     "title": {
         "nb": "Oppgave over pass og stell av barn"
     },
-    "rootObject": {
-        "id": "111111",
-        "modelDescription": {
-            "name": {
-                "nb": "Leveranse"
-            },
-            "description": {
-                "nb": "norsk bokmål tekst",
-                "nn": "nynorsk tekst",
-                "en": "engelsk tekst"
-            },
-            "identifier": "identifier",
-            "belongsToModule": "inntekt",
-            "concept": {
-                "anbefaltTerm": {
-                    "nb": "Anbefalt term"
-                },
-                "definition": {
-                    "nb": "Definisjon"
-                },
-                "publisher": {
-                    "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                    "id": "974760673",
-                    "name": "REGISTERENHETEN I BRØNNØYSUND",
-                    "orgPath": "/STAT/912660680/974760673",
-                    "prefLabel": {
-                        "nb": "Brønnøysundregistrene"
-                    }
-                },
-                "conceptReference": "https://conceptreference.com"
-            }
-        },
-        "attributeList": [
-            {
-                "name": {
-                    "nb": "norsk bokmål tekst",
-                    "nn": "nynorsk tekst",
-                    "en": "engelsk tekst"
-                },
-                "referencedObject": {
-                    "refId": "refId-1",
-                    "name": {
-                        "nb": "norsk bokmål tekst",
-                        "nn": "nynorsk tekst",
-                        "en": "engelsk tekst"
-                    }
-                },
-                "range": "0..*",
-                "elementDescription": {
-                    "name": {
-                        "nb": "Leveranse"
-                    },
-                    "description": {
-                        "nb": "norsk bokmål tekst",
-                        "nn": "nynorsk tekst",
-                        "en": "engelsk tekst"
-                    },
-                    "identifier": "identifier",
-                    "belongsToModule": "inntekt",
-                    "concept": {
-                        "anbefaltTerm": {
-                            "nb": "Anbefalt term"
-                        },
-                        "definition": {
-                            "nb": "Definisjon"
-                        },
-                        "publisher": {
-                            "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                            "id": "974760673",
-                            "name": "REGISTERENHETEN I BRØNNØYSUND",
-                            "orgPath": "/STAT/912660680/974760673",
-                            "prefLabel": {
-                                "nb": "Brønnøysundregistrene"
-                            }
-                        },
-                        "conceptReference": "https://conceptreference.com"
-                    }
-                }
-            }
-        ]
-    },
     "objectTypes": [
         {
-            "id": "111111",
+            "identifier": "111111",
             "modelDescription": {
                 "name": {
                     "nb": "Leveranse"
@@ -173,7 +92,7 @@
             ]
         },
         {
-            "id": "111111",
+            "identifier": "111111",
             "modelDescription": {
                 "name": {
                     "nb": "Leveranse"
@@ -256,7 +175,7 @@
     ],
     "codeTypes": [
         {
-            "id": "id-codetype",
+            "identifier": "id-codetype",
             "modelDescription": {
                 "name": {
                     "nb": "Leveranse"
@@ -389,7 +308,7 @@
     ],
     "dataTypes": [
         {
-            "id": "id-datatype",
+            "identifier": "id-datatype",
             "modelDescription": {
                 "name": {
                     "nb": "Leveranse"
@@ -553,7 +472,7 @@
     ],
     "simpleTypes": [
         {
-            "id": "id-simpletype",
+            "identifier": "id-simpletype",
             "modelDescription": {
                 "name": {
                     "nb": "Leveranse"

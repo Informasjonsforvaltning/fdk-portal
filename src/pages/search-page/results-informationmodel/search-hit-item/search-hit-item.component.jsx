@@ -65,11 +65,7 @@ export const SearchHitItem = ({
 
   const losItems = getLosStructure(referenceData);
 
-  const {
-    publisher,
-    themes = [],
-    document: { informationModelDescription: { description = {} } = {} } = {}
-  } = item || {};
+  const { publisher, description, themes = [] } = item || {};
 
   const informationModelDescription = getTranslateText(description) || '';
 
@@ -92,7 +88,10 @@ export const SearchHitItem = ({
 
       {themes.length > 0 && (
         <div className="mb-4 d-flex flex-wrap align-items-baseline align-items-center">
-          {renderThemes(themes, losItems)}
+          {renderThemes(
+            themes.map(({ uri: id }) => ({ id })),
+            losItems
+          )}
         </div>
       )}
     </article>
