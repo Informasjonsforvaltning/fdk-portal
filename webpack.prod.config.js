@@ -1,3 +1,6 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
@@ -7,10 +10,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode: 'production',
   context: path.join(__dirname),
-  entry: ['./src/index.jsx'],
+  entry: {
+    main: './src/index.jsx',
+    maintenance: './src/entrypoints/maintenance/index.tsx'
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
     publicPath: '/'
   },
   module: {
@@ -68,15 +73,40 @@ module.exports = {
       minimize: true,
       debug: false
     }),
+    new (class ChunksFromEntryPlugin {
+      apply(compiler) {
+        compiler.hooks.emit.tap('ChunksFromEntryPlugin', compilation => {
+          compilation.hooks.htmlWebpackPluginAlterChunks.tap(
+            'ChunksFromEntryPlugin',
+            (_, { plugin }) =>
+              compilation.entrypoints
+                .get(plugin.options.entry)
+                .chunks.map(chunk => ({
+                  names: chunk.name ? [chunk.name] : [],
+                  files: chunk.files.slice(),
+                  size: chunk.modulesSize(),
+                  hash: chunk.hash
+                }))
+          );
+        });
+      }
+    })(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new HtmlWebpackPlugin({
+      entry: 'main',
       template: './src/index.html',
       filename: 'index.html',
       inject: true
     }),
+    new HtmlWebpackPlugin({
+      entry: 'maintenance',
+      template: './src/entrypoints/maintenance/index.html',
+      filename: 'maintenance.html',
+      inject: true
+    }),
     new MiniCssExtractPlugin({
-      filename: 'styles.css'
+      filename: '[name].styles.css'
     }),
     new CopyWebpackPlugin(
       [{ from: './src/img/*', to: './img', flatten: true }],
