@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import SC from './styled';
 import { Concept, TextLanguage } from '../../../../types';
@@ -16,7 +17,7 @@ export const Description: FC<Props> = ({
   identifier,
   description,
   version,
-  concept: { prefLabel, definition, publisher, uri } = {}
+  concept: { id, prefLabel, definition, publisher, uri } = {}
 }) => (
   <SC.ModelDescription>
     {description && (
@@ -43,7 +44,7 @@ export const Description: FC<Props> = ({
     {prefLabel && (
       <SC.DescriptionField>
         <strong>{localization.facet.concept}:</strong>
-        {getTranslateText(prefLabel)}
+        <Link to={`/concepts/${id}`}>{getTranslateText(prefLabel)}</Link>
       </SC.DescriptionField>
     )}
 
