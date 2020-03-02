@@ -11,6 +11,9 @@ import {
   ExpansionPanelBody
 } from '../../../components/expansion-panel';
 import { ModelElementList } from './model-element-list/model-element-list.component';
+import ListTitleSC from './list-title/styled';
+import { LinkExternal } from '../../../components/link-external/link-external.component';
+import ModelFieldSC from './model-field/styled';
 
 interface Props {
   informationModelDocument: InformationModelDocument;
@@ -213,6 +216,19 @@ export const InfoModelStructure: FC<Props> = ({
                     />
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
+              )}
+              {node.typeDefinitionReference && (
+                <>
+                  <ListTitleSC.ListTitle>
+                    {localization.infoMod.structure.distributionReference}
+                  </ListTitleSC.ListTitle>
+                  <ModelFieldSC.ModelField>
+                    <LinkExternal
+                      uri={node.typeDefinitionReference}
+                      prefLabel={node.typeDefinitionReference}
+                    />
+                  </ModelFieldSC.ModelField>
+                </>
               )}
               <ModelElementList
                 title={localization.infoMod.structure.attribute}
