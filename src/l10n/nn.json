@@ -374,7 +374,8 @@
     "range": "Omfang",
     "sample": "Eksempel",
     "conceptDescription": "Begrepsbeskrivelse",
-    "datasetReferences": "Brukt i datasett"
+    "datasetReferences": "Brukt i datasett",
+    "informationModelReferences": "Brukt i informasjonsmodell"
   },
   "infoMod": {
     "infoModHeader": "Informasjonsmodell",

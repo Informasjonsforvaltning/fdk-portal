@@ -237,6 +237,18 @@ const renderDatasets = datasets =>
     </ListRegular>
   );
 
+const renderInformationModelReferences = informationModels =>
+  informationModels &&
+  informationModels.length > 0 && (
+    <ListRegular title={localization.concept.informationModelReferences}>
+      {informationModels.map(({ id, title }) => (
+        <li key={id} className="d-flex list-regular--item">
+          <a href={`/informationmodels/${id}`}>{getTranslateText(title)}</a>
+        </li>
+      ))}
+    </ListRegular>
+  );
+
 const renderConceptReferences = (
   { prefLabel, seeAlso = [] },
   conceptReferences
@@ -407,6 +419,7 @@ const renderStickyMenu = conceptItem => {
 export const ConceptDetailsPage = ({
   conceptItem,
   conceptDatasetReferences,
+  conceptInformationModelReferences,
   publisherItems,
   conceptReferences,
   fetchPublishersIfNeeded,
@@ -505,6 +518,9 @@ export const ConceptDetailsPage = ({
             {renderRange(_.get(conceptItem, ['definition', 'range']))}
             {renderIdentifiers(_.get(conceptItem, 'id'))}
             {renderDatasets(conceptDatasetReferences)}
+            {renderInformationModelReferences(
+              conceptInformationModelReferences
+            )}
             {renderConceptReferences(conceptItem, conceptReferences)}
             {renderContactPoint(_.get(conceptItem, 'contactPoint'))}
             <div style={{ height: '75vh' }} />
