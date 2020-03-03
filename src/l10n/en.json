@@ -374,7 +374,8 @@
     "range": "Range",
     "sample": "Sample",
     "conceptDescription": "Concept description",
-    "datasetReferences": "Reference to datasets"
+    "datasetReferences": "Reference to datasets",
+    "informationModelReferences": "Reference to information models"
   },
   "infoMod": {
     "infoModHeader": "Information model",
