@@ -56,6 +56,17 @@ const renderThemePill = ({ themesItems, keyValue, history, location, key }) => {
   });
 };
 
+const renderKeywordPills = (keywords, history, location) =>
+  keywords.map(keyword => (
+    <Pill
+      key={keyword}
+      label={keyword}
+      handleOnClick={() =>
+        setMultiselectFilterValue(history, location, 'keywords', keyword, false)
+      }
+    />
+  ));
+
 export const FilterPills = ({
   history,
   location,
@@ -99,6 +110,9 @@ export const FilterPills = ({
           location,
           key
         });
+      }
+      if (key === 'keywords') {
+        return renderKeywordPills(keyValue.split(','), history, location);
       }
       return (
         <Pill

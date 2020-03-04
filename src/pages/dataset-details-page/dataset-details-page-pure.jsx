@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import DocumentMeta from 'react-document-meta';
@@ -250,7 +250,13 @@ const renderKeywords = keywordItems => {
   return (
     <ListRegular title={localization.dataset.keyword}>
       <div className="d-flex list-regular--item">
-        {keywords(keywordItems).join(', ')}
+        {keywords(keywordItems).map((keyword, index) => (
+          <Fragment key={keyword}>
+            {index > 0 && ','}
+            &nbsp;
+            <a href={`/?keywords=${keyword}`}>{keyword}</a>
+          </Fragment>
+        ))}
       </div>
     </ListRegular>
   );
