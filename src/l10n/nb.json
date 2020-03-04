@@ -408,7 +408,7 @@
       "extendsFrom": "Arver fra",
       "code": "Kode",
       "externalCodelist": "Ekstern kodeliste",
-      "distributionReference": "Referanse til distribusjon",
+      "definitionReference": "Referanse til definisjon",
       "restrictions": "Verdirestriksjoner"
     },
     "modelDescription": {
