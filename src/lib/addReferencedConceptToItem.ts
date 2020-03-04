@@ -12,7 +12,10 @@ export function addReferencedConceptToItem(
       addReferencedConceptToItem(item[key], concepts);
     }
     if (key === 'isDescribedByUri') {
-      item.concept = concepts.find(concept => concept.uri === item[key], {});
+      item.concept = concepts.find(
+        concept => concept.identifier === item[key],
+        {}
+      );
     }
     return item;
   });
