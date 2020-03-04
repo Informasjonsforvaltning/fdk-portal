@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Scroll from 'react-scroll';
 
 import SC from './styled';
 import { InformationModelDocument } from '../../../types';
@@ -14,6 +15,8 @@ import { ModelElementList } from './model-element-list/model-element-list.compon
 import ListTitleSC from './list-title/styled';
 import { LinkExternal } from '../../../components/link-external/link-external.component';
 import ModelFieldSC from './model-field/styled';
+
+const ScrollLink = Scroll.Link;
 
 interface Props {
   informationModelDocument: InformationModelDocument;
@@ -94,6 +97,29 @@ export const InfoModelStructure: FC<Props> = ({
                 title={localization.infoMod.structure.role}
                 properties={node.roles}
               />
+
+              {node.isSubclassOf?.identifier && (
+                <>
+                  <ListTitleSC.ListTitle>
+                    {localization.infoMod.structure.extendsFrom}
+                  </ListTitleSC.ListTitle>
+                  <ModelFieldSC.ModelField>
+                    <ScrollLink
+                      to={node.isSubclassOf.identifier}
+                      spy
+                      smooth
+                      isDynamic
+                      offset={0}
+                      duration={1500}
+                    >
+                      <span>
+                        {getTranslateText(node.isSubclassOf.name) ||
+                          node.isSubclassOf.identifier}
+                      </span>
+                    </ScrollLink>
+                  </ModelFieldSC.ModelField>
+                </>
+              )}
             </ExpansionPanelBody>
           </SC.ObjectTypeExpansionPanel>
         ))}
@@ -151,6 +177,29 @@ export const InfoModelStructure: FC<Props> = ({
                 title={localization.infoMod.structure.code}
                 properties={node.properties}
               />
+
+              {node.isSubclassOf?.identifier && (
+                <>
+                  <ListTitleSC.ListTitle>
+                    {localization.infoMod.structure.extendsFrom}
+                  </ListTitleSC.ListTitle>
+                  <ModelFieldSC.ModelField>
+                    <ScrollLink
+                      to={node.isSubclassOf.identifier}
+                      spy
+                      smooth
+                      isDynamic
+                      offset={0}
+                      duration={1500}
+                    >
+                      <span>
+                        {getTranslateText(node.isSubclassOf.name) ||
+                          node.isSubclassOf.identifier}
+                      </span>
+                    </ScrollLink>
+                  </ModelFieldSC.ModelField>
+                </>
+              )}
             </ExpansionPanelBody>
           </SC.ObjectTypeExpansionPanel>
         ))}
@@ -196,6 +245,29 @@ export const InfoModelStructure: FC<Props> = ({
                 title={localization.infoMod.structure.role}
                 properties={node.roles}
               />
+
+              {node.isSubclassOf?.identifier && (
+                <>
+                  <ListTitleSC.ListTitle>
+                    {localization.infoMod.structure.extendsFrom}
+                  </ListTitleSC.ListTitle>
+                  <ModelFieldSC.ModelField>
+                    <ScrollLink
+                      to={node.isSubclassOf.identifier}
+                      spy
+                      smooth
+                      isDynamic
+                      offset={0}
+                      duration={1500}
+                    >
+                      <span>
+                        {getTranslateText(node.isSubclassOf.name) ||
+                          node.isSubclassOf.identifier}
+                      </span>
+                    </ScrollLink>
+                  </ModelFieldSC.ModelField>
+                </>
+              )}
             </ExpansionPanelBody>
           </SC.ObjectTypeExpansionPanel>
         ))}
@@ -255,6 +327,28 @@ export const InfoModelStructure: FC<Props> = ({
                 title={localization.infoMod.structure.role}
                 properties={node.roles}
               />
+              {node.isSubclassOf?.identifier && (
+                <>
+                  <ListTitleSC.ListTitle>
+                    {localization.infoMod.structure.extendsFrom}
+                  </ListTitleSC.ListTitle>
+                  <ModelFieldSC.ModelField>
+                    <ScrollLink
+                      to={node.isSubclassOf.identifier}
+                      spy
+                      smooth
+                      isDynamic
+                      offset={0}
+                      duration={1500}
+                    >
+                      <span>
+                        {getTranslateText(node.isSubclassOf.name) ||
+                          node.isSubclassOf.identifier}
+                      </span>
+                    </ScrollLink>
+                  </ModelFieldSC.ModelField>
+                </>
+              )}
             </ExpansionPanelBody>
           </SC.ObjectTypeExpansionPanel>
         ))}
