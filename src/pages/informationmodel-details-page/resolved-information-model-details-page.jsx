@@ -27,7 +27,7 @@ const mapProps = {
     );
     const allReferencedConcepts = await memoizedSearchConcepts({
       identifiers: allReferencedConceptIds.join(),
-      returnfields: 'definition,publisher,uri'
+      returnfields: 'definition,publisher,identifier'
     }).then(result => extractConcepts(result));
 
     addReferencedConceptToItem(informationModelItem, allReferencedConcepts);

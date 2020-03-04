@@ -72,6 +72,7 @@ export interface Property {
 export interface Concept {
   id: string;
   uri: string;
+  identifier: string;
   prefLabel: Partial<TextLanguage>;
   definition: any;
   publisher: Partial<Publisher>;
