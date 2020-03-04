@@ -419,11 +419,12 @@ const renderStickyMenu = conceptItem => {
 export const ConceptDetailsPage = ({
   conceptItem,
   conceptDatasetReferences,
-  conceptInformationModelReferences,
   publisherItems,
   conceptReferences,
+  informationModelReferences,
   fetchPublishersIfNeeded,
-  fetchConceptReferences
+  fetchConceptReferences,
+  fetchInformationModelReferences
 }) => {
   fetchPublishersIfNeeded();
 
@@ -441,6 +442,13 @@ export const ConceptDetailsPage = ({
         size: identifiers.length
       });
     }
+  }
+
+  if (!informationModelReferences && fetchInformationModelReferences) {
+    fetchInformationModelReferences({
+      conceptIdentifiers: conceptItem.identifier,
+      size: 1000
+    });
   }
 
   const meta = {
@@ -518,9 +526,7 @@ export const ConceptDetailsPage = ({
             {renderRange(_.get(conceptItem, ['definition', 'range']))}
             {renderIdentifiers(_.get(conceptItem, 'id'))}
             {renderDatasets(conceptDatasetReferences)}
-            {renderInformationModelReferences(
-              conceptInformationModelReferences
-            )}
+            {renderInformationModelReferences(informationModelReferences)}
             {renderConceptReferences(conceptItem, conceptReferences)}
             {renderContactPoint(_.get(conceptItem, 'contactPoint'))}
             <div style={{ height: '75vh' }} />
