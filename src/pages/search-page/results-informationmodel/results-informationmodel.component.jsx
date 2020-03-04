@@ -153,6 +153,7 @@ export const ResultsInformationModelPure = ({
             location={location}
             locationSearch={locationSearch}
             publishers={publishers}
+            losItems={losItems}
           />
 
           {informationModelAggregations && (
