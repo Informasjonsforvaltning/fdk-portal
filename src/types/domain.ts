@@ -24,7 +24,7 @@ export interface Node {
   roles: Partial<Property>[];
   attributes: Partial<Property>[];
   properties: Partial<Property>[];
-  isSubClassOf: string;
+  isSubclassOf?: Partial<Type>;
   modelElementType: string;
   isDescribedByUri: string;
   typeDefinitionReference: string;
