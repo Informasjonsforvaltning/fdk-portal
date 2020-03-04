@@ -584,9 +584,9 @@
                     }
                 ]
             },
-            "distributionReference": [
-                "https://distributionReference1.com",
-                "https://distributionReference2.com"
+            "definitionReference": [
+                "https://definitionReference1.com",
+                "https://definitionReference2.com"
             ]
         }
     ],
