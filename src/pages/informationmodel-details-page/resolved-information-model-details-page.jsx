@@ -26,7 +26,7 @@ const mapProps = {
       'isDescribedByUri'
     );
     const allReferencedConcepts = await memoizedSearchConcepts({
-      uris: allReferencedConceptIds.join(),
+      identifiers: allReferencedConceptIds.join(),
       returnfields: 'definition,publisher,uri'
     }).then(result => extractConcepts(result));
 

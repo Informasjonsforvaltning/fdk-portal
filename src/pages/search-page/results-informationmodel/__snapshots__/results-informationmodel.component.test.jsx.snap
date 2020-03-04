@@ -60,7 +60,7 @@ exports[`should render ResultsInformationModel correctly with hits 1`] = `
           }
         }
         locationSearch={Object {}}
-        losItems={null}
+        losItems={Object {}}
         publishers={null}
         themesItems={null}
       />
@@ -443,7 +443,7 @@ exports[`should render ResultsInformationModel correctly with minimum of props a
           }
         }
         locationSearch={Object {}}
-        losItems={null}
+        losItems={Object {}}
         publishers={null}
         themesItems={null}
       />
