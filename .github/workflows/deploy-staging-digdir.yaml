@@ -3,7 +3,7 @@ name: Build and deploy to staging (digdir) when pull request is created
 on:
   push:
     branches:
-      - some_branch
+      - develop
 
 jobs:
   build-and-deploy:
