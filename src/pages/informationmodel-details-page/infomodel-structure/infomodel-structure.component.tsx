@@ -308,7 +308,7 @@ export const InfoModelStructure: FC<Props> = ({
               {node.typeDefinitionReference && (
                 <>
                   <ListTitleSC.ListTitle>
-                    {localization.infoMod.structure.distributionReference}
+                    {localization.infoMod.structure.definitionReference}
                   </ListTitleSC.ListTitle>
                   <ModelFieldSC.ModelField>
                     <LinkExternal

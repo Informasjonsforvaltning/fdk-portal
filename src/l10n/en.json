@@ -408,7 +408,7 @@
       "extendsFrom": "Extends from",
       "code": "Code",
       "externalCodelist": "External codelist",
-      "distributionReference": "Distribution reference",
+      "definitionReference": "Definition reference",
       "restrictions": "Value restrictions"
     },
     "modelDescription": {
