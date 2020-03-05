@@ -8,10 +8,9 @@ import { ConnectedAppNavBar } from '../../app/app-nav-bar/connected-app-nav-bar'
 import SC from './styled';
 
 const MaintenancePage: FC = () => {
-  replaceUri = {getConfig().searchHost || 'https://fellesdatakatalog.digdir.no'}
   useEffect(() => {
     setTimeout(
-      () => location.replace(replaceUri),
+      () => location.replace(getConfig().searchHost || 'https://fellesdatakatalog.digdir.no'),
       10000
     );
   }, []);
