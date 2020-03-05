@@ -10,7 +10,7 @@ import SC from './styled';
 const MaintenancePage: FC = () => {
   useEffect(() => {
     setTimeout(
-      () => location.replace('https://fellesdatakatalog.digdir.no'),
+      () => location.replace({getConfig().searchHost || 'https://fellesdatakatalog.digdir.no'}),
       10000
     );
   }, []);
@@ -33,7 +33,7 @@ const MaintenancePage: FC = () => {
           <p>Du finner oss her:</p>
         </SC.Subheading>
         <SC.Link
-          uri="https://fellesdatakatalog.digdir.no"
+          uri={getConfig().searchHost || 'https://fellesdatakatalog.digdir.no'}
           prefLabel="fellesdatakatalog.digdir.no"
         />
         <SC.RedirectionNotice>
