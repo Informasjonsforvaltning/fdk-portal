@@ -6,6 +6,10 @@ import {
   extractConcepts,
   extractTotal
 } from '../../api/concepts';
+import {
+  informationmodelsSearch,
+  extractInformationmodels
+} from '../../api/informationmodels';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
 
 export const CONCEPTS_REQUEST = 'CONCEPTS_REQUEST';
@@ -14,6 +18,12 @@ export const CONCEPTS_FAILURE = 'CONCEPTS_FAILURE';
 export const CONCEPT_REFERENCES_REQUEST = 'CONCEPT_REFERENCES_REQUEST';
 export const CONCEPT_REFERENCES_SUCCESS = 'CONCEPT_REFERENCES_SUCCESS';
 export const CONCEPT_REFERENCES_FAILURE = 'CONCEPT_REFERENCES_FAILURE';
+export const INFORMATION_MODEL_REFERENCES_REQUEST =
+  'INFORMATION_MODEL_REFERENCES_REQUEST';
+export const INFORMATION_MODEL_REFERENCES_SUCCESS =
+  'INFORMATION_MODEL_REFERENCES_SUCCESS';
+export const INFORMATION_MODEL_REFERENCES_FAILURE =
+  'INFORMATION_MODEL_REFERENCES_FAILURE';
 
 const generateQueryKey = query => qs.stringify(query, { skipNulls: true });
 
@@ -53,6 +63,28 @@ export function fetchConceptReferencesAction(query) {
         onBeforeStart: { type: CONCEPT_REFERENCES_REQUEST, meta: { queryKey } },
         onSuccess: { type: CONCEPT_REFERENCES_SUCCESS, meta: { queryKey } },
         onError: { type: CONCEPT_REFERENCES_FAILURE, meta: { queryKey } }
+      })
+    );
+}
+
+export function fetchInformationModelReferencesAction(query) {
+  const queryKey = generateQueryKey(query);
+  return (dispatch, getState) =>
+    shouldFetch(_.get(getState(), ['concepts', 'meta']), queryKey) &&
+    dispatch(
+      reduxFsaThunk(() => informationmodelsSearch(query), {
+        onBeforeStart: {
+          type: INFORMATION_MODEL_REFERENCES_REQUEST,
+          meta: { queryKey }
+        },
+        onSuccess: {
+          type: INFORMATION_MODEL_REFERENCES_SUCCESS,
+          meta: { queryKey }
+        },
+        onError: {
+          type: INFORMATION_MODEL_REFERENCES_FAILURE,
+          meta: { queryKey }
+        }
       })
     );
 }
@@ -100,8 +132,8 @@ export function conceptReducer(state = initialState, action) {
         ...state,
         conceptReferences: extractConcepts(action.payload),
         meta: {
-          isFetching: false,
-          lastFetch: Date.now(),
+          isFetching: true,
+          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };
@@ -121,7 +153,37 @@ export function conceptReducer(state = initialState, action) {
         conceptReferences: extractConcepts(action.payload),
         meta: {
           isFetching: false,
+          lastFetch: null,
+          queryKey: action.meta.queryKey
+        }
+      };
+    case INFORMATION_MODEL_REFERENCES_REQUEST:
+      return {
+        ...state,
+        informationModelReferences: [],
+        meta: {
+          isFetching: true,
+          lastFetch: null,
+          queryKey: action.meta.queryKey
+        }
+      };
+    case INFORMATION_MODEL_REFERENCES_SUCCESS:
+      return {
+        ...state,
+        informationModelReferences: extractInformationmodels(action.payload),
+        meta: {
+          isFetching: false,
           lastFetch: Date.now(),
+          queryKey: action.meta.queryKey
+        }
+      };
+    case INFORMATION_MODEL_REFERENCES_FAILURE:
+      return {
+        ...state,
+        informationModelReferences: [],
+        meta: {
+          isFetching: false,
+          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };

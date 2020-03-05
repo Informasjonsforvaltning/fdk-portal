@@ -374,7 +374,8 @@
     "range": "Omfang",
     "sample": "Eksempel",
     "conceptDescription": "Begrepsbeskrivelse",
-    "datasetReferences": "Brukt i datasett"
+    "datasetReferences": "Brukt i datasett",
+    "informationModelReferences": "Brukt i informasjonsmodell"
   },
   "infoMod": {
     "infoModHeader": "Informasjonsmodell",
@@ -407,7 +408,7 @@
       "extendsFrom": "Arver frå",
       "code": "Kode",
       "externalCodelist": "Ekstern kodeliste",
-      "distributionReference": "Referanse til distribusjon",
+      "definitionReference": "Referanse til definisjon",
       "restrictions": "Verdirestriksjonar"
     },
     "modelDescription": {

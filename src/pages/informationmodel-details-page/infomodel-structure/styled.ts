@@ -6,6 +6,10 @@ const InfoModelStructure = styled.div`
   flex-direction: column;
   margin-bottom: 2em;
   padding-top: 1em;
+
+  a {
+    cursor: pointer;
+  }
 `;
 
 const Title = styled.h2`

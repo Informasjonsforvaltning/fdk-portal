@@ -2,11 +2,15 @@ import React, { FC, memo } from 'react';
 import Scroll from 'react-scroll';
 
 import SC from './styled';
-import { ExpansionPanelHead } from '../../../../../components/expansion-panel';
+import {
+  ExpansionPanelBody,
+  ExpansionPanelHead
+} from '../../../../../components/expansion-panel';
 import { Property } from '../../../../../types';
 import { ExpansionIndicatorDetails } from '../../expansion-indicator-details/expansion-indicator-details.component';
 import { getTranslateText } from '../../../../../lib/translateText';
 import { createMultiplicityRange } from '../../../../../lib/multiplicity-range';
+import { Description } from '../../model-description/model-description.component';
 
 const ScrollLink = Scroll.Link;
 
@@ -14,7 +18,9 @@ interface Props {
   property: Partial<Property>;
 }
 
-const ElementPure: FC<Props> = ({ property: { name, parameters, type } }) => (
+const ElementPure: FC<Props> = ({
+  property: { identifier, name, parameters, type, concept }
+}) => (
   <SC.ObjectTypeElementExpansionPanel
     shouldExpandOnHeadClick={false}
     expansionIndicator={{
@@ -23,7 +29,7 @@ const ElementPure: FC<Props> = ({ property: { name, parameters, type } }) => (
     }}
   >
     <ExpansionPanelHead>
-      {name && <strong>{getTranslateText(name)}:</strong>}
+      {name && <strong>{getTranslateText(name)}</strong>}
       <div>
         {type && type.identifier && (
           <ScrollLink
@@ -40,6 +46,11 @@ const ElementPure: FC<Props> = ({ property: { name, parameters, type } }) => (
         <span>{createMultiplicityRange(parameters)}</span>
       </div>
     </ExpansionPanelHead>
+    <ExpansionPanelBody>
+      {(identifier || concept) && (
+        <Description identifier={identifier} concept={concept} />
+      )}
+    </ExpansionPanelBody>
   </SC.ObjectTypeElementExpansionPanel>
 );
 

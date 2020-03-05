@@ -3,6 +3,24 @@
 exports[`InfoModelStructure component should render with missing information model properties 1`] = `
 <styled.div>
   <styled.h2 />
+  <styled.div>
+    <Styled(Component)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDetailsPure)
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+        }
+      }
+      shouldExpandOnHeadClick={false}
+      showWithoutHeadAndPadding={true}
+    >
+      <Memo(ExpansionPanelBody)>
+        <Component />
+      </Memo(ExpansionPanelBody)>
+    </Styled(Component)>
+  </styled.div>
 </styled.div>
 `;
 
@@ -11,6 +29,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
   <styled.h2>
     Oppgave over pass og stell av barn
   </styled.h2>
+  <styled.div>
+    <Styled(Component)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDetailsPure)
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+        }
+      }
+      shouldExpandOnHeadClick={false}
+      showWithoutHeadAndPadding={true}
+    >
+      <Memo(ExpansionPanelBody)>
+        <Component />
+      </Memo(ExpansionPanelBody)>
+    </Styled(Component)>
+  </styled.div>
   <styled.div>
     <styled.h3>
       Object type
@@ -21,6 +57,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="111111"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
           title="Attribute"
         />
@@ -35,6 +89,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="111111"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
           title="Attribute"
         />
@@ -54,11 +126,26 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="id-codetype"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
-          title="Attribute"
-        />
-        <Memo(ModelElementListPure)
-          title="Role"
+          title="Code"
         />
       </Memo(ExpansionPanelBody)>
     </Styled(Component)>
@@ -73,6 +160,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="id-datatype"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
           title="Attribute"
         />
@@ -92,6 +197,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
     >
       <Memo(ExpansionPanelHead) />
       <Memo(ExpansionPanelBody)>
+        <Styled(Component)
+          expansionIndicator={
+            Object {
+              "collapse": <Memo(ExpansionIndicatorDetailsPure)
+                isExpanded={true}
+              />,
+              "expand": <Memo(ExpansionIndicatorDetailsPure) />,
+            }
+          }
+          shouldExpandOnHeadClick={false}
+          showWithoutHeadAndPadding={true}
+        >
+          <Memo(ExpansionPanelBody)>
+            <Component
+              identifier="id-simpletype"
+            />
+          </Memo(ExpansionPanelBody)>
+        </Styled(Component)>
         <Memo(ModelElementListPure)
           title="Attribute"
         />

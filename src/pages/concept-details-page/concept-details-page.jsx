@@ -237,6 +237,18 @@ const renderDatasets = datasets =>
     </ListRegular>
   );
 
+const renderInformationModelReferences = informationModels =>
+  informationModels &&
+  informationModels.length > 0 && (
+    <ListRegular title={localization.concept.informationModelReferences}>
+      {informationModels.map(({ id, title }) => (
+        <li key={id} className="d-flex list-regular--item">
+          <a href={`/informationmodels/${id}`}>{getTranslateText(title)}</a>
+        </li>
+      ))}
+    </ListRegular>
+  );
+
 const renderConceptReferences = (
   { prefLabel, seeAlso = [] },
   conceptReferences
@@ -409,8 +421,10 @@ export const ConceptDetailsPage = ({
   conceptDatasetReferences,
   publisherItems,
   conceptReferences,
+  informationModelReferences,
   fetchPublishersIfNeeded,
-  fetchConceptReferences
+  fetchConceptReferences,
+  fetchInformationModelReferences
 }) => {
   fetchPublishersIfNeeded();
 
@@ -428,6 +442,13 @@ export const ConceptDetailsPage = ({
         size: identifiers.length
       });
     }
+  }
+
+  if (!informationModelReferences && fetchInformationModelReferences) {
+    fetchInformationModelReferences({
+      conceptIdentifiers: conceptItem.identifier,
+      size: 1000
+    });
   }
 
   const meta = {
@@ -505,6 +526,7 @@ export const ConceptDetailsPage = ({
             {renderRange(_.get(conceptItem, ['definition', 'range']))}
             {renderIdentifiers(_.get(conceptItem, 'id'))}
             {renderDatasets(conceptDatasetReferences)}
+            {renderInformationModelReferences(informationModelReferences)}
             {renderConceptReferences(conceptItem, conceptReferences)}
             {renderContactPoint(_.get(conceptItem, 'contactPoint'))}
             <div style={{ height: '75vh' }} />

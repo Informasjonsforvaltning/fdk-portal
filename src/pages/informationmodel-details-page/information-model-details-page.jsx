@@ -228,7 +228,11 @@ const renderStickyMenu = (
     title,
     contactPoint,
     schema,
-    informationModelDescription: { keywords, category } = {}
+    informationModelDescription: { keywords, category } = {},
+    objectTypes,
+    codeTypes,
+    dataTypes,
+    simpleTypes
   } = {},
   referencedApis
 ) => {
@@ -247,7 +251,10 @@ const renderStickyMenu = (
     }
   ];
 
-  if (schema) {
+  if (
+    schema ||
+    isNewInformationModel({ objectTypes, codeTypes, dataTypes, simpleTypes })
+  ) {
     menuItems.push({
       name: localization.infoMod.infoModHeader,
       prefLabel: localization.infoMod.infoModHeader

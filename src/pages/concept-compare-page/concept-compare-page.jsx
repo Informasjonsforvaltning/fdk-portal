@@ -39,8 +39,8 @@ const existFieldValue = value =>
 const existValuesOnAnyItem = (items, fieldPath) =>
   Object.values(items).some(item => existFieldValue(_.get(item, fieldPath)));
 
-const renderFieldValue = (item, fieldPath, index) => {
-  const fieldValue = _.get(item, fieldPath);
+const renderFieldValue = (item, fieldPath, fieldPathFallback, index) => {
+  const fieldValue = _.get(item, fieldPath) || _.get(item, fieldPathFallback);
   const renderArrayItem = (value, index) => (
     <span key={index} className="mr-2">
       {getTranslateText(value)}
@@ -56,8 +56,13 @@ const renderFieldValue = (item, fieldPath, index) => {
   );
 };
 
-const renderRow = (label, items, fieldPath) => {
-  if (!existValuesOnAnyItem(items, fieldPath)) {
+const renderRow = (label, items, fieldPath, fieldPathFallback = []) => {
+  if (
+    !(
+      existValuesOnAnyItem(items, fieldPath) ||
+      existValuesOnAnyItem(items, fieldPathFallback)
+    )
+  ) {
     return null;
   }
   return (
@@ -66,7 +71,7 @@ const renderRow = (label, items, fieldPath) => {
         <strong>{label}</strong>
       </td>
       {Object.values(items).map((item, index) =>
-        renderFieldValue(item, fieldPath, index)
+        renderFieldValue(item, fieldPath, fieldPathFallback, index)
       )}
     </tr>
   );
@@ -177,10 +182,12 @@ export const ConceptComparePage = props => {
                       'prefLabel'
                     )}
                     <tbody>
-                      {renderRow(localization.responsible, conceptsCompare, [
-                        'publisher',
-                        'prefLabel'
-                      ])}
+                      {renderRow(
+                        localization.responsible,
+                        conceptsCompare,
+                        ['publisher', 'prefLabel'],
+                        ['publisher', 'name']
+                      )}
                       {renderRow(
                         localization.compare.definition,
                         conceptsCompare,
