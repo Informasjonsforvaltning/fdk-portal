@@ -10,7 +10,7 @@ import SC from './styled';
 const MaintenancePage: FC = () => {
   useEffect(() => {
     setTimeout(
-      () => location.replace({getConfig().searchHost}),
+      () => location.replace({getConfig().searchHost || ('https://fellesdatakatalog.digdir.no')}),
       10000
     );
   }, []);
