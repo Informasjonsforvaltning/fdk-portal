@@ -123,7 +123,7 @@ exports[`should render App correctly 1`] = `
           <p
             className="fdk-p-footer"
           >
-            Dette er et samarbeidsprosjekt mellom Brønnøysundregistrene, Difi og øvrige SKATE-etater.
+            Dette er et samarbeid mellom Digitaliseringsdirektoratet, Brønnøysundregistrene og øvrige SKATE-etater.
           </p>
         </div>
         <div
@@ -198,7 +198,7 @@ exports[`should render App correctly 1`] = `
           <p
             className="fdk-p-footer"
           >
-            Dette er et samarbeidsprosjekt mellom Brønnøysundregistrene, Difi og øvrige SKATE-etater.
+            Dette er et samarbeid mellom Digitaliseringsdirektoratet, Brønnøysundregistrene og øvrige SKATE-etater.
           </p>
         </div>
         <div

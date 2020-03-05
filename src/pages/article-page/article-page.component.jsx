@@ -54,7 +54,7 @@ export const ArticlePage = () => {
                 title="Lenke til registreringsløsning"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://registrering.fellesdatakatalog.brreg.no/"
+                href="https://registrering.fellesdatakatalog.digdir.no/"
               >
                 Logg inn i registreringsløsningen
               </a>
@@ -229,8 +229,8 @@ export const ArticlePage = () => {
           <div className="fdk-box fdk-box--flex fdk-box__feedback">
             <div className="fdk-box fdk-box__feedback__left">
               <div>
-                Dette er et samarbeidsprosjekt mellom Brønnøysundregistrene,
-                Difi og øvrige SKATE-etater.
+                Dette er et samarbeid mellom Digitaliseringsdirektoratet, Brønnøysundregistrene
+                 og øvrige SKATE-etater.
               </div>
               <div>
                 <a
