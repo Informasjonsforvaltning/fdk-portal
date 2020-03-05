@@ -54,7 +54,7 @@ export const ArticlePage = () => {
                 title="Lenke til registreringsløsning"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://registrering.fellesdatakatalog.brreg.no/"
+                href="https://registrering.fellesdatakatalog.digdir.no/"
               >
                 Logg inn i registreringsløsningen
               </a>
