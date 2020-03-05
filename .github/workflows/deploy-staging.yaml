@@ -1,7 +1,7 @@
 name: Build and deploy to staging when pull request is created
 
 on:
-  push:
+  pull_request:
     branches:
       - develop
 
