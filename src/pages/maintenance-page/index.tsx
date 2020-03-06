@@ -33,7 +33,7 @@ const MaintenancePage: FC = () => {
           <p>Du finner oss her:</p>
         </SC.Subheading>
         <SC.Link
-          uri='https://demo.fellesdatakatalog.digdir.no'
+          uri="https://demo.fellesdatakatalog.digdir.no"
           prefLabel="demo.fellesdatakatalog.digdir.no"
         />
         <SC.RedirectionNotice>
