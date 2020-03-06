@@ -136,10 +136,6 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
                 "prefLabel": "Other distributions",
               },
               Object {
-                "name": "Keyword",
-                "prefLabel": "Keyword",
-              },
-              Object {
                 "name": "Contact information",
                 "prefLabel": "Contact information",
               },
@@ -1207,15 +1203,6 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
           referenceData={null}
           referencedItems={null}
         />
-        <ListRegular
-          bottomMargin={true}
-          name={null}
-          title="Keyword"
-        >
-          <div
-            className="d-flex list-regular--item"
-          />
-        </ListRegular>
         <ListRegular
           bottomMargin={true}
           name={null}

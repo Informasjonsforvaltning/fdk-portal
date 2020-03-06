@@ -397,6 +397,16 @@ const renderStickyMenu = conceptItem => {
     });
   }
 
+  if (
+    conceptItem.informationModels &&
+    conceptItem.informationModels.length > 0
+  ) {
+    menuItems.push({
+      name: localization.concept.informationModelReferences,
+      prefLabel: localization.concept.informationModelReferences
+    });
+  }
+
   if (conceptItem.concepts && conceptItem.concepts.length > 0) {
     menuItems.push({
       name: localization.conceptReferences.sideMenuTitle,
@@ -490,7 +500,8 @@ export const ConceptDetailsPage = ({
             {renderStickyMenu({
               ...conceptItem,
               datasets: conceptDatasetReferences,
-              concepts: conceptReferences
+              concepts: conceptReferences,
+              informationModels: informationModelReferences
             })}
           </div>
           <section className="col-12 col-lg-8 mt-3">

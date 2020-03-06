@@ -154,11 +154,14 @@ const renderIdentifier = id =>
     </ListRegular>
   ) : null;
 
+const hasKeywords = keywords =>
+  keywords &&
+  localization.getLanguage() in keywords &&
+  keywords[localization.getLanguage()].length > 0;
+
 const renderKeywords = keywords => {
   const language = localization.getLanguage();
-  return keywords &&
-    Object.keys(keywords).length > 0 &&
-    language in keywords ? (
+  return hasKeywords(keywords) ? (
     <ListRegular title={localization.infoMod.keywords}>
       <div className="d-flex list-regular--item">
         {(keywords[language] || []).join(', ')}
@@ -228,7 +231,8 @@ const renderStickyMenu = (
     title,
     contactPoint,
     schema,
-    informationModelDescription: { keywords, category } = {},
+    keywords,
+    category,
     objectTypes,
     codeTypes,
     dataTypes,
@@ -261,7 +265,7 @@ const renderStickyMenu = (
     });
   }
 
-  if (keywords && keywords.length > 0) {
+  if (hasKeywords(keywords)) {
     menuItems.push({
       name: localization.infoMod.keywords,
       prefLabel: localization.infoMod.keywords
