@@ -239,18 +239,14 @@ const renderSubjects = subject => {
 
 const renderKeywords = keywordItems => {
   const language = localization.getLanguage();
-  const keywords = items =>
-    items
-      .filter(item => !!(item && item[language]))
-      .map(item => item[language]);
-
-  if (!keywordItems || keywordItems.length === 0) {
-    return null;
-  }
-  return (
+  const keywords = keywordItems
+    .filter(item => !!(item && item[language]))
+    .map(item => item[language])
+    .filter(Boolean);
+  return keywords && keywords.length > 0 ? (
     <ListRegular title={localization.dataset.keyword}>
       <div className="d-flex list-regular--item">
-        {keywords(keywordItems).map((keyword, index) => (
+        {keywords.map((keyword, index) => (
           <Fragment key={keyword}>
             {index > 0 && <>,&nbsp;</>}
             <a href={`/?keywords=${encodeURIComponent(keyword)}`}>{keyword}</a>
@@ -258,7 +254,7 @@ const renderKeywords = keywordItems => {
         ))}
       </div>
     </ListRegular>
-  );
+  ) : null;
 };
 
 const getTitleText = (title, distributionIndex) =>
@@ -326,6 +322,16 @@ const renderApis = ({ heading, publisherItems, apis }) => {
     <div className="dataset-distributions">
       <ListRegular title={heading}>{apis.map(renderApi)}</ListRegular>
     </div>
+  );
+};
+
+const hasKeywords = dataset => {
+  const language = localization.getLanguage();
+  return (
+    (dataset.keyword || [])
+      .filter(item => !!(item && item[language]))
+      .map(item => item[language])
+      .filter(Boolean).length > 0
   );
 };
 
@@ -399,7 +405,7 @@ const renderStickyMenu = (datasetItem, apis) => {
       prefLabel: localization.dataset.subject
     });
   }
-  if (_.get(datasetItem, 'keyword')) {
+  if (hasKeywords(datasetItem)) {
     menuItems.push({
       name: localization.dataset.keyword,
       prefLabel: localization.dataset.keyword
@@ -506,7 +512,7 @@ export const DatasetDetailsPagePure = props => {
 
             {renderSubjects(_.get(datasetItem, 'subject'))}
 
-            {renderKeywords(_.get(datasetItem, 'keyword'))}
+            {renderKeywords(datasetItem.keyword)}
 
             {renderContactPoints(datasetItem)}
 
