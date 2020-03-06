@@ -239,7 +239,7 @@ const renderSubjects = subject => {
 
 const renderKeywords = keywordItems => {
   const language = localization.getLanguage();
-  const keywords = keywordItems
+  const keywords = (keywordItems || [])
     .filter(item => !!(item && item[language]))
     .map(item => item[language])
     .filter(Boolean);
