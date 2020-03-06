@@ -34,7 +34,7 @@ const MaintenancePage: FC = () => {
         </SC.Subheading>
         <SC.Link
           uri='https://demo.fellesdatakatalog.digdir.no'
-          prefLabel="fellesdatakatalog.digdir.no"
+          prefLabel="demo.fellesdatakatalog.digdir.no"
         />
         <SC.RedirectionNotice>
           Du blir automatisk videresendt innen 10 sekunder.
