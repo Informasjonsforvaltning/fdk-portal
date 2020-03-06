@@ -252,9 +252,8 @@ const renderKeywords = keywordItems => {
       <div className="d-flex list-regular--item">
         {keywords(keywordItems).map((keyword, index) => (
           <Fragment key={keyword}>
-            {index > 0 && ','}
-            &nbsp;
-            <a href={`/?keywords=${keyword}`}>{keyword}</a>
+            {index > 0 && <>,&nbsp;</>}
+            <a href={`/?keywords=${encodeURIComponent(keyword)}`}>{keyword}</a>
           </Fragment>
         ))}
       </div>
