@@ -21,3 +21,13 @@ export function getParamFromLocation(location, param) {
 
   return queryObj && queryObj[param];
 }
+
+export function patchSearchQuery(key, value) {
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true
+  });
+  query[key] = [...new Set([...(query[key] || '').split(','), value])]
+    .filter(Boolean)
+    .join();
+  return qs.stringify(query, { addQueryPrefix: true });
+}

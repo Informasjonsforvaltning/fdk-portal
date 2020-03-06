@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
 
@@ -17,6 +16,7 @@ import {
   isDateAfterToday,
   formatDate
 } from '../../lib/date-utils';
+import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 import { LabelNational } from '../label-national/label-national.component';
 import { AlertMessage } from '../alert-message/alert-message.component';
 import { LinkExternal } from '../link-external/link-external.component';
@@ -32,7 +32,7 @@ const renderPublisher = (
     return null;
   }
   const publisherItem =
-    getPublisherByOrgNr(publisherItems, _.get(publisher, 'id')) || publisher;
+    getPublisherByOrgNr(publisherItems, publisher.id) || publisher;
   return (
     <PublisherLabel
       label={publisherLabel}
@@ -48,23 +48,31 @@ const renderThemes = (themes, losItems, darkThemeBackground) => {
     'fdk-label-details': darkThemeBackground
   });
 
+  const getContextRootLink = () => {
+    const informationmodelsRoot = '/informationmodels';
+    if (location.pathname.includes(informationmodelsRoot)) {
+      return informationmodelsRoot;
+    }
+    return '/';
+  };
+
   return themes
-    .map((singleTheme, index) => {
-      const losItem = _.find(losItems, { uri: singleTheme.id });
-      const title = getTranslateText(
-        _.get(losItem, 'prefLabel') || singleTheme.title
-      );
+    .map(({ id, title }) => {
+      const { uri, prefLabel, losPaths: [theme = ''] = [] } =
+        Object.values(losItems).find(({ uri }) => uri === id) || {};
       return (
-        title && (
-          <div
-            key={`dataset-description-theme-${index}`}
+        uri &&
+        theme && (
+          <Link
+            key={uri}
+            to={`${getContextRootLink()}${patchSearchQuery('losTheme', theme)}`}
             className={themeClass}
           >
             <span className="uu-invisible" aria-hidden="false">
               Datasettets tema.
             </span>
-            {title}
-          </div>
+            {getTranslateText(prefLabel || title)}
+          </Link>
         )
       );
     })
