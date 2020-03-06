@@ -249,7 +249,9 @@ const renderKeywords = keywordItems => {
         {keywords.map((keyword, index) => (
           <Fragment key={keyword}>
             {index > 0 && <>,&nbsp;</>}
-            <a href={`/?keywords=${encodeURIComponent(keyword)}`}>{keyword}</a>
+            <Link to={`/?keywords=${encodeURIComponent(keyword)}`}>
+              {keyword}
+            </Link>
           </Fragment>
         ))}
       </div>
