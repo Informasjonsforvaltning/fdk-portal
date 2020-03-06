@@ -7,16 +7,25 @@
   }
 }
 
-.fdk-label {
+.fdk-label, a.fdk-label {
   @include themify($themes) {
-    background-color: themed('color-neutral-lightest');
-    color: themed('color-neutral-dark');
+    background-color: themed('color-neutral-lighter');
+    color: themed('color-neutral-darkest') !important;
   }
   font-size: 1.4rem !important;
   border-radius: .9em !important;
   padding: .0em .6em .0em .6em !important;
   display: inline-block !important;
   line-height: 1.5em !important;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    @include themify($themes) {
+      background: themed('color-neutral-darkest') !important;
+      color: themed('color-neutral-lightest') !important;
+    }
+  }
 }
 
 .fdk-national-component {
@@ -31,16 +40,25 @@
   line-height: 1.5em !important;
 }
 
-.fdk-label-details {
+.fdk-label-details, a.fdk-label-details {
   @include themify($themes) {
     background-color: themed('color-neutral-light');
-    color: themed('color-neutral-darkest');
+    color: themed('color-neutral-darkest') !important;
   }
   font-size: 1.4rem !important;
   border-radius: .9em !important;
   padding: .0em .6em .0em .6em !important;
   display: inline-block !important;
   line-height: 1.5em !important;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    @include themify($themes) {
+      background: themed('color-neutral-darkest') !important;
+      color: themed('color-neutral-lightest') !important;
+    }
+  }
 }
 
 .fdk-national-component-icon {
