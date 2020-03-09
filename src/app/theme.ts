@@ -43,3 +43,50 @@ export const themeFDK = {
     textLink: '#0069A5'
   }
 };
+
+export const themeNAP = {
+  colors: {
+    header: '#FFFFFF',
+    headerBg: '#2E3539',
+    primary: '#ED9300',
+    primaryLight: '#FADFB2',
+    primaryLighter: '#FDF4E5',
+    linkDarker: '#8E5800',
+    linkDark: '#D58400',
+    link: '#ED9300',
+    linkLight: '#F9D499',
+    linkLighter: '#FAE4BF',
+
+    neutralDarkest: '#2E3539',
+    neutralDarker: '#444F55',
+    neutralDark: '#60696E',
+    neutral: '#A1A7AA',
+    neutralLight: '#DADADA',
+    neutralLighter: '#E5E5E5',
+    neutralLightest: '#F2F2F2',
+    success: '#3E7B1F',
+    successLighter: '#ABD795',
+    successLightest: '#EBF6E6',
+    warningDarker: '#8E5800',
+    warning: '#ED9300',
+    warningLighter: '#FFE5B1',
+    warningLightest: '#FFF2D8',
+    danger: '#C83214',
+    dangerLighter: '#ECB7AD',
+    dangerLightest: '#F7E0DC',
+
+    buttonPrimary1: '#008ec2',
+    buttonPrimary2: '#F1A933',
+    buttonSecondary1: '#F8D499',
+    buttonSecondary2: '#FAE4BF',
+    buttonShadow: '#8E5800',
+    buttonTextPrimary: '#FFFFFF',
+    buttonTextSecondary: '#2E3539',
+    iconStroke: '#2E3539',
+    iconFill: '#ED9300',
+    iconLink: '#444F55',
+    textDefault: '#444F55',
+    textLight: '#60696E',
+    textLink: '#444F55'
+  }
+};
