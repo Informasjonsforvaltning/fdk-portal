@@ -24,7 +24,7 @@ const Section = styled.div`
 `;
 
 const SectionHeader = styled.h3`
-  color: ${({ theme }) => theme.fdk.colors.neutralDark};
+  color: ${({ theme }) => theme.colors.neutralDark};
   font-weight: 300;
   margin-bottom: 1em;
   overflow: hidden;
@@ -35,7 +35,7 @@ const SectionHeader = styled.h3`
 const ObjectTypeExpansionPanel = styled(ExpansionPanel)<{
   showWithoutHeadAndPadding?: boolean;
 }>`
-  background-color: ${({ theme }) => theme.fdk.colors.neutralLightest};
+  background-color: ${({ theme }) => theme.colors.neutralLightest};
   border-radius: 5px;
   margin-bottom: 0.5em;
   padding: 1em;
@@ -54,7 +54,7 @@ const ObjectTypeExpansionPanel = styled(ExpansionPanel)<{
         display: none;
       `}
        
-    color: ${({ theme }) => theme.fdk.colors.link};
+    color: ${({ theme }) => theme.colors.link};
     font-size: 2rem;
     font-weight: 600;
   }
