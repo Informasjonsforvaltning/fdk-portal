@@ -14,7 +14,7 @@ import { configureStore } from './redux/configureStore';
 import { ConnectedApp } from './app/connected-app';
 import { ErrorBoundary } from './components/error-boundary/error-boundary';
 import { getConfig } from './config';
-import { theme } from './app/theme';
+import { themeFDK } from './app/theme';
 
 if (window.location.hostname.indexOf('fellesdatakatalog.brreg.no') !== -1) {
   ReactGA.initialize('UA-110098477-1'); // prod
@@ -62,7 +62,7 @@ function Analytics(props) {
 const store = configureStore(getConfig().store);
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={themeFDK}>
     <ErrorBoundary>
       <Provider store={store}>
         <BrowserRouter>
