@@ -229,8 +229,8 @@ export const ArticlePage = () => {
           <div className="fdk-box fdk-box--flex fdk-box__feedback">
             <div className="fdk-box fdk-box__feedback__left">
               <div>
-                Dette er et samarbeid mellom Digitaliseringsdirektoratet, Brønnøysundregistrene
-                 og øvrige SKATE-etater.
+                Dette er et samarbeid mellom Digitaliseringsdirektoratet,
+                Brønnøysundregistrene og øvrige SKATE-etater.
               </div>
               <div>
                 <a
