@@ -5,15 +5,19 @@ import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import cx from 'classnames';
+import { ThemeProvider } from 'styled-components';
 
 import localization from '../../../lib/localization';
-import { SearchHitItem } from './search-hit-item/search-hit-item.component';
 import { FilterTree } from '../filter-tree/filter-tree.component';
 import { getSortfield, setPage, setSortfield } from '../search-location-helper';
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { FilterPills } from '../filter-pills/filter-pills.component';
 import { getLosStructure } from '../../../redux/modules/referenceData';
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
+import { getConfig } from '../../../config';
+import { themeFDK, themeNAP } from '../../../app/theme';
+import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
+import { InformationModelItem } from './informationmodel-item/informationmodel-item.component';
 
 const renderFilterModal = ({
   showFilterModal,
@@ -66,14 +70,21 @@ const renderFilterModal = ({
 
 const renderHits = (hits, publishers, referenceData) => {
   if (hits && Array.isArray(hits)) {
-    return hits.map((item, index) => (
-      <SearchHitItem
-        key={item.id}
-        item={item}
-        fadeInCounter={index < 3 ? index : null}
-        publishers={publishers}
-        referenceData={referenceData}
-      />
+    return hits.map(item => (
+      <ErrorBoundary key={item.id}>
+        <ThemeProvider
+          theme={
+            getConfig().themeNap
+              ? themeNAP.colors.infomod
+              : themeFDK.colors.infomod
+          }
+        >
+          <InformationModelItem
+            informationModel={item}
+            referenceData={referenceData}
+          />
+        </ThemeProvider>
+      </ErrorBoundary>
     ));
   }
   return null;
