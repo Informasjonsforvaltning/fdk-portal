@@ -35,12 +35,15 @@
   "statusReplacedUrl": "Ny versjon er dokumentert her.",
   "during": "i",
   "datasetLabel": "Datasett",
+  "conceptLabel": "Omgrep",
+  "informationModelLabel": "Informasjonsmodell",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
   "linkToNap": "Lenke til NAP",
   "showDetails": "Vis detaljar",
   "closeDetails": "Skjul detaljar",
+  "openData": "Opne data",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -244,7 +247,7 @@
         "public": "Offentleg",
         "restricted": "Avgrensa offentlegheit",
         "nonPublic": "Unntatt offentlegheit",
-        "publicDetailsLabel": "Datasettet er offentleg",
+        "publicDetailsLabel": "Datasettet kan deles offentleg",
         "restrictedDetailsLabel": "Datasettet har avgrensa offentlegheit",
         "nonPublicDetailsLabel": "Datasettet er unntatt offentlegheit"
       }
