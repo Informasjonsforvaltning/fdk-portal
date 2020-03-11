@@ -207,57 +207,79 @@ exports[`should render ResultsApi correctly with hits 1`] = `
       className="col-12 col-lg-8"
       id="apis"
     >
-      <SearchHitItem
-        fadeInCounter={0}
-        item={
-          Object {
-            "formats": Array [],
-            "id": "68dda78f-364f-41dd-869a-0dd8d9a3fe4c",
-            "nationalComponent": false,
-            "publisher": Object {
-              "id": "970018131",
-              "name": "UTDANNINGSDIREKTORATET",
-              "orgPath": "/STAT/872417842/970018131",
-              "prefLabel": Object {
-                "no": "Utdanningsdirektoratet",
-              },
-            },
-            "title": "Barnehagefakta",
-            "titleFormatted": "Barnehagefakta",
-          }
-        }
+      <ErrorBoundary
         key="68dda78f-364f-41dd-869a-0dd8d9a3fe4c"
-        publishers={null}
-        referenceData={null}
-      />
-      <SearchHitItem
-        fadeInCounter={1}
-        item={
-          Object {
-            "formats": Array [
-              "application/xml",
-              "application/json",
-              "text/json",
-              "text/xml",
-            ],
-            "id": "70f6e5b3-b633-413b-b5e7-11b63bb413eb",
-            "nationalComponent": false,
-            "publisher": Object {
-              "id": "970018131",
-              "name": "UTDANNINGSDIREKTORATET",
-              "orgPath": "/STAT/872417842/970018131",
-              "prefLabel": Object {
-                "no": "Utdanningsdirektoratet",
-              },
-            },
-            "title": "Nasjonalt barnehageregister API",
-            "titleFormatted": "Nasjonalt barnehageregister API",
+      >
+        <ThemeProvider
+          theme={
+            Object {
+              "dark": "#805333",
+              "light": "#F2E1D5",
+              "lighter": "#F7F2ED",
+            }
           }
-        }
+        >
+          <Component
+            api={
+              Object {
+                "formats": Array [],
+                "id": "68dda78f-364f-41dd-869a-0dd8d9a3fe4c",
+                "nationalComponent": false,
+                "publisher": Object {
+                  "id": "970018131",
+                  "name": "UTDANNINGSDIREKTORATET",
+                  "orgPath": "/STAT/872417842/970018131",
+                  "prefLabel": Object {
+                    "no": "Utdanningsdirektoratet",
+                  },
+                },
+                "title": "Barnehagefakta",
+                "titleFormatted": "Barnehagefakta",
+              }
+            }
+            referenceData={null}
+          />
+        </ThemeProvider>
+      </ErrorBoundary>
+      <ErrorBoundary
         key="70f6e5b3-b633-413b-b5e7-11b63bb413eb"
-        publishers={null}
-        referenceData={null}
-      />
+      >
+        <ThemeProvider
+          theme={
+            Object {
+              "dark": "#805333",
+              "light": "#F2E1D5",
+              "lighter": "#F7F2ED",
+            }
+          }
+        >
+          <Component
+            api={
+              Object {
+                "formats": Array [
+                  "application/xml",
+                  "application/json",
+                  "text/json",
+                  "text/xml",
+                ],
+                "id": "70f6e5b3-b633-413b-b5e7-11b63bb413eb",
+                "nationalComponent": false,
+                "publisher": Object {
+                  "id": "970018131",
+                  "name": "UTDANNINGSDIREKTORATET",
+                  "orgPath": "/STAT/872417842/970018131",
+                  "prefLabel": Object {
+                    "no": "Utdanningsdirektoratet",
+                  },
+                },
+                "title": "Nasjonalt barnehageregister API",
+                "titleFormatted": "Nasjonalt barnehageregister API",
+              }
+            }
+            referenceData={null}
+          />
+        </ThemeProvider>
+      </ErrorBoundary>
       <div
         className="col-12 d-flex justify-content-center"
       >
