@@ -5,9 +5,9 @@ import ReactPaginate from 'react-paginate';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import cx from 'classnames';
 import { withRouter } from 'react-router';
+import { ThemeProvider } from 'styled-components';
 
 import localization from '../../../lib/localization';
-import { SearchHitItem } from './search-hit-item/search-hit-item.component';
 import { FilterBox } from '../../../components/filter-box/filter-box.component';
 import { FilterTree } from '../filter-tree/filter-tree.component';
 import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
@@ -20,6 +20,8 @@ import {
 } from '../../../redux/modules/referenceData';
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import { getConfig } from '../../../config';
+import { DatasetItem } from './dataset-item/dataset-item.component';
+import { themeFDK, themeNAP } from '../../../app/theme';
 
 function _renderFilterModal({
   showFilterModal,
@@ -112,7 +114,15 @@ function _renderHits({ datasetItems, referenceData }) {
   if (datasetItems && Array.isArray(datasetItems)) {
     return datasetItems.map(dataset => (
       <ErrorBoundary key={dataset.id}>
-        <SearchHitItem dataset={dataset} referenceData={referenceData} />
+        <ThemeProvider
+          theme={
+            getConfig().themeNap
+              ? themeNAP.colors.dataset
+              : themeFDK.colors.dataset
+          }
+        >
+          <DatasetItem dataset={dataset} referenceData={referenceData} />
+        </ThemeProvider>
       </ErrorBoundary>
     ));
   }
