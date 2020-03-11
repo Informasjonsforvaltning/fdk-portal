@@ -96,12 +96,15 @@ export const getLosStructure = referenceData => {
     get(item, ['losPaths', 0], '').toLowerCase()
   );
 
-  const losStructureWithSelectedFields = mapValues(losStructure, item => ({
-    prefLabel: item.name,
-    isTema: item.isTema,
-    uri: item.uri
-  }));
-  return losStructureWithSelectedFields;
+  return mapValues(
+    losStructure,
+    ({ name: prefLabel, isTema, uri, losPaths = [] }) => ({
+      prefLabel,
+      isTema,
+      uri,
+      losPaths
+    })
+  );
 };
 
 export const getThemesStructure = referenceData =>

@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { Link } from 'react-router-dom';
 
 import localization from '../../../../lib/localization';
 import './search-hit-item.scss';
 import { getTranslateText } from '../../../../lib/translateText';
+import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import { getLosStructure } from '../../../../redux/modules/referenceData';
 import { SearchHitHeader } from '../../../../components/search-hit-header/search-hit-header.component';
 
@@ -31,25 +33,37 @@ const renderHeaderLink = (item, publisher, publishers) => {
   );
 };
 
-const renderThemes = (themes, losItems) =>
-  themes
+const renderThemes = (themes, losItems) => {
+  const getContextRootLink = () => {
+    const informationmodelsRoot = '/informationmodels';
+    if (location.pathname.includes(informationmodelsRoot)) {
+      return informationmodelsRoot;
+    }
+    return '/';
+  };
+
+  return themes
     .map(({ id, title }) => {
-      const losItem = Object.values(losItems).find(({ uri }) => uri === id);
-      const themeTitle = losItem
-        ? getTranslateText(losItem.prefLabel || title)
-        : title;
+      const { uri, prefLabel, losPaths: [theme = ''] = [] } =
+        Object.values(losItems).find(({ uri }) => uri === id) || {};
       return (
-        themeTitle && (
-          <div key={id} className="align-self-center mr-2 mb-2 fdk-label">
+        uri &&
+        theme && (
+          <Link
+            key={id}
+            to={`${getContextRootLink()}${patchSearchQuery('losTheme', theme)}`}
+            className="align-self-center mr-2 mb-2 fdk-label"
+          >
             <span className="uu-invisible" aria-hidden="false">
               Imformasjonsmodell tema
             </span>
-            {themeTitle}
-          </div>
+            {getTranslateText(prefLabel || title)}
+          </Link>
         )
       );
     })
     .filter(Boolean);
+};
 
 export const SearchHitItem = ({
   item,

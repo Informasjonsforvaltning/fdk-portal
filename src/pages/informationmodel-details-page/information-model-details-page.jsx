@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import DocumentMeta from 'react-document-meta';
+import { Link } from 'react-router-dom';
 
 import localization from '../../lib/localization';
 import { formatDate, dateStringToDate } from '../../lib/date-utils';
@@ -164,7 +165,16 @@ const renderKeywords = keywords => {
   return hasKeywords(keywords) ? (
     <ListRegular title={localization.infoMod.keywords}>
       <div className="d-flex list-regular--item">
-        {(keywords[language] || []).join(', ')}
+        {(keywords[language] || []).map((keyword, index) => (
+          <Fragment key={keyword}>
+            {index > 0 && <>,&nbsp;</>}
+            <Link
+              to={`/informationmodels?keywords=${encodeURIComponent(keyword)}`}
+            >
+              {keyword}
+            </Link>
+          </Fragment>
+        ))}
       </div>
     </ListRegular>
   ) : null;
