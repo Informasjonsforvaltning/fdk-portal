@@ -31,3 +31,10 @@ export function getFirstLineOfText(text) {
   }
   return firstLine;
 }
+
+export function truncateTextWithEllipsis(str, length = 100, ending = '...') {
+  if (str.length > length) {
+    return str.slice(0, length) + ending;
+  }
+  return str;
+}

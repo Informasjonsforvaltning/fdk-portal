@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchHitHead component should render with properties 1`] = `
+<styled.div>
+  <styled.div>
+    <Styled(SvgIconCatalogDatasetLg) />
+  </styled.div>
+  <styled.div>
+    <styled.div>
+      <styled.h2>
+        <Link
+          replace={false}
+          to="/datasets/123"
+        >
+          Test datasett
+        </Link>
+      </styled.h2>
+    </styled.div>
+    <styled.div>
+      Dataset
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
