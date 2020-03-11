@@ -16,6 +16,7 @@ export interface InformationModelDocument {
   modelDescription?: Partial<TextLanguage>;
   isDescribedByUri?: string;
   concept?: Partial<Concept>;
+  themes?: any;
 }
 
 export interface Node {
@@ -76,4 +77,29 @@ export interface Concept {
   prefLabel: Partial<TextLanguage>;
   definition: any;
   publisher: Partial<Publisher>;
+  example: Partial<TextLanguage>;
+}
+
+export interface Dataset {
+  id: string;
+  type: any;
+  publisher: Partial<Publisher>;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  theme: string[];
+  distribution: any;
+  accessRights: any;
+  provenance: any;
+}
+
+export interface Api {
+  id: string;
+  uri: string;
+  publisher: Partial<Publisher>;
+  title: Partial<TextLanguage>;
+  description?: Partial<TextLanguage>;
+  nationalComponent: boolean;
+  isOpenAccess: boolean;
+  isOpenLicense: boolean;
+  isFree: boolean;
 }
