@@ -5,14 +5,18 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import cx from 'classnames';
 import _ from 'lodash';
 import { withRouter } from 'react-router';
+import { ThemeProvider } from 'styled-components';
 
 import localization from '../../../lib/localization';
-import { SearchHitItem } from './search-hit-item/search-hit-item.component';
 import { FilterBox } from '../../../components/filter-box/filter-box.component';
 import { FilterTree } from '../filter-tree/filter-tree.component';
 import { getSortfield, setPage, setSortfield } from '../search-location-helper';
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { FilterPills } from '../filter-pills/filter-pills.component';
+import { getConfig } from '../../../config';
+import { themeFDK, themeNAP } from '../../../app/theme';
+import { ApiItem } from './api-item/api-item.component';
+import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
 
 const renderFilterModal = ({
   showFilterModal,
@@ -54,14 +58,16 @@ const renderFilterModal = ({
 
 const renderHits = (hits, publishers, referenceData) => {
   if (hits && Array.isArray(hits)) {
-    return hits.map((item, index) => (
-      <SearchHitItem
-        key={item.id}
-        item={item}
-        fadeInCounter={index < 3 ? index : null}
-        publishers={publishers}
-        referenceData={referenceData}
-      />
+    return hits.map(item => (
+      <ErrorBoundary key={item.id}>
+        <ThemeProvider
+          theme={
+            getConfig().themeNap ? themeNAP.colors.api : themeFDK.colors.api
+          }
+        >
+          <ApiItem api={item} referenceData={referenceData} />
+        </ThemeProvider>
+      </ErrorBoundary>
     ));
   }
   return null;
