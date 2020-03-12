@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import cx from 'classnames';
 import _ from 'lodash';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import localization from '../../../lib/localization';

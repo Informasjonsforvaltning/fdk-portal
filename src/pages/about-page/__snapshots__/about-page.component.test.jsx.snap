@@ -57,7 +57,6 @@ exports[`should render AboutPage correctly 1`] = `
           </b>
           <br />
           <Link
-            replace={false}
             to="/about-registration"
           >
             User manual to start registration (only in Norwegian)
