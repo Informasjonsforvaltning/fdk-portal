@@ -69,13 +69,7 @@ export function App({ language }) {
 
       <ConnectedAppNavBar />
 
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <Breadcrumbs />
-          </div>
-        </div>
-      </div>
+      <Breadcrumbs />
 
       <Switch>
         <Route exact path={PATHNAME_DATASETS} component={ConnectedSearchPage} />
