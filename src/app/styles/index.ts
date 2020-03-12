@@ -5,4 +5,12 @@ import 'designsystemet/fdk-designsystem-bootstrap4/scss/common.scss';
 import 'designsystemet/fdk-designsystem-bootstrap4/scss/animations.scss';
 import 'designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
 import 'font-awesome/scss/font-awesome.scss';
-import '../assets/fonts/icomoon.css';
+import '../../assets/fonts/icomoon.css';
+
+import { createGlobalStyle } from 'styled-components';
+
+import CommonStyles from './common';
+
+export default createGlobalStyle`
+  ${CommonStyles}
+`;
