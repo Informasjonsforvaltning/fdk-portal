@@ -2,8 +2,10 @@ import React, { FC } from 'react';
 
 import { Api } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
-import { SearchHit } from '../../../../components/search-hit/components/search-hit/search-hit.component';
-import { SearchHitOpenData } from '../../../../components/search-hit/components/search-hit-open-data/search-hit-open-data.component';
+import {
+  SearchHit,
+  SearchHitOpenData
+} from '../../../../components/search-hit/search-hit';
 import { RoundedTag } from '../../../../components/rounded-tag/rounded-tag.component';
 import PublicIconBase from '../../../../images/icon-access-open-md.svg';
 import localization from '../../../../lib/localization';

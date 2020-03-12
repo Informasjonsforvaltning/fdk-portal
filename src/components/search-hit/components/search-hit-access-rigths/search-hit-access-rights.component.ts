@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
 
-const SearchHitAccessRightsPure: FC<any> = ({ children }) => children;
+const SearchHitAccessRights: FC<any> = ({ children }) => children;
 
-export const SearchHitAccessRights = memo(SearchHitAccessRightsPure);
+export default memo(SearchHitAccessRights);

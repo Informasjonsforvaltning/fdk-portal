@@ -5,13 +5,15 @@ import { getTranslateText } from '../../../../lib/translateText';
 import { getLosStructure } from '../../../../redux/modules/referenceData';
 import { Dataset } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
-import { SearchHitOpenData } from '../../../../components/search-hit/components/search-hit-open-data/search-hit-open-data.component';
 import { RoundedTag } from '../../../../components/rounded-tag/rounded-tag.component';
 import PublicIconBase from '../../../../images/icon-access-open-md.svg';
-import { SearchHitAccessRights } from '../../../../components/search-hit/components/search-hit-access-rigths/search-hit-access-rights.component';
-import { SearchHitThemes } from '../../../../components/search-hit/components/search-hit-themes/searh-hit-themes.component';
-import { SearchHitFormats } from '../../../../components/search-hit/components/search-hit-formats/search-hit-formats';
-import { SearchHit } from '../../../../components/search-hit/components/search-hit/search-hit.component';
+import {
+  SearchHit,
+  SearchHitFormats,
+  SearchHitThemes,
+  SearchHitAccessRights,
+  SearchHitOpenData
+} from '../../../../components/search-hit/search-hit';
 import localization from '../../../../lib/localization';
 
 interface Props {
