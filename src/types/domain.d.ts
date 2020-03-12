@@ -1,3 +1,5 @@
+import { DataFormat } from './enums';
+
 export interface InformationModelDocument {
   id: string;
   identifier?: string;
@@ -102,4 +104,32 @@ export interface Api {
   isOpenAccess: boolean;
   isOpenLicense: boolean;
   isFree: boolean;
+}
+
+interface License {
+  uri: string;
+  prefLabel?: Partial<TextLanguage>;
+}
+
+interface ConformsTo {
+  uri: string;
+  prefLabel?: Partial<TextLanguage>;
+}
+
+interface Page {
+  uri: string;
+}
+
+export interface Distribution {
+  uri: string;
+  type: string;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  format: DataFormat[];
+  license: License;
+  openLicense: boolean;
+  accessURL: string[];
+  downloadURL: string[];
+  conformsTo: ConformsTo[];
+  page?: Page[];
 }
