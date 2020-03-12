@@ -12,7 +12,7 @@
     "sourceMap": true,
     "outDir": "./dist/",
     "esModuleInterop": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "downlevelIteration": true,
     "strict": true,
     "noImplicitAny": true,

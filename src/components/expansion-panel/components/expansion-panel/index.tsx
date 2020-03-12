@@ -51,7 +51,7 @@ const ExpansionPanel: FC<Props> = ({
     )?.shift();
 
   return (
-    <SC.ExpansionPanel {...props} data-testid={testIds.root}>
+    <SC.ExpansionPanel data-testid={testIds.root} {...props}>
       <SC.Head
         onClick={
           shouldExpandOnHeadClick ? onClick ?? toggleExpansion : undefined

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import localization from '../../lib/localization';
 import { DatasetDescription } from './dataset-description/dataset-description.component';
 import { DatasetKeyInfo } from './dataset-key-info/dataset-key-info.component';
-import { DatasetDistribution } from './dataset-distribution/dataset-distribution.component';
+import { DatasetDistribution as OldDatasetDistribution } from './dataset-distribution/dataset-distribution.component';
 import { DatasetInfo } from './dataset-info/dataset-info.component';
 import { DatasetQuality } from './dataset-quality/dataset-quality.component';
 import { getTranslateText } from '../../lib/translateText';
@@ -19,6 +19,7 @@ import { BoxRegular } from '../../components/box-regular/box-regular.component';
 import { LinkExternal } from '../../components/link-external/link-external.component';
 import { DistributionHeading } from './distribution-heading/distribution-heading.component';
 import { StickyMenu } from '../../components/sticky-menu/sticky-menu.component';
+import DatasetDistribution from '../../components/dataset-distribution';
 import {
   REFERENCEDATA_PATH_DISTRIBUTIONTYPE,
   REFERENCEDATA_PATH_LOS,
@@ -28,6 +29,8 @@ import { SearchHitHeader } from '../../components/search-hit-header/search-hit-h
 import { getFirstLineOfText } from '../../lib/stringUtils';
 import './dataset-details-page.scss';
 import { getConfig } from '../../config';
+
+import SC from './styled';
 
 const renderPublished = datasetItem => {
   if (!datasetItem) {
@@ -274,7 +277,7 @@ const renderDistribution = (
   }
   const distributionItems = (distribution, size) =>
     distribution.map((item, index) => (
-      <DatasetDistribution
+      <OldDatasetDistribution
         key={`dist-${index}`}
         title={getTitleText(getTranslateText(item.title), index)}
         description={getTranslateText(item.description)}
@@ -445,6 +448,10 @@ export const DatasetDetailsPagePure = props => {
     description: getTranslateText(_.get(datasetItem, 'description'))
   };
 
+  const distributions = (datasetItem.distribution || []).filter(
+    ({ accessService }) => !accessService
+  );
+
   return (
     <main id="content" className="container">
       <article>
@@ -492,13 +499,19 @@ export const DatasetDetailsPagePure = props => {
                 apis
               })}
 
-            {renderDistribution(
-              localization.dataset.distributions,
-              true,
-              _.get(datasetItem, 'distribution', []).filter(
-                item => !item.accessService
-              ),
-              referenceData
+            {distributions.length > 0 && (
+              <SC.Section>
+                <SC.DatasetDistributionsTitle>
+                  {localization.dataset.distribution.title} (
+                  {distributions.length})
+                </SC.DatasetDistributionsTitle>
+                {distributions.map(distribution => (
+                  <DatasetDistribution
+                    key={distribution.uri}
+                    distribution={distribution}
+                  />
+                ))}
+              </SC.Section>
             )}
 
             {renderDistribution(

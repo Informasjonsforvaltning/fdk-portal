@@ -607,161 +607,172 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
           legalBasisForRestriction={null}
           type={null}
         />
-        <div
-          className="dataset-distributions"
-        >
-          <DistributionHeading
-            itemsCount={7}
-            title="Other distributions"
+        <styled.section>
+          <styled.h2>
+            Distributions
+             (
+            7
+            )
+          </styled.h2>
+          <Memo(DatasetDistribution)
+            distribution={
+              Object {
+                "accessURL": Array [
+                  "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
+                ],
+                "description": Object {
+                  "nb": "Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet",
+                },
+                "downloadURL": Array [],
+                "format": Array [
+                  "GPX",
+                ],
+                "openLicense": false,
+                "title": Object {
+                  "nb": "Geonorge nedlastning",
+                },
+                "uri": "https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/GPX",
+              }
+            }
+            key="https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/GPX"
           />
-          <DatasetDistribution
-            accessUrl={
-              Array [
-                "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
-              ]
+          <Memo(DatasetDistribution)
+            distribution={
+              Object {
+                "accessURL": Array [
+                  "https://wfs.geonorge.no/skwms1/wfs.markagrensa?service=wfs&request=getcapabilities",
+                ],
+                "description": Object {
+                  "en": "View Service (WFS)",
+                  "nb": "Karttjeneste som returnerer vektordata (OGC Web Feature Service)",
+                },
+                "downloadURL": Array [],
+                "format": Array [
+                  "WFS",
+                ],
+                "openLicense": false,
+                "title": Object {
+                  "en": "OGC:WFS",
+                  "nb": "WFS-tjeneste",
+                },
+                "uri": "https://kartkatalog.geonorge.no/Metadata/uuid/bd4c56e8-383f-4048-acd5-86aea32e457c",
+              }
             }
-            conformsTo={null}
-            defaultopenCollapse={false}
-            description="Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet"
-            format={
-              Array [
-                "GPX",
-              ]
-            }
-            key="dist-0"
-            license={null}
-            page={null}
-            referenceData={null}
-            title="Geonorge nedlastning"
-            type={null}
+            key="https://kartkatalog.geonorge.no/Metadata/uuid/bd4c56e8-383f-4048-acd5-86aea32e457c"
           />
-          <DatasetDistribution
-            accessUrl={
-              Array [
-                "https://wfs.geonorge.no/skwms1/wfs.markagrensa?service=wfs&request=getcapabilities",
-              ]
+          <Memo(DatasetDistribution)
+            distribution={
+              Object {
+                "accessURL": Array [
+                  "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
+                ],
+                "description": Object {
+                  "nb": "Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet",
+                },
+                "downloadURL": Array [],
+                "format": Array [
+                  "GML",
+                ],
+                "openLicense": false,
+                "title": Object {
+                  "nb": "Geonorge nedlastning",
+                },
+                "uri": "https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/GML",
+              }
             }
-            conformsTo={null}
-            defaultopenCollapse={false}
-            description="View Service (WFS)"
-            format={
-              Array [
-                "WFS",
-              ]
-            }
-            key="dist-1"
-            license={null}
-            page={null}
-            referenceData={null}
-            title="OGC:WFS"
-            type={null}
+            key="https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/GML"
           />
-          <DatasetDistribution
-            accessUrl={
-              Array [
-                "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
-              ]
+          <Memo(DatasetDistribution)
+            distribution={
+              Object {
+                "accessURL": Array [
+                  "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
+                ],
+                "description": Object {
+                  "nb": "Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet",
+                },
+                "downloadURL": Array [],
+                "format": Array [
+                  "ESRI Filgeodatabase",
+                ],
+                "openLicense": false,
+                "title": Object {
+                  "nb": "Geonorge nedlastning",
+                },
+                "uri": "https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/ESRI+Filgeodatabase",
+              }
             }
-            conformsTo={null}
-            defaultopenCollapse={false}
-            description="Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet"
-            format={
-              Array [
-                "GML",
-              ]
-            }
-            key="dist-2"
-            license={null}
-            page={null}
-            referenceData={null}
-            title="Geonorge nedlastning"
-            type={null}
+            key="https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/ESRI+Filgeodatabase"
           />
-          <DatasetDistribution
-            accessUrl={
-              Array [
-                "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
-              ]
+          <Memo(DatasetDistribution)
+            distribution={
+              Object {
+                "accessURL": Array [
+                  "https://wms.geonorge.no/skwms1/wms.markagrensen?request=GetCapabilities&Service=WMS",
+                ],
+                "description": Object {
+                  "en": "View Service (WMS)",
+                  "nb": "Karttjeneste som returnerer kartbilder (Web Map Service)",
+                },
+                "downloadURL": Array [],
+                "format": Array [
+                  "WMS",
+                ],
+                "openLicense": false,
+                "title": Object {
+                  "en": "OGC:WMS",
+                  "nb": "WMS-tjeneste",
+                },
+                "uri": "https://kartkatalog.geonorge.no/Metadata/uuid/4d0fd462-aa69-4d49-b773-52382dc0e450",
+              }
             }
-            conformsTo={null}
-            defaultopenCollapse={false}
-            description="Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet"
-            format={
-              Array [
-                "ESRI Filgeodatabase",
-              ]
-            }
-            key="dist-3"
-            license={null}
-            page={null}
-            referenceData={null}
-            title="Geonorge nedlastning"
-            type={null}
+            key="https://kartkatalog.geonorge.no/Metadata/uuid/4d0fd462-aa69-4d49-b773-52382dc0e450"
           />
-          <DatasetDistribution
-            accessUrl={
-              Array [
-                "https://wms.geonorge.no/skwms1/wms.markagrensen?request=GetCapabilities&Service=WMS",
-              ]
+          <Memo(DatasetDistribution)
+            distribution={
+              Object {
+                "accessURL": Array [
+                  "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
+                ],
+                "description": Object {
+                  "nb": "Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet",
+                },
+                "downloadURL": Array [],
+                "format": Array [
+                  "postgis",
+                ],
+                "openLicense": false,
+                "title": Object {
+                  "nb": "Geonorge nedlastning",
+                },
+                "uri": "https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/postgis",
+              }
             }
-            conformsTo={null}
-            defaultopenCollapse={false}
-            description="View Service (WMS)"
-            format={
-              Array [
-                "WMS",
-              ]
-            }
-            key="dist-4"
-            license={null}
-            page={null}
-            referenceData={null}
-            title="OGC:WMS"
-            type={null}
+            key="https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/postgis"
           />
-          <DatasetDistribution
-            accessUrl={
-              Array [
-                "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
-              ]
+          <Memo(DatasetDistribution)
+            distribution={
+              Object {
+                "accessURL": Array [
+                  "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
+                ],
+                "description": Object {
+                  "nb": "Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet",
+                },
+                "downloadURL": Array [],
+                "format": Array [
+                  "SOSI",
+                ],
+                "openLicense": false,
+                "title": Object {
+                  "nb": "Geonorge nedlastning",
+                },
+                "uri": "https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/SOSI",
+              }
             }
-            conformsTo={null}
-            defaultopenCollapse={false}
-            description="Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet"
-            format={
-              Array [
-                "postgis",
-              ]
-            }
-            key="dist-5"
-            license={null}
-            page={null}
-            referenceData={null}
-            title="Geonorge nedlastning"
-            type={null}
+            key="https://kartkatalog.geonorge.no/Metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300/SOSI"
           />
-          <DatasetDistribution
-            accessUrl={
-              Array [
-                "https://kartkatalog.geonorge.no/metadata/uuid/45e9ba77-388c-40eb-87df-e34e9d9ab300",
-              ]
-            }
-            conformsTo={null}
-            defaultopenCollapse={false}
-            description="Nedlastning gjennom Geonorge-portalen ved bruk av handlevognsfunksjonalitet"
-            format={
-              Array [
-                "SOSI",
-              ]
-            }
-            key="dist-6"
-            license={null}
-            page={null}
-            referenceData={null}
-            title="Geonorge nedlastning"
-            type={null}
-          />
-        </div>
+        </styled.section>
         <DatasetQuality
           accuracyAnnotation={null}
           availabilityAnnotations={null}
