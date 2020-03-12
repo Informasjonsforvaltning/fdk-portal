@@ -353,13 +353,6 @@ exports[`should render ApiDetailsPage correctly with apiItem 1`] = `
             col2Width={null}
           />
         </ListRegular>
-        <div
-          style={
-            Object {
-              "height": "75vh",
-            }
-          }
-        />
       </section>
     </div>
   </article>
@@ -483,13 +476,6 @@ exports[`should render ApiDetailsPage correctly with missing api-properties 1`] 
             col2Width={null}
           />
         </ListRegular>
-        <div
-          style={
-            Object {
-              "height": "75vh",
-            }
-          }
-        />
       </section>
     </div>
   </article>

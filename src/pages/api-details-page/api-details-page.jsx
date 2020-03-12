@@ -515,7 +515,6 @@ export const ApiDetailsPage = ({
             {renderInformationModelReferences(referencedInformationModels)}
 
             {renderContactPoints(apiItem.contactPoint)}
-            <div style={{ height: '75vh' }} />
           </section>
         </div>
       </article>

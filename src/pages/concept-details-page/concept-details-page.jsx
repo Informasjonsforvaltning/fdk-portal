@@ -540,7 +540,6 @@ export const ConceptDetailsPage = ({
             {renderInformationModelReferences(informationModelReferences)}
             {renderConceptReferences(conceptItem, conceptReferences)}
             {renderContactPoint(_.get(conceptItem, 'contactPoint'))}
-            <div style={{ height: '75vh' }} />
           </section>
         </div>
       </article>

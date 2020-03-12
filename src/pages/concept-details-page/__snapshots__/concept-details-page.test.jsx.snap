@@ -152,13 +152,6 @@ exports[`should render ConceptDetailsPage correctly with conceptItem 1`] = `
             col2Width={null}
           />
         </ListRegular>
-        <div
-          style={
-            Object {
-              "height": "75vh",
-            }
-          }
-        />
       </section>
     </div>
   </article>
