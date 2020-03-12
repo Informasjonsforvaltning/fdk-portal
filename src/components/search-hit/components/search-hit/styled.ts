@@ -96,6 +96,8 @@ const Theme = styled.div`
 `;
 
 const Format = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: 1em;
   span {
     border: 1px solid;
@@ -103,6 +105,7 @@ const Format = styled.div`
     border-radius: 5px;
     font-size: 1.3rem;
     padding: 0.1em 0.2em;
+    margin-bottom: 0.5em;
     margin-right: 0.5em;
   }
 `;
