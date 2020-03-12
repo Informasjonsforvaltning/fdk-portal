@@ -530,8 +530,6 @@ export const DatasetDetailsPagePure = props => {
             {renderKeywords(datasetItem.keyword)}
 
             {renderContactPoints(datasetItem)}
-
-            <div style={{ height: '75vh' }} />
           </div>
         </div>
       </article>

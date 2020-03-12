@@ -1234,13 +1234,6 @@ exports[`should render DatasetDetailsPagePure correctly with datasetItem 1`] = `
             col2Width={null}
           />
         </ListRegular>
-        <div
-          style={
-            Object {
-              "height": "75vh",
-            }
-          }
-        />
       </div>
     </div>
   </article>

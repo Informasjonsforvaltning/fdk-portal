@@ -7,7 +7,8 @@ export default css`
   }
 
   body,
-  #root {
+  #root,
+  #root > div {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;

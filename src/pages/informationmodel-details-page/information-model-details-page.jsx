@@ -403,7 +403,6 @@ export const InformationModelDetailsPage = ({
             {renderRelatedApi(referencedApis, publisherItems)}
 
             {renderContactPoint(contactPoint)}
-            <div style={{ height: '75vh' }} />
           </section>
         </div>
       </article>
