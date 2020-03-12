@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
 
-const SearchHitFormatsPure: FC<any> = ({ children }) => children;
+const SearchHitFormats: FC<any> = ({ children }) => children;
 
-export const SearchHitFormats = memo(SearchHitFormatsPure);
+export default memo(SearchHitFormats);

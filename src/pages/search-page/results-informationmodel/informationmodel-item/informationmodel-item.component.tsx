@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
-// import find from 'lodash/find';
 
 import { InformationModelDocument } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
-import { SearchHit } from '../../../../components/search-hit/components/search-hit/search-hit.component';
-import { SearchHitThemes } from '../../../../components/search-hit/components/search-hit-themes/searh-hit-themes.component';
+import {
+  SearchHit,
+  SearchHitThemes
+} from '../../../../components/search-hit/search-hit';
 import { getTranslateText } from '../../../../lib/translateText';
 import { RoundedTag } from '../../../../components/rounded-tag/rounded-tag.component';
 

@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
 
-const SearchHitOpenDataPure: FC<any> = ({ children }) => children;
+const SearchHitOpenData: FC<any> = ({ children }) => children;
 
-export const SearchHitOpenData = memo(SearchHitOpenDataPure);
+export default memo(SearchHitOpenData);
