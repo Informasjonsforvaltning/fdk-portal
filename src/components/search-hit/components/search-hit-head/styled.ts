@@ -33,6 +33,7 @@ const HeadInformation = styled.div`
 
 const Header = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const Title = styled.h2`
