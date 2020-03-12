@@ -6,8 +6,7 @@ import cx from 'classnames';
 import _get from 'lodash/get';
 import _capitalize from 'lodash/capitalize';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import {

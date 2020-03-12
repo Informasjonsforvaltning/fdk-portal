@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';

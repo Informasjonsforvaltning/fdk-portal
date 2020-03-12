@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import cx from 'classnames';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import localization from '../../../lib/localization';
