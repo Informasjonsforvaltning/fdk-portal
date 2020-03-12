@@ -25,7 +25,6 @@ import { ErrorBoundary } from '../../../components/error-boundary/error-boundary
 import { ConceptItem } from './concept-item/concept-item.component';
 import { getConfig } from '../../../config';
 import { themeFDK, themeNAP } from '../../../app/theme';
-import { ConceptsHitItem } from './concepts-hit-item/concepts-hit-item.component';
 
 function _renderCompareTerms({ conceptsCompare, removeConcept }) {
   const conceptIdsArray = [];
@@ -78,13 +77,6 @@ function _renderTerms({
       item =>
         item && (
           <ErrorBoundary key={item.id}>
-            <ConceptsHitItem
-              key={item.id}
-              result={item}
-              concepts={conceptsCompare}
-              onAddConcept={addConcept}
-              onDeleteConcept={removeConcept}
-            />
             <ThemeProvider
               theme={
                 getConfig().themeNap
