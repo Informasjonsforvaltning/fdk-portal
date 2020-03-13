@@ -8,19 +8,23 @@ import _capitalize from 'lodash/capitalize';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import { ThemeProvider } from 'styled-components';
 
 import {
   PATHNAME_CONCEPTS,
   PATHNAME_CONCEPTS_COMPARE
 } from '../../../constants/constants';
 import localization from '../../../lib/localization';
-import { ConceptsHitItem } from './concepts-hit-item/concepts-hit-item.component';
 import { CompareTerms } from './compare-terms/compare-terms.component';
 import { FilterTree } from '../filter-tree/filter-tree.component';
 import { getTranslateText } from '../../../lib/translateText';
 import { getSortfield, setPage, setSortfield } from '../search-location-helper';
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { FilterPills } from '../filter-pills/filter-pills.component';
+import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
+import { ConceptItem } from './concept-item/concept-item.component';
+import { getConfig } from '../../../config';
+import { themeFDK, themeNAP } from '../../../app/theme';
 
 function _renderCompareTerms({ conceptsCompare, removeConcept }) {
   const conceptIdsArray = [];
@@ -72,13 +76,22 @@ function _renderTerms({
     return conceptItems.map(
       item =>
         item && (
-          <ConceptsHitItem
-            key={item.id}
-            result={item}
-            concepts={conceptsCompare}
-            onAddConcept={addConcept}
-            onDeleteConcept={removeConcept}
-          />
+          <ErrorBoundary key={item.id}>
+            <ThemeProvider
+              theme={
+                getConfig().themeNap
+                  ? themeNAP.colors.concept
+                  : themeFDK.colors.concept
+              }
+            >
+              <ConceptItem
+                concept={item}
+                concepts={conceptsCompare}
+                onAddConcept={addConcept}
+                onDeleteConcept={removeConcept}
+              />
+            </ThemeProvider>
+          </ErrorBoundary>
         )
     );
   }

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchHit component should render with properties 1`] = `
+<styled.article>
+  <Component
+    id="123"
+    isAuthoritative={false}
+    title={
+      Object {
+        "nb": "Test datasett",
+      }
+    }
+    type={0}
+  />
+  <styled.div>
+    <span>
+      Owner: 
+       
+    </span>
+    <span>
+      Test direktorat
+    </span>
+  </styled.div>
+  <styled.p>
+    Test datasett beskrivelse
+  </styled.p>
+</styled.article>
+`;

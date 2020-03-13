@@ -1,3 +1,5 @@
+import { DataFormat } from './enums';
+
 export interface InformationModelDocument {
   id: string;
   identifier?: string;
@@ -16,6 +18,7 @@ export interface InformationModelDocument {
   modelDescription?: Partial<TextLanguage>;
   isDescribedByUri?: string;
   concept?: Partial<Concept>;
+  themes?: any;
 }
 
 export interface Node {
@@ -76,4 +79,57 @@ export interface Concept {
   prefLabel: Partial<TextLanguage>;
   definition: any;
   publisher: Partial<Publisher>;
+  example: Partial<TextLanguage>;
+}
+
+export interface Dataset {
+  id: string;
+  type: any;
+  publisher: Partial<Publisher>;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  theme: string[];
+  distribution: any;
+  accessRights: any;
+  provenance: any;
+}
+
+export interface Api {
+  id: string;
+  uri: string;
+  publisher: Partial<Publisher>;
+  title: Partial<TextLanguage>;
+  description?: Partial<TextLanguage>;
+  nationalComponent: boolean;
+  isOpenAccess: boolean;
+  isOpenLicense: boolean;
+  isFree: boolean;
+}
+
+interface License {
+  uri: string;
+  prefLabel?: Partial<TextLanguage>;
+}
+
+interface ConformsTo {
+  uri: string;
+  prefLabel?: Partial<TextLanguage>;
+}
+
+interface Page {
+  uri: string;
+}
+
+export interface Distribution {
+  uri: string;
+  type: string;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  format: DataFormat[];
+  license: License;
+  openLicense: boolean;
+  accessURL: string[];
+  downloadURL: string[];
+  conformsTo: ConformsTo[];
+  page?: Page[];
 }

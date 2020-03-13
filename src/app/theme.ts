@@ -40,7 +40,28 @@ export const themeFDK = {
     iconLink: '#0069A5',
     textDefault: '#2D3741',
     textLight: '#6C737A',
-    textLink: '#0069A5'
+    textLink: '#0069A5',
+
+    dataset: {
+      dark: '#335380',
+      light: '#D5E1F2',
+      lighter: '#F0F3F7'
+    },
+    api: {
+      dark: '#805333',
+      light: '#F2E1D5',
+      lighter: '#F7F2ED'
+    },
+    concept: {
+      dark: '#337380',
+      light: '#D5EDF2',
+      lighter: '#F0F6F7'
+    },
+    infomod: {
+      dark: '#593380',
+      light: '#E4D5F2',
+      lighter: '#F4F0F7'
+    }
   }
 };
 
@@ -87,6 +108,27 @@ export const themeNAP = {
     iconLink: '#444F55',
     textDefault: '#444F55',
     textLight: '#60696E',
-    textLink: '#444F55'
+    textLink: '#444F55',
+
+    dataset: {
+      dark: '#444F55',
+      light: '#FFF',
+      lighter: '#E5E5E5'
+    },
+    api: {
+      dark: '#805333',
+      light: '#F2E1D5',
+      lighter: '#F7F2ED'
+    },
+    concept: {
+      dark: '#337380',
+      light: '#D5EDF2',
+      lighter: '#F0F6F7'
+    },
+    infomod: {
+      dark: '#593380',
+      light: '#E4D5F2',
+      lighter: '#F4F0F7'
+    }
   }
 };
