@@ -110,7 +110,7 @@ function _renderFilterModal({
   );
 }
 
-function _renderHits({ datasetItems, referenceData }) {
+const renderHits = (datasetItems, losItems) => {
   if (datasetItems && Array.isArray(datasetItems)) {
     return datasetItems.map(dataset => (
       <ErrorBoundary key={dataset.id}>
@@ -121,13 +121,13 @@ function _renderHits({ datasetItems, referenceData }) {
               : themeFDK.colors.dataset
           }
         >
-          <DatasetItem dataset={dataset} referenceData={referenceData} />
+          <DatasetItem dataset={dataset} losItems={losItems} />
         </ThemeProvider>
       </ErrorBoundary>
     ));
   }
   return null;
-}
+};
 
 export const ResultsDatasetPure = ({
   showFilterModal,
@@ -302,9 +302,11 @@ export const ResultsDatasetPure = ({
           )}
         </aside>
 
-        <section className="col-12 col-lg-8">
-          {_renderHits({ datasetItems, referenceData })}
-        </section>
+        {!_.isEmpty(losItems) && (
+          <section className="col-12 col-lg-8">
+            {renderHits(datasetItems, losItems)}
+          </section>
+        )}
 
         <section className="col-12 col-lg-8 offset-lg-4 d-flex justify-content-center position-relative">
           <div className="position-absolute d-flex" style={{ left: 15 }}>
