@@ -68,7 +68,7 @@ const renderFilterModal = ({
   );
 };
 
-const renderHits = (hits, publishers, referenceData) => {
+const renderHits = (hits, losItems) => {
   if (hits && Array.isArray(hits)) {
     return hits.map(item => (
       <ErrorBoundary key={item.id}>
@@ -79,10 +79,7 @@ const renderHits = (hits, publishers, referenceData) => {
               : themeFDK.colors.infomod
           }
         >
-          <InformationModelItem
-            informationModel={item}
-            referenceData={referenceData}
-          />
+          <InformationModelItem informationModel={item} losItems={losItems} />
         </ThemeProvider>
       </ErrorBoundary>
     ));
@@ -202,7 +199,7 @@ export const ResultsInformationModelPure = ({
           )}
         </aside>
         <div id="informationModels" className="col-12 col-lg-8">
-          {renderHits(informationModelItems, publishers, referenceData)}
+          {!_.isEmpty(losItems) && renderHits(informationModelItems, losItems)}
           <div className="col-12 d-flex justify-content-center">
             <span className="uu-invisible" aria-hidden="false">
               Sidepaginering.
