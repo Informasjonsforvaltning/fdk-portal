@@ -44,6 +44,7 @@
   "showDetails": "Se detaljer",
   "closeDetails": "Skjul detaljer",
   "openData": "Åpne data",
+  "showHitsFor": "Viser {0} treff for {1}",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",

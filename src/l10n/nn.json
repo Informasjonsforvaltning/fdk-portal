@@ -44,6 +44,7 @@
   "showDetails": "Vis detaljar",
   "closeDetails": "Skjul detaljar",
   "openData": "Opne data",
+  "showHitsFor": "Viser {0} treff for {1}",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",

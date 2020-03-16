@@ -44,6 +44,7 @@
   "showDetails": "Show details",
   "closeDetails": "Close details",
   "openData": "Open data",
+  "showHitsFor": "Shows {0} hits for {1}",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",

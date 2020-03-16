@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab component must render correct structure 1`] = `
+<styled.li
+  active={true}
+>
+  <Styled(Link)
+    aria-label="Tab for datasett"
+    to={
+      Object {
+        "pathname": "/datasets",
+        "search": "",
+      }
+    }
+  />
+</styled.li>
+`;
+
+exports[`Tab component must render correct structure 2`] = `
+<styled.li
+  active={false}
+>
+  <Styled(Link)
+    aria-label="Tab for datasett"
+    to={
+      Object {
+        "pathname": "/datasets",
+        "search": "",
+      }
+    }
+  />
+</styled.li>
+`;
