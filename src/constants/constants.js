@@ -11,4 +11,4 @@ export const HITS_PER_PAGE = 10;
 export const PATHNAME_HOME_NAP =
   'https://transportportal.atlas.vegvesen.no/no/';
 export const PATHNAME_ABOUT_NAP =
-  'https://transportportal.atlas.vegvesen.no/about/';
+  'https://transportportal.atlas.vegvesen.no/no/gen/about/';

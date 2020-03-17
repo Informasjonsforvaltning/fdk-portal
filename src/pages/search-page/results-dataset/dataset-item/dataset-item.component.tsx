@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
-import find from 'lodash/find';
 
 import { getTranslateText } from '../../../../lib/translateText';
-import { getLosStructure } from '../../../../redux/modules/referenceData';
 import { Dataset } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
 import { RoundedTag } from '../../../../components/rounded-tag/rounded-tag.component';
@@ -15,10 +13,12 @@ import {
   SearchHitOpenData
 } from '../../../../components/search-hit/search-hit';
 import localization from '../../../../lib/localization';
+import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
+import { PATHNAME_DATASETS } from '../../../../constants/constants';
 
 interface Props {
   dataset: Dataset;
-  referenceData: any;
+  losItems: any;
 }
 
 function isDatasetOpen(accessRights: any, distribution: any): boolean {
@@ -45,12 +45,19 @@ const renderAccessRights = (accessRight: any) => {
 const renderThemes = (themes: any, losItems: any) => {
   return themes
     .map((theme: any, index: number) => {
-      const losItem = find(losItems, { uri: theme.id });
-      const title = getTranslateText(losItem?.prefLabel || theme.title);
+      const losItem: any =
+        Object.values(losItems).find(
+          (losItem: any) => losItem.uri === theme.id
+        ) || {};
+      const losPath: any = losItem?.losPaths ? losItem.losPaths[0] : '';
+      const prefLabel = getTranslateText(losItem.prefLabel);
       return (
-        title && (
-          <RoundedTag key={`dataset-theme-${index}`} to="">
-            <span>{title}</span>
+        prefLabel && (
+          <RoundedTag
+            key={`dataset-theme-${index}`}
+            to={`${PATHNAME_DATASETS}${patchSearchQuery('losTheme', losPath)}`}
+          >
+            <span>{prefLabel}</span>
           </RoundedTag>
         )
       );
@@ -81,9 +88,8 @@ export const DatasetItem: FC<Props> = ({
     accessRights = {},
     provenance = {}
   },
-  referenceData
+  losItems
 }) => {
-  const losItems = getLosStructure(referenceData);
   return (
     <SearchHit
       id={id}
