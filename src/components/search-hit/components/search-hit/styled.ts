@@ -44,6 +44,7 @@ const OpenData = styled.div`
     &:hover {
       color: #fff;
       background-color: #000;
+      cursor: default;
       text-decoration: none;
     }
   }
@@ -65,6 +66,7 @@ const AccessRight = styled.div`
     color: ${({ theme }) => theme.dark};
     &:hover {
       color: #fff !important;
+      cursor: default;
       background-color: #000 !important;
       text-decoration: none;
       svg {
