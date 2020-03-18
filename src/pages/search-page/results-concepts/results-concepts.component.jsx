@@ -25,6 +25,8 @@ import { ConceptItem } from '../../../components/concept-item/concept-item.compo
 import { getConfig } from '../../../config';
 import { themeFDK, themeNAP } from '../../../app/theme';
 
+import { Entity } from '../../../types/enums';
+
 function _renderCompareTerms({ conceptsCompare, removeConcept }) {
   const conceptIdsArray = [];
   const children = items =>
@@ -78,9 +80,9 @@ function _renderTerms({
           <ErrorBoundary key={item.id}>
             <ThemeProvider
               theme={
-                getConfig().themeNap
-                  ? themeNAP.colors.concept
-                  : themeFDK.colors.concept
+                (getConfig().themeNap ? themeNAP : themeFDK).colors[
+                  Entity.CONCEPT
+                ]
               }
             >
               <ConceptItem

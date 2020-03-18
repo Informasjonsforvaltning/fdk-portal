@@ -18,6 +18,8 @@ import { themeFDK, themeNAP } from '../../../app/theme';
 import { ApiItem } from '../../../components/api-item/api-item.component';
 import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
 
+import { Entity } from '../../../types/enums';
+
 const renderFilterModal = ({
   showFilterModal,
   closeFilterModal,
@@ -62,7 +64,9 @@ const renderHits = (hits, publishers, referenceData) => {
       <ErrorBoundary key={item.id}>
         <ThemeProvider
           theme={
-            getConfig().themeNap ? themeNAP.colors.api : themeFDK.colors.api
+            (getConfig().themeNap ? themeNAP : themeFDK).colors[
+              Entity.DATA_SERVICE
+            ]
           }
         >
           <ApiItem api={item} referenceData={referenceData} />

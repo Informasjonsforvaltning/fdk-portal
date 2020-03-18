@@ -23,6 +23,8 @@ import { getConfig } from '../../../config';
 import { DatasetItem } from '../../../components/dataset-item/dataset-item.component';
 import { themeFDK, themeNAP } from '../../../app/theme';
 
+import { Entity } from '../../../types/enums';
+
 function _renderFilterModal({
   showFilterModal,
   closeFilterModal,
@@ -117,9 +119,7 @@ const renderHits = (datasetItems, losItems) => {
       <ErrorBoundary key={dataset.id}>
         <ThemeProvider
           theme={
-            getConfig().themeNap
-              ? themeNAP.colors.dataset
-              : themeFDK.colors.dataset
+            (getConfig().themeNap ? themeNAP : themeFDK).colors[Entity.DATASET]
           }
         >
           <DatasetItem dataset={dataset} losItems={losItems} />
