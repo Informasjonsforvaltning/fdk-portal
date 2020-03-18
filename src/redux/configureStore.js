@@ -1,30 +1,31 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import persistState from 'redux-localstorage';
 import { apiMiddleware } from 'redux-api-middleware';
 
 import { rootReducer } from './rootReducer';
+import RootSaga from './saga';
 
-function selectCompose() {
-  return window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-}
+const sagaMiddleware = createSagaMiddleware({ context: {} });
 
 export function configureStore(storeConfig) {
-  const middlewares = [thunk, apiMiddleware];
+  const middlewares = [thunk, apiMiddleware, sagaMiddleware];
   if (storeConfig.reduxLog) {
     middlewares.push(createLogger());
   }
 
-  const selectedCompose = selectCompose();
-
-  const enhancer = selectedCompose(
+  const enhancer = composeWithDevTools(
     applyMiddleware(...middlewares),
     persistState(['featureToggle', 'settings'], { key: 'redux' })
   );
 
   const store = createStore(rootReducer, /* preloadedState, */ enhancer);
   store.dispatch({ type: 'STORE_INIT' });
+
+  sagaMiddleware.run(RootSaga);
 
   if (module.hot) {
     module.hot.accept('./rootReducer', () => {
