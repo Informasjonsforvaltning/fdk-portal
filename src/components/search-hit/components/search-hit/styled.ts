@@ -43,7 +43,7 @@ const OpenData = styled.div`
     color: #fff !important;
     &:hover {
       color: #fff;
-      background-color: #000;
+      background-color: #121619;
       cursor: default;
       text-decoration: none;
     }
@@ -67,7 +67,7 @@ const AccessRight = styled.div`
     &:hover {
       color: #fff !important;
       cursor: default;
-      background-color: #000 !important;
+      background-color: #121619 !important;
       text-decoration: none;
       svg {
         path {
@@ -91,7 +91,7 @@ const Theme = styled.div`
     padding: 0 0.6em;
     &:hover {
       color: #fff !important;
-      background-color: #000 !important;
+      background-color: #121619 !important;
       text-decoration: none;
     }
   }
