@@ -90,16 +90,27 @@ export interface Concept {
   example: Partial<TextLanguage>;
 }
 
+interface Provenance {
+  code: string;
+}
+
+interface AccessRights {
+  code: string;
+}
+
 export interface Dataset {
   id: string;
   type: any;
   publisher: Partial<Publisher>;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
+  descriptionFormatted: Partial<TextLanguage>;
+  objective: Partial<TextLanguage>;
   theme: string[];
-  distribution: any;
-  accessRights: any;
-  provenance: any;
+  distribution: Distribution[];
+  accessRights?: AccessRights;
+  provenance?: Provenance;
+  harvest: Partial<Harvest>;
 }
 
 export interface Api {
