@@ -1,3 +1,5 @@
+import { Entity } from '../types/enums';
+
 export const themeFDK = {
   colors: {
     headerBg: '#FFFFFF',
@@ -45,22 +47,22 @@ export const themeFDK = {
     searchBoxBg: '#2D3741',
     searchButtonBg: '#121619',
 
-    dataset: {
+    [Entity.DATASET]: {
       dark: '#335380',
       light: '#D5E1F2',
       lighter: '#F0F3F7'
     },
-    api: {
+    [Entity.DATA_SERVICE]: {
       dark: '#805333',
       light: '#F2E1D5',
       lighter: '#F7F2ED'
     },
-    concept: {
+    [Entity.CONCEPT]: {
       dark: '#337380',
       light: '#D5EDF2',
       lighter: '#F0F6F7'
     },
-    infomod: {
+    [Entity.INFORMATION_MODEL]: {
       dark: '#593380',
       light: '#E4D5F2',
       lighter: '#F4F0F7'
@@ -116,22 +118,22 @@ export const themeNAP = {
     searchBoxBg: '#DFE1E2',
     searchButtonBg: '#D5D7D9',
 
-    dataset: {
+    [Entity.DATASET]: {
       dark: '#444F55',
       light: '#FFF',
       lighter: '#E5E5E5'
     },
-    api: {
+    [Entity.DATA_SERVICE]: {
       dark: '#805333',
       light: '#F2E1D5',
       lighter: '#F7F2ED'
     },
-    concept: {
+    [Entity.CONCEPT]: {
       dark: '#337380',
       light: '#D5EDF2',
       lighter: '#F0F6F7'
     },
-    infomod: {
+    [Entity.INFORMATION_MODEL]: {
       dark: '#593380',
       light: '#E4D5F2',
       lighter: '#F4F0F7'

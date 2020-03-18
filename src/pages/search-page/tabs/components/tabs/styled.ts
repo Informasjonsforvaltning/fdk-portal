@@ -6,6 +6,8 @@ import ApiIconBase from '../../../../../images/icon-catalog-api-md.svg';
 import ConceptIconBase from '../../../../../images/icon-catalog-concept-md.svg';
 import InfomodIconBase from '../../../../../images/icon-catalog-infomod-md.svg';
 
+import { Entity } from '../../../../../types/enums';
+
 const Tabs = styled.ul`
   align-items: center;
   display: flex;
@@ -37,9 +39,9 @@ const AllIcon = styled(AllIconBase)`
 const DatasetIcon = styled(DatasetIconBase)`
   border-radius: 50%;
   padding: 0.5em;
-  background-color: ${({ theme }) => theme.colors.dataset.light};
+  background-color: ${({ theme }) => theme.colors[Entity.DATASET].light};
   height: 3em;
-  fill: ${({ theme }) => theme.colors.dataset.dark};
+  fill: ${({ theme }) => theme.colors[Entity.DATASET].dark};
 
   @media (min-width: 768px) {
     height: 2em;
@@ -49,9 +51,9 @@ const DatasetIcon = styled(DatasetIconBase)`
 const ApiIcon = styled(ApiIconBase)`
   border-radius: 50%;
   padding: 0.5em;
-  background-color: ${({ theme }) => theme.colors.api.light};
+  background-color: ${({ theme }) => theme.colors[Entity.DATA_SERVICE].light};
   height: 3em;
-  fill: ${({ theme }) => theme.colors.api.dark};
+  fill: ${({ theme }) => theme.colors[Entity.DATA_SERVICE].dark};
 
   @media (min-width: 768px) {
     height: 2em;
@@ -61,9 +63,9 @@ const ApiIcon = styled(ApiIconBase)`
 const ConceptIcon = styled(ConceptIconBase)`
   border-radius: 50%;
   padding: 0.5em;
-  background-color: ${({ theme }) => theme.colors.concept.light};
+  background-color: ${({ theme }) => theme.colors[Entity.CONCEPT].light};
   height: 3em;
-  fill: ${({ theme }) => theme.colors.concept.dark};
+  fill: ${({ theme }) => theme.colors[Entity.CONCEPT].dark};
 
   @media (min-width: 768px) {
     height: 2em;
@@ -73,9 +75,10 @@ const ConceptIcon = styled(ConceptIconBase)`
 const InfomodIcon = styled(InfomodIconBase)`
   border-radius: 50%;
   padding: 0.5em;
-  background-color: ${({ theme }) => theme.colors.infomod.light};
+  background-color: ${({ theme }) =>
+    theme.colors[Entity.INFORMATION_MODEL].light};
   height: 3em;
-  fill: ${({ theme }) => theme.colors.infomod.dark};
+  fill: ${({ theme }) => theme.colors[Entity.INFORMATION_MODEL].dark};
 
   @media (min-width: 768px) {
     height: 2em;

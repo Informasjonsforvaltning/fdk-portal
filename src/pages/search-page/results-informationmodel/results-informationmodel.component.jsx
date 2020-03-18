@@ -19,6 +19,8 @@ import { themeFDK, themeNAP } from '../../../app/theme';
 import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
 import { InformationModelItem } from '../../../components/informationmodel-item/informationmodel-item.component';
 
+import { Entity } from '../../../types/enums';
+
 const renderFilterModal = ({
   showFilterModal,
   closeFilterModal,
@@ -74,9 +76,9 @@ const renderHits = (hits, losItems) => {
       <ErrorBoundary key={item.id}>
         <ThemeProvider
           theme={
-            getConfig().themeNap
-              ? themeNAP.colors.infomod
-              : themeFDK.colors.infomod
+            (getConfig().themeNap ? themeNAP : themeFDK).colors[
+              Entity.INFORMATION_MODEL
+            ]
           }
         >
           <InformationModelItem informationModel={item} losItems={losItems} />
