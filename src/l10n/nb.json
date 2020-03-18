@@ -433,5 +433,21 @@
     "sitatFraKilde": "Sitat fra",
     "basertPåKilde": "Basert på",
     "egendefinert": "Egendefinert"
+  },
+  "detailsPage": {
+    "banner": {
+      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "entity": {
+        "dataset": "Datasettbeskrivelse",
+        "dataservice": "Datatjenestebeskrivelse",
+        "concept": "Begrepsbeskrivelse",
+        "infomod": "Informasjonsmodellbeskrivelse"
+      }
+    },
+    "publisher": "Eier: {publisher}",
+    "openData": "Åpne data",
+    "menu": {
+      "title": "Gå til"
+    }
   }
 }
