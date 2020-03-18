@@ -8,6 +8,7 @@ import { datasetsReducer } from './modules/datasets';
 import { apisReducer } from './modules/apis';
 import { conceptReducer } from './modules/concepts';
 import { informationModelsReducer } from './modules/informationModels';
+import DatasetReducer from '../components/with-dataset/redux/reducer';
 import ReferenceDataReducer from '../components/with-reference-data/redux/reducer';
 
 export const rootReducer = combineReducers({
@@ -20,5 +21,6 @@ export const rootReducer = combineReducers({
   apis: apisReducer,
   concepts: conceptReducer,
   informationModels: informationModelsReducer,
+  DatasetReducer,
   ReferenceDataReducer
 });
