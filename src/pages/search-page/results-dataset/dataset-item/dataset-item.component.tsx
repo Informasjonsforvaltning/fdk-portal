@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import { getTranslateText } from '../../../../lib/translateText';
 import { Dataset } from '../../../../types';
@@ -101,16 +102,22 @@ export const DatasetItem: FC<Props> = ({
     >
       {isDatasetOpen(accessRights, distribution) && (
         <SearchHitOpenData>
-          <RoundedTag>
-            <PublicIconBase />
-            <span>{localization.openData}</span>
-          </RoundedTag>
+          <div data-tip={localization.openDataTooltip}>
+            <RoundedTag>
+              <PublicIconBase />
+              <span>{localization.openData}</span>
+            </RoundedTag>
+          </div>
+          <ReactTooltip effect="solid" multiline />
         </SearchHitOpenData>
       )}
 
       {!isDatasetOpen(accessRights, distribution) && (
         <SearchHitAccessRights>
-          {renderAccessRights(accessRights)}
+          <div data-tip={localization.publicDatasetTooltip}>
+            {renderAccessRights(accessRights)}
+          </div>
+          <ReactTooltip effect="solid" multiline />
         </SearchHitAccessRights>
       )}
 
