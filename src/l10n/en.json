@@ -45,8 +45,8 @@
   "closeDetails": "Close details",
   "openData": "Open data",
   "showHitsFor": "Shows {0} hits for {1}",
-  "openDataTooltip": "Datasets that are published under an open<br> licence such that everyone can get access, use<br> and share them. This also include solutions that require<br> user registration and/or API-keys as long as everyone can get access.",
-  "publicDatasetTooltip": "Datasets that can be accessed by everyone, but not published as 'Open Data'.",
+  "openDataTooltip": "Datasets that are published under an open<br> licence such that everyone can get access,<br> use and share them. This also include solutions<br> that require user registration and/or API-keys as<br> long as everyone can get access.",
+  "publicDatasetTooltip": "Datasets that can be accessed<br> by everyone, but not published<br> as 'Open Data'.",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
