@@ -5,6 +5,13 @@ export enum SearchTypes {
   informationModel
 }
 
+export enum Entity {
+  DATASET = 'dataset',
+  DATA_SERVICE = 'dataservice',
+  CONCEPT = 'concept',
+  INFORMATION_MODEL = 'informationmodel'
+}
+
 export enum DataFormat {
   JSON = 'application/json',
   CSV = 'text/csv',
