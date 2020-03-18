@@ -432,5 +432,21 @@
     "sitatFraKilde": "Sitat fra",
     "basertPåKilde": "Basert på",
     "egendefinert": "Egendefinert"
+  },
+  "detailsPage": {
+    "banner": {
+      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "entity": {
+        "dataset": "Datasettbeskrivelse",
+        "dataservice": "Datatjenestebeskrivelse",
+        "concept": "Omgrepsbeskrivelse",
+        "infomod": "Informasjonsmodellbeskrivelse"
+      }
+    },
+    "publisher": "Eigar: {publisher}",
+    "openData": "Opne data",
+    "menu": {
+      "title": "Gå til"
+    }
   }
 }

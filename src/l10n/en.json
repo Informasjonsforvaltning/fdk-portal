@@ -432,5 +432,21 @@
     "sitatFraKilde": "Cited in",
     "basertPåKilde": "Based on",
     "egendefinert": "User-defined"
+  },
+  "detailsPage": {
+    "banner": {
+      "lastPublishedInfo":  "{entity} published in Felles datakatalog on {lastPublished}",
+      "entity": {
+        "dataset": "Dataset description",
+        "dataservice": "Data service description",
+        "concept": "Concept description",
+        "infomod": "Information model description"
+      }
+    },
+    "publisher": "Owner: {publisher}",
+    "openData": "Open data",
+    "menu": {
+      "title": "Go to"
+    }
   }
 }
