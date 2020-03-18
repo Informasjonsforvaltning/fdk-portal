@@ -56,6 +56,14 @@ export interface Harvest {
 
 export interface LosTheme {
   uri: string;
+  name: Partial<TextLanguage>;
+  losPaths?: string[];
+}
+
+export interface EuTheme {
+  id: string;
+  title: Partial<TextLanguage>;
+  code?: string;
 }
 
 export interface Type {
@@ -132,4 +140,10 @@ export interface Distribution {
   downloadURL: string[];
   conformsTo: ConformsTo[];
   page?: Page[];
+  accessService?: any;
+}
+
+export interface ReferenceData {
+  los?: LosTheme[];
+  themes?: EuTheme[];
 }
