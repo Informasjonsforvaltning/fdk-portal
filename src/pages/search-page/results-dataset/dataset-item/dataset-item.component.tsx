@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import ReactTooltip from 'react-tooltip';
 
 import { getTranslateText } from '../../../../lib/translateText';
 import { Dataset } from '../../../../types';
@@ -16,6 +15,7 @@ import {
 import localization from '../../../../lib/localization';
 import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import { PATHNAME_DATASETS } from '../../../../constants/constants';
+import ReactTooltipSC from '../../../../components/tooltip/styled';
 
 interface Props {
   dataset: Dataset;
@@ -108,7 +108,7 @@ export const DatasetItem: FC<Props> = ({
               <span>{localization.openData}</span>
             </RoundedTag>
           </div>
-          <ReactTooltip effect="solid" multiline />
+          <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
         </SearchHitOpenData>
       )}
 
@@ -117,7 +117,7 @@ export const DatasetItem: FC<Props> = ({
           <div data-tip={localization.publicDatasetTooltip}>
             {renderAccessRights(accessRights)}
           </div>
-          <ReactTooltip effect="solid" multiline />
+          <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
         </SearchHitAccessRights>
       )}
 
