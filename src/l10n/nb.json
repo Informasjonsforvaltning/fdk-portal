@@ -46,7 +46,8 @@
   "openData": "Åpne data",
   "showHitsFor": "Viser {0} treff for {1}",
   "openDataTooltip": "Datasett som er publisert under en åpen<br> lisens slik at alle kan få tilgang, bruke<br> og dele. Dette omfatter også løsninger som<br> krever brukeregistrering/API-nøkler,<br> så lenge alle kan få tilgang.",
-  "publicDatasetTooltip": "Datasett som kan gjøres tilgjengelig for alle, men som ikke er publisert som åpne data.",
+  "openDataTooltipX": "Datasett som er publisert under en åpen lisens slik at alle kan få tilgang, bruke og dele. Dette omfatter også løsninger som krever brukeregistrering/API-nøkler, så lenge alle kan få tilgang.",
+  "publicDatasetTooltip": "Datasett som kan gjøres tilgjengelig<br> for alle, men som ikke er publisert<br> som åpne data.",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
