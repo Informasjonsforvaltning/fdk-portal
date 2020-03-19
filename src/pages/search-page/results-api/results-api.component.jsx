@@ -15,7 +15,7 @@ import { parseSearchParams } from '../../../lib/location-history-helper';
 import { FilterPills } from '../filter-pills/filter-pills.component';
 import { getConfig } from '../../../config';
 import { themeFDK, themeNAP } from '../../../app/theme';
-import { ApiItem } from './api-item/api-item.component';
+import { ApiItem } from '../../../components/api-item/api-item.component';
 import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
 
 const renderFilterModal = ({
