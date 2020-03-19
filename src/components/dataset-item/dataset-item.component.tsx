@@ -1,21 +1,21 @@
 import React, { FC } from 'react';
 
-import { getTranslateText } from '../../../../lib/translateText';
-import { Dataset } from '../../../../types';
-import { SearchTypes } from '../../../../types/enums';
-import { RoundedTag } from '../../../../components/rounded-tag/rounded-tag.component';
-import PublicIconBase from '../../../../images/icon-access-open-md.svg';
+import { getTranslateText } from '../../lib/translateText';
+import { Dataset } from '../../types';
+import { SearchTypes } from '../../types/enums';
+import { RoundedTag } from '../rounded-tag/rounded-tag.component';
+import PublicIconBase from '../../images/icon-access-open-md.svg';
 import {
   SearchHit,
   SearchHitFormats,
   SearchHitThemes,
   SearchHitAccessRights,
   SearchHitOpenData
-} from '../../../../components/search-hit/search-hit';
-import localization from '../../../../lib/localization';
-import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
-import { PATHNAME_DATASETS } from '../../../../constants/constants';
-import ReactTooltipSC from '../../../../components/tooltip/styled';
+} from '../search-hit/search-hit';
+import localization from '../../lib/localization';
+import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
+import { PATHNAME_DATASETS } from '../../constants/constants';
+import ReactTooltipSC from '../tooltip/styled';
 
 interface Props {
   dataset: Dataset;
