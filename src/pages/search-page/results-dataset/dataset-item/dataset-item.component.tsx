@@ -44,24 +44,43 @@ const renderAccessRights = (accessRight: any) => {
 };
 
 const renderThemes = (themes: any, losItems: any) => {
+  const isEuTheme = ({ id, title, code }: any) => !!id && !!title && !!code;
+  const isLosTheme = ({ uri, prefLabel, losPaths }: any) =>
+    !!uri && !!prefLabel && !!losPaths;
+
   return themes
-    .map((theme: any, index: number) => {
-      const losItem: any =
-        Object.values(losItems).find(
-          (losItem: any) => losItem.uri === theme.id
-        ) || {};
-      const losPath: any = losItem?.losPaths ? losItem.losPaths[0] : '';
-      const prefLabel = getTranslateText(losItem.prefLabel);
-      return (
-        prefLabel && (
+    .map((theme: any) =>
+      theme.id
+        ? Object.values(losItems).find(
+            (losItem: any) => losItem.uri === theme.id
+          ) ?? null
+        : theme
+    )
+    .filter(Boolean)
+    .map((theme: any) => {
+      if (isEuTheme(theme)) {
+        const { id, title, code } = theme;
+        return (
           <RoundedTag
-            key={`dataset-theme-${index}`}
+            key={id}
+            to={`${PATHNAME_DATASETS}${patchSearchQuery('theme', code)}`}
+          >
+            <span>{getTranslateText(title)}</span>
+          </RoundedTag>
+        );
+      }
+      if (isLosTheme(theme)) {
+        const { uri, prefLabel, losPaths: [losPath] = [] } = theme;
+        return (
+          <RoundedTag
+            key={uri}
             to={`${PATHNAME_DATASETS}${patchSearchQuery('losTheme', losPath)}`}
           >
-            <span>{prefLabel}</span>
+            <span>{getTranslateText(prefLabel)}</span>
           </RoundedTag>
-        )
-      );
+        );
+      }
+      return null;
     })
     .filter(Boolean);
 };
