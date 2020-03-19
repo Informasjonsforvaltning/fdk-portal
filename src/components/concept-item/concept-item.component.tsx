@@ -2,15 +2,12 @@ import React, { FC, Fragment } from 'react';
 import some from 'lodash/some';
 
 import SC from './styled';
-import { Concept, TextLanguage } from '../../../../types';
-import { SearchTypes } from '../../../../types/enums';
-import {
-  SearchHit,
-  SearchHitData
-} from '../../../../components/search-hit/search-hit';
-import { LinkExternal } from '../../../../components/link-external/link-external.component';
-import localization from '../../../../lib/localization';
-import { getTranslateText } from '../../../../lib/translateText';
+import { Concept, TextLanguage } from '../../types';
+import { SearchTypes } from '../../types/enums';
+import { SearchHit, SearchHitData } from '../search-hit/search-hit';
+import { LinkExternal } from '../link-external/link-external.component';
+import localization from '../../lib/localization';
+import { getTranslateText } from '../../lib/translateText';
 
 interface Props {
   concept: Concept;
