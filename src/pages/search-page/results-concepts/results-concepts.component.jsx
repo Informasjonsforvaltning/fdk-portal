@@ -22,7 +22,7 @@ import { getSortfield, setPage, setSortfield } from '../search-location-helper';
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { FilterPills } from '../filter-pills/filter-pills.component';
 import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
-import { ConceptItem } from './concept-item/concept-item.component';
+import { ConceptItem } from '../../../components/concept-item/concept-item.component';
 import { getConfig } from '../../../config';
 import { themeFDK, themeNAP } from '../../../app/theme';
 
