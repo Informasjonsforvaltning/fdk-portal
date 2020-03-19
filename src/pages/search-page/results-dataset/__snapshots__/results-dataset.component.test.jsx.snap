@@ -136,6 +136,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
                     ],
                   }
                 }
+                filters={null}
                 htmlKey={1}
                 onClick={[Function]}
                 themesItems={Object {}}
@@ -153,6 +154,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
                     ],
                   }
                 }
+                filters={Object {}}
                 htmlKey={2}
                 onClick={[Function]}
                 themesItems={null}
@@ -209,6 +211,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
                     ],
                   }
                 }
+                filters={null}
                 htmlKey={3}
                 onClick={[Function]}
                 themesItems={null}
@@ -226,6 +229,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
                     ],
                   }
                 }
+                filters={null}
                 htmlKey={4}
                 onClick={[Function]}
                 themesItems={null}
@@ -278,6 +282,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
               ],
             }
           }
+          filters={null}
           htmlKey={1}
           onClick={[Function]}
           themesItems={Object {}}
@@ -295,6 +300,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
               ],
             }
           }
+          filters={Object {}}
           htmlKey={2}
           onClick={[Function]}
           themesItems={null}
@@ -351,6 +357,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
               ],
             }
           }
+          filters={null}
           htmlKey={3}
           onClick={[Function]}
           themesItems={null}
@@ -368,6 +375,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
               ],
             }
           }
+          filters={null}
           htmlKey={4}
           onClick={[Function]}
           themesItems={null}

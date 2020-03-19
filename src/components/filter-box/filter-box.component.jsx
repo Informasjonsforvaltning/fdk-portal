@@ -33,12 +33,15 @@ export class FilterBox extends React.Component {
     this.setState({ open: !open });
   }
 
-  _renderOptions({ buckets }, onClick, activeFilter) {
+  _renderOptions({ buckets }, onClick, activeFilter, allFilters) {
     const { open } = this.state;
     const { htmlKey, themesItems } = this.props;
-    let filters;
+    const filters = [];
     if (activeFilter) {
-      filters = activeFilter.split(',');
+      filters.push(...activeFilter.split(','));
+    }
+    if (allFilters && 'opendata' in allFilters) {
+      filters.push('OPEN_DATA');
     }
     const options = items =>
       items.map((item, index) => {
@@ -48,7 +51,7 @@ export class FilterBox extends React.Component {
           itemKey = Number.parseInt(`${htmlKey}${index}`, 10);
         }
         let active = false;
-        if (filters && filters.includes(item.key)) {
+        if (filters.includes(item.key)) {
           active = true;
         }
         return (
@@ -100,7 +103,7 @@ export class FilterBox extends React.Component {
 
   render() {
     const { openFilter } = this.state;
-    const { title, filter, onClick, activeFilter } = this.props;
+    const { title, filter, onClick, activeFilter, filters } = this.props;
 
     if (_.get(filter, 'buckets', []).length > 0) {
       return (
@@ -118,7 +121,7 @@ export class FilterBox extends React.Component {
           <Collapse isOpen={openFilter}>
             <div className="fdk-panel__content">
               <div className="fdk-items-list">
-                {this._renderOptions(filter, onClick, activeFilter)}
+                {this._renderOptions(filter, onClick, activeFilter, filters)}
               </div>
             </div>
           </Collapse>
@@ -133,7 +136,8 @@ FilterBox.defaultProps = {
   htmlKey: null,
   title: null,
   activeFilter: null,
-  themesItems: null
+  themesItems: null,
+  filters: null
 };
 
 FilterBox.propTypes = {
@@ -142,7 +146,8 @@ FilterBox.propTypes = {
   filter: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
   activeFilter: PropTypes.string,
-  themesItems: PropTypes.object
+  themesItems: PropTypes.object,
+  filters: PropTypes.object
 };
 
 // export default FilterBox;

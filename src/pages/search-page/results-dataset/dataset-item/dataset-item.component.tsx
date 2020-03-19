@@ -15,6 +15,7 @@ import {
 import localization from '../../../../lib/localization';
 import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import { PATHNAME_DATASETS } from '../../../../constants/constants';
+import ReactTooltipSC from '../../../../components/tooltip/styled';
 
 interface Props {
   dataset: Dataset;
@@ -101,16 +102,22 @@ export const DatasetItem: FC<Props> = ({
     >
       {isDatasetOpen(accessRights, distribution) && (
         <SearchHitOpenData>
-          <RoundedTag>
-            <PublicIconBase />
-            <span>{localization.openData}</span>
-          </RoundedTag>
+          <div data-tip={localization.openDataTooltip}>
+            <RoundedTag>
+              <PublicIconBase />
+              <span>{localization.openData}</span>
+            </RoundedTag>
+          </div>
+          <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
         </SearchHitOpenData>
       )}
 
       {!isDatasetOpen(accessRights, distribution) && (
         <SearchHitAccessRights>
-          {renderAccessRights(accessRights)}
+          <div data-tip={localization.publicDatasetTooltip}>
+            {renderAccessRights(accessRights)}
+          </div>
+          <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
         </SearchHitAccessRights>
       )}
 

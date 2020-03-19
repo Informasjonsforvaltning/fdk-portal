@@ -14,13 +14,13 @@
 
 .theme-fdk {
   .top-section-search {
-    background-color: $color-primary-lighter;
+    background-color: $color-neutral-dark;
   }
 }
 
 .sk-hits-stats__info {
-  color: $color-neutral-darkest;
-  font-size: 1.6rem;
+  color: $color-white;
+  font-size: 2rem;
   font-weight: 500;
 }
 
@@ -208,8 +208,7 @@
   }
   .theme-fdk {
     .top-section-search--image {
-      background-image: url(../../img/illustration-search.svg);
-      background-size: 105%;
+      background-image: url(../../img/illustration-search-grey.svg);
     }
   }
   .top-section-search--image {

@@ -14,7 +14,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 a {
   @include themify($themes) {
-    color: themed('color-text-link') !important;
+    color: themed('color-text-link');
   }
 }
 

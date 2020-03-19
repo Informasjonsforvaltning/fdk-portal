@@ -10,7 +10,6 @@ import { ResultsConcepts } from './results-concepts/results-concepts.component';
 import { ResultsApi } from './results-api/results-api.component';
 import { ResultsInformationModel } from './results-informationmodel/results-informationmodel.component';
 import { SearchBox } from './search-box/search-box.component';
-import { ResultsTabs } from './results-tabs/results-tabs.component';
 import { getConfig } from '../../config';
 
 import './search-page.scss';
@@ -34,6 +33,7 @@ import {
   REFERENCEDATA_PATH_LOS,
   REFERENCEDATA_PATH_THEMES
 } from '../../redux/modules/referenceData';
+import { Tabs } from './tabs/tabs';
 
 const browser = detect();
 
@@ -110,13 +110,17 @@ export const SearchPage = props => {
   const handleDatasetFilterAccessRights = event => {
     const selectedValue = event.target.value;
     const add = event.target.checked;
-    setMultiselectFilterValue(
-      history,
-      location,
-      'accessrights',
-      selectedValue,
-      add
-    );
+    if (selectedValue === 'OPEN_DATA') {
+      setMultiselectFilterValue(history, location, 'opendata', 'true', add);
+    } else {
+      setMultiselectFilterValue(
+        history,
+        location,
+        'accessrights',
+        selectedValue,
+        add
+      );
+    }
   };
 
   const handleFilterPublisherHierarchy = event => {
@@ -189,9 +193,9 @@ export const SearchPage = props => {
           open={open}
         />
         {!getConfig().themeNap && (
-          <ResultsTabs
+          <Tabs
             countDatasets={datasetTotal}
-            countTerms={conceptTotal}
+            countConcepts={conceptTotal}
             countApis={apiTotal}
             countInformationModels={informationModelTotal}
           />

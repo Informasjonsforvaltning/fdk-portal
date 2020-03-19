@@ -27,6 +27,22 @@ export const SearchBoxPure = props => {
   let refSearchBox; // eslint-disable-line no-unused-vars
   return (
     <div className="container pt-5 pb-5">
+      <div className="col-md-12 text-center mt-5 mb-4">
+        <HitsStats
+          countDatasets={countDatasets}
+          countTerms={countTerms}
+          countApis={countApis}
+          countInformationModels={countInformationModels}
+          filteringOrTextSearchPerformed={
+            !!(
+              getParamFromUrl('q') ||
+              getParamFromUrl('theme') ||
+              getParamFromUrl('accessRight') ||
+              getParamFromUrl('publisher')
+            )
+          }
+        />
+      </div>
       <div className="col-12 col-lg-10 offset-lg-1 fdk-search-flex d-flex">
         <div className="d-inline d-lg-none">
           <button
@@ -82,22 +98,6 @@ export const SearchBoxPure = props => {
           <img src={SearchIcon} alt="Søk" />
           {localization.query.do}
         </button>
-      </div>
-      <div className="col-md-12 text-center">
-        <HitsStats
-          countDatasets={countDatasets}
-          countTerms={countTerms}
-          countApis={countApis}
-          countInformationModels={countInformationModels}
-          filteringOrTextSearchPerformed={
-            !!(
-              getParamFromUrl('q') ||
-              getParamFromUrl('theme') ||
-              getParamFromUrl('accessRight') ||
-              getParamFromUrl('publisher')
-            )
-          }
-        />
       </div>
     </div>
   );
