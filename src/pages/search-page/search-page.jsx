@@ -110,13 +110,17 @@ export const SearchPage = props => {
   const handleDatasetFilterAccessRights = event => {
     const selectedValue = event.target.value;
     const add = event.target.checked;
-    setMultiselectFilterValue(
-      history,
-      location,
-      'accessrights',
-      selectedValue,
-      add
-    );
+    if (selectedValue === 'OPEN_DATA') {
+      setMultiselectFilterValue(history, location, 'opendata', 'true', add);
+    } else {
+      setMultiselectFilterValue(
+        history,
+        location,
+        'accessrights',
+        selectedValue,
+        add
+      );
+    }
   };
 
   const handleFilterPublisherHierarchy = event => {

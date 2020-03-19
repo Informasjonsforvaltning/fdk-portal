@@ -114,6 +114,27 @@ export const FilterPills = ({
       if (key === 'keywords') {
         return renderKeywordPills(keyValue.split(','), history, location);
       }
+      if (key === 'opendata') {
+        return (
+          <Pill
+            key={`${key}-${keyValue}`}
+            history={history}
+            location={location}
+            name={key}
+            value={keyValue}
+            label={localization.open_data}
+            handleOnClick={() => {
+              setMultiselectFilterValue(
+                history,
+                location,
+                key,
+                keyValue,
+                false
+              );
+            }}
+          />
+        );
+      }
       return (
         <Pill
           key={`${key}-${keyValue}`}

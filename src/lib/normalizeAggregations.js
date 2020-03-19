@@ -30,9 +30,22 @@ const normalizeAggregation = aggregation => {
 export const normalizeAggregations = data => {
   const { aggregations } = data;
   if (aggregations) {
+    const normalisedAggregations = _.mapValues(
+      aggregations,
+      normalizeAggregation
+    );
+    if (
+      normalisedAggregations.accessRights &&
+      normalisedAggregations.opendata
+    ) {
+      normalisedAggregations.accessRights.buckets.unshift({
+        key: 'OPEN_DATA',
+        count: normalisedAggregations.opendata.count
+      });
+    }
     return {
       ...data,
-      aggregations: _.mapValues(aggregations, normalizeAggregation)
+      aggregations: normalisedAggregations
     };
   }
   return data;

@@ -72,6 +72,7 @@ function _renderFilterModal({
               filter={datasetAggregations.accessRights}
               onClick={onFilterAccessRights}
               activeFilter={locationSearch.accessrights}
+              filters={locationSearch}
             />
           )}
           <FilterTree
@@ -275,6 +276,7 @@ export const ResultsDatasetPure = ({
                   filter={datasetAggregations.accessRights}
                   onClick={onFilterAccessRights}
                   activeFilter={locationSearch.accessrights}
+                  filters={locationSearch}
                 />
               )}
               <FilterTree

@@ -140,6 +140,7 @@ exports[`should render ResultsApi correctly with hits 1`] = `
                     ],
                   }
                 }
+                filters={null}
                 htmlKey={2}
                 onClick={[Function]}
                 themesItems={null}
@@ -196,6 +197,7 @@ exports[`should render ResultsApi correctly with hits 1`] = `
               ],
             }
           }
+          filters={null}
           htmlKey={2}
           onClick={[Function]}
           themesItems={null}

@@ -23,6 +23,7 @@
   "public": "Public",
   "restricted": "Restricted",
   "non_public": "Non public",
+  "open_data": "Open data",
   "unknown": "Unknown",
   "deprecated": "deprecated",
   "responsible": "Responsible",
