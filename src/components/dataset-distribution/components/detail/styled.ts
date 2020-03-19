@@ -4,6 +4,7 @@ const Detail = styled.div`
   display: flex;
   padding: 10px 0;
   border-top: 1px solid #dfe1e2;
+  word-break: break-all;
 `;
 
 const Property = styled.div`

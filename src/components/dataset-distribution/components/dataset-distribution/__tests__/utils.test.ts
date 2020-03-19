@@ -18,8 +18,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -32,8 +32,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -46,8 +46,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -60,8 +60,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -74,8 +74,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -88,8 +88,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -102,8 +102,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -116,8 +116,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -130,8 +130,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -144,8 +144,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -158,8 +158,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         },
@@ -172,8 +172,8 @@ describe('DatasetDistribution utils', () => {
           ],
           expected: [
             DataFormat.JSON,
-            DataFormat.XML,
             DataFormat.CSV,
+            DataFormat.XML,
             DataFormat.UNKNOWN
           ]
         }
