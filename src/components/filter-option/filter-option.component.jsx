@@ -44,7 +44,7 @@ export const FilterOption = props => {
 
   let inputRef;
 
-  return (
+  return count ? (
     <div className={`checkbox ${displayClass}`}>
       <label
         className="checkbox_label"
@@ -52,6 +52,7 @@ export const FilterOption = props => {
           inputRef.click();
         }}
         tabIndex="0"
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
         role="button"
         htmlFor={id}
       >
@@ -71,7 +72,7 @@ export const FilterOption = props => {
         {textLabel} ({count})
       </label>
     </div>
-  );
+  ) : null;
 };
 
 FilterOption.defaultProps = {

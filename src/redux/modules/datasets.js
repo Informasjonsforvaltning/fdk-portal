@@ -29,7 +29,7 @@ export function fetchDatasetsIfNeededAction(query) {
   const queryKey = generateQueryKey(query);
   const params = {
     ...query,
-    aggregations: 'accessRights,theme,orgPath,provenance,spatial,los'
+    aggregations: 'accessRights,opendata,theme,orgPath,provenance,spatial,los'
   };
   return (dispatch, getState) =>
     shouldFetch(_.get(getState(), ['datasets', 'meta']), queryKey) &&
