@@ -50,7 +50,7 @@ const renderThemes = (themes: any, losItems: any) => {
 
   return themes
     .map((theme: any) =>
-      theme.id
+      theme.id && !theme.code
         ? Object.values(losItems).find(
             (losItem: any) => losItem.uri === theme.id
           ) ?? null
