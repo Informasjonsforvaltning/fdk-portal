@@ -1,15 +1,12 @@
 import React, { FC } from 'react';
 
-import { InformationModelDocument } from '../../../../types';
-import { SearchTypes } from '../../../../types/enums';
-import {
-  SearchHit,
-  SearchHitThemes
-} from '../../../../components/search-hit/search-hit';
-import { getTranslateText } from '../../../../lib/translateText';
-import { RoundedTag } from '../../../../components/rounded-tag/rounded-tag.component';
-import { PATHNAME_INFORMATIONMODELS } from '../../../../constants/constants';
-import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
+import { InformationModelDocument } from '../../types';
+import { SearchTypes } from '../../types/enums';
+import { SearchHit, SearchHitThemes } from '../search-hit/search-hit';
+import { getTranslateText } from '../../lib/translateText';
+import { RoundedTag } from '../rounded-tag/rounded-tag.component';
+import { PATHNAME_INFORMATIONMODELS } from '../../constants/constants';
+import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 
 interface Props {
   informationModel: InformationModelDocument;

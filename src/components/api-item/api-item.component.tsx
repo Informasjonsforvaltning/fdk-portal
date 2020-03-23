@@ -1,14 +1,11 @@
 import React, { FC } from 'react';
 
-import { Api } from '../../../../types';
-import { SearchTypes } from '../../../../types/enums';
-import {
-  SearchHit,
-  SearchHitOpenData
-} from '../../../../components/search-hit/search-hit';
-import { RoundedTag } from '../../../../components/rounded-tag/rounded-tag.component';
-import PublicIconBase from '../../../../images/icon-access-open-md.svg';
-import localization from '../../../../lib/localization';
+import { Api } from '../../types';
+import { SearchTypes } from '../../types/enums';
+import { SearchHit, SearchHitOpenData } from '../search-hit/search-hit';
+import { RoundedTag } from '../rounded-tag/rounded-tag.component';
+import PublicIconBase from '../../images/icon-access-open-md.svg';
+import localization from '../../lib/localization';
 
 interface Props {
   api: Api;

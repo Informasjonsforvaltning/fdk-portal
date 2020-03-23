@@ -17,7 +17,7 @@ import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import { getConfig } from '../../../config';
 import { themeFDK, themeNAP } from '../../../app/theme';
 import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
-import { InformationModelItem } from './informationmodel-item/informationmodel-item.component';
+import { InformationModelItem } from '../../../components/informationmodel-item/informationmodel-item.component';
 
 const renderFilterModal = ({
   showFilterModal,

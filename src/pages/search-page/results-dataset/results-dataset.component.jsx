@@ -20,7 +20,7 @@ import {
 } from '../../../redux/modules/referenceData';
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import { getConfig } from '../../../config';
-import { DatasetItem } from './dataset-item/dataset-item.component';
+import { DatasetItem } from '../../../components/dataset-item/dataset-item.component';
 import { themeFDK, themeNAP } from '../../../app/theme';
 
 function _renderFilterModal({
