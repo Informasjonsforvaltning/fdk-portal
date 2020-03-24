@@ -47,6 +47,27 @@ const DatasetDistribution: FC<Props> = ({
       />
     </ExpansionPanelHead>
     <ExpansionPanelBody>
+      {formats.length > 0 && (
+        <Detail
+          property={translations.dataset.distribution.format}
+          value={formats.sort(formatSorter).join(', ')}
+          data-testid={testIds.detail}
+        />
+      )}
+      {accessURL && (
+        <Detail
+          property={translations.dataset.distribution.accessUrl}
+          value={
+            <ExternalLink uri={accessURL} prefLabel={accessURL} openInNewTab />
+          }
+          data-testid={testIds.detail}
+        />
+      )}
+      <Detail
+        property={translations.dataset.distribution.description}
+        value={translate(description)}
+        data-testid={testIds.detail}
+      />
       {licenseUri && (
         <Detail
           property={translations.dataset.distribution.licenseLinkDefault}
@@ -60,18 +81,6 @@ const DatasetDistribution: FC<Props> = ({
           data-testid={testIds.detail}
         />
       )}
-      {formats.length > 0 && (
-        <Detail
-          property={translations.dataset.distribution.format}
-          value={formats.sort(formatSorter).join(', ')}
-          data-testid={testIds.detail}
-        />
-      )}
-      <Detail
-        property={translations.dataset.distribution.description}
-        value={translate(description)}
-        data-testid={testIds.detail}
-      />
       {downloadURL && (
         <Detail
           property={translations.dataset.distribution.downloadUrl}
@@ -81,15 +90,6 @@ const DatasetDistribution: FC<Props> = ({
               prefLabel={downloadURL}
               openInNewTab
             />
-          }
-          data-testid={testIds.detail}
-        />
-      )}
-      {accessURL && (
-        <Detail
-          property={translations.dataset.distribution.accessUrl}
-          value={
-            <ExternalLink uri={accessURL} prefLabel={accessURL} openInNewTab />
           }
           data-testid={testIds.detail}
         />
