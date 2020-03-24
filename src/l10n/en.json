@@ -36,6 +36,7 @@
   "statusDeprecated": "This version of API has expired and will be phased out {0} {1}. ",
   "statusReplacedUrl": "Ny versjon er dokumentert her.",
   "during": "during",
+  "resultsLabel": "All",
   "datasetLabel": "Dataset",
   "conceptLabel": "Concept",
   "informationModelLabel": "Information model",
@@ -51,6 +52,7 @@
   "publicDatasetTooltip": "Datasets that can be accessed<br> by everyone, but not published<br> as 'Open Data'.",
   "searchBoxHeader": "Everything you need to discover, evaluate and utilize public sector data",
   "showOnly": "Show only",
+  "publisher": "Publisher",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -117,6 +119,7 @@
     "navigation": "Sidenavigering",
     "next": "Neste side",
     "prev": "Forrige side",
+    "resultsTab": "All",
     "datasetTab": "Datasets",
     "apiTab": "APIs",
     "termTab": "Concepts",

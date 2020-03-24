@@ -36,6 +36,7 @@
   "statusDeprecated": "Denne versjonen av API-et er foreldet og vil fases ut {0} {1}. ",
   "statusReplacedUrl": "Ny versjon er dokumentert her.",
   "during": "i",
+  "resultsLabel": "Alle",
   "datasetLabel": "Datasett",
   "conceptLabel": "Begrep",
   "informationModelLabel": "Informasjonsmodell",
@@ -52,6 +53,7 @@
   "publicDatasetTooltip": "Datasett som kan gjøres tilgjengelig<br> for alle, men som ikke er publisert<br> som åpne data.",
   "searchBoxHeader": "Alt du trenger for å oppdage, vurdere og ta i bruk data fra offentlig sektor",
   "showOnly": "Vis kun",
+  "publisher": "Utgiver",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -118,6 +120,7 @@
     "navigation": "Sidenavigering",
     "next": "Neste side",
     "prev": "Forrige side",
+    "resultsTab": "Alle",
     "datasetTab": "Datasett",
     "apiTab": "API-er",
     "termTab": "Begreper",
