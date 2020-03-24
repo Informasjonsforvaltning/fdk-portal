@@ -20,6 +20,7 @@
   "phone": "Phone",
   "close": "Close",
   "filter": "Filter",
+  "openFilter": "Open search filter",
   "public": "Public",
   "restricted": "Restricted",
   "non_public": "Non public",
