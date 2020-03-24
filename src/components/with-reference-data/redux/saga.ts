@@ -10,13 +10,15 @@ function* getReferenceDataRequested({
   payload: { category }
 }: ReturnType<typeof actions.getReferenceDataRequested>) {
   try {
-    const { data, errors } = yield call(
-      axios.get,
-      `${getConfig().referenceDataApi.host}/reference-data/${category}`,
-      {
-        headers: { accept: 'application/json' }
-      }
-    );
+    const url =
+      category === 'referencetypes'
+        ? `${
+            getConfig().referenceDataApi.host
+          }/reference-data/codes/${category}`
+        : `${getConfig().referenceDataApi.host}/reference-data/${category}`;
+    const { data, errors } = yield call(axios.get, url, {
+      headers: { accept: 'application/json' }
+    });
     if (data) {
       yield put(actions.getReferenceDataSucceeded(category, data));
     } else {
