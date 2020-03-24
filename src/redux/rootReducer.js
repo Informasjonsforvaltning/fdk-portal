@@ -10,6 +10,7 @@ import { conceptReducer } from './modules/concepts';
 import { informationModelsReducer } from './modules/informationModels';
 import DatasetReducer from '../components/with-dataset/redux/reducer';
 import ReferenceDataReducer from '../components/with-reference-data/redux/reducer';
+import DatasetsReducer from '../components/with-datasets/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -22,5 +23,6 @@ export const rootReducer = combineReducers({
   concepts: conceptReducer,
   informationModels: informationModelsReducer,
   DatasetReducer,
-  ReferenceDataReducer
+  ReferenceDataReducer,
+  DatasetsReducer
 });
