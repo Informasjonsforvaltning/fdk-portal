@@ -48,6 +48,8 @@
   "showHitsFor": "Viser {0} treff for {1}",
   "openDataTooltip": "Datasett som er publisert under ein open <br> lisens slik at alle kan få tilgang, bruka<br> og dela. Dette omfattar òg løysingar som<br> krev brukeregistrering/API-nøklar,<br> så lenge alle kan få tilgang.",
   "publicDatasetTooltip": "Datasett som kan gjerast tilgjengeleg<br> for alle, men som ikkje er publisert<br> som opne data.",
+  "searchBoxHeader": "Alt du treng for å oppdage, vurdere og ta i bruk data fra offentleg sektor",
+  "showOnly": "Vis kun",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
