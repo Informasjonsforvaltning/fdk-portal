@@ -22,18 +22,22 @@ import {
   PATHNAME_APIS,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
-  PATHNAME_INFORMATIONMODELS
+  PATHNAME_INFORMATIONMODELS,
+  PATHNAME_SEARCH
 } from '../../constants/constants';
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { setFilter, setMultiselectFilterValue } from './search-location-helper';
 import localization from '../../lib/localization';
 import {
+  getLosStructure,
+  getThemesStructure,
   REFERENCEDATA_PATH_APISTATUS,
   REFERENCEDATA_PATH_DISTRIBUTIONTYPE,
   REFERENCEDATA_PATH_LOS,
   REFERENCEDATA_PATH_THEMES
 } from '../../redux/modules/referenceData';
 import { Tabs } from './tabs/tabs';
+import ResultsPage from './results-all-entities/results-all-entities.component';
 
 const browser = detect();
 
@@ -63,8 +67,15 @@ const SearchPage = props => {
     location,
     conceptsCompare,
     addConcept,
-    removeConcept
+    removeConcept,
+    searchAllEntities
   } = props;
+
+  const {
+    hits: searchAllEntitiesHits,
+    page: searchAllEntitiesPage,
+    aggregations: allResultsEntititesAggregations
+  } = searchAllEntities;
 
   const locationSearch = parseSearchParams(location);
   const locationSearchParamQ = _.pick(locationSearch, 'q');
@@ -199,6 +210,7 @@ const SearchPage = props => {
           </SearchBoxTitle>
           {!getConfig().themeNap && (
             <Tabs
+              countResults={searchAllEntities.page.totalElements}
               countDatasets={datasetTotal}
               countConcepts={conceptTotal}
               countApis={apiTotal}
@@ -222,6 +234,18 @@ const SearchPage = props => {
           </div>
         </div>
         <Switch>
+          <Route exact path={PATHNAME_SEARCH}>
+            <ResultsPage
+              entities={searchAllEntitiesHits}
+              aggregations={allResultsEntititesAggregations}
+              page={searchAllEntitiesPage}
+              losItems={getLosStructure(referenceData)}
+              themesItems={getThemesStructure(referenceData)}
+              publishers={publisherItems}
+              onFilterPublisher={handleFilterPublisherHierarchy}
+              onFilterLos={handleFilterLos}
+            />
+          </Route>
           <Route exact path={PATHNAME_DATASETS}>
             <ResultsDataset
               showFilterModal={showFilterModal}

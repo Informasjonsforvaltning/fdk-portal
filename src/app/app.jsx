@@ -17,6 +17,7 @@ import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { ConnectedAppNavBar } from './app-nav-bar/connected-app-nav-bar';
 import { ConnectedDatasetsReportPage } from '../pages/datasets-report-page/connected-datasets-report-page';
 import {
+  PATHNAME_SEARCH,
   PATHNAME_DATASETS,
   PATHNAME_DATASET_DETAILS,
   PATHNAME_APIS,
@@ -72,6 +73,7 @@ export function App({ language }) {
       <Breadcrumbs />
 
       <Switch>
+        <Route exact path={PATHNAME_SEARCH} component={SearchPage} />
         <Route exact path={PATHNAME_DATASETS} component={SearchPage} />
         <Route exact path={PATHNAME_APIS} component={SearchPage} />
         <Route exact path={PATHNAME_CONCEPTS} component={SearchPage} />

@@ -36,6 +36,7 @@
   "statusDeprecated": "Denne versjonen av API-et er forelda og vil fases ut {0} {1}. ",
   "statusReplacedUrl": "Ny versjon er dokumentert her.",
   "during": "i",
+  "resultsLabel": "Alle",
   "datasetLabel": "Datasett",
   "conceptLabel": "Omgrep",
   "informationModelLabel": "Informasjonsmodell",
@@ -51,6 +52,7 @@
   "publicDatasetTooltip": "Datasett som kan gjerast tilgjengeleg<br> for alle, men som ikkje er publisert<br> som opne data.",
   "searchBoxHeader": "Alt du treng for å oppdage, vurdere og ta i bruk data fra offentleg sektor",
   "showOnly": "Vis kun",
+  "publisher": "Utgivar",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -117,6 +119,7 @@
     "navigation": "Sidenavigering",
     "next": "Neste side",
     "prev": "Forrige side",
+    "resultsTab": "Alle",
     "datasetTab": "Datasett",
     "apiTab": "API",
     "termTab": "Omgrep",
