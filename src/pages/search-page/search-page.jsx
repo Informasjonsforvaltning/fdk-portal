@@ -9,7 +9,12 @@ import { ResultsDataset } from './results-dataset/results-dataset.component';
 import { ResultsConcepts } from './results-concepts/results-concepts.component';
 import { ResultsApi } from './results-api/results-api.component';
 import { ResultsInformationModel } from './results-informationmodel/results-informationmodel.component';
-import { SearchBox } from './search-box/search-box.component';
+import {
+  SearchBox,
+  SearchBoxTitle
+} from '../../components/search-box/search-box';
+
+import { HitsStats } from './search-box/hits-stats/hits-stats.component';
 import { getConfig } from '../../config';
 
 import './search-page.scss';
@@ -21,11 +26,7 @@ import {
   PATHNAME_INFORMATIONMODELS
 } from '../../constants/constants';
 import { parseSearchParams } from '../../lib/location-history-helper';
-import {
-  setFilter,
-  setMultiselectFilterValue,
-  setSearchText
-} from './search-location-helper';
+import { setFilter, setMultiselectFilterValue } from './search-location-helper';
 import localization from '../../lib/localization';
 import {
   REFERENCEDATA_PATH_APISTATUS,
@@ -96,10 +97,6 @@ export const SearchPage = props => {
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_APISTATUS);
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_LOS);
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_THEMES);
-
-  const handleSearchSubmit = searchText => {
-    setSearchText(history, location, searchText);
-  };
 
   const handleFilterThemes = event => {
     const selectedValue = event.target.value;
@@ -183,25 +180,39 @@ export const SearchPage = props => {
   return (
     <div>
       <section className={topSectionClass}>
-        <SearchBox
-          onSearchSubmit={handleSearchSubmit}
-          searchText={locationSearch.q || ''}
-          countDatasets={datasetTotal}
-          countTerms={conceptTotal}
-          countApis={apiTotal}
-          countInformationModels={informationModelTotal}
-          open={open}
-        />
-        {!getConfig().themeNap && (
-          <Tabs
-            countDatasets={datasetTotal}
-            countConcepts={conceptTotal}
-            countApis={apiTotal}
-            countInformationModels={informationModelTotal}
-          />
-        )}
+        <SearchBox>
+          <SearchBoxTitle>
+            <HitsStats
+              countDatasets={datasetTotal}
+              countApis={apiTotal}
+              countTerms={conceptTotal}
+              countInformationModels={informationModelTotal}
+            />
+          </SearchBoxTitle>
+          {!getConfig().themeNap && (
+            <Tabs
+              countDatasets={datasetTotal}
+              countConcepts={conceptTotal}
+              countApis={apiTotal}
+              countInformationModels={informationModelTotal}
+            />
+          )}
+        </SearchBox>
       </section>
       <div className="container">
+        <div className="row mt-3 mb-3 d-lg-none">
+          <div className="col-12">
+            <div className="d-flex justify-content-center">
+              <button
+                type="button"
+                className="fdk-bg-color-neutral-lighter fdk-button w-100"
+                onClick={open}
+              >
+                {localization.openFilter}
+              </button>
+            </div>
+          </div>
+        </div>
         <Switch>
           <Route exact path={PATHNAME_DATASETS}>
             <ResultsDataset
