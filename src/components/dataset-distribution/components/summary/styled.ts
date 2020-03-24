@@ -10,7 +10,7 @@ const Title = styled.h4`
   flex: 1;
   margin: 0;
   font-size: 16px;
-  color: ${({ theme }) => theme.colors.dataset.dark};
+  color: ${({ theme }) => theme.colors.textDefault};
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

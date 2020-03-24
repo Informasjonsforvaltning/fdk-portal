@@ -83,7 +83,7 @@ describe('Styled components for Summary component', () => {
         SC.Title,
         [
           { property: 'font-size', value: '16px' },
-          { property: 'color', value: theme.colors.dataset.dark },
+          { property: 'color', value: theme.colors.textDefault },
           { property: 'white-space', value: 'nowrap' },
           { property: 'text-overflow', value: 'ellipsis' },
           { property: 'overflow', value: 'hidden' }
