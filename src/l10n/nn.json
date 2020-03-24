@@ -445,6 +445,9 @@
     },
     "publisher": "Eigar: {publisher}",
     "openData": "Opne data",
+    "publicData": "Offentlig data",
+    "restrictedData": "Begrensa offentlegheit",
+    "nonPublicData": "Unntatt offentlegheit",
     "menu": {
       "title": "Gå til"
     }

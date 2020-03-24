@@ -445,6 +445,9 @@
     },
     "publisher": "Owner: {publisher}",
     "openData": "Open data",
+    "publicData": "Public data",
+    "restrictedData": "Restricted data",
+    "nonPublicData": "Non public data",
     "menu": {
       "title": "Go to"
     }

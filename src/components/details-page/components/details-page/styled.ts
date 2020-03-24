@@ -30,21 +30,35 @@ const Themes = styled.div`
   }
 
   & > a {
+    display: inline-flex;
+    align-items: center;
     color: ${({ theme }) => theme.entityColours.dark} !important;
     background: ${({ theme }) => theme.entityColours.light};
     text-decoration: none;
     cursor: pointer;
 
     &.open-data {
-      display: inline-flex;
-      align-items: center;
       color: white !important;
       background: ${({ theme }) => theme.entityColours.dark};
+    }
+
+    &.public-data,
+    &.restricted-data,
+    &.non-public-data {
+      background: white;
+
+      & > svg > path {
+        fill: ${({ theme }) => theme.entityColours.dark};
+      }
     }
 
     &:hover {
       color: white !important;
       background: ${({ theme }) => theme.colors.textDefault} !important;
+
+      & > svg > path {
+        fill: white;
+      }
     }
 
     & > svg {

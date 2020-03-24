@@ -446,6 +446,9 @@
     },
     "publisher": "Eier: {publisher}",
     "openData": "Åpne data",
+    "publicData": "Offentlig data",
+    "restrictedData": "Begrenset offentlegheit",
+    "nonPublicData": "Unntatt offentlegheit",
     "menu": {
       "title": "Gå til"
     }

@@ -19,6 +19,9 @@ import Banner from '../banner';
 import ContentSection from '../content-section';
 
 import OpenAccessIcon from '../../../../images/icon-access-open-md.svg';
+import PublicAccessIcon from '../../../../images/icon-access-public-md.svg';
+import RestrictedAccessIcon from '../../../../images/icon-access-restricted-md.svg';
+import NonPublicAccessIcon from '../../../../images/icon-access-non-public-md.svg';
 
 import SC from './styled';
 
@@ -38,6 +41,9 @@ interface Props extends ReferenceDataProps {
   lastPublished: string;
   isAuthoritative: boolean;
   isOpenData: boolean;
+  isPublicData: boolean;
+  isRestrictedData: boolean;
+  isNonPublicData: boolean;
   themes: Theme[];
 }
 
@@ -55,6 +61,9 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   lastPublished,
   isAuthoritative,
   isOpenData,
+  isPublicData,
+  isRestrictedData,
+  isNonPublicData,
   themes = [],
   referenceData: { los: losThemes, themes: euThemes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
@@ -118,6 +127,33 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           >
             <OpenAccessIcon />
             {translations.detailsPage.openData}
+          </Link>
+        )}
+        {isPublicData && (
+          <Link
+            to={`/${rootPaths[entity]}?accessrights=PUBLIC`}
+            className="public-data"
+          >
+            <PublicAccessIcon />
+            {translations.detailsPage.publicData}
+          </Link>
+        )}
+        {isRestrictedData && (
+          <Link
+            to={`/${rootPaths[entity]}?accessrights=RESTRICTED`}
+            className="restricted-data"
+          >
+            <RestrictedAccessIcon />
+            {translations.detailsPage.restrictedData}
+          </Link>
+        )}
+        {isNonPublicData && (
+          <Link
+            to={`/${rootPaths[entity]}?accessrights=NON_PUBLIC`}
+            className="non-public-data"
+          >
+            <NonPublicAccessIcon />
+            {translations.detailsPage.nonPublicData}
           </Link>
         )}
         {enrichedThemes.map(theme => {
