@@ -42,6 +42,9 @@ export const themeFDK = {
     textLight: '#6C737A',
     textLink: '#0069A5',
 
+    searchBoxBg: '#2D3741',
+    searchButtonBg: '#121619',
+
     dataset: {
       dark: '#335380',
       light: '#D5E1F2',
@@ -109,6 +112,9 @@ export const themeNAP = {
     textDefault: '#444F55',
     textLight: '#60696E',
     textLink: '#444F55',
+
+    searchBoxBg: '#DFE1E2',
+    searchButtonBg: '#D5D7D9',
 
     dataset: {
       dark: '#444F55',
