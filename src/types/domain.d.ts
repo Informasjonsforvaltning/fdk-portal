@@ -119,11 +119,14 @@ export interface Api {
   publisher: Partial<Publisher>;
   title: Partial<TextLanguage>;
   description?: Partial<TextLanguage>;
+  descriptionFormatted?: Partial<TextLanguage>;
   nationalComponent: boolean;
   isOpenAccess: boolean;
   isOpenLicense: boolean;
   isFree: boolean;
 }
+
+export interface DataService extends Api {}
 
 interface License {
   uri: string;
