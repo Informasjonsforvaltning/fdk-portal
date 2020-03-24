@@ -451,6 +451,23 @@
     "nonPublicData": "Unntatt offentlegheit",
     "menu": {
       "title": "Gå til"
+    },
+    "sectionTitles": {
+      "dataset": {
+        "description": "Beskrivelse",
+        "objective": "Formål",
+        "distributions": "Distribusjoner ({count})",
+        "usage": "Bruk av datasettet",
+        "sample": "Eksempeldata",
+        "provenance": "Opphav og oppdatering",
+        "quality": "Kvalitet på innhold",
+        "conceptReferences": "Begreper brukt i datasett",
+        "datasetReferences": "Relaterte datasett",
+        "dataserviceReferences": "Relaterte datatjenester",
+        "keywords": "Søkeord",
+        "restrictions": "Avgrensninger",
+        "contactInformation": "Kontaktinformasjon"
+      }
     }
   }
 }

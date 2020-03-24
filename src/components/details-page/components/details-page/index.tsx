@@ -11,6 +11,13 @@ import { Link } from 'react-router-dom';
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
+import {
+  PATHNAME_DATASETS,
+  PATHNAME_APIS,
+  PATHNAME_CONCEPTS,
+  PATHNAME_INFORMATIONMODELS
+} from '../../../../constants/constants';
+
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../with-reference-data';
@@ -48,10 +55,10 @@ interface Props extends ReferenceDataProps {
 }
 
 const rootPaths = {
-  [Entity.DATASET]: '',
-  [Entity.DATA_SERVICE]: 'apis',
-  [Entity.CONCEPT]: 'concepts',
-  [Entity.INFORMATION_MODEL]: 'informationmodels'
+  [Entity.DATASET]: PATHNAME_DATASETS,
+  [Entity.DATA_SERVICE]: PATHNAME_APIS,
+  [Entity.CONCEPT]: PATHNAME_CONCEPTS,
+  [Entity.INFORMATION_MODEL]: PATHNAME_INFORMATIONMODELS
 };
 
 const DetailsPage: FC<PropsWithChildren<Props>> = ({
@@ -121,17 +128,14 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       </SC.Publisher>
       <SC.Themes>
         {isOpenData && (
-          <Link
-            to={`/${rootPaths[entity]}?opendata=true`}
-            className="open-data"
-          >
+          <Link to={`${rootPaths[entity]}?opendata=true`} className="open-data">
             <OpenAccessIcon />
             {translations.detailsPage.openData}
           </Link>
         )}
         {isPublicData && (
           <Link
-            to={`/${rootPaths[entity]}?accessrights=PUBLIC`}
+            to={`${rootPaths[entity]}?accessrights=PUBLIC`}
             className="public-data"
           >
             <PublicAccessIcon />
@@ -140,7 +144,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         )}
         {isRestrictedData && (
           <Link
-            to={`/${rootPaths[entity]}?accessrights=RESTRICTED`}
+            to={`${rootPaths[entity]}?accessrights=RESTRICTED`}
             className="restricted-data"
           >
             <RestrictedAccessIcon />
@@ -149,7 +153,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         )}
         {isNonPublicData && (
           <Link
-            to={`/${rootPaths[entity]}?accessrights=NON_PUBLIC`}
+            to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
             className="non-public-data"
           >
             <NonPublicAccessIcon />
@@ -160,7 +164,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           if (isEuTheme(theme)) {
             const { id, title, code } = theme;
             return (
-              <Link key={id} to={`/${rootPaths[entity]}?theme=${code}`}>
+              <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
                 {translate(title)}
               </Link>
             );
@@ -168,7 +172,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           if (isLosTheme(theme)) {
             const { uri, name, losPaths: [losPath] = [] } = theme;
             return (
-              <Link key={uri} to={`/${rootPaths[entity]}?losTheme=${losPath}`}>
+              <Link key={uri} to={`${rootPaths[entity]}?losTheme=${losPath}`}>
                 {translate(name)}
               </Link>
             );

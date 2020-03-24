@@ -450,6 +450,23 @@
     "nonPublicData": "Non public data",
     "menu": {
       "title": "Go to"
+    },
+    "sectionTitles": {
+      "dataset": {
+        "description": "Description",
+        "objective": "Objective",
+        "distributions": "Distributions ({count})",
+        "usage": "Dataset usage",
+        "sample": "Sample data",
+        "provenance": "Provenance",
+        "quality": "Content quality",
+        "conceptReferences": "References to concepts",
+        "datasetReferences": "References to datasets",
+        "dataserviceReferences": "References to data services",
+        "keywords": "Keywords",
+        "restrictions": "Restrictions",
+        "contactInformation": "Contact information"
+      }
     }
   }
 }

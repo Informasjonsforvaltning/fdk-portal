@@ -65,9 +65,15 @@ exports[`should render App correctly 1`] = `
           path="/concepts/:id"
         />
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "compare": null,
+              "type": [Function],
+            }
+          }
           exact={true}
-          path="/datasets/:id"
+          path="/datasets/:datasetId"
         />
         <Route
           component={[Function]}
