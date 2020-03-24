@@ -92,25 +92,97 @@ export interface Concept {
 
 interface Provenance {
   code: string;
+  prefLabel: Partial<TextLanguage>;
 }
 
 interface AccessRights {
   code: string;
 }
 
+interface ContactPoint {
+  email: string;
+  organizationUnit: string;
+  hasURL: string;
+  hasTelephone: string;
+}
+
+interface SpatialRestriction {
+  code: string;
+  prefLabel: Partial<TextLanguage>;
+  uri: string;
+}
+
+interface TemporalRestriction {
+  startDate: string;
+  endDate: string;
+}
+
+interface ReferenceType {
+  uri: string;
+  code: string;
+  prefLabel: Partial<TextLanguage>;
+}
+
+interface DatasetReference {
+  referenceType: ReferenceType;
+  source: { uri: string };
+}
+
+interface Annotation {
+  hasBody: Partial<TextLanguage>;
+}
+
+interface AccrualPeriodicity {
+  prefLabel: Partial<TextLanguage>;
+}
+
+interface Sample {
+  description?: Partial<TextLanguage>;
+  format: DataFormat[];
+  accessURL: string[];
+}
+
+interface LegalBasis {
+  uri: string;
+  prefLabel: Partial<TextLanguage>;
+}
+
 export interface Dataset {
   id: string;
-  type: any;
+  type: string;
+  uri: string;
   publisher: Partial<Publisher>;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   descriptionFormatted: Partial<TextLanguage>;
   objective: Partial<TextLanguage>;
+  keyword: Partial<TextLanguage>[];
   theme: string[];
+  issued: string;
+  modified: string;
   distribution: Distribution[];
   accessRights?: AccessRights;
+  accrualPeriodicity?: AccrualPeriodicity;
   provenance?: Provenance;
   harvest: Partial<Harvest>;
+  contactPoint: Partial<ContactPoint>[];
+  spatial?: SpatialRestriction[];
+  temporal?: TemporalRestriction[];
+  references?: DatasetReference[];
+  subject?: Partial<Concept>[];
+  hasRelevanceAnnotation?: Partial<Annotation>;
+  hasCompletenessAnnotation?: Partial<Annotation>;
+  hasAccuracyAnnotation?: Partial<Annotation>;
+  hasAvailabilityAnnotation?: Partial<Annotation>;
+  hasCurrentnessAnnotation?: Partial<Annotation>;
+  sample?: Sample[];
+  legalBasisForRestriction?: LegalBasis[];
+  legalBasisForProcessing?: LegalBasis[];
+  legalBasisForAccess?: LegalBasis[];
+  conformsTo: ConformsTo[];
+  informationModel?: Partial<ReferenceType>[];
+  language?: Partial<ReferenceType>[];
+  landingPage: string[];
 }
 
 export interface Api {
@@ -160,4 +232,5 @@ export interface Distribution {
 export interface ReferenceData {
   los?: LosTheme[];
   themes?: EuTheme[];
+  referencetypes?: ReferenceType[];
 }
