@@ -245,7 +245,6 @@ export const SearchPage = props => {
               publisherCounts={_.get(apiAggregations, 'orgPath.buckets')}
               publishers={publisherItems}
               hitsPerPage={HITS_PER_PAGE}
-              referenceData={referenceData}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>

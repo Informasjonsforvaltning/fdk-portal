@@ -9,7 +9,6 @@ import localization from '../../lib/localization';
 
 interface Props {
   api: Api;
-  referenceData: any;
 }
 
 export const ApiItem: FC<Props> = ({
