@@ -5,7 +5,7 @@ import cx from 'classnames';
 import DocumentMeta from 'react-document-meta';
 
 import localization from '../lib/localization';
-import { ConnectedSearchPage } from '../pages/search-page/connected-search-page';
+import { SearchPage } from '../pages/search-page/search-page';
 import DatasetDetailsPage from '../components/dataset-details-page';
 import { ConnectedApiDetailsPage } from '../pages/api-details-page/connected-api-details-page';
 import { ConnectedConceptDetailsPage } from '../pages/concept-details-page/connected-concept-details-page';
@@ -72,14 +72,10 @@ export function App({ language }) {
       <Breadcrumbs />
 
       <Switch>
-        <Route exact path={PATHNAME_DATASETS} component={ConnectedSearchPage} />
-        <Route exact path={PATHNAME_APIS} component={ConnectedSearchPage} />
-        <Route exact path={PATHNAME_CONCEPTS} component={ConnectedSearchPage} />
-        <Route
-          exact
-          path={PATHNAME_INFORMATIONMODELS}
-          component={ConnectedSearchPage}
-        />
+        <Route exact path={PATHNAME_DATASETS} component={SearchPage} />
+        <Route exact path={PATHNAME_APIS} component={SearchPage} />
+        <Route exact path={PATHNAME_CONCEPTS} component={SearchPage} />
+        <Route exact path={PATHNAME_INFORMATIONMODELS} component={SearchPage} />
         <ScrollToTop>
           <Switch>
             <Route
