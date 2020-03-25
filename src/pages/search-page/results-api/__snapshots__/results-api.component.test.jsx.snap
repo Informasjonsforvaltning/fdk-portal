@@ -239,7 +239,6 @@ exports[`should render ResultsApi correctly with hits 1`] = `
                 "titleFormatted": "Barnehagefakta",
               }
             }
-            referenceData={null}
           />
         </ThemeProvider>
       </ErrorBoundary>
@@ -278,7 +277,6 @@ exports[`should render ResultsApi correctly with hits 1`] = `
                 "titleFormatted": "Nasjonalt barnehageregister API",
               }
             }
-            referenceData={null}
           />
         </ThemeProvider>
       </ErrorBoundary>
