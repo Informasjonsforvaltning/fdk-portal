@@ -6,7 +6,7 @@ import React, {
   PropsWithChildren,
   useState
 } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import SC from './styled';
 import localization from '../../../../lib/localization';
