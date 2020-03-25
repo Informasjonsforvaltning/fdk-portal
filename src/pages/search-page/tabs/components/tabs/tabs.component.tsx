@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import SC from './styled';
 import Tab from '../tab/tab.component';
