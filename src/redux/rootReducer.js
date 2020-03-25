@@ -8,6 +8,11 @@ import { datasetsReducer } from './modules/datasets';
 import { apisReducer } from './modules/apis';
 import { conceptReducer } from './modules/concepts';
 import { informationModelsReducer } from './modules/informationModels';
+import DatasetReducer from '../components/with-dataset/redux/reducer';
+import ReferenceDataReducer from '../components/with-reference-data/redux/reducer';
+import ConceptsReducer from '../components/with-concepts/redux/reducer';
+import DatasetsReducer from '../components/with-datasets/redux/reducer';
+import DataServicesReducer from '../components/with-data-services/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -18,5 +23,10 @@ export const rootReducer = combineReducers({
   datasets: datasetsReducer,
   apis: apisReducer,
   concepts: conceptReducer,
-  informationModels: informationModelsReducer
+  informationModels: informationModelsReducer,
+  DatasetReducer,
+  ReferenceDataReducer,
+  ConceptsReducer,
+  DatasetsReducer,
+  DataServicesReducer
 });

@@ -235,7 +235,7 @@ export const ArticlePage = () => {
               <div>
                 <a
                   title="Informasjonskapsler og personvern"
-                  href="https://www.brreg.no/personvernerklaering/"
+                  href="https://www.digdir.no/om-oss/personvernerklaering/706"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -260,7 +260,7 @@ export const ArticlePage = () => {
                   <p>
                     <a
                       className="white-link"
-                      href="mailto:fellesdatakatalog@brreg.no"
+                      href="mailto:digdir@fellesdatakatalog.no"
                     >
                       Send oss gjerne en e-post
                     </a>

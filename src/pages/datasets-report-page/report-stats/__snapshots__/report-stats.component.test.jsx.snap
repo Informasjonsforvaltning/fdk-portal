@@ -35,7 +35,6 @@ exports[`should render ReportStats correctly 1`] = `
           <br />
           <Link
             className="mb-3"
-            replace={false}
             title="Datasets that are public"
             to="/"
           >
@@ -48,7 +47,6 @@ exports[`should render ReportStats correctly 1`] = `
           <br />
           <Link
             className="mb-3"
-            replace={false}
             title="Datasets that are public"
             to="/?firstHarvested=7"
           >
@@ -67,7 +65,6 @@ exports[`should render ReportStats correctly 1`] = `
           <br />
           <Link
             className="mb-3"
-            replace={false}
             title="Datasets that are public"
             to="/apis"
           >
@@ -79,7 +76,6 @@ exports[`should render ReportStats correctly 1`] = `
           <br />
           <Link
             className="mb-3"
-            replace={false}
             title="Datasets that are public"
             to="/apis?firstHarvested=7"
           >
@@ -97,7 +93,6 @@ exports[`should render ReportStats correctly 1`] = `
           <br />
           <Link
             className="mb-3"
-            replace={false}
             title="Datasets that are public"
             to="/concepts"
           >
@@ -109,7 +104,6 @@ exports[`should render ReportStats correctly 1`] = `
           <br />
           <Link
             className="mb-3"
-            replace={false}
             title="Datasets that are public"
             to="/concepts?firstHarvested=7"
           >

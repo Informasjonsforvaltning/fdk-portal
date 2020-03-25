@@ -6,8 +6,7 @@ import cx from 'classnames';
 import _get from 'lodash/get';
 import _capitalize from 'lodash/capitalize';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import {
@@ -25,6 +24,8 @@ import { ErrorBoundary } from '../../../components/error-boundary/error-boundary
 import { ConceptItem } from '../../../components/concept-item/concept-item.component';
 import { getConfig } from '../../../config';
 import { themeFDK, themeNAP } from '../../../app/theme';
+
+import { Entity } from '../../../types/enums';
 
 function _renderCompareTerms({ conceptsCompare, removeConcept }) {
   const conceptIdsArray = [];
@@ -79,9 +80,9 @@ function _renderTerms({
           <ErrorBoundary key={item.id}>
             <ThemeProvider
               theme={
-                getConfig().themeNap
-                  ? themeNAP.colors.concept
-                  : themeFDK.colors.concept
+                (getConfig().themeNap ? themeNAP : themeFDK).colors[
+                  Entity.CONCEPT
+                ]
               }
             >
               <ConceptItem

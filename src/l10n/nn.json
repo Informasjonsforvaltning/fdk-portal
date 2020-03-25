@@ -20,6 +20,7 @@
   "phone": "Telefon",
   "close": "Lukk",
   "filter": "Filter",
+  "openFilter": "Opne søkefilter",
   "public": "Offentleg",
   "restricted": "Begrensa offentlegheit",
   "non_public": "Unntatt offentlegheit",
@@ -48,6 +49,8 @@
   "showHitsFor": "Viser {0} treff for {1}",
   "openDataTooltip": "Datasett som er publisert under ein open <br> lisens slik at alle kan få tilgang, bruka<br> og dela. Dette omfattar òg løysingar som<br> krev brukeregistrering/API-nøklar,<br> så lenge alle kan få tilgang.",
   "publicDatasetTooltip": "Datasett som kan gjerast tilgjengeleg<br> for alle, men som ikkje er publisert<br> som opne data.",
+  "searchBoxHeader": "Alt du treng for å oppdage, vurdere og ta i bruk data fra offentleg sektor",
+  "showOnly": "Vis kun",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -429,5 +432,41 @@
     "sitatFraKilde": "Sitat fra",
     "basertPåKilde": "Basert på",
     "egendefinert": "Egendefinert"
+  },
+  "detailsPage": {
+    "banner": {
+      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "entity": {
+        "dataset": "Datasettbeskrivelse",
+        "dataservice": "Datatjenestebeskrivelse",
+        "concept": "Omgrepsbeskrivelse",
+        "infomod": "Informasjonsmodellbeskrivelse"
+      }
+    },
+    "publisher": "Eigar: {publisher}",
+    "openData": "Opne data",
+    "publicData": "Offentlig data",
+    "restrictedData": "Begrensa offentlegheit",
+    "nonPublicData": "Unntatt offentlegheit",
+    "menu": {
+      "title": "Gå til"
+    },
+    "sectionTitles": {
+      "dataset": {
+        "description": "Beskrivelse",
+        "objective": "Formål",
+        "distributions": "Distribusjoner ({count})",
+        "usage": "Bruk av datasettet",
+        "sample": "Eksempeldata",
+        "provenance": "Opphav og oppdatering",
+        "quality": "Kvalitet på innhald",
+        "conceptReferences": "Omgrep brukt i datasett",
+        "datasetReferences": "Relaterte datasett",
+        "dataserviceReferences": "Relaterte datatjenestar",
+        "keywords": "Emneord",
+        "restrictions": "Avgrensningar",
+        "contactInformation": "Kontaktinformasjon"
+      }
+    }
   }
 }

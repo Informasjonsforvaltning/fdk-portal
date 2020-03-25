@@ -6,7 +6,7 @@ import DocumentMeta from 'react-document-meta';
 
 import localization from '../lib/localization';
 import { ConnectedSearchPage } from '../pages/search-page/connected-search-page';
-import { DatasetDetailsPage } from '../pages/dataset-details-page/dataset-details-page';
+import DatasetDetailsPage from '../components/dataset-details-page';
 import { ConnectedApiDetailsPage } from '../pages/api-details-page/connected-api-details-page';
 import { ConnectedConceptDetailsPage } from '../pages/concept-details-page/connected-concept-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
@@ -30,7 +30,6 @@ import {
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
-import './styles';
 
 export function App({ language }) {
   // react-localization is a stateful library, so we set the required language on each full-app render
@@ -70,73 +69,54 @@ export function App({ language }) {
 
       <ConnectedAppNavBar />
 
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <Breadcrumbs />
-          </div>
-        </div>
-      </div>
-      <div className="app-routes">
-        <Switch>
-          <Route
-            exact
-            path={PATHNAME_DATASETS}
-            component={ConnectedSearchPage}
-          />
-          <Route exact path={PATHNAME_APIS} component={ConnectedSearchPage} />
-          <Route
-            exact
-            path={PATHNAME_CONCEPTS}
-            component={ConnectedSearchPage}
-          />
-          <Route
-            exact
-            path={PATHNAME_INFORMATIONMODELS}
-            component={ConnectedSearchPage}
-          />
-          <ScrollToTop>
-            <Switch>
-              <Route
-                exact
-                path={`${PATHNAME_INFORMATIONMODELS}/:id`}
-                component={ConnectedInformationModelDetailsPage}
-              />
-              <Route
-                exact
-                path={`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`}
-                component={ConnectedConceptComparePage}
-              />
-              <Route
-                exact
-                path={`${PATHNAME_CONCEPTS}/:id`}
-                component={ConnectedConceptDetailsPage}
-              />
-              <Route
-                exact
-                path={`${PATHNAME_DATASET_DETAILS}/:id`}
-                component={DatasetDetailsPage}
-              />
-              <Route
-                exact
-                path="/apis/:id"
-                component={ConnectedApiDetailsPage}
-              />
-              <Route
-                exact
-                path={PATHNAME_REPORTS}
-                component={ConnectedDatasetsReportPage}
-              />
-              <Route exact path={PATHNAME_ABOUT} component={AboutPage} />
-              <Route
-                exact
-                path={PATHNAME_ABOUT_REGISTRATION}
-                component={ArticlePage}
-              />
-            </Switch>
-          </ScrollToTop>
-        </Switch>
-      </div>
+      <Breadcrumbs />
+
+      <Switch>
+        <Route exact path={PATHNAME_DATASETS} component={ConnectedSearchPage} />
+        <Route exact path={PATHNAME_APIS} component={ConnectedSearchPage} />
+        <Route exact path={PATHNAME_CONCEPTS} component={ConnectedSearchPage} />
+        <Route
+          exact
+          path={PATHNAME_INFORMATIONMODELS}
+          component={ConnectedSearchPage}
+        />
+        <ScrollToTop>
+          <Switch>
+            <Route
+              exact
+              path={`${PATHNAME_INFORMATIONMODELS}/:id`}
+              component={ConnectedInformationModelDetailsPage}
+            />
+            <Route
+              exact
+              path={`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`}
+              component={ConnectedConceptComparePage}
+            />
+            <Route
+              exact
+              path={`${PATHNAME_CONCEPTS}/:id`}
+              component={ConnectedConceptDetailsPage}
+            />
+            <Route
+              exact
+              path={`${PATHNAME_DATASET_DETAILS}/:datasetId`}
+              component={DatasetDetailsPage}
+            />
+            <Route exact path="/apis/:id" component={ConnectedApiDetailsPage} />
+            <Route
+              exact
+              path={PATHNAME_REPORTS}
+              component={ConnectedDatasetsReportPage}
+            />
+            <Route exact path={PATHNAME_ABOUT} component={AboutPage} />
+            <Route
+              exact
+              path={PATHNAME_ABOUT_REGISTRATION}
+              component={ArticlePage}
+            />
+          </Switch>
+        </ScrollToTop>
+      </Switch>
 
       <div className="fdk-footer d-md-none">
         <div className="container">

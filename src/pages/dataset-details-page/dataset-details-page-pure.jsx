@@ -505,9 +505,9 @@ export const DatasetDetailsPagePure = props => {
                   {localization.dataset.distribution.title} (
                   {distributions.length})
                 </SC.DatasetDistributionsTitle>
-                {distributions.map(distribution => (
+                {distributions.map((distribution, index) => (
                   <DatasetDistribution
-                    key={distribution.uri}
+                    key={distribution.uri || `distribution-${index}`}
                     distribution={distribution}
                   />
                 ))}
@@ -530,8 +530,6 @@ export const DatasetDetailsPagePure = props => {
             {renderKeywords(datasetItem.keyword)}
 
             {renderContactPoints(datasetItem)}
-
-            <div style={{ height: '75vh' }} />
           </div>
         </div>
       </article>

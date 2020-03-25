@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import cx from 'classnames';
 import _ from 'lodash';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import localization from '../../../lib/localization';
@@ -17,6 +17,8 @@ import { getConfig } from '../../../config';
 import { themeFDK, themeNAP } from '../../../app/theme';
 import { ApiItem } from '../../../components/api-item/api-item.component';
 import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
+
+import { Entity } from '../../../types/enums';
 
 const renderFilterModal = ({
   showFilterModal,
@@ -62,7 +64,9 @@ const renderHits = (hits, publishers, referenceData) => {
       <ErrorBoundary key={item.id}>
         <ThemeProvider
           theme={
-            getConfig().themeNap ? themeNAP.colors.api : themeFDK.colors.api
+            (getConfig().themeNap ? themeNAP : themeFDK).colors[
+              Entity.DATA_SERVICE
+            ]
           }
         >
           <ApiItem api={item} referenceData={referenceData} />

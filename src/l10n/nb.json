@@ -20,6 +20,7 @@
   "phone": "Telefon",
   "close": "Lukk",
   "filter": "Filter",
+  "openFilter": "Åpne søkefilter",
   "public": "Offentlig",
   "restricted": "Begrenset offentlighet",
   "non_public": "Unntatt offentlighet",
@@ -49,6 +50,8 @@
   "openDataTooltip": "Datasett som er publisert under en åpen<br> lisens slik at alle kan få tilgang, bruke<br> og dele. Dette omfatter også løsninger som<br> krever brukeregistrering/API-nøkler,<br> så lenge alle kan få tilgang.",
   "openDataTooltipX": "Datasett som er publisert under en åpen lisens slik at alle kan få tilgang, bruke og dele. Dette omfatter også løsninger som krever brukeregistrering/API-nøkler, så lenge alle kan få tilgang.",
   "publicDatasetTooltip": "Datasett som kan gjøres tilgjengelig<br> for alle, men som ikke er publisert<br> som åpne data.",
+  "searchBoxHeader": "Alt du trenger for å oppdage, vurdere og ta i bruk data fra offentlig sektor",
+  "showOnly": "Vis kun",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -430,5 +433,41 @@
     "sitatFraKilde": "Sitat fra",
     "basertPåKilde": "Basert på",
     "egendefinert": "Egendefinert"
+  },
+  "detailsPage": {
+    "banner": {
+      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "entity": {
+        "dataset": "Datasettbeskrivelse",
+        "dataservice": "Datatjenestebeskrivelse",
+        "concept": "Begrepsbeskrivelse",
+        "infomod": "Informasjonsmodellbeskrivelse"
+      }
+    },
+    "publisher": "Eier: {publisher}",
+    "openData": "Åpne data",
+    "publicData": "Offentlig data",
+    "restrictedData": "Begrenset offentlegheit",
+    "nonPublicData": "Unntatt offentlegheit",
+    "menu": {
+      "title": "Gå til"
+    },
+    "sectionTitles": {
+      "dataset": {
+        "description": "Beskrivelse",
+        "objective": "Formål",
+        "distributions": "Distribusjoner ({count})",
+        "usage": "Bruk av datasettet",
+        "sample": "Eksempeldata",
+        "provenance": "Opphav og oppdatering",
+        "quality": "Kvalitet på innhold",
+        "conceptReferences": "Begreper brukt i datasett",
+        "datasetReferences": "Relaterte datasett",
+        "dataserviceReferences": "Relaterte datatjenester",
+        "keywords": "Søkeord",
+        "restrictions": "Avgrensninger",
+        "contactInformation": "Kontaktinformasjon"
+      }
+    }
   }
 }

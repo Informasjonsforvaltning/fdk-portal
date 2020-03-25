@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import cx from 'classnames';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import localization from '../../../lib/localization';
@@ -22,6 +22,8 @@ import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import { getConfig } from '../../../config';
 import { DatasetItem } from '../../../components/dataset-item/dataset-item.component';
 import { themeFDK, themeNAP } from '../../../app/theme';
+
+import { Entity } from '../../../types/enums';
 
 function _renderFilterModal({
   showFilterModal,
@@ -117,9 +119,7 @@ const renderHits = (datasetItems, losItems) => {
       <ErrorBoundary key={dataset.id}>
         <ThemeProvider
           theme={
-            getConfig().themeNap
-              ? themeNAP.colors.dataset
-              : themeFDK.colors.dataset
+            (getConfig().themeNap ? themeNAP : themeFDK).colors[Entity.DATASET]
           }
         >
           <DatasetItem dataset={dataset} losItems={losItems} />

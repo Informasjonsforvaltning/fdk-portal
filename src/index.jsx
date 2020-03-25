@@ -15,6 +15,7 @@ import { ConnectedApp } from './app/connected-app';
 import { ErrorBoundary } from './components/error-boundary/error-boundary';
 import { getConfig } from './config';
 import { themeFDK, themeNAP } from './app/theme';
+import GlobalStyles from './app/styles';
 
 if (window.location.hostname.indexOf('fellesdatakatalog.brreg.no') !== -1) {
   ReactGA.initialize('UA-110098477-1'); // prod
@@ -62,17 +63,20 @@ function Analytics(props) {
 const store = configureStore(getConfig().store);
 
 ReactDOM.render(
-  <ThemeProvider theme={getConfig().themeNap ? themeNAP : themeFDK}>
-    <ErrorBoundary>
-      <Provider store={store}>
-        <BrowserRouter>
-          <>
-            <Route path="/" component={Analytics} />
-            <Route path="/" component={ConnectedApp} />
-          </>
-        </BrowserRouter>
-      </Provider>
-    </ErrorBoundary>
-  </ThemeProvider>,
+  <>
+    <ThemeProvider theme={getConfig().themeNap ? themeNAP : themeFDK}>
+      <GlobalStyles />
+      <ErrorBoundary>
+        <Provider store={store}>
+          <BrowserRouter>
+            <>
+              <Route path="/" component={Analytics} />
+              <Route path="/" component={ConnectedApp} />
+            </>
+          </BrowserRouter>
+        </Provider>
+      </ErrorBoundary>
+    </ThemeProvider>
+  </>,
   document.getElementById('root')
 );

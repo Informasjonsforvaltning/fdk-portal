@@ -7,14 +7,19 @@ const TabLink = styled(Link)`
   border: 0;
   box-sizing: border-box;
   display: flex;
-  padding: 0.4em 1em;
+  flex-grow: 1;
+  padding: 1em 1.5em;
   text-decoration: none;
+
+  @media (min-width: 768px) {
+    padding: 0.5em 1em;
+  }
 `;
 
 const Tab = styled.li<{ active?: boolean }>`
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    border-color: green;
+    border-color: none;
     
     justify-content: center;
     list-style-type: none;

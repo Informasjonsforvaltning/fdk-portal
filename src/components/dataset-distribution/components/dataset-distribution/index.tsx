@@ -1,6 +1,6 @@
 import React, { memo, FC } from 'react';
 
-import tranlations from '../../../../lib/localization';
+import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
 import {
@@ -47,9 +47,30 @@ const DatasetDistribution: FC<Props> = ({
       />
     </ExpansionPanelHead>
     <ExpansionPanelBody>
+      {formats.length > 0 && (
+        <Detail
+          property={translations.dataset.distribution.format}
+          value={formats.sort(formatSorter).join(', ')}
+          data-testid={testIds.detail}
+        />
+      )}
+      {accessURL && (
+        <Detail
+          property={translations.dataset.distribution.accessUrl}
+          value={
+            <ExternalLink uri={accessURL} prefLabel={accessURL} openInNewTab />
+          }
+          data-testid={testIds.detail}
+        />
+      )}
+      <Detail
+        property={translations.dataset.distribution.description}
+        value={translate(description)}
+        data-testid={testIds.detail}
+      />
       {licenseUri && (
         <Detail
-          property={tranlations.dataset.distribution.licenseLinkDefault}
+          property={translations.dataset.distribution.licenseLinkDefault}
           value={
             <ExternalLink
               uri={licenseUri}
@@ -60,21 +81,9 @@ const DatasetDistribution: FC<Props> = ({
           data-testid={testIds.detail}
         />
       )}
-      {formats.length > 0 && (
-        <Detail
-          property={tranlations.dataset.distribution.format}
-          value={formats.sort(formatSorter).join(', ')}
-          data-testid={testIds.detail}
-        />
-      )}
-      <Detail
-        property={tranlations.dataset.distribution.description}
-        value={translate(description)}
-        data-testid={testIds.detail}
-      />
       {downloadURL && (
         <Detail
-          property={tranlations.dataset.distribution.downloadUrl}
+          property={translations.dataset.distribution.downloadUrl}
           value={
             <ExternalLink
               uri={downloadURL}
@@ -85,18 +94,9 @@ const DatasetDistribution: FC<Props> = ({
           data-testid={testIds.detail}
         />
       )}
-      {accessURL && (
-        <Detail
-          property={tranlations.dataset.distribution.accessUrl}
-          value={
-            <ExternalLink uri={accessURL} prefLabel={accessURL} openInNewTab />
-          }
-          data-testid={testIds.detail}
-        />
-      )}
       {conformsToUri && (
         <Detail
-          property={tranlations.dataset.distribution.conformsTo}
+          property={translations.dataset.distribution.conformsTo}
           value={
             <ExternalLink
               uri={conformsToUri}
@@ -110,7 +110,7 @@ const DatasetDistribution: FC<Props> = ({
       {pageUri && (
         <ExternalLink
           uri={pageUri}
-          prefLabel={tranlations.dataset.distribution.page}
+          prefLabel={translations.dataset.distribution.page}
           openInNewTab
           data-testid={testIds.moreInfo}
         />

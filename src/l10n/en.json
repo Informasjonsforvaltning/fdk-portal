@@ -20,6 +20,7 @@
   "phone": "Phone",
   "close": "Close",
   "filter": "Filter",
+  "openFilter": "Open search filter",
   "public": "Public",
   "restricted": "Restricted",
   "non_public": "Non public",
@@ -48,6 +49,8 @@
   "showHitsFor": "Shows {0} hits for {1}",
   "openDataTooltip": "Datasets that are published under an open<br> licence such that everyone can get access,<br> use and share them. This also include solutions<br> that require user registration and/or API-keys as<br> long as everyone can get access.",
   "publicDatasetTooltip": "Datasets that can be accessed<br> by everyone, but not published<br> as 'Open Data'.",
+  "searchBoxHeader": "Everything you need to discover, evaluate and utilize public sector data",
+  "showOnly": "Show only",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -429,5 +432,41 @@
     "sitatFraKilde": "Cited in",
     "basertPåKilde": "Based on",
     "egendefinert": "User-defined"
+  },
+  "detailsPage": {
+    "banner": {
+      "lastPublishedInfo":  "{entity} published in Felles datakatalog on {lastPublished}",
+      "entity": {
+        "dataset": "Dataset description",
+        "dataservice": "Data service description",
+        "concept": "Concept description",
+        "infomod": "Information model description"
+      }
+    },
+    "publisher": "Owner: {publisher}",
+    "openData": "Open data",
+    "publicData": "Public data",
+    "restrictedData": "Restricted data",
+    "nonPublicData": "Non public data",
+    "menu": {
+      "title": "Go to"
+    },
+    "sectionTitles": {
+      "dataset": {
+        "description": "Description",
+        "objective": "Objective",
+        "distributions": "Distributions ({count})",
+        "usage": "Dataset usage",
+        "sample": "Sample data",
+        "provenance": "Provenance",
+        "quality": "Content quality",
+        "conceptReferences": "References to concepts",
+        "datasetReferences": "References to datasets",
+        "dataserviceReferences": "References to data services",
+        "keywords": "Keywords",
+        "restrictions": "Restrictions",
+        "contactInformation": "Contact information"
+      }
+    }
   }
 }
