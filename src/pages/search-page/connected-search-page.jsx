@@ -8,7 +8,7 @@ import {
   addConceptAction,
   removeConceptAction
 } from '../../redux/modules/conceptsCompare';
-import SearchPage from './search-page';
+import SearchPage from './search-page-pure';
 import { fetchReferenceDataIfNeededAction } from '../../redux/modules/referenceData';
 
 const mapStateToProps = ({
