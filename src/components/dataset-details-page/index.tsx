@@ -119,7 +119,7 @@ const DatasetDetailsPage: FC<Props> = ({
   const isAuthoritative = dataset?.provenance?.code === 'NASJONAL';
   const isOpenData =
     dataset?.accessRights?.code === 'PUBLIC' &&
-    dataset.distribution.some(({ openLicense }) => openLicense);
+    dataset?.distribution?.some(({ openLicense }) => openLicense);
   const isPublicData = dataset?.accessRights?.code === 'PUBLIC' && !isOpenData;
   const isRestrictedData = dataset?.accessRights?.code === 'RESTRICTED';
   const isNonPublicData = dataset?.accessRights?.code === 'NON_PUBLIC';
@@ -163,7 +163,7 @@ const DatasetDetailsPage: FC<Props> = ({
   const referencedDatasets = datasets;
   const referencedDataServices = dataServices;
   const datasetReferenceTypes = dataset?.references ?? [];
-  const keywords = dataset?.keyword.map(translate).filter(Boolean) ?? [];
+  const keywords = dataset?.keyword?.map(translate)?.filter(Boolean) ?? [];
   const spatialRestrictions = dataset?.spatial ?? [];
   const temporalRestrictions = dataset?.temporal ?? [];
   const contactPoints = dataset?.contactPoint ?? [];
@@ -551,12 +551,12 @@ const DatasetDetailsPage: FC<Props> = ({
               title={translations.detailsPage.sectionTitles.dataset.keywords}
             >
               <InlineList>
-                {keywords.map(keyword => (
+                {keywords.map((keyword, index) => (
                   <Link
                     to={`${PATHNAME_DATASETS}?keywords=${encodeURIComponent(
                       keyword
                     )}`}
-                    key={keyword}
+                    key={`${keyword}-${index}`}
                   >
                     {keyword}
                   </Link>
@@ -581,11 +581,11 @@ const DatasetDetailsPage: FC<Props> = ({
                       uri ? (
                         <ExternalLink
                           uri={uri}
-                          prefLabel={prefLabel}
+                          prefLabel={translate(prefLabel) || uri}
                           openInNewTab
                         />
                       ) : (
-                        translate(prefLabel)
+                        translate(prefLabel) || uri
                       )
                     }
                   />
@@ -635,22 +635,26 @@ const DatasetDetailsPage: FC<Props> = ({
                         }
                       />
                     )}
-                    <KeyValueListItem
-                      property={translations.email}
-                      value={
-                        <a
-                          title={email}
-                          href={`mailto:${email}`}
-                          rel="noopener noreferrer"
-                        >
-                          {email}
-                        </a>
-                      }
-                    />
-                    <KeyValueListItem
-                      property={translations.phone}
-                      value={hasTelephone}
-                    />
+                    {email && (
+                      <KeyValueListItem
+                        property={translations.email}
+                        value={
+                          <a
+                            title={email}
+                            href={`mailto:${email}`}
+                            rel="noopener noreferrer"
+                          >
+                            {email}
+                          </a>
+                        }
+                      />
+                    )}
+                    {hasTelephone && (
+                      <KeyValueListItem
+                        property={translations.phone}
+                        value={hasTelephone}
+                      />
+                    )}
                   </KeyValueList>
                 )
               )}
