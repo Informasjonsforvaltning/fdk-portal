@@ -1,9 +1,8 @@
 import _ from 'lodash';
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import cx from 'classnames';
 import { detect } from 'detect-browser';
-import { compose, withHandlers, withState } from 'recompose';
 
 import { ResultsDataset } from './results-dataset/results-dataset.component';
 import { ResultsConcepts } from './results-concepts/results-concepts.component';
@@ -38,7 +37,7 @@ import { Tabs } from './tabs/tabs';
 
 const browser = detect();
 
-export const SearchPage = props => {
+const SearchPage = props => {
   const {
     fetchDatasetsIfNeeded,
     fetchApisIfNeeded,
@@ -64,10 +63,7 @@ export const SearchPage = props => {
     location,
     conceptsCompare,
     addConcept,
-    removeConcept,
-    showFilterModal,
-    open,
-    close
+    removeConcept
   } = props;
 
   const locationSearch = parseSearchParams(location);
@@ -97,6 +93,18 @@ export const SearchPage = props => {
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_APISTATUS);
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_LOS);
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_THEMES);
+
+  const [showFilterModal, setShowFilterModal] = useState(false);
+
+  const openFilterModal = event => {
+    event.preventDefault();
+    setShowFilterModal(true);
+  };
+
+  const closeFilterModal = event => {
+    event.preventDefault();
+    setShowFilterModal(false);
+  };
 
   const handleFilterThemes = event => {
     const selectedValue = event.target.value;
@@ -206,7 +214,7 @@ export const SearchPage = props => {
               <button
                 type="button"
                 className="fdk-bg-color-neutral-lighter fdk-button w-100"
-                onClick={open}
+                onClick={openFilterModal}
               >
                 {localization.openFilter}
               </button>
@@ -217,7 +225,7 @@ export const SearchPage = props => {
           <Route exact path={PATHNAME_DATASETS}>
             <ResultsDataset
               showFilterModal={showFilterModal}
-              closeFilterModal={close}
+              closeFilterModal={closeFilterModal}
               datasetItems={datasetItems}
               datasetAggregations={datasetAggregations}
               datasetTotal={datasetTotal}
@@ -235,7 +243,7 @@ export const SearchPage = props => {
           <Route exact path={PATHNAME_APIS}>
             <ResultsApi
               showFilterModal={showFilterModal}
-              closeFilterModal={close}
+              closeFilterModal={closeFilterModal}
               apiItems={apiItems}
               apiTotal={apiTotal}
               apiAggregations={apiAggregations}
@@ -250,7 +258,7 @@ export const SearchPage = props => {
           <Route exact path={PATHNAME_CONCEPTS}>
             <ResultsConcepts
               showFilterModal={showFilterModal}
-              closeFilterModal={close}
+              closeFilterModal={closeFilterModal}
               conceptItems={conceptItems}
               conceptTotal={conceptTotal}
               conceptAggregations={conceptAggregations}
@@ -266,7 +274,7 @@ export const SearchPage = props => {
           <Route exact path={PATHNAME_INFORMATIONMODELS}>
             <ResultsInformationModel
               showFilterModal={showFilterModal}
-              closeFilterModal={close}
+              closeFilterModal={closeFilterModal}
               informationModelItems={informationModelItems}
               informationModelTotal={informationModelTotal}
               informationModelAggregations={informationModelAggregations}
@@ -302,18 +310,4 @@ export const SearchPage = props => {
   );
 };
 
-const enhance = compose(
-  withState('showFilterModal', 'setShowFilterModal', false),
-  withHandlers({
-    open: props => e => {
-      e.preventDefault();
-      props.setShowFilterModal(true);
-    },
-    close: props => e => {
-      e.preventDefault();
-      props.setShowFilterModal(false);
-    }
-  })
-);
-
-export const SearchPageWithState = enhance(SearchPage);
+export default SearchPage;
