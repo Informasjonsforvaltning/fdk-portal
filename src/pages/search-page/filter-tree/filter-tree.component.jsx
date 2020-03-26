@@ -122,7 +122,7 @@ const mainTree = ({
       ) {
         name = localization.facet.publishers[currentPublisher.name];
       } else if (currentPublisher) {
-        name = getTranslateText(_.get(currentPublisher, 'prefLabel'));
+        name = getTranslateText(_.get(currentPublisher, 'prefLabel', node.key));
       }
     }
 
