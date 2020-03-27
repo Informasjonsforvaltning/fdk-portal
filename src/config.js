@@ -8,6 +8,7 @@ const env = window.env || {
 // override all env variables to staging (inspired by https://www.staging.fellesdatakatalog.digdir.no/config.js)
 // env.SEARCH_API_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
+// env.SEARCH_FULLTEXT_HOST = 'https://search.staging.fellesdatakatalog.digdir.no';
 // env.USE_DEMO_LOGO = true;
 
 const searchApi = {
@@ -32,7 +33,8 @@ const config = {
   catalogApi: defaultToSearchApi(env.CATALOG_API_HOST),
   referenceDataApi: defaultToSearchApi(env.REFERENCE_DATA_HOST),
   searchHost: defaultToSearchApi(env.SEARCH_HOST),
-  useDemoLogo: env.USE_DEMO_LOGO
+  useDemoLogo: env.USE_DEMO_LOGO,
+  searchFullTextApi: { host: env.SEARCH_FULLTEXT_HOST }
 };
 
 export const getConfig = () => config;
