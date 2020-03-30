@@ -1,6 +1,11 @@
 @import '../../../node_modules/designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
 
 .fdk-header {
+  padding: 0 1.2em !important;
+  .fdk-logo {
+    height: 8rem !important;
+  }
+
   @include themify($themes) {
     background-color: themed('color-header-bg') !important;
   }

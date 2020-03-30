@@ -24,7 +24,7 @@ import { getConfig } from '../../config';
 export function AppNavBar(props) {
   const fdkLogoPath = getConfig().useDemoLogo
     ? 'fdk-logo-demo.svg'
-    : 'fdk-logo@2x.png';
+    : 'fdk-datanorge-logo.svg';
 
   return (
     <div className="fdk-header">
