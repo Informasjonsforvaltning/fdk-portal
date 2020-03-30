@@ -1,0 +1,631 @@
+{
+  "hits": [
+    {
+      "id": "6a9aa3ce-c01b-4b2f-a289-a27b887b9a1c",
+      "uri": "https://fellesdatakatalog.brreg.no/api/concepts/6a9aa3ce-c01b-4b2f-a289-a27b887b9a1c",
+      "identifier": "https://registrering-begrep-api.staging.fellesdatakatalog.digdir.no/910244132/875e167a-ff15-4d47-92f2-14e42f4a77f4",
+      "application": [],
+      "definition": {
+        "text": {
+          "nb": "Vestlandet sin egen måte å si at man er støl i muskelen på."
+        },
+        "source": {
+          "prefLabel": {
+            "nb": "Gangsperre vs stølhet"
+          }
+        },
+        "sourceRelationship": "basertPåKilde",
+        "sources": [
+          {
+            "text": {
+              "nb": "Gangsperre vs stølhet"
+            },
+            "uri": ""
+          }
+        ]
+      },
+      "prefLabel": {
+        "nb": "Gangsperr"
+      },
+      "altLabel": [],
+      "hiddenLabel": [],
+      "seeAlso": [],
+      "publisher": {
+        "uri": "http://data.brreg.no/enhetsregisteret/enhet/910244132",
+        "name": "RAMSUND OG ROGNAN REVISJON",
+        "orgPath": "/ANNET/910244132"
+      },
+      "harvest": {
+        "firstHarvested": "2020-03-27T06:43:11.366+0000",
+        "lastHarvested": "2020-03-29T12:02:32.252+0000"
+      },
+      "type": "concept"
+    },
+    {
+      "expandedLosTema": [
+        "samfunnstryggleik og beredskap",
+        "samfunnssikkerhet og beredskap",
+        "civil protection and emergency planning",
+        "brann",
+        "brann",
+        "fire",
+        "forsvaret",
+        "forsvaret",
+        "the defense",
+        "varslingstenester",
+        "varslingstjenester",
+        "fire",
+        "bekymringsmelding om branntryggleik",
+        "bekymringsmelding om brannsikkerhet",
+        "fire safety report",
+        "branntilsyn",
+        "branntilsyn",
+        "fire supervision",
+        "fyrverkeri",
+        "fyrverkeri",
+        "fireworks",
+        "feiing",
+        "feiing",
+        "chimney sweep services",
+        "melding om overnatting",
+        "melding om overnatting",
+        "notice of accommodation",
+        "verneplikt",
+        "verneplikt",
+        "compulsory military service",
+        "sesjon",
+        "sesjon",
+        "session",
+        "repetisjonsteneste",
+        "repetisjonstjeneste",
+        "repetition service",
+        "skredvarsel",
+        "skredvarsel",
+        "avalanche warning",
+        "blåskjelvarsel",
+        "blåskjellvarsel",
+        "mussels warning",
+        "skogbrannvarsel",
+        "skogbrannvarsel",
+        "forest fire warning",
+        "flyalarm",
+        "flyalarm",
+        "alert",
+        "lynvarsel",
+        "lynvarsel",
+        "warning of lightning",
+        "flaumvarsel",
+        "flomvarsel",
+        "flood warning",
+        "vêrvarsel",
+        "værvarsel",
+        "weather forecast",
+        "mobilitetstilbod",
+        "mobilitetstilbud",
+        "mobility services",
+        "trafikk og transport",
+        "trafikk og transport",
+        "traffic and transport",
+        "drivstoff og ladestasjonar",
+        "drivstoff og ladestasjoner",
+        "filling and charging stations",
+        "reisebillett",
+        "reisebillett",
+        "travel tickets",
+        "lokasjonstenester",
+        "lokasjonstjenester",
+        "location information",
+        "skuleskyss",
+        "skoleskyss",
+        "school transport",
+        "ruteplanleggjar",
+        "ruteplanlegger",
+        "route planner",
+        "parkering",
+        "parkering og hvileplasser",
+        "parking and rest area",
+        "reisegaranti",
+        "reisegaranti",
+        "travel guarantee",
+        "tilrettelagd transport",
+        "tilrettelagt transport",
+        "transport services for disabled persons",
+        "takstar og kjøpsinformasjon",
+        "takster og kjøpsinformasjon",
+        "fare and purchase information",
+        "ruteinformasjon",
+        "ruteinformasjon",
+        "operational information",
+        "miljøvenleg transport",
+        "miljøvennlig transport",
+        "environmental transportation",
+        "næring",
+        "næring",
+        "business",
+        "tilskotsordningar for næring",
+        "tilskuddsordninger for næring",
+        "public funding schemes for business",
+        "næringsliv",
+        "næringsliv",
+        "agriculture",
+        "næringsutvikling",
+        "næringsutvikling",
+        "business development",
+        "landbruk",
+        "landbruk",
+        "agriculture sector",
+        "handel og service",
+        "handel og service",
+        "trade and service",
+        "avløysartilskot",
+        "avløsertilskudd",
+        "farm assistance grant",
+        "skogbrukstilskot",
+        "skogbrukstilskudd",
+        "forestry grants",
+        "tilskot til økologisk landbruk",
+        "tilskudd til økologisk landbruk",
+        "organic agriculture grants",
+        "produksjonstilskot",
+        "produksjonstilskudd",
+        "produce grants",
+        "stønad til bedrifter",
+        "støtte til bedrifter",
+        "support for businesses",
+        "jordbrukstilskot",
+        "jordbrukstilskudd",
+        "farming grants",
+        "tenester og krav til enkeltbransjar",
+        "tjenester og krav til enkeltbransjer",
+        "services and obligations for specific industries",
+        "starte eller avslutte bedrift",
+        "starte eller avslutte bedrift",
+        "starting or closing a business",
+        "rapportering for næringsdrivande",
+        "rapportering for næringsdrivende",
+        "business reporting",
+        "standardar",
+        "standarder",
+        "standards",
+        "tenester og krav til arbeidsgivar",
+        "tjenester og krav til arbeidsgiver",
+        "services and obligations for employers",
+        "sertifisering og autorisasjon",
+        "sertifisering og autorisasjon",
+        "certification and authorization",
+        "patent, design og varemerke",
+        "patent, design og varemerke",
+        "patent, design and trademarks",
+        "utenlandsk bedrift",
+        "utenlandsk bedrift",
+        "foreign businesses in norway",
+        "tilsyn og kontroll med næringsverksemd",
+        "tilsyn og kontroll med næringsvirksomhet",
+        "controlling compliance in businesses",
+        "bevilling og løyve",
+        "bevilling og tillatelser",
+        "licenses and permissions",
+        "stønad til bedrifter",
+        "støtte til bedrifter",
+        "support for businesses",
+        "næringsklynger",
+        "næringsklynger",
+        "business parks",
+        "næringsareal",
+        "næringsareal",
+        "business space",
+        "dyrehelse",
+        "dyrehelse",
+        "animal health",
+        "reindrift",
+        "reindrift",
+        "reindeer herding",
+        "erstatningsordningar i landbruket",
+        "erstatningsordninger i landbruket",
+        "compensation schemes in agriculture",
+        "vegbygging",
+        "vegbygging",
+        "road building",
+        "skogbruk",
+        "skogbruk",
+        "forestry",
+        "plantedyrking",
+        "plantedyrking",
+        "cultivation of plants",
+        "plantevern",
+        "plantevern",
+        "plant protection",
+        "landbrukseigedom",
+        "landbrukseiendom",
+        "agricultural property",
+        "veterinær",
+        "veterinær",
+        "veterinarian",
+        "produktsikkerheit",
+        "produktsikkerhet",
+        "product safety",
+        "offentleg innkjøp",
+        "offentlig innkjøp",
+        "public procurement"
+      ],
+      "losTheme": [
+        {
+          "children": [
+            "https://psi.norge.no/los/tema/brann",
+            "https://psi.norge.no/los/tema/forsvaret",
+            "https://psi.norge.no/los/tema/varslingstjenester"
+          ],
+          "isTema": true,
+          "losPaths": [
+            "samfunnssikkerhet-og-beredskap"
+          ],
+          "name": {
+            "nn": "Samfunnstryggleik og beredskap",
+            "nb": "Samfunnssikkerhet og beredskap",
+            "en": "Civil protection and emergency planning"
+          },
+          "uri": "https://psi.norge.no/los/tema/samfunnssikkerhet-og-beredskap",
+          "synonyms": []
+        },
+        {
+          "children": [
+            "https://psi.norge.no/los/ord/drivstoff-og-ladestasjoner",
+            "https://psi.norge.no/los/ord/reisebillett",
+            "https://psi.norge.no/los/ord/lokasjonstjenester",
+            "https://psi.norge.no/los/ord/skoleskyss",
+            "https://psi.norge.no/los/ord/ruteplanlegger",
+            "https://psi.norge.no/los/ord/parkering-og-hvileplasser",
+            "https://psi.norge.no/los/ord/reisegaranti",
+            "https://psi.norge.no/los/ord/tilrettelagt-transport",
+            "https://psi.norge.no/los/ord/takster-og-kjopsinformasjon",
+            "https://psi.norge.no/los/ord/ruteinformasjon",
+            "https://psi.norge.no/los/ord/miljovennlig-transport"
+          ],
+          "parents": [
+            "https://psi.norge.no/los/tema/trafikk-og-transport"
+          ],
+          "isTema": true,
+          "losPaths": [
+            "trafikk-og-transport/mobilitetstilbud"
+          ],
+          "name": {
+            "nn": "Mobilitetstilbod",
+            "nb": "Mobilitetstilbud",
+            "en": "Mobility services"
+          },
+          "uri": "https://psi.norge.no/los/tema/mobilitetstilbud",
+          "synonyms": [
+            "Kollektivtilbud",
+            "Kollektivtilbod"
+          ]
+        },
+        {
+          "children": [
+            "https://psi.norge.no/los/tema/tilskuddsordninger-for-naring",
+            "https://psi.norge.no/los/tema/naringsliv",
+            "https://psi.norge.no/los/tema/naringsutvikling",
+            "https://psi.norge.no/los/tema/landbruk",
+            "https://psi.norge.no/los/tema/handel-og-service"
+          ],
+          "isTema": true,
+          "losPaths": [
+            "naring"
+          ],
+          "name": {
+            "nn": "Næring",
+            "nb": "Næring",
+            "en": "Business"
+          },
+          "uri": "https://psi.norge.no/los/tema/naring",
+          "synonyms": []
+        }
+      ],
+      "id": "522e4c94-2d38-428b-a24e-97d54f1b0213",
+      "uri": "http://brreg.no/catalogs/910244132/datasets/e238edd9-b05c-435c-a844-89bb27d883bb",
+      "source": "B",
+      "harvest": {
+        "firstHarvested": "2020-03-23T08:46:02+0100",
+        "lastHarvested": "2020-03-29T01:03:08+0100",
+        "lastChanged": "2020-03-29T01:03:08+0100",
+        "changed": [
+          "2020-03-23T08:46:02+0100",
+          "2020-03-23T13:01:06+0100",
+          "2020-03-23T13:01:16+0100",
+          "2020-03-23T13:01:55+0100",
+          "2020-03-23T13:02:46+0100",
+          "2020-03-23T13:03:48+0100",
+          "2020-03-23T13:03:54+0100",
+          "2020-03-23T13:04:00+0100",
+          "2020-03-23T13:09:40+0100",
+          "2020-03-23T13:09:46+0100",
+          "2020-03-23T13:09:53+0100",
+          "2020-03-23T13:10:00+0100",
+          "2020-03-23T13:10:18+0100",
+          "2020-03-23T13:10:36+0100",
+          "2020-03-23T13:10:49+0100",
+          "2020-03-23T13:10:56+0100",
+          "2020-03-23T13:29:20+0100",
+          "2020-03-23T13:30:16+0100",
+          "2020-03-24T01:02:57+0100",
+          "2020-03-25T01:02:53+0100",
+          "2020-03-26T01:02:56+0100",
+          "2020-03-27T01:02:54+0100",
+          "2020-03-27T07:40:19+0100",
+          "2020-03-27T07:40:26+0100",
+          "2020-03-27T07:40:33+0100",
+          "2020-03-27T07:40:42+0100",
+          "2020-03-27T07:40:49+0100",
+          "2020-03-27T07:40:56+0100",
+          "2020-03-27T07:41:03+0100",
+          "2020-03-27T07:41:10+0100",
+          "2020-03-27T07:41:17+0100",
+          "2020-03-27T07:41:25+0100",
+          "2020-03-27T07:41:32+0100",
+          "2020-03-27T07:41:40+0100",
+          "2020-03-27T07:41:48+0100",
+          "2020-03-27T07:41:57+0100",
+          "2020-03-27T07:42:04+0100",
+          "2020-03-27T07:42:12+0100",
+          "2020-03-27T07:42:19+0100",
+          "2020-03-27T07:42:26+0100",
+          "2020-03-27T07:42:33+0100",
+          "2020-03-27T07:42:41+0100",
+          "2020-03-27T07:42:49+0100",
+          "2020-03-27T07:42:57+0100",
+          "2020-03-27T07:43:05+0100",
+          "2020-03-27T07:43:12+0100",
+          "2020-03-27T07:43:19+0100",
+          "2020-03-28T01:03:14+0100",
+          "2020-03-29T01:03:08+0100"
+        ]
+      },
+      "title": {
+        "nn": "Nynorsk test",
+        "nb": "Test åpne data"
+      },
+      "description": {
+        "nb": "Test åpne data"
+      },
+      "descriptionFormatted": {
+        "nb": "Test åpne data"
+      },
+      "objective": {
+        "nb": "Test åpne data"
+      },
+      "contactPoint": [],
+      "keyword": [
+        {
+          "nb": "test"
+        },
+        {
+          "nb": "Åpne data"
+        }
+      ],
+      "publisher": {
+        "type": "no.dcat.datastore.domain.dcat.Publisher",
+        "valid": false,
+        "uri": "http://data.brreg.no/enhetsregisteret/enhet/910244132",
+        "id": "910244132",
+        "name": "RAMSUND OG ROGNAN REVISJON",
+        "orgPath": "/ANNET/910244132"
+      },
+      "modified": "2020-03-05T00:00:00+0100",
+      "language": [
+        {
+          "uri": "http://publications.europa.eu/resource/authority/language/ENG",
+          "code": "ENG",
+          "prefLabel": {
+            "en": "English",
+            "nb": "Engelsk",
+            "nn": "Engelsk",
+            "no": "Engelsk"
+          }
+        }
+      ],
+      "landingPage": [
+        "https://www.aftenposten.no"
+      ],
+      "theme": [
+        {
+          "id": "https://psi.norge.no/los/tema/samfunnssikkerhet-og-beredskap"
+        },
+        {
+          "id": "https://psi.norge.no/los/tema/mobilitetstilbud"
+        },
+        {
+          "id": "https://psi.norge.no/los/tema/naring"
+        }
+      ],
+      "distribution": [
+        {
+          "downloadURL": [],
+          "accessURL": [],
+          "openLicense": false,
+          "type": "API",
+          "accessService": {
+            "uri": "http://dataset-catalogue:8080/catalogs/55154089-9251-4f42-a7b7-fe0f41d270c1",
+            "description": {
+              "nb": "Sindres nasjonale opplæringskontorregister API"
+            },
+            "endpointDescription": [
+              {
+                "uri": "baaeeaf2-a2d0-44d0-a5a9-d040a66993e2",
+                "extraType": "http://xmlns.com/foaf/0.1/Document"
+              }
+            ]
+          }
+        },
+        {
+          "downloadURL": [],
+          "accessURL": [],
+          "openLicense": false,
+          "type": "API",
+          "accessService": {
+            "uri": "http://dataset-catalogue:8080/catalogs/8d60b744-6b1d-4f26-bcb1-50875b4d159d",
+            "description": {
+              "nb": "Accounts API SPAREBANK 1 TELEMARK"
+            },
+            "endpointDescription": [
+              {
+                "uri": "282b4993-3d8e-4171-b88d-034a88118c27",
+                "extraType": "http://xmlns.com/foaf/0.1/Document"
+              }
+            ]
+          }
+        },
+        {
+          "title": {
+            "nb": "Test åpne data"
+          },
+          "description": {
+            "nb": "TEST TEST"
+          },
+          "downloadURL": [],
+          "accessURL": [
+            "https://data.norge.no/nlod/en/2.0"
+          ],
+          "openLicense": false,
+          "page": [
+            {
+              "uri": "https://www.db.no",
+              "extraType": "http://xmlns.com/foaf/0.1/Document"
+            }
+          ],
+          "format": [
+            "application/xml",
+            "application/json"
+          ],
+          "type": "API"
+        }
+      ],
+      "accessRights": {
+        "uri": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+        "code": "PUBLIC",
+        "prefLabel": {
+          "en": "Public",
+          "nb": "Offentlig",
+          "nn": "Offentlig"
+        }
+      },
+      "hasCurrentnessAnnotation": {
+        "inDimension": "http://iso.org/25012/2008/dataquality/Currentness",
+        "hasBody": {
+          "nb": "asd"
+        }
+      },
+      "references": [
+        {
+          "referenceType": {
+            "uri": "http://purl.org/dc/terms/isReferencedBy",
+            "code": "isReferencedBy",
+            "prefLabel": {
+              "en": "Is Referenced By",
+              "nn": "Er referert av",
+              "nb": "Er referert av"
+            }
+          },
+          "source": {
+            "uri": "http://brreg.no/catalogs/910244132/datasets/1c941ffb-1849-44a6-ba06-ce6b1ddacc60"
+          }
+        }
+      ],
+      "provenance": {
+        "uri": "http://data.brreg.no/datakatalog/provinens/vedtak",
+        "code": "VEDTAK",
+        "prefLabel": {
+          "nb": "Vedtak",
+          "nn": "Vedtak",
+          "en": "Governmental decisions"
+        }
+      },
+      "accrualPeriodicity": {
+        "uri": "http://publications.europa.eu/resource/authority/frequency/WEEKLY_3",
+        "code": "WEEKLY_3",
+        "prefLabel": {
+          "sk": "trikrát týždenne",
+          "cs": "třikrát týdně",
+          "nl": "drie keer per week",
+          "ga": "trí uair in aghaidh na seachtaine",
+          "pl": "trzy razy w tygodniu",
+          "lt": "tris kartus per savaitę",
+          "sl": "trikrat tedensko",
+          "it": "tre volte a settimana",
+          "fi": "kolme kertaa viikossa",
+          "lv": "trīsreiz nedēļā",
+          "hr": "triput tjedno",
+          "mt": "tliet darbiet fil-ġimgħa",
+          "hu": "hetente háromszori",
+          "fr": "trois fois par semaine",
+          "en": "three times a week",
+          "el": "τριεβδομαδιαίος",
+          "ro": "de trei ori pe săptămână",
+          "pt": "três vezes por semana",
+          "et": "kolm korda nädalas",
+          "no": "tre ganger i uken",
+          "sv": "tre gånger per vecka",
+          "es": "tres veces por semana",
+          "da": "tre gange ugentligt",
+          "de": "dreimal in Woche",
+          "bg": "три пъти на седмица"
+        }
+      },
+      "subject": [
+        {
+          "uri": "https://fellesdatakatalog.brreg.no/api/concepts/f5507108-ee5f-4fa6-8e69-5c8c3ee540ec",
+          "identifier": "http://begrepskatalogen/begrep/2b29205f-e7e6-11e8-b7e4-005056821322",
+          "prefLabel": {
+            "nb": "boenheter i boligselskap eller boligsameie"
+          },
+          "definition": {
+            "nb": "tema  i forbindelse med fastsetting av formues- og inntektsskatt som omhandler felles- formue, -gjeld, -inntekter og -kostnader som skattepliktige har knyttet til en eller flere boenheter i boligselskap eller boligsameie"
+          }
+        }
+      ],
+      "conformsTo": [
+        {
+          "uri": "https://test.no",
+          "prefLabel": {
+            "nb": "Test for standard"
+          },
+          "extraType": "http://purl.org/dc/terms/Standard"
+        }
+      ],
+      "catalog": {
+        "id": "910244132",
+        "uri": "http://dataset-catalogue:8080/catalogs/910244132",
+        "title": {
+          "nb": "Datakatalog for RAMSUND OG ROGNAN REVISJON"
+        },
+        "publisher": {
+          "type": "no.dcat.datastore.domain.dcat.Publisher",
+          "valid": false,
+          "uri": "http://data.brreg.no/enhetsregisteret/enhet/910244132",
+          "id": "910244132",
+          "name": "RAMSUND OG ROGNAN REVISJON",
+          "orgPath": "/ANNET/910244132"
+        }
+      },
+      "type": "dataset"
+    },
+    {
+      "id": "94b78a43-a2f9-41ea-a4c6-e13376b650a9",
+      "title": {
+        "nb": "Åpne Data fra Enhetsregisteret - API Dokumentasjon"
+      },
+      "publisher": {
+        "uri": "https://data.brreg.no/enhetsregisteret/api/enheter/910244132",
+        "name": "RAMSUND OG ROGNAN REVISJON",
+        "orgPath": "PRIVAT/910244132",
+        "prefLabel": {}
+      },
+      "harvest": {
+        "firstHarvested": "2020-03-22T23:26:17",
+        "lastHarvested": "2020-03-29T12:10:27",
+        "lastChanged": "2020-03-22T23:26:17"
+      },
+      "harvestSourceUri": "http://fdk-nginx-search:8080/api/registration/apis/2260e2ed-d17f-4ff7-badf-9bc1eca0cc04",
+      "schema": "{\"$schema\":\"http://json-schema.org/draft-06/schema#\",\"$id\":\"https://fellesdatakatalog.brreg.no/informationmodels/2260e2ed-d17f-4ff7-badf-9bc1eca0cc04/schema\",\"definitions\":{\"Enhet\":{\"properties\":{\"organisasjonsnummer\":{\"type\":\"string\"},\"navn\":{\"type\":\"string\"},\"organisasjonsform\":{\"$ref\":\"#/definitions/Organisasjonsform\"},\"registreringsdatoEnhetsregisteret\":{\"type\":\"string\"},\"registrertIMvaregisteret\":{\"type\":\"boolean\"},\"naeringskode1\":{\"$ref\":\"#/definitions/Naeringskode\"},\"naeringskode2\":{\"$ref\":\"#/definitions/Naeringskode\"},\"naeringskode3\":{\"$ref\":\"#/definitions/Naeringskode\"},\"antallAnsatte\":{\"type\":\"integer\"},\"stiftelsedato\":{\"type\":\"string\"},\"institusjonellSektorkode\":{\"$ref\":\"#/definitions/Sektorkode\"},\"registrertIForetaksregisteret\":{\"type\":\"boolean\"},\"registrertIStiftelsesregisteret\":{\"type\":\"boolean\"},\"registrertIFrivillighetsregisteret\":{\"type\":\"boolean\"},\"sisteInnsendteAarsregnskap\":{\"type\":\"string\"},\"konkurs\":{\"type\":\"boolean\"},\"underAvvikling\":{\"type\":\"boolean\"},\"underTvangsavviklingEllerTvangsopplosning\":{\"type\":\"boolean\"},\"maalform\":{\"type\":\"string\"},\"_links\":{\"$ref\":\"#/definitions/Self\"}}},\"Naeringskode\":{\"properties\":{\"kode\":{\"type\":\"string\"},\"beskrivelse\":{\"type\":\"string\"}}},\"Sektorkode\":{\"properties\":{\"kode\":{\"type\":\"string\"},\"beskrivelse\":{\"type\":\"string\"}}},\"_Organisasjonsformer\":{\"properties\":{\"embedded\":{\"$ref\":\"#/definitions/Organisasjonsformer\"}}},\"Organisasjonsformer\":{\"properties\":{\"organisasjonsformer\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Organisasjonsform\"}}}},\"Organisasjonsform\":{\"properties\":{\"kode\":{\"type\":\"string\"},\"beskrivelse\":{\"type\":\"string\"},\"_links\":{\"$ref\":\"#/definitions/Self\"}}},\"Self\":{\"properties\":{\"self\":{\"$ref\":\"#/definitions/Href\"}}},\"Href\":{\"properties\":{\"href\":{\"type\":\"string\"}}}}}",
+      "type": "informationmodel"
+    }
+  ]
+}
