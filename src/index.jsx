@@ -7,7 +7,6 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import ReactGA from 'react-ga';
-import { hotjar } from 'react-hotjar';
 import { ThemeProvider } from 'styled-components';
 
 import { configureStore } from './redux/configureStore';
@@ -20,7 +19,6 @@ import GlobalStyles from './app/styles';
 if (window.location.hostname.indexOf('fellesdatakatalog.brreg.no') !== -1) {
   ReactGA.initialize('UA-110098477-1'); // prod
   ReactGA.set({ anonymizeIp: true });
-  hotjar.initialize(995327, 6);
 } else if (
   location.hostname.includes('data.transportportal.no') ||
   getConfig().themeNap
