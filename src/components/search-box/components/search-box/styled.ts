@@ -29,6 +29,11 @@ const Content = styled.div`
   padding: 4em 2em 0 2em;
   margin-bottom: 4em;
 
+  @media (min-width: 768px) {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
   ${SearchBoxTitleSC.Title} {
     color: ${({ theme }) => theme.colors.headerBg};
     margin-bottom: 1em;

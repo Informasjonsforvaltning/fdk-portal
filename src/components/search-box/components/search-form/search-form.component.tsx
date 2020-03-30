@@ -33,27 +33,26 @@ const SearchForm: FC<PropsWithChildren<
 
   return (
     <SC.SearchForm onSubmit={onSearch}>
-      <label htmlFor="searchBox">
-        <input
-          aria-label={localization.query.intro}
-          autoComplete="off"
-          name="searchBox"
-          placeholder={localization.query.intro}
-          type="search"
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-        />
-        <button
-          aria-label={localization.query.reset}
-          className="search-clear"
-          type="button"
-          onClick={onClear}
-        />
-        <button className="search-button" type="button" onClick={onSearch}>
-          <img src={SearchIcon} alt={localization.query.do} />
-          {localization.query.do}
-        </button>
-      </label>
+      <label htmlFor="searchBox">{localization.query.intro}</label>
+      <input
+        aria-label={localization.query.intro}
+        autoComplete="off"
+        id="searchBox"
+        placeholder={localization.query.intro}
+        type="search"
+        value={searchQuery}
+        onChange={e => setSearchQuery(e.target.value)}
+      />
+      <button
+        aria-label={localization.query.reset}
+        className="search-clear"
+        type="button"
+        onClick={onClear}
+      />
+      <button className="search-button" type="button" onClick={onSearch}>
+        <img src={SearchIcon} alt={localization.query.do} />
+        {localization.query.do}
+      </button>
     </SC.SearchForm>
   );
 };
