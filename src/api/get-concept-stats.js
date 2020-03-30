@@ -22,7 +22,7 @@ export function extractStats(data) {
   };
 }
 
-const extractConcepts = data => _.get(data, '_embedded.concepts');
+const extractConcepts = data => _.get(data, '_embedded.concepts', []);
 
 const extractConceptUris = data =>
   _.map(extractConcepts(data), 'uri').join(',');
