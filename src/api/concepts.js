@@ -20,7 +20,7 @@ export const getConcept = id =>
     .catch(() => null);
 
 export const extractConcepts = searchResponse =>
-  get(searchResponse, ['_embedded', 'concepts']);
+  get(searchResponse, ['_embedded', 'concepts'], []);
 
 export const extractAggregations = searchResponse =>
   get(searchResponse, 'aggregations');
