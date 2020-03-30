@@ -33,7 +33,9 @@ const SearchForm: FC<PropsWithChildren<
 
   return (
     <SC.SearchForm onSubmit={onSearch}>
-      <label htmlFor="searchBox">{localization.query.intro}</label>
+      <label className="uu-invisible" htmlFor="searchBox">
+        {localization.query.intro}
+      </label>
       <input
         aria-label={localization.query.intro}
         autoComplete="off"
