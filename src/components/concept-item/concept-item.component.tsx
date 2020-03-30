@@ -11,9 +11,9 @@ import { getTranslateText } from '../../lib/translateText';
 
 interface Props {
   concept: Concept;
-  concepts: Concept[];
-  onAddConcept: Function;
-  onDeleteConcept: Function;
+  concepts?: Concept[];
+  onAddConcept?: Function;
+  onDeleteConcept?: Function;
 }
 
 function getSourceRelationshipLabel(sourceRelationship: string) {
@@ -132,12 +132,15 @@ export const ConceptItem: FC<Props> = ({
       <SearchHitData>
         {renderSource(definition)}
         {renderExample(example)}
-        {renderAddRemoveCompareButton(
-          concept,
-          showCompareButton,
-          onAddConcept,
-          onDeleteConcept
-        )}
+        {concepts &&
+          onAddConcept &&
+          onDeleteConcept &&
+          renderAddRemoveCompareButton(
+            concept,
+            showCompareButton,
+            onAddConcept,
+            onDeleteConcept
+          )}
       </SearchHitData>
     </SearchHit>
   );
