@@ -1,5 +1,4 @@
 import memoize from 'lodash/memoize';
-import pick from 'lodash/pick';
 import { resolve } from 'react-resolver';
 
 import { searchAllEntities } from '../../api/search-fulltext-api/all-entities';
@@ -11,12 +10,17 @@ const memoizedSearchAllEntities = memoize(searchAllEntities);
 
 const mapProps = {
   searchAllEntities: ({ location }: any) => {
-    const searchParameters = parseSearchParams(location);
-    const searchParamOnlyQ = pick(searchParameters, 'q');
+    const { q, orgPath, losTheme: los, page } = parseSearchParams(location);
+
+    const filters = [];
+    orgPath && filters.push({ orgPath });
+    los && filters.push({ los });
+
     const searchAllEntitiesParams =
       location.pathname === PATHNAME_SEARCH
-        ? searchParameters
-        : searchParamOnlyQ;
+        ? { q, filters, page: parseInt(page || 0, 10) }
+        : { q };
+
     return memoizedSearchAllEntities(searchAllEntitiesParams).then(response =>
       normalizeAggregations(response)
     );
