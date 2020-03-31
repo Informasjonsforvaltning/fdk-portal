@@ -89,7 +89,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
               containerClassName="pagination"
               onPageChange={onPageChange}
               activeClassName="active"
-              forcePage={parseInt(page || 0, 10)}
+              forcePage={parseInt(searchParams.page || 0, 10)}
               disableInitialCallback
             />
           </SC.Pagination>
