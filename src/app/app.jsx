@@ -5,6 +5,7 @@ import cx from 'classnames';
 import DocumentMeta from 'react-document-meta';
 
 import localization from '../lib/localization';
+import { MainPage } from '../pages/main-page/main-page';
 import { SearchPage } from '../pages/search-page/search-page';
 import DatasetDetailsPage from '../components/dataset-details-page';
 import { ConnectedApiDetailsPage } from '../pages/api-details-page/connected-api-details-page';
@@ -26,7 +27,8 @@ import {
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
-  PATHNAME_ABOUT_REGISTRATION
+  PATHNAME_ABOUT_REGISTRATION,
+  PATHNAME_MAIN_PAGE
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
@@ -73,6 +75,7 @@ export function App({ language }) {
       <Breadcrumbs />
 
       <Switch>
+        <Route exact path={PATHNAME_MAIN_PAGE} component={MainPage} />
         <Route exact path={PATHNAME_SEARCH} component={SearchPage} />
         <Route exact path={PATHNAME_DATASETS} component={SearchPage} />
         <Route exact path={PATHNAME_APIS} component={SearchPage} />

@@ -1,4 +1,5 @@
-export const PATHNAME_SEARCH = '/';
+export const PATHNAME_MAIN_PAGE = '/';
+export const PATHNAME_SEARCH = '/search';
 export const PATHNAME_DATASETS = '/datasets';
 export const PATHNAME_DATASET_DETAILS = '/datasets';
 export const PATHNAME_APIS = '/apis';
