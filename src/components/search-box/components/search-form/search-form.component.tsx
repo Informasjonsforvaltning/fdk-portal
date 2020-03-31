@@ -12,6 +12,7 @@ import SC from './styled';
 import localization from '../../../../lib/localization';
 import { parseSearchParams } from '../../../../lib/location-history-helper';
 import { setSearchText } from '../../../../pages/search-page/search-location-helper';
+import { PATHNAME_MAIN_PAGE } from '../../../../constants/constants';
 import SearchIcon from '../../../../img/icon-search-lg.svg';
 
 const SearchForm: FC<PropsWithChildren<
@@ -28,7 +29,9 @@ const SearchForm: FC<PropsWithChildren<
   function onClear(e: FormEvent) {
     e.preventDefault();
     setSearchQuery('');
-    setSearchText(history, location, '');
+    if (location.pathname !== PATHNAME_MAIN_PAGE) {
+      setSearchText(history, location, '');
+    }
   }
 
   return (

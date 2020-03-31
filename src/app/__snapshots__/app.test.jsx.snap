@@ -35,6 +35,11 @@ exports[`should render App correctly 1`] = `
     <Route
       component={[Function]}
       exact={true}
+      path="/search"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
       path="/datasets"
     />
     <Route
