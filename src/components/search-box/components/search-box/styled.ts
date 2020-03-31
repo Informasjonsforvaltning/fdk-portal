@@ -45,7 +45,21 @@ const Content = styled.div`
   }
 `;
 
+const SearchLinks = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  margin: 4em 0 0 0;
+  width: 100%;
+
+  @media (min-width: 992px) {
+    flex-flow: row;
+    width: 80%;
+  }
+`;
+
 export default {
   SearchBox,
-  Content
+  Content,
+  SearchLinks
 };

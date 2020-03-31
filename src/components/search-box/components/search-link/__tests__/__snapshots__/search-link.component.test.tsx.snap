@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchLink component must render correct structure 1`] = `
+<Styled(Link)
+  to="/datasets"
+  type="dataset"
+>
+  <Styled(SvgIconCatalogDatasetLg) />
+  <span>
+    Show only
+  </span>
+  <span>
+    dataset
+  </span>
+</Styled(Link)>
+`;
