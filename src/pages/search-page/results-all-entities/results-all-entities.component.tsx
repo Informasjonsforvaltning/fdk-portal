@@ -54,7 +54,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   const searchParams = parseSearchParams(location);
   const {
     orgPath: orgPathFilterParam,
-    los: losThemeFilterParam
+    losTheme: losThemeFilterParam
   } = searchParams;
   const { totalPages } = page;
 
