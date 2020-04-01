@@ -14,6 +14,7 @@ import { Props as EntitiesProps } from '../../components/with-entities';
 import { Props as ReferenceDataProps } from '../../components/with-reference-data';
 import { Entity } from '../../types/enums';
 import newsFromFile from './news.json';
+import { getConfig } from '../../config';
 
 interface Props extends EntitiesProps, ReferenceDataProps {
   news?: any;
@@ -53,6 +54,20 @@ const MainPage: FC<Props> = ({
           </section>
           <section className="col-12 col-lg-4">
             <NewsList news={news} />
+
+            {!getConfig().themeNap && (
+              <SC.Twitter>
+                <h2>{localization.newsFromDatakatalogenOnTwitter}</h2>
+                <a
+                  className="twitter-timeline"
+                  data-width="600"
+                  data-height="500"
+                  href="https://twitter.com/datakatalogen?ref_src=twsrc%5Etfw"
+                >
+                  Tweets by datakatalogen
+                </a>
+              </SC.Twitter>
+            )}
           </section>
         </SC.Content>
       </main>
