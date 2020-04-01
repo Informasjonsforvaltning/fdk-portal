@@ -28,11 +28,13 @@ import {
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
-  PATHNAME_MAIN_PAGE
+  PATHNAME_MAIN_PAGE,
+  PATHNAME_NEWS_ARTICLE
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
+import { NewsArticle } from '../pages/news-article-page/news-article-page';
 
 export function App({ language }) {
   // react-localization is a stateful library, so we set the required language on each full-app render
@@ -104,6 +106,11 @@ export function App({ language }) {
               component={DatasetDetailsPage}
             />
             <Route exact path="/apis/:id" component={ConnectedApiDetailsPage} />
+            <Route
+              exact
+              path={`${PATHNAME_NEWS_ARTICLE}/:id`}
+              component={NewsArticle}
+            />
             <Route
               exact
               path={PATHNAME_REPORTS}
