@@ -9,6 +9,7 @@ export const PATHNAME_INFORMATIONMODELS = '/informationmodels';
 export const PATHNAME_REPORTS = '/reports';
 export const PATHNAME_ABOUT = '/about';
 export const PATHNAME_ABOUT_REGISTRATION = '/about-registration';
+export const PATHNAME_NEWS_ARTICLE = '/news';
 export const HITS_PER_PAGE = 10;
 export const PATHNAME_HOME_NAP =
   'https://transportportal.atlas.vegvesen.no/no/';

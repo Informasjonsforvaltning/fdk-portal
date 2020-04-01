@@ -246,8 +246,9 @@ export interface Links {
 export interface NewsItemAttributes {
   title: string;
   created: string;
-  changed: Date;
+  changed: string;
   field_ingress: string;
+  body: string;
 }
 
 export interface News {
