@@ -20,6 +20,7 @@ const NewsList: FC<Props> = ({ news }) => {
         {news.map((item: News) => (
           <Item
             key={item.id}
+            id={item.id}
             date={item.attributes.created}
             title={item.attributes.title}
             abstract={item.attributes.field_ingress}

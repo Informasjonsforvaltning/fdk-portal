@@ -15,6 +15,10 @@ const Date = styled.span`
 const Title = styled.h3`
   font-size: 1.5em;
   margin-top: 0.2em;
+  & > a {
+    color: ${({ theme }) => theme.colors.neutralDarker};
+    text-decoration: none;
+  }
 `;
 
 const Abstract = styled.p`
