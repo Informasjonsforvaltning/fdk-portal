@@ -9,7 +9,22 @@
       }
     }
   },
-  "data": [],
+  "data": [{
+    "type": "node--news",
+    "id": "a02c4c8b-82ae-4f39-b845-b0447a57b509",
+    "links": {
+      "self": {
+        "href": ""
+      }
+    },
+    "attributes": {
+      "title": "Protokoll over behandlingsaktiviteter lanseres i mai",
+      "created": "2020-04-02T11:09:40+00:00",
+      "changed": "2020-04-02T11:12:16+00:00",
+      "field_ingress": "Ny løsning for protokoll over behandlingsaktiviteter i henhold til artikkel 30 i personvernforordningen (GDPR) blir lansert i mai 2020.",
+      "body": "Digitaliseringsdirektoratet utvikler i samarbeid med Brønnøysundregistrene løsning for protokoll over behandlingsaktiviteter i henhold til artikkel 30 i personvernforordningen (GDPR). Løsningen er planlagt satt i produksjon i mai 2020.\n \nFelles datakatalog tilbyr derved en løsning som gjør det mulig for virksomheter å ivareta kravene i personvernforordningen på en oversiktlig og strukturert måte. I protokollen kan man  registrere hvem som er behandlingsansvarlig og personvernombud, samt at man kan registrere andre egenskaper om blant annet hva behandlingen gjelder og formålet med den, hvilket rettslig grunnlag som gjelder for behandlingen, kategorier av personopplysninger og registrerte, beskrivelser av tekniske og organisatoriske sikkerhetstiltak, risikovurderinger, kategorier av mottakere og om personopplysninger overføres til tredjeland.\n \nMan kan også oppgi navn på tilhørende datasett og knytte datasettbeskrivelser fra datasettkatalogen i Felles datakatalog til den aktuelle behandlingsaktiviteten. Dette bidrar til bedre oversikt i egen virksomhet over sammenhenger mellom behandlingsaktiviteter og datasett. \n \nProtokollene registreres i Felles datakatalog sin registreringsløsning. Innholdet i protokollene blir ikke vist i Felles datakatalog sin portal. Den enkelte virksomhet kan i stedet generere rapporter fra egne protokoller og oppbevare rapportene i virksomhetens NOARK-godkjente arkiv."
+    }
+  }],
   "links": {
     "next": {
       "href": "http:\/\/dev-drupal8.difi.local\/development\/jsonapi\/node\/news?fields%5Bnode--news%5D=title%2Cfield_ingress%2Ccreated%2Cchanged\u0026page%5Boffset%5D=3\u0026page%5Blimit%5D=3\u0026sort=-created"
