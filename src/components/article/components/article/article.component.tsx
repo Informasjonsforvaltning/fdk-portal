@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Article: FC<Props> = ({
-  article: { title = '', field_ingress: abstract = '', body = '' }
+  article: { title = '', field_ingress: abstract = '', body = '', video_link }
 }) => {
   return (
     <SC.Article>
@@ -25,6 +25,16 @@ const Article: FC<Props> = ({
           __html: convertToSanitizedHtml(body)
         }}
       />
+      {video_link && (
+        <SC.Video>
+          <iframe
+            title={getTranslateText(title)}
+            src={video_link}
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          />
+        </SC.Video>
+      )}
     </SC.Article>
   );
 };

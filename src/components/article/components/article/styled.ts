@@ -22,9 +22,24 @@ const Body = styled.p`
   font-size: 1.6em;
 `;
 
+const Video = styled.div`
+  padding: 56.25% 0 0 0;
+  position: relative;
+
+  & > iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 export default {
   Article,
   Title,
   Abstract,
-  Body
+  Body,
+  Video
 };
