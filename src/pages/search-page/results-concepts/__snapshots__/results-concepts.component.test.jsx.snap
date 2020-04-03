@@ -8,30 +8,25 @@ exports[`should render ResultsConcepts correctly with hits 1`] = `
     className="row mb-3"
   >
     <div
-      className="col-6 col-lg-4"
-    />
-    <div
-      className="col-6 col-lg-4 offset-lg-4"
+      className="col-12"
     >
       <div
-        className="d-flex justify-content-end"
+        className="d-flex justify-content-center justify-content-lg-end"
       >
-        <Button
-          className="fdk-button fdk-button-black-toggle selected"
-          color="primary"
+        <styled.button
+          borderLeft={true}
           onClick={[Function]}
-          tag="button"
+          selected={true}
         >
-          Relevance
-        </Button>
-        <Button
-          className="fdk-button fdk-button-black-toggle"
-          color="primary"
+          Sorted by relevance
+        </styled.button>
+        <styled.button
+          borderRight={true}
           onClick={[Function]}
-          tag="button"
+          selected={false}
         >
-          Recently published
-        </Button>
+          Sort by last published
+        </styled.button>
       </div>
     </div>
   </section>
@@ -598,30 +593,25 @@ exports[`should render ResultsConcepts correctly with minimum of props 1`] = `
     className="row mb-3"
   >
     <div
-      className="col-6 col-lg-4"
-    />
-    <div
-      className="col-6 col-lg-4 offset-lg-4"
+      className="col-12"
     >
       <div
-        className="d-flex justify-content-end"
+        className="d-flex justify-content-center justify-content-lg-end"
       >
-        <Button
-          className="fdk-button fdk-button-black-toggle selected"
-          color="primary"
+        <styled.button
+          borderLeft={true}
           onClick={[Function]}
-          tag="button"
+          selected={true}
         >
-          Relevance
-        </Button>
-        <Button
-          className="fdk-button fdk-button-black-toggle"
-          color="primary"
+          Sorted by relevance
+        </styled.button>
+        <styled.button
+          borderRight={true}
           onClick={[Function]}
-          tag="button"
+          selected={false}
         >
-          Recently published
-        </Button>
+          Sort by last published
+        </styled.button>
       </div>
     </div>
   </section>
