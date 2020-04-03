@@ -33,7 +33,7 @@ export function getFirstLineOfText(text) {
 }
 
 export function truncateTextWithEllipsis(str, length = 100, ending = '...') {
-  if (str.length > length) {
+  if (str && str.length > length) {
     return str.slice(0, length) + ending;
   }
   return str;
