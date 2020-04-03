@@ -171,7 +171,10 @@
   },
   "sort": {
     "by": "Sorter på",
-    "relevance": "Relevans",
+    "sortBy": "Sorter etter {sortField}",
+    "sortedBy": "Sortert etter {sortField}",
+    "relevance": "relevans",
+    "published": "sist publisert",
     "title": "tittel A-Å",
     "publisher": "utgivar A-Å",
     "modified": "Sist publisert"
