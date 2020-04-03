@@ -14,9 +14,10 @@ import localization from '../../../lib/localization';
 import { FilterTree } from '../filter-tree/filter-tree.component';
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { FilterPills } from '../filter-pills/filter-pills.component';
-import { setPage } from '../search-location-helper';
+import { getSortfield, setSortfield, setPage } from '../search-location-helper';
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import SearchEntities from '../../../components/search-entities/search-entities.component';
+import ButtonToggleSC from '../../../components/button-toggle/styled';
 
 interface Props extends RouteComponentProps<any> {
   entities:
@@ -58,6 +59,15 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   } = searchParams;
   const { totalPages } = page;
 
+  const sortfield = getSortfield(location);
+
+  const onSortByScoreClick = () => {
+    setSortfield(history, location, undefined);
+  };
+  const onSortByModifiedClick = () => {
+    setSortfield(history, location, 'harvest.firstHarvested');
+  };
+
   const onPageChange = (data: any) => {
     setPage(history, location, data.selected);
     window.scrollTo(0, 0);
@@ -65,6 +75,38 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
 
   return (
     <main id="content">
+      <div className="row">
+        <SC.SortButtons className="col-12">
+          <ButtonToggleSC.ButtonToggle
+            onClick={onSortByScoreClick}
+            selected={sortfield === undefined}
+            borderLeft
+          >
+            {localization.formatString(
+              sortfield === undefined
+                ? localization.sort.sortedBy
+                : localization.sort.sortBy,
+              {
+                sortField: localization.sort.relevance
+              }
+            )}
+          </ButtonToggleSC.ButtonToggle>
+          <ButtonToggleSC.ButtonToggle
+            onClick={onSortByModifiedClick}
+            selected={sortfield === 'harvest.firstHarvested'}
+            borderRight
+          >
+            {localization.formatString(
+              sortfield === 'harvest.firstHarvested'
+                ? localization.sort.sortedBy
+                : localization.sort.sortBy,
+              {
+                sortField: localization.sort.published
+              }
+            )}
+          </ButtonToggleSC.ButtonToggle>
+        </SC.SortButtons>
+      </div>
       <SC.Content className="row">
         <section className="col-12 col-lg-8">
           <SearchEntities
