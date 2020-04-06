@@ -24,6 +24,7 @@ const SearchForm = styled.form`
     color: ${({ theme }) => theme.colors.neutralDarker};
     flex: 1;
     line-height: normal;
+    outline: none;
     width: 80%;
   }
 
@@ -38,11 +39,11 @@ const SearchForm = styled.form`
       z-index: 1;
       width: 20px;
       height: 20px;
-      right: 120px;
+      right: 130px;
       top: 28px;
 
       @media (max-width: 768px) {
-        right: 80px;
+        right: 85px;
         top: 18px;
         width: 15px;
         height: 15px;
@@ -54,12 +55,16 @@ const SearchForm = styled.form`
     align-items: center;
     border: none;
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.colors.searchButtonBg};
+    background-color: ${({ theme }) => theme.colors.neutralDarker};
     color: #fff;
     display: flex;
     font-size: 0.7em;
     font-weight: 300;
     padding: 0.6em 1em;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.neutralDarkest};
+    }
 
     & > img {
       margin-right: 0.2em;
