@@ -48,6 +48,7 @@
   "closeDetails": "Skjul detaljer",
   "openData": "Åpne data",
   "showHitsFor": "Viser {0} treff for {1}",
+  "authoritativeDatasetTooltip": "Dette datasettet er en autoritativ<br> kilde. Dette betyr at det stammer<br> fra en troverdig, overordnet kilde.",
   "openDataTooltip": "Datasett som er publisert under en åpen<br> lisens slik at alle kan få tilgang, bruke<br> og dele. Dette omfatter også løsninger som<br> krever brukeregistrering/API-nøkler,<br> så lenge alle kan få tilgang.",
   "openDataTooltipX": "Datasett som er publisert under en åpen lisens slik at alle kan få tilgang, bruke og dele. Dette omfatter også løsninger som krever brukeregistrering/API-nøkler, så lenge alle kan få tilgang.",
   "publicDatasetTooltip": "Datasett som kan gjøres tilgjengelig<br> for alle, men som ikke er publisert<br> som åpne data.",
