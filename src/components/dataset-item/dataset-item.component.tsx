@@ -14,7 +14,6 @@ import {
 } from '../search-hit/search-hit';
 import localization from '../../lib/localization';
 import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
-import { PATHNAME_DATASETS } from '../../constants/constants';
 import ReactTooltipSC from '../tooltip/styled';
 
 interface Props {
@@ -61,10 +60,7 @@ const renderThemes = (themes: any, losItems: any) => {
       if (isEuTheme(theme)) {
         const { id, title, code } = theme;
         return (
-          <RoundedTag
-            key={id}
-            to={`${PATHNAME_DATASETS}${patchSearchQuery('theme', code)}`}
-          >
+          <RoundedTag key={id} to={patchSearchQuery('theme', code)}>
             <span>{getTranslateText(title)}</span>
           </RoundedTag>
         );
@@ -72,10 +68,7 @@ const renderThemes = (themes: any, losItems: any) => {
       if (isLosTheme(theme)) {
         const { uri, prefLabel, losPaths: [losPath] = [] } = theme;
         return (
-          <RoundedTag
-            key={uri}
-            to={`${PATHNAME_DATASETS}${patchSearchQuery('losTheme', losPath)}`}
-          >
+          <RoundedTag key={uri} to={patchSearchQuery('losTheme', losPath)}>
             <span>{getTranslateText(prefLabel)}</span>
           </RoundedTag>
         );
