@@ -6,6 +6,7 @@ import { TextLanguage } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
 import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
+import ReactTooltipSC from '../../../tooltip/styled';
 
 interface Props {
   id: string;
@@ -36,7 +37,12 @@ export const SearchHitHead: FC<Props> = ({
             </Link>
           </SC.Title>
         )}
-        {isAuthoritative && <SC.AuthoritativeIcon />}
+        {isAuthoritative && (
+          <div data-tip={localization.authoritativeDatasetTooltip}>
+            <SC.AuthoritativeIcon />
+            <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
+          </div>
+        )}
       </SC.Header>
 
       <SC.Type>
