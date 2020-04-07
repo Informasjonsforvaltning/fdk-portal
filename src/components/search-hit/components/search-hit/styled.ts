@@ -61,7 +61,7 @@ const AccessRight = styled.div`
     }
   }
 
-  ${RoundedTagSC.RoundedTag} {
+  ${RoundedTagSC.RoundedTagWithLink} {
     background-color: ${({ theme }) => theme.lighter};
     color: ${({ theme }) => theme.dark};
     &:hover {
@@ -83,7 +83,7 @@ const Theme = styled.div`
   margin-bottom: 1em;
   flex-wrap: wrap;
 
-  ${RoundedTagSC.RoundedTag} {
+  ${RoundedTagSC.RoundedTagWithLink} {
     background-color: ${({ theme }) => theme.lighter};
     color: ${({ theme }) => theme.dark} !important;
     margin-right: 0.5em;
