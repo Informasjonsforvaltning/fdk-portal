@@ -8,6 +8,21 @@ import { normalizeAggregations } from '../../lib/normalizeAggregations';
 
 const memoizedSearchAllEntities = memoize(searchAllEntities);
 
+const parseAvailabilityFilters = (availability: any, filters: any) => {
+  availability.split(',').forEach((item: any) => {
+    switch (item) {
+      case 'isFree':
+        return filters.push({ isFree: true });
+      case 'isOpenAccess':
+        return filters.push({ isOpenAccess: true });
+      case 'isOpenLicense':
+        return filters.push({ isOpenLicense: true });
+      default:
+        return null;
+    }
+  });
+};
+
 const mapProps = {
   searchAllEntities: ({ location }: any) => {
     const {
@@ -16,13 +31,15 @@ const mapProps = {
       losTheme: los,
       page,
       sortfield,
-      accessrights: accessRights
+      accessrights: accessRights,
+      availability
     } = parseSearchParams(location);
 
     const filters = [];
     orgPath && filters.push({ orgPath });
     los && filters.push({ los });
     accessRights && filters.push({ accessRights });
+    availability && parseAvailabilityFilters(availability, filters);
 
     const searchAllEntitiesParams =
       location.pathname === PATHNAME_SEARCH

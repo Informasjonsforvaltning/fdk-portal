@@ -58,6 +58,10 @@
   "publisher": "Utgivar",
   "news": "Aktuelt",
   "datasetAccessRights": "Tilgangsnivå for datasett",
+  "apiAvailability": "Tilgjengelegheit for API",
+  "isFree": "Gratis",
+  "isOpenAccess": "Open for alle",
+  "isOpenLicense": "Open lisens",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
