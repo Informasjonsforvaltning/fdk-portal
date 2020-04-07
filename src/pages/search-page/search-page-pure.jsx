@@ -244,6 +244,7 @@ const SearchPage = props => {
               publishers={publisherItems}
               onFilterPublisher={handleFilterPublisherHierarchy}
               onFilterLos={handleFilterLos}
+              onFilterAccessRights={handleDatasetFilterAccessRights}
             />
           </Route>
           <Route exact path={PATHNAME_DATASETS}>

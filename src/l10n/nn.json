@@ -57,6 +57,7 @@
   "showOnly": "Vis kun",
   "publisher": "Utgivar",
   "news": "Aktuelt",
+  "datasetAccessRights": "Tilgangsnivå for datasett",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
