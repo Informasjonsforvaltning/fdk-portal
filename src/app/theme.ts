@@ -119,9 +119,9 @@ export const themeNAP = {
     searchButtonBg: '#D5D7D9',
 
     [Entity.DATASET]: {
-      dark: '#444F55',
-      light: '#FFF',
-      lighter: '#E5E5E5'
+      dark: '#3E7B1F',
+      light: '#DFF2D5',
+      lighter: '#F4F7F2'
     },
     [Entity.DATA_SERVICE]: {
       dark: '#805333',
