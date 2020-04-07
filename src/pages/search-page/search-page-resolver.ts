@@ -10,13 +10,19 @@ const memoizedSearchAllEntities = memoize(searchAllEntities);
 
 const mapProps = {
   searchAllEntities: ({ location }: any) => {
-    const { q, orgPath, losTheme: los, page, sortfield } = parseSearchParams(
-      location
-    );
+    const {
+      q,
+      orgPath,
+      losTheme: los,
+      page,
+      sortfield,
+      accessrights: accessRights
+    } = parseSearchParams(location);
 
     const filters = [];
     orgPath && filters.push({ orgPath });
     los && filters.push({ los });
+    accessRights && filters.push({ accessRights });
 
     const searchAllEntitiesParams =
       location.pathname === PATHNAME_SEARCH

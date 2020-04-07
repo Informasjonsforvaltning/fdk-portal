@@ -57,6 +57,7 @@
   "showOnly": "Show only",
   "publisher": "Publisher",
   "news": "News",
+  "datasetAccessRights": "Dataset access",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",

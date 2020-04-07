@@ -18,6 +18,7 @@ import { getSortfield, setSortfield, setPage } from '../search-location-helper';
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import SearchEntities from '../../../components/search-entities/search-entities.component';
 import ButtonToggleSC from '../../../components/button-toggle/styled';
+import { FilterBox } from '../../../components/filter-box/filter-box.component';
 
 interface Props extends RouteComponentProps<any> {
   entities:
@@ -30,6 +31,7 @@ interface Props extends RouteComponentProps<any> {
   losItems?: any;
   themesItems?: any;
   publishers: Partial<Publisher>[];
+  onFilterAccessRights: any;
   onFilterPublisher: any;
   onFilterLos: any;
   compareConceptList: Concept[];
@@ -44,6 +46,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   losItems = {},
   themesItems = [],
   publishers = [],
+  onFilterAccessRights,
   onFilterPublisher,
   onFilterLos,
   compareConceptList,
@@ -55,7 +58,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   const searchParams = parseSearchParams(location);
   const {
     orgPath: orgPathFilterParam,
-    losTheme: losThemeFilterParam
+    losTheme: losThemeFilterParam,
+    accessrights: accessrightsParam
   } = searchParams;
   const { totalPages } = page;
 
@@ -169,6 +173,14 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
             activeFilter={losThemeFilterParam}
             referenceDataItems={losItems}
             collapseItems
+          />
+          <FilterBox
+            htmlKey={2}
+            title={localization.datasetAccessRights}
+            filter={aggregations.accessRights}
+            onClick={onFilterAccessRights}
+            activeFilter={accessrightsParam}
+            filters={searchParams}
           />
         </SC.Filters>
       </SC.Content>
