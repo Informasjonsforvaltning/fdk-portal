@@ -43,7 +43,7 @@ export function AppNavBar(props) {
                 Gå til forside
               </span>
               <img
-                className="fdk-logo"
+                className={getConfig().themeNap ? 'nap-logo' : 'fdk-logo'}
                 src={
                   getConfig().themeNap
                     ? '/img/logo-transport.svg'
