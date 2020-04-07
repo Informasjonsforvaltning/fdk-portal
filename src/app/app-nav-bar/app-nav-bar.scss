@@ -6,6 +6,11 @@
     height: 8rem !important;
   }
 
+  .nap-logo {
+    height: 6rem !important;
+    margin: 1em 0;
+  }
+
   @include themify($themes) {
     background-color: themed('color-header-bg') !important;
   }
