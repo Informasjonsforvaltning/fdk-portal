@@ -58,6 +58,10 @@
   "publisher": "Publisher",
   "news": "News",
   "datasetAccessRights": "Dataset access",
+  "apiAvailability": "API availability",
+  "isFree": "Is free",
+  "isOpenAccess": "Open access",
+  "isOpenLicense": "Open license",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",

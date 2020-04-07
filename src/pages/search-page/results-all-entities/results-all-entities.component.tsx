@@ -32,6 +32,7 @@ interface Props extends RouteComponentProps<any> {
   themesItems?: any;
   publishers: Partial<Publisher>[];
   onFilterAccessRights: any;
+  onFilterAvailability: any;
   onFilterPublisher: any;
   onFilterLos: any;
   compareConceptList: Concept[];
@@ -47,6 +48,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   themesItems = [],
   publishers = [],
   onFilterAccessRights,
+  onFilterAvailability,
   onFilterPublisher,
   onFilterLos,
   compareConceptList,
@@ -59,7 +61,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   const {
     orgPath: orgPathFilterParam,
     losTheme: losThemeFilterParam,
-    accessrights: accessrightsParam
+    accessrights: accessrightsParam,
+    availability: availabilityParam
   } = searchParams;
   const { totalPages } = page;
 
@@ -180,6 +183,14 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
             filter={aggregations.accessRights}
             onClick={onFilterAccessRights}
             activeFilter={accessrightsParam}
+            filters={searchParams}
+          />
+          <FilterBox
+            htmlKey={3}
+            title={localization.apiAvailability}
+            filter={aggregations.availability}
+            onClick={onFilterAvailability}
+            activeFilter={availabilityParam}
             filters={searchParams}
           />
         </SC.Filters>

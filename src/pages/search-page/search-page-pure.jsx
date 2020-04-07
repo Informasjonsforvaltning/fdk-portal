@@ -139,6 +139,18 @@ const SearchPage = props => {
     }
   };
 
+  const handleApiFilterAvailability = event => {
+    const selectedValue = event.target.value;
+    const add = event.target.checked;
+    setMultiselectFilterValue(
+      history,
+      location,
+      'availability',
+      selectedValue,
+      add
+    );
+  };
+
   const handleFilterPublisherHierarchy = event => {
     const selectedValue = event.target.value;
 
@@ -245,6 +257,7 @@ const SearchPage = props => {
               onFilterPublisher={handleFilterPublisherHierarchy}
               onFilterLos={handleFilterLos}
               onFilterAccessRights={handleDatasetFilterAccessRights}
+              onFilterAvailability={handleApiFilterAvailability}
             />
           </Route>
           <Route exact path={PATHNAME_DATASETS}>
