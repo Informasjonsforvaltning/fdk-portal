@@ -56,13 +56,13 @@ const renderThemePill = ({ themesItems, keyValue, history, location, key }) => {
   });
 };
 
-const renderKeywordPills = (keywords, history, location) =>
+const renderKeywordPills = (filterName, keywords, history, location) =>
   keywords.map(keyword => (
     <Pill
       key={keyword}
       label={keyword}
       handleOnClick={() =>
-        setMultiselectFilterValue(history, location, 'keywords', keyword, false)
+        setMultiselectFilterValue(history, location, filterName, keyword, false)
       }
     />
   ));
@@ -111,8 +111,8 @@ export const FilterPills = ({
           key
         });
       }
-      if (key === 'keywords') {
-        return renderKeywordPills(keyValue.split(','), history, location);
+      if (key === 'keywords' || key === 'availability') {
+        return renderKeywordPills(key, keyValue.split(','), history, location);
       }
       if (key === 'opendata') {
         return (
