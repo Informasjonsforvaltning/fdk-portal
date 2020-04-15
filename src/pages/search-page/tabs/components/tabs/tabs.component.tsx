@@ -5,6 +5,7 @@ import SC from './styled';
 import Tab from '../tab/tab.component';
 import localization from '../../../../../lib/localization';
 import {
+  PATHNAME_SEARCH,
   PATHNAME_APIS,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
@@ -13,6 +14,7 @@ import {
 import { getLinkForTab } from '../../../search-location-helper';
 
 interface Props {
+  countResults?: number;
   countDatasets: number;
   countConcepts: number;
   countApis: number;
@@ -20,6 +22,7 @@ interface Props {
 }
 
 const Tabs: FC<Props & RouteComponentProps> = ({
+  countResults,
   countDatasets,
   countApis,
   countConcepts,
@@ -27,6 +30,16 @@ const Tabs: FC<Props & RouteComponentProps> = ({
   location
 }) => (
   <SC.Tabs>
+    <Tab
+      active={location.pathname === PATHNAME_SEARCH}
+      tabLink={getLinkForTab(location, PATHNAME_SEARCH)}
+      label={localization.resultsLabel}
+    >
+      <SC.AllIcon />
+      <SC.Label>
+        {localization.page.resultsTab}&nbsp;({countResults})
+      </SC.Label>
+    </Tab>
     <Tab
       active={location.pathname === PATHNAME_DATASETS}
       tabLink={getLinkForTab(location, PATHNAME_DATASETS)}

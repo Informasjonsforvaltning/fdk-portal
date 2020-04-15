@@ -8,7 +8,6 @@ import {
   addConceptAction,
   removeConceptAction
 } from '../../redux/modules/conceptsCompare';
-import { SearchPageWithState } from './search-page';
 import { fetchReferenceDataIfNeededAction } from '../../redux/modules/referenceData';
 
 const mapStateToProps = ({
@@ -91,7 +90,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchInformationModelsIfNeededAction(query))
 });
 
-export const ConnectedSearchPage = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchPageWithState);
+export const searchPageConnector = connect(mapStateToProps, mapDispatchToProps);

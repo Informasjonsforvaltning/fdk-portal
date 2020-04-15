@@ -234,3 +234,27 @@ export interface ReferenceData {
   themes?: EuTheme[];
   referencetypes?: ReferenceType[];
 }
+
+export interface Link {
+  href: string;
+}
+export interface Links {
+  next: Link;
+  self: Link;
+}
+
+export interface NewsItemAttributes {
+  title: string;
+  created: string;
+  changed: string;
+  field_ingress: string;
+  body: string;
+  video_link: string;
+}
+
+export interface News {
+  type: string;
+  id: string;
+  links: Partial<Links>;
+  attributes: Partial<NewsItemAttributes>;
+}

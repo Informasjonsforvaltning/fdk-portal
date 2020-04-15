@@ -35,6 +35,16 @@ exports[`should render App correctly 1`] = `
     <Route
       component={[Function]}
       exact={true}
+      path="/search-all"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/datasets"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
       path="/apis"
     />
     <Route
@@ -79,6 +89,17 @@ exports[`should render App correctly 1`] = `
           component={[Function]}
           exact={true}
           path="/apis/:id"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "compare": null,
+              "type": [Function],
+            }
+          }
+          exact={true}
+          path="/news/:id"
         />
         <Route
           component={[Function]}

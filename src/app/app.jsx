@@ -5,7 +5,8 @@ import cx from 'classnames';
 import DocumentMeta from 'react-document-meta';
 
 import localization from '../lib/localization';
-import { ConnectedSearchPage } from '../pages/search-page/connected-search-page';
+import { MainPage } from '../pages/main-page/main-page';
+import { SearchPage } from '../pages/search-page/search-page';
 import DatasetDetailsPage from '../components/dataset-details-page';
 import { ConnectedApiDetailsPage } from '../pages/api-details-page/connected-api-details-page';
 import { ConnectedConceptDetailsPage } from '../pages/concept-details-page/connected-concept-details-page';
@@ -17,6 +18,7 @@ import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { ConnectedAppNavBar } from './app-nav-bar/connected-app-nav-bar';
 import { ConnectedDatasetsReportPage } from '../pages/datasets-report-page/connected-datasets-report-page';
 import {
+  PATHNAME_SEARCH,
   PATHNAME_DATASETS,
   PATHNAME_DATASET_DETAILS,
   PATHNAME_APIS,
@@ -25,11 +27,14 @@ import {
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
-  PATHNAME_ABOUT_REGISTRATION
+  PATHNAME_ABOUT_REGISTRATION,
+  PATHNAME_MAIN_PAGE,
+  PATHNAME_NEWS_ARTICLE
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
+import { NewsArticle } from '../pages/news-article-page/news-article-page';
 
 export function App({ language }) {
   // react-localization is a stateful library, so we set the required language on each full-app render
@@ -72,14 +77,12 @@ export function App({ language }) {
       <Breadcrumbs />
 
       <Switch>
-        <Route exact path={PATHNAME_DATASETS} component={ConnectedSearchPage} />
-        <Route exact path={PATHNAME_APIS} component={ConnectedSearchPage} />
-        <Route exact path={PATHNAME_CONCEPTS} component={ConnectedSearchPage} />
-        <Route
-          exact
-          path={PATHNAME_INFORMATIONMODELS}
-          component={ConnectedSearchPage}
-        />
+        <Route exact path={PATHNAME_MAIN_PAGE} component={MainPage} />
+        <Route exact path={PATHNAME_SEARCH} component={SearchPage} />
+        <Route exact path={PATHNAME_DATASETS} component={SearchPage} />
+        <Route exact path={PATHNAME_APIS} component={SearchPage} />
+        <Route exact path={PATHNAME_CONCEPTS} component={SearchPage} />
+        <Route exact path={PATHNAME_INFORMATIONMODELS} component={SearchPage} />
         <ScrollToTop>
           <Switch>
             <Route
@@ -103,6 +106,11 @@ export function App({ language }) {
               component={DatasetDetailsPage}
             />
             <Route exact path="/apis/:id" component={ConnectedApiDetailsPage} />
+            <Route
+              exact
+              path={`${PATHNAME_NEWS_ARTICLE}/:id`}
+              component={NewsArticle}
+            />
             <Route
               exact
               path={PATHNAME_REPORTS}

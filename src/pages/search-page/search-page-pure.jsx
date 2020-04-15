@@ -1,9 +1,8 @@
 import _ from 'lodash';
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import cx from 'classnames';
 import { detect } from 'detect-browser';
-import { compose, withHandlers, withState } from 'recompose';
 
 import { ResultsDataset } from './results-dataset/results-dataset.component';
 import { ResultsConcepts } from './results-concepts/results-concepts.component';
@@ -23,22 +22,26 @@ import {
   PATHNAME_APIS,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
-  PATHNAME_INFORMATIONMODELS
+  PATHNAME_INFORMATIONMODELS,
+  PATHNAME_SEARCH
 } from '../../constants/constants';
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { setFilter, setMultiselectFilterValue } from './search-location-helper';
 import localization from '../../lib/localization';
 import {
+  getLosStructure,
+  getThemesStructure,
   REFERENCEDATA_PATH_APISTATUS,
   REFERENCEDATA_PATH_DISTRIBUTIONTYPE,
   REFERENCEDATA_PATH_LOS,
   REFERENCEDATA_PATH_THEMES
 } from '../../redux/modules/referenceData';
 import { Tabs } from './tabs/tabs';
+import ResultsPage from './results-all-entities/results-all-entities.component';
 
 const browser = detect();
 
-export const SearchPage = props => {
+const SearchPage = props => {
   const {
     fetchDatasetsIfNeeded,
     fetchApisIfNeeded,
@@ -65,10 +68,14 @@ export const SearchPage = props => {
     conceptsCompare,
     addConcept,
     removeConcept,
-    showFilterModal,
-    open,
-    close
+    searchAllEntities
   } = props;
+
+  const {
+    hits: searchAllEntitiesHits,
+    page: searchAllEntitiesPage,
+    aggregations: allResultsEntititesAggregations
+  } = searchAllEntities;
 
   const locationSearch = parseSearchParams(location);
   const locationSearchParamQ = _.pick(locationSearch, 'q');
@@ -97,6 +104,18 @@ export const SearchPage = props => {
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_APISTATUS);
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_LOS);
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_THEMES);
+
+  const [showFilterModal, setShowFilterModal] = useState(false);
+
+  const openFilterModal = event => {
+    event.preventDefault();
+    setShowFilterModal(true);
+  };
+
+  const closeFilterModal = event => {
+    event.preventDefault();
+    setShowFilterModal(false);
+  };
 
   const handleFilterThemes = event => {
     const selectedValue = event.target.value;
@@ -191,6 +210,7 @@ export const SearchPage = props => {
           </SearchBoxTitle>
           {!getConfig().themeNap && (
             <Tabs
+              countResults={searchAllEntities.page.totalElements}
               countDatasets={datasetTotal}
               countConcepts={conceptTotal}
               countApis={apiTotal}
@@ -206,7 +226,7 @@ export const SearchPage = props => {
               <button
                 type="button"
                 className="fdk-bg-color-neutral-lighter fdk-button w-100"
-                onClick={open}
+                onClick={openFilterModal}
               >
                 {localization.openFilter}
               </button>
@@ -214,10 +234,23 @@ export const SearchPage = props => {
           </div>
         </div>
         <Switch>
+          <Route exact path={PATHNAME_SEARCH}>
+            <ResultsPage
+              entities={searchAllEntitiesHits}
+              aggregations={allResultsEntititesAggregations}
+              page={searchAllEntitiesPage}
+              losItems={getLosStructure(referenceData)}
+              themesItems={getThemesStructure(referenceData)}
+              publishers={publisherItems}
+              onFilterPublisher={handleFilterPublisherHierarchy}
+              onFilterLos={handleFilterLos}
+              onFilterAccessRights={handleDatasetFilterAccessRights}
+            />
+          </Route>
           <Route exact path={PATHNAME_DATASETS}>
             <ResultsDataset
               showFilterModal={showFilterModal}
-              closeFilterModal={close}
+              closeFilterModal={closeFilterModal}
               datasetItems={datasetItems}
               datasetAggregations={datasetAggregations}
               datasetTotal={datasetTotal}
@@ -235,7 +268,7 @@ export const SearchPage = props => {
           <Route exact path={PATHNAME_APIS}>
             <ResultsApi
               showFilterModal={showFilterModal}
-              closeFilterModal={close}
+              closeFilterModal={closeFilterModal}
               apiItems={apiItems}
               apiTotal={apiTotal}
               apiAggregations={apiAggregations}
@@ -245,13 +278,12 @@ export const SearchPage = props => {
               publisherCounts={_.get(apiAggregations, 'orgPath.buckets')}
               publishers={publisherItems}
               hitsPerPage={HITS_PER_PAGE}
-              referenceData={referenceData}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
             <ResultsConcepts
               showFilterModal={showFilterModal}
-              closeFilterModal={close}
+              closeFilterModal={closeFilterModal}
               conceptItems={conceptItems}
               conceptTotal={conceptTotal}
               conceptAggregations={conceptAggregations}
@@ -267,7 +299,7 @@ export const SearchPage = props => {
           <Route exact path={PATHNAME_INFORMATIONMODELS}>
             <ResultsInformationModel
               showFilterModal={showFilterModal}
-              closeFilterModal={close}
+              closeFilterModal={closeFilterModal}
               informationModelItems={informationModelItems}
               informationModelTotal={informationModelTotal}
               informationModelAggregations={informationModelAggregations}
@@ -283,38 +315,9 @@ export const SearchPage = props => {
             />
           </Route>
         </Switch>
-        {!getConfig().themeNap && (
-          <div className="twitter-container d-flex justify-content-end mt-5">
-            <div className="twitter">
-              <h2>{localization.newsFromDatakatalogenOnTwitter}</h2>
-              <a
-                className="twitter-timeline"
-                data-width="600"
-                data-height="400"
-                href="https://twitter.com/datakatalogen?ref_src=twsrc%5Etfw"
-              >
-                Tweets by datakatalogen
-              </a>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
 };
 
-const enhance = compose(
-  withState('showFilterModal', 'setShowFilterModal', false),
-  withHandlers({
-    open: props => e => {
-      e.preventDefault();
-      props.setShowFilterModal(true);
-    },
-    close: props => e => {
-      e.preventDefault();
-      props.setShowFilterModal(false);
-    }
-  })
-);
-
-export const SearchPageWithState = enhance(SearchPage);
+export default SearchPage;

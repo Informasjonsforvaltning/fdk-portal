@@ -12,6 +12,7 @@ import SC from './styled';
 import localization from '../../../../lib/localization';
 import { parseSearchParams } from '../../../../lib/location-history-helper';
 import { setSearchText } from '../../../../pages/search-page/search-location-helper';
+import { PATHNAME_MAIN_PAGE } from '../../../../constants/constants';
 import SearchIcon from '../../../../img/icon-search-lg.svg';
 
 const SearchForm: FC<PropsWithChildren<
@@ -28,32 +29,35 @@ const SearchForm: FC<PropsWithChildren<
   function onClear(e: FormEvent) {
     e.preventDefault();
     setSearchQuery('');
-    setSearchText(history, location, '');
+    if (location.pathname !== PATHNAME_MAIN_PAGE) {
+      setSearchText(history, location, '');
+    }
   }
 
   return (
     <SC.SearchForm onSubmit={onSearch}>
-      <label htmlFor="searchBox">
-        <input
-          aria-label={localization.query.intro}
-          autoComplete="off"
-          name="searchBox"
-          placeholder={localization.query.intro}
-          type="search"
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-        />
-        <button
-          aria-label={localization.query.reset}
-          className="search-clear"
-          type="button"
-          onClick={onClear}
-        />
-        <button className="search-button" type="button" onClick={onSearch}>
-          <img src={SearchIcon} alt={localization.query.do} />
-          {localization.query.do}
-        </button>
+      <label className="uu-invisible" htmlFor="searchBox">
+        {localization.query.intro}
       </label>
+      <input
+        aria-label={localization.query.intro}
+        autoComplete="off"
+        id="searchBox"
+        placeholder={localization.query.intro}
+        type="search"
+        value={searchQuery}
+        onChange={e => setSearchQuery(e.target.value)}
+      />
+      <button
+        aria-label={localization.query.reset}
+        className="search-clear"
+        type="button"
+        onClick={onClear}
+      />
+      <button className="search-button" type="button" onClick={onSearch}>
+        <img src={SearchIcon} alt={localization.query.do} />
+        {localization.query.do}
+      </button>
     </SC.SearchForm>
   );
 };

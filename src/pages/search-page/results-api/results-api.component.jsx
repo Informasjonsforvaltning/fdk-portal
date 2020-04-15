@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import cx from 'classnames';
 import _ from 'lodash';
 import { withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -19,6 +18,7 @@ import { ApiItem } from '../../../components/api-item/api-item.component';
 import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
 
 import { Entity } from '../../../types/enums';
+import ButtonToggleSC from '../../../components/button-toggle/styled';
 
 const renderFilterModal = ({
   showFilterModal,
@@ -58,7 +58,7 @@ const renderFilterModal = ({
   </Modal>
 );
 
-const renderHits = (hits, publishers, referenceData) => {
+const renderHits = hits => {
   if (hits && Array.isArray(hits)) {
     return hits.map(item => (
       <ErrorBoundary key={item.id}>
@@ -69,7 +69,7 @@ const renderHits = (hits, publishers, referenceData) => {
             ]
           }
         >
-          <ApiItem api={item} referenceData={referenceData} />
+          <ApiItem api={item} />
         </ThemeProvider>
       </ErrorBoundary>
     ));
@@ -89,8 +89,7 @@ export const ResultsApiPure = ({
   publishers,
   hitsPerPage,
   history,
-  location,
-  referenceData
+  location
 }) => {
   const locationSearch = parseSearchParams(location);
 
@@ -98,12 +97,6 @@ export const ResultsApiPure = ({
   const pageCount = Math.ceil((apiTotal || 1) / hitsPerPage);
 
   const sortfield = getSortfield(location);
-  const sortByScoreClass = cx('fdk-button', 'fdk-button-black-toggle', {
-    selected: !sortfield
-  });
-  const sortByLastModifiedClass = cx('fdk-button', 'fdk-button-black-toggle', {
-    selected: sortfield === 'modified'
-  });
 
   const onSortByScoreClick = () => {
     setSortfield(history, location, undefined);
@@ -120,23 +113,36 @@ export const ResultsApiPure = ({
   return (
     <main data-test-id="apis" id="content">
       <div className="row mb-3">
-        <div className="col-6 col-lg-4" />
-        <div className="col-6 col-lg-4 offset-lg-4">
-          <div className="d-flex justify-content-end">
-            <Button
-              className={sortByScoreClass}
+        <div className="col-12">
+          <div className="d-flex justify-content-center justify-content-lg-end">
+            <ButtonToggleSC.ButtonToggle
               onClick={onSortByScoreClick}
-              color="primary"
+              selected={sortfield === undefined}
+              borderLeft
             >
-              {localization.sort.relevance}
-            </Button>
-            <Button
-              className={sortByLastModifiedClass}
+              {localization.formatString(
+                sortfield === undefined
+                  ? localization.sort.sortedBy
+                  : localization.sort.sortBy,
+                {
+                  sortField: localization.sort.relevance
+                }
+              )}
+            </ButtonToggleSC.ButtonToggle>
+            <ButtonToggleSC.ButtonToggle
               onClick={onSortByModifiedClick}
-              color="primary"
+              selected={sortfield === 'modified'}
+              borderRight
             >
-              {localization.sort.modified}
-            </Button>
+              {localization.formatString(
+                sortfield === 'modified'
+                  ? localization.sort.sortedBy
+                  : localization.sort.sortBy,
+                {
+                  sortField: localization.sort.published
+                }
+              )}
+            </ButtonToggleSC.ButtonToggle>
           </div>
         </div>
       </div>
@@ -183,7 +189,7 @@ export const ResultsApiPure = ({
           )}
         </aside>
         <div id="apis" className="col-12 col-lg-8">
-          {renderHits(apiItems, publishers, referenceData)}
+          {renderHits(apiItems)}
 
           <div className="col-12 d-flex justify-content-center">
             <span className="uu-invisible" aria-hidden="false">
@@ -227,8 +233,7 @@ ResultsApiPure.defaultProps = {
   hitsPerPage: 10,
 
   history: { push: _.noop },
-  location: { search: '' },
-  referenceData: null
+  location: { search: '' }
 };
 
 ResultsApiPure.propTypes = {
@@ -248,8 +253,7 @@ ResultsApiPure.propTypes = {
   hitsPerPage: PropTypes.number,
 
   history: PropTypes.object,
-  location: PropTypes.object,
-  referenceData: PropTypes.object
+  location: PropTypes.object
 };
 
 export const ResultsApi = withRouter(ResultsApiPure);

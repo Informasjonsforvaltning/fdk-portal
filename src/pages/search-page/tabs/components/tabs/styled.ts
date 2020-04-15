@@ -30,9 +30,12 @@ const Label = styled.span`
 `;
 
 const AllIcon = styled(AllIconBase)`
-  height: 1.5em;
+  border-radius: 50%;
+  padding: 0.5em;
+  background-color: ${({ theme }) => theme.colors.neutralLight};
+  height: 3em;
   @media (min-width: 768px) {
-    height: 1em;
+    height: 2em;
   }
 `;
 

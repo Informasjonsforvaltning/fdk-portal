@@ -5,7 +5,6 @@ import { SearchTypes } from '../../types/enums';
 import { SearchHit, SearchHitThemes } from '../search-hit/search-hit';
 import { getTranslateText } from '../../lib/translateText';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
-import { PATHNAME_INFORMATIONMODELS } from '../../constants/constants';
 import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 
 interface Props {
@@ -26,10 +25,7 @@ const renderThemes = (themes: any, losItems: any) => {
         prefLabel && (
           <RoundedTag
             key={`dataset-theme-${index}`}
-            to={`${PATHNAME_INFORMATIONMODELS}${patchSearchQuery(
-              'losTheme',
-              losPath
-            )}`}
+            to={patchSearchQuery('losTheme', losPath)}
           >
             <span>{prefLabel}</span>
           </RoundedTag>

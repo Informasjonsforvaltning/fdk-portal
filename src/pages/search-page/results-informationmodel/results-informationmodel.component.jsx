@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import cx from 'classnames';
 import { ThemeProvider } from 'styled-components';
 
 import localization from '../../../lib/localization';
@@ -20,6 +19,7 @@ import { ErrorBoundary } from '../../../components/error-boundary/error-boundary
 import { InformationModelItem } from '../../../components/informationmodel-item/informationmodel-item.component';
 
 import { Entity } from '../../../types/enums';
+import ButtonToggleSC from '../../../components/button-toggle/styled';
 
 const renderFilterModal = ({
   showFilterModal,
@@ -109,12 +109,6 @@ export const ResultsInformationModelPure = ({
   const pageCount = Math.ceil((informationModelTotal || 1) / hitsPerPage);
 
   const sortfield = getSortfield(location);
-  const sortByScoreClass = cx('fdk-button', 'fdk-button-black-toggle', {
-    selected: !sortfield
-  });
-  const sortByLastModifiedClass = cx('fdk-button', 'fdk-button-black-toggle', {
-    selected: sortfield === 'modified'
-  });
 
   const onSortByScoreClick = () => {
     setSortfield(history, location, undefined);
@@ -132,23 +126,36 @@ export const ResultsInformationModelPure = ({
   return (
     <main data-test-id="informationModels" id="content">
       <div className="row mb-3">
-        <div className="col-6 col-lg-4" />
-        <div className="col-6 col-lg-4 offset-lg-4">
-          <div className="d-flex justify-content-end">
-            <Button
-              className={sortByScoreClass}
+        <div className="col-12">
+          <div className="d-flex justify-content-center justify-content-lg-end">
+            <ButtonToggleSC.ButtonToggle
               onClick={onSortByScoreClick}
-              color="primary"
+              selected={sortfield === undefined}
+              borderLeft
             >
-              {localization.sort.relevance}
-            </Button>
-            <Button
-              className={sortByLastModifiedClass}
+              {localization.formatString(
+                sortfield === undefined
+                  ? localization.sort.sortedBy
+                  : localization.sort.sortBy,
+                {
+                  sortField: localization.sort.relevance
+                }
+              )}
+            </ButtonToggleSC.ButtonToggle>
+            <ButtonToggleSC.ButtonToggle
               onClick={onSortByModifiedClick}
-              color="primary"
+              selected={sortfield === 'modified'}
+              borderRight
             >
-              {localization.sort.modified}
-            </Button>
+              {localization.formatString(
+                sortfield === 'modified'
+                  ? localization.sort.sortedBy
+                  : localization.sort.sortBy,
+                {
+                  sortField: localization.sort.published
+                }
+              )}
+            </ButtonToggleSC.ButtonToggle>
           </div>
         </div>
       </div>

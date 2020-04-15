@@ -6,8 +6,13 @@ import SC from './styled';
 interface Props extends HTMLAttributes<HTMLElement> {}
 
 const RoundedTagPure: FC<Props & Partial<RedirectProps>> = ({
-  to = '',
+  to,
   children
-}) => <SC.RoundedTag to={to}>{children}</SC.RoundedTag>;
+}) => {
+  if (!to) {
+    return <SC.RoundedTag>{children}</SC.RoundedTag>;
+  }
+  return <SC.RoundedTagWithLink to={to}>{children}</SC.RoundedTagWithLink>;
+};
 
 export const RoundedTag = memo(RoundedTagPure);

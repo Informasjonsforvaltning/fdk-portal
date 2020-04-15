@@ -6,10 +6,10 @@ import { SearchHit, SearchHitOpenData } from '../search-hit/search-hit';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 import PublicIconBase from '../../images/icon-access-open-md.svg';
 import localization from '../../lib/localization';
+import ReactTooltipSC from '../tooltip/styled';
 
 interface Props {
   api: Api;
-  referenceData: any;
 }
 
 export const ApiItem: FC<Props> = ({
@@ -35,10 +35,13 @@ export const ApiItem: FC<Props> = ({
     >
       {isOpenAccess && isOpenLicense && isFree && (
         <SearchHitOpenData>
-          <RoundedTag>
-            <PublicIconBase />
-            <span>{localization.openData}</span>
-          </RoundedTag>
+          <div data-tip={localization.openApiTooltip}>
+            <RoundedTag>
+              <PublicIconBase />
+              <span>{localization.openApi}</span>
+            </RoundedTag>
+          </div>
+          <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
         </SearchHitOpenData>
       )}
     </SearchHit>

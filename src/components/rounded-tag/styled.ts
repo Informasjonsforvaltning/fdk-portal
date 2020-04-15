@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const RoundedTag = styled(Link)`
+const RoundedTagWithLink = styled(Link)`
     align-items: center;
     border-radius: .9em;
     border: none;
@@ -10,4 +10,13 @@ const RoundedTag = styled(Link)`
   }
 `;
 
-export default { RoundedTag };
+const RoundedTag = styled.div`
+    align-items: center;
+    border-radius: .9em;
+    border: none;
+    display: flex;
+    padding: .3em .6em;
+  }
+`;
+
+export default { RoundedTagWithLink, RoundedTag };

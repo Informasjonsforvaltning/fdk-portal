@@ -4,6 +4,7 @@ import SearchBoxTitleSC from '../search-box-title/styled';
 import SearchBoxBackground from '../../../../img/illustration-search-dark.svg';
 
 const SearchBox = styled.section`
+    align-items: center;
     background-color: ${({ theme }) => theme.colors.searchBoxBg};
     background-repeat: no-repeat;
     background-position: top right;
@@ -15,8 +16,7 @@ const SearchBox = styled.section`
     @media (max-width: 768px) {
         background-size: 70%;
         font-size: 1.1rem;
-    }
-    
+    }    
   }
 `;
 
@@ -26,21 +26,46 @@ const Content = styled.div`
   flex: 1 1 auto;
   flex-flow: column;
   justify-content: space-between;
-  padding: 4em 2em 0 2em;
+  padding: 0 15px;
   margin-bottom: 4em;
+  margin-top: 4em;
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+    width: 100%;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+    width: 100%;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+    width: 100%;
+  }
 
   ${SearchBoxTitleSC.Title} {
     color: ${({ theme }) => theme.colors.headerBg};
     margin-bottom: 1em;
     text-align: center;
+  }
+`;
 
-    @media (min-width: 768px) {
-      margin: 0 25% 1em 25%;
-    }
+const SearchLinks = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  margin-top: 4em;
+  width: 100%;
+
+  @media (min-width: 992px) {
+    flex-flow: row;
   }
 `;
 
 export default {
   SearchBox,
-  Content
+  Content,
+  SearchLinks
 };

@@ -31,13 +31,17 @@ const Title = styled.h1`
   font-size: 42px;
   font-weight: bold;
 
-  & > svg {
+  svg {
     height: 24px;
     width: 24px;
     min-height: 24px;
     min-width: 24px;
     margin-left: 12px;
     margin-top: -3px;
+  }
+
+  div {
+    display: inline;
   }
 `;
 

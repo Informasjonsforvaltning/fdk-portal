@@ -13,6 +13,7 @@ import ReferenceDataReducer from '../components/with-reference-data/redux/reduce
 import ConceptsReducer from '../components/with-concepts/redux/reducer';
 import DatasetsReducer from '../components/with-datasets/redux/reducer';
 import DataServicesReducer from '../components/with-data-services/redux/reducer';
+import EntitiesReducer from '../components/with-entities/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -28,5 +29,6 @@ export const rootReducer = combineReducers({
   ReferenceDataReducer,
   ConceptsReducer,
   DatasetsReducer,
-  DataServicesReducer
+  DataServicesReducer,
+  EntitiesReducer
 });

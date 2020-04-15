@@ -3,30 +3,29 @@ import styled from 'styled-components';
 import ClearIcon from '../../../../img/icon-clear-nap.svg';
 
 const SearchForm = styled.form`
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
   font-size: 3rem;
+  display: flex;
+  height: 2.5em;
+  padding: 0 0.5em;
+  position: relative;
   width: 60%;
+  justify-content: space-between;
 
   @media (max-width: 768px) {
     font-size: 2rem;
     width: 100%;
   }
 
-  label {
-    position: relative;
-    width: 100%;
-  }
-
   input {
     border: none;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(45, 55, 65, 0.2);
     color: ${({ theme }) => theme.colors.neutralDarker};
-    padding: 0.3em 0.5em;
-    width: 100%;
-
-    @media (max-width: 768px) {
-      padding: 0.6em;
-    }
+    flex: 1;
+    line-height: normal;
+    outline: none;
+    width: 80%;
   }
 
   .search-clear {
@@ -40,11 +39,11 @@ const SearchForm = styled.form`
       z-index: 1;
       width: 20px;
       height: 20px;
-      right: 120px;
-      top: 22px;
+      right: 130px;
+      top: 28px;
 
       @media (max-width: 768px) {
-        right: 80px;
+        right: 85px;
         top: 18px;
         width: 15px;
         height: 15px;
@@ -56,18 +55,15 @@ const SearchForm = styled.form`
     align-items: center;
     border: none;
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.colors.searchButtonBg};
+    background-color: ${({ theme }) => theme.colors.neutralDarker};
     color: #fff;
     display: flex;
     font-size: 0.7em;
     font-weight: 300;
     padding: 0.6em 1em;
-    position: absolute;
-    right: 0.5em;
-    top: 6px;
 
-    @media (max-width: 768px) {
-      top: 4px;
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.neutralDarkest};
     }
 
     & > img {
