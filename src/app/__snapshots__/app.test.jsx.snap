@@ -161,9 +161,9 @@ exports[`should render App correctly 1`] = `
             className="fdk-p-footer"
           >
             <a
-              href="mailto:fellesdatakatalog@brreg.no"
+              href="mailto:digdir@fellesdatakatalog.no"
             >
-              fellesdatakatalog@brreg.no
+              digdir@fellesdatakatalog.no
             </a>
           </p>
         </div>
@@ -186,7 +186,7 @@ exports[`should render App correctly 1`] = `
             className="fdk-p-footer"
           >
             <a
-              href="https://www.brreg.no/personvernerklaering/"
+              href="https://www.digdir.no/om-oss/personvernerklaering/706"
             >
               Informasjonskapsler
               <br />
@@ -219,7 +219,7 @@ exports[`should render App correctly 1`] = `
             className="fdk-p-footer"
           >
             <a
-              href="mailto:fellesdatakatalog@brreg.no"
+              href="mailto:digdir@fellesdatakatalog.no"
             >
               <span
                 aria-hidden="false"
@@ -229,7 +229,7 @@ exports[`should render App correctly 1`] = `
               </span>
               Kontakt:
               <br />
-              fellesdatakatalog@brreg.no
+              digdir@fellesdatakatalog.no
             </a>
           </p>
         </div>
