@@ -156,7 +156,7 @@ export function App({ language }) {
           <div className="row">
             <div className="col-md-3">
               <p className="fdk-p-footer">
-                <a href="https://www.brreg.no/personvernerklaering/">
+                <a href="https://www.digdir.no/om-oss/personvernerklaering/706">
                   {localization.footer.information}
                   <br />
                   {localization.footer.privacy}
