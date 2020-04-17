@@ -244,17 +244,17 @@ export interface Links {
 }
 
 export interface NewsItemAttributes {
-  title: string;
-  created: string;
-  changed: string;
-  field_ingress: string;
-  body: string;
-  video_link: string;
+  title?: string;
+  created?: string;
+  changed?: string;
+  field_ingress?: string;
+  body?: string;
+  video_link?: string;
+  field_modules: any;
 }
 
-export interface News {
+export interface News extends NewsItemAttributes {
   type: string;
   id: string;
   links: Partial<Links>;
-  attributes: Partial<NewsItemAttributes>;
 }
