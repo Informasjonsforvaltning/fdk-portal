@@ -3,7 +3,7 @@
 .fdk-p-path {
   i, span {
     @include themify($themes) {
-      color: themed('color-neutral-dark') !important;
+      color: themed('color-neutral-darker') !important;
     }
   }
   a {
