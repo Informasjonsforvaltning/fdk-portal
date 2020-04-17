@@ -10,8 +10,17 @@ interface Props {
 }
 
 const Article: FC<Props> = ({
-  article: { title = '', field_ingress: abstract = '', body = '', video_link }
+  article: {
+    title = '',
+    field_ingress: abstract = '',
+    body = '',
+    video_link,
+    field_modules
+  }
 }) => {
+  const fieldBody = field_modules?.find(
+    (item: any) => item.type === 'paragraph--body'
+  );
   return (
     <SC.Article>
       <SC.Title>{getTranslateText(title)}</SC.Title>
@@ -22,7 +31,7 @@ const Article: FC<Props> = ({
       />
       <SC.Body
         dangerouslySetInnerHTML={{
-          __html: convertToSanitizedHtml(body)
+          __html: convertToSanitizedHtml(fieldBody?.field_body?.value ?? body)
         }}
       />
       {video_link && (
