@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getConfig } from '../../config';
 
 interface Props {
   path: string;
@@ -6,11 +7,9 @@ interface Props {
   data?: any;
 }
 
-const CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no/api/content';
-
 export const cmsApi = ({ path, method, data }: Props) =>
   axios({
-    url: `${CMS_API_HOST}${path}`,
+    url: `${getConfig().cmsApi.host}/api/content${path}`,
     headers: {
       'Content-Type': 'application/vnd.api+json'
     },
