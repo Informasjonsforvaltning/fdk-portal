@@ -21,9 +21,9 @@ const NewsList: FC<Props> = ({ news }) => {
           <Item
             key={item.id}
             id={item.id}
-            date={item.attributes.created}
-            title={item.attributes.title}
-            abstract={item.attributes.field_ingress}
+            date={item.created}
+            title={item.title}
+            abstract={item.field_ingress}
           />
         ))}
       </div>

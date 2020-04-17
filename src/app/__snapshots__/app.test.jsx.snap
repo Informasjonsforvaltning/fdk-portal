@@ -91,13 +91,7 @@ exports[`should render App correctly 1`] = `
           path="/apis/:id"
         />
         <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.memo),
-              "compare": null,
-              "type": [Function],
-            }
-          }
+          component={[Function]}
           exact={true}
           path="/news/:id"
         />
