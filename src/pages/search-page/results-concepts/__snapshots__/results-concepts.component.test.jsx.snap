@@ -72,7 +72,7 @@ exports[`should render ResultsConcepts correctly with hits 1`] = `
         <ThemeProvider
           theme={
             Object {
-              "dark": "#337380",
+              "dark": "#2E6773",
               "light": "#D5EDF2",
               "lighter": "#F0F6F7",
             }
@@ -130,7 +130,7 @@ exports[`should render ResultsConcepts correctly with hits 1`] = `
         <ThemeProvider
           theme={
             Object {
-              "dark": "#337380",
+              "dark": "#2E6773",
               "light": "#D5EDF2",
               "lighter": "#F0F6F7",
             }
@@ -192,7 +192,7 @@ exports[`should render ResultsConcepts correctly with hits 1`] = `
         <ThemeProvider
           theme={
             Object {
-              "dark": "#337380",
+              "dark": "#2E6773",
               "light": "#D5EDF2",
               "lighter": "#F0F6F7",
             }
@@ -251,7 +251,7 @@ exports[`should render ResultsConcepts correctly with hits 1`] = `
         <ThemeProvider
           theme={
             Object {
-              "dark": "#337380",
+              "dark": "#2E6773",
               "light": "#D5EDF2",
               "lighter": "#F0F6F7",
             }
@@ -308,7 +308,7 @@ exports[`should render ResultsConcepts correctly with hits 1`] = `
         <ThemeProvider
           theme={
             Object {
-              "dark": "#337380",
+              "dark": "#2E6773",
               "light": "#D5EDF2",
               "lighter": "#F0F6F7",
             }
@@ -374,7 +374,7 @@ exports[`should render ResultsConcepts correctly with hits 1`] = `
         <ThemeProvider
           theme={
             Object {
-              "dark": "#337380",
+              "dark": "#2E6773",
               "light": "#D5EDF2",
               "lighter": "#F0F6F7",
             }
@@ -436,7 +436,7 @@ exports[`should render ResultsConcepts correctly with hits 1`] = `
         <ThemeProvider
           theme={
             Object {
-              "dark": "#337380",
+              "dark": "#2E6773",
               "light": "#D5EDF2",
               "lighter": "#F0F6F7",
             }
@@ -500,7 +500,7 @@ Enten er foreldrene arbeidsgivere, eller dagmammaen er selvstendig næringsdrive
         <ThemeProvider
           theme={
             Object {
-              "dark": "#337380",
+              "dark": "#2E6773",
               "light": "#D5EDF2",
               "lighter": "#F0F6F7",
             }
