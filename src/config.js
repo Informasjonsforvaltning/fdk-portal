@@ -9,6 +9,7 @@ const env = window.env || {
 // env.SEARCH_API_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_FULLTEXT_HOST = 'https://search.staging.fellesdatakatalog.digdir.no';
+// env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
 // env.USE_DEMO_LOGO = true;
 
 const searchApi = {
@@ -34,7 +35,8 @@ const config = {
   referenceDataApi: defaultToSearchApi(env.REFERENCE_DATA_HOST),
   searchHost: defaultToSearchApi(env.SEARCH_HOST),
   useDemoLogo: env.USE_DEMO_LOGO,
-  searchFullTextApi: { host: env.SEARCH_FULLTEXT_HOST }
+  searchFullTextApi: { host: env.SEARCH_FULLTEXT_HOST },
+  cmsApi: { host: env.CMS_API_HOST }
 };
 
 export const getConfig = () => config;
