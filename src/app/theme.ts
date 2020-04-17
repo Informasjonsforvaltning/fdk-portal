@@ -58,7 +58,7 @@ export const themeFDK = {
       lighter: '#F7F2ED'
     },
     [Entity.CONCEPT]: {
-      dark: '#337380',
+      dark: '#2E6773',
       light: '#D5EDF2',
       lighter: '#F0F6F7'
     },
