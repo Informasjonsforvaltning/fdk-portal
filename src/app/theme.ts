@@ -73,7 +73,7 @@ export const themeFDK = {
 export const themeNAP = {
   colors: {
     header: '#FFFFFF',
-    headerBg: '#2E3539',
+    headerBg: '#444F55',
     primary: '#ED9300',
     primaryLight: '#FADFB2',
     primaryLighter: '#FDF4E5',
@@ -84,8 +84,8 @@ export const themeNAP = {
     linkLighter: '#FAE4BF',
 
     neutralDarkest: '#2E3539',
-    neutralDarker: '#444F55',
-    neutralDark: '#60696E',
+    neutralDarker: '#2E3439',
+    neutralDark: '#444F55',
     neutral: '#A1A7AA',
     neutralLight: '#DADADA',
     neutralLighter: '#E5E5E5',
