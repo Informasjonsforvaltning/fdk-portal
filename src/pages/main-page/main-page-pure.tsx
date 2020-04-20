@@ -13,7 +13,6 @@ import SearchEntities from '../../components/search-entities/search-entities.com
 import { Props as EntitiesProps } from '../../components/with-entities';
 import { Props as ReferenceDataProps } from '../../components/with-reference-data';
 import { Entity } from '../../types/enums';
-import newsFromFile from './news.json';
 import { getConfig } from '../../config';
 
 interface Props extends EntitiesProps, ReferenceDataProps {
@@ -21,7 +20,7 @@ interface Props extends EntitiesProps, ReferenceDataProps {
 }
 
 const MainPage: FC<Props> = ({
-  news = newsFromFile.data,
+  news,
   entities,
   entitiesActions: { getEntitiesRequested: getEntities },
   referenceData: { los },

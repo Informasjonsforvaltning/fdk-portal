@@ -1,3 +1,8 @@
-import NewsArticlePure from './news-article-page-pure';
+import { compose } from 'redux';
 
-export const NewsArticle = NewsArticlePure;
+import NewsArticlePure from './news-article-page-pure';
+import { newsArticlePageResolver } from './news-article-page-resolver';
+
+const enhance = compose(newsArticlePageResolver);
+
+export const NewsArticle = enhance(NewsArticlePure);

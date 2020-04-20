@@ -58,6 +58,10 @@
   "publisher": "Utgiver",
   "news": "Aktuelt",
   "datasetAccessRights": "Tilgangsnivå for datasett",
+  "apiAvailability": "Tilgjengelighet for API",
+  "isFree": "Gratis",
+  "isOpenAccess": "Åpen for alle",
+  "isOpenLicense": "Åpen lisens",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -168,7 +172,7 @@
     "information": "Informasjonskapsler",
     "information_text": "Dette er et samarbeid mellom Digitaliseringsdirektoratet, Brønnøysundregistrene og øvrige SKATE-etater.",
     "information_textNap": "Dette er et samarbeid mellom Statens vegvesen, Jernbanedirektoratet, Entur og Digitaliseringsdirektoratet.",
-    "mail": "fellesdatakatalog@brreg.no",
+    "mail": "digdir@fellesdatakatalog.no",
     "mailNap": "transportportal@vegvesen.no",
     "privacy": " og personvern",
     "contact": "Kontakt:"
