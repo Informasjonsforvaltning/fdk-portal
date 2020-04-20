@@ -2,11 +2,9 @@
 
 exports[`should render HitsStats correctly when no hits 1`] = `
 <div
-  className="sk-hits-stats"
   data-qa="hits-stats"
 >
   <div
-    className="sk-hits-stats__info"
     data-qa="info"
   >
     Sorry, no hits
@@ -16,11 +14,9 @@ exports[`should render HitsStats correctly when no hits 1`] = `
 
 exports[`should render HitsStats correctly when no initial search 1`] = `
 <div
-  className="sk-hits-stats"
   data-qa="hits-stats"
 >
   <div
-    className="sk-hits-stats__info"
     data-qa="info"
   >
     Search among 100 datasets, 0 APIs, 100 concepts and 0 information models
@@ -30,11 +26,9 @@ exports[`should render HitsStats correctly when no initial search 1`] = `
 
 exports[`should render HitsStats correctly when search performed  1`] = `
 <div
-  className="sk-hits-stats"
   data-qa="hits-stats"
 >
   <div
-    className="sk-hits-stats__info"
     data-qa="info"
   >
     Search gave 100 hit(s) among datasets, 0 hit(s) among APIs, 100 hit(s) among concepts 0 hit(s) among information models
