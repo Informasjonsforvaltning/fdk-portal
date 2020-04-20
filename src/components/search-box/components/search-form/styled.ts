@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import ClearIcon from '../../../../img/icon-clear-nap.svg';
+import ClearIconBase from '../../../../images/icon-clear.svg';
 
 const SearchForm = styled.form`
   align-items: center;
@@ -29,26 +29,11 @@ const SearchForm = styled.form`
   }
 
   .search-clear {
+    background-color: transparent;
     border: none;
+    margin-right: 0.3em;
+    outline: none;
     padding: 0;
-    &:after {
-      background-image: url(${ClearIcon});
-      content: '';
-      cursor: pointer;
-      position: absolute;
-      z-index: 1;
-      width: 20px;
-      height: 20px;
-      right: 130px;
-      top: 28px;
-
-      @media (max-width: 768px) {
-        right: 85px;
-        top: 18px;
-        width: 15px;
-        height: 15px;
-      }
-    }
   }
 
   .search-button {
@@ -73,4 +58,18 @@ const SearchForm = styled.form`
   }
 `;
 
-export default { SearchForm };
+const ClearIcon = styled(ClearIconBase)`
+  width: 20px;
+  height: 20px;
+
+  & > path {
+    fill: ${({ theme }) => theme.colors.neutralDarker};
+  }
+
+  @media (max-width: 768px) {
+    width: 15px;
+    height: 15px;
+  }
+`;
+
+export default { SearchForm, ClearIcon };
