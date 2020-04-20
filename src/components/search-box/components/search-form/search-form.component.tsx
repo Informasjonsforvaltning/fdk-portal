@@ -53,7 +53,9 @@ const SearchForm: FC<PropsWithChildren<
         className="search-clear"
         type="button"
         onClick={onClear}
-      />
+      >
+        <SC.ClearIcon />
+      </button>
       <button className="search-button" type="button" onClick={onSearch}>
         <img src={SearchIcon} alt={localization.query.do} />
         {localization.query.do}
