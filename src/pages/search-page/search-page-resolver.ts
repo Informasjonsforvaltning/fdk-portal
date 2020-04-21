@@ -32,7 +32,8 @@ const mapProps = {
       page,
       sortfield,
       accessrights: accessRights,
-      availability
+      availability,
+      opendata
     } = parseSearchParams(location);
 
     const filters = [];
@@ -40,6 +41,7 @@ const mapProps = {
     los && filters.push({ los });
     accessRights && filters.push({ accessRights });
     availability && parseAvailabilityFilters(availability, filters);
+    opendata && filters.push({ opendata: true });
 
     const searchAllEntitiesParams =
       location.pathname === PATHNAME_SEARCH
