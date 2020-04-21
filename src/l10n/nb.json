@@ -62,6 +62,7 @@
   "isFree": "Gratis",
   "isOpenAccess": "Åpen for alle",
   "isOpenLicense": "Åpen lisens",
+  "help": "Hjelp",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -95,7 +96,7 @@
     "home": "Søk i Felles datakatalog",
     "homeNAP": "Søk i Transportportal.no",
     "about": "Om Felles Datakatalog",
-    "aboutRegistration": "Registrere data",
+    "aboutRegistration": "Hjelp til å registrere",
     "reports": "Rapporter",
     "conceptsCompare": "Sammenlign begrep",
     "aboutNap": "Om Transportportal.no"
