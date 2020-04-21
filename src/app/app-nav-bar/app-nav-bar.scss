@@ -19,6 +19,9 @@
       @include themify($themes) {
         color: themed('color-header') !important;
       }
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .fdk-button-menu {
