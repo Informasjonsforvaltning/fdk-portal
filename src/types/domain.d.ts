@@ -249,7 +249,6 @@ export interface NewsItemAttributes {
   changed?: string;
   field_ingress?: string;
   body?: string;
-  video_link?: string;
   field_modules: any;
 }
 
