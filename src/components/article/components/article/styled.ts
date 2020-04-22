@@ -8,6 +8,12 @@ const Article = styled.section`
   }
 `;
 
+const Date = styled.span`
+  color: ${({ theme }) => theme.colors.neutralDark};
+  font-size: 1.6em;
+  margin-bottom: 0.5em;
+`;
+
 const Title = styled.h1`
   font-size: 3em;
 `;
@@ -20,6 +26,13 @@ const Abstract = styled.p`
 
 const Body = styled.p`
   font-size: 1.6em;
+`;
+
+const FullWidthImage = styled.img`
+  border-radius: 5px;
+  height: auto;
+  margin-bottom: 4em;
+  max-width: 100%;
 `;
 
 const Video = styled.div`
@@ -38,8 +51,10 @@ const Video = styled.div`
 
 export default {
   Article,
+  Date,
   Title,
   Abstract,
   Body,
+  FullWidthImage,
   Video
 };
