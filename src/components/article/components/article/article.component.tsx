@@ -14,7 +14,6 @@ const Article: FC<Props> = ({
     title = '',
     field_ingress: abstract = '',
     body = '',
-    video_link,
     field_modules
   }
 }) => {
@@ -34,16 +33,6 @@ const Article: FC<Props> = ({
           __html: convertToSanitizedHtml(fieldBody?.field_body?.value ?? body)
         }}
       />
-      {video_link && (
-        <SC.Video>
-          <iframe
-            title={getTranslateText(title)}
-            src={video_link}
-            allow="autoplay; fullscreen"
-            allowFullScreen
-          />
-        </SC.Video>
-      )}
     </SC.Article>
   );
 };
