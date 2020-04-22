@@ -217,7 +217,9 @@ const DatasetDetailsPage: FC<Props> = ({
               ))}
             </ContentSection>
           )}
-          {Object.values(usage).filter(Boolean).length > 0 && (
+          {Object.values(usage)
+            .filter(Boolean)
+            .filter(item => item && item?.length > 0).length > 0 && (
             <ContentSection
               id="usage"
               title={translations.detailsPage.sectionTitles.dataset.usage}
