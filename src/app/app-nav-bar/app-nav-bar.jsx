@@ -61,11 +61,19 @@ export function AppNavBar(props) {
                     {localization.menu.about}
                   </Link>
                 </NavItem>
-                <NavItem>
-                  <Link className="nav-link" to={PATHNAME_ABOUT_REGISTRATION}>
-                    {localization.menu.aboutRegistration}
-                  </Link>
-                </NavItem>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav>{localization.help}</DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>
+                      <Link
+                        className="nav-link"
+                        to={PATHNAME_ABOUT_REGISTRATION}
+                      >
+                        {localization.menu.aboutRegistration}
+                      </Link>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
                 <NavItem>
                   <Link className="nav-link" to={PATHNAME_REPORTS}>
                     {localization.menu.reports}

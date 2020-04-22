@@ -62,6 +62,7 @@
   "isFree": "Is free",
   "isOpenAccess": "Open access",
   "isOpenLicense": "Open license",
+  "help": "Help",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
