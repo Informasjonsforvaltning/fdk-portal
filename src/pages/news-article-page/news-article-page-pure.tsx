@@ -1,6 +1,5 @@
 import React, { FC, memo, useEffect, useState } from 'react';
 
-import SC from './styled';
 import { News as NewsInterface } from '../../types';
 import {
   getParagraphBodyValue,
@@ -27,20 +26,14 @@ const NewsArticlePage: FC<Props> = ({
   }, []);
 
   return (
-    <main id="content" className="container">
-      <SC.Content className="row">
-        <div className="col-12 col-lg-8 offset-lg-2">
-          <Article
-            publishedDate={created}
-            title={title}
-            abstract={field_ingress}
-            body={getParagraphBodyValue(field_modules)}
-            imageTop={getParagraphImage(field_modules)}
-            vimeoData={vimeoData}
-          />
-        </div>
-      </SC.Content>
-    </main>
+    <Article
+      publishedDate={created}
+      title={title}
+      abstract={field_ingress}
+      body={getParagraphBodyValue(field_modules)}
+      imageTop={getParagraphImage(field_modules)}
+      vimeoData={vimeoData}
+    />
   );
 };
 
