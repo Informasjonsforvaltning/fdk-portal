@@ -5,6 +5,7 @@ import SC from './styled';
 import { convertToSanitizedHtml } from '../../../../lib/markdown-converter';
 import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
+import NewsList from '../../../news-list/news-list-component';
 
 interface Props {
   publishedDate: string;
@@ -13,6 +14,7 @@ interface Props {
   body: string;
   imageTop: any;
   vimeoData: any;
+  relatedNews: any;
 }
 
 const Article: FC<Partial<Props>> = ({
@@ -21,19 +23,21 @@ const Article: FC<Partial<Props>> = ({
   abstract,
   body,
   imageTop,
-  vimeoData
+  vimeoData,
+  relatedNews
 }) => (
   <main id="content" className="container">
     <SC.Article>
       <div className="row">
-        <div className="col-12 col-lg-8 offset-lg-2">
-          {imageTop && (
+        {imageTop && (
+          <div className="col-12">
             <SC.FullWidthImage
               alt={imageTop.meta.alt}
               src={imageTop?.download_urls?.canonical}
             />
-          )}
-
+          </div>
+        )}
+        <div className={relatedNews ? 'col-12 col-lg-8' : 'col-12'}>
           {publishedDate && (
             <SC.Date>
               {localization.published}{' '}
@@ -61,6 +65,13 @@ const Article: FC<Partial<Props>> = ({
             <SC.Video dangerouslySetInnerHTML={{ __html: vimeoData.html }} />
           )}
         </div>
+        {relatedNews && (
+          <aside className="col-12 col-lg-4">
+            <SC.AsideContent>
+              <NewsList news={relatedNews} />
+            </SC.AsideContent>
+          </aside>
+        )}
       </div>
     </SC.Article>
   </main>

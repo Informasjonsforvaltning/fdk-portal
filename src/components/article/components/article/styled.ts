@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ArticleItemSC from '../../../article-item/styled';
 
 const Article = styled.article`
     margin-top: 3em;
@@ -54,6 +55,16 @@ const Video = styled.div`
   }
 `;
 
+const AsideContent = styled.div`
+  background-color: ${({ theme }) => theme.colors.neutralLighter};
+  border-radius: 5px;
+  padding: 3em;
+
+  ${ArticleItemSC.ArticleItem} {
+    font-size: 1.5rem;
+  }
+`;
+
 export default {
   Article,
   Date,
@@ -61,5 +72,6 @@ export default {
   Abstract,
   Body,
   FullWidthImage,
-  Video
+  Video,
+  AsideContent
 };
