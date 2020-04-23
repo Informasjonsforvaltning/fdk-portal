@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 
 import { News } from '../../../../types';
-import Item from '../article-item/article-item.component';
+import Item from '../../../../components/article-item/article-item.component';
 import HeaderSC from '../header/styled';
 import localization from '../../../../lib/localization';
 
