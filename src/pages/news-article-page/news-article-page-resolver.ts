@@ -6,7 +6,7 @@ import {
   getRecentNewsEntities
 } from '../../api/cms-api/news-entities';
 
-const NEWS_LIST_LIMIT = 3;
+const NEWS_LIST_LIMIT = 6;
 
 const memoizedGetNewsEntity = memoize(getNewsEntity);
 const memoizedGetRecentNewsEntities = memoize(getRecentNewsEntities);

@@ -11,10 +11,12 @@ import { getVimeoData } from '../../api/vimeo/host';
 
 interface Props {
   newsItem?: Partial<NewsInterface>;
+  news?: any;
 }
 
 const NewsArticlePage: FC<Props> = ({
-  newsItem: { created, title, field_ingress, field_modules } = {}
+  newsItem: { created, title, field_ingress, field_modules } = {},
+  news
 }) => {
   const videoLinkValue = getParagraphVideoValue(field_modules);
   const [vimeoData, setVimeoData] = useState();
@@ -33,6 +35,7 @@ const NewsArticlePage: FC<Props> = ({
       body={getParagraphBodyValue(field_modules)}
       imageTop={getParagraphImage(field_modules)}
       vimeoData={vimeoData}
+      relatedNews={news}
     />
   );
 };
