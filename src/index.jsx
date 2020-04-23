@@ -16,7 +16,7 @@ import { getConfig } from './config';
 import { themeFDK, themeNAP } from './app/theme';
 import GlobalStyles from './app/styles';
 
-if (window.location.hostname.indexOf('fellesdatakatalog.brreg.no') !== -1) {
+if (window.location.hostname.indexOf('fellesdatakatalog.digdir.no') !== -1) {
   ReactGA.initialize('UA-110098477-1'); // prod
   ReactGA.set({ anonymizeIp: true });
 } else if (
@@ -40,7 +40,7 @@ window.addEventListener('unhandledrejection', event => {
 function Analytics(props) {
   const PAGEVIEW_TIMEOUT = 1000;
   if (
-    window.location.hostname.indexOf('fellesdatakatalog.brreg.no') !== -1 ||
+    window.location.hostname.indexOf('fellesdatakatalog.digdir.no') !== -1 ||
     window.location.hostname.indexOf('data.transportportal.no') !== -1 ||
     window.location.hostname.indexOf('localhost') !== -1
   ) {
