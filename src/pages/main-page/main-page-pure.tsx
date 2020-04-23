@@ -52,6 +52,10 @@ const MainPage: FC<Props> = ({
             <SearchEntities entities={entities} losItems={los} />
           </section>
           <section className="col-12 col-lg-4">
+            <HeaderSC.Header>
+              <span>{localization.news}</span>
+            </HeaderSC.Header>
+
             <NewsList news={news} />
 
             {!getConfig().themeNap && (
