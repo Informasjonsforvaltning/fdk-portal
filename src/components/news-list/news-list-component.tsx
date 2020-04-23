@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 
-import { News } from '../../../../types';
-import Item from '../../../../components/article-item/article-item.component';
+import { News } from '../../types';
+import Item from '../article-item/article-item.component';
 
 interface Props {
   news?: News[];

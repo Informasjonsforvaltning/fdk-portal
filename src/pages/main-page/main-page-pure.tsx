@@ -8,7 +8,7 @@ import {
   SearchLink
 } from '../../components/search-box/search-box';
 import HeaderSC from './components/header/styled';
-import NewsList from './components/news-list/news-list-component';
+import NewsList from '../../components/news-list/news-list-component';
 import SearchEntities from '../../components/search-entities/search-entities.component';
 import { Props as EntitiesProps } from '../../components/with-entities';
 import { Props as ReferenceDataProps } from '../../components/with-reference-data';
