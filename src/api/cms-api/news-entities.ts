@@ -1,9 +1,9 @@
 import { deserialize } from 'deserialize-json-api';
 import { cmsApiGet } from './host';
 
-export const getRecentNewsEntities = () =>
+export const getRecentNewsEntities = (pageLimit: number) =>
   cmsApiGet(
-    '/node/news?fields[node--news]=title,field_ingress,created,changed&page[limit]=3&sort=-created'
+    `/node/news?fields[node--news]=title,field_ingress,created,changed&page[limit]=${pageLimit}&sort=-created`
   ).then(deserialize);
 
 export const getNewsEntity = (id: string) =>
