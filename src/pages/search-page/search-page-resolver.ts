@@ -12,11 +12,11 @@ const parseAvailabilityFilters = (availability: any, filters: any) => {
   availability.split(',').forEach((item: any) => {
     switch (item) {
       case 'isFree':
-        return filters.push({ isFree: true });
+        return filters.push({ isFree: 'true' });
       case 'isOpenAccess':
-        return filters.push({ isOpenAccess: true });
+        return filters.push({ isOpenAccess: 'true' });
       case 'isOpenLicense':
-        return filters.push({ isOpenLicense: true });
+        return filters.push({ isOpenLicense: 'true' });
       default:
         return null;
     }
@@ -41,7 +41,7 @@ const mapProps = {
     los && filters.push({ los });
     accessRights && filters.push({ accessRights });
     availability && parseAvailabilityFilters(availability, filters);
-    opendata && filters.push({ opendata: true });
+    opendata && filters.push({ opendata: 'true' });
 
     const searchAllEntitiesParams =
       location.pathname === PATHNAME_SEARCH
