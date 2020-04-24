@@ -216,6 +216,7 @@
       "title": "Distribusjoner",
       "description": "Beskrivelse",
       "downloadUrl": "Nedlastingslenke",
+      "download": "Last ned distribusjon",
       "format": "Format",
       "accessUrl": "TilgangsURL",
       "license": "Føresetnad for bruk av datasettet",
