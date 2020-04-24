@@ -40,7 +40,11 @@ window.addEventListener('unhandledrejection', event => {
 function Analytics(props) {
   const PAGEVIEW_TIMEOUT = 1000;
   if (
-    ['fellesdatakatalog.digdir.no', 'data.transportportal.no', 'localhost'].includes(location.hostname)
+    [
+      'fellesdatakatalog.digdir.no',
+      'data.transportportal.no',
+      'localhost'
+    ].includes(location.hostname)
   ) {
     ReactGA.set({ page: props.location.pathname + props.location.search });
     window.setTimeout(
