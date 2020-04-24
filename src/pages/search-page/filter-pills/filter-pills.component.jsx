@@ -60,7 +60,7 @@ const renderKeywordPills = (filterName, keywords, history, location) =>
   keywords.map(keyword => (
     <Pill
       key={keyword}
-      label={keyword}
+      label={localization[keyword] || keyword}
       handleOnClick={() =>
         setMultiselectFilterValue(history, location, filterName, keyword, false)
       }
