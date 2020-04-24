@@ -1,5 +1,7 @@
 import React, { memo, FC, useEffect } from 'react';
 import { compose } from 'redux';
+import { withProps } from 'recompose';
+import pick from 'lodash/pick';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import parse from 'html-react-parser';
@@ -97,10 +99,18 @@ const DatasetDetailsPage: FC<Props> = ({
   }, [conceptIdentifiers?.join()]);
 
   useEffect(() => {
-    if (datasetUris && datasetUris.length > 0 && datasets.length === 0) {
-      getDatasets({
-        uris: datasetUris.join()
-      });
+    if (
+      datasetId &&
+      datasetUris &&
+      datasetUris.length > 0 &&
+      datasets.length === 0
+    ) {
+      getDatasets(
+        {
+          uris: datasetUris.join()
+        },
+        datasetId
+      );
     }
   }, [datasetUris?.join()]);
 
@@ -668,8 +678,13 @@ const DatasetDetailsPage: FC<Props> = ({
   );
 };
 
+const mapRouteParams = withProps(({ match: { params } }: any) =>
+  pick(params, 'datasetId')
+);
+
 export default compose(
   memo,
+  mapRouteParams,
   withDataset,
   withReferenceData,
   withConcepts,

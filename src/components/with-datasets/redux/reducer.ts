@@ -5,9 +5,7 @@ import { GET_DATASETS_REQUESTED, GET_DATASETS_SUCCEEDED } from './action-types';
 
 import { Actions } from '../../../types';
 
-const initialState = fromJS({
-  datasets: []
-});
+const initialState = fromJS({});
 
 export default function reducer(
   state = initialState,
@@ -15,9 +13,12 @@ export default function reducer(
 ) {
   switch (action.type) {
     case GET_DATASETS_REQUESTED:
-      return state.set('datasets', fromJS([]));
+      return state.set(action.payload.datasetId, fromJS([]));
     case GET_DATASETS_SUCCEEDED:
-      return state.set('datasets', fromJS(action.payload.datasets));
+      return state.set(
+        action.payload.datasetId,
+        fromJS(action.payload.datasets)
+      );
     default:
       return state;
   }

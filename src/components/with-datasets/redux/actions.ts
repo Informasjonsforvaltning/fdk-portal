@@ -6,20 +6,22 @@ import {
 
 import { Dataset } from '../../../types';
 
-export function getDatasetsRequested(params: object) {
+export function getDatasetsRequested(params: object, datasetId: string) {
   return {
     type: GET_DATASETS_REQUESTED,
     payload: {
-      params
+      params,
+      datasetId
     }
   };
 }
 
-export function getDatasetsSucceeded(datasets: Dataset[]) {
+export function getDatasetsSucceeded(datasets: Dataset[], datasetId: string) {
   return {
     type: GET_DATASETS_SUCCEEDED,
     payload: {
-      datasets
+      datasets,
+      datasetId
     }
   };
 }

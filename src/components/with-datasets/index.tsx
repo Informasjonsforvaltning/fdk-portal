@@ -14,9 +14,11 @@ export interface Props {
 const withDatasets = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
-  const mapStateToProps = (state: any) => ({
-    datasets: state.DatasetsReducer.get('datasets').toJS()
-  });
+  const mapStateToProps = (state: any, { datasetId }: any) => {
+    return {
+      datasets: state.DatasetsReducer.get(datasetId)?.toJS() ?? []
+    };
+  };
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
     datasetsActions: bindActionCreators(actions, dispatch)
