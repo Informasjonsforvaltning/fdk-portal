@@ -8,7 +8,7 @@ import {
   SearchLink
 } from '../../components/search-box/search-box';
 import HeaderSC from './components/header/styled';
-import NewsList from './components/news-list/news-list-component';
+import NewsList from '../../components/news-list/news-list-component';
 import SearchEntities from '../../components/search-entities/search-entities.component';
 import { Props as EntitiesProps } from '../../components/with-entities';
 import { Props as ReferenceDataProps } from '../../components/with-reference-data';
@@ -52,6 +52,10 @@ const MainPage: FC<Props> = ({
             <SearchEntities entities={entities} losItems={los} />
           </section>
           <section className="col-12 col-lg-4">
+            <HeaderSC.Header>
+              <span>{localization.news}</span>
+            </HeaderSC.Header>
+
             <NewsList news={news} />
 
             {!getConfig().themeNap && (

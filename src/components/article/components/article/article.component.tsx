@@ -1,51 +1,80 @@
 import React, { FC, memo } from 'react';
+import Moment from 'react-moment';
 
 import SC from './styled';
-import { NewsItemAttributes } from '../../../../types';
 import { convertToSanitizedHtml } from '../../../../lib/markdown-converter';
 import { getTranslateText } from '../../../../lib/translateText';
+import localization from '../../../../lib/localization';
+import NewsList from '../../../news-list/news-list-component';
 
 interface Props {
-  article: Partial<NewsItemAttributes>;
+  publishedDate: string;
+  title: string;
+  abstract: string;
+  body: string;
+  imageTop: any;
+  vimeoData: any;
+  relatedNews: any;
 }
 
-const Article: FC<Props> = ({
-  article: {
-    title = '',
-    field_ingress: abstract = '',
-    body = '',
-    video_link,
-    field_modules
-  }
-}) => {
-  const fieldBody = field_modules?.find(
-    (item: any) => item.type === 'paragraph--body'
-  );
-  return (
+const Article: FC<Partial<Props>> = ({
+  publishedDate,
+  title,
+  abstract,
+  body,
+  imageTop,
+  vimeoData,
+  relatedNews
+}) => (
+  <main id="content" className="container">
     <SC.Article>
-      <SC.Title>{getTranslateText(title)}</SC.Title>
-      <SC.Abstract
-        dangerouslySetInnerHTML={{
-          __html: convertToSanitizedHtml(abstract)
-        }}
-      />
-      <SC.Body
-        dangerouslySetInnerHTML={{
-          __html: convertToSanitizedHtml(fieldBody?.field_body?.value ?? body)
-        }}
-      />
-      {video_link && (
-        <SC.Video>
-          <iframe
-            title={getTranslateText(title)}
-            src={video_link}
-            allow="autoplay; fullscreen"
-            allowFullScreen
-          />
-        </SC.Video>
-      )}
+      <div className="row">
+        {imageTop && (
+          <div className="col-12">
+            <SC.FullWidthImage
+              alt={imageTop.meta.alt}
+              src={imageTop?.download_urls?.canonical}
+            />
+          </div>
+        )}
+        <div className={relatedNews ? 'col-12 col-lg-8' : 'col-12'}>
+          {publishedDate && (
+            <SC.Date>
+              {localization.published}{' '}
+              <Moment format="DD.MM.YYYY">{publishedDate}</Moment>
+            </SC.Date>
+          )}
+
+          {title && <SC.Title>{getTranslateText(title)}</SC.Title>}
+
+          {abstract && (
+            <SC.Abstract
+              dangerouslySetInnerHTML={{
+                __html: convertToSanitizedHtml(abstract)
+              }}
+            />
+          )}
+          {body && (
+            <SC.Body
+              dangerouslySetInnerHTML={{
+                __html: convertToSanitizedHtml(body)
+              }}
+            />
+          )}
+          {vimeoData && (
+            <SC.Video dangerouslySetInnerHTML={{ __html: vimeoData.html }} />
+          )}
+        </div>
+        {relatedNews && (
+          <aside className="col-12 col-lg-4">
+            <SC.AsideContent>
+              <NewsList news={relatedNews} />
+            </SC.AsideContent>
+          </aside>
+        )}
+      </div>
     </SC.Article>
-  );
-};
+  </main>
+);
 
 export default memo(Article);

@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 
 import SC from './styled';
+import { PATHNAME_NEWS_ARTICLE } from '../../constants/constants';
 
 interface Props {
   id: string;
@@ -21,7 +22,7 @@ const ArticleItem: FC<Props> = ({ id, date, title, abstract }) => (
       )}
       {title && (
         <SC.Title>
-          <Link to={`news/${id}`}>{title}</Link>
+          <Link to={`${PATHNAME_NEWS_ARTICLE}/${id}`}>{title}</Link>
         </SC.Title>
       )}
     </header>

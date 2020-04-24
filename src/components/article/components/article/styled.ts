@@ -1,11 +1,23 @@
 import styled from 'styled-components';
+import ArticleItemSC from '../../../article-item/styled';
 
-const Article = styled.section`
+const Article = styled.article`
+    margin-top: 3em;
     display: flex;
     flex-flow: column;
     font-size: 1rem;
     word-wrap: break-word;
+    
+    @media (min-width: 992px) {
+      margin-top: 6em;
+    }
   }
+`;
+
+const Date = styled.span`
+  color: ${({ theme }) => theme.colors.neutralDark};
+  font-size: 1.6em;
+  margin-bottom: 0.5em;
 `;
 
 const Title = styled.h1`
@@ -22,6 +34,13 @@ const Body = styled.p`
   font-size: 1.6em;
 `;
 
+const FullWidthImage = styled.img`
+  border-radius: 5px;
+  height: auto;
+  margin-bottom: 4em;
+  max-width: 100%;
+`;
+
 const Video = styled.div`
   padding: 56.25% 0 0 0;
   position: relative;
@@ -36,10 +55,23 @@ const Video = styled.div`
   }
 `;
 
+const AsideContent = styled.div`
+  background-color: ${({ theme }) => theme.colors.neutralLighter};
+  border-radius: 5px;
+  padding: 3em;
+
+  ${ArticleItemSC.ArticleItem} {
+    font-size: 1.5rem;
+  }
+`;
+
 export default {
   Article,
+  Date,
   Title,
   Abstract,
   Body,
-  Video
+  FullWidthImage,
+  Video,
+  AsideContent
 };
