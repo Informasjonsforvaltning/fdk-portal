@@ -12,6 +12,8 @@ import ExternalLink from '../../../link-external';
 import Summary from '../summary';
 import Detail from '../detail';
 
+import DownloadIcon from '../../../../images/icon-download-sm.svg';
+
 import SC from './styled';
 
 import testIds from './test-ids';
@@ -81,19 +83,6 @@ const DatasetDistribution: FC<Props> = ({
           data-testid={testIds.detail}
         />
       )}
-      {downloadURL && (
-        <Detail
-          property={translations.dataset.distribution.downloadUrl}
-          value={
-            <ExternalLink
-              uri={downloadURL}
-              prefLabel={downloadURL}
-              openInNewTab
-            />
-          }
-          data-testid={testIds.detail}
-        />
-      )}
       {conformsToUri && (
         <Detail
           property={translations.dataset.distribution.conformsTo}
@@ -107,13 +96,23 @@ const DatasetDistribution: FC<Props> = ({
           data-testid={testIds.detail}
         />
       )}
+      {downloadURL && (
+        <SC.Section>
+          <SC.DownloadButton href={downloadURL}>
+            <DownloadIcon />
+            {translations.dataset.distribution.download}
+          </SC.DownloadButton>
+        </SC.Section>
+      )}
       {pageUri && (
-        <ExternalLink
-          uri={pageUri}
-          prefLabel={translations.dataset.distribution.page}
-          openInNewTab
-          data-testid={testIds.moreInfo}
-        />
+        <SC.Section>
+          <ExternalLink
+            uri={pageUri}
+            prefLabel={translations.dataset.distribution.page}
+            openInNewTab
+            data-testid={testIds.moreInfo}
+          />
+        </SC.Section>
       )}
     </ExpansionPanelBody>
   </SC.DatasetDistribution>

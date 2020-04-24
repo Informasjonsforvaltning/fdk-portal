@@ -216,6 +216,7 @@
       "title": "Distributions",
       "description": "Description",
       "downloadUrl": "Download link",
+      "download": "Download distribution",
       "format": "Format",
       "accessUrl": "AccessURL",
       "license": "License",
