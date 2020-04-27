@@ -85,30 +85,20 @@ const DatasetDetailsPage: FC<Props> = ({
   const datasetUri = dataset?.uri;
 
   useEffect(() => {
-    if (
-      conceptIdentifiers &&
-      conceptIdentifiers.length > 0 &&
-      concepts.length === 0
-    ) {
-      getConcepts({
-        identifiers: conceptIdentifiers.join()
-      });
-    }
-  }, [conceptIdentifiers?.join()]);
+    getConcepts({
+      identifiers: (conceptIdentifiers ?? []).join()
+    });
+  }, [(conceptIdentifiers ?? []).join()]);
 
   useEffect(() => {
-    if (datasetUris && datasetUris.length > 0 && datasets.length === 0) {
-      getDatasets({
-        uris: datasetUris.join()
-      });
-    }
-  }, [datasetUris?.join()]);
+    getDatasets({
+      uris: (datasetUris ?? []).join()
+    });
+  }, [(datasetUris ?? []).join()]);
 
   useEffect(() => {
-    if (datasetUri && dataServices.length === 0) {
-      getDataServices({ dataseturi: datasetUri });
-    }
-  }, [datasetUri]);
+    getDataServices({ dataseturi: datasetUri ?? '' });
+  }, [datasetUri ?? '']);
 
   const entity = Entity.DATASET;
 
