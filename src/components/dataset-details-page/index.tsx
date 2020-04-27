@@ -595,7 +595,7 @@ const DatasetDetailsPage: FC<Props> = ({
                 {temporalRestrictions.map(({ startDate, endDate }) => (
                   <KeyValueListItem
                     key={`${startDate}-${endDate}`}
-                    property={translations.dataset.spatial}
+                    property={translations.dataset.temporal}
                     value={
                       startDate && endDate
                         ? `${formatDate(

@@ -240,6 +240,7 @@
     "periodFrom": "From",
     "periodTo": "To",
     "spatial": "Spatial",
+    "temporal": "Temporal",
     "information": "Information",
     "keyword": "Keyword",
     "subject": "Concepts used in the dataset",

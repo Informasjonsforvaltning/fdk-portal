@@ -240,6 +240,7 @@
     "periodFrom": "Tidsmessig avgrenset fra",
     "periodTo": "Tidsmessig avgrenset til",
     "spatial": "Geografisk avgrenset til",
+    "temporal": "Tidsmessig avgrenset til",
     "information": "Opplysninger",
     "keyword": "Søkeord",
     "subject": "Begrep brukt i datasettet",

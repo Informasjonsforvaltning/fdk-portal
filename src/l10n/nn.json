@@ -240,6 +240,7 @@
     "periodFrom": "Gjeld frå",
     "periodTo": "Gjeld til",
     "spatial": "Geografisk avgrensa til",
+    "temporal": "Tidsmessig avgrensa til",
     "information": "Opplysningar",
     "keyword": "Emneord",
     "subject": "Omgrep brukt i datasettet",
