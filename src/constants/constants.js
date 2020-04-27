@@ -15,3 +15,7 @@ export const PATHNAME_HOME_NAP =
   'https://transportportal.atlas.vegvesen.no/no/';
 export const PATHNAME_ABOUT_NAP =
   'https://transportportal.atlas.vegvesen.no/no/gen/about/';
+
+export const PARAGRAPH__BODY = 'paragraph--body';
+export const PARAGRAPH__IMAGE = 'paragraph--image';
+export const PARAGRAPH__VIDEO = 'paragraph--video';

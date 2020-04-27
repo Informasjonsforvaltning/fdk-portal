@@ -41,20 +41,6 @@ const FullWidthImage = styled.img`
   max-width: 100%;
 `;
 
-const Video = styled.div`
-  padding: 56.25% 0 0 0;
-  position: relative;
-
-  & > iframe {
-    border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-`;
-
 const AsideContent = styled.div`
   background-color: ${({ theme }) => theme.colors.neutralLighter};
   border-radius: 5px;
@@ -72,6 +58,5 @@ export default {
   Abstract,
   Body,
   FullWidthImage,
-  Video,
   AsideContent
 };
