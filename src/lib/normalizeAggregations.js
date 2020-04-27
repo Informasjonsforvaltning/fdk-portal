@@ -1,16 +1,28 @@
 import _ from 'lodash';
 
 const normalizeBucketsArray = buckets =>
-  buckets.map(bucket => ({
-    key: bucket.key,
-    count: bucket.doc_count || bucket.count // support passing through already normalized data
-  }));
+  buckets
+    .map(({ key, doc_count, count }) =>
+      doc_count || count
+        ? {
+            key,
+            count: doc_count || count // support passing through already normalized data
+          }
+        : null
+    )
+    .filter(Boolean);
 
 const normalizeBucketsObject = buckets =>
-  Object.keys(buckets).map(key => ({
-    key,
-    count: buckets[key].doc_count || buckets[key].count // support passing through already normalized data
-  }));
+  Object.entries(buckets)
+    .map(([key, { doc_count, count }]) =>
+      doc_count || count
+        ? {
+            key,
+            count: doc_count || count // support passing through already normalized data
+          }
+        : null
+    )
+    .filter(Boolean);
 
 const normalizeAggregation = aggregation => {
   if (aggregation.doc_count || aggregation.value) {
