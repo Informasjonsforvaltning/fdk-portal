@@ -8,10 +8,16 @@ import { conceptsSearch } from '../../../api/concepts';
 import { Concept } from '../../../types';
 
 function* getConceptsRequested({
-  payload: { params }
+  payload: {
+    params: { identifiers }
+  }
 }: ReturnType<typeof actions.getConceptsRequested>) {
+  if (!identifiers) {
+    return;
+  }
+
   try {
-    const data = yield call(conceptsSearch, params);
+    const data = yield call(conceptsSearch, { identifiers });
     if (data?._embedded?.concepts) {
       yield put(
         actions.getConceptsSucceeded(data?._embedded?.concepts as Concept[])

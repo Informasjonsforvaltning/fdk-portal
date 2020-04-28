@@ -8,10 +8,16 @@ import { apisSearch } from '../../../api/apis';
 import { DataService } from '../../../types';
 
 function* getDataServicesRequested({
-  payload: { params }
+  payload: {
+    params: { dataseturi }
+  }
 }: ReturnType<typeof actions.getDataServicesRequested>) {
+  if (!dataseturi) {
+    return;
+  }
+
   try {
-    const data = yield call(apisSearch, params);
+    const data = yield call(apisSearch, { dataseturi });
     if (data?.hits) {
       yield put(actions.getDataServicesSucceeded(data?.hits as DataService[]));
     } else {

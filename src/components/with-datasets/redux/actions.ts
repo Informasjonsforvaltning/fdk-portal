@@ -6,7 +6,11 @@ import {
 
 import { Dataset } from '../../../types';
 
-export function getDatasetsRequested(params: object) {
+interface GetDatasetsParams {
+  uris?: string;
+}
+
+export function getDatasetsRequested(params: GetDatasetsParams) {
   return {
     type: GET_DATASETS_REQUESTED,
     payload: {
