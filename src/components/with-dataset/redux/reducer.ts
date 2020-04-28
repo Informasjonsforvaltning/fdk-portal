@@ -1,7 +1,11 @@
 import { fromJS } from 'immutable';
 
 import * as actions from './actions';
-import { GET_DATASET_REQUESTED, GET_DATASET_SUCCEEDED } from './action-types';
+import {
+  GET_DATASET_REQUESTED,
+  GET_DATASET_SUCCEEDED,
+  RESET_DATASET
+} from './action-types';
 
 import { Actions } from '../../../types';
 
@@ -14,6 +18,7 @@ export default function reducer(
   action: Actions<typeof actions>
 ) {
   switch (action.type) {
+    case RESET_DATASET:
     case GET_DATASET_REQUESTED:
       return state.set('dataset', null);
     case GET_DATASET_SUCCEEDED:
