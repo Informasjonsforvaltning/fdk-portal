@@ -14,19 +14,17 @@ interface Props {
 
 const ArticleItem: FC<Props> = ({ id, date, title, abstract }) => (
   <SC.ArticleItem>
-    <header>
-      {date && (
-        <SC.Date>
-          <Moment format="DD.MM.YYYY">{date}</Moment>
-        </SC.Date>
-      )}
-      {title && (
-        <SC.Title>
-          <Link to={`${PATHNAME_NEWS_ARTICLE}/${id}`}>{title}</Link>
-        </SC.Title>
-      )}
-    </header>
-    {abstract && <SC.Abstract>{abstract}</SC.Abstract>}
+    <Link to={`${PATHNAME_NEWS_ARTICLE}/${id}`}>
+      <header>
+        {date && (
+          <SC.Date>
+            <Moment format="DD.MM.YYYY">{date}</Moment>
+          </SC.Date>
+        )}
+        {title && <SC.Title>{title}</SC.Title>}
+      </header>
+      {abstract && <SC.Abstract>{abstract}</SC.Abstract>}
+    </Link>
   </SC.ArticleItem>
 );
 
