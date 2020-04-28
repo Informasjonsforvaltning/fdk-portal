@@ -60,7 +60,7 @@ const DatasetDetailsPage: FC<Props> = ({
   concepts,
   datasets,
   dataServices,
-  datasetActions: { getDatasetRequested: getDataset },
+  datasetActions: { getDatasetRequested: getDataset, resetDataset },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptsActions: { getConceptsRequested: getConcepts },
   datasetsActions: { getDatasetsRequested: getDatasets },
@@ -76,6 +76,10 @@ const DatasetDetailsPage: FC<Props> = ({
     if (!referencetypes) {
       getReferenceData('referencetypes');
     }
+
+    return () => {
+      resetDataset();
+    };
   }, []);
 
   const conceptIdentifiers = dataset?.subject?.map(
@@ -88,13 +92,13 @@ const DatasetDetailsPage: FC<Props> = ({
     getConcepts({
       identifiers: conceptIdentifiers?.join()
     });
-  }, [(conceptIdentifiers ?? []).join()]);
+  }, [conceptIdentifiers?.join()]);
 
   useEffect(() => {
     getDatasets({
       uris: datasetUris?.join()
     });
-  }, [(datasetUris ?? []).join()]);
+  }, [datasetUris?.join()]);
 
   useEffect(() => {
     getDataServices({ dataseturi: datasetUri });
