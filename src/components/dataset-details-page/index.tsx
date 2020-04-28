@@ -82,23 +82,23 @@ const DatasetDetailsPage: FC<Props> = ({
     ({ identifier }) => identifier
   );
   const datasetUris = dataset?.references?.map(({ source: { uri } }) => uri);
-  const datasetUri = dataset?.uri;
+  const datasetUri = dataset?.uri ?? '';
 
   useEffect(() => {
     getConcepts({
-      identifiers: (conceptIdentifiers ?? []).join()
+      identifiers: conceptIdentifiers?.join()
     });
   }, [(conceptIdentifiers ?? []).join()]);
 
   useEffect(() => {
     getDatasets({
-      uris: (datasetUris ?? []).join()
+      uris: datasetUris?.join()
     });
   }, [(datasetUris ?? []).join()]);
 
   useEffect(() => {
-    getDataServices({ dataseturi: datasetUri ?? '' });
-  }, [datasetUri ?? '']);
+    getDataServices({ dataseturi: datasetUri });
+  }, [datasetUri]);
 
   const entity = Entity.DATASET;
 
