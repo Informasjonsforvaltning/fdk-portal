@@ -45,7 +45,8 @@
       "contactPoint": {
         "email": "mailto:informasjonsforvaltning@brreg.no",
         "telephone": "47 750 07 500"
-      }
+      },
+      "identifier": "https://dataverk.nav.no/begrep/BEGREP-183"
     }, {
       "id" : "19",
       "uri" : "testuri19",
