@@ -258,6 +258,7 @@ const SearchPage = props => {
               onFilterLos={handleFilterLos}
               onFilterAccessRights={handleDatasetFilterAccessRights}
               onFilterAvailability={handleApiFilterAvailability}
+              onFilterTheme={handleFilterThemes}
             />
           </Route>
           <Route exact path={PATHNAME_DATASETS}>
