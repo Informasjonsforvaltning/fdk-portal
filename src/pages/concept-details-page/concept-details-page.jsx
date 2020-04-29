@@ -206,18 +206,15 @@ const renderRange = range => {
   );
 };
 
-const renderIdentifiers = id => {
-  if (!id) {
+const renderIdentifiers = identifier => {
+  if (!identifier) {
     return null;
   }
 
   return (
     <ListRegular title={localization.concept.identifier}>
       <div className="d-flex list-regular--item">
-        <a href={`/api/concepts/${id}`}>{`${_.get(
-          window.location,
-          'origin'
-        )}/api/concepts/${id}`}</a>
+        <a href={identifier}>{identifier}</a>
       </div>
     </ListRegular>
   );
@@ -533,7 +530,7 @@ export const ConceptDetailsPage = ({
               _.get(conceptItem, 'hiddenLabel')
             )}
             {renderRange(_.get(conceptItem, ['definition', 'range']))}
-            {renderIdentifiers(_.get(conceptItem, 'id'))}
+            {renderIdentifiers(_.get(conceptItem, 'identifier'))}
             {renderDatasets(conceptDatasetReferences)}
             {renderInformationModelReferences(informationModelReferences)}
             {renderConceptReferences(conceptItem, conceptReferences)}
