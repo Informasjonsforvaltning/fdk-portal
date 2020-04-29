@@ -1,3 +1,5 @@
+import { PARAGRAPH__IMAGE } from '../../constants/constants';
+
 export const getParagraphBodyValue = (fieldModule: any) =>
   fieldModule?.field_body?.value;
 
@@ -6,3 +8,7 @@ export const getParagraphImage = (fieldModule: any) =>
 
 export const getParagraphVideoValue = (fieldModule: any) =>
   fieldModule?.field_remote_video?.field_media_oembed_video;
+
+export const findParagraphImage = (fields: any) =>
+  fields?.find((item: any) => item.type === PARAGRAPH__IMAGE)?.field_image
+    ?.field_media_image;
