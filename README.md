@@ -17,7 +17,7 @@ dcatno/search: [Apache License, version 2.0](http://www.apache.org/licenses/LICE
 
 To run locally:
 
-1. Run ```npm run dev``` or run ```npm run server``` to start server.
+1. Run ```npm run start``` to start server.
 
 2. Open browser ```http://localhost:3000```
 
