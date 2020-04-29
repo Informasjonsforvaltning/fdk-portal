@@ -57,6 +57,11 @@ exports[`should render App correctly 1`] = `
       exact={true}
       path="/informationmodels"
     />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/news-archive"
+    />
     <withRouter(ScrollToTop)>
       <Switch>
         <Route
