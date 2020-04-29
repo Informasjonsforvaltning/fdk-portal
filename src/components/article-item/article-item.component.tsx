@@ -5,16 +5,28 @@ import { Link } from 'react-router-dom';
 import SC from './styled';
 import { PATHNAME_NEWS_ARTICLE } from '../../constants/constants';
 
+interface Image {
+  alt: string;
+  url: string;
+}
 interface Props {
   id: string;
   date?: string;
   title?: string;
   abstract?: string;
+  image?: Image;
 }
 
-const ArticleItem: FC<Props> = ({ id, date, title, abstract }) => (
+const ArticleItem: FC<Props> = ({
+  id,
+  date,
+  title,
+  abstract,
+  image: { alt: imageAlt, url: imageUrl } = {}
+}) => (
   <SC.ArticleItem>
     <Link to={`${PATHNAME_NEWS_ARTICLE}/${id}`}>
+      <SC.Image title={imageAlt} imageUrl={imageUrl} />
       <header>
         {date && (
           <SC.Date>

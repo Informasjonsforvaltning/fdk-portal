@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Title = styled.h3`
   font-size: 1.5em;
@@ -30,9 +30,26 @@ const Abstract = styled.p`
   margin: 0;
 `;
 
+const Image = styled.div<{ imageUrl?: string }>`
+  background-image: url(../../img/illustration-article-placeholder.svg);
+  ${({ imageUrl }) =>
+    imageUrl &&
+    css`
+      background-image: url(${imageUrl});
+    `}
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  padding-top: 50%;
+  overflow: hidden;
+`;
+
 export default {
   ArticleItem,
   Date,
   Title,
-  Abstract
+  Abstract,
+  Image
 };
