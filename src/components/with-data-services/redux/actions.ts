@@ -6,7 +6,11 @@ import {
 
 import { DataService } from '../../../types';
 
-export function getDataServicesRequested(params: object) {
+interface GetDataServicesParams {
+  dataseturi?: string;
+}
+
+export function getDataServicesRequested(params: GetDataServicesParams) {
   return {
     type: GET_DATA_SERVICES_REQUESTED,
     payload: {

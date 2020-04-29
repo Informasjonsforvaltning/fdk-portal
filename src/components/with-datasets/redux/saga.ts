@@ -8,10 +8,16 @@ import { datasetsSearch } from '../../../api/datasets';
 import { Dataset } from '../../../types';
 
 function* getDatasetsRequested({
-  payload: { params }
+  payload: {
+    params: { uris }
+  }
 }: ReturnType<typeof actions.getDatasetsRequested>) {
+  if (!uris) {
+    return;
+  }
+
   try {
-    const data = yield call(datasetsSearch, params);
+    const data = yield call(datasetsSearch, { uris });
     const datasets = data?.hits?.hits.map(({ _source }: any) => _source);
     if (datasets) {
       yield put(actions.getDatasetsSucceeded(datasets as Dataset[]));

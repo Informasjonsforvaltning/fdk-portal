@@ -336,7 +336,7 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionRootElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
-    expect(datasetDistributionDetailElements).toHaveLength(4);
+    expect(datasetDistributionDetailElements).toHaveLength(3);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
       format.join(', ')
     );
@@ -352,15 +352,6 @@ describe('DatasetDistribution component', () => {
     expect(
       datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
-    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
-      downloadURL[0]
-    );
-    expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild?.tagName.toLowerCase()
-    ).toEqual('a');
-    expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
-    ).toHaveAttribute('href', downloadURL[0]);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
     cleanup();
@@ -374,6 +365,73 @@ describe('DatasetDistribution component', () => {
           license: licenseWithLabel,
           downloadURL,
           accessURL
+        }}
+      />,
+      {
+        theme
+      }
+    );
+
+    datasetDistributionRootElement = getByTestId(testIds.root);
+    datasetDistributionSummaryElement = getByTestId(testIds.summary);
+    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
+    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
+
+    expect(datasetDistributionRootElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
+    expect(datasetDistributionDetailElements).toHaveLength(0);
+    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
+
+    datasetDistributionSummaryElement.click();
+
+    datasetDistributionRootElement = getByTestId(testIds.root);
+    datasetDistributionSummaryElement = getByTestId(testIds.summary);
+    datasetDistributionDetailElements = getAllByTestId(testIds.detail);
+    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
+
+    expect(datasetDistributionRootElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
+    expect(datasetDistributionDetailElements).toHaveLength(4);
+    expect(datasetDistributionDetailElements[0]).toHaveTextContent(
+      format.join(', ')
+    );
+    expect(datasetDistributionDetailElements[1]).toHaveTextContent(
+      accessURL[0]
+    );
+    expect(
+      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+    ).toEqual('a');
+    expect(
+      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild
+    ).toHaveAttribute('href', accessURL[0]);
+    expect(datasetDistributionDetailElements[2]).toHaveTextContent(
+      description.en
+    );
+    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
+      licenseWithLabel.prefLabel.en
+    );
+    expect(
+      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+    ).toEqual('a');
+    expect(
+      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
+    ).toHaveAttribute('href', licenseWithLabel.uri);
+    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
+
+    cleanup();
+
+    rerender(
+      <DatasetDistribution
+        distribution={{
+          title,
+          description,
+          format,
+          license: licenseWithLabel,
+          downloadURL,
+          accessURL,
+          conformsTo: conformsToWithLabel
         }}
       />,
       {
@@ -428,99 +486,13 @@ describe('DatasetDistribution component', () => {
       datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
     expect(datasetDistributionDetailElements[4]).toHaveTextContent(
-      downloadURL[0]
-    );
-    expect(
-      datasetDistributionDetailElements[4].lastElementChild?.firstElementChild?.tagName.toLowerCase()
-    ).toEqual('a');
-    expect(
-      datasetDistributionDetailElements[4].lastElementChild?.firstElementChild
-    ).toHaveAttribute('href', downloadURL[0]);
-    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    cleanup();
-
-    rerender(
-      <DatasetDistribution
-        distribution={{
-          title,
-          description,
-          format,
-          license: licenseWithLabel,
-          downloadURL,
-          accessURL,
-          conformsTo: conformsToWithLabel
-        }}
-      />,
-      {
-        theme
-      }
-    );
-
-    datasetDistributionRootElement = getByTestId(testIds.root);
-    datasetDistributionSummaryElement = getByTestId(testIds.summary);
-    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
-    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
-
-    expect(datasetDistributionRootElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
-    expect(datasetDistributionDetailElements).toHaveLength(0);
-    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    datasetDistributionSummaryElement.click();
-
-    datasetDistributionRootElement = getByTestId(testIds.root);
-    datasetDistributionSummaryElement = getByTestId(testIds.summary);
-    datasetDistributionDetailElements = getAllByTestId(testIds.detail);
-    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
-
-    expect(datasetDistributionRootElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
-    expect(datasetDistributionDetailElements).toHaveLength(6);
-    expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.join(', ')
-    );
-    expect(datasetDistributionDetailElements[1]).toHaveTextContent(
-      accessURL[0]
-    );
-    expect(
-      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild?.tagName.toLowerCase()
-    ).toEqual('a');
-    expect(
-      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild
-    ).toHaveAttribute('href', accessURL[0]);
-    expect(datasetDistributionDetailElements[2]).toHaveTextContent(
-      description.en
-    );
-    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
-      licenseWithLabel.prefLabel.en
-    );
-    expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild?.tagName.toLowerCase()
-    ).toEqual('a');
-    expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
-    ).toHaveAttribute('href', licenseWithLabel.uri);
-
-    expect(datasetDistributionDetailElements[4]).toHaveTextContent(
-      downloadURL[0]
-    );
-    expect(
-      datasetDistributionDetailElements[4].lastElementChild?.firstElementChild?.tagName.toLowerCase()
-    ).toEqual('a');
-    expect(
-      datasetDistributionDetailElements[4].lastElementChild?.firstElementChild
-    ).toHaveAttribute('href', downloadURL[0]);
-    expect(datasetDistributionDetailElements[5]).toHaveTextContent(
       conformsToWithLabel[0].prefLabel.en
     );
     expect(
-      datasetDistributionDetailElements[5].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+      datasetDistributionDetailElements[4].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
-      datasetDistributionDetailElements[5].lastElementChild?.firstElementChild
+      datasetDistributionDetailElements[4].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', conformsToWithLabel[0].uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
@@ -564,7 +536,7 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionRootElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
-    expect(datasetDistributionDetailElements).toHaveLength(6);
+    expect(datasetDistributionDetailElements).toHaveLength(5);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
       format.join(', ')
     );
@@ -590,23 +562,13 @@ describe('DatasetDistribution component', () => {
       datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
     expect(datasetDistributionDetailElements[4]).toHaveTextContent(
-      downloadURL[0]
+      conformsToWithoutLabel[0].uri
     );
     expect(
       datasetDistributionDetailElements[4].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
       datasetDistributionDetailElements[4].lastElementChild?.firstElementChild
-    ).toHaveAttribute('href', downloadURL[0]);
-
-    expect(datasetDistributionDetailElements[5]).toHaveTextContent(
-      conformsToWithoutLabel[0].uri
-    );
-    expect(
-      datasetDistributionDetailElements[5].lastElementChild?.firstElementChild?.tagName.toLowerCase()
-    ).toEqual('a');
-    expect(
-      datasetDistributionDetailElements[5].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', conformsToWithoutLabel[0].uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
@@ -651,7 +613,7 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionRootElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
-    expect(datasetDistributionDetailElements).toHaveLength(6);
+    expect(datasetDistributionDetailElements).toHaveLength(5);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
       format.join(', ')
     );
@@ -677,22 +639,13 @@ describe('DatasetDistribution component', () => {
       datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
     expect(datasetDistributionDetailElements[4]).toHaveTextContent(
-      downloadURL[0]
+      conformsToWithLabel[0].prefLabel.en
     );
     expect(
       datasetDistributionDetailElements[4].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
       datasetDistributionDetailElements[4].lastElementChild?.firstElementChild
-    ).toHaveAttribute('href', downloadURL[0]);
-    expect(datasetDistributionDetailElements[5]).toHaveTextContent(
-      conformsToWithLabel[0].prefLabel.en
-    );
-    expect(
-      datasetDistributionDetailElements[5].lastElementChild?.firstElementChild?.tagName.toLowerCase()
-    ).toEqual('a');
-    expect(
-      datasetDistributionDetailElements[5].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', conformsToWithLabel[0].uri);
     expect(datasetDistributionMoreInfoElement).toBeInTheDocument();
     expect(datasetDistributionMoreInfoElement.textContent).toEqual(

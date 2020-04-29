@@ -60,7 +60,7 @@ const DatasetDetailsPage: FC<Props> = ({
   concepts,
   datasets,
   dataServices,
-  datasetActions: { getDatasetRequested: getDataset },
+  datasetActions: { getDatasetRequested: getDataset, resetDataset },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptsActions: { getConceptsRequested: getConcepts },
   datasetsActions: { getDatasetsRequested: getDatasets },
@@ -76,38 +76,32 @@ const DatasetDetailsPage: FC<Props> = ({
     if (!referencetypes) {
       getReferenceData('referencetypes');
     }
+
+    return () => {
+      resetDataset();
+    };
   }, []);
 
   const conceptIdentifiers = dataset?.subject?.map(
     ({ identifier }) => identifier
   );
   const datasetUris = dataset?.references?.map(({ source: { uri } }) => uri);
-  const datasetUri = dataset?.uri;
+  const datasetUri = dataset?.uri ?? '';
 
   useEffect(() => {
-    if (
-      conceptIdentifiers &&
-      conceptIdentifiers.length > 0 &&
-      concepts.length === 0
-    ) {
-      getConcepts({
-        identifiers: conceptIdentifiers.join()
-      });
-    }
+    getConcepts({
+      identifiers: conceptIdentifiers?.join()
+    });
   }, [conceptIdentifiers?.join()]);
 
   useEffect(() => {
-    if (datasetUris && datasetUris.length > 0 && datasets.length === 0) {
-      getDatasets({
-        uris: datasetUris.join()
-      });
-    }
+    getDatasets({
+      uris: datasetUris?.join()
+    });
   }, [datasetUris?.join()]);
 
   useEffect(() => {
-    if (datasetUri && dataServices.length === 0) {
-      getDataServices({ dataseturi: datasetUri });
-    }
+    getDataServices({ dataseturi: datasetUri });
   }, [datasetUri]);
 
   const entity = Entity.DATASET;
@@ -595,7 +589,7 @@ const DatasetDetailsPage: FC<Props> = ({
                 {temporalRestrictions.map(({ startDate, endDate }) => (
                   <KeyValueListItem
                     key={`${startDate}-${endDate}`}
-                    property={translations.dataset.spatial}
+                    property={translations.dataset.temporal}
                     value={
                       startDate && endDate
                         ? `${formatDate(

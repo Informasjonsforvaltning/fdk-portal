@@ -21,15 +21,13 @@ import { StickyMenu } from '../../components/sticky-menu/sticky-menu.component';
 import './concept-details-page.scss';
 
 const renderDescription = description => {
-  if (!description) {
-    return null;
-  }
-
   const descriptionText = getTranslateText(description);
   return (
-    <ShowMore showMoreButtonText={localization.showFullDescription}>
-      {descriptionText}
-    </ShowMore>
+    descriptionText && (
+      <ShowMore showMoreButtonText={localization.showFullDescription}>
+        {descriptionText}
+      </ShowMore>
+    )
   );
 };
 

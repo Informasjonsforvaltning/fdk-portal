@@ -5,38 +5,70 @@ import SC from './styled';
 import { convertToSanitizedHtml } from '../../../../lib/markdown-converter';
 import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
+import {
+  getParagraphBodyValue,
+  getParagraphImage,
+  getParagraphVideoValue
+} from '../../../../lib/drupal/drupal-values';
 import NewsList from '../../../news-list/news-list-component';
+import VimeoVideo from '../vimeo-video/vimeo-video.component';
+import {
+  PARAGRAPH__BODY,
+  PARAGRAPH__IMAGE,
+  PARAGRAPH__VIDEO
+} from '../../../../constants/constants';
 
 interface Props {
   publishedDate: string;
   title: string;
   abstract: string;
-  body: string;
-  imageTop: any;
-  vimeoData: any;
+  field_modules: any;
   relatedNews: any;
 }
+
+export const renderFieldModule = (fieldModule: any) => {
+  switch (fieldModule.type) {
+    case PARAGRAPH__BODY:
+      return (
+        <SC.Body
+          key={fieldModule.id}
+          dangerouslySetInnerHTML={{
+            __html: convertToSanitizedHtml(getParagraphBodyValue(fieldModule))
+          }}
+        />
+      );
+    case PARAGRAPH__IMAGE: {
+      const image = getParagraphImage(fieldModule);
+      return (
+        <SC.FullWidthImage
+          key={fieldModule.id}
+          alt={image.meta.alt}
+          src={image?.download_urls?.canonical}
+        />
+      );
+    }
+    case PARAGRAPH__VIDEO:
+      return (
+        <VimeoVideo
+          key={fieldModule.id}
+          videoLinkValue={getParagraphVideoValue(fieldModule)}
+        />
+      );
+    default:
+      return null;
+  }
+};
 
 const Article: FC<Partial<Props>> = ({
   publishedDate,
   title,
   abstract,
-  body,
-  imageTop,
-  vimeoData,
+  field_modules,
   relatedNews
 }) => (
   <main id="content" className="container">
     <SC.Article>
       <div className="row">
-        {imageTop && (
-          <div className="col-12">
-            <SC.FullWidthImage
-              alt={imageTop.meta.alt}
-              src={imageTop?.download_urls?.canonical}
-            />
-          </div>
-        )}
         <div className={relatedNews ? 'col-12 col-lg-8' : 'col-12'}>
           {publishedDate && (
             <SC.Date>
@@ -54,15 +86,8 @@ const Article: FC<Partial<Props>> = ({
               }}
             />
           )}
-          {body && (
-            <SC.Body
-              dangerouslySetInnerHTML={{
-                __html: convertToSanitizedHtml(body)
-              }}
-            />
-          )}
-          {vimeoData && (
-            <SC.Video dangerouslySetInnerHTML={{ __html: vimeoData.html }} />
+          {field_modules?.map((fieldModule: any) =>
+            renderFieldModule(fieldModule)
           )}
         </div>
         {relatedNews && (

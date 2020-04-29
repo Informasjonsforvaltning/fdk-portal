@@ -6,7 +6,11 @@ import {
 
 import { Concept } from '../../../types';
 
-export function getConceptsRequested(params: object) {
+interface GetConceptsParams {
+  identifiers?: string;
+}
+
+export function getConceptsRequested(params: GetConceptsParams) {
   return {
     type: GET_CONCEPTS_REQUESTED,
     payload: {

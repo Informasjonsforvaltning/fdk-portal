@@ -1,7 +1,8 @@
 import {
   GET_DATASET_REQUESTED,
   GET_DATASET_SUCCEEDED,
-  GET_DATASET_FAILED
+  GET_DATASET_FAILED,
+  RESET_DATASET
 } from './action-types';
 
 import { Dataset } from '../../../types';
@@ -30,5 +31,11 @@ export function getDatasetFailed(message: string) {
     payload: {
       message
     }
+  };
+}
+
+export function resetDataset() {
+  return {
+    type: RESET_DATASET
   };
 }
