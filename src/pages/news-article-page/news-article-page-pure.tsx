@@ -9,11 +9,12 @@ interface Props {
 }
 
 const NewsArticlePage: FC<Props> = ({
-  newsItem: { created, title, field_ingress, field_modules } = {},
+  newsItem: { created, changed, title, field_ingress, field_modules } = {},
   news
 }) => (
   <Article
     publishedDate={created}
+    lastChangedDate={changed}
     title={title}
     abstract={field_ingress}
     field_modules={field_modules}
