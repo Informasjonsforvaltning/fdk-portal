@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import React, { FC } from 'react';
 
 import SC from './styled';
 import {
@@ -49,4 +49,4 @@ const SearchLink: FC<Props> = ({ entity }) => {
   );
 };
 
-export default memo(SearchLink);
+export default SearchLink;
