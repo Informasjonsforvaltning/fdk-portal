@@ -120,9 +120,9 @@ exports[`should render ConceptDetailsPage correctly with conceptItem 1`] = `
             className="d-flex list-regular--item"
           >
             <a
-              href="/api/concepts/14"
+              href="https://dataverk.nav.no/begrep/BEGREP-183"
             >
-              http://localhost/api/concepts/14
+              https://dataverk.nav.no/begrep/BEGREP-183
             </a>
           </div>
         </ListRegular>

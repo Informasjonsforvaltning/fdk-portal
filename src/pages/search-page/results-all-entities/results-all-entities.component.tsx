@@ -35,6 +35,7 @@ interface Props extends RouteComponentProps<any> {
   onFilterAvailability: any;
   onFilterPublisher: any;
   onFilterLos: any;
+  onFilterTheme: any;
   compareConceptList: Concept[];
   addConcept: Function;
   removeConcept: Function;
@@ -51,6 +52,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   onFilterAvailability,
   onFilterPublisher,
   onFilterLos,
+  onFilterTheme,
   compareConceptList,
   addConcept,
   removeConcept,
@@ -62,7 +64,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     orgPath: orgPathFilterParam,
     losTheme: losThemeFilterParam,
     accessrights: accessrightsParam,
-    availability: availabilityParam
+    availability: availabilityParam,
+    theme: themeParam
   } = searchParams;
   const { totalPages } = page;
 
@@ -176,6 +179,14 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
             activeFilter={losThemeFilterParam}
             referenceDataItems={losItems}
             collapseItems
+          />
+          <FilterBox
+            htmlKey={1}
+            title={localization.facet.themeEU}
+            filter={aggregations.theme}
+            onClick={onFilterTheme}
+            activeFilter={themeParam}
+            themesItems={themesItems}
           />
           <FilterBox
             htmlKey={2}
