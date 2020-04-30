@@ -36,7 +36,7 @@ exports[`should render ReportStats correctly 1`] = `
           <Link
             className="mb-3"
             title="Datasets that are public"
-            to="/"
+            to="/datasets"
           >
             <strong>
               985
@@ -48,7 +48,7 @@ exports[`should render ReportStats correctly 1`] = `
           <Link
             className="mb-3"
             title="Datasets that are public"
-            to="/?firstHarvested=7"
+            to="/datasets?firstHarvested=7"
           >
             0
              

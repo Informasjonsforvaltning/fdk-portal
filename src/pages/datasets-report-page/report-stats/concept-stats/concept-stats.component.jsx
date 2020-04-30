@@ -8,6 +8,7 @@ import '../report-stats.scss';
 import { getTranslateText } from '../../../../lib/translateText';
 import { StatBox } from '../stat-box/stat-box.component';
 import { getPublisherByOrgNr } from '../../../../redux/modules/publishers';
+import { PATHNAME_CONCEPTS } from '../../../../constants/constants';
 
 export const ConceptStats = props => {
   const { stats, publishers, mostUsedConcepts, isFilterActive } = props;
@@ -32,7 +33,7 @@ export const ConceptStats = props => {
       <Link
         key={`mostUsed-${index}`}
         className="fdk-label-item"
-        to={`/concepts/${conceptRecord.id}`}
+        to={`${PATHNAME_CONCEPTS}/${conceptRecord.id}`}
       >
         <strong className="fdk-text-size-medium">
           {getTranslateText(_.get(conceptRecord, 'prefLabel'))}
@@ -67,7 +68,10 @@ export const ConceptStats = props => {
             <Link
               title={localization.page.datasetTab}
               className="fdk-plain-label"
-              to={`/concepts?orgPath=${_.get(publisherItem, 'orgPath')}`}
+              to={`${PATHNAME_CONCEPTS}?orgPath=${_.get(
+                publisherItem,
+                'orgPath'
+              )}`}
             >
               {publisherRecord.count}
             </Link>

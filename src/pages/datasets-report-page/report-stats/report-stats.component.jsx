@@ -12,6 +12,11 @@ import { ConceptStats } from './concept-stats/concept-stats.component';
 import { Tabs } from '../../../components/tabs/tabs.component';
 import { isFilterActive } from '../filter-helper';
 import './report-stats.scss';
+import {
+  PATHNAME_APIS,
+  PATHNAME_CONCEPTS,
+  PATHNAME_DATASETS
+} from '../../../constants/constants';
 
 export const ReportStats = props => {
   const {
@@ -59,7 +64,10 @@ export const ReportStats = props => {
               <Link
                 title={localization.report.aggregation.public}
                 className="mb-3"
-                to={`/${qs.stringify({ orgPath }, { addQueryPrefix: true })}`}
+                to={`${PATHNAME_DATASETS}${qs.stringify(
+                  { orgPath },
+                  { addQueryPrefix: true }
+                )}`}
               >
                 <strong>
                   {datasetStats.total} {localization.report.datasets}
@@ -69,7 +77,7 @@ export const ReportStats = props => {
               <Link
                 title={localization.report.aggregation.public}
                 className="mb-3"
-                to={`/${qs.stringify(
+                to={`${PATHNAME_DATASETS}${qs.stringify(
                   { firstHarvested: 7, orgPath },
                   { addQueryPrefix: true }
                 )}`}
@@ -83,7 +91,7 @@ export const ReportStats = props => {
               <Link
                 title={localization.report.aggregation.public}
                 className="mb-3"
-                to={`/apis${qs.stringify(
+                to={`${PATHNAME_APIS}${qs.stringify(
                   { orgPath },
                   { addQueryPrefix: true }
                 )}`}
@@ -96,7 +104,7 @@ export const ReportStats = props => {
               <Link
                 title={localization.report.aggregation.public}
                 className="mb-3"
-                to={`/apis${qs.stringify(
+                to={`${PATHNAME_APIS}${qs.stringify(
                   { firstHarvested: 7, orgPath },
                   { addQueryPrefix: true }
                 )}`}
@@ -110,7 +118,7 @@ export const ReportStats = props => {
               <Link
                 title={localization.report.aggregation.public}
                 className="mb-3"
-                to={`/concepts${qs.stringify(
+                to={`${PATHNAME_CONCEPTS}${qs.stringify(
                   { orgPath },
                   { addQueryPrefix: true }
                 )}`}
@@ -123,7 +131,7 @@ export const ReportStats = props => {
               <Link
                 title={localization.report.aggregation.public}
                 className="mb-3"
-                to={`/concepts${qs.stringify(
+                to={`${PATHNAME_CONCEPTS}${qs.stringify(
                   { firstHarvested: 7, orgPath },
                   { addQueryPrefix: true }
                 )}`}
