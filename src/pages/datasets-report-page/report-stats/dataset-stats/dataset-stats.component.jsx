@@ -9,6 +9,7 @@ import '../report-stats.scss';
 import { getTranslateText } from '../../../../lib/translateText';
 import { StatBox } from '../stat-box/stat-box.component';
 import { ChartBar } from '../chart-bar/chart-bar.component';
+import { PATHNAME_DATASETS } from '../../../../constants/constants';
 
 const calculatePercent = (number, total) => {
   const calculatedValue = (number / total) * 100;
@@ -60,7 +61,7 @@ export const DatasetStats = props => {
         <Link
           title={localization.report.aggregation.public}
           className="mb-3"
-          to={`/?accessrights=PUBLIC${orgPathParam}`}
+          to={`${PATHNAME_DATASETS}?accessrights=PUBLIC${orgPathParam}`}
         >
           {stats.public}
         </Link>
@@ -77,7 +78,7 @@ export const DatasetStats = props => {
         <Link
           title={localization.report.aggregation.restricted}
           className="mb-3"
-          to={`/?accessrights=RESTRICTED${orgPathParam}`}
+          to={`${PATHNAME_DATASETS}?accessrights=RESTRICTED${orgPathParam}`}
         >
           {stats.restricted}
         </Link>
@@ -94,7 +95,7 @@ export const DatasetStats = props => {
         <Link
           title={localization.report.aggregation.nonPublic}
           className="mb-3"
-          to={`/?accessrights=NON_PUBLIC${orgPathParam}`}
+          to={`${PATHNAME_DATASETS}?accessrights=NON_PUBLIC${orgPathParam}`}
         >
           {stats.nonPublic}
         </Link>
@@ -111,7 +112,7 @@ export const DatasetStats = props => {
         <Link
           title={localization.report.aggregation.accessRightsUnknown}
           className="mb-3"
-          to={`/?accessrights=Ukjent${orgPathParam}`}
+          to={`${PATHNAME_DATASETS}?accessrights=Ukjent${orgPathParam}`}
         >
           {stats.unknown}
         </Link>
@@ -130,7 +131,7 @@ export const DatasetStats = props => {
         <Link
           title={localization.report.aggregation.openDataset}
           className="mb-3"
-          to={`/?opendata=true${orgPathParam}`}
+          to={`${PATHNAME_DATASETS}?opendata=true${orgPathParam}`}
         >
           <span>{stats.opendata}</span>
           <span>/{stats.total}</span>
@@ -160,7 +161,7 @@ export const DatasetStats = props => {
           <Link
             title={localization.report.aggregation.publicWithDistributions}
             className="mb-3"
-            to={`/?withDistributions=true&isPublic=true${orgPathParam}`}
+            to={`${PATHNAME_DATASETS}?withDistributions=true&isPublic=true${orgPathParam}`}
           >
             {stats.publicWithDistribution}
           </Link>
@@ -180,7 +181,7 @@ export const DatasetStats = props => {
           <Link
             title={localization.report.aggregation.publicWithoutDistributions}
             className="mb-3"
-            to={`/?withDistributions=false&isPublic=true${orgPathParam}`}
+            to={`${PATHNAME_DATASETS}?withDistributions=false&isPublic=true${orgPathParam}`}
           >
             {stats.publicWithoutDistribution}
           </Link>
@@ -204,7 +205,7 @@ export const DatasetStats = props => {
               localization.report.aggregation.restrictedDatasetWithDistributions
             }
             className="mb-3"
-            to={`/?withDistributions=true&isPublic=false${orgPathParam}`}
+            to={`${PATHNAME_DATASETS}?withDistributions=true&isPublic=false${orgPathParam}`}
           >
             {stats.nonpublicWithDistribution}
           </Link>
@@ -230,7 +231,7 @@ export const DatasetStats = props => {
                 .restrictedDatasetWithoutDistributions
             }
             className="mb-3"
-            to={`/?withDistributions=false&isPublic=false${orgPathParam}`}
+            to={`${PATHNAME_DATASETS}?withDistributions=false&isPublic=false${orgPathParam}`}
           >
             {stats.nonpublicWithoutDistribution}
           </Link>
@@ -242,7 +243,7 @@ export const DatasetStats = props => {
           <Link
             title={localization.report.apis}
             className="mb-3"
-            to={`/?distributionType=API${orgPathParam}`}
+            to={`${PATHNAME_DATASETS}?distributionType=API${orgPathParam}`}
           >
             {stats.distributionCountForTypeApi}
           </Link>
@@ -253,7 +254,7 @@ export const DatasetStats = props => {
           <Link
             title={localization.report.aggregation.typeFile}
             className="mb-3"
-            to={`/?distributionType=Nedlastbar fil${orgPathParam}`}
+            to={`${PATHNAME_DATASETS}?distributionType=Nedlastbar fil${orgPathParam}`}
           >
             {stats.distributionCountForTypeFile}
           </Link>
@@ -264,7 +265,7 @@ export const DatasetStats = props => {
           <Link
             title={localization.report.aggregation.typeFeed}
             className="mb-3"
-            to={`/?distributionType=Feed${orgPathParam}`}
+            to={`${PATHNAME_DATASETS}?distributionType=Feed${orgPathParam}`}
           >
             {stats.distributionCountForTypeFeed}
           </Link>
@@ -280,7 +281,7 @@ export const DatasetStats = props => {
         <Link
           title={localization.report.aggregation.national}
           className="mb-3"
-          to={`/?isNationalComponent=true${orgPathParam}`}
+          to={`${PATHNAME_DATASETS}?isNationalComponent=true${orgPathParam}`}
         >
           {stats.nationalComponent}
         </Link>
@@ -302,7 +303,7 @@ export const DatasetStats = props => {
         <Link
           title={localization.report.aggregation.withConcepts}
           className="mb-3"
-          to={`/?withSubject=true${orgPathParam}`}
+          to={`${PATHNAME_DATASETS}?withSubject=true${orgPathParam}`}
         >
           {stats.subjectCount}
         </Link>
@@ -326,7 +327,7 @@ export const DatasetStats = props => {
         <Link
           title={localization.report.aggregation.withoutConcepts}
           className="mb-3"
-          to={`/?withSubject=false${orgPathParam}`}
+          to={`${PATHNAME_DATASETS}?withSubject=false${orgPathParam}`}
         >
           {stats.total - stats.subjectCount}
         </Link>
@@ -347,7 +348,7 @@ export const DatasetStats = props => {
           <Link
             title={localization.page.datasetTab}
             className="fdk-plain-label"
-            to={`/?catalog=${catalogRecord.key}${orgPathParam}`}
+            to={`${PATHNAME_DATASETS}?catalog=${catalogRecord.key}${orgPathParam}`}
           >
             {catalogRecord.count}
           </Link>
