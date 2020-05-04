@@ -483,7 +483,7 @@
         "provenance": "Opphav og oppdatering",
         "quality": "Kvalitet på innhold",
         "conceptReferences": "Begreper brukt i datasett",
-        "datasetReferences": "Relaterte datasett",
+        "datasetReferences": "Relasjoner",
         "dataserviceReferences": "Relaterte datatjenester",
         "keywords": "Søkeord",
         "restrictions": "Avgrensninger",
