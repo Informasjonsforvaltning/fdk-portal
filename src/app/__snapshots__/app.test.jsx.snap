@@ -160,9 +160,9 @@ exports[`should render App correctly 1`] = `
             className="fdk-p-footer"
           >
             <a
-              href="mailto:digdir@fellesdatakatalog.no"
+              href="mailto:fellesdatakatalog@digdir.no"
             >
-              digdir@fellesdatakatalog.no
+              fellesdatakatalog@digdir.no
             </a>
           </p>
         </div>
@@ -218,7 +218,7 @@ exports[`should render App correctly 1`] = `
             className="fdk-p-footer"
           >
             <a
-              href="mailto:digdir@fellesdatakatalog.no"
+              href="mailto:fellesdatakatalog@digdir.no"
             >
               <span
                 aria-hidden="false"
@@ -228,7 +228,7 @@ exports[`should render App correctly 1`] = `
               </span>
               Kontakt:
               <br />
-              digdir@fellesdatakatalog.no
+              fellesdatakatalog@digdir.no
             </a>
           </p>
         </div>
