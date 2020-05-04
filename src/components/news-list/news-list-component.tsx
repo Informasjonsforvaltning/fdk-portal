@@ -25,6 +25,7 @@ const renderNewsItems = (news: News[]) => {
           alt: image?.meta?.alt,
           url: image?.download_urls?.canonical
         }}
+        showFallbackImage={false}
       />
     );
   });
