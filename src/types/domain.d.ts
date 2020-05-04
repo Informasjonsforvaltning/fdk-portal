@@ -214,6 +214,15 @@ interface Page {
   uri: string;
 }
 
+interface EndpointDescription {
+  uri: string;
+}
+
+export interface AccessService {
+  description: Partial<TextLanguage>;
+  endpointDescription: EndpointDescription[];
+}
+
 export interface Distribution {
   uri: string;
   type: string;
@@ -226,7 +235,7 @@ export interface Distribution {
   downloadURL: string[];
   conformsTo: ConformsTo[];
   page?: Page[];
-  accessService?: any;
+  accessService?: AccessService[];
 }
 
 export interface ReferenceData {

@@ -20,6 +20,7 @@ import {
 
 interface Props {
   publishedDate: string;
+  lastChangedDate?: string;
   title: string;
   abstract: string;
   field_modules: any;
@@ -61,6 +62,7 @@ export const renderFieldModule = (fieldModule: any) => {
 
 const Article: FC<Partial<Props>> = ({
   publishedDate,
+  lastChangedDate,
   title,
   abstract,
   field_modules,
@@ -72,8 +74,17 @@ const Article: FC<Partial<Props>> = ({
         <div className={relatedNews ? 'col-12 col-lg-8' : 'col-12'}>
           {publishedDate && (
             <SC.Date>
-              {localization.published}{' '}
+              <span>{localization.published} </span>
               <Moment format="DD.MM.YYYY">{publishedDate}</Moment>
+              {lastChangedDate && (
+                <>
+                  <span>
+                    &nbsp;{' / '}
+                    {localization.lastChanged}{' '}
+                  </span>
+                  <Moment format="DD.MM.YYYY">{lastChangedDate}</Moment>
+                </>
+              )}
             </SC.Date>
           )}
 

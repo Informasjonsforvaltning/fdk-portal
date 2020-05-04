@@ -64,6 +64,7 @@
   "isOpenLicense": "Open lisens",
   "help": "Hjelp",
   "published": "Publisert",
+  "lastChanged": "Sist endra",
   "newsArchive": "Se alle aktueltsaker",
   "conceptReferences": {
     "title": "Omgrep relatert til",
@@ -175,7 +176,7 @@
     "information": "Informasjonskapslar - personvern",
     "information_text": "Dette er eit samarbeid mellom Digitaliseringsdirektoratet, Brønnøysundregistrene og andre SKATE-etatar.",
     "information_textNap": "Dette er eit samarbeid mellom Statens vegvesen, Jernbanedirektoratet, Entur og Digitaliseringsdirektoratet.",
-    "mail": "digdir@fellesdatakatalog.no",
+    "mail": "fellesdatakatalog@digdir.no",
     "mailNap": "transportportal@vegvesen.no",
     "privacy": " og personvern",
     "contact": "Kontakt:"
@@ -227,7 +228,8 @@
       "standard": "Standard",
       "referenceDefaultCode": "Andre relasjonar",
       "referenceDefault": "Relasjon",
-      "type": "Type"
+      "type": "Type",
+      "dataService": "Datatjeneste"
     },
     "issued": "Utgjevingsdato",
     "quality": "Kvalitet på innhald",

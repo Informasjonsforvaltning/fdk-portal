@@ -4,6 +4,7 @@ const Summary = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 40px;
 `;
 
 const Title = styled.h4`

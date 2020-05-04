@@ -1,7 +1,10 @@
 import React, { memo, FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
+
+import { PATHNAME_APIS } from '../../../../constants/constants';
 
 import {
   ExpansionPanelHead,
@@ -37,7 +40,8 @@ const DatasetDistribution: FC<Props> = ({
     conformsTo: [
       { uri: conformsToUri = null, prefLabel: conformsToPrefLabel = null } = {}
     ] = [],
-    page: [{ uri: pageUri = null } = {}] = []
+    page: [{ uri: pageUri = null } = {}] = [],
+    accessService: accessServices = []
   }
 }) => (
   <SC.DatasetDistribution data-testid={testIds.root}>
@@ -95,6 +99,20 @@ const DatasetDistribution: FC<Props> = ({
           }
           data-testid={testIds.detail}
         />
+      )}
+      {accessServices?.map(
+        ({ description, endpointDescription: [endpointDescription] }) => (
+          <Detail
+            key={endpointDescription.uri}
+            property={translations.dataset.distribution.dataService}
+            value={
+              <Link to={`${PATHNAME_APIS}/${endpointDescription.uri}`}>
+                {translate(description)}
+              </Link>
+            }
+            data-testid={testIds.detail}
+          />
+        )
       )}
       {downloadURL && (
         <SC.Section>
