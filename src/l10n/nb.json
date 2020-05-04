@@ -228,7 +228,8 @@
       "standard": "Standard",
       "referenceDefaultCode": "Andre relasjoner",
       "referenceDefault": "Relasjon",
-      "type": "Type"
+      "type": "Type",
+      "dataService": "Datatjeneste"
     },
     "issued": "Utgitt",
     "quality": "Kvalitet på innhold",
