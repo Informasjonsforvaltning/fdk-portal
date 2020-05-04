@@ -228,7 +228,8 @@
       "standard": "Standard",
       "referenceDefaultCode": "Other relations",
       "referenceDefault": "Relation",
-      "type": "Type"
+      "type": "Type",
+      "dataService": "Data service"
     },
     "issued": "Issue date",
     "quality": "Quality",

@@ -127,8 +127,7 @@ const DatasetDetailsPage: FC<Props> = ({
     dateStringToDate(dataset?.harvest.firstHarvested)
   );
   const objective = translate(dataset?.objective);
-  const distributions =
-    dataset?.distribution?.filter(({ accessService }) => !accessService) ?? [];
+  const distributions = dataset?.distribution ?? [];
   const usage = {
     legalBasisForRestriction: dataset?.legalBasisForRestriction ?? [],
     legalBasisForProcessing: dataset?.legalBasisForProcessing ?? [],
