@@ -83,11 +83,14 @@ const renderFormats = (distributions: any) => {
     return null;
   }
 
-  return distributions.map((distribution: any) =>
-    distribution.format?.map((item: string) => (
-      <span key={`format-${item}`}>{item}</span>
-    ))
+  const formats: string[] = distributions.reduce(
+    (previous: any, { format = [] }: any) => [...previous, ...format],
+    []
   );
+
+  return [...new Set(formats)].map((item: any, index: number) => (
+    <span key={`format-${item}-${index}`}>{item}</span>
+  ));
 };
 
 export const DatasetItem: FC<Props> = ({
