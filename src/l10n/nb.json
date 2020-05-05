@@ -484,7 +484,7 @@
         "quality": "Kvalitet på innhold",
         "conceptReferences": "Begreper brukt i datasett",
         "datasetReferences": "Relasjoner",
-        "dataserviceReferences": "Relaterte datatjenester",
+        "dataserviceReferences": "Brukt i datatjeneste (API)",
         "keywords": "Søkeord",
         "restrictions": "Avgrensninger",
         "contactInformation": "Kontaktinformasjon"
