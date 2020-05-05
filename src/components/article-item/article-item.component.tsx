@@ -15,6 +15,7 @@ interface Props {
   title?: string;
   abstract?: string;
   image?: Image;
+  showFallbackImage?: boolean;
 }
 
 const ArticleItem: FC<Props> = ({
@@ -22,11 +23,14 @@ const ArticleItem: FC<Props> = ({
   date,
   title,
   abstract,
-  image: { alt: imageAlt, url: imageUrl } = {}
+  image: { alt: imageAlt, url: imageUrl } = {},
+  showFallbackImage = true
 }) => (
   <SC.ArticleItem>
     <Link to={`${PATHNAME_NEWS_ARTICLE}/${id}`}>
-      <SC.Image title={imageAlt} imageUrl={imageUrl} />
+      {(showFallbackImage || imageUrl) && (
+        <SC.Image title={imageAlt} imageUrl={imageUrl} />
+      )}
       <header>
         {date && (
           <SC.Date>

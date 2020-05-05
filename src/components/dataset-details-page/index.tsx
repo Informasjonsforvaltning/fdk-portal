@@ -80,7 +80,7 @@ const DatasetDetailsPage: FC<Props> = ({
     return () => {
       resetDataset();
     };
-  }, []);
+  }, [datasetId]);
 
   const conceptIdentifiers = dataset?.subject?.map(
     ({ identifier }) => identifier
@@ -160,6 +160,15 @@ const DatasetDetailsPage: FC<Props> = ({
   const spatialRestrictions = dataset?.spatial ?? [];
   const temporalRestrictions = dataset?.temporal ?? [];
   const contactPoints = dataset?.contactPoint ?? [];
+
+  const referencedResourcesUnResolved =
+    dataset?.references?.filter(
+      ({ source: { uri: datasetRefererenceUri } }) =>
+        !referencedDatasets.some(
+          ({ uri: referencedDatasetsUri }) =>
+            referencedDatasetsUri === datasetRefererenceUri
+        )
+    ) ?? [];
 
   return (
     dataset && (
@@ -484,7 +493,8 @@ const DatasetDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
-          {referencedDatasets.length > 0 && (
+          {(referencedDatasets.length > 0 ||
+            referencedResourcesUnResolved.length > 0) && (
             <ContentSection
               id="dataset-references"
               title={
@@ -492,7 +502,7 @@ const DatasetDetailsPage: FC<Props> = ({
               }
             >
               <KeyValueList>
-                {referencedDatasets.map(({ id, uri, title }) => (
+                {referencedDatasets?.map(({ id, uri, title }) => (
                   <KeyValueListItem
                     key={id}
                     property={translate(
@@ -511,9 +521,34 @@ const DatasetDetailsPage: FC<Props> = ({
                     }
                   />
                 ))}
+                {referencedResourcesUnResolved?.map(
+                  (
+                    {
+                      source: { uri },
+                      referenceType: { uri: referenceTypeUri }
+                    },
+                    index
+                  ) => (
+                    <KeyValueListItem
+                      key={`${uri}-${index}`}
+                      property={translate(
+                        referencetypes?.find(
+                          ({ uri: referenceTypesUri }) =>
+                            referenceTypesUri === referenceTypeUri
+                        )?.prefLabel
+                      )}
+                      value={
+                        <a href={uri} rel="noopener noreferrer">
+                          {uri}
+                        </a>
+                      }
+                    />
+                  )
+                )}
               </KeyValueList>
             </ContentSection>
           )}
+
           {referencedDataServices.length > 0 && (
             <ContentSection
               id="dataservice-references"
