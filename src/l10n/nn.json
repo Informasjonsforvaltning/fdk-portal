@@ -460,7 +460,7 @@
       "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
       "entity": {
         "dataset": "Datasettbeskrivelse",
-        "dataservice": "Datatjenestebeskrivelse",
+        "dataservice": "Datatenestebeskrivelse",
         "concept": "Omgrepsbeskrivelse",
         "infomod": "Informasjonsmodellbeskrivelse"
       }
@@ -484,7 +484,7 @@
         "quality": "Kvalitet på innhald",
         "conceptReferences": "Omgrep brukt i datasett",
         "datasetReferences": "Relasjonar",
-        "dataserviceReferences": "Relaterte datatjenestar",
+        "dataserviceReferences": "Brukt i datateneste (API)",
         "keywords": "Emneord",
         "restrictions": "Avgrensningar",
         "contactInformation": "Kontaktinformasjon"

@@ -484,7 +484,7 @@
         "quality": "Content quality",
         "conceptReferences": "References to concepts",
         "datasetReferences": "Relations",
-        "dataserviceReferences": "References to data services",
+        "dataserviceReferences": "Used in data service (API)",
         "keywords": "Keywords",
         "restrictions": "Restrictions",
         "contactInformation": "Contact information"
