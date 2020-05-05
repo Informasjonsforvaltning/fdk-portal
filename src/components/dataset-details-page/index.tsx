@@ -80,7 +80,7 @@ const DatasetDetailsPage: FC<Props> = ({
     return () => {
       resetDataset();
     };
-  }, []);
+  }, [datasetId]);
 
   const conceptIdentifiers = dataset?.subject?.map(
     ({ identifier }) => identifier
