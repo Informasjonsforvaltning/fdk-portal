@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { getTranslateText } from '../../lib/translateText';
-import { Dataset } from '../../types';
+import { Dataset, MediaType } from '../../types';
 import { SearchTypes } from '../../types/enums';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 import PublicIconBase from '../../images/icon-access-open-md.svg';
@@ -19,6 +19,7 @@ import ReactTooltipSC from '../tooltip/styled';
 interface Props {
   dataset: Dataset;
   losItems: any;
+  mediatypes?: MediaType[];
 }
 
 function isDatasetOpen(accessRights: any, distribution: any): boolean {
@@ -78,7 +79,7 @@ const renderThemes = (themes: any, losItems: any) => {
     .filter(Boolean);
 };
 
-const renderFormats = (distributions: any) => {
+const renderFormats = (distributions: any, mediatypes: MediaType[]) => {
   if (!(distributions && distributions.length > 0)) {
     return null;
   }
@@ -89,7 +90,9 @@ const renderFormats = (distributions: any) => {
   );
 
   return [...new Set(formats)].map((item: any, index: number) => (
-    <span key={`format-${item}-${index}`}>{item}</span>
+    <span key={`format-${item}-${index}`}>
+      {mediatypes?.find(({ code }) => code === item)?.name ?? item}
+    </span>
   ));
 };
 
@@ -104,7 +107,8 @@ export const DatasetItem: FC<Props> = ({
     accessRights = {},
     provenance = {}
   },
-  losItems
+  losItems,
+  mediatypes = []
 }) => {
   return (
     <SearchHit
@@ -138,7 +142,9 @@ export const DatasetItem: FC<Props> = ({
 
       <SearchHitThemes>{renderThemes(theme, losItems)}</SearchHitThemes>
 
-      <SearchHitFormats>{renderFormats(distribution)}</SearchHitFormats>
+      <SearchHitFormats>
+        {renderFormats(distribution, mediatypes)}
+      </SearchHitFormats>
     </SearchHit>
   );
 };
