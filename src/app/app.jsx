@@ -30,13 +30,15 @@ import {
   PATHNAME_ABOUT_REGISTRATION,
   PATHNAME_MAIN_PAGE,
   PATHNAME_NEWS_ARTICLE,
-  PATHNAME_NEWS_ARCHIVE
+  PATHNAME_NEWS_ARCHIVE,
+  PATHNAME_GUIDANCE
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
 import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
+import { GuidancePage } from '../pages/guidance-page/guidance-page';
 
 export function App({ language }) {
   // react-localization is a stateful library, so we set the required language on each full-app render
@@ -125,6 +127,7 @@ export function App({ language }) {
               path={PATHNAME_ABOUT_REGISTRATION}
               component={ArticlePage}
             />
+            <Route exact path={PATHNAME_GUIDANCE} component={GuidancePage} />
           </Switch>
         </ScrollToTop>
       </Switch>

@@ -102,7 +102,8 @@
     "aboutRegistration": "Register data",
     "reports": "Reports",
     "conceptsCompare": "Compare concepts",
-    "aboutNap": "About Transportportal.no"
+    "aboutNap": "About Transportportal.no",
+    "guidance": "Guidance"
   },
   "query": {
     "intro": "Search for contents",
