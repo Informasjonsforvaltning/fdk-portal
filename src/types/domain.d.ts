@@ -238,6 +238,11 @@ export interface Distribution {
   accessService?: AccessService[];
 }
 
+export interface MediaType {
+  code: string;
+  name: string;
+}
+
 export interface ReferenceData {
   los?: LosTheme[];
   themes?: EuTheme[];
