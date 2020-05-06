@@ -15,6 +15,7 @@ export const REFERENCEDATA_PATH_DISTRIBUTIONTYPE = 'codes/distributiontype';
 export const REFERENCEDATA_PATH_REFERENCETYPES = 'codes/referencetypes';
 export const REFERENCEDATA_PATH_LOS = 'los';
 export const REFERENCEDATA_PATH_THEMES = 'themes';
+export const REFERENCEDATA_PATH_MEDIATYPES = 'codes/mediatypes';
 
 function shouldFetch(metaState) {
   const threshold = 60 * 1000; // seconds

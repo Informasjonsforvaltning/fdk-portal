@@ -34,6 +34,7 @@ import {
   REFERENCEDATA_PATH_APISTATUS,
   REFERENCEDATA_PATH_DISTRIBUTIONTYPE,
   REFERENCEDATA_PATH_LOS,
+  REFERENCEDATA_PATH_MEDIATYPES,
   REFERENCEDATA_PATH_THEMES
 } from '../../redux/modules/referenceData';
 import { Tabs } from './tabs/tabs';
@@ -104,6 +105,7 @@ const SearchPage = props => {
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_APISTATUS);
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_LOS);
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_THEMES);
+  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_MEDIATYPES);
 
   const [showFilterModal, setShowFilterModal] = useState(false);
 
@@ -253,6 +255,10 @@ const SearchPage = props => {
               page={searchAllEntitiesPage}
               losItems={getLosStructure(referenceData)}
               themesItems={getThemesStructure(referenceData)}
+              mediatypes={_.get(referenceData, [
+                'items',
+                REFERENCEDATA_PATH_MEDIATYPES
+              ])}
               publishers={publisherItems}
               onFilterPublisher={handleFilterPublisherHierarchy}
               onFilterLos={handleFilterLos}
