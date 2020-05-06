@@ -16,7 +16,8 @@ import {
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
   PATHNAME_ABOUT_NAP,
-  PATHNAME_HOME_NAP
+  PATHNAME_HOME_NAP,
+  PATHNAME_GUIDANCE
 } from '../../constants/constants';
 import './app-nav-bar.scss';
 import { getConfig } from '../../config';
@@ -56,6 +57,11 @@ export function AppNavBar(props) {
           <div>
             {!getConfig().themeNap && (
               <Nav className="d-none d-lg-inline-flex">
+                <NavItem>
+                  <a className="nav-link" href={PATHNAME_GUIDANCE}>
+                    {localization.menu.guidance}
+                  </a>
+                </NavItem>
                 <NavItem>
                   <Link className="nav-link" to={PATHNAME_ABOUT}>
                     {localization.menu.about}
@@ -127,6 +133,9 @@ export function AppNavBar(props) {
               </DropdownToggle>
               {!getConfig().themeNap && (
                 <DropdownMenu right className="fdk-dropdownmenu">
+                  <Link className="dropdown-item" to={PATHNAME_GUIDANCE}>
+                    {localization.menu.guidance}
+                  </Link>
                   <Link className="dropdown-item" to={PATHNAME_ABOUT}>
                     {localization.about.about}
                   </Link>
