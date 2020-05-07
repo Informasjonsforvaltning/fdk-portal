@@ -10,8 +10,6 @@ import { getTranslateText } from '../../../lib/translateText';
 import './filter-tree.scss';
 import { keyPrefixForest } from '../../../lib/key-prefix-forest';
 
-import CollapseIcon from '../../../img/icon-collapse-md.svg';
-import ExpandIcon from '../../../img/icon-expand-md.svg';
 import CollapseTextIcon from '../../../img/icon-collapse-text-sm.svg';
 import ExpandTextIcon from '../../../img/icon-expand-text-sm.svg';
 
@@ -227,7 +225,6 @@ export const FilterTree = props => {
             onClick={handleToggleOpenFilter}
           >
             <span>{title}</span>
-            <img src={openFilter ? CollapseIcon : ExpandIcon} alt="" />
           </button>
         </div>
         <Collapse isOpen={openFilter}>
