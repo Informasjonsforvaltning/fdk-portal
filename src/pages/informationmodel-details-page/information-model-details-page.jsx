@@ -93,9 +93,9 @@ const renderDescription = description =>
   ) : null;
 
 const renderStatus = ({
-  issued,
   version,
-  lastModified,
+  issued,
+  modified,
   validFromIncluding,
   validToIncluding,
   changelog,
@@ -123,10 +123,10 @@ const renderStatus = ({
     {version && (
       <TwoColRow col1={localization.infoMod.version} col2={version} />
     )}
-    {lastModified && (
+    {modified && (
       <TwoColRow
         col1={localization.infoMod.lastModified}
-        col2={formatDate(dateStringToDate(lastModified))}
+        col2={formatDate(dateStringToDate(modified))}
       />
     )}
     {changelog && (
@@ -333,6 +333,7 @@ export const InformationModelDetailsPage = ({
     harvest,
     version,
     issued,
+    modified,
     validFromIncluding,
     validToIncluding,
     changelog,
@@ -383,9 +384,9 @@ export const InformationModelDetailsPage = ({
             {renderDescription(description)}
 
             {renderStatus({
-              issued,
               version,
-              lastModified: harvest.lastChanged,
+              issued,
+              modified,
               validFromIncluding,
               validToIncluding,
               changelog,
