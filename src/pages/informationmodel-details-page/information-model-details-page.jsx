@@ -213,8 +213,8 @@ const renderRelatedApi = (referencedApis, publisherItems) => {
   );
 };
 
-const renderContactPoint = ({ name, email, telephone } = {}) =>
-  name || email || telephone ? (
+const renderContactPoint = ({ name, email, phone } = {}) =>
+  name || email || phone ? (
     <ListRegular title={localization.contactInfo}>
       {name && (
         <TwoColRow
@@ -232,7 +232,7 @@ const renderContactPoint = ({ name, email, telephone } = {}) =>
           }
         />
       )}
-      {telephone && <TwoColRow col1={localization.phone} col2={telephone} />}
+      {phone && <TwoColRow col1={localization.phone} col2={phone} />}
     </ListRegular>
   ) : null;
 
