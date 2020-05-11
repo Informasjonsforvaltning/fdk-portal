@@ -100,49 +100,58 @@ const renderStatus = ({
   validToIncluding,
   changelog,
   landingPage
-}) => (
-  <ListRegular title={localization.infoMod.status}>
-    {issued && (
-      <TwoColRow
-        col1={localization.infoMod.issued}
-        col2={formatDate(dateStringToDate(issued))}
-      />
-    )}
-    {(validFromIncluding || validToIncluding) && (
-      <TwoColRow
-        col1={localization.infoMod.valid}
-        col2={`${validFromIncluding ? localization.infoMod.from : ''} ${
-          validFromIncluding
-            ? formatDate(dateStringToDate(validFromIncluding))
-            : ''
-        } ${validToIncluding ? localization.infoMod.to : ''} ${
-          validToIncluding ? formatDate(dateStringToDate(validToIncluding)) : ''
-        }`}
-      />
-    )}
-    {version && (
-      <TwoColRow col1={localization.infoMod.version} col2={version} />
-    )}
-    {modified && (
-      <TwoColRow
-        col1={localization.infoMod.lastModified}
-        col2={formatDate(dateStringToDate(modified))}
-      />
-    )}
-    {changelog && (
-      <TwoColRow col1={localization.infoMod.changelog} col2={changelog} />
-    )}
-    {landingPage && (
-      <div className="d-flex list-regular--item">
-        <LinkExternal
-          uri={landingPage}
-          prefLabel={localization.infoMod.moreInfo}
-          openInNewTab
+}) =>
+  (issued ||
+    validFromIncluding ||
+    validToIncluding ||
+    version ||
+    modified ||
+    changelog ||
+    landingPage) && (
+    <ListRegular title={localization.infoMod.status}>
+      {issued && (
+        <TwoColRow
+          col1={localization.infoMod.issued}
+          col2={formatDate(dateStringToDate(issued))}
         />
-      </div>
-    )}
-  </ListRegular>
-);
+      )}
+      {(validFromIncluding || validToIncluding) && (
+        <TwoColRow
+          col1={localization.infoMod.valid}
+          col2={`${validFromIncluding ? localization.infoMod.from : ''} ${
+            validFromIncluding
+              ? formatDate(dateStringToDate(validFromIncluding))
+              : ''
+          } ${validToIncluding ? localization.infoMod.to : ''} ${
+            validToIncluding
+              ? formatDate(dateStringToDate(validToIncluding))
+              : ''
+          }`}
+        />
+      )}
+      {version && (
+        <TwoColRow col1={localization.infoMod.version} col2={version} />
+      )}
+      {modified && (
+        <TwoColRow
+          col1={localization.infoMod.lastModified}
+          col2={formatDate(dateStringToDate(modified))}
+        />
+      )}
+      {changelog && (
+        <TwoColRow col1={localization.infoMod.changelog} col2={changelog} />
+      )}
+      {landingPage && (
+        <div className="d-flex list-regular--item">
+          <LinkExternal
+            uri={landingPage}
+            prefLabel={localization.infoMod.moreInfo}
+            openInNewTab
+          />
+        </div>
+      )}
+    </ListRegular>
+  );
 
 const renderIdentifier = id =>
   id ? (
