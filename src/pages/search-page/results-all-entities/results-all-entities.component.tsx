@@ -8,6 +8,7 @@ import {
   Concept,
   Dataset,
   InformationModelDocument,
+  MediaType,
   Publisher
 } from '../../../types';
 import localization from '../../../lib/localization';
@@ -30,6 +31,7 @@ interface Props extends RouteComponentProps<any> {
   page?: any;
   losItems?: any;
   themesItems?: any;
+  mediatypes?: MediaType[];
   publishers: Partial<Publisher>[];
   onFilterAccessRights: any;
   onFilterAvailability: any;
@@ -47,6 +49,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   page = {},
   losItems = {},
   themesItems = [],
+  mediatypes = [],
   publishers = [],
   onFilterAccessRights,
   onFilterAvailability,
@@ -125,6 +128,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
             compareConceptList={compareConceptList}
             addConcept={addConcept}
             removeConcept={removeConcept}
+            mediatypes={mediatypes}
           />
           <SC.Pagination>
             <span className="uu-invisible" aria-hidden="false">

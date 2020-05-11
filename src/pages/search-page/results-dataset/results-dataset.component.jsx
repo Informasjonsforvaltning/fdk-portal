@@ -113,7 +113,7 @@ function _renderFilterModal({
   );
 }
 
-const renderHits = (datasetItems, losItems) => {
+const renderHits = (datasetItems, losItems, mediatypes) => {
   if (datasetItems && Array.isArray(datasetItems)) {
     return datasetItems.map(dataset => (
       <ErrorBoundary key={dataset.id}>
@@ -122,7 +122,11 @@ const renderHits = (datasetItems, losItems) => {
             (getConfig().themeNap ? themeNAP : themeFDK).colors[Entity.DATASET]
           }
         >
-          <DatasetItem dataset={dataset} losItems={losItems} />
+          <DatasetItem
+            dataset={dataset}
+            losItems={losItems}
+            mediatypes={mediatypes}
+          />
         </ThemeProvider>
       </ErrorBoundary>
     ));
@@ -185,6 +189,8 @@ export const ResultsDatasetPure = ({
 
   const losItems = getLosStructure(referenceData);
   const themesItems = getThemesStructure(referenceData);
+  const { items: { 'codes/mediatypes': mediatypes = [] } = {} } =
+    referenceData || {};
 
   return (
     <main id="content" data-test-id="datasets">
@@ -313,7 +319,7 @@ export const ResultsDatasetPure = ({
 
         {!_.isEmpty(losItems) && (
           <section className="col-12 col-lg-8">
-            {renderHits(datasetItems, losItems)}
+            {renderHits(datasetItems, losItems, mediatypes)}
           </section>
         )}
 

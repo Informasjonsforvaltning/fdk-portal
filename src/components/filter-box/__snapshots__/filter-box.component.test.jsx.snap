@@ -15,10 +15,6 @@ exports[`should render FilterBox correctly 1`] = `
       <span>
         Testbox
       </span>
-      <img
-        alt=""
-        src={[Function]}
-      />
     </button>
   </div>
   <Collapse
@@ -281,10 +277,6 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
       <span>
         Testbox
       </span>
-      <img
-        alt=""
-        src={[Function]}
-      />
     </button>
   </div>
   <Collapse

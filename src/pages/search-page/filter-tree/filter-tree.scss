@@ -32,7 +32,7 @@
   .tree-view_arrow {
     cursor: pointer;
     @include themify($themes) {
-      color: themed('color-text-link');
+      color: themed('color-neutral-darker');
     }
     font-size: 2rem;
     font-family: FontAwesome;

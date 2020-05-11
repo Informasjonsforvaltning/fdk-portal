@@ -7,8 +7,6 @@ import localization from '../../lib/localization';
 import { FilterOption } from '../filter-option/filter-option.component';
 import './filter-box.scss';
 
-import CollapseIcon from '../../img/icon-collapse-md.svg';
-import ExpandIcon from '../../img/icon-expand-md.svg';
 import CollapseTextIcon from '../../img/icon-collapse-text-sm.svg';
 import ExpandTextIcon from '../../img/icon-expand-text-sm.svg';
 
@@ -115,7 +113,6 @@ export class FilterBox extends React.Component {
               onClick={this.toggleFilter}
             >
               <span>{title}</span>
-              <img src={openFilter ? CollapseIcon : ExpandIcon} alt="" />
             </button>
           </div>
           <Collapse isOpen={openFilter}>

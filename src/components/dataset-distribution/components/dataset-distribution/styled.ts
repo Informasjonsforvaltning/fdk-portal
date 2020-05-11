@@ -21,6 +21,10 @@ const DatasetDistribution = styled(ExpansionPanel)`
 
     & > ${SC.ExpansionPanel.HeadExpansionIndicator} {
       margin-left: 24px;
+
+      & > svg > path {
+        fill: ${({ theme }) => theme.colors.dataset.dark};
+      }
     }
   }
 
