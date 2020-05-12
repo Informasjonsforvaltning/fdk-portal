@@ -3,10 +3,15 @@ import _ from 'lodash';
 import {
   extractAggregations,
   extractInformationmodels,
-  extractTotal,
-  informationmodelsSearch
+  extractTotal
 } from '../../api/informationmodels';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
+import {
+  extractInformationModels,
+  searchInformationModels,
+  paramsToSearchBody,
+  extractInformationModelsAggregations
+} from '../../api/search-fulltext-api/informationmodels';
 
 export const INFORMATIONMODELS_REQUEST = 'INFORMATIONMODELS_REQUEST';
 export const INFORMATIONMODELS_SUCCESS = 'INFORMATIONMODELS_SUCCESS';
@@ -28,18 +33,14 @@ export function fetchInformationModelsIfNeededAction(query) {
   return (dispatch, getState) =>
     shouldFetch(_.get(getState(), ['informationModels', 'meta']), queryKey) &&
     dispatch(
-      reduxFsaThunk(
-        () =>
-          informationmodelsSearch({ ...query, aggregations: 'orgPath,los' }),
-        {
-          onBeforeStart: {
-            type: INFORMATIONMODELS_REQUEST,
-            meta: { queryKey }
-          },
-          onSuccess: { type: INFORMATIONMODELS_SUCCESS, meta: { queryKey } },
-          onError: { type: INFORMATIONMODELS_FAILURE, meta: { queryKey } }
-        }
-      )
+      reduxFsaThunk(() => searchInformationModels(paramsToSearchBody(query)), {
+        onBeforeStart: {
+          type: INFORMATIONMODELS_REQUEST,
+          meta: { queryKey }
+        },
+        onSuccess: { type: INFORMATIONMODELS_SUCCESS, meta: { queryKey } },
+        onError: { type: INFORMATIONMODELS_FAILURE, meta: { queryKey } }
+      })
     );
 }
 
@@ -59,8 +60,10 @@ export function informationModelsReducer(state = initialState, action) {
     case INFORMATIONMODELS_SUCCESS:
       return {
         ...state,
-        informationModelItems: extractInformationmodels(action.payload),
-        informationModelAggregations: extractAggregations(action.payload),
+        informationModelItems: extractInformationModels(action.payload),
+        informationModelAggregations: extractInformationModelsAggregations(
+          action.payload
+        ),
         informationModelTotal: extractTotal(action.payload),
         meta: {
           isFetching: false,

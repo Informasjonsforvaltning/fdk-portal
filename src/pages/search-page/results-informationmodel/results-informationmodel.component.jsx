@@ -24,7 +24,7 @@ import ButtonToggleSC from '../../../components/button-toggle/styled';
 const renderFilterModal = ({
   showFilterModal,
   closeFilterModal,
-  informationModeloAggregations,
+  informationModelAggregations,
   locationSearch,
   publisherCounts,
   publishers,
@@ -41,7 +41,7 @@ const renderFilterModal = ({
           <FilterTree
             title={localization.facet.theme}
             aggregations={filterLosThemesFromAggregation(
-              _.get(informationModeloAggregations, ['los', 'buckets']),
+              informationModelAggregations.los.buckets,
               losItems
             )}
             handleFiltering={onFilterLos}

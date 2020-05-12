@@ -24,6 +24,6 @@ then it will be translated in JsonSchema to "$ref": "#/definitions/Organisasjons
 
 ## Recommended way to regenerate mock, is to download actual server response from production system.
 
-curl 'http://localhost:8080/api/informationmodels?aggregations=true' -o ./src/mock/informationmodels.response.json
+curl 'http://localhost:8000/informationmodels' -o ./src/mock/informationmodels.response.json
 
 curl 'http://localhost:8080/api/informationmodels/936c581f-9d95-418b-8fce-e452f6bdfd5e' -o ./src/mock/informationmodel.response.json
