@@ -5,9 +5,9 @@ exports[`should render InformationModelReference correctly 1`] = `
   className="d-flex flex-column list-regular--item"
 >
   <Link
-    to="/informationModels/936c581f-9d95-418b-8fce-e452f6bdfd5e"
+    to="/informationModels/25fb4837-aef2-4a27-ad08-d2f72d693ab1"
   >
-    Åpne Data fra Enhetsregisteret - API Dokumentasjon
+    RA-0554 Pris på juridisk tjenesteyting
   </Link>
 </div>
 `;

@@ -4,7 +4,7 @@ import { InformationModelReference } from './informationmodel-reference.componen
 import informationModelsResponse from '../../../mock/informationmodels.response.json';
 
 const informationModelItem =
-  informationModelsResponse._embedded.informationmodels[0];
+  informationModelsResponse.hits[0];
 
 test('should render InformationModelReference correctly with no props', () => {
   const wrapper = shallow(<InformationModelReference />);

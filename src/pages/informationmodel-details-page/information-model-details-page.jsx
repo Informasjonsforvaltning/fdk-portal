@@ -93,56 +93,65 @@ const renderDescription = description =>
   ) : null;
 
 const renderStatus = ({
-  issued,
   version,
-  lastModified,
+  issued,
+  modified,
   validFromIncluding,
   validToIncluding,
   changelog,
   landingPage
-}) => (
-  <ListRegular title={localization.infoMod.status}>
-    {issued && (
-      <TwoColRow
-        col1={localization.infoMod.issued}
-        col2={formatDate(dateStringToDate(issued))}
-      />
-    )}
-    {(validFromIncluding || validToIncluding) && (
-      <TwoColRow
-        col1={localization.infoMod.valid}
-        col2={`${validFromIncluding ? localization.infoMod.from : ''} ${
-          validFromIncluding
-            ? formatDate(dateStringToDate(validFromIncluding))
-            : ''
-        } ${validToIncluding ? localization.infoMod.to : ''} ${
-          validToIncluding ? formatDate(dateStringToDate(validToIncluding)) : ''
-        }`}
-      />
-    )}
-    {version && (
-      <TwoColRow col1={localization.infoMod.version} col2={version} />
-    )}
-    {lastModified && (
-      <TwoColRow
-        col1={localization.infoMod.lastModified}
-        col2={formatDate(dateStringToDate(lastModified))}
-      />
-    )}
-    {changelog && (
-      <TwoColRow col1={localization.infoMod.changelog} col2={changelog} />
-    )}
-    {landingPage && (
-      <div className="d-flex list-regular--item">
-        <LinkExternal
-          uri={landingPage}
-          prefLabel={localization.infoMod.moreInfo}
-          openInNewTab
+}) =>
+  (issued ||
+    validFromIncluding ||
+    validToIncluding ||
+    version ||
+    modified ||
+    changelog ||
+    landingPage) && (
+    <ListRegular title={localization.infoMod.status}>
+      {issued && (
+        <TwoColRow
+          col1={localization.infoMod.issued}
+          col2={formatDate(dateStringToDate(issued))}
         />
-      </div>
-    )}
-  </ListRegular>
-);
+      )}
+      {(validFromIncluding || validToIncluding) && (
+        <TwoColRow
+          col1={localization.infoMod.valid}
+          col2={`${validFromIncluding ? localization.infoMod.from : ''} ${
+            validFromIncluding
+              ? formatDate(dateStringToDate(validFromIncluding))
+              : ''
+          } ${validToIncluding ? localization.infoMod.to : ''} ${
+            validToIncluding
+              ? formatDate(dateStringToDate(validToIncluding))
+              : ''
+          }`}
+        />
+      )}
+      {version && (
+        <TwoColRow col1={localization.infoMod.version} col2={version} />
+      )}
+      {modified && (
+        <TwoColRow
+          col1={localization.infoMod.lastModified}
+          col2={formatDate(dateStringToDate(modified))}
+        />
+      )}
+      {changelog && (
+        <TwoColRow col1={localization.infoMod.changelog} col2={changelog} />
+      )}
+      {landingPage && (
+        <div className="d-flex list-regular--item">
+          <LinkExternal
+            uri={landingPage}
+            prefLabel={localization.infoMod.moreInfo}
+            openInNewTab
+          />
+        </div>
+      )}
+    </ListRegular>
+  );
 
 const renderIdentifier = id =>
   id ? (
@@ -213,8 +222,8 @@ const renderRelatedApi = (referencedApis, publisherItems) => {
   );
 };
 
-const renderContactPoint = ({ name, email, telephone } = {}) =>
-  name || email || telephone ? (
+const renderContactPoint = ({ name, email, phone } = {}) =>
+  name || email || phone ? (
     <ListRegular title={localization.contactInfo}>
       {name && (
         <TwoColRow
@@ -232,7 +241,7 @@ const renderContactPoint = ({ name, email, telephone } = {}) =>
           }
         />
       )}
-      {telephone && <TwoColRow col1={localization.phone} col2={telephone} />}
+      {phone && <TwoColRow col1={localization.phone} col2={phone} />}
     </ListRegular>
   ) : null;
 
@@ -333,6 +342,7 @@ export const InformationModelDetailsPage = ({
     harvest,
     version,
     issued,
+    modified,
     validFromIncluding,
     validToIncluding,
     changelog,
@@ -383,9 +393,9 @@ export const InformationModelDetailsPage = ({
             {renderDescription(description)}
 
             {renderStatus({
-              issued,
               version,
-              lastModified: harvest.lastChanged,
+              issued,
+              modified,
               validFromIncluding,
               validToIncluding,
               changelog,
