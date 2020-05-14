@@ -6,8 +6,11 @@ import {
   PATHNAME_CONCEPTS,
   PATHNAME_CONCEPTS_COMPARE,
   PATHNAME_DATASETS,
+  PATHNAME_GUIDANCE,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_MAIN_PAGE
+  PATHNAME_MAIN_PAGE,
+  PATHNAME_NEWS_ARCHIVE,
+  PATHNAME_NEWS_ARTICLE
 } from '../../constants/constants';
 import { DatasetBreadcrumb } from './dataset-breadcrumb/dataset-breadcrumb';
 import { ApiBreadcrumb } from './api-breadcrumb/api-breadcrumb';
@@ -16,6 +19,7 @@ import { InformationModelBreadcrumb } from './informationModel-breadbrumb/inform
 import { PathNameBreadcrumb } from './pathname-breadcrumb/pathname-breadcrumb';
 import './breadcrumbs.scss';
 import { getConfig } from '../../config';
+import { NewsBreadcrumb } from './news-breadcrumb/news-breadcrumb';
 
 // define some custom breadcrumbs for certain routes (optional)
 const routes = [
@@ -46,6 +50,18 @@ const routes = [
   {
     path: '/reports',
     breadcrumb: <PathNameBreadcrumb pathName="reports" />
+  },
+  {
+    path: PATHNAME_NEWS_ARCHIVE,
+    breadcrumb: <PathNameBreadcrumb pathName="newsArchive" />
+  },
+  {
+    path: `${PATHNAME_NEWS_ARTICLE}/:id`,
+    breadcrumb: NewsBreadcrumb
+  },
+  {
+    path: PATHNAME_GUIDANCE,
+    breadcrumb: <PathNameBreadcrumb pathName="guidance" />
   }
 ];
 
