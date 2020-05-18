@@ -14,7 +14,7 @@ const Article = styled.article`
   }
 `;
 
-const Date = styled.span`
+const Date = styled.div`
   color: ${({ theme }) => theme.colors.neutralDark};
   font-size: 1.6em;
   margin-bottom: 0.5em;
