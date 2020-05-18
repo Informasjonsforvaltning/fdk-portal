@@ -39,6 +39,7 @@ import '../assets/css/bootstrap-override.scss';
 import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { GuidancePage } from '../pages/guidance-page/guidance-page';
+import Footer from '../components/footer/footer.component';
 
 export function App({ language }) {
   // react-localization is a stateful library, so we set the required language on each full-app render
@@ -132,65 +133,71 @@ export function App({ language }) {
         </ScrollToTop>
       </Switch>
 
-      <div className="fdk-footer d-md-none">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 text-center mb-2">
-              <p className="fdk-p-footer">{footerText}</p>
-            </div>
-            <div className="col-sm-12 text-center mb-2">
-              <p className="fdk-p-footer">
-                <a href="https://www.brreg.no/personvernerklaering/">
-                  {localization.footer.information}
-                  {localization.footer.privacy}
-                  <i className="fa fa-external-link fdk-fa-right" />
-                </a>
-              </p>
-            </div>
+      {!getConfig().themeNap ? (
+        <Footer />
+      ) : (
+        <>
+          <div className="fdk-footer d-md-none">
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-12 text-center mb-2">
+                  <p className="fdk-p-footer">{footerText}</p>
+                </div>
+                <div className="col-sm-12 text-center mb-2">
+                  <p className="fdk-p-footer">
+                    <a href="https://www.brreg.no/personvernerklaering/">
+                      {localization.footer.information}
+                      {localization.footer.privacy}
+                      <i className="fa fa-external-link fdk-fa-right" />
+                    </a>
+                  </p>
+                </div>
 
-            <div className="col-sm-12 text-center mb-2">
-              <p className="fdk-p-footer">
-                <a href={`mailto:${footerEmail}`}>{footerEmail}</a>
-              </p>
+                <div className="col-sm-12 text-center mb-2">
+                  <p className="fdk-p-footer">
+                    <a href={`mailto:${footerEmail}`}>{footerEmail}</a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="fdk-footer d-none d-md-block">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-3">
-              <p className="fdk-p-footer">
-                <a href="https://www.digdir.no/om-oss/personvernerklaering/706">
-                  {localization.footer.information}
-                  <br />
-                  {localization.footer.privacy}
-                  <i className="fa fa-external-link fdk-fa-right" />
-                </a>
-              </p>
-            </div>
-            <div className="col-md-6 text-center">
-              <span className="uu-invisible" aria-hidden="false">
-                Felles Datakatalog.
-              </span>
-              <p className="fdk-p-footer">{footerText}</p>
-            </div>
-            <div className="col-md-3 text-right">
-              <p className="fdk-p-footer">
-                <a href={`mailto:${footerEmail}`}>
+          <div className="fdk-footer d-none d-md-block">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-3">
+                  <p className="fdk-p-footer">
+                    <a href="https://www.digdir.no/om-oss/personvernerklaering/706">
+                      {localization.footer.information}
+                      <br />
+                      {localization.footer.privacy}
+                      <i className="fa fa-external-link fdk-fa-right" />
+                    </a>
+                  </p>
+                </div>
+                <div className="col-md-6 text-center">
                   <span className="uu-invisible" aria-hidden="false">
-                    Mailadresse.
+                    Felles Datakatalog.
                   </span>
-                  {localization.footer.contact}
-                  <br />
-                  {footerEmail}
-                </a>
-              </p>
+                  <p className="fdk-p-footer">{footerText}</p>
+                </div>
+                <div className="col-md-3 text-right">
+                  <p className="fdk-p-footer">
+                    <a href={`mailto:${footerEmail}`}>
+                      <span className="uu-invisible" aria-hidden="false">
+                        Mailadresse.
+                      </span>
+                      {localization.footer.contact}
+                      <br />
+                      {footerEmail}
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 }
