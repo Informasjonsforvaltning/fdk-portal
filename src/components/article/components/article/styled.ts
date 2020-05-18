@@ -2,15 +2,10 @@ import styled from 'styled-components';
 import ArticleItemSC from '../../../article-item/styled';
 
 const Article = styled.article`
-    margin-top: 3em;
     display: flex;
     flex-flow: column;
     font-size: 1rem;
     word-wrap: break-word;
-    
-    @media (min-width: 992px) {
-      margin-top: 6em;
-    }
   }
 `;
 

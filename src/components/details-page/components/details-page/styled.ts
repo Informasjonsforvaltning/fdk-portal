@@ -4,7 +4,6 @@ import SideMenuBase from '../side-menu';
 
 const DetailsPage = styled.article`
   flex: 1 0 auto;
-  padding-top: 40px;
 `;
 
 const Publisher = styled.p`
