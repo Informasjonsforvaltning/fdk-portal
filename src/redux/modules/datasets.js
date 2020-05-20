@@ -1,13 +1,14 @@
 import _ from 'lodash';
 import qs from 'qs';
 
-import {
-  datasetsSearch,
-  extractAggregations,
-  extractDatasets,
-  extractTotal
-} from '../../api/datasets';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
+import {
+  extractDatasetAggregations,
+  searchDatasets,
+  extractDatasets,
+  extractDatasetsTotal,
+  paramsToSearchBody
+} from '../../api/search-fulltext-api/datasets';
 
 export const DATASETS_REQUEST = 'DATASETS_REQUEST';
 export const DATASETS_SUCCESS = 'DATASETS_SUCCESS';
@@ -34,7 +35,7 @@ export function fetchDatasetsIfNeededAction(query) {
   return (dispatch, getState) =>
     shouldFetch(_.get(getState(), ['datasets', 'meta']), queryKey) &&
     dispatch(
-      reduxFsaThunk(() => datasetsSearch(params), {
+      reduxFsaThunk(() => searchDatasets(paramsToSearchBody(params)), {
         onBeforeStart: { type: DATASETS_REQUEST, meta: { queryKey } },
         onSuccess: { type: DATASETS_SUCCESS, meta: { queryKey } },
         onError: { type: DATASETS_FAILURE, meta: { queryKey } }
@@ -59,8 +60,8 @@ export function datasetsReducer(state = initialState, action) {
       return {
         ...state,
         datasetItems: extractDatasets(action.payload),
-        datasetAggregations: extractAggregations(action.payload),
-        datasetTotal: extractTotal(action.payload),
+        datasetAggregations: extractDatasetAggregations(action.payload),
+        datasetTotal: extractDatasetsTotal(action.payload),
         meta: {
           isFetching: false,
           lastFetch: Date.now(),
