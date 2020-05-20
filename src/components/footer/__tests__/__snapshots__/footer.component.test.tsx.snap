@@ -13,35 +13,45 @@ exports[`Footer component must render correct structure 1`] = `
           Search catalogs
         </styled.div>
         <styled.ul>
-          <styled.li>
+          <styled.li
+            key="link-Search all catalogs-/search-all"
+          >
             <Link
               to="/search-all"
             >
               Search all catalogs
             </Link>
           </styled.li>
-          <styled.li>
+          <styled.li
+            key="link-Search among datasets-/datasets"
+          >
             <Link
               to="/datasets"
             >
               Search among datasets
             </Link>
           </styled.li>
-          <styled.li>
+          <styled.li
+            key="link-Search among APIs-/apis"
+          >
             <Link
               to="/apis"
             >
               Search among APIs
             </Link>
           </styled.li>
-          <styled.li>
+          <styled.li
+            key="link-Search among concepts-/concepts"
+          >
             <Link
               to="/concepts"
             >
               Search among concepts
             </Link>
           </styled.li>
-          <styled.li>
+          <styled.li
+            key="link-Search among information models-/informationmodels"
+          >
             <Link
               to="/informationmodels"
             >
@@ -55,35 +65,45 @@ exports[`Footer component must render correct structure 1`] = `
           About the National Data Catalog
         </styled.div>
         <styled.ul>
-          <styled.li>
+          <styled.li
+            key="link-Guidance-/guidance"
+          >
             <Link
               to="/guidance"
             >
               Guidance
             </Link>
           </styled.li>
-          <styled.li>
+          <styled.li
+            key="link-Reports-/reports"
+          >
             <Link
               to="/reports"
             >
               Reports
             </Link>
           </styled.li>
-          <styled.li>
+          <styled.li
+            key="link-About the National Data Catalog-/about"
+          >
             <Link
               to="/about"
             >
               About the National Data Catalog
             </Link>
           </styled.li>
-          <styled.li>
+          <styled.li
+            key="link-Register data-/about-registration"
+          >
             <Link
               to="/about-registration"
             >
               Register data
             </Link>
           </styled.li>
-          <styled.li>
+          <styled.li
+            key="link-News-/news-archive"
+          >
             <Link
               to="/news-archive"
             >
@@ -100,7 +120,9 @@ exports[`Footer component must render correct structure 1`] = `
           The Norwegian Digitalisation Agency managing the National Data Catalog.
         </span>
         <styled.ul>
-          <styled.li>
+          <styled.li
+            key="link-Privacy-https://www.digdir.no/om-oss/personvernerklaering/706"
+          >
             <a
               href="https://www.digdir.no/om-oss/personvernerklaering/706"
               rel="noopener noreferrer"
@@ -109,7 +131,9 @@ exports[`Footer component must render correct structure 1`] = `
               Privacy
             </a>
           </styled.li>
-          <styled.li>
+          <styled.li
+            key="link-Cookies-https://www.digdir.no/om-oss/personvernerklaering/706"
+          >
             <a
               href="https://www.digdir.no/om-oss/personvernerklaering/706"
               rel="noopener noreferrer"
