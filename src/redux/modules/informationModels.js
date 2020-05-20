@@ -1,10 +1,6 @@
 import _ from 'lodash';
 
-import {
-  extractAggregations,
-  extractInformationmodels,
-  extractTotal
-} from '../../api/informationmodels';
+import { extractTotal } from '../../api/informationmodels';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
 import {
   extractInformationModels,

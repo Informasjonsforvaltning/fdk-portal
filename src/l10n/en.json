@@ -103,7 +103,8 @@
     "reports": "Reports",
     "conceptsCompare": "Compare concepts",
     "aboutNap": "About Transportportal.no",
-    "guidance": "Guidance"
+    "guidance": "Guidance",
+    "newsArchive": "News"
   },
   "query": {
     "intro": "Search for contents",
@@ -180,7 +181,25 @@
     "mail": "fellesdatakatalog@digdir.no",
     "mailNap": "transportportal@vegvesen.no",
     "privacy": " and privacy",
-    "contact": "Contact:"
+    "contact": "Contact:",
+    "searchCatalogsTitle": "Search catalogs",
+    "searchAllCatalogs": "Search all catalogs",
+    "searchDatasets": "Search among datasets",
+    "searchDataservices": "Search among APIs",
+    "searchConcepts": "Search among concepts",
+    "searchInformationModels": "Search among information models",
+    "aboutFDKTitle": "About the National Data Catalog",
+    "guidance": "Guidance",
+    "reports": "Reports",
+    "aboutFDK": "About the National Data Catalog",
+    "guideToRegister": "Register data",
+    "news": "News",
+    "aboutSiteTitle": "About site",
+    "privacyText": "Privacy",
+    "informationCookies": "Cookies",
+    "twitter": "The National Data Catalog on Twitter",
+    "footerText": "The Norwegian Digitalisation Agency managing the National Data Catalog.",
+    "contactTitle": "Contact"
   },
   "sort": {
     "by": "Sort by",

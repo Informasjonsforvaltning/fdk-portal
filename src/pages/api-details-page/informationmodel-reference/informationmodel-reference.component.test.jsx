@@ -3,8 +3,7 @@ import { shallow } from 'enzyme';
 import { InformationModelReference } from './informationmodel-reference.component';
 import informationModelsResponse from '../../../mock/informationmodels.response.json';
 
-const informationModelItem =
-  informationModelsResponse.hits[0];
+const informationModelItem = informationModelsResponse.hits[0];
 
 test('should render InformationModelReference correctly with no props', () => {
   const wrapper = shallow(<InformationModelReference />);

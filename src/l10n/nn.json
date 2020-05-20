@@ -103,7 +103,8 @@
     "reports": "Rapportar",
     "conceptsCompare": "Samanlikne omgrep",
     "aboutNap": "Om Transportportal.no",
-    "guidance": "Rettleiing"
+    "guidance": "Rettleiing",
+    "newsArchive": "Aktuelt"
   },
   "query": {
     "intro": "Søk etter innhald",
@@ -180,7 +181,25 @@
     "mail": "fellesdatakatalog@digdir.no",
     "mailNap": "transportportal@vegvesen.no",
     "privacy": " og personvern",
-    "contact": "Kontakt:"
+    "contact": "Kontakt:",
+    "searchCatalogsTitle": "Søk i katalogar",
+    "searchAllCatalogs": "Søk i alle katalogar",
+    "searchDatasets": "Søk i datasett",
+    "searchDataservices": "Søk i API-ar",
+    "searchConcepts": "Søk i omgrep",
+    "searchInformationModels": "Søk i informasjonsmodellar",
+    "aboutFDKTitle": "Om Felles datakatalog",
+    "guidance": "Veiledning",
+    "reports": "Rapportar",
+    "aboutFDK": "Om Felles datakatalog",
+    "guideToRegister": "Hjelp til å registrere",
+    "news": "Aktuelt",
+    "aboutSiteTitle": "Om nettstaden",
+    "privacyText": "Personvern",
+    "informationCookies": "Informasjonskapslar",
+    "twitter": "Felles datakatalog på Twitter",
+    "footerText": "Digitaliseringsdirektoratet forvaltar Felles Datakatalog.",
+    "contactTitle": "Kontakt"
   },
   "sort": {
     "by": "Sorter på",

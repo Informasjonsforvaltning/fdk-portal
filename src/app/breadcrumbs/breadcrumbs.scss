@@ -1,6 +1,7 @@
 @import '../../../node_modules/designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
 
 .fdk-p-path {
+  margin-bottom: 4rem !important;
   i, span {
     @include themify($themes) {
       color: themed('color-neutral-darker') !important;
