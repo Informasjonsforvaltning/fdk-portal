@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 
 import SC from './styled';
 import { Props as OrganizationsProps } from '../../components/with-organizations';
@@ -7,11 +7,14 @@ import { getTranslateText } from '../../lib/translateText';
 import { PATHNAME_SEARCH } from '../../constants/constants';
 import { Entity } from '../../types/enums';
 import localization from '../../lib/localization';
+import OrganizationFilter from './components/organization-filter/organization-filter.component';
+import { filterOrganizationsByName } from '../../components/with-organizations/redux/reducer';
 
 const OrganizationsPage: FC<OrganizationsProps> = ({
   organizations,
   organizationsActions: { getOrganizationsRequested: getOrganizations }
 }) => {
+  const [searchQuery, setSearchQuery] = useState();
   useEffect(() => {
     if (!organizations || organizations.length === 0) {
       getOrganizations();
@@ -24,8 +27,16 @@ const OrganizationsPage: FC<OrganizationsProps> = ({
           <SC.Header>{localization.searchOrganizations}</SC.Header>
         </div>
       </div>
+      <div className="row mb-5">
+        <SC.SearchBox className="col-12">
+          <OrganizationFilter
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+        </SC.SearchBox>
+      </div>
       <div className="row">
-        {organizations.map(
+        {filterOrganizationsByName(organizations, searchQuery).map(
           (
             {
               id,

@@ -9,6 +9,7 @@ import {
 import { Actions, Organization } from '../../../types';
 import { SortOrder } from '../../../types/enums';
 import localization from '../../../lib/localization';
+import { getTranslateText } from '../../../lib/translateText';
 
 export const sortOrganizationsByName = (
   organizations: Organization[],
@@ -55,3 +56,17 @@ export default function reducer(
       return state;
   }
 }
+
+export const filterOrganizationsByName = (
+  organizations: Organization[],
+  filterName: string
+) => {
+  if (!filterName) {
+    return organizations;
+  }
+  return organizations.filter((item: Organization) =>
+    (getTranslateText(item?.organization?.name) || '')
+      .toLowerCase()
+      .includes(filterName.toLowerCase())
+  );
+};
