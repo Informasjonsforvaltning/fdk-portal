@@ -66,6 +66,7 @@
   "published": "Publisert",
   "lastChanged": "Sist endret",
   "newsArchive": "Se alle aktueltsaker",
+  "searchOrganizations": "Søk på virksomheter",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -104,7 +105,8 @@
     "conceptsCompare": "Sammenlign begrep",
     "aboutNap": "Om Transportportal.no",
     "guidance": "Veiledning",
-    "newsArchive": "Aktuelt"
+    "newsArchive": "Aktuelt",
+    "organizations": "Organisasjoner"
   },
   "query": {
     "intro": "Søk etter innhold",

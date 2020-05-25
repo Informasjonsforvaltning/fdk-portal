@@ -31,7 +31,8 @@ import {
   PATHNAME_MAIN_PAGE,
   PATHNAME_NEWS_ARTICLE,
   PATHNAME_NEWS_ARCHIVE,
-  PATHNAME_GUIDANCE
+  PATHNAME_GUIDANCE,
+  PATHNAME_ORGANIZATIONS
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
@@ -40,6 +41,7 @@ import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { GuidancePage } from '../pages/guidance-page/guidance-page';
 import Footer from '../components/footer/footer.component';
+import { OrganizationsPage } from '../pages/organizations-page/organizations-page';
 
 export function App({ language }) {
   // react-localization is a stateful library, so we set the required language on each full-app render
@@ -89,6 +91,11 @@ export function App({ language }) {
         <Route exact path={PATHNAME_CONCEPTS} component={SearchPage} />
         <Route exact path={PATHNAME_INFORMATIONMODELS} component={SearchPage} />
         <Route exact path={PATHNAME_NEWS_ARCHIVE} component={NewsArchivePage} />
+        <Route
+          exact
+          path={PATHNAME_ORGANIZATIONS}
+          component={OrganizationsPage}
+        />
         <ScrollToTop>
           <Switch>
             <Route

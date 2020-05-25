@@ -66,6 +66,7 @@
   "published": "Published",
   "lastChanged": "Last changed",
   "newsArchive": "See news archive",
+  "searchOrganizations": "Search organizations",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -104,7 +105,8 @@
     "conceptsCompare": "Compare concepts",
     "aboutNap": "About Transportportal.no",
     "guidance": "Guidance",
-    "newsArchive": "News"
+    "newsArchive": "News",
+    "organizations": "Organizations"
   },
   "query": {
     "intro": "Search for contents",

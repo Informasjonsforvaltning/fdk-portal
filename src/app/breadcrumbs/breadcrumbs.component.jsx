@@ -10,7 +10,8 @@ import {
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_MAIN_PAGE,
   PATHNAME_NEWS_ARCHIVE,
-  PATHNAME_NEWS_ARTICLE
+  PATHNAME_NEWS_ARTICLE,
+  PATHNAME_ORGANIZATIONS
 } from '../../constants/constants';
 import { DatasetBreadcrumb } from './dataset-breadcrumb/dataset-breadcrumb';
 import { ApiBreadcrumb } from './api-breadcrumb/api-breadcrumb';
@@ -62,6 +63,10 @@ const routes = [
   {
     path: PATHNAME_GUIDANCE,
     breadcrumb: <PathNameBreadcrumb pathName="guidance" />
+  },
+  {
+    path: PATHNAME_ORGANIZATIONS,
+    breadcrumb: <PathNameBreadcrumb pathName="organizations" />
   }
 ];
 
