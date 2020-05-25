@@ -7,6 +7,12 @@ const Header = styled.h1`
   text-align: center;
 `;
 
+const SearchBox = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+`;
+
 const Box = styled(Link)`
   align-items: center;
   background-color: #fff;
@@ -53,4 +59,4 @@ const CountTag = styled.div<{ type?: Entity }>`
   }
 `;
 
-export default { Header, Box, SortLabel, Title, Info, CountTag };
+export default { Header, SearchBox, Box, SortLabel, Title, Info, CountTag };
