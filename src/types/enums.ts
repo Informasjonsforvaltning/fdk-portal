@@ -30,3 +30,8 @@ export enum DataFormat {
   SIRI = 'application/x.siri',
   UNKNOWN = 'unknown'
 }
+
+export enum SortOrder {
+  ASC,
+  DSC
+}
