@@ -22,7 +22,7 @@ export const ArticlePage = () => {
                 title="Lenke til Altinn"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://www.altinn.no/"
+                href="https://registrering.fellesdatakatalog.digdir.no"
               >
                 https://registrering.fellesdatakatalog.digdir.no
               </a>

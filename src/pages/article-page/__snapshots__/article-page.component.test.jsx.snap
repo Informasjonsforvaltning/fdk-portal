@@ -25,7 +25,7 @@ exports[`should render ArticlePage correctly 1`] = `
           Her finner du katalogene til din virksomhet i Felles datakatalog:
            
           <a
-            href="https://www.altinn.no/"
+            href="https://registrering.fellesdatakatalog.digdir.no"
             rel="noopener noreferrer"
             target="_blank"
             title="Lenke til Altinn"
