@@ -39,6 +39,7 @@ export interface TextLanguage {
   nb: string;
   nn: string;
   en: string;
+  no: string;
 }
 
 export interface Publisher {
@@ -269,4 +270,16 @@ export interface News extends NewsItemAttributes {
   type: string;
   id: string;
   links: Partial<Links>;
+}
+
+export interface Organization {
+  id: string;
+  organization: {
+    name: Partial<TextLanguage>;
+    orgPath: string;
+  };
+  dataset_count: number;
+  concept_count: number;
+  dataservice_count: number;
+  informationmodel_count: number;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
-import { Link } from 'react-router-dom';
 
 import localization from '../../lib/localization';
 
@@ -23,30 +22,6 @@ export const AboutPage = () => {
             <p
               dangerouslySetInnerHTML={{ __html: localization.about.maintext }}
             />
-            <p
-              dangerouslySetInnerHTML={{
-                __html: localization.about.dataNorgeText
-              }}
-            />
-            <p>
-              <b>{localization.about.register}</b>
-              <br />
-              <Link to="/about-registration">
-                {localization.about.helpToRegister}
-              </Link>
-            </p>
-            <p>
-              <a
-                title="Lenke til registreringsløsning"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://registrering.fellesdatakatalog.brreg.no/"
-              >
-                <span className="fdk-button fdk-button-default">
-                  Kom i gang med registreringen
-                </span>
-              </a>
-            </p>
           </div>
         </div>
       </div>

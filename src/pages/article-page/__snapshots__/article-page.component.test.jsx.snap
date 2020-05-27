@@ -5,7 +5,7 @@ exports[`should render ArticlePage correctly 1`] = `
   className="container"
 >
   <SideEffect(DocumentMeta)
-    title="Hvordan komme i gang med registrering av datasett"
+    title="Hvordan få tilgang til dine kataloger"
   />
   <div
     className="row"
@@ -19,59 +19,88 @@ exports[`should render ArticlePage correctly 1`] = `
         Registration (only in Norwegian)
       </h1>
       <div
-        className="fdk-subtitle"
-      >
-        <span>
-          Jeg ønsker tilgang til registreringsløsningen for min virksomhet
-        </span>
-      </div>
-      <div
         className="fdk-box fdk-box--white"
       >
         <p>
-          Din leder må gi deg tilgang til tjenesten "Registrering i datakatalog" i
+          Her finner du katalogene til din virksomhet i Felles datakatalog:
            
           <a
-            href="https://www.altinn.no/"
+            href="https://registrering.fellesdatakatalog.digdir.no"
             rel="noopener noreferrer"
             target="_blank"
             title="Lenke til Altinn"
           >
-            Altinn
-          </a>
-          , og eventuelt tildele deg rollen "Tilgangsstyring", dersom du skal delegere tilgangen videre.
-          <br />
-          Kontakt den som kan delegere tilganger i
-           
-          <a
-            href="https://www.altinn.no/"
-            rel="noopener noreferrer"
-            target="_blank"
-            title="Lenke til Altinn"
-          >
-            Altinn
-          </a>
-           
-          i din virksomhet.
-        </p>
-        <p>
-          Når du har fått tilgang, vil din virksomhets datakatalog være tilgjengelig etter innlogging.
-          <br />
-          <a
-            href="https://registrering.fellesdatakatalog.digdir.no/"
-            rel="noopener noreferrer"
-            target="_blank"
-            title="Lenke til registreringsløsning"
-          >
-            Logg inn i registreringsløsningen
+            https://registrering.fellesdatakatalog.digdir.no
           </a>
         </p>
         <p>
-          Det er også mulig at din virksomhet kan få registrere på vegne av andre. Dersom du ønsker dette, må du kontakte FDK på: fellesdatakatalog@brreg.no
+          For å se og redigere innhold må du være innlogget. Du kan velge mellom to innloggingsmetoder:
+          <ul>
+            <li>
+              Innlogging med ID-porten/Altinn
+            </li>
+            <li>
+              Innlogging med Felles brukerhåndtering
+            </li>
+          </ul>
+        </p>
+        <div
+          className="fdk-subtitle"
+        >
+          Innlogging med ID-porten/Altinn
+        </div>
+        <p>
+          Din leder må gi deg tilgang til tjenesten "Registrering i datakatalog" i Altinn, og eventuelt tildele deg rollen "Tilgangsstyring", dersom du skal delegere tilgangen videre.
+          <br />
+          <br />
+          Kontakt den som kan delegere tilganger i Altinn i din virksomhet.
+          <br />
+          <br />
+          Når du har fått tilgang, vil din virksomhets kataloger være tilgjengelig etter innlogging.
+          <br />
+          <br />
+          Det er også mulig at din virksomhet kan få registrere på vegne av andre. Dersom du ønsker dette, må du kontakte FDK på:
+           
+          <a
+            href="mailto:fellesdatakatalog@digdir.no"
+          >
+            fellesdatakatalog@digdir.no
+          </a>
+          <br />
+          <br />
+        </p>
+        <div
+          className="fdk-subtitle"
+        >
+          Innlogging med Felles brukerhåndtering
+        </div>
+        <p>
+          Du kan selv opprette bruker ved å registrere deg på Digitaliseringsdirektoratets Felles brukerhåndtering. Vi bruker e-postadressen til å identifisere deg og knytte deg til rett organisasjon. Bruk derfor jobb-adressen din når du logger på.
+          <br />
+          <br />
+          Du vil motta en e-post fra Felles brukerhåndtering etter registering. Følg instruksen i e-posten.
+          <br />
+          <br />
+          Etter å ha fullført innlogging, vil din virksomhets kataloger være tilgjengelige.
+          <br />
+          <br />
+        </p>
+        <div
+          className="fdk-subtitle"
+        >
+          Bruksvilkår
+        </div>
+        <p>
+          Etter innlogging må du (eller en annen bemyndiget person i din virksomhet) akseptere bruksvilkår på vegne av virksomheten. Hvis de ikke aksepteres, vil det ikke opprettes kataloger for din virksomhet.
         </p>
       </div>
       <div
         className="fdk-subtitle"
+      >
+        Veiledning for å få tilgang gjennom Altinn
+      </div>
+      <div
+        className="fdk-subtitle-2"
       >
         Hvordan gjøre en ansatt til ansvarlig for registrering i Felles datakatalog (FDK) - Anbefalt
       </div>
@@ -287,7 +316,7 @@ exports[`should render ArticlePage correctly 1`] = `
         </div>
       </div>
       <div
-        className="fdk-subtitle"
+        className="fdk-subtitle-2"
       >
         <span>
           Jeg ønsker å tildele rettigheter til enkeltpersoner manuelt
@@ -306,73 +335,6 @@ exports[`should render ArticlePage correctly 1`] = `
             }
           }
         />
-      </div>
-    </div>
-  </div>
-  <div
-    className="row"
-  >
-    <div
-      className="col-sm-12"
-    >
-      <div
-        className="fdk-box fdk-box--flex fdk-box__feedback"
-      >
-        <div
-          className="fdk-box fdk-box__feedback__left"
-        >
-          <div>
-            Dette er et samarbeid mellom Digitaliseringsdirektoratet, Brønnøysundregistrene og øvrige SKATE-etater.
-          </div>
-          <div>
-            <a
-              href="https://www.digdir.no/om-oss/personvernerklaering/706"
-              rel="noopener noreferrer"
-              target="_blank"
-              title="Informasjonskapsler og personvern"
-            >
-              Informasjonskapsler og personvern
-            </a>
-          </div>
-        </div>
-        <div
-          className="fdk-box fdk-box--white fdk-box__feedback__right"
-        >
-          <div
-            className="fdk-subtitle"
-          >
-            <strong>
-              Fortell oss hva du synes
-            </strong>
-          </div>
-          <div
-            className="fdk-box__rowItem fdk-box--mt1 fdk-box--flex"
-          >
-            <div
-              className="fdk-box__rowItem__number"
-            >
-              <i
-                className="fdk-box__icon fa fa-envelope fa-3x"
-              />
-            </div>
-            <div
-              className="fdk-box__rowItem--big"
-            >
-              <p>
-                Vi jobber hele tiden med løsningen og setter derfor stor pris på gode innspill fra publikum!
-              </p>
-              <p>
-                <a
-                  className="white-link"
-                  href="mailto:digdir@fellesdatakatalog.no"
-                >
-                  Send oss gjerne en e-post
-                </a>
-                med ris, ros eller om morsomme bugs som har klart å gjemme seg fra testerne våre.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

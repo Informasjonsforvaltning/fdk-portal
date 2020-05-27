@@ -649,19 +649,15 @@ const DatasetDetailsPage: FC<Props> = ({
                   <KeyValueList
                     key={`${organizationUnit}-${email}-${hasURL}-${hasTelephone}`}
                   >
-                    {organizationUnit && (
+                    {hasURL && (
                       <KeyValueListItem
                         property={translations.contactPoint}
                         value={
-                          hasURL ? (
-                            <ExternalLink
-                              uri={hasURL}
-                              prefLabel={organizationUnit}
-                              openInNewTab
-                            />
-                          ) : (
-                            organizationUnit
-                          )
+                          <ExternalLink
+                            uri={hasURL}
+                            prefLabel={organizationUnit ?? hasURL}
+                            openInNewTab
+                          />
                         }
                       />
                     )}
