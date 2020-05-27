@@ -148,7 +148,8 @@
     "search": "Søket gav {0} treff i datasett, {1} treff i API, {2} treff i omgrep og {3} treff i informasjonsmodellar",
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket gav {0} treff i datasett",
-    "nohits": "Søket ga dessverre ingen treff"
+    "nohits": "Søket ga dessverre ingen treff",
+    "nohitsDescription": "Kontroller at du har skrive riktig, eller prøv med andre søkjeord."
   },
   "facet": {
     "organisation": "Eigar",

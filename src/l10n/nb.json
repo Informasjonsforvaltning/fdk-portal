@@ -146,7 +146,8 @@
     "search": "Søket ga {0} treff i datasett, {1} treff i API-er, {2} treff i begreper og {3} treff i informasjonsmodeller",
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket ga {0} treff i datasett",
-    "nohits": "Søket ga dessverre ingen treff"
+    "nohits": "Søket ga dessverre ingen treff",
+    "nohitsDescription": "Kontroller at du har skrevet riktig, eller prøv med andre søkeord."
   },
   "facet": {
     "organisation": "Eier",
