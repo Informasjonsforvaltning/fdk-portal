@@ -318,96 +318,12 @@ exports[`should render ResultsApi correctly with minimum of props and no hits 1`
   id="content"
 >
   <div
-    className="row mb-3"
+    className="row"
   >
     <div
       className="col-12"
     >
-      <div
-        className="d-flex justify-content-center justify-content-lg-end"
-      >
-        <styled.button
-          borderLeft={true}
-          onClick={[Function]}
-          selected={true}
-        >
-          Sorted by relevance
-        </styled.button>
-        <styled.button
-          borderRight={true}
-          onClick={[Function]}
-          selected={false}
-        >
-          Sort by last published
-        </styled.button>
-      </div>
-    </div>
-  </div>
-  <div
-    className="row"
-  >
-    <aside
-      className="search-filters col-lg-4 d-none d-lg-block"
-    >
-      <span
-        aria-hidden="false"
-        className="uu-invisible"
-      >
-        Filtrering
-      </span>
-      <FilterPills
-        history={
-          Object {
-            "push": [Function],
-          }
-        }
-        location={
-          Object {
-            "search": "",
-          }
-        }
-        locationSearch={Object {}}
-        losItems={null}
-        publishers={null}
-        themesItems={null}
-      />
-    </aside>
-    <div
-      className="col-12 col-lg-8"
-      id="apis"
-    >
-      <div
-        className="col-12 d-flex justify-content-center"
-      >
-        <span
-          aria-hidden="false"
-          className="uu-invisible"
-        >
-          Sidepaginering.
-        </span>
-        <PaginationBoxView
-          activeClassName="active"
-          breakClassName="break-me"
-          breakLabel={
-            <span>
-              ...
-            </span>
-          }
-          containerClassName="pagination"
-          disableInitialCallback={true}
-          disabledClassName="disabled"
-          forcePage={0}
-          marginPagesDisplayed={1}
-          nextClassName="next"
-          nextLabel="Neste side"
-          onPageChange={[Function]}
-          pageCount={1}
-          pageRangeDisplayed={2}
-          previousClassName="previous"
-          previousLabel="Forrige side"
-          subContainerClassName="pages pagination"
-        />
-      </div>
+      <Memo(EmptyHits) />
     </div>
   </div>
 </main>
