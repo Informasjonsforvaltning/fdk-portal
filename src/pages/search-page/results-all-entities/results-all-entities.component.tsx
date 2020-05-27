@@ -20,6 +20,7 @@ import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import SearchEntities from '../../../components/search-entities/search-entities.component';
 import ButtonToggleSC from '../../../components/button-toggle/styled';
 import { FilterBox } from '../../../components/filter-box/filter-box.component';
+import EmptyHits from '../../../components/empty-hits/empty.component';
 
 interface Props extends RouteComponentProps<any> {
   entities:
@@ -88,128 +89,138 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
 
   return (
     <main id="content">
-      <div className="row">
-        <SC.SortButtons className="col-12">
-          <ButtonToggleSC.ButtonToggle
-            onClick={onSortByScoreClick}
-            selected={sortfield === undefined}
-            borderLeft
-          >
-            {localization.formatString(
-              sortfield === undefined
-                ? localization.sort.sortedBy
-                : localization.sort.sortBy,
-              {
-                sortField: localization.sort.relevance
-              }
-            )}
-          </ButtonToggleSC.ButtonToggle>
-          <ButtonToggleSC.ButtonToggle
-            onClick={onSortByModifiedClick}
-            selected={sortfield === 'harvest.firstHarvested'}
-            borderRight
-          >
-            {localization.formatString(
-              sortfield === 'harvest.firstHarvested'
-                ? localization.sort.sortedBy
-                : localization.sort.sortBy,
-              {
-                sortField: localization.sort.published
-              }
-            )}
-          </ButtonToggleSC.ButtonToggle>
-        </SC.SortButtons>
-      </div>
-      <SC.Content className="row">
-        <section className="col-12 col-lg-8">
-          <SearchEntities
-            entities={entities}
-            losItems={losItems}
-            compareConceptList={compareConceptList}
-            addConcept={addConcept}
-            removeConcept={removeConcept}
-            mediatypes={mediatypes}
-          />
-          <SC.Pagination>
-            <span className="uu-invisible" aria-hidden="false">
-              Sidepaginering.
-            </span>
-            <ReactPaginate
-              pageCount={parseInt(totalPages || 0, 10)}
-              pageRangeDisplayed={2}
-              marginPagesDisplayed={1}
-              previousLabel={localization.page.prev}
-              nextLabel={localization.page.next}
-              breakLabel={<span>...</span>}
-              breakClassName="break-me"
-              containerClassName="pagination"
-              onPageChange={onPageChange}
-              activeClassName="active"
-              forcePage={parseInt(searchParams.page || 0, 10)}
-              disableInitialCallback
-            />
-          </SC.Pagination>
-        </section>
+      {entities && entities.length > 0 ? (
+        <>
+          <div className="row">
+            <SC.SortButtons className="col-12">
+              <ButtonToggleSC.ButtonToggle
+                onClick={onSortByScoreClick}
+                selected={sortfield === undefined}
+                borderLeft
+              >
+                {localization.formatString(
+                  sortfield === undefined
+                    ? localization.sort.sortedBy
+                    : localization.sort.sortBy,
+                  {
+                    sortField: localization.sort.relevance
+                  }
+                )}
+              </ButtonToggleSC.ButtonToggle>
+              <ButtonToggleSC.ButtonToggle
+                onClick={onSortByModifiedClick}
+                selected={sortfield === 'harvest.firstHarvested'}
+                borderRight
+              >
+                {localization.formatString(
+                  sortfield === 'harvest.firstHarvested'
+                    ? localization.sort.sortedBy
+                    : localization.sort.sortBy,
+                  {
+                    sortField: localization.sort.published
+                  }
+                )}
+              </ButtonToggleSC.ButtonToggle>
+            </SC.SortButtons>
+          </div>
+          <SC.Content className="row">
+            <section className="col-12 col-lg-8">
+              <SearchEntities
+                entities={entities}
+                losItems={losItems}
+                compareConceptList={compareConceptList}
+                addConcept={addConcept}
+                removeConcept={removeConcept}
+                mediatypes={mediatypes}
+              />
+              <SC.Pagination>
+                <span className="uu-invisible" aria-hidden="false">
+                  Sidepaginering.
+                </span>
+                <ReactPaginate
+                  pageCount={parseInt(totalPages || 0, 10)}
+                  pageRangeDisplayed={2}
+                  marginPagesDisplayed={1}
+                  previousLabel={localization.page.prev}
+                  nextLabel={localization.page.next}
+                  breakLabel={<span>...</span>}
+                  breakClassName="break-me"
+                  containerClassName="pagination"
+                  onPageChange={onPageChange}
+                  activeClassName="active"
+                  forcePage={parseInt(searchParams.page || 0, 10)}
+                  disableInitialCallback
+                />
+              </SC.Pagination>
+            </section>
 
-        <SC.Filters className="col-lg-4">
-          <span className="uu-invisible" aria-hidden="false">
-            {localization.filter}
-          </span>
+            <SC.Filters className="col-lg-4">
+              <span className="uu-invisible" aria-hidden="false">
+                {localization.filter}
+              </span>
 
-          <FilterPills
-            history={history}
-            location={location}
-            locationSearch={searchParams}
-            themesItems={themesItems}
-            publishers={publishers}
-            losItems={losItems}
-          />
+              <FilterPills
+                history={history}
+                location={location}
+                locationSearch={searchParams}
+                themesItems={themesItems}
+                publishers={publishers}
+                losItems={losItems}
+              />
 
-          <FilterTree
-            title={localization.publisher}
-            aggregations={aggregations.orgPath.buckets}
-            handleFiltering={onFilterPublisher}
-            activeFilter={orgPathFilterParam}
-            referenceDataItems={publishers}
-          />
+              <FilterTree
+                title={localization.publisher}
+                aggregations={aggregations.orgPath.buckets}
+                handleFiltering={onFilterPublisher}
+                activeFilter={orgPathFilterParam}
+                referenceDataItems={publishers}
+              />
 
-          <FilterTree
-            title={localization.facet.theme}
-            aggregations={filterLosThemesFromAggregation(
-              aggregations.los.buckets,
-              losItems
-            )}
-            handleFiltering={onFilterLos}
-            activeFilter={losThemeFilterParam}
-            referenceDataItems={losItems}
-            collapseItems
-          />
-          <FilterBox
-            htmlKey={1}
-            title={localization.facet.themeEU}
-            filter={aggregations.theme}
-            onClick={onFilterTheme}
-            activeFilter={themeParam}
-            themesItems={themesItems}
-          />
-          <FilterBox
-            htmlKey={2}
-            title={localization.datasetAccessRights}
-            filter={aggregations.accessRights}
-            onClick={onFilterAccessRights}
-            activeFilter={accessrightsParam}
-            filters={searchParams}
-          />
-          <FilterBox
-            htmlKey={3}
-            title={localization.apiAvailability}
-            filter={aggregations.availability}
-            onClick={onFilterAvailability}
-            activeFilter={availabilityParam}
-            filters={searchParams}
-          />
-        </SC.Filters>
-      </SC.Content>
+              <FilterTree
+                title={localization.facet.theme}
+                aggregations={filterLosThemesFromAggregation(
+                  aggregations.los.buckets,
+                  losItems
+                )}
+                handleFiltering={onFilterLos}
+                activeFilter={losThemeFilterParam}
+                referenceDataItems={losItems}
+                collapseItems
+              />
+              <FilterBox
+                htmlKey={1}
+                title={localization.facet.themeEU}
+                filter={aggregations.theme}
+                onClick={onFilterTheme}
+                activeFilter={themeParam}
+                themesItems={themesItems}
+              />
+              <FilterBox
+                htmlKey={2}
+                title={localization.datasetAccessRights}
+                filter={aggregations.accessRights}
+                onClick={onFilterAccessRights}
+                activeFilter={accessrightsParam}
+                filters={searchParams}
+              />
+              <FilterBox
+                htmlKey={3}
+                title={localization.apiAvailability}
+                filter={aggregations.availability}
+                onClick={onFilterAvailability}
+                activeFilter={availabilityParam}
+                filters={searchParams}
+              />
+            </SC.Filters>
+          </SC.Content>
+        </>
+      ) : (
+        <div className="row">
+          <div className="col-12">
+            <EmptyHits />
+          </div>
+        </div>
+      )}
     </main>
   );
 };

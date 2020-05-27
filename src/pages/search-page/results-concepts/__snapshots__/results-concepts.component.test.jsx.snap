@@ -589,100 +589,14 @@ exports[`should render ResultsConcepts correctly with minimum of props 1`] = `
 <main
   id="content"
 >
-  <section
-    className="row mb-3"
+  <div
+    className="row"
   >
     <div
       className="col-12"
     >
-      <div
-        className="d-flex justify-content-center justify-content-lg-end"
-      >
-        <styled.button
-          borderLeft={true}
-          onClick={[Function]}
-          selected={true}
-        >
-          Sorted by relevance
-        </styled.button>
-        <styled.button
-          borderRight={true}
-          onClick={[Function]}
-          selected={false}
-        >
-          Sort by last published
-        </styled.button>
-      </div>
+      <Memo(EmptyHits) />
     </div>
-  </section>
-  <section
-    className="row"
-  >
-    <aside
-      className="search-filters col-lg-4"
-    >
-      <div
-        className="d-none d-lg-block"
-      >
-        <span
-          aria-hidden="false"
-          className="uu-invisible"
-        >
-          Filtrering tilgang
-        </span>
-        <FilterPills
-          history={
-            Object {
-              "push": [Function],
-            }
-          }
-          location={
-            Object {
-              "search": "",
-            }
-          }
-          locationSearch={Object {}}
-          losItems={null}
-          publishers={null}
-          themesItems={null}
-        />
-      </div>
-    </aside>
-    <section
-      className="col-lg-8"
-    />
-    <section
-      className="col-lg-8 offset-lg-4 d-flex justify-content-center"
-    >
-      <span
-        aria-hidden="false"
-        className="uu-invisible"
-      >
-        Sidepaginering.
-      </span>
-      <PaginationBoxView
-        activeClassName="active"
-        breakClassName="break-me"
-        breakLabel={
-          <span>
-            ...
-          </span>
-        }
-        containerClassName="pagination"
-        disableInitialCallback={true}
-        disabledClassName="disabled"
-        forcePage={0}
-        marginPagesDisplayed={1}
-        nextClassName="next"
-        nextLabel="Neste side"
-        onPageChange={[Function]}
-        pageCount={1}
-        pageRangeDisplayed={2}
-        previousClassName="previous"
-        previousLabel="Forrige side"
-        subContainerClassName="pages pagination"
-      />
-    </section>
-  </section>
+  </div>
 </main>
 `;

@@ -19,6 +19,7 @@ import { ErrorBoundary } from '../../../components/error-boundary/error-boundary
 
 import { Entity } from '../../../types/enums';
 import ButtonToggleSC from '../../../components/button-toggle/styled';
+import EmptyHits from '../../../components/empty-hits/empty.component';
 
 const renderFilterModal = ({
   showFilterModal,
@@ -112,107 +113,117 @@ export const ResultsApiPure = ({
 
   return (
     <main data-test-id="apis" id="content">
-      <div className="row mb-3">
-        <div className="col-12">
-          <div className="d-flex justify-content-center justify-content-lg-end">
-            <ButtonToggleSC.ButtonToggle
-              onClick={onSortByScoreClick}
-              selected={sortfield === undefined}
-              borderLeft
-            >
-              {localization.formatString(
-                sortfield === undefined
-                  ? localization.sort.sortedBy
-                  : localization.sort.sortBy,
-                {
-                  sortField: localization.sort.relevance
-                }
-              )}
-            </ButtonToggleSC.ButtonToggle>
-            <ButtonToggleSC.ButtonToggle
-              onClick={onSortByModifiedClick}
-              selected={sortfield === 'modified'}
-              borderRight
-            >
-              {localization.formatString(
-                sortfield === 'modified'
-                  ? localization.sort.sortedBy
-                  : localization.sort.sortBy,
-                {
-                  sortField: localization.sort.published
-                }
-              )}
-            </ButtonToggleSC.ButtonToggle>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <aside className="search-filters col-lg-4 d-none d-lg-block">
-          <span className="uu-invisible" aria-hidden="false">
-            Filtrering
-          </span>
-
-          <FilterPills
-            history={history}
-            location={location}
-            locationSearch={locationSearch}
-            publishers={publishers}
-          />
-
-          {apiAggregations && (
-            <div>
-              {renderFilterModal({
-                showFilterModal,
-                closeFilterModal,
-                apiAggregations,
-                locationSearch,
-                publisherCounts,
-                publishers,
-                onFilterFormat,
-                onFilterPublisherHierarchy
-              })}
-              <FilterTree
-                title={localization.provider}
-                aggregations={publisherCounts}
-                handleFiltering={onFilterPublisherHierarchy}
-                activeFilter={locationSearch.orgPath}
-                referenceDataItems={publishers}
-              />
-              <FilterBox
-                htmlKey={2}
-                title={localization.facet.format}
-                filter={_.get(apiAggregations, 'formats')}
-                onClick={onFilterFormat}
-                activeFilter={locationSearch.format}
-              />
+      {apiItems && apiItems.length > 0 ? (
+        <>
+          <div className="row mb-3">
+            <div className="col-12">
+              <div className="d-flex justify-content-center justify-content-lg-end">
+                <ButtonToggleSC.ButtonToggle
+                  onClick={onSortByScoreClick}
+                  selected={sortfield === undefined}
+                  borderLeft
+                >
+                  {localization.formatString(
+                    sortfield === undefined
+                      ? localization.sort.sortedBy
+                      : localization.sort.sortBy,
+                    {
+                      sortField: localization.sort.relevance
+                    }
+                  )}
+                </ButtonToggleSC.ButtonToggle>
+                <ButtonToggleSC.ButtonToggle
+                  onClick={onSortByModifiedClick}
+                  selected={sortfield === 'modified'}
+                  borderRight
+                >
+                  {localization.formatString(
+                    sortfield === 'modified'
+                      ? localization.sort.sortedBy
+                      : localization.sort.sortBy,
+                    {
+                      sortField: localization.sort.published
+                    }
+                  )}
+                </ButtonToggleSC.ButtonToggle>
+              </div>
             </div>
-          )}
-        </aside>
-        <div id="apis" className="col-12 col-lg-8">
-          {renderHits(apiItems)}
+          </div>
+          <div className="row">
+            <aside className="search-filters col-lg-4 d-none d-lg-block">
+              <span className="uu-invisible" aria-hidden="false">
+                Filtrering
+              </span>
 
-          <div className="col-12 d-flex justify-content-center">
-            <span className="uu-invisible" aria-hidden="false">
-              Sidepaginering.
-            </span>
-            <ReactPaginate
-              pageCount={pageCount}
-              pageRangeDisplayed={2}
-              marginPagesDisplayed={1}
-              previousLabel={localization.page.prev}
-              nextLabel={localization.page.next}
-              breakLabel={<span>...</span>}
-              breakClassName="break-me"
-              containerClassName="pagination"
-              onPageChange={onPageChange}
-              subContainerClassName="pages pagination"
-              activeClassName="active"
-              forcePage={page}
-              disableInitialCallback
-            />
+              <FilterPills
+                history={history}
+                location={location}
+                locationSearch={locationSearch}
+                publishers={publishers}
+              />
+
+              {apiAggregations && (
+                <div>
+                  {renderFilterModal({
+                    showFilterModal,
+                    closeFilterModal,
+                    apiAggregations,
+                    locationSearch,
+                    publisherCounts,
+                    publishers,
+                    onFilterFormat,
+                    onFilterPublisherHierarchy
+                  })}
+                  <FilterTree
+                    title={localization.provider}
+                    aggregations={publisherCounts}
+                    handleFiltering={onFilterPublisherHierarchy}
+                    activeFilter={locationSearch.orgPath}
+                    referenceDataItems={publishers}
+                  />
+                  <FilterBox
+                    htmlKey={2}
+                    title={localization.facet.format}
+                    filter={_.get(apiAggregations, 'formats')}
+                    onClick={onFilterFormat}
+                    activeFilter={locationSearch.format}
+                  />
+                </div>
+              )}
+            </aside>
+            <div id="apis" className="col-12 col-lg-8">
+              {renderHits(apiItems)}
+
+              <div className="col-12 d-flex justify-content-center">
+                <span className="uu-invisible" aria-hidden="false">
+                  Sidepaginering.
+                </span>
+                <ReactPaginate
+                  pageCount={pageCount}
+                  pageRangeDisplayed={2}
+                  marginPagesDisplayed={1}
+                  previousLabel={localization.page.prev}
+                  nextLabel={localization.page.next}
+                  breakLabel={<span>...</span>}
+                  breakClassName="break-me"
+                  containerClassName="pagination"
+                  onPageChange={onPageChange}
+                  subContainerClassName="pages pagination"
+                  activeClassName="active"
+                  forcePage={page}
+                  disableInitialCallback
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="row">
+          <div className="col-12">
+            <EmptyHits />
           </div>
         </div>
-      </div>
+      )}
     </main>
   );
 };
