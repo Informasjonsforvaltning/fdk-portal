@@ -12,6 +12,7 @@ import {
   PATHNAME_INFORMATIONMODELS
 } from '../../../../../constants/constants';
 import { getLinkForTab } from '../../../search-location-helper';
+import { Entity } from '../../../../../types/enums';
 
 interface Props {
   countResults?: number;
@@ -35,7 +36,9 @@ const Tabs: FC<Props & RouteComponentProps> = ({
       tabLink={getLinkForTab(location, PATHNAME_SEARCH)}
       label={localization.resultsLabel}
     >
-      <SC.AllIcon />
+      <SC.IconPlaceholder>
+        <SC.AllIcon />
+      </SC.IconPlaceholder>
       <SC.Label>
         {localization.page.resultsTab}&nbsp;({countResults})
       </SC.Label>
@@ -45,7 +48,9 @@ const Tabs: FC<Props & RouteComponentProps> = ({
       tabLink={getLinkForTab(location, PATHNAME_DATASETS)}
       label={localization.datasetLabel}
     >
-      <SC.DatasetIcon />
+      <SC.IconPlaceholder type={Entity.DATASET}>
+        <SC.DatasetIcon />
+      </SC.IconPlaceholder>
       <SC.Label>
         {localization.page.datasetTab}&nbsp;({countDatasets})
       </SC.Label>
@@ -56,7 +61,9 @@ const Tabs: FC<Props & RouteComponentProps> = ({
       tabLink={getLinkForTab(location, PATHNAME_APIS)}
       label={localization.apiLabel}
     >
-      <SC.ApiIcon />
+      <SC.IconPlaceholder type={Entity.DATA_SERVICE}>
+        <SC.ApiIcon />
+      </SC.IconPlaceholder>
       <SC.Label>
         {localization.page.apiTab}&nbsp;({countApis})
       </SC.Label>
@@ -67,7 +74,9 @@ const Tabs: FC<Props & RouteComponentProps> = ({
       tabLink={getLinkForTab(location, PATHNAME_CONCEPTS)}
       label={localization.conceptLabel}
     >
-      <SC.ConceptIcon />
+      <SC.IconPlaceholder type={Entity.CONCEPT}>
+        <SC.ConceptIcon />
+      </SC.IconPlaceholder>
       <SC.Label>
         {localization.page.termTab}&nbsp;({countConcepts})
       </SC.Label>
@@ -78,7 +87,9 @@ const Tabs: FC<Props & RouteComponentProps> = ({
       tabLink={getLinkForTab(location, PATHNAME_INFORMATIONMODELS)}
       label={localization.informationModelLabel}
     >
-      <SC.InfomodIcon />
+      <SC.IconPlaceholder type={Entity.INFORMATION_MODEL}>
+        <SC.InfomodIcon />
+      </SC.IconPlaceholder>
       <SC.Label>
         {localization.page.informationModelTab}&nbsp;(
         {countInformationModels})

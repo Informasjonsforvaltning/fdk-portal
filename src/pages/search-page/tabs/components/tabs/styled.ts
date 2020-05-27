@@ -29,20 +29,23 @@ const Label = styled.span`
   }
 `;
 
-const AllIcon = styled(AllIconBase)`
+const IconPlaceholder = styled.div<{ type?: Entity }>`
   border-radius: 50%;
+  background-color: ${({ type, theme }) =>
+    type ? theme.colors[type]?.light : theme.colors.neutralLight};
+`;
+
+const AllIcon = styled(AllIconBase)`
   padding: 0.5em;
-  background-color: ${({ theme }) => theme.colors.neutralLight};
   height: 3em;
+
   @media (min-width: 768px) {
     height: 2em;
   }
 `;
 
 const DatasetIcon = styled(DatasetIconBase)`
-  border-radius: 50%;
   padding: 0.5em;
-  background-color: ${({ theme }) => theme.colors[Entity.DATASET].light};
   height: 3em;
   fill: ${({ theme }) => theme.colors[Entity.DATASET].dark};
 
@@ -52,9 +55,7 @@ const DatasetIcon = styled(DatasetIconBase)`
 `;
 
 const ApiIcon = styled(ApiIconBase)`
-  border-radius: 50%;
   padding: 0.5em;
-  background-color: ${({ theme }) => theme.colors[Entity.DATA_SERVICE].light};
   height: 3em;
   fill: ${({ theme }) => theme.colors[Entity.DATA_SERVICE].dark};
 
@@ -64,9 +65,7 @@ const ApiIcon = styled(ApiIconBase)`
 `;
 
 const ConceptIcon = styled(ConceptIconBase)`
-  border-radius: 50%;
   padding: 0.5em;
-  background-color: ${({ theme }) => theme.colors[Entity.CONCEPT].light};
   height: 3em;
   fill: ${({ theme }) => theme.colors[Entity.CONCEPT].dark};
 
@@ -76,10 +75,7 @@ const ConceptIcon = styled(ConceptIconBase)`
 `;
 
 const InfomodIcon = styled(InfomodIconBase)`
-  border-radius: 50%;
   padding: 0.5em;
-  background-color: ${({ theme }) =>
-    theme.colors[Entity.INFORMATION_MODEL].light};
   height: 3em;
   fill: ${({ theme }) => theme.colors[Entity.INFORMATION_MODEL].dark};
 
@@ -91,6 +87,7 @@ const InfomodIcon = styled(InfomodIconBase)`
 export default {
   Tabs,
   Label,
+  IconPlaceholder,
   AllIcon,
   DatasetIcon,
   ApiIcon,
