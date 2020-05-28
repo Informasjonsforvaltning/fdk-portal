@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -42,11 +42,21 @@ import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { GuidancePage } from '../pages/guidance-page/guidance-page';
 import Footer from '../components/footer/footer.component';
 import { OrganizationsPage } from '../pages/organizations-page/organizations-page';
+import { parseSearchParams } from '../lib/location-history-helper';
 
 export function App({ language, onChangeLanguage }) {
+  useEffect(() => {
+    const params = parseSearchParams(location);
+    const { lang } = params;
+    if (lang) {
+      onChangeLanguage(lang);
+    }
+  }, []);
+
   // react-localization is a stateful library, so we set the required language on each full-app render
   // and full-render app each time when the language is changed
   localization.setLanguage(language);
+
   const themeClass = cx({
     'theme-nap': getConfig().themeNap,
     'theme-fdk': !getConfig().themeNap
