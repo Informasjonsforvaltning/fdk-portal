@@ -1,5 +1,13 @@
 import { searchFullTextApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
+import { getConfig } from '../../config';
+
+const transportLosThemes = [
+  'trafikk-og-transport/mobilitetstilbud',
+  'trafikk-og-transport/trafikkinformasjon',
+  'trafikk-og-transport/veg-og-vegregulering',
+  'trafikk-og-transport/yrkestransport'
+];
 
 export const searchDatasets = (body: any) =>
   searchFullTextApiPost('/datasets', body);
@@ -40,6 +48,17 @@ const mapFilters = ({
   if (provenance) {
     filters.push({ provenance });
   }
+
+  // Filter out NAP data if filterTransportDatasets in conf is true
+  if (getConfig().filterTransportDatasets) {
+    filters.push(
+      { accessRights: 'PUBLIC' },
+      {
+        los: transportLosThemes.join()
+      }
+    );
+  }
+
   return filters.length > 0 ? filters : undefined;
 };
 
