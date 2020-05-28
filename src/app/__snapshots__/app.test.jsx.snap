@@ -24,7 +24,7 @@ exports[`should render App correctly 1`] = `
       Hopp til hovedinnhold
     </a>
   </div>
-  <Connect(AppNavBar) />
+  <AppNavBar />
   <withRouter() />
   <Switch>
     <Route
