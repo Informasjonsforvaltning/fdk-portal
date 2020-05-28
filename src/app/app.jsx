@@ -15,7 +15,7 @@ import { ConnectedInformationModelDetailsPage } from '../pages/informationmodel-
 import { AboutPage } from '../pages/about-page/about-page.component';
 import { ArticlePage } from '../pages/article-page/article-page.component';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
-import { ConnectedAppNavBar } from './app-nav-bar/connected-app-nav-bar';
+import { AppNavBar } from './app-nav-bar/app-nav-bar';
 import { ConnectedDatasetsReportPage } from '../pages/datasets-report-page/connected-datasets-report-page';
 import {
   PATHNAME_SEARCH,
@@ -43,7 +43,7 @@ import { GuidancePage } from '../pages/guidance-page/guidance-page';
 import Footer from '../components/footer/footer.component';
 import { OrganizationsPage } from '../pages/organizations-page/organizations-page';
 
-export function App({ language }) {
+export function App({ language, onChangeLanguage }) {
   // react-localization is a stateful library, so we set the required language on each full-app render
   // and full-render app each time when the language is changed
   localization.setLanguage(language);
@@ -79,7 +79,7 @@ export function App({ language }) {
         </a>
       </div>
 
-      <ConnectedAppNavBar />
+      <AppNavBar onChangeLanguage={onChangeLanguage} />
 
       <Breadcrumbs />
 
@@ -210,5 +210,6 @@ export function App({ language }) {
 }
 
 App.propTypes = {
-  language: PropTypes.string.isRequired
+  language: PropTypes.string.isRequired,
+  onChangeLanguage: PropTypes.func.isRequired
 };
