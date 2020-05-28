@@ -449,7 +449,7 @@
     "changelog": "Endringar fra siste versjon",
     "moreInfo": "Meir informasjon om informasjonsmodellen",
     "identifier": "Identifikator",
-    "keyword": "Emneord",
+    "keywords": "Emneord",
     "category": "Modellkategori",
     "relatedAPIHeader": "Høyrer til API",
     "informationModelDescription": "Informasjonsmodelbeskrivelse",
