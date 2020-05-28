@@ -489,9 +489,9 @@
     },
     "publisher": "Eier: {publisher}",
     "openData": "Åpne data",
-    "publicData": "Offentlig data",
-    "restrictedData": "Begrenset offentlegheit",
-    "nonPublicData": "Unntatt offentlegheit",
+    "publicData": "Kan deles offentlig",
+    "restrictedData": "Begrenset offentlighet",
+    "nonPublicData": "Unntatt offentlighet",
     "menu": {
       "title": "Gå til"
     },
