@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const RoundedTagWithLink = styled(Link)`
     align-items: center;
-    border-radius: .9em;
+    border-radius: 20px;
     border: none;
     display: flex;
     padding: .3em .6em;
@@ -12,7 +12,7 @@ const RoundedTagWithLink = styled(Link)`
 
 const RoundedTag = styled.div`
     align-items: center;
-    border-radius: .9em;
+    border-radius: 20px;
     border: none;
     display: flex;
     padding: .3em .6em;

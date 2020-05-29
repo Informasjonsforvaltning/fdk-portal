@@ -26,6 +26,7 @@ import { themeFDK, themeNAP } from '../../../app/theme';
 
 import { Entity } from '../../../types/enums';
 import ButtonToggleSC from '../../../components/button-toggle/styled';
+import EmptyHits from '../../../components/empty-hits/empty.component';
 
 function _renderCompareTerms({ conceptsCompare, removeConcept }) {
   const conceptIdsArray = [];
@@ -170,108 +171,118 @@ export const ResultsConceptsPure = ({
 
   return (
     <main id="content">
-      <section className="row mb-3">
-        <div className="col-12">
-          <div className="d-flex justify-content-center justify-content-lg-end">
-            <ButtonToggleSC.ButtonToggle
-              onClick={onSortByScoreClick}
-              selected={sortfield === undefined}
-              borderLeft
-            >
-              {localization.formatString(
-                sortfield === undefined
-                  ? localization.sort.sortedBy
-                  : localization.sort.sortBy,
-                {
-                  sortField: localization.sort.relevance
-                }
-              )}
-            </ButtonToggleSC.ButtonToggle>
-            <ButtonToggleSC.ButtonToggle
-              onClick={onSortByModifiedClick}
-              selected={sortfield === 'modified'}
-              borderRight
-            >
-              {localization.formatString(
-                sortfield === 'modified'
-                  ? localization.sort.sortedBy
-                  : localization.sort.sortBy,
-                {
-                  sortField: localization.sort.published
-                }
-              )}
-            </ButtonToggleSC.ButtonToggle>
+      {conceptItems && conceptItems.length > 0 ? (
+        <>
+          <section className="row mb-3">
+            <div className="col-12">
+              <div className="d-flex justify-content-center justify-content-lg-end">
+                <ButtonToggleSC.ButtonToggle
+                  onClick={onSortByScoreClick}
+                  selected={sortfield === undefined}
+                  borderLeft
+                >
+                  {localization.formatString(
+                    sortfield === undefined
+                      ? localization.sort.sortedBy
+                      : localization.sort.sortBy,
+                    {
+                      sortField: localization.sort.relevance
+                    }
+                  )}
+                </ButtonToggleSC.ButtonToggle>
+                <ButtonToggleSC.ButtonToggle
+                  onClick={onSortByModifiedClick}
+                  selected={sortfield === 'modified'}
+                  borderRight
+                >
+                  {localization.formatString(
+                    sortfield === 'modified'
+                      ? localization.sort.sortedBy
+                      : localization.sort.sortBy,
+                    {
+                      sortField: localization.sort.published
+                    }
+                  )}
+                </ButtonToggleSC.ButtonToggle>
+              </div>
+            </div>
+          </section>
+
+          <section className="row">
+            <aside className="search-filters col-lg-4">
+              <div className="d-none d-lg-block">
+                <span className="uu-invisible" aria-hidden="false">
+                  Filtrering tilgang
+                </span>
+
+                <FilterPills
+                  history={history}
+                  location={location}
+                  locationSearch={locationSearch}
+                  publishers={publishers}
+                />
+
+                {conceptAggregations && (
+                  <div>
+                    {_renderFilterModal({
+                      showFilterModal,
+                      closeFilterModal,
+                      onFilterPublisherHierarchy,
+                      locationSearch,
+                      publisherCounts,
+                      publishers
+                    })}
+                    <FilterTree
+                      title={localization.responsible}
+                      aggregations={publisherCounts}
+                      handleFiltering={onFilterPublisherHierarchy}
+                      activeFilter={locationSearch.orgPath}
+                      referenceDataItems={publishers}
+                    />
+                  </div>
+                )}
+              </div>
+              {_renderCompareTerms({ conceptsCompare, removeConcept })}
+            </aside>
+
+            <section className="col-lg-8">
+              {_renderTerms({
+                conceptItems,
+                conceptsCompare,
+                addConcept,
+                removeConcept
+              })}
+            </section>
+
+            <section className="col-lg-8 offset-lg-4 d-flex justify-content-center">
+              <span className="uu-invisible" aria-hidden="false">
+                Sidepaginering.
+              </span>
+              <ReactPaginate
+                pageCount={pageCount}
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={1}
+                previousLabel={localization.page.prev}
+                nextLabel={localization.page.next}
+                breakLabel={<span>...</span>}
+                breakClassName="break-me"
+                containerClassName="pagination"
+                onPageChange={onPageChange}
+                subContainerClassName="pages pagination"
+                activeClassName="active"
+                forcePage={page}
+                disableInitialCallback
+              />
+            </section>
+          </section>
+        </>
+      ) : (
+        <div className="row">
+          <div className="col-12">
+            <EmptyHits />
           </div>
         </div>
-      </section>
-
-      <section className="row">
-        <aside className="search-filters col-lg-4">
-          <div className="d-none d-lg-block">
-            <span className="uu-invisible" aria-hidden="false">
-              Filtrering tilgang
-            </span>
-
-            <FilterPills
-              history={history}
-              location={location}
-              locationSearch={locationSearch}
-              publishers={publishers}
-            />
-
-            {conceptAggregations && (
-              <div>
-                {_renderFilterModal({
-                  showFilterModal,
-                  closeFilterModal,
-                  onFilterPublisherHierarchy,
-                  locationSearch,
-                  publisherCounts,
-                  publishers
-                })}
-                <FilterTree
-                  title={localization.responsible}
-                  aggregations={publisherCounts}
-                  handleFiltering={onFilterPublisherHierarchy}
-                  activeFilter={locationSearch.orgPath}
-                  referenceDataItems={publishers}
-                />
-              </div>
-            )}
-          </div>
-          {_renderCompareTerms({ conceptsCompare, removeConcept })}
-        </aside>
-
-        <section className="col-lg-8">
-          {_renderTerms({
-            conceptItems,
-            conceptsCompare,
-            addConcept,
-            removeConcept
-          })}
-        </section>
-
-        <section className="col-lg-8 offset-lg-4 d-flex justify-content-center">
-          <span className="uu-invisible" aria-hidden="false">
-            Sidepaginering.
-          </span>
-          <ReactPaginate
-            pageCount={pageCount}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            previousLabel={localization.page.prev}
-            nextLabel={localization.page.next}
-            breakLabel={<span>...</span>}
-            breakClassName="break-me"
-            containerClassName="pagination"
-            onPageChange={onPageChange}
-            subContainerClassName="pages pagination"
-            activeClassName="active"
-            forcePage={page}
-            disableInitialCallback
-          />
-        </section>
-      </section>
+      )}
     </main>
   );
 };

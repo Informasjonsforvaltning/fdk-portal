@@ -106,7 +106,7 @@ const Format = styled.div`
     border-color: ${({ theme }) => theme.dark};
     border-radius: 5px;
     font-size: 1.3rem;
-    padding: 0.1em 0.2em;
+    padding: 0.3em 0.8em;
     margin-bottom: 0.5em;
     margin-right: 0.5em;
   }

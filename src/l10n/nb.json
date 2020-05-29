@@ -120,7 +120,7 @@
     "title": "Om Felles datakatalog",
     "titleSub": "\n",
     "ingress": "Felles datakatalog – data.norge.no er det offentlige nettstedet som gir oversikt over beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet blir levert av ulike virksomheter, offentlige og private. Det er Digitaliseringsdirektoratet som er ansvarlig for drift og utvikling av nettstedet.",
-    "maintext": "Felles datakatalog – data.norge.no er delt i to hoveddeler:<br><br><ul><li>Portal, der du kan finne beskrivelser av datasett, begrep, api-er og informasjonsmodeller fra ulike virksomheter.</li><li>Kataloger for å legge til innhold, der du kan registrere beskrivelser for din virksomhet.</li></ul><br><br><b>Portal</b><br>Her kan du søke og finne beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet er levert av offentlige og private virksomheter. Ønsker du lese mer om portalen, se <a href='http://informasjonsforvaltning.github.io'>http://informasjonsforvaltning.github.io</a>.<br><br><b>Kataloger for å legge til innhold</b><br>Det er to måter du kan legge til innhold for din virksomhet:<br><br><ul><li>Du kan oppgi et høsteendepunkt for din virksomhets katalog. Har din virksomhet en katalog som kan eksponeres og deles? Ta kontakt! Les mer om høsting <a href='https://informasjonsforvaltning.github.io/felles-datakatalog/datasett-katalog'>her</a>.</li><li>Du kan benytte våre kataloger til å registrere og få oversikt over din virksomhet sine beskrivelser om datasett, begrep, api-er og behandlingsaktiviteter. De publiserte beskrivelsene vil automatisk dukke opp i vår portal. Hvordan du får tilgang, kan du lese mer om <a href='https://fellesdatakatalog.digdir.no/about-registration'>her</a>. Private virksomheter som ønsker å benytte våre kataloger, må ta kontakt på <a href='mailto:fellesdatakatalog@digdir.no'>fellesdatakatalog@digdir.no</a> for å få tilgang.</li></ul><br><br><b>Formål</b><br>Felles datakatalog – data.norge.no er laget for å synliggjøre hvilke data virksomheter har som de kan dele med andre. Katalogen adresserer behovet for å oppdage, evaluere og få tilgang til data.",
+    "maintext": "Felles datakatalog – data.norge.no er delt i to hoveddeler:<br><br><ul><li>Portal, der du kan finne beskrivelser av datasett, begrep, api-er og informasjonsmodeller fra ulike virksomheter.</li><li>Kataloger for å legge til innhold, der du kan registrere beskrivelser for din virksomhet.</li></ul><br><br><b>Portal</b><br>Her kan du søke og finne beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet er levert av offentlige og private virksomheter. Ønsker du lese mer om portalen, se <a href='http://informasjonsforvaltning.github.io'>http://informasjonsforvaltning.github.io</a>.<br><br><b>Kataloger for å legge til innhold</b><br>Det er to måter du kan legge til innhold for din virksomhet:<br><br><ul><li>Du kan oppgi et høsteendepunkt for din virksomhets katalog. Har din virksomhet en katalog som kan eksponeres og deles? Ta kontakt! Les mer om høsting <a href='https://informasjonsforvaltning.github.io/felles-datakatalog/datasett-katalog'>her</a>.</li><li>Du kan benytte våre kataloger til å registrere og få oversikt over din virksomhet sine beskrivelser om datasett, begrep, api-er og behandlingsaktiviteter. De publiserte beskrivelsene vil automatisk dukke opp i vår portal. Hvordan du får tilgang, kan du lese mer om <a href='https://data.norge.no/about-registration'>her</a>. Private virksomheter som ønsker å benytte våre kataloger, må ta kontakt på <a href='mailto:fellesdatakatalog@digdir.no'>fellesdatakatalog@digdir.no</a> for å få tilgang.</li></ul><br><br><b>Formål</b><br>Felles datakatalog – data.norge.no er laget for å synliggjøre hvilke data virksomheter har som de kan dele med andre. Katalogen adresserer behovet for å oppdage, evaluere og få tilgang til data.",
     "register": "Registrere datasett",
     "helpToRegister": "Hjelp til å komme i gang med å registrere datasett",
     "help": "Hjelp",
@@ -146,7 +146,8 @@
     "search": "Søket ga {0} treff i datasett, {1} treff i API-er, {2} treff i begreper og {3} treff i informasjonsmodeller",
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket ga {0} treff i datasett",
-    "nohits": "Søket ga dessverre ingen treff"
+    "nohits": "Søket ga dessverre ingen treff",
+    "nohitsDescription": "Kontroller at du har skrevet riktig, eller prøv med andre søkeord."
   },
   "facet": {
     "organisation": "Eier",
@@ -488,9 +489,9 @@
     },
     "publisher": "Eier: {publisher}",
     "openData": "Åpne data",
-    "publicData": "Offentlig data",
-    "restrictedData": "Begrenset offentlegheit",
-    "nonPublicData": "Unntatt offentlegheit",
+    "publicData": "Kan deles offentlig",
+    "restrictedData": "Begrenset offentlighet",
+    "nonPublicData": "Unntatt offentlighet",
     "menu": {
       "title": "Gå til"
     },

@@ -460,134 +460,14 @@ exports[`should render ResultsDataset correctly with minimum of props 1`] = `
   data-test-id="datasets"
   id="content"
 >
-  <section
-    className="row mb-3"
+  <div
+    className="row"
   >
     <div
       className="col-12"
     >
-      <div
-        className="d-flex justify-content-center justify-content-lg-end"
-      >
-        <styled.button
-          borderLeft={true}
-          onClick={[Function]}
-          selected={true}
-        >
-          Sorted by relevance
-        </styled.button>
-        <styled.button
-          borderRight={true}
-          onClick={[Function]}
-          selected={false}
-        >
-          Sort by last published
-        </styled.button>
-      </div>
+      <Memo(EmptyHits) />
     </div>
-  </section>
-  <section
-    className="row"
-  >
-    <aside
-      className="search-filters col-lg-4 d-none d-lg-block"
-    >
-      <span
-        aria-hidden="false"
-        className="uu-invisible"
-      >
-        Filtrering tilgang
-      </span>
-      <FilterPills
-        history={
-          Object {
-            "push": [Function],
-          }
-        }
-        location={
-          Object {
-            "search": "",
-          }
-        }
-        locationSearch={Object {}}
-        losItems={Object {}}
-        publishers={null}
-        themesItems={Object {}}
-      />
-    </aside>
-    <section
-      className="col-12 col-lg-8 offset-lg-4 d-flex justify-content-center position-relative"
-    >
-      <div
-        className="position-absolute d-flex"
-        style={
-          Object {
-            "left": 15,
-          }
-        }
-      >
-        <a
-          className="d-flex justify-content-center align-items-center"
-          href="http://localhost:8080/datasets.rss"
-        >
-          <img
-            alt="RSS icon"
-            src="/img/icon-feed-sm.svg"
-            style={
-              Object {
-                "height": "15px",
-                "marginRight": "5px",
-              }
-            }
-          />
-          RSS
-        </a>
-        <a
-          className="d-flex justify-content-center align-items-center ml-4"
-          href="http://localhost:8080/datasets.atom"
-        >
-          <img
-            alt="Atom icon"
-            src="/img/icon-feed-sm.svg"
-            style={
-              Object {
-                "height": "15px",
-                "marginRight": "5px",
-              }
-            }
-          />
-          Atom
-        </a>
-      </div>
-      <span
-        aria-hidden="false"
-        className="uu-invisible"
-      >
-        Sidepaginering.
-      </span>
-      <PaginationBoxView
-        activeClassName="active"
-        breakClassName="break-me"
-        breakLabel={
-          <span>
-            ...
-          </span>
-        }
-        containerClassName="pagination"
-        disableInitialCallback={true}
-        disabledClassName="disabled"
-        forcePage={0}
-        marginPagesDisplayed={1}
-        nextClassName="next"
-        nextLabel="Neste side"
-        onPageChange={[Function]}
-        pageCount={1}
-        pageRangeDisplayed={2}
-        previousClassName="previous"
-        previousLabel="Forrige side"
-        subContainerClassName="pages pagination"
-      />
-    </section>
-  </section>
+  </div>
 </main>
 `;

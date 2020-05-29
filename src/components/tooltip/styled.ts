@@ -3,7 +3,8 @@ import ReactTooltip from 'react-tooltip';
 
 const ReactTooltipStyled = styled(ReactTooltip)`
   font-weight: 400;
-  line-height: 2em;
+  line-height: 1.5em;
+  padding: 1.5em;
   &.type-dark.place-top {
     background-color: #121619;
 
