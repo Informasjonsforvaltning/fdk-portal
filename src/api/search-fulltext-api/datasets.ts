@@ -2,13 +2,6 @@ import { searchFullTextApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { getConfig } from '../../config';
 
-const transportLosThemes = [
-  'trafikk-og-transport/mobilitetstilbud',
-  'trafikk-og-transport/trafikkinformasjon',
-  'trafikk-og-transport/veg-og-vegregulering',
-  'trafikk-og-transport/yrkestransport'
-];
-
 export const searchDatasets = (body: any) =>
   searchFullTextApiPost('/datasets', body);
 
@@ -54,7 +47,7 @@ const mapFilters = ({
     filters.push(
       { accessRights: 'PUBLIC' },
       {
-        los: transportLosThemes.join()
+        themeprofile: 'transport'
       }
     );
   }
