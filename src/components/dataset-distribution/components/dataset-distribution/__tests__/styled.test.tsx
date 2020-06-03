@@ -37,7 +37,7 @@ describe('Styled components for DatasetDistribution component', () => {
           },
           {
             property: 'padding',
-            value: '12px 24px',
+            value: '1em 2em',
             options: { modifier: `& > ${ExpansionPanelSC.ExpansionPanel.Head}` }
           },
           {
