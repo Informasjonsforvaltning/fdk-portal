@@ -41,7 +41,14 @@ const Themes = styled.div`
       background: ${({ theme }) => theme.entityColours.dark};
     }
 
-    &.public-data,
+    &.public-data {
+      background: ${({ theme }) => theme.entityColours.light};
+
+      & > svg > path {
+        fill: ${({ theme }) => theme.entityColours.dark};
+      }
+    }
+
     &.restricted-data,
     &.non-public-data {
       background: white;
