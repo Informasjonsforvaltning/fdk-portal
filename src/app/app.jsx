@@ -16,7 +16,7 @@ import { AboutPage } from '../pages/about-page/about-page.component';
 import { ArticlePage } from '../pages/article-page/article-page.component';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { AppNavBar } from './app-nav-bar/app-nav-bar';
-import { ConnectedDatasetsReportPage } from '../pages/datasets-report-page/connected-datasets-report-page';
+import { ReportPage } from '../pages/datasets-report-page/report-page';
 import {
   PATHNAME_SEARCH,
   PATHNAME_DATASETS,
@@ -134,11 +134,7 @@ export function App({ language, onChangeLanguage }) {
               path={`${PATHNAME_NEWS_ARTICLE}/:id`}
               component={NewsArticle}
             />
-            <Route
-              exact
-              path={PATHNAME_REPORTS}
-              component={ConnectedDatasetsReportPage}
-            />
+            <Route exact path={PATHNAME_REPORTS} component={ReportPage} />
             <Route exact path={PATHNAME_ABOUT} component={AboutPage} />
             <Route
               exact

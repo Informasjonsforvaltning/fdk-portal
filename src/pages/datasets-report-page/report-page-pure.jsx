@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
@@ -8,14 +7,20 @@ import localization from '../../lib/localization';
 import { PublishersSelect } from './publishers-select/publishers-select.component';
 import { PublishersTree } from './publishers-tree/publishers-tree.component';
 import { getParamFromLocation } from '../../lib/addOrReplaceUrlParam';
-import { ResolvedReportStats } from './report-stats/resolved-report-stats';
+import { ReportStats } from './report-stats/report-stats.component';
 import { isFilterActive } from './filter-helper';
 
-export function DatasetsReportPage({
+export function ReportPagePure({
   location,
   history,
   fetchPublishersIfNeeded,
-  publishers
+  publishers,
+  datasetStats,
+  apiStats,
+  conceptStats,
+  catalogs,
+  fetchCatalogsIfNeeded,
+  mostUsedConcepts
 }) {
   function selectPublisher(publisher) {
     const orgPath = publisher && publisher.orgPath;
@@ -39,9 +44,10 @@ export function DatasetsReportPage({
   }
 
   fetchPublishersIfNeeded();
+  fetchCatalogsIfNeeded();
 
   const orgPath = getParamFromLocation(location, 'orgPath');
-  const selectedPublisher = _.get(publishers, [orgPath], null);
+  const selectedPublisher = publishers && publishers[orgPath];
 
   return (
     <section className="container">
@@ -67,9 +73,14 @@ export function DatasetsReportPage({
           />
         </div>
         <div className="col-md-8">
-          <ResolvedReportStats
-            orgPath={selectedPublisher && selectedPublisher.orgPath}
+          <ReportStats
+            datasetStats={datasetStats}
+            apiStats={apiStats}
+            conceptStats={conceptStats}
             entityName={selectedPublisher && selectedPublisher.name}
+            catalogs={catalogs}
+            fetchCatalogsIfNeeded={fetchCatalogsIfNeeded}
+            mostUsedConcepts={mostUsedConcepts}
           />
         </div>
       </div>
@@ -77,12 +88,12 @@ export function DatasetsReportPage({
   );
 }
 
-DatasetsReportPage.defaultProps = {
-  fetchPublishersIfNeeded: _.noop,
+ReportPagePure.defaultProps = {
+  fetchPublishersIfNeeded: PropTypes.func,
   publishers: {}
 };
 
-DatasetsReportPage.propTypes = {
+ReportPagePure.propTypes = {
   fetchPublishersIfNeeded: PropTypes.func,
   location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
