@@ -27,7 +27,7 @@ const renderFilterModal = ({
   closeFilterModal,
   informationModelAggregations,
   locationSearch,
-  publisherCounts,
+  publisherAggregations,
   publishers,
   onFilterPublisherHierarchy,
   onFilterLos,
@@ -51,7 +51,7 @@ const renderFilterModal = ({
           />
           <FilterTree
             title={localization.responsible}
-            aggregations={publisherCounts}
+            aggregations={publisherAggregations}
             handleFiltering={onFilterPublisherHierarchy}
             activeFilter={locationSearch.orgPath}
             referenceDataItems={publishers}
@@ -108,6 +108,10 @@ export const ResultsInformationModelPure = ({
   const locationSearch = parseSearchParams(location);
   const page = parseInt(locationSearch.page || 0, 10);
   const pageCount = Math.ceil((informationModelTotal || 1) / hitsPerPage);
+  const publisherAggregations = publisherCounts.map(({ key, ...rest }) => ({
+    key: !key.includes('MISSING') ? `/${key}` : key,
+    ...rest
+  }));
 
   const sortfield = getSortfield(location);
 
@@ -183,7 +187,7 @@ export const ResultsInformationModelPure = ({
                     closeFilterModal,
                     informationModelAggregations,
                     locationSearch,
-                    publisherCounts,
+                    publisherAggregations,
                     publishers,
                     onFilterPublisherHierarchy,
                     onFilterLos,
@@ -202,7 +206,7 @@ export const ResultsInformationModelPure = ({
                   />
                   <FilterTree
                     title={localization.responsible}
-                    aggregations={publisherCounts}
+                    aggregations={publisherAggregations}
                     handleFiltering={onFilterPublisherHierarchy}
                     activeFilter={locationSearch.orgPath}
                     referenceDataItems={publishers}
