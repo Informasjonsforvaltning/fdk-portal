@@ -363,7 +363,7 @@ export const DatasetStats = props => {
         <StatBox label={localization.report.countCatalogsLabel}>
           <img src="/img/icon-catalog-dataset.svg" alt="icon" />
           <span className="stat-box--number">
-            {Object.keys(catalogs).length}
+            {catalogs && Object.keys(catalogs).length}
           </span>
         </StatBox>
       )}
