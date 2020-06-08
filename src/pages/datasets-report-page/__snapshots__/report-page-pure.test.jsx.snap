@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render DatasetsReportPage correctly 1`] = `
+exports[`should render ReportPagePure correctly 1`] = `
 <section
   className="container"
 >
@@ -17,15 +17,28 @@ exports[`should render DatasetsReportPage correctly 1`] = `
       />
       <PublishersResolver
         onChange={[Function]}
-        value={null}
       />
     </div>
     <div
       className="col-md-8"
     >
-      <DatasetStatsApiStatsConceptStatsMostUsedConceptsResolver
+      <ReportStats
+        catalogs={null}
         entityName={null}
-        orgPath={null}
+        fetchCatalogsIfNeeded={
+          [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        publishers={null}
       />
     </div>
   </div>
