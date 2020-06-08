@@ -16,7 +16,7 @@ import { AboutPage } from '../pages/about-page/about-page.component';
 import { ArticlePage } from '../pages/article-page/article-page.component';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { AppNavBar } from './app-nav-bar/app-nav-bar';
-import { ReportPage } from '../pages/datasets-report-page/report-page';
+import { ReportPage } from '../pages/report-page/report-page';
 import {
   PATHNAME_SEARCH,
   PATHNAME_DATASETS,
