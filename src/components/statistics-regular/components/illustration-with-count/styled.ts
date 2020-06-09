@@ -1,0 +1,59 @@
+import styled, { css } from 'styled-components';
+
+import { Variant } from './enums';
+
+const Icon = styled.figure`
+  align-items: center;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.light};
+  display: flex;
+  justify-content: center;
+
+  & > svg {
+    fill: ${({ theme }) => theme.dark};
+    width: 65%;
+
+    & > path {
+      fill: ${({ theme }) => theme.dark};
+    }
+  }
+`;
+
+const Chart = styled.figure`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 110px;
+
+  & > svg {
+    fill: ${({ theme }) => theme.dark};
+  }
+`;
+
+const Count = styled.span`
+  color: ${({ theme }) => theme.dark};
+  font-size: 2em;
+  font-weight: 600;
+  margin-left: 0.2em;
+`;
+
+const Content = styled.div<{ variant?: Variant }>`
+  align-items: center;
+  display: flex;
+  margin: 0.5em 0;
+
+  ${({ variant }) => {
+    switch (variant) {
+      case Variant.COLUMN:
+        return css`
+          flex-flow: column;
+        `;
+      default:
+        return css``;
+    }
+  }}
+`;
+
+export default { Icon, Chart, Count, Content };
