@@ -11,7 +11,7 @@ module.exports = {
   mode: 'production',
   context: path.join(__dirname),
   entry: {
-    main: './src/index.jsx',
+    main: './src/entrypoints/main/index.tsx',
     maintenance: './src/entrypoints/maintenance/index.tsx'
   },
   output: {
@@ -95,7 +95,7 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new HtmlWebpackPlugin({
       entry: 'main',
-      template: './src/index.html',
+      template: './src/entrypoints/main/index.html',
       filename: 'index.html',
       inject: true
     }),

@@ -9,12 +9,12 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import { ThemeProvider } from 'styled-components';
 
-import { configureStore } from './redux/configureStore';
-import { ConnectedApp } from './app/connected-app';
-import { ErrorBoundary } from './components/error-boundary/error-boundary';
-import { getConfig } from './config';
-import { themeFDK, themeNAP } from './app/theme';
-import GlobalStyles from './app/styles';
+import { configureStore } from '../../redux/configureStore';
+import { ConnectedApp } from '../../app/connected-app';
+import { ErrorBoundary } from '../../components/error-boundary/error-boundary';
+import { getConfig } from '../../config';
+import { themeFDK, themeNAP } from '../../app/theme';
+import GlobalStyles from '../../app/styles';
 
 if (
   ['data.norge.no', 'fellesdatakatalog.digdir.no'].includes(location.hostname)
@@ -39,7 +39,7 @@ window.addEventListener('unhandledrejection', event => {
 /**
  * @return {null}
  */
-function Analytics(props) {
+function Analytics(props: any) {
   const PAGEVIEW_TIMEOUT = 1000;
   if (
     [
