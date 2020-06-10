@@ -24,7 +24,7 @@ jobs:
       - run: gcloud auth configure-docker
 
       - name: Build Docker image
-        run: docker build . -t eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA -t eu.gcr.io/digdir-fdk-infra/fdk-portal:latest
+        run: docker build . -t eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA -t eu.gcr.io/digdir-fdk-infra/fdk-portal:latest --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish docker image to Google Cloud
         run: docker -- push eu.gcr.io/digdir-fdk-infra/fdk-portal
