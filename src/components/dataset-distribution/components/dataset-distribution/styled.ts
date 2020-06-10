@@ -12,7 +12,7 @@ const DatasetDistribution = styled(ExpansionPanel)`
   }
 
   & > ${SC.ExpansionPanel.Head} {
-    padding: 12px 24px;
+    padding: 1em 2em;
 
     & > ${SC.ExpansionPanel.HeadContent} {
       flex: 1;

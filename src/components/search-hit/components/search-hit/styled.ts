@@ -61,8 +61,8 @@ const AccessRight = styled.div`
     }
   }
 
-  ${RoundedTagSC.RoundedTagWithLink} {
-    background-color: ${({ theme }) => theme.lighter};
+  ${RoundedTagSC.RoundedTag} {
+    background-color: ${({ theme }) => theme.light};
     color: ${({ theme }) => theme.dark};
     &:hover {
       color: #fff !important;

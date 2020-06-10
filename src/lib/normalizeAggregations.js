@@ -55,6 +55,20 @@ export const normalizeAggregations = data => {
         count: normalisedAggregations.opendata.count
       });
     }
+    if (normalisedAggregations.orgPath) {
+      normalisedAggregations.orgPath = {
+        ...normalisedAggregations.orgPath,
+        buckets: normalisedAggregations.orgPath.buckets.map(
+          ({ key, ...rest }) => ({
+            key:
+              !key.includes('MISSING') && !key.startsWith('/')
+                ? `/${key}`
+                : key,
+            ...rest
+          })
+        )
+      };
+    }
     return {
       ...data,
       aggregations: normalisedAggregations

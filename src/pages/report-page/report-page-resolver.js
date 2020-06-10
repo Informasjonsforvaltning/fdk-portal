@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import { resolve } from 'react-resolver';
-import { getDatasetStats } from '../../../api/get-dataset-stats';
-import { ConnectedReportStats } from './connected-report-stats';
-import { getApiStats } from '../../../api/get-api-stats';
-import { getConceptStats } from '../../../api/get-concept-stats';
-import { conceptsSearch, extractConcepts } from '../../../api/concepts';
+import { getDatasetStats } from '../../api/get-dataset-stats';
+import { getApiStats } from '../../api/get-api-stats';
+import { getConceptStats } from '../../api/get-concept-stats';
+import { conceptsSearch, extractConcepts } from '../../api/concepts';
+import { getParamFromLocation } from '../../lib/addOrReplaceUrlParam';
 
 const memoizedGetDatasetStats = _.memoize(getDatasetStats);
 const memoizedGetApiStats = _.memoize(getApiStats);
@@ -12,11 +12,16 @@ const memoizedGetConceptStats = _.memoize(getConceptStats);
 const memoizedSearchConcepts = _.memoize(conceptsSearch, JSON.stringify);
 
 const mapProps = {
-  datasetStats: props => memoizedGetDatasetStats(_.get(props, 'orgPath')),
-  apiStats: props => memoizedGetApiStats(_.get(props, 'orgPath')),
-  conceptStats: props => memoizedGetConceptStats(_.get(props, 'orgPath')),
-  mostUsedConcepts: async props => {
-    const conceptStats = await memoizedGetConceptStats(_.get(props, 'orgPath'));
+  datasetStats: ({ location }) =>
+    memoizedGetDatasetStats(getParamFromLocation(location, 'orgPath')),
+  apiStats: ({ location }) =>
+    memoizedGetApiStats(getParamFromLocation(location, 'orgPath')),
+  conceptStats: ({ location }) =>
+    memoizedGetConceptStats(getParamFromLocation(location, 'orgPath')),
+  mostUsedConcepts: async ({ location }) => {
+    const conceptStats = await memoizedGetConceptStats(
+      getParamFromLocation(location, 'orgPath')
+    );
     const datasetCountsByConceptUri = _.get(
       conceptStats,
       'datasetCountsByConceptUri',
@@ -40,4 +45,4 @@ const mapProps = {
   }
 };
 
-export const ResolvedReportStats = resolve(mapProps)(ConnectedReportStats);
+export const reportPageResolver = resolve(mapProps);
