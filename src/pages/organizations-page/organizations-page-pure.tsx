@@ -14,7 +14,7 @@ const OrganizationsPage: FC<OrganizationsProps> = ({
   organizations,
   organizationsActions: { getOrganizationsRequested: getOrganizations }
 }) => {
-  const [searchQuery, setSearchQuery] = useState();
+  const [searchQuery, setSearchQuery] = useState<any>();
   useEffect(() => {
     if (!organizations || organizations.length === 0) {
       getOrganizations();
