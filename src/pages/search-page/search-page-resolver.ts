@@ -29,7 +29,7 @@ const mapProps = {
       q,
       orgPath,
       losTheme: los,
-      page,
+      page = 0,
       sortfield,
       accessrights: accessRights,
       availability,
@@ -50,7 +50,7 @@ const mapProps = {
         ? {
             q,
             ...(filters.length > 0 && { filters }),
-            ...(page && { page: parseInt(page || 0, 10) }),
+            ...(page && { page: parseInt(page.toString(), 10) }),
             ...(sortfield && {
               sorting: { field: sortfield, direction: 'desc' }
             })

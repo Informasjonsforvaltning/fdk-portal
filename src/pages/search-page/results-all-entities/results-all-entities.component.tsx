@@ -65,6 +65,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
 }) => {
   const searchParams = parseSearchParams(location);
   const {
+    page: pageSearchParam = 0,
     orgPath: orgPathFilterParam,
     losTheme: losThemeFilterParam,
     accessrights: accessrightsParam,
@@ -148,7 +149,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                   containerClassName="pagination"
                   onPageChange={onPageChange}
                   activeClassName="active"
-                  forcePage={parseInt(searchParams.page || 0, 10)}
+                  forcePage={parseInt(pageSearchParam?.toString(), 10)}
                   disableInitialCallback
                 />
               </SC.Pagination>
@@ -172,7 +173,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 title={localization.publisher}
                 aggregations={aggregations.orgPath.buckets}
                 handleFiltering={onFilterPublisher}
-                activeFilter={orgPathFilterParam}
+                activeFilter={orgPathFilterParam?.toString()}
                 referenceDataItems={publishers}
               />
 
@@ -183,7 +184,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                   losItems
                 )}
                 handleFiltering={onFilterLos}
-                activeFilter={losThemeFilterParam}
+                activeFilter={losThemeFilterParam?.toString()}
                 referenceDataItems={losItems}
                 collapseItems
               />

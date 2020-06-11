@@ -19,7 +19,9 @@ const SearchForm: FC<PropsWithChildren<
   HTMLAttributes<HTMLElement> & RouteComponentProps
 >> = ({ history, location }) => {
   const locationSearch = parseSearchParams(location);
-  const [searchQuery, setSearchQuery] = useState(locationSearch.q || '');
+  const [searchQuery, setSearchQuery] = useState(
+    locationSearch.q?.toString() || ''
+  );
 
   function onSearch(e: FormEvent) {
     e.preventDefault();
