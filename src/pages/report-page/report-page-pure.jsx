@@ -79,7 +79,6 @@ export function ReportPagePure({
             conceptStats={conceptStats}
             entityName={selectedPublisher && selectedPublisher.name}
             catalogs={catalogs}
-            fetchCatalogsIfNeeded={fetchCatalogsIfNeeded}
             mostUsedConcepts={mostUsedConcepts}
           />
         </div>
