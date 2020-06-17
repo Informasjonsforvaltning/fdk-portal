@@ -291,3 +291,8 @@ interface QualifiedAttribution {
   agent: Partial<Publisher>;
   role: string;
 }
+
+export interface DataPoint {
+  xAxis: string;
+  yAxix: string;
+}
