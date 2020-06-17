@@ -440,6 +440,8 @@
       "json": "JSON Schema"
     },
     "status": "Status",
+    "modelStatus": "Modellstatus",
+    "language": "Språk",
     "issued": "Utgitt",
     "valid": "Gyldig",
     "from": "fra",

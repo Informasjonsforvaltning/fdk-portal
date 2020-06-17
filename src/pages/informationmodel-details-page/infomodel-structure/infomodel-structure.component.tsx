@@ -49,10 +49,10 @@ export const InfoModelStructure: FC<Props> = ({
       >
         <ExpansionPanelBody>
           <Description
-            description={modelDescription}
             identifier={identifier}
             version={version}
             concept={concept}
+            description={modelDescription}
           />
         </ExpansionPanelBody>
       </SC.ObjectTypeExpansionPanel>
@@ -84,7 +84,9 @@ export const InfoModelStructure: FC<Props> = ({
                   <ExpansionPanelBody>
                     <Description
                       identifier={node.identifier}
+                      description={node.description}
                       concept={node.concept}
+                      belongsToModule={node.belongsToModule}
                     />
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
@@ -152,7 +154,9 @@ export const InfoModelStructure: FC<Props> = ({
                   <ExpansionPanelBody>
                     <Description
                       identifier={node.identifier}
+                      description={node.description}
                       concept={node.concept}
+                      belongsToModule={node.belongsToModule}
                     />
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
@@ -232,7 +236,9 @@ export const InfoModelStructure: FC<Props> = ({
                   <ExpansionPanelBody>
                     <Description
                       identifier={node.identifier}
+                      description={node.description}
                       concept={node.concept}
+                      belongsToModule={node.belongsToModule}
                     />
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
@@ -300,7 +306,9 @@ export const InfoModelStructure: FC<Props> = ({
                   <ExpansionPanelBody>
                     <Description
                       identifier={node.identifier}
+                      description={node.description}
                       concept={node.concept}
+                      belongsToModule={node.belongsToModule}
                     />
                   </ExpansionPanelBody>
                 </SC.ObjectTypeExpansionPanel>
