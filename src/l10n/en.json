@@ -440,6 +440,8 @@
       "json": "JSON Schema"
     },
     "status": "Status",
+    "modelStatus": "Model status",
+    "language": "Language",
     "issued": "Issued",
     "valid": "Valid",
     "from": "from",

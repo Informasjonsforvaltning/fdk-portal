@@ -24,6 +24,8 @@ export interface InformationModelDocument {
 export interface Node {
   identifier: string;
   name: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  belongsToModule: Partial<TextLanguage>;
   roles: Partial<Property>[];
   attributes: Partial<Property>[];
   properties: Partial<Property>[];
@@ -75,6 +77,8 @@ export interface Type {
 export interface Property {
   identifier: string;
   name: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  belongsToModule: Partial<TextLanguage>;
   parameters: any;
   type: Partial<Type>;
   isDescribedByUri: string;

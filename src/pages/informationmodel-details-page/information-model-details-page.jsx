@@ -96,6 +96,8 @@ const renderStatus = ({
   version,
   issued,
   modified,
+  status,
+  languages,
   validFromIncluding,
   validToIncluding,
   changelog,
@@ -109,6 +111,15 @@ const renderStatus = ({
     changelog ||
     landingPage) && (
     <ListRegular title={localization.infoMod.status}>
+      {status && (
+        <TwoColRow col1={localization.infoMod.modelStatus} col2={status} />
+      )}
+      {languages.length > 0 && (
+        <TwoColRow
+          col1={localization.infoMod.language}
+          col2={languages.join(', ')}
+        />
+      )}
       {issued && (
         <TwoColRow
           col1={localization.infoMod.issued}
@@ -325,6 +336,7 @@ export const InformationModelDetailsPage = ({
 }) => {
   fetchPublishersIfNeeded();
   fetchReferenceDataIfNeeded('los');
+  fetchReferenceDataIfNeeded('codes/linguisticsystem');
 
   if (!informationModelItem) {
     return null;
@@ -343,6 +355,8 @@ export const InformationModelDetailsPage = ({
     version,
     issued,
     modified,
+    status,
+    languages: languageUris = [],
     validFromIncluding,
     validToIncluding,
     changelog,
@@ -356,6 +370,10 @@ export const InformationModelDetailsPage = ({
   } = informationModelItem || {};
 
   const hasModel = isNewInformationModel(informationModelItem) || schema;
+  const languages = (referenceData.items['codes/linguisticsystem'] || [])
+    .filter(({ uri }) => languageUris.includes(uri))
+    .map(({ prefLabel }) => getTranslateText(prefLabel))
+    .filter(Boolean);
 
   return (
     <main id="content" className="container">
@@ -396,6 +414,8 @@ export const InformationModelDetailsPage = ({
               version,
               issued,
               modified,
+              status,
+              languages,
               validFromIncluding,
               validToIncluding,
               changelog,
