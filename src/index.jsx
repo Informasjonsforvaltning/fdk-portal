@@ -16,7 +16,9 @@ import { getConfig } from './config';
 import { themeFDK, themeNAP } from './app/theme';
 import GlobalStyles from './app/styles';
 
-if (location.hostname === 'fellesdatakatalog.digdir.no') {
+if (
+  ['data.norge.no', 'fellesdatakatalog.digdir.no'].includes(location.hostname)
+) {
   ReactGA.initialize('UA-110098477-1'); // prod
   ReactGA.set({ anonymizeIp: true });
 } else if (
@@ -41,6 +43,7 @@ function Analytics(props) {
   const PAGEVIEW_TIMEOUT = 1000;
   if (
     [
+      'data.norge.no',
       'fellesdatakatalog.digdir.no',
       'data.transportportal.no',
       'localhost'
