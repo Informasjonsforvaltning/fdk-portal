@@ -15,7 +15,7 @@ import { getTranslateText } from '../../lib/translateText';
 import { ListRegular } from '../../components/list-regular/list-regular.component';
 import { HarvestDate } from '../../components/harvest-date/harvest-date.component';
 import { TwoColRow } from '../../components/list-regular/twoColRow/twoColRow';
-import { BoxRegular } from '../../components/box-regular/box-regular.component';
+import { BoxRegular } from './box-regular/box-regular.component';
 import { LinkExternal } from '../../components/link-external/link-external.component';
 import { DistributionHeading } from './distribution-heading/distribution-heading.component';
 import { StickyMenu } from '../../components/sticky-menu/sticky-menu.component';

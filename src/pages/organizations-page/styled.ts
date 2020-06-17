@@ -44,6 +44,12 @@ const Title = styled.span`
 
 const Info = styled.div`
   display: flex;
+  margin-left: 2em;
+  margin-top: 0.2em;
+
+  @media (min-width: 768px) {
+    margin: 0;
+  }
 `;
 
 const CountTag = styled.div<{ type?: Entity }>`
