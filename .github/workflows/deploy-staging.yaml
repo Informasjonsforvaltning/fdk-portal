@@ -1,4 +1,4 @@
-name: Build and deploy to staging (digdir) when pull request is created
+name: Build and deploy to staging when pull request is created
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
             helm init --client-only
             helm repo add fdk https://informasjonsforvaltning.github.io/helm-chart/
             helm fetch --untar --untardir ./helm fdk/fdk-portal
-            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA" -f ./helm/fdk-portal/values/staging-digdir.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
+            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA" -f ./helm/fdk-portal/values/staging.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
             chmod o+w ./kubectlapply.yaml
             cat kubectlapply.yaml
 
@@ -61,4 +61,4 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         uses: pullreminders/slack-action@master
         with:
-          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to digdir-staging\"}'
+          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to staging\"}'

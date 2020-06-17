@@ -1,8 +1,8 @@
-name: Deploy to demo (digdir)
+name: Deploy to demo
 
 on:
   repository_dispatch:
-    types: [deploy-demo-digdir]
+    types: [deploy-demo]
 
 jobs:
   deploy-demo:
@@ -20,7 +20,7 @@ jobs:
             helm init --client-only
             helm repo add fdk https://informasjonsforvaltning.github.io/helm-chart/
             helm fetch --untar --untardir ./helm fdk/fdk-portal
-            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/digdir-fdk-infra/fdk-portal:${{ github.event.client_payload.sha }}" -f ./helm/fdk-portal/values/demo-digdir.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
+            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/digdir-fdk-infra/fdk-portal:${{ github.event.client_payload.sha }}" -f ./helm/fdk-portal/values/demo.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
             chmod o+w ./kubectlapply.yaml
             cat kubectlapply.yaml
 
@@ -44,4 +44,4 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         uses: pullreminders/slack-action@master
         with:
-          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to digdir-demo\"}'
+          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to demo\"}'
