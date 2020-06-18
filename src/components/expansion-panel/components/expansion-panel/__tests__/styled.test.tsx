@@ -10,7 +10,7 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must render correct HTML element', () => {
       const { container } = render(<SC.ExpansionPanel />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild!.tagName).toEqual('DIV');
@@ -19,11 +19,11 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must not render children if no children are provided', () => {
       const { container } = render(<SC.ExpansionPanel />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).toBeEmpty();
+      expect(container.firstElementChild).toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(0);
     });
@@ -35,11 +35,11 @@ describe('Styled components for ExpansionPanel component', () => {
         <SC.ExpansionPanel>{text}</SC.ExpansionPanel>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(container.firstElementChild).toHaveTextContent(text);
@@ -54,11 +54,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.ExpansionPanel>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(1);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(getAllByTestId(childTestId)).toHaveLength(1);
@@ -74,11 +74,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.ExpansionPanel>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(2);
       expect(getAllByTestId(childTestId)).toHaveLength(2);
@@ -98,11 +98,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.ExpansionPanel>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(4);
       expect(container.firstElementChild!.firstChild!.textContent).toEqual(
@@ -119,7 +119,7 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must render correct HTML element', () => {
       const { container } = render(<SC.HeadContent />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild!.tagName).toEqual('DIV');
@@ -128,11 +128,11 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must not render children if no children are provided', () => {
       const { container } = render(<SC.HeadContent />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).toBeEmpty();
+      expect(container.firstElementChild).toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(0);
     });
@@ -142,11 +142,11 @@ describe('Styled components for ExpansionPanel component', () => {
 
       const { container } = render(<SC.HeadContent>{text}</SC.HeadContent>);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(container.firstElementChild).toHaveTextContent(text);
@@ -161,11 +161,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.HeadContent>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(1);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(getAllByTestId(childTestId)).toHaveLength(1);
@@ -181,11 +181,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.HeadContent>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(2);
       expect(getAllByTestId(childTestId)).toHaveLength(2);
@@ -205,11 +205,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.HeadContent>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(4);
       expect(container.firstElementChild!.firstChild!.textContent).toEqual(
@@ -226,7 +226,7 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must render correct HTML element', () => {
       const { container } = render(<SC.HeadExpansionIndicator />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild!.tagName).toEqual('DIV');
@@ -235,11 +235,11 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must not render children if no children are provided', () => {
       const { container } = render(<SC.HeadExpansionIndicator />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).toBeEmpty();
+      expect(container.firstElementChild).toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(0);
     });
@@ -251,11 +251,11 @@ describe('Styled components for ExpansionPanel component', () => {
         <SC.HeadExpansionIndicator>{text}</SC.HeadExpansionIndicator>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(container.firstElementChild).toHaveTextContent(text);
@@ -270,11 +270,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.HeadExpansionIndicator>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(1);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(getAllByTestId(childTestId)).toHaveLength(1);
@@ -290,11 +290,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.HeadExpansionIndicator>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(2);
       expect(getAllByTestId(childTestId)).toHaveLength(2);
@@ -314,11 +314,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.HeadExpansionIndicator>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(4);
       expect(container.firstElementChild!.firstChild!.textContent).toEqual(
@@ -335,7 +335,7 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must render correct HTML element', () => {
       const { container } = render(<SC.Head />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild!.tagName).toEqual('DIV');
@@ -344,11 +344,11 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must not render children if no children are provided', () => {
       const { container } = render(<SC.Head />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).toBeEmpty();
+      expect(container.firstElementChild).toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(0);
     });
@@ -358,11 +358,11 @@ describe('Styled components for ExpansionPanel component', () => {
 
       const { container } = render(<SC.Head>{text}</SC.Head>);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(container.firstElementChild).toHaveTextContent(text);
@@ -377,11 +377,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.Head>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(1);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(getAllByTestId(childTestId)).toHaveLength(1);
@@ -397,11 +397,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.Head>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(2);
       expect(getAllByTestId(childTestId)).toHaveLength(2);
@@ -421,11 +421,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.Head>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(4);
       expect(container.firstElementChild!.firstChild!.textContent).toEqual(
@@ -442,7 +442,7 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must render correct HTML element', () => {
       const { container } = render(<SC.CollapseIcon />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild!.tagName).toEqual('svg');
@@ -469,7 +469,7 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must render correct HTML element', () => {
       const { container } = render(<SC.ExpandIcon />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild!.tagName).toEqual('svg');
@@ -496,7 +496,7 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must render correct HTML element', () => {
       const { container } = render(<SC.Body />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild!.tagName).toEqual('DIV');
@@ -505,11 +505,11 @@ describe('Styled components for ExpansionPanel component', () => {
     it('must not render children if no children are provided', () => {
       const { container } = render(<SC.Body />);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).toBeEmpty();
+      expect(container.firstElementChild).toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(0);
     });
@@ -519,11 +519,11 @@ describe('Styled components for ExpansionPanel component', () => {
 
       const { container } = render(<SC.Body>{text}</SC.Body>);
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(0);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(container.firstElementChild).toHaveTextContent(text);
@@ -538,11 +538,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.Body>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(1);
       expect(container.firstElementChild!.childNodes).toHaveLength(1);
       expect(getAllByTestId(childTestId)).toHaveLength(1);
@@ -558,11 +558,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.Body>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(2);
       expect(getAllByTestId(childTestId)).toHaveLength(2);
@@ -582,11 +582,11 @@ describe('Styled components for ExpansionPanel component', () => {
         </SC.Body>
       );
 
-      expect(container).not.toBeEmpty();
+      expect(container).not.toBeEmptyDOMElement();
       expect(container.children).toHaveLength(1);
       expect(container.childNodes).toHaveLength(1);
       expect(container.firstElementChild).not.toBeNull();
-      expect(container.firstElementChild).not.toBeEmpty();
+      expect(container.firstElementChild).not.toBeEmptyDOMElement();
       expect(container.firstElementChild!.children).toHaveLength(2);
       expect(container.firstElementChild!.childNodes).toHaveLength(4);
       expect(container.firstElementChild!.firstChild!.textContent).toEqual(

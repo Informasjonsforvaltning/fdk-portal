@@ -132,7 +132,8 @@ exports[`should render ApiDetailsPage correctly with apiItem 1`] = `
             validFromIncluding={null}
             validToIncluding={null}
           />
-          <withStateHandlers(ShowMorePure)
+          <ShowMorePure
+            showLessButtonText=""
             showMoreButtonText="Show the full description"
           >
             <div
@@ -142,7 +143,7 @@ exports[`should render ApiDetailsPage correctly with apiItem 1`] = `
                 }
               }
             />
-          </withStateHandlers(ShowMorePure)>
+          </ShowMorePure>
           <div
             className="access-icons mb-5 d-flex justify-content-between"
           >

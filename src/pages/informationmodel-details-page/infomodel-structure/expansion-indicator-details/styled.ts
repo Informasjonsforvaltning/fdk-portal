@@ -6,18 +6,18 @@ const CollapseIcon = styled(CollapseIconBase)`
   height: 16px;
   width: 16px;
   margin-right: 0.5em;
-  fill: ${({ theme }) => theme.colors.link};
+  fill: ${({ theme }) => theme.extendedColors.link};
 `;
 
 const ExpandIcon = styled(ExpandIconBase)`
   height: 16px;
   width: 16px;
   margin-right: 0.5em;
-  fill: ${({ theme }) => theme.colors.link};
+  fill: ${({ theme }) => theme.extendedColors.link};
 `;
 
 const IndicatorText = styled.span`
-  color: ${({ theme }) => theme.colors.link};
+  color: ${({ theme }) => theme.extendedColors.link};
 `;
 
 export default { CollapseIcon, ExpandIcon, IndicatorText };

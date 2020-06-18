@@ -10,6 +10,7 @@ const Title = styled.h2`
   margin-bottom: 10px;
   padding: 10px 0;
   font-size: 32px;
+  font-weight: 600;
   border-bottom: 1px solid ${({ theme }) => theme.entityColours.light};
 `;
 

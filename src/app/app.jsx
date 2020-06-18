@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import DocumentMeta from 'react-document-meta';
+import Footer from '@fellesdatakatalog/external-footer';
 
 import localization from '../lib/localization';
 import { MainPage } from '../pages/main-page/main-page';
@@ -40,7 +41,6 @@ import '../assets/css/bootstrap-override.scss';
 import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { GuidancePage } from '../pages/guidance-page/guidance-page';
-import Footer from '../components/footer/footer.component';
 import { OrganizationsPage } from '../pages/organizations-page/organizations-page';
 import { parseSearchParams } from '../lib/location-history-helper';
 

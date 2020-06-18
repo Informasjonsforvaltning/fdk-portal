@@ -1,13 +1,12 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import 'whatwg-fetch';
 
 import React from 'react';
-import * as ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import ReactGA from 'react-ga';
-import { ThemeProvider } from 'styled-components';
+import ThemeProvider from '@fellesdatakatalog/theme';
 
 import { configureStore } from '../../redux/configureStore';
 import { ConnectedApp } from '../../app/connected-app';
@@ -32,13 +31,6 @@ if (
   ReactGA.set({ anonymizeIp: true });
 }
 
-window.addEventListener('unhandledrejection', event => {
-  console.warn(`WARNING: Unhandled promise rejection. Reason: ${event.reason}`);
-});
-
-/**
- * @return {null}
- */
 function Analytics(props: any) {
   const PAGEVIEW_TIMEOUT = 1000;
   if (
@@ -64,22 +56,19 @@ function Analytics(props: any) {
 }
 
 const store = configureStore(getConfig().store);
+const theme = getConfig().themeNap ? themeNAP : themeFDK;
 
-ReactDOM.render(
-  <>
-    <ThemeProvider theme={getConfig().themeNap ? themeNAP : themeFDK}>
-      <GlobalStyles />
-      <ErrorBoundary>
-        <Provider store={store}>
-          <BrowserRouter>
-            <>
-              <Route path="/" component={Analytics} />
-              <Route path="/" component={ConnectedApp} />
-            </>
-          </BrowserRouter>
-        </Provider>
-      </ErrorBoundary>
-    </ThemeProvider>
-  </>,
+render(
+  <ThemeProvider theme={theme}>
+    <GlobalStyles />
+    <ErrorBoundary>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Route path="/" component={Analytics} />
+          <Route path="/" component={ConnectedApp} />
+        </BrowserRouter>
+      </Provider>
+    </ErrorBoundary>
+  </ThemeProvider>,
   document.getElementById('root')
 );

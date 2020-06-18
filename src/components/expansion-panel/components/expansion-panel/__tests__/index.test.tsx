@@ -23,7 +23,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -45,8 +45,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -64,7 +66,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -92,8 +94,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -117,7 +121,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -139,8 +143,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -158,7 +164,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -186,8 +192,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -219,7 +227,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -241,8 +249,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -261,7 +271,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -289,8 +299,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -324,7 +336,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -346,8 +358,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -366,7 +380,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -394,8 +408,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -433,7 +449,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -455,8 +471,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -475,7 +493,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -503,8 +521,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -529,7 +549,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -551,8 +571,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -574,7 +596,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -602,8 +624,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -627,7 +651,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -649,8 +673,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -672,7 +698,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -700,8 +726,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -726,7 +754,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -748,9 +776,11 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadContentElement).toHaveTextContent('Head 1');
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -773,7 +803,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -801,9 +831,11 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadContentElement).toHaveTextContent('Head 1');
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -827,7 +859,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -849,8 +881,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -872,7 +906,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -900,8 +934,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -925,7 +961,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -947,8 +983,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -970,7 +1008,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -998,15 +1036,17 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
     expect(expansionPanelHeadExpansionIndicatorElement.childNodes).toHaveLength(
       1
     );
-    expect(expansionPanelBodyElement).not.toBeEmpty();
+    expect(expansionPanelBodyElement).not.toBeEmptyDOMElement();
   });
 
   it('must render correct structure if multiple ExpanseionPanelBody children are provided', () => {
@@ -1025,7 +1065,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1047,8 +1087,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -1071,7 +1113,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1099,15 +1141,17 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
     expect(expansionPanelHeadExpansionIndicatorElement.childNodes).toHaveLength(
       1
     );
-    expect(expansionPanelBodyElement).not.toBeEmpty();
+    expect(expansionPanelBodyElement).not.toBeEmptyDOMElement();
     expect(expansionPanelBodyElement).toHaveTextContent('Body 1');
   });
 
@@ -1127,7 +1171,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1149,8 +1193,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -1173,7 +1219,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1201,15 +1247,17 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
     expect(expansionPanelHeadExpansionIndicatorElement.childNodes).toHaveLength(
       1
     );
-    expect(expansionPanelBodyElement).not.toBeEmpty();
+    expect(expansionPanelBodyElement).not.toBeEmptyDOMElement();
 
     rerender(
       <ExpansionPanel>
@@ -1226,7 +1274,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1248,8 +1296,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -1272,7 +1322,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1300,15 +1350,17 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
     expect(expansionPanelHeadExpansionIndicatorElement.childNodes).toHaveLength(
       1
     );
-    expect(expansionPanelBodyElement).not.toBeEmpty();
+    expect(expansionPanelBodyElement).not.toBeEmptyDOMElement();
   });
 
   it('must render correct structure if multiple ExpansionPanelHead children and multiple ExpanseionPanelBody children are provided in any order', () => {
@@ -1329,7 +1381,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1351,8 +1403,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -1377,7 +1431,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1405,15 +1459,17 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
     expect(expansionPanelHeadExpansionIndicatorElement.childNodes).toHaveLength(
       1
     );
-    expect(expansionPanelBodyElement).not.toBeEmpty();
+    expect(expansionPanelBodyElement).not.toBeEmptyDOMElement();
     expect(expansionPanelBodyElement).toHaveTextContent('Body 1');
 
     rerender(
@@ -1433,7 +1489,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1455,9 +1511,11 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadContentElement).toHaveTextContent('Head 1');
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -1482,7 +1540,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1510,16 +1568,18 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadContentElement).toHaveTextContent('Head 1');
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
     expect(expansionPanelHeadExpansionIndicatorElement.childNodes).toHaveLength(
       1
     );
-    expect(expansionPanelBodyElement).not.toBeEmpty();
+    expect(expansionPanelBodyElement).not.toBeEmptyDOMElement();
     expect(expansionPanelBodyElement).toHaveTextContent('Body 2');
   });
 
@@ -1532,7 +1592,7 @@ describe('ExpansionPanel component', () => {
     const expansionPanelHeadElement = getByTestId(testIds.head);
     const expansionPanelBodyElement = queryByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1553,7 +1613,7 @@ describe('ExpansionPanel component', () => {
     const expansionPanelHeadElement = getByTestId(testIds.head);
     const expansionPanelBodyElement = getByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1576,7 +1636,7 @@ describe('ExpansionPanel component', () => {
     const expansionPanelHeadElement = getByTestId(testIds.head);
     let expansionPanelBodyElement = queryByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1593,7 +1653,7 @@ describe('ExpansionPanel component', () => {
 
     expansionPanelBodyElement = getByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1610,7 +1670,7 @@ describe('ExpansionPanel component', () => {
 
     expansionPanelBodyElement = queryByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1633,7 +1693,7 @@ describe('ExpansionPanel component', () => {
     const expansionPanelHeadElement = getByTestId(testIds.head);
     let expansionPanelBodyElement = getByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1650,7 +1710,7 @@ describe('ExpansionPanel component', () => {
 
     expansionPanelBodyElement = queryByTestId(testIds.body) as any;
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1667,7 +1727,7 @@ describe('ExpansionPanel component', () => {
 
     expansionPanelBodyElement = getByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1690,7 +1750,7 @@ describe('ExpansionPanel component', () => {
     const expansionPanelHeadElement = getByTestId(testIds.head);
     const expansionPanelBodyElement = queryByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1746,7 +1806,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1768,8 +1828,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -1796,7 +1858,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1824,8 +1886,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -1880,7 +1944,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -1902,8 +1966,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -1934,7 +2000,7 @@ describe('ExpansionPanel component', () => {
 
     expansionPanelBodyElement = getByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -1962,8 +2028,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -2000,7 +2068,7 @@ describe('ExpansionPanel component', () => {
       testIds.headExpansionIndicator
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeDefined();
@@ -2028,8 +2096,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );
@@ -2060,7 +2130,7 @@ describe('ExpansionPanel component', () => {
 
     expansionPanelBodyElement = queryByTestId(testIds.body);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(expansionPanelRootElement).toBeDefined();
     expect(expansionPanelHeadElement).toBeDefined();
     expect(expansionPanelBodyElement).toBeNull();
@@ -2082,8 +2152,10 @@ describe('ExpansionPanel component', () => {
     );
     expect(expansionPanelHeadElement.children).toHaveLength(2);
     expect(expansionPanelHeadElement.childNodes).toHaveLength(2);
-    expect(expansionPanelHeadContentElement).toBeEmpty();
-    expect(expansionPanelHeadExpansionIndicatorElement).not.toBeEmpty();
+    expect(expansionPanelHeadContentElement).toBeEmptyDOMElement();
+    expect(
+      expansionPanelHeadExpansionIndicatorElement
+    ).not.toBeEmptyDOMElement();
     expect(expansionPanelHeadExpansionIndicatorElement.children).toHaveLength(
       1
     );

@@ -13,7 +13,7 @@ const ListItem = styled.li`
 const Property = styled.div`
   flex-basis: 40%;
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.textDefault};
+  color: ${({ theme }) => theme.extendedColors.textDefault};
 `;
 
 const Value = styled.div`

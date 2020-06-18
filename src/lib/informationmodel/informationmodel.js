@@ -40,10 +40,7 @@ export function getParentTypeRef(schema) {
     return undefined;
   }
 
-  const parentTypeRefs = _(allOf)
-    .filter('$ref')
-    .map('$ref')
-    .value();
+  const parentTypeRefs = _(allOf).filter('$ref').map('$ref').value();
 
   if (parentTypeRefs.length > 1) {
     throw new Error(`More than one parent type references`);
@@ -91,10 +88,7 @@ function convertPropertyFromJsonSchema(schema) {
 
   if (Array.isArray(schema.oneOf)) {
     // we currently ignore if oneOf includes nested ad-hoc schemas, only extract lists of referenced types
-    property.oneOfTypeRefs = _(schema.oneOf)
-      .filter('$ref')
-      .map('$ref')
-      .value();
+    property.oneOfTypeRefs = _(schema.oneOf).filter('$ref').map('$ref').value();
   }
 
   return property;

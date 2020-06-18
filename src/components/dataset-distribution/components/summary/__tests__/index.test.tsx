@@ -45,9 +45,9 @@ describe('Summary component', () => {
     expect(summaryRootElement.childNodes).toHaveLength(2);
     expect(summaryRootElement.firstElementChild).toBe(summaryTitleElement);
     expect(summaryRootElement.lastElementChild).toBe(summaryFormatsElement);
-    expect(summaryTitleElement).not.toBeEmpty();
+    expect(summaryTitleElement).not.toBeEmptyDOMElement();
     expect(summaryTitleElement).toHaveTextContent(title);
-    expect(summaryFormatsElement).toBeEmpty();
+    expect(summaryFormatsElement).toBeEmptyDOMElement();
 
     rerender(<Summary title={title} formats={formats} />, { theme });
 
@@ -66,13 +66,13 @@ describe('Summary component', () => {
     expect(summaryRootElement.childNodes).toHaveLength(2);
     expect(summaryRootElement.firstElementChild).toBe(summaryTitleElement);
     expect(summaryRootElement.lastElementChild).toBe(summaryFormatsElement);
-    expect(summaryTitleElement).not.toBeEmpty();
+    expect(summaryTitleElement).not.toBeEmptyDOMElement();
     expect(summaryTitleElement).toHaveTextContent(title);
-    expect(summaryFormatsElement).not.toBeEmpty();
+    expect(summaryFormatsElement).not.toBeEmptyDOMElement();
 
     summaryFormatElements.forEach(element => {
       expect(summaryFormatsElement).toContainElement(element);
-      expect(element).not.toBeEmpty();
+      expect(element).not.toBeEmptyDOMElement();
       expect(element.children).toHaveLength(1);
       expect(element.childNodes).toHaveLength(1);
       expect(element.firstElementChild?.tagName.toLowerCase()).toEqual('svg');

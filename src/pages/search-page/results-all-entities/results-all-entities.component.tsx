@@ -40,8 +40,8 @@ interface Props extends RouteComponentProps<any> {
   onFilterLos: any;
   onFilterTheme: any;
   compareConceptList: Concept[];
-  addConcept: Function;
-  removeConcept: Function;
+  addConcept: (concept: Partial<Concept>) => void;
+  removeConcept: (id?: string) => void;
 }
 
 const ResultsPage: FC<PropsWithChildren<Props>> = ({

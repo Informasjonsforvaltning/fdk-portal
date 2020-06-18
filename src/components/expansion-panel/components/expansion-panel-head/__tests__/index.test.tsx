@@ -9,7 +9,7 @@ describe('ExpansionPanelHead component', () => {
   it('must not have a top level element', () => {
     const { container } = render(<ExpansionPanelHead />);
 
-    expect(container).toBeEmpty();
+    expect(container).toBeEmptyDOMElement();
     expect(container.children).toHaveLength(0);
     expect(container.childNodes).toHaveLength(0);
   });
@@ -17,7 +17,7 @@ describe('ExpansionPanelHead component', () => {
   it('must not render children if no children are provided', () => {
     const { container } = render(<ExpansionPanelHead />);
 
-    expect(container).toBeEmpty();
+    expect(container).toBeEmptyDOMElement();
     expect(container.children).toHaveLength(0);
     expect(container.childNodes).toHaveLength(0);
   });
@@ -29,7 +29,7 @@ describe('ExpansionPanelHead component', () => {
       <ExpansionPanelHead>{text}</ExpansionPanelHead>
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(container.children).toHaveLength(0);
     expect(container.childNodes).toHaveLength(1);
     expect(container).toHaveTextContent(text);
@@ -44,7 +44,7 @@ describe('ExpansionPanelHead component', () => {
       </ExpansionPanelHead>
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(container.children).toHaveLength(1);
     expect(container.childNodes).toHaveLength(1);
     expect(getAllByTestId(childTestId)).toHaveLength(1);
@@ -60,7 +60,7 @@ describe('ExpansionPanelHead component', () => {
       </ExpansionPanelHead>
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(container.children).toHaveLength(2);
     expect(container.childNodes).toHaveLength(2);
     expect(getAllByTestId(childTestId)).toHaveLength(2);
@@ -80,7 +80,7 @@ describe('ExpansionPanelHead component', () => {
       </ExpansionPanelHead>
     );
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(container.children).toHaveLength(2);
     expect(container.childNodes).toHaveLength(4);
     expect(container.firstChild!.textContent).toEqual(textBefore);

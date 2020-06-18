@@ -60,7 +60,7 @@ const Themes = styled.div`
 
     &:hover {
       color: white !important;
-      background: ${({ theme }) => theme.colors.textDefault} !important;
+      background: ${({ theme }) => theme.extendedColors.textDefault} !important;
 
       & > svg > path {
         fill: white;

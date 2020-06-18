@@ -88,7 +88,7 @@ const renderTitle = (
   isWillBeValid
 ) => {
   const titleTag = (Tag, title) => (
-    <Tag className="mr-3" name={title}>
+    <Tag className="mr-3 search-hit-header-title" name={title}>
       {title}
       {isExpired && (
         <span className="fdk-expired">

@@ -1,45 +1,41 @@
-import React from 'react';
+import React, { useRef, useState, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { withStateHandlers } from 'recompose';
 import cx from 'classnames';
 
 import localization from '../../lib/localization';
 import './show-more.scss';
 
-function convertRemToPixels(rem) {
-  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-}
-
-// set to match limiting block height in show-more.css
-const COLLAPSE_THRESHOLD = convertRemToPixels(12);
-
 export const ShowMorePure = ({
   showMoreButtonText,
   showLessButtonText,
-  toggleShowAll,
-  contentHeight,
-  showAll,
-  setContentHeight,
   children
 }) => {
-  function onRef(element) {
-    if (element && !contentHeight) {
-      setContentHeight(element.getBoundingClientRect().height);
-    }
-  }
+  const contentElement = useRef(null);
+
+  const [showAll, setShowAll] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  const toggleShowAll = () => setShowAll(!showAll);
+
   function _renderContent(extraClass) {
     return (
-      <div className={cx('fdk-ingress', extraClass)} ref={onRef}>
+      <div className={cx('fdk-ingress', extraClass)} ref={contentElement}>
         {children}
       </div>
     );
   }
+
+  useLayoutEffect(() => {
+    if (contentElement.current) {
+      setContentHeight(contentElement.current.getBoundingClientRect().height);
+    }
+  }, []);
+
   let content;
   if (!contentHeight) {
     // content height not measured, render with measuring box
     content = _renderContent('show-more__cropped-box-measure');
-  } else if (contentHeight < COLLAPSE_THRESHOLD) {
+  } else if (contentHeight < 120) {
     // content height is under threshold
     content = _renderContent();
   } else if (showAll) {
@@ -49,7 +45,7 @@ export const ShowMorePure = ({
         {_renderContent()}
         <button
           type="button"
-          className="fdk-button-small"
+          className="fdk-button-small show-all"
           onClick={toggleShowAll}
         >
           <i className="fa mr-2 fa-angle-double-up" />
@@ -64,7 +60,7 @@ export const ShowMorePure = ({
         {_renderContent('show-more__cropped-box')}
         <button
           type="button"
-          className="fdk-button-small"
+          className="fdk-button-small show-all"
           onClick={toggleShowAll}
         >
           <i className="fa mr-2 fa-angle-double-down" />
@@ -78,30 +74,12 @@ export const ShowMorePure = ({
 
 ShowMorePure.defaultProps = {
   showMoreButtonText: '',
-  showLessButtonText: '',
-  toggleShowAll: _.noop,
-  setContentHeight: _.noop,
-  showAll: false
+  showLessButtonText: ''
 };
 
 ShowMorePure.propTypes = {
   showMoreButtonText: PropTypes.string,
-  showLessButtonText: PropTypes.string,
-  toggleShowAll: PropTypes.func,
-  setContentHeight: PropTypes.func,
-  showAll: PropTypes.bool
+  showLessButtonText: PropTypes.string
 };
 
-const enhance = withStateHandlers(
-  ({ initialShowAll = false, initialContentHeight = null }) => ({
-    showAll: initialShowAll,
-    contentHeight: initialContentHeight
-  }),
-  {
-    toggleShowAll: ({ showAll }) => () => ({ showAll: !showAll }),
-    setContentHeight: () => value => ({ contentHeight: value })
-  }
-);
-
-export const ShowMoreWithState = enhance(ShowMorePure);
-export const ShowMore = ShowMoreWithState;
+export const ShowMore = ShowMorePure;

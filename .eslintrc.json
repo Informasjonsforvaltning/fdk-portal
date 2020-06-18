@@ -26,9 +26,14 @@
     "prettier/prettier": [ // customizing prettier rules (unfortunately not many of them are customizable)
       "error",
       {
-        "singleQuote": true
+        "semi": true,
+        "singleQuote": true,
+        // "jsxSingleQuote": true,
+        "trailingComma": "none",
+        "arrowParens": "avoid"
       }
     ],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-empty-interface": "off",
@@ -44,6 +49,7 @@
     "no-shadow": 0,
     "no-underscore-dangle": 0,
     "wrap-iife": 2,
+    "camelcase": "off",
     "react/prop-types": 0,
     "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
     "react/jsx-filename-extension": [

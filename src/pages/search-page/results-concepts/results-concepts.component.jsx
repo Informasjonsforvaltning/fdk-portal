@@ -53,7 +53,9 @@ function _renderCompareTerms({ conceptsCompare, removeConcept }) {
   if (conceptsCompare && Object.keys(conceptsCompare).length > 0) {
     return (
       <div className="mt-5">
-        <h3 className="mb-3">{localization.terms.compareTerms}</h3>
+        <h3 className="mb-3 fdk-compare-terms-title">
+          {localization.terms.compareTerms}
+        </h3>
         {children(conceptsCompare)}
         <div className="d-flex justify-content-center">
           <Link
@@ -81,7 +83,7 @@ function _renderTerms({
           <ErrorBoundary key={item.id}>
             <ThemeProvider
               theme={
-                (getConfig().themeNap ? themeNAP : themeFDK).colors[
+                (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
                   Entity.CONCEPT
                 ]
               }

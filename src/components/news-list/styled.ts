@@ -7,7 +7,8 @@ const NewsList = styled.div`
 `;
 
 const Link = styled(LinkBase)`
-  color: ${({ theme }) => theme.colors.neutralDarker} !important;
+  color: ${({ theme }) => theme.extendedColors.neutralDarker} !important;
+  text-decoration: underline;
 `;
 
 export default {

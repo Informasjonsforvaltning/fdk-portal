@@ -136,7 +136,8 @@ exports[`should render DatasetDescription correctly 1`] = `
     validFromIncluding={null}
     validToIncluding={null}
   />
-  <withStateHandlers(ShowMorePure)
+  <ShowMorePure
+    showLessButtonText=""
     showMoreButtonText="Show the full description"
   >
     <span
@@ -146,7 +147,7 @@ exports[`should render DatasetDescription correctly 1`] = `
         }
       }
     />
-  </withStateHandlers(ShowMorePure)>
+  </ShowMorePure>
 </header>
 `;
 

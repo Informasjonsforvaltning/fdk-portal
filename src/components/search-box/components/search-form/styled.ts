@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '@fellesdatakatalog/theme';
 
 import ClearIconBase from '../../../../images/icon-clear.svg';
 
@@ -21,11 +22,15 @@ const SearchForm = styled.form`
 
   input {
     border: none;
-    color: ${({ theme }) => theme.colors.neutralDarker};
+    color: ${({ theme }) => theme.extendedColors.neutralDarker};
     flex: 1;
     line-height: normal;
     outline: none;
     width: 80%;
+
+    &::placeholder {
+      font-weight: ${theme.fontWeight('FW400')};
+    }
   }
 
   .search-clear {
@@ -40,15 +45,16 @@ const SearchForm = styled.form`
     align-items: center;
     border: none;
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.colors.neutralDarker};
+    background-color: ${({ theme }) => theme.extendedColors.neutralDarker};
     color: #fff;
     display: flex;
     font-size: 0.7em;
     font-weight: 300;
     padding: 0.6em 1em;
+    line-height: 1.2;
 
     &:hover {
-      background-color: ${({ theme }) => theme.colors.neutralDarkest};
+      background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
     }
 
     & > img {
@@ -63,7 +69,7 @@ const ClearIcon = styled(ClearIconBase)`
   height: 20px;
 
   & > path {
-    fill: ${({ theme }) => theme.colors.neutralDarker};
+    fill: ${({ theme }) => theme.extendedColors.neutralDarker};
   }
 
   @media (max-width: 768px) {

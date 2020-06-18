@@ -97,11 +97,12 @@ exports[`should render ConceptDetailsPage correctly with conceptItem 1`] = `
             validFromIncluding={null}
             validToIncluding={null}
           />
-          <withStateHandlers(ShowMorePure)
+          <ShowMorePure
+            showLessButtonText=""
             showMoreButtonText="Show the full description"
           >
             engelsk definition14
-          </withStateHandlers(ShowMorePure)>
+          </ShowMorePure>
           <div
             className="fdk-ingress"
           >

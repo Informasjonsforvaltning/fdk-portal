@@ -15,11 +15,11 @@ export const expectCorrectRootElement = (
   Component: ComponentType,
   tagName: string,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   const { container } = renderer(<Component />, renderOptions);
 
-  expect(container).not.toBeEmpty();
+  expect(container).not.toBeEmptyDOMElement();
   expect(container.children).toHaveLength(1);
   expect(container.childNodes).toHaveLength(1);
   expect(container.firstElementChild!.tagName.toLowerCase()).toEqual(
@@ -31,20 +31,20 @@ export const expectNoChildren = (
   Component: ComponentType,
   hasRootElement: boolean = true,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   const { container } = renderer(<Component />, renderOptions);
 
   if (hasRootElement) {
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(container.children).toHaveLength(1);
     expect(container.childNodes).toHaveLength(1);
     expect(container.firstElementChild).not.toBeNull();
-    expect(container.firstElementChild).toBeEmpty();
+    expect(container.firstElementChild).toBeEmptyDOMElement();
     expect(container.firstElementChild!.children).toHaveLength(0);
     expect(container.firstElementChild!.childNodes).toHaveLength(0);
   } else {
-    expect(container).toBeEmpty();
+    expect(container).toBeEmptyDOMElement();
     expect(container.children).toHaveLength(0);
     expect(container.childNodes).toHaveLength(0);
   }
@@ -53,17 +53,17 @@ export const expectNoChildren = (
 export const expectSingleTextChild = (
   Component: ComponentType,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   const text = 'text child';
 
   const { container } = renderer(<Component>{text}</Component>, renderOptions);
 
-  expect(container).not.toBeEmpty();
+  expect(container).not.toBeEmptyDOMElement();
   expect(container.children).toHaveLength(1);
   expect(container.childNodes).toHaveLength(1);
   expect(container.firstElementChild).not.toBeNull();
-  expect(container.firstElementChild).not.toBeEmpty();
+  expect(container.firstElementChild).not.toBeEmptyDOMElement();
   expect(container.firstElementChild!.children).toHaveLength(0);
   expect(container.firstElementChild!.childNodes).toHaveLength(1);
   expect(container.firstElementChild).toHaveTextContent(text);
@@ -72,7 +72,7 @@ export const expectSingleTextChild = (
 export const expectSingleElementChild = (
   Component: ComponentType,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   const childTestId = 'child';
 
@@ -83,11 +83,11 @@ export const expectSingleElementChild = (
     renderOptions
   );
 
-  expect(container).not.toBeEmpty();
+  expect(container).not.toBeEmptyDOMElement();
   expect(container.children).toHaveLength(1);
   expect(container.childNodes).toHaveLength(1);
   expect(container.firstElementChild).not.toBeNull();
-  expect(container.firstElementChild).not.toBeEmpty();
+  expect(container.firstElementChild).not.toBeEmptyDOMElement();
   expect(container.firstElementChild!.children).toHaveLength(1);
   expect(container.firstElementChild!.childNodes).toHaveLength(1);
   expect(getByTestId(childTestId)).not.toBeNull();
@@ -96,7 +96,7 @@ export const expectSingleElementChild = (
 export const expectMultipleElementChildren = (
   Component: ComponentType,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   const childTestId = 'child';
 
@@ -108,11 +108,11 @@ export const expectMultipleElementChildren = (
     renderOptions
   );
 
-  expect(container).not.toBeEmpty();
+  expect(container).not.toBeEmptyDOMElement();
   expect(container.children).toHaveLength(1);
   expect(container.childNodes).toHaveLength(1);
   expect(container.firstElementChild).not.toBeNull();
-  expect(container.firstElementChild).not.toBeEmpty();
+  expect(container.firstElementChild).not.toBeEmptyDOMElement();
   expect(container.firstElementChild!.children).toHaveLength(2);
   expect(container.firstElementChild!.childNodes).toHaveLength(2);
   expect(getAllByTestId(childTestId)).toHaveLength(2);
@@ -121,7 +121,7 @@ export const expectMultipleElementChildren = (
 export const expectTextAndElementChildren = (
   Component: ComponentType,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   const textBefore = 'text before';
   const textAfter = 'text after';
@@ -137,11 +137,11 @@ export const expectTextAndElementChildren = (
     renderOptions
   );
 
-  expect(container).not.toBeEmpty();
+  expect(container).not.toBeEmptyDOMElement();
   expect(container.children).toHaveLength(1);
   expect(container.childNodes).toHaveLength(1);
   expect(container.firstElementChild).not.toBeNull();
-  expect(container.firstElementChild).not.toBeEmpty();
+  expect(container.firstElementChild).not.toBeEmptyDOMElement();
   expect(container.firstElementChild!.children).toHaveLength(2);
   expect(container.firstElementChild!.childNodes).toHaveLength(4);
   expect(container.firstElementChild!.firstChild!.textContent).toEqual(
@@ -157,7 +157,7 @@ export const expectStyleRules = (
   Component: ComponentType,
   styleRules: StyleRule[],
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   const { container } = renderer(<Component />, renderOptions);
 

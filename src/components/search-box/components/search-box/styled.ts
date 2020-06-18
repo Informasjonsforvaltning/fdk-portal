@@ -4,19 +4,18 @@ import SearchBoxTitleSC from '../search-box-title/styled';
 import SearchBoxBackground from '../../../../img/illustration-search-dark.svg';
 
 const SearchBox = styled.section`
-    align-items: center;
-    background-color: ${({ theme }) => theme.colors.searchBoxBg};
-    background-repeat: no-repeat;
-    background-position: top right;
-    background-image: url(${SearchBoxBackground});
-    display: flex;
-    flex-flow: column;
-    font-size: 1.6rem;
-    
-    @media (max-width: 768px) {
-        background-size: 70%;
-        font-size: 1.1rem;
-    }    
+  align-items: center;
+  background-color: ${({ theme }) => theme.extendedColors.searchBoxBg};
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-image: url(${SearchBoxBackground});
+  display: flex;
+  flex-flow: column;
+  font-size: 1.6rem;
+
+  @media (max-width: 768px) {
+    background-size: 70%;
+    font-size: 1.1rem;
   }
 `;
 
@@ -46,7 +45,7 @@ const Content = styled.div`
   }
 
   ${SearchBoxTitleSC.Title} {
-    color: ${({ theme }) => theme.colors.headerBg};
+    color: ${({ theme }) => theme.extendedColors.headerBg};
     margin-bottom: 1em;
     text-align: center;
   }
