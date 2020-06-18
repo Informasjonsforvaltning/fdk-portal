@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import PieChart from 'react-minimal-pie-chart';
+import { PieChart } from 'react-minimal-pie-chart';
 
 import localization from '../../../../lib/localization';
 import '../report-stats.scss';

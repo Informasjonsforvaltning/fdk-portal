@@ -24,8 +24,10 @@ exports[`should render App correctly 1`] = `
       Hopp til hovedinnhold
     </a>
   </div>
-  <AppNavBar />
-  <withRouter() />
+  <AppNavBar
+    onChangeLanguage={[Function]}
+  />
+  <Component />
   <Switch>
     <Route
       component={[Function]}
@@ -63,24 +65,60 @@ exports[`should render App correctly 1`] = `
       path="/news-archive"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": Object {
+            "$$typeof": Symbol(react.memo),
+            "compare": null,
+            "type": [Function],
+          },
+          "compare": null,
+          "displayName": "Connect(Component)",
+          "type": [Function],
+        }
+      }
       exact={true}
       path="/organizations"
     />
     <withRouter(ScrollToTop)>
       <Switch>
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(InformationModelItemReferencedApisResolver)",
+              "type": [Function],
+            }
+          }
           exact={true}
           path="/informationmodels/:id"
         />
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(ConceptComparePage)",
+              "type": [Function],
+            }
+          }
           exact={true}
           path="/concepts/compare"
         />
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(ConceptItemConceptDatasetReferencesResolver)",
+              "type": [Function],
+            }
+          }
           exact={true}
           path="/concepts/:id"
         />
@@ -89,14 +127,32 @@ exports[`should render App correctly 1`] = `
             Object {
               "$$typeof": Symbol(react.memo),
               "compare": null,
-              "type": [Function],
+              "type": Object {
+                "$$typeof": Symbol(react.memo),
+                "WrappedComponent": Object {
+                  "$$typeof": Symbol(react.memo),
+                  "compare": null,
+                  "type": [Function],
+                },
+                "compare": null,
+                "displayName": "Connect(Component)",
+                "type": [Function],
+              },
             }
           }
           exact={true}
           path="/datasets/:datasetId"
         />
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(ApiItemReferencedDatasetsReferencedInformationModelsResolver)",
+              "type": [Function],
+            }
+          }
           exact={true}
           path="/apis/:id"
         />
@@ -106,7 +162,15 @@ exports[`should render App correctly 1`] = `
           path="/news/:id"
         />
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(DatasetStatsApiStatsConceptStatsMostUsedConceptsResolver)",
+              "type": [Function],
+            }
+          }
           exact={true}
           path="/reports"
         />
@@ -128,6 +192,6 @@ exports[`should render App correctly 1`] = `
       </Switch>
     </withRouter(ScrollToTop)>
   </Switch>
-  <Footer />
+  <w />
 </div>
 `;

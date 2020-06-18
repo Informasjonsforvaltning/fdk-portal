@@ -17,6 +17,8 @@ const Title = styled.h2`
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 1em;
+  font-size: 2.4rem;
+  font-weight: 600;
 `;
 
 const Section = styled.div`
@@ -24,7 +26,8 @@ const Section = styled.div`
 `;
 
 const SectionHeader = styled.h3`
-  color: ${({ theme }) => theme.colors.neutralDark};
+  color: ${({ theme }) => theme.extendedColors.neutralDark};
+  font-size: 2rem;
   font-weight: 300;
   margin-bottom: 1em;
   overflow: hidden;
@@ -35,7 +38,7 @@ const SectionHeader = styled.h3`
 const ObjectTypeExpansionPanel = styled(ExpansionPanel)<{
   showWithoutHeadAndPadding?: boolean;
 }>`
-  background-color: ${({ theme }) => theme.colors.neutralLightest};
+  background-color: ${({ theme }) => theme.extendedColors.neutralLightest};
   border-radius: 5px;
   margin-bottom: 0.5em;
   padding: 1em;
@@ -54,7 +57,7 @@ const ObjectTypeExpansionPanel = styled(ExpansionPanel)<{
         display: none;
       `}
        
-    color: ${({ theme }) => theme.colors.link};
+    color: ${({ theme }) => theme.extendedColors.link};
     font-size: 2rem;
     font-weight: 600;
   }

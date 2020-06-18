@@ -35,9 +35,9 @@ describe('Detail component', () => {
     expect(detailRootElement.childNodes).toHaveLength(2);
     expect(detailRootElement.firstElementChild).toBe(detailPropertyElement);
     expect(detailRootElement.lastElementChild).toBe(detailValueElement);
-    expect(detailPropertyElement).not.toBeEmpty();
+    expect(detailPropertyElement).not.toBeEmptyDOMElement();
     expect(detailPropertyElement).toHaveTextContent(property);
-    expect(detailValueElement).not.toBeEmpty();
+    expect(detailValueElement).not.toBeEmptyDOMElement();
     expect(detailValueElement).toHaveTextContent(textValue);
 
     rerender(<Detail property={property} value={<Component />} />, { theme });
@@ -55,9 +55,9 @@ describe('Detail component', () => {
     expect(detailRootElement.childNodes).toHaveLength(2);
     expect(detailRootElement.firstElementChild).toBe(detailPropertyElement);
     expect(detailRootElement.lastElementChild).toBe(detailValueElement);
-    expect(detailPropertyElement).not.toBeEmpty();
+    expect(detailPropertyElement).not.toBeEmptyDOMElement();
     expect(detailPropertyElement).toHaveTextContent(property);
-    expect(detailValueElement).not.toBeEmpty();
+    expect(detailValueElement).not.toBeEmptyDOMElement();
     expect(detailValueElement).toHaveTextContent(textValue);
   });
 });

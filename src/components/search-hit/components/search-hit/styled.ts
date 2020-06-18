@@ -3,18 +3,17 @@ import styled from 'styled-components';
 import RoundedTagSC from '../../../rounded-tag/styled';
 
 const SearchHit = styled.article`
-    background-color: #FFF;
-    border-radius: 5px;
-    padding: 1em;
-    margin-bottom: 1em;
-    
-    a {
-        text-decoration: none;
-        cursor: pointer;
-        
-        &:hover {
-            text-decoration: underline;
-        }
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 1em;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 `;
@@ -25,6 +24,7 @@ const Publisher = styled.div`
 
 const Description = styled.p`
   font-size: 2rem;
+  margin-bottom: 2.3rem;
 `;
 
 const OpenData = styled.div`

@@ -76,16 +76,19 @@ exports[`should render DatasetInfo correctly 1`] = `
           ago={false}
           calendar={false}
           decimal={false}
-          element="time"
+          element={null}
           filter={[Function]}
           format="DD.MM.YYYY"
           fromNow={false}
           interval={60000}
+          local={false}
           onChange={[Function]}
+          titleFormat=""
           toNow={false}
           unit={null}
           unix={false}
           utc={false}
+          withTitle={false}
         >
           1483228800000
         </t>
@@ -100,16 +103,19 @@ exports[`should render DatasetInfo correctly 1`] = `
           ago={false}
           calendar={false}
           decimal={false}
-          element="time"
+          element={null}
           filter={[Function]}
           format="DD.MM.YYYY"
           fromNow={false}
           interval={60000}
+          local={false}
           onChange={[Function]}
+          titleFormat=""
           toNow={false}
           unit={null}
           unix={false}
           utc={false}
+          withTitle={false}
         >
           1514764799000
         </t>

@@ -26,7 +26,7 @@ import { NewsBreadcrumb } from './news-breadcrumb/news-breadcrumb';
 const routes = [
   {
     path: getConfig().themeNap ? PATHNAME_DATASETS : PATHNAME_MAIN_PAGE,
-    breadcrumb: (
+    breadcrumb: () => (
       <PathNameBreadcrumb
         pathName={getConfig().themeNap ? 'homeNAP' : 'home'}
       />
@@ -36,25 +36,25 @@ const routes = [
   { path: '/apis/:id', breadcrumb: ApiBreadcrumb },
   {
     path: `${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`,
-    breadcrumb: <PathNameBreadcrumb pathName="conceptsCompare" />
+    breadcrumb: () => <PathNameBreadcrumb pathName="conceptsCompare" />
   },
   { path: '/concepts/:id', breadcrumb: ConceptBreadcrumb },
   {
     path: `${PATHNAME_INFORMATIONMODELS}/:id`,
     breadcrumb: InformationModelBreadcrumb
   },
-  { path: '/about', breadcrumb: <PathNameBreadcrumb pathName="about" /> },
+  { path: '/about', breadcrumb: () => <PathNameBreadcrumb pathName="about" /> },
   {
     path: '/about-registration',
-    breadcrumb: <PathNameBreadcrumb pathName="aboutRegistration" />
+    breadcrumb: () => <PathNameBreadcrumb pathName="aboutRegistration" />
   },
   {
     path: '/reports',
-    breadcrumb: <PathNameBreadcrumb pathName="reports" />
+    breadcrumb: () => <PathNameBreadcrumb pathName="reports" />
   },
   {
     path: PATHNAME_NEWS_ARCHIVE,
-    breadcrumb: <PathNameBreadcrumb pathName="newsArchive" />
+    breadcrumb: () => <PathNameBreadcrumb pathName="newsArchive" />
   },
   {
     path: `${PATHNAME_NEWS_ARTICLE}/:id`,
@@ -62,11 +62,11 @@ const routes = [
   },
   {
     path: PATHNAME_GUIDANCE,
-    breadcrumb: <PathNameBreadcrumb pathName="guidance" />
+    breadcrumb: () => <PathNameBreadcrumb pathName="guidance" />
   },
   {
     path: PATHNAME_ORGANIZATIONS,
-    breadcrumb: <PathNameBreadcrumb pathName="organizations" />
+    breadcrumb: () => <PathNameBreadcrumb pathName="organizations" />
   }
 ];
 
@@ -83,13 +83,11 @@ const PureBreadcrumbs = ({ breadcrumbs }) => {
       <div className="fdk-p-path">
         <div className="container">
           <p className="row col-12 col-xs-12 my-2">
-            {breadcrumbs.map((breadcrumb, index) => (
-              <span key={breadcrumb.key}>
+            {breadcrumbs.map(({ key, match, breadcrumb }, index) => (
+              <span key={key}>
                 {index < breadcrumbs.length - 1 && (
                   <>
-                    <NavLink to={breadcrumb.props.match.url}>
-                      {breadcrumb}
-                    </NavLink>
+                    <NavLink to={match.url}>{breadcrumb}</NavLink>
                     <i className="fa fa-angle-right fdk-fa-path" />
                   </>
                 )}

@@ -11,7 +11,7 @@ describe('Title component', () => {
 
     const { container } = render(<Title>{text}</Title>);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(container.children).toHaveLength(1);
     expect(container.childNodes).toHaveLength(1);
     expect(container).toHaveTextContent(text);

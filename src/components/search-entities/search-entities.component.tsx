@@ -16,8 +16,8 @@ interface Props {
   losItems: any;
   mediatypes?: MediaType[];
   compareConceptList?: Concept[] | undefined;
-  addConcept?: Function;
-  removeConcept?: Function;
+  addConcept?: (concept: Partial<Concept>) => void;
+  removeConcept?: (id?: string) => void;
 }
 
 const renderEntity = (
@@ -42,7 +42,9 @@ const renderEntity = (
       return (
         <ThemeProvider
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).colors[Entity.DATASET]
+            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+              Entity.DATASET
+            ]
           }
         >
           <DatasetItem
@@ -56,7 +58,7 @@ const renderEntity = (
       return (
         <ThemeProvider
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).colors[
+            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
               Entity.DATA_SERVICE
             ]
           }
@@ -68,7 +70,9 @@ const renderEntity = (
       return (
         <ThemeProvider
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).colors[Entity.CONCEPT]
+            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+              Entity.CONCEPT
+            ]
           }
         >
           <ConceptItem
@@ -83,7 +87,7 @@ const renderEntity = (
       return (
         <ThemeProvider
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).colors[
+            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
               Entity.INFORMATION_MODEL
             ]
           }

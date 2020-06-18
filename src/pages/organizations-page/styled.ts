@@ -4,6 +4,7 @@ import { Entity } from '../../types/enums';
 
 const Header = styled.h1`
   font-size: 4rem;
+  font-weight: 600;
   text-align: center;
 `;
 
@@ -53,10 +54,12 @@ const Info = styled.div`
 `;
 
 const CountTag = styled.div<{ type?: Entity }>`
-    color: ${({ theme }) => theme.colors.neutralDarker};
+    color: ${({ theme }) => theme.extendedColors.neutralDarker};
     text-align: center;
     background-color: ${({ type, theme }) =>
-      type ? theme.colors[type]?.light : theme.colors.neutralLighter};
+      type
+        ? theme.extendedColors[type]?.light
+        : theme.extendedColors.neutralLighter};
     border-radius: 20px;
     border: none;
     padding: .3em .6em;

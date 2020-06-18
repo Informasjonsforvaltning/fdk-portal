@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 const ModelDescription = styled.div`
-    color: ${({ theme }) => theme.colors.neutralDarker};
-    font-size: 1.6rem;
-    font-weight: 400;
-    display: flex;
-    flex-direction: column;
-  }
+  color: ${({ theme }) => theme.extendedColors.neutralDarker};
+  font-size: 1.6rem;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
 `;
 
 const DescriptionField = styled.div`

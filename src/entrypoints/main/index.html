@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="nb">
 	<head>
-		<!-- <base href="/" /> -->
 		<title>Felles datakatalog</title>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Felles Datakatalog er en oversikt over hvilke data de ulike offentlige virksomhetene har, hvordan de henger sammen og hva de betyr. Datakatalogen gjør det mulig for deg å søke i opplysningene hos offentlige virksomheter og bruke de til for eksempel analyseformål.">
 		<meta name="author" content="Digitaliseringsdirektoratet" />
-		<meta property="og:url" content="https://fellesdatakatalog.digdir.no" />
+		<meta property="og:url" content="https://data.norge.no" />
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="Felles datakatalog" />
 		<meta property="og:description" content="Felles Datakatalog er en oversikt over hvilke data de ulike offentlige virksomhetene har, hvordan de henger sammen og hva de betyr. Datakatalogen gjør det mulig for deg å søke i opplysningene hos offentlige virksomheter og bruke de til for eksempel analyseformål." />
@@ -26,13 +25,11 @@
 			  );
 			}
 		</script>
-		<!-- <link media="screen" rel="stylesheet"
-			href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900"> -->
 		<link rel="alternate" type="application/rss+xml" title="RSS"
-			href="https://www.fellesdatakatalog.brreg.no/datasets.rss">
+			href="https://data.norge.no/datasets.rss">
 		<link rel="alternate" type="application/atom+xml" title="Atom"
-			href="https://www.fellesdatakatalog.brreg.no/datasets.atom">
-		<script src="/config.js"></script>
+			href="https://data.norge.no/datasets.atom">
+		<script src="<%= webpackConfig.output.publicPath %>config.js"></script> 
 	</head>
 	<body>
 		<div id="root"></div>

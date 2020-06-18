@@ -14,6 +14,11 @@ const Twitter = styled.div`
   border-radius: 5px;
   margin-top: 3em;
   padding: 2em 2em;
+
+  & > h2 {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
 `;
 
 export default { Content, Twitter };

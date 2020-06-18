@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { compose } from 'redux';
 import { fetchReferenceDataIfNeededAction } from '../../redux/modules/referenceData';
 import { DatasetDetailsPagePure } from './dataset-details-page-pure';
 import { datasetDetailsPageResolver } from './dataset-details-page-resolver';

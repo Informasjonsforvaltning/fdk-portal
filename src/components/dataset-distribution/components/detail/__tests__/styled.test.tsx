@@ -83,7 +83,7 @@ describe('Styled components for Detail component', () => {
         [
           { property: 'flex-basis', value: '30%' },
           { property: 'font-weight', value: 'bold' },
-          { property: 'color', value: theme.colors.textDefault }
+          { property: 'color', value: theme.extendedColors.textDefault }
         ],
         renderWithTheme,
         { theme }

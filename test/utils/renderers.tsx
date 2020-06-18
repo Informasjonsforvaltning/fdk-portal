@@ -4,16 +4,20 @@ import { ThemeProvider } from 'styled-components';
 
 export const renderWithTheme = (
   children: any,
-  { theme = {} }: { theme?: any }
+  { theme, ...options }: Record<string, unknown> = {}
 ) => {
   const rendered = render(
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    <ThemeProvider theme={theme}>{children}</ThemeProvider>,
+    options
   );
   return {
     ...rendered,
-    rerender: (rerenderUi: any, rerenderTheme: any) => {
-      rendered.container.remove();
-      return renderWithTheme(rerenderUi, rerenderTheme);
-    }
+    rerender: (rerenderUi: any, newOptions?: any) =>
+      renderWithTheme(rerenderUi, {
+        theme,
+        ...options,
+        ...newOptions,
+        container: rendered.container
+      })
   };
 };

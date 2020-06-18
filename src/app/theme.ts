@@ -1,7 +1,7 @@
 import { Entity } from '../types/enums';
 
 export const themeFDK = {
-  colors: {
+  extendedColors: {
     headerBg: '#FFFFFF',
     primary: '#00C3FF',
     primaryLight: '#B3EDFF',
@@ -71,7 +71,7 @@ export const themeFDK = {
 };
 
 export const themeNAP = {
-  colors: {
+  extendedColors: {
     header: '#FFFFFF',
     headerBg: '#444F55',
     primary: '#ED9300',

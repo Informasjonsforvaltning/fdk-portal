@@ -25,10 +25,21 @@
     }
   }
   .fdk-button-menu {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    padding: .8em .9em;
     @include themify($themes) {
       background-color: themed('color-button-primary-1');
       color: themed('color-button-text-primary');
     }
+  }
+}
+
+.fdk-dropdownmenu {
+  font-size: 1.4rem !important;
+
+  & > * {
+    line-height: 2.56rem !important;
   }
 }
 

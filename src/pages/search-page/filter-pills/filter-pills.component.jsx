@@ -12,6 +12,8 @@ import {
   clearFilters
 } from '../search-location-helper';
 
+import SC from './styled';
+
 const getFilterLabel = (key, keyValue, publishers) => {
   if (
     keyValue.toUpperCase() === 'UKJENT' ||
@@ -152,7 +154,7 @@ export const FilterPills = ({
 
   return (
     <div>
-      <h3>{localization.activeFilter}</h3>
+      <SC.Heading>{localization.activeFilter}</SC.Heading>
       <div className="d-flex flex-wrap mt-4">
         {pills(history, location, locationSearch, themesItems, publishers)}
       </div>

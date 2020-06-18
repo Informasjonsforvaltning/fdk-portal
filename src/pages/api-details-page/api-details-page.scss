@@ -1,5 +1,9 @@
 @import '../../../node_modules/designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
 
+.fdk-detail-date {
+    font-size: 1.4rem;
+}
+
 .fdk-icon-catalog-api {
     background-image: url("/img/icon-catalog-api-lg.svg");
     width: 3.5em; 

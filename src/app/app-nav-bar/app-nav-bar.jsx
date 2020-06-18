@@ -40,6 +40,7 @@ export function AppNavBar(props) {
                   : localization.linkToFdk
               }
               href={getConfig().themeNap ? PATHNAME_HOME_NAP : '/'}
+              className="d-flex"
             >
               <span className="uu-invisible" aria-hidden="false">
                 Gå til forside

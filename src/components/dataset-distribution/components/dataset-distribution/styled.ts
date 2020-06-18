@@ -23,7 +23,7 @@ const DatasetDistribution = styled(ExpansionPanel)`
       margin-left: 24px;
 
       & > svg > path {
-        fill: ${({ theme }) => theme.colors.dataset.dark};
+        fill: ${({ theme }) => theme.extendedColors.dataset.dark};
       }
     }
   }
@@ -45,7 +45,7 @@ const DownloadButton = styled.a`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  background: ${({ theme }) => theme.colors.neutralDarkest};
+  background: ${({ theme }) => theme.extendedColors.neutralDarkest};
   color: white !important;
   box-shadow: 0 2px 4px rgba(45, 55, 65, 0.25);
 
