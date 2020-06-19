@@ -18,5 +18,13 @@
     &:last-child {
       border-bottom: 0;
     }
+
+    & h3 {
+      font-size: 2rem;
+    }
+
+    & h3, & h4 {
+      font-weight: 600;
+    }
   }
 }

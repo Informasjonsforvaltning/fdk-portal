@@ -22,7 +22,7 @@ const Filter = styled.div`
 
   input {
     border: none;
-    color: ${({ theme }) => theme.colors.neutralDarker};
+    color: ${({ theme }) => theme.extendedColors.neutralDarker};
     flex: 1;
     line-height: normal;
     outline: none;
@@ -43,7 +43,7 @@ const ClearIcon = styled(ClearIconBase)`
   height: 20px;
 
   & > path {
-    fill: ${({ theme }) => theme.colors.neutralDarker};
+    fill: ${({ theme }) => theme.extendedColors.neutralDarker};
   }
 
   @media (max-width: 768px) {

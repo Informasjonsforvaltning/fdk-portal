@@ -107,7 +107,9 @@ const DatasetDetailsPage: FC<Props> = ({
   const entity = Entity.DATASET;
 
   const theme = {
-    entityColours: (getConfig().themeNap ? themeNAP : themeFDK).colors[entity]
+    entityColours: (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+      entity
+    ]
   };
 
   const isAuthoritative = dataset?.provenance?.code === 'NASJONAL';

@@ -1,13 +1,13 @@
-name: Build, test and deploy to production (digdir) on merge to master branch
+name: Build and deploy to staging when pull request is created
 
 on:
   push:
     branches:
-      - master
+      - develop
 
 jobs:
-  build-test-and-deploy-production:
-    name: Build, test, publish and deploy to production environment
+  build-and-deploy:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +23,8 @@ jobs:
       # Configure docker to use the gcloud command-line tool as a credential helper
       - run: gcloud auth configure-docker
 
-      - name: Build Docker image
-        run: docker build . -t eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA -t eu.gcr.io/digdir-fdk-infra/fdk-portal:latest
+      - name: Build Docker image with GitHub commit sha tag
+        run: docker build . -t eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA -t eu.gcr.io/digdir-fdk-infra/fdk-portal:staging_latest --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish docker image to Google Cloud
         run: docker -- push eu.gcr.io/digdir-fdk-infra/fdk-portal
@@ -37,19 +37,19 @@ jobs:
             helm init --client-only
             helm repo add fdk https://informasjonsforvaltning.github.io/helm-chart/
             helm fetch --untar --untardir ./helm fdk/fdk-portal
-            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA" -f ./helm/fdk-portal/values/prod-digdir.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
+            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA" -f ./helm/fdk-portal/values/staging.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
             chmod o+w ./kubectlapply.yaml
             cat kubectlapply.yaml
 
       - name: Get kubeconfig file from GKE
         uses: machine-learning-apps/gke-kubeconfig@master
         with:
-          application_credentials: ${{ secrets.DIGDIR_FDK_PROD_AUTODEPLOY }}
-          project_id: digdir-fdk-prod
+          application_credentials: ${{ secrets.DIGDIR_FDK_DEV_AUTODEPLOY }}
+          project_id: digdir-fdk-dev
           location_zone: europe-north1-a
-          cluster_name: digdir-fdk-prod
+          cluster_name: digdir-fdk-dev
 
-      - name: Deploy to production
+      - name: Deploy to staging
         uses: docker://bitnami/kubectl:latest
         env:
           KUBECONFIG: '/github/workspace/.kube/config'
@@ -61,11 +61,4 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         uses: pullreminders/slack-action@master
         with:
-          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to digdir-production\"}'
-
-      - name: Trigger deploy to demo
-        uses: peter-evans/repository-dispatch@master
-        with:
-          token: ${{ secrets.DISPATCH_TOKEN }}
-          event-type: deploy-demo-digdir
-          client-payload: '{"sha": "${{ github.sha }}"}'
+          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to staging\"}'

@@ -12,8 +12,8 @@ import { getTranslateText } from '../../lib/translateText';
 interface Props {
   concept: Concept;
   concepts?: Concept[];
-  onAddConcept?: Function;
-  onDeleteConcept?: Function;
+  onAddConcept?: (concept: Partial<Concept>) => void;
+  onDeleteConcept?: (id?: string) => void;
 }
 
 function getSourceRelationshipLabel(sourceRelationship: string) {
@@ -78,8 +78,8 @@ const renderExample = (example: Partial<TextLanguage>) => {
 const renderAddRemoveCompareButton = (
   item: Partial<Concept>,
   showCompare: boolean,
-  onAddConcept: Function,
-  onDeleteConcept: Function
+  onAddConcept: (concept: Partial<Concept>) => void,
+  onDeleteConcept: (id?: string) => void
 ) => {
   if (showCompare) {
     return (

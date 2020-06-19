@@ -5,7 +5,7 @@ import localization from '../../../../lib/localization';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   searchQuery: string;
-  setSearchQuery: Function;
+  setSearchQuery: (query: string) => void;
 }
 const OrganizationFilter: FC<Props> = ({ searchQuery, setSearchQuery }) => {
   return (

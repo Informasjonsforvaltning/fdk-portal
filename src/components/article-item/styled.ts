@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 
 const Title = styled.h3`
   font-size: 1.5em;
-  margin-top: 0.2em;
+  font-weight: 600;
+  margin: 0.2em 0;
 `;
 
 const ArticleItem = styled.article`
@@ -12,7 +13,7 @@ const ArticleItem = styled.article`
   margin-bottom: 2em;
   word-break: break-word;
   & > a {
-    color: ${({ theme }) => theme.colors.neutralDarker};
+    color: ${({ theme }) => theme.extendedColors.neutralDarker};
     text-decoration: none;
     &:hover {
       ${Title} {
@@ -23,7 +24,7 @@ const ArticleItem = styled.article`
 `;
 
 const Date = styled.span`
-  color: ${({ theme }) => theme.colors.neutralDark};
+  color: ${({ theme }) => theme.extendedColors.neutralDark};
 `;
 
 const Abstract = styled.p`

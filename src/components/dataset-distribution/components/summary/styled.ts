@@ -10,8 +10,10 @@ const Summary = styled.div`
 const Title = styled.h4`
   flex: 1;
   margin: 0;
+  line-height: 1.5;
   font-size: 16px;
-  color: ${({ theme }) => theme.colors.textDefault};
+  font-weight: 600;
+  color: ${({ theme }) => theme.extendedColors.textDefault};
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

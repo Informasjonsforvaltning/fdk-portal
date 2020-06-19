@@ -5,7 +5,7 @@ const ButtonToggle = styled.button<{
   borderLeft?: boolean;
   borderRight?: boolean;
 }>`
-    background-color: ${({ theme }) => theme.colors.neutralLight};
+    background-color: ${({ theme }) => theme.extendedColors.neutralLight};
     border: none;
     padding: .5em;
     ${({ borderLeft }) =>
@@ -25,7 +25,8 @@ const ButtonToggle = styled.button<{
     ${({ selected }) =>
       selected
         ? css`
-            background-color: ${({ theme }) => theme.colors.neutralDarker};
+            background-color: ${({ theme }) =>
+              theme.extendedColors.neutralDarker};
             box-shadow: 0 4px 8px rgba(45, 55, 65, 0.2);
             color: #fff;
             &:before {
@@ -43,7 +44,6 @@ const ButtonToggle = styled.button<{
     @media (min-width: 992px) {
       min-width: 14em;
     }    
-  }
 `;
 
 export default {

@@ -18,20 +18,27 @@ export default css`
 
   #root > div {
     &.${Entity.DATASET} {
-      background: ${({ theme }) => theme.colors[Entity.DATASET].lighter};
+      background: ${({ theme }) =>
+        theme.extendedColors[Entity.DATASET].lighter};
     }
 
     &.${Entity.DATA_SERVICE} {
-      background: ${({ theme }) => theme.colors[Entity.DATA_SERVICE].lighter};
+      background: ${({ theme }) =>
+        theme.extendedColors[Entity.DATA_SERVICE].lighter};
     }
 
     &.${Entity.CONCEPT} {
-      background: ${({ theme }) => theme.colors[Entity.CONCEPT].lighter};
+      background: ${({ theme }) =>
+        theme.extendedColors[Entity.CONCEPT].lighter};
     }
 
     &.${Entity.INFORMATION_MODEL} {
       background: ${({ theme }) =>
-        theme.colors[Entity.INFORMATION_MODEL].lighter};
+        theme.extendedColors[Entity.INFORMATION_MODEL].lighter};
     }
+  }
+
+  footer {
+    margin-top: 60px;
   }
 `;

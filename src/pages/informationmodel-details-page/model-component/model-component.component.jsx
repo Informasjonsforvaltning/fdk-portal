@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import _ from 'lodash';
 import { Collapse } from 'reactstrap';
-import { withStateHandlers } from 'recompose';
 import Scroll from 'react-scroll';
 
 import {
@@ -90,8 +89,10 @@ const renderType = (type, nativeType) => {
   return null;
 };
 
-export const ModelComponentPure = props => {
-  const { name, definitions, collapse, onToggle } = props;
+export const ModelComponentPure = ({ name, definitions }) => {
+  const [collapse, setCollapse] = useState(false);
+
+  const onToggle = () => setCollapse(!collapse);
 
   if (!definitions) {
     return null;
@@ -138,14 +139,4 @@ ModelComponentPure.propTypes = {
   definitions: PropTypes.object
 };
 
-const enhance = withStateHandlers(
-  ({ initialCollapse = false }) => ({
-    collapse: initialCollapse
-  }),
-  {
-    onToggle: ({ collapse }) => () => ({ collapse: !collapse })
-  }
-);
-
-export const ModelComponentWithState = enhance(ModelComponentPure);
-export const ModelComponent = ModelComponentWithState;
+export const ModelComponent = ModelComponentPure;

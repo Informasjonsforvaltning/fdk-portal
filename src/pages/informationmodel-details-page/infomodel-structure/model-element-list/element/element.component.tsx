@@ -19,7 +19,15 @@ interface Props {
 }
 
 const ElementPure: FC<Props> = ({
-  property: { identifier, name, parameters, type, concept }
+  property: {
+    identifier,
+    name,
+    description,
+    belongsToModule,
+    parameters,
+    type,
+    concept
+  }
 }) => (
   <SC.ObjectTypeElementExpansionPanel
     shouldExpandOnHeadClick={false}
@@ -48,7 +56,12 @@ const ElementPure: FC<Props> = ({
     </ExpansionPanelHead>
     <ExpansionPanelBody>
       {(identifier || concept) && (
-        <Description identifier={identifier} concept={concept} />
+        <Description
+          identifier={identifier}
+          description={description}
+          concept={concept}
+          belongsToModule={belongsToModule}
+        />
       )}
     </ExpansionPanelBody>
   </SC.ObjectTypeElementExpansionPanel>

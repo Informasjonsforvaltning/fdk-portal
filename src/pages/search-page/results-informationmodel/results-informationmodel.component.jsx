@@ -77,7 +77,7 @@ const renderHits = (hits, losItems) => {
       <ErrorBoundary key={item.id}>
         <ThemeProvider
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).colors[
+            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
               Entity.INFORMATION_MODEL
             ]
           }

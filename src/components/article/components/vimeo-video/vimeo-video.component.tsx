@@ -8,7 +8,7 @@ interface Props {
 }
 
 const VimeoVideo: FC<Props> = ({ videoLinkValue }) => {
-  const [vimeoData, setVimeoData] = useState();
+  const [vimeoData, setVimeoData] = useState<any>();
   useEffect(() => {
     if (videoLinkValue) {
       getVimeoData(videoLinkValue).then(setVimeoData);

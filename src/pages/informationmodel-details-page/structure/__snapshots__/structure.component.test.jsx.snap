@@ -29,7 +29,7 @@ exports[`should render Structure success correctly with props 1`] = `
     className="border-top pt-3 pb-3 d-flex flex-column"
     key="0"
   >
-    <withStateHandlers(ModelComponentPure)
+    <ModelComponentPure
       definitions={
         Object {
           "Adresse": Object {
@@ -203,7 +203,7 @@ exports[`should render Structure success correctly with props 1`] = `
     className="border-top pt-3 pb-3 d-flex flex-column"
     key="1"
   >
-    <withStateHandlers(ModelComponentPure)
+    <ModelComponentPure
       definitions={
         Object {
           "Adresse": Object {
@@ -377,7 +377,7 @@ exports[`should render Structure success correctly with props 1`] = `
     className="border-top pt-3 pb-3 d-flex flex-column"
     key="2"
   >
-    <withStateHandlers(ModelComponentPure)
+    <ModelComponentPure
       definitions={
         Object {
           "Adresse": Object {
@@ -551,7 +551,7 @@ exports[`should render Structure success correctly with props 1`] = `
     className="border-top pt-3 pb-3 d-flex flex-column"
     key="3"
   >
-    <withStateHandlers(ModelComponentPure)
+    <ModelComponentPure
       definitions={
         Object {
           "Adresse": Object {
@@ -725,7 +725,7 @@ exports[`should render Structure success correctly with props 1`] = `
     className="border-top pt-3 pb-3 d-flex flex-column"
     key="4"
   >
-    <withStateHandlers(ModelComponentPure)
+    <ModelComponentPure
       definitions={
         Object {
           "Adresse": Object {
@@ -899,7 +899,7 @@ exports[`should render Structure success correctly with props 1`] = `
     className="border-top pt-3 pb-3 d-flex flex-column"
     key="5"
   >
-    <withStateHandlers(ModelComponentPure)
+    <ModelComponentPure
       definitions={
         Object {
           "Adresse": Object {
@@ -1073,7 +1073,7 @@ exports[`should render Structure success correctly with props 1`] = `
     className="border-top pt-3 pb-3 d-flex flex-column"
     key="6"
   >
-    <withStateHandlers(ModelComponentPure)
+    <ModelComponentPure
       definitions={
         Object {
           "Adresse": Object {
@@ -1247,7 +1247,7 @@ exports[`should render Structure success correctly with props 1`] = `
     className="border-top pt-3 pb-3 d-flex flex-column"
     key="7"
   >
-    <withStateHandlers(ModelComponentPure)
+    <ModelComponentPure
       definitions={
         Object {
           "Adresse": Object {
@@ -1421,7 +1421,7 @@ exports[`should render Structure success correctly with props 1`] = `
     className="border-top pt-3 pb-3 d-flex flex-column"
     key="8"
   >
-    <withStateHandlers(ModelComponentPure)
+    <ModelComponentPure
       definitions={
         Object {
           "Adresse": Object {

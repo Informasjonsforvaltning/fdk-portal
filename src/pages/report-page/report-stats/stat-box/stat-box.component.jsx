@@ -2,7 +2,7 @@ import some from 'lodash/some';
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import PieChart from 'react-minimal-pie-chart';
+import { PieChart } from 'react-minimal-pie-chart';
 import { Motion, spring } from 'react-motion';
 
 import './stat-box.scss';

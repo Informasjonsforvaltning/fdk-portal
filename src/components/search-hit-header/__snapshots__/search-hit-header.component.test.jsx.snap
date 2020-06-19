@@ -6,7 +6,7 @@ exports[`should render SearchHitHeader with harvest dates 1`] = `
     className="mb-2 d-flex flex-wrap align-items-center"
   >
     <h1
-      className="mr-3"
+      className="mr-3 search-hit-header-title"
       name="Test tittel"
     >
       Test tittel

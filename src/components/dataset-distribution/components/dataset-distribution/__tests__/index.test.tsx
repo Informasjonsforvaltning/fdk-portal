@@ -92,7 +92,23 @@ describe('DatasetDistribution component', () => {
 
     cleanup();
 
-    rerender(<DatasetDistribution distribution={{ description }} />, { theme });
+    rerender(<DatasetDistribution distribution={{ description }} />);
+
+    datasetDistributionRootElement = getByTestId(testIds.root);
+    datasetDistributionSummaryElement = getByTestId(testIds.summary);
+    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
+    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
+
+    expect(datasetDistributionRootElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toHaveTextContent(description.en);
+    expect(datasetDistributionDetailElements).toHaveLength(1);
+    expect(datasetDistributionDetailElements[0]).toHaveTextContent(
+      description.en
+    );
+    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
+
+    datasetDistributionSummaryElement.click();
 
     datasetDistributionRootElement = getByTestId(testIds.root);
     datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -105,27 +121,9 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionDetailElements).toHaveLength(0);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
-    datasetDistributionSummaryElement.click();
-
-    datasetDistributionRootElement = getByTestId(testIds.root);
-    datasetDistributionSummaryElement = getByTestId(testIds.summary);
-    datasetDistributionDetailElements = getAllByTestId(testIds.detail);
-    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
-
-    expect(datasetDistributionRootElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toHaveTextContent(description.en);
-    expect(datasetDistributionDetailElements).toHaveLength(1);
-    expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      description.en
-    );
-    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
     cleanup();
 
-    rerender(<DatasetDistribution distribution={{ title, description }} />, {
-      theme
-    });
+    rerender(<DatasetDistribution distribution={{ title, description }} />);
 
     datasetDistributionRootElement = getByTestId(testIds.root);
     datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -157,24 +155,8 @@ describe('DatasetDistribution component', () => {
     cleanup();
 
     rerender(
-      <DatasetDistribution distribution={{ title, description, format }} />,
-      {
-        theme
-      }
+      <DatasetDistribution distribution={{ title, description, format }} />
     );
-
-    datasetDistributionRootElement = getByTestId(testIds.root);
-    datasetDistributionSummaryElement = getByTestId(testIds.summary);
-    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
-    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
-
-    expect(datasetDistributionRootElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
-    expect(datasetDistributionDetailElements).toHaveLength(0);
-    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    datasetDistributionSummaryElement.click();
 
     datasetDistributionRootElement = getByTestId(testIds.root);
     datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -193,15 +175,25 @@ describe('DatasetDistribution component', () => {
     );
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
+    datasetDistributionSummaryElement.click();
+
+    datasetDistributionRootElement = getByTestId(testIds.root);
+    datasetDistributionSummaryElement = getByTestId(testIds.summary);
+    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
+    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
+
+    expect(datasetDistributionRootElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
+    expect(datasetDistributionDetailElements).toHaveLength(0);
+    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
+
     cleanup();
 
     rerender(
       <DatasetDistribution
         distribution={{ title, description, format, license: licenseWithLabel }}
-      />,
-      {
-        theme
-      }
+      />
     );
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -253,24 +245,8 @@ describe('DatasetDistribution component', () => {
           format,
           license: licenseWithoutLabel
         }}
-      />,
-      {
-        theme
-      }
+      />
     );
-
-    datasetDistributionRootElement = getByTestId(testIds.root);
-    datasetDistributionSummaryElement = getByTestId(testIds.summary);
-    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
-    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
-
-    expect(datasetDistributionRootElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
-    expect(datasetDistributionDetailElements).toHaveLength(0);
-    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    datasetDistributionSummaryElement.click();
 
     datasetDistributionRootElement = getByTestId(testIds.root);
     datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -298,6 +274,19 @@ describe('DatasetDistribution component', () => {
     ).toHaveAttribute('href', licenseWithoutLabel.uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
+    datasetDistributionSummaryElement.click();
+
+    datasetDistributionRootElement = getByTestId(testIds.root);
+    datasetDistributionSummaryElement = getByTestId(testIds.summary);
+    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
+    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
+
+    expect(datasetDistributionRootElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
+    expect(datasetDistributionDetailElements).toHaveLength(0);
+    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
+
     cleanup();
 
     rerender(
@@ -309,10 +298,7 @@ describe('DatasetDistribution component', () => {
           license: licenseWithLabel,
           downloadURL
         }}
-      />,
-      {
-        theme
-      }
+      />
     );
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -366,24 +352,8 @@ describe('DatasetDistribution component', () => {
           downloadURL,
           accessURL
         }}
-      />,
-      {
-        theme
-      }
+      />
     );
-
-    datasetDistributionRootElement = getByTestId(testIds.root);
-    datasetDistributionSummaryElement = getByTestId(testIds.summary);
-    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
-    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
-
-    expect(datasetDistributionRootElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
-    expect(datasetDistributionDetailElements).toHaveLength(0);
-    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    datasetDistributionSummaryElement.click();
 
     datasetDistributionRootElement = getByTestId(testIds.root);
     datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -420,6 +390,19 @@ describe('DatasetDistribution component', () => {
     ).toHaveAttribute('href', licenseWithLabel.uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
+    datasetDistributionSummaryElement.click();
+
+    datasetDistributionRootElement = getByTestId(testIds.root);
+    datasetDistributionSummaryElement = getByTestId(testIds.summary);
+    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
+    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
+
+    expect(datasetDistributionRootElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
+    expect(datasetDistributionDetailElements).toHaveLength(0);
+    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
+
     cleanup();
 
     rerender(
@@ -433,10 +416,7 @@ describe('DatasetDistribution component', () => {
           accessURL,
           conformsTo: conformsToWithLabel
         }}
-      />,
-      {
-        theme
-      }
+      />
     );
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -509,24 +489,8 @@ describe('DatasetDistribution component', () => {
           accessURL,
           conformsTo: conformsToWithoutLabel
         }}
-      />,
-      {
-        theme
-      }
+      />
     );
-
-    datasetDistributionRootElement = getByTestId(testIds.root);
-    datasetDistributionSummaryElement = getByTestId(testIds.summary);
-    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
-    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
-
-    expect(datasetDistributionRootElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toBeInTheDocument();
-    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
-    expect(datasetDistributionDetailElements).toHaveLength(0);
-    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    datasetDistributionSummaryElement.click();
 
     datasetDistributionRootElement = getByTestId(testIds.root);
     datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -572,6 +536,19 @@ describe('DatasetDistribution component', () => {
     ).toHaveAttribute('href', conformsToWithoutLabel[0].uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
+    datasetDistributionSummaryElement.click();
+
+    datasetDistributionRootElement = getByTestId(testIds.root);
+    datasetDistributionSummaryElement = getByTestId(testIds.summary);
+    datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
+    datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
+
+    expect(datasetDistributionRootElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toBeInTheDocument();
+    expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
+    expect(datasetDistributionDetailElements).toHaveLength(0);
+    expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
+
     cleanup();
 
     rerender(
@@ -586,10 +563,7 @@ describe('DatasetDistribution component', () => {
           conformsTo: conformsToWithLabel,
           page
         }}
-      />,
-      {
-        theme
-      }
+      />
     );
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -673,7 +647,7 @@ describe('DatasetDistribution component', () => {
     const datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
     const datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(datasetDistributionRootElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toBeInTheDocument();
     expect(datasetDistributionDetailElements).toHaveLength(0);
@@ -694,7 +668,7 @@ describe('DatasetDistribution component', () => {
     let datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
     let datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(datasetDistributionRootElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toBeInTheDocument();
     expect(datasetDistributionDetailElements).toHaveLength(0);
@@ -707,7 +681,7 @@ describe('DatasetDistribution component', () => {
     datasetDistributionDetailElements = getAllByTestId(testIds.detail);
     datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(datasetDistributionRootElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toBeInTheDocument();
     expect(datasetDistributionDetailElements).toHaveLength(1);
@@ -720,7 +694,7 @@ describe('DatasetDistribution component', () => {
     datasetDistributionDetailElements = queryAllByTestId(testIds.detail);
     datasetDistributionMoreInfoElement = queryByTestId(testIds.moreInfo);
 
-    expect(container).not.toBeEmpty();
+    expect(container).not.toBeEmptyDOMElement();
     expect(datasetDistributionRootElement).toBeInTheDocument();
     expect(datasetDistributionSummaryElement).toBeInTheDocument();
     expect(datasetDistributionDetailElements).toHaveLength(0);

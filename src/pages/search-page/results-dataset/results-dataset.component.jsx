@@ -120,7 +120,9 @@ const renderHits = (datasetItems, losItems, mediatypes) => {
       <ErrorBoundary key={dataset.id}>
         <ThemeProvider
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).colors[Entity.DATASET]
+            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+              Entity.DATASET
+            ]
           }
         >
           <DatasetItem

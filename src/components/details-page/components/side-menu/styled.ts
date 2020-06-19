@@ -5,6 +5,7 @@ const SideMenu = styled.aside``;
 const Title = styled.h3`
   margin: 15px 0;
   font-size: 24px;
+  font-weight: 600;
 `;
 
 const Menu = styled.nav`

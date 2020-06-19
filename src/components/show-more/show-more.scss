@@ -2,8 +2,6 @@
 
 .show-more__cropped-box-measure {
   position:relative;
-  max-height:12rem;
-  overflow:hidden;
 }
 
 .show-more__cropped-box {
@@ -21,5 +19,9 @@
   position:absolute;
   left:0;
   top:0;
-  background:linear-gradient(rgba(255,255,255,0) calc( 100% - 5rem - 2.3rem ), $color-neutral-lightest);
+  background:linear-gradient(rgba(255,255,255,0) calc(100% - 5rem - 2.3rem), $color-neutral-lightest);
+}
+
+.fdk-ingress {
+  margin-bottom: 28px;
 }

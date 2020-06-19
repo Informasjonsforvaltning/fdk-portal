@@ -9,6 +9,7 @@ import localization from '../../../../lib/localization';
 interface Props {
   identifier?: string;
   description?: Partial<TextLanguage>;
+  belongsToModule?: Partial<TextLanguage>;
   version?: string;
   concept?: Partial<Concept>;
 }
@@ -17,7 +18,8 @@ export const Description: FC<Props> = ({
   identifier,
   description,
   version,
-  concept: { id, prefLabel, definition, publisher, uri } = {}
+  concept: { id, prefLabel, definition, publisher, uri } = {},
+  belongsToModule
 }) => (
   <SC.ModelDescription>
     {description && (
@@ -68,6 +70,15 @@ export const Description: FC<Props> = ({
           {localization.infoMod.modelDescription.conceptReference}:
         </strong>
         {uri}
+      </SC.DescriptionField>
+    )}
+
+    {getTranslateText(belongsToModule) && (
+      <SC.DescriptionField>
+        <strong>
+          {localization.infoMod.modelDescription.belongsToModule}:
+        </strong>
+        {getTranslateText(belongsToModule)}
       </SC.DescriptionField>
     )}
   </SC.ModelDescription>

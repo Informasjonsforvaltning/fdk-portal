@@ -5,7 +5,7 @@ const ObjectTypeElementExpansionPanel = styled(ExpansionPanel)`
   background-color: transparent;
   border-radius: none;
   border-bottom: 1px solid;
-  border-bottom-color: ${({ theme }) => theme.colors.neutralLighter};
+  border-bottom-color: ${({ theme }) => theme.extendedColors.neutralLighter};
   margin-bottom: 0.5em;
 
   ${SC.ExpansionPanel.Head} {
@@ -13,7 +13,7 @@ const ObjectTypeElementExpansionPanel = styled(ExpansionPanel)`
   }
 
   ${SC.ExpansionPanel.HeadContent} {
-    color: ${({ theme }) => theme.colors.neutralDarker};
+    color: ${({ theme }) => theme.extendedColors.neutralDarker};
     font-size: 1.6rem;
     font-weight: 400;
     display: flex;

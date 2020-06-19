@@ -2,21 +2,29 @@ import styled from 'styled-components';
 import ArticleItemSC from '../../../article-item/styled';
 
 const Article = styled.article`
-    display: flex;
-    flex-flow: column;
-    font-size: 1rem;
-    word-wrap: break-word;
+  display: flex;
+  flex-flow: column;
+  font-size: 1rem;
+  word-wrap: break-word;
+
+  & p {
+    margin-bottom: 2.3rem;
+  }
+
+  & a > p {
+    margin-bottom: 0;
   }
 `;
 
 const Date = styled.div`
-  color: ${({ theme }) => theme.colors.neutralDark};
+  color: ${({ theme }) => theme.extendedColors.neutralDark};
   font-size: 1.6em;
   margin-bottom: 0.5em;
 `;
 
 const Title = styled.h1`
   font-size: 3em;
+  font-weight: 600;
 `;
 
 const Abstract = styled.p`
@@ -37,7 +45,7 @@ const FullWidthImage = styled.img`
 `;
 
 const AsideContent = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutralLighter};
+  background-color: ${({ theme }) => theme.extendedColors.neutralLighter};
   border-radius: 5px;
   padding: 3em;
 
