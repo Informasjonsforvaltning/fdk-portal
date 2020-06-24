@@ -4,7 +4,7 @@ import { fetchCatalogsIfNeededAction } from '../../redux/modules/catalogs';
 
 const mapStateToProps = ({ catalogs, publishers }: any) => ({
   catalogs: catalogs?.items ?? [],
-  publishers: publishers?.publisherItems ?? []
+  publishers: publishers?.publisherItems ?? {}
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

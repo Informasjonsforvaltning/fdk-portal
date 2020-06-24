@@ -25,6 +25,7 @@ exports[`should render ReportPagePure correctly 1`] = `
       <ReportStats
         catalogs={null}
         entityName={null}
+        mostUsedConcepts={Array []}
         publishers={null}
       />
     </div>

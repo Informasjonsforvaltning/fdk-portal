@@ -191,7 +191,8 @@ export const ReportStats = props => {
 ReportStats.defaultProps = {
   entityName: null,
   catalogs: null,
-  publishers: null
+  publishers: null,
+  mostUsedConcepts: null
 };
 
 ReportStats.propTypes = {
@@ -200,5 +201,6 @@ ReportStats.propTypes = {
   conceptStats: PropTypes.object.isRequired,
   entityName: PropTypes.string,
   catalogs: PropTypes.object,
-  publishers: PropTypes.object
+  publishers: PropTypes.object,
+  mostUsedConcepts: PropTypes.object
 };

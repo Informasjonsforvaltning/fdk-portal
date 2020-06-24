@@ -1,6 +1,6 @@
 import { compose } from 'redux';
 
-import { ReportPagePure } from './report-page-pure';
+import ReportPagePure from './report-page-pure';
 import { reportPageConnector } from './report-page-connector';
 import { reportPageResolver } from './report-page-resolver';
 

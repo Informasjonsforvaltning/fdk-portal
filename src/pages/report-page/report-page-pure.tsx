@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, memo } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import qs from 'qs';
 import { Button } from 'reactstrap';
 
@@ -9,20 +9,31 @@ import { PublishersTree } from './publishers-tree/publishers-tree.component';
 import { getParamFromLocation } from '../../lib/addOrReplaceUrlParam';
 import { ReportStats } from './report-stats/report-stats.component';
 import { isFilterActive } from './filter-helper';
+import { Publisher } from '../../types';
 
-export function ReportPagePure({
-  location,
-  history,
-  fetchPublishersIfNeeded,
-  publishers,
+interface Props extends RouteComponentProps {
+  publishers?: any;
+  datasetStats: any;
+  apiStats: any;
+  conceptStats: any;
+  catalogs: any;
+  mostUsedConcepts?: any;
+  fetchPublishersIfNeeded: any;
+  fetchCatalogsIfNeeded: any;
+}
+const ReportPagePure: FC<Props> = ({
+  publishers = {},
   datasetStats,
   apiStats,
   conceptStats,
   catalogs,
+  mostUsedConcepts = [],
   fetchCatalogsIfNeeded,
-  mostUsedConcepts
-}) {
-  function selectPublisher(publisher) {
+  fetchPublishersIfNeeded,
+  location,
+  history
+}) => {
+  function selectPublisher(publisher: Partial<Publisher> | null) {
     const orgPath = publisher && publisher.orgPath;
     const currentSearch = qs.parse(location.search, {
       ignoreQueryPrefix: true
@@ -46,8 +57,8 @@ export function ReportPagePure({
   fetchPublishersIfNeeded();
   fetchCatalogsIfNeeded();
 
-  const orgPath = getParamFromLocation(location, 'orgPath');
-  const selectedPublisher = publishers && publishers[orgPath];
+  const orgPath = getParamFromLocation(location, 'orgPath')?.toString();
+  const selectedPublisher = orgPath && publishers && publishers[orgPath];
 
   return (
     <section className="container">
@@ -85,16 +96,6 @@ export function ReportPagePure({
       </div>
     </section>
   );
-}
-
-ReportPagePure.defaultProps = {
-  fetchPublishersIfNeeded: PropTypes.func,
-  publishers: {}
 };
 
-ReportPagePure.propTypes = {
-  fetchPublishersIfNeeded: PropTypes.func,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  publishers: PropTypes.object
-};
+export default memo(ReportPagePure);
