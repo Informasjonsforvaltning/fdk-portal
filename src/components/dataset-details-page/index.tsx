@@ -159,6 +159,7 @@ const DatasetDetailsPage: FC<Props> = ({
   const referencedDataServices = dataServices;
   const datasetReferenceTypes = dataset?.references ?? [];
   const keywords = dataset?.keyword?.map(translate)?.filter(Boolean) ?? [];
+  const qualifiedAttributions = dataset?.qualifiedAttributions ?? [];
   const spatialRestrictions = dataset?.spatial ?? [];
   const temporalRestrictions = dataset?.temporal ?? [];
   const contactPoints = dataset?.contactPoint ?? [];
@@ -594,6 +595,22 @@ const DatasetDetailsPage: FC<Props> = ({
                   </Link>
                 ))}
               </InlineList>
+            </ContentSection>
+          )}
+          {qualifiedAttributions.length > 0 && (
+            <ContentSection
+              id="qualifiedAttributions"
+              title={
+                translations.detailsPage.sectionTitles.dataset
+                  .qualifiedAttributions
+              }
+            >
+              {qualifiedAttributions
+                .map(
+                  ({ agent: { name, prefLabel } }) =>
+                    translate(prefLabel) || name
+                )
+                .join(', ')}
             </ContentSection>
           )}
           {(spatialRestrictions.length > 0 ||

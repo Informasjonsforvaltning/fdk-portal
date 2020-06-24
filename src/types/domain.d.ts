@@ -188,6 +188,7 @@ export interface Dataset {
   informationModel?: Partial<ReferenceType>[];
   language?: Partial<ReferenceType>[];
   landingPage: string[];
+  qualifiedAttributions: QualifiedAttribution[];
 }
 
 export interface Api {
@@ -286,4 +287,9 @@ export interface Organization {
   concept_count: number;
   dataservice_count: number;
   informationmodel_count: number;
+}
+
+interface QualifiedAttribution {
+  agent: Partial<Publisher>;
+  role: string;
 }
