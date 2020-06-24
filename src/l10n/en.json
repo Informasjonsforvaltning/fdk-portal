@@ -510,6 +510,7 @@
         "datasetReferences": "Relations",
         "dataserviceReferences": "Used in data service (API)",
         "keywords": "Keywords",
+        "qualifiedAttributions": "Content providers",
         "restrictions": "Restrictions",
         "contactInformation": "Contact information"
       }
