@@ -296,3 +296,23 @@ export interface DataPoint {
   xAxis: string;
   yAxis: string;
 }
+
+interface Report {
+  totalObjects: string;
+  newLastWeek: string;
+  catalogs: KeyWithCountObject[];
+}
+
+export interface DatasetsReport extends Report {
+  formats: KeyWithCountObject[];
+  nationalComponent: string;
+  opendata: string;
+  withSubject: string;
+  accessRights: KeyWithCountObject[];
+  themesAndTopicsCount: KeyWithCountObject[];
+}
+
+export interface KeyWithCountObject {
+  key: string;
+  count: string;
+}
