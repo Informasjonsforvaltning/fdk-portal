@@ -9,7 +9,7 @@ exports[`should render ReportStats correctly 1`] = `
       className="col-12 fdk-container-statsx"
     >
       <h1>
-        Showing numbers for 
+        Showing numbers for
         <strong>
           Test entity
         </strong>

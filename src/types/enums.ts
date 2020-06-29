@@ -35,3 +35,14 @@ export enum SortOrder {
   ASC,
   DSC
 }
+
+export enum Filter {
+  LASTXDAYS = 'last_x_days',
+  OPENDATA = 'opendata',
+  ACCESSRIGHTS = 'accessrights',
+  PROVENANCE = 'provenance',
+  SUBJECTEXISTS = 'subjectExists',
+  FORMAT = 'format',
+  LOS = 'losTheme',
+  ORGPATH = 'orgPath'
+}

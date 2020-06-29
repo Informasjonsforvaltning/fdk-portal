@@ -167,7 +167,7 @@ exports[`should render App correctly 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(DatasetStatsDataServiceStatsConceptStatsMostUsedConceptsResolver)",
+              "displayName": "Connect(DatasetsReportDatasetsTimeseriesDataServiceStatsConceptStatsInformationModelsReportResolver)",
               "type": [Function],
             }
           }
