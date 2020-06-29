@@ -21,7 +21,10 @@ const mapFilters = ({
   provenance,
   uris,
   accessService,
-  subject
+  subject,
+  last_x_days,
+  format,
+  subjectExists
 }: any) => {
   const filters = [];
   if (id) {
@@ -70,6 +73,17 @@ const mapFilters = ({
         field: 'subject.identifier.keyword',
         values: [subject]
       }
+    });
+  }
+  if (last_x_days) {
+    filters.push({ last_x_days });
+  }
+  if (format) {
+    filters.push({ format });
+  }
+  if (subjectExists) {
+    filters.push({
+      exists: 'subject'
     });
   }
 
