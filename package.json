@@ -48,6 +48,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "classnames": "^2.2.5",
+    "clean-deep": "^3.3.0",
     "core-js": "^3.6.5",
     "deserialize-json-api": "^1.4.0",
     "designsystemet": "git+https://github.com/Informasjonsforvaltning/designsystemet.git#1.4.25",
