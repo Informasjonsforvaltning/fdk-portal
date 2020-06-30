@@ -2,18 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { resolve } from 'react-resolver';
-import { getDataset } from '../../../api/datasets';
+import {
+  searchDatasets,
+  paramsToSearchBody,
+  extractFirstDataset
+} from '../../../api/search-fulltext-api/datasets';
 import { getTranslateText } from '../../../lib/translateText';
 
-const memoizedGetDataset = _.memoize(getDataset);
+const memoizedGetDatasets = _.memoize(searchDatasets);
 
-export const PureDatasetBreadcrumb = props => {
-  const { datasetItem } = props;
-  return <span>{getTranslateText(datasetItem && datasetItem.title)}</span>;
-};
+export const PureDatasetBreadcrumb = ({ datasetItem = {} }) => (
+  <span>{getTranslateText(datasetItem?.title)}</span>
+);
 
 const mapProps = {
-  datasetItem: props => memoizedGetDataset(props.match.params.id)
+  datasetItem: ({ match: { params: { id } = {} } = {} }) =>
+    id &&
+    memoizedGetDatasets(paramsToSearchBody({ id }))
+      .then(extractFirstDataset)
+      .catch(() => null)
 };
 
 PureDatasetBreadcrumb.defaultProps = {
