@@ -70,7 +70,6 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
             }
           }
           centered={false}
-          container="body"
           fade={true}
           isOpen={false}
           keyboard={true}
