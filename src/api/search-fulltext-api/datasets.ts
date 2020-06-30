@@ -11,15 +11,22 @@ const mapSorting = ({ sortfield }: any) =>
     : undefined;
 
 const mapFilters = ({
+  id,
   losTheme: los,
   orgPath,
   theme,
   opendata,
   accessrights: accessRights,
   spatial,
-  provenance
+  provenance,
+  uris,
+  accessService,
+  subject
 }: any) => {
   const filters = [];
+  if (id) {
+    filters.push({ _id: id });
+  }
   if (los) {
     filters.push({ los });
   }
@@ -40,6 +47,30 @@ const mapFilters = ({
   }
   if (provenance) {
     filters.push({ provenance });
+  }
+  if (uris) {
+    filters.push({
+      collection: {
+        field: 'uri',
+        values: uris
+      }
+    });
+  }
+  if (accessService) {
+    filters.push({
+      collection: {
+        field: 'distribution.accessService.endpointDescription.uri.keyword',
+        values: [accessService]
+      }
+    });
+  }
+  if (subject) {
+    filters.push({
+      collection: {
+        field: 'subject.identifier.keyword',
+        values: [subject]
+      }
+    });
   }
 
   // Filter out NAP data if filterTransportDatasets in conf is true
@@ -68,4 +99,6 @@ export const extractDatasetAggregations = (searchResponse: any) =>
   normalizeAggregations(searchResponse).aggregations ?? [];
 
 export const extractDatasetsTotal = (searchResponse: any) =>
-  searchResponse.page.totalElements ?? 0;
+  searchResponse?.page?.totalElements ?? 0;
+
+export const extractFirstDataset = ({ hits = [] }: any) => hits[0] ?? {};
