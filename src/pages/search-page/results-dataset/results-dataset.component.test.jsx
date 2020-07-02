@@ -3,10 +3,10 @@ import { shallow } from 'enzyme';
 import { ResultsDatasetPure } from './results-dataset.component';
 import datasetsResponse from '../__fixtures/datasetsApiResponse.json';
 import {
-  extractAggregations,
+  extractDatasetAggregations,
   extractDatasets,
-  extractTotal
-} from '../../../api/datasets';
+  extractDatasetsTotal
+} from '../../../api/search-fulltext-api/datasets';
 
 test('should render ResultsDataset correctly with minimum of props', () => {
   const result = shallow(<ResultsDatasetPure />);
@@ -15,9 +15,9 @@ test('should render ResultsDataset correctly with minimum of props', () => {
 
 test('should render ResultsDataset correctly with hits', () => {
   const props = {
-    datasetItems: extractDatasets(datasetsResponse),
-    datasetAggregations: extractAggregations(datasetsResponse),
-    datasetTotal: extractTotal(datasetsResponse)
+    datasetItems: extractDatasets(datasetsResponse?.hits),
+    datasetAggregations: extractDatasetAggregations(datasetsResponse),
+    datasetTotal: extractDatasetsTotal(datasetsResponse)
   };
   const result = shallow(<ResultsDatasetPure {...props} />);
   expect(result).toMatchSnapshot();
