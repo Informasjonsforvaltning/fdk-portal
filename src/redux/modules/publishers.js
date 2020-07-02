@@ -1,7 +1,10 @@
 import _ from 'lodash';
 import keyBy from 'lodash/keyBy';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
-import { getAllPublishers } from '../../api/publishers';
+import {
+  getOrganizations,
+  extractOrganizations
+} from '../../api/organization-catalogs-api/organizations';
 
 export const PUBLISHERS_REQUEST = 'PUBLISHERS_REQUEST';
 export const PUBLISHERS_SUCCESS = 'PUBLISHERS_SUCCESS';
@@ -20,7 +23,7 @@ export function fetchPublishersIfNeededAction() {
   return (dispatch, getState) => {
     if (shouldFetch(_.get(getState(), ['publishers', 'meta']))) {
       dispatch(
-        reduxFsaThunk(() => getAllPublishers(), {
+        reduxFsaThunk(() => getOrganizations().then(extractOrganizations), {
           onBeforeStart: { type: PUBLISHERS_REQUEST },
           onSuccess: { type: PUBLISHERS_SUCCESS },
           onError: { type: PUBLISHERS_FAILURE }
