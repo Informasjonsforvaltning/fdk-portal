@@ -123,10 +123,10 @@ const DatasetDetailsPage: FC<Props> = ({
   const title = translate(dataset?.title);
   const description = parse(sanitise(translate(dataset?.descriptionFormatted)));
   const publisher = translate(
-    dataset?.publisher.prefLabel || dataset?.publisher.name
+    dataset?.publisher?.prefLabel || dataset?.publisher?.name
   );
   const lastPublished = formatDate(
-    dateStringToDate(dataset?.harvest.firstHarvested)
+    dateStringToDate(dataset?.harvest?.firstHarvested)
   );
   const objective = translate(dataset?.objective);
   const distributions = dataset?.distribution ?? [];
@@ -138,7 +138,7 @@ const DatasetDetailsPage: FC<Props> = ({
     standards: dataset?.conformsTo ?? [],
     informationModelReferences: dataset?.informationModel ?? [],
     languages: dataset?.language ?? [],
-    moreInformationPage: dataset?.landingPage[0]
+    moreInformationPage: dataset?.landingPage?.[0]
   };
   const samples = dataset?.sample ?? [];
   const provenance = {
@@ -382,7 +382,7 @@ const DatasetDetailsPage: FC<Props> = ({
                     />
                     <KeyValueListItem
                       property={translations.dataset.distribution.format}
-                      value={formats.join(', ')}
+                      value={formats?.join(', ')}
                     />
                     <KeyValueListItem
                       property={translations.dataset.distribution.accessUrl}
