@@ -12,7 +12,7 @@ const env = window.env || {
 // env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
 // env.ORGANIZATION_HOST =
 //   'https://organization-bff.staging.fellesdatakatalog.digdir.no';
-// env.ORGANIZATION_CATALOG_API_HOST = 'https://organization-catalogue.staging.fellesdatakatalog.digdir.no';
+// env.ORGANIZATION_CATALOGUE_HOST = 'https://organization-catalogue.staging.fellesdatakatalog.digdir.no';
 // env.USE_DEMO_LOGO = true;
 
 const searchApi = {
@@ -41,11 +41,7 @@ const config = {
   searchFullTextApi: { host: env.SEARCH_FULLTEXT_HOST },
   cmsApi: { host: env.CMS_API_HOST },
   organizationsApi: { host: env.ORGANIZATION_HOST },
-  organizationsCatalogApi: {
-    host: env.SEARCH_HOST?.includes('staging')
-      ? 'https://organization-catalogue.staging.fellesdatakatalog.digdir.no'
-      : 'https://organization-catalogue.fellesdatakatalog.digdir.no'
-  }
+  organizationsCatalogApi: { host: env.ORGANIZATION_CATALOGUE_HOST }
 };
 
 export const getConfig = () => config;
