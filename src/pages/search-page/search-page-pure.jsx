@@ -76,7 +76,7 @@ const SearchPage = props => {
     hits: searchAllEntitiesHits,
     page: searchAllEntitiesPage,
     aggregations: allResultsEntititesAggregations
-  } = searchAllEntities;
+  } = searchAllEntities || {};
 
   const locationSearch = parseSearchParams(location);
   const locationSearchParamQ = _.pick(locationSearch, 'q');
@@ -224,11 +224,11 @@ const SearchPage = props => {
           </SearchBoxTitle>
           {!getConfig().themeNap && (
             <Tabs
-              countResults={searchAllEntities.page.totalElements}
-              countDatasets={datasetTotal}
-              countConcepts={conceptTotal}
-              countApis={apiTotal}
-              countInformationModels={informationModelTotal}
+              countResults={searchAllEntities?.page?.totalElements || 0}
+              countDatasets={datasetTotal || 0}
+              countConcepts={conceptTotal || 0}
+              countApis={apiTotal || 0}
+              countInformationModels={informationModelTotal || 0}
             />
           )}
         </SearchBox>
