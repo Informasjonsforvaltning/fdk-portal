@@ -24,7 +24,7 @@ const getFilterLabel = (key, keyValue, publishers) => {
   if (key === 'orgPath') {
     const currentPublisher = publishers[keyValue];
     if (!currentPublisher) {
-      return _.capitalize(keyValue);
+      return _.capitalize(keyValue.replace(/^\/|\/$/g, ''));
     }
     return (
       localization.facet.publishers[currentPublisher.name] ||
