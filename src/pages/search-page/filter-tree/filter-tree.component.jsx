@@ -109,16 +109,17 @@ const mainTree = ({
 
     let name = node.key;
     if (referenceDataItems) {
-      const currentPublisher = referenceDataItems[node.key];
+      const { key } = node || {};
+      const currentPublisher = referenceDataItems[key];
       if (
-        currentPublisher &&
-        (currentPublisher.id === 'STAT' ||
-          currentPublisher.id === 'FYLKE' ||
-          currentPublisher.id === 'KOMMUNE' ||
-          currentPublisher.id === 'PRIVAT' ||
-          currentPublisher.id === 'ANNET')
+        key &&
+        (key === '/STAT' ||
+          key === '/FYLKE' ||
+          key === '/KOMMUNE' ||
+          key === '/PRIVAT' ||
+          key === '/ANNET')
       ) {
-        name = localization.facet.publishers[currentPublisher.name];
+        name = _.capitalize(key.replace(/^\/|\/$/g, ''));
       } else if (currentPublisher) {
         name = getTranslateText(_.get(currentPublisher, 'prefLabel', node.key));
       }
