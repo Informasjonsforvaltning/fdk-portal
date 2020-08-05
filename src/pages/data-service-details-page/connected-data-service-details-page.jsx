@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchPublishersIfNeededAction } from '../../redux/modules/publishers';
-import { ResolvedApiDetailsPage } from './resolved-api-details-page';
+import { ResolvedDataServiceDetailsPage } from './resolved-data-service-details-page';
 import {
   fetchReferenceDataIfNeededAction,
   REFERENCEDATA_PATH_APISTATUS,
@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
     )
 });
 
-export const ConnectedApiDetailsPage = connect(
+export const ConnectedDataServiceDetailsPage = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ResolvedApiDetailsPage);
+)(ResolvedDataServiceDetailsPage);

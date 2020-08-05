@@ -14,7 +14,7 @@ import { parseSearchParams } from '../../../lib/location-history-helper';
 import { FilterPills } from '../filter-pills/filter-pills.component';
 import { getConfig } from '../../../config';
 import { themeFDK, themeNAP } from '../../../app/theme';
-import { ApiItem } from '../../../components/api-item/api-item.component';
+import { DataServiceItem } from '../../../components/data-service-item/data-service-item.component';
 import { ErrorBoundary } from '../../../components/error-boundary/error-boundary';
 
 import { Entity } from '../../../types/enums';
@@ -24,7 +24,7 @@ import EmptyHits from '../../../components/empty-hits/empty.component';
 const renderFilterModal = ({
   showFilterModal,
   closeFilterModal,
-  apiAggregations,
+  dataServiceAggregations,
   locationSearch,
   publisherCounts,
   publishers,
@@ -45,7 +45,7 @@ const renderFilterModal = ({
         <FilterBox
           htmlKey={2}
           title={localization.facet.format}
-          filter={_.get(apiAggregations, 'formats')}
+          filter={_.get(dataServiceAggregations, 'formats')}
           onClick={onFilterFormat}
           activeFilter={locationSearch.format}
         />
@@ -70,7 +70,7 @@ const renderHits = hits => {
             ]
           }
         >
-          <ApiItem api={item} />
+          <DataServiceItem dataService={item} />
         </ThemeProvider>
       </ErrorBoundary>
     ));
@@ -81,9 +81,9 @@ const renderHits = hits => {
 export const ResultsApiPure = ({
   showFilterModal,
   closeFilterModal,
-  apiItems,
-  apiTotal,
-  apiAggregations,
+  dataServiceItems,
+  dataServiceTotal,
+  dataServiceAggregations,
   onFilterPublisherHierarchy,
   onFilterFormat,
   publisherCounts,
@@ -95,7 +95,7 @@ export const ResultsApiPure = ({
   const locationSearch = parseSearchParams(location);
 
   const page = parseInt(locationSearch.page || 0, 10);
-  const pageCount = Math.ceil((apiTotal || 1) / hitsPerPage);
+  const pageCount = Math.ceil((dataServiceTotal || 1) / hitsPerPage);
 
   const sortfield = getSortfield(location);
 
@@ -113,7 +113,7 @@ export const ResultsApiPure = ({
 
   return (
     <main data-test-id="apis" id="content">
-      {apiItems && apiItems.length > 0 ? (
+      {dataServiceItems && dataServiceItems.length > 0 ? (
         <>
           <div className="row mb-3">
             <div className="col-12">
@@ -162,12 +162,12 @@ export const ResultsApiPure = ({
                 publishers={publishers}
               />
 
-              {apiAggregations && (
+              {dataServiceAggregations && (
                 <div>
                   {renderFilterModal({
                     showFilterModal,
                     closeFilterModal,
-                    apiAggregations,
+                    dataServiceAggregations,
                     locationSearch,
                     publisherCounts,
                     publishers,
@@ -184,7 +184,7 @@ export const ResultsApiPure = ({
                   <FilterBox
                     htmlKey={2}
                     title={localization.facet.format}
-                    filter={_.get(apiAggregations, 'formats')}
+                    filter={_.get(dataServiceAggregations, 'formats')}
                     onClick={onFilterFormat}
                     activeFilter={locationSearch.format}
                   />
@@ -192,7 +192,7 @@ export const ResultsApiPure = ({
               )}
             </aside>
             <div id="apis" className="col-12 col-lg-8">
-              {renderHits(apiItems)}
+              {renderHits(dataServiceItems)}
 
               <div className="col-12 d-flex justify-content-center">
                 <span className="uu-invisible" aria-hidden="false">
@@ -232,9 +232,9 @@ ResultsApiPure.defaultProps = {
   showFilterModal: false,
   closeFilterModal: _.noop,
 
-  apiItems: [],
-  apiTotal: 0,
-  apiAggregations: null,
+  dataServiceItems: [],
+  dataServiceTotal: 0,
+  dataServiceAggregations: null,
 
   onFilterPublisherHierarchy: _.noop,
   onFilterFormat: _.noop,
@@ -251,9 +251,9 @@ ResultsApiPure.propTypes = {
   showFilterModal: PropTypes.bool,
   closeFilterModal: PropTypes.func,
 
-  apiItems: PropTypes.array,
-  apiTotal: PropTypes.number,
-  apiAggregations: PropTypes.object,
+  dataServiceItems: PropTypes.array,
+  dataServiceTotal: PropTypes.number,
+  dataServiceAggregations: PropTypes.object,
 
   onFilterPublisherHierarchy: PropTypes.func,
   onFilterFormat: PropTypes.func,

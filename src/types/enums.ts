@@ -1,6 +1,6 @@
 export enum SearchTypes {
   dataset,
-  api,
+  dataservice,
   concept,
   informationModel
 }

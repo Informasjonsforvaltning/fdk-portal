@@ -216,7 +216,7 @@ const renderRelatedApi = (referencedApis, publisherItems) => {
       <div key={`reference-${index}`} className="list-regular--item">
         <SearchHitHeader
           title={item.title}
-          titleLink={`/apis/${encodeURIComponent(item.id)}`}
+          titleLink={`/dataservices/${encodeURIComponent(item.id)}`}
           publisherLabel={`${localization.responsible}:`}
           publisher={item.publisher}
           publisherItems={publisherItems}

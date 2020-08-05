@@ -47,7 +47,7 @@ exports[`should render App correctly 1`] = `
     <Route
       component={[Function]}
       exact={true}
-      path="/apis"
+      path="/dataservices"
     />
     <Route
       component={[Function]}
@@ -149,12 +149,12 @@ exports[`should render App correctly 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(ApiItemReferencedDatasetsReferencedInformationModelsResolver)",
+              "displayName": "Connect(DataServiceItemReferencedDatasetsReferencedInformationModelsResolver)",
               "type": [Function],
             }
           }
           exact={true}
-          path="/apis/:id"
+          path="/dataservices/:id"
         />
         <Route
           component={[Function]}
@@ -167,7 +167,7 @@ exports[`should render App correctly 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(DatasetStatsApiStatsConceptStatsMostUsedConceptsResolver)",
+              "displayName": "Connect(DatasetStatsDataServiceStatsConceptStatsMostUsedConceptsResolver)",
               "type": [Function],
             }
           }

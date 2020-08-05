@@ -6,7 +6,7 @@ import Tab from '../tab/tab.component';
 import localization from '../../../../../lib/localization';
 import {
   PATHNAME_SEARCH,
-  PATHNAME_APIS,
+  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS
@@ -57,8 +57,8 @@ const Tabs: FC<Props & RouteComponentProps> = ({
     </Tab>
 
     <Tab
-      active={location.pathname === PATHNAME_APIS}
-      tabLink={getLinkForTab(location, PATHNAME_APIS)}
+      active={location.pathname === PATHNAME_DATA_SERVICES}
+      tabLink={getLinkForTab(location, PATHNAME_DATA_SERVICES)}
       label={localization.apiLabel}
     >
       <SC.IconPlaceholder type={Entity.DATA_SERVICE}>

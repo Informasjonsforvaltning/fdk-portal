@@ -1,21 +1,21 @@
 import _ from 'lodash';
 import { resolve } from 'react-resolver';
 import { getDatasetStats } from '../../api/get-dataset-stats';
-import { getApiStats } from '../../api/get-api-stats';
+import { getDataServiceStats } from '../../api/get-data-service-stats';
 import { getConceptStats } from '../../api/get-concept-stats';
 import { conceptsSearch, extractConcepts } from '../../api/concepts';
 import { getParamFromLocation } from '../../lib/addOrReplaceUrlParam';
 
 const memoizedGetDatasetStats = _.memoize(getDatasetStats);
-const memoizedGetApiStats = _.memoize(getApiStats);
+const memoizedGetDataServiceStats = _.memoize(getDataServiceStats);
 const memoizedGetConceptStats = _.memoize(getConceptStats);
 const memoizedSearchConcepts = _.memoize(conceptsSearch, JSON.stringify);
 
 const mapProps = {
   datasetStats: ({ location }) =>
     memoizedGetDatasetStats(getParamFromLocation(location, 'orgPath')),
-  apiStats: ({ location }) =>
-    memoizedGetApiStats(getParamFromLocation(location, 'orgPath')),
+  dataServiceStats: ({ location }) =>
+    memoizedGetDataServiceStats(getParamFromLocation(location, 'orgPath')),
   conceptStats: ({ location }) =>
     memoizedGetConceptStats(getParamFromLocation(location, 'orgPath')),
   mostUsedConcepts: async ({ location }) => {

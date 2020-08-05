@@ -2,14 +2,17 @@ import _ from 'lodash';
 import { resolve } from 'react-resolver';
 import { InformationModelDetailsPage } from './information-model-details-page';
 import { getInformationmodel } from '../../api/informationmodels';
-import { apisSearch, extractApis } from '../../api/apis';
+import {
+  searchDataServices,
+  extractDataServices
+} from '../../api/search-fulltext-api/dataservices';
 import { findAllByKey } from '../../lib/find-by-key';
 import { conceptsSearch, extractConcepts } from '../../api/concepts';
 import { addReferencedConceptToItem } from '../../lib/addReferencedConceptToItem';
 
 export const getApiByHarvestSourceUri = harvestSourceUri =>
-  apisSearch({ harvestSourceUri })
-    .then(extractApis)
+  searchDataServices({ harvestSourceUri })
+    .then(extractDataServices)
     .catch(() => []);
 
 const memoizedGetInformationModel = _.memoize(getInformationmodel);

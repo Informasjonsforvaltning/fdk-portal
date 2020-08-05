@@ -13,7 +13,7 @@ import { getTranslateText as translate } from '../../../../lib/translateText';
 
 import {
   PATHNAME_DATASETS,
-  PATHNAME_APIS,
+  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_INFORMATIONMODELS
 } from '../../../../constants/constants';
@@ -56,7 +56,7 @@ interface Props extends ReferenceDataProps {
 
 const rootPaths = {
   [Entity.DATASET]: PATHNAME_DATASETS,
-  [Entity.DATA_SERVICE]: PATHNAME_APIS,
+  [Entity.DATA_SERVICE]: PATHNAME_DATA_SERVICES,
   [Entity.CONCEPT]: PATHNAME_CONCEPTS,
   [Entity.INFORMATION_MODEL]: PATHNAME_INFORMATIONMODELS
 };

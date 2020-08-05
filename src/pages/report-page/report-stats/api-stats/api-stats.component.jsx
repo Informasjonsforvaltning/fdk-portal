@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import localization from '../../../../lib/localization';
 import '../report-stats.scss';
 import { StatBox } from '../stat-box/stat-box.component';
-import { PATHNAME_APIS } from '../../../../constants/constants';
+import { PATHNAME_DATA_SERVICES } from '../../../../constants/constants';
 
 export const APIStats = props => {
   const { stats, orgPath } = props;
@@ -25,7 +25,7 @@ export const APIStats = props => {
         <Link
           title={localization.report.aggregation.apiOpenForAll}
           className="mb-3"
-          to={`${PATHNAME_APIS}?isOpenAccess=true${orgPathParam}`}
+          to={`${PATHNAME_DATA_SERVICES}?isOpenAccess=true${orgPathParam}`}
         >
           {stats.openAccess}
         </Link>
@@ -36,7 +36,7 @@ export const APIStats = props => {
         <Link
           title={localization.report.aggregation.apiNotOpenForAll}
           className="mb-3"
-          to={`${PATHNAME_APIS}?isOpenAccess=false${orgPathParam}`}
+          to={`${PATHNAME_DATA_SERVICES}?isOpenAccess=false${orgPathParam}`}
         >
           {stats.notOpenAccess}
         </Link>
@@ -51,7 +51,7 @@ export const APIStats = props => {
         <Link
           title={localization.report.aggregation.apiOpenLicense}
           className="mb-3"
-          to={`${PATHNAME_APIS}?isOpenLicense=true${orgPathParam}`}
+          to={`${PATHNAME_DATA_SERVICES}?isOpenLicense=true${orgPathParam}`}
         >
           {stats.openLicense}
         </Link>
@@ -62,7 +62,7 @@ export const APIStats = props => {
         <Link
           title={localization.report.aggregation.apiNotOpenLicense}
           className="mb-3"
-          to={`${PATHNAME_APIS}?isOpenLicense=false${orgPathParam}`}
+          to={`${PATHNAME_DATA_SERVICES}?isOpenLicense=false${orgPathParam}`}
         >
           {stats.notOpenLicense}
         </Link>
@@ -77,7 +77,7 @@ export const APIStats = props => {
         <Link
           title={localization.report.aggregation.apiFreeUsage}
           className="mb-3"
-          to={`${PATHNAME_APIS}?isFree=true${orgPathParam}`}
+          to={`${PATHNAME_DATA_SERVICES}?isFree=true${orgPathParam}`}
         >
           {stats.freeUsage}
         </Link>
@@ -88,7 +88,7 @@ export const APIStats = props => {
         <Link
           title={localization.report.aggregation.apiNotFreeUsage}
           className="mb-3"
-          to={`${PATHNAME_APIS}?isFree=false${orgPathParam}`}
+          to={`${PATHNAME_DATA_SERVICES}?isFree=false${orgPathParam}`}
         >
           {stats.notFreeUsage}
         </Link>
@@ -111,7 +111,7 @@ export const APIStats = props => {
           <Link
             title={localization.page.datasetTab}
             className="fdk-plain-label"
-            to={`${PATHNAME_APIS}?format=${formatRecord.key}${orgPathParam}`}
+            to={`${PATHNAME_DATA_SERVICES}?format=${formatRecord.key}${orgPathParam}`}
           >
             {formatRecord.count}
           </Link>
