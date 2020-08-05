@@ -16,7 +16,7 @@ export function ReportPagePure({
   fetchPublishersIfNeeded,
   publishers,
   datasetStats,
-  apiStats,
+  dataServiceStats,
   conceptStats,
   catalogs,
   fetchCatalogsIfNeeded,
@@ -75,7 +75,7 @@ export function ReportPagePure({
         <div className="col-md-8">
           <ReportStats
             datasetStats={datasetStats}
-            apiStats={apiStats}
+            apiStats={dataServiceStats}
             conceptStats={conceptStats}
             entityName={selectedPublisher && selectedPublisher.name}
             catalogs={catalogs}

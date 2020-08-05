@@ -5,7 +5,7 @@ import { catalogsReducer } from './modules/catalogs';
 import { referenceDataReducer } from './modules/referenceData';
 import { conceptsCompareReducer } from './modules/conceptsCompare';
 import { datasetsReducer } from './modules/datasets';
-import { apisReducer } from './modules/apis';
+import { dataServicesReducer } from './modules/dataservices';
 import { conceptReducer } from './modules/concepts';
 import { informationModelsReducer } from './modules/informationModels';
 import DatasetReducer from '../components/with-dataset/redux/reducer';
@@ -23,7 +23,7 @@ export const rootReducer = combineReducers({
   referenceData: referenceDataReducer,
   conceptsCompare: conceptsCompareReducer,
   datasets: datasetsReducer,
-  apis: apisReducer,
+  dataServices: dataServicesReducer,
   concepts: conceptReducer,
   informationModels: informationModelsReducer,
   DatasetReducer,

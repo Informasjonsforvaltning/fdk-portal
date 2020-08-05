@@ -13,7 +13,7 @@ import { Tabs } from '../../../components/tabs/tabs.component';
 import { isFilterActive } from '../filter-helper';
 import './report-stats.scss';
 import {
-  PATHNAME_APIS,
+  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS
 } from '../../../constants/constants';
@@ -89,7 +89,7 @@ export const ReportStats = props => {
               <Link
                 title={localization.report.aggregation.public}
                 className="mb-3"
-                to={`${PATHNAME_APIS}${qs.stringify(
+                to={`${PATHNAME_DATA_SERVICES}${qs.stringify(
                   { orgPath },
                   { addQueryPrefix: true }
                 )}`}
@@ -102,7 +102,7 @@ export const ReportStats = props => {
               <Link
                 title={localization.report.aggregation.public}
                 className="mb-3"
-                to={`${PATHNAME_APIS}${qs.stringify(
+                to={`${PATHNAME_DATA_SERVICES}${qs.stringify(
                   { firstHarvested: 7, orgPath },
                   { addQueryPrefix: true }
                 )}`}

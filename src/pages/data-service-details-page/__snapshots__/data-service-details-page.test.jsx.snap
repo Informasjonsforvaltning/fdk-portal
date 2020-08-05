@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render ApiDetailsPage correctly with apiItem 1`] = `
+exports[`should render DataServiceDetailsPage correctly with dataServiceItem 1`] = `
 <main
   className="container"
   id="content"
@@ -360,127 +360,6 @@ exports[`should render ApiDetailsPage correctly with apiItem 1`] = `
 </main>
 `;
 
-exports[`should render ApiDetailsPage correctly with missing api-properties 1`] = `
-<main
-  className="container"
-  id="content"
->
-  <article>
-    <div
-      className="row"
-    >
-      <div
-        className="col-12 col-lg-8 offset-lg-4"
-      >
-        <SideEffect(DocumentMeta)
-          description={null}
-          title={null}
-        />
-        <div
-          className="d-flex fdk-detail-date mb-5"
-        >
-          <i
-            className="align-self-center fdk-icon-catalog-api mr-2"
-          />
-          <strong
-            className="align-self-center"
-          >
-            API-description
-             
-          </strong>
-          <HarvestDate
-            className="align-self-center"
-            harvest={null}
-          />
-        </div>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="col-12 col-lg-4 "
-      >
-        <StickyMenu
-          menuItems={
-            Array [
-              Object {
-                "name": "Terms and restrictions",
-                "prefLabel": "Terms and restrictions",
-              },
-            ]
-          }
-          title="Go to"
-        />
-      </div>
-      <section
-        className="col-12 col-lg-8 mt-3 api-details-section"
-      >
-        <div
-          name={null}
-        >
-          <SearchHitHeader
-            darkThemeBackground={true}
-            externalLink={false}
-            nationalComponent={false}
-            publisher={null}
-            publisherItems={null}
-            publisherLabel="Provider:"
-            publisherTag="span"
-            referenceData={null}
-            statusCode={null}
-            tag="h1"
-            theme={Array []}
-            title={null}
-            titleLink={null}
-            validFromIncluding={null}
-            validToIncluding={null}
-          />
-          <div
-            className="access-icons mb-5 d-flex justify-content-between"
-          />
-        </div>
-        0
-        <ListRegular
-          bottomMargin={true}
-          name={null}
-          title="Terms and restrictions"
-        >
-          <TwoColRow
-            col1="Terms of service"
-            col1Width={null}
-            col2={
-              <a
-                href="https://fellesdatakatalog.brreg.no/about"
-              >
-                https://fellesdatakatalog.brreg.no/about
-                <i
-                  className="fa fa-external-link fdk-fa-right"
-                />
-              </a>
-            }
-            col2Width={null}
-          />
-          <TwoColRow
-            col1="License"
-            col1Width={null}
-            col2={
-              <a
-                href="http://data.norge.no/nlod/no/2.0"
-              >
-                License of API
-                <i
-                  className="fa fa-external-link fdk-fa-right"
-                />
-              </a>
-            }
-            col2Width={null}
-          />
-        </ListRegular>
-      </section>
-    </div>
-  </article>
-</main>
-`;
+exports[`should render DataServiceDetailsPage correctly with missing api-properties 1`] = `""`;
 
-exports[`should render ApiDetailsPage correctly with no apiItem 1`] = `""`;
+exports[`should render DataServiceDetailsPage correctly with no dataServiceItem 1`] = `""`;

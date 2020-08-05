@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import DocumentMeta from 'react-document-meta';
@@ -16,7 +16,7 @@ import { TwoColRow } from '../../components/list-regular/twoColRow/twoColRow';
 import { DatasetReference } from './dataset-reference/dataset-reference.component';
 import { InformationModelReference } from './informationmodel-reference/informationmodel-reference.component';
 import { convertToSanitizedHtml } from '../../lib/markdown-converter';
-import './api-details-page.scss';
+import './data-service-details-page.scss';
 import { AlertMessage } from '../../components/alert-message/alert-message.component';
 import {
   iconIsFree,
@@ -67,7 +67,7 @@ const renderFormats = formats => {
 
 const renderApiUsageInstruction = (servers, apiSpecUrl, apiDocUrl) =>
   servers &&
-  servers.length && (
+  servers.length > 0 && (
     <ApiUsageInstruction
       servers={servers}
       apiSpecUrl={apiSpecUrl}
@@ -406,8 +406,8 @@ const renderExpiredOrDeprecatedVersion = item => {
   return null;
 };
 
-export const ApiDetailsPage = ({
-  apiItem,
+export const DataServiceDetailsPage = ({
+  dataServiceItem,
   publisherItems,
   referencedDatasets,
   referencedInformationModels,
@@ -416,22 +416,24 @@ export const ApiDetailsPage = ({
   fetchApiStatusIfNeeded,
   fetchApiServiceTypeIfNeeded
 }) => {
-  if (!apiItem) {
+  useEffect(() => {
+    fetchPublishersIfNeeded();
+    fetchApiStatusIfNeeded();
+    fetchApiServiceTypeIfNeeded();
+  }, []);
+
+  if (!dataServiceItem) {
     return null;
   }
 
-  fetchPublishersIfNeeded();
-  fetchApiStatusIfNeeded();
-  fetchApiServiceTypeIfNeeded();
-
-  const internalApiSpecUrl = `/api/apis/${apiItem.id}/spec`;
+  const internalApiSpecUrl = `/api/apis/${dataServiceItem.id}/spec`;
 
   const meta = {
-    title: getTranslateText(apiItem.title),
-    description: getTranslateText(apiItem.description)
+    title: getTranslateText(dataServiceItem.title),
+    description: getTranslateText(dataServiceItem.description)
   };
 
-  const { isFree, isOpenAccess, isOpenLicense } = apiItem;
+  const { isFree, isOpenAccess, isOpenLicense } = dataServiceItem;
 
   return (
     <main id="content" className="container">
@@ -447,7 +449,7 @@ export const ApiDetailsPage = ({
               </strong>
               <HarvestDate
                 className="align-self-center"
-                harvest={apiItem.harvest}
+                harvest={dataServiceItem.harvest}
               />
             </div>
           </div>
@@ -455,25 +457,26 @@ export const ApiDetailsPage = ({
 
         <div className="row">
           <div className="col-12 col-lg-4 ">
-            {renderStickyMenu(apiItem, referencedInformationModels)}
+            {renderStickyMenu(dataServiceItem, referencedInformationModels)}
           </div>
 
           <section className="col-12 col-lg-8 mt-3 api-details-section">
-            <div name={getTranslateText(apiItem.title)}>
+            <div name={getTranslateText(dataServiceItem.title)}>
               <SearchHitHeader
-                title={getTranslateText(apiItem.title)}
+                title={getTranslateText(dataServiceItem.title)}
                 publisherLabel={`${localization.provider}:`}
-                publisher={apiItem.publisher}
+                publisher={dataServiceItem.publisher}
                 publisherItems={publisherItems}
-                nationalComponent={apiItem.nationalComponent}
-                statusCode={apiItem.statusCode}
+                nationalComponent={dataServiceItem.nationalComponent}
+                statusCode={dataServiceItem.statusCode}
                 referenceData={referenceData}
                 darkThemeBackground
               />
-              {renderExpiredOrDeprecatedVersion(apiItem)}
+              {renderExpiredOrDeprecatedVersion(dataServiceItem)}
 
               {renderDescription(
-                apiItem.descriptionFormatted || apiItem.description
+                dataServiceItem.descriptionFormatted ||
+                  dataServiceItem.description
               )}
               <div className="access-icons mb-5 d-flex justify-content-between">
                 {isFree === true && iconIsFree()}
@@ -485,36 +488,44 @@ export const ApiDetailsPage = ({
               </div>
             </div>
 
-            {renderFormats(apiItem.formats)}
+            {renderFormats(dataServiceItem.formats)}
 
             {renderApiUsageInstruction(
-              _.get(apiItem, ['apiSpecification', 'servers'], []),
-              apiItem.apiSpecUrl || internalApiSpecUrl,
-              apiItem.apiDocUrl
+              _.get(dataServiceItem, ['apiSpecification', 'servers'], []),
+              dataServiceItem.apiSpecUrl || internalApiSpecUrl,
+              dataServiceItem.apiDocUrl
             )}
 
             {renderApiEndpoints(
-              apiItem.apiSpecification && apiItem.apiSpecification.paths
+              dataServiceItem.apiSpecification &&
+                dataServiceItem.apiSpecification.paths
             )}
 
             {renderAPIInfo({})}
 
             {renderTermsAndRestrictions(
-              _.get(apiItem, ['apiSpecification', 'info', 'termsOfService']),
-              _.get(apiItem, ['apiSpecification', 'info', 'license']),
-              _.get(apiItem, 'cost'),
-              _.get(apiItem, 'usageLimitation'),
-              _.get(apiItem, 'performance'),
-              _.get(apiItem, 'availability')
+              _.get(dataServiceItem, [
+                'apiSpecification',
+                'info',
+                'termsOfService'
+              ]),
+              _.get(dataServiceItem, ['apiSpecification', 'info', 'license']),
+              _.get(dataServiceItem, 'cost'),
+              _.get(dataServiceItem, 'usageLimitation'),
+              _.get(dataServiceItem, 'performance'),
+              _.get(dataServiceItem, 'availability')
             )}
 
-            {renderServiceType(_.get(apiItem, 'serviceType'), referenceData)}
+            {renderServiceType(
+              _.get(dataServiceItem, 'serviceType'),
+              referenceData
+            )}
 
             {renderDatasetReferences(referencedDatasets)}
 
             {renderInformationModelReferences(referencedInformationModels)}
 
-            {renderContactPoints(apiItem.contactPoint)}
+            {renderContactPoints(dataServiceItem.contactPoint)}
           </section>
         </div>
       </article>
@@ -522,7 +533,7 @@ export const ApiDetailsPage = ({
   );
 };
 
-ApiDetailsPage.defaultProps = {
+DataServiceDetailsPage.defaultProps = {
   apiItem: null,
   publisherItems: null,
   referenceData: null,
@@ -532,7 +543,7 @@ ApiDetailsPage.defaultProps = {
   referencedDatasets: []
 };
 
-ApiDetailsPage.propTypes = {
+DataServiceDetailsPage.propTypes = {
   apiItem: PropTypes.object,
   publisherItems: PropTypes.object,
   referenceData: PropTypes.object,

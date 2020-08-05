@@ -7,7 +7,7 @@ import { Entity } from '../../types/enums';
 import { ErrorBoundary } from '../error-boundary/error-boundary';
 import { Concept, MediaType } from '../../types';
 import { DatasetItem } from '../dataset-item/dataset-item.component';
-import { ApiItem } from '../api-item/api-item.component';
+import { DataServiceItem } from '../data-service-item/data-service-item.component';
 import { ConceptItem } from '../concept-item/concept-item.component';
 import { InformationModelItem } from '../informationmodel-item/informationmodel-item.component';
 
@@ -63,7 +63,7 @@ const renderEntity = (
             ]
           }
         >
-          <ApiItem api={entity} />
+          <DataServiceItem dataService={entity} />
         </ThemeProvider>
       );
     case Entity.CONCEPT:

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Api } from '../../types';
+import { DataService } from '../../types';
 import { SearchTypes } from '../../types/enums';
 import { SearchHit, SearchHitOpenData } from '../search-hit/search-hit';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
@@ -9,11 +9,11 @@ import localization from '../../lib/localization';
 import ReactTooltipSC from '../tooltip/styled';
 
 interface Props {
-  api: Api;
+  dataService: DataService;
 }
 
-export const ApiItem: FC<Props> = ({
-  api: {
+export const DataServiceItem: FC<Props> = ({
+  dataService: {
     id,
     title,
     description,
@@ -27,7 +27,7 @@ export const ApiItem: FC<Props> = ({
   return (
     <SearchHit
       id={id}
-      type={SearchTypes.api}
+      type={SearchTypes.dataservice}
       title={title}
       publisher={publisher}
       description={description || null}

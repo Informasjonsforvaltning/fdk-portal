@@ -26,7 +26,7 @@ function getPublisherLabel(type: SearchTypes) {
   switch (type) {
     case SearchTypes.dataset:
       return localization.search_hit.owned;
-    case SearchTypes.api:
+    case SearchTypes.dataservice:
       return `${localization.provider}:`;
     case SearchTypes.concept:
       return `${localization.responsible}:`;
@@ -42,10 +42,12 @@ export const SearchHit: FC<Props> = ({
   type,
   title,
   description,
-  publisher: { prefLabel, name } = {},
+  publisher,
   isAuthoritative = false,
   children
 }) => {
+  const { prefLabel, name } = publisher || {};
+
   const renderSearchHitOpenData = () =>
     Children.map(children, child =>
       isValidElement(child) && child.type === SearchHitOpenData ? (

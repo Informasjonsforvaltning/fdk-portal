@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import SC from './styled';
 import {
-  PATHNAME_APIS,
+  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS
@@ -22,7 +22,7 @@ const SearchLink: FC<Props> = ({ entity }) => {
       translation: localization.datasetLabel
     },
     [Entity.DATA_SERVICE]: {
-      path: PATHNAME_APIS,
+      path: PATHNAME_DATA_SERVICES,
       icon: SC.ApiIcon,
       translation: localization.apiLabel
     },

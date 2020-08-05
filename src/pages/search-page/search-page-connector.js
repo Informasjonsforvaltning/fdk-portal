@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchDatasetsIfNeededAction } from '../../redux/modules/datasets';
-import { fetchApisIfNeededAction } from '../../redux/modules/apis';
+import { fetchDataServicesIfNeededAction } from '../../redux/modules/dataservices';
 import { fetchConceptsIfNeededAction } from '../../redux/modules/concepts';
 import { fetchInformationModelsIfNeededAction } from '../../redux/modules/informationModels';
 import { fetchPublishersIfNeededAction } from '../../redux/modules/publishers';
@@ -12,7 +12,7 @@ import { fetchReferenceDataIfNeededAction } from '../../redux/modules/referenceD
 
 const mapStateToProps = ({
   datasets,
-  apis,
+  dataServices,
   concepts,
   informationModels,
   publishers,
@@ -26,10 +26,14 @@ const mapStateToProps = ({
     datasetTotal: null
   };
 
-  const { apiItems, apiAggregations, apiTotal } = apis || {
-    apiItems: null,
-    apiAggregations: null,
-    apiTotal: null
+  const {
+    dataServiceItems,
+    dataServiceAggregations,
+    dataServiceTotal
+  } = dataServices || {
+    dataServiceItems: null,
+    dataServiceAggregations: null,
+    dataServiceTotal: null
   };
 
   const { conceptItems, conceptAggregations, conceptTotal } = concepts || {
@@ -60,9 +64,9 @@ const mapStateToProps = ({
     datasetItems,
     datasetAggregations,
     datasetTotal,
-    apiItems,
-    apiAggregations,
-    apiTotal,
+    dataServiceItems,
+    dataServiceAggregations,
+    dataServiceTotal,
     conceptItems,
     conceptAggregations,
     conceptTotal,
@@ -79,7 +83,8 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = dispatch => ({
   fetchDatasetsIfNeeded: query => dispatch(fetchDatasetsIfNeededAction(query)),
-  fetchApisIfNeeded: query => dispatch(fetchApisIfNeededAction(query)),
+  fetchDataServicesIfNeeded: query =>
+    dispatch(fetchDataServicesIfNeededAction(query)),
   fetchConceptsIfNeeded: query => dispatch(fetchConceptsIfNeededAction(query)),
   fetchPublishersIfNeeded: () => dispatch(fetchPublishersIfNeededAction()),
   fetchReferenceDataIfNeeded: path =>

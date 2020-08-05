@@ -14,7 +14,7 @@ import {
   PATHNAME_ORGANIZATIONS
 } from '../../constants/constants';
 import { DatasetBreadcrumb } from './dataset-breadcrumb/dataset-breadcrumb';
-import { ApiBreadcrumb } from './api-breadcrumb/api-breadcrumb';
+import { DataServiceBreadcrumb } from './data-service-breadcrumb/data-service-breadcrumb';
 import { ConceptBreadcrumb } from './concept-breadcrumb/concept-breadcrumb';
 import { InformationModelBreadcrumb } from './informationModel-breadbrumb/information-breadcrumb';
 import { PathNameBreadcrumb } from './pathname-breadcrumb/pathname-breadcrumb';
@@ -33,7 +33,7 @@ const routes = [
     )
   },
   { path: '/datasets/:id', breadcrumb: DatasetBreadcrumb },
-  { path: '/apis/:id', breadcrumb: ApiBreadcrumb },
+  { path: '/dataservices/:id', breadcrumb: DataServiceBreadcrumb },
   {
     path: `${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`,
     breadcrumb: () => <PathNameBreadcrumb pathName="conceptsCompare" />

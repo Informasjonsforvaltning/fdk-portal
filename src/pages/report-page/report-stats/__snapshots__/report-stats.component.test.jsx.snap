@@ -66,7 +66,7 @@ exports[`should render ReportStats correctly 1`] = `
           <Link
             className="mb-3"
             title="Datasets that are public"
-            to="/apis"
+            to="/dataservices"
           >
             <strong>
                
@@ -77,7 +77,7 @@ exports[`should render ReportStats correctly 1`] = `
           <Link
             className="mb-3"
             title="Datasets that are public"
-            to="/apis?firstHarvested=7"
+            to="/dataservices?firstHarvested=7"
           >
              
             new the past week

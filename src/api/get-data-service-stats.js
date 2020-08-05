@@ -1,9 +1,7 @@
 import _ from 'lodash';
-import axios from 'axios';
 
 import { normalizeAggregations } from '../lib/normalizeAggregations';
-import { apisUrlBase } from './apis';
-import { getConfig } from '../config';
+import { searchDataServices } from './search-fulltext-api/dataservices';
 
 function getFromBucketArray(data, aggregation, key) {
   const buckets = _.get(data, ['aggregations', aggregation, 'buckets'], []);
@@ -30,17 +28,12 @@ export function extractStats(data) {
   };
 }
 
-export const getApiStats = orgPath =>
-  axios
-    .get(apisUrlBase(), {
-      ...getConfig().apiApi.config,
-      params: {
-        orgPath,
-        size: 0,
-        aggregations:
-          'formats,orgPath,firstHarvested,publisher,openAccess,openLicence,freeUsage'
-      }
-    })
-    .then(r => r.data)
+export const getDataServiceStats = orgPath =>
+  searchDataServices({
+    orgPath,
+    size: 0,
+    aggregations:
+      'formats,orgPath,firstHarvested,publisher,openAccess,openLicence,freeUsage'
+  })
     .then(normalizeAggregations)
     .then(extractStats);

@@ -191,7 +191,7 @@ export interface Dataset {
   qualifiedAttributions: QualifiedAttribution[];
 }
 
-export interface Api {
+export interface DataService {
   id: string;
   uri: string;
   publisher: Partial<Publisher>;
@@ -203,8 +203,6 @@ export interface Api {
   isOpenLicense: boolean;
   isFree: boolean;
 }
-
-export interface DataService extends Api {}
 
 interface License {
   uri: string;
