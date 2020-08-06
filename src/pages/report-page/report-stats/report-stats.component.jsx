@@ -25,12 +25,10 @@ export const ReportStats = props => {
     conceptStats,
     entityName,
     catalogs,
-    fetchCatalogsIfNeeded,
     publishers,
     mostUsedConcepts
   } = props;
   const orgPath = getParamFromLocation(window.location, 'orgPath');
-  fetchCatalogsIfNeeded();
 
   let name;
   if (entityName) {
@@ -191,14 +189,12 @@ export const ReportStats = props => {
 };
 
 ReportStats.defaultProps = {
-  fetchCatalogsIfNeeded: _.noop,
   entityName: null,
   catalogs: null,
   publishers: null
 };
 
 ReportStats.propTypes = {
-  fetchCatalogsIfNeeded: PropTypes.func,
   datasetStats: PropTypes.object.isRequired,
   apiStats: PropTypes.object.isRequired,
   conceptStats: PropTypes.object.isRequired,

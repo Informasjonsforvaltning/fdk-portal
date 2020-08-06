@@ -123,10 +123,10 @@ const DatasetDetailsPage: FC<Props> = ({
   const title = translate(dataset?.title);
   const description = parse(sanitise(translate(dataset?.descriptionFormatted)));
   const publisher = translate(
-    dataset?.publisher.prefLabel || dataset?.publisher.name
+    dataset?.publisher?.prefLabel || dataset?.publisher?.name
   );
   const lastPublished = formatDate(
-    dateStringToDate(dataset?.harvest.firstHarvested)
+    dateStringToDate(dataset?.harvest?.firstHarvested)
   );
   const objective = translate(dataset?.objective);
   const distributions = dataset?.distribution ?? [];
@@ -138,7 +138,7 @@ const DatasetDetailsPage: FC<Props> = ({
     standards: dataset?.conformsTo ?? [],
     informationModelReferences: dataset?.informationModel ?? [],
     languages: dataset?.language ?? [],
-    moreInformationPage: dataset?.landingPage[0]
+    moreInformationPage: dataset?.landingPage?.[0]
   };
   const samples = dataset?.sample ?? [];
   const provenance = {
@@ -159,6 +159,7 @@ const DatasetDetailsPage: FC<Props> = ({
   const referencedDataServices = dataServices;
   const datasetReferenceTypes = dataset?.references ?? [];
   const keywords = dataset?.keyword?.map(translate)?.filter(Boolean) ?? [];
+  const qualifiedAttributions = dataset?.qualifiedAttributions ?? [];
   const spatialRestrictions = dataset?.spatial ?? [];
   const temporalRestrictions = dataset?.temporal ?? [];
   const contactPoints = dataset?.contactPoint ?? [];
@@ -381,7 +382,7 @@ const DatasetDetailsPage: FC<Props> = ({
                     />
                     <KeyValueListItem
                       property={translations.dataset.distribution.format}
-                      value={formats.join(', ')}
+                      value={formats?.join(', ')}
                     />
                     <KeyValueListItem
                       property={translations.dataset.distribution.accessUrl}
@@ -594,6 +595,22 @@ const DatasetDetailsPage: FC<Props> = ({
                   </Link>
                 ))}
               </InlineList>
+            </ContentSection>
+          )}
+          {qualifiedAttributions.length > 0 && (
+            <ContentSection
+              id="qualifiedAttributions"
+              title={
+                translations.detailsPage.sectionTitles.dataset
+                  .qualifiedAttributions
+              }
+            >
+              {qualifiedAttributions
+                .map(
+                  ({ agent: { name, prefLabel } }) =>
+                    translate(prefLabel) || name
+                )
+                .join(', ')}
             </ContentSection>
           )}
           {(spatialRestrictions.length > 0 ||

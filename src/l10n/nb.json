@@ -510,6 +510,7 @@
         "datasetReferences": "Relasjoner",
         "dataserviceReferences": "Brukt i datatjeneste (API)",
         "keywords": "Søkeord",
+        "qualifiedAttributions": "Innholdsleverandører",
         "restrictions": "Avgrensninger",
         "contactInformation": "Kontaktinformasjon"
       }

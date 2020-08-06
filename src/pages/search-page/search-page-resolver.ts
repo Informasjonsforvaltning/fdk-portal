@@ -57,9 +57,9 @@ const mapProps = {
           }
         : { q };
 
-    return memoizedSearchAllEntities(searchAllEntitiesParams).then(response =>
-      normalizeAggregations(response)
-    );
+    return memoizedSearchAllEntities(searchAllEntitiesParams)
+      .then(response => normalizeAggregations(response))
+      .catch(() => null);
   }
 };
 

@@ -3,7 +3,11 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { GET_DATASETS_REQUESTED } from './action-types';
 import * as actions from './actions';
 
-import { datasetsSearch } from '../../../api/datasets';
+import {
+  extractDatasets,
+  paramsToSearchBody,
+  searchDatasets
+} from '../../../api/search-fulltext-api/datasets';
 
 import { Dataset } from '../../../types';
 
@@ -17,10 +21,13 @@ function* getDatasetsRequested({
   }
 
   try {
-    const data = yield call(datasetsSearch, { uris });
-    const datasets = data?.hits?.hits.map(({ _source }: any) => _source);
-    if (datasets) {
-      yield put(actions.getDatasetsSucceeded(datasets as Dataset[]));
+    const uriArray = uris.split(',');
+    const params = paramsToSearchBody({ uris: uriArray });
+    const data = yield call(searchDatasets, params);
+    if (data) {
+      yield put(
+        actions.getDatasetsSucceeded(extractDatasets(data) as Dataset[])
+      );
     } else {
       yield put(actions.getDatasetsFailed(''));
     }

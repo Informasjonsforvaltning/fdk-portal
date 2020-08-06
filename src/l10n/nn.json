@@ -510,6 +510,7 @@
         "datasetReferences": "Relasjonar",
         "dataserviceReferences": "Brukt i datateneste (API)",
         "keywords": "Emneord",
+        "qualifiedAttributions": "Innhaldsleverandørar",
         "restrictions": "Avgrensningar",
         "contactInformation": "Kontaktinformasjon"
       }

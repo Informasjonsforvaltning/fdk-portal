@@ -49,7 +49,7 @@ const renderThemes = (themes: any, losItems: any) => {
     !!uri && !!prefLabel && !!losPaths;
 
   return themes
-    .map((theme: any) =>
+    ?.map((theme: any) =>
       theme.id && !theme.code
         ? Object.values(losItems).find(
             (losItem: any) => losItem.uri === theme.id
@@ -85,7 +85,7 @@ const renderFormats = (distributions: any, mediatypes: MediaType[]) => {
   }
 
   const formats: string[] = distributions.reduce(
-    (previous: any, { format = [] }: any) => [...previous, ...format],
+    (previous: any, current: any) => [...previous, ...(current?.format ?? [])],
     []
   );
 

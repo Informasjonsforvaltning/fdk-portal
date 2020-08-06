@@ -25,19 +25,6 @@ exports[`should render ReportPagePure correctly 1`] = `
       <ReportStats
         catalogs={null}
         entityName={null}
-        fetchCatalogsIfNeeded={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-            ],
-          }
-        }
         publishers={null}
       />
     </div>
