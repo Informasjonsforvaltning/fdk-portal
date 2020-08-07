@@ -28,13 +28,13 @@ export default {
       cacheGroups: {
         default: false,
         mainVendors: {
-          test: /[\\/]node_modules[\\/]/,
+          test: ({ resource = '' }) => resource.includes('node_modules'),
           name: 'main.vendors',
           filename: '[name].bundle.js',
           chunks: ({ name }) => name === 'main'
         },
         maintenanceVendors: {
-          test: /[\\/]node_modules[\\/]/,
+          test: ({ resource = '' }) => resource.includes('node_modules'),
           name: 'maintenance.vendors',
           filename: '[name].bundle.js',
           chunks: ({ name }) => name === 'maintenance'
@@ -64,7 +64,12 @@ export default {
       },
       {
         test: /\.s?css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'resolve-url-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.svg$/,
