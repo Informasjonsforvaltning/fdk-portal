@@ -1,5 +1,4 @@
 import React from 'react';
-import { cleanup } from '@testing-library/react';
 
 import { themeFDK as theme } from '../../../../../app/theme';
 
@@ -10,8 +9,6 @@ import DatasetDistribution from '..';
 import testIds from '../test-ids';
 
 import { DataFormat } from '../../../../../types/enums';
-
-afterEach(cleanup);
 
 describe('DatasetDistribution component', () => {
   it(Expectation.STRUCTURE, () => {
@@ -90,8 +87,6 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionDetailElements).toHaveLength(1);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
-    cleanup();
-
     rerender(<DatasetDistribution distribution={{ description }} />);
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -121,8 +116,6 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionDetailElements).toHaveLength(0);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
-    cleanup();
-
     rerender(<DatasetDistribution distribution={{ title, description }} />);
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -151,8 +144,6 @@ describe('DatasetDistribution component', () => {
       description.en
     );
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    cleanup();
 
     rerender(
       <DatasetDistribution distribution={{ title, description, format }} />
@@ -187,8 +178,6 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(0);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    cleanup();
 
     rerender(
       <DatasetDistribution
@@ -234,8 +223,6 @@ describe('DatasetDistribution component', () => {
       datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    cleanup();
 
     rerender(
       <DatasetDistribution
@@ -287,8 +274,6 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionDetailElements).toHaveLength(0);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
-    cleanup();
-
     rerender(
       <DatasetDistribution
         distribution={{
@@ -339,8 +324,6 @@ describe('DatasetDistribution component', () => {
       datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    cleanup();
 
     rerender(
       <DatasetDistribution
@@ -402,8 +385,6 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(0);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    cleanup();
 
     rerender(
       <DatasetDistribution
@@ -476,8 +457,6 @@ describe('DatasetDistribution component', () => {
     ).toHaveAttribute('href', conformsToWithLabel[0].uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
-    cleanup();
-
     rerender(
       <DatasetDistribution
         distribution={{
@@ -548,8 +527,6 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(0);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
-    cleanup();
 
     rerender(
       <DatasetDistribution
