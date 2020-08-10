@@ -1,19 +1,24 @@
-import memoize from 'lodash/memoize';
 import { resolve } from 'react-resolver';
 import {
   extractArticleData,
   getArticleEntity
 } from '../../api/cms-api/article-entities';
+import localization from '../../lib/localization';
 
-const ARTICLE_GUIDANCE_ID = 'e32a0d53-d5f7-4b07-adc2-cc8cbac0fcdb';
-
-const memoizedGetArticleEntity = memoize(getArticleEntity);
+const articleIds: { [key: string]: string } = {
+  nb: 'e32a0d53-d5f7-4b07-adc2-cc8cbac0fcdb',
+  nn: '40cb9799-4f53-482c-8075-417f70bcd483',
+  en: '95430944-2177-48d1-9e1e-f589defd262c'
+};
 
 const mapProps = {
-  article: () =>
-    memoizedGetArticleEntity(ARTICLE_GUIDANCE_ID)
+  article: () => {
+    const ARTICLE_FETCH_ID = articleIds[localization.getLanguage()];
+
+    return getArticleEntity(ARTICLE_FETCH_ID)
       .then(extractArticleData)
-      .catch(() => [])
+      .catch(() => []);
+  }
 };
 
 export const guidancePageResolver = resolve(mapProps);
