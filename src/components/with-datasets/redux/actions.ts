@@ -4,13 +4,15 @@ import {
   GET_DATASETS_FAILED
 } from './action-types';
 
-import { Dataset } from '../../../types';
+import type { Dataset } from '../../../types';
 
 interface GetDatasetsParams {
   uris?: string;
+  size?: number;
+  orgPath?: string;
 }
 
-export function getDatasetsRequested(params: GetDatasetsParams) {
+export function getDatasetsRequested(params?: GetDatasetsParams) {
   return {
     type: GET_DATASETS_REQUESTED,
     payload: {

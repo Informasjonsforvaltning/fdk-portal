@@ -108,7 +108,8 @@
     "aboutNap": "Om Transportportal.no",
     "guidance": "Rettleiing",
     "newsArchive": "Aktuelt",
-    "organizations": "Verksemder"
+    "organizations": "Verksemder",
+    "datasets": "Datasettkatalog"
   },
   "query": {
     "intro": "Søk etter innhald",

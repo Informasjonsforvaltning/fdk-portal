@@ -9,21 +9,15 @@ import {
   searchDatasets
 } from '../../../api/search-fulltext-api/datasets';
 
-import { Dataset } from '../../../types';
+import type { Dataset } from '../../../types';
 
 function* getDatasetsRequested({
-  payload: {
-    params: { uris }
-  }
+  payload: { params: { uris, size, orgPath } = {} }
 }: ReturnType<typeof actions.getDatasetsRequested>) {
-  if (!uris) {
-    return;
-  }
-
   try {
-    const uriArray = uris.split(',');
-    const params = paramsToSearchBody({ uris: uriArray });
-    const data = yield call(searchDatasets, params);
+    const uriArray = uris?.split(',') ?? [];
+    const searchBody = paramsToSearchBody({ uris: uriArray, size, orgPath });
+    const data = yield call(searchDatasets, searchBody);
     if (data) {
       yield put(
         actions.getDatasetsSucceeded(extractDatasets(data) as Dataset[])
