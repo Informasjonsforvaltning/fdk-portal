@@ -7,6 +7,7 @@ import datasetsSaga from '../components/with-datasets/redux/saga';
 import dataServicesSaga from '../components/with-data-services/redux/saga';
 import entitiesSaga from '../components/with-entities/redux/saga';
 import organizationsSaga from '../components/with-organizations/redux/saga';
+import organizationSaga from '../components/with-organization/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -16,6 +17,7 @@ export default function* saga() {
     datasetsSaga(),
     dataServicesSaga(),
     entitiesSaga(),
-    organizationsSaga()
+    organizationsSaga(),
+    organizationSaga()
   ]);
 }
