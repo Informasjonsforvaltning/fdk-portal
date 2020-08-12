@@ -108,7 +108,8 @@
     "aboutNap": "About Transportportal.no",
     "guidance": "Guidance",
     "newsArchive": "News",
-    "organizations": "Organizations"
+    "organizations": "Organizations",
+    "datasets": "Dataset catalogue"
   },
   "query": {
     "intro": "Search for contents",
