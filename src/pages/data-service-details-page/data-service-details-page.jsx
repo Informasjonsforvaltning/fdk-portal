@@ -40,7 +40,7 @@ const renderDescription = descriptionFormatted => {
     <ShowMore showMoreButtonText={localization.showFullDescription}>
       <div
         dangerouslySetInnerHTML={{
-          __html: convertToSanitizedHtml(descriptionFormatted)
+          __html: convertToSanitizedHtml(getTranslateText(descriptionFormatted))
         }}
       />
     </ShowMore>
