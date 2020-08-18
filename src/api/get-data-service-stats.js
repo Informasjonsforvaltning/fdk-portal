@@ -13,8 +13,12 @@ function getFromBucketArray(data, aggregation, key) {
 
 export function extractStats(data) {
   return {
-    total: _.get(data, 'total', 0),
-    newLastWeek: getFromBucketArray(data, 'firstHarvested', 'last7days'),
+    total: _.get(data, ['page', 'totalElements'], 0),
+    newLastWeek: getFromBucketArray(data, [
+      'page',
+      'firstHarvested',
+      'last7days'
+    ]),
     openLicense: getFromBucketArray(data, 'openLicence', 'true'),
     notOpenLicense: getFromBucketArray(data, 'openLicence', 'false'),
     missingOpenLicense: getFromBucketArray(data, 'openLicence', 'MISSING'),
