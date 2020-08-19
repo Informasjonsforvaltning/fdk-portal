@@ -62,7 +62,7 @@ const DatasetReport: FC<Props> = ({
     nationalComponent,
     withSubject = '0',
     opendata = '0',
-    accessRights,
+    accessRights = [],
     formats = [],
     themesAndTopicsCount = [],
     catalogs = []
@@ -76,21 +76,38 @@ const DatasetReport: FC<Props> = ({
   }, []);
 
   const accessRightsPublic =
+    Array.isArray(accessRights) &&
     accessRights?.find((item: KeyWithCountObject) => item.key === 'PUBLIC')
-      ?.count ?? '0';
+      ?.count
+      ? accessRights?.find((item: KeyWithCountObject) => item.key === 'PUBLIC')
+          ?.count
+      : '0';
   const accessRightsRestriced =
+    Array.isArray(accessRights) &&
     accessRights?.find((item: KeyWithCountObject) => item.key === 'RESTRICTED')
-      ?.count ?? '0';
+      ?.count
+      ? accessRights?.find(
+          (item: KeyWithCountObject) => item.key === 'RESTRICTED'
+        )?.count
+      : '0';
   const accessRightsNonPublic =
+    Array.isArray(accessRights) &&
     accessRights?.find((item: KeyWithCountObject) => item.key === 'NON_PUBLIC')
-      ?.count ?? '0';
+      ?.count
+      ? accessRights?.find(
+          (item: KeyWithCountObject) => item.key === 'NON_PUBLIC'
+        )?.count
+      : '0';
+
   const accessRightsUnknown =
     Number(totalObjects) -
     Number(accessRightsPublic) -
     Number(accessRightsRestriced) -
     Number(accessRightsNonPublic);
 
-  const topMostUsedFormats = sortFormats(formats).splice(0, 4);
+  const topMostUsedFormats = Array.isArray(formats)
+    ? sortFormats(formats).splice(0, 4)
+    : [];
 
   const theme = getConfig().themeNap ? themeNAP : themeFDK;
 
@@ -421,71 +438,76 @@ const DatasetReport: FC<Props> = ({
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-12">
-            <BoxRegular header={localization.report.usedFormats}>
-              <PieChart
-                data={topMostUsedFormats.map(
-                  (item: KeyWithCountObject, index: number) => {
-                    const colorArray: { [key: string]: string } =
-                      theme.extendedColors[Entity.DATASET].graph;
-                    return {
-                      value: Number(item.count) ?? 0,
-                      label: item.key,
-                      color: colorArray[Object.keys(colorArray)[index % 5]]
-                    };
+        {Array.isArray(topMostUsedFormats) && topMostUsedFormats?.length > 0 && (
+          <div className="row">
+            <div className="col-12">
+              <BoxRegular header={localization.report.usedFormats}>
+                <PieChart
+                  data={topMostUsedFormats.map(
+                    (item: KeyWithCountObject, index: number) => {
+                      const colorArray: { [key: string]: string } =
+                        theme.extendedColors[Entity.DATASET].graph;
+                      return {
+                        value: Number(item.count) ?? 0,
+                        label: item.key,
+                        color: colorArray[Object.keys(colorArray)[index % 5]]
+                      };
+                    }
+                  )}
+                  startAngle={0}
+                  lineWidth={40}
+                  animate
+                  label={({ dataEntry }) =>
+                    `${dataEntry.value} ${dataEntry.label}`
                   }
-                )}
-                startAngle={0}
-                lineWidth={40}
-                animate
-                label={({ dataEntry }) =>
-                  `${dataEntry.value} ${dataEntry.label}`
-                }
-                labelStyle={() => ({
-                  fill: theme.extendedColors[Entity.DATASET].dark,
-                  fontSize: '4px'
-                })}
-                onClick={(e, segmentIndex) => {
-                  e.preventDefault();
-                  history.push(
-                    `${PATHNAME_DATASETS}${patchSearchQuery(
-                      Filter.FORMAT,
-                      topMostUsedFormats[segmentIndex].key
-                    )}`
-                  );
-                }}
-              />
-            </BoxRegular>
+                  labelStyle={() => ({
+                    fill: theme.extendedColors[Entity.DATASET].dark,
+                    fontSize: '4px'
+                  })}
+                  onClick={(e, segmentIndex) => {
+                    e.preventDefault();
+                    history.push(
+                      `${PATHNAME_DATASETS}${patchSearchQuery(
+                        Filter.FORMAT,
+                        topMostUsedFormats[segmentIndex].key
+                      )}`
+                    );
+                  }}
+                />
+              </BoxRegular>
+            </div>
           </div>
-        </div>
+        )}
 
-        <div className="row">
-          <div className="col-12">
-            <BoxRegular
-              variant={BoxFlowVariant.COLUMN}
-              header={localization.report.usedThemes}
-            >
-              <List
-                headerText1={localization.report.themeAndTopic}
-                headerText2={localization.report.countDataset}
-                listItems={themesAndTopicsCount.map(
-                  (item: KeyWithCountObject, index: any) => ({
-                    id: index,
-                    path: `${PATHNAME_DATASETS}?${Filter.LOS}=${item.key}`,
-                    text1: translate(
-                      los?.find(
-                        (losTheme: any) => losTheme.losPaths.join() === item.key
-                      )?.name
-                    ),
-                    text2: item.count
-                  })
-                )}
-              />
-            </BoxRegular>
-          </div>
-        </div>
-
+        {Array.isArray(themesAndTopicsCount) &&
+          themesAndTopicsCount?.length > 0 && (
+            <div className="row">
+              <div className="col-12">
+                <BoxRegular
+                  variant={BoxFlowVariant.COLUMN}
+                  header={localization.report.usedThemes}
+                >
+                  <List
+                    headerText1={localization.report.themeAndTopic}
+                    headerText2={localization.report.countDataset}
+                    listItems={themesAndTopicsCount?.map(
+                      (item: KeyWithCountObject, index: any) => ({
+                        id: index,
+                        path: `${PATHNAME_DATASETS}?${Filter.LOS}=${item.key}`,
+                        text1: translate(
+                          los?.find(
+                            (losTheme: any) =>
+                              losTheme.losPaths.join() === item.key
+                          )?.name
+                        ),
+                        text2: item.count
+                      })
+                    )}
+                  />
+                </BoxRegular>
+              </div>
+            </div>
+          )}
         <div className="row">
           <div className="col-12">
             <BoxRegular variant={BoxFlowVariant.COLUMN}>
