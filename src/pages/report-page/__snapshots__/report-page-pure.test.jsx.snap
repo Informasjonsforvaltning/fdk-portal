@@ -43,8 +43,13 @@ exports[`should render ReportPagePure correctly 1`] = `
           publishers={Object {}}
           value={null}
         />
-        <PublishersResolver
-          onChange={[Function]}
+        <FilterTree
+          activeFilter={null}
+          aggregations={Array []}
+          collapseItems={false}
+          handleFiltering={[Function]}
+          referenceDataItems={Object {}}
+          title="Organization"
         />
       </div>
       <div
@@ -76,6 +81,7 @@ exports[`should render ReportPagePure correctly 1`] = `
               >
                 <Memo(Tab)
                   label="Datasets"
+                  onClick={[Function]}
                   variant="dataset"
                 />
               </i>
@@ -84,6 +90,7 @@ exports[`should render ReportPagePure correctly 1`] = `
               >
                 <Memo(Tab)
                   label="APIs"
+                  onClick={[Function]}
                   variant="dataservice"
                 />
               </i>
@@ -92,6 +99,7 @@ exports[`should render ReportPagePure correctly 1`] = `
               >
                 <Memo(Tab)
                   label="Concepts"
+                  onClick={[Function]}
                   variant="concept"
                 />
               </i>
@@ -100,6 +108,7 @@ exports[`should render ReportPagePure correctly 1`] = `
               >
                 <Memo(Tab)
                   label="Information models"
+                  onClick={[Function]}
                   variant="informationmodel"
                 />
               </i>
