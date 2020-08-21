@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
 import { Button } from 'reactstrap';
@@ -9,7 +9,6 @@ import ThemeProvider from '@fellesdatakatalog/theme';
 import SC from './styled';
 import localization from '../../lib/localization';
 import { PublishersSelect } from './publishers-select/publishers-select.component';
-import { PublishersTree } from './publishers-tree/publishers-tree.component';
 import { getParamFromLocation } from '../../lib/addOrReplaceUrlParam';
 import { isFilterActive } from './filter-helper';
 import { getConfig } from '../../config';
@@ -20,6 +19,8 @@ import DataserviceReport from './components/dataserviceReport/dataserviceReport.
 import ConceptReport from './components/conceptReport/conceptReport.component';
 import InformationModelReport from './components/informationModelReport/informationModelReport.component';
 import TabContent, { Variant } from '../../components/tab/tab.component';
+import { FilterTree } from '../search-page/filter-tree/filter-tree.component';
+import { setFilter } from '../search-page/search-location-helper';
 
 export function ReportPagePure({
   location,
@@ -32,6 +33,8 @@ export function ReportPagePure({
   datasetsReport,
   datasetsTimeSeries
 }) {
+  const [activeTab, setActiveTab] = useState(Variant.DATASET);
+
   function selectPublisher(publisher) {
     const orgPath = publisher && publisher.orgPath;
     const currentSearch = qs.parse(location.search, {
@@ -57,6 +60,21 @@ export function ReportPagePure({
 
   const orgPath = getParamFromLocation(location, 'orgPath');
   const selectedPublisher = publishers && publishers[orgPath];
+
+  const handleFilterPublisherHierarchy = event => {
+    const selectedValue = event.target.value;
+
+    if (event.target.checked) {
+      setFilter(history, location, { orgPath: selectedValue });
+    } else {
+      setFilter(history, location, { orgPath: null });
+    }
+  };
+
+  // const catalogs = Object.keys(publishers).map(item => {return ({key: item})}).concat(defaultOrganizations);
+  const catalogs = {
+    [Variant.DATASET]: datasetsReport?.catalogs ?? []
+  };
 
   return (
     <ThemeProvider
@@ -88,9 +106,13 @@ export function ReportPagePure({
               onChange={selectPublisher}
               value={selectedPublisher}
             />
-            <PublishersTree
-              onChange={selectPublisher}
-              value={selectedPublisher}
+
+            <FilterTree
+              title={localization.organization}
+              aggregations={catalogs[activeTab]}
+              handleFiltering={handleFilterPublisherHierarchy}
+              activeFilter={orgPath}
+              referenceDataItems={publishers}
             />
           </div>
           <div className="col-md-8">
@@ -121,24 +143,28 @@ export function ReportPagePure({
                       <TabContent
                         variant={Variant.DATASET}
                         label={localization.page.datasetTab}
+                        onClick={() => setActiveTab(Variant.DATASET)}
                       />
                     </Tab>
                     <Tab for="pane-2">
                       <TabContent
                         variant={Variant.DATA_SERVICE}
                         label={localization.page.apiTab}
+                        onClick={() => setActiveTab(Variant.DATA_SERVICE)}
                       />
                     </Tab>
                     <Tab for="pane-3">
                       <TabContent
                         variant={Variant.CONCEPT}
                         label={localization.page.termTab}
+                        onClick={() => setActiveTab(Variant.CONCEPT)}
                       />
                     </Tab>
                     <Tab for="pane-4">
                       <TabContent
                         variant={Variant.INFORMATION_MODEL}
                         label={localization.page.informationModelTab}
+                        onClick={() => setActiveTab(Variant.INFORMATION_MODEL)}
                       />
                     </Tab>
                     <Pane id="pane-1">
