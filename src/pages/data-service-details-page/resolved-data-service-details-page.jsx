@@ -36,7 +36,7 @@ const mapProps = {
     }
   }) => {
     const dataServices = await memoizedSearchDataServices({
-      q: id
+      filters: [{ _id: id }]
     }).then(extractDataServices);
 
     return Array.isArray(dataServices) ? dataServices[0] : null;
@@ -46,7 +46,9 @@ const mapProps = {
       params: { id }
     }
   }) => {
-    const currentApi = await memoizedSearchDataServices({ q: id });
+    const currentApi = await memoizedSearchDataServices({
+      filters: [{ _id: id }]
+    });
     const uriArray = (currentApi?.datasetReferences || []).map(
       item => item.uri
     );
