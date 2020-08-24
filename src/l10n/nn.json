@@ -549,5 +549,16 @@
         "contactInformation": "Kontaktinformasjon"
       }
     }
+  },
+  "metadataQualityPage": {
+    "criterion": "Kriterium",
+    "metadataQuality": "Metadatakvalitet",
+    "criteria": {
+      "visibility": "Synlegheit",
+      "availability": "Tilgjengelegheit",
+      "interpolarity": "Interpolaritet",
+      "context": "Kontekst",
+      "reusability": "Gjenbrukbarheit"
+    }
   }
 }
