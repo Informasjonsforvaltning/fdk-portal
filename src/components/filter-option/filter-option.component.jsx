@@ -32,6 +32,10 @@ export const FilterOption = props => {
     optionLabel?.toUpperCase() === 'MISSING'
   ) {
     textLabel = localization.unknown;
+  } else if (optionLabel?.toUpperCase()?.startsWith('/ANNET')) {
+    textLabel = _capitalize(
+      optionLabel.substr(optionLabel.lastIndexOf('/') + 1, optionLabel.length)
+    );
   } else {
     textLabel = localization[optionLabel] || optionLabel;
   }
