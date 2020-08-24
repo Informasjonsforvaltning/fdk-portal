@@ -546,5 +546,16 @@
         "contactInformation": "Contact information"
       }
     }
+  },
+  "metadataQualityPage": {
+    "criterion": "Criterion",
+    "metadataQuality": "Metadata quality",
+    "criteria": {
+      "visibility": "Visibility",
+      "availability": "Availability",
+      "interpolarity": "Interpolarity",
+      "context": "Context",
+      "reusability": "Reusability"
+    }
   }
 }
