@@ -6,7 +6,7 @@ import IllustrationSC from '../illustration-with-count/styled';
 import { Variant } from './enums';
 
 const Label = styled.span<{ variant?: Variant }>`
-  color: ${({ theme }) => theme.dark};
+  color: ${({ theme }) => theme.dark ?? theme.extendedColors.neutralDarker};
   text-align: center;
 
   ${({ variant }) => {
