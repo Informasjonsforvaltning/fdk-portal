@@ -556,6 +556,17 @@
       "interpolarity": "Interpolarity",
       "context": "Context",
       "reusability": "Reusability"
-    }
+    },
+    "descriptionsTotal": "descriptions",
+    "newDescriptions": "new descriptions {0}",
+    "lastYear": "last year",
+    "lastMonth": "last month",
+    "lastWeek": "last week",
+    "metaDataMiddle": "medium",
+    "datasetIs": "datasets are {0}",
+    "authoritativeSources": "authoritative sources",
+    "open": "open",
+    "metadataQualityCatalog": "metadata quality for catalog is {0}",
+    "percentMetadataQuality": "of the criteria are met"
   }
 }

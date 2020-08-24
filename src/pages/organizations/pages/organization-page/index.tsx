@@ -1,7 +1,8 @@
-import React, { memo, FC, useLayoutEffect } from 'react';
+import React, { FC, memo, useLayoutEffect } from 'react';
 import { compose } from 'redux';
-import { Link as RouteLink, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import Link from '@fellesdatakatalog/link';
+import ThemeProvider from '@fellesdatakatalog/theme';
 
 import withOrganization, {
   Props as OrganizationProps
@@ -11,8 +12,23 @@ import { getTranslateText as translate } from '../../../../lib/translateText';
 
 import SC from './styled';
 
-import MagnifyingGlassIcon from '../../../../images/icon-catalog-all-md.svg';
 import DatasetIcon from '../../../../images/icon-catalog-dataset-lg.svg';
+import AccessOpenIcon from '../../../../images/icon-access-open-md-v2.svg';
+import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
+import { PATHNAME_DATASETS } from '../../../../constants/constants';
+import {
+  patchListOfSearchQuery,
+  patchSearchQuery
+} from '../../../../lib/addOrReplaceUrlParam';
+import { Entity, Filter } from '../../../../types/enums';
+import NewIcon from '../../../../images/icon-new-md.svg';
+import {
+  IllustrationWithCount,
+  SC as StatisticsRegularSC,
+  StatisticsRegular
+} from '../../../../components/statistics-regular/statistics-regular';
+import { themeFDK as theme } from '../../../../app/theme';
+import localization from '../../../../lib/localization';
 
 interface RouteParams {
   organizationId: string;
@@ -45,40 +61,102 @@ const OrganizationPage: FC<Props> = ({
           <pre>{JSON.stringify(organization, null, 2)}</pre>
         </SC.OrganizationInformation>
       </SC.Section>
-      <SC.Section>
-        <SC.AllCataloguesStatistics>
-          <h2>
-            <MagnifyingGlassIcon />
-            Statistikk for alle kataloger tilsammen
-          </h2>
-          <div>
-            <SC.Box>Here</SC.Box>
-            <SC.Box>Here</SC.Box>
-            <SC.Box>Here</SC.Box>
-            <SC.Box>Here</SC.Box>
-          </div>
-        </SC.AllCataloguesStatistics>
-      </SC.Section>
-      <SC.Section>
-        <SC.DatasetCataloguesStatistics>
-          <h2>
-            <DatasetIcon />
-            Statistikk for datasettkatalog
-          </h2>
-          <div>
-            <SC.Box>Here</SC.Box>
-            <SC.Box>Here</SC.Box>
-            <SC.Box>Here</SC.Box>
-            <SC.Box>Here</SC.Box>
-          </div>
-          <div>
-            <SC.Box colspan={2}>
-              <RouteLink to={`${url}/datasets`}>here</RouteLink>
-            </SC.Box>
-            <SC.Box colspan={2}>Here</SC.Box>
-          </div>
-        </SC.DatasetCataloguesStatistics>
-      </SC.Section>
+      <ThemeProvider theme={theme.extendedColors[Entity.DATASET]}>
+        <SC.Section>
+          <SC.DatasetCataloguesStatistics>
+            <h2>
+              <DatasetIcon />
+              Statistikk for datasettkatalog
+            </h2>
+            <SC.StatisticsBoxes>
+              <SC.Box>
+                <StatisticsRegular
+                  to={`${PATHNAME_DATASETS}${patchSearchQuery(
+                    Filter.ORGPATH,
+                    organization?.orgPath
+                  )}`}
+                >
+                  <IllustrationWithCount icon={<DatasetIcon />} count={28} />
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {localization.metadataQualityPage.descriptionsTotal}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+              <SC.Box>
+                <StatisticsRegular
+                  to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                    [Filter.ORGPATH]: organization?.orgPath,
+                    [Filter.LASTXDAYS]: '7'
+                  })}`}
+                >
+                  <IllustrationWithCount icon={<NewIcon />} count={1} />
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {localization.formatString(
+                      localization.metadataQualityPage.newDescriptions,
+                      localization.metadataQualityPage.lastWeek
+                    )}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+              <SC.Box>
+                <StatisticsRegular
+                  to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                    [Filter.ORGPATH]: organization?.orgPath,
+                    [Filter.PROVENANCE]: 'NASJONAL'
+                  })}`}
+                >
+                  <IllustrationWithCount
+                    icon={<AuthoritativeIcon />}
+                    count={4}
+                  />
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {localization.formatString(
+                      localization.metadataQualityPage.datasetIs,
+                      localization.metadataQualityPage.authoritativeSources
+                    )}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+              <SC.Box>
+                <StatisticsRegular
+                  to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                    [Filter.ORGPATH]: organization?.orgPath,
+                    [Filter.OPENDATA]: 'true'
+                  })}`}
+                >
+                  <IllustrationWithCount icon={<AccessOpenIcon />} count={4} />
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {localization.formatString(
+                      localization.metadataQualityPage.datasetIs,
+                      localization.metadataQualityPage.open
+                    )}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+            </SC.StatisticsBoxes>
+            <SC.StatisticsBoxes>
+              <SC.Box colspan={2}>
+                <StatisticsRegular to={`${url}/datasets`}>
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {localization.formatString(
+                      localization.metadataQualityPage.metadataQualityCatalog,
+                      'TODO'
+                    )}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+              <SC.Box colspan={2}>
+                <StatisticsRegular to={`${url}/datasets`}>
+                  <IllustrationWithCount count={67} />
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {localization.metadataQualityPage.percentMetadataQuality}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+            </SC.StatisticsBoxes>
+          </SC.DatasetCataloguesStatistics>
+        </SC.Section>
+      </ThemeProvider>
       <SC.Section>
         <SC.FrequentlyAskedQuestions>
           <SC.Question>
