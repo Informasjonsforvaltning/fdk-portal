@@ -5,7 +5,8 @@ import React, {
   Children,
   useState,
   useEffect,
-  HTMLAttributes
+  HTMLAttributes,
+  ComponentType
 } from 'react';
 
 import ExpansionPanelHead from '../expansion-panel-head';
@@ -24,6 +25,7 @@ export interface Props extends HTMLAttributes<HTMLElement> {
   isExpanded?: boolean;
   shouldExpandOnHeadClick?: boolean;
   expansionIndicator?: ExpansionIndicator;
+  as?: keyof JSX.IntrinsicElements | ComponentType<any>;
 }
 
 const ExpansionPanel: FC<Props> = ({
