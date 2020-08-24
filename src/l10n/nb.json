@@ -559,6 +559,18 @@
       "interpolarity": "Interpolaritet",
       "context": "Kontekst",
       "reusability": "Gjenbrukbarhet"
-    }
+    },
+    "descriptionsTotal": "beskrivelser totalt",
+    "newDescriptions": "nye beskrivelser {0}",
+    "lastYear": "siste år",
+    "lastMonth": "siste måned",
+    "lastWeek": "siste uke",
+    "metadataQuality": "metadatakvaliteten er {0}",
+    "metaDataMiddle": "middels",
+    "datasetIs": "datasett som er {0}",
+    "authoritativeSources": "autoritative kilder",
+    "open": "åpne",
+    "metadataQualityCatalog": "metadatakvaliteten for datakatalogen er {0}",
+    "percentMetadataQuality": "av kriteriene er oppfylt"
   }
 }
