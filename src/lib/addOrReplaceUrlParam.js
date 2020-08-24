@@ -31,3 +31,11 @@ export function patchSearchQuery(key, value) {
     .join();
   return qs.stringify(query, { addQueryPrefix: true });
 }
+
+export function patchListOfSearchQuery(list) {
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true
+  });
+
+  return qs.stringify({ ...query, ...list }, { addQueryPrefix: true });
+}
