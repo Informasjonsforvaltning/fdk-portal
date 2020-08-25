@@ -565,7 +565,7 @@
     "lastYear": "last year",
     "lastMonth": "last month",
     "lastWeek": "last week",
-    "metadataQuality": "metadata quality is {0}",
+    "metadataQualityIs": "metadata quality is {0}",
     "metaDataMiddle": "medium",
     "datasetIs": "datasets are {0}",
     "authoritativeSources": "authoritative sources",
