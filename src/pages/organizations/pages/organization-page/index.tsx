@@ -71,7 +71,7 @@ const OrganizationPage: FC<Props> = ({
             <MagnifyingGlassIcon />
             Statistikk for alle kataloger tilsammen
           </h2>
-          <div>
+          <SC.StatisticsBoxes>
             <SC.Box>
               <StatisticsRegular
                 to={`${PATHNAME_SEARCH}${patchSearchQuery(
@@ -131,7 +131,7 @@ const OrganizationPage: FC<Props> = ({
                 </StatisticsRegularSC.StatisticsRegular.Label>
               </StatisticsRegular>
             </SC.Box>
-          </div>
+          </SC.StatisticsBoxes>
         </SC.AllCataloguesStatistics>
       </SC.Section>
       <ThemeProvider theme={theme.extendedColors[Entity.DATASET]}>
@@ -141,7 +141,7 @@ const OrganizationPage: FC<Props> = ({
               <DatasetIcon />
               Statistikk for datasettkatalog
             </h2>
-            <div>
+            <SC.StatisticsBoxes>
               <SC.Box>
                 <StatisticsRegular
                   to={`${PATHNAME_DATASETS}${patchSearchQuery(
@@ -206,8 +206,8 @@ const OrganizationPage: FC<Props> = ({
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
               </SC.Box>
-            </div>
-            <div>
+            </SC.StatisticsBoxes>
+            <SC.StatisticsBoxes>
               <SC.Box colspan={2}>
                 <StatisticsRegular to={`${url}/datasets`}>
                   <StatisticsRegularSC.StatisticsRegular.Label>
@@ -226,7 +226,7 @@ const OrganizationPage: FC<Props> = ({
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
               </SC.Box>
-            </div>
+            </SC.StatisticsBoxes>
           </SC.DatasetCataloguesStatistics>
         </SC.Section>
       </ThemeProvider>

@@ -20,18 +20,20 @@ const Box = styled.div<{ colspan?: number }>`
   border-radius: 4px;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
 
-  ${({ colspan }) => {
-    switch (colspan) {
-      case 2:
-        return css`
-          min-width: calc(100% / 2 - ${theme.spacing('S8')});
-        `;
-      default:
-        return css`
-          min-width: calc(100% / 4 - 3 * ${theme.spacing('S8')});
-        `;
-    }
-  }}
+  @media (min-width: 768px) {
+    ${({ colspan }) => {
+      switch (colspan) {
+        case 2:
+          return css`
+            width: calc(100% / 2 - ${theme.spacing('S8')});
+          `;
+        default:
+          return css`
+            width: calc(100% / 4 - 3 * ${theme.spacing('S8')});
+          `;
+      }
+    }}
+  }
 `;
 
 const OrganizationInformation = styled.div`
@@ -59,15 +61,6 @@ const AllCataloguesStatistics = styled.div`
       margin-right: ${theme.spacing('S12')};
     }
   }
-
-  & > div {
-    display: flex;
-    margin-top: ${theme.spacing('S8')};
-
-    & > ${Box}:nth-of-type(n+2) {
-      margin-left: ${theme.spacing('S8')};
-    }
-  }
 `;
 
 const DatasetCataloguesStatistics = styled.div`
@@ -89,27 +82,25 @@ const DatasetCataloguesStatistics = styled.div`
       margin-right: ${theme.spacing('S12')};
     }
   }
-
-  & > div {
-    display: flex;
-    margin-top: ${theme.spacing('S8')};
-
-    & > ${Box}:nth-of-type(n+2) {
-      margin-left: ${theme.spacing('S8')};
-    }
-  }
 `;
 
 const FrequentlyAskedQuestions = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const Question = styled.div`
-  flex: 1 0 auto;
-  width: calc(100% / 2 - ${theme.spacing('S8')});
+  flex: 1 0 100%;
+  margin-top: ${theme.spacing('S8')};
 
-  &:nth-of-type(n + 2) {
-    margin-left: ${theme.spacing('S8')};
+  @media (min-width: 768px) {
+    flex: 1 0 auto;
+    margin-top: 0;
+    width: calc(100% / 2 - ${theme.spacing('S8')});
+
+    &:nth-of-type(n + 2) {
+      margin-left: ${theme.spacing('S8')};
+    }
   }
 
   & > h3 {
@@ -126,6 +117,23 @@ const Question = styled.div`
   }
 `;
 
+const StatisticsBoxes = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: ${theme.spacing('S8')};
+
+  & > ${Box}:nth-of-type(n+2) {
+    margin-top: ${theme.spacing('S8')};
+  }
+
+  @media (min-width: 768px) {
+    & > ${Box}:nth-of-type(n+2) {
+      margin-top: 0;
+      margin-left: ${theme.spacing('S8')};
+    }
+  }
+`;
+
 export default {
   OrganizationPage,
   Title,
@@ -135,5 +143,6 @@ export default {
   AllCataloguesStatistics,
   DatasetCataloguesStatistics,
   FrequentlyAskedQuestions,
-  Question
+  Question,
+  StatisticsBoxes
 };
