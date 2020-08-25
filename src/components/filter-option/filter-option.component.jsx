@@ -28,10 +28,14 @@ export const FilterOption = props => {
       textLabel = localization.unknown;
     }
   } else if (
-    optionLabel.toUpperCase() === 'UKJENT' ||
-    optionLabel.toUpperCase() === 'MISSING'
+    optionLabel?.toUpperCase() === 'UKJENT' ||
+    optionLabel?.toUpperCase() === 'MISSING'
   ) {
     textLabel = localization.unknown;
+  } else if (optionLabel?.toUpperCase()?.startsWith('/ANNET')) {
+    textLabel = _capitalize(
+      optionLabel.substr(optionLabel.lastIndexOf('/') + 1, optionLabel.length)
+    );
   } else {
     textLabel = localization[optionLabel] || optionLabel;
   }
@@ -44,7 +48,7 @@ export const FilterOption = props => {
 
   let inputRef;
 
-  return count ? (
+  return (
     <div className={`checkbox ${displayClass}`}>
       <label
         className="checkbox_label"
@@ -69,10 +73,10 @@ export const FilterOption = props => {
           value={value}
         />
         <span className="checkbox-replacement" />
-        {textLabel} ({count})
+        {textLabel} {count ? `(${count})` : ''}
       </label>
     </div>
-  ) : null;
+  );
 };
 
 FilterOption.defaultProps = {

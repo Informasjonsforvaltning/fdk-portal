@@ -21,11 +21,14 @@ const Box = styled(Link)`
   color: #000 !important;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-bottom: 0.5em;
   padding: 0.5em 1.5em;
   text-decoration: none;
   transition: all 200ms ease-in-out;
+
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+  }
 
   &:hover {
     background-color: #000;
@@ -41,15 +44,23 @@ const SortLabel = styled.span`
 
 const Title = styled.span`
   flex-grow: 1;
+  max-width: 85%;
+
+  @media (min-width: 768px) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 const Info = styled.div`
   display: flex;
   margin-left: 2em;
   margin-top: 0.2em;
-
+  width: 100%;
   @media (min-width: 768px) {
     margin: 0;
+    width: auto;
   }
 `;
 

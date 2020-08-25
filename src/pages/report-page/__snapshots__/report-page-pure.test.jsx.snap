@@ -1,33 +1,145 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ReportPagePure correctly 1`] = `
-<section
-  className="container"
+<H
+  theme={
+    Object {
+      "dark": "#335380",
+      "graph": Object {
+        "dark": "#4B6B96",
+        "darker": "#335380",
+        "light": "#89A2C4",
+        "lighter": "#AFC2DB",
+        "lightest": "#D5E1F2",
+        "medium": "#6885AD",
+      },
+      "light": "#D5E1F2",
+      "lighter": "#F0F3F7",
+    }
+  }
 >
-  <div
-    className="row"
+  <section
+    className="container"
   >
     <div
-      className="col-md-4"
+      className="row"
     >
-      <PublishersSelect
-        onChange={[Function]}
-        publishers={Object {}}
-        value={null}
-      />
-      <PublishersResolver
-        onChange={[Function]}
-      />
+      <div
+        className="col-12"
+      >
+        <styled.h1>
+          Reports
+        </styled.h1>
+      </div>
     </div>
     <div
-      className="col-md-8"
+      className="row"
     >
-      <ReportStats
-        catalogs={null}
-        entityName={null}
-        publishers={null}
-      />
+      <div
+        className="col-md-4"
+      >
+        <PublishersSelect
+          onChange={[Function]}
+          publishers={Object {}}
+          value={null}
+        />
+        <FilterTree
+          activeFilter={null}
+          aggregations={Array []}
+          collapseItems={false}
+          handleFiltering={[Function]}
+          referenceDataItems={Object {}}
+          title="Organization"
+        />
+      </div>
+      <div
+        className="col-md-8"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col-12"
+          >
+            <styled.h1>
+              Showing numbers for
+               
+              all entities
+            </styled.h1>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-12"
+          >
+            <b>
+              <i
+                active={true}
+                for="pane-1"
+              >
+                <Memo(Tab)
+                  label="Datasets"
+                  onClick={[Function]}
+                  variant="dataset"
+                />
+              </i>
+              <i
+                for="pane-2"
+              >
+                <Memo(Tab)
+                  label="APIs"
+                  onClick={[Function]}
+                  variant="dataservice"
+                />
+              </i>
+              <i
+                for="pane-3"
+              >
+                <Memo(Tab)
+                  label="Concepts"
+                  onClick={[Function]}
+                  variant="concept"
+                />
+              </i>
+              <i
+                for="pane-4"
+              >
+                <Memo(Tab)
+                  label="Information models"
+                  onClick={[Function]}
+                  variant="informationmodel"
+                />
+              </i>
+              <l
+                id="pane-1"
+              >
+                <withRouter(Connect(Component))
+                  datasetsTimeSeries={Object {}}
+                  publishers={Object {}}
+                />
+              </l>
+              <l
+                id="pane-2"
+              >
+                <withRouter(undefined) />
+              </l>
+              <l
+                id="pane-3"
+              >
+                <withRouter(undefined) />
+              </l>
+              <l
+                id="pane-4"
+              >
+                <withRouter(undefined) />
+              </l>
+            </b>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</H>
 `;

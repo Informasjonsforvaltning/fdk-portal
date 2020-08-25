@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render PureDataServiceBreadcrumb correctly with no dataServiceItem 1`] = `<span />`;
+
+exports[`should render PureDataServiceBreadcrumb with data service active correctly 1`] = `
+<span>
+  Data service title
+</span>
+`;

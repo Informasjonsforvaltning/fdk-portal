@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 
 import SC from './styled';
 import {
-  Api,
+  DataService,
   Concept,
   Dataset,
   InformationModelDocument,
@@ -25,7 +25,7 @@ import EmptyHits from '../../../components/empty-hits/empty.component';
 interface Props extends RouteComponentProps<any> {
   entities:
     | Partial<Dataset>[]
-    | Partial<Api>[]
+    | Partial<DataService>[]
     | Partial<Concept>[]
     | Partial<InformationModelDocument>[];
   aggregations?: any;

@@ -50,12 +50,28 @@ export const themeFDK = {
     [Entity.DATASET]: {
       dark: '#335380',
       light: '#D5E1F2',
-      lighter: '#F0F3F7'
+      lighter: '#F0F3F7',
+      graph: {
+        darker: '#335380',
+        dark: '#4B6B96',
+        medium: '#6885AD',
+        light: '#89A2C4',
+        lighter: '#AFC2DB',
+        lightest: '#D5E1F2'
+      }
     },
     [Entity.DATA_SERVICE]: {
       dark: '#805333',
       light: '#F2E1D5',
-      lighter: '#F7F2ED'
+      lighter: '#F7F2ED',
+      graph: {
+        darker: '#805333',
+        dark: '#96694B',
+        medium: '#AD8468',
+        light: '#C4A289',
+        lighter: '#DBC2B2',
+        lightest: '#DFF2D5'
+      }
     },
     [Entity.CONCEPT]: {
       dark: '#2E6773',
@@ -65,7 +81,11 @@ export const themeFDK = {
     [Entity.INFORMATION_MODEL]: {
       dark: '#593380',
       light: '#E4D5F2',
-      lighter: '#F4F0F7'
+      lighter: '#F4F0F7',
+      graph: {
+        darker: '#593380',
+        lightest: '#E4D5F2'
+      }
     }
   }
 };
@@ -121,7 +141,15 @@ export const themeNAP = {
     [Entity.DATASET]: {
       dark: '#3E7B1F',
       light: '#DFF2D5',
-      lighter: '#F4F7F2'
+      lighter: '#F4F7F2',
+      graph: {
+        darker: '#DFF2D5',
+        dark: '#45732E',
+        medium: '#63914C',
+        light: '#88B272',
+        lighter: '#B0D19F',
+        lightest: '#DFF2D5'
+      }
     },
     [Entity.DATA_SERVICE]: {
       dark: '#805333',

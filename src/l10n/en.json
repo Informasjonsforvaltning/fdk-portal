@@ -68,6 +68,7 @@
   "newsArchive": "See news archive",
   "searchOrganizations": "Search organizations",
   "searchOrganization": "Search organization",
+  "organization": "Organization",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -335,7 +336,7 @@
     "law": "Link to concept law."
   },
   "report": {
-    "title": "Showing numbers for ",
+    "title": "Showing numbers for",
     "allEntities": "all entities",
     "searchPublisher": "Choose publisher",
     "searchPublisherPlaceholder": "Search publisher...",
@@ -364,12 +365,12 @@
       "national": "authoritative sources",
       "withConcepts": "Datasets that use concepts",
       "withoutConcepts": "Datasets without concepts",
-      "apiOpenForAll": "API with public access",
-      "apiNotOpenForAll": "API without public access",
-      "apiOpenLicense": "API with open license",
-      "apiNotOpenLicense": "API without open license",
-      "apiFreeUsage": "API for free",
-      "apiNotFreeUsage": "API not for free"
+      "apiOpenForAll": "with public access",
+      "apiNotOpenForAll": "without public access",
+      "apiOpenLicense": "with open license",
+      "apiNotOpenLicense": "require license",
+      "apiFreeUsage": "for free",
+      "apiNotFreeUsage": "not for free"
     },
     "countCatalogsLabel": "organizations with datasets.",
     "catalogsFrom": "Dataset catalogs from",
@@ -381,7 +382,35 @@
     "conceptMostUsed": "Most used concepts",
     "countConceptsCatalogsLabel": "organizations with concepts",
     "conceptsFrom": "Concept catalogs from",
-    "conceptsCatalog": "Concept catalogs"
+    "conceptsCatalog": "Concept catalogs",
+
+    "datasetsDescription": "datasettbeskrivelser",
+    "dataserviceDescription": "API-beskrivelser",
+    "conceptsDescription": "begrepsbeskrivelser",
+    "informationModelsDescription": "informasjonsmodellbeskrivelser",
+    "growth": "Utvikling",
+    "opendata": "åpne data",
+    "public": "kan deles offentlig",
+    "restricted": "har begrenset offentlighet",
+    "nonPublic": "er unntatt offentlighet",
+    "unknown": "har ukjent tilgangsnivå",
+    "authoritative": "autoritative kilder",
+    "useConcepts": "benytter begrep fra begrepskatalogen",
+    "referToConcept": "informasjonsmodeller refererer til begrep fra begrepskatalogen",
+    "usedFormats": "Mest brukte formater",
+    "usedThemes": "Mest brukte tema og emner",
+    "themeAndTopic": "Tema/emne",
+    "countDataset": "Antall datasett",
+    "countDataservice": "Antall API-er",
+    "countConcept": "Antall begrep",
+    "countInformationModel": "Antall informasjonsmodeller",
+    "organizationsDataset": "virksomheter har datasettbeskrivelser i Felles datakatalog",
+    "organizationsDataservice": "virksomheter har API-beskrivelser i Felles datakatalog",
+    "organizationsConcept": "virksomheter har begrepsbeskrivelser i Felles datakatalog",
+    "organizationsInformationModel": "virksomheter har informasjonsmodellbeskrivelser i Felles datakatalog",
+    "catalogName": "Katalognavn",
+    "access": "Access",
+    "conceptReferenced": "Most referenced concepts"
   },
   "registration": {
     "title": "Registration (only in Norwegian)"

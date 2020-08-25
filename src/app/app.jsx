@@ -9,7 +9,7 @@ import localization from '../lib/localization';
 import { MainPage } from '../pages/main-page/main-page';
 import { SearchPage } from '../pages/search-page/search-page';
 import DatasetDetailsPage from '../components/dataset-details-page';
-import { ConnectedApiDetailsPage } from '../pages/api-details-page/connected-api-details-page';
+import { ConnectedDataServiceDetailsPage } from '../pages/data-service-details-page/connected-data-service-details-page';
 import { ConnectedConceptDetailsPage } from '../pages/concept-details-page/connected-concept-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
 import { ConnectedInformationModelDetailsPage } from '../pages/informationmodel-details-page/connected-information-model-details-page';
@@ -22,7 +22,7 @@ import {
   PATHNAME_SEARCH,
   PATHNAME_DATASETS,
   PATHNAME_DATASET_DETAILS,
-  PATHNAME_APIS,
+  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_CONCEPTS_COMPARE,
   PATHNAME_INFORMATIONMODELS,
@@ -97,7 +97,7 @@ export function App({ language, onChangeLanguage }) {
         <Route exact path={PATHNAME_MAIN_PAGE} component={MainPage} />
         <Route exact path={PATHNAME_SEARCH} component={SearchPage} />
         <Route exact path={PATHNAME_DATASETS} component={SearchPage} />
-        <Route exact path={PATHNAME_APIS} component={SearchPage} />
+        <Route exact path={PATHNAME_DATA_SERVICES} component={SearchPage} />
         <Route exact path={PATHNAME_CONCEPTS} component={SearchPage} />
         <Route exact path={PATHNAME_INFORMATIONMODELS} component={SearchPage} />
         <Route exact path={PATHNAME_NEWS_ARCHIVE} component={NewsArchivePage} />
@@ -128,7 +128,11 @@ export function App({ language, onChangeLanguage }) {
               path={`${PATHNAME_DATASET_DETAILS}/:datasetId`}
               component={DatasetDetailsPage}
             />
-            <Route exact path="/apis/:id" component={ConnectedApiDetailsPage} />
+            <Route
+              exact
+              path="/dataservices/:id"
+              component={ConnectedDataServiceDetailsPage}
+            />
             <Route
               exact
               path={`${PATHNAME_NEWS_ARTICLE}/:id`}

@@ -68,6 +68,14 @@ exports[`SearchEntities must render correct structure 1`] = `
       theme={
         Object {
           "dark": "#335380",
+          "graph": Object {
+            "dark": "#4B6B96",
+            "darker": "#335380",
+            "light": "#89A2C4",
+            "lighter": "#AFC2DB",
+            "lightest": "#D5E1F2",
+            "medium": "#6885AD",
+          },
           "light": "#D5E1F2",
           "lighter": "#F0F3F7",
         }
@@ -653,6 +661,10 @@ exports[`SearchEntities must render correct structure 1`] = `
       theme={
         Object {
           "dark": "#593380",
+          "graph": Object {
+            "darker": "#593380",
+            "lightest": "#E4D5F2",
+          },
           "light": "#E4D5F2",
           "lighter": "#F4F0F7",
         }

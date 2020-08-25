@@ -13,7 +13,7 @@ import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import {
   PATHNAME_DATASETS,
   PATHNAME_DATASET_DETAILS,
-  PATHNAME_APIS,
+  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS
 } from '../../constants/constants';
 
@@ -567,7 +567,7 @@ const DatasetDetailsPage: FC<Props> = ({
                       <KeyValueListItem
                         key={id}
                         property={
-                          <Link to={`${PATHNAME_APIS}/${id}`}>
+                          <Link to={`${PATHNAME_DATA_SERVICES}/${id}`}>
                             {translate(title)}
                           </Link>
                         }

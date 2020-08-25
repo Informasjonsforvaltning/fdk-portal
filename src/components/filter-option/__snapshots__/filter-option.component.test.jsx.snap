@@ -24,9 +24,8 @@ exports[`should render FilterOption correctly 1`] = `
       className="checkbox-replacement"
     />
     Agriculture, fisheries, forestry and food
-     (
-    18
-    )
+     
+    (18)
   </label>
 </div>
 `;
@@ -55,9 +54,8 @@ exports[`should render FilterOption correctly with no corresponding theme 1`] = 
       className="checkbox-replacement"
     />
     Unknown
-     (
-    18
-    )
+     
+    (18)
   </label>
 </div>
 `;
@@ -86,9 +84,8 @@ exports[`should render FilterOption correctly with no theme 1`] = `
       className="checkbox-replacement"
     />
     Public
-     (
-    463
-    )
+     
+    (463)
   </label>
 </div>
 `;

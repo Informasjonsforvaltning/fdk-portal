@@ -191,7 +191,7 @@ export interface Dataset {
   qualifiedAttributions: QualifiedAttribution[];
 }
 
-export interface Api {
+export interface DataService {
   id: string;
   uri: string;
   publisher: Partial<Publisher>;
@@ -203,8 +203,6 @@ export interface Api {
   isOpenLicense: boolean;
   isFree: boolean;
 }
-
-export interface DataService extends Api {}
 
 interface License {
   uri: string;
@@ -292,4 +290,29 @@ export interface Organization {
 interface QualifiedAttribution {
   agent: Partial<Publisher>;
   role: string;
+}
+
+export interface DataPoint {
+  xAxis: string;
+  yAxis: string;
+}
+
+interface Report {
+  totalObjects: string;
+  newLastWeek: string;
+  catalogs: KeyWithCountObject[];
+}
+
+export interface DatasetsReport extends Report {
+  formats: KeyWithCountObject[];
+  nationalComponent: string;
+  opendata: string;
+  withSubject: string;
+  accessRights: KeyWithCountObject[];
+  themesAndTopicsCount: KeyWithCountObject[];
+}
+
+export interface KeyWithCountObject {
+  key: string;
+  count: string;
 }

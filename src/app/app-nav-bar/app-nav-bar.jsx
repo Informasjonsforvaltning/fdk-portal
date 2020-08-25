@@ -106,6 +106,11 @@ export function AppNavBar(props) {
                     {localization.menu.aboutRegistration}
                   </Link>
                 </NavItem>
+                <NavItem>
+                  <Link className="nav-link" to={PATHNAME_REPORTS}>
+                    {localization.menu.reports}
+                  </Link>
+                </NavItem>
               </Nav>
             )}
           </div>

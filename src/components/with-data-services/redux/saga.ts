@@ -3,9 +3,9 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { GET_DATA_SERVICES_REQUESTED } from './action-types';
 import * as actions from './actions';
 
-import { apisSearch } from '../../../api/apis';
+import { searchDataServices } from '../../../api/search-fulltext-api/dataservices';
 
-import { DataService } from '../../../types';
+import type { DataService } from '../../../types';
 
 function* getDataServicesRequested({
   payload: {
@@ -17,7 +17,7 @@ function* getDataServicesRequested({
   }
 
   try {
-    const data = yield call(apisSearch, { dataseturi });
+    const data = yield call(searchDataServices, { dataseturi });
     if (data?.hits) {
       yield put(actions.getDataServicesSucceeded(data?.hits as DataService[]));
     } else {

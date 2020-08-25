@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
-import { PATHNAME_APIS } from '../../../../constants/constants';
+import { PATHNAME_DATA_SERVICES } from '../../../../constants/constants';
 
 import {
   ExpansionPanelHead,
@@ -106,7 +106,7 @@ const DatasetDistribution: FC<Props> = ({
             key={endpointDescription.uri}
             property={translations.dataset.distribution.dataService}
             value={
-              <Link to={`${PATHNAME_APIS}/${endpointDescription.uri}`}>
+              <Link to={`${PATHNAME_DATA_SERVICES}/${endpointDescription.uri}`}>
                 {translate(description)}
               </Link>
             }

@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
 import { fetchPublishersIfNeededAction } from '../../redux/modules/publishers';
-import { fetchCatalogsIfNeededAction } from '../../redux/modules/catalogs';
+import { fetchReferenceDataIfNeededAction } from '../../redux/modules/referenceData';
 
-const mapStateToProps = ({ catalogs, publishers }: any) => ({
-  catalogs: catalogs?.items ?? [],
-  publishers: publishers?.publisherItems ?? []
+const mapStateToProps = ({ publishers, referenceData }: any) => ({
+  publishers: publishers?.publisherItems ?? [],
+  referenceData
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  fetchCatalogsIfNeeded: () => dispatch(fetchCatalogsIfNeededAction()),
-  fetchPublishersIfNeeded: () => dispatch(fetchPublishersIfNeededAction())
+  fetchPublishersIfNeeded: () => dispatch(fetchPublishersIfNeededAction()),
+  fetchReferenceDataIfNeeded: (path: string) =>
+    dispatch(fetchReferenceDataIfNeededAction(path))
 });
 
 export const reportPageConnector = connect(mapStateToProps, mapDispatchToProps);

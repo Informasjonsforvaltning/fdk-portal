@@ -1,11 +1,11 @@
 import { resolve } from 'path';
-import merge from 'webpack-merge';
+import { merge } from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ErrorOverlayPlugin from 'error-overlay-webpack-plugin';
 
 import baseConfig from './base.config';
 
-export default merge.smart(baseConfig, {
+export default merge(baseConfig, {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   resolve: {
@@ -43,20 +43,6 @@ export default merge.smart(baseConfig, {
           resolve(__dirname, '..', 'node_modules', 'ansi-styles'),
           resolve(__dirname, '..', 'node_modules', 'chalk'),
           resolve(__dirname, '..', 'node_modules', 'react-dev-utils')
-        ]
-      },
-      {
-        test: /\.s?css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'resolve-url-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
         ]
       },
       {

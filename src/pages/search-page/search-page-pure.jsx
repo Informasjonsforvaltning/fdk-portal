@@ -19,7 +19,7 @@ import { getConfig } from '../../config';
 import './search-page.scss';
 import {
   HITS_PER_PAGE,
-  PATHNAME_APIS,
+  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
@@ -45,7 +45,7 @@ const browser = detect();
 const SearchPage = props => {
   const {
     fetchDatasetsIfNeeded,
-    fetchApisIfNeeded,
+    fetchDataServicesIfNeeded,
     fetchConceptsIfNeeded,
     fetchPublishersIfNeeded,
     fetchReferenceDataIfNeeded,
@@ -54,9 +54,9 @@ const SearchPage = props => {
     datasetItems,
     datasetAggregations,
     datasetTotal,
-    apiItems,
-    apiAggregations,
-    apiTotal,
+    dataServiceItems,
+    dataServiceAggregations,
+    dataServiceTotal,
     conceptItems,
     conceptAggregations,
     conceptTotal,
@@ -85,8 +85,10 @@ const SearchPage = props => {
     location.pathname === PATHNAME_DATASETS
       ? locationSearch
       : locationSearchParamQ;
-  const apiSearchParams =
-    location.pathname === PATHNAME_APIS ? locationSearch : locationSearchParamQ;
+  const dataServiceSearchParams =
+    location.pathname === PATHNAME_DATA_SERVICES
+      ? locationSearch
+      : locationSearchParamQ;
   const conceptSearchParams =
     location.pathname === PATHNAME_CONCEPTS
       ? locationSearch
@@ -97,7 +99,7 @@ const SearchPage = props => {
       : locationSearchParamQ;
 
   fetchDatasetsIfNeeded(datasetSearchParams);
-  fetchApisIfNeeded(apiSearchParams);
+  fetchDataServicesIfNeeded(dataServiceSearchParams);
   fetchConceptsIfNeeded(conceptSearchParams);
   fetchInformationModelsIfNeeded(informationModelSearchParams);
   fetchPublishersIfNeeded();
@@ -217,7 +219,7 @@ const SearchPage = props => {
           <SearchBoxTitle>
             <HitsStats
               countDatasets={datasetTotal}
-              countApis={apiTotal}
+              countApis={dataServiceTotal}
               countTerms={conceptTotal}
               countInformationModels={informationModelTotal}
             />
@@ -227,7 +229,7 @@ const SearchPage = props => {
               countResults={searchAllEntities?.page?.totalElements || 0}
               countDatasets={datasetTotal || 0}
               countConcepts={conceptTotal || 0}
-              countApis={apiTotal || 0}
+              countApis={dataServiceTotal || 0}
               countInformationModels={informationModelTotal || 0}
             />
           )}
@@ -285,17 +287,20 @@ const SearchPage = props => {
               hitsPerPage={HITS_PER_PAGE}
             />
           </Route>
-          <Route exact path={PATHNAME_APIS}>
+          <Route exact path={PATHNAME_DATA_SERVICES}>
             <ResultsApi
               showFilterModal={showFilterModal}
               closeFilterModal={closeFilterModal}
-              apiItems={apiItems}
-              apiTotal={apiTotal}
-              apiAggregations={apiAggregations}
+              dataServiceItems={dataServiceItems}
+              dataServiceTotal={dataServiceTotal}
+              dataServiceAggregations={dataServiceAggregations}
               onFilterAccessRights={handleDatasetFilterAccessRights}
               onFilterPublisherHierarchy={handleFilterPublisherHierarchy}
               onFilterFormat={handleFilterFormat}
-              publisherCounts={_.get(apiAggregations, 'orgPath.buckets')}
+              publisherCounts={_.get(
+                dataServiceAggregations,
+                'orgPath.buckets'
+              )}
               publishers={publisherItems}
               hitsPerPage={HITS_PER_PAGE}
             />
