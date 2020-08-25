@@ -561,7 +561,7 @@
     "lastYear": "siste år",
     "lastMonth": "siste månad",
     "lastWeek": "siste veke",
-    "metadataQuality": "metadatakvaliteten er {0}",
+    "metadataQualityIs": "metadatakvaliteten er {0}",
     "metaDataMiddle": "middels",
     "datasetIs": "datasett som er {0}",
     "authoritativeSources": "autoritative kjelder",

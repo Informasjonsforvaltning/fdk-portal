@@ -44,6 +44,7 @@ const OrganizationPage: FC<Props> = ({
   organization,
   organizationActions: { getOrganizationRequested: getOrganization },
   match: {
+    url,
     params: { organizationId }
   }
 }) => {
@@ -124,7 +125,7 @@ const OrganizationPage: FC<Props> = ({
                 <IllustrationWithCount count="218" />
                 <StatisticsRegularSC.StatisticsRegular.Label>
                   {localization.formatString(
-                    localization.metadataQualityPage.metadataQuality,
+                    localization.metadataQualityPage.metadataQualityIs,
                     'TODO'
                   )}
                 </StatisticsRegularSC.StatisticsRegular.Label>
@@ -208,7 +209,7 @@ const OrganizationPage: FC<Props> = ({
             </div>
             <div>
               <SC.Box colspan={2}>
-                <StatisticsRegular to="" as="div">
+                <StatisticsRegular to={`${url}/datasets`}>
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {localization.formatString(
                       localization.metadataQualityPage.metadataQualityCatalog,
@@ -218,7 +219,7 @@ const OrganizationPage: FC<Props> = ({
                 </StatisticsRegular>
               </SC.Box>
               <SC.Box colspan={2}>
-                <StatisticsRegular to="" as="div">
+                <StatisticsRegular to={`${url}/datasets`}>
                   <IllustrationWithCount count="67%" />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {localization.metadataQualityPage.percentMetadataQuality}
