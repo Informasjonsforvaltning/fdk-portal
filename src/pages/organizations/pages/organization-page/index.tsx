@@ -8,6 +8,10 @@ import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
 
+import withStatistics, {
+  Props as StatisticsProps
+} from '../../../../components/with-statistics';
+
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
 import SC from './styled';
@@ -34,11 +38,19 @@ interface RouteParams {
   organizationId: string;
 }
 
-interface Props extends OrganizationProps, RouteComponentProps<RouteParams> {}
+interface Props
+  extends OrganizationProps,
+    StatisticsProps,
+    RouteComponentProps<RouteParams> {}
 
 const OrganizationPage: FC<Props> = ({
   organization,
   organizationActions: { getOrganizationRequested: getOrganization },
+  statistics: { datasetsStatistics },
+  statisticsActions: {
+    getDatasetsStatisticsRequested: getDatasetsStatistics,
+    resetStatistics
+  },
   match: {
     url,
     params: { organizationId }
@@ -48,6 +60,13 @@ const OrganizationPage: FC<Props> = ({
     if (organization?.id !== organizationId) {
       getOrganization(organizationId);
     }
+    if (!datasetsStatistics) {
+      getDatasetsStatistics({ organizationId });
+    }
+
+    return () => {
+      resetStatistics();
+    };
   }, []);
 
   return (
@@ -76,7 +95,10 @@ const OrganizationPage: FC<Props> = ({
                     organization?.orgPath
                   )}`}
                 >
-                  <IllustrationWithCount icon={<DatasetIcon />} count={28} />
+                  <IllustrationWithCount
+                    icon={<DatasetIcon />}
+                    count={datasetsStatistics?.totalObjects}
+                  />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {localization.metadataQualityPage.descriptionsTotal}
                   </StatisticsRegularSC.StatisticsRegular.Label>
@@ -89,7 +111,10 @@ const OrganizationPage: FC<Props> = ({
                     [Filter.LASTXDAYS]: '7'
                   })}`}
                 >
-                  <IllustrationWithCount icon={<NewIcon />} count={1} />
+                  <IllustrationWithCount
+                    icon={<NewIcon />}
+                    count={datasetsStatistics?.newLastWeek}
+                  />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {localization.formatString(
                       localization.metadataQualityPage.newDescriptions,
@@ -107,7 +132,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<AuthoritativeIcon />}
-                    count={4}
+                    count={datasetsStatistics?.nationalComponent}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {localization.formatString(
@@ -124,7 +149,10 @@ const OrganizationPage: FC<Props> = ({
                     [Filter.OPENDATA]: 'true'
                   })}`}
                 >
-                  <IllustrationWithCount icon={<AccessOpenIcon />} count={4} />
+                  <IllustrationWithCount
+                    icon={<AccessOpenIcon />}
+                    count={datasetsStatistics?.opendata}
+                  />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {localization.formatString(
                       localization.metadataQualityPage.datasetIs,
@@ -185,4 +213,8 @@ const OrganizationPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withOrganization)(OrganizationPage);
+export default compose<FC>(
+  memo,
+  withOrganization,
+  withStatistics
+)(OrganizationPage);

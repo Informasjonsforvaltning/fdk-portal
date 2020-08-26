@@ -316,3 +316,7 @@ export interface KeyWithCountObject {
   key: string;
   count: number;
 }
+
+export interface Statistics {
+  datasetsStatistics: DatasetsReport;
+}
