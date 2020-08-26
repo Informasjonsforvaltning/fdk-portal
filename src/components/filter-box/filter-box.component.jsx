@@ -33,7 +33,7 @@ export class FilterBox extends React.Component {
 
   _renderOptions({ buckets }, onClick, activeFilter, allFilters) {
     const { open } = this.state;
-    const { htmlKey, themesItems } = this.props;
+    const { htmlKey, referenceDataItems } = this.props;
     const filters = [];
     if (activeFilter) {
       filters.push(...activeFilter.split(','));
@@ -61,7 +61,7 @@ export class FilterBox extends React.Component {
             count={item.count}
             onClick={onClick}
             active={active}
-            themesItems={themesItems}
+            referenceDataItems={referenceDataItems}
           />
         );
       });
@@ -133,7 +133,7 @@ FilterBox.defaultProps = {
   htmlKey: null,
   title: null,
   activeFilter: null,
-  themesItems: null,
+  referenceDataItems: null,
   filters: null
 };
 
@@ -143,7 +143,7 @@ FilterBox.propTypes = {
   filter: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
   activeFilter: PropTypes.string,
-  themesItems: PropTypes.object,
+  referenceDataItems: PropTypes.object,
   filters: PropTypes.object
 };
 

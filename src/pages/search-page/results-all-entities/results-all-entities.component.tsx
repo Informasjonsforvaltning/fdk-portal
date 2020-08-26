@@ -194,7 +194,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 filter={aggregations.theme}
                 onClick={onFilterTheme}
                 activeFilter={themeParam}
-                themesItems={themesItems}
+                referenceDataItems={themesItems}
               />
               <FilterBox
                 htmlKey={2}

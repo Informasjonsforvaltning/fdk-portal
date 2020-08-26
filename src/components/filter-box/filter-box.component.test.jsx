@@ -15,7 +15,7 @@ beforeEach(() => {
     filter: themeAggregation,
     onClick,
     activeFilter: null,
-    themesItems: themeItems
+    referenceDataItems: themeItems
   };
   wrapper = shallow(<FilterBox {...defaultProps} />);
 });
