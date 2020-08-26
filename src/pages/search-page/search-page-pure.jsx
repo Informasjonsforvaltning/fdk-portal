@@ -303,6 +303,7 @@ const SearchPage = props => {
               )}
               publishers={publisherItems}
               hitsPerPage={HITS_PER_PAGE}
+              referenceData={referenceData}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
