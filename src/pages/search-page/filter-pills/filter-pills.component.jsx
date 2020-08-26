@@ -113,7 +113,7 @@ export const FilterPills = ({
           key
         });
       }
-      if (key === 'keywords' || key === 'availability') {
+      if (key === 'keywords' || key === 'availability' || key === 'format') {
         return renderKeywordPills(key, keyValue.split(','), history, location);
       }
       if (key === 'opendata') {

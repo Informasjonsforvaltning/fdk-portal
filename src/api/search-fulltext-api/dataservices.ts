@@ -13,7 +13,8 @@ const mapFilters = ({
   opendata,
   accessrights: accessRights,
   spatial,
-  provenance
+  provenance,
+  format
 }: any) => {
   const filters = [];
   if (los) {
@@ -36,6 +37,14 @@ const mapFilters = ({
   }
   if (provenance) {
     filters.push({ provenance });
+  }
+  if (format) {
+    filters.push({
+      collection: {
+        field: 'mediaType.code.keyword',
+        values: format.split(',')
+      }
+    });
   }
 
   return filters.length > 0 ? filters : undefined;

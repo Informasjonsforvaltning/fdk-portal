@@ -110,3 +110,9 @@ export const getLosStructure = referenceData => {
 
 export const getThemesStructure = referenceData =>
   keyBy(get(referenceData, ['items', REFERENCEDATA_PATH_THEMES], []), 'code');
+
+export const getMediaTypesByKey = referenceData =>
+  keyBy(
+    get(referenceData, ['items', REFERENCEDATA_PATH_MEDIATYPES], []),
+    'code'
+  );
