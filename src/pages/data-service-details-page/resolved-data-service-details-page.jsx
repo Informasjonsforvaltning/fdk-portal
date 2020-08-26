@@ -48,10 +48,9 @@ const mapProps = {
   }) => {
     const currentApi = await memoizedSearchDataServices({
       filters: [{ _id: id }]
-    });
-    const uriArray = (currentApi?.datasetReferences || []).map(
-      item => item.uri
-    );
+    }).then(extractDataServices);
+
+    const uriArray = currentApi?.[0]?.servesDataset ?? [];
     const paramsUris = paramsToSearchBody({ uris: uriArray });
     const paramsAccessService = paramsToSearchBody({ accessService: id });
 

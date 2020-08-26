@@ -47,23 +47,21 @@ const renderDescription = descriptionFormatted => {
   );
 };
 
-const renderFormats = formats => {
-  if (!formats || formats.length === 0) {
-    return null;
-  }
-  const formatItems = formats =>
-    formats.map((item, index) => (
-      <span key={index}>
-        {index > 0 ? ', ' : ''}
-        {item}
-      </span>
-    ));
-  return (
+const renderFormats = formats =>
+  formats &&
+  Array.isArray(formats) &&
+  formats.length > 0 && (
     <ListRegular title={localization.format}>
-      <div className="d-flex list-regular--item">{formatItems(formats)}</div>
+      <div className="d-flex list-regular--item">
+        {formats.map(({ code, prefLabel }, index) => (
+          <span key={code}>
+            {index > 0 ? ', ' : ''}
+            {getTranslateText(prefLabel)}
+          </span>
+        ))}
+      </div>
     </ListRegular>
   );
-};
 
 const renderApiUsageInstruction = (servers, apiSpecUrl, apiDocUrl) =>
   servers &&
@@ -96,24 +94,16 @@ const renderAPIInfo = ({ children }) => {
   return <ListRegular title={localization.apiInfo}>{children}</ListRegular>;
 };
 
-const renderDatasetReferences = references => {
-  if (!references || (references && references.length === 0)) {
-    return null;
-  }
-  const children = items =>
-    items.map((item, index) => (
-      <DatasetReference
-        key={`${index}-${item.id}`}
-        datasetReference={item}
-        index={index}
-      />
-    ));
-  return (
+const renderDatasetReferences = references =>
+  references &&
+  Array.isArray(references) &&
+  references.length > 0 && (
     <ListRegular title={localization.datasetReferences}>
-      {children(references)}
+      {references.map(item => (
+        <DatasetReference key={item.id} datasetReference={item} />
+      ))}
     </ListRegular>
   );
-};
 
 const renderInformationModelReferences = informationModels => {
   if (
@@ -272,7 +262,7 @@ const renderTermsAndRestrictions = (
   );
 };
 
-const renderStickyMenu = (apiItem, informationModels) => {
+const renderStickyMenu = (apiItem, informationModels, datasets) => {
   const menuItems = [];
   if (_.get(apiItem, 'description')) {
     menuItems.push({
@@ -280,13 +270,17 @@ const renderStickyMenu = (apiItem, informationModels) => {
       prefLabel: localization.description
     });
   }
-  if (_.get(apiItem, 'formats', []).length > 0) {
+  if (_.get(apiItem, 'mediaType', []).length > 0) {
     menuItems.push({
       name: localization.format,
       prefLabel: localization.format
     });
   }
-  if (_.get(apiItem, ['apiSpecification', 'servers'], []).length) {
+  if (
+    _.get(apiItem, ['apiSpecification', 'servers'], []).length ||
+    _.get(apiItem, 'endpointURL', []).length ||
+    _.get(apiItem, 'endpointDescription', []).length
+  ) {
     menuItems.push({
       name: localization.api.servers.title,
       prefLabel: localization.api.servers.title
@@ -317,7 +311,12 @@ const renderStickyMenu = (apiItem, informationModels) => {
       prefLabel: localization.api.termsAndRestrictions.termsAndRestrictions
     });
   }
-  if (_.get(apiItem, 'datasetReferences')) {
+  if (
+    _.get(apiItem, 'servesDataset', []).length > 0 &&
+    datasets &&
+    Array.isArray(datasets) &&
+    datasets.length > 0
+  ) {
     menuItems.push({
       name: localization.datasetReferences,
       prefLabel: localization.datasetReferences
@@ -426,14 +425,19 @@ export const DataServiceDetailsPage = ({
     return null;
   }
 
-  const internalApiSpecUrl = `/api/apis/${dataServiceItem.id}/spec`;
-
   const meta = {
     title: getTranslateText(dataServiceItem.title),
     description: getTranslateText(dataServiceItem.description)
   };
 
-  const { isFree, isOpenAccess, isOpenLicense } = dataServiceItem;
+  const {
+    isFree,
+    isOpenAccess,
+    isOpenLicense,
+    endpointDescription: endpointDescriptions = [],
+    endpointURL: endpointUrls = [],
+    mediaType: mediaTypes = []
+  } = dataServiceItem;
 
   return (
     <main id="content" className="container">
@@ -457,7 +461,11 @@ export const DataServiceDetailsPage = ({
 
         <div className="row">
           <div className="col-12 col-lg-4 ">
-            {renderStickyMenu(dataServiceItem, referencedInformationModels)}
+            {renderStickyMenu(
+              dataServiceItem,
+              referencedInformationModels,
+              referencedDatasets
+            )}
           </div>
 
           <section className="col-12 col-lg-8 mt-3 api-details-section">
@@ -488,12 +496,11 @@ export const DataServiceDetailsPage = ({
               </div>
             </div>
 
-            {renderFormats(dataServiceItem.formats)}
+            {renderFormats(mediaTypes)}
 
             {renderApiUsageInstruction(
-              _.get(dataServiceItem, ['apiSpecification', 'servers'], []),
-              dataServiceItem.apiSpecUrl || internalApiSpecUrl,
-              dataServiceItem.apiDocUrl
+              endpointUrls.map(url => ({ url })),
+              endpointDescriptions[0]
             )}
 
             {renderApiEndpoints(
