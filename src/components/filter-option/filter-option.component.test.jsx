@@ -13,7 +13,7 @@ test('should render FilterOption correctly', () => {
       count={filterOptions[0].count}
       onClick={onClick}
       active={filterOptions[0].active}
-      themesItems={filterOptions[0].themesItems}
+      referenceDataItems={filterOptions[0].themesItems}
       displayClass={filterOptions[0].displayClass}
     />
   );
@@ -30,7 +30,7 @@ test('should render FilterOption correctly with no corresponding theme', () => {
       count={filterOptions[1].count}
       onClick={onClick}
       active={filterOptions[1].active}
-      themesItems={filterOptions[1].themesItems}
+      referenceDataItems={filterOptions[1].themesItems}
       displayClass={filterOptions[1].displayClass}
     />
   );
@@ -47,7 +47,7 @@ test('should render FilterOption correctly with no theme', () => {
       count={filterOptions[2].count}
       onClick={onClick}
       active={filterOptions[2].active}
-      themesItems={filterOptions[2].themesItems}
+      referenceDataItems={filterOptions[2].themesItems}
       displayClass={filterOptions[2].displayClass}
     />
   );
@@ -64,7 +64,7 @@ test('should handle onChange', () => {
       count={filterOptions[2].count}
       onClick={onClick}
       active={filterOptions[2].active}
-      themesItems={filterOptions[2].themesItems}
+      referenceDataItems={filterOptions[2].themesItems}
       displayClass={filterOptions[2].displayClass}
     />
   );
