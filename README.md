@@ -29,4 +29,7 @@ npm run start
 ```
 % docker-compose up --build
 ```
+fdk-portal's external dependencies will in this setting be realized by our staging environment.
+
+
 Open your browser and point it to http://localhost:8080
