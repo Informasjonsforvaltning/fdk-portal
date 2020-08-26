@@ -1,8 +1,6 @@
 FROM node:12 AS build
-ARG GITHUB_TOKEN
 WORKDIR /app
-COPY package.json package-lock.json .npmrc ./
-RUN echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
+COPY package.json package-lock.json ./
 RUN npm set progress=false && \
   npm config set depth 0 && \
   npm ci
