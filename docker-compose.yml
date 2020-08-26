@@ -3,4 +3,11 @@ services:
   fdk-portal:
     build: .
     ports:
-      - "8080:8080"
+      - 8080:8080
+    environment:
+      - SEARCH_API_HOST=https://www.staging.fellesdatakatalog.digdir.no
+      - SEARCH_FULLTEXT_HOST=https://search.staging.fellesdatakatalog.digdir.no
+      - CMS_API_HOST=https://cms-fellesdatakatalog.digdir.no
+      - ORGANIZATION_HOST=https://organization-bff.staging.fellesdatakatalog.digdir.no
+      - ORGANIZATION_CATALOGUE_HOST=https://organization-catalogue.staging.fellesdatakatalog.digdir.no
+      - REPORT_API_HOST=https://reports-bff.staging.fellesdatakatalog.digdir.no
