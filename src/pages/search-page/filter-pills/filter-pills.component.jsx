@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import cx from 'classnames';
+import capitalize from 'lodash/capitalize';
+import get from 'lodash/get';
 
+import { omit } from '../../../lib/omit';
 import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
 import { Pill } from '../../../components/pill/pill.component';
@@ -14,57 +15,62 @@ import {
 
 import SC from './styled';
 
-const getFilterLabel = (key, keyValue, publishers) => {
+const getFilterLabel = (filterName, filterValue, referenceDataItems) => {
   if (
-    keyValue.toUpperCase() === 'UKJENT' ||
-    keyValue.toUpperCase() === 'MISSING'
+    filterValue.toUpperCase() === 'UKJENT' ||
+    filterValue.toUpperCase() === 'MISSING'
   ) {
     return localization.unknown;
   }
-  if (key === 'orgPath') {
-    const currentPublisher = publishers[keyValue];
-    if (!currentPublisher) {
-      return _.capitalize(keyValue.replace(/^\/|\/$/g, ''));
+
+  switch (filterName) {
+    case 'orgPath': {
+      const currentPublisher = referenceDataItems[filterValue];
+      if (!currentPublisher) {
+        return capitalize(filterValue.replace(/^\/|\/$/g, ''));
+      }
+      return (
+        localization.facet.publishers[currentPublisher.name] ||
+        getTranslateText(currentPublisher.prefLabel) ||
+        capitalize(currentPublisher.name)
+      );
     }
-    return (
-      localization.facet.publishers[currentPublisher.name] ||
-      getTranslateText(currentPublisher.prefLabel) ||
-      _.capitalize(currentPublisher.name)
-    );
+    case 'theme':
+      return (
+        getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
+        filterValue
+      );
+    case 'losTheme':
+      return (
+        getTranslateText(get(referenceDataItems, [filterValue, 'prefLabel'])) ||
+        filterValue
+      );
+    case 'opendata':
+      return localization.open_data;
+    default:
+      return localization[filterValue.toLowerCase()] || capitalize(filterValue);
   }
-  return localization[keyValue.toLowerCase()] || _.capitalize(keyValue);
 };
 
-const renderThemePill = ({ themesItems, keyValue, history, location, key }) => {
-  const themeArray = keyValue.split(',');
-  return themeArray.map((theme, index) => {
-    const label =
-      getTranslateText(_.get(themesItems, [theme, 'title'])) ||
-      getTranslateText(_.get(themesItems, [theme, 'prefLabel'])) ||
-      localization.unknown;
-    return (
-      <Pill
-        key={`${keyValue}-${index}`}
-        history={history}
-        location={location}
-        name={key}
-        value={theme}
-        label={label}
-        handleOnClick={() => {
-          setMultiselectFilterValue(history, location, key, theme, false);
-        }}
-      />
-    );
-  });
-};
-
-const renderKeywordPills = (filterName, keywords, history, location) =>
-  keywords.map(keyword => (
+const renderFilterValuesPills = (
+  filterName,
+  filterValues,
+  history,
+  location,
+  referenceDataItems
+) =>
+  filterValues.map((filterValue, index) => (
     <Pill
-      key={keyword}
-      label={localization[keyword] || keyword}
+      key={`${filterValue}-${index}`}
+      label={getFilterLabel(filterName, filterValue, referenceDataItems)}
       handleOnClick={() =>
-        setMultiselectFilterValue(history, location, filterName, keyword, false)
+        setMultiselectFilterValue(
+          history,
+          location,
+          filterName,
+          filterValue,
+          false
+        )
       }
     />
   ));
@@ -81,93 +87,34 @@ export const FilterPills = ({
     return null;
   }
 
-  const clearButtonClass = cx(
-    'fdk-button-clear',
-    'fdk-text-size-15',
-    'border',
-    'border-dark',
-    'fade-in-500',
-    {
-      'd-none': !isFilterNotEmpty(location)
-    }
-  );
-
-  const pills = (history, location, locationSearch, themesItems, publishers) =>
-    Object.keys(_.omit(locationSearch, ['q', 'page', 'sortfield'])).map(key => {
-      const keyValue = locationSearch[key];
-      if (key === 'theme') {
-        return renderThemePill({
-          themesItems,
-          keyValue,
-          history,
-          location,
-          key
-        });
-      }
-      if (key === 'losTheme') {
-        return renderThemePill({
-          themesItems: losItems,
-          keyValue,
-          history,
-          location,
-          key
-        });
-      }
-      if (key === 'keywords' || key === 'availability' || key === 'format') {
-        return renderKeywordPills(key, keyValue.split(','), history, location);
-      }
-      if (key === 'opendata') {
-        return (
-          <Pill
-            key={`${key}-${keyValue}`}
-            history={history}
-            location={location}
-            name={key}
-            value={keyValue}
-            label={localization.open_data}
-            handleOnClick={() => {
-              setMultiselectFilterValue(
-                history,
-                location,
-                key,
-                keyValue,
-                false
-              );
-            }}
-          />
-        );
-      }
-      return (
-        <Pill
-          key={`${key}-${keyValue}`}
-          history={history}
-          location={location}
-          name={key}
-          value={keyValue}
-          label={getFilterLabel(key, keyValue, publishers)}
-          handleOnClick={() => {
-            setMultiselectFilterValue(history, location, key, keyValue, false);
-          }}
-        />
-      );
-    });
+  const referenceDataItems = {
+    theme: themesItems,
+    losTheme: losItems,
+    orgPath: publishers
+  };
 
   return (
     <div>
       <SC.Heading>{localization.activeFilter}</SC.Heading>
-      <div className="d-flex flex-wrap mt-4">
-        {pills(history, location, locationSearch, themesItems, publishers)}
-      </div>
-
-      <div className="pl-0 mt-2 mb-4">
-        <button
-          className={clearButtonClass}
-          onClick={() => clearFilters(history, location)}
-          type="button"
-        >
-          {localization.query.clear}
-        </button>
-      </div>
+      <SC.Pills>
+        {Object.keys(
+          omit(locationSearch, ['q', 'page', 'sortfield'])
+        ).map(filterName =>
+          renderFilterValuesPills(
+            filterName,
+            locationSearch[filterName]?.split(','),
+            history,
+            location,
+            referenceDataItems[filterName]
+          )
+        )}
+      </SC.Pills>
+      <SC.ClearButton
+        onClick={() => clearFilters(history, location)}
+        type="button"
+      >
+        {localization.query.clear}
+      </SC.ClearButton>
     </div>
   );
 };
