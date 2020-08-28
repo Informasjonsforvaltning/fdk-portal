@@ -502,7 +502,7 @@ export const DataServiceDetailsPage = ({
 
             {renderApiUsageInstruction(
               endpointUrls.map(url => ({ url })),
-              endpointDescriptions[0]
+              endpointDescriptions
             )}
 
             {renderApiEndpoints(
