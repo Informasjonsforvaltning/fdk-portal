@@ -161,9 +161,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
               </span>
 
               <FilterPills
-                history={history}
-                location={location}
-                locationSearch={searchParams}
                 themesItems={themesItems}
                 publishers={publishers}
                 losItems={losItems}

@@ -168,13 +168,7 @@ export const ResultsInformationModelPure = ({
                 Filtrering
               </span>
 
-              <FilterPills
-                history={history}
-                location={location}
-                locationSearch={locationSearch}
-                publishers={publishers}
-                losItems={losItems}
-              />
+              <FilterPills publishers={publishers} losItems={losItems} />
 
               {informationModelAggregations && (
                 <div>

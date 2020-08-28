@@ -161,12 +161,7 @@ export const ResultsApiPure = ({
                 Filtrering
               </span>
 
-              <FilterPills
-                history={history}
-                location={location}
-                locationSearch={locationSearch}
-                publishers={publishers}
-              />
+              <FilterPills publishers={publishers} />
 
               {dataServiceAggregations && (
                 <div>
