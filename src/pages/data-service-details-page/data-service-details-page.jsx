@@ -129,22 +129,22 @@ const renderInformationModelReferences = informationModels => {
 
 const getContactPointKey = contactPoint =>
   contactPoint &&
-  (contactPoint.uri ||
+  (contactPoint.hasURL ||
     contactPoint.organizationName ||
     contactPoint.email ||
-    contactPoint.phone);
+    contactPoint.hasTelephone);
 
 const renderContactPoint = contactPoint => {
-  const { uri, organizationName, email, phone } = contactPoint;
+  const { hasURL, organizationName, email, hasTelephone } = contactPoint;
   return (
     <React.Fragment key={getContactPointKey(contactPoint)}>
-      {(uri || organizationName) && (
+      {(hasURL || organizationName) && (
         <TwoColRow
           col1={localization.contactPoint}
           col2={
-            uri ? (
-              <a href={uri}>
-                {organizationName || uri}
+            hasURL ? (
+              <a href={hasURL}>
+                {organizationName || hasURL}
                 <i className="fa fa-external-link fdk-fa-right" />
               </a>
             ) : (
@@ -163,7 +163,9 @@ const renderContactPoint = contactPoint => {
           }
         />
       )}
-      {phone && <TwoColRow col1={localization.phone} col2={phone} />}
+      {hasTelephone && (
+        <TwoColRow col1={localization.phone} col2={hasTelephone} />
+      )}
     </React.Fragment>
   );
 };

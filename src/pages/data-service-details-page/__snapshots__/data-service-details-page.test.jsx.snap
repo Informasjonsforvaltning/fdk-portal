@@ -292,16 +292,7 @@ exports[`should render DataServiceDetailsPage correctly with dataServiceItem 1`]
           <TwoColRow
             col1="Contact point"
             col1Width={null}
-            col2={
-              <a
-                href="https://fellesdatakatalog.brreg.no"
-              >
-                Brønnøysundregistrene
-                <i
-                  className="fa fa-external-link fdk-fa-right"
-                />
-              </a>
-            }
+            col2="Brønnøysundregistrene"
             col2Width={null}
           />
           <TwoColRow
