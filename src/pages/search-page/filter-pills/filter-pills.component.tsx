@@ -1,8 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, memo } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import capitalize from 'lodash/capitalize';
 import get from 'lodash/get';
 
+import { parseSearchParams } from '../../../lib/location-history-helper';
 import { omit } from '../../../lib/omit';
 import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
@@ -14,8 +15,35 @@ import {
 } from '../search-location-helper';
 
 import SC from './styled';
+import { EuTheme, LosTheme, Publisher } from '../../../types';
 
-const getFilterLabel = (filterName, filterValue, referenceDataItems) => {
+interface ThemesItems {
+  [key: string]: Partial<EuTheme>;
+}
+
+interface LosThemeItems {
+  [key: string]: Partial<LosTheme>;
+}
+
+interface PublisherItems {
+  [key: string]: Partial<Publisher>;
+}
+
+interface Props extends RouteComponentProps {
+  themesItems: ThemesItems;
+  losItems: LosThemeItems;
+  publishers: any;
+}
+
+interface ReferenceDataItems {
+  [key: string]: any;
+}
+
+const getFilterLabel = (
+  filterName: string,
+  filterValue: string,
+  referenceDataItems: ThemesItems | LosThemeItems | PublisherItems
+) => {
   if (
     filterValue.toUpperCase() === 'UKJENT' ||
     filterValue.toUpperCase() === 'MISSING'
@@ -25,14 +53,14 @@ const getFilterLabel = (filterName, filterValue, referenceDataItems) => {
 
   switch (filterName) {
     case 'orgPath': {
-      const currentPublisher = referenceDataItems[filterValue];
-      if (!currentPublisher) {
+      const { name, prefLabel }: any = referenceDataItems[filterValue];
+      if (!(name || prefLabel)) {
         return capitalize(filterValue.replace(/^\/|\/$/g, ''));
       }
       return (
-        localization.facet.publishers[currentPublisher.name] ||
-        getTranslateText(currentPublisher.prefLabel) ||
-        capitalize(currentPublisher.name)
+        localization.facet.publishers[name] ||
+        getTranslateText(prefLabel) ||
+        capitalize(name)
       );
     }
     case 'theme':
@@ -53,13 +81,13 @@ const getFilterLabel = (filterName, filterValue, referenceDataItems) => {
 };
 
 const renderFilterValuesPills = (
-  filterName,
-  filterValues,
-  history,
-  location,
-  referenceDataItems
+  filterName: string,
+  filterValues: any,
+  history: any,
+  location: any,
+  referenceDataItems: any
 ) =>
-  filterValues.map((filterValue, index) => (
+  filterValues.map((filterValue: string, index: number) => (
     <Pill
       key={`${filterValue}-${index}`}
       label={getFilterLabel(filterName, filterValue, referenceDataItems)}
@@ -75,10 +103,9 @@ const renderFilterValuesPills = (
     />
   ));
 
-export const FilterPills = ({
+const FilterPillsPure: FC<Props> = ({
   history,
   location,
-  locationSearch,
   themesItems,
   publishers,
   losItems
@@ -87,7 +114,9 @@ export const FilterPills = ({
     return null;
   }
 
-  const referenceDataItems = {
+  const locationSearch: any = parseSearchParams(location);
+
+  const referenceDataItems: ReferenceDataItems = {
     theme: themesItems,
     losTheme: losItems,
     orgPath: publishers
@@ -99,7 +128,7 @@ export const FilterPills = ({
       <SC.Pills>
         {Object.keys(
           omit(locationSearch, ['q', 'page', 'sortfield'])
-        ).map(filterName =>
+        ).map((filterName: string) =>
           renderFilterValuesPills(
             filterName,
             locationSearch[filterName]?.split(','),
@@ -119,20 +148,4 @@ export const FilterPills = ({
   );
 };
 
-FilterPills.defaultProps = {
-  history: null,
-  location: null,
-  locationSearch: null,
-  themesItems: null,
-  publishers: null,
-  losItems: null
-};
-
-FilterPills.propTypes = {
-  history: PropTypes.object,
-  location: PropTypes.object,
-  locationSearch: PropTypes.object,
-  themesItems: PropTypes.object,
-  publishers: PropTypes.object,
-  losItems: PropTypes.object
-};
+export const FilterPills = withRouter(memo(FilterPillsPure));

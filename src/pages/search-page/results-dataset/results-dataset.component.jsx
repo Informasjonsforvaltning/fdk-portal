@@ -241,9 +241,6 @@ export const ResultsDatasetPure = ({
               </span>
 
               <FilterPills
-                history={history}
-                location={location}
-                locationSearch={locationSearch}
                 themesItems={themesItems}
                 publishers={publishers}
                 losItems={losItems}

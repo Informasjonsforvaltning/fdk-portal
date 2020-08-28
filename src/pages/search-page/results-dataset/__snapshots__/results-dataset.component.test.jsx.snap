@@ -43,18 +43,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
       >
         Filtrering tilgang
       </span>
-      <FilterPills
-        history={
-          Object {
-            "push": [Function],
-          }
-        }
-        location={
-          Object {
-            "search": "",
-          }
-        }
-        locationSearch={Object {}}
+      <withRouter(undefined)
         losItems={Object {}}
         publishers={null}
         themesItems={Object {}}

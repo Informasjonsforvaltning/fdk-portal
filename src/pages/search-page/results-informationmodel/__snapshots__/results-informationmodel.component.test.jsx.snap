@@ -43,21 +43,9 @@ exports[`should render ResultsInformationModel correctly with hits 1`] = `
       >
         Filtrering
       </span>
-      <FilterPills
-        history={
-          Object {
-            "push": [Function],
-          }
-        }
-        location={
-          Object {
-            "search": "",
-          }
-        }
-        locationSearch={Object {}}
+      <withRouter(undefined)
         losItems={Object {}}
         publishers={null}
-        themesItems={null}
       />
       <div>
         <Modal
