@@ -231,7 +231,7 @@ SearchHitHeader.defaultProps = {
 
 SearchHitHeader.propTypes = {
   tag: PropTypes.string,
-  title: PropTypes.any,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   titleLink: PropTypes.string,
   publisherLabel: PropTypes.string,
   publisher: PropTypes.object,
