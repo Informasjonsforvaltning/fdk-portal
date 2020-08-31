@@ -60,6 +60,6 @@ ApiServer.defaultProps = {
 
 ApiServer.propTypes = {
   servers: PropTypes.array,
-  apiSpecUrl: PropTypes.string,
+  apiSpecUrl: PropTypes.array,
   apiDocUrl: PropTypes.string
 };
