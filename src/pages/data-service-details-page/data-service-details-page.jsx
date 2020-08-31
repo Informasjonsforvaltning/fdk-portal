@@ -330,7 +330,12 @@ const renderStickyMenu = (apiItem, informationModels, datasets) => {
       prefLabel: localization.informationModelReferences
     });
   }
-  if (_.get(apiItem, 'contactPoint')) {
+  if (
+    apiItem?.contactPoint[0]?.hasURL ||
+    apiItem?.contactPoint[0]?.organizationName ||
+    apiItem?.contactPoint[0]?.email ||
+    apiItem?.contactPoint[0]?.hasTelephone
+  ) {
     menuItems.push({
       name: localization.contactInfo,
       prefLabel: localization.contactInfo
