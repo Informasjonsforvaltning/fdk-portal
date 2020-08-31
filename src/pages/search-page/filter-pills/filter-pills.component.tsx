@@ -15,7 +15,7 @@ import {
 } from '../search-location-helper';
 
 import SC from './styled';
-import { EuTheme, LosTheme, Publisher } from '../../../types';
+import { EuTheme, LosTheme } from '../../../types';
 
 interface ThemesItems {
   [key: string]: Partial<EuTheme>;
@@ -23,10 +23,6 @@ interface ThemesItems {
 
 interface LosThemeItems {
   [key: string]: Partial<LosTheme>;
-}
-
-interface PublisherItems {
-  [key: string]: Partial<Publisher>;
 }
 
 interface Props extends RouteComponentProps {
@@ -42,7 +38,7 @@ interface ReferenceDataItems {
 const getFilterLabel = (
   filterName: string,
   filterValue: string,
-  referenceDataItems: ThemesItems | LosThemeItems | PublisherItems
+  referenceDataItems: any
 ) => {
   if (
     filterValue.toUpperCase() === 'UKJENT' ||
@@ -53,13 +49,13 @@ const getFilterLabel = (
 
   switch (filterName) {
     case 'orgPath': {
-      const { name, prefLabel }: any = referenceDataItems[filterValue];
-      if (!(name || prefLabel)) {
+      const referencedItem = referenceDataItems[filterValue];
+      if (!(referencedItem?.name || referencedItem?.prefLabel)) {
         return capitalize(filterValue.replace(/^\/|\/$/g, ''));
       }
       return (
         localization.facet.publishers[name] ||
-        getTranslateText(prefLabel) ||
+        getTranslateText(referencedItem?.prefLabel) ||
         capitalize(name)
       );
     }
