@@ -298,21 +298,21 @@ export interface DataPoint {
 }
 
 interface Report {
-  totalObjects: string;
-  newLastWeek: string;
+  totalObjects: number;
+  newLastWeek: number;
   catalogs: KeyWithCountObject[];
 }
 
 export interface DatasetsReport extends Report {
   formats: KeyWithCountObject[];
-  nationalComponent: string;
-  opendata: string;
-  withSubject: string;
+  nationalComponent: number;
+  opendata: number;
+  withSubject: number;
   accessRights: KeyWithCountObject[];
   themesAndTopicsCount: KeyWithCountObject[];
 }
 
 export interface KeyWithCountObject {
   key: string;
-  count: string;
+  count: number;
 }
