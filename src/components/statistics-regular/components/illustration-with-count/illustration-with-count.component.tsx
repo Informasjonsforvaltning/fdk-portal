@@ -8,14 +8,14 @@ interface Props {
   variant?: Variant;
   icon?: ReactNode;
   chart?: ReactNode;
-  count?: string;
+  count?: number;
 }
 
 const IllustrationWithCount: FC<Props> = ({ variant, icon, chart, count }) => (
   <SC.Content variant={variant}>
     {icon && <SC.Icon>{icon}</SC.Icon>}
     {chart && <SC.Chart>{chart}</SC.Chart>}
-    {count && <SC.Count>{count}</SC.Count>}
+    {Number.isInteger(count) && <SC.Count>{count}</SC.Count>}
   </SC.Content>
 );
 
