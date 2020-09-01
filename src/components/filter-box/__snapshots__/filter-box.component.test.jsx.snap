@@ -50,7 +50,7 @@ exports[`should render FilterBox correctly 1`] = `
             label="GOVE"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -80,7 +80,7 @@ exports[`should render FilterBox correctly 1`] = `
             label="EDUC"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -110,7 +110,7 @@ exports[`should render FilterBox correctly 1`] = `
             label="HEAL"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -140,7 +140,7 @@ exports[`should render FilterBox correctly 1`] = `
             label="Ukjent"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -170,7 +170,7 @@ exports[`should render FilterBox correctly 1`] = `
             label="AGRI"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -219,7 +219,7 @@ exports[`should render FilterBox correctly 1`] = `
                   label="TEST"
                   labelRaw={null}
                   onClick={[MockFunction]}
-                  themesItems={
+                  referenceDataItems={
                     Object {
                       "AGRI": Object {
                         "code": "AGRI",
@@ -312,7 +312,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
             label="GOVE"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -342,7 +342,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
             label="EDUC"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -372,7 +372,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
             label="HEAL"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -402,7 +402,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
             label="Ukjent"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -432,7 +432,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
             label="AGRI"
             labelRaw={null}
             onClick={[MockFunction]}
-            themesItems={
+            referenceDataItems={
               Object {
                 "AGRI": Object {
                   "code": "AGRI",
@@ -481,7 +481,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
                   label="TEST"
                   labelRaw={null}
                   onClick={[MockFunction]}
-                  themesItems={
+                  referenceDataItems={
                     Object {
                       "AGRI": Object {
                         "code": "AGRI",

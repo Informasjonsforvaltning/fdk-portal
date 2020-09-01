@@ -42,26 +42,26 @@ const ObjectTypeExpansionPanel = styled(ExpansionPanel)<{
   border-radius: 5px;
   margin-bottom: 0.5em;
   padding: 1em;
-  
-    ${({ showWithoutHeadAndPadding }) =>
-      showWithoutHeadAndPadding &&
-      css`
-        background-color: transparent;
-        padding: 0;
-      `}
-    
+
+  ${({ showWithoutHeadAndPadding }) =>
+    showWithoutHeadAndPadding &&
+    css`
+      background-color: transparent;
+      padding: 0;
+    `}
+
   ${SC.ExpansionPanel.HeadContent} {
     ${({ showWithoutHeadAndPadding }) =>
       showWithoutHeadAndPadding &&
       css`
         display: none;
       `}
-       
+
     color: ${({ theme }) => theme.extendedColors.link};
     font-size: 2rem;
     font-weight: 600;
   }
-  
+
   ${SC.ExpansionPanel.Body} {
     padding: 1em;
   }

@@ -45,21 +45,8 @@ exports[`should render ResultsConcepts correctly with hits 1`] = `
         >
           Filtrering tilgang
         </span>
-        <FilterPills
-          history={
-            Object {
-              "push": [Function],
-            }
-          }
-          location={
-            Object {
-              "search": "",
-            }
-          }
-          locationSearch={Object {}}
-          losItems={null}
+        <withRouter(undefined)
           publishers={null}
-          themesItems={null}
         />
       </div>
     </aside>

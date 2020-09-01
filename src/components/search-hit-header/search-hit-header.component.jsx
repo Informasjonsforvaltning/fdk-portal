@@ -88,8 +88,11 @@ const renderTitle = (
   isWillBeValid
 ) => {
   const titleTag = (Tag, title) => (
-    <Tag className="mr-3 search-hit-header-title" name={title}>
-      {title}
+    <Tag
+      className="mr-3 search-hit-header-title"
+      name={getTranslateText(title)}
+    >
+      {getTranslateText(title)}
       {isExpired && (
         <span className="fdk-expired">
           &nbsp;({localization.validity.expired})
@@ -228,7 +231,7 @@ SearchHitHeader.defaultProps = {
 
 SearchHitHeader.propTypes = {
   tag: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   titleLink: PropTypes.string,
   publisherLabel: PropTypes.string,
   publisher: PropTypes.object,

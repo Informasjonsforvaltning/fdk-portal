@@ -161,9 +161,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
               </span>
 
               <FilterPills
-                history={history}
-                location={location}
-                locationSearch={searchParams}
                 themesItems={themesItems}
                 publishers={publishers}
                 losItems={losItems}
@@ -194,7 +191,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 filter={aggregations.theme}
                 onClick={onFilterTheme}
                 activeFilter={themeParam}
-                themesItems={themesItems}
+                referenceDataItems={themesItems}
               />
               <FilterBox
                 htmlKey={2}

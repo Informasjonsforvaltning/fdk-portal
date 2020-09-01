@@ -58,7 +58,7 @@ exports[`should handle toggleFilter 1`] = `
                 label="Stat"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT"
               />
             }
@@ -77,7 +77,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="Kommunal- og moderniserings- departementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417858"
                 />
               }
@@ -91,7 +91,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/971040238"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/971040238"
               />
               <FilterOption
@@ -103,7 +103,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="Difi"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/991825827"
               />
               <FilterOption
@@ -115,7 +115,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/974763907"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/974763907"
               />
               <FilterOption
@@ -127,7 +127,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/916132727"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/916132727"
               />
               <FilterOption
@@ -139,7 +139,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/942114184"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/942114184"
               />
             </TreeView>
@@ -156,7 +156,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="Landbruks- og matdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417874"
                 />
               }
@@ -170,7 +170,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417874/988983837"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/988983837"
               />
               <FilterOption
@@ -182,7 +182,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417874/981544315"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/981544315"
               />
               <FilterOption
@@ -194,7 +194,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="Mattilsynet"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/985399077"
               />
             </TreeView>
@@ -211,7 +211,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="/stat/977161630"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/977161630"
                 />
               }
@@ -225,7 +225,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/977161630/970205039"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/977161630/970205039"
               />
               <FilterOption
@@ -237,7 +237,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/977161630/870917732"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/977161630/870917732"
               />
             </TreeView>
@@ -254,7 +254,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="/stat/972417882"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417882"
                 />
               }
@@ -268,7 +268,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/999601391"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/999601391"
               />
               <FilterOption
@@ -280,7 +280,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/971022264"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/971022264"
               />
               <FilterOption
@@ -292,7 +292,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/974760819"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/974760819"
               />
               <FilterOption
@@ -304,7 +304,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/919666102"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/919666102"
               />
             </TreeView>
@@ -321,7 +321,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="Nærings- og fiskeridepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/912660680"
                 />
               }
@@ -335,7 +335,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/970188290"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/970188290"
               />
               <FilterOption
@@ -347,7 +347,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/971203420"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/971203420"
               />
               <FilterOption
@@ -359,7 +359,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="Brønnøysundregistrene"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/974760673"
               />
               <FilterOption
@@ -371,7 +371,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/971349077"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/971349077"
               />
               <FilterOption
@@ -383,7 +383,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/886028482"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/886028482"
               />
               <FilterOption
@@ -395,7 +395,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/974760282"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/974760282"
               />
             </TreeView>
@@ -412,7 +412,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="/stat/972417904"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417904"
                 />
               }
@@ -426,7 +426,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/971032081"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/971032081"
               />
               <FilterOption
@@ -438,7 +438,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/874783242"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/874783242"
               />
               <FilterOption
@@ -450,7 +450,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/974446871"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/974446871"
               />
             </TreeView>
@@ -467,7 +467,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="Kunnskapsdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/872417842"
                 />
               }
@@ -481,7 +481,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/971274042"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/971274042"
               />
               <FilterOption
@@ -493,7 +493,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/986339523"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/986339523"
               />
               <FilterOption
@@ -505,7 +505,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="Utdanningsdirektoratet"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/970018131"
               />
               <FilterOption
@@ -517,7 +517,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/874789542"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/874789542"
               />
               <FilterOption
@@ -529,7 +529,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/974767880"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/974767880"
               />
             </TreeView>
@@ -546,7 +546,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="Finansdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417807"
                 />
               }
@@ -560,7 +560,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="Ssb"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417807/971526920"
               />
               <FilterOption
@@ -572,7 +572,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417807/986252932"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417807/986252932"
               />
             </TreeView>
@@ -589,7 +589,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="Arbeids- og sosialdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887457"
                 />
               }
@@ -603,7 +603,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="Nav"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887457/889640782"
               />
               <FilterOption
@@ -615,7 +615,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/983887457/974761211"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887457/974761211"
               />
             </TreeView>
@@ -632,7 +632,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="Kulturdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417866"
                 />
               }
@@ -646,7 +646,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417866/971527412"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/971527412"
               />
               <FilterOption
@@ -658,7 +658,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="Arkivverket"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/961181399"
               />
               <FilterOption
@@ -670,7 +670,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417866/982391490"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/982391490"
               />
             </TreeView>
@@ -687,7 +687,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="Helse- og omsorgsdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887406"
                 />
               }
@@ -705,7 +705,7 @@ exports[`should handle toggleFilter 1`] = `
                     label={null}
                     labelRaw="Helsedirektoratet"
                     onClick={[MockFunction]}
-                    themesItems={null}
+                    referenceDataItems={null}
                     value="/STAT/983887406/983544622"
                   />
                 }
@@ -719,7 +719,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="/stat/983887406/983544622/867668292"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887406/983544622/867668292"
                 />
               </TreeView>
@@ -732,7 +732,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/983887406/983744516"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/983744516"
               />
               <FilterOption
@@ -744,7 +744,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="Direktoratet for e-helse"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/915933149"
               />
               <FilterOption
@@ -756,7 +756,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/983887406/974761122"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/974761122"
               />
             </TreeView>
@@ -773,7 +773,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="/stat/972417831"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417831"
                 />
               }
@@ -787,7 +787,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417831/974760983"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417831/974760983"
               />
             </TreeView>
@@ -804,7 +804,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="/stat/972417920"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417920"
                 />
               }
@@ -818,7 +818,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417920/971277882"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417920/971277882"
               />
             </TreeView>
@@ -835,7 +835,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="/stat/972417823"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417823"
                 />
               }
@@ -849,7 +849,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417823/975950662"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417823/975950662"
               />
               <FilterOption
@@ -861,7 +861,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417823/986105174"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417823/986105174"
               />
             </TreeView>
@@ -874,7 +874,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/stat/917082308"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/917082308"
             />
             <TreeView
@@ -890,7 +890,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="/stat/972417793"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417793"
                 />
               }
@@ -904,7 +904,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417793/987879696"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417793/987879696"
               />
               <FilterOption
@@ -916,7 +916,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/stat/972417793/986128433"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417793/986128433"
               />
             </TreeView>
@@ -929,7 +929,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/stat/937884117"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/937884117"
             />
             <FilterOption
@@ -941,7 +941,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/stat/966056258"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/966056258"
             />
             <FilterOption
@@ -953,7 +953,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/stat/971524960"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/971524960"
             />
             <FilterOption
@@ -965,7 +965,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/stat/983609155"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/983609155"
             />
           </TreeView>
@@ -988,7 +988,7 @@ exports[`should handle toggleFilter 1`] = `
                 label="Kommune"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/KOMMUNE"
               />
             }
@@ -1003,7 +1003,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/964965226"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964965226"
             />
             <FilterOption
@@ -1015,7 +1015,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="Oslo kommune"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/958935420"
             />
             <FilterOption
@@ -1027,7 +1027,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/940101808"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/940101808"
             />
             <FilterOption
@@ -1039,7 +1039,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/964338531"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964338531"
             />
             <FilterOption
@@ -1051,7 +1051,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/988913898"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/988913898"
             />
             <FilterOption
@@ -1063,7 +1063,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/964978573"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964978573"
             />
             <FilterOption
@@ -1075,7 +1075,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/964968063"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964968063"
             />
             <FilterOption
@@ -1087,7 +1087,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/840029212"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/840029212"
             />
             <FilterOption
@@ -1099,7 +1099,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/936401651"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/936401651"
             />
             <FilterOption
@@ -1111,7 +1111,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/942953119"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942953119"
             />
             <FilterOption
@@ -1123,7 +1123,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/944020977"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/944020977"
             />
             <FilterOption
@@ -1135,7 +1135,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/964967725"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964967725"
             />
             <FilterOption
@@ -1147,7 +1147,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/964968896"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964968896"
             />
             <FilterOption
@@ -1159,7 +1159,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/840894312"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/840894312"
             />
             <FilterOption
@@ -1171,7 +1171,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/842566142"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/842566142"
             />
             <FilterOption
@@ -1183,7 +1183,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/844458312"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/844458312"
             />
             <FilterOption
@@ -1195,7 +1195,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/934945514"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/934945514"
             />
             <FilterOption
@@ -1207,7 +1207,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/938772924"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/938772924"
             />
             <FilterOption
@@ -1219,7 +1219,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/942110286"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942110286"
             />
             <FilterOption
@@ -1231,7 +1231,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/942110464"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942110464"
             />
             <FilterOption
@@ -1243,7 +1243,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/945578564"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/945578564"
             />
             <FilterOption
@@ -1255,7 +1255,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/963923511"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/963923511"
             />
             <FilterOption
@@ -1267,7 +1267,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/964979367"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964979367"
             />
             <FilterOption
@@ -1279,7 +1279,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/kommune/972417971"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/972417971"
             />
           </TreeView>
@@ -1302,7 +1302,7 @@ exports[`should handle toggleFilter 1`] = `
                 label="Privat"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/PRIVAT"
               />
             }
@@ -1317,7 +1317,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/privat/985198292"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/985198292"
             />
             <FilterOption
@@ -1329,7 +1329,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/privat/914749360"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/914749360"
             />
             <FilterOption
@@ -1341,7 +1341,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/privat/917422575"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/917422575"
             />
             <FilterOption
@@ -1353,7 +1353,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/privat/971273003"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/971273003"
             />
             <FilterOption
@@ -1365,7 +1365,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/privat/974442167"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/974442167"
             />
             <FilterOption
@@ -1377,7 +1377,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/privat/976390512"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/976390512"
             />
             <FilterOption
@@ -1389,7 +1389,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/privat/979469241"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/979469241"
             />
             <FilterOption
@@ -1401,7 +1401,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/privat/984661185"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/984661185"
             />
             <FilterOption
@@ -1413,7 +1413,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="Ruter as"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/991609407"
             />
             <FilterOption
@@ -1425,7 +1425,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/privat/994686011"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/994686011"
             />
           </TreeView>
@@ -1448,7 +1448,7 @@ exports[`should handle toggleFilter 1`] = `
                 label="Annet"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/ANNET"
               />
             }
@@ -1463,7 +1463,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/annet/9747678801"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/9747678801"
             />
             <FilterOption
@@ -1475,7 +1475,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/annet/fylkeskommunene"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/Fylkeskommunene"
             />
             <FilterOption
@@ -1487,7 +1487,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="Ramsund og rognan revisjon"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/910244132"
             />
             <FilterOption
@@ -1499,7 +1499,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/annet/916285515"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/916285515"
             />
             <FilterOption
@@ -1511,7 +1511,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/annet/971036028"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/971036028"
             />
             <FilterOption
@@ -1523,7 +1523,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/annet/974652366"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/974652366"
             />
             <FilterOption
@@ -1535,7 +1535,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/annet/991467645"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/991467645"
             />
           </TreeView>
@@ -1558,7 +1558,7 @@ exports[`should handle toggleFilter 1`] = `
                 label="Fylke"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/FYLKE"
               />
             }
@@ -1577,7 +1577,7 @@ exports[`should handle toggleFilter 1`] = `
                   label={null}
                   labelRaw="/fylke/941388841"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/FYLKE/941388841"
                 />
               }
@@ -1591,7 +1591,7 @@ exports[`should handle toggleFilter 1`] = `
                 label={null}
                 labelRaw="/fylke/941388841/974783231"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/FYLKE/941388841/974783231"
               />
             </TreeView>
@@ -1604,7 +1604,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/fylke/938626367"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/FYLKE/938626367"
             />
             <FilterOption
@@ -1616,7 +1616,7 @@ exports[`should handle toggleFilter 1`] = `
               label={null}
               labelRaw="/fylke/958381492"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/FYLKE/958381492"
             />
           </TreeView>
@@ -1685,7 +1685,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label="Stat"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT"
               />
             }
@@ -1704,7 +1704,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="Kommunal- og moderniserings- departementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417858"
                 />
               }
@@ -1718,7 +1718,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/971040238"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/971040238"
               />
               <FilterOption
@@ -1730,7 +1730,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="Difi"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/991825827"
               />
               <FilterOption
@@ -1742,7 +1742,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/974763907"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/974763907"
               />
               <FilterOption
@@ -1754,7 +1754,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/916132727"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/916132727"
               />
               <FilterOption
@@ -1766,7 +1766,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/942114184"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/942114184"
               />
             </TreeView>
@@ -1783,7 +1783,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="Landbruks- og matdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417874"
                 />
               }
@@ -1797,7 +1797,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417874/988983837"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/988983837"
               />
               <FilterOption
@@ -1809,7 +1809,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417874/981544315"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/981544315"
               />
               <FilterOption
@@ -1821,7 +1821,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="Mattilsynet"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/985399077"
               />
             </TreeView>
@@ -1838,7 +1838,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="/stat/977161630"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/977161630"
                 />
               }
@@ -1852,7 +1852,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/977161630/970205039"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/977161630/970205039"
               />
               <FilterOption
@@ -1864,7 +1864,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/977161630/870917732"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/977161630/870917732"
               />
             </TreeView>
@@ -1881,7 +1881,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417882"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417882"
                 />
               }
@@ -1895,7 +1895,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/999601391"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/999601391"
               />
               <FilterOption
@@ -1907,7 +1907,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/971022264"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/971022264"
               />
               <FilterOption
@@ -1919,7 +1919,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/974760819"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/974760819"
               />
               <FilterOption
@@ -1931,7 +1931,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/919666102"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/919666102"
               />
             </TreeView>
@@ -1948,7 +1948,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="Nærings- og fiskeridepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/912660680"
                 />
               }
@@ -1962,7 +1962,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/970188290"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/970188290"
               />
               <FilterOption
@@ -1974,7 +1974,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/971203420"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/971203420"
               />
               <FilterOption
@@ -1986,7 +1986,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="Brønnøysundregistrene"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/974760673"
               />
               <FilterOption
@@ -1998,7 +1998,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/971349077"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/971349077"
               />
               <FilterOption
@@ -2010,7 +2010,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/886028482"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/886028482"
               />
               <FilterOption
@@ -2022,7 +2022,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/974760282"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/974760282"
               />
             </TreeView>
@@ -2039,7 +2039,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417904"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417904"
                 />
               }
@@ -2053,7 +2053,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/971032081"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/971032081"
               />
               <FilterOption
@@ -2065,7 +2065,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/874783242"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/874783242"
               />
               <FilterOption
@@ -2077,7 +2077,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/974446871"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/974446871"
               />
             </TreeView>
@@ -2094,7 +2094,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="Kunnskapsdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/872417842"
                 />
               }
@@ -2108,7 +2108,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/971274042"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/971274042"
               />
               <FilterOption
@@ -2120,7 +2120,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/986339523"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/986339523"
               />
               <FilterOption
@@ -2132,7 +2132,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="Utdanningsdirektoratet"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/970018131"
               />
               <FilterOption
@@ -2144,7 +2144,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/874789542"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/874789542"
               />
               <FilterOption
@@ -2156,7 +2156,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/974767880"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/974767880"
               />
             </TreeView>
@@ -2173,7 +2173,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="Finansdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417807"
                 />
               }
@@ -2187,7 +2187,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="Ssb"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417807/971526920"
               />
               <FilterOption
@@ -2199,7 +2199,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417807/986252932"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417807/986252932"
               />
             </TreeView>
@@ -2216,7 +2216,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="Arbeids- og sosialdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887457"
                 />
               }
@@ -2230,7 +2230,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="Nav"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887457/889640782"
               />
               <FilterOption
@@ -2242,7 +2242,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/983887457/974761211"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887457/974761211"
               />
             </TreeView>
@@ -2259,7 +2259,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="Kulturdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417866"
                 />
               }
@@ -2273,7 +2273,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417866/971527412"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/971527412"
               />
               <FilterOption
@@ -2285,7 +2285,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="Arkivverket"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/961181399"
               />
               <FilterOption
@@ -2297,7 +2297,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417866/982391490"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/982391490"
               />
             </TreeView>
@@ -2314,7 +2314,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="Helse- og omsorgsdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887406"
                 />
               }
@@ -2332,7 +2332,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                     label={null}
                     labelRaw="Helsedirektoratet"
                     onClick={[MockFunction]}
-                    themesItems={null}
+                    referenceDataItems={null}
                     value="/STAT/983887406/983544622"
                   />
                 }
@@ -2346,7 +2346,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="/stat/983887406/983544622/867668292"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887406/983544622/867668292"
                 />
               </TreeView>
@@ -2359,7 +2359,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/983887406/983744516"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/983744516"
               />
               <FilterOption
@@ -2371,7 +2371,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="Direktoratet for e-helse"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/915933149"
               />
               <FilterOption
@@ -2383,7 +2383,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/983887406/974761122"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/974761122"
               />
             </TreeView>
@@ -2400,7 +2400,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417831"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417831"
                 />
               }
@@ -2414,7 +2414,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417831/974760983"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417831/974760983"
               />
             </TreeView>
@@ -2431,7 +2431,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417920"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417920"
                 />
               }
@@ -2445,7 +2445,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417920/971277882"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417920/971277882"
               />
             </TreeView>
@@ -2462,7 +2462,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417823"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417823"
                 />
               }
@@ -2476,7 +2476,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417823/975950662"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417823/975950662"
               />
               <FilterOption
@@ -2488,7 +2488,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417823/986105174"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417823/986105174"
               />
             </TreeView>
@@ -2501,7 +2501,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/stat/917082308"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/917082308"
             />
             <TreeView
@@ -2517,7 +2517,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417793"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417793"
                 />
               }
@@ -2531,7 +2531,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417793/987879696"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417793/987879696"
               />
               <FilterOption
@@ -2543,7 +2543,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417793/986128433"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417793/986128433"
               />
             </TreeView>
@@ -2556,7 +2556,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/stat/937884117"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/937884117"
             />
             <FilterOption
@@ -2568,7 +2568,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/stat/966056258"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/966056258"
             />
             <FilterOption
@@ -2580,7 +2580,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/stat/971524960"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/971524960"
             />
             <FilterOption
@@ -2592,7 +2592,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/stat/983609155"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/983609155"
             />
           </TreeView>
@@ -2615,7 +2615,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label="Kommune"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/KOMMUNE"
               />
             }
@@ -2630,7 +2630,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/964965226"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964965226"
             />
             <FilterOption
@@ -2642,7 +2642,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="Oslo kommune"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/958935420"
             />
             <FilterOption
@@ -2654,7 +2654,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/940101808"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/940101808"
             />
             <FilterOption
@@ -2666,7 +2666,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/964338531"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964338531"
             />
             <FilterOption
@@ -2678,7 +2678,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/988913898"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/988913898"
             />
             <FilterOption
@@ -2690,7 +2690,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/964978573"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964978573"
             />
             <FilterOption
@@ -2702,7 +2702,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/964968063"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964968063"
             />
             <FilterOption
@@ -2714,7 +2714,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/840029212"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/840029212"
             />
             <FilterOption
@@ -2726,7 +2726,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/936401651"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/936401651"
             />
             <FilterOption
@@ -2738,7 +2738,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/942953119"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942953119"
             />
             <FilterOption
@@ -2750,7 +2750,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/944020977"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/944020977"
             />
             <FilterOption
@@ -2762,7 +2762,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/964967725"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964967725"
             />
             <FilterOption
@@ -2774,7 +2774,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/964968896"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964968896"
             />
             <FilterOption
@@ -2786,7 +2786,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/840894312"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/840894312"
             />
             <FilterOption
@@ -2798,7 +2798,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/842566142"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/842566142"
             />
             <FilterOption
@@ -2810,7 +2810,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/844458312"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/844458312"
             />
             <FilterOption
@@ -2822,7 +2822,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/934945514"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/934945514"
             />
             <FilterOption
@@ -2834,7 +2834,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/938772924"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/938772924"
             />
             <FilterOption
@@ -2846,7 +2846,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/942110286"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942110286"
             />
             <FilterOption
@@ -2858,7 +2858,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/942110464"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942110464"
             />
             <FilterOption
@@ -2870,7 +2870,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/945578564"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/945578564"
             />
             <FilterOption
@@ -2882,7 +2882,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/963923511"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/963923511"
             />
             <FilterOption
@@ -2894,7 +2894,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/964979367"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964979367"
             />
             <FilterOption
@@ -2906,7 +2906,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/kommune/972417971"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/972417971"
             />
           </TreeView>
@@ -2929,7 +2929,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label="Privat"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/PRIVAT"
               />
             }
@@ -2944,7 +2944,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/privat/985198292"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/985198292"
             />
             <FilterOption
@@ -2956,7 +2956,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/privat/914749360"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/914749360"
             />
             <FilterOption
@@ -2968,7 +2968,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/privat/917422575"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/917422575"
             />
             <FilterOption
@@ -2980,7 +2980,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/privat/971273003"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/971273003"
             />
             <FilterOption
@@ -2992,7 +2992,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/privat/974442167"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/974442167"
             />
             <FilterOption
@@ -3004,7 +3004,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/privat/976390512"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/976390512"
             />
             <FilterOption
@@ -3016,7 +3016,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/privat/979469241"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/979469241"
             />
             <FilterOption
@@ -3028,7 +3028,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/privat/984661185"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/984661185"
             />
             <FilterOption
@@ -3040,7 +3040,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="Ruter as"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/991609407"
             />
             <FilterOption
@@ -3052,7 +3052,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/privat/994686011"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/994686011"
             />
           </TreeView>
@@ -3075,7 +3075,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label="Annet"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/ANNET"
               />
             }
@@ -3090,7 +3090,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/annet/9747678801"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/9747678801"
             />
             <FilterOption
@@ -3102,7 +3102,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/annet/fylkeskommunene"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/Fylkeskommunene"
             />
             <FilterOption
@@ -3114,7 +3114,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="Ramsund og rognan revisjon"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/910244132"
             />
             <FilterOption
@@ -3126,7 +3126,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/annet/916285515"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/916285515"
             />
             <FilterOption
@@ -3138,7 +3138,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/annet/971036028"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/971036028"
             />
             <FilterOption
@@ -3150,7 +3150,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/annet/974652366"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/974652366"
             />
             <FilterOption
@@ -3162,7 +3162,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/annet/991467645"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/991467645"
             />
           </TreeView>
@@ -3185,7 +3185,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label="Fylke"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/FYLKE"
               />
             }
@@ -3204,7 +3204,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                   label={null}
                   labelRaw="/fylke/941388841"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/FYLKE/941388841"
                 />
               }
@@ -3218,7 +3218,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 label={null}
                 labelRaw="/fylke/941388841/974783231"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/FYLKE/941388841/974783231"
               />
             </TreeView>
@@ -3231,7 +3231,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/fylke/938626367"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/FYLKE/938626367"
             />
             <FilterOption
@@ -3243,7 +3243,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               label={null}
               labelRaw="/fylke/958381492"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/FYLKE/958381492"
             />
           </TreeView>
@@ -3312,7 +3312,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label="Stat"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT"
               />
             }
@@ -3331,7 +3331,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="Kommunal- og moderniserings- departementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417858"
                 />
               }
@@ -3345,7 +3345,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/971040238"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/971040238"
               />
               <FilterOption
@@ -3357,7 +3357,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="Difi"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/991825827"
               />
               <FilterOption
@@ -3369,7 +3369,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/974763907"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/974763907"
               />
               <FilterOption
@@ -3381,7 +3381,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/916132727"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/916132727"
               />
               <FilterOption
@@ -3393,7 +3393,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/942114184"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/942114184"
               />
             </TreeView>
@@ -3410,7 +3410,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="Landbruks- og matdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417874"
                 />
               }
@@ -3424,7 +3424,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417874/988983837"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/988983837"
               />
               <FilterOption
@@ -3436,7 +3436,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417874/981544315"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/981544315"
               />
               <FilterOption
@@ -3448,7 +3448,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="Mattilsynet"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/985399077"
               />
             </TreeView>
@@ -3465,7 +3465,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="/stat/977161630"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/977161630"
                 />
               }
@@ -3479,7 +3479,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/977161630/970205039"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/977161630/970205039"
               />
               <FilterOption
@@ -3491,7 +3491,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/977161630/870917732"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/977161630/870917732"
               />
             </TreeView>
@@ -3508,7 +3508,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417882"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417882"
                 />
               }
@@ -3522,7 +3522,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/999601391"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/999601391"
               />
               <FilterOption
@@ -3534,7 +3534,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/971022264"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/971022264"
               />
               <FilterOption
@@ -3546,7 +3546,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/974760819"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/974760819"
               />
               <FilterOption
@@ -3558,7 +3558,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/919666102"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/919666102"
               />
             </TreeView>
@@ -3575,7 +3575,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="Nærings- og fiskeridepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/912660680"
                 />
               }
@@ -3589,7 +3589,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/970188290"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/970188290"
               />
               <FilterOption
@@ -3601,7 +3601,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/971203420"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/971203420"
               />
               <FilterOption
@@ -3613,7 +3613,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="Brønnøysundregistrene"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/974760673"
               />
               <FilterOption
@@ -3625,7 +3625,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/971349077"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/971349077"
               />
               <FilterOption
@@ -3637,7 +3637,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/886028482"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/886028482"
               />
               <FilterOption
@@ -3649,7 +3649,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/974760282"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/974760282"
               />
             </TreeView>
@@ -3666,7 +3666,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417904"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417904"
                 />
               }
@@ -3680,7 +3680,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/971032081"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/971032081"
               />
               <FilterOption
@@ -3692,7 +3692,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/874783242"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/874783242"
               />
               <FilterOption
@@ -3704,7 +3704,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/974446871"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/974446871"
               />
             </TreeView>
@@ -3721,7 +3721,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="Kunnskapsdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/872417842"
                 />
               }
@@ -3735,7 +3735,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/971274042"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/971274042"
               />
               <FilterOption
@@ -3747,7 +3747,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/986339523"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/986339523"
               />
               <FilterOption
@@ -3759,7 +3759,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="Utdanningsdirektoratet"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/970018131"
               />
               <FilterOption
@@ -3771,7 +3771,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/874789542"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/874789542"
               />
               <FilterOption
@@ -3783,7 +3783,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/974767880"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/974767880"
               />
             </TreeView>
@@ -3800,7 +3800,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="Finansdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417807"
                 />
               }
@@ -3814,7 +3814,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="Ssb"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417807/971526920"
               />
               <FilterOption
@@ -3826,7 +3826,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417807/986252932"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417807/986252932"
               />
             </TreeView>
@@ -3843,7 +3843,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="Arbeids- og sosialdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887457"
                 />
               }
@@ -3857,7 +3857,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="Nav"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887457/889640782"
               />
               <FilterOption
@@ -3869,7 +3869,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/983887457/974761211"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887457/974761211"
               />
             </TreeView>
@@ -3886,7 +3886,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="Kulturdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417866"
                 />
               }
@@ -3900,7 +3900,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417866/971527412"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/971527412"
               />
               <FilterOption
@@ -3912,7 +3912,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="Arkivverket"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/961181399"
               />
               <FilterOption
@@ -3924,7 +3924,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417866/982391490"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/982391490"
               />
             </TreeView>
@@ -3941,7 +3941,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="Helse- og omsorgsdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887406"
                 />
               }
@@ -3959,7 +3959,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                     label={null}
                     labelRaw="Helsedirektoratet"
                     onClick={[MockFunction]}
-                    themesItems={null}
+                    referenceDataItems={null}
                     value="/STAT/983887406/983544622"
                   />
                 }
@@ -3973,7 +3973,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="/stat/983887406/983544622/867668292"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887406/983544622/867668292"
                 />
               </TreeView>
@@ -3986,7 +3986,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/983887406/983744516"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/983744516"
               />
               <FilterOption
@@ -3998,7 +3998,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="Direktoratet for e-helse"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/915933149"
               />
               <FilterOption
@@ -4010,7 +4010,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/983887406/974761122"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/974761122"
               />
             </TreeView>
@@ -4027,7 +4027,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417831"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417831"
                 />
               }
@@ -4041,7 +4041,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417831/974760983"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417831/974760983"
               />
             </TreeView>
@@ -4058,7 +4058,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417920"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417920"
                 />
               }
@@ -4072,7 +4072,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417920/971277882"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417920/971277882"
               />
             </TreeView>
@@ -4089,7 +4089,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417823"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417823"
                 />
               }
@@ -4103,7 +4103,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417823/975950662"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417823/975950662"
               />
               <FilterOption
@@ -4115,7 +4115,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417823/986105174"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417823/986105174"
               />
             </TreeView>
@@ -4128,7 +4128,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/stat/917082308"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/917082308"
             />
             <TreeView
@@ -4144,7 +4144,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="/stat/972417793"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417793"
                 />
               }
@@ -4158,7 +4158,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417793/987879696"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417793/987879696"
               />
               <FilterOption
@@ -4170,7 +4170,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/stat/972417793/986128433"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417793/986128433"
               />
             </TreeView>
@@ -4183,7 +4183,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/stat/937884117"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/937884117"
             />
             <FilterOption
@@ -4195,7 +4195,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/stat/966056258"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/966056258"
             />
             <FilterOption
@@ -4207,7 +4207,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/stat/971524960"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/971524960"
             />
             <FilterOption
@@ -4219,7 +4219,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/stat/983609155"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/983609155"
             />
           </TreeView>
@@ -4242,7 +4242,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label="Kommune"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/KOMMUNE"
               />
             }
@@ -4257,7 +4257,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/964965226"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964965226"
             />
             <FilterOption
@@ -4269,7 +4269,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="Oslo kommune"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/958935420"
             />
             <FilterOption
@@ -4281,7 +4281,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/940101808"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/940101808"
             />
             <FilterOption
@@ -4293,7 +4293,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/964338531"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964338531"
             />
             <FilterOption
@@ -4305,7 +4305,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/988913898"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/988913898"
             />
             <FilterOption
@@ -4317,7 +4317,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/964978573"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964978573"
             />
             <FilterOption
@@ -4329,7 +4329,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/964968063"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964968063"
             />
             <FilterOption
@@ -4341,7 +4341,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/840029212"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/840029212"
             />
             <FilterOption
@@ -4353,7 +4353,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/936401651"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/936401651"
             />
             <FilterOption
@@ -4365,7 +4365,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/942953119"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942953119"
             />
             <FilterOption
@@ -4377,7 +4377,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/944020977"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/944020977"
             />
             <FilterOption
@@ -4389,7 +4389,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/964967725"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964967725"
             />
             <FilterOption
@@ -4401,7 +4401,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/964968896"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964968896"
             />
             <FilterOption
@@ -4413,7 +4413,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/840894312"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/840894312"
             />
             <FilterOption
@@ -4425,7 +4425,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/842566142"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/842566142"
             />
             <FilterOption
@@ -4437,7 +4437,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/844458312"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/844458312"
             />
             <FilterOption
@@ -4449,7 +4449,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/934945514"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/934945514"
             />
             <FilterOption
@@ -4461,7 +4461,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/938772924"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/938772924"
             />
             <FilterOption
@@ -4473,7 +4473,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/942110286"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942110286"
             />
             <FilterOption
@@ -4485,7 +4485,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/942110464"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942110464"
             />
             <FilterOption
@@ -4497,7 +4497,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/945578564"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/945578564"
             />
             <FilterOption
@@ -4509,7 +4509,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/963923511"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/963923511"
             />
             <FilterOption
@@ -4521,7 +4521,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/964979367"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964979367"
             />
             <FilterOption
@@ -4533,7 +4533,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/kommune/972417971"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/972417971"
             />
           </TreeView>
@@ -4556,7 +4556,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label="Privat"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/PRIVAT"
               />
             }
@@ -4571,7 +4571,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/privat/985198292"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/985198292"
             />
             <FilterOption
@@ -4583,7 +4583,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/privat/914749360"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/914749360"
             />
             <FilterOption
@@ -4595,7 +4595,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/privat/917422575"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/917422575"
             />
             <FilterOption
@@ -4607,7 +4607,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/privat/971273003"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/971273003"
             />
             <FilterOption
@@ -4619,7 +4619,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/privat/974442167"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/974442167"
             />
             <FilterOption
@@ -4631,7 +4631,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/privat/976390512"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/976390512"
             />
             <FilterOption
@@ -4643,7 +4643,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/privat/979469241"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/979469241"
             />
             <FilterOption
@@ -4655,7 +4655,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/privat/984661185"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/984661185"
             />
             <FilterOption
@@ -4667,7 +4667,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="Ruter as"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/991609407"
             />
             <FilterOption
@@ -4679,7 +4679,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/privat/994686011"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/994686011"
             />
           </TreeView>
@@ -4702,7 +4702,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label="Annet"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/ANNET"
               />
             }
@@ -4717,7 +4717,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/annet/9747678801"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/9747678801"
             />
             <FilterOption
@@ -4729,7 +4729,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/annet/fylkeskommunene"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/Fylkeskommunene"
             />
             <FilterOption
@@ -4741,7 +4741,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="Ramsund og rognan revisjon"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/910244132"
             />
             <FilterOption
@@ -4753,7 +4753,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/annet/916285515"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/916285515"
             />
             <FilterOption
@@ -4765,7 +4765,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/annet/971036028"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/971036028"
             />
             <FilterOption
@@ -4777,7 +4777,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/annet/974652366"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/974652366"
             />
             <FilterOption
@@ -4789,7 +4789,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/annet/991467645"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/991467645"
             />
           </TreeView>
@@ -4812,7 +4812,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label="Fylke"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/FYLKE"
               />
             }
@@ -4831,7 +4831,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                   label={null}
                   labelRaw="/fylke/941388841"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/FYLKE/941388841"
                 />
               }
@@ -4845,7 +4845,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 label={null}
                 labelRaw="/fylke/941388841/974783231"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/FYLKE/941388841/974783231"
               />
             </TreeView>
@@ -4858,7 +4858,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/fylke/938626367"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/FYLKE/938626367"
             />
             <FilterOption
@@ -4870,7 +4870,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               label={null}
               labelRaw="/fylke/958381492"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/FYLKE/958381492"
             />
           </TreeView>
@@ -4941,7 +4941,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label="Stat"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT"
               />
             }
@@ -4960,7 +4960,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="Kommunal- og moderniserings- departementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417858"
                 />
               }
@@ -4974,7 +4974,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/971040238"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/971040238"
               />
               <FilterOption
@@ -4986,7 +4986,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="Difi"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/991825827"
               />
               <FilterOption
@@ -4998,7 +4998,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/974763907"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/974763907"
               />
               <FilterOption
@@ -5010,7 +5010,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/916132727"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/916132727"
               />
               <FilterOption
@@ -5022,7 +5022,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417858/942114184"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417858/942114184"
               />
             </TreeView>
@@ -5039,7 +5039,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="Landbruks- og matdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417874"
                 />
               }
@@ -5053,7 +5053,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417874/988983837"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/988983837"
               />
               <FilterOption
@@ -5065,7 +5065,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417874/981544315"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/981544315"
               />
               <FilterOption
@@ -5077,7 +5077,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="Mattilsynet"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417874/985399077"
               />
             </TreeView>
@@ -5094,7 +5094,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="/stat/977161630"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/977161630"
                 />
               }
@@ -5108,7 +5108,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/977161630/970205039"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/977161630/970205039"
               />
               <FilterOption
@@ -5120,7 +5120,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/977161630/870917732"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/977161630/870917732"
               />
             </TreeView>
@@ -5137,7 +5137,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="/stat/972417882"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417882"
                 />
               }
@@ -5151,7 +5151,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/999601391"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/999601391"
               />
               <FilterOption
@@ -5163,7 +5163,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/971022264"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/971022264"
               />
               <FilterOption
@@ -5175,7 +5175,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/974760819"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/974760819"
               />
               <FilterOption
@@ -5187,7 +5187,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417882/919666102"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417882/919666102"
               />
             </TreeView>
@@ -5204,7 +5204,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="Nærings- og fiskeridepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/912660680"
                 />
               }
@@ -5218,7 +5218,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/970188290"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/970188290"
               />
               <FilterOption
@@ -5230,7 +5230,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/971203420"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/971203420"
               />
               <FilterOption
@@ -5242,7 +5242,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="Brønnøysundregistrene"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/974760673"
               />
               <FilterOption
@@ -5254,7 +5254,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/971349077"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/971349077"
               />
               <FilterOption
@@ -5266,7 +5266,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/886028482"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/886028482"
               />
               <FilterOption
@@ -5278,7 +5278,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/912660680/974760282"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/912660680/974760282"
               />
             </TreeView>
@@ -5295,7 +5295,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="/stat/972417904"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417904"
                 />
               }
@@ -5309,7 +5309,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/971032081"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/971032081"
               />
               <FilterOption
@@ -5321,7 +5321,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/874783242"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/874783242"
               />
               <FilterOption
@@ -5333,7 +5333,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417904/974446871"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417904/974446871"
               />
             </TreeView>
@@ -5350,7 +5350,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="Kunnskapsdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/872417842"
                 />
               }
@@ -5364,7 +5364,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/971274042"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/971274042"
               />
               <FilterOption
@@ -5376,7 +5376,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/986339523"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/986339523"
               />
               <FilterOption
@@ -5388,7 +5388,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="Utdanningsdirektoratet"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/970018131"
               />
               <FilterOption
@@ -5400,7 +5400,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/874789542"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/874789542"
               />
               <FilterOption
@@ -5412,7 +5412,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/872417842/974767880"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/872417842/974767880"
               />
             </TreeView>
@@ -5429,7 +5429,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="Finansdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417807"
                 />
               }
@@ -5443,7 +5443,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="Ssb"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417807/971526920"
               />
               <FilterOption
@@ -5455,7 +5455,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417807/986252932"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417807/986252932"
               />
             </TreeView>
@@ -5472,7 +5472,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="Arbeids- og sosialdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887457"
                 />
               }
@@ -5486,7 +5486,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="Nav"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887457/889640782"
               />
               <FilterOption
@@ -5498,7 +5498,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/983887457/974761211"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887457/974761211"
               />
             </TreeView>
@@ -5515,7 +5515,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="Kulturdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417866"
                 />
               }
@@ -5529,7 +5529,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417866/971527412"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/971527412"
               />
               <FilterOption
@@ -5541,7 +5541,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="Arkivverket"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/961181399"
               />
               <FilterOption
@@ -5553,7 +5553,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417866/982391490"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417866/982391490"
               />
             </TreeView>
@@ -5570,7 +5570,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="Helse- og omsorgsdepartementet"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887406"
                 />
               }
@@ -5588,7 +5588,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                     label={null}
                     labelRaw="Helsedirektoratet"
                     onClick={[MockFunction]}
-                    themesItems={null}
+                    referenceDataItems={null}
                     value="/STAT/983887406/983544622"
                   />
                 }
@@ -5602,7 +5602,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="/stat/983887406/983544622/867668292"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/983887406/983544622/867668292"
                 />
               </TreeView>
@@ -5615,7 +5615,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/983887406/983744516"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/983744516"
               />
               <FilterOption
@@ -5627,7 +5627,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="Direktoratet for e-helse"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/915933149"
               />
               <FilterOption
@@ -5639,7 +5639,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/983887406/974761122"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/983887406/974761122"
               />
             </TreeView>
@@ -5656,7 +5656,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="/stat/972417831"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417831"
                 />
               }
@@ -5670,7 +5670,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417831/974760983"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417831/974760983"
               />
             </TreeView>
@@ -5687,7 +5687,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="/stat/972417920"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417920"
                 />
               }
@@ -5701,7 +5701,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417920/971277882"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417920/971277882"
               />
             </TreeView>
@@ -5718,7 +5718,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="/stat/972417823"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417823"
                 />
               }
@@ -5732,7 +5732,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417823/975950662"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417823/975950662"
               />
               <FilterOption
@@ -5744,7 +5744,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417823/986105174"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417823/986105174"
               />
             </TreeView>
@@ -5757,7 +5757,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/stat/917082308"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/917082308"
             />
             <TreeView
@@ -5773,7 +5773,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="/stat/972417793"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/STAT/972417793"
                 />
               }
@@ -5787,7 +5787,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417793/987879696"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417793/987879696"
               />
               <FilterOption
@@ -5799,7 +5799,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/stat/972417793/986128433"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/STAT/972417793/986128433"
               />
             </TreeView>
@@ -5812,7 +5812,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/stat/937884117"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/937884117"
             />
             <FilterOption
@@ -5824,7 +5824,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/stat/966056258"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/966056258"
             />
             <FilterOption
@@ -5836,7 +5836,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/stat/971524960"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/971524960"
             />
             <FilterOption
@@ -5848,7 +5848,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/stat/983609155"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/STAT/983609155"
             />
           </TreeView>
@@ -5871,7 +5871,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label="Kommune"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/KOMMUNE"
               />
             }
@@ -5886,7 +5886,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/964965226"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964965226"
             />
             <FilterOption
@@ -5898,7 +5898,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="Oslo kommune"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/958935420"
             />
             <FilterOption
@@ -5910,7 +5910,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/940101808"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/940101808"
             />
             <FilterOption
@@ -5922,7 +5922,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/964338531"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964338531"
             />
             <FilterOption
@@ -5934,7 +5934,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/988913898"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/988913898"
             />
             <FilterOption
@@ -5946,7 +5946,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/964978573"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964978573"
             />
             <FilterOption
@@ -5958,7 +5958,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/964968063"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964968063"
             />
             <FilterOption
@@ -5970,7 +5970,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/840029212"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/840029212"
             />
             <FilterOption
@@ -5982,7 +5982,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/936401651"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/936401651"
             />
             <FilterOption
@@ -5994,7 +5994,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/942953119"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942953119"
             />
             <FilterOption
@@ -6006,7 +6006,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/944020977"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/944020977"
             />
             <FilterOption
@@ -6018,7 +6018,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/964967725"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964967725"
             />
             <FilterOption
@@ -6030,7 +6030,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/964968896"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964968896"
             />
             <FilterOption
@@ -6042,7 +6042,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/840894312"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/840894312"
             />
             <FilterOption
@@ -6054,7 +6054,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/842566142"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/842566142"
             />
             <FilterOption
@@ -6066,7 +6066,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/844458312"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/844458312"
             />
             <FilterOption
@@ -6078,7 +6078,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/934945514"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/934945514"
             />
             <FilterOption
@@ -6090,7 +6090,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/938772924"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/938772924"
             />
             <FilterOption
@@ -6102,7 +6102,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/942110286"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942110286"
             />
             <FilterOption
@@ -6114,7 +6114,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/942110464"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/942110464"
             />
             <FilterOption
@@ -6126,7 +6126,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/945578564"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/945578564"
             />
             <FilterOption
@@ -6138,7 +6138,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/963923511"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/963923511"
             />
             <FilterOption
@@ -6150,7 +6150,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/964979367"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/964979367"
             />
             <FilterOption
@@ -6162,7 +6162,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/kommune/972417971"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/KOMMUNE/972417971"
             />
           </TreeView>
@@ -6185,7 +6185,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label="Privat"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/PRIVAT"
               />
             }
@@ -6200,7 +6200,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/privat/985198292"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/985198292"
             />
             <FilterOption
@@ -6212,7 +6212,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/privat/914749360"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/914749360"
             />
             <FilterOption
@@ -6224,7 +6224,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/privat/917422575"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/917422575"
             />
             <FilterOption
@@ -6236,7 +6236,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/privat/971273003"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/971273003"
             />
             <FilterOption
@@ -6248,7 +6248,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/privat/974442167"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/974442167"
             />
             <FilterOption
@@ -6260,7 +6260,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/privat/976390512"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/976390512"
             />
             <FilterOption
@@ -6272,7 +6272,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/privat/979469241"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/979469241"
             />
             <FilterOption
@@ -6284,7 +6284,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/privat/984661185"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/984661185"
             />
             <FilterOption
@@ -6296,7 +6296,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="Ruter as"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/991609407"
             />
             <FilterOption
@@ -6308,7 +6308,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/privat/994686011"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/PRIVAT/994686011"
             />
           </TreeView>
@@ -6331,7 +6331,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label="Annet"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/ANNET"
               />
             }
@@ -6346,7 +6346,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/annet/9747678801"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/9747678801"
             />
             <FilterOption
@@ -6358,7 +6358,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/annet/fylkeskommunene"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/Fylkeskommunene"
             />
             <FilterOption
@@ -6370,7 +6370,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="Ramsund og rognan revisjon"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/910244132"
             />
             <FilterOption
@@ -6382,7 +6382,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/annet/916285515"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/916285515"
             />
             <FilterOption
@@ -6394,7 +6394,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/annet/971036028"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/971036028"
             />
             <FilterOption
@@ -6406,7 +6406,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/annet/974652366"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/974652366"
             />
             <FilterOption
@@ -6418,7 +6418,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/annet/991467645"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/ANNET/991467645"
             />
           </TreeView>
@@ -6441,7 +6441,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label="Fylke"
                 labelRaw={null}
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/FYLKE"
               />
             }
@@ -6460,7 +6460,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                   label={null}
                   labelRaw="/fylke/941388841"
                   onClick={[MockFunction]}
-                  themesItems={null}
+                  referenceDataItems={null}
                   value="/FYLKE/941388841"
                 />
               }
@@ -6474,7 +6474,7 @@ exports[`should render FilterTree correctly with props 1`] = `
                 label={null}
                 labelRaw="/fylke/941388841/974783231"
                 onClick={[MockFunction]}
-                themesItems={null}
+                referenceDataItems={null}
                 value="/FYLKE/941388841/974783231"
               />
             </TreeView>
@@ -6487,7 +6487,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/fylke/938626367"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/FYLKE/938626367"
             />
             <FilterOption
@@ -6499,7 +6499,7 @@ exports[`should render FilterTree correctly with props 1`] = `
               label={null}
               labelRaw="/fylke/958381492"
               onClick={[MockFunction]}
-              themesItems={null}
+              referenceDataItems={null}
               value="/FYLKE/958381492"
             />
           </TreeView>

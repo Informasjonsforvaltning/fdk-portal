@@ -71,10 +71,6 @@ exports[`should render DataServiceDetailsPage correctly with dataServiceItem 1`]
                 "prefLabel": "Description",
               },
               Object {
-                "name": "Format",
-                "prefLabel": "Format",
-              },
-              Object {
                 "name": "Start using the API",
                 "prefLabel": "Start using the API",
               },
@@ -85,10 +81,6 @@ exports[`should render DataServiceDetailsPage correctly with dataServiceItem 1`]
               Object {
                 "name": "Terms and restrictions",
                 "prefLabel": "Terms and restrictions",
-              },
-              Object {
-                "name": "Dataset references",
-                "prefLabel": "Dataset references",
               },
               Object {
                 "name": "Contact information",
@@ -221,33 +213,6 @@ exports[`should render DataServiceDetailsPage correctly with dataServiceItem 1`]
             </span>
           </div>
         </div>
-        <ListRegular
-          bottomMargin={true}
-          name={null}
-          title="Format"
-        >
-          <div
-            className="d-flex list-regular--item"
-          >
-            <span
-              key="0"
-            >
-              application/json
-            </span>
-          </div>
-        </ListRegular>
-        <ApiServer
-          apiDocUrl="https://informasjonsforvaltning.github.io/felles-datakatalog/api-katalog/api/"
-          apiSpecUrl="https://raw.githubusercontent.com/brreg/openAPI/master/specs/api-cat.json"
-          servers={
-            Array [
-              Object {
-                "description": "The production API server",
-                "url": "https://fellesdatakatalog.brreg.no/api-cat/apis",
-              },
-            ]
-          }
-        />
         <ApiEndpoints
           name="Operations"
           paths={
@@ -327,16 +292,7 @@ exports[`should render DataServiceDetailsPage correctly with dataServiceItem 1`]
           <TwoColRow
             col1="Contact point"
             col1Width={null}
-            col2={
-              <a
-                href="https://fellesdatakatalog.brreg.no"
-              >
-                Brønnøysundregistrene
-                <i
-                  className="fa fa-external-link fdk-fa-right"
-                />
-              </a>
-            }
+            col2="Brønnøysundregistrene"
             col2Width={null}
           />
           <TwoColRow

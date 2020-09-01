@@ -17,12 +17,13 @@ export default function ApiServer({ servers, apiSpecUrl, apiDocUrl }) {
               <i className="fa fa-external-link fdk-fa-right" />
             </a>
           )}
-          {apiSpecUrl && (
-            <a href={apiSpecUrl} className="mr-5">
-              {localization.specification}
-              <i className="fa fa-external-link fdk-fa-right" />
-            </a>
-          )}
+          {Array.isArray(apiSpecUrl) &&
+            apiSpecUrl.map(url => (
+              <a href={url} className="mr-5">
+                {localization.specification}
+                <i className="fa fa-external-link fdk-fa-right" />
+              </a>
+            ))}
         </div>
       </div>
     );
@@ -59,6 +60,6 @@ ApiServer.defaultProps = {
 
 ApiServer.propTypes = {
   servers: PropTypes.array,
-  apiSpecUrl: PropTypes.string,
+  apiSpecUrl: PropTypes.array,
   apiDocUrl: PropTypes.string
 };

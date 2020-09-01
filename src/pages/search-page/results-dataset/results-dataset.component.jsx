@@ -65,7 +65,7 @@ function _renderFilterModal({
               filter={datasetAggregations.theme}
               onClick={onFilterTheme}
               activeFilter={locationSearch.theme}
-              themesItems={themesItems}
+              referenceDataItems={themesItems}
             />
           )}
           {!getConfig().themeNap && (
@@ -241,9 +241,6 @@ export const ResultsDatasetPure = ({
               </span>
 
               <FilterPills
-                history={history}
-                location={location}
-                locationSearch={locationSearch}
                 themesItems={themesItems}
                 publishers={publishers}
                 losItems={losItems}
@@ -284,7 +281,7 @@ export const ResultsDatasetPure = ({
                       filter={datasetAggregations.theme}
                       onClick={onFilterTheme}
                       activeFilter={locationSearch.theme}
-                      themesItems={themesItems}
+                      referenceDataItems={themesItems}
                     />
                   )}
                   {!getConfig().themeNap && (

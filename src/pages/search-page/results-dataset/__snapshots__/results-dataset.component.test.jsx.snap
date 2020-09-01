@@ -43,18 +43,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
       >
         Filtrering tilgang
       </span>
-      <FilterPills
-        history={
-          Object {
-            "push": [Function],
-          }
-        }
-        location={
-          Object {
-            "search": "",
-          }
-        }
-        locationSearch={Object {}}
+      <withRouter(undefined)
         losItems={Object {}}
         publishers={null}
         themesItems={Object {}}
@@ -138,7 +127,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
                 filters={null}
                 htmlKey={1}
                 onClick={[Function]}
-                themesItems={Object {}}
+                referenceDataItems={Object {}}
                 title="EU-theme (phasing out)"
               />
               <FilterBox
@@ -156,7 +145,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
                 filters={Object {}}
                 htmlKey={2}
                 onClick={[Function]}
-                themesItems={null}
+                referenceDataItems={null}
                 title="Access"
               />
               <FilterTree
@@ -213,7 +202,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
                 filters={null}
                 htmlKey={3}
                 onClick={[Function]}
-                themesItems={null}
+                referenceDataItems={null}
                 title="Spatial"
               />
               <FilterBox
@@ -231,7 +220,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
                 filters={null}
                 htmlKey={4}
                 onClick={[Function]}
-                themesItems={null}
+                referenceDataItems={null}
                 title="Provenance"
               />
             </div>
@@ -284,7 +273,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
           filters={null}
           htmlKey={1}
           onClick={[Function]}
-          themesItems={Object {}}
+          referenceDataItems={Object {}}
           title="EU-theme (phasing out)"
         />
         <FilterBox
@@ -302,7 +291,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
           filters={Object {}}
           htmlKey={2}
           onClick={[Function]}
-          themesItems={null}
+          referenceDataItems={null}
           title="Access"
         />
         <FilterTree
@@ -359,7 +348,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
           filters={null}
           htmlKey={3}
           onClick={[Function]}
-          themesItems={null}
+          referenceDataItems={null}
           title="Spatial"
         />
         <FilterBox
@@ -377,7 +366,7 @@ exports[`should render ResultsDataset correctly with hits 1`] = `
           filters={null}
           htmlKey={4}
           onClick={[Function]}
-          themesItems={null}
+          referenceDataItems={null}
           title="Provenance"
         />
       </div>

@@ -217,12 +217,7 @@ export const ResultsConceptsPure = ({
                   Filtrering tilgang
                 </span>
 
-                <FilterPills
-                  history={history}
-                  location={location}
-                  locationSearch={locationSearch}
-                  publishers={publishers}
-                />
+                <FilterPills publishers={publishers} />
 
                 {conceptAggregations && (
                   <div>

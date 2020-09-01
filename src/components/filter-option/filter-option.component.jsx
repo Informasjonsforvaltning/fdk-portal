@@ -14,16 +14,18 @@ export const FilterOption = props => {
     count,
     onClick,
     active,
-    themesItems,
+    referenceDataItems,
     displayClass
   } = props;
   const optionLabel = labelRaw || label;
 
   let textLabel;
   // if themes, then choose text from themes array, else choose label from localization-file.
-  if (themesItems) {
-    if (themesItems[`${label}`]) {
-      textLabel = getTranslateText(themesItems[`${label}`].title);
+  if (referenceDataItems) {
+    if (referenceDataItems[`${label}`]) {
+      textLabel =
+        getTranslateText(referenceDataItems[`${label}`].title) ||
+        getTranslateText(referenceDataItems[`${label}`].name);
     } else {
       textLabel = localization.unknown;
     }
@@ -85,7 +87,7 @@ FilterOption.defaultProps = {
   label: null,
   count: null,
   active: null,
-  themesItems: null,
+  referenceDataItems: null,
   displayClass: null
 };
 
@@ -97,6 +99,6 @@ FilterOption.propTypes = {
   count: PropTypes.number,
   onClick: PropTypes.func.isRequired,
   active: PropTypes.bool,
-  themesItems: PropTypes.object,
+  referenceDataItems: PropTypes.object,
   displayClass: PropTypes.string
 };

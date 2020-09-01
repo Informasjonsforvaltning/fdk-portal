@@ -20,6 +20,7 @@ import { ErrorBoundary } from '../../../components/error-boundary/error-boundary
 import { Entity } from '../../../types/enums';
 import ButtonToggleSC from '../../../components/button-toggle/styled';
 import EmptyHits from '../../../components/empty-hits/empty.component';
+import { getMediaTypesByKey } from '../../../redux/modules/referenceData';
 
 const renderFilterModal = ({
   showFilterModal,
@@ -29,7 +30,8 @@ const renderFilterModal = ({
   publisherCounts,
   publishers,
   onFilterFormat,
-  onFilterPublisherHierarchy
+  onFilterPublisherHierarchy,
+  mediaTypes
 }) => (
   <Modal isOpen={showFilterModal} toggle={closeFilterModal}>
     <ModalHeader toggle={closeFilterModal}>{localization.filter}</ModalHeader>
@@ -48,6 +50,7 @@ const renderFilterModal = ({
           filter={_.get(dataServiceAggregations, 'formats')}
           onClick={onFilterFormat}
           activeFilter={locationSearch.format}
+          referenceDataItems={mediaTypes}
         />
       </div>
     </ModalBody>
@@ -90,7 +93,8 @@ export const ResultsApiPure = ({
   publishers,
   hitsPerPage,
   history,
-  location
+  location,
+  referenceData
 }) => {
   const locationSearch = parseSearchParams(location);
 
@@ -110,6 +114,8 @@ export const ResultsApiPure = ({
     setPage(history, location, data.selected);
     window.scrollTo(0, 0);
   };
+
+  const mediaTypes = getMediaTypesByKey(referenceData);
 
   return (
     <main data-test-id="apis" id="content">
@@ -155,12 +161,7 @@ export const ResultsApiPure = ({
                 Filtrering
               </span>
 
-              <FilterPills
-                history={history}
-                location={location}
-                locationSearch={locationSearch}
-                publishers={publishers}
-              />
+              <FilterPills publishers={publishers} />
 
               {dataServiceAggregations && (
                 <div>
@@ -172,7 +173,8 @@ export const ResultsApiPure = ({
                     publisherCounts,
                     publishers,
                     onFilterFormat,
-                    onFilterPublisherHierarchy
+                    onFilterPublisherHierarchy,
+                    mediaTypes
                   })}
                   <FilterTree
                     title={localization.provider}
@@ -187,6 +189,7 @@ export const ResultsApiPure = ({
                     filter={_.get(dataServiceAggregations, 'formats')}
                     onClick={onFilterFormat}
                     activeFilter={locationSearch.format}
+                    referenceDataItems={mediaTypes}
                   />
                 </div>
               )}
@@ -244,7 +247,8 @@ ResultsApiPure.defaultProps = {
   hitsPerPage: 10,
 
   history: { push: _.noop },
-  location: { search: '' }
+  location: { search: '' },
+  referenceData: null
 };
 
 ResultsApiPure.propTypes = {
@@ -264,7 +268,8 @@ ResultsApiPure.propTypes = {
   hitsPerPage: PropTypes.number,
 
   history: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
+  referenceData: PropTypes.object
 };
 
 export const ResultsApi = withRouter(ResultsApiPure);
