@@ -46,7 +46,7 @@ const sortFormats = (formats: KeyWithCountObject[]) => {
   return formats.sort((a: KeyWithCountObject, b: KeyWithCountObject) => {
     const aObject = a.count;
     const bObject = b.count;
-    return aObject.toString().localeCompare(bObject) * -1;
+    return aObject.toString().localeCompare(bObject.toString()) * -1;
   });
 };
 
@@ -57,11 +57,11 @@ const DatasetReport: FC<Props> = ({
   location: { search: searchParams } = {},
   history,
   datasetsReport: {
-    totalObjects = '0',
-    newLastWeek = '0',
-    nationalComponent = '0',
-    withSubject = '0',
-    opendata = '0',
+    totalObjects = 0,
+    newLastWeek = 0,
+    nationalComponent = 0,
+    withSubject = 0,
+    opendata = 0,
     accessRights = [],
     formats = [],
     themesAndTopicsCount = [],
@@ -76,34 +76,20 @@ const DatasetReport: FC<Props> = ({
   }, []);
 
   const accessRightsPublic =
-    Array.isArray(accessRights) &&
     accessRights?.find((item: KeyWithCountObject) => item.key === 'PUBLIC')
-      ?.count
-      ? accessRights?.find((item: KeyWithCountObject) => item.key === 'PUBLIC')
-          ?.count
-      : '0';
+      ?.count || 0;
   const accessRightsRestriced =
-    Array.isArray(accessRights) &&
     accessRights?.find((item: KeyWithCountObject) => item.key === 'RESTRICTED')
-      ?.count
-      ? accessRights?.find(
-          (item: KeyWithCountObject) => item.key === 'RESTRICTED'
-        )?.count
-      : '0';
+      ?.count || 0;
   const accessRightsNonPublic =
-    Array.isArray(accessRights) &&
     accessRights?.find((item: KeyWithCountObject) => item.key === 'NON_PUBLIC')
-      ?.count
-      ? accessRights?.find(
-          (item: KeyWithCountObject) => item.key === 'NON_PUBLIC'
-        )?.count
-      : '0';
+      ?.count || 0;
 
   const accessRightsUnknown =
-    Number(totalObjects) -
-    Number(accessRightsPublic) -
-    Number(accessRightsRestriced) -
-    Number(accessRightsNonPublic);
+    totalObjects -
+    accessRightsPublic -
+    accessRightsRestriced -
+    accessRightsNonPublic;
 
   const topMostUsedFormats = Array.isArray(formats)
     ? sortFormats(formats).splice(0, 4)
@@ -367,7 +353,7 @@ const DatasetReport: FC<Props> = ({
                           )}
                         />
                       }
-                      count={`${accessRightsUnknown}`}
+                      count={accessRightsUnknown}
                     />
                     <SC.StatisticsRegular.Label>
                       {localization.report.unknown}
@@ -514,7 +500,7 @@ const DatasetReport: FC<Props> = ({
                                   losTheme.losPaths.join() === key
                               )?.name
                             ),
-                            text2: count
+                            text2: `${count}`
                           })
                         )}
                       />
@@ -530,7 +516,7 @@ const DatasetReport: FC<Props> = ({
                     <StatisticsRegular to={`${PATHNAME_DATASETS}`}>
                       <IllustrationWithCount
                         icon={<DatasetIcon />}
-                        count={`${catalogs.length}`}
+                        count={catalogs.length}
                       />
                       <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
                         {localization.report.organizationsDataset}
@@ -550,7 +536,7 @@ const DatasetReport: FC<Props> = ({
                             translate(publishers[`${key}`]?.prefLabel) ??
                             publishers[`${key}`]?.name ??
                             key,
-                          text2: count
+                          text2: `${count}`
                         })
                       )}
                     />

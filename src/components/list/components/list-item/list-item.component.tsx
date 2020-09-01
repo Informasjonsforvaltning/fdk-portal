@@ -10,8 +10,8 @@ interface Props {
 
 const ListItem: FC<Props> = ({ to, text1, text2, ...props }) => (
   <SC.ListItem to={to} {...props}>
-    {text1 && <SC.Text>{text1}</SC.Text>}
-    {text2 && <SC.Text>{text2}</SC.Text>}
+    <SC.Text>{text1}</SC.Text>
+    <SC.Text>{text2}</SC.Text>
   </SC.ListItem>
 );
 

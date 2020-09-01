@@ -14,7 +14,8 @@ const mapFilters = ({
   accessrights: accessRights,
   spatial,
   provenance,
-  format
+  format,
+  dataseturi
 }: any) => {
   const filters = [];
   if (los) {
@@ -45,6 +46,9 @@ const mapFilters = ({
         values: format.split(',')
       }
     });
+  }
+  if (dataseturi) {
+    filters.push({ 'servesDataset.keyword': dataseturi });
   }
 
   return filters.length > 0 ? filters : undefined;
