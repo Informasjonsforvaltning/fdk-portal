@@ -389,6 +389,7 @@
     "conceptsDescription": "begrepsbeskrivelser",
     "informationModelsDescription": "informasjonsmodellbeskrivelser",
     "growth": "Utvikling",
+    "growthFromFirstPublish": "Datasetdescriptions since first published",
     "opendata": "åpne data",
     "public": "kan deles offentlig",
     "restricted": "har begrenset offentlighet",

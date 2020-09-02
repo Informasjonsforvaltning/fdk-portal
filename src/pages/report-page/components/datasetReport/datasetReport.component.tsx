@@ -134,7 +134,10 @@ const DatasetReport: FC<Props> = ({
         {timeSeriesData?.length > 0 && timeSeriesData?.length > 0 && (
           <div className="row">
             <div className="col-12">
-              <BoxRegular header={localization.report.growth}>
+              <BoxRegular
+                header={localization.report.growth}
+                subHeader={localization.report.growthFromFirstPublish}
+              >
                 <Line
                   name={localization.datasetLabel}
                   data={timeSeriesData}
