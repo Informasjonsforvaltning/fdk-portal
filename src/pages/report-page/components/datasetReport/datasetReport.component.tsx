@@ -94,6 +94,10 @@ const DatasetReport: FC<Props> = ({
     formats
   ).splice(0, 4);
 
+  const topMostUsedThemes: KeyWithCountObject[] = sortKeyWithCount(
+    themesAndTopicsCount.filter(item => item.key !== 'MISSING')
+  ).splice(0, 10);
+
   const theme = getConfig().themeNap ? themeNAP : themeFDK;
 
   return (
@@ -481,35 +485,33 @@ const DatasetReport: FC<Props> = ({
                 </div>
               )}
 
-            {Array.isArray(themesAndTopicsCount) &&
-              themesAndTopicsCount?.length > 0 && (
-                <div className="row">
-                  <div className="col-12">
-                    <BoxRegular
-                      variant={BoxFlowVariant.COLUMN}
-                      header={localization.report.usedThemes}
-                    >
-                      <List
-                        headerText1={localization.report.themeAndTopic}
-                        headerText2={localization.report.countDataset}
-                        listItems={themesAndTopicsCount?.map(
-                          ({ key, count }: KeyWithCountObject, index: any) => ({
-                            id: index,
-                            path: `${PATHNAME_DATASETS}?${Filter.LOS}=${key}`,
-                            text1: translate(
-                              los?.find(
-                                (losTheme: any) =>
-                                  losTheme.losPaths.join() === key
-                              )?.name
-                            ),
-                            text2: `${count}`
-                          })
-                        )}
-                      />
-                    </BoxRegular>
-                  </div>
+            {Array.isArray(topMostUsedThemes) && topMostUsedThemes?.length > 0 && (
+              <div className="row">
+                <div className="col-12">
+                  <BoxRegular
+                    variant={BoxFlowVariant.COLUMN}
+                    header={localization.report.usedThemes}
+                  >
+                    <List
+                      headerText1={localization.report.themeAndTopic}
+                      headerText2={localization.report.countDataset}
+                      listItems={topMostUsedThemes?.map(
+                        ({ key, count }: KeyWithCountObject, index: any) => ({
+                          id: index,
+                          path: `${PATHNAME_DATASETS}?${Filter.LOS}=${key}`,
+                          text1: translate(
+                            los?.find((losTheme: any) =>
+                              losTheme.losPaths.includes(key)
+                            )?.name
+                          ),
+                          text2: `${count}`
+                        })
+                      )}
+                    />
+                  </BoxRegular>
                 </div>
-              )}
+              </div>
+            )}
 
             {Array.isArray(catalogs) && catalogs?.length > 0 && (
               <div className="row">
