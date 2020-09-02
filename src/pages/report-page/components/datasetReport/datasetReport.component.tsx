@@ -42,12 +42,11 @@ interface Props extends RouteComponentProps, ReferenceDataProps {
   publishers?: any;
 }
 
-const sortFormats = (formats: KeyWithCountObject[]) => {
-  return formats.sort((a: KeyWithCountObject, b: KeyWithCountObject) => {
-    const aObject = a.count;
-    const bObject = b.count;
-    return aObject.toString().localeCompare(bObject.toString()) * -1;
-  });
+const sortKeyWithCount = (keyWithCountArray: KeyWithCountObject[]) => {
+  if (!Array.isArray(keyWithCountArray)) {
+    return [];
+  }
+  return keyWithCountArray.sort(({ count: a }, { count: b }) => b - a);
 };
 
 const DatasetReport: FC<Props> = ({
@@ -91,9 +90,9 @@ const DatasetReport: FC<Props> = ({
     accessRightsRestriced -
     accessRightsNonPublic;
 
-  const topMostUsedFormats = Array.isArray(formats)
-    ? sortFormats(formats).splice(0, 4)
-    : [];
+  const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(
+    formats
+  ).splice(0, 4);
 
   const theme = getConfig().themeNap ? themeNAP : themeFDK;
 
