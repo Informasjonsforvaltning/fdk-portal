@@ -53,6 +53,7 @@ exports[`should render api-ApiUsageInstruction correctly 1`] = `
       <a
         className="mr-5"
         href="https://raw.githubusercontent.com/brreg/openAPI/master/specs/api-cat.json"
+        key="https://raw.githubusercontent.com/brreg/openAPI/master/specs/api-cat.json-0"
       >
         Specification
         <i
@@ -201,6 +202,7 @@ exports[`should render api-ApiUsageInstruction correctly apiSpecUrl is not set 2
       <a
         className="mr-5"
         href="https://raw.githubusercontent.com/brreg/openAPI/master/specs/api-cat.json"
+        key="https://raw.githubusercontent.com/brreg/openAPI/master/specs/api-cat.json-0"
       >
         Specification
         <i
