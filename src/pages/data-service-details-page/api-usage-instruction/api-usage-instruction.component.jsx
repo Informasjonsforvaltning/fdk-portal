@@ -18,8 +18,8 @@ export default function ApiServer({ servers, apiSpecUrl, apiDocUrl }) {
             </a>
           )}
           {Array.isArray(apiSpecUrl) &&
-            apiSpecUrl.map(url => (
-              <a href={url} className="mr-5">
+            apiSpecUrl.map((url, index) => (
+              <a key={`${url}-${index}`} href={url} className="mr-5">
                 {localization.specification}
                 <i className="fa fa-external-link fdk-fa-right" />
               </a>
