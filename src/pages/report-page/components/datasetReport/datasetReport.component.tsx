@@ -35,6 +35,7 @@ import { Line } from '../../../../components/charts';
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../components/with-reference-data';
+import FormatPie from './formatPie/formatPie.component';
 
 interface Props extends RouteComponentProps, ReferenceDataProps {
   datasetsReport: Partial<DatasetsReport>;
@@ -444,41 +445,10 @@ const DatasetReport: FC<Props> = ({
                 <div className="row">
                   <div className="col-12">
                     <BoxRegular header={localization.report.usedFormats}>
-                      <PieChart
-                        data={topMostUsedFormats.map(
-                          (
-                            { key, count }: KeyWithCountObject,
-                            index: number
-                          ) => {
-                            const colorArray: { [key: string]: string } =
-                              theme.extendedColors[Entity.DATASET].graph;
-                            return {
-                              value: Number(count) ?? 0,
-                              label: key,
-                              color:
-                                colorArray[Object.keys(colorArray)[index % 5]]
-                            };
-                          }
-                        )}
-                        startAngle={0}
-                        lineWidth={40}
-                        animate
-                        label={({ dataEntry }) =>
-                          `${dataEntry.value} ${dataEntry.label}`
-                        }
-                        labelStyle={() => ({
-                          fill: theme.extendedColors[Entity.DATASET].dark,
-                          fontSize: '4px'
-                        })}
-                        onClick={(e, segmentIndex) => {
-                          e.preventDefault();
-                          history.push(
-                            `${PATHNAME_DATASETS}${patchSearchQuery(
-                              Filter.FORMAT,
-                              topMostUsedFormats[segmentIndex].key
-                            )}`
-                          );
-                        }}
+                      <FormatPie
+                        formats={topMostUsedFormats}
+                        theme={theme}
+                        history={history}
                       />
                     </BoxRegular>
                   </div>
