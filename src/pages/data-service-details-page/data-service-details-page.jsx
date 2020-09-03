@@ -264,6 +264,15 @@ const renderTermsAndRestrictions = (
   );
 };
 
+const shouldRenderContactPoint = contactPoint =>
+  Array.isArray(contactPoint) &&
+  contactPoint.find(({ hasURL, organizationName, email, hasTelephone }) => {
+    if (hasURL || organizationName || email || hasTelephone) {
+      return true;
+    }
+    return false;
+  });
+
 const renderStickyMenu = (apiItem, informationModels, datasets) => {
   const menuItems = [];
   if (_.get(apiItem, 'description')) {
@@ -330,12 +339,7 @@ const renderStickyMenu = (apiItem, informationModels, datasets) => {
       prefLabel: localization.informationModelReferences
     });
   }
-  if (
-    apiItem?.contactPoint[0]?.hasURL ||
-    apiItem?.contactPoint[0]?.organizationName ||
-    apiItem?.contactPoint[0]?.email ||
-    apiItem?.contactPoint[0]?.hasTelephone
-  ) {
+  if (shouldRenderContactPoint(apiItem?.contactPoint)) {
     menuItems.push({
       name: localization.contactInfo,
       prefLabel: localization.contactInfo

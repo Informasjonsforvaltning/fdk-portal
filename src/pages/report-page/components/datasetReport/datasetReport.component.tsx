@@ -35,6 +35,7 @@ import { Line } from '../../../../components/charts';
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../components/with-reference-data';
+import FormatPie from './formatPie/formatPie.component';
 
 interface Props extends RouteComponentProps, ReferenceDataProps {
   datasetsReport: Partial<DatasetsReport>;
@@ -42,12 +43,11 @@ interface Props extends RouteComponentProps, ReferenceDataProps {
   publishers?: any;
 }
 
-const sortFormats = (formats: KeyWithCountObject[]) => {
-  return formats.sort((a: KeyWithCountObject, b: KeyWithCountObject) => {
-    const aObject = a.count;
-    const bObject = b.count;
-    return aObject.toString().localeCompare(bObject.toString()) * -1;
-  });
+const sortKeyWithCount = (keyWithCountArray: KeyWithCountObject[]) => {
+  if (!Array.isArray(keyWithCountArray)) {
+    return [];
+  }
+  return keyWithCountArray.sort(({ count: a }, { count: b }) => b - a);
 };
 
 const DatasetReport: FC<Props> = ({
@@ -91,9 +91,13 @@ const DatasetReport: FC<Props> = ({
     accessRightsRestriced -
     accessRightsNonPublic;
 
-  const topMostUsedFormats = Array.isArray(formats)
-    ? sortFormats(formats).splice(0, 4)
-    : [];
+  const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(
+    formats
+  ).splice(0, 4);
+
+  const topMostUsedThemes: KeyWithCountObject[] = sortKeyWithCount(
+    themesAndTopicsCount.filter(item => item.key !== 'MISSING')
+  ).splice(0, 10);
 
   const theme = getConfig().themeNap ? themeNAP : themeFDK;
 
@@ -134,7 +138,10 @@ const DatasetReport: FC<Props> = ({
         {timeSeriesData?.length > 0 && timeSeriesData?.length > 0 && (
           <div className="row">
             <div className="col-12">
-              <BoxRegular header={localization.report.growth}>
+              <BoxRegular
+                header={localization.report.growth}
+                subHeader={localization.report.growthFromFirstPublish}
+              >
                 <Line
                   name={localization.datasetLabel}
                   data={timeSeriesData}
@@ -438,76 +445,43 @@ const DatasetReport: FC<Props> = ({
                 <div className="row">
                   <div className="col-12">
                     <BoxRegular header={localization.report.usedFormats}>
-                      <PieChart
-                        data={topMostUsedFormats.map(
-                          (
-                            { key, count }: KeyWithCountObject,
-                            index: number
-                          ) => {
-                            const colorArray: { [key: string]: string } =
-                              theme.extendedColors[Entity.DATASET].graph;
-                            return {
-                              value: Number(count) ?? 0,
-                              label: key,
-                              color:
-                                colorArray[Object.keys(colorArray)[index % 5]]
-                            };
-                          }
-                        )}
-                        startAngle={0}
-                        lineWidth={40}
-                        animate
-                        label={({ dataEntry }) =>
-                          `${dataEntry.value} ${dataEntry.label}`
-                        }
-                        labelStyle={() => ({
-                          fill: theme.extendedColors[Entity.DATASET].dark,
-                          fontSize: '4px'
-                        })}
-                        onClick={(e, segmentIndex) => {
-                          e.preventDefault();
-                          history.push(
-                            `${PATHNAME_DATASETS}${patchSearchQuery(
-                              Filter.FORMAT,
-                              topMostUsedFormats[segmentIndex].key
-                            )}`
-                          );
-                        }}
+                      <FormatPie
+                        formats={topMostUsedFormats}
+                        theme={theme}
+                        history={history}
                       />
                     </BoxRegular>
                   </div>
                 </div>
               )}
 
-            {Array.isArray(themesAndTopicsCount) &&
-              themesAndTopicsCount?.length > 0 && (
-                <div className="row">
-                  <div className="col-12">
-                    <BoxRegular
-                      variant={BoxFlowVariant.COLUMN}
-                      header={localization.report.usedThemes}
-                    >
-                      <List
-                        headerText1={localization.report.themeAndTopic}
-                        headerText2={localization.report.countDataset}
-                        listItems={themesAndTopicsCount?.map(
-                          ({ key, count }: KeyWithCountObject, index: any) => ({
-                            id: index,
-                            path: `${PATHNAME_DATASETS}?${Filter.LOS}=${key}`,
-                            text1: translate(
-                              los?.find(
-                                (losTheme: any) =>
-                                  losTheme.losPaths.join() === key
-                              )?.name
-                            ),
-                            text2: `${count}`
-                          })
-                        )}
-                      />
-                    </BoxRegular>
-                  </div>
+            {Array.isArray(topMostUsedThemes) && topMostUsedThemes?.length > 0 && (
+              <div className="row">
+                <div className="col-12">
+                  <BoxRegular
+                    variant={BoxFlowVariant.COLUMN}
+                    header={localization.report.usedThemes}
+                  >
+                    <List
+                      headerText1={localization.report.themeAndTopic}
+                      headerText2={localization.report.countDataset}
+                      listItems={topMostUsedThemes?.map(
+                        ({ key, count }: KeyWithCountObject, index: any) => ({
+                          id: index,
+                          path: `${PATHNAME_DATASETS}?${Filter.LOS}=${key}`,
+                          text1: translate(
+                            los?.find((losTheme: any) =>
+                              losTheme.losPaths.includes(key)
+                            )?.name
+                          ),
+                          text2: `${count}`
+                        })
+                      )}
+                    />
+                  </BoxRegular>
                 </div>
-              )}
+              </div>
+            )}
 
             {Array.isArray(catalogs) && catalogs?.length > 0 && (
               <div className="row">

@@ -19,6 +19,12 @@ const BoxHeader = styled.h3`
   margin-bottom: 1em;
 `;
 
+const BoxSubHeader = styled.h4`
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-bottom: 1em;
+`;
+
 const BoxContent = styled.div<{ variant?: Variant }>`
   align-items: center;
   display: flex;
@@ -61,6 +67,7 @@ const BoxColumn = styled.div`
 export default {
   BoxRegular,
   BoxHeader,
+  BoxSubHeader,
   BoxContent,
   BoxColumn
 };
