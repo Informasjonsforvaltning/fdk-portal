@@ -181,7 +181,12 @@ describe('DatasetDistribution component', () => {
 
     rerender(
       <DatasetDistribution
-        distribution={{ title, description, format, license: licenseWithLabel }}
+        distribution={{
+          title,
+          description,
+          format,
+          license: [licenseWithLabel]
+        }}
       />
     );
 
@@ -211,26 +216,25 @@ describe('DatasetDistribution component', () => {
       format.join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
-      description.en
-    );
-    expect(datasetDistributionDetailElements[2]).toHaveTextContent(
       licenseWithLabel.prefLabel.en
     );
     expect(
-      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
-      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
+      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
+    expect(datasetDistributionDetailElements[2]).toHaveTextContent(
+      description.en
+    );
     rerender(
       <DatasetDistribution
         distribution={{
           title,
           description,
           format,
-          license: licenseWithoutLabel
+          license: [licenseWithoutLabel]
         }}
       />
     );
@@ -248,19 +252,18 @@ describe('DatasetDistribution component', () => {
       format.join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
-      description.en
-    );
-    expect(datasetDistributionDetailElements[2]).toHaveTextContent(
       licenseWithoutLabel.uri
     );
     expect(
-      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
-      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
+      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithoutLabel.uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
+    expect(datasetDistributionDetailElements[2]).toHaveTextContent(
+      description.en
+    );
     datasetDistributionSummaryElement.click();
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -280,7 +283,7 @@ describe('DatasetDistribution component', () => {
           title,
           description,
           format,
-          license: licenseWithLabel,
+          license: [licenseWithLabel],
           downloadURL
         }}
       />
@@ -312,26 +315,25 @@ describe('DatasetDistribution component', () => {
       format.join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
-      description.en
-    );
-    expect(datasetDistributionDetailElements[2]).toHaveTextContent(
       licenseWithLabel.prefLabel.en
     );
     expect(
-      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
-      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
+      datasetDistributionDetailElements[1].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
+    expect(datasetDistributionDetailElements[2]).toHaveTextContent(
+      description.en
+    );
     rerender(
       <DatasetDistribution
         distribution={{
           title,
           description,
           format,
-          license: licenseWithLabel,
+          license: [licenseWithLabel],
           downloadURL,
           accessURL
         }}
@@ -360,19 +362,18 @@ describe('DatasetDistribution component', () => {
       datasetDistributionDetailElements[1].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', accessURL[0]);
     expect(datasetDistributionDetailElements[2]).toHaveTextContent(
-      description.en
-    );
-    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
       licenseWithLabel.prefLabel.en
     );
     expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
+      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
-
+    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
+      description.en
+    );
     datasetDistributionSummaryElement.click();
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -392,7 +393,7 @@ describe('DatasetDistribution component', () => {
           title,
           description,
           format,
-          license: licenseWithLabel,
+          license: [licenseWithLabel],
           downloadURL,
           accessURL,
           conformsTo: conformsToWithLabel
@@ -435,17 +436,17 @@ describe('DatasetDistribution component', () => {
       datasetDistributionDetailElements[1].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', accessURL[0]);
     expect(datasetDistributionDetailElements[2]).toHaveTextContent(
-      description.en
-    );
-    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
       licenseWithLabel.prefLabel.en
     );
     expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
+      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
+    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
+      description.en
+    );
     expect(datasetDistributionDetailElements[4]).toHaveTextContent(
       conformsToWithLabel[0].prefLabel.en
     );
@@ -463,7 +464,7 @@ describe('DatasetDistribution component', () => {
           title,
           description,
           format,
-          license: licenseWithLabel,
+          license: [licenseWithLabel],
           downloadURL,
           accessURL,
           conformsTo: conformsToWithoutLabel
@@ -493,17 +494,17 @@ describe('DatasetDistribution component', () => {
       datasetDistributionDetailElements[1].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', accessURL[0]);
     expect(datasetDistributionDetailElements[2]).toHaveTextContent(
-      description.en
-    );
-    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
       licenseWithLabel.prefLabel.en
     );
     expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
+      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
+    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
+      description.en
+    );
     expect(datasetDistributionDetailElements[4]).toHaveTextContent(
       conformsToWithoutLabel[0].uri
     );
@@ -534,7 +535,7 @@ describe('DatasetDistribution component', () => {
           title,
           description,
           format,
-          license: licenseWithLabel,
+          license: [licenseWithLabel],
           downloadURL,
           accessURL,
           conformsTo: conformsToWithLabel,
@@ -578,17 +579,17 @@ describe('DatasetDistribution component', () => {
       datasetDistributionDetailElements[1].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', accessURL[0]);
     expect(datasetDistributionDetailElements[2]).toHaveTextContent(
-      description.en
-    );
-    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
       licenseWithLabel.prefLabel.en
     );
     expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild?.tagName.toLowerCase()
+      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild?.tagName.toLowerCase()
     ).toEqual('a');
     expect(
-      datasetDistributionDetailElements[3].lastElementChild?.firstElementChild
+      datasetDistributionDetailElements[2].lastElementChild?.firstElementChild
     ).toHaveAttribute('href', licenseWithLabel.uri);
+    expect(datasetDistributionDetailElements[3]).toHaveTextContent(
+      description.en
+    );
     expect(datasetDistributionDetailElements[4]).toHaveTextContent(
       conformsToWithLabel[0].prefLabel.en
     );

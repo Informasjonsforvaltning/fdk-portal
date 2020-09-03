@@ -233,7 +233,7 @@ export interface Distribution {
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   format: DataFormat[];
-  license: License;
+  license: License[];
   openLicense: boolean;
   accessURL: string[];
   downloadURL: string[];

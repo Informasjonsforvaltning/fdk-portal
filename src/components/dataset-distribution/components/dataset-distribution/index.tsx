@@ -23,7 +23,7 @@ import testIds from './test-ids';
 
 import { formatSorter } from './utils';
 
-import { Distribution } from '../../../../types';
+import { Distribution, License } from '../../../../types';
 
 interface Props {
   distribution: Partial<Distribution>;
@@ -33,7 +33,7 @@ const DatasetDistribution: FC<Props> = ({
   distribution: {
     title,
     description,
-    license: { uri: licenseUri, prefLabel: licensePrefLabel } = {},
+    license: licenses = [],
     format: formats = [],
     downloadURL: [downloadURL] = [],
     accessURL: [accessURL] = [],
@@ -69,24 +69,26 @@ const DatasetDistribution: FC<Props> = ({
           data-testid={testIds.detail}
         />
       )}
+      {licenses?.map(
+        ({ uri: licenseUri, prefLabel: licensePrefLabel }: License) => (
+          <Detail
+            property={translations.dataset.distribution.licenseLinkDefault}
+            value={
+              <ExternalLink
+                uri={licenseUri}
+                prefLabel={translate(licensePrefLabel) || licenseUri}
+                openInNewTab
+              />
+            }
+            data-testid={testIds.detail}
+          />
+        )
+      )}
       <Detail
         property={translations.dataset.distribution.description}
         value={translate(description)}
         data-testid={testIds.detail}
       />
-      {licenseUri && (
-        <Detail
-          property={translations.dataset.distribution.licenseLinkDefault}
-          value={
-            <ExternalLink
-              uri={licenseUri}
-              prefLabel={translate(licensePrefLabel) || licenseUri}
-              openInNewTab
-            />
-          }
-          data-testid={testIds.detail}
-        />
-      )}
       {conformsToUri && (
         <Detail
           property={translations.dataset.distribution.conformsTo}
