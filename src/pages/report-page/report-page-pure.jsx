@@ -72,8 +72,8 @@ export function ReportPagePure({
   };
 
   // const catalogs = Object.keys(publishers).map(item => {return ({key: item})}).concat(defaultOrganizations);
-  const catalogs = {
-    [Variant.DATASET]: datasetsReport?.catalogs ?? []
+  const orgPaths = {
+    [Variant.DATASET]: datasetsReport?.orgPaths ?? []
   };
 
   return (
@@ -109,7 +109,7 @@ export function ReportPagePure({
 
             <FilterTree
               title={localization.organization}
-              aggregations={catalogs[activeTab]}
+              aggregations={orgPaths[activeTab]}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPath}
               referenceDataItems={publishers}
