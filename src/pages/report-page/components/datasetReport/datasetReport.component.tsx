@@ -507,9 +507,9 @@ const DatasetReport: FC<Props> = ({
                             Filter.ORGPATH
                           }=${encodeURI(key)}`,
                           text1:
-                            translate(publishers[`${key}`]?.prefLabel) ??
-                            publishers[`${key}`]?.name ??
-                            key,
+                            translate(publishers[key]?.prefLabel) ??
+                            publishers[key]?.name ??
+                            key.substr(key.lastIndexOf('/') + 1, key.length),
                           text2: `${count}`
                         })
                       )}
