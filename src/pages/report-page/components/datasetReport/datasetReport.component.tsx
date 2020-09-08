@@ -513,6 +513,8 @@ const DatasetReport: FC<Props> = ({
                           text2: `${count}`
                         })
                       )}
+                      showMoreLabel={localization.report.showAllCatalogs}
+                      showLessLabel={localization.report.showLessCatalogs}
                     />
                   </BoxRegular>
                 </div>

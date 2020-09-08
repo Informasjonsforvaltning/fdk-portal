@@ -411,7 +411,9 @@
     "organizationsInformationModel": "verksemder har informasjonsmodellskildringar i Felles datakatalog",
     "catalogName": "Katalognamn",
     "access": "Tilgang",
-    "conceptReferenced": "Omgrep som det oftast refererast til"
+    "conceptReferenced": "Omgrep som det oftast refererast til",
+    "showAllCatalogs": "Vis alle katalogar",
+    "showLessCatalogs": "Vis færre katalogar"
   },
   "registration": {
     "title": "Korleis få tilgang til dine katalogar"
