@@ -59,6 +59,7 @@ const DatasetReport: FC<Props> = ({
   datasetsReport: {
     totalObjects = 0,
     newLastWeek = 0,
+    organizationCount = 0,
     nationalComponent = 0,
     withSubject = 0,
     opendata = 0,
@@ -482,20 +483,20 @@ const DatasetReport: FC<Props> = ({
               </div>
             )}
 
-            {Array.isArray(catalogs) && catalogs?.length > 0 && (
-              <div className="row">
-                <div className="col-12">
-                  <BoxRegular variant={BoxFlowVariant.COLUMN}>
-                    <StatisticsRegular to={`${PATHNAME_DATASETS}`}>
-                      <IllustrationWithCount
-                        icon={<DatasetIcon />}
-                        count={catalogs.length}
-                      />
-                      <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
-                        {localization.report.organizationsDataset}
-                      </SC.StatisticsRegular.Label>
-                    </StatisticsRegular>
+            <div className="row">
+              <div className="col-12">
+                <BoxRegular variant={BoxFlowVariant.COLUMN}>
+                  <StatisticsRegular to={`${PATHNAME_DATASETS}`}>
+                    <IllustrationWithCount
+                      icon={<DatasetIcon />}
+                      count={organizationCount}
+                    />
+                    <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
+                      {localization.report.organizationsDataset}
+                    </SC.StatisticsRegular.Label>
+                  </StatisticsRegular>
 
+                  {Array.isArray(catalogs) && catalogs?.length > 0 && (
                     <List
                       headerText1={localization.report.catalogName}
                       headerText2={localization.report.countDataset}
@@ -515,10 +516,10 @@ const DatasetReport: FC<Props> = ({
                       showMoreLabel={localization.report.showAllCatalogs}
                       showLessLabel={localization.report.showLessCatalogs}
                     />
-                  </BoxRegular>
-                </div>
+                  )}
+                </BoxRegular>
               </div>
-            )}
+            </div>
           </div>
         )}
       </main>
