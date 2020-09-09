@@ -300,6 +300,7 @@ export interface DataPoint {
 interface Report {
   totalObjects: number;
   newLastWeek: number;
+  organizationCount: number;
   catalogs: KeyWithCountObject[];
 }
 
