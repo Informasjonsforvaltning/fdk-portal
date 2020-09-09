@@ -6,14 +6,12 @@ import { themeFDK } from '../../../../app/theme';
 interface Props {
   name: string;
   data: number[];
-  labels: any;
   lineColor?: string;
 }
 
 const LineChart: FC<Props> = ({
   name,
   data,
-  labels,
   lineColor = themeFDK.extendedColors.neutralDarker
 }) => {
   const options = {
@@ -34,9 +32,8 @@ const LineChart: FC<Props> = ({
     stroke: {
       curve: 'smooth'
     },
-    labels,
     xaxis: {
-      type: 'string'
+      type: 'datetime'
     },
     legend: {
       horizontalAlign: 'left'
