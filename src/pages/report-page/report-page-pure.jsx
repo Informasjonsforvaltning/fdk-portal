@@ -21,6 +21,7 @@ import InformationModelReport from './components/informationModelReport/informat
 import TabContent, { Variant } from '../../components/tab/tab.component';
 import { FilterTree } from '../search-page/filter-tree/filter-tree.component';
 import { setFilter } from '../search-page/search-location-helper';
+import { getTranslateText as translate } from '../../lib/translateText';
 
 export function ReportPagePure({
   location,
@@ -72,8 +73,8 @@ export function ReportPagePure({
   };
 
   // const catalogs = Object.keys(publishers).map(item => {return ({key: item})}).concat(defaultOrganizations);
-  const catalogs = {
-    [Variant.DATASET]: datasetsReport?.catalogs ?? []
+  const orgPaths = {
+    [Variant.DATASET]: datasetsReport?.orgPaths ?? []
   };
 
   return (
@@ -109,7 +110,7 @@ export function ReportPagePure({
 
             <FilterTree
               title={localization.organization}
-              aggregations={catalogs[activeTab]}
+              aggregations={orgPaths[activeTab]}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPath}
               referenceDataItems={publishers}
@@ -120,10 +121,14 @@ export function ReportPagePure({
               <div className="col-12">
                 <SC.SubTitle>
                   {localization.report.title}{' '}
-                  {selectedPublisher && selectedPublisher.name
+                  {orgPath
                     ? capitalize(
-                        localization.facet.publishers[selectedPublisher.name] ||
-                          selectedPublisher.name
+                        translate(publishers[orgPath]?.prefLabel) ??
+                          publishers[orgPath]?.name ??
+                          orgPath.substr(
+                            orgPath.lastIndexOf('/') + 1,
+                            orgPath.length
+                          )
                       )
                     : localization.report.allEntities}
                 </SC.SubTitle>

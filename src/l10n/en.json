@@ -411,7 +411,9 @@
     "organizationsInformationModel": "organizations with information model descriptions",
     "catalogName": "Catalog name",
     "access": "Access",
-    "conceptReferenced": "Most referenced concepts"
+    "conceptReferenced": "Most referenced concepts",
+    "showAllCatalogs": "Show all catalogs",
+    "showLessCatalogs": "Show less catalogs"
   },
   "registration": {
     "title": "Registration (only in Norwegian)"

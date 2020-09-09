@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import CollapseIconBase from '../../../../images/icon-collapse-md.svg';
+import ExpandIconBase from '../../../../images/icon-expand-md.svg';
 
 const ListHeader = styled.div`
   align-items: center;
@@ -22,4 +24,32 @@ const List = styled.div`
   width: 100%;
 `;
 
-export default { List, ListHeader, HeaderText };
+const Expansion = styled.button`
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.dark} !important;
+  cursor: pointer;
+  display: flex;
+  margin-top: 1em;
+`;
+
+const CollapseIcon = styled(CollapseIconBase)`
+  height: 16px;
+  width: 16px;
+  margin-right: 0.5em;
+`;
+
+const ExpandIcon = styled(ExpandIconBase)`
+  height: 16px;
+  width: 16px;
+  margin-right: 0.5em;
+`;
+
+export default {
+  List,
+  ListHeader,
+  HeaderText,
+  Expansion,
+  CollapseIcon,
+  ExpandIcon
+};

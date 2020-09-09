@@ -67,7 +67,7 @@ const DatasetReport: FC<Props> = ({
     themesAndTopicsCount = [],
     catalogs = []
   } = {},
-  datasetsTimeSeries: { timeSeriesLabels, timeSeriesData } = {}
+  datasetsTimeSeries: { timeSeriesData } = {}
 }) => {
   useEffect(() => {
     if (!los) {
@@ -145,7 +145,6 @@ const DatasetReport: FC<Props> = ({
                 <Line
                   name={localization.datasetLabel}
                   data={timeSeriesData}
-                  labels={timeSeriesLabels}
                   lineColor={theme.extendedColors[Entity.DATASET].dark}
                 />
               </BoxRegular>
@@ -507,12 +506,14 @@ const DatasetReport: FC<Props> = ({
                             Filter.ORGPATH
                           }=${encodeURI(key)}`,
                           text1:
-                            translate(publishers[`${key}`]?.prefLabel) ??
-                            publishers[`${key}`]?.name ??
-                            key,
+                            translate(publishers[key]?.prefLabel) ??
+                            publishers[key]?.name ??
+                            key.substr(key.lastIndexOf('/') + 1, key.length),
                           text2: `${count}`
                         })
                       )}
+                      showMoreLabel={localization.report.showAllCatalogs}
+                      showLessLabel={localization.report.showLessCatalogs}
                     />
                   </BoxRegular>
                 </div>
