@@ -67,7 +67,7 @@ const DatasetReport: FC<Props> = ({
     themesAndTopicsCount = [],
     catalogs = []
   } = {},
-  datasetsTimeSeries: { timeSeriesLabels, timeSeriesData } = {}
+  datasetsTimeSeries: { timeSeriesData } = {}
 }) => {
   useEffect(() => {
     if (!los) {
@@ -145,7 +145,6 @@ const DatasetReport: FC<Props> = ({
                 <Line
                   name={localization.datasetLabel}
                   data={timeSeriesData}
-                  labels={timeSeriesLabels}
                   lineColor={theme.extendedColors[Entity.DATASET].dark}
                 />
               </BoxRegular>

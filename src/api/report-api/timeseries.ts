@@ -6,11 +6,12 @@ export const extractLabelsAndData = (timeSeries: DataPoint[]) => {
     return {};
   }
 
-  const timeSeriesLabels = timeSeries.map(({ xAxis }) => xAxis);
-  const timeSeriesData = timeSeries.map(({ yAxis }) => yAxis);
+  const timeSeriesData = timeSeries.map(({ xAxis, yAxis }) => [
+    Date.parse(xAxis),
+    yAxis
+  ]);
 
   return {
-    timeSeriesLabels,
     timeSeriesData
   };
 };
