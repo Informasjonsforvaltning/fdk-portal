@@ -1,10 +1,7 @@
 import React, { FC, memo, useState } from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 import { KeyWithCountObject } from '../../../../../types';
-import { Entity, Filter } from '../../../../../types/enums';
-
-import { PATHNAME_DATASETS } from '../../../../../constants/constants';
-import { patchSearchQuery } from '../../../../../lib/addOrReplaceUrlParam';
+import { Entity } from '../../../../../types/enums';
 
 interface Props {
   formats: any;
@@ -12,7 +9,7 @@ interface Props {
   history: any;
 }
 
-const FormatPie: FC<Props> = ({ formats, theme, history }) => {
+const FormatPie: FC<Props> = ({ formats, theme }) => {
   const [hovered, setHovered] = useState<number | undefined>(undefined);
 
   const data = formats.map(
@@ -51,17 +48,8 @@ const FormatPie: FC<Props> = ({ formats, theme, history }) => {
         fontSize: '4px',
         fontWeight: hovered === index ? 'bold' : 'normal'
       })}
-      onClick={(e, segmentIndex) => {
-        e.preventDefault();
-        history.push(
-          `${PATHNAME_DATASETS}${patchSearchQuery(
-            Filter.FORMAT,
-            formats[segmentIndex].key
-          )}`
-        );
-      }}
       lineWidth={lineWidth}
-      segmentsStyle={{ transition: 'stroke .3s', cursor: 'pointer' }}
+      segmentsStyle={{ transition: 'stroke .3s' }}
       onMouseOver={(_, index) => {
         setHovered(index);
       }}
