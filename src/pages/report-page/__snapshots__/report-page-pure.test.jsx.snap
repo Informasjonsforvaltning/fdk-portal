@@ -25,17 +25,6 @@ exports[`should render ReportPagePure correctly 1`] = `
       className="row"
     >
       <div
-        className="col-12"
-      >
-        <styled.h1>
-          Reports
-        </styled.h1>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
         className="col-md-4"
       >
         <PublishersSelect
@@ -62,6 +51,17 @@ exports[`should render ReportPagePure correctly 1`] = `
             className="col-12"
           >
             <styled.h1>
+              Reports
+            </styled.h1>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-12"
+          >
+            <styled.h1>
               Showing numbers for
                
               all entities
@@ -69,7 +69,7 @@ exports[`should render ReportPagePure correctly 1`] = `
           </div>
         </div>
         <div
-          className="row"
+          className="row mb-5"
         >
           <div
             className="col-12"

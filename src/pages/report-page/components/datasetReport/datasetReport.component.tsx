@@ -194,7 +194,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
@@ -239,7 +239,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
@@ -281,7 +281,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
@@ -323,7 +323,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
@@ -363,7 +363,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (

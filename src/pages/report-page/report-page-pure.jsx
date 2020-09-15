@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
-import { Button } from 'reactstrap';
 import capitalize from 'lodash/capitalize';
 import Tabs, { Tab, Pane } from '@fellesdatakatalog/tabs';
 import ThemeProvider from '@fellesdatakatalog/theme';
@@ -87,20 +86,14 @@ export function ReportPagePure({
     >
       <section className="container">
         <div className="row">
-          <div className="col-12">
-            <SC.Title>{localization.menu.reports}</SC.Title>
-          </div>
-        </div>
-        <div className="row">
           <div className="col-md-4">
             {isFilterActive({ orgPath }) && (
-              <Button
+              <SC.ClearButton
                 className="fdk-button fade-in-500"
                 onClick={clearSearch}
-                color="primary"
               >
                 {localization.query.clear}
-              </Button>
+              </SC.ClearButton>
             )}
             <PublishersSelect
               publishers={publishers}
@@ -119,6 +112,11 @@ export function ReportPagePure({
           <div className="col-md-8">
             <div className="row">
               <div className="col-12">
+                <SC.Title>{localization.menu.reports}</SC.Title>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
                 <SC.SubTitle>
                   {localization.report.title}{' '}
                   {orgPath
@@ -134,7 +132,7 @@ export function ReportPagePure({
                 </SC.SubTitle>
               </div>
             </div>
-            <div className="row">
+            <div className="row mb-5">
               <div className="col-12">
                 {getConfig().themeNap ? (
                   <DatasetReport
