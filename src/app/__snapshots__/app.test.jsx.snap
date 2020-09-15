@@ -30,10 +30,11 @@ exports[`should render App correctly 1`] = `
   <Component />
   <Switch>
     <Route
-      component={[Function]}
       exact={true}
       path="/"
-    />
+    >
+      <NewsResolver />
+    </Route>
     <Route
       component={[Function]}
       exact={true}
