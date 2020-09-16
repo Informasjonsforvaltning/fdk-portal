@@ -1,11 +1,12 @@
 import _ from 'lodash';
 import qs from 'qs';
 import {
-  conceptsSearch,
-  extractAggregations,
+  extractConceptAggregations,
+  searchConcepts,
   extractConcepts,
-  extractTotal
-} from '../../api/concepts';
+  extractConceptsTotal,
+  paramsToSearchBody
+} from '../../api/search-fulltext-api/concepts';
 import {
   informationmodelsSearch,
   extractInformationmodels
@@ -44,7 +45,7 @@ export function fetchConceptsIfNeededAction(query) {
   return (dispatch, getState) =>
     shouldFetch(_.get(getState(), ['concepts', 'meta']), queryKey) &&
     dispatch(
-      reduxFsaThunk(() => conceptsSearch(params), {
+      reduxFsaThunk(() => searchConcepts(paramsToSearchBody(params)), {
         onBeforeStart: { type: CONCEPTS_REQUEST, meta: { queryKey } },
         onSuccess: { type: CONCEPTS_SUCCESS, meta: { queryKey } },
         onError: { type: CONCEPTS_FAILURE, meta: { queryKey } }
@@ -59,7 +60,7 @@ export function fetchConceptReferencesAction(query) {
   return (dispatch, getState) =>
     shouldFetch(_.get(getState(), ['concepts', 'meta']), queryKey) &&
     dispatch(
-      reduxFsaThunk(() => conceptsSearch(params), {
+      reduxFsaThunk(() => searchConcepts(paramsToSearchBody(params)), {
         onBeforeStart: { type: CONCEPT_REFERENCES_REQUEST, meta: { queryKey } },
         onSuccess: { type: CONCEPT_REFERENCES_SUCCESS, meta: { queryKey } },
         onError: { type: CONCEPT_REFERENCES_FAILURE, meta: { queryKey } }
@@ -106,8 +107,8 @@ export function conceptReducer(state = initialState, action) {
       return {
         ...state,
         conceptItems: extractConcepts(action.payload),
-        conceptAggregations: extractAggregations(action.payload),
-        conceptTotal: extractTotal(action.payload),
+        conceptAggregations: extractConceptAggregations(action.payload),
+        conceptTotal: extractConceptsTotal(action.payload),
         meta: {
           isFetching: false,
           lastFetch: Date.now(),

@@ -16,13 +16,10 @@ import { PATHNAME_CONCEPTS } from '../../../../constants/constants';
 import localization from '../../../../lib/localization';
 
 interface Props extends RouteComponentProps {
-  conceptReport?: any;
+  conceptReport?: number;
 }
 
-const ConceptReport: FC<Props> = ({
-  location,
-  conceptReport: { total } = {}
-}) => {
+const ConceptReport: FC<Props> = ({ location, conceptReport = 0 }) => {
   const { search: searchParams } = location;
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.CONCEPT]}>
@@ -31,7 +28,10 @@ const ConceptReport: FC<Props> = ({
           <div className="col-12">
             <BoxRegular>
               <StatisticsRegular to={`${PATHNAME_CONCEPTS}${searchParams}`}>
-                <IllustrationWithCount icon={<ConceptIcon />} count={total} />
+                <IllustrationWithCount
+                  icon={<ConceptIcon />}
+                  count={conceptReport}
+                />
                 <SC.StatisticsRegular.Label>
                   {localization.report.conceptsDescription}
                 </SC.StatisticsRegular.Label>

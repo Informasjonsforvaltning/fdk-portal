@@ -3,10 +3,10 @@ import { shallow } from 'enzyme';
 import { ResultsConceptsPure } from './results-concepts.component';
 import concepts from '../../../mock/concepts.response.json';
 import {
-  extractAggregations,
+  extractConceptAggregations,
   extractConcepts,
-  extractTotal
-} from '../../../api/concepts';
+  extractConceptsTotal
+} from '../../../api/search-fulltext-api/concepts';
 
 test('should render ResultsConcepts correctly with minimum of props', () => {
   const result = shallow(<ResultsConceptsPure />);
@@ -16,8 +16,8 @@ test('should render ResultsConcepts correctly with minimum of props', () => {
 test('should render ResultsConcepts correctly with hits', () => {
   const props = {
     conceptItems: extractConcepts(concepts),
-    conceptAggregations: extractAggregations(concepts),
-    conceptTotal: extractTotal(concepts)
+    conceptAggregations: extractConceptAggregations(concepts),
+    conceptTotal: extractConceptsTotal(concepts)
   };
 
   const result = shallow(<ResultsConceptsPure {...props} />);

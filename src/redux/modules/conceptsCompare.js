@@ -1,6 +1,10 @@
 import _ from 'lodash';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
-import { getConcept } from '../../api/concepts';
+import {
+  extractFirstConcept,
+  paramsToSearchBody,
+  searchConcepts
+} from '../../api/search-fulltext-api/concepts';
 
 export const CONCEPTSCOMPARE_REQUEST = 'CONCEPTSCOMPARE_REQUEST';
 export const CONCEPTSCOMPARE_SUCCESS = 'CONCEPTSCOMPARE_SUCCESS';
@@ -25,7 +29,7 @@ export function fetchConceptsToCompareIfNeededAction(iDs) {
       .forEach(id => {
         if (shouldFetch(_.get(getState(), ['conceptsCompare', 'meta', id]))) {
           dispatch(
-            reduxFsaThunk(() => getConcept(id), {
+            reduxFsaThunk(() => searchConcepts(paramsToSearchBody({ id })), {
               onBeforeStart: { type: CONCEPTSCOMPARE_REQUEST, meta: { id } },
               onSuccess: { type: CONCEPTSCOMPARE_SUCCESS, meta: { id } },
               onError: { type: CONCEPTSCOMPARE_FAILURE, meta: { id } }
@@ -72,7 +76,7 @@ export function conceptsCompareReducer(state = initialState, action) {
       return {
         items: {
           ...state.items,
-          [action.meta.id]: action.payload
+          [action.meta.id]: extractFirstConcept(action.payload)
         },
         meta: {
           ...state.meta,
