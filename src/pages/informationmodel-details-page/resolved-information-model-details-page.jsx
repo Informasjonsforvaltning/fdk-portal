@@ -7,7 +7,11 @@ import {
   extractDataServices
 } from '../../api/search-fulltext-api/dataservices';
 import { findAllByKey } from '../../lib/find-by-key';
-import { conceptsSearch, extractConcepts } from '../../api/concepts';
+import {
+  extractConcepts,
+  paramsToSearchBody,
+  searchConcepts
+} from '../../api/search-fulltext-api/concepts';
 import { addReferencedConceptToItem } from '../../lib/addReferencedConceptToItem';
 
 export const getApiByHarvestSourceUri = harvestSourceUri =>
@@ -17,7 +21,7 @@ export const getApiByHarvestSourceUri = harvestSourceUri =>
 
 const memoizedGetInformationModel = _.memoize(getInformationmodel);
 const memoizedGetApiByHarvestSourceUri = _.memoize(getApiByHarvestSourceUri);
-const memoizedSearchConcepts = _.memoize(conceptsSearch);
+const memoizedSearchConcepts = _.memoize(searchConcepts);
 
 const mapProps = {
   informationModelItem: async props => {
@@ -28,11 +32,9 @@ const mapProps = {
       informationModelItem,
       'isDescribedByUri'
     );
-    const allReferencedConcepts = await memoizedSearchConcepts({
-      identifiers: allReferencedConceptIds.join(),
-      returnfields: 'definition,publisher,identifier',
-      size: 1000
-    }).then(result => extractConcepts(result));
+    const allReferencedConcepts = await memoizedSearchConcepts(
+      paramsToSearchBody({ identifier: allReferencedConceptIds })
+    ).then(result => extractConcepts(result));
 
     addReferencedConceptToItem(informationModelItem, allReferencedConcepts);
     return informationModelItem;

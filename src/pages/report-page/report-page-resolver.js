@@ -5,14 +5,18 @@ import { getDatasetsTimeseries } from '../../api/report-api/timeseries';
 import { parseSearchParams } from '../../lib/location-history-helper';
 
 import { getDataServiceStats } from '../../api/get-data-service-stats';
-import { getConceptStats } from '../../api/get-concept-stats';
+import {
+  extractConceptsTotal,
+  paramsToSearchBody,
+  searchConcepts
+} from '../../api/search-fulltext-api/concepts';
 import { getParamFromLocation } from '../../lib/addOrReplaceUrlParam';
 import { searchInformationModels } from '../../api/search-fulltext-api/informationmodels';
 
 const memoizedGetDatasetsReport = memoize(getDatasetsReport);
 const memoizedGetDatasetsTimeseries = memoize(getDatasetsTimeseries);
 const memoizedGetDataServiceStats = memoize(getDataServiceStats);
-const memoizedGetConceptStats = memoize(getConceptStats);
+const memoizedGetSearchConcepts = memoize(searchConcepts);
 const memoizedSearchInformationModels = memoize(searchInformationModels);
 
 const mapProps = {
@@ -26,8 +30,12 @@ const mapProps = {
   },
   dataServiceStats: ({ location }) =>
     memoizedGetDataServiceStats(getParamFromLocation(location, 'orgPath')),
-  conceptStats: ({ location }) =>
-    memoizedGetConceptStats(getParamFromLocation(location, 'orgPath')),
+  conceptStats: ({ location }) => {
+    const { orgPath } = parseSearchParams(location);
+    return memoizedGetSearchConcepts(paramsToSearchBody({ orgPath })).then(
+      extractConceptsTotal
+    );
+  },
   informationModelsReport: ({ location }) => {
     const { orgPath, losTheme: los } = parseSearchParams(location);
     return memoizedSearchInformationModels({ orgPath, los });
