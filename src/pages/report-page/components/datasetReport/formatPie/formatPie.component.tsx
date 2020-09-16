@@ -21,7 +21,7 @@ const FormatPie: FC<Props> = ({ formats, theme }) => {
         label: key,
         color:
           hovered === index
-            ? theme.extendedColors.neutralDarker
+            ? theme.extendedColors.neutralDarkest
             : colorArray[Object.keys(colorArray)[index % 5]]
       };
     }
@@ -43,7 +43,7 @@ const FormatPie: FC<Props> = ({ formats, theme }) => {
       labelStyle={(index: any) => ({
         fill:
           hovered === index
-            ? theme.extendedColors.neutralDarker
+            ? theme.extendedColors.neutralDarkest
             : theme.extendedColors[Entity.DATASET].dark,
         fontSize: '4px',
         fontWeight: hovered === index ? 'bold' : 'normal'
