@@ -15,7 +15,7 @@ const ListItem = styled(Link)`
   transition: all 200ms ease-in-out;
 
   &:hover {
-    background-color: #000;
+    background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
     color: #fff !important;
     text-decoration: none;
   }
