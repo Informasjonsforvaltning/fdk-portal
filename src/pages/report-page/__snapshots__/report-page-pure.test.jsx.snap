@@ -80,6 +80,7 @@ exports[`should render ReportPagePure correctly 1`] = `
                 for="pane-1"
               >
                 <Memo(Tab)
+                  active={true}
                   label="Datasets"
                   onClick={[Function]}
                   variant="dataset"
@@ -89,6 +90,7 @@ exports[`should render ReportPagePure correctly 1`] = `
                 for="pane-2"
               >
                 <Memo(Tab)
+                  active={false}
                   label="APIs"
                   onClick={[Function]}
                   variant="dataservice"
@@ -98,6 +100,7 @@ exports[`should render ReportPagePure correctly 1`] = `
                 for="pane-3"
               >
                 <Memo(Tab)
+                  active={false}
                   label="Concepts"
                   onClick={[Function]}
                   variant="concept"
@@ -107,6 +110,7 @@ exports[`should render ReportPagePure correctly 1`] = `
                 for="pane-4"
               >
                 <Memo(Tab)
+                  active={false}
                   label="Information models"
                   onClick={[Function]}
                   variant="informationmodel"
