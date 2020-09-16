@@ -413,7 +413,8 @@
     "access": "Access",
     "conceptReferenced": "Most referenced concepts",
     "showAllCatalogs": "Show all catalogs",
-    "showLessCatalogs": "Show less catalogs"
+    "showLessCatalogs": "Show less catalogs",
+    "datasetCatalogs": "Dataset catalogs"
   },
   "registration": {
     "title": "Registration (only in Norwegian)"
