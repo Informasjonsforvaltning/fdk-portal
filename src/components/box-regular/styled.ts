@@ -9,7 +9,7 @@ const BoxRegular = styled.div`
   flex-flow: column;
   font-size: 16px;
   justify-content: center;
-  margin: 0.5em 0;
+  margin: 0.3em 0;
   padding: 3em;
 `;
 
