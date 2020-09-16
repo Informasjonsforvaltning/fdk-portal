@@ -413,7 +413,8 @@
     "access": "Tilgang",
     "conceptReferenced": "Begrep som det oftest refereres til",
     "showAllCatalogs": "Vis alle kataloger",
-    "showLessCatalogs": "Vis færre kataloger"
+    "showLessCatalogs": "Vis færre kataloger",
+    "datasetCatalogs": "Datasettkataloger"
   },
   "registration": {
     "title": "Hvordan få tilgang til dine kataloger"
