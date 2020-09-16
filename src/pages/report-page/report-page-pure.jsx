@@ -147,6 +147,7 @@ export function ReportPagePure({
                         variant={Variant.DATASET}
                         label={localization.page.datasetTab}
                         onClick={() => setActiveTab(Variant.DATASET)}
+                        active={activeTab === Variant.DATASET}
                       />
                     </Tab>
                     <Tab for="pane-2">
@@ -154,6 +155,7 @@ export function ReportPagePure({
                         variant={Variant.DATA_SERVICE}
                         label={localization.page.apiTab}
                         onClick={() => setActiveTab(Variant.DATA_SERVICE)}
+                        active={activeTab === Variant.DATA_SERVICE}
                       />
                     </Tab>
                     <Tab for="pane-3">
@@ -161,6 +163,7 @@ export function ReportPagePure({
                         variant={Variant.CONCEPT}
                         label={localization.page.termTab}
                         onClick={() => setActiveTab(Variant.CONCEPT)}
+                        active={activeTab === Variant.CONCEPT}
                       />
                     </Tab>
                     <Tab for="pane-4">
@@ -168,6 +171,7 @@ export function ReportPagePure({
                         variant={Variant.INFORMATION_MODEL}
                         label={localization.page.informationModelTab}
                         onClick={() => setActiveTab(Variant.INFORMATION_MODEL)}
+                        active={activeTab === Variant.INFORMATION_MODEL}
                       />
                     </Tab>
                     <Pane id="pane-1">

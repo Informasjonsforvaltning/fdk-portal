@@ -18,10 +18,26 @@ const Tab = styled.div<{ active?: boolean; variant?: Entity }>`
   background-color: ${({ variant, theme }) =>
     variant ? theme.extendedColors[variant]?.light : 'none'};
 
-  ${({ active }) =>
+  ${({ variant, active }) =>
     active &&
     css`
-      background-color: ${({ theme }) => theme.extendedColors.neutralLightest};
+      background-color: transparent;
+      cursor: default;
+      & > div {
+        background-color: ${({ theme }) =>
+          variant ? theme.extendedColors[variant]?.light : 'none'};
+      }
+    `}
+
+  ${({ active }) =>
+    !active &&
+    css`
+      &:hover {
+        background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
+        color: #FFF;
+        & > div > svg, & > div > svg > path {
+          fill: ${({ theme }) => theme.extendedColors.neutralDarkest};
+        }
     `}
 `;
 
