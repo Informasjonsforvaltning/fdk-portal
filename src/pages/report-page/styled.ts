@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const Title = styled.h1`
   font-size: 3em;
   font-weight: 600;
-  margin: 1.5em 0;
 `;
 
 const SubTitle = styled.h1`
@@ -13,4 +12,14 @@ const SubTitle = styled.h1`
   margin-top: 0.5em;
 `;
 
-export default { Title, SubTitle };
+const ClearButton = styled.button`
+  animation: fadein 500ms;
+  background-color: ${({ theme }) => theme.extendedColors.neutralLighter};
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  box-shadow: 0 2px 4px rgba(45, 55, 65, 0.2);
+  padding: 0.8em 0.9em;
+`;
+
+export default { Title, SubTitle, ClearButton };

@@ -4,7 +4,7 @@ import ExpandIconBase from '../../../../images/icon-expand-md.svg';
 
 const ListHeader = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.extendedColors.neutralDarker};
+  background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
   border-radius: 2px;
   color: white;
   display: flex;

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import DocumentMeta from 'react-document-meta';
@@ -94,7 +94,13 @@ export function App({ language, onChangeLanguage }) {
       <Breadcrumbs />
 
       <Switch>
-        <Route exact path={PATHNAME_MAIN_PAGE} component={MainPage} />
+        <Route exact path={PATHNAME_MAIN_PAGE}>
+          {getConfig().themeNap ? (
+            <Redirect to={PATHNAME_DATASETS} />
+          ) : (
+            <MainPage />
+          )}
+        </Route>
         <Route exact path={PATHNAME_SEARCH} component={SearchPage} />
         <Route exact path={PATHNAME_DATASETS} component={SearchPage} />
         <Route exact path={PATHNAME_DATA_SERVICES} component={SearchPage} />

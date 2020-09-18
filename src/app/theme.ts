@@ -12,7 +12,7 @@ export const themeFDK = {
     linkLight: '#BFD9E8',
     linkLighter: '#CCE1ED',
 
-    neutralDarkest: '#2D3741',
+    neutralDarkest: '#121619',
     neutralDarker: '#2D3741',
     neutralDark: '#6C737A',
     neutral: '#969BA0',

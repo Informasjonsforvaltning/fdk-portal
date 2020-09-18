@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
-import { Button } from 'reactstrap';
 import capitalize from 'lodash/capitalize';
 import Tabs, { Tab, Pane } from '@fellesdatakatalog/tabs';
 import ThemeProvider from '@fellesdatakatalog/theme';
@@ -87,20 +86,14 @@ export function ReportPagePure({
     >
       <section className="container">
         <div className="row">
-          <div className="col-12">
-            <SC.Title>{localization.menu.reports}</SC.Title>
-          </div>
-        </div>
-        <div className="row">
           <div className="col-md-4">
             {isFilterActive({ orgPath }) && (
-              <Button
+              <SC.ClearButton
                 className="fdk-button fade-in-500"
                 onClick={clearSearch}
-                color="primary"
               >
                 {localization.query.clear}
-              </Button>
+              </SC.ClearButton>
             )}
             <PublishersSelect
               publishers={publishers}
@@ -119,6 +112,11 @@ export function ReportPagePure({
           <div className="col-md-8">
             <div className="row">
               <div className="col-12">
+                <SC.Title>{localization.menu.reports}</SC.Title>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
                 <SC.SubTitle>
                   {localization.report.title}{' '}
                   {orgPath
@@ -134,7 +132,7 @@ export function ReportPagePure({
                 </SC.SubTitle>
               </div>
             </div>
-            <div className="row">
+            <div className="row mb-5">
               <div className="col-12">
                 {getConfig().themeNap ? (
                   <DatasetReport
@@ -149,6 +147,7 @@ export function ReportPagePure({
                         variant={Variant.DATASET}
                         label={localization.page.datasetTab}
                         onClick={() => setActiveTab(Variant.DATASET)}
+                        active={activeTab === Variant.DATASET}
                       />
                     </Tab>
                     <Tab for="pane-2">
@@ -156,6 +155,7 @@ export function ReportPagePure({
                         variant={Variant.DATA_SERVICE}
                         label={localization.page.apiTab}
                         onClick={() => setActiveTab(Variant.DATA_SERVICE)}
+                        active={activeTab === Variant.DATA_SERVICE}
                       />
                     </Tab>
                     <Tab for="pane-3">
@@ -163,6 +163,7 @@ export function ReportPagePure({
                         variant={Variant.CONCEPT}
                         label={localization.page.termTab}
                         onClick={() => setActiveTab(Variant.CONCEPT)}
+                        active={activeTab === Variant.CONCEPT}
                       />
                     </Tab>
                     <Tab for="pane-4">
@@ -170,6 +171,7 @@ export function ReportPagePure({
                         variant={Variant.INFORMATION_MODEL}
                         label={localization.page.informationModelTab}
                         onClick={() => setActiveTab(Variant.INFORMATION_MODEL)}
+                        active={activeTab === Variant.INFORMATION_MODEL}
                       />
                     </Tab>
                     <Pane id="pane-1">

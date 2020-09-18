@@ -5,7 +5,6 @@ import withBreadcrumbs from 'react-router-breadcrumbs-hoc';
 import {
   PATHNAME_CONCEPTS,
   PATHNAME_CONCEPTS_COMPARE,
-  PATHNAME_DATASETS,
   PATHNAME_GUIDANCE,
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_MAIN_PAGE,
@@ -25,7 +24,7 @@ import { NewsBreadcrumb } from './news-breadcrumb/news-breadcrumb';
 // define some custom breadcrumbs for certain routes (optional)
 const routes = [
   {
-    path: getConfig().themeNap ? PATHNAME_DATASETS : PATHNAME_MAIN_PAGE,
+    path: PATHNAME_MAIN_PAGE,
     breadcrumb: () => (
       <PathNameBreadcrumb
         pathName={getConfig().themeNap ? 'homeNAP' : 'home'}

@@ -1,311 +1,571 @@
 {
-  "_embedded" : {
-    "concepts" : [ {
-      "id" : "d092ccf9-93dd-4ef9-9a5a-d1a50f495d82",
-      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/d092ccf9-93dd-4ef9-9a5a-d1a50f495d82",
-      "identifier" : "http://begrepskatalogen/begrep/20b52ae3-9fe1-11e5-a9f8-e4115b280940",
-      "definition" : {
-        "text" : {
-          "nb" : "institusjon for barn som er under skolepliktig alder"
-        }
-      },
-      "subject" : {
-        "nb" : "Tredjepartsopplysninger"
-      },
-      "prefLabel" : {
-        "nb" : "barnehage"
-      },
-      "altLabel" : [ {
-        "nb" : "familiebarnehage"
-      } ],
-      "hiddenLabel" : [ ],
-      "contactPoint" : {
-        "email" : "begrepskatalogen@skatteetaten.no"
-      },
-      "publisher" : {
-        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
-        "name" : "SKATTEETATEN",
-        "orgPath" : "/STAT/972417807/974761076",
-        "prefLabel" : {
-          "no" : "SKATTEETATEN"
-        }
-      },
-      "harvest" : {
-        "firstHarvested" : "2019-04-29T12:18:21.525+0000",
-        "lastHarvested" : "2019-07-02T04:00:53.441+0000"
+  "hits": [ {
+    "id" : "d092ccf9-93dd-4ef9-9a5a-d1a50f495d82",
+    "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/d092ccf9-93dd-4ef9-9a5a-d1a50f495d82",
+    "identifier" : "http://begrepskatalogen/begrep/20b52ae3-9fe1-11e5-a9f8-e4115b280940",
+    "definition" : {
+      "text" : {
+        "nb" : "institusjon for barn som er under skolepliktig alder"
       }
-    }, {
-      "id" : "22ce6a6e-f629-4a75-826d-500cfc2d9e7a",
-      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/22ce6a6e-f629-4a75-826d-500cfc2d9e7a",
-      "identifier" : "http://begrepskatalogen/begrep/8ea2df64-7662-11e6-a74e-7e18b36b3fd9",
-      "definition" : {
-        "text" : {
-          "nb" : "økonomisk tilskudd fra arbeidsgiveren til en barnehage som ikke er arbeidsgiverens bedriftsbarnehage."
-        },
-        "remark" : {
-          "nb" : "Tilskudd utover en månedlig maksimalbeløp skal arbeidstakeren som har barnehageplassen skatte av."
-        },
-        "source" : {
-          "prefLabel" : {
-            "nb" : "Veiledningen til A-ordningen, - FSFIN §5-15-5, 2. ledd"
-          }
-        }
-      },
-      "subject" : {
-        "nb" : "Formues- og inntektsskatt"
-      },
+    },
+    "subject" : {
+      "nb" : "Tredjepartsopplysninger"
+    },
+    "prefLabel" : {
+      "nb" : "barnehage"
+    },
+    "altLabel" : [ {
+      "nb" : "familiebarnehage"
+    } ],
+    "hiddenLabel" : [ ],
+    "contactPoint" : {
+      "email" : "begrepskatalogen@skatteetaten.no"
+    },
+    "publisher" : {
+      "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+      "name" : "SKATTEETATEN",
+      "orgPath" : "/STAT/972417807/974761076",
       "prefLabel" : {
-        "nb" : "tilskudd til barnehageplass"
-      },
-      "altLabel" : [ ],
-      "hiddenLabel" : [ ],
-      "contactPoint" : {
-        "email" : "begrepskatalogen@skatteetaten.no"
-      },
-      "publisher" : {
-        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
-        "name" : "SKATTEETATEN",
-        "orgPath" : "/STAT/972417807/974761076",
-        "prefLabel" : {
-          "no" : "SKATTEETATEN"
-        }
-      },
-      "harvest" : {
-        "firstHarvested" : "2019-04-29T12:17:02.338+0000",
-        "lastHarvested" : "2019-07-02T04:00:16.185+0000"
+        "no" : "SKATTEETATEN"
       }
-    }, {
-      "id" : "815db2ae-b168-4d1e-9934-9a374a09a605",
-      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/815db2ae-b168-4d1e-9934-9a374a09a605",
-      "identifier" : "http://begrepskatalogen/begrep/8ea2df2d-7662-11e6-a74e-7e18b36b3fd9",
-      "definition" : {
-        "text" : {
-          "nb" : "skattfri fordel av plass i barnehage som arbeidsgiver gjennom eierandel eller innskudd disponerer til bruk for sine arbeidstakeres barn"
-        },
-        "source" : {
-          "prefLabel" : {
-            "nb" : "FSFIN § 5-15-5"
-          }
+    },
+    "harvest" : {
+      "firstHarvested" : "2019-04-29T12:18:21.525+0000",
+      "lastHarvested" : "2019-07-02T04:00:53.441+0000"
+    }
+  }, {
+    "id" : "22ce6a6e-f629-4a75-826d-500cfc2d9e7a",
+    "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/22ce6a6e-f629-4a75-826d-500cfc2d9e7a",
+    "identifier" : "http://begrepskatalogen/begrep/8ea2df64-7662-11e6-a74e-7e18b36b3fd9",
+    "definition" : {
+      "text" : {
+        "nb" : "økonomisk tilskudd fra arbeidsgiveren til en barnehage som ikke er arbeidsgiverens bedriftsbarnehage."
+      },
+      "remark" : {
+        "nb" : "Tilskudd utover en månedlig maksimalbeløp skal arbeidstakeren som har barnehageplassen skatte av."
+      },
+      "source" : {
+        "prefLabel" : {
+          "nb" : "Veiledningen til A-ordningen, - FSFIN §5-15-5, 2. ledd"
         }
-      },
-      "subject" : {
-        "nb" : "Formues- og inntektsskatt"
-      },
+      }
+    },
+    "subject" : {
+      "nb" : "Formues- og inntektsskatt"
+    },
+    "prefLabel" : {
+      "nb" : "tilskudd til barnehageplass"
+    },
+    "altLabel" : [ ],
+    "hiddenLabel" : [ ],
+    "contactPoint" : {
+      "email" : "begrepskatalogen@skatteetaten.no"
+    },
+    "publisher" : {
+      "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+      "name" : "SKATTEETATEN",
+      "orgPath" : "/STAT/972417807/974761076",
       "prefLabel" : {
-        "nb" : "fordel av bedriftsbarnehageplass"
-      },
-      "altLabel" : [ ],
-      "hiddenLabel" : [ ],
-      "contactPoint" : {
-        "email" : "begrepskatalogen@skatteetaten.no"
-      },
-      "publisher" : {
-        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
-        "name" : "SKATTEETATEN",
-        "orgPath" : "/STAT/972417807/974761076",
-        "prefLabel" : {
-          "no" : "SKATTEETATEN"
-        }
-      },
-      "harvest" : {
-        "firstHarvested" : "2019-04-29T12:16:53.227+0000",
-        "lastHarvested" : "2019-07-02T04:00:12.564+0000"
+        "no" : "SKATTEETATEN"
       }
-    }, {
-      "id" : "8f1a3814-0cde-470e-aa3e-fc30bf1835a4",
-      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/8f1a3814-0cde-470e-aa3e-fc30bf1835a4",
-      "identifier" : "http://begrepskatalogen/begrep/46f4d715-4c6c-11e8-bb3e-005056821322",
-      "definition" : {
-        "text" : {
-          "nb" : "faktisk kostnad som en gitt skattepliktig har i en gitt skattleggingsperionde for merkjøring for å bringe og hente barn "
+    },
+    "harvest" : {
+      "firstHarvested" : "2019-04-29T12:17:02.338+0000",
+      "lastHarvested" : "2019-07-02T04:00:16.185+0000"
+    }
+  }, {
+    "id" : "815db2ae-b168-4d1e-9934-9a374a09a605",
+    "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/815db2ae-b168-4d1e-9934-9a374a09a605",
+    "identifier" : "http://begrepskatalogen/begrep/8ea2df2d-7662-11e6-a74e-7e18b36b3fd9",
+    "definition" : {
+      "text" : {
+        "nb" : "skattfri fordel av plass i barnehage som arbeidsgiver gjennom eierandel eller innskudd disponerer til bruk for sine arbeidstakeres barn"
+      },
+      "source" : {
+        "prefLabel" : {
+          "nb" : "FSFIN § 5-15-5"
         }
-      },
-      "subject" : {
-        "nb" : "Formues- og inntektsskatt"
-      },
+      }
+    },
+    "subject" : {
+      "nb" : "Formues- og inntektsskatt"
+    },
+    "prefLabel" : {
+      "nb" : "fordel av bedriftsbarnehageplass"
+    },
+    "altLabel" : [ ],
+    "hiddenLabel" : [ ],
+    "contactPoint" : {
+      "email" : "begrepskatalogen@skatteetaten.no"
+    },
+    "publisher" : {
+      "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+      "name" : "SKATTEETATEN",
+      "orgPath" : "/STAT/972417807/974761076",
       "prefLabel" : {
-        "nb" : "faktisk kostnad for merkjøring for å bringe og hente barn"
-      },
-      "altLabel" : [ ],
-      "hiddenLabel" : [ ],
-      "contactPoint" : {
-        "email" : "begrepskatalogen@skatteetaten.no"
-      },
-      "example" : {
-        "nb" : "Bussbillett mellom hjem og barnehage mv., bompenger for omveien til og fra barnehagen"
-      },
-      "publisher" : {
-        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
-        "name" : "SKATTEETATEN",
-        "orgPath" : "/STAT/972417807/974761076",
-        "prefLabel" : {
-          "no" : "SKATTEETATEN"
-        }
-      },
-      "harvest" : {
-        "firstHarvested" : "2019-04-29T12:17:16.835+0000",
-        "lastHarvested" : "2019-07-02T04:00:22.580+0000"
+        "no" : "SKATTEETATEN"
       }
-    }, {
-      "id" : "30b843a4-0d19-41f7-aee3-7e79ec703d03",
-      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/30b843a4-0d19-41f7-aee3-7e79ec703d03",
-      "identifier" : "http://begrepskatalogen/begrep/20b52ae7-9fe1-11e5-a9f8-e4115b280940",
-      "definition" : {
-        "text" : {
-          "nb" : "summen for en bestemt skattleggingsperiode av en gitt skattepliktigs utgifter til tilsyn i barnets hjem, i barnepassers hjem, barnehage, i skolefritidsordning på barneskole, institusjon mv., for barn som gir rett til foreldrefradrag."
-        },
-        "remark" : {
-          "nb" : "Dette omfatter ikke kostnader til mat, drikke og merkjøring for å bringe og hente barn"
-        },
-        "source" : {
-          "prefLabel" : {
-            "nb" : "Skatte-ABC, fagemnet Foreldrefradrag"
-          }
-        }
-      },
-      "subject" : {
-        "nb" : "Tredjepartsopplysninger"
-      },
+    },
+    "harvest" : {
+      "firstHarvested" : "2019-04-29T12:16:53.227+0000",
+      "lastHarvested" : "2019-07-02T04:00:12.564+0000"
+    }
+  }, {
+    "id" : "8f1a3814-0cde-470e-aa3e-fc30bf1835a4",
+    "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/8f1a3814-0cde-470e-aa3e-fc30bf1835a4",
+    "identifier" : "http://begrepskatalogen/begrep/46f4d715-4c6c-11e8-bb3e-005056821322",
+    "definition" : {
+      "text" : {
+        "nb" : "faktisk kostnad som en gitt skattepliktig har i en gitt skattleggingsperionde for merkjøring for å bringe og hente barn "
+      }
+    },
+    "subject" : {
+      "nb" : "Formues- og inntektsskatt"
+    },
+    "prefLabel" : {
+      "nb" : "faktisk kostnad for merkjøring for å bringe og hente barn"
+    },
+    "altLabel" : [ ],
+    "hiddenLabel" : [ ],
+    "contactPoint" : {
+      "email" : "begrepskatalogen@skatteetaten.no"
+    },
+    "example" : {
+      "nb" : "Bussbillett mellom hjem og barnehage mv., bompenger for omveien til og fra barnehagen"
+    },
+    "publisher" : {
+      "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+      "name" : "SKATTEETATEN",
+      "orgPath" : "/STAT/972417807/974761076",
       "prefLabel" : {
-        "nb" : "oppholdskostnader ved pass og stell av barn"
-      },
-      "altLabel" : [ {
-        "nb" : "betalt barnepass"
-      } ],
-      "hiddenLabel" : [ ],
-      "contactPoint" : {
-        "email" : "begrepskatalogen@skatteetaten.no"
-      },
-      "publisher" : {
-        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
-        "name" : "SKATTEETATEN",
-        "orgPath" : "/STAT/972417807/974761076",
-        "prefLabel" : {
-          "no" : "SKATTEETATEN"
-        }
-      },
-      "harvest" : {
-        "firstHarvested" : "2019-04-29T12:17:50.112+0000",
-        "lastHarvested" : "2019-07-02T04:00:37.283+0000"
+        "no" : "SKATTEETATEN"
       }
-    }, {
-      "id" : "d071c81d-0ae3-411a-8b47-bbdd99b87233",
-      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/d071c81d-0ae3-411a-8b47-bbdd99b87233",
-      "identifier" : "http://begrepskatalogen/begrep/46f4d75b-4c6c-11e8-bb3e-005056821322",
-      "definition" : {
-        "text" : {
-          "nb" : "ivaretakelse av barnets velbefinnede ved at en eller flere ansvarlige personer er til stede og viser omsorg for barnet"
-        },
-        "remark" : {
-          "nb" : "Pass og stell av barn vil omfatte tilsyn, pleie mv. av barnet. Dette kan skje i barnets hjem, i barnepassers hjem, barnehage, i skolefritidsordning på barneskole, institusjon mv. Som pass og stell av barn regnes også fritidsordninger for barn i regi av klubber og foreninger som driver aktiviteter innenfor eget interessefelt med mindre aktivitieten er sporadisk. Dette kan f.eks. være aktiviteter innenfor idrett, teater, musikk, barnekor, kulturskole mv. Det er et vilkår at ordningen er etablert som et alternativ til skolefritidsordning på barneskole. Trening med aldersbestemt lag regnes ikke som pass og stell av barn. Pass og stell må avgrenses mot"
-        },
-        "source" : {
-          "prefLabel" : {
-            "nb" : "Skatte-ABC, fagemnet \"Foreldrefradrag\""
-          }
+    },
+    "harvest" : {
+      "firstHarvested" : "2019-04-29T12:17:16.835+0000",
+      "lastHarvested" : "2019-07-02T04:00:22.580+0000"
+    }
+  }, {
+    "id" : "30b843a4-0d19-41f7-aee3-7e79ec703d03",
+    "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/30b843a4-0d19-41f7-aee3-7e79ec703d03",
+    "identifier" : "http://begrepskatalogen/begrep/20b52ae7-9fe1-11e5-a9f8-e4115b280940",
+    "definition" : {
+      "text" : {
+        "nb" : "summen for en bestemt skattleggingsperiode av en gitt skattepliktigs utgifter til tilsyn i barnets hjem, i barnepassers hjem, barnehage, i skolefritidsordning på barneskole, institusjon mv., for barn som gir rett til foreldrefradrag."
+      },
+      "remark" : {
+        "nb" : "Dette omfatter ikke kostnader til mat, drikke og merkjøring for å bringe og hente barn"
+      },
+      "source" : {
+        "prefLabel" : {
+          "nb" : "Skatte-ABC, fagemnet Foreldrefradrag"
         }
-      },
-      "subject" : {
-        "nb" : "Formues- og inntektsskatt"
-      },
+      }
+    },
+    "subject" : {
+      "nb" : "Tredjepartsopplysninger"
+    },
+    "prefLabel" : {
+      "nb" : "oppholdskostnader ved pass og stell av barn"
+    },
+    "altLabel" : [ {
+      "nb" : "betalt barnepass"
+    } ],
+    "hiddenLabel" : [ ],
+    "contactPoint" : {
+      "email" : "begrepskatalogen@skatteetaten.no"
+    },
+    "publisher" : {
+      "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+      "name" : "SKATTEETATEN",
+      "orgPath" : "/STAT/972417807/974761076",
       "prefLabel" : {
-        "nb" : "pass og stell av barn"
-      },
-      "altLabel" : [ ],
-      "hiddenLabel" : [ ],
-      "contactPoint" : {
-        "email" : "begrepskatalogen@skatteetaten.no"
-      },
-      "publisher" : {
-        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
-        "name" : "SKATTEETATEN",
-        "orgPath" : "/STAT/972417807/974761076",
-        "prefLabel" : {
-          "no" : "SKATTEETATEN"
-        }
-      },
-      "harvest" : {
-        "firstHarvested" : "2019-04-29T12:16:53.845+0000",
-        "lastHarvested" : "2019-07-02T04:00:12.965+0000"
+        "no" : "SKATTEETATEN"
       }
-    }, {
-      "id" : "5bb11bb8-806b-4c93-84f9-05da23679d1b",
-      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/5bb11bb8-806b-4c93-84f9-05da23679d1b",
-      "identifier" : "http://begrepskatalogen/begrep/dcfb471c-e484-11e6-9cb3-005056821322",
-      "definition" : {
-        "text" : {
-          "nb" : "person som passer andres barn regelmessig på dagtid, gjerne hele dager, og ofte mens foreldrene er på jobb. Passer som regel flere barn samtidig, enten hjemme hos seg selv eller hjemme hos ett av barna."
-        },
-        "remark" : {
-          "nb" : "En dagmamma skal godkjennes av kommunen i henhold til \"Forskrift om miljørettet helsevern i barnehager og skoler m.v\" dersom: 1) Man får godtgjøring for regelmessig tilsyn med og omsorg for barn, 2) tilbyr ukentlig oppholdstid på mer enn ti timer og 3) antall barn som er tilstede samtidig, er tre eller flere (inkludert dagmammaens egne barn).\n\nEnten er foreldrene arbeidsgivere, eller dagmammaen er selvstendig næringsdrivende. Det er mange forenklede regler for dagmammajobb i forhold til andre arbeidsforhold. Bant annet skal det ikke betales arbeidsgiveravgift og dagmammaen trenger ikke nødvedigvis registrere seg som selvstedig næringsdrivende i Brønnøysundregistrene."
-        },
-        "source" : {
-          "prefLabel" : {
-            "nb" : "snl.no"
-          }
+    },
+    "harvest" : {
+      "firstHarvested" : "2019-04-29T12:17:50.112+0000",
+      "lastHarvested" : "2019-07-02T04:00:37.283+0000"
+    }
+  }, {
+    "id" : "d071c81d-0ae3-411a-8b47-bbdd99b87233",
+    "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/d071c81d-0ae3-411a-8b47-bbdd99b87233",
+    "identifier" : "http://begrepskatalogen/begrep/46f4d75b-4c6c-11e8-bb3e-005056821322",
+    "definition" : {
+      "text" : {
+        "nb" : "ivaretakelse av barnets velbefinnede ved at en eller flere ansvarlige personer er til stede og viser omsorg for barnet"
+      },
+      "remark" : {
+        "nb" : "Pass og stell av barn vil omfatte tilsyn, pleie mv. av barnet. Dette kan skje i barnets hjem, i barnepassers hjem, barnehage, i skolefritidsordning på barneskole, institusjon mv. Som pass og stell av barn regnes også fritidsordninger for barn i regi av klubber og foreninger som driver aktiviteter innenfor eget interessefelt med mindre aktivitieten er sporadisk. Dette kan f.eks. være aktiviteter innenfor idrett, teater, musikk, barnekor, kulturskole mv. Det er et vilkår at ordningen er etablert som et alternativ til skolefritidsordning på barneskole. Trening med aldersbestemt lag regnes ikke som pass og stell av barn. Pass og stell må avgrenses mot"
+      },
+      "source" : {
+        "prefLabel" : {
+          "nb" : "Skatte-ABC, fagemnet \"Foreldrefradrag\""
         }
-      },
-      "subject" : {
-        "nb" : "A-ordningen"
-      },
+      }
+    },
+    "subject" : {
+      "nb" : "Formues- og inntektsskatt"
+    },
+    "prefLabel" : {
+      "nb" : "pass og stell av barn"
+    },
+    "altLabel" : [ ],
+    "hiddenLabel" : [ ],
+    "contactPoint" : {
+      "email" : "begrepskatalogen@skatteetaten.no"
+    },
+    "publisher" : {
+      "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+      "name" : "SKATTEETATEN",
+      "orgPath" : "/STAT/972417807/974761076",
       "prefLabel" : {
-        "nb" : "dagmamma i egen bolig"
-      },
-      "altLabel" : [ ],
-      "hiddenLabel" : [ ],
-      "contactPoint" : {
-        "email" : "begrepskatalogen@skatteetaten.no"
-      },
-      "publisher" : {
-        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
-        "name" : "SKATTEETATEN",
-        "orgPath" : "/STAT/972417807/974761076",
-        "prefLabel" : {
-          "no" : "SKATTEETATEN"
-        }
-      },
-      "harvest" : {
-        "firstHarvested" : "2019-04-29T12:17:40.238+0000",
-        "lastHarvested" : "2019-07-02T04:00:32.617+0000"
+        "no" : "SKATTEETATEN"
       }
-    }, {
-      "id" : "572c21d8-dd74-41a0-8bc1-cc9ddcf2c430",
-      "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/572c21d8-dd74-41a0-8bc1-cc9ddcf2c430",
-      "identifier" : "http://begrepskatalogen/begrep/20b52ae4-9fe1-11e5-a9f8-e4115b280940",
-      "definition" : {
-        "text" : {
-          "nb" : "rent leketilbud uten de samme krav til pedagogiske personale som for barnehager"
+    },
+    "harvest" : {
+      "firstHarvested" : "2019-04-29T12:16:53.845+0000",
+      "lastHarvested" : "2019-07-02T04:00:12.965+0000"
+    }
+  }, {
+    "id" : "5bb11bb8-806b-4c93-84f9-05da23679d1b",
+    "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/5bb11bb8-806b-4c93-84f9-05da23679d1b",
+    "identifier" : "http://begrepskatalogen/begrep/dcfb471c-e484-11e6-9cb3-005056821322",
+    "definition" : {
+      "text" : {
+        "nb" : "person som passer andres barn regelmessig på dagtid, gjerne hele dager, og ofte mens foreldrene er på jobb. Passer som regel flere barn samtidig, enten hjemme hos seg selv eller hjemme hos ett av barna."
+      },
+      "remark" : {
+        "nb" : "En dagmamma skal godkjennes av kommunen i henhold til \"Forskrift om miljørettet helsevern i barnehager og skoler m.v\" dersom: 1) Man får godtgjøring for regelmessig tilsyn med og omsorg for barn, 2) tilbyr ukentlig oppholdstid på mer enn ti timer og 3) antall barn som er tilstede samtidig, er tre eller flere (inkludert dagmammaens egne barn).\n\nEnten er foreldrene arbeidsgivere, eller dagmammaen er selvstendig næringsdrivende. Det er mange forenklede regler for dagmammajobb i forhold til andre arbeidsforhold. Bant annet skal det ikke betales arbeidsgiveravgift og dagmammaen trenger ikke nødvedigvis registrere seg som selvstedig næringsdrivende i Brønnøysundregistrene."
+      },
+      "source" : {
+        "prefLabel" : {
+          "nb" : "snl.no"
         }
-      },
-      "subject" : {
-        "nb" : "Tredjepartsopplysninger"
-      },
+      }
+    },
+    "subject" : {
+      "nb" : "A-ordningen"
+    },
+    "prefLabel" : {
+      "nb" : "dagmamma i egen bolig"
+    },
+    "altLabel" : [ ],
+    "hiddenLabel" : [ ],
+    "contactPoint" : {
+      "email" : "begrepskatalogen@skatteetaten.no"
+    },
+    "publisher" : {
+      "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+      "name" : "SKATTEETATEN",
+      "orgPath" : "/STAT/972417807/974761076",
       "prefLabel" : {
-        "nb" : "barnepark"
-      },
-      "altLabel" : [ ],
-      "hiddenLabel" : [ ],
-      "contactPoint" : {
-        "email" : "begrepskatalogen@skatteetaten.no"
-      },
-      "publisher" : {
-        "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
-        "name" : "SKATTEETATEN",
-        "orgPath" : "/STAT/972417807/974761076",
-        "prefLabel" : {
-          "no" : "SKATTEETATEN"
-        }
-      },
-      "harvest" : {
-        "firstHarvested" : "2019-04-29T12:17:46.570+0000",
-        "lastHarvested" : "2019-07-02T04:00:35.700+0000"
+        "no" : "SKATTEETATEN"
       }
-    } ]
+    },
+    "harvest" : {
+      "firstHarvested" : "2019-04-29T12:17:40.238+0000",
+      "lastHarvested" : "2019-07-02T04:00:32.617+0000"
+    }
+  }, {
+    "id" : "572c21d8-dd74-41a0-8bc1-cc9ddcf2c430",
+    "uri" : "https://fellesdatakatalog.brreg.no/api/concepts/572c21d8-dd74-41a0-8bc1-cc9ddcf2c430",
+    "identifier" : "http://begrepskatalogen/begrep/20b52ae4-9fe1-11e5-a9f8-e4115b280940",
+    "definition" : {
+      "text" : {
+        "nb" : "rent leketilbud uten de samme krav til pedagogiske personale som for barnehager"
+      }
+    },
+    "subject" : {
+      "nb" : "Tredjepartsopplysninger"
+    },
+    "prefLabel" : {
+      "nb" : "barnepark"
+    },
+    "altLabel" : [ ],
+    "hiddenLabel" : [ ],
+    "contactPoint" : {
+      "email" : "begrepskatalogen@skatteetaten.no"
+    },
+    "publisher" : {
+      "uri" : "http://data.brreg.no/enhetsregisteret/enhet/974761076",
+      "name" : "SKATTEETATEN",
+      "orgPath" : "/STAT/972417807/974761076",
+      "prefLabel" : {
+        "no" : "SKATTEETATEN"
+      }
+    },
+    "harvest" : {
+      "firstHarvested" : "2019-04-29T12:17:46.570+0000",
+      "lastHarvested" : "2019-07-02T04:00:35.700+0000"
+    }
+  } ],
+  "page": {
+    "size": 10,
+    "totalElements": 562,
+    "totalPages": 57,
+    "currentPage": 0
   },
-  "page" : {
-    "size" : 50,
-    "totalElements" : 8,
-    "totalPages" : 1,
-    "number" : 0
+  "aggregations": {
+    "los": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "demokrati-og-innbyggerrettigheter",
+          "doc_count": 1
+        },
+        {
+          "key": "demokrati-og-innbyggerrettigheter/personopplysninger",
+          "doc_count": 1
+        },
+        {
+          "key": "helse-og-omsorg",
+          "doc_count": 1
+        },
+        {
+          "key": "naring",
+          "doc_count": 1
+        },
+        {
+          "key": "naring/naringsliv",
+          "doc_count": 1
+        },
+        {
+          "key": "skole-og-utdanning",
+          "doc_count": 1
+        },
+        {
+          "key": "skole-og-utdanning/grunnskole",
+          "doc_count": 1
+        },
+        {
+          "key": "skole-og-utdanning/voksenopplaring",
+          "doc_count": 1
+        },
+        {
+          "key": "sosiale-tjenester",
+          "doc_count": 1
+        }
+      ]
+    },
+    "orgPath": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "/STAT",
+          "doc_count": 534
+        },
+        {
+          "key": "/STAT/972417807",
+          "doc_count": 339
+        },
+        {
+          "key": "/STAT/972417807/971526920",
+          "doc_count": 132
+        },
+        {
+          "key": "/STAT/972417807/840747972",
+          "doc_count": 111
+        },
+        {
+          "key": "/STAT/972417807/974761076",
+          "doc_count": 90
+        },
+        {
+          "key": "/STAT/912660680",
+          "doc_count": 64
+        },
+        {
+          "key": "/STAT/983887406",
+          "doc_count": 34
+        },
+        {
+          "key": "/STAT/983887406/983544622",
+          "doc_count": 27
+        },
+        {
+          "key": "/STAT/912660680/974760673",
+          "doc_count": 25
+        },
+        {
+          "key": "/STAT/983887457",
+          "doc_count": 22
+        },
+        {
+          "key": "/STAT/912660680/974761262",
+          "doc_count": 20
+        },
+        {
+          "key": "/STAT/972417858",
+          "doc_count": 19
+        },
+        {
+          "key": "/STAT/972417831",
+          "doc_count": 16
+        },
+        {
+          "key": "/STAT/972417858/974760223",
+          "doc_count": 16
+        },
+        {
+          "key": "/STAT/972417866",
+          "doc_count": 16
+        },
+        {
+          "key": "/STAT/972417831/986186999",
+          "doc_count": 14
+        },
+        {
+          "key": "/STAT/972417866/971527412",
+          "doc_count": 14
+        },
+        {
+          "key": "/STAT/912660680/971526157",
+          "doc_count": 13
+        },
+        {
+          "key": "/STAT/972417904",
+          "doc_count": 12
+        },
+        {
+          "key": "/STAT/983887457/889640782",
+          "doc_count": 11
+        },
+        {
+          "key": "/KOMMUNE",
+          "doc_count": 10
+        },
+        {
+          "key": "MISSING",
+          "doc_count": 10
+        },
+        {
+          "key": "/KOMMUNE/938275130",
+          "doc_count": 9
+        },
+        {
+          "key": "/STAT/972417904/971032081",
+          "doc_count": 7
+        },
+        {
+          "key": "/STAT/983887457/974761211",
+          "doc_count": 7
+        },
+        {
+          "key": "/STAT/912660680/971203420",
+          "doc_count": 6
+        },
+        {
+          "key": "/STAT/972417807/880455702",
+          "doc_count": 6
+        },
+        {
+          "key": "/STAT/972417874",
+          "doc_count": 6
+        },
+        {
+          "key": "/STAT/972417793",
+          "doc_count": 5
+        },
+        {
+          "key": "/STAT/972417793/986128433",
+          "doc_count": 5
+        },
+        {
+          "key": "/ANNET",
+          "doc_count": 4
+        },
+        {
+          "key": "/ANNET/910244132",
+          "doc_count": 4
+        },
+        {
+          "key": "/PRIVAT",
+          "doc_count": 4
+        },
+        {
+          "key": "/STAT/972417874/985399077",
+          "doc_count": 4
+        },
+        {
+          "key": "/STAT/983887406/974761122",
+          "doc_count": 4
+        },
+        {
+          "key": "/STAT/972417904/981105516",
+          "doc_count": 3
+        },
+        {
+          "key": "/STAT/983887457/982583462",
+          "doc_count": 3
+        },
+        {
+          "key": "/PRIVAT/970237372",
+          "doc_count": 2
+        },
+        {
+          "key": "/PRIVAT/987414502",
+          "doc_count": 2
+        },
+        {
+          "key": "/STAT/972417858/974761467",
+          "doc_count": 2
+        },
+        {
+          "key": "/STAT/972417866/982391490",
+          "doc_count": 2
+        },
+        {
+          "key": "/STAT/972417874/981544315",
+          "doc_count": 2
+        },
+        {
+          "key": "/STAT/972417904/881143712",
+          "doc_count": 2
+        },
+        {
+          "key": "/STAT/983887406/984936923",
+          "doc_count": 2
+        },
+        {
+          "key": "/KOMMUNE/958935420",
+          "doc_count": 1
+        },
+        {
+          "key": "/STAT/872417842",
+          "doc_count": 1
+        },
+        {
+          "key": "/STAT/872417842/960885406",
+          "doc_count": 1
+        },
+        {
+          "key": "/STAT/972417831/914459265",
+          "doc_count": 1
+        },
+        {
+          "key": "/STAT/972417831/915429785",
+          "doc_count": 1
+        },
+        {
+          "key": "/STAT/972417831/915429785/874761532",
+          "doc_count": 1
+        },
+        {
+          "key": "/STAT/972417858/916132727",
+          "doc_count": 1
+        },
+        {
+          "key": "/STAT/983887406/915933149",
+          "doc_count": 1
+        },
+        {
+          "key": "/STAT/983887457/874761222",
+          "doc_count": 1
+        }
+      ]
+    }
   }
 }

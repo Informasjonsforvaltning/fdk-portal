@@ -39,11 +39,11 @@ const StatisticsRegular = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    color: ${({ theme }) => theme.extendedColors.neutralDarker};
+    color: ${({ theme }) => theme.extendedColors.neutralDarkest};
     text-decoration: none;
 
     ${IllustrationSC.Icon} {
-      background-color: ${({ theme }) => theme.extendedColors.neutralDarker};
+      background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
       & > svg {
         fill: white;
 
@@ -54,12 +54,12 @@ const StatisticsRegular = styled(Link)`
     }
 
     ${IllustrationSC.Count} {
-      color: ${({ theme }) => theme.extendedColors.neutralDarker};
+      color: ${({ theme }) => theme.extendedColors.neutralDarkest};
       text-decoration: underline;
     }
 
     ${Label} {
-      color: ${({ theme }) => theme.extendedColors.neutralDarker};
+      color: ${({ theme }) => theme.extendedColors.neutralDarkest};
     }
   }
 `;

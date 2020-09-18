@@ -136,6 +136,22 @@ const DatasetReport: FC<Props> = ({
           </div>
         </div>
 
+        <div className="row">
+          <div className="col-12">
+            <BoxRegular>
+              <StatisticsRegular to={`${PATHNAME_DATASETS}`}>
+                <IllustrationWithCount
+                  icon={<DatasetIcon />}
+                  count={organizationCount}
+                />
+                <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
+                  {localization.report.organizationsDataset}
+                </SC.StatisticsRegular.Label>
+              </StatisticsRegular>
+            </BoxRegular>
+          </div>
+        </div>
+
         {timeSeriesData?.length > 0 && timeSeriesData?.length > 0 && (
           <div className="row">
             <div className="col-12">
@@ -178,7 +194,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
@@ -223,7 +239,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
@@ -265,7 +281,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
@@ -307,7 +323,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
@@ -347,7 +363,7 @@ const DatasetReport: FC<Props> = ({
                               color: theme.extendedColors[Entity.DATASET].light
                             }
                           ]}
-                          startAngle={0}
+                          startAngle={-90}
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
@@ -485,17 +501,7 @@ const DatasetReport: FC<Props> = ({
 
             <div className="row">
               <div className="col-12">
-                <BoxRegular variant={BoxFlowVariant.COLUMN}>
-                  <StatisticsRegular to={`${PATHNAME_DATASETS}`}>
-                    <IllustrationWithCount
-                      icon={<DatasetIcon />}
-                      count={organizationCount}
-                    />
-                    <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
-                      {localization.report.organizationsDataset}
-                    </SC.StatisticsRegular.Label>
-                  </StatisticsRegular>
-
+                <BoxRegular header={localization.report.datasetCatalogs}>
                   {Array.isArray(catalogs) && catalogs?.length > 0 && (
                     <List
                       headerText1={localization.report.catalogName}

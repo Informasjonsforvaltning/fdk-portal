@@ -29,7 +29,7 @@ export const sortOrganizationsByName = (
       b.getIn(['organization', 'name', 'no']) ??
       b.getIn(['organization', 'name', 'en']);
 
-    return aObject.localeCompare(bObject) * (order === SortOrder.ASC ? 1 : -1);
+    return aObject?.localeCompare(bObject) * (order === SortOrder.ASC ? 1 : -1);
   });
 };
 

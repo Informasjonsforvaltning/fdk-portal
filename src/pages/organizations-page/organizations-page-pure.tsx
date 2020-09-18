@@ -50,12 +50,17 @@ const OrganizationsPage: FC<OrganizationsProps> = ({
             organizations: Organization[]
           ) => {
             let sortLabel = '';
+            const previousOrganizationName = getTranslateText(
+              organizations[index - 1]?.organization?.name
+            );
+            const currentOrganizationName = getTranslateText(name);
             if (
               index === 0 ||
               (index > 0 &&
-                getTranslateText(
-                  organizations[index - 1].organization.name
-                ).charAt(0) !== getTranslateText(name).charAt(0))
+                previousOrganizationName &&
+                currentOrganizationName &&
+                previousOrganizationName.charAt(0) !==
+                  currentOrganizationName.charAt(0))
             ) {
               sortLabel = getTranslateText(name).charAt(0);
             }
