@@ -9,7 +9,7 @@ import withOrganization, {
 } from '../../../../components/with-organization';
 
 import { getTranslateText as translate } from '../../../../lib/translateText';
-import localization from '../../../../lib/localization';
+import translations from '../../../../lib/localization';
 import {
   patchListOfSearchQuery,
   patchSearchQuery
@@ -23,19 +23,16 @@ import {
 
 import SC from './styled';
 
-import MagnifyingGlassIcon from '../../../../images/icon-catalog-all-md.svg';
 import DatasetIcon from '../../../../images/icon-catalog-dataset-lg.svg';
 import AccessOpenIcon from '../../../../images/icon-access-open-md-v2.svg';
 import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
 import NewIcon from '../../../../images/icon-new-md.svg';
 
-import {
-  PATHNAME_DATASETS,
-  PATHNAME_SEARCH
-} from '../../../../constants/constants';
+import { PATHNAME_DATASETS } from '../../../../constants/constants';
 
-import { Entity, Filter } from '../../../../types/enums';
 import { themeFDK as theme } from '../../../../app/theme';
+
+import { Entity, Filter, RatingCategory } from '../../../../types/enums';
 
 interface RouteParams {
   organizationId: string;
@@ -43,9 +40,19 @@ interface RouteParams {
 
 interface Props extends OrganizationProps, RouteComponentProps<RouteParams> {}
 
+const articleIds: { [key: string]: string } = {
+  nb: '701a4b80-d830-4aa5-be63-20422e3d8d64',
+  nn: '5892cae9-2b31-4f52-b0a6-da87092924bf',
+  en: 'cf2a2b6d-88bb-4f3a-bbfc-4114e2841479'
+};
+
 const OrganizationPage: FC<Props> = ({
   organization,
-  organizationActions: { getOrganizationRequested: getOrganization },
+  rating,
+  organizationActions: {
+    getOrganizationRequested: getOrganization,
+    getCatalogRatingRequested: getRating
+  },
   match: {
     url,
     params: { organizationId }
@@ -55,94 +62,66 @@ const OrganizationPage: FC<Props> = ({
     if (organization?.id !== organizationId) {
       getOrganization(organizationId);
     }
+    if (!rating) {
+      getRating(organizationId);
+    }
   }, []);
+
+  const ratingPercentage = Math.round(
+    ((rating?.score ?? 0) / (rating?.maxScore ?? 0)) * 100
+  );
+
+  const determineRatingIcon = () => {
+    switch (rating?.category) {
+      case RatingCategory.EXCELLENT:
+        return <SC.ExcellentQualityIcon />;
+      case RatingCategory.GOOD:
+        return <SC.GoodQualityIcon />;
+      case RatingCategory.SUFFICIENT:
+        return <SC.SufficientQualityIcon />;
+      case RatingCategory.POOR:
+      default:
+        return <SC.PoorQualityIcon />;
+    }
+  };
+
+  const determineRatingTranslation = () => {
+    switch (rating?.category) {
+      case RatingCategory.EXCELLENT:
+        return translations.metadataQualityPage.metadataQualityIsExcellent;
+      case RatingCategory.GOOD:
+        return translations.metadataQualityPage.metadataQualityIsGood;
+      case RatingCategory.SUFFICIENT:
+        return translations.metadataQualityPage.metadataQualityIsSufficient;
+      case RatingCategory.POOR:
+      default:
+        return translations.metadataQualityPage.metadataQualityIsPoor;
+    }
+  };
 
   return (
     <SC.OrganizationPage className="container">
       <SC.Title>
-        Statistikk for{' '}
-        {translate(organization?.prefLabel) || organization?.name}
+        {translations.formatString(
+          translations.metadataQualityPage.organizationPageTitle,
+          {
+            organizationName:
+              translate(organization?.prefLabel) || organization?.name
+          }
+        )}
       </SC.Title>
       <SC.Section>
-        <SC.OrganizationInformation>
+        {/* <SC.OrganizationInformation>
           <pre>{JSON.stringify(organization, null, 2)}</pre>
-        </SC.OrganizationInformation>
+        </SC.OrganizationInformation> */}
       </SC.Section>
-      <SC.Section>
-        <SC.AllCataloguesStatistics>
-          <h2>
-            <MagnifyingGlassIcon />
-            Statistikk for alle kataloger tilsammen
-          </h2>
-          <div>
-            <SC.Box>
-              <StatisticsRegular
-                to={`${PATHNAME_SEARCH}${patchSearchQuery(
-                  Filter.ORGPATH,
-                  organization?.orgPath
-                )}`}
-              >
-                <IllustrationWithCount
-                  icon={<MagnifyingGlassIcon />}
-                  count={218}
-                />
-                <StatisticsRegularSC.StatisticsRegular.Label>
-                  {localization.metadataQualityPage.descriptionsTotal}
-                </StatisticsRegularSC.StatisticsRegular.Label>
-              </StatisticsRegular>
-            </SC.Box>
-            <SC.Box>
-              <StatisticsRegular
-                to={`${PATHNAME_SEARCH}${patchListOfSearchQuery({
-                  [Filter.ORGPATH]: organization?.orgPath,
-                  [Filter.LASTXDAYS]: '365'
-                })}`}
-              >
-                <IllustrationWithCount icon={<NewIcon />} count={218} />
-                <StatisticsRegularSC.StatisticsRegular.Label>
-                  {localization.formatString(
-                    localization.metadataQualityPage.newDescriptions,
-                    localization.metadataQualityPage.lastYear
-                  )}
-                </StatisticsRegularSC.StatisticsRegular.Label>
-              </StatisticsRegular>
-            </SC.Box>
-            <SC.Box>
-              <StatisticsRegular
-                to={`${PATHNAME_SEARCH}${patchListOfSearchQuery({
-                  [Filter.ORGPATH]: organization?.orgPath,
-                  [Filter.LASTXDAYS]: '30'
-                })}`}
-              >
-                <IllustrationWithCount icon={<NewIcon />} count={218} />
-                <StatisticsRegularSC.StatisticsRegular.Label>
-                  {localization.formatString(
-                    localization.metadataQualityPage.newDescriptions,
-                    localization.metadataQualityPage.lastMonth
-                  )}
-                </StatisticsRegularSC.StatisticsRegular.Label>
-              </StatisticsRegular>
-            </SC.Box>
-            <SC.Box>
-              <StatisticsRegular as="div" to="">
-                <IllustrationWithCount count={218} />
-                <StatisticsRegularSC.StatisticsRegular.Label>
-                  {localization.formatString(
-                    localization.metadataQualityPage.metadataQualityIs,
-                    'TODO'
-                  )}
-                </StatisticsRegularSC.StatisticsRegular.Label>
-              </StatisticsRegular>
-            </SC.Box>
-          </div>
-        </SC.AllCataloguesStatistics>
-      </SC.Section>
+      <SC.Section />
       <SC.Section>
         <ThemeProvider theme={theme.extendedColors[Entity.DATASET]}>
           <SC.DatasetCataloguesStatistics>
             <h2>
               <DatasetIcon />
-              Statistikk for datasettkatalog
+              {translations.metadataQualityPage.datasetCatalogStatistics}
             </h2>
             <div>
               <SC.Box>
@@ -154,7 +133,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount icon={<DatasetIcon />} count={28} />
                   <StatisticsRegularSC.StatisticsRegular.Label>
-                    {localization.metadataQualityPage.descriptionsTotal}
+                    {translations.metadataQualityPage.descriptionsTotal}
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
               </SC.Box>
@@ -167,9 +146,9 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount icon={<NewIcon />} count={1} />
                   <StatisticsRegularSC.StatisticsRegular.Label>
-                    {localization.formatString(
-                      localization.metadataQualityPage.newDescriptions,
-                      localization.metadataQualityPage.lastWeek
+                    {translations.formatString(
+                      translations.metadataQualityPage.newDescriptions,
+                      translations.metadataQualityPage.lastWeek
                     )}
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
@@ -186,9 +165,9 @@ const OrganizationPage: FC<Props> = ({
                     count={4}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
-                    {localization.formatString(
-                      localization.metadataQualityPage.datasetIs,
-                      localization.metadataQualityPage.authoritativeSources
+                    {translations.formatString(
+                      translations.metadataQualityPage.datasetIs,
+                      translations.metadataQualityPage.authoritativeSources
                     )}
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
@@ -202,9 +181,9 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount icon={<AccessOpenIcon />} count={4} />
                   <StatisticsRegularSC.StatisticsRegular.Label>
-                    {localization.formatString(
-                      localization.metadataQualityPage.datasetIs,
-                      localization.metadataQualityPage.open
+                    {translations.formatString(
+                      translations.metadataQualityPage.datasetIs,
+                      translations.metadataQualityPage.open
                     )}
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
@@ -214,18 +193,24 @@ const OrganizationPage: FC<Props> = ({
               <SC.Box colspan={2}>
                 <StatisticsRegular to={`${url}/datasets`}>
                   <StatisticsRegularSC.StatisticsRegular.Label>
-                    {localization.formatString(
-                      localization.metadataQualityPage.metadataQualityCatalog,
-                      'TODO'
-                    )}
+                    <IllustrationWithCount
+                      icon={determineRatingIcon()}
+                      percentage={
+                        isNaN(ratingPercentage) ? 0 : ratingPercentage
+                      }
+                    />
+                    {determineRatingTranslation()}
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
               </SC.Box>
               <SC.Box colspan={2}>
                 <StatisticsRegular to={`${url}/datasets`}>
-                  <IllustrationWithCount count={67} />
+                  <IllustrationWithCount count={rating?.satisfiedCriteria} />
                   <StatisticsRegularSC.StatisticsRegular.Label>
-                    {localization.metadataQualityPage.percentMetadataQuality}
+                    {
+                      translations.metadataQualityPage
+                        .metadataQualitySatisfiedCriteria
+                    }
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
               </SC.Box>
@@ -234,28 +219,9 @@ const OrganizationPage: FC<Props> = ({
         </ThemeProvider>
       </SC.Section>
       <SC.Section>
-        <SC.FrequentlyAskedQuestions>
-          <SC.Question>
-            <h3>Hva er metadatakvalitet?</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio
-              rerum iusto natus voluptate officiis quasi recusandae labore eius
-              obcaecati culpa molestias illo non hic facilis voluptatibus
-              adipisci vitae, mollitia consequatur?
-            </p>
-            <Link href="/">Lær mer om metadatakvalitet</Link>
-          </SC.Question>
-          <SC.Question>
-            <h3>Hvordan kan jeg forbedre metadatakvaliteten?</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio
-              rerum iusto natus voluptate officiis quasi recusandae labore eius
-              obcaecati culpa molestias illo non hic facilis voluptatibus
-              adipisci vitae, mollitia consequatur?
-            </p>
-            <Link href="/">Slik forbedrer du metadatakvaliteten</Link>
-          </SC.Question>
-        </SC.FrequentlyAskedQuestions>
+        <Link href={`/news/${articleIds[translations.getLanguage()]}`}>
+          {translations.metadataQualityPage.learnMoreAboutMetadataQuality}
+        </Link>
       </SC.Section>
     </SC.OrganizationPage>
   );

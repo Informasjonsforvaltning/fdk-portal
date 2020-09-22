@@ -554,23 +554,45 @@
     "criterion": "Criterion",
     "metadataQuality": "Metadata quality",
     "criteria": {
-      "visibility": "Visibility",
+      "findability": "Findability",
       "availability": "Availability",
       "interpolarity": "Interpolarity",
       "context": "Context",
       "reusability": "Reusability"
     },
+    "indicator": {
+      "accessUrl": "Download URL is provided",
+      "keyword": "Keywords are provided",
+      "subject": "Subjects are provided"
+    },
+    "indicatorDescription": {
+      "accessUrl": "Distributions have access URLa or related data services have endpoint URLs.",
+      "keyword": "There is at least one keyword related to this dataset description.",
+      "subject": "There is at least one subject related to this dataset description."
+    },
+    "indicatorWeight": "Weight: {weight}",
     "descriptionsTotal": "descriptions",
     "newDescriptions": "new descriptions {0}",
     "lastYear": "last year",
     "lastMonth": "last month",
     "lastWeek": "last week",
-    "metadataQualityIs": "metadata quality is {0}",
+    "metadataQualityIsExcellent": "Metadata quality is excellent",
+    "metadataQualityIsGood": "Metadata quality is good",
+    "metadataQualityIsSufficient": "Metadata quality is sufficient",
+    "metadataQualityIsPoor": "Metadata quality is poor",
     "metaDataMiddle": "medium",
     "datasetIs": "datasets are {0}",
     "authoritativeSources": "authoritative sources",
     "open": "open",
     "metadataQualityCatalog": "metadata quality for catalog is {0}",
-    "percentMetadataQuality": "of the criteria are met"
+    "metadataQualitySatisfiedCriteria": "of the criteria are met",
+    "organizationPageTitle": "Statistics for {organizationName}",
+    "organizationDatasetCatalogPageTitle": "Dataset catalog for {organizationName}",
+    "organizationDatasetCatalogPageSubtitle": "Metadata quality for dataset description in dataset catalog",
+    "organizationDatasetPageSubtitle": "Metadata quality for dataset description of",
+    "datasetCatalogStatistics": "Statistics for dataset catalog",
+    "datasetTitle": "Dataset description title",
+    "loadMoreDatasets": "Load more dataset descriptions",
+    "learnMoreAboutMetadataQuality": "Learn more about metadata quality"
   }
 }

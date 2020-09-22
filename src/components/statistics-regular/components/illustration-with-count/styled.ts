@@ -41,8 +41,9 @@ const Count = styled.span`
 `;
 
 const Content = styled.div<{ variant?: Variant }>`
-  align-items: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0.5em 0;
 
   ${({ variant }) => {

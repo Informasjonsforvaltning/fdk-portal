@@ -5,9 +5,12 @@ import { SC as ExpansionPanelSC } from '../../../../components/expansion-panel';
 
 import DatasetSVG from '../../../../images/icon-catalog-dataset-lg.svg';
 import AuthoritativeSVG from '../../../../images/icon-authoritative-md.svg';
-import PoorQualitySVG from '../../../../images/icon-quality-poor-md.svg';
-import MediumQualitySVG from '../../../../images/icon-quality-medium-md.svg';
-import GoodQualitySVG from '../../../../images/icon-quality-good-md.svg';
+import MetadataQualityExcellentSVG from '../../../../images/icon-quality-excellent-md.svg';
+import MetadataQualityGoodSVG from '../../../../images/icon-quality-good-md.svg';
+import MetadataQualitySufficientSVG from '../../../../images/icon-quality-sufficient-md.svg';
+import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg';
+import CheckSVG from '../../../../images/icon-checked-sm.svg';
+import CrossSVG from '../../../../images/icon-empty-search-sm.svg';
 
 const DatasetPage = styled.article`
   flex: 1 0 auto;
@@ -80,6 +83,7 @@ const Box = styled.div`
   padding: ${theme.spacing('S24')};
   border-radius: 4px;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  pointer-events: none;
 
   &:nth-of-type(n + 2) {
     margin-left: ${theme.spacing('S8')};
@@ -136,7 +140,7 @@ const Table = styled.table`
     & > tr {
       color: ${theme.colour(Colour.BLUE, 'B50')};
 
-      &.section-row > td {
+      &.section-row > td > div {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -147,15 +151,19 @@ const Table = styled.table`
           display: flex;
           align-items: center;
           margin-right: 26px;
-        }
 
-        & > div > svg {
-          height: 30px;
-          width: 30px;
-          min-height: 30px;
-          min-width: 30px;
-          margin: 0;
-          margin-right: ${theme.spacing('S8')};
+          & > svg {
+            height: 30px;
+            width: 30px;
+            min-height: 30px;
+            min-width: 30px;
+            margin: 0;
+            margin-right: ${theme.spacing('S8')};
+          }
+
+          & > span {
+            min-width: 40px;
+          }
         }
       }
     }
@@ -164,7 +172,7 @@ const Table = styled.table`
       ${ExpansionPanelSC.ExpansionPanel.Head},
       ${ExpansionPanelSC.ExpansionPanel.Body} {
       padding: ${theme.spacing('S12')} ${theme.spacing('S16')};
-      padding-left: ${theme.spacing('S24')};
+      padding-left: ${theme.spacing('S32')};
       cursor: pointer;
     }
 
@@ -179,7 +187,14 @@ const Table = styled.table`
         min-height: 24px;
         min-width: 24px;
         margin: 0;
-        margin-right: ${theme.spacing('S48')};
+        margin-right: ${theme.spacing('S56')};
+      }
+    }
+
+    & ${ExpansionPanelSC.ExpansionPanel.Body} {
+      & span {
+        display: flex;
+        margin-top: ${theme.spacing('S8')};
       }
     }
   }
@@ -189,13 +204,13 @@ const TableHead = styled.thead``;
 
 const TableBody = styled.tbody``;
 
-const PoorQualityIcon = styled(PoorQualitySVG)`
+const PoorQualityIcon = styled(MetadataQualityPoorSVG)`
   & > path {
     fill: ${theme.colour(Colour.BLUE, 'B50')};
   }
 `;
 
-const MediumQualityIcon = styled(MediumQualitySVG)`
+const SufficientQualityIcon = styled(MetadataQualitySufficientSVG)`
   & > path {
     fill: ${theme.colour(Colour.BLUE, 'B50')};
   }
@@ -205,9 +220,27 @@ const MediumQualityIcon = styled(MediumQualitySVG)`
   }
 `;
 
-const GoodQualityIcon = styled(GoodQualitySVG)`
+const GoodQualityIcon = styled(MetadataQualityGoodSVG)`
+  & > path {
+    fill: ${theme.colour(Colour.BLUE, 'B50', 85)};
+  }
+`;
+
+const ExcellentQualityIcon = styled(MetadataQualityExcellentSVG)`
   & > path {
     fill: ${theme.colour(Colour.BLUE, 'B50')};
+  }
+`;
+
+const CheckIcon = styled(CheckSVG)`
+  & > path {
+    fill: ${theme.colour(Colour.BLUE, 'B50')};
+  }
+`;
+
+const CrossIcon = styled(CrossSVG)`
+  & > path {
+    fill: ${theme.colour(Colour.BLUE, 'B30')};
   }
 `;
 
@@ -250,8 +283,11 @@ export default {
   TableHead,
   TableBody,
   PoorQualityIcon,
-  MediumQualityIcon,
+  SufficientQualityIcon,
   GoodQualityIcon,
+  ExcellentQualityIcon,
+  CheckIcon,
+  CrossIcon,
   FrequentlyAskedQuestions,
   Question
 };

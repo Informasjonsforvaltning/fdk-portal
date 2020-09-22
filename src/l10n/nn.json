@@ -554,23 +554,45 @@
     "criterion": "Kriterium",
     "metadataQuality": "Metadatakvalitet",
     "criteria": {
-      "visibility": "Synlegheit",
+      "findability": "Søkbarheit",
       "availability": "Tilgjengelegheit",
       "interpolarity": "Interpolaritet",
       "context": "Kontekst",
       "reusability": "Gjenbrukbarheit"
     },
+    "indicator": {
+      "accessUrl": "Nedlastingslenke er oppgitt",
+      "keyword": "Nøkkelord er oppgitt",
+      "subject": "Fagområdet er oppgitt"
+    },
+    "indicatorDescription": {
+      "accessUrl": "Det finnes en tilgangsURL til datasett på distribusjon eller endpointURL på en tilknyttet datatjeneste.",
+      "keyword": "Det finnes et eller flere nøkkelord tilknyttet datasettbeskrivelsen.",
+      "subject": "Det finnes et eller flere begreper tilknyttet datasettbeskrivelsen."
+    },
+    "indicatorWeight": "Vekt: {weight}",
     "descriptionsTotal": "skildringar totalt",
     "newDescriptions": "nye skildringar {0}",
     "lastYear": "siste år",
     "lastMonth": "siste månad",
     "lastWeek": "siste veke",
-    "metadataQualityIs": "metadatakvaliteten er {0}",
+    "metadataQualityIsExcellent": "Metadatakvaliteten er utmerket",
+    "metadataQualityIsGood": "Metadatakvaliteten er god",
+    "metadataQualityIsSufficient": "Metadatakvaliteten er tilstrekkelig",
+    "metadataQualityIsPoor": "Metadatakvaliteten er dårlig",
     "metaDataMiddle": "middels",
     "datasetIs": "datasett som er {0}",
     "authoritativeSources": "autoritative kjelder",
     "open": "opne",
     "metadataQualityCatalog": "metadatakvaliteten for datakatalogen er {0}",
-    "percentMetadataQuality": "av kriteriane er oppfyld"
+    "metadataQualitySatisfiedCriteria": "av kriteriane er oppfyld",
+    "organizationPageTitle": "Statistikk for {organizationName}",
+    "organizationDatasetCatalogPageTitle": "Datasettkatalog for {organizationName}",
+    "organizationDatasetCatalogPageSubtitle": "Metadatakvalitet for beskrivelse av datasett i datasettkatalogen",
+    "organizationDatasetPageSubtitle": "Metadatakvalitet for datasettbeskrivelsen av",
+    "datasetCatalogStatistics": "Statistikk for datasettkatalog",
+    "datasetTitle": "Tittel på datasettbeskrivelse",
+    "loadMoreDatasets": "Last inn flere datasettbeskrivelser",
+    "learnMoreAboutMetadataQuality": "Lær mer om metadatakvalitet"
   }
 }

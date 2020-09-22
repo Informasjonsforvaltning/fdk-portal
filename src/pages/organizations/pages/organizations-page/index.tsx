@@ -83,15 +83,22 @@ const OrganizationsPage: FC<Props> = ({
             organizations: Organization[]
           ) => {
             let sortLabel = '';
+            const previousOrganizationName = translate(
+              organizations[index - 1]?.organization?.name
+            );
+            const currentOrganizationName = translate(name);
+
             if (
               index === 0 ||
               (index > 0 &&
-                translate(organizations[index - 1].organization.name).charAt(
-                  0
-                ) !== translate(name).charAt(0))
+                previousOrganizationName &&
+                currentOrganizationName &&
+                previousOrganizationName.charAt(0) !==
+                  currentOrganizationName.charAt(0))
             ) {
-              sortLabel = translate(name).charAt(0);
+              sortLabel = translate(name)?.charAt(0);
             }
+
             return (
               <SC.Box key={id} className="col-12" to={`${url}/${id}`}>
                 <SC.SortLabel>{sortLabel}</SC.SortLabel>
