@@ -46,3 +46,21 @@ export enum Filter {
   LOS = 'losTheme',
   ORGPATH = 'orgPath'
 }
+
+export enum RatingCategory {
+  EXCELLENT = 'excellent',
+  GOOD = 'good',
+  SUFFICIENT = 'sufficient',
+  POOR = 'poor'
+}
+
+export enum DimensionType {
+  FINDABILITY = 'findability',
+  ACCESSIBILITY = 'accessibility'
+}
+
+export enum IndicatorType {
+  ACCESS_URL = 'access_url',
+  KEYWORD = 'keyword',
+  SUBJECT = 'subject'
+}

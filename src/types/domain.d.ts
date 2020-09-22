@@ -1,4 +1,10 @@
-import { DataFormat } from './enums';
+import {
+  DataFormat,
+  RatingCategory,
+  Entity as EntityType,
+  DimensionType,
+  IndicatorType
+} from './enums';
 
 export interface InformationModelDocument {
   id: string;
@@ -49,6 +55,7 @@ export interface Publisher {
   id: string;
   name: string;
   orgPath: string;
+  organizationId: string;
   prefLabel: Partial<TextLanguage>;
 }
 
@@ -189,6 +196,7 @@ export interface Dataset {
   language?: Partial<ReferenceType>[];
   landingPage: string[];
   qualifiedAttributions: QualifiedAttribution[];
+  assessment?: Assessment;
 }
 
 export interface DataService {
@@ -316,4 +324,43 @@ export interface DatasetsReport extends Report {
 export interface KeyWithCountObject {
   key: string;
   count: number;
+}
+
+export interface Rating {
+  score: number;
+  maxScore: number;
+  satisfiedCriteria: number;
+  totalCriteria: number;
+  category: RatingCategory;
+}
+
+export interface Catalog {
+  id: string;
+  uri?: string;
+}
+
+export interface Entity {
+  uri: string;
+  type: EntityType;
+  catalog: Catalog;
+}
+
+export interface Indicator {
+  type: IndicatorType;
+  weight: number;
+  conforms: boolean;
+}
+
+export interface Dimension {
+  type: DimensionType;
+  rating: Rating;
+  indicators: Indicator[];
+}
+
+export interface Assessment {
+  id: string;
+  entity: Entity;
+  rating: Rating;
+  dimensions: Dimension[];
+  updated: string;
 }

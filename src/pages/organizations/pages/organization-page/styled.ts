@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 
+import MetadataQualityExcellentSVG from '../../../../images/icon-quality-excellent-md.svg';
+import MetadataQualityGoodSVG from '../../../../images/icon-quality-good-md.svg';
+import MetadataQualitySufficientSVG from '../../../../images/icon-quality-sufficient-md.svg';
+import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg';
+
 const OrganizationPage = styled.article`
   flex: 1 0 auto;
 `;
@@ -40,36 +45,6 @@ const OrganizationInformation = styled.div`
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
 `;
 
-const AllCataloguesStatistics = styled.div`
-  & > h2 {
-    display: flex;
-    align-items: center;
-    padding: ${theme.spacing('S12')};
-    border-radius: 4px;
-    font-size: ${theme.fontSize('FS24')};
-    font-weight: ${theme.fontWeight('FW700')};
-    background: ${theme.colour(Colour.NEUTRAL, 'N20')};
-    color: ${theme.colour(Colour.NEUTRAL, 'N60')};
-
-    & > svg {
-      height: 40px;
-      width: 40px;
-      min-height: 40px;
-      min-width: 40px;
-      margin-right: ${theme.spacing('S12')};
-    }
-  }
-
-  & > div {
-    display: flex;
-    margin-top: ${theme.spacing('S8')};
-
-    & > ${Box}:nth-of-type(n+2) {
-      margin-left: ${theme.spacing('S8')};
-    }
-  }
-`;
-
 const DatasetCataloguesStatistics = styled.div`
   & > h2 {
     display: flex;
@@ -97,6 +72,34 @@ const DatasetCataloguesStatistics = styled.div`
     & > ${Box}:nth-of-type(n+2) {
       margin-left: ${theme.spacing('S8')};
     }
+  }
+`;
+
+const PoorQualityIcon = styled(MetadataQualityPoorSVG)`
+  & > path {
+    fill: ${theme.colour(Colour.BLUE, 'B50')};
+  }
+`;
+
+const SufficientQualityIcon = styled(MetadataQualitySufficientSVG)`
+  & > path {
+    fill: ${theme.colour(Colour.BLUE, 'B50')};
+  }
+
+  & > circle:first-of-type {
+    fill: ${theme.colour(Colour.BLUE, 'B30')};
+  }
+`;
+
+const GoodQualityIcon = styled(MetadataQualityGoodSVG)`
+  & > path {
+    fill: ${theme.colour(Colour.BLUE, 'B50', 85)};
+  }
+`;
+
+const ExcellentQualityIcon = styled(MetadataQualityExcellentSVG)`
+  & > path {
+    fill: ${theme.colour(Colour.BLUE, 'B50')};
   }
 `;
 
@@ -132,8 +135,11 @@ export default {
   Section,
   Box,
   OrganizationInformation,
-  AllCataloguesStatistics,
   DatasetCataloguesStatistics,
+  PoorQualityIcon,
+  SufficientQualityIcon,
+  GoodQualityIcon,
+  ExcellentQualityIcon,
   FrequentlyAskedQuestions,
   Question
 };

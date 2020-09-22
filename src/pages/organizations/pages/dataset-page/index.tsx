@@ -1,6 +1,7 @@
-import React, { memo, FC, useLayoutEffect } from 'react';
+import React, { memo, FC, useLayoutEffect, Fragment } from 'react';
 import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../../../lib/localization';
@@ -9,33 +10,50 @@ import { getTranslateText as translate } from '../../../../lib/translateText';
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
-import withDataset, {
-  Props as DatasetProps
-} from '../../../../components/with-dataset';
 
 import ExpansionPanel, {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '../../../../components/expansion-panel';
+import {
+  IllustrationWithCount,
+  SC as StatisticsRegularSC,
+  StatisticsRegular
+} from '../../../../components/statistics-regular/statistics-regular';
 
 import SC from './styled';
 import ReactTooltipSC from '../../../../components/tooltip/styled';
+
+import { themeFDK as theme } from '../../../../app/theme';
+
+import type { Rating } from '../../../../types';
+import {
+  DimensionType,
+  IndicatorType,
+  RatingCategory,
+  Entity
+} from '../../../../types/enums';
 
 interface RouteParams {
   organizationId: string;
   datasetId: string;
 }
 
-interface Props
-  extends OrganizationProps,
-    DatasetProps,
-    RouteComponentProps<RouteParams> {}
+interface Props extends OrganizationProps, RouteComponentProps<RouteParams> {}
+
+const articleIds: { [key: string]: string } = {
+  nb: '701a4b80-d830-4aa5-be63-20422e3d8d64',
+  nn: '5892cae9-2b31-4f52-b0a6-da87092924bf',
+  en: 'cf2a2b6d-88bb-4f3a-bbfc-4114e2841479'
+};
 
 const DatasetPage: FC<Props> = ({
   organization,
   dataset,
-  organizationActions: { getOrganizationRequested: getOrganization },
-  datasetActions: { getDatasetRequested: getDataset },
+  organizationActions: {
+    getOrganizationRequested: getOrganization,
+    getOrganizationDatasetRequested: getOrganizationDataset
+  },
   match: {
     params: { organizationId, datasetId }
   }
@@ -44,23 +62,94 @@ const DatasetPage: FC<Props> = ({
     if (organization?.id !== organizationId) {
       getOrganization(organizationId);
     }
+
     if (dataset?.id !== datasetId) {
-      getDataset(datasetId);
+      getOrganizationDataset(organizationId, datasetId);
     }
   }, []);
 
   const isAuthoritative = dataset?.provenance?.code === 'NASJONAL';
 
-  const visibilityScore = 75;
-  const availabilityScore = 54;
-  const interpolarityScore = 63;
-  const contextScore = 27;
-  const reusabilityScore = 38;
+  const calculateRatingPercentage = (r: Rating | null | undefined) => {
+    const score = r?.score ?? 0;
+    const maxScore = r?.maxScore ?? 0;
+
+    return maxScore === 0 ? 0 : Math.round((score / maxScore) * 100);
+  };
+
+  const determineRatingIcon = (r: Rating | null | undefined) => {
+    switch (r?.category) {
+      case RatingCategory.EXCELLENT:
+        return <SC.ExcellentQualityIcon />;
+      case RatingCategory.GOOD:
+        return <SC.GoodQualityIcon />;
+      case RatingCategory.SUFFICIENT:
+        return <SC.SufficientQualityIcon />;
+      case RatingCategory.POOR:
+      default:
+        return <SC.PoorQualityIcon />;
+    }
+  };
+
+  const determineRatingTranslation = (r: Rating | null | undefined) => {
+    switch (r?.category) {
+      case RatingCategory.EXCELLENT:
+        return translations.metadataQualityPage.metadataQualityIsExcellent;
+      case RatingCategory.GOOD:
+        return translations.metadataQualityPage.metadataQualityIsGood;
+      case RatingCategory.SUFFICIENT:
+        return translations.metadataQualityPage.metadataQualityIsSufficient;
+      case RatingCategory.POOR:
+      default:
+        return translations.metadataQualityPage.metadataQualityIsPoor;
+    }
+  };
+
+  const determineDimensionTranslation = (dimensionType: DimensionType) => {
+    switch (dimensionType) {
+      case DimensionType.FINDABILITY:
+        return translations.metadataQualityPage.criteria.findability;
+      case DimensionType.ACCESSIBILITY:
+        return translations.metadataQualityPage.criteria.availability;
+      default:
+        return null;
+    }
+  };
+
+  const determineIndicatorTranslation = (indicatorType: IndicatorType) => {
+    switch (indicatorType) {
+      case IndicatorType.ACCESS_URL:
+        return translations.metadataQualityPage.indicator.accessUrl;
+      case IndicatorType.KEYWORD:
+        return translations.metadataQualityPage.indicator.keyword;
+      case IndicatorType.SUBJECT:
+        return translations.metadataQualityPage.indicator.subject;
+      default:
+        return null;
+    }
+  };
+
+  const determineIndicatorDescriptionTranslation = (
+    indicatorType: IndicatorType
+  ) => {
+    switch (indicatorType) {
+      case IndicatorType.ACCESS_URL:
+        return translations.metadataQualityPage.indicatorDescription.accessUrl;
+      case IndicatorType.KEYWORD:
+        return translations.metadataQualityPage.indicatorDescription.keyword;
+      case IndicatorType.SUBJECT:
+        return translations.metadataQualityPage.indicatorDescription.subject;
+      default:
+        return null;
+    }
+  };
 
   return (
     <SC.DatasetPage className="container">
       <SC.Banner>
-        <h1>Metadatakvalitet for datasettbeskrivelsen av </h1>
+        <h1>
+          {translations.metadataQualityPage.organizationDatasetPageSubtitle}
+        </h1>
         <div>
           <SC.DatasetIcon />
           <SC.Title>
@@ -75,10 +164,36 @@ const DatasetPage: FC<Props> = ({
         </div>
       </SC.Banner>
       <SC.Section>
-        <SC.SummaryBoxes>
-          <SC.Box>here 1</SC.Box>
-          <SC.Box>here 2</SC.Box>
-        </SC.SummaryBoxes>
+        <ThemeProvider theme={theme.extendedColors[Entity.DATASET]}>
+          <SC.SummaryBoxes>
+            <SC.Box>
+              <StatisticsRegular to="">
+                <StatisticsRegularSC.StatisticsRegular.Label>
+                  <IllustrationWithCount
+                    icon={determineRatingIcon(dataset?.assessment?.rating)}
+                    percentage={calculateRatingPercentage(
+                      dataset?.assessment?.rating
+                    )}
+                  />
+                  {determineRatingTranslation(dataset?.assessment?.rating)}
+                </StatisticsRegularSC.StatisticsRegular.Label>
+              </StatisticsRegular>
+            </SC.Box>
+            <SC.Box>
+              <StatisticsRegular to="">
+                <IllustrationWithCount
+                  count={dataset?.assessment?.rating?.satisfiedCriteria ?? 0}
+                />
+                <StatisticsRegularSC.StatisticsRegular.Label>
+                  {
+                    translations.metadataQualityPage
+                      .metadataQualitySatisfiedCriteria
+                  }
+                </StatisticsRegularSC.StatisticsRegular.Label>
+              </StatisticsRegular>
+            </SC.Box>
+          </SC.SummaryBoxes>
+        </ThemeProvider>
       </SC.Section>
       <SC.Section>
         <SC.Table>
@@ -91,340 +206,56 @@ const DatasetPage: FC<Props> = ({
             </tr>
           </SC.TableHead>
           <SC.TableBody>
-            <tr className="section-row">
-              <td>
-                <p>{translations.metadataQualityPage.criteria.visibility}</p>
-                <div>
-                  {visibilityScore < 50 && <SC.PoorQualityIcon />}
-                  {visibilityScore >= 50 && visibilityScore < 75 && (
-                    <SC.MediumQualityIcon />
-                  )}
-                  {visibilityScore >= 75 && <SC.GoodQualityIcon />}
-                  {visibilityScore}%
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Nøkkelord er opggitt</p>
-                  <span>
-                    {visibilityScore < 50 && <SC.PoorQualityIcon />}
-                    {visibilityScore >= 50 && visibilityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {visibilityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body1</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Tema er oppgitt</p>
-                  <span>
-                    {visibilityScore < 50 && <SC.PoorQualityIcon />}
-                    {visibilityScore >= 50 && visibilityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {visibilityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body2</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Det er oppgitt fyldig nok informasjon</p>
-                  <span>
-                    {visibilityScore < 50 && <SC.PoorQualityIcon />}
-                    {visibilityScore >= 50 && visibilityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {visibilityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body2</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr className="section-row">
-              <td>
-                <p>{translations.metadataQualityPage.criteria.availability}</p>
-                <div>
-                  {availabilityScore < 50 && <SC.PoorQualityIcon />}
-                  {availabilityScore >= 50 && availabilityScore < 75 && (
-                    <SC.MediumQualityIcon />
-                  )}
-                  {availabilityScore >= 75 && <SC.GoodQualityIcon />}
-                  {availabilityScore}%
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Nedlastingslenke er oppgitt</p>
-                  <span>
-                    {availabilityScore < 50 && <SC.PoorQualityIcon />}
-                    {availabilityScore >= 50 && availabilityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {availabilityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body2</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr className="section-row">
-              <td>
-                <p>{translations.metadataQualityPage.criteria.interpolarity}</p>
-                <div>
-                  {interpolarityScore < 50 && <SC.PoorQualityIcon />}
-                  {interpolarityScore >= 50 && interpolarityScore < 75 && (
-                    <SC.MediumQualityIcon />
-                  )}
-                  {interpolarityScore >= 75 && <SC.GoodQualityIcon />}
-                  {interpolarityScore}%
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Format er oppgitt</p>
-                  <span>
-                    {interpolarityScore < 50 && <SC.PoorQualityIcon />}
-                    {interpolarityScore >= 50 && interpolarityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {interpolarityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body2</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Type er oppgitt</p>
-                  <span>
-                    {interpolarityScore < 50 && <SC.PoorQualityIcon />}
-                    {interpolarityScore >= 50 && interpolarityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {interpolarityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Format/mediatype referert fra ordliste</p>
-                  <span>
-                    {interpolarityScore < 50 && <SC.PoorQualityIcon />}
-                    {interpolarityScore >= 50 && interpolarityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {interpolarityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>I samsvar med DCAT-AP-NO</p>
-                  <span>
-                    {interpolarityScore < 50 && <SC.PoorQualityIcon />}
-                    {interpolarityScore >= 50 && interpolarityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {interpolarityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr className="section-row">
-              <td>
-                <p>{translations.metadataQualityPage.criteria.context}</p>
-                <div>
-                  {contextScore < 50 && <SC.PoorQualityIcon />}
-                  {contextScore >= 50 && contextScore < 75 && (
-                    <SC.MediumQualityIcon />
-                  )}
-                  {contextScore >= 75 && <SC.GoodQualityIcon />}
-                  {contextScore}%
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Utgivelsesdato er oppgitt</p>
-                  <span>
-                    {contextScore < 50 && <SC.PoorQualityIcon />}
-                    {contextScore >= 50 && contextScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {contextScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Dato for siste oppdatering er oppgitt</p>
-                  <span>
-                    {contextScore < 50 && <SC.PoorQualityIcon />}
-                    {contextScore >= 50 && contextScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {contextScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Rettigheter er oppgitt</p>
-                  <span>
-                    {contextScore < 50 && <SC.PoorQualityIcon />}
-                    {contextScore >= 50 && contextScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {contextScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr className="section-row">
-              <td>
-                <p>{translations.metadataQualityPage.criteria.reusability}</p>
-                <div>
-                  {reusabilityScore < 50 && <SC.PoorQualityIcon />}
-                  {reusabilityScore >= 50 && reusabilityScore < 75 && (
-                    <SC.MediumQualityIcon />
-                  )}
-                  {reusabilityScore >= 75 && <SC.GoodQualityIcon />}
-                  {reusabilityScore}%
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Lisens er oppgitt</p>
-                  <span>
-                    {reusabilityScore < 50 && <SC.PoorQualityIcon />}
-                    {reusabilityScore >= 50 && reusabilityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {reusabilityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Lisens er referert fra ordliste</p>
-                  <span>
-                    {reusabilityScore < 50 && <SC.PoorQualityIcon />}
-                    {reusabilityScore >= 50 && reusabilityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {reusabilityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Informasjon om tilgansnivå og -rettigheter er oppgitt</p>
-                  <span>
-                    {reusabilityScore < 50 && <SC.PoorQualityIcon />}
-                    {reusabilityScore >= 50 && reusabilityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {reusabilityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Kontaktpunkt er oppgitt</p>
-                  <span>
-                    {reusabilityScore < 50 && <SC.PoorQualityIcon />}
-                    {reusabilityScore >= 50 && reusabilityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {reusabilityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
-            <tr>
-              <ExpansionPanel as="td">
-                <ExpansionPanelHead>
-                  <p>Utgiver er oppgitt</p>
-                  <span>
-                    {reusabilityScore < 50 && <SC.PoorQualityIcon />}
-                    {reusabilityScore >= 50 && reusabilityScore < 75 && (
-                      <SC.MediumQualityIcon />
-                    )}
-                    {reusabilityScore >= 75 && <SC.GoodQualityIcon />}
-                  </span>
-                </ExpansionPanelHead>
-                <ExpansionPanelBody>body3</ExpansionPanelBody>
-              </ExpansionPanel>
-            </tr>
+            {dataset?.assessment?.dimensions?.map(
+              ({ type, rating, indicators }) => (
+                <Fragment key={type}>
+                  <tr className="section-row">
+                    <td>
+                      <div>
+                        <p>{determineDimensionTranslation(type)}</p>
+                        <div>
+                          {determineRatingIcon(rating)}
+                          <span>{calculateRatingPercentage(rating)}%</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  {indicators.map(({ type, conforms, weight }) => (
+                    <tr key={type}>
+                      <ExpansionPanel as="td">
+                        <ExpansionPanelHead>
+                          <p>{determineIndicatorTranslation(type)}</p>
+                          <span>
+                            {conforms ? <SC.CheckIcon /> : <SC.CrossIcon />}
+                          </span>
+                        </ExpansionPanelHead>
+                        <ExpansionPanelBody>
+                          <p>
+                            {determineIndicatorDescriptionTranslation(type)}
+                          </p>
+                          <span>
+                            {translations.formatString(
+                              translations.metadataQualityPage.indicatorWeight,
+                              { weight }
+                            )}
+                          </span>
+                        </ExpansionPanelBody>
+                      </ExpansionPanel>
+                    </tr>
+                  ))}
+                </Fragment>
+              )
+            )}
           </SC.TableBody>
         </SC.Table>
       </SC.Section>
       <SC.Section>
-        <SC.FrequentlyAskedQuestions>
-          <SC.Question>
-            <h3>Hva er metadatakvalitet?</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio
-              rerum iusto natus voluptate officiis quasi recusandae labore eius
-              obcaecati culpa molestias illo non hic facilis voluptatibus
-              adipisci vitae, mollitia consequatur?
-            </p>
-            <Link href="/">Lær mer om metadatakvalitet</Link>
-          </SC.Question>
-          <SC.Question>
-            <h3>Hvordan kan jeg forbedre metadatakvaliteten?</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio
-              rerum iusto natus voluptate officiis quasi recusandae labore eius
-              obcaecati culpa molestias illo non hic facilis voluptatibus
-              adipisci vitae, mollitia consequatur?
-            </p>
-            <Link href="/">Slik forbedrer du metadatakvaliteten</Link>
-          </SC.Question>
-        </SC.FrequentlyAskedQuestions>
+        <Link href={`/news/${articleIds[translations.getLanguage()]}`}>
+          {translations.metadataQualityPage.learnMoreAboutMetadataQuality}
+        </Link>
       </SC.Section>
     </SC.DatasetPage>
   );
 };
 
-export default compose<FC>(memo, withOrganization, withDataset)(DatasetPage);
+export default compose<FC>(memo, withOrganization)(DatasetPage);
