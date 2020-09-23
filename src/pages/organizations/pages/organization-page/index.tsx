@@ -61,10 +61,7 @@ const OrganizationPage: FC<Props> = ({
   useLayoutEffect(() => {
     if (organization?.id !== organizationId) {
       getOrganization(organizationId);
-
-      if (!rating) {
-        getRating(organizationId);
-      }
+      getRating(organizationId);
     }
   }, []);
 
