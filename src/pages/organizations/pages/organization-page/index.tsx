@@ -61,9 +61,10 @@ const OrganizationPage: FC<Props> = ({
   useLayoutEffect(() => {
     if (organization?.id !== organizationId) {
       getOrganization(organizationId);
-    }
-    if (!rating) {
-      getRating(organizationId);
+
+      if (!rating) {
+        getRating(organizationId);
+      }
     }
   }, []);
 
@@ -205,7 +206,9 @@ const OrganizationPage: FC<Props> = ({
               </SC.Box>
               <SC.Box colspan={2}>
                 <StatisticsRegular to={`${url}/datasets`}>
-                  <IllustrationWithCount count={rating?.satisfiedCriteria} />
+                  <IllustrationWithCount
+                    count={rating?.satisfiedCriteria ?? 0}
+                  />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {
                       translations.metadataQualityPage
