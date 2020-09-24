@@ -147,6 +147,7 @@ const DatasetPage: FC<Props> = ({
   return (
     <SC.DatasetPage className="container">
       <SC.Banner>
+        <SC.BetaRibbon>BETA</SC.BetaRibbon>
         <h1>
           {translations.metadataQualityPage.organizationDatasetPageSubtitle}
         </h1>

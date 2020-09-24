@@ -99,6 +99,7 @@ const OrganizationPage: FC<Props> = ({
 
   return (
     <SC.OrganizationPage className="container">
+      <SC.BetaRibbon>BETA</SC.BetaRibbon>
       <SC.Title>
         {translations.formatString(
           translations.metadataQualityPage.organizationPageTitle,

@@ -8,6 +8,18 @@ import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg'
 
 const OrganizationPage = styled.article`
   flex: 1 0 auto;
+  overflow: hidden;
+`;
+
+const BetaRibbon = styled.span`
+  position: absolute;
+  top: 8px;
+  right: -33px;
+  transform: rotate(45deg);
+  padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
+  font-weight: ${theme.fontWeight('FW700')};
+  color: ${theme.colour(Colour.BLUE, 'B50')};
+  background: ${theme.colour(Colour.YELLOW, 'Y30')};
 `;
 
 const Title = styled.h1`
@@ -131,6 +143,7 @@ const Question = styled.div`
 
 export default {
   OrganizationPage,
+  BetaRibbon,
   Title,
   Section,
   Box,
