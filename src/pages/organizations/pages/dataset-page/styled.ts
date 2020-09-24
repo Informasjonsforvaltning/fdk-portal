@@ -17,11 +17,13 @@ const DatasetPage = styled.article`
 `;
 
 const Banner = styled.header`
+  position: relative;
   width: 100%;
   padding: 18px;
   border-radius: 5px;
   color: ${theme.colour(Colour.BLUE, 'B50')};
   background: ${theme.colour(Colour.BLUE, 'B30')};
+  overflow: hidden;
 
   & > h1 {
     font-size: ${theme.fontSize('FS24')};
@@ -32,6 +34,17 @@ const Banner = styled.header`
     display: flex;
     margin-top: ${theme.spacing('S10')};
   }
+`;
+
+const BetaRibbon = styled.span`
+  position: absolute;
+  top: 8px;
+  right: -33px;
+  transform: rotate(45deg);
+  padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
+  font-weight: ${theme.fontWeight('FW700')};
+  color: ${theme.colour(Colour.BLUE, 'B50')};
+  background: ${theme.colour(Colour.YELLOW, 'Y30')};
 `;
 
 const DatasetIcon = styled(DatasetSVG)`
@@ -272,6 +285,7 @@ const Question = styled.div`
 
 export default {
   DatasetPage,
+  BetaRibbon,
   Banner,
   DatasetIcon,
   Title,
