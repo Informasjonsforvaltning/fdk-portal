@@ -2,17 +2,18 @@ import memoize from 'lodash/memoize';
 import { resolve } from 'react-resolver';
 import {
   getDatasetsReport,
-  getConceptsReport
+  getConceptsReport,
+  getInformationModelsReport
 } from '../../api/report-api/reports';
 import {
   getDatasetsTimeseries,
-  getConceptsTimeseries
+  getConceptsTimeseries,
+  getInformationModelsTimeseries
 } from '../../api/report-api/timeseries';
 import { parseSearchParams } from '../../lib/location-history-helper';
 
 import { getDataServiceStats } from '../../api/get-data-service-stats';
 import { getParamFromLocation } from '../../lib/addOrReplaceUrlParam';
-import { searchInformationModels } from '../../api/search-fulltext-api/informationmodels';
 import {
   extractConcepts,
   searchConcepts,
@@ -24,7 +25,10 @@ const memoizedGetDatasetsTimeseries = memoize(getDatasetsTimeseries);
 const memoizedGetDataServiceStats = memoize(getDataServiceStats);
 const memoizedGetConceptsReport = memoize(getConceptsReport);
 const memoizedGetConceptsTimeseries = memoize(getConceptsTimeseries);
-const memoizedSearchInformationModels = memoize(searchInformationModels);
+const memoizedGetInformationModelsReport = memoize(getInformationModelsReport);
+const memoizedGetInformationModelsTimeseries = memoize(
+  getInformationModelsTimeseries
+);
 const memoizedSearchConcepts = memoize(searchConcepts);
 
 const mapProps = {
@@ -57,7 +61,11 @@ const mapProps = {
   },
   informationModelsReport: ({ location }) => {
     const { orgPath, losTheme: los } = parseSearchParams(location);
-    return memoizedSearchInformationModels({ orgPath, los });
+    return memoizedGetInformationModelsReport({ orgPath, los });
+  },
+  informationModelsTimeSeries: ({ location }) => {
+    const { orgPath, losTheme: los } = parseSearchParams(location);
+    return memoizedGetInformationModelsTimeseries({ orgPath, los });
   }
 };
 

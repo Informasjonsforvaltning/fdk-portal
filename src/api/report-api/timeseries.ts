@@ -21,3 +21,8 @@ export const getDatasetsTimeseries = (params: any = '') =>
 
 export const getConceptsTimeseries = (params: any = '') =>
   reportApiGet('/timeseries/concepts', params).then(extractLabelsAndData);
+
+export const getInformationModelsTimeseries = (params: any = '') =>
+  reportApiGet('/timeseries/informationmodels', params).then(
+    extractLabelsAndData
+  );
