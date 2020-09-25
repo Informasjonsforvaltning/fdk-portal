@@ -1,4 +1,5 @@
 import React, { FC, memo } from 'react';
+import moment from 'moment';
 import Chart from 'react-apexcharts';
 
 import { themeFDK } from '../../../../app/theme';
@@ -33,7 +34,14 @@ const LineChart: FC<Props> = ({
       curve: 'smooth'
     },
     xaxis: {
-      type: 'datetime'
+      type: 'datetime',
+      tickAmount: 8,
+      max: new Date().getTime(),
+      labels: {
+        formatter: (val: any) => {
+          return moment(new Date(val)).format('DD MMM YY');
+        }
+      }
     },
     legend: {
       horizontalAlign: 'left'
