@@ -72,10 +72,10 @@ export function ReportPagePure({
     }
   };
 
-  // const catalogs = Object.keys(publishers).map(item => {return ({key: item})}).concat(defaultOrganizations);
   const orgPaths = {
     [Variant.DATASET]: datasetsReport?.orgPaths ?? [],
-    [Variant.CONCEPT]: conceptsReport?.orgPaths ?? []
+    [Variant.CONCEPT]: conceptsReport?.orgPaths ?? [],
+    [Variant.INFORMATION_MODEL]: informationModelsReport?.orgPaths ?? []
   };
 
   return (

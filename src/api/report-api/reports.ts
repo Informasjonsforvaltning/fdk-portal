@@ -5,3 +5,6 @@ export const getDatasetsReport = (params: any = '') =>
 
 export const getConceptsReport = (params: any = '') =>
   reportApiGet('/report/concepts', params);
+
+export const getInformationModelsReport = (params: any = '') =>
+  reportApiGet('/report/informationmodels', params);

@@ -392,6 +392,7 @@
     "growth": "Utvikling",
     "growthFromFirstPublish": "Antall datasettskildringer sia fyrste publisering",
     "conceptGrowthFromFirstPublish": "Antall omgrepsskildringar sia fyrste publisering",
+    "informationModelGrowthFromFirstPublish": "Antall informasjonsmodellskildringar sia fyrste publisering",
     "opendata": "opne data",
     "public": "kan delas offentleg",
     "restricted": "har avgrensa offentlighet",
