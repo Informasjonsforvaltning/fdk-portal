@@ -391,6 +391,7 @@
     "informationModelsDescription": "informasjonsmodellskildringar",
     "growth": "Utvikling",
     "growthFromFirstPublish": "Antall datasettskildringer sia fyrste publisering",
+    "conceptGrowthFromFirstPublish": "Antall omgrepsskildringar sia fyrste publisering",
     "opendata": "opne data",
     "public": "kan delas offentleg",
     "restricted": "har avgrensa offentlighet",
