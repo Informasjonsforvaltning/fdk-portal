@@ -28,10 +28,11 @@ export function ReportPagePure({
   fetchPublishersIfNeeded,
   publishers,
   dataServiceStats,
-  conceptStats,
   informationModelsReport,
   datasetsReport,
-  datasetsTimeSeries
+  datasetsTimeSeries,
+  conceptsReport,
+  conceptsTimeSeries
 }) {
   const [activeTab, setActiveTab] = useState(Variant.DATASET);
 
@@ -73,7 +74,8 @@ export function ReportPagePure({
 
   // const catalogs = Object.keys(publishers).map(item => {return ({key: item})}).concat(defaultOrganizations);
   const orgPaths = {
-    [Variant.DATASET]: datasetsReport?.orgPaths ?? []
+    [Variant.DATASET]: datasetsReport?.orgPaths ?? [],
+    [Variant.CONCEPT]: conceptsReport?.orgPaths ?? []
   };
 
   return (
@@ -185,7 +187,10 @@ export function ReportPagePure({
                       <DataserviceReport dataserviceReport={dataServiceStats} />
                     </Pane>
                     <Pane id="pane-3">
-                      <ConceptReport conceptReport={conceptStats} />
+                      <ConceptReport
+                        conceptsReport={conceptsReport}
+                        conceptsTimeSeries={conceptsTimeSeries}
+                      />
                     </Pane>
                     <Pane id="pane-4">
                       <InformationModelReport

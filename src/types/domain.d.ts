@@ -321,6 +321,10 @@ export interface DatasetsReport extends Report {
   themesAndTopicsCount: KeyWithCountObject[];
 }
 
+export interface ConceptsReport extends Report {
+  mostInUse: KeyWithCountObject[];
+}
+
 export interface KeyWithCountObject {
   key: string;
   count: number;

@@ -391,6 +391,7 @@
     "informationModelsDescription": "information model descriptions",
     "growth": "Growth",
     "growthFromFirstPublish": "Datasetdescriptions since first published",
+    "conceptGrowthFromFirstPublish": "Concept descriptions since first published",
     "opendata": "open data",
     "public": "are public",
     "restricted": "with restricted access",
