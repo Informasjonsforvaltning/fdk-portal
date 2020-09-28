@@ -555,21 +555,37 @@
     "criterion": "Kriterium",
     "metadataQuality": "Metadatakvalitet",
     "criteria": {
+      "accessibility": "Tilgjengelighet",
       "findability": "Søkbarhet",
-      "availability": "Tilgjengelighet",
-      "interpolarity": "Interpolaritet",
-      "context": "Kontekst",
+      "interoperability": "Interoperabilitet",
+      "readability": "Lesbarhet",
       "reusability": "Gjenbrukbarhet"
     },
     "indicator": {
-      "accessUrl": "Nedlastingslenke er oppgitt",
-      "keyword": "Nøkkelord er oppgitt",
-      "subject": "Fagområdet er oppgitt"
+      "distributableData": "Nedlastingslenke er oppgitt",
+      "keywordUsage": "Nøkkelord er oppgitt",
+      "subjectUsage": "Fagområdet er oppgitt",
+      "geoSearch": "Datasettet er geografisk avgrenset",
+      "controlledVocabularyUsage": "Distribusjon har mediatype",
+      "licenseInformation": "Distribusjonslisensen er oppgitt",
+      "contactPoint": "Kontaktinformasjon er oppgitt",
+      "title": "Tittel er konsis",
+      "titleNoOrgName": "Organisasjonens navn er ikke med i tittel",
+      "description": "Beskrivelsen er konsis",
+      "descriptionWithoutTitle": "Beskrivelsen er ikke en gjentakelse av tittel"
     },
     "indicatorDescription": {
-      "accessUrl": "Det finnes en tilgangsURL til datasett på distribusjon eller endpointURL på en tilknyttet datatjeneste.",
-      "keyword": "Det finnes et eller flere nøkkelord tilknyttet datasettbeskrivelsen.",
-      "subject": "Det finnes et eller flere begreper tilknyttet datasettbeskrivelsen."
+      "distributableData": "Det finnes en tilgangsURL til datasett på distribusjon eller endpointURL på en tilknyttet datatjeneste.",
+      "keywordUsage": "Det finnes et eller flere nøkkelord tilknyttet datasettbeskrivelsen.",
+      "subjectUsage": "Det finnes et eller flere begreper tilknyttet datasettbeskrivelsen.",
+      "geoSearch": "Datasettet er geografisk avgrenset.",
+      "controlledVocabularyUsage": "Det finnes et eller flere format på distribusjonen til datasettbeskrivelsen som finnes i IANAs liste over mediatyper.",
+      "licenseInformation": "Det finnes en lisens for å gjenbruke datasettet på distribusjonsklassen til datasettet.",
+      "contactPoint": "Det finnes kontaktinformasjon for hvem konsument kan henvende seg til.",
+      "title": "Tittel er mindre enn 100 tegn.",
+      "titleNoOrgName": "Organisasjonens navn er ikke med i tittel.",
+      "description": "Beskrivelsen er mindre enn 400 tegn, ikke regnet med mellomrom.",
+      "descriptionWithoutTitle": "Beskrivelsen er ikke en gjentakelse av tittel."
     },
     "indicatorWeight": "Vekt: {weight}",
     "descriptionsTotal": "beskrivelser totalt",

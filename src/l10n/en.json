@@ -556,21 +556,37 @@
     "criterion": "Criterion",
     "metadataQuality": "Metadata quality",
     "criteria": {
+      "accessibility": "Availability",
       "findability": "Findability",
-      "availability": "Availability",
-      "interpolarity": "Interpolarity",
-      "context": "Context",
+      "interoperability": "Interoperability",
+      "readability": "Readability",
       "reusability": "Reusability"
     },
     "indicator": {
-      "accessUrl": "Download URL is provided",
-      "keyword": "Keywords are provided",
-      "subject": "Subjects are provided"
+      "distributableData": "Download URL is provided",
+      "keywordUsage": "Keywords are provided",
+      "subjectUsage": "Subjects are provided",
+      "geoSearch": "Dataset has spacial constraints",
+      "controlledVocabularyUsage": "Distribution has correct media type",
+      "licenseInformation": "Distribution license is provided",
+      "contactPoint": "Contact information is provided",
+      "title": "Title is concise",
+      "titleNoOrgName": "Organisation name is not part of the title",
+      "description": "Description is concise",
+      "descriptionWithoutTitle": "Description is not the same as title"
     },
     "indicatorDescription": {
-      "accessUrl": "Distributions have access URLa or related data services have endpoint URLs.",
-      "keyword": "There is at least one keyword related to this dataset description.",
-      "subject": "There is at least one subject related to this dataset description."
+      "distributableData": "Distributions have access URLa or related data services have endpoint URLs.",
+      "keywordUsage": "There is at least one keyword related to this dataset description.",
+      "subjectUsage": "There is at least one subject related to this dataset description.",
+      "geoSearch": "Dataset has spacial constraints.",
+      "controlledVocabularyUsage": "There is at least one format on dataset's distribution that conforms to IANAs mediatypes.",
+      "licenseInformation": "There is a license on dataset distribution that allows for reuse of the dataset.",
+      "contactPoint": "There is contact information that allows consumers to get in touch with data providers.",
+      "title": "Title is less than 100 characters long.",
+      "titleNoOrgName": "Organisation name is not part of the title.",
+      "description": "Description is less than 400 characters long, excluding whitespace.",
+      "descriptionWithoutTitle": "Description is not the same as title."
     },
     "indicatorWeight": "Weight: {weight}",
     "descriptionsTotal": "descriptions",

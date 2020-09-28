@@ -107,10 +107,16 @@ const DatasetPage: FC<Props> = ({
 
   const determineDimensionTranslation = (dimensionType: DimensionType) => {
     switch (dimensionType) {
+      case DimensionType.ACCESSIBILITY:
+        return translations.metadataQualityPage.criteria.accessibility;
       case DimensionType.FINDABILITY:
         return translations.metadataQualityPage.criteria.findability;
-      case DimensionType.ACCESSIBILITY:
-        return translations.metadataQualityPage.criteria.availability;
+      case DimensionType.INTEROPERABILITY:
+        return translations.metadataQualityPage.criteria.interoperability;
+      case DimensionType.READABILITY:
+        return translations.metadataQualityPage.criteria.readability;
+      case DimensionType.REUSABILITY:
+        return translations.metadataQualityPage.criteria.reusability;
       default:
         return null;
     }
@@ -118,12 +124,30 @@ const DatasetPage: FC<Props> = ({
 
   const determineIndicatorTranslation = (indicatorType: IndicatorType) => {
     switch (indicatorType) {
-      case IndicatorType.ACCESS_URL:
-        return translations.metadataQualityPage.indicator.accessUrl;
-      case IndicatorType.KEYWORD:
-        return translations.metadataQualityPage.indicator.keyword;
-      case IndicatorType.SUBJECT:
-        return translations.metadataQualityPage.indicator.subject;
+      case IndicatorType.DISTRIBUTABLE_DATA:
+        return translations.metadataQualityPage.indicator.distributableData;
+      case IndicatorType.KEYWORD_USAGE:
+        return translations.metadataQualityPage.indicator.keywordUsage;
+      case IndicatorType.SUBJECT_USAGE:
+        return translations.metadataQualityPage.indicator.subjectUsage;
+      case IndicatorType.GEO_SEARCH:
+        return translations.metadataQualityPage.indicator.geoSearch;
+      case IndicatorType.CONTROLLED_VOCABULARY_USAGE:
+        return translations.metadataQualityPage.indicator
+          .controlledVocabularyUsage;
+      case IndicatorType.LICENSE_INFORMATION:
+        return translations.metadataQualityPage.indicator.licenseInformation;
+      case IndicatorType.CONTACT_POINT:
+        return translations.metadataQualityPage.indicator.contactPoint;
+      case IndicatorType.TITLE:
+        return translations.metadataQualityPage.indicator.title;
+      case IndicatorType.TITLE_NO_ORG_NAME:
+        return translations.metadataQualityPage.indicator.titleNoOrgName;
+      case IndicatorType.DESCRIPTION:
+        return translations.metadataQualityPage.indicator.description;
+      case IndicatorType.DESCRIPTION_WITHOUT_TITLE:
+        return translations.metadataQualityPage.indicator
+          .descriptionWithoutTitle;
       default:
         return null;
     }
@@ -133,12 +157,37 @@ const DatasetPage: FC<Props> = ({
     indicatorType: IndicatorType
   ) => {
     switch (indicatorType) {
-      case IndicatorType.ACCESS_URL:
-        return translations.metadataQualityPage.indicatorDescription.accessUrl;
-      case IndicatorType.KEYWORD:
-        return translations.metadataQualityPage.indicatorDescription.keyword;
-      case IndicatorType.SUBJECT:
-        return translations.metadataQualityPage.indicatorDescription.subject;
+      case IndicatorType.DISTRIBUTABLE_DATA:
+        return translations.metadataQualityPage.indicatorDescription
+          .distributableData;
+      case IndicatorType.KEYWORD_USAGE:
+        return translations.metadataQualityPage.indicatorDescription
+          .keywordUsage;
+      case IndicatorType.SUBJECT_USAGE:
+        return translations.metadataQualityPage.indicatorDescription
+          .subjectUsage;
+      case IndicatorType.GEO_SEARCH:
+        return translations.metadataQualityPage.indicatorDescription.geoSearch;
+      case IndicatorType.CONTROLLED_VOCABULARY_USAGE:
+        return translations.metadataQualityPage.indicatorDescription
+          .controlledVocabularyUsage;
+      case IndicatorType.LICENSE_INFORMATION:
+        return translations.metadataQualityPage.indicatorDescription
+          .licenseInformation;
+      case IndicatorType.CONTACT_POINT:
+        return translations.metadataQualityPage.indicatorDescription
+          .contactPoint;
+      case IndicatorType.TITLE:
+        return translations.metadataQualityPage.indicatorDescription.title;
+      case IndicatorType.TITLE_NO_ORG_NAME:
+        return translations.metadataQualityPage.indicatorDescription
+          .titleNoOrgName;
+      case IndicatorType.DESCRIPTION:
+        return translations.metadataQualityPage.indicatorDescription
+          .description;
+      case IndicatorType.DESCRIPTION_WITHOUT_TITLE:
+        return translations.metadataQualityPage.indicatorDescription
+          .descriptionWithoutTitle;
       default:
         return null;
     }

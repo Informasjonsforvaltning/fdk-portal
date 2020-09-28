@@ -157,8 +157,13 @@ const DatasetsPage: FC<Props> = ({
             <tr>
               <th>{translations.metadataQualityPage.datasetTitle}</th>
               <th>{translations.metadataQualityPage.metadataQuality}</th>
+              <th>{translations.metadataQualityPage.criteria.accessibility}</th>
               <th>{translations.metadataQualityPage.criteria.findability}</th>
-              <th>{translations.metadataQualityPage.criteria.availability}</th>
+              <th>
+                {translations.metadataQualityPage.criteria.interoperability}
+              </th>
+              <th>{translations.metadataQualityPage.criteria.readability}</th>
+              <th>{translations.metadataQualityPage.criteria.reusability}</th>
             </tr>
           </SC.TableHead>
           <SC.TableBody>
@@ -176,6 +181,14 @@ const DatasetsPage: FC<Props> = ({
                 <td>
                   {calculateRatingPercentage(
                     assessment?.dimensions?.find(
+                      ({ type }) => type === DimensionType.ACCESSIBILITY
+                    )?.rating
+                  )}
+                  %
+                </td>
+                <td>
+                  {calculateRatingPercentage(
+                    assessment?.dimensions?.find(
                       ({ type }) => type === DimensionType.FINDABILITY
                     )?.rating
                   )}
@@ -184,7 +197,23 @@ const DatasetsPage: FC<Props> = ({
                 <td>
                   {calculateRatingPercentage(
                     assessment?.dimensions?.find(
-                      ({ type }) => type === DimensionType.ACCESSIBILITY
+                      ({ type }) => type === DimensionType.INTEROPERABILITY
+                    )?.rating
+                  )}
+                  %
+                </td>
+                <td>
+                  {calculateRatingPercentage(
+                    assessment?.dimensions?.find(
+                      ({ type }) => type === DimensionType.READABILITY
+                    )?.rating
+                  )}
+                  %
+                </td>
+                <td>
+                  {calculateRatingPercentage(
+                    assessment?.dimensions?.find(
+                      ({ type }) => type === DimensionType.REUSABILITY
                     )?.rating
                   )}
                   %
