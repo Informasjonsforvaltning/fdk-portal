@@ -8,7 +8,7 @@ import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg'
 
 const DatasetsPage = styled.article`
   flex: 1 0 auto;
-  overflow: auto;
+  overflow: hidden;
 `;
 
 const BetaRibbon = styled.span`
@@ -61,6 +61,8 @@ const MetadataCellContents = styled.div`
   & > svg {
     height: 30px;
     width: 30px;
+    min-height: 30px;
+    min-width: 30px;
   }
 
   & > span {
@@ -91,15 +93,9 @@ const Table = styled.table`
     vertical-align: middle;
 
     &:first-of-type {
-      width: 50%;
+      width: 21%;
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
-    }
-
-    &:last-of-type {
-      width: 15%;
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
     }
 
     &:nth-of-type(n + 2) {
