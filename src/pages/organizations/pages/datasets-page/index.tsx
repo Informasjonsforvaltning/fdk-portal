@@ -1,7 +1,6 @@
 import React, { memo, FC, useState, useLayoutEffect } from 'react';
 import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
 
 import withOrganization, {
@@ -11,19 +10,11 @@ import withOrganization, {
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';
 
-import {
-  IllustrationWithCount,
-  SC as StatisticsRegularSC,
-  StatisticsRegular
-} from '../../../../components/statistics-regular/statistics-regular';
-
 import ExpandIcon from '../../../../images/icon-expand-text-sm.svg';
 
 import SC from './styled';
 
-import { themeFDK as theme } from '../../../../app/theme';
-
-import { Entity, RatingCategory, DimensionType } from '../../../../types/enums';
+import { RatingCategory, DimensionType } from '../../../../types/enums';
 import { Rating } from '../../../../types';
 
 interface RouteParams {
@@ -41,9 +32,10 @@ const articleIds: { [key: string]: string } = {
 const DatasetsPage: FC<Props> = ({
   organization,
   datasets,
-  rating,
   datasetsPage,
   hasMoreDatasets,
+  datasetsCount,
+  datasetsPageSize,
   organizationActions: {
     getOrganizationRequested: getOrganization,
     getOrganizationDatasetsRequested: getOrganizationDatasets,
@@ -91,20 +83,6 @@ const DatasetsPage: FC<Props> = ({
     }
   };
 
-  const determineRatingTranslation = () => {
-    switch (rating?.category) {
-      case RatingCategory.EXCELLENT:
-        return translations.metadataQualityPage.metadataQualityIsExcellent;
-      case RatingCategory.GOOD:
-        return translations.metadataQualityPage.metadataQualityIsGood;
-      case RatingCategory.SUFFICIENT:
-        return translations.metadataQualityPage.metadataQualityIsSufficient;
-      case RatingCategory.POOR:
-      default:
-        return translations.metadataQualityPage.metadataQualityIsPoor;
-    }
-  };
-
   return (
     <SC.DatasetsPage className="container">
       <SC.BetaRibbon>BETA</SC.BetaRibbon>
@@ -123,34 +101,6 @@ const DatasetsPage: FC<Props> = ({
             .organizationDatasetCatalogPageSubtitle
         }
       </SC.Subtitle>
-      <SC.Section>
-        <ThemeProvider theme={theme.extendedColors[Entity.DATASET]}>
-          <SC.SummaryBoxes>
-            <SC.Box>
-              <StatisticsRegular to="">
-                <StatisticsRegularSC.StatisticsRegular.Label>
-                  <IllustrationWithCount
-                    icon={determineRatingIcon(rating)}
-                    percentage={calculateRatingPercentage(rating)}
-                  />
-                  {determineRatingTranslation()}
-                </StatisticsRegularSC.StatisticsRegular.Label>
-              </StatisticsRegular>
-            </SC.Box>
-            <SC.Box>
-              <StatisticsRegular to="">
-                <IllustrationWithCount count={rating?.satisfiedCriteria ?? 0} />
-                <StatisticsRegularSC.StatisticsRegular.Label>
-                  {
-                    translations.metadataQualityPage
-                      .metadataQualitySatisfiedCriteria
-                  }
-                </StatisticsRegularSC.StatisticsRegular.Label>
-              </StatisticsRegular>
-            </SC.Box>
-          </SC.SummaryBoxes>
-        </ThemeProvider>
-      </SC.Section>
       <SC.Section>
         <SC.Table>
           <SC.TableHead>
@@ -229,14 +179,32 @@ const DatasetsPage: FC<Props> = ({
             }
           >
             <ExpandIcon />
-            <span>{translations.metadataQualityPage.loadMoreDatasets}</span>
+            <span>
+              {translations.formatString(
+                translations.metadataQualityPage.loadMoreDatasets,
+                { count: datasetsCount - (datasetsPage + 1) * datasetsPageSize }
+              )}
+            </span>
           </SC.LoadMoreButton>
         )}
       </SC.Section>
       <SC.Section>
-        <Link href={`/news/${articleIds[translations.getLanguage()]}`}>
-          {translations.metadataQualityPage.learnMoreAboutMetadataQuality}
-        </Link>
+        <SC.FrequentlyAskedQuestions>
+          <SC.Question>
+            <h3>
+              {translations.metadataQualityPage.whatIsMetadataQualityFaqTitle}
+            </h3>
+            <p>
+              {
+                translations.metadataQualityPage
+                  .whatIsMetadataQualityFaqDescription
+              }
+            </p>
+            <Link href={`/news/${articleIds[translations.getLanguage()]}`}>
+              {translations.metadataQualityPage.whatIsMetadataQualityFaqLink}
+            </Link>
+          </SC.Question>
+        </SC.FrequentlyAskedQuestions>
       </SC.Section>
     </SC.DatasetsPage>
   );

@@ -36,23 +36,6 @@ const Section = styled.section`
   margin-top: ${theme.spacing('S40')};
 `;
 
-const SummaryBoxes = styled.div`
-  display: flex;
-`;
-
-const Box = styled.div`
-  flex: 1 0 auto;
-  min-width: calc(100% / 2 - ${theme.spacing('S8')});
-  padding: ${theme.spacing('S24')};
-  border-radius: 4px;
-  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  pointer-events: none;
-
-  &:nth-of-type(n + 2) {
-    margin-left: ${theme.spacing('S8')};
-  }
-`;
-
 const MetadataCellContents = styled.div`
   display: flex;
   justify-content: center;
@@ -111,8 +94,8 @@ const Table = styled.table`
       justify-content: space-between;
     }
 
-    background: ${theme.colour(Colour.BLUE, 'B30')};
-    color: ${theme.colour(Colour.BLUE, 'B50')};
+    background: ${theme.colour(Colour.BLUE, 'B50')};
+    color: ${theme.colour(Colour.NEUTRAL, 'N0')};
     font-weight: ${theme.fontWeight('FW700')};
   }
 
@@ -153,7 +136,7 @@ const LoadMoreButton = styled.button`
     height: 20px;
     width: 20px;
 
-    & > path {
+    & > g {
       fill: ${theme.colour(Colour.BLUE, 'B50')};
     }
   }
@@ -223,8 +206,6 @@ export default {
   Title,
   Subtitle,
   Section,
-  SummaryBoxes,
-  Box,
   Table,
   TableHead,
   TableBody,

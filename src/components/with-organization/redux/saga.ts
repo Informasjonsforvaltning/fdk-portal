@@ -63,7 +63,9 @@ function* getOrganizationDatasetsRequested({
         actions.getOrganizationDatasetsSucceeded(
           data.hits as Dataset[],
           data.catalogRating as Rating,
-          data.page.currentPage + 1 < data.page.totalPages
+          data.page.currentPage + 1 < data.page.totalPages,
+          data.page.size,
+          data.page.totalElements
         )
       );
     } else {
