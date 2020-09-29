@@ -604,13 +604,15 @@
     "open": "open",
     "metadataQualityCatalog": "metadata quality for catalog is {0}",
     "metadataQualitySatisfiedCriteria": "of the criteria are met",
-    "organizationPageTitle": "Statistics for {organizationName}",
-    "organizationDatasetCatalogPageTitle": "Dataset catalog for {organizationName}",
-    "organizationDatasetCatalogPageSubtitle": "Metadata quality for dataset description in dataset catalog",
+    "organizationPageTitle": "Contents of {organizationName}",
+    "organizationDatasetCatalogPageTitle": "Dataset descriptions for {organizationName}",
+    "organizationDatasetCatalogPageSubtitle": "Metadata quality for dataset descriptions",
     "organizationDatasetPageSubtitle": "Metadata quality for dataset description of",
-    "datasetCatalogStatistics": "Statistics for dataset catalog",
+    "datasetCatalogStatistics": "Contents of dataset catalog",
     "datasetTitle": "Dataset description title",
-    "loadMoreDatasets": "Load more dataset descriptions",
-    "learnMoreAboutMetadataQuality": "Learn more about metadata quality"
+    "loadMoreDatasets": "Load more dataset descriptions (remaining: {count})",
+    "whatIsMetadataQualityFaqTitle": "What is metadata quality?",
+    "whatIsMetadataQualityFaqDescription": "Metadata quality is meant to be an indicator data owners can use to evaluate the quality of their data.",
+    "whatIsMetadataQualityFaqLink": "Learn more about metadata quality"
   }
 }

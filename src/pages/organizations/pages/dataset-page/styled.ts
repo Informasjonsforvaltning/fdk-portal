@@ -86,23 +86,6 @@ const Section = styled.section`
   margin-top: ${theme.spacing('S40')};
 `;
 
-const SummaryBoxes = styled.div`
-  display: flex;
-`;
-
-const Box = styled.div`
-  flex: 1 0 auto;
-  min-width: calc(100% / 2 - ${theme.spacing('S8')});
-  padding: ${theme.spacing('S24')};
-  border-radius: 4px;
-  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  pointer-events: none;
-
-  &:nth-of-type(n + 2) {
-    margin-left: ${theme.spacing('S8')};
-  }
-`;
-
 const Table = styled.table`
   width: 100%;
   border-spacing: 0 5px;
@@ -144,8 +127,8 @@ const Table = styled.table`
       justify-content: space-between;
     }
 
-    background: ${theme.colour(Colour.BLUE, 'B30')};
-    color: ${theme.colour(Colour.BLUE, 'B50')};
+    background: ${theme.colour(Colour.BLUE, 'B50')};
+    color: ${theme.colour(Colour.NEUTRAL, 'N0')};
     font-weight: ${theme.fontWeight('FW700')};
   }
 
@@ -191,8 +174,6 @@ const Table = styled.table`
 
     & ${ExpansionPanelSC.ExpansionPanel.HeadContent} {
       display: flex;
-      justify-content: space-between;
-      flex: 1;
 
       & svg {
         height: 24px;
@@ -200,7 +181,7 @@ const Table = styled.table`
         min-height: 24px;
         min-width: 24px;
         margin: 0;
-        margin-right: ${theme.spacing('S56')};
+        margin-right: ${theme.spacing('S12')};
       }
     }
 
@@ -291,8 +272,6 @@ export default {
   Title,
   AuthoritativeIcon,
   Section,
-  SummaryBoxes,
-  Box,
   Table,
   TableHead,
   TableBody,

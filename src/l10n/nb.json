@@ -564,7 +564,7 @@
     "indicator": {
       "distributableData": "Nedlastingslenke er oppgitt",
       "keywordUsage": "Nøkkelord er oppgitt",
-      "subjectUsage": "Fagområdet er oppgitt",
+      "subjectUsage": "Begrep er oppgitt",
       "geoSearch": "Datasettet er geografisk avgrenset",
       "controlledVocabularyUsage": "Distribusjon har mediatype",
       "licenseInformation": "Distribusjonslisensen er oppgitt",
@@ -603,13 +603,15 @@
     "open": "åpne",
     "metadataQualityCatalog": "metadatakvaliteten for datakatalogen er {0}",
     "metadataQualitySatisfiedCriteria": "av kriteriene er oppfylt",
-    "organizationPageTitle": "Statistikk for {organizationName}",
-    "organizationDatasetCatalogPageTitle": "Datasettkatalog for {organizationName}",
-    "organizationDatasetCatalogPageSubtitle": "Metadatakvalitet for beskrivelse av datasett i datasettkatalogen",
+    "organizationPageTitle": "Innhold for {organizationName}",
+    "organizationDatasetCatalogPageTitle": "Datasettbeskrivelsene til {organizationName}",
+    "organizationDatasetCatalogPageSubtitle": "Metadatakvalitet for datasettbeskrivelsene",
     "organizationDatasetPageSubtitle": "Metadatakvalitet for datasettbeskrivelsen av",
-    "datasetCatalogStatistics": "Statistikk for datasettkatalog",
+    "datasetCatalogStatistics": "Innhold for datasettkatalog",
     "datasetTitle": "Tittel på datasettbeskrivelse",
-    "loadMoreDatasets": "Last inn flere datasettbeskrivelser",
-    "learnMoreAboutMetadataQuality": "Lær mer om metadatakvalitet"
+    "loadMoreDatasets": "Last inn flere datasettbeskrivelser (gjenstår: {count})",
+    "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",
+    "whatIsMetadataQualityFaqDescription": "Metadatakvalitet er ment som et hjelpeverktøy til dataeiere slik at de kan vurdere metadata mot ulike indikatorer.",
+    "whatIsMetadataQualityFaqLink": "Lær mer om metadatakvalitet"
   }
 }

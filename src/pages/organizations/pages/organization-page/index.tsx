@@ -7,6 +7,9 @@ import Link from '@fellesdatakatalog/link';
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
+import withReport, {
+  Props as ReportProps
+} from '../../../../components/with-report';
 
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';
@@ -38,7 +41,10 @@ interface RouteParams {
   organizationId: string;
 }
 
-interface Props extends OrganizationProps, RouteComponentProps<RouteParams> {}
+interface Props
+  extends OrganizationProps,
+    ReportProps,
+    RouteComponentProps<RouteParams> {}
 
 const articleIds: { [key: string]: string } = {
   nb: '701a4b80-d830-4aa5-be63-20422e3d8d64',
@@ -49,9 +55,14 @@ const articleIds: { [key: string]: string } = {
 const OrganizationPage: FC<Props> = ({
   organization,
   rating,
+  datasetsReport,
   organizationActions: {
     getOrganizationRequested: getOrganization,
     getCatalogRatingRequested: getRating
+  },
+  reportActions: {
+    getDatasetsReportRequested: getDatasetsReport,
+    resetDatasetsReport
   },
   match: {
     url,
@@ -59,11 +70,21 @@ const OrganizationPage: FC<Props> = ({
   }
 }) => {
   useLayoutEffect(() => {
-    if (organization?.id !== organizationId) {
+    if (organization?.organizationId !== organizationId) {
       getOrganization(organizationId);
       getRating(organizationId);
     }
+
+    return () => {
+      resetDatasetsReport();
+    };
   }, []);
+
+  useLayoutEffect(() => {
+    if (organization?.organizationId === organizationId) {
+      getDatasetsReport({ orgPath: organization.orgPath });
+    }
+  }, [organization?.organizationId]);
 
   const ratingPercentage = Math.round(
     ((rating?.score ?? 0) / (rating?.maxScore ?? 0)) * 100
@@ -130,7 +151,10 @@ const OrganizationPage: FC<Props> = ({
                     organization?.orgPath
                   )}`}
                 >
-                  <IllustrationWithCount icon={<DatasetIcon />} count={28} />
+                  <IllustrationWithCount
+                    icon={<DatasetIcon />}
+                    count={datasetsReport?.totalObjects ?? 0}
+                  />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.metadataQualityPage.descriptionsTotal}
                   </StatisticsRegularSC.StatisticsRegular.Label>
@@ -143,7 +167,10 @@ const OrganizationPage: FC<Props> = ({
                     [Filter.LASTXDAYS]: '7'
                   })}`}
                 >
-                  <IllustrationWithCount icon={<NewIcon />} count={1} />
+                  <IllustrationWithCount
+                    icon={<NewIcon />}
+                    count={datasetsReport?.newLastWeek ?? 0}
+                  />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
                       translations.metadataQualityPage.newDescriptions,
@@ -161,7 +188,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<AuthoritativeIcon />}
-                    count={4}
+                    count={datasetsReport?.nationalComponent ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
@@ -178,7 +205,10 @@ const OrganizationPage: FC<Props> = ({
                     [Filter.OPENDATA]: 'true'
                   })}`}
                 >
-                  <IllustrationWithCount icon={<AccessOpenIcon />} count={4} />
+                  <IllustrationWithCount
+                    icon={<AccessOpenIcon />}
+                    count={datasetsReport?.opendata ?? 0}
+                  />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
                       translations.metadataQualityPage.datasetIs,
@@ -228,4 +258,8 @@ const OrganizationPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withOrganization)(OrganizationPage);
+export default compose<FC>(
+  memo,
+  withOrganization,
+  withReport
+)(OrganizationPage);

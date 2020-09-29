@@ -1,7 +1,6 @@
 import React, { memo, FC, useLayoutEffect, Fragment } from 'react';
 import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../../../lib/localization';
@@ -15,23 +14,15 @@ import ExpansionPanel, {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '../../../../components/expansion-panel';
-import {
-  IllustrationWithCount,
-  SC as StatisticsRegularSC,
-  StatisticsRegular
-} from '../../../../components/statistics-regular/statistics-regular';
 
 import SC from './styled';
 import ReactTooltipSC from '../../../../components/tooltip/styled';
-
-import { themeFDK as theme } from '../../../../app/theme';
 
 import type { Rating } from '../../../../types';
 import {
   DimensionType,
   IndicatorType,
-  RatingCategory,
-  Entity
+  RatingCategory
 } from '../../../../types/enums';
 
 interface RouteParams {
@@ -88,20 +79,6 @@ const DatasetPage: FC<Props> = ({
       case RatingCategory.POOR:
       default:
         return <SC.PoorQualityIcon />;
-    }
-  };
-
-  const determineRatingTranslation = (r: Rating | null | undefined) => {
-    switch (r?.category) {
-      case RatingCategory.EXCELLENT:
-        return translations.metadataQualityPage.metadataQualityIsExcellent;
-      case RatingCategory.GOOD:
-        return translations.metadataQualityPage.metadataQualityIsGood;
-      case RatingCategory.SUFFICIENT:
-        return translations.metadataQualityPage.metadataQualityIsSufficient;
-      case RatingCategory.POOR:
-      default:
-        return translations.metadataQualityPage.metadataQualityIsPoor;
     }
   };
 
@@ -214,38 +191,6 @@ const DatasetPage: FC<Props> = ({
         </div>
       </SC.Banner>
       <SC.Section>
-        <ThemeProvider theme={theme.extendedColors[Entity.DATASET]}>
-          <SC.SummaryBoxes>
-            <SC.Box>
-              <StatisticsRegular to="">
-                <StatisticsRegularSC.StatisticsRegular.Label>
-                  <IllustrationWithCount
-                    icon={determineRatingIcon(dataset?.assessment?.rating)}
-                    percentage={calculateRatingPercentage(
-                      dataset?.assessment?.rating
-                    )}
-                  />
-                  {determineRatingTranslation(dataset?.assessment?.rating)}
-                </StatisticsRegularSC.StatisticsRegular.Label>
-              </StatisticsRegular>
-            </SC.Box>
-            <SC.Box>
-              <StatisticsRegular to="">
-                <IllustrationWithCount
-                  count={dataset?.assessment?.rating?.satisfiedCriteria ?? 0}
-                />
-                <StatisticsRegularSC.StatisticsRegular.Label>
-                  {
-                    translations.metadataQualityPage
-                      .metadataQualitySatisfiedCriteria
-                  }
-                </StatisticsRegularSC.StatisticsRegular.Label>
-              </StatisticsRegular>
-            </SC.Box>
-          </SC.SummaryBoxes>
-        </ThemeProvider>
-      </SC.Section>
-      <SC.Section>
         <SC.Table>
           <SC.TableHead>
             <tr>
@@ -274,10 +219,10 @@ const DatasetPage: FC<Props> = ({
                     <tr key={type}>
                       <ExpansionPanel as="td">
                         <ExpansionPanelHead>
-                          <p>{determineIndicatorTranslation(type)}</p>
                           <span>
                             {conforms ? <SC.CheckIcon /> : <SC.CrossIcon />}
                           </span>
+                          <p>{determineIndicatorTranslation(type)}</p>
                         </ExpansionPanelHead>
                         <ExpansionPanelBody>
                           <p>
@@ -300,9 +245,22 @@ const DatasetPage: FC<Props> = ({
         </SC.Table>
       </SC.Section>
       <SC.Section>
-        <Link href={`/news/${articleIds[translations.getLanguage()]}`}>
-          {translations.metadataQualityPage.learnMoreAboutMetadataQuality}
-        </Link>
+        <SC.FrequentlyAskedQuestions>
+          <SC.Question>
+            <h3>
+              {translations.metadataQualityPage.whatIsMetadataQualityFaqTitle}
+            </h3>
+            <p>
+              {
+                translations.metadataQualityPage
+                  .whatIsMetadataQualityFaqDescription
+              }
+            </p>
+            <Link href={`/news/${articleIds[translations.getLanguage()]}`}>
+              {translations.metadataQualityPage.whatIsMetadataQualityFaqLink}
+            </Link>
+          </SC.Question>
+        </SC.FrequentlyAskedQuestions>
       </SC.Section>
     </SC.DatasetPage>
   );

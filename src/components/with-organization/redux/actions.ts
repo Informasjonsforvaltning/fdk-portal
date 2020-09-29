@@ -85,14 +85,18 @@ export function getOrganizationDatasetsRequested(id: string) {
 export function getOrganizationDatasetsSucceeded(
   datasets: Dataset[],
   rating: Rating,
-  hasMoreDatasets: boolean
+  hasMoreDatasets: boolean,
+  datasetsPageSize: number,
+  datasetsCount: number
 ) {
   return {
     type: GET_ORGANIZATION_DATASETS_SUCCEEDED,
     payload: {
       datasets,
       rating,
-      hasMoreDatasets
+      hasMoreDatasets,
+      datasetsPageSize,
+      datasetsCount
     }
   };
 }
