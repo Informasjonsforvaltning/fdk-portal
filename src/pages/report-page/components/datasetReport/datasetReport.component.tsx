@@ -68,13 +68,15 @@ const DatasetReport: FC<Props> = ({
     themesAndTopicsCount = [],
     catalogs = []
   } = {},
-  datasetsTimeSeries: { timeSeriesData } = {}
+  datasetsTimeSeries: { timeSeriesData = [] } = {}
 }) => {
   useEffect(() => {
     if (!los) {
       getReferenceData('los');
     }
   }, []);
+
+  timeSeriesData.push([Date.now(), totalObjects]);
 
   const accessRightsPublic =
     accessRights?.find((item: KeyWithCountObject) => item.key === 'PUBLIC')

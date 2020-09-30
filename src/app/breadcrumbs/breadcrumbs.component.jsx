@@ -20,6 +20,7 @@ import { PathNameBreadcrumb } from './pathname-breadcrumb/pathname-breadcrumb';
 import './breadcrumbs.scss';
 import { getConfig } from '../../config';
 import { NewsBreadcrumb } from './news-breadcrumb/news-breadcrumb';
+import OrganizationBreadcrumb from './organization-breadcrumb';
 
 // define some custom breadcrumbs for certain routes (optional)
 const routes = [
@@ -66,6 +67,18 @@ const routes = [
   {
     path: PATHNAME_ORGANIZATIONS,
     breadcrumb: () => <PathNameBreadcrumb pathName="organizations" />
+  },
+  {
+    path: `${PATHNAME_ORGANIZATIONS}/:organizationId`,
+    breadcrumb: () => <OrganizationBreadcrumb />
+  },
+  {
+    path: `${PATHNAME_ORGANIZATIONS}/:organizationId/datasets`,
+    breadcrumb: () => <PathNameBreadcrumb pathName="datasets" />
+  },
+  {
+    path: `${PATHNAME_ORGANIZATIONS}/:organizationId/datasets/:id`,
+    breadcrumb: DatasetBreadcrumb
   }
 ];
 

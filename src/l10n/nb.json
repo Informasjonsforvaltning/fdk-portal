@@ -15,7 +15,7 @@
   "contactPoint": "Kontaktpunkt",
   "documentation": "Dokumentasjon",
   "specification": "Spesifikasjon",
-  "serviceType":"Tjenestetype",
+  "serviceType": "Tjenestetype",
   "email": "E-post",
   "phone": "Telefon",
   "close": "Lukk",
@@ -108,7 +108,8 @@
     "aboutNap": "Om Transportportal.no",
     "guidance": "Veiledning",
     "newsArchive": "Aktuelt",
-    "organizations": "Virksomheter"
+    "organizations": "Virksomheter",
+    "datasets": "Datasettbeskrivelser"
   },
   "query": {
     "intro": "Søk etter innhold",
@@ -345,10 +346,10 @@
     "datasetTab": "Rapport for datasett",
     "conceptTab": "Rapport for begreper",
     "apiTab": "Rapport for API-er",
-    "datasets":"datasett",
-    "apis":"API-er",
-    "concepts":"begreper",
-    "newPastWeek":"nye siste uke",
+    "datasets": "datasett",
+    "apis": "API-er",
+    "concepts": "begreper",
+    "newPastWeek": "nye siste uke",
     "aggregation": {
       "public": "Datasett som er offentlig",
       "restricted": "Datasett med begrenset offentlighet",
@@ -383,13 +384,14 @@
     "countConceptsCatalogsLabel": "virksomheter har begreper i Felles datakatalog",
     "conceptsFrom": "Virksomhetens begrepskataloger",
     "conceptsCatalog": "Begrepskataloger",
-
     "datasetsDescription": "datasettbeskrivelser",
     "dataserviceDescription": "API-beskrivelser",
     "conceptsDescription": "begrepsbeskrivelser",
     "informationModelsDescription": "informasjonsmodellbeskrivelser",
     "growth": "Utvikling",
     "growthFromFirstPublish": "Antall datasettbeskrivelser siden første publisering",
+    "conceptGrowthFromFirstPublish": "Antall begrepsbeskrivelser siden første publisering",
+    "informationModelGrowthFromFirstPublish": "Antall informasjonsmodellbeskrivelser siden første publisering",
     "opendata": "åpne data",
     "public": "kan deles offentlig",
     "restricted": "har begrenset offentlighet",
@@ -548,5 +550,68 @@
         "contactInformation": "Kontaktinformasjon"
       }
     }
+  },
+  "metadataQualityPage": {
+    "criterion": "Kriterium",
+    "metadataQuality": "Metadatakvalitet",
+    "criteria": {
+      "accessibility": "Tilgjengelighet",
+      "findability": "Søkbarhet",
+      "interoperability": "Interoperabilitet",
+      "readability": "Lesbarhet",
+      "reusability": "Gjenbrukbarhet"
+    },
+    "indicator": {
+      "distributableData": "Nedlastingslenke er oppgitt",
+      "keywordUsage": "Nøkkelord er oppgitt",
+      "subjectUsage": "Begrep er oppgitt",
+      "geoSearch": "Datasettet er geografisk avgrenset",
+      "controlledVocabularyUsage": "Distribusjon har mediatype",
+      "licenseInformation": "Distribusjonslisensen er oppgitt",
+      "contactPoint": "Kontaktinformasjon er oppgitt",
+      "title": "Tittel er konsis",
+      "titleNoOrgName": "Organisasjonens navn er ikke med i tittel",
+      "description": "Beskrivelsen er konsis",
+      "descriptionWithoutTitle": "Beskrivelsen er ikke en gjentakelse av tittel"
+    },
+    "indicatorDescription": {
+      "distributableData": "Det finnes en tilgangsURL til datasett på distribusjon eller endpointURL på en tilknyttet datatjeneste.",
+      "keywordUsage": "Det finnes et eller flere nøkkelord tilknyttet datasettbeskrivelsen.",
+      "subjectUsage": "Det finnes et eller flere begreper tilknyttet datasettbeskrivelsen.",
+      "geoSearch": "Datasettet er geografisk avgrenset.",
+      "controlledVocabularyUsage": "Det finnes et eller flere format på distribusjonen til datasettbeskrivelsen som finnes i IANAs liste over mediatyper.",
+      "licenseInformation": "Det finnes en lisens for å gjenbruke datasettet på distribusjonsklassen til datasettet.",
+      "contactPoint": "Det finnes kontaktinformasjon for hvem konsument kan henvende seg til.",
+      "title": "Tittel er mindre enn 100 tegn.",
+      "titleNoOrgName": "Organisasjonens navn er ikke med i tittel.",
+      "description": "Beskrivelsen er mindre enn 400 tegn, ikke regnet med mellomrom.",
+      "descriptionWithoutTitle": "Beskrivelsen er ikke en gjentakelse av tittel."
+    },
+    "indicatorWeight": "Vekt: {weight}",
+    "descriptionsTotal": "beskrivelser totalt",
+    "newDescriptions": "nye beskrivelser {0}",
+    "lastYear": "siste år",
+    "lastMonth": "siste måned",
+    "lastWeek": "siste uke",
+    "metadataQualityIsExcellent": "Metadatakvaliteten er utmerket",
+    "metadataQualityIsGood": "Metadatakvaliteten er god",
+    "metadataQualityIsSufficient": "Metadatakvaliteten er tilstrekkelig",
+    "metadataQualityIsPoor": "Metadatakvaliteten er dårlig",
+    "metaDataMiddle": "middels",
+    "datasetIs": "datasett som er {0}",
+    "authoritativeSources": "autoritative kilder",
+    "open": "åpne",
+    "metadataQualityCatalog": "metadatakvaliteten for datakatalogen er {0}",
+    "metadataQualitySatisfiedCriteria": "av kriteriene er oppfylt",
+    "organizationPageTitle": "Innhold for {organizationName}",
+    "organizationDatasetCatalogPageTitle": "Datasettbeskrivelsene til {organizationName}",
+    "organizationDatasetCatalogPageSubtitle": "Metadatakvalitet for datasettbeskrivelsene",
+    "organizationDatasetPageSubtitle": "Metadatakvalitet for datasettbeskrivelsen av",
+    "datasetCatalogStatistics": "Datasettbeskrivelser",
+    "datasetTitle": "Tittel på datasettbeskrivelse",
+    "loadMoreDatasets": "Last inn flere datasettbeskrivelser (gjenstår: {count})",
+    "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",
+    "whatIsMetadataQualityFaqDescription": "Metadatakvalitet er ment som et hjelpeverktøy til dataeiere slik at de kan vurdere metadata mot ulike indikatorer.",
+    "whatIsMetadataQualityFaqLink": "Lær mer om metadatakvalitet"
   }
 }

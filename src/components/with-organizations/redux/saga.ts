@@ -12,6 +12,7 @@ function* getOrganizationsRequested() {
   try {
     const data = yield call(getOrganizations);
     const organizations = extractOrganizations(data);
+
     if (organizations) {
       yield put(actions.getOrganizationsSucceeded(organizations as any));
     } else {

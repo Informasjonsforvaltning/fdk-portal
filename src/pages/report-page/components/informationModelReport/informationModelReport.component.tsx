@@ -6,41 +6,101 @@ import BoxRegular from '../../../../components/box-regular/box-regular.component
 import {
   StatisticsRegular,
   IllustrationWithCount,
-  SC
+  SC,
+  FontVariant
 } from '../../../../components/statistics-regular/statistics-regular';
 import { themeFDK as theme } from '../../../../app/theme';
-import { Entity } from '../../../../types/enums';
+import { Entity, Filter } from '../../../../types/enums';
 
 import InfoModIcon from '../../../../images/icon-catalog-infomod-md.svg';
+import NewIcon from '../../../../images/icon-new-md.svg';
+import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import { PATHNAME_INFORMATIONMODELS } from '../../../../constants/constants';
 import localization from '../../../../lib/localization';
+import { Line } from '../../../../components/charts';
+import { Report } from '../../../../types';
 
 interface Props extends RouteComponentProps {
-  informationModelsReport?: any;
+  informationModelsReport?: Partial<Report>;
+  informationModelsTimeSeries: any;
+  publishers?: any;
 }
 
 const InformationModelReport: FC<Props> = ({
-  location,
-  informationModelsReport: { page: { totalElements = '0' } } = {}
+  location: { search: searchParams } = {},
+  informationModelsReport: {
+    totalObjects = 0,
+    newLastWeek = 0,
+    organizationCount = 0
+  } = {},
+  informationModelsTimeSeries: { timeSeriesData = [] } = {}
 }) => {
-  const { search: searchParams } = location;
+  timeSeriesData.push([Date.now(), totalObjects]);
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.INFORMATION_MODEL]}>
       <main id="content">
         <div className="row">
-          <div className="col-12">
+          <div className="col-12 col-md-6">
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_INFORMATIONMODELS}${searchParams}`}
               >
                 <IllustrationWithCount
                   icon={<InfoModIcon />}
-                  count={totalElements}
+                  count={totalObjects}
                 />
                 <SC.StatisticsRegular.Label>
                   {localization.report.informationModelsDescription}
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
+            </BoxRegular>
+          </div>
+          <div className="col-12 col-md-6">
+            <BoxRegular>
+              <StatisticsRegular
+                to={`${PATHNAME_INFORMATIONMODELS}${patchSearchQuery(
+                  Filter.LASTXDAYS,
+                  '7'
+                )}`}
+              >
+                <IllustrationWithCount icon={<NewIcon />} count={newLastWeek} />
+                <SC.StatisticsRegular.Label>
+                  {localization.report.newPastWeek}
+                </SC.StatisticsRegular.Label>
+              </StatisticsRegular>
+            </BoxRegular>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-12">
+            <BoxRegular>
+              <StatisticsRegular to={`${PATHNAME_INFORMATIONMODELS}`}>
+                <IllustrationWithCount
+                  icon={<InfoModIcon />}
+                  count={organizationCount}
+                />
+                <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
+                  {localization.report.organizationsInformationModel}
+                </SC.StatisticsRegular.Label>
+              </StatisticsRegular>
+            </BoxRegular>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-12">
+            <BoxRegular
+              header={localization.report.growth}
+              subHeader={
+                localization.report.informationModelGrowthFromFirstPublish
+              }
+            >
+              <Line
+                name={localization.informationModelLabel}
+                data={timeSeriesData}
+                lineColor={theme.extendedColors[Entity.INFORMATION_MODEL].dark}
+              />
             </BoxRegular>
           </div>
         </div>

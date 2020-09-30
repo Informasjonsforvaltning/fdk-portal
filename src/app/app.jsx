@@ -41,7 +41,7 @@ import '../assets/css/bootstrap-override.scss';
 import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { GuidancePage } from '../pages/guidance-page/guidance-page';
-import { OrganizationsPage } from '../pages/organizations-page/organizations-page';
+import OrganizationsRouter from '../pages/organizations';
 import { parseSearchParams } from '../lib/location-history-helper';
 
 export function App({ language, onChangeLanguage }) {
@@ -107,11 +107,7 @@ export function App({ language, onChangeLanguage }) {
         <Route exact path={PATHNAME_CONCEPTS} component={SearchPage} />
         <Route exact path={PATHNAME_INFORMATIONMODELS} component={SearchPage} />
         <Route exact path={PATHNAME_NEWS_ARCHIVE} component={NewsArchivePage} />
-        <Route
-          exact
-          path={PATHNAME_ORGANIZATIONS}
-          component={OrganizationsPage}
-        />
+        <Route path={PATHNAME_ORGANIZATIONS} component={OrganizationsRouter} />
         <ScrollToTop>
           <Switch>
             <Route

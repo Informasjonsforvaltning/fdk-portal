@@ -108,7 +108,8 @@
     "aboutNap": "Om Transportportal.no",
     "guidance": "Rettleiing",
     "newsArchive": "Aktuelt",
-    "organizations": "Verksemder"
+    "organizations": "Verksemder",
+    "datasets": "Datasettbeskrivelser"
   },
   "query": {
     "intro": "Søk etter innhald",
@@ -390,6 +391,8 @@
     "informationModelsDescription": "informasjonsmodellskildringar",
     "growth": "Utvikling",
     "growthFromFirstPublish": "Antall datasettskildringer sia fyrste publisering",
+    "conceptGrowthFromFirstPublish": "Antall omgrepsskildringar sia fyrste publisering",
+    "informationModelGrowthFromFirstPublish": "Antall informasjonsmodellskildringar sia fyrste publisering",
     "opendata": "opne data",
     "public": "kan delas offentleg",
     "restricted": "har avgrensa offentlighet",
@@ -548,5 +551,68 @@
         "contactInformation": "Kontaktinformasjon"
       }
     }
+  },
+  "metadataQualityPage": {
+    "criterion": "Kriterium",
+    "metadataQuality": "Metadatakvalitet",
+    "criteria": {
+      "accessibility": "Tilgjengelegheit",
+      "findability": "Søkbarheit",
+      "interoperability": "Interoperabilitet",
+      "readability": "Lesbarhet",
+      "reusability": "Gjenbrukbarheit"
+    },
+    "indicator": {
+      "distributableData": "Nedlastingslenke er oppgitt",
+      "keywordUsage": "Nøkkelord er oppgitt",
+      "subjectUsage": "Begrep er oppgitt",
+      "geoSearch": "Datasettet er geografisk avgrenset",
+      "controlledVocabularyUsage": "Distribusjon har mediatype",
+      "licenseInformation": "Distribusjonslisensen er oppgitt",
+      "contactPoint": "Kontaktinformasjon er oppgitt",
+      "title": "Tittel er konsis",
+      "titleNoOrgName": "Organisasjonens navn er ikke med i tittel",
+      "description": "Beskrivelsen er konsis",
+      "descriptionWithoutTitle": "Beskrivelsen er ikke en gjentakelse av tittel"
+    },
+    "indicatorDescription": {
+      "distributableData": "Det finnes en tilgangsURL til datasett på distribusjon eller endpointURL på en tilknyttet datatjeneste.",
+      "keywordUsage": "Det finnes et eller flere nøkkelord tilknyttet datasettbeskrivelsen.",
+      "subjectUsage": "Det finnes et eller flere begreper tilknyttet datasettbeskrivelsen.",
+      "geoSearch": "Datasettet er geografisk avgrenset.",
+      "controlledVocabularyUsage": "Det finnes et eller flere format på distribusjonen til datasettbeskrivelsen som finnes i IANAs liste over mediatyper.",
+      "licenseInformation": "Det finnes en lisens for å gjenbruke datasettet på distribusjonsklassen til datasettet.",
+      "contactPoint": "Det finnes kontaktinformasjon for hvem konsument kan henvende seg til.",
+      "title": "Tittel er mindre enn 100 tegn.",
+      "titleNoOrgName": "Organisasjonens navn er ikke med i tittel.",
+      "description": "Beskrivelsen er mindre enn 400 tegn, ikke regnet med mellomrom.",
+      "descriptionWithoutTitle": "Beskrivelsen er ikke en gjentakelse av tittel."
+    },
+    "indicatorWeight": "Vekt: {weight}",
+    "descriptionsTotal": "skildringar totalt",
+    "newDescriptions": "nye skildringar {0}",
+    "lastYear": "siste år",
+    "lastMonth": "siste månad",
+    "lastWeek": "siste veke",
+    "metadataQualityIsExcellent": "Metadatakvaliteten er utmerket",
+    "metadataQualityIsGood": "Metadatakvaliteten er god",
+    "metadataQualityIsSufficient": "Metadatakvaliteten er tilstrekkelig",
+    "metadataQualityIsPoor": "Metadatakvaliteten er dårlig",
+    "metaDataMiddle": "middels",
+    "datasetIs": "datasett som er {0}",
+    "authoritativeSources": "autoritative kjelder",
+    "open": "opne",
+    "metadataQualityCatalog": "metadatakvaliteten for datakatalogen er {0}",
+    "metadataQualitySatisfiedCriteria": "av kriteriane er oppfyld",
+    "organizationPageTitle": "Innhald for {organizationName}",
+    "organizationDatasetCatalogPageTitle": "Datasettbeskrivelsene til {organizationName}",
+    "organizationDatasetCatalogPageSubtitle": "Metadatakvalitet for datasettbeskrivelsene",
+    "organizationDatasetPageSubtitle": "Metadatakvalitet for datasettbeskrivelsen av",
+    "datasetCatalogStatistics": "Datasettbeskrivelser",
+    "datasetTitle": "Tittel på datasettbeskrivelse",
+    "loadMoreDatasets": "Last inn flere datasettbeskrivelser (gjenstår: {count})",
+    "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",
+    "whatIsMetadataQualityFaqDescription": "Metadatakvalitet er ment som et hjelpeverktøy til dataeiere slik at de kan vurdere metadata mot ulike indikatorer.",
+    "whatIsMetadataQualityFaqLink": "Lær mer om metadatakvalitet"
   }
 }

@@ -18,3 +18,11 @@ export const extractLabelsAndData = (timeSeries: DataPoint[]) => {
 
 export const getDatasetsTimeseries = (params: any = '') =>
   reportApiGet('/timeseries/datasets', params).then(extractLabelsAndData);
+
+export const getConceptsTimeseries = (params: any = '') =>
+  reportApiGet('/timeseries/concepts', params).then(extractLabelsAndData);
+
+export const getInformationModelsTimeseries = (params: any = '') =>
+  reportApiGet('/timeseries/informationmodels', params).then(
+    extractLabelsAndData
+  );

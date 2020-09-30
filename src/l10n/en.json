@@ -108,7 +108,8 @@
     "aboutNap": "About Transportportal.no",
     "guidance": "Guidance",
     "newsArchive": "News",
-    "organizations": "Organizations"
+    "organizations": "Organizations",
+    "datasets": "Dataset descriptions"
   },
   "query": {
     "intro": "Search for contents",
@@ -390,6 +391,8 @@
     "informationModelsDescription": "information model descriptions",
     "growth": "Growth",
     "growthFromFirstPublish": "Datasetdescriptions since first published",
+    "conceptGrowthFromFirstPublish": "Concept descriptions since first published",
+    "informationModelGrowthFromFirstPublish": "Information model descriptions since first published",
     "opendata": "open data",
     "public": "are public",
     "restricted": "with restricted access",
@@ -548,5 +551,68 @@
         "contactInformation": "Contact information"
       }
     }
+  },
+  "metadataQualityPage": {
+    "criterion": "Criterion",
+    "metadataQuality": "Metadata quality",
+    "criteria": {
+      "accessibility": "Availability",
+      "findability": "Findability",
+      "interoperability": "Interoperability",
+      "readability": "Readability",
+      "reusability": "Reusability"
+    },
+    "indicator": {
+      "distributableData": "Download URL is provided",
+      "keywordUsage": "Keywords are provided",
+      "subjectUsage": "Subjects are provided",
+      "geoSearch": "Dataset has spacial constraints",
+      "controlledVocabularyUsage": "Distribution has correct media type",
+      "licenseInformation": "Distribution license is provided",
+      "contactPoint": "Contact information is provided",
+      "title": "Title is concise",
+      "titleNoOrgName": "Organisation name is not part of the title",
+      "description": "Description is concise",
+      "descriptionWithoutTitle": "Description is not the same as title"
+    },
+    "indicatorDescription": {
+      "distributableData": "Distributions have access URLa or related data services have endpoint URLs.",
+      "keywordUsage": "There is at least one keyword related to this dataset description.",
+      "subjectUsage": "There is at least one subject related to this dataset description.",
+      "geoSearch": "Dataset has spacial constraints.",
+      "controlledVocabularyUsage": "There is at least one format on dataset's distribution that conforms to IANAs mediatypes.",
+      "licenseInformation": "There is a license on dataset distribution that allows for reuse of the dataset.",
+      "contactPoint": "There is contact information that allows consumers to get in touch with data providers.",
+      "title": "Title is less than 100 characters long.",
+      "titleNoOrgName": "Organisation name is not part of the title.",
+      "description": "Description is less than 400 characters long, excluding whitespace.",
+      "descriptionWithoutTitle": "Description is not the same as title."
+    },
+    "indicatorWeight": "Weight: {weight}",
+    "descriptionsTotal": "descriptions",
+    "newDescriptions": "new descriptions {0}",
+    "lastYear": "last year",
+    "lastMonth": "last month",
+    "lastWeek": "last week",
+    "metadataQualityIsExcellent": "Metadata quality is excellent",
+    "metadataQualityIsGood": "Metadata quality is good",
+    "metadataQualityIsSufficient": "Metadata quality is sufficient",
+    "metadataQualityIsPoor": "Metadata quality is poor",
+    "metaDataMiddle": "medium",
+    "datasetIs": "datasets are {0}",
+    "authoritativeSources": "authoritative sources",
+    "open": "open",
+    "metadataQualityCatalog": "metadata quality for catalog is {0}",
+    "metadataQualitySatisfiedCriteria": "of the criteria are met",
+    "organizationPageTitle": "Contents of {organizationName}",
+    "organizationDatasetCatalogPageTitle": "Dataset descriptions for {organizationName}",
+    "organizationDatasetCatalogPageSubtitle": "Metadata quality for dataset descriptions",
+    "organizationDatasetPageSubtitle": "Metadata quality for dataset description of",
+    "datasetCatalogStatistics": "Dataset descriptions",
+    "datasetTitle": "Dataset description title",
+    "loadMoreDatasets": "Load more dataset descriptions (remaining: {count})",
+    "whatIsMetadataQualityFaqTitle": "What is metadata quality?",
+    "whatIsMetadataQualityFaqDescription": "Metadata quality is meant to be an indicator data owners can use to evaluate the quality of their data.",
+    "whatIsMetadataQualityFaqLink": "Learn more about metadata quality"
   }
 }

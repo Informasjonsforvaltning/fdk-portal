@@ -100,9 +100,10 @@ const mapFilters = ({
   return filters.length > 0 ? filters : undefined;
 };
 
-export const paramsToSearchBody = ({ q, page, ...params }: any) => ({
+export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   q,
   page: page ? Number(page) : undefined,
+  size,
   sorting: mapSorting(params),
   filters: mapFilters(params)
 });

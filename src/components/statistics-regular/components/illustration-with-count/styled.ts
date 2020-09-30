@@ -7,7 +7,8 @@ const Icon = styled.figure`
   height: 48px;
   width: 48px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.light};
+  background-color: ${({ theme }) =>
+    theme.light ?? theme.extendedColors.neutralLight};
   display: flex;
   justify-content: center;
 
@@ -33,15 +34,16 @@ const Chart = styled.figure`
 `;
 
 const Count = styled.span`
-  color: ${({ theme }) => theme.dark};
+  color: ${({ theme }) => theme.dark ?? theme.extendedColors.neutralDarker};
   font-size: 2em;
   font-weight: 600;
   margin-left: 0.2em;
 `;
 
 const Content = styled.div<{ variant?: Variant }>`
-  align-items: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0.5em 0;
 
   ${({ variant }) => {
