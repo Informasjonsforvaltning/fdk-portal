@@ -608,7 +608,7 @@
     "organizationDatasetCatalogPageTitle": "Dataset descriptions for {organizationName}",
     "organizationDatasetCatalogPageSubtitle": "Metadata quality for dataset descriptions",
     "organizationDatasetPageSubtitle": "Metadata quality for dataset description of",
-    "datasetCatalogStatistics": "Contents of dataset catalog",
+    "datasetCatalogStatistics": "Dataset descriptions",
     "datasetTitle": "Dataset description title",
     "loadMoreDatasets": "Load more dataset descriptions (remaining: {count})",
     "whatIsMetadataQualityFaqTitle": "What is metadata quality?",

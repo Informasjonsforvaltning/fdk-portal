@@ -608,7 +608,7 @@
     "organizationDatasetCatalogPageTitle": "Datasettbeskrivelsene til {organizationName}",
     "organizationDatasetCatalogPageSubtitle": "Metadatakvalitet for datasettbeskrivelsene",
     "organizationDatasetPageSubtitle": "Metadatakvalitet for datasettbeskrivelsen av",
-    "datasetCatalogStatistics": "Innhald for datasettkatalog",
+    "datasetCatalogStatistics": "Datasettbeskrivelser",
     "datasetTitle": "Tittel på datasettbeskrivelse",
     "loadMoreDatasets": "Last inn flere datasettbeskrivelser (gjenstår: {count})",
     "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",
