@@ -63,7 +63,7 @@ const DatasetDetailsPage: FC<Props> = ({
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptsActions: { getConceptsRequested: getConcepts },
-  datasetsActions: { getDatasetsRequested: getDatasets },
+  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
   dataServicesActions: { getDataServicesRequested: getDataServices },
   match: {
     params: { datasetId }
@@ -98,6 +98,10 @@ const DatasetDetailsPage: FC<Props> = ({
     getDatasets({
       uris: datasetUris?.join()
     });
+
+    return () => {
+      resetDatasets();
+    };
   }, [datasetUris?.join()]);
 
   useEffect(() => {
