@@ -39,9 +39,15 @@ jobs:
         with:
           args: "apply -f ./kubectlapply.yaml --force"
 
-      - name: Notify slack of deploy
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: pullreminders/slack-action@master
+      - name: Notify slack
+        uses: 8398a7/action-slack@v3
         with:
-          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to demo\"}'
+          mention: 'channel'
+          if_mention: failure
+          status: ${{ job.status }}
+          author_name: 'Application: fdk-portal | Environment: demo'
+          fields: commit,author,workflow
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()

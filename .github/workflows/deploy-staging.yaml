@@ -1,4 +1,4 @@
-name: Build and deploy to staging when pull request is created
+name: Deploy to staging
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-
+    name: Build, test, publish and deploy to staging environment when pull request is created
     runs-on: ubuntu-latest
 
     steps:
@@ -56,9 +56,13 @@ jobs:
         with:
           args: "apply -f ./kubectlapply.yaml --force"
 
-      - name: Notify slack of deploy
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: pullreminders/slack-action@master
+      - name: Notify slack
+        uses: 8398a7/action-slack@v3
         with:
-          args: '{\"channel\":\"C7NTH118T\",\"text\":\"Application: fdk-portal deployed to staging\"}'
+          status: ${{ job.status }}
+          author_name: 'Application: fdk-portal | Environment: staging'
+          fields: commit,author,workflow
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
