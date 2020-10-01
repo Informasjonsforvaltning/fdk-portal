@@ -29,6 +29,7 @@ export function ReportPagePure({
   publishers,
   dataServiceStats,
   informationModelsReport,
+  informationModelsTimeSeries,
   datasetsReport,
   datasetsTimeSeries,
   conceptsReport,
@@ -195,6 +196,9 @@ export function ReportPagePure({
                     <Pane id="pane-4">
                       <InformationModelReport
                         informationModelsReport={informationModelsReport}
+                        informationModelsTimeSeries={
+                          informationModelsTimeSeries
+                        }
                       />
                     </Pane>
                   </Tabs>
