@@ -85,7 +85,8 @@ const DatasetDetailsPage: FC<Props> = ({
   const conceptIdentifiers = dataset?.subject?.map(
     ({ identifier }) => identifier
   );
-  const datasetUris = dataset?.references?.map(({ source: { uri } }) => uri);
+  const datasetUris =
+    dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
   const datasetUri = dataset?.uri ?? '';
 
   useEffect(() => {
@@ -95,9 +96,11 @@ const DatasetDetailsPage: FC<Props> = ({
   }, [conceptIdentifiers?.join()]);
 
   useEffect(() => {
-    getDatasets({
-      uris: datasetUris?.join()
-    });
+    if (datasetUris?.length > 0) {
+      getDatasets({
+        uris: datasetUris?.join()
+      });
+    }
 
     return () => {
       resetDatasets();
