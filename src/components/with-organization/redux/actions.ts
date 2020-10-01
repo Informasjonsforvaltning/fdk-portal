@@ -55,10 +55,11 @@ export function getCatalogRatingRequested(id: string) {
   };
 }
 
-export function getCatalogRatingSucceeded(rating: Rating) {
+export function getCatalogRatingSucceeded(datasets: Dataset[], rating: Rating) {
   return {
     type: GET_CATALOG_RATING_SUCCEEDED,
     payload: {
+      datasets,
       rating
     }
   };

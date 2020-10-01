@@ -53,6 +53,7 @@ const articleIds: { [key: string]: string } = {
 };
 
 const OrganizationPage: FC<Props> = ({
+  datasets,
   organization,
   rating,
   datasetsReport,
@@ -218,34 +219,36 @@ const OrganizationPage: FC<Props> = ({
                 </StatisticsRegular>
               </SC.Box>
             </div>
-            <div>
-              <SC.Box colspan={2}>
-                <StatisticsRegular to={`${url}/datasets`}>
-                  <StatisticsRegularSC.StatisticsRegular.Label>
+            {datasets.length > 0 && rating && (
+              <div>
+                <SC.Box colspan={2}>
+                  <StatisticsRegular to={`${url}/datasets`}>
+                    <StatisticsRegularSC.StatisticsRegular.Label>
+                      <IllustrationWithCount
+                        icon={determineRatingIcon()}
+                        percentage={
+                          isNaN(ratingPercentage) ? 0 : ratingPercentage
+                        }
+                      />
+                      {determineRatingTranslation()}
+                    </StatisticsRegularSC.StatisticsRegular.Label>
+                  </StatisticsRegular>
+                </SC.Box>
+                <SC.Box colspan={2}>
+                  <StatisticsRegular to={`${url}/datasets`}>
                     <IllustrationWithCount
-                      icon={determineRatingIcon()}
-                      percentage={
-                        isNaN(ratingPercentage) ? 0 : ratingPercentage
-                      }
+                      count={rating?.satisfiedCriteria ?? 0}
                     />
-                    {determineRatingTranslation()}
-                  </StatisticsRegularSC.StatisticsRegular.Label>
-                </StatisticsRegular>
-              </SC.Box>
-              <SC.Box colspan={2}>
-                <StatisticsRegular to={`${url}/datasets`}>
-                  <IllustrationWithCount
-                    count={rating?.satisfiedCriteria ?? 0}
-                  />
-                  <StatisticsRegularSC.StatisticsRegular.Label>
-                    {
-                      translations.metadataQualityPage
-                        .metadataQualitySatisfiedCriteria
-                    }
-                  </StatisticsRegularSC.StatisticsRegular.Label>
-                </StatisticsRegular>
-              </SC.Box>
-            </div>
+                    <StatisticsRegularSC.StatisticsRegular.Label>
+                      {
+                        translations.metadataQualityPage
+                          .metadataQualitySatisfiedCriteria
+                      }
+                    </StatisticsRegularSC.StatisticsRegular.Label>
+                  </StatisticsRegular>
+                </SC.Box>
+              </div>
+            )}
           </SC.DatasetCataloguesStatistics>
         </ThemeProvider>
       </SC.Section>
