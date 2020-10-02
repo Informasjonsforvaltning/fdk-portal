@@ -275,6 +275,7 @@ const shouldRenderContactPoint = contactPoint =>
 
 const renderStickyMenu = (apiItem, informationModels, datasets) => {
   const menuItems = [];
+  const { conformsTo } = apiItem;
   if (_.get(apiItem, 'description')) {
     menuItems.push({
       name: getTranslateText(_.get(apiItem, 'title')),
@@ -303,12 +304,6 @@ const renderStickyMenu = (apiItem, informationModels, datasets) => {
       prefLabel: localization.api.endpoints.operations
     });
   }
-  if (_.get(apiItem, 'serviceType')) {
-    menuItems.push({
-      name: localization.serviceType,
-      prefLabel: localization.serviceType
-    });
-  }
   if (
     _.get(apiItem, ['apiSpecification', 'info', 'termsOfService']) ||
     _.get(apiItem, ['apiSpecification', 'info', 'license']) ||
@@ -320,6 +315,12 @@ const renderStickyMenu = (apiItem, informationModels, datasets) => {
     menuItems.push({
       name: localization.api.termsAndRestrictions.termsAndRestrictions,
       prefLabel: localization.api.termsAndRestrictions.termsAndRestrictions
+    });
+  }
+  if (conformsTo?.length > 0) {
+    menuItems.push({
+      name: localization.serviceType,
+      prefLabel: localization.serviceType
     });
   }
   if (
@@ -348,23 +349,29 @@ const renderStickyMenu = (apiItem, informationModels, datasets) => {
   return <StickyMenu title={localization.goTo} menuItems={menuItems} />;
 };
 
-const renderServiceType = (serviceType, referenceData) => {
-  if (!serviceType) {
+const renderServiceType = (conformsTo, referenceData) => {
+  if (!conformsTo || !Array.isArray(conformsTo) || conformsTo.length < 1) {
     return null;
   }
-  const referenceDataServiceTypeItem = getReferenceDataByCode(
-    referenceData,
-    REFERENCEDATA_PATH_APISERVICETYPE,
-    serviceType
-  );
+
+  const children = items =>
+    items.map(({ uri }) => {
+      const referenceDataServiceTypeItem = getReferenceDataByCode(
+        referenceData,
+        REFERENCEDATA_PATH_APISERVICETYPE,
+        uri.substring(uri.lastIndexOf('#') + 1)
+      );
+
+      return (
+        <div key={uri} className="d-flex list-regular--item">
+          {getTranslateText(referenceDataServiceTypeItem?.prefLabel) || uri}
+        </div>
+      );
+    });
+
   return (
     <ListRegular title={localization.serviceType}>
-      <TwoColRow
-        col1={localization.serviceType}
-        col2={getTranslateText(
-          _.get(referenceDataServiceTypeItem, 'prefLabel')
-        )}
-      />
+      {children(conformsTo)}
     </ListRegular>
   );
 };
@@ -447,7 +454,8 @@ export const DataServiceDetailsPage = ({
     isOpenLicense,
     endpointDescription: endpointDescriptions = [],
     endpointURL: endpointUrls = [],
-    mediaType: mediaTypes = []
+    mediaType: mediaTypes = [],
+    conformsTo
   } = dataServiceItem;
 
   return (
@@ -534,10 +542,7 @@ export const DataServiceDetailsPage = ({
               _.get(dataServiceItem, 'availability')
             )}
 
-            {renderServiceType(
-              _.get(dataServiceItem, 'serviceType'),
-              referenceData
-            )}
+            {renderServiceType(conformsTo, referenceData)}
 
             {renderDatasetReferences(referencedDatasets)}
 
