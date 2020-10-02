@@ -573,7 +573,7 @@
       "title": "Tittel er konsis",
       "titleNoOrgName": "Organisasjonens navn er ikke med i tittel",
       "description": "Beskrivelsen er konsis",
-      "descriptionWithoutTitle": "Beskrivelsen er ikke en gjentakelse av tittel"
+      "descriptionWithoutTitle": "Tittelen er ikke en del av beskrivelsen"
     },
     "indicatorDescription": {
       "distributableData": "Det finnes en tilgangsURL til datasett på distribusjon eller endpointURL på en tilknyttet datatjeneste.",
@@ -586,7 +586,7 @@
       "title": "Tittel er mindre enn 100 tegn.",
       "titleNoOrgName": "Organisasjonens navn er ikke med i tittel.",
       "description": "Beskrivelsen er mindre enn 400 tegn, ikke regnet med mellomrom.",
-      "descriptionWithoutTitle": "Beskrivelsen er ikke en gjentakelse av tittel."
+      "descriptionWithoutTitle": "Tittelen er ikke en del av beskrivelsen."
     },
     "indicatorWeight": "Vekt: {weight}",
     "descriptionsTotal": "skildringar totalt",
@@ -613,6 +613,7 @@
     "loadMoreDatasets": "Last inn flere datasettbeskrivelser (gjenstår: {count})",
     "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",
     "whatIsMetadataQualityFaqDescription": "Metadatakvalitet er ment som et hjelpeverktøy til dataeiere slik at de kan vurdere metadata mot ulike indikatorer.",
-    "whatIsMetadataQualityFaqLink": "Lær mer om metadatakvalitet"
+    "whatIsMetadataQualityFaqLink": "Lær mer om metadatakvalitet",
+    "averageRatingForOrganization": "Gjennomsnitt for virksomheten"
   }
 }
