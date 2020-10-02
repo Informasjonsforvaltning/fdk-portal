@@ -573,7 +573,7 @@
       "title": "Title is concise",
       "titleNoOrgName": "Organisation name is not part of the title",
       "description": "Description is concise",
-      "descriptionWithoutTitle": "Description is not the same as title"
+      "descriptionWithoutTitle": "Description does not contain title"
     },
     "indicatorDescription": {
       "distributableData": "Distributions have access URLa or related data services have endpoint URLs.",
@@ -586,7 +586,7 @@
       "title": "Title is less than 100 characters long.",
       "titleNoOrgName": "Organisation name is not part of the title.",
       "description": "Description is less than 400 characters long, excluding whitespace.",
-      "descriptionWithoutTitle": "Description is not the same as title."
+      "descriptionWithoutTitle": "Description does not contain title."
     },
     "indicatorWeight": "Weight: {weight}",
     "descriptionsTotal": "descriptions",
@@ -613,6 +613,7 @@
     "loadMoreDatasets": "Load more dataset descriptions (remaining: {count})",
     "whatIsMetadataQualityFaqTitle": "What is metadata quality?",
     "whatIsMetadataQualityFaqDescription": "Metadata quality is meant to be an indicator data owners can use to evaluate the quality of their data.",
-    "whatIsMetadataQualityFaqLink": "Learn more about metadata quality"
+    "whatIsMetadataQualityFaqLink": "Learn more about metadata quality",
+    "averageRatingForOrganization": "Average for organization"
   }
 }

@@ -61,7 +61,9 @@ const DatasetPage: FC<Props> = ({
 
   const isAuthoritative = dataset?.provenance?.code === 'NASJONAL';
 
-  const calculateRatingPercentage = (r: Rating | null | undefined) => {
+  const calculateRatingPercentage = (
+    r: Pick<Rating, 'score' | 'maxScore'> | null | undefined
+  ) => {
     const score = r?.score ?? 0;
     const maxScore = r?.maxScore ?? 0;
 
