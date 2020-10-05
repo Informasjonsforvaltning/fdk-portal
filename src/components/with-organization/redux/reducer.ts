@@ -48,9 +48,11 @@ export default function reducer(
     case GET_ORGANIZATION_FAILED:
       return state.set('isLoadingOrganization', false);
     case GET_CATALOG_RATING_REQUESTED:
-      return state.set('rating', null);
+      return state.set('datasets', fromJS([])).set('rating', null);
     case GET_CATALOG_RATING_SUCCEEDED:
-      return state.set('rating', fromJS(action.payload.rating));
+      return state
+        .set('datasets', fromJS(action.payload.datasets))
+        .set('rating', fromJS(action.payload.rating));
     case GET_CATALOG_RATING_FAILED:
       return state;
     case GET_ORGANIZATION_DATASETS_REQUESTED:

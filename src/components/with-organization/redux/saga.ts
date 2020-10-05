@@ -40,9 +40,12 @@ function* getCatalogRatingRequested({
   try {
     const data = yield call(getOrganizationData, id);
 
-    if (data?.catalogRating) {
+    if (data?.datasets?.hits && data?.catalogRating) {
       yield put(
-        actions.getCatalogRatingSucceeded(data.catalogRating as Rating)
+        actions.getCatalogRatingSucceeded(
+          data.datasets.hits as Dataset[],
+          data.catalogRating as Rating
+        )
       );
     } else {
       yield put(actions.getCatalogRatingFailed(''));

@@ -336,6 +336,7 @@ export interface Rating {
   satisfiedCriteria: number;
   totalCriteria: number;
   category: RatingCategory;
+  dimensionsRating: Record<DimensionType, Pick<Rating, 'score' | 'maxScore'>>;
 }
 
 export interface Catalog {

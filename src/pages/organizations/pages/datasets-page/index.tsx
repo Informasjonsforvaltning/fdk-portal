@@ -14,8 +14,8 @@ import ExpandIcon from '../../../../images/icon-expand-text-sm.svg';
 
 import SC from './styled';
 
+import type { Rating } from '../../../../types';
 import { RatingCategory, DimensionType } from '../../../../types/enums';
-import { Rating } from '../../../../types';
 
 interface RouteParams {
   organizationId: string;
@@ -32,6 +32,7 @@ const articleIds: { [key: string]: string } = {
 const DatasetsPage: FC<Props> = ({
   organization,
   datasets,
+  rating,
   datasetsPage,
   hasMoreDatasets,
   datasetsCount,
@@ -62,7 +63,9 @@ const DatasetsPage: FC<Props> = ({
     }
   }, [organization]);
 
-  const calculateRatingPercentage = (r: Rating | null | undefined) => {
+  const calculateRatingPercentage = (
+    r: Pick<Rating, 'score' | 'maxScore'> | null | undefined
+  ) => {
     const score = r?.score ?? 0;
     const maxScore = r?.maxScore ?? 0;
 
@@ -187,6 +190,28 @@ const DatasetsPage: FC<Props> = ({
             </span>
           </SC.LoadMoreButton>
         )}
+        <SC.RatingSummary>
+          <div>
+            {translations.metadataQualityPage.averageRatingForOrganization}
+          </div>
+          <SC.MetadataCellContents>
+            {determineRatingIcon(rating)}
+            <span>{calculateRatingPercentage(rating)}%</span>
+          </SC.MetadataCellContents>
+          {[
+            DimensionType.ACCESSIBILITY,
+            DimensionType.FINDABILITY,
+            DimensionType.INTEROPERABILITY,
+            DimensionType.READABILITY,
+            DimensionType.REUSABILITY
+          ].map(dimension => (
+            <div>
+              {`${calculateRatingPercentage(
+                rating?.dimensionsRating?.[dimension]
+              )}%`}
+            </div>
+          ))}
+        </SC.RatingSummary>
       </SC.Section>
       <SC.Section>
         <SC.FrequentlyAskedQuestions>

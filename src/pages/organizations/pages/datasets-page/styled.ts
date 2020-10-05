@@ -84,6 +84,11 @@ const Table = styled.table`
     &:nth-of-type(n + 2) {
       text-align: center;
     }
+
+    &:last-of-type {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
   }
 
   th {
@@ -174,6 +179,31 @@ const ExcellentQualityIcon = styled(MetadataQualityExcellentSVG)`
   }
 `;
 
+const RatingSummary = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: ${theme.spacing('S16')};
+  text-align: center;
+  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  border-radius: 4px;
+  font-size: ${theme.fontSize('FS20')};
+  font-weight: ${theme.fontWeight('FW700')};
+
+  & > div {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: ${theme.spacing('S12')};
+    color: ${theme.colour(Colour.BLUE, 'B50')};
+
+    &:first-of-type {
+      min-width: 21%;
+      text-align: left;
+    }
+  }
+`;
+
 const FrequentlyAskedQuestions = styled.div`
   display: flex;
 `;
@@ -215,6 +245,7 @@ export default {
   SufficientQualityIcon,
   GoodQualityIcon,
   ExcellentQualityIcon,
+  RatingSummary,
   FrequentlyAskedQuestions,
   Question
 };
