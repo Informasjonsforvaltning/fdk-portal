@@ -26,3 +26,6 @@ export const getInformationModelsTimeseries = (params: any = '') =>
   reportApiGet('/timeseries/informationmodels', params).then(
     extractLabelsAndData
   );
+
+export const getDataServicesTimeseries = (params: any = '') =>
+  reportApiGet('/timeseries/dataservices', params).then(extractLabelsAndData);

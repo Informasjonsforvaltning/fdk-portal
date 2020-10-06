@@ -27,7 +27,8 @@ export function ReportPagePure({
   history,
   fetchPublishersIfNeeded,
   publishers,
-  dataServiceStats,
+  dataServicesReport,
+  dataServicesTimeSeries,
   informationModelsReport,
   informationModelsTimeSeries,
   datasetsReport,
@@ -75,6 +76,7 @@ export function ReportPagePure({
 
   const orgPaths = {
     [Variant.DATASET]: datasetsReport?.orgPaths ?? [],
+    [Variant.DATA_SERVICE]: dataServicesReport?.orgPaths ?? [],
     [Variant.CONCEPT]: conceptsReport?.orgPaths ?? [],
     [Variant.INFORMATION_MODEL]: informationModelsReport?.orgPaths ?? []
   };
@@ -185,7 +187,10 @@ export function ReportPagePure({
                       />
                     </Pane>
                     <Pane id="pane-2">
-                      <DataserviceReport dataserviceReport={dataServiceStats} />
+                      <DataserviceReport
+                        dataServicesReport={dataServicesReport}
+                        dataServicesTimeSeries={dataServicesTimeSeries}
+                      />
                     </Pane>
                     <Pane id="pane-3">
                       <ConceptReport
