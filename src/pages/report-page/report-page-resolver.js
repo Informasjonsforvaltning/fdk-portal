@@ -3,17 +3,17 @@ import { resolve } from 'react-resolver';
 import {
   getDatasetsReport,
   getConceptsReport,
-  getInformationModelsReport
+  getInformationModelsReport,
+  getDataServicesReport
 } from '../../api/report-api/reports';
 import {
   getDatasetsTimeseries,
   getConceptsTimeseries,
-  getInformationModelsTimeseries
+  getInformationModelsTimeseries,
+  getDataServicesTimeseries
 } from '../../api/report-api/timeseries';
 import { parseSearchParams } from '../../lib/location-history-helper';
 
-import { getDataServiceStats } from '../../api/get-data-service-stats';
-import { getParamFromLocation } from '../../lib/addOrReplaceUrlParam';
 import {
   extractConcepts,
   searchConcepts,
@@ -22,7 +22,8 @@ import {
 
 const memoizedGetDatasetsReport = memoize(getDatasetsReport);
 const memoizedGetDatasetsTimeseries = memoize(getDatasetsTimeseries);
-const memoizedGetDataServiceStats = memoize(getDataServiceStats);
+const memoizedGetDataServicesReport = memoize(getDataServicesReport);
+const memoizedGetDataServicesTimeseries = memoize(getDataServicesTimeseries);
 const memoizedGetConceptsReport = memoize(getConceptsReport);
 const memoizedGetConceptsTimeseries = memoize(getConceptsTimeseries);
 const memoizedGetInformationModelsReport = memoize(getInformationModelsReport);
@@ -40,8 +41,14 @@ const mapProps = {
     const { orgPath, losTheme: los } = parseSearchParams(location);
     return memoizedGetDatasetsTimeseries({ orgPath, los });
   },
-  dataServiceStats: ({ location }) =>
-    memoizedGetDataServiceStats(getParamFromLocation(location, 'orgPath')),
+  dataServicesReport: ({ location }) => {
+    const { orgPath } = parseSearchParams(location);
+    return memoizedGetDataServicesReport({ orgPath });
+  },
+  dataServicesTimeSeries: ({ location }) => {
+    const { orgPath } = parseSearchParams(location);
+    return memoizedGetDataServicesTimeseries({ orgPath });
+  },
   conceptsReport: async ({ location }) => {
     const { orgPath, losTheme: los } = parseSearchParams(location);
 
