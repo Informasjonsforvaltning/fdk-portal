@@ -564,6 +564,13 @@
       "readability": "Readability",
       "reusability": "Reusability"
     },
+    "tooltipText": {
+      "accessibility": "Metadata and data can be shared and exchanged automatically through open, well-defined interfaces and formats.",
+      "findability": "The first step towards using data is finding it. Metadata and data should be easy to find for both man and machine.",
+      "interoperability": "Metadata and data is described and documented according to standards.",
+      "readability": "Metadata and data are represented in a user-friendly and understandable way.",
+      "reusability": "Metadata and data are described well enough for their contents to be easily assessed and re-used."
+    },
     "indicator": {
       "distributableData": "Download URL is provided",
       "keywordUsage": "Keywords are provided",

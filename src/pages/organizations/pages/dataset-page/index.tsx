@@ -209,7 +209,23 @@ const DatasetPage: FC<Props> = ({
                   <tr className="section-row">
                     <td>
                       <div>
-                        <p>{determineDimensionTranslation(type)}</p>
+                        <SC.DimensionContainer>
+                          <p>{determineDimensionTranslation(type)}</p>
+                          <div
+                            data-tip={
+                              translations.metadataQualityPage.tooltipText?.[
+                                type
+                              ]
+                            }
+                          >
+                            <SC.QuestionIcon />
+                            <ReactTooltipSC.ReactTooltipStyled
+                              effect="solid"
+                              place="top"
+                              multiline
+                            />
+                          </div>
+                        </SC.DimensionContainer>
                         <div>
                           {determineRatingIcon(rating)}
                           <span>{calculateRatingPercentage(rating)}%</span>
