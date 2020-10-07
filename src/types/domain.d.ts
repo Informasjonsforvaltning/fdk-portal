@@ -64,6 +64,10 @@ export interface Harvest {
   lastHarvested: string;
 }
 
+export interface Theme {
+  id: string;
+}
+
 export interface LosTheme {
   uri: string;
   name: Partial<TextLanguage>;
@@ -169,7 +173,8 @@ export interface Dataset {
   descriptionFormatted: Partial<TextLanguage>;
   objective: Partial<TextLanguage>;
   keyword: Partial<TextLanguage>[];
-  theme: string[];
+  theme?: EuTheme[];
+  losTheme?: LosTheme[];
   issued: string;
   modified: string;
   distribution: Distribution[];
