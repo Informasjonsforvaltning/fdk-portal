@@ -8,8 +8,44 @@ const DetailsPage = styled.article`
 
 const Publisher = styled.p`
   margin: 0;
-  margin-top: 15px;
   font-size: 20px;
+`;
+
+const SubBanner = styled.div`
+  margin: 0;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const MetadataQuality = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  white-space: nowrap;
+  align-items: center;
+
+  & > p {
+    color: ${({ theme }) => theme.entityColours.dark};
+    font-size: 20px;
+    line-height: 1;
+  }
+`;
+
+const RatingIcon = styled.div`
+  height: 18px;
+  width: 30px;
+  margin-left: 7px;
+  margin-right: 7px;
+
+  & > svg {
+    background-color: ${({ theme }) => theme.entityColours.lighter};
+    padding: 5px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: relative;
+  }
 `;
 
 const Themes = styled.div`
@@ -96,9 +132,12 @@ const Content = styled.main`
 
 export default {
   DetailsPage,
+  SubBanner,
   Publisher,
+  MetadataQuality,
   Themes,
   Page,
   SideMenu,
-  Content
+  Content,
+  RatingIcon
 };

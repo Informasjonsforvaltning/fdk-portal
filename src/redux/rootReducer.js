@@ -17,6 +17,7 @@ import EntitiesReducer from '../components/with-entities/redux/reducer';
 import OrganizationsReducer from '../components/with-organizations/redux/reducer';
 import OrganizationReducer from '../components/with-organization/redux/reducer';
 import ReportReducer from '../components/with-report/redux/reducer';
+import AssessmentReducer from '../components/with-assessment/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -36,5 +37,6 @@ export const rootReducer = combineReducers({
   EntitiesReducer,
   OrganizationsReducer,
   OrganizationReducer,
-  ReportReducer
+  ReportReducer,
+  AssessmentReducer
 });

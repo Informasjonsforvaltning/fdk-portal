@@ -40,6 +40,7 @@ import ExternalLink from '../link-external';
 
 import SC from './styled';
 
+import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
 
 interface RouteParams {
@@ -129,9 +130,7 @@ const DatasetDetailsPage: FC<Props> = ({
 
   const title = translate(dataset?.title);
   const description = parse(sanitise(translate(dataset?.descriptionFormatted)));
-  const publisher = translate(
-    dataset?.publisher?.prefLabel || dataset?.publisher?.name
-  );
+
   const lastPublished = formatDate(
     dateStringToDate(dataset?.harvest?.firstHarvested)
   );
@@ -180,20 +179,27 @@ const DatasetDetailsPage: FC<Props> = ({
         )
     ) ?? [];
 
+  const themes: Theme[] = [
+    ...(dataset?.losTheme?.map(({ uri: id }) => ({ id })) ?? []),
+    ...(dataset?.theme?.map(({ id }) => ({ id })) ?? [])
+  ];
+
   return (
     dataset && (
       <ThemeProvider theme={theme}>
         <DetailsPage
           entity={entity}
           title={title}
-          publisher={publisher}
+          publisher={dataset?.publisher}
+          entityId={dataset?.id}
+          entityUri={dataset?.uri}
           lastPublished={lastPublished}
           isAuthoritative={isAuthoritative}
           isOpenData={isOpenData}
           isPublicData={isPublicData}
           isRestrictedData={isRestrictedData}
           isNonPublicData={isNonPublicData}
-          themes={dataset.theme}
+          themes={themes}
         >
           {description && (
             <ContentSection
