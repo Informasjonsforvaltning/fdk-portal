@@ -4,9 +4,12 @@ import {
   GET_ORGANIZATIONS_FAILED
 } from './action-types';
 
-export function getOrganizationsRequested() {
+export function getOrganizationsRequested(filter?: string) {
   return {
-    type: GET_ORGANIZATIONS_REQUESTED
+    type: GET_ORGANIZATIONS_REQUESTED,
+    payload: {
+      filter
+    }
   };
 }
 

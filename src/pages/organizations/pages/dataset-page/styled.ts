@@ -1,5 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
+
+import { getConfig } from '../../../../config';
 
 import { SC as ExpansionPanelSC } from '../../../../components/expansion-panel';
 
@@ -12,6 +14,8 @@ import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg'
 import CheckSVG from '../../../../images/icon-checked-sm.svg';
 import CrossSVG from '../../../../images/icon-empty-search-sm.svg';
 
+const isTransportportal = getConfig().themeNap;
+
 const DatasetPage = styled.article`
   flex: 1 0 auto;
 `;
@@ -21,8 +25,6 @@ const Banner = styled.header`
   width: 100%;
   padding: 18px;
   border-radius: 5px;
-  color: ${theme.colour(Colour.BLUE, 'B50')};
-  background: ${theme.colour(Colour.BLUE, 'B30')};
   overflow: hidden;
 
   & > h1 {
@@ -34,6 +36,17 @@ const Banner = styled.header`
     display: flex;
     margin-top: ${theme.spacing('S10')};
   }
+
+  ${() =>
+    isTransportportal
+      ? css`
+          background: ${theme.colour(Colour.GREEN, 'G20')};
+          color: ${theme.colour(Colour.GREEN, 'G50')};
+        `
+      : css`
+          background: ${theme.colour(Colour.BLUE, 'B30')};
+          color: ${theme.colour(Colour.BLUE, 'B50')};
+        `}
 `;
 
 const BetaRibbon = styled.span`
@@ -53,9 +66,18 @@ const DatasetIcon = styled(DatasetSVG)`
   min-height: 42px;
   min-width: 42px;
 
-  & path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          & path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 `;
 
 const Title = styled.h2`
@@ -77,9 +99,18 @@ const AuthoritativeIcon = styled(AuthoritativeSVG)`
   margin-left: ${theme.spacing('S12')};
   margin-top: -3px;
 
-  & path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          & path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 `;
 
 const Section = styled.section`
@@ -127,14 +158,29 @@ const Table = styled.table`
       justify-content: space-between;
     }
 
-    background: ${theme.colour(Colour.BLUE, 'B50')};
     color: ${theme.colour(Colour.NEUTRAL, 'N0')};
     font-weight: ${theme.fontWeight('FW700')};
+
+    ${() =>
+      isTransportportal
+        ? css`
+            background: ${theme.colour(Colour.GREEN, 'G50')};
+          `
+        : css`
+            background: ${theme.colour(Colour.BLUE, 'B50')};
+          `}
   }
 
   tbody {
     & > tr {
-      color: ${theme.colour(Colour.BLUE, 'B50')};
+      ${() =>
+        isTransportportal
+          ? css`
+              color: ${theme.colour(Colour.GREEN, 'G50')};
+            `
+          : css`
+              color: ${theme.colour(Colour.BLUE, 'B50')};
+            `}
 
       &.section-row > td > div {
         display: flex;
@@ -185,6 +231,21 @@ const Table = styled.table`
       }
     }
 
+    & ${ExpansionPanelSC.ExpansionPanel.HeadExpansionIndicator} {
+      ${() =>
+        isTransportportal
+          ? css`
+              & > svg > path {
+                fill: ${theme.colour(Colour.GREEN, 'G50')};
+              }
+            `
+          : css`
+              & > svg > path {
+                fill: ${theme.colour(Colour.BLUE, 'B50')};
+              }
+            `}
+    }
+
     & ${ExpansionPanelSC.ExpansionPanel.Body} {
       & span {
         display: flex;
@@ -199,43 +260,101 @@ const TableHead = styled.thead``;
 const TableBody = styled.tbody``;
 
 const PoorQualityIcon = styled(MetadataQualityPoorSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 `;
 
 const SufficientQualityIcon = styled(MetadataQualitySufficientSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
 
-  & > circle:first-of-type {
-    fill: ${theme.colour(Colour.BLUE, 'B30')};
-  }
+          & > circle:first-of-type {
+            fill: ${theme.colour(Colour.GREEN, 'G20')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+
+          & > circle:first-of-type {
+            fill: ${theme.colour(Colour.BLUE, 'B30')};
+          }
+        `}
 `;
 
 const GoodQualityIcon = styled(MetadataQualityGoodSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50', 85)};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50', 85)};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50', 85)};
+          }
+        `}
 `;
 
 const ExcellentQualityIcon = styled(MetadataQualityExcellentSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 `;
 
 const CheckIcon = styled(CheckSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 `;
 
 const CrossIcon = styled(CrossSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B30')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G20')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B30')};
+          }
+        `}
 `;
 
 const FrequentlyAskedQuestions = styled.div`

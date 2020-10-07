@@ -1,10 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
+
+import { getConfig } from '../../../../config';
 
 import MetadataQualityExcellentSVG from '../../../../images/icon-quality-excellent-md.svg';
 import MetadataQualityGoodSVG from '../../../../images/icon-quality-good-md.svg';
 import MetadataQualitySufficientSVG from '../../../../images/icon-quality-sufficient-md.svg';
 import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg';
+
+const isTransportportal = getConfig().themeNap;
 
 const DatasetsPage = styled.article`
   flex: 1 0 auto;
@@ -99,13 +103,20 @@ const Table = styled.table`
       justify-content: space-between;
     }
 
-    background: ${theme.colour(Colour.BLUE, 'B50')};
     color: ${theme.colour(Colour.NEUTRAL, 'N0')};
     font-weight: ${theme.fontWeight('FW700')};
+
+    ${() =>
+      isTransportportal
+        ? css`
+            background: ${theme.colour(Colour.GREEN, 'G50')};
+          `
+        : css`
+            background: ${theme.colour(Colour.BLUE, 'B50')};
+          `}
   }
 
   tbody > tr {
-    color: ${theme.colour(Colour.BLUE, 'B50')};
     cursor: pointer;
 
     &:hover {
@@ -116,6 +127,15 @@ const Table = styled.table`
         fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
       }
     }
+
+    ${() =>
+      isTransportportal
+        ? css`
+            color: ${theme.colour(Colour.GREEN, 'G50')};
+          `
+        : css`
+            color: ${theme.colour(Colour.BLUE, 'B50')};
+          `}
   }
 `;
 
@@ -131,19 +151,35 @@ const LoadMoreButton = styled.button`
   border-bottom: 1px solid transparent;
   appearance: none;
   background: none;
-  color: ${theme.colour(Colour.BLUE, 'B50')};
 
-  &:hover {
-    border-color: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          color: ${theme.colour(Colour.GREEN, 'G50')};
+
+          &:hover {
+            border-color: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+
+          & > svg > g {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          color: ${theme.colour(Colour.BLUE, 'B50')};
+
+          &:hover {
+            border-color: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+
+          & > svg > g {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 
   & > svg {
     height: 20px;
     width: 20px;
-
-    & > g {
-      fill: ${theme.colour(Colour.BLUE, 'B50')};
-    }
   }
 
   & > span {
@@ -152,31 +188,71 @@ const LoadMoreButton = styled.button`
 `;
 
 const PoorQualityIcon = styled(MetadataQualityPoorSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 `;
 
 const SufficientQualityIcon = styled(MetadataQualitySufficientSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
 
-  & > circle:first-of-type {
-    fill: ${theme.colour(Colour.BLUE, 'B30')};
-  }
+          & > circle:first-of-type {
+            fill: ${theme.colour(Colour.GREEN, 'G20')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+
+          & > circle:first-of-type {
+            fill: ${theme.colour(Colour.BLUE, 'B30')};
+          }
+        `}
 `;
 
 const GoodQualityIcon = styled(MetadataQualityGoodSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50', 85)};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50', 85)};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50', 85)};
+          }
+        `}
 `;
 
 const ExcellentQualityIcon = styled(MetadataQualityExcellentSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 `;
 
 const RatingSummary = styled.div`
@@ -196,6 +272,15 @@ const RatingSummary = styled.div`
     align-items: center;
     padding: ${theme.spacing('S12')};
     color: ${theme.colour(Colour.BLUE, 'B50')};
+
+    ${() =>
+      isTransportportal
+        ? css`
+            color: ${theme.colour(Colour.GREEN, 'G50')};
+          `
+        : css`
+            color: ${theme.colour(Colour.BLUE, 'B50')};
+          `}
 
     &:first-of-type {
       min-width: 21%;

@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 
+import { getConfig } from '../../../../config';
+
 import MetadataQualityExcellentSVG from '../../../../images/icon-quality-excellent-md.svg';
 import MetadataQualityGoodSVG from '../../../../images/icon-quality-good-md.svg';
 import MetadataQualitySufficientSVG from '../../../../images/icon-quality-sufficient-md.svg';
 import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg';
+
+const isTransportportal = getConfig().themeNap;
 
 const OrganizationPage = styled.article`
   flex: 1 0 auto;
@@ -65,8 +69,6 @@ const DatasetCataloguesStatistics = styled.div`
     border-radius: 4px;
     font-size: ${theme.fontSize('FS24')};
     font-weight: ${theme.fontWeight('FW700')};
-    background: ${theme.colour(Colour.BLUE, 'B30')};
-    color: ${theme.colour(Colour.BLUE, 'B50')};
 
     & > svg {
       height: 40px;
@@ -75,6 +77,21 @@ const DatasetCataloguesStatistics = styled.div`
       min-width: 40px;
       margin-right: ${theme.spacing('S12')};
     }
+
+    ${() =>
+      isTransportportal
+        ? css`
+            background: ${theme.colour(Colour.GREEN, 'G20')};
+            color: ${theme.colour(Colour.GREEN, 'G50')};
+
+            & > svg > path {
+              fill: ${theme.colour(Colour.GREEN, 'G50')};
+            }
+          `
+        : css`
+            background: ${theme.colour(Colour.BLUE, 'B30')};
+            color: ${theme.colour(Colour.BLUE, 'B50')};
+          `}
   }
 
   & > div {

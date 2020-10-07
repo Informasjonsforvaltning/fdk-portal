@@ -8,9 +8,11 @@ import {
   extractOrganizations
 } from '../../../api/organizations-api/organizations';
 
-function* getOrganizationsRequested() {
+function* getOrganizationsRequested({
+  payload: { filter }
+}: ReturnType<typeof actions.getOrganizationsRequested>) {
   try {
-    const data = yield call(getOrganizations);
+    const data = yield call(getOrganizations, filter);
     const organizations = extractOrganizations(data);
 
     if (organizations) {
