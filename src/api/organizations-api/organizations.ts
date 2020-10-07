@@ -1,7 +1,9 @@
 import { organizationsApiGet } from './host';
 
-export const getOrganizations = () =>
-  organizationsApiGet('/organizationcatalogs');
+export const getOrganizations = (filter?: string) =>
+  organizationsApiGet(
+    filter ? `/organizationcatalogs?filter=${filter}` : '/organizationcatalogs'
+  );
 
 export const getOrganization = (id: string) =>
   organizationsApiGet(`/organizationcatalogs/${id}`);

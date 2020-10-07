@@ -93,7 +93,6 @@ const SortLabel = styled.span`
 
 const Title = styled.span`
   flex-grow: 1;
-  max-width: 85%;
 `;
 
 const Info = styled.div`
@@ -118,8 +117,11 @@ const CountTag = styled.div<{ type?: Entity }>`
   border-radius: 20px;
   border: none;
   padding: 0.3em 0.6em;
-  margin-right: 0.5em;
   width: 50px;
+
+  &:nth-of-type(n + 2) {
+    margin-left: 0.5em;
+  }
 `;
 
 export default {

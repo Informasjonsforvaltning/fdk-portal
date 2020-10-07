@@ -4,6 +4,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
 
+import { getConfig } from '../../../../config';
+
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
@@ -33,7 +35,7 @@ import NewIcon from '../../../../images/icon-new-md.svg';
 
 import { PATHNAME_DATASETS } from '../../../../constants/constants';
 
-import { themeFDK as theme } from '../../../../app/theme';
+import { themeFDK, themeNAP } from '../../../../app/theme';
 
 import { Entity, Filter, RatingCategory } from '../../../../types/enums';
 
@@ -90,6 +92,8 @@ const OrganizationPage: FC<Props> = ({
   const ratingPercentage = Math.round(
     ((rating?.score ?? 0) / (rating?.maxScore ?? 0)) * 100
   );
+
+  const theme = getConfig().themeNap ? themeNAP : themeFDK;
 
   const determineRatingIcon = () => {
     switch (rating?.category) {
