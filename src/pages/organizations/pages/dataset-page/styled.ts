@@ -11,6 +11,7 @@ import MetadataQualitySufficientSVG from '../../../../images/icon-quality-suffic
 import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg';
 import CheckSVG from '../../../../images/icon-checked-sm.svg';
 import CrossSVG from '../../../../images/icon-empty-search-sm.svg';
+import QuestionIconSVG from '../../../../images/icon-question-sm.svg';
 
 const DatasetPage = styled.article`
   flex: 1 0 auto;
@@ -238,6 +239,29 @@ const CrossIcon = styled(CrossSVG)`
   }
 `;
 
+const QuestionIcon = styled(QuestionIconSVG)`
+  height: 15px;
+  width: 15px;
+  & > path {
+    fill: ${theme.colour(Colour.BLUE, 'B50')};
+  }
+`;
+
+const DimensionContainer = styled.div`
+  display: flex;
+
+  div {
+    display: flex;
+    align-items: center;
+    margin-left: 7px;
+    margin-right: 7px;
+
+    &:hover > svg > path {
+      fill: black;
+    }
+  }
+`;
+
 const FrequentlyAskedQuestions = styled.div`
   display: flex;
 `;
@@ -282,5 +306,7 @@ export default {
   CheckIcon,
   CrossIcon,
   FrequentlyAskedQuestions,
-  Question
+  Question,
+  QuestionIcon,
+  DimensionContainer
 };

@@ -564,6 +564,13 @@
       "readability": "Lesbarhet",
       "reusability": "Gjenbrukbarheit"
     },
+    "tooltipText": {
+      "accessibility": "Metadata og data kan delast og utvekslast maskinelt via opne, veldefinerte grensesnitt og format.",
+      "findability": "Første steg for å nytta data er å finna han. Metadata og data skal vera enkelt å finna både for menneske og maskiner.",
+      "interoperability": "Metadata og data er beskrivne og dokumenterte med utgangspunkt i standardar.",
+      "readability": "Metadata og data er representerte på ein brukarvennleg og forståeleg måte.",
+      "reusability": "Metadata og data er beskrivne godt nok til at innhaldet enkelt lèt seg vurdera og gjenbruka."
+    },
     "indicator": {
       "distributableData": "Nedlastingslenke er oppgitt",
       "keywordUsage": "Nøkkelord er oppgitt",
