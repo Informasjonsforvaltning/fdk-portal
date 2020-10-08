@@ -222,10 +222,8 @@ const OrganizationPage: FC<Props> = ({
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
               </SC.Box>
-            </div>
-            {datasets.length > 0 && rating && (
-              <div>
-                <SC.Box colspan={2}>
+              {datasets.length > 0 && rating && (
+                <SC.Box>
                   <StatisticsRegular to={`${url}/datasets`}>
                     <StatisticsRegularSC.StatisticsRegular.Label>
                       <IllustrationWithCount
@@ -238,21 +236,8 @@ const OrganizationPage: FC<Props> = ({
                     </StatisticsRegularSC.StatisticsRegular.Label>
                   </StatisticsRegular>
                 </SC.Box>
-                <SC.Box colspan={2}>
-                  <StatisticsRegular to={`${url}/datasets`}>
-                    <IllustrationWithCount
-                      count={rating?.satisfiedCriteria ?? 0}
-                    />
-                    <StatisticsRegularSC.StatisticsRegular.Label>
-                      {
-                        translations.metadataQualityPage
-                          .metadataQualitySatisfiedCriteria
-                      }
-                    </StatisticsRegularSC.StatisticsRegular.Label>
-                  </StatisticsRegular>
-                </SC.Box>
-              </div>
-            )}
+              )}
+            </div>
           </SC.DatasetCataloguesStatistics>
         </ThemeProvider>
       </SC.Section>
