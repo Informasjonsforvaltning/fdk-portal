@@ -15,6 +15,10 @@ const ReactTooltipStyled = styled(ReactTooltip)`
     &:after {
       border-top-color: #121619;
     }
+
+    &.show {
+      opacity: 1;
+    }
   }
 `;
 

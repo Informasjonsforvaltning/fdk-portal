@@ -217,10 +217,12 @@ const DatasetPage: FC<Props> = ({
                                 type
                               ]
                             }
+                            data-for={`${type}_tooltip`}
                           >
                             <SC.QuestionIcon />
                           </div>
                           <ReactTooltipSC.ReactTooltipStyled
+                            id={`${type}_tooltip`}
                             effect="solid"
                             place="top"
                             multiline
