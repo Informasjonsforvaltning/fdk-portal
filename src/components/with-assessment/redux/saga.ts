@@ -14,7 +14,7 @@ function* getAssessmentRequested({
   try {
     const { data } = yield call(
       axios.get,
-      getConfig().metadataQualityAssessmentApi.host,
+      `${getConfig().metadataQualityAssessmentApi.host}/assessment/entity`,
       {
         params: {
           entityUri: uri
