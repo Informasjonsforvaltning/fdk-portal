@@ -16,7 +16,7 @@ const env = window.env || {
 //   'https://organization-catalogue.staging.fellesdatakatalog.digdir.no';
 // env.REPORT_API_HOST = 'https://reports-bff.staging.fellesdatakatalog.digdir.no';
 // env.METADATA_QUALITY_ASSESSMENT_API_HOST =
-//   'https://metadata-quality.staging.fellesdatakatalog.digdir.no/assessment/entity';
+//   'https://metadata-quality.staging.fellesdatakatalog.digdir.no';
 // env.USE_DEMO_LOGO = true;
 
 const searchApi = {
