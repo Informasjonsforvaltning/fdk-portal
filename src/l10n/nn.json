@@ -70,6 +70,7 @@
   "searchOrganizations": "Søk på verksemder",
   "searchOrganization": "Søk på verksemd",
   "organization": "Verksemd",
+  "addedLastDays": "Nye siste {days} dager",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",

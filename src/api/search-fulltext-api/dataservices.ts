@@ -15,7 +15,8 @@ const mapFilters = ({
   spatial,
   provenance,
   format,
-  dataseturi
+  dataseturi,
+  last_x_days
 }: any) => {
   const filters = [];
   if (los) {
@@ -49,6 +50,9 @@ const mapFilters = ({
   }
   if (dataseturi) {
     filters.push({ 'servesDataset.keyword': dataseturi });
+  }
+  if (last_x_days) {
+    filters.push({ last_x_days });
   }
 
   return filters.length > 0 ? filters : undefined;

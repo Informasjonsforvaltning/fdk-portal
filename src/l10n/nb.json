@@ -70,6 +70,7 @@
   "searchOrganizations": "Søk på virksomheter",
   "searchOrganization": "Søk på virksomhet",
   "organization": "Virksomhet",
+  "addedLastDays": "Nye siste {days} dager",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
