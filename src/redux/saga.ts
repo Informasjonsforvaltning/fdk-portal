@@ -9,6 +9,7 @@ import entitiesSaga from '../components/with-entities/redux/saga';
 import organizationsSaga from '../components/with-organizations/redux/saga';
 import organizationSaga from '../components/with-organization/redux/saga';
 import reportSaga from '../components/with-report/redux/saga';
+import assessmentSaga from '../components/with-assessment/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -20,6 +21,7 @@ export default function* saga() {
     entitiesSaga(),
     organizationsSaga(),
     organizationSaga(),
-    reportSaga()
+    reportSaga(),
+    assessmentSaga()
   ]);
 }

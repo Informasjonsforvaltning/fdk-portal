@@ -107,6 +107,11 @@ export function AppNavBar(props) {
                   </Link>
                 </NavItem>
                 <NavItem>
+                  <Link className="nav-link" to={PATHNAME_ORGANIZATIONS}>
+                    {localization.menu.organizations}
+                  </Link>
+                </NavItem>
+                <NavItem>
                   <Link className="nav-link" to={PATHNAME_REPORTS}>
                     {localization.menu.reports}
                   </Link>

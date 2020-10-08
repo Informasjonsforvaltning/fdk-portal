@@ -8,3 +8,6 @@ export const getConceptsReport = (params: any = '') =>
 
 export const getInformationModelsReport = (params: any = '') =>
   reportApiGet('/report/informationmodels', params);
+
+export const getDataServicesReport = (params: any = '') =>
+  reportApiGet('/report/dataservices', params);

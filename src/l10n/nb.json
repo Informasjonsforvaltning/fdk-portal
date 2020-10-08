@@ -40,6 +40,7 @@
   "datasetLabel": "Datasett",
   "conceptLabel": "Begrep",
   "informationModelLabel": "Informasjonsmodell",
+  "dataServiceLabel": "Datatjeneste",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
@@ -69,6 +70,7 @@
   "searchOrganizations": "Søk på virksomheter",
   "searchOrganization": "Søk på virksomhet",
   "organization": "Virksomhet",
+  "addedLastDays": "Nye siste {days} dager",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -392,6 +394,7 @@
     "growthFromFirstPublish": "Antall datasettbeskrivelser siden første publisering",
     "conceptGrowthFromFirstPublish": "Antall begrepsbeskrivelser siden første publisering",
     "informationModelGrowthFromFirstPublish": "Antall informasjonsmodellbeskrivelser siden første publisering",
+    "dataServiceGrowthFromFirstPublish": "Antall datatjenestebeskrivelser siden første publisering",
     "opendata": "åpne data",
     "public": "kan deles offentlig",
     "restricted": "har begrenset offentlighet",
@@ -561,6 +564,13 @@
       "readability": "Lesbarhet",
       "reusability": "Gjenbrukbarhet"
     },
+    "tooltipText": {
+      "accessibility": "Metadata og data kan deles og utveksles maskinelt via åpne, veldefinerte grensesnitt og formater.",
+      "findability": "Første steg for å benytte data er å finne den. Metadata og data skal være enkelt å finne både for mennesker og maskiner.",
+      "interoperability": "Metadata og data kan deles og utveksles maskinelt via åpne, veldefinerte grensesnitt og formater.",
+      "readability": "Metadata og data er representert på en brukervennlig og forståelig måte.",
+      "reusability": "Metadata og data kan deles og utveksles maskinelt via åpne, veldefinerte grensesnitt og formater."
+    },
     "indicator": {
       "distributableData": "Nedlastingslenke er oppgitt",
       "keywordUsage": "Nøkkelord er oppgitt",
@@ -613,6 +623,14 @@
     "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",
     "whatIsMetadataQualityFaqDescription": "Metadatakvalitet er ment som et hjelpeverktøy til dataeiere slik at de kan vurdere metadata mot ulike indikatorer.",
     "whatIsMetadataQualityFaqLink": "Lær mer om metadatakvalitet",
-    "averageRatingForOrganization": "Gjennomsnitt for virksomheten"
+    "averageRatingForOrganization": "Gjennomsnitt for virksomheten",
+    "organisationName": "Virksomhetsnavn",
+    "organisationNumber": "Organisasjonsnummer",
+    "organisationForm": "Organisasjonsform",
+    "organisationBusinessCodes": "Næringskode(r)",
+    "organisationInstitutionalSectorCode": "Institusjonell sektorkode",
+    "organisationHomePage": "Hjemmeside",
+    "organisationMoreInfo": "Flere opplysninger",
+    "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret"
   }
 }

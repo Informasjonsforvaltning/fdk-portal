@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 
+import { getConfig } from '../../../../config';
+
 import MetadataQualityExcellentSVG from '../../../../images/icon-quality-excellent-md.svg';
 import MetadataQualityGoodSVG from '../../../../images/icon-quality-good-md.svg';
 import MetadataQualitySufficientSVG from '../../../../images/icon-quality-sufficient-md.svg';
 import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg';
+
+const isTransportportal = getConfig().themeNap;
 
 const OrganizationPage = styled.article`
   flex: 1 0 auto;
@@ -31,30 +35,58 @@ const Section = styled.section`
   margin-top: ${theme.spacing('S40')};
 `;
 
-const Box = styled.div<{ colspan?: number }>`
-  flex: 1 0 auto;
+const Box = styled.div`
+  flex: 1 1 calc(100% / 5 - 4 * ${theme.spacing('S8')});
   padding: ${theme.spacing('S24')};
   border-radius: 4px;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
-
-  ${({ colspan }) => {
-    switch (colspan) {
-      case 2:
-        return css`
-          min-width: calc(100% / 2 - ${theme.spacing('S8')});
-        `;
-      default:
-        return css`
-          min-width: calc(100% / 4 - 3 * ${theme.spacing('S8')});
-        `;
-    }
-  }}
 `;
 
 const OrganizationInformation = styled.div`
-  padding: ${theme.spacing('S24')};
+  padding: ${theme.spacing('S16')} ${theme.spacing('S24')};
   border-radius: 4px;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+
+  & > img {
+    max-height: 100px;
+    max-width: 300px;
+    margin-bottom: ${theme.spacing('S16')};
+
+    & + ul > li:first-of-type {
+      padding-top: ${theme.spacing('S10')};
+      border-top: 1px solid ${theme.colour(Colour.NEUTRAL, 'N20')};
+    }
+  }
+
+  & > ul > li {
+    display: flex;
+    padding: ${theme.spacing('S10')} 0;
+    line-height: 26px;
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:nth-of-type(n + 2) {
+      border-top: 1px solid ${theme.colour(Colour.NEUTRAL, 'N20')};
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+
+    & > span {
+      &:first-of-type {
+        width: 225px;
+        font-weight: ${theme.fontWeight('FW700')};
+      }
+
+      & a > div {
+        align-items: center;
+        line-height: 1.2;
+      }
+    }
+  }
 `;
 
 const DatasetCataloguesStatistics = styled.div`
@@ -65,8 +97,6 @@ const DatasetCataloguesStatistics = styled.div`
     border-radius: 4px;
     font-size: ${theme.fontSize('FS24')};
     font-weight: ${theme.fontWeight('FW700')};
-    background: ${theme.colour(Colour.BLUE, 'B30')};
-    color: ${theme.colour(Colour.BLUE, 'B50')};
 
     & > svg {
       height: 40px;
@@ -75,6 +105,21 @@ const DatasetCataloguesStatistics = styled.div`
       min-width: 40px;
       margin-right: ${theme.spacing('S12')};
     }
+
+    ${() =>
+      isTransportportal
+        ? css`
+            background: ${theme.colour(Colour.GREEN, 'G20')};
+            color: ${theme.colour(Colour.GREEN, 'G50')};
+
+            & > svg > path {
+              fill: ${theme.colour(Colour.GREEN, 'G50')};
+            }
+          `
+        : css`
+            background: ${theme.colour(Colour.BLUE, 'B30')};
+            color: ${theme.colour(Colour.BLUE, 'B50')};
+          `}
   }
 
   & > div {

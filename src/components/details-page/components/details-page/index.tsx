@@ -6,7 +6,9 @@ import React, {
   Children,
   isValidElement
 } from 'react';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
+import FdkLink from '@fellesdatakatalog/link';
 
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
@@ -21,6 +23,9 @@ import {
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../with-reference-data';
+import withAssessment, {
+  Props as AssessmentProps
+} from '../../../with-assessment';
 
 import Banner from '../banner';
 import ContentSection from '../content-section';
@@ -32,19 +37,22 @@ import NonPublicAccessIcon from '../../../../images/icon-access-non-public-md.sv
 
 import SC from './styled';
 
-import { LosTheme, EuTheme } from '../../../../types';
+import { LosTheme, EuTheme, Publisher, Theme } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
-interface Theme {
-  id: string;
-}
+import {
+  determineRatingIcon,
+  calculateRatingPercentage
+} from '../../../../pages/organizations/pages/dataset-page/index';
 
 interface EnrichedTheme extends Partial<LosTheme>, Partial<EuTheme> {}
 
-interface Props extends ReferenceDataProps {
+interface ExternalProps {
   entity: Entity;
   title: string;
-  publisher: string;
+  publisher?: Partial<Publisher>;
+  entityId?: string;
+  entityUri?: string;
   lastPublished: string;
   isAuthoritative: boolean;
   isOpenData: boolean;
@@ -53,6 +61,8 @@ interface Props extends ReferenceDataProps {
   isNonPublicData: boolean;
   themes: Theme[];
 }
+
+interface Props extends ReferenceDataProps, AssessmentProps, ExternalProps {}
 
 const rootPaths = {
   [Entity.DATASET]: PATHNAME_DATASETS,
@@ -65,6 +75,9 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   entity,
   title,
   publisher,
+  assessment,
+  entityId,
+  entityUri,
   lastPublished,
   isAuthoritative,
   isOpenData,
@@ -74,6 +87,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   themes = [],
   referenceData: { los: losThemes, themes: euThemes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
+  assessmentActions: { getAssessmentRequested: getAssessment },
   children
 }) => {
   useEffect(() => {
@@ -90,6 +104,12 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       getReferenceData('themes');
     }
   }, []);
+
+  useEffect(() => {
+    if (entityUri) {
+      getAssessment(entityUri);
+    }
+  }, [entityUri]);
 
   const renderContentSections = () =>
     Children.map(children, child =>
@@ -113,6 +133,8 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   const isLosTheme = ({ uri, name, losPaths }: EnrichedTheme) =>
     !!uri && !!name && !!losPaths;
 
+  const publisherName = translate(publisher?.prefLabel || publisher?.name);
+
   return (
     <SC.DetailsPage className="container">
       <Banner
@@ -121,11 +143,24 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         lastPublished={lastPublished}
         isAuthoritative={isAuthoritative}
       />
-      <SC.Publisher>
-        {translations.formatString(translations.detailsPage.publisher, {
-          publisher
-        })}
-      </SC.Publisher>
+      <SC.SubBanner>
+        <SC.Publisher>
+          {translations.formatString(translations.detailsPage.publisher, {
+            publisher: publisherName
+          })}
+        </SC.Publisher>
+        {assessment && publisher && (
+          <FdkLink href={`/organizations/${publisher.id}/datasets/${entityId}`}>
+            <SC.MetadataQuality>
+              <p>{translations.metadataQualityPage.metadataQuality}: </p>
+              <SC.RatingIcon>
+                {determineRatingIcon(assessment.rating)}
+              </SC.RatingIcon>
+              <p>{calculateRatingPercentage(assessment.rating)} %</p>
+            </SC.MetadataQuality>
+          </FdkLink>
+        )}
+      </SC.SubBanner>
       <SC.Themes>
         {isOpenData && (
           <Link to={`${rootPaths[entity]}?opendata=true`} className="open-data">
@@ -188,4 +223,8 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default memo(withReferenceData(DetailsPage));
+export default compose<FC<ExternalProps>>(
+  memo,
+  withAssessment,
+  withReferenceData
+)(DetailsPage);

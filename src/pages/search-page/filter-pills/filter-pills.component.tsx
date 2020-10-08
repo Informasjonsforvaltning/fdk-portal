@@ -9,13 +9,14 @@ import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
 import { Pill } from '../../../components/pill/pill.component';
 import {
-  setMultiselectFilterValue,
+  clearFilters,
   isFilterNotEmpty,
-  clearFilters
+  setMultiselectFilterValue
 } from '../search-location-helper';
 
 import SC from './styled';
 import { EuTheme, LosTheme } from '../../../types';
+import { Filter } from '../../../types/enums';
 
 interface ThemesItems {
   [key: string]: Partial<EuTheme>;
@@ -48,7 +49,7 @@ const getFilterLabel = (
   }
 
   switch (filterName) {
-    case 'orgPath': {
+    case Filter.ORGPATH: {
       const referencedItem = referenceDataItems[filterValue];
       if (!(referencedItem?.name || referencedItem?.prefLabel)) {
         return capitalize(filterValue.replace(/^\/|\/$/g, ''));
@@ -59,18 +60,22 @@ const getFilterLabel = (
         capitalize(name)
       );
     }
-    case 'theme':
+    case Filter.THEME:
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
         filterValue
       );
-    case 'losTheme':
+    case Filter.LOS:
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'prefLabel'])) ||
         filterValue
       );
-    case 'opendata':
+    case Filter.OPENDATA:
       return localization.open_data;
+    case Filter.LASTXDAYS:
+      return localization.formatString(localization.addedLastDays, {
+        days: filterValue
+      });
     default:
       return localization[filterValue.toLowerCase()] || capitalize(filterValue);
   }
@@ -123,7 +128,7 @@ const FilterPillsPure: FC<Props> = ({
       <SC.Heading>{localization.activeFilter}</SC.Heading>
       <SC.Pills>
         {Object.keys(
-          omit(locationSearch, ['q', 'page', 'sortfield'])
+          omit(locationSearch, [Filter.Q, Filter.PAGE, Filter.SORTFIELD])
         ).map((filterName: string) =>
           renderFilterValuesPills(
             filterName,

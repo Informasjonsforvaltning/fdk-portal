@@ -64,6 +64,10 @@ export interface Harvest {
   lastHarvested: string;
 }
 
+export interface Theme {
+  id: string;
+}
+
 export interface LosTheme {
   uri: string;
   name: Partial<TextLanguage>;
@@ -169,7 +173,8 @@ export interface Dataset {
   descriptionFormatted: Partial<TextLanguage>;
   objective: Partial<TextLanguage>;
   keyword: Partial<TextLanguage>[];
-  theme: string[];
+  theme?: EuTheme[];
+  losTheme?: LosTheme[];
   issued: string;
   modified: string;
   distribution: Distribution[];
@@ -368,4 +373,34 @@ export interface Assessment {
   rating: Rating;
   dimensions: Dimension[];
   updated: string;
+}
+
+interface EnhetsregisteretAdresse {
+  land: string;
+  landkode: string;
+  postnummer: string;
+  poststed: string;
+  adresse: string[];
+  kommune: string;
+  kommunenummer: string;
+}
+
+export interface EnhetsregisteretOrganization {
+  organisasjonsnummer: string;
+  navn: string;
+  organisasjonsform: {
+    kode: string;
+    beskrivelse: string;
+  };
+  hjemmeside: string;
+  postadresse: EnhetsregisteretAdresse;
+  naeringskode1: {
+    beskrivelse: string;
+    kode: string;
+  };
+  forretningsadresse: EnhetsregisteretAdresse;
+  institusjonellSektorkode: {
+    kode: string;
+    beskrivelse: string;
+  };
 }

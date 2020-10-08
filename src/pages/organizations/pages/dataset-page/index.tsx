@@ -38,6 +38,29 @@ const articleIds: { [key: string]: string } = {
   en: 'cf2a2b6d-88bb-4f3a-bbfc-4114e2841479'
 };
 
+export const determineRatingIcon = (r: Rating | null | undefined) => {
+  switch (r?.category) {
+    case RatingCategory.EXCELLENT:
+      return <SC.ExcellentQualityIcon />;
+    case RatingCategory.GOOD:
+      return <SC.GoodQualityIcon />;
+    case RatingCategory.SUFFICIENT:
+      return <SC.SufficientQualityIcon />;
+    case RatingCategory.POOR:
+    default:
+      return <SC.PoorQualityIcon />;
+  }
+};
+
+export const calculateRatingPercentage = (
+  r: Pick<Rating, 'score' | 'maxScore'> | null | undefined
+) => {
+  const score = r?.score ?? 0;
+  const maxScore = r?.maxScore ?? 0;
+
+  return maxScore === 0 ? 0 : Math.round((score / maxScore) * 100);
+};
+
 const DatasetPage: FC<Props> = ({
   organization,
   dataset,
@@ -60,29 +83,6 @@ const DatasetPage: FC<Props> = ({
   }, []);
 
   const isAuthoritative = dataset?.provenance?.code === 'NASJONAL';
-
-  const calculateRatingPercentage = (
-    r: Pick<Rating, 'score' | 'maxScore'> | null | undefined
-  ) => {
-    const score = r?.score ?? 0;
-    const maxScore = r?.maxScore ?? 0;
-
-    return maxScore === 0 ? 0 : Math.round((score / maxScore) * 100);
-  };
-
-  const determineRatingIcon = (r: Rating | null | undefined) => {
-    switch (r?.category) {
-      case RatingCategory.EXCELLENT:
-        return <SC.ExcellentQualityIcon />;
-      case RatingCategory.GOOD:
-        return <SC.GoodQualityIcon />;
-      case RatingCategory.SUFFICIENT:
-        return <SC.SufficientQualityIcon />;
-      case RatingCategory.POOR:
-      default:
-        return <SC.PoorQualityIcon />;
-    }
-  };
 
   const determineDimensionTranslation = (dimensionType: DimensionType) => {
     switch (dimensionType) {
@@ -209,7 +209,23 @@ const DatasetPage: FC<Props> = ({
                   <tr className="section-row">
                     <td>
                       <div>
-                        <p>{determineDimensionTranslation(type)}</p>
+                        <SC.DimensionContainer>
+                          <p>{determineDimensionTranslation(type)}</p>
+                          <div
+                            data-tip={
+                              translations.metadataQualityPage.tooltipText?.[
+                                type
+                              ]
+                            }
+                          >
+                            <SC.QuestionIcon />
+                            <ReactTooltipSC.ReactTooltipStyled
+                              effect="solid"
+                              place="top"
+                              multiline
+                            />
+                          </div>
+                        </SC.DimensionContainer>
                         <div>
                           {determineRatingIcon(rating)}
                           <span>{calculateRatingPercentage(rating)}%</span>

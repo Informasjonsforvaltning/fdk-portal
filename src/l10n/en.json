@@ -40,6 +40,7 @@
   "datasetLabel": "Dataset",
   "conceptLabel": "Concept",
   "informationModelLabel": "Information model",
+  "dataServiceLabel": "Data service",
   "activeFilter": "Enabled filters",
   "goTo": "Go to",
   "linkToFdk": "Link to the National Data Catalog",
@@ -69,6 +70,7 @@
   "searchOrganizations": "Search organizations",
   "searchOrganization": "Search organization",
   "organization": "Organization",
+  "addedLastDays": "Added last {days} days",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -393,6 +395,7 @@
     "growthFromFirstPublish": "Datasetdescriptions since first published",
     "conceptGrowthFromFirstPublish": "Concept descriptions since first published",
     "informationModelGrowthFromFirstPublish": "Information model descriptions since first published",
+    "dataServiceGrowthFromFirstPublish": "Data service descriptions since first published",
     "opendata": "open data",
     "public": "are public",
     "restricted": "with restricted access",
@@ -562,6 +565,13 @@
       "readability": "Readability",
       "reusability": "Reusability"
     },
+    "tooltipText": {
+      "accessibility": "Metadata and data can be shared and exchanged automatically through open, well-defined interfaces and formats.",
+      "findability": "The first step towards using data is finding it. Metadata and data should be easy to find for both man and machine.",
+      "interoperability": "Metadata and data is described and documented according to standards.",
+      "readability": "Metadata and data are represented in a user-friendly and understandable way.",
+      "reusability": "Metadata and data are described well enough for their contents to be easily assessed and re-used."
+    },
     "indicator": {
       "distributableData": "Download URL is provided",
       "keywordUsage": "Keywords are provided",
@@ -614,6 +624,14 @@
     "whatIsMetadataQualityFaqTitle": "What is metadata quality?",
     "whatIsMetadataQualityFaqDescription": "Metadata quality is meant to be an indicator data owners can use to evaluate the quality of their data.",
     "whatIsMetadataQualityFaqLink": "Learn more about metadata quality",
-    "averageRatingForOrganization": "Average for organization"
+    "averageRatingForOrganization": "Average for organization",
+    "organisationName": "Organisation name",
+    "organisationNumber": "Organisation name",
+    "organisationForm": "Organisation form",
+    "organisationBusinessCodes": "Business code(s)",
+    "organisationInstitutionalSectorCode": "Institutional sector code",
+    "organisationHomePage": "Home page",
+    "organisationMoreInfo": "More information",
+    "organisationInEnhetsregisteret": "More information about {organizationName} in Enhetsregisteret"
   }
 }

@@ -2,6 +2,8 @@ import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
 
+import { getConfig } from '../../../../config';
+
 import localization from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
@@ -33,8 +35,10 @@ const OrganizationsPage: FC<Props> = ({
       : organizations;
 
   useEffect(() => {
-    getOrganizations();
+    getOrganizations(getConfig().themeNap ? 'transportportal' : undefined);
   }, []);
+
+  const isTransportportal = getConfig().themeNap;
 
   return (
     <main className="container">
@@ -107,15 +111,19 @@ const OrganizationsPage: FC<Props> = ({
                   <SC.CountTag type={Entity.DATASET}>
                     {dataset_count}
                   </SC.CountTag>
-                  <SC.CountTag type={Entity.DATA_SERVICE}>
-                    {dataservice_count}
-                  </SC.CountTag>
-                  <SC.CountTag type={Entity.CONCEPT}>
-                    {concept_count}
-                  </SC.CountTag>
-                  <SC.CountTag type={Entity.INFORMATION_MODEL}>
-                    {informationmodel_count}
-                  </SC.CountTag>
+                  {!isTransportportal && (
+                    <>
+                      <SC.CountTag type={Entity.DATA_SERVICE}>
+                        {dataservice_count}
+                      </SC.CountTag>
+                      <SC.CountTag type={Entity.CONCEPT}>
+                        {concept_count}
+                      </SC.CountTag>
+                      <SC.CountTag type={Entity.INFORMATION_MODEL}>
+                        {informationmodel_count}
+                      </SC.CountTag>
+                    </>
+                  )}
                 </SC.Info>
               </SC.Box>
             );
