@@ -219,12 +219,12 @@ const DatasetPage: FC<Props> = ({
                             }
                           >
                             <SC.QuestionIcon />
-                            <ReactTooltipSC.ReactTooltipStyled
-                              effect="solid"
-                              place="top"
-                              multiline
-                            />
                           </div>
+                          <ReactTooltipSC.ReactTooltipStyled
+                            effect="solid"
+                            place="top"
+                            multiline
+                          />
                         </SC.DimensionContainer>
                         <div>
                           {determineRatingIcon(rating)}
