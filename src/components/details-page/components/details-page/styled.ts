@@ -17,6 +17,10 @@ const SubBanner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  & > a {
+    color: ${({ theme }) => theme.entityColours.dark} !important;
+  }
 `;
 
 const MetadataQuality = styled.div`
@@ -26,7 +30,6 @@ const MetadataQuality = styled.div`
   align-items: center;
 
   & > p {
-    color: ${({ theme }) => theme.entityColours.dark};
     font-size: 20px;
     line-height: 1;
   }
