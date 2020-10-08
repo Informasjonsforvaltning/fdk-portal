@@ -379,9 +379,18 @@ const CrossIcon = styled(CrossSVG)`
 const QuestionIcon = styled(QuestionIconSVG)`
   height: 15px;
   width: 15px;
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 `;
 
 const DimensionContainer = styled.div`
@@ -392,7 +401,8 @@ const DimensionContainer = styled.div`
     align-items: center;
     margin-left: 7px;
     margin-right: 7px;
-
+    max-width: 250px;
+    white-space: normal;
     &:hover > svg > path {
       fill: black;
     }
