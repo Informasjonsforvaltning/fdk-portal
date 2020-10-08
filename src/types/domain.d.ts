@@ -374,3 +374,33 @@ export interface Assessment {
   dimensions: Dimension[];
   updated: string;
 }
+
+interface EnhetsregisteretAdresse {
+  land: string;
+  landkode: string;
+  postnummer: string;
+  poststed: string;
+  adresse: string[];
+  kommune: string;
+  kommunenummer: string;
+}
+
+export interface EnhetsregisteretOrganization {
+  organisasjonsnummer: string;
+  navn: string;
+  organisasjonsform: {
+    kode: string;
+    beskrivelse: string;
+  };
+  hjemmeside: string;
+  postadresse: EnhetsregisteretAdresse;
+  naeringskode1: {
+    beskrivelse: string;
+    kode: string;
+  };
+  forretningsadresse: EnhetsregisteretAdresse;
+  institusjonellSektorkode: {
+    kode: string;
+    beskrivelse: string;
+  };
+}

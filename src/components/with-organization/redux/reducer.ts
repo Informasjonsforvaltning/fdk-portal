@@ -5,6 +5,9 @@ import {
   GET_ORGANIZATION_REQUESTED,
   GET_ORGANIZATION_SUCCEEDED,
   GET_ORGANIZATION_FAILED,
+  GET_ENHETSREGISTERET_ORGANIZATION_REQUESTED,
+  GET_ENHETSREGISTERET_ORGANIZATION_SUCCEEDED,
+  GET_ENHETSREGISTERET_ORGANIZATION_FAILED,
   GET_CATALOG_RATING_REQUESTED,
   GET_CATALOG_RATING_SUCCEEDED,
   GET_CATALOG_RATING_FAILED,
@@ -25,6 +28,7 @@ import type { Actions } from '../../../types';
 const initialState = fromJS({
   organization: null,
   isLoadingOrganization: false,
+  enhetsregisteretOrganization: null,
   datasets: [],
   dataset: null,
   datasetsPage: 0,
@@ -47,6 +51,15 @@ export default function reducer(
         .set('isLoadingOrganization', false);
     case GET_ORGANIZATION_FAILED:
       return state.set('isLoadingOrganization', false);
+    case GET_ENHETSREGISTERET_ORGANIZATION_REQUESTED:
+      return state.set('enhetsregisteretOrganization', null);
+    case GET_ENHETSREGISTERET_ORGANIZATION_SUCCEEDED:
+      return state.set(
+        'enhetsregisteretOrganization',
+        fromJS(action.payload.organization)
+      );
+    case GET_ENHETSREGISTERET_ORGANIZATION_FAILED:
+      return state;
     case GET_CATALOG_RATING_REQUESTED:
       return state.set('datasets', fromJS([])).set('rating', null);
     case GET_CATALOG_RATING_SUCCEEDED:

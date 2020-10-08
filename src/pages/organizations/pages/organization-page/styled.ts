@@ -39,9 +39,50 @@ const Box = styled.div`
 `;
 
 const OrganizationInformation = styled.div`
-  padding: ${theme.spacing('S24')};
+  padding: ${theme.spacing('S16')} ${theme.spacing('S24')};
   border-radius: 4px;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+
+  & > img {
+    max-height: 100px;
+    max-width: 300px;
+    margin-bottom: ${theme.spacing('S16')};
+
+    & + ul > li:first-of-type {
+      padding-top: ${theme.spacing('S10')};
+      border-top: 1px solid ${theme.colour(Colour.NEUTRAL, 'N20')};
+    }
+  }
+
+  & > ul > li {
+    display: flex;
+    padding: ${theme.spacing('S10')} 0;
+    line-height: 26px;
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:nth-of-type(n + 2) {
+      border-top: 1px solid ${theme.colour(Colour.NEUTRAL, 'N20')};
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+
+    & > span {
+      &:first-of-type {
+        width: 225px;
+        font-weight: ${theme.fontWeight('FW700')};
+      }
+
+      & a > div {
+        align-items: center;
+        line-height: 1.2;
+      }
+    }
+  }
 `;
 
 const DatasetCataloguesStatistics = styled.div`

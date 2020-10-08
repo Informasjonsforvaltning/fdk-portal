@@ -2,6 +2,9 @@ import {
   GET_ORGANIZATION_REQUESTED,
   GET_ORGANIZATION_SUCCEEDED,
   GET_ORGANIZATION_FAILED,
+  GET_ENHETSREGISTERET_ORGANIZATION_REQUESTED,
+  GET_ENHETSREGISTERET_ORGANIZATION_SUCCEEDED,
+  GET_ENHETSREGISTERET_ORGANIZATION_FAILED,
   GET_CATALOG_RATING_REQUESTED,
   GET_CATALOG_RATING_SUCCEEDED,
   GET_CATALOG_RATING_FAILED,
@@ -17,7 +20,12 @@ import {
   RESET_ORGANIZATION
 } from './action-types';
 
-import type { Publisher, Rating, Dataset } from '../../../types';
+import type {
+  Publisher,
+  Rating,
+  Dataset,
+  EnhetsregisteretOrganization
+} from '../../../types';
 
 export function getOrganizationRequested(id: string) {
   return {
@@ -40,6 +48,35 @@ export function getOrganizationSucceeded(organization: Publisher) {
 export function getOrganizationFailed(message: string) {
   return {
     type: GET_ORGANIZATION_FAILED,
+    payload: {
+      message
+    }
+  };
+}
+
+export function getEnhetsregisteretOrganizationRequested(id: string) {
+  return {
+    type: GET_ENHETSREGISTERET_ORGANIZATION_REQUESTED,
+    payload: {
+      id
+    }
+  };
+}
+
+export function getEnhetsregisteretOrganizationSucceeded(
+  organization: EnhetsregisteretOrganization
+) {
+  return {
+    type: GET_ENHETSREGISTERET_ORGANIZATION_SUCCEEDED,
+    payload: {
+      organization
+    }
+  };
+}
+
+export function getEnhetsregisteretOrganizationFailed(message: string) {
+  return {
+    type: GET_ENHETSREGISTERET_ORGANIZATION_FAILED,
     payload: {
       message
     }

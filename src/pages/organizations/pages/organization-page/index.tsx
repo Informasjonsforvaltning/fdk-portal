@@ -1,4 +1,4 @@
-import React, { FC, memo, useLayoutEffect } from 'react';
+import React, { FC, memo, useState, useLayoutEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -55,10 +55,12 @@ const articleIds: { [key: string]: string } = {
 const OrganizationPage: FC<Props> = ({
   datasets,
   organization,
+  enhetsregisteretOrganization,
   rating,
   datasetsReport,
   organizationActions: {
     getOrganizationRequested: getOrganization,
+    getEnhetsregisteretOrganizationRequested: getEnhetsregisteretOrganization,
     getCatalogRatingRequested: getRating
   },
   reportActions: {
@@ -70,9 +72,12 @@ const OrganizationPage: FC<Props> = ({
     params: { organizationId }
   }
 }) => {
+  const [showOrganizationLogo, setShowOrganizationLogo] = useState(true);
+
   useLayoutEffect(() => {
-    if (organization?.organizationId !== organizationId) {
+    if (enhetsregisteretOrganization?.organisasjonsnummer !== organizationId) {
       getOrganization(organizationId);
+      getEnhetsregisteretOrganization(organizationId);
       getRating(organizationId);
     }
 
@@ -132,9 +137,92 @@ const OrganizationPage: FC<Props> = ({
         )}
       </SC.Title>
       <SC.Section>
-        {/* <SC.OrganizationInformation>
-          <pre>{JSON.stringify(organization, null, 2)}</pre>
-        </SC.OrganizationInformation> */}
+        <SC.OrganizationInformation>
+          {showOrganizationLogo &&
+            enhetsregisteretOrganization?.organisasjonsnummer && (
+              <img
+                src={`https://orglogo.difi.no/api/logo/org/${enhetsregisteretOrganization?.organisasjonsnummer}`}
+                alt={`${enhetsregisteretOrganization?.navn} logo`}
+                onError={() => setShowOrganizationLogo(false)}
+              />
+            )}
+          <ul>
+            <li>
+              <span>{translations.metadataQualityPage.organisationName}</span>
+              <span>{enhetsregisteretOrganization?.navn}</span>
+            </li>
+            <li>
+              <span>{translations.metadataQualityPage.organisationNumber}</span>
+              <span>
+                {enhetsregisteretOrganization?.organisasjonsnummer.replace(
+                  /\B(?=(\d{3})+(?!\d))/g,
+                  ' '
+                )}
+              </span>
+            </li>
+            <li>
+              <span>{translations.metadataQualityPage.organisationForm}</span>
+              <span>
+                {enhetsregisteretOrganization?.organisasjonsform.beskrivelse}
+              </span>
+            </li>
+            <li>
+              <span>
+                {translations.metadataQualityPage.organisationBusinessCodes}
+              </span>
+              <span>{`${enhetsregisteretOrganization?.naeringskode1.kode} ${enhetsregisteretOrganization?.naeringskode1.beskrivelse}`}</span>
+            </li>
+            <li>
+              <span>
+                {
+                  translations.metadataQualityPage
+                    .organisationInstitutionalSectorCode
+                }
+              </span>
+              <span>{`${enhetsregisteretOrganization?.institusjonellSektorkode.kode} ${enhetsregisteretOrganization?.institusjonellSektorkode.beskrivelse}`}</span>
+            </li>
+            {enhetsregisteretOrganization?.hjemmeside && (
+              <li>
+                <span>
+                  {translations.metadataQualityPage.organisationHomePage}
+                </span>
+                <span>
+                  <Link
+                    href={`//${enhetsregisteretOrganization?.hjemmeside.replace(
+                      /\/$/,
+                      ''
+                    )}`}
+                    external
+                  >
+                    {enhetsregisteretOrganization?.hjemmeside.replace(
+                      /\/$/,
+                      ''
+                    )}
+                  </Link>
+                </span>
+              </li>
+            )}
+            <li>
+              <span>
+                {translations.metadataQualityPage.organisationMoreInfo}
+              </span>
+              <span>
+                <Link
+                  href={`https://data.brreg.no/enhetsregisteret/oppslag/enheter/${enhetsregisteretOrganization?.organisasjonsnummer}`}
+                  external
+                >
+                  {translations.formatString(
+                    translations.metadataQualityPage
+                      .organisationInEnhetsregisteret,
+                    {
+                      organizationName: enhetsregisteretOrganization?.navn ?? ''
+                    }
+                  )}
+                </Link>
+              </span>
+            </li>
+          </ul>
+        </SC.OrganizationInformation>
       </SC.Section>
       <SC.Section />
       <SC.Section>
