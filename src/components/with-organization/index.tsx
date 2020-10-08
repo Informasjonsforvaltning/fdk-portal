@@ -4,11 +4,17 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import * as actions from './redux/actions';
 
-import type { Publisher, Rating, Dataset } from '../../types';
+import type {
+  Publisher,
+  Rating,
+  Dataset,
+  EnhetsregisteretOrganization
+} from '../../types';
 
 export interface Props {
   organization: Publisher | null;
   isLoadingOrganization: boolean;
+  enhetsregisteretOrganization: EnhetsregisteretOrganization | null;
   datasets: Dataset[];
   dataset: Dataset | null;
   datasetsPage: number;
@@ -27,6 +33,9 @@ const withOrganization = (Component: ComponentType<any>) => {
     isLoadingOrganization: state.OrganizationReducer.get(
       'isLoadingOrganization'
     ),
+    enhetsregisteretOrganization:
+      state.OrganizationReducer.get('enhetsregisteretOrganization')?.toJS() ??
+      null,
     datasets: state.OrganizationReducer.get('datasets').toJS(),
     dataset: state.OrganizationReducer.get('dataset')?.toJS() ?? null,
     datasetsPage: state.OrganizationReducer.get('datasetsPage'),

@@ -624,6 +624,14 @@
     "whatIsMetadataQualityFaqTitle": "What is metadata quality?",
     "whatIsMetadataQualityFaqDescription": "Metadata quality is meant to be an indicator data owners can use to evaluate the quality of their data.",
     "whatIsMetadataQualityFaqLink": "Learn more about metadata quality",
-    "averageRatingForOrganization": "Average for organization"
+    "averageRatingForOrganization": "Average for organization",
+    "organisationName": "Organisation name",
+    "organisationNumber": "Organisation name",
+    "organisationForm": "Organisation form",
+    "organisationBusinessCodes": "Business code(s)",
+    "organisationInstitutionalSectorCode": "Institutional sector code",
+    "organisationHomePage": "Home page",
+    "organisationMoreInfo": "More information",
+    "organisationInEnhetsregisteret": "More information about {organizationName} in Enhetsregisteret"
   }
 }

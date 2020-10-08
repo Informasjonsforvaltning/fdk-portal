@@ -623,6 +623,14 @@
     "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",
     "whatIsMetadataQualityFaqDescription": "Metadatakvalitet er ment som et hjelpeverktøy til dataeiere slik at de kan vurdere metadata mot ulike indikatorer.",
     "whatIsMetadataQualityFaqLink": "Lær mer om metadatakvalitet",
-    "averageRatingForOrganization": "Gjennomsnitt for virksomheten"
+    "averageRatingForOrganization": "Gjennomsnitt for virksomheten",
+    "organisationName": "Virksomhetsnavn",
+    "organisationNumber": "Organisasjonsnummer",
+    "organisationForm": "Organisasjonsform",
+    "organisationBusinessCodes": "Næringskode(r)",
+    "organisationInstitutionalSectorCode": "Institusjonell sektorkode",
+    "organisationHomePage": "Hjemmeside",
+    "organisationMoreInfo": "Flere opplysninger",
+    "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret"
   }
 }
