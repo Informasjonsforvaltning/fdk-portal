@@ -190,6 +190,10 @@ const DatasetPage: FC<Props> = ({
               </div>
             )}
           </SC.Title>
+          <SC.BannerRating>
+            {determineRatingIcon(dataset?.assessment?.rating)}
+            <p>{calculateRatingPercentage(dataset?.assessment?.rating)}%</p>
+          </SC.BannerRating>
         </div>
       </SC.Banner>
       <SC.Section>

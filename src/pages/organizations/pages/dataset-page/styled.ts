@@ -92,6 +92,24 @@ const Title = styled.h2`
   }
 `;
 
+const BannerRating = styled.div`
+  display: flex;
+  font-size: ${theme.fontSize('FS20')};
+  font-weight: ${theme.fontWeight('FW700')};
+  margin-left: auto;
+  align-items: center;
+
+  & > svg {
+    height: 35px;
+    width: 35px;
+  }
+
+  & > p {
+    margin-left: 7px;
+    margin-right: 20px;
+  }
+`;
+
 const AuthoritativeIcon = styled(AuthoritativeSVG)`
   height: 24px;
   width: 24px;
@@ -412,6 +430,7 @@ export default {
   BetaRibbon,
   Banner,
   DatasetIcon,
+  BannerRating,
   Title,
   AuthoritativeIcon,
   Section,
