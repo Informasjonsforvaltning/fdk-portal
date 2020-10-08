@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 
 import MetadataQualityExcellentSVG from '../../../../images/icon-quality-excellent-md.svg';
@@ -31,24 +31,11 @@ const Section = styled.section`
   margin-top: ${theme.spacing('S40')};
 `;
 
-const Box = styled.div<{ colspan?: number }>`
-  flex: 1 0 auto;
+const Box = styled.div`
+  flex: 1 1 calc(100% / 5 - 4 * ${theme.spacing('S8')});
   padding: ${theme.spacing('S24')};
   border-radius: 4px;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
-
-  ${({ colspan }) => {
-    switch (colspan) {
-      case 2:
-        return css`
-          min-width: calc(100% / 2 - ${theme.spacing('S8')});
-        `;
-      default:
-        return css`
-          min-width: calc(100% / 4 - 3 * ${theme.spacing('S8')});
-        `;
-    }
-  }}
 `;
 
 const OrganizationInformation = styled.div`
