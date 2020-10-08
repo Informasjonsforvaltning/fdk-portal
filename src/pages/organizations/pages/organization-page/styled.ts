@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 
 import { getConfig } from '../../../../config';
