@@ -70,6 +70,7 @@
   "searchOrganizations": "Search organizations",
   "searchOrganization": "Search organization",
   "organization": "Organization",
+  "addedLastDays": "Added last {days} days",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",

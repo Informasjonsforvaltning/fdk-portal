@@ -72,6 +72,10 @@ const getFilterLabel = (
       );
     case Filter.OPENDATA:
       return localization.open_data;
+    case Filter.LASTXDAYS:
+      return localization.formatString(localization.addedLastDays, {
+        days: filterValue
+      });
     default:
       return localization[filterValue.toLowerCase()] || capitalize(filterValue);
   }
