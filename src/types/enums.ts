@@ -44,7 +44,11 @@ export enum Filter {
   SUBJECTEXISTS = 'subjectExists',
   FORMAT = 'format',
   LOS = 'losTheme',
-  ORGPATH = 'orgPath'
+  ORGPATH = 'orgPath',
+  THEME = 'theme',
+  Q = 'q',
+  PAGE = 'page',
+  SORTFIELD = 'sortfield'
 }
 
 export enum RatingCategory {
