@@ -35,7 +35,7 @@ import { Line } from '../../../../components/charts';
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../components/with-reference-data';
-import FormatPie from './formatPie/formatPie.component';
+import FormatPie from '../formatPie/formatPie.component';
 import { sortKeyWithCount } from '../../sort-helper';
 
 interface Props extends RouteComponentProps, ReferenceDataProps {

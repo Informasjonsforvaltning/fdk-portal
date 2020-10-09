@@ -1,21 +1,26 @@
 import React, { FC, memo, useState } from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
-import { KeyWithCountObject } from '../../../../../types';
-import { Entity } from '../../../../../types/enums';
+import { KeyWithCountObject } from '../../../../types';
+import { Entity } from '../../../../types/enums';
 
 interface Props {
   formats: any;
   theme: any;
   history: any;
+  entityType?: Entity;
 }
 
-const FormatPie: FC<Props> = ({ formats, theme }) => {
+const FormatPie: FC<Props> = ({
+  formats,
+  theme,
+  entityType = Entity.DATASET
+}) => {
   const [hovered, setHovered] = useState<number | undefined>(undefined);
 
   const data = formats.map(
     ({ key, count }: KeyWithCountObject, index: number) => {
       const colorArray: { [key: string]: string } =
-        theme.extendedColors[Entity.DATASET].graph;
+        theme.extendedColors[entityType].graph;
       return {
         value: Number(count) ?? 0,
         label: key,
@@ -44,7 +49,7 @@ const FormatPie: FC<Props> = ({ formats, theme }) => {
         fill:
           hovered === index
             ? theme.extendedColors.neutralDarkest
-            : theme.extendedColors[Entity.DATASET].dark,
+            : theme.extendedColors[entityType].dark,
         fontSize: '4px',
         fontWeight: hovered === index ? 'bold' : 'normal'
       })}
