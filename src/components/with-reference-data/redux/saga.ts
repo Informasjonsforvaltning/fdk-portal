@@ -9,9 +9,10 @@ function* getReferenceDataRequested({
   payload: { category }
 }: ReturnType<typeof actions.getReferenceDataRequested>) {
   try {
+    const codes = ['referencetypes', 'mediatypes'];
     const data = yield call(
       getReferenceData,
-      category === 'referencetypes' ? `codes/${category}` : category
+      codes.includes(category) ? `codes/${category}` : category
     );
     if (data) {
       yield put(actions.getReferenceDataSucceeded(category, data));
