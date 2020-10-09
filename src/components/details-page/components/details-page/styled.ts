@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import SideMenuBase from '../side-menu';
 
+const onMobileView = '@media (max-width: 768px)';
+
 const DetailsPage = styled.article`
   flex: 1 0 auto;
 `;
@@ -9,6 +11,9 @@ const DetailsPage = styled.article`
 const Publisher = styled.p`
   margin: 0;
   font-size: 20px;
+  ${onMobileView} {
+    font-size: 16px;
+  }
 `;
 
 const SubBanner = styled.div`
@@ -21,6 +26,13 @@ const SubBanner = styled.div`
   & > a {
     color: ${({ theme }) => theme.entityColours.dark} !important;
   }
+
+  ${onMobileView} {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
 `;
 
 const MetadataQuality = styled.div`
@@ -32,6 +44,14 @@ const MetadataQuality = styled.div`
   & > p {
     font-size: 20px;
     line-height: 1;
+  }
+
+  ${onMobileView} {
+    margin-top: 10px;
+    margin-bottom: 0;
+    & > p {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -48,6 +68,10 @@ const RatingIcon = styled.div`
     top: 50%;
     left: 50%;
     position: relative;
+  }
+
+  ${onMobileView} {
+    width: 20px;
   }
 `;
 
@@ -122,15 +146,82 @@ const Themes = styled.div`
 const Page = styled.div`
   display: flex;
   margin-top: 40px;
+  ${onMobileView} {
+    flex-direction: column;
+  }
+`;
+
+const MenuToggle = styled.button`
+  display: none;
+  color: ${({ theme }) => theme.extendedColors.neutralDarker};
+
+  ${onMobileView} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    background-color: ${({ theme }) => theme.extendedColors.neutralLight};
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.extendedColors.neutralDarkest};
+  }
+
+  &:active {
+    background: black;
+    color: ${({ theme }) => theme.extendedColors.neutralLighter};
+  }
+
+  &:before {
+    content: '\\f0c9';
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 0.5em;
+  }
 `;
 
 const SideMenu = styled(SideMenuBase)`
   width: 200px;
   margin-right: 50px;
+  ${onMobileView} {
+    display: none;
+    width: auto;
+    margin-right: 0;
+  }
+`;
+
+const SideMenuSmall = styled(SideMenuBase)`
+  display: none;
+  ${onMobileView} {
+    display: flex;
+
+    nav {
+      width: 100%;
+
+      ul > li {
+        background-color: ${({ theme }) => theme.extendedColors.neutralLighter};
+        border-radius: 5px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+
+        a {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
 `;
 
 const Content = styled.main`
   width: calc(100% - 250px);
+  ${onMobileView} {
+    width: auto;
+    margin-top: 40px;
+  }
 `;
 
 export default {
@@ -140,7 +231,9 @@ export default {
   MetadataQuality,
   Themes,
   Page,
+  MenuToggle,
   SideMenu,
+  SideMenuSmall,
   Content,
   RatingIcon
 };

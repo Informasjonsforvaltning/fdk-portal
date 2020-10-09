@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const onMobileView = '@media (max-width: 768px)';
+
 const Banner = styled.header`
   display: flex;
   width: 100%;
@@ -17,6 +19,12 @@ const Banner = styled.header`
     width: 42px;
     min-height: 42px;
     min-width: 42px;
+    ${onMobileView} {
+      height: 20px;
+      width: 20px;
+      min-height: 20px;
+      min-width: 20px;
+    }
   }
 `;
 
@@ -43,12 +51,22 @@ const Title = styled.h1`
   div {
     display: inline;
   }
+
+  ${onMobileView} {
+    line-height: 24px;
+    font-size: 24px;
+    white-space: normal;
+    word-wrap: break-word;
+  }
 `;
 
 const LastPublishedInfo = styled.p`
   margin: 0;
   margin-top: 8px;
   font-size: 20px;
+  ${onMobileView} {
+    font-size: 16px;
+  }
 `;
 
 export default { Banner, Content, Title, LastPublishedInfo };

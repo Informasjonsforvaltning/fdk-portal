@@ -536,6 +536,10 @@
     "menu": {
       "title": "Go to"
     },
+    "navMenuButton": {
+      "open": "Hide table of contents",
+      "closed": "View table of contents"
+    },
     "sectionTitles": {
       "dataset": {
         "description": "Description",
