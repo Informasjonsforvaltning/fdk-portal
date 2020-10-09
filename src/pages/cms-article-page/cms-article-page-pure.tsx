@@ -7,7 +7,7 @@ interface Props {
   article?: Partial<NewsInterface>;
 }
 
-const GuidancePage: FC<Props> = ({
+const CmsArticlePage: FC<Props> = ({
   article: { created, changed, title, field_ingress, field_modules } = {}
 }) => (
   <Article
@@ -19,4 +19,4 @@ const GuidancePage: FC<Props> = ({
   />
 );
 
-export default memo(GuidancePage);
+export default memo(CmsArticlePage);

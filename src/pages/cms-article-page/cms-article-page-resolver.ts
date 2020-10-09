@@ -25,4 +25,4 @@ const mapProps = {
   }
 };
 
-export const guidancePageResolver = resolve(mapProps);
+export const cmsArticlePageResolver = resolve(mapProps);
