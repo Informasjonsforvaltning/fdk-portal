@@ -14,7 +14,6 @@ import { ConnectedConceptDetailsPage } from '../pages/concept-details-page/conne
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
 import { ConnectedInformationModelDetailsPage } from '../pages/informationmodel-details-page/connected-information-model-details-page';
 import { AboutPage } from '../pages/about-page/about-page.component';
-import { ArticlePage } from '../pages/article-page/article-page.component';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { AppNavBar } from './app-nav-bar/app-nav-bar';
 import { ReportPage } from '../pages/report-page/report-page';
@@ -145,7 +144,7 @@ export function App({ language, onChangeLanguage }) {
             <Route
               exact
               path={PATHNAME_ABOUT_REGISTRATION}
-              component={ArticlePage}
+              component={CmsArticlePage}
             />
             <Route exact path={PATHNAME_GUIDANCE} component={CmsArticlePage} />
           </Switch>
