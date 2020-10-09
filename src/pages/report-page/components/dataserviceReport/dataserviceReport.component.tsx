@@ -1,4 +1,5 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useEffect } from 'react';
+import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import ThemeProvider from '@fellesdatakatalog/theme';
 
@@ -18,25 +19,56 @@ import NewIcon from '../../../../images/icon-new-md.svg';
 import { PATHNAME_DATA_SERVICES } from '../../../../constants/constants';
 import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import localization from '../../../../lib/localization';
-import { Report } from '../../../../types';
+import {
+  DataServiceReport,
+  KeyWithCountObject,
+  MediaType
+} from '../../../../types';
 import { Line } from '../../../../components/charts';
+import withReferenceData, {
+  Props as ReferenceDataProps
+} from '../../../../components/with-reference-data';
+import FormatPie from '../formatPie/formatPie.component';
+import { sortKeyWithCount } from '../../sort-helper';
 
-interface Props extends RouteComponentProps {
-  dataServicesReport?: Partial<Report>;
+interface Props extends RouteComponentProps, ReferenceDataProps {
+  dataServicesReport?: Partial<DataServiceReport>;
   dataServicesTimeSeries?: any;
 }
 
 const DataserviceReport: FC<Props> = ({
   location,
+  referenceData: { mediatypes },
+  referenceDataActions: { getReferenceDataRequested: getReferenceData },
   dataServicesReport: {
     totalObjects = 0,
     newLastWeek = 0,
-    organizationCount = 0
+    organizationCount = 0,
+    formats = []
   } = {},
   dataServicesTimeSeries: { timeSeriesData = [] } = {}
 }) => {
   const { search: searchParams } = location;
   timeSeriesData.push([Date.now(), totalObjects]);
+
+  useEffect(() => {
+    if (!mediatypes) {
+      getReferenceData('mediatypes');
+    }
+  }, []);
+
+  const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(
+    formats
+  ).map((item: KeyWithCountObject) => ({
+    ...item,
+    key:
+      mediatypes?.find((mediatype: MediaType) =>
+        mediatype.code.includes(
+          item.key.substr(item.key.lastIndexOf('application/'), item.key.length)
+        )
+      )?.name || item.key.substr(item.key.length - 5)
+  }));
+
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.DATA_SERVICE]}>
       <main id="content">
@@ -107,9 +139,28 @@ const DataserviceReport: FC<Props> = ({
             </div>
           </div>
         )}
+
+        {Array.isArray(topMostUsedFormats) && topMostUsedFormats?.length > 0 && (
+          <div className="row">
+            <div className="col-12">
+              <BoxRegular header={localization.report.usedFormats}>
+                <FormatPie
+                  formats={topMostUsedFormats.splice(0, 4)}
+                  theme={theme}
+                  history={history}
+                  entityType={Entity.DATA_SERVICE}
+                />
+              </BoxRegular>
+            </div>
+          </div>
+        )}
       </main>
     </ThemeProvider>
   );
 };
 
-export default withRouter(memo(DataserviceReport));
+export default compose<FC>(
+  memo,
+  withReferenceData,
+  withRouter
+)(DataserviceReport);

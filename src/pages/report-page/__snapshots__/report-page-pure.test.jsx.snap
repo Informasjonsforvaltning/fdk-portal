@@ -127,7 +127,7 @@ exports[`should render ReportPagePure correctly 1`] = `
               <l
                 id="pane-2"
               >
-                <withRouter(undefined) />
+                <Memo(Connect(Component)) />
               </l>
               <l
                 id="pane-3"

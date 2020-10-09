@@ -331,6 +331,10 @@ export interface ConceptsReport extends Report {
   mostInUse: KeyWithCountObject[];
 }
 
+export interface DataServiceReport extends Report {
+  formats: KeyWithCountObject[];
+}
+
 export interface KeyWithCountObject {
   key: string;
   count: number;
