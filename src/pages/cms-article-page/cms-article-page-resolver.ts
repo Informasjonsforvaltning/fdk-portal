@@ -5,6 +5,7 @@ import {
 } from '../../api/cms-api/article-entities';
 import localization from '../../lib/localization';
 import {
+  PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
   PATHNAME_GUIDANCE
 } from '../../constants/constants';
@@ -19,6 +20,11 @@ const articleIds: { [pathname: string]: { [key: string]: string } } = {
     nb: '1f8e5e49-c8a0-42bb-bab0-8948842d173f',
     nn: 'd0f5c946-10d6-4416-9ec9-00ad95127a9f',
     en: 'afb0ee91-dab4-44d7-857f-1652c3cac1b5'
+  },
+  [PATHNAME_ABOUT]: {
+    nb: 'd8443b67-85ae-45c9-af12-2f4851b0a012',
+    nn: '9cc84334-e052-4572-910a-9c4fe815974b',
+    en: '3e7b9b21-d7ce-470b-bdee-3b2db2d7448b'
   }
 };
 
