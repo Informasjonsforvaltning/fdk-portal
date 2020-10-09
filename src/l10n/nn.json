@@ -536,6 +536,10 @@
     "menu": {
       "title": "Gå til"
     },
+    "navMenuButton": {
+      "open": "Skjul innhaldsoversikt",
+      "closed": "Vis innhaldsoversikt"
+    },
     "sectionTitles": {
       "dataset": {
         "description": "Beskrivelse",
