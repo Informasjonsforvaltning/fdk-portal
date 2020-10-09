@@ -40,7 +40,7 @@ import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
 import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
-import { GuidancePage } from '../pages/guidance-page/guidance-page';
+import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import { parseSearchParams } from '../lib/location-history-helper';
 
@@ -147,7 +147,7 @@ export function App({ language, onChangeLanguage }) {
               path={PATHNAME_ABOUT_REGISTRATION}
               component={ArticlePage}
             />
-            <Route exact path={PATHNAME_GUIDANCE} component={GuidancePage} />
+            <Route exact path={PATHNAME_GUIDANCE} component={CmsArticlePage} />
           </Switch>
         </ScrollToTop>
       </Switch>
