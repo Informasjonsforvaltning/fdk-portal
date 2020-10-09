@@ -264,6 +264,7 @@ export interface ReferenceData {
   los?: LosTheme[];
   themes?: EuTheme[];
   referencetypes?: ReferenceType[];
+  mediatypes?: MediaType[];
 }
 
 export interface Link {
