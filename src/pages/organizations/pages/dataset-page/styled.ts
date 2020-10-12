@@ -102,6 +102,19 @@ const BannerRating = styled.div`
   & > svg {
     height: 35px;
     width: 35px;
+
+    ${() =>
+      isTransportportal
+        ? css`
+            & > circle:first-of-type {
+              fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+            }
+          `
+        : css`
+            & > circle:first-of-type {
+              fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+            }
+          `}
   }
 
   & > p {
@@ -301,12 +314,20 @@ const SufficientQualityIcon = styled(MetadataQualitySufficientSVG)`
             fill: ${theme.colour(Colour.GREEN, 'G50')};
           }
 
+          & > circle {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+
           & > circle:first-of-type {
             fill: ${theme.colour(Colour.GREEN, 'G20')};
           }
         `
       : css`
           & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+
+          & > circle {
             fill: ${theme.colour(Colour.BLUE, 'B50')};
           }
 
