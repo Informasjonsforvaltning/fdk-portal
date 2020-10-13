@@ -637,5 +637,9 @@
     "organisationHomePage": "Home page",
     "organisationMoreInfo": "More information",
     "organisationInEnhetsregisteret": "More information about {organizationName} in Enhetsregisteret"
+  },
+  "truncatedText" : {
+    "expanded" : "Hide description",
+    "collapsed" : "Show full description"
   }
 }

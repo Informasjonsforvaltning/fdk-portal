@@ -636,5 +636,9 @@
     "organisationHomePage": "Hjemmeside",
     "organisationMoreInfo": "Flere opplysninger",
     "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret"
+  },
+  "truncatedText" : {
+    "expanded" : "Skjul beskrivelsen",
+    "collapsed" : "Vis hele beskrivelsen"
   }
 }
