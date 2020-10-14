@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import DocumentMeta from 'react-document-meta';
@@ -19,17 +19,15 @@ import { Structure } from './structure/structure.component';
 import './information-model-details-page.scss';
 import { InfoModelStructure } from './infomodel-structure/infomodel-structure.component';
 
-const renderJSONSchema = schema => {
-  if (!schema) {
-    return null;
-  }
-
-  return (
+const renderJSONSchema = schema =>
+  schema && (
     <div>
-      <pre style={{ whiteSpace: 'pre' }}>{JSON.stringify(schema, null, 2)}</pre>
+      <pre className="code">{JSON.stringify(schema, null, 2)}</pre>
     </div>
   );
-};
+
+const renderRdfData = rdfData =>
+  rdfData && <pre className="code">{rdfData}</pre>;
 
 const getSchema = model => {
   const schemaJson = _.get(model, 'schema', null);
@@ -43,7 +41,7 @@ const isNewInformationModel = ({
   simpleTypes
 } = {}) => objectTypes || codeTypes || dataTypes || simpleTypes;
 
-const createTabsArray = informationModelItem => {
+const createTabsArray = (informationModelItem, rdfData) => {
   const tabsArray = [];
 
   if (isNewInformationModel(informationModelItem)) {
@@ -69,10 +67,27 @@ const createTabsArray = informationModelItem => {
       body: renderJSONSchema(parsedJsonSchema)
     });
   }
+  if (rdfData) {
+    tabsArray.push(
+      {
+        title: localization.infoMod.tabs.turtle,
+        body: renderRdfData(rdfData.turtle)
+      },
+      {
+        title: localization.infoMod.tabs.jsonld,
+        body: renderJSONSchema(rdfData.jsonld)
+      },
+      {
+        title: localization.infoMod.tabs.rdfxml,
+        body: renderRdfData(rdfData.rdfxml)
+      }
+    );
+  }
+
   return tabsArray;
 };
 
-const renderModels = informationModelItem => {
+const renderModels = (informationModelItem, rdfData) => {
   if (!informationModelItem) {
     return null;
   }
@@ -80,7 +95,7 @@ const renderModels = informationModelItem => {
   return (
     <ListRegular title={localization.infoMod.infoModHeader}>
       <div className="d-flex list-regular--item" />
-      <Tabs tabContent={createTabsArray(informationModelItem)} />
+      <Tabs tabContent={createTabsArray(informationModelItem, rdfData)} />
     </ListRegular>
   );
 };
@@ -329,24 +344,13 @@ const renderStickyMenu = (
 export const InformationModelDetailsPage = ({
   fetchPublishersIfNeeded,
   fetchReferenceDataIfNeeded,
+  fetchRdfDataIfNeeded,
   informationModelItem,
   publisherItems,
   referencedApis,
-  referenceData
+  referenceData,
+  rdfData
 }) => {
-  fetchPublishersIfNeeded();
-  fetchReferenceDataIfNeeded('los');
-  fetchReferenceDataIfNeeded('codes/linguisticsystem');
-
-  if (!informationModelItem) {
-    return null;
-  }
-
-  const meta = {
-    title: getTranslateText(informationModelItem.title),
-    description: getTranslateText(informationModelItem.description)
-  };
-
   const {
     id,
     title,
@@ -368,6 +372,18 @@ export const InformationModelDetailsPage = ({
     category,
     schema
   } = informationModelItem || {};
+
+  useEffect(() => {
+    fetchPublishersIfNeeded();
+    fetchReferenceDataIfNeeded('los');
+    fetchReferenceDataIfNeeded('codes/linguisticsystem');
+    fetchRdfDataIfNeeded(id);
+  }, [id]);
+
+  const meta = {
+    title: getTranslateText(informationModelItem.title),
+    description: getTranslateText(informationModelItem.description)
+  };
 
   const hasModel = isNewInformationModel(informationModelItem) || schema;
   const languages = (referenceData.items['codes/linguisticsystem'] || [])
@@ -424,7 +440,7 @@ export const InformationModelDetailsPage = ({
 
             {renderIdentifier(id)}
 
-            {hasModel && renderModels(informationModelItem)}
+            {hasModel && renderModels(informationModelItem, rdfData)}
 
             {renderKeywords(keywords)}
 
@@ -443,6 +459,7 @@ export const InformationModelDetailsPage = ({
 InformationModelDetailsPage.defaultProps = {
   informationModelItem: null,
   publisherItems: null,
+  fetchRdfDataIfNeeded: _.noop,
   fetchPublishersIfNeeded: _.noop,
   fetchReferenceDataIfNeeded: _.noop,
   referencedApis: [],
@@ -452,6 +469,7 @@ InformationModelDetailsPage.defaultProps = {
 InformationModelDetailsPage.propTypes = {
   informationModelItem: PropTypes.object,
   publisherItems: PropTypes.object,
+  fetchRdfDataIfNeeded: PropTypes.func,
   fetchPublishersIfNeeded: PropTypes.func,
   fetchReferenceDataIfNeeded: PropTypes.func,
   referencedApis: PropTypes.array,
