@@ -15,7 +15,7 @@
   "contactPoint": "Kontaktpunkt",
   "documentation": "Dokumentasjon",
   "specification": "Spesifikasjon",
-  "serviceType":"Tenestetype",
+  "serviceType": "Tenestetype",
   "email": "E-mail",
   "phone": "Telefon",
   "close": "Lukk",
@@ -348,10 +348,10 @@
     "datasetTab": "Rapport for datasett",
     "apiTab": "Rapport for API",
     "conceptTab": "Rapport for omgrep",
-    "datasets":"datasett",
-    "apis":"API",
-    "concepts":"omgrep",
-    "newPastWeek":"nye siste veke",
+    "datasets": "datasett",
+    "apis": "API",
+    "concepts": "omgrep",
+    "newPastWeek": "nye siste veke",
     "aggregation": {
       "public": "Datasett som er offentleg",
       "restricted": "Datasett med avgrensa offentlegheit",
@@ -386,7 +386,6 @@
     "countConceptsCatalogsLabel": "verksemder har omgrep i Felles datakatalog",
     "conceptsFrom": "Omgrepskatalogar frå",
     "conceptsCatalog": "Omgrepskatalogar",
-
     "datasetsDescription": "datasettskildringar",
     "dataserviceDescription": "API-skildringar",
     "conceptsDescription": "omgrepsskildringar",
@@ -476,7 +475,10 @@
     "infoModHeader": "Informasjonsmodell",
     "tabs": {
       "structure": "Struktur",
-      "json": "JSON Schema"
+      "json": "JSON Schema",
+      "turtle": "Turtle",
+      "jsonld": "JSON-LD",
+      "rdfxml": "RDF/XML"
     },
     "status": "Status",
     "modelStatus": "Modellstatus",

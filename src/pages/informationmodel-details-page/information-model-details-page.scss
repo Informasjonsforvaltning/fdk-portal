@@ -5,3 +5,8 @@
   height: 3.5em;
   display: inline-block;
 }
+
+.code {
+  white-space: pre-wrap; 
+  overflow-wrap: break-word;
+}

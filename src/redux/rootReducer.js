@@ -7,6 +7,7 @@ import { conceptsCompareReducer } from './modules/conceptsCompare';
 import { datasetsReducer } from './modules/datasets';
 import { dataServicesReducer } from './modules/dataservices';
 import { conceptReducer } from './modules/concepts';
+import { rdfDataReducer } from './modules/rdfData';
 import { informationModelsReducer } from './modules/informationModels';
 import DatasetReducer from '../components/with-dataset/redux/reducer';
 import ReferenceDataReducer from '../components/with-reference-data/redux/reducer';
@@ -20,6 +21,7 @@ import ReportReducer from '../components/with-report/redux/reducer';
 import AssessmentReducer from '../components/with-assessment/redux/reducer';
 
 export const rootReducer = combineReducers({
+  rdfData: rdfDataReducer,
   publishers: publishersReducer,
   settings: settingsReducer,
   catalogs: catalogsReducer,
