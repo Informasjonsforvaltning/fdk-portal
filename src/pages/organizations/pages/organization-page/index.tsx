@@ -33,7 +33,10 @@ import AccessOpenIcon from '../../../../images/icon-access-open-md-v2.svg';
 import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
 import NewIcon from '../../../../images/icon-new-md.svg';
 
-import { PATHNAME_DATASETS } from '../../../../constants/constants';
+import {
+  PATHNAME_DATASETS,
+  PATHNAME_GUIDANCE_METADATA
+} from '../../../../constants/constants';
 
 import { themeFDK, themeNAP } from '../../../../app/theme';
 
@@ -47,12 +50,6 @@ interface Props
   extends OrganizationProps,
     ReportProps,
     RouteComponentProps<RouteParams> {}
-
-const articleIds: { [key: string]: string } = {
-  nb: '701a4b80-d830-4aa5-be63-20422e3d8d64',
-  nn: '5892cae9-2b31-4f52-b0a6-da87092924bf',
-  en: 'cf2a2b6d-88bb-4f3a-bbfc-4114e2841479'
-};
 
 const OrganizationPage: FC<Props> = ({
   datasets,
@@ -76,6 +73,9 @@ const OrganizationPage: FC<Props> = ({
 }) => {
   const [showOrganizationLogo, setShowOrganizationLogo] = useState(true);
 
+  const isTransportportal = getConfig().themeNap;
+  const theme = isTransportportal ? themeNAP : themeFDK;
+
   useLayoutEffect(() => {
     if (organization?.organizationId !== organizationId) {
       getOrganization(organizationId);
@@ -90,15 +90,16 @@ const OrganizationPage: FC<Props> = ({
 
   useLayoutEffect(() => {
     if (organization?.organizationId === organizationId) {
-      getDatasetsReport({ orgPath: organization.orgPath });
+      getDatasetsReport({
+        orgPath: organization.orgPath,
+        themeprofile: isTransportportal ? 'transport' : undefined
+      });
     }
   }, [organization?.organizationId]);
 
   const ratingPercentage = Math.round(
     ((rating?.score ?? 0) / (rating?.maxScore ?? 0)) * 100
   );
-
-  const theme = getConfig().themeNap ? themeNAP : themeFDK;
 
   const determineRatingIcon = () => {
     switch (rating?.category) {
@@ -339,9 +340,22 @@ const OrganizationPage: FC<Props> = ({
         </ThemeProvider>
       </SC.Section>
       <SC.Section>
-        <Link href={`/news/${articleIds[translations.getLanguage()]}`}>
-          {translations.metadataQualityPage.learnMoreAboutMetadataQuality}
-        </Link>
+        <SC.FrequentlyAskedQuestions>
+          <SC.Question>
+            <h3>
+              {translations.metadataQualityPage.whatIsMetadataQualityFaqTitle}
+            </h3>
+            <p>
+              {
+                translations.metadataQualityPage
+                  .whatIsMetadataQualityFaqDescription
+              }
+            </p>
+            <Link href={PATHNAME_GUIDANCE_METADATA}>
+              {translations.metadataQualityPage.whatIsMetadataQualityFaqLink}
+            </Link>
+          </SC.Question>
+        </SC.FrequentlyAskedQuestions>
       </SC.Section>
     </SC.OrganizationPage>
   );

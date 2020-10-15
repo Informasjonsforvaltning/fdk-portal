@@ -111,11 +111,12 @@ export function getCatalogRatingFailed(message: string) {
   };
 }
 
-export function getOrganizationDatasetsRequested(id: string) {
+export function getOrganizationDatasetsRequested(id: string, filter?: string) {
   return {
     type: GET_ORGANIZATION_DATASETS_REQUESTED,
     payload: {
-      id
+      id,
+      filter
     }
   };
 }
@@ -150,13 +151,15 @@ export function getOrganizationDatasetsFailed(message: string) {
 
 export function loadMoreOrganizationDatasetsRequested(
   id: string,
-  page: number
+  page: number,
+  filter?: string
 ) {
   return {
     type: LOAD_MORE_ORGANIZATION_DATASETS_REQUESTED,
     payload: {
       id,
-      page
+      page,
+      filter
     }
   };
 }

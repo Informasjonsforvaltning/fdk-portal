@@ -5,14 +5,18 @@ interface Props {
   path: string;
   method: any;
   data?: any;
+  params?: Record<string, string | number | undefined>;
 }
 
-export const organizationsApi = ({ path, method, data }: Props) =>
+export const organizationsApi = ({ path, method, data, params }: Props) =>
   axios({
     url: `${getConfig().organizationsApi.host}${path}`,
     method,
-    data
+    data,
+    params
   }).then(({ data }) => data);
 
-export const organizationsApiGet = (path: string) =>
-  organizationsApi({ path, method: 'GET' });
+export const organizationsApiGet = (
+  path: string,
+  params?: Record<string, string | number | undefined>
+) => organizationsApi({ path, method: 'GET', params });

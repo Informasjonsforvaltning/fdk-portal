@@ -25,6 +25,8 @@ const OrganizationsPage: FC<Props> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
+  const isTransportportal = getConfig().themeNap;
+
   const filterOrganizationsByName = (query: string) =>
     query
       ? organizations.filter(({ organization }) =>
@@ -35,10 +37,8 @@ const OrganizationsPage: FC<Props> = ({
       : organizations;
 
   useEffect(() => {
-    getOrganizations(getConfig().themeNap ? 'transportportal' : undefined);
+    getOrganizations(isTransportportal ? 'transportportal' : undefined);
   }, []);
-
-  const isTransportportal = getConfig().themeNap;
 
   return (
     <main className="container">
