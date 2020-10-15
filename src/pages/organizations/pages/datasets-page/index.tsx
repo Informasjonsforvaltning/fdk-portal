@@ -10,6 +10,8 @@ import withOrganization, {
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';
 
+import { PATHNAME_GUIDANCE_METADATA } from '../../../../constants/constants';
+
 import ExpandIcon from '../../../../images/icon-expand-text-sm.svg';
 
 import SC from './styled';
@@ -22,12 +24,6 @@ interface RouteParams {
 }
 
 interface Props extends OrganizationProps, RouteComponentProps<RouteParams> {}
-
-const articleIds: { [key: string]: string } = {
-  nb: '701a4b80-d830-4aa5-be63-20422e3d8d64',
-  nn: '5892cae9-2b31-4f52-b0a6-da87092924bf',
-  en: 'cf2a2b6d-88bb-4f3a-bbfc-4114e2841479'
-};
 
 const DatasetsPage: FC<Props> = ({
   organization,
@@ -225,7 +221,7 @@ const DatasetsPage: FC<Props> = ({
                   .whatIsMetadataQualityFaqDescription
               }
             </p>
-            <Link href={`/news/${articleIds[translations.getLanguage()]}`}>
+            <Link href={PATHNAME_GUIDANCE_METADATA}>
               {translations.metadataQualityPage.whatIsMetadataQualityFaqLink}
             </Link>
           </SC.Question>

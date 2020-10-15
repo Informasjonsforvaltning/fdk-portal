@@ -7,7 +7,8 @@ import localization from '../../lib/localization';
 import {
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
-  PATHNAME_GUIDANCE
+  PATHNAME_GUIDANCE,
+  PATHNAME_GUIDANCE_METADATA
 } from '../../constants/constants';
 
 const articleIds: { [pathname: string]: { [key: string]: string } } = {
@@ -15,6 +16,11 @@ const articleIds: { [pathname: string]: { [key: string]: string } } = {
     nb: 'e32a0d53-d5f7-4b07-adc2-cc8cbac0fcdb',
     nn: '40cb9799-4f53-482c-8075-417f70bcd483',
     en: '95430944-2177-48d1-9e1e-f589defd262c'
+  },
+  [PATHNAME_GUIDANCE_METADATA]: {
+    nb: '701a4b80-d830-4aa5-be63-20422e3d8d64',
+    nn: '5892cae9-2b31-4f52-b0a6-da87092924bf',
+    en: 'cf2a2b6d-88bb-4f3a-bbfc-4114e2841479'
   },
   [PATHNAME_ABOUT_REGISTRATION]: {
     nb: '1f8e5e49-c8a0-42bb-bab0-8948842d173f',
