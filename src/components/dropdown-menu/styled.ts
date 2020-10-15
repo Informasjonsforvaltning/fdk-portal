@@ -17,6 +17,11 @@ const GlobalStyle = createGlobalStyle<globalProps>`
         css`
           height: 100vh;
           overflow-y: hidden;
+
+          // For safari:
+          position: fixed;
+          left: 0;
+          right: 0;
         `}
     }
   }
