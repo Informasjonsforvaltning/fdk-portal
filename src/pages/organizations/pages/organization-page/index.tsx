@@ -77,7 +77,7 @@ const OrganizationPage: FC<Props> = ({
   const [showOrganizationLogo, setShowOrganizationLogo] = useState(true);
 
   useLayoutEffect(() => {
-    if (enhetsregisteretOrganization?.organisasjonsnummer !== organizationId) {
+    if (organization?.organizationId !== organizationId) {
       getOrganization(organizationId);
       getEnhetsregisteretOrganization(organizationId);
       getRating(organizationId);

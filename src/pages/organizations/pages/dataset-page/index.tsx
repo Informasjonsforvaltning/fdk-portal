@@ -73,7 +73,7 @@ const DatasetPage: FC<Props> = ({
   }
 }) => {
   useLayoutEffect(() => {
-    if (organization?.id !== organizationId) {
+    if (organization?.organizationId !== organizationId) {
       getOrganization(organizationId);
     }
 
