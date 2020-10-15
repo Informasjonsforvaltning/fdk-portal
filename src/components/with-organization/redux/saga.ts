@@ -83,10 +83,10 @@ function* getCatalogRatingRequested({
 }
 
 function* getOrganizationDatasetsRequested({
-  payload: { id }
+  payload: { id, filter }
 }: ReturnType<typeof actions.getOrganizationDatasetsRequested>) {
   try {
-    const data = yield call(getOrganizationDatasets, id);
+    const data = yield call(getOrganizationDatasets, id, 0, filter);
 
     if (data?.hits && data?.catalogRating && data?.page) {
       yield put(
@@ -107,10 +107,10 @@ function* getOrganizationDatasetsRequested({
 }
 
 function* loadMoreOrganizationDatasetsRequested({
-  payload: { id, page }
+  payload: { id, page, filter }
 }: ReturnType<typeof actions.loadMoreOrganizationDatasetsRequested>) {
   try {
-    const data = yield call(getOrganizationDatasets, id, page);
+    const data = yield call(getOrganizationDatasets, id, page, filter);
 
     if (data?.hits && data?.catalogRating && data?.page) {
       yield put(

@@ -3,6 +3,8 @@ import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
 import Link from '@fellesdatakatalog/link';
 
+import { getConfig } from '../../../../config';
+
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
@@ -46,6 +48,8 @@ const DatasetsPage: FC<Props> = ({
 }) => {
   const [datasetsRequested, setDatasetsRequested] = useState(false);
 
+  const isTransportportal = getConfig().themeNap;
+
   useLayoutEffect(() => {
     if (organization?.organizationId !== organizationId) {
       getOrganization(organizationId);
@@ -54,7 +58,10 @@ const DatasetsPage: FC<Props> = ({
 
   useLayoutEffect(() => {
     if (organization && !datasetsRequested) {
-      getOrganizationDatasets(organization.organizationId);
+      getOrganizationDatasets(
+        organization.organizationId,
+        isTransportportal ? 'transportportal' : undefined
+      );
       setDatasetsRequested(true);
     }
   }, [organization]);
@@ -201,7 +208,7 @@ const DatasetsPage: FC<Props> = ({
             DimensionType.READABILITY,
             DimensionType.REUSABILITY
           ].map(dimension => (
-            <div>
+            <div key={dimension}>
               {`${calculateRatingPercentage(
                 rating?.dimensionsRating?.[dimension]
               )}%`}

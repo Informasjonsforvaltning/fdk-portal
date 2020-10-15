@@ -1,15 +1,17 @@
 import { organizationsApiGet } from './host';
 
 export const getOrganizations = (filter?: string) =>
-  organizationsApiGet(
-    filter ? `/organizationcatalogs?filter=${filter}` : '/organizationcatalogs'
-  );
+  organizationsApiGet('/organizationcatalogs', { filter });
 
 export const getOrganization = (id: string) =>
   organizationsApiGet(`/organizationcatalogs/${id}`);
 
-export const getOrganizationDatasets = (id: string, page: number = 0) =>
-  organizationsApiGet(`/organizationcatalogs/${id}/datasets?page=${page}`);
+export const getOrganizationDatasets = (
+  id: string,
+  page?: number,
+  filter?: string
+) =>
+  organizationsApiGet(`/organizationcatalogs/${id}/datasets`, { page, filter });
 
 export const getOrganizationDataset = (
   organizationId: string,
