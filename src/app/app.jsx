@@ -31,6 +31,7 @@ import {
   PATHNAME_NEWS_ARTICLE,
   PATHNAME_NEWS_ARCHIVE,
   PATHNAME_GUIDANCE,
+  PATHNAME_GUIDANCE_METADATA,
   PATHNAME_ORGANIZATIONS
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
@@ -146,6 +147,11 @@ export function App({ language, onChangeLanguage }) {
               component={CmsArticlePage}
             />
             <Route exact path={PATHNAME_GUIDANCE} component={CmsArticlePage} />
+            <Route
+              exact
+              path={PATHNAME_GUIDANCE_METADATA}
+              component={CmsArticlePage}
+            />
           </Switch>
         </ScrollToTop>
       </Switch>
