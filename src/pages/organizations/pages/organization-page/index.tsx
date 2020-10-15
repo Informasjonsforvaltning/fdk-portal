@@ -141,96 +141,101 @@ const OrganizationPage: FC<Props> = ({
         )}
       </SC.Title>
       <SC.Section>
-        <SC.OrganizationInformation>
-          {showOrganizationLogo &&
-            enhetsregisteretOrganization?.organisasjonsnummer && (
-              <img
-                src={`https://orglogo.difi.no/api/logo/org/${enhetsregisteretOrganization?.organisasjonsnummer}`}
-                alt={`${enhetsregisteretOrganization?.navn} logo`}
-                onError={() => setShowOrganizationLogo(false)}
-              />
-            )}
-          <ul>
-            <li>
-              <span>{translations.metadataQualityPage.organisationName}</span>
-              <span>{enhetsregisteretOrganization?.navn}</span>
-            </li>
-            <li>
-              <span>{translations.metadataQualityPage.organisationNumber}</span>
-              <span>
-                {enhetsregisteretOrganization?.organisasjonsnummer.replace(
-                  /\B(?=(\d{3})+(?!\d))/g,
-                  ' '
-                )}
-              </span>
-            </li>
-            <li>
-              <span>{translations.metadataQualityPage.organisationForm}</span>
-              <span>
-                {enhetsregisteretOrganization?.organisasjonsform.beskrivelse}
-              </span>
-            </li>
-            {enhetsregisteretOrganization?.naeringskode1 && (
+        {enhetsregisteretOrganization && (
+          <SC.OrganizationInformation>
+            {showOrganizationLogo &&
+              enhetsregisteretOrganization.organisasjonsnummer && (
+                <img
+                  src={`https://orglogo.difi.no/api/logo/org/${enhetsregisteretOrganization.organisasjonsnummer}`}
+                  alt={`${enhetsregisteretOrganization.navn} logo`}
+                  onError={() => setShowOrganizationLogo(false)}
+                />
+              )}
+            <ul>
               <li>
-                <span>
-                  {translations.metadataQualityPage.organisationBusinessCodes}
-                </span>
-                <span>{`${enhetsregisteretOrganization?.naeringskode1.kode} ${enhetsregisteretOrganization?.naeringskode1.beskrivelse}`}</span>
+                <span>{translations.metadataQualityPage.organisationName}</span>
+                <span>{enhetsregisteretOrganization.navn}</span>
               </li>
-            )}
-            {enhetsregisteretOrganization?.institusjonellSektorkode && (
               <li>
                 <span>
-                  {
-                    translations.metadataQualityPage
-                      .organisationInstitutionalSectorCode
-                  }
+                  {translations.metadataQualityPage.organisationNumber}
                 </span>
-                <span>{`${enhetsregisteretOrganization?.institusjonellSektorkode.kode} ${enhetsregisteretOrganization?.institusjonellSektorkode.beskrivelse}`}</span>
+                <span>
+                  {enhetsregisteretOrganization.organisasjonsnummer.replace(
+                    /\B(?=(\d{3})+(?!\d))/g,
+                    ' '
+                  )}
+                </span>
               </li>
-            )}
-            {enhetsregisteretOrganization?.hjemmeside && (
+              <li>
+                <span>{translations.metadataQualityPage.organisationForm}</span>
+                <span>
+                  {enhetsregisteretOrganization.organisasjonsform.beskrivelse}
+                </span>
+              </li>
+              {enhetsregisteretOrganization.naeringskode1 && (
+                <li>
+                  <span>
+                    {translations.metadataQualityPage.organisationBusinessCodes}
+                  </span>
+                  <span>{`${enhetsregisteretOrganization.naeringskode1.kode} ${enhetsregisteretOrganization.naeringskode1.beskrivelse}`}</span>
+                </li>
+              )}
+              {enhetsregisteretOrganization.institusjonellSektorkode && (
+                <li>
+                  <span>
+                    {
+                      translations.metadataQualityPage
+                        .organisationInstitutionalSectorCode
+                    }
+                  </span>
+                  <span>{`${enhetsregisteretOrganization.institusjonellSektorkode.kode} ${enhetsregisteretOrganization.institusjonellSektorkode.beskrivelse}`}</span>
+                </li>
+              )}
+              {enhetsregisteretOrganization.hjemmeside && (
+                <li>
+                  <span>
+                    {translations.metadataQualityPage.organisationHomePage}
+                  </span>
+                  <span>
+                    <Link
+                      href={`//${enhetsregisteretOrganization.hjemmeside.replace(
+                        /\/$/,
+                        ''
+                      )}`}
+                      external
+                    >
+                      {enhetsregisteretOrganization.hjemmeside.replace(
+                        /\/$/,
+                        ''
+                      )}
+                    </Link>
+                  </span>
+                </li>
+              )}
               <li>
                 <span>
-                  {translations.metadataQualityPage.organisationHomePage}
+                  {translations.metadataQualityPage.organisationMoreInfo}
                 </span>
                 <span>
                   <Link
-                    href={`//${enhetsregisteretOrganization?.hjemmeside.replace(
-                      /\/$/,
-                      ''
-                    )}`}
+                    href={`https://data.brreg.no/enhetsregisteret/oppslag/enheter/${enhetsregisteretOrganization.organisasjonsnummer}`}
                     external
                   >
-                    {enhetsregisteretOrganization?.hjemmeside.replace(
-                      /\/$/,
-                      ''
+                    {translations.formatString(
+                      translations.metadataQualityPage
+                        .organisationInEnhetsregisteret,
+                      {
+                        organizationName:
+                          enhetsregisteretOrganization.navn ?? ''
+                      }
                     )}
                   </Link>
                 </span>
               </li>
-            )}
-            <li>
-              <span>
-                {translations.metadataQualityPage.organisationMoreInfo}
-              </span>
-              <span>
-                <Link
-                  href={`https://data.brreg.no/enhetsregisteret/oppslag/enheter/${enhetsregisteretOrganization?.organisasjonsnummer}`}
-                  external
-                >
-                  {translations.formatString(
-                    translations.metadataQualityPage
-                      .organisationInEnhetsregisteret,
-                    {
-                      organizationName: enhetsregisteretOrganization?.navn ?? ''
-                    }
-                  )}
-                </Link>
-              </span>
-            </li>
-          </ul>
-        </SC.OrganizationInformation>
+            </ul>
+          </SC.OrganizationInformation>
+        )}
       </SC.Section>
       <SC.Section />
       <SC.Section>
