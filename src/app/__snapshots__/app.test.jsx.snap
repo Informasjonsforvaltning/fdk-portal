@@ -183,6 +183,11 @@ exports[`should render App correctly 1`] = `
           exact={true}
           path="/guidance"
         />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/guidance/metadata"
+        />
       </Switch>
     </withRouter(ScrollToTop)>
   </Switch>
