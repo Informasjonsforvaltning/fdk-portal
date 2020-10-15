@@ -409,3 +409,15 @@ export interface EnhetsregisteretOrganization {
     beskrivelse: string;
   };
 }
+
+export interface DropdownMenuItem {
+  label: string;
+}
+
+export interface DropdownButtonItem extends DropdownMenuItem {
+  fn: () => void;
+}
+
+export interface DropdownLinkItem extends DropdownMenuItem {
+  linkPath: string;
+}
