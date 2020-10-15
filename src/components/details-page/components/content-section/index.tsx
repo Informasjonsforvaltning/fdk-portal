@@ -1,4 +1,6 @@
-import React, { memo, FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
+
+import TruncatedText from '../../../truncated-text/index';
 
 import SC from './styled';
 
@@ -11,11 +13,17 @@ const ContentSection: FC<PropsWithChildren<Props>> = ({
   id,
   title,
   children
-}) => (
-  <SC.ContentSection id={id}>
-    <SC.Title>{title}</SC.Title>
-    {children}
-  </SC.ContentSection>
-);
+}) => {
+  return (
+    <SC.ContentSection id={id}>
+      <SC.Title>{title}</SC.Title>
+      {typeof children === 'string' ? (
+        <TruncatedText content={children} visibleLines={4} lineHeight={20} />
+      ) : (
+        children
+      )}
+    </SC.ContentSection>
+  );
+};
 
-export default memo(ContentSection);
+export default ContentSection;

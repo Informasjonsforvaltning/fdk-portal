@@ -45,7 +45,7 @@ const List: FC<Props> = ({
       </SC.ListHeader>
       {listItems &&
         renderListItems(
-          isExpanded ? listItems : listItems.splice(0, expandItemsDefault)
+          isExpanded ? listItems : listItems.slice(0, expandItemsDefault)
         )}
 
       {listItems.length > expandItemsDefault && (

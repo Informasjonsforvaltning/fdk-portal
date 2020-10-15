@@ -536,6 +536,10 @@
     "menu": {
       "title": "Gå til"
     },
+    "navMenuButton": {
+      "open": "Skjul innhaldsoversikt",
+      "closed": "Vis innhaldsoversikt"
+    },
     "sectionTitles": {
       "dataset": {
         "description": "Beskrivelse",
@@ -633,5 +637,9 @@
     "organisationHomePage": "Hjemmeside",
     "organisationMoreInfo": "Flere opplysninger",
     "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret"
+  },
+  "truncatedText" : {
+    "expanded" : "Skjul skildringa",
+    "collapsed" : "Vis heile skildringa"
   }
 }

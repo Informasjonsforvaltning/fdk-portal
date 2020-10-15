@@ -264,6 +264,7 @@ export interface ReferenceData {
   los?: LosTheme[];
   themes?: EuTheme[];
   referencetypes?: ReferenceType[];
+  mediatypes?: MediaType[];
 }
 
 export interface Link {
@@ -328,6 +329,10 @@ export interface DatasetsReport extends Report {
 
 export interface ConceptsReport extends Report {
   mostInUse: KeyWithCountObject[];
+}
+
+export interface DataServiceReport extends Report {
+  formats: KeyWithCountObject[];
 }
 
 export interface KeyWithCountObject {

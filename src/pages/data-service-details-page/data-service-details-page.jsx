@@ -354,12 +354,17 @@ const renderServiceType = (conformsTo, referenceData) => {
     return null;
   }
 
+  const serviceTypeCodeMapping = {
+    CUSTOMER_RELATIONS: 'Kundeforhold',
+    ACCOUNT_DETAILS: 'Kontoopplysninger'
+  };
+
   const children = items =>
     items.map(({ uri }) => {
       const referenceDataServiceTypeItem = getReferenceDataByCode(
         referenceData,
         REFERENCEDATA_PATH_APISERVICETYPE,
-        uri.substring(uri.lastIndexOf('#') + 1)
+        serviceTypeCodeMapping[uri.substring(uri.lastIndexOf('#') + 1)]
       );
 
       return (

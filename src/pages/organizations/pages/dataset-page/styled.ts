@@ -92,6 +92,37 @@ const Title = styled.h2`
   }
 `;
 
+const BannerRating = styled.div`
+  display: flex;
+  font-size: ${theme.fontSize('FS20')};
+  font-weight: ${theme.fontWeight('FW700')};
+  margin-left: auto;
+  align-items: center;
+
+  & > svg {
+    height: 35px;
+    width: 35px;
+
+    ${() =>
+      isTransportportal
+        ? css`
+            & > circle:first-of-type {
+              fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+            }
+          `
+        : css`
+            & > circle:first-of-type {
+              fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+            }
+          `}
+  }
+
+  & > p {
+    margin-left: 7px;
+    margin-right: 20px;
+  }
+`;
+
 const AuthoritativeIcon = styled(AuthoritativeSVG)`
   height: 24px;
   width: 24px;
@@ -283,12 +314,20 @@ const SufficientQualityIcon = styled(MetadataQualitySufficientSVG)`
             fill: ${theme.colour(Colour.GREEN, 'G50')};
           }
 
+          & > circle {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+
           & > circle:first-of-type {
             fill: ${theme.colour(Colour.GREEN, 'G20')};
           }
         `
       : css`
           & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+
+          & > circle {
             fill: ${theme.colour(Colour.BLUE, 'B50')};
           }
 
@@ -361,9 +400,18 @@ const CrossIcon = styled(CrossSVG)`
 const QuestionIcon = styled(QuestionIconSVG)`
   height: 15px;
   width: 15px;
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+  ${() =>
+    isTransportportal
+      ? css`
+          & > path {
+            fill: ${theme.colour(Colour.GREEN, 'G50')};
+          }
+        `
+      : css`
+          & > path {
+            fill: ${theme.colour(Colour.BLUE, 'B50')};
+          }
+        `}
 `;
 
 const DimensionContainer = styled.div`
@@ -374,7 +422,8 @@ const DimensionContainer = styled.div`
     align-items: center;
     margin-left: 7px;
     margin-right: 7px;
-
+    max-width: 250px;
+    white-space: normal;
     &:hover > svg > path {
       fill: black;
     }
@@ -412,6 +461,7 @@ export default {
   BetaRibbon,
   Banner,
   DatasetIcon,
+  BannerRating,
   Title,
   AuthoritativeIcon,
   Section,

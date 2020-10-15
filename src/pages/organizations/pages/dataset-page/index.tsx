@@ -190,6 +190,10 @@ const DatasetPage: FC<Props> = ({
               </div>
             )}
           </SC.Title>
+          <SC.BannerRating>
+            {determineRatingIcon(dataset?.assessment?.rating)}
+            <p>{calculateRatingPercentage(dataset?.assessment?.rating)}%</p>
+          </SC.BannerRating>
         </div>
       </SC.Banner>
       <SC.Section>
@@ -217,14 +221,16 @@ const DatasetPage: FC<Props> = ({
                                 type
                               ]
                             }
+                            data-for={`${type}_tooltip`}
                           >
                             <SC.QuestionIcon />
-                            <ReactTooltipSC.ReactTooltipStyled
-                              effect="solid"
-                              place="top"
-                              multiline
-                            />
                           </div>
+                          <ReactTooltipSC.ReactTooltipStyled
+                            id={`${type}_tooltip`}
+                            effect="solid"
+                            place="top"
+                            multiline
+                          />
                         </SC.DimensionContainer>
                         <div>
                           {determineRatingIcon(rating)}

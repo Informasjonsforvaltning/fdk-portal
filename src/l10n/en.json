@@ -536,6 +536,10 @@
     "menu": {
       "title": "Go to"
     },
+    "navMenuButton": {
+      "open": "Hide table of contents",
+      "closed": "View table of contents"
+    },
     "sectionTitles": {
       "dataset": {
         "description": "Description",
@@ -633,5 +637,9 @@
     "organisationHomePage": "Home page",
     "organisationMoreInfo": "More information",
     "organisationInEnhetsregisteret": "More information about {organizationName} in Enhetsregisteret"
+  },
+  "truncatedText" : {
+    "expanded" : "Hide description",
+    "collapsed" : "Show full description"
   }
 }

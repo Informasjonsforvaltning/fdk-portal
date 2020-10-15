@@ -35,20 +35,14 @@ import { Line } from '../../../../components/charts';
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../components/with-reference-data';
-import FormatPie from './formatPie/formatPie.component';
+import FormatPie from '../formatPie/formatPie.component';
+import { sortKeyWithCount } from '../../sort-helper';
 
 interface Props extends RouteComponentProps, ReferenceDataProps {
   datasetsReport: Partial<DatasetsReport>;
   datasetsTimeSeries: any;
   publishers?: any;
 }
-
-const sortKeyWithCount = (keyWithCountArray: KeyWithCountObject[]) => {
-  if (!Array.isArray(keyWithCountArray)) {
-    return [];
-  }
-  return keyWithCountArray.sort(({ count: a }, { count: b }) => b - a);
-};
 
 const DatasetReport: FC<Props> = ({
   publishers = {},

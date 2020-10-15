@@ -13,8 +13,6 @@ import { ConnectedDataServiceDetailsPage } from '../pages/data-service-details-p
 import { ConnectedConceptDetailsPage } from '../pages/concept-details-page/connected-concept-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
 import { ConnectedInformationModelDetailsPage } from '../pages/informationmodel-details-page/connected-information-model-details-page';
-import { AboutPage } from '../pages/about-page/about-page.component';
-import { ArticlePage } from '../pages/article-page/article-page.component';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { AppNavBar } from './app-nav-bar/app-nav-bar';
 import { ReportPage } from '../pages/report-page/report-page';
@@ -40,7 +38,7 @@ import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
 import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
-import { GuidancePage } from '../pages/guidance-page/guidance-page';
+import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import { parseSearchParams } from '../lib/location-history-helper';
 
@@ -141,13 +139,13 @@ export function App({ language, onChangeLanguage }) {
               component={NewsArticle}
             />
             <Route exact path={PATHNAME_REPORTS} component={ReportPage} />
-            <Route exact path={PATHNAME_ABOUT} component={AboutPage} />
+            <Route exact path={PATHNAME_ABOUT} component={CmsArticlePage} />
             <Route
               exact
               path={PATHNAME_ABOUT_REGISTRATION}
-              component={ArticlePage}
+              component={CmsArticlePage}
             />
-            <Route exact path={PATHNAME_GUIDANCE} component={GuidancePage} />
+            <Route exact path={PATHNAME_GUIDANCE} component={CmsArticlePage} />
           </Switch>
         </ScrollToTop>
       </Switch>

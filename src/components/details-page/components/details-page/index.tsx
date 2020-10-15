@@ -4,7 +4,8 @@ import React, {
   PropsWithChildren,
   useEffect,
   Children,
-  isValidElement
+  isValidElement,
+  useState
 } from 'react';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
@@ -111,6 +112,8 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     }
   }, [entityUri]);
 
+  const [navOpen, setNavOpen] = useState(false);
+
   const renderContentSections = () =>
     Children.map(children, child =>
       isValidElement(child) && child.type === ContentSection ? child : null
@@ -216,7 +219,16 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         })}
       </SC.Themes>
       <SC.Page>
-        <SC.SideMenu menuItems={menuItems} />
+        <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
+          {translations.detailsPage.navMenuButton[navOpen ? 'open' : 'closed']}
+        </SC.MenuToggle>
+        <SC.SideMenu
+          title={translations.detailsPage.menu.title}
+          menuItems={menuItems}
+        />
+
+        {navOpen && <SC.SideMenuSmall title="" menuItems={menuItems} />}
+
         <SC.Content>{renderContentSections()}</SC.Content>
       </SC.Page>
     </SC.DetailsPage>
