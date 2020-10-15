@@ -170,21 +170,25 @@ const OrganizationPage: FC<Props> = ({
                 {enhetsregisteretOrganization?.organisasjonsform.beskrivelse}
               </span>
             </li>
-            <li>
-              <span>
-                {translations.metadataQualityPage.organisationBusinessCodes}
-              </span>
-              <span>{`${enhetsregisteretOrganization?.naeringskode1.kode} ${enhetsregisteretOrganization?.naeringskode1.beskrivelse}`}</span>
-            </li>
-            <li>
-              <span>
-                {
-                  translations.metadataQualityPage
-                    .organisationInstitutionalSectorCode
-                }
-              </span>
-              <span>{`${enhetsregisteretOrganization?.institusjonellSektorkode.kode} ${enhetsregisteretOrganization?.institusjonellSektorkode.beskrivelse}`}</span>
-            </li>
+            {enhetsregisteretOrganization?.naeringskode1 && (
+              <li>
+                <span>
+                  {translations.metadataQualityPage.organisationBusinessCodes}
+                </span>
+                <span>{`${enhetsregisteretOrganization?.naeringskode1.kode} ${enhetsregisteretOrganization?.naeringskode1.beskrivelse}`}</span>
+              </li>
+            )}
+            {enhetsregisteretOrganization?.institusjonellSektorkode && (
+              <li>
+                <span>
+                  {
+                    translations.metadataQualityPage
+                      .organisationInstitutionalSectorCode
+                  }
+                </span>
+                <span>{`${enhetsregisteretOrganization?.institusjonellSektorkode.kode} ${enhetsregisteretOrganization?.institusjonellSektorkode.beskrivelse}`}</span>
+              </li>
+            )}
             {enhetsregisteretOrganization?.hjemmeside && (
               <li>
                 <span>
