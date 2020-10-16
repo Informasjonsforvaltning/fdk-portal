@@ -517,7 +517,7 @@ const DatasetReport: FC<Props> = ({
                         ({ key, count }: KeyWithCountObject, index: any) => ({
                           id: index,
                           path: `${PATHNAME_DATASETS}?${
-                            Filter.ORGPATH
+                            Filter.CATALOGNAME
                           }=${encodeURI(key)}`,
                           text1:
                             translate(publishers[key]?.prefLabel) ??
