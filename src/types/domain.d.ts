@@ -415,9 +415,9 @@ export interface DropdownMenuItem {
 }
 
 export interface DropdownButtonItem extends DropdownMenuItem {
-  fn: () => void;
+  onClick: () => void;
 }
 
 export interface DropdownLinkItem extends DropdownMenuItem {
-  linkPath: string;
+  url: string;
 }

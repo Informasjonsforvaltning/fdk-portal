@@ -12,7 +12,7 @@ import {
 
 import { ThemeProvider } from 'styled-components';
 
-import PortalDropdownMenu from '../../components/dropdown-menu/index';
+import PortalDropdownMenu from '../../components/dropdown-menu';
 
 import localization from '../../lib/localization';
 import {
@@ -32,50 +32,48 @@ import { themeFDK, themeNAP } from '../theme';
 import './app-nav-bar.scss';
 import { getConfig } from '../../config';
 
-const entity = Entity.DATASET;
+const isTransportportal = getConfig().themeNap;
 
 const theme = {
-  entityColours: (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
-    entity
+  entityColours: (isTransportportal ? themeNAP : themeFDK).extendedColors[
+    Entity.DATASET
   ]
 };
 
-const getMenuItems = isNap => {
-  if (isNap) {
-    return [
-      {
-        label: localization.menu.aboutNap,
-        linkPath: PATHNAME_ABOUT_NAP
-      },
-      {
-        label: localization.menu.aboutRegistration,
-        linkPath: PATHNAME_ABOUT_REGISTRATION
-      }
-    ];
-  }
-  return [
-    {
-      label: localization.menu.guidance,
-      linkPath: PATHNAME_GUIDANCE
-    },
-    {
-      label: localization.menu.organizations,
-      linkPath: PATHNAME_ORGANIZATIONS
-    },
-    {
-      label: localization.about.about,
-      linkPath: PATHNAME_ABOUT
-    },
-    {
-      label: localization.menu.aboutRegistration,
-      linkPath: PATHNAME_ABOUT_REGISTRATION
-    },
-    {
-      label: localization.menu.reports,
-      linkPath: PATHNAME_REPORTS
-    }
-  ];
-};
+const getMenuItems = isNap =>
+  isNap
+    ? [
+        {
+          label: localization.menu.aboutNap,
+          url: PATHNAME_ABOUT_NAP
+        },
+        {
+          label: localization.menu.aboutRegistration,
+          url: PATHNAME_ABOUT_REGISTRATION
+        }
+      ]
+    : [
+        {
+          label: localization.menu.guidance,
+          url: PATHNAME_GUIDANCE
+        },
+        {
+          label: localization.menu.organizations,
+          url: PATHNAME_ORGANIZATIONS
+        },
+        {
+          label: localization.about.about,
+          url: PATHNAME_ABOUT
+        },
+        {
+          label: localization.menu.aboutRegistration,
+          url: PATHNAME_ABOUT_REGISTRATION
+        },
+        {
+          label: localization.menu.reports,
+          url: PATHNAME_REPORTS
+        }
+      ];
 
 export function AppNavBar(props) {
   const fdkLogoPath = getConfig().useDemoLogo
@@ -84,15 +82,15 @@ export function AppNavBar(props) {
   const languageItems = [
     {
       label: localization.lang['norwegian-nb'],
-      fn: () => props.onChangeLanguage('nb')
+      onClick: () => props.onChangeLanguage('nb')
     },
     {
       label: localization.lang['norwegian-nn'],
-      fn: () => props.onChangeLanguage('nn')
+      onClick: () => props.onChangeLanguage('nn')
     },
     {
       label: localization.lang['english-en'],
-      fn: () => props.onChangeLanguage('en')
+      onClick: () => props.onChangeLanguage('en')
     }
   ];
 
@@ -104,20 +102,20 @@ export function AppNavBar(props) {
             <div>
               <a
                 title={
-                  getConfig().themeNap
+                  isTransportportal
                     ? localization.linkToNap
                     : localization.linkToFdk
                 }
-                href={getConfig().themeNap ? PATHNAME_HOME_NAP : '/'}
+                href={isTransportportal ? PATHNAME_HOME_NAP : '/'}
                 className="d-flex"
               >
                 <span className="uu-invisible" aria-hidden="false">
                   Gå til forside
                 </span>
                 <img
-                  className={getConfig().themeNap ? 'nap-logo' : 'fdk-logo'}
+                  className={isTransportportal ? 'nap-logo' : 'fdk-logo'}
                   src={
-                    getConfig().themeNap
+                    isTransportportal
                       ? '/img/logo-transport.svg'
                       : `/img/${fdkLogoPath}`
                   }
@@ -126,7 +124,7 @@ export function AppNavBar(props) {
               </a>
             </div>
             <div>
-              {!getConfig().themeNap && (
+              {!isTransportportal && (
                 <Nav className="d-none d-lg-inline-flex">
                   <NavItem>
                     <a className="nav-link" href={PATHNAME_GUIDANCE}>
@@ -163,7 +161,7 @@ export function AppNavBar(props) {
                   </NavItem>
                 </Nav>
               )}
-              {getConfig().themeNap && (
+              {isTransportportal && (
                 <Nav className="d-none d-lg-inline-flex">
                   <NavItem>
                     <a className="nav-link" href={PATHNAME_ABOUT_NAP}>
@@ -193,14 +191,14 @@ export function AppNavBar(props) {
                 desktopView
                 caret
                 title={localization.lang.chosenLanguage}
-                menuItems={[...languageItems]}
+                menuItems={languageItems}
               />
               <PortalDropdownMenu
                 mobileView
                 caret
                 title={localization.app.menu}
                 menuItems={[
-                  ...getMenuItems(getConfig().themeNap),
+                  ...getMenuItems(isTransportportal),
                   ...languageItems
                 ]}
               />

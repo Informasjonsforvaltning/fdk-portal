@@ -5,9 +5,9 @@ const isTransportportal = getConfig().themeNap;
 
 const onMobileView = '@media (max-width: 990px)';
 
-type globalProps = {
+interface globalProps {
   dropdownOpen: boolean;
-};
+}
 
 const GlobalStyle = createGlobalStyle<globalProps>`
   body {
@@ -27,10 +27,10 @@ const GlobalStyle = createGlobalStyle<globalProps>`
   }
 `;
 
-type dropdownMenuProps = {
+interface dropdownMenuProps {
   desktopView: boolean;
   mobileView: boolean;
-};
+}
 
 const DropdownMenu = styled.nav<dropdownMenuProps>`
   color: ${({ theme }) => theme.extendedColors.neutralDarkest};
@@ -41,23 +41,22 @@ const DropdownMenu = styled.nav<dropdownMenuProps>`
   }
 `;
 
-type titleProps = {
+interface titleProps {
   caret: boolean;
-};
+}
 
 const Title = styled.button<titleProps>`
   padding: 10px;
   font-size: 16px;
   border: none;
-  ${() =>
+  ${({ theme }) =>
     isTransportportal
       ? css`
-          background-color: ${({ theme }) =>
-            theme.extendedColors.neutralDarkest};
-          color: ${({ theme }) => theme.extendedColors.neutralLightest};
+          background-color: ${theme.extendedColors.neutralDarkest};
+          color: ${theme.extendedColors.neutralLightest};
         `
       : css`
-          background-color: ${({ theme }) => theme.extendedColors.headerBg};
+          background-color: ${theme.extendedColors.headerBg};
         `}
 
   ${({ caret }) =>
@@ -73,9 +72,9 @@ const Title = styled.button<titleProps>`
     `}
 `;
 
-type dropdownProps = {
+interface dropdownProps {
   open: boolean;
-};
+}
 
 const bannerHeight = '8rem';
 
@@ -88,13 +87,13 @@ const Dropdown = styled.ul<dropdownProps>`
   right: 0;
   overflow-y: scroll;
 
-  ${() =>
+  ${({ theme }) =>
     isTransportportal
       ? css`
-          background-color: ${({ theme }) => theme.extendedColors.header};
+          background-color: ${theme.extendedColors.header};
         `
       : css`
-          background-color: ${({ theme }) => theme.extendedColors.headerBg};
+          background-color: ${theme.extendedColors.headerBg};
         `}
 
   ${onMobileView} {
