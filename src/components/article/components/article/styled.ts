@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '@fellesdatakatalog/theme';
 import ArticleItemSC from '../../../article-item/styled';
 
 const Article = styled.article`
@@ -13,6 +14,10 @@ const Article = styled.article`
 
   & a > p {
     margin-bottom: 0;
+  }
+
+  & img {
+    margin-top: ${theme.spacing('S10')};
   }
 `;
 

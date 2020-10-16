@@ -6,7 +6,7 @@ import { convertToSanitizedHtml } from '../../../../lib/markdown-converter';
 import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
 import {
-  getParagraphBodyValue,
+  getParagraphBodyProcessed,
   getParagraphImage,
   getParagraphVideoValue
 } from '../../../../lib/drupal/drupal-values';
@@ -34,7 +34,9 @@ export const renderFieldModule = (fieldModule: any) => {
         <SC.Body
           key={fieldModule.id}
           dangerouslySetInnerHTML={{
-            __html: convertToSanitizedHtml(getParagraphBodyValue(fieldModule))
+            __html: convertToSanitizedHtml(
+              getParagraphBodyProcessed(fieldModule)
+            )
           }}
         />
       );
@@ -43,7 +45,7 @@ export const renderFieldModule = (fieldModule: any) => {
       return (
         <SC.FullWidthImage
           key={fieldModule.id}
-          alt={image.meta.alt}
+          alt={image?.meta?.alt}
           src={image?.download_urls?.canonical}
         />
       );

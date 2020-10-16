@@ -1,7 +1,7 @@
 import { PARAGRAPH__IMAGE } from '../../constants/constants';
 
-export const getParagraphBodyValue = (fieldModule: any) =>
-  fieldModule?.field_body?.value;
+export const getParagraphBodyProcessed = (fieldModule: any) =>
+  fieldModule?.field_body?.processed;
 
 export const getParagraphImage = (fieldModule: any) =>
   fieldModule.field_image?.field_media_image;
