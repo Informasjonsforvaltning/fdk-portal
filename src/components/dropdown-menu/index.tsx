@@ -1,11 +1,4 @@
-import React, {
-  memo,
-  FC,
-  PropsWithChildren,
-  useState,
-  useRef,
-  useEffect
-} from 'react';
+import React, { memo, FC, useState, useRef, useEffect } from 'react';
 
 import { DropdownMenuItem } from '../../types';
 
@@ -21,7 +14,7 @@ interface Props {
   mobileView: boolean;
 }
 
-const DropdownMenu: FC<PropsWithChildren<Props>> = ({
+const DropdownMenu: FC<Props> = ({
   title,
   caret,
   menuItems,
@@ -72,8 +65,8 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
       >
         <SC.Title caret={caret}>{title}</SC.Title>
         <SC.Dropdown open={open}>
-          {menuItems.map(menuItem => (
-            <MenuItem content={menuItem} />
+          {menuItems.map((menuItem, index) => (
+            <MenuItem key={`menuItem_${index}`} content={menuItem} />
           ))}
         </SC.Dropdown>
       </SC.DropdownMenu>

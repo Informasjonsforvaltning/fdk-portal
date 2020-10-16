@@ -10,19 +10,19 @@ import {
 } from '../../../../types';
 
 const isButtonItem = (item: DropdownMenuItem): item is DropdownButtonItem =>
-  (item as DropdownButtonItem).fn !== undefined;
+  (item as DropdownButtonItem).onClick !== undefined;
 
 const isLinkItem = (item: DropdownMenuItem): item is DropdownLinkItem =>
-  (item as DropdownLinkItem).linkPath !== undefined;
+  (item as DropdownLinkItem).url !== undefined;
 
 const createMenuItem = (item: DropdownMenuItem) => {
   if (isButtonItem(item)) {
-    return <SC.ButtonItem onClick={item.fn}>{item.label}</SC.ButtonItem>;
+    return <SC.ButtonItem onClick={item.onClick}>{item.label}</SC.ButtonItem>;
   }
   if (isLinkItem(item)) {
     return (
       <SC.LinkItem>
-        <FdkLink href={item.linkPath}>{item.label}</FdkLink>
+        <FdkLink href={item.url}>{item.label}</FdkLink>
       </SC.LinkItem>
     );
   }
