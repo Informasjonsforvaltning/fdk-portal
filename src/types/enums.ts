@@ -48,7 +48,8 @@ export enum Filter {
   THEME = 'theme',
   Q = 'q',
   PAGE = 'page',
-  SORTFIELD = 'sortfield'
+  SORTFIELD = 'sortfield',
+  CATALOGNAME = 'catalog_name'
 }
 
 export enum RatingCategory {

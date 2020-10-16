@@ -24,7 +24,8 @@ const mapFilters = ({
   subject,
   last_x_days,
   format,
-  subjectExists
+  subjectExists,
+  catalog_name
 }: any) => {
   const filters = [];
   if (id) {
@@ -84,6 +85,11 @@ const mapFilters = ({
   if (subjectExists) {
     filters.push({
       exists: 'subject'
+    });
+  }
+  if (catalog_name) {
+    filters.push({
+      catalog_name
     });
   }
 
