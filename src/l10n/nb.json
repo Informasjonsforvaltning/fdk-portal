@@ -109,6 +109,7 @@
     "conceptsCompare": "Sammenlign begrep",
     "aboutNap": "Om Transportportal.no",
     "guidance": "Veiledning",
+    "guidanceMetadata": "Metadata",
     "newsArchive": "Aktuelt",
     "organizations": "Virksomheter",
     "datasets": "Datasettbeskrivelser"
@@ -576,7 +577,7 @@
       "reusability": "Metadata og data kan deles og utveksles maskinelt via åpne, veldefinerte grensesnitt og formater."
     },
     "indicator": {
-      "distributableData": "Nedlastingslenke er oppgitt",
+      "distributableData": "Tilgangslenke er oppgitt",
       "keywordUsage": "Nøkkelord er oppgitt",
       "subjectUsage": "Begrep er oppgitt",
       "geoSearch": "Datasettet er geografisk avgrenset",

@@ -3,12 +3,16 @@ import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
 import Link from '@fellesdatakatalog/link';
 
+import { getConfig } from '../../../../config';
+
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
 
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';
+
+import { PATHNAME_GUIDANCE_METADATA } from '../../../../constants/constants';
 
 import ExpandIcon from '../../../../images/icon-expand-text-sm.svg';
 
@@ -22,12 +26,6 @@ interface RouteParams {
 }
 
 interface Props extends OrganizationProps, RouteComponentProps<RouteParams> {}
-
-const articleIds: { [key: string]: string } = {
-  nb: '701a4b80-d830-4aa5-be63-20422e3d8d64',
-  nn: '5892cae9-2b31-4f52-b0a6-da87092924bf',
-  en: 'cf2a2b6d-88bb-4f3a-bbfc-4114e2841479'
-};
 
 const DatasetsPage: FC<Props> = ({
   organization,
@@ -50,6 +48,8 @@ const DatasetsPage: FC<Props> = ({
 }) => {
   const [datasetsRequested, setDatasetsRequested] = useState(false);
 
+  const isTransportportal = getConfig().themeNap;
+
   useLayoutEffect(() => {
     if (organization?.organizationId !== organizationId) {
       getOrganization(organizationId);
@@ -58,7 +58,10 @@ const DatasetsPage: FC<Props> = ({
 
   useLayoutEffect(() => {
     if (organization && !datasetsRequested) {
-      getOrganizationDatasets(organization.organizationId);
+      getOrganizationDatasets(
+        organization.organizationId,
+        isTransportportal ? 'transportportal' : undefined
+      );
       setDatasetsRequested(true);
     }
   }, [organization]);
@@ -205,7 +208,7 @@ const DatasetsPage: FC<Props> = ({
             DimensionType.READABILITY,
             DimensionType.REUSABILITY
           ].map(dimension => (
-            <div>
+            <div key={dimension}>
               {`${calculateRatingPercentage(
                 rating?.dimensionsRating?.[dimension]
               )}%`}
@@ -225,7 +228,7 @@ const DatasetsPage: FC<Props> = ({
                   .whatIsMetadataQualityFaqDescription
               }
             </p>
-            <Link href={`/news/${articleIds[translations.getLanguage()]}`}>
+            <Link href={PATHNAME_GUIDANCE_METADATA}>
               {translations.metadataQualityPage.whatIsMetadataQualityFaqLink}
             </Link>
           </SC.Question>

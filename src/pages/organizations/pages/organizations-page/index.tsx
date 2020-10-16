@@ -25,6 +25,8 @@ const OrganizationsPage: FC<Props> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
+  const isTransportportal = getConfig().themeNap;
+
   const filterOrganizationsByName = (query: string) =>
     query
       ? organizations.filter(({ organization }) =>
@@ -35,10 +37,8 @@ const OrganizationsPage: FC<Props> = ({
       : organizations;
 
   useEffect(() => {
-    getOrganizations(getConfig().themeNap ? 'transportportal' : undefined);
+    getOrganizations(isTransportportal ? 'transportportal' : undefined);
   }, []);
-
-  const isTransportportal = getConfig().themeNap;
 
   return (
     <main className="container">
@@ -79,9 +79,7 @@ const OrganizationsPage: FC<Props> = ({
               id,
               organization: { name },
               dataset_count,
-              dataservice_count,
-              concept_count,
-              informationmodel_count
+              dataservice_count
             }: Organization,
             index: number,
             organizations: Organization[]
@@ -115,12 +113,6 @@ const OrganizationsPage: FC<Props> = ({
                     <>
                       <SC.CountTag type={Entity.DATA_SERVICE}>
                         {dataservice_count}
-                      </SC.CountTag>
-                      <SC.CountTag type={Entity.CONCEPT}>
-                        {concept_count}
-                      </SC.CountTag>
-                      <SC.CountTag type={Entity.INFORMATION_MODEL}>
-                        {informationmodel_count}
                       </SC.CountTag>
                     </>
                   )}
