@@ -71,7 +71,7 @@ const DatasetsPage: FC<Props> = ({
       );
       setDatasetsRequested(true);
     }
-  }, [organization]);
+  }, [organization?.organizationId]);
 
   const calculateRatingPercentage = (
     r: Pick<Rating, 'score' | 'maxScore'> | null | undefined
