@@ -31,9 +31,10 @@ const DropdownMenu: FC<Props> = ({
   };
 
   const handleClickOutside = (event: Event) => {
-    event.preventDefault();
     if (ref.current && !ref.current.contains(event.target as Node)) {
       setOpen(false);
+    } else {
+      event.preventDefault();
     }
   };
 
