@@ -31,6 +31,7 @@ const DropdownMenu: FC<Props> = ({
   };
 
   const handleClickOutside = (event: Event) => {
+    event.preventDefault();
     if (ref.current && !ref.current.contains(event.target as Node)) {
       setOpen(false);
     }
@@ -59,7 +60,6 @@ const DropdownMenu: FC<Props> = ({
         ref={ref}
         onClick={handleClick}
         onFocus={() => setOpen(true)}
-        onBlur={() => setOpen(false)}
         desktopView={desktopView}
         mobileView={mobileView}
       >

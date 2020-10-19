@@ -22,6 +22,11 @@ const GlobalStyle = createGlobalStyle<globalProps>`
           position: fixed;
           left: 0;
           right: 0;
+
+          .fdk-header {
+            // Maintain header position when scrollbar is removed
+            padding-right: 34px !important;
+          }
         `}
     }
   }
@@ -85,7 +90,7 @@ const Dropdown = styled.ul<dropdownProps>`
   z-index: 1000;
   position: absolute;
   right: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   ${({ theme }) =>
     isTransportportal
