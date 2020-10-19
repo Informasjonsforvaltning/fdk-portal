@@ -72,6 +72,7 @@ export default function reducer(
       return state
         .set('datasets', fromJS([]))
         .set('hasMoreDatasets', false)
+        .set('datasetsPage', 0)
         .set('datasetsPageSize', 0)
         .set('datasetsCount', 0);
     case GET_ORGANIZATION_DATASETS_SUCCEEDED:
