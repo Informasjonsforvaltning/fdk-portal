@@ -15,7 +15,7 @@
   "contactPoint": "Contact point",
   "documentation": "Documentation",
   "specification": "Specification",
-  "serviceType":"Service type",
+  "serviceType": "Service type",
   "email": "Email",
   "phone": "Phone",
   "close": "Close",
@@ -350,9 +350,9 @@
     "apiTab": "API report",
     "conceptTab": "Concept report",
     "datasets": "datasets",
-    "apis":"APIs",
-    "concepts":"concepts",
-    "newPastWeek":"new the past week",
+    "apis": "APIs",
+    "concepts": "concepts",
+    "newPastWeek": "new the past week",
     "aggregation": {
       "public": "Datasets that are public",
       "restricted": "Datasets with restricted access",
@@ -387,7 +387,6 @@
     "countConceptsCatalogsLabel": "organizations with concepts",
     "conceptsFrom": "Concept catalogs from",
     "conceptsCatalog": "Concept catalogs",
-
     "datasetsDescription": "dataset descriptions",
     "dataserviceDescription": "API-descriptions",
     "conceptsDescription": "concept descriptions",
@@ -477,7 +476,10 @@
     "infoModHeader": "Information model",
     "tabs": {
       "structure": "Structure",
-      "json": "JSON Schema"
+      "json": "JSON Schema",
+      "turtle": "Turtle",
+      "jsonld": "JSON-LD",
+      "rdfxml": "RDF/XML"
     },
     "status": "Status",
     "modelStatus": "Model status",
@@ -521,7 +523,7 @@
   },
   "detailsPage": {
     "banner": {
-      "lastPublishedInfo":  "{entity} published in Felles datakatalog on {lastPublished}",
+      "lastPublishedInfo": "{entity} published in Felles datakatalog on {lastPublished}",
       "entity": {
         "dataset": "Dataset description",
         "dataservice": "Data service description",

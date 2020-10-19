@@ -476,7 +476,10 @@
     "infoModHeader": "Informasjonsmodell",
     "tabs": {
       "structure": "Struktur",
-      "json": "JSON Schema"
+      "json": "JSON Schema",
+      "turtle": "Turtle",
+      "jsonld": "JSON-LD",
+      "rdfxml": "RDF/XML"
     },
     "status": "Status",
     "modelStatus": "Modellstatus",

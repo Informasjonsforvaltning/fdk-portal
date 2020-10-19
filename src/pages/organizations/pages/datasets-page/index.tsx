@@ -50,6 +50,13 @@ const DatasetsPage: FC<Props> = ({
 
   const isTransportportal = getConfig().themeNap;
 
+  const loadMoreDatasets = () =>
+    loadMoreOrganizationDatasets(
+      organizationId,
+      datasetsPage + 1,
+      isTransportportal ? 'transportportal' : undefined
+    );
+
   useLayoutEffect(() => {
     if (organization?.organizationId !== organizationId) {
       getOrganization(organizationId);
@@ -64,7 +71,7 @@ const DatasetsPage: FC<Props> = ({
       );
       setDatasetsRequested(true);
     }
-  }, [organization]);
+  }, [organization?.organizationId]);
 
   const calculateRatingPercentage = (
     r: Pick<Rating, 'score' | 'maxScore'> | null | undefined
@@ -179,11 +186,7 @@ const DatasetsPage: FC<Props> = ({
           </SC.TableBody>
         </SC.Table>
         {hasMoreDatasets && (
-          <SC.LoadMoreButton
-            onClick={() =>
-              loadMoreOrganizationDatasets(organizationId, datasetsPage + 1)
-            }
-          >
+          <SC.LoadMoreButton onClick={loadMoreDatasets}>
             <ExpandIcon />
             <span>
               {translations.formatString(
