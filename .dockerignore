@@ -1,6 +1,22 @@
-node_modules
 dist
 coverage
+node_modules
 
+npm-debug.log
+
+.DS_Store
+.dockerignore
+.gitignore
+.eslintignore
 .huskyrc
 .lintstagedrc
+.eslintrc.json
+
+Dockerfile
+docker-compose.yml
+commitlint.config.js
+
+README.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+LICENSE

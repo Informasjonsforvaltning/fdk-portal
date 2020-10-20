@@ -1,14 +1,15 @@
-coverage
 dist
+coverage
 node_modules
-Dockerfile
-*.sh
-nginx
-*.scss
-assets
-img
-images
 
+.gitignore
+.dockerignore
+.eslintignore
 .huskyrc
 .lintstagedrc
+
+package-lock.json
+
+*.sh
+*.scss
 *.md
