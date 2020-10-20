@@ -88,12 +88,14 @@ const DatasetReport: FC<Props> = ({
     accessRightsRestriced -
     accessRightsNonPublic;
 
-  const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(
-    formats
-  ).splice(0, 4);
+  const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
+    .filter(({ key }: KeyWithCountObject) => key !== 'MISSING')
+    .splice(0, 4);
 
   const topMostUsedThemes: KeyWithCountObject[] = sortKeyWithCount(
-    themesAndTopicsCount.filter(item => item.key !== 'MISSING')
+    themesAndTopicsCount.filter(
+      ({ key }: KeyWithCountObject) => key !== 'MISSING'
+    )
   ).splice(0, 10);
 
   const theme = getConfig().themeNap ? themeNAP : themeFDK;
