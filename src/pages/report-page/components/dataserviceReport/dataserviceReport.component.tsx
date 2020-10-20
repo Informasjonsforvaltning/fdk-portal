@@ -111,7 +111,7 @@ const DataserviceReport: FC<Props> = ({
         <div className="row">
           <div className="col-12">
             <BoxRegular>
-              <StatisticsRegular to={`${PATHNAME_DATA_SERVICES}`}>
+              <StatisticsRegular to="" as="div">
                 <IllustrationWithCount
                   icon={<ApiIcon />}
                   count={organizationCount}
