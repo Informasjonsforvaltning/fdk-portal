@@ -143,7 +143,16 @@ const DatasetReport: FC<Props> = ({
                   count={organizationCount}
                 />
                 <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
-                  {localization.report.organizationsDataset}
+                  {localization.formatString(
+                    localization.report.countCatalogsLabel,
+                    {
+                      catalog: translate(
+                        getConfig().themeNap
+                          ? localization.nap
+                          : localization.nationalDataCatalog
+                      )
+                    }
+                  )}
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
