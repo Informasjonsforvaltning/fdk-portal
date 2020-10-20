@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import { merge } from 'webpack-merge';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ErrorOverlayPlugin from 'error-overlay-webpack-plugin';
 
 import baseConfig from './base.config';
