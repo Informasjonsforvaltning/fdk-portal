@@ -79,7 +79,7 @@ const ConceptReport: FC<Props> = ({
         <div className="row">
           <div className="col-12">
             <BoxRegular>
-              <StatisticsRegular to={`${PATHNAME_CONCEPTS}`}>
+              <StatisticsRegular to="" as="div">
                 <IllustrationWithCount
                   icon={<ConceptIcon />}
                   count={organizationCount}

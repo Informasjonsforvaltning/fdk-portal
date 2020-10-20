@@ -75,7 +75,7 @@ const InformationModelReport: FC<Props> = ({
         <div className="row">
           <div className="col-12">
             <BoxRegular>
-              <StatisticsRegular to={`${PATHNAME_INFORMATIONMODELS}`}>
+              <StatisticsRegular to="" as="div">
                 <IllustrationWithCount
                   icon={<InfoModIcon />}
                   count={organizationCount}

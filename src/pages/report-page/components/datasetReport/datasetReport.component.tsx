@@ -137,7 +137,7 @@ const DatasetReport: FC<Props> = ({
         <div className="row">
           <div className="col-12">
             <BoxRegular>
-              <StatisticsRegular to={`${PATHNAME_DATASETS}`}>
+              <StatisticsRegular to="" as="div">
                 <IllustrationWithCount
                   icon={<DatasetIcon />}
                   count={organizationCount}
