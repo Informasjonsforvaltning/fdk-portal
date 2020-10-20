@@ -1,3 +1,8 @@
+export enum Environment {
+  DEVELOPMENT = 'development',
+  PRODUCTION = 'production'
+}
+
 export enum SearchTypes {
   dataset,
   dataservice,
