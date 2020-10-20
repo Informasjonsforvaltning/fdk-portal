@@ -5,7 +5,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
-import ReactGA from 'react-ga';
 import ThemeProvider from '@fellesdatakatalog/theme';
 
 import { configureStore } from '../../redux/configureStore';
@@ -15,45 +14,7 @@ import { getConfig } from '../../config';
 import { themeFDK, themeNAP } from '../../app/theme';
 import GlobalStyles from '../../app/styles';
 
-if (
-  ['data.norge.no', 'fellesdatakatalog.digdir.no'].includes(location.hostname)
-) {
-  ReactGA.initialize('UA-110098477-1'); // prod
-  ReactGA.set({ anonymizeIp: true });
-} else if (
-  location.hostname.includes('data.transportportal.no') ||
-  getConfig().themeNap
-) {
-  ReactGA.initialize('UA-110098477-4');
-  ReactGA.set({ anonymizeIp: true });
-} else if (window.location.hostname.indexOf('localhost') !== -1) {
-  ReactGA.initialize('UA-41886511-1'); // localhost
-  ReactGA.set({ anonymizeIp: true });
-}
-
-function Analytics(props: any) {
-  const PAGEVIEW_TIMEOUT = 1000;
-  if (
-    [
-      'data.norge.no',
-      'fellesdatakatalog.digdir.no',
-      'data.transportportal.no',
-      'localhost'
-    ].includes(location.hostname)
-  ) {
-    ReactGA.set({ page: props.location.pathname + props.location.search });
-    window.setTimeout(
-      () =>
-        ReactGA.pageview(
-          props.location.pathname + props.location.search,
-          undefined,
-          document.title
-        ),
-      PAGEVIEW_TIMEOUT
-    );
-  }
-  return null;
-}
+import Analytics from '../../components/analytics';
 
 const store = configureStore(getConfig().store);
 const theme = getConfig().themeNap ? themeNAP : themeFDK;
@@ -61,11 +22,11 @@ const theme = getConfig().themeNap ? themeNAP : themeFDK;
 render(
   <ThemeProvider theme={theme}>
     <GlobalStyles />
+    <Analytics />
     <ErrorBoundary>
       <Provider store={store}>
         <BrowserRouter>
-          <Route path="/" component={Analytics} />
-          <Route path="/" component={ConnectedApp} />
+          <Route component={ConnectedApp} />
         </BrowserRouter>
       </Provider>
     </ErrorBoundary>
