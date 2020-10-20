@@ -8,10 +8,11 @@ export const getArticleEntity = (id: string) =>
   ).then(deserialize);
 
 const prependAbsoluteImageLinks = (data: any) => {
-  const dataWithReplacedImgSrc = JSON.stringify(data).replaceAll(
+  const dataWithReplacedImgSrc = JSON.stringify(data).replace(
     /(<img[^]+?src=\\")(?!https:\/\/)(.*?)"/g,
     `$1${getConfig().cmsApi.host}$2"`
   );
+
   return JSON.parse(dataWithReplacedImgSrc);
 };
 export const extractArticleData = (response: any) =>
