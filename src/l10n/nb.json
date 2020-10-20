@@ -71,6 +71,8 @@
   "searchOrganization": "Søk på virksomhet",
   "organization": "Virksomhet",
   "addedLastDays": "Nye siste {days} dager",
+  "nationalDataCatalog": "Felles datakatalog",
+  "nap": "Transportportalen",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -376,7 +378,7 @@
       "apiFreeUsage": "er gratis å bruke",
       "apiNotFreeUsage": "koster å bruke"
     },
-    "countCatalogsLabel": "virksomheter har datasett i Felles datakatalog",
+    "countCatalogsLabel": "virksomheter har datasett i {catalog}",
     "catalogsFrom": "Datasettkataloger fra",
     "distributionFormat": "Format på distribusjoner",
     "countAPIcatalogsLabel": "virksomheter har API-er i Felles datakatalog",

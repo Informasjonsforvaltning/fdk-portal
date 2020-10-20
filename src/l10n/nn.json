@@ -71,6 +71,8 @@
   "searchOrganization": "Søk på verksemd",
   "organization": "Verksemd",
   "addedLastDays": "Nye siste {days} dager",
+  "nationalDataCatalog": "Felles datakatalog",
+  "nap": "Transportportalen",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -376,7 +378,7 @@
       "apiFreeUsage": "er gratis å bruke",
       "apiNotFreeUsage": "kostar å bruke"
     },
-    "countCatalogsLabel": "verksemder har datasett i Felles datakatalog",
+    "countCatalogsLabel": "verksemder har datasett i {catalog}",
     "catalogsFrom": "Datasettkatalogar frå",
     "distributionFormat": "Format på distribusjonar",
     "countAPIcatalogsLabel": "verksemder har API i Felles datakatalog",
