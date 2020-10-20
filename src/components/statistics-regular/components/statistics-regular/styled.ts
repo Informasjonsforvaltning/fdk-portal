@@ -28,40 +28,46 @@ const Label = styled.span<{ variant?: Variant }>`
   }}
 `;
 
-const StatisticsRegular = styled(Link)`
+const StatisticsRegular = styled(Link)<{ as?: string }>`
   align-items: center;
   color: ${({ theme }) => theme.dark};
-  cursor: pointer;
   display: flex;
   flex-flow: column;
   font-size: 1.6rem;
   margin: 0.5em;
   text-decoration: none;
 
-  &:hover {
-    color: ${({ theme }) => theme.extendedColors.neutralDarkest};
-    text-decoration: none;
+  ${({ as }) =>
+    !as &&
+    css`
+      cursor: pointer;
 
-    ${IllustrationSC.Icon} {
-      background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
-      & > svg {
-        fill: white;
+      &:hover {
+        color: ${({ theme }) => theme.extendedColors.neutralDarkest};
+        text-decoration: none;
 
-        & > path {
-          fill: white;
+        ${IllustrationSC.Icon} {
+          background-color: ${({ theme }) =>
+            theme.extendedColors.neutralDarkest};
+          & > svg {
+            fill: white;
+
+            & > path {
+              fill: white;
+            }
+          }
+        }
+
+        ${IllustrationSC.Count} {
+          color: ${({ theme }) => theme.extendedColors.neutralDarkest};
+          text-decoration: underline;
+        }
+
+        ${Label} {
+          color: ${({ theme }) => theme.extendedColors.neutralDarkest};
         }
       }
-    }
-
-    ${IllustrationSC.Count} {
-      color: ${({ theme }) => theme.extendedColors.neutralDarkest};
-      text-decoration: underline;
-    }
-
-    ${Label} {
-      color: ${({ theme }) => theme.extendedColors.neutralDarkest};
-    }
-  }
+    `}
 `;
 
 export default { StatisticsRegular, Label };
