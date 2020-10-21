@@ -88,12 +88,14 @@ const DatasetReport: FC<Props> = ({
     accessRightsRestriced -
     accessRightsNonPublic;
 
-  const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(
-    formats
-  ).splice(0, 4);
+  const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
+    .filter(({ key }: KeyWithCountObject) => key !== 'MISSING')
+    .splice(0, 4);
 
   const topMostUsedThemes: KeyWithCountObject[] = sortKeyWithCount(
-    themesAndTopicsCount.filter(item => item.key !== 'MISSING')
+    themesAndTopicsCount.filter(
+      ({ key }: KeyWithCountObject) => key !== 'MISSING'
+    )
   ).splice(0, 10);
 
   const theme = getConfig().themeNap ? themeNAP : themeFDK;
@@ -135,13 +137,22 @@ const DatasetReport: FC<Props> = ({
         <div className="row">
           <div className="col-12">
             <BoxRegular>
-              <StatisticsRegular to={`${PATHNAME_DATASETS}`}>
+              <StatisticsRegular to="" as="div">
                 <IllustrationWithCount
                   icon={<DatasetIcon />}
                   count={organizationCount}
                 />
                 <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
-                  {localization.report.organizationsDataset}
+                  {localization.formatString(
+                    localization.report.countCatalogsLabel,
+                    {
+                      catalog: translate(
+                        getConfig().themeNap
+                          ? localization.nap
+                          : localization.nationalDataCatalog
+                      )
+                    }
+                  )}
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
@@ -506,7 +517,7 @@ const DatasetReport: FC<Props> = ({
                         ({ key, count }: KeyWithCountObject, index: any) => ({
                           id: index,
                           path: `${PATHNAME_DATASETS}?${
-                            Filter.ORGPATH
+                            Filter.CATALOGNAME
                           }=${encodeURI(key)}`,
                           text1:
                             translate(publishers[key]?.prefLabel) ??

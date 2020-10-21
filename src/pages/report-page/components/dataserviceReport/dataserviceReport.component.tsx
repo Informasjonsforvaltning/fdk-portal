@@ -57,17 +57,20 @@ const DataserviceReport: FC<Props> = ({
     }
   }, []);
 
-  const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(
-    formats
-  ).map((item: KeyWithCountObject) => ({
-    ...item,
-    key:
-      mediatypes?.find((mediatype: MediaType) =>
-        mediatype.code.includes(
-          item.key.substr(item.key.lastIndexOf('application/'), item.key.length)
-        )
-      )?.name || item.key.substr(item.key.length - 5)
-  }));
+  const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
+    .filter(({ key }: KeyWithCountObject) => key !== 'MISSING')
+    .map((item: KeyWithCountObject) => ({
+      ...item,
+      key:
+        mediatypes?.find((mediatype: MediaType) =>
+          mediatype.code.includes(
+            item.key.substr(
+              item.key.lastIndexOf('application/'),
+              item.key.length
+            )
+          )
+        )?.name || item.key.substr(item.key.length - 5)
+    }));
 
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.DATA_SERVICE]}>
@@ -108,7 +111,7 @@ const DataserviceReport: FC<Props> = ({
         <div className="row">
           <div className="col-12">
             <BoxRegular>
-              <StatisticsRegular to={`${PATHNAME_DATA_SERVICES}`}>
+              <StatisticsRegular to="" as="div">
                 <IllustrationWithCount
                   icon={<ApiIcon />}
                   count={organizationCount}
