@@ -222,32 +222,6 @@ const renderInformationModelCategory = category =>
     </ListRegular>
   ) : null;
 
-const renderRelatedApi = (referencedApis, publisherItems) => {
-  if (!referencedApis || referencedApis.length === 0) {
-    return null;
-  }
-  const apiReferenceItems = items =>
-    items.map((item, index) => (
-      <div key={`reference-${index}`} className="list-regular--item">
-        <SearchHitHeader
-          title={item.title}
-          titleLink={`/dataservices/${encodeURIComponent(item.id)}`}
-          publisherLabel={`${localization.responsible}:`}
-          publisher={item.publisher}
-          publisherItems={publisherItems}
-          tag="h4"
-          darkThemeBackground
-        />
-      </div>
-    ));
-
-  return (
-    <ListRegular title={localization.infoMod.relatedAPIHeader}>
-      {apiReferenceItems(referencedApis)}
-    </ListRegular>
-  );
-};
-
 const renderContactPoint = ({ name, email, phone } = {}) =>
   name || email || phone ? (
     <ListRegular title={localization.contactInfo}>
@@ -271,20 +245,17 @@ const renderContactPoint = ({ name, email, phone } = {}) =>
     </ListRegular>
   ) : null;
 
-const renderStickyMenu = (
-  {
-    title,
-    contactPoint,
-    schema,
-    keywords,
-    category,
-    objectTypes,
-    codeTypes,
-    dataTypes,
-    simpleTypes
-  } = {},
-  referencedApis
-) => {
+const renderStickyMenu = ({
+  title,
+  contactPoint,
+  schema,
+  keywords,
+  category,
+  objectTypes,
+  codeTypes,
+  dataTypes,
+  simpleTypes
+} = {}) => {
   const menuItems = [
     {
       name: getTranslateText(title),
@@ -321,13 +292,6 @@ const renderStickyMenu = (
     menuItems.push({
       name: localization.infoMod.category,
       prefLabel: localization.infoMod.category
-    });
-  }
-
-  if (!_.isEmpty(referencedApis)) {
-    menuItems.push({
-      name: localization.infoMod.relatedAPIHeader,
-      prefLabel: localization.infoMod.relatedAPIHeader
     });
   }
 
@@ -445,8 +409,6 @@ export const InformationModelDetailsPage = ({
             {renderKeywords(keywords)}
 
             {renderInformationModelCategory(category)}
-
-            {renderRelatedApi(referencedApis, publisherItems)}
 
             {renderContactPoint(contactPoint)}
           </section>
