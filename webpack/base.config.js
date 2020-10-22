@@ -7,6 +7,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 export default {
   entry: {
     main: './src/entrypoints/main/index.tsx',
+    publishing: './src/entrypoints/publishing/index.tsx',
     maintenance: './src/entrypoints/maintenance/index.tsx'
   },
   output: {
@@ -32,6 +33,12 @@ export default {
           name: 'main.vendors',
           filename: '[name].bundle.js',
           chunks: ({ name }) => name === 'main'
+        },
+        publishingVendors: {
+          test: ({ resource = '' }) => resource.includes('node_modules'),
+          name: 'publishing.vendors',
+          filename: '[name].bundle.js',
+          chunks: ({ name }) => name === 'publishing'
         },
         maintenanceVendors: {
           test: ({ resource = '' }) => resource.includes('node_modules'),
@@ -112,6 +119,13 @@ export default {
       favicon: './src/img/favicon.ico',
       base: '/',
       chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/entrypoints/publishing/index.html',
+      filename: 'publishing.html',
+      favicon: './src/img/favicon.ico',
+      base: '/',
+      chunks: ['publishing']
     }),
     new HtmlWebpackPlugin({
       template: './src/entrypoints/maintenance/index.html',

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nb">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Felles datakatalog</title>
+		<meta name="description" content="Felles Datakatalog er en oversikt over hvilke data de ulike offentlige virksomhetene har, hvordan de henger sammen og hva de betyr. Datakatalogen gjør det mulig for deg å søke i opplysningene hos offentlige virksomheter og bruke de til for eksempel analyseformål.">
+		<meta name="author" content="Digitaliseringsdirektoratet" />
+		<meta property="og:url" content="https://data.norge.no" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Felles datakatalog" />
+		<meta property="og:description" content="Felles Datakatalog er en oversikt over hvilke data de ulike offentlige virksomhetene har, hvordan de henger sammen og hva de betyr. Datakatalogen gjør det mulig for deg å søke i opplysningene hos offentlige virksomheter og bruke de til for eksempel analyseformål." />
+		<script>
+			document.write(
+			  location.hostname.indexOf('nap.') >= 0 ||
+			    location.hostname.indexOf('transportportal.') >= 0
+			    ? '<link rel="icon" type="image/x-icon" href="/img/favicon-nap.ico">'
+			    : '<link rel="icon" type="image/x-icon" href="/img/favicon.ico">'
+			);
+		</script>
+		<script src="<%= webpackConfig.output.publicPath %>config.js"></script> 
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+</html>
