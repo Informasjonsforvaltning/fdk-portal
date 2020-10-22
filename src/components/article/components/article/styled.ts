@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '@fellesdatakatalog/theme';
+import { theme, Colour } from '@fellesdatakatalog/theme';
 import ArticleItemSC from '../../../article-item/styled';
 
 const Article = styled.article`
@@ -22,9 +22,13 @@ const Article = styled.article`
 `;
 
 const Date = styled.div`
-  color: ${({ theme }) => theme.extendedColors.neutralDark};
   font-size: 1.6em;
   margin-bottom: 0.5em;
+
+  &,
+  & * {
+    color: ${theme.colour(Colour.NEUTRAL, 'N50')};
+  }
 `;
 
 const Title = styled.h1`
@@ -50,7 +54,7 @@ const FullWidthImage = styled.img`
 `;
 
 const AsideContent = styled.div`
-  background-color: ${({ theme }) => theme.extendedColors.neutralLighter};
+  background-color: ${theme.colour(Colour.NEUTRAL, 'N20')};
   border-radius: 5px;
   padding: 3em;
 

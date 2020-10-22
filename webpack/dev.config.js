@@ -21,6 +21,7 @@ export default merge(baseConfig, {
     before: app => app.get('/config.js', (_, res) => res.status(204).send()),
     historyApiFallback: {
       rewrites: [
+        { from: /^\/publishing/, to: '/publishing.html' },
         { from: /^\/maintenance/, to: '/maintenance.html' },
         { from: /./, to: '/index.html' }
       ]
