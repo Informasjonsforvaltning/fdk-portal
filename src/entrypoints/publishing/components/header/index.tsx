@@ -3,7 +3,7 @@ import { compose } from 'redux';
 
 import env from '../../../../env';
 
-import translations from '../../../../lib/localization';
+import Translation from '../../../../components/translation';
 
 import SC from './styled';
 
@@ -16,22 +16,22 @@ const Header: FC = () => (
       <SC.NavigationLinks>
         <li>
           <SC.Link href={FDK_REGISTRATION_BASE_URI}>
-            {translations.menu.registerData}
+            <Translation id="menu.registerData" />
           </SC.Link>
         </li>
         <li>
           <SC.Link href={ADMIN_GUI_BASE_URI}>
-            {translations.menu.harvestData}
+            <Translation id="menu.harvestData" />
           </SC.Link>
         </li>
         <li>
           <SC.Link href="/publishing/terms-of-use">
-            {translations.menu.termsOfUse}
+            <Translation id="menu.termsOfUse" />
           </SC.Link>
         </li>
         <li>
           <SC.Link href="/" target="_self" external>
-            {translations.menu.searchInFdk}
+            <Translation id="menu.searchInFdk" />
           </SC.Link>
         </li>
       </SC.NavigationLinks>
