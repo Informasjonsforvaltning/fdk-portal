@@ -1,7 +1,11 @@
 import React, { memo, FC, useEffect } from 'react';
 import { compose } from 'redux';
 
-import localization from '../../../../../../lib/localization';
+import {
+  withTranslations,
+  Props as TranslationsProps,
+  Language
+} from '../../../../../../providers/translations';
 
 import withCmsArticle, {
   Props as CmsArticleProps
@@ -11,21 +15,22 @@ import { Article } from '../../../../../../components/article/article';
 
 import SC from './styled';
 
-interface Props extends CmsArticleProps {}
+interface Props extends CmsArticleProps, TranslationsProps {}
 
-const articles: { [key: string]: string } = {
-  nb: '1f8e5e49-c8a0-42bb-bab0-8948842d173f',
-  nn: 'd0f5c946-10d6-4416-9ec9-00ad95127a9f',
-  en: 'afb0ee91-dab4-44d7-857f-1652c3cac1b5'
+const articles = {
+  [Language.NB]: '1f8e5e49-c8a0-42bb-bab0-8948842d173f',
+  [Language.NN]: 'd0f5c946-10d6-4416-9ec9-00ad95127a9f',
+  [Language.EN]: 'afb0ee91-dab4-44d7-857f-1652c3cac1b5'
 };
 
 const AboutRegistrationPage: FC<Props> = ({
   cmsArticle,
-  cmsArticleActions: { getCmsArticleRequested: getCmsArticle }
+  cmsArticleActions: { getCmsArticleRequested: getCmsArticle },
+  translationsService
 }) => {
   useEffect(() => {
-    if (localization.getLanguage() in articles) {
-      getCmsArticle(articles[localization.getLanguage()]);
+    if (translationsService.getLanguage() in articles) {
+      getCmsArticle(articles[translationsService.getLanguage()]);
     }
   }, []);
 
@@ -45,4 +50,8 @@ const AboutRegistrationPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withCmsArticle)(AboutRegistrationPage);
+export default compose<FC>(
+  memo,
+  withTranslations,
+  withCmsArticle
+)(AboutRegistrationPage);
