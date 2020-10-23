@@ -63,7 +63,6 @@
   "isFree": "Gratis",
   "isOpenAccess": "Open for alle",
   "isOpenLicense": "Open lisens",
-  "help": "Hjelp",
   "published": "Publisert",
   "lastChanged": "Sist endra",
   "newsArchive": "Se alle aktueltsaker",
@@ -105,12 +104,11 @@
   "menu": {
     "home": "Søk i Felles datakatalog",
     "homeNAP": "Søk i Transportportal.no",
-    "about": "Felles Datakatalog",
+    "about": "Om Felles datakatalog",
     "aboutRegistration": "Hjelp til å registrere",
     "reports": "Rapportar",
     "conceptsCompare": "Samanlikne omgrep",
     "aboutNap": "Om Transportportal.no",
-    "guidance": "Rettleiing",
     "guidanceMetadata": "Metadata",
     "newsArchive": "Aktuelt",
     "organizations": "Verksemder",
@@ -118,7 +116,8 @@
     "registerData": "Registrere data",
     "harvestData": "Høste data",
     "termsOfUse": "Bruksvilkår",
-    "searchInFdk": "Søk i Felles datakatalog"
+    "searchInFdk": "Søk i Felles datakatalog",
+    "publishing": "Publisere i Felles datakatalog"
   },
   "query": {
     "intro": "Søk etter innhald",

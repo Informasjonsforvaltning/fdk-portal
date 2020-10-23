@@ -63,7 +63,6 @@
   "isFree": "Is free",
   "isOpenAccess": "Open access",
   "isOpenLicense": "Open license",
-  "help": "Help",
   "published": "Published",
   "lastChanged": "Last changed",
   "newsArchive": "See news archive",
@@ -110,7 +109,6 @@
     "reports": "Reports",
     "conceptsCompare": "Compare concepts",
     "aboutNap": "About Transportportal.no",
-    "guidance": "Guidance",
     "guidanceMetadata": "Metadata",
     "newsArchive": "News",
     "organizations": "Organizations",
@@ -118,7 +116,8 @@
     "registerData": "Register data",
     "harvestData": "Harvest data",
     "termsOfUse": "Terms of use",
-    "searchInFdk": "Search in Felles datakatalog"
+    "searchInFdk": "Search in Felles datakatalog",
+    "publishing": "Publishing in The National Data Catalog"
   },
   "query": {
     "intro": "Search for contents",
