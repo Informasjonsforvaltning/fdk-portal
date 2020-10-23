@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
 
-import LogoSVG from '../../../../images/fdk-registration-logo-negative.svg';
+import LogoSVG from '../../../../images/fdk-publishing-logo-negative.svg';
 
 const Header = styled.header`
   display: flex;
