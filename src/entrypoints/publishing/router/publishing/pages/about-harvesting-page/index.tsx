@@ -1,7 +1,11 @@
 import React, { memo, FC, useEffect } from 'react';
 import { compose } from 'redux';
 
-import localization from '../../../../../../lib/localization';
+import {
+  withTranslations,
+  Props as TranslationsProps,
+  Language
+} from '../../../../../../providers/translations';
 
 import withCmsArticle, {
   Props as CmsArticleProps
@@ -11,21 +15,22 @@ import { Article } from '../../../../../../components/article/article';
 
 import SC from './styled';
 
-interface Props extends CmsArticleProps {}
+interface Props extends CmsArticleProps, TranslationsProps {}
 
-const articles: { [key: string]: string } = {
-  nb: '5e4d7251-1327-4cc1-8c91-2d0947fd75c4',
-  nn: 'ba6aac2b-57ad-4961-934f-1456f8d55da9',
-  en: 'ae3b550d-7e75-4b47-b85c-18300aada1b4'
+const articles = {
+  [Language.NB]: '5e4d7251-1327-4cc1-8c91-2d0947fd75c4',
+  [Language.NN]: 'ba6aac2b-57ad-4961-934f-1456f8d55da9',
+  [Language.EN]: 'ae3b550d-7e75-4b47-b85c-18300aada1b4'
 };
 
 const AboutHarvestingPage: FC<Props> = ({
   cmsArticle,
-  cmsArticleActions: { getCmsArticleRequested: getCmsArticle }
+  cmsArticleActions: { getCmsArticleRequested: getCmsArticle },
+  translationsService
 }) => {
   useEffect(() => {
-    if (localization.getLanguage() in articles) {
-      getCmsArticle(articles[localization.getLanguage()]);
+    if (translationsService.getLanguage() in articles) {
+      getCmsArticle(articles[translationsService.getLanguage()]);
     }
   }, []);
 
@@ -45,4 +50,8 @@ const AboutHarvestingPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withCmsArticle)(AboutHarvestingPage);
+export default compose<FC>(
+  memo,
+  withTranslations,
+  withCmsArticle
+)(AboutHarvestingPage);

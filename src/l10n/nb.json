@@ -673,7 +673,7 @@
         "logInMethodIdPortenLink": "Innlogging via ID-porten/Altinn",
         "logInMethodFdkLink": "Innlogging via Felles brukerhåndtering"
       },
-      "usefuleInfo": {
+      "usefulInfo": {
         "title": "Nyttig å vite om datasettbeskrivelser",
         "description": "Før du går i gang med å publisere data til Felles Datakatalog kan det være lurt å ta en titt på lenkene under.",
         "datasetsStandardLink": "Standard for beskrive datasett",
