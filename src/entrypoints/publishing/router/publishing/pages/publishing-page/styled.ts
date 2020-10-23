@@ -6,7 +6,7 @@ import RegisterIllustrationSVG from '../../../../../../images/illustration-regis
 import HarvestIllustrationSVG from '../../../../../../images/illustration-harvest.svg';
 
 const PublishingPage = styled.article`
-  flex: 1 0 auto;
+  flex: 1;
   margin-top: ${theme.spacing('S48')};
 `;
 
