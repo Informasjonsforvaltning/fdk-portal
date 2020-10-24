@@ -15,8 +15,6 @@ const Analytics: FC = () => {
   const isLocalhost = ['localhost'].includes(hostname);
 
   const configureAnalytics = () => {
-    ReactGA.set({ anonymizeIp: true });
-
     if (isFellesDatakatalog) {
       ReactGA.initialize(GoogleAnalyticsTrackingId.FELLESDATAKATALOG);
     }
@@ -28,6 +26,8 @@ const Analytics: FC = () => {
     if (isLocalhost) {
       ReactGA.initialize(GoogleAnalyticsTrackingId.LOCALHOST);
     }
+
+    ReactGA.set({ anonymizeIp: true });
   };
 
   const registerPageView = () => {
