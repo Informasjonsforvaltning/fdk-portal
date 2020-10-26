@@ -1,14 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  DropdownToggle,
-  DropdownItem,
-  DropdownMenu,
-  UncontrolledDropdown,
-  Nav,
-  NavItem
-} from 'reactstrap';
+import { Nav, NavItem } from 'reactstrap';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -21,8 +14,8 @@ import {
   PATHNAME_ABOUT_REGISTRATION,
   PATHNAME_ABOUT_NAP,
   PATHNAME_HOME_NAP,
-  PATHNAME_GUIDANCE,
-  PATHNAME_ORGANIZATIONS
+  PATHNAME_ORGANIZATIONS,
+  PATHNAME_PUBLISHING
 } from '../../constants/constants';
 
 import { Entity } from '../../types/enums';
@@ -54,10 +47,6 @@ const getMenuItems = isNap =>
       ]
     : [
         {
-          label: localization.menu.guidance,
-          url: PATHNAME_GUIDANCE
-        },
-        {
           label: localization.menu.organizations,
           url: PATHNAME_ORGANIZATIONS
         },
@@ -66,8 +55,8 @@ const getMenuItems = isNap =>
           url: PATHNAME_ABOUT
         },
         {
-          label: localization.menu.aboutRegistration,
-          url: PATHNAME_ABOUT_REGISTRATION
+          label: localization.menu.publishing,
+          url: PATHNAME_PUBLISHING
         },
         {
           label: localization.menu.reports,
@@ -127,11 +116,6 @@ export function AppNavBar(props) {
               {!isTransportportal && (
                 <Nav className="d-none d-lg-inline-flex">
                   <NavItem>
-                    <a className="nav-link" href={PATHNAME_GUIDANCE}>
-                      {localization.menu.guidance}
-                    </a>
-                  </NavItem>
-                  <NavItem>
                     <Link className="nav-link" to={PATHNAME_ORGANIZATIONS}>
                       {localization.menu.organizations}
                     </Link>
@@ -141,19 +125,11 @@ export function AppNavBar(props) {
                       {localization.menu.about}
                     </Link>
                   </NavItem>
-                  <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav>{localization.help}</DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>
-                        <Link
-                          className="nav-link"
-                          to={PATHNAME_ABOUT_REGISTRATION}
-                        >
-                          {localization.menu.aboutRegistration}
-                        </Link>
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
+                  <NavItem>
+                    <a href={PATHNAME_PUBLISHING} className="nav-link">
+                      {localization.menu.publishing}
+                    </a>
+                  </NavItem>
                   <NavItem>
                     <Link className="nav-link" to={PATHNAME_REPORTS}>
                       {localization.menu.reports}
@@ -173,6 +149,7 @@ export function AppNavBar(props) {
                       {localization.menu.aboutRegistration}
                     </Link>
                   </NavItem>
+                  <NavItem />
                   <NavItem>
                     <Link className="nav-link" to={PATHNAME_ORGANIZATIONS}>
                       {localization.menu.organizations}

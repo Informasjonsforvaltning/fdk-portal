@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import { merge } from 'webpack-merge';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ErrorOverlayPlugin from 'error-overlay-webpack-plugin';
 
 import baseConfig from './base.config';
@@ -22,6 +21,7 @@ export default merge(baseConfig, {
     before: app => app.get('/config.js', (_, res) => res.status(204).send()),
     historyApiFallback: {
       rewrites: [
+        { from: /^\/publishing/, to: '/publishing.html' },
         { from: /^\/maintenance/, to: '/maintenance.html' },
         { from: /./, to: '/index.html' }
       ]

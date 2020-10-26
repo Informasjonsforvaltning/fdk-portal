@@ -21,6 +21,14 @@ export default merge(baseConfig, {
               .replace('@', '')}`,
           chunks: ({ name }) => name === 'main'
         },
+        publishingVendors: {
+          test: ({ resource = '' }) => resource.includes('node_modules'),
+          name: module =>
+            `publishing.vendor.${module.context
+              .match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
+              .replace('@', '')}`,
+          chunks: ({ name }) => name === 'publishing'
+        },
         maintenanceVendors: {
           test: ({ resource = '' }) => resource.includes('node_modules'),
           name: module =>

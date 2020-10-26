@@ -19,6 +19,7 @@ export const PATHNAME_ABOUT_NAP =
 export const PATHNAME_GUIDANCE = '/guidance';
 export const PATHNAME_GUIDANCE_METADATA = '/guidance/metadata';
 export const PATHNAME_ORGANIZATIONS = '/organizations';
+export const PATHNAME_PUBLISHING = '/publishing';
 
 export const PARAGRAPH__BODY = 'paragraph--body';
 export const PARAGRAPH__IMAGE = 'paragraph--image';

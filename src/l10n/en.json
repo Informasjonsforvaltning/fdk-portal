@@ -63,7 +63,6 @@
   "isFree": "Is free",
   "isOpenAccess": "Open access",
   "isOpenLicense": "Open license",
-  "help": "Help",
   "published": "Published",
   "lastChanged": "Last changed",
   "newsArchive": "See news archive",
@@ -110,11 +109,15 @@
     "reports": "Reports",
     "conceptsCompare": "Compare concepts",
     "aboutNap": "About Transportportal.no",
-    "guidance": "Guidance",
     "guidanceMetadata": "Metadata",
     "newsArchive": "News",
     "organizations": "Organizations",
-    "datasets": "Dataset descriptions"
+    "datasets": "Dataset descriptions",
+    "registerData": "Register data",
+    "harvestData": "Harvest data",
+    "termsOfUse": "Terms of use",
+    "searchInFdk": "Search in Felles datakatalog",
+    "publishing": "Publishing in The National Data Catalog"
   },
   "query": {
     "intro": "Search for contents",
@@ -642,6 +645,41 @@
     "organisationHomePage": "Home page",
     "organisationMoreInfo": "More information",
     "organisationInEnhetsregisteret": "More information about {organizationName} in Enhetsregisteret"
+  },
+  "publishingPage": {
+    "title": "Publishing in Felles datakatalog",
+    "description": "In order to discover, evaluate and use data, it first needs to be described and published.",
+    "methodSections": {
+      "register": {
+        "title": "Register data",
+        "description": "Registration portal gives you access to registering dataset and concept descriptions along with records of processing activities.",
+        "cta": "Log in to register",
+        "question": "Haven't registered in Felles datakatalog before?",
+        "link": "Get started with registration"
+      },
+      "harvest": {
+        "title": "Harvest data",
+        "description": "Felles datakatalog can harvest data from external data catalogs, so that your data can be searchable in the portal.",
+        "cta": "Log in to administer harvesting",
+        "question": "Haven't harvested to Felles datakatalog before?",
+        "link": "Get started with harvesting"
+      }
+    },
+    "informationSections": {
+      "getStartedHelp": {
+        "title": "Help getting started with registration",
+        "description": "Registration portal can be used by all users that wish to publish data to the portal on behalf of its organisation.",
+        "logInMethodIdPortenLink": "Loggin in via ID-porten/Altinn",
+        "logInMethodFdkLink": "Logging in via Felles brukerhåndtering"
+      },
+      "usefulInfo": {
+        "title": "Good to know about dataset descriptions",
+        "description": "It is a good idea to have a look at the links below before publishing data in Felles Datakatalog.",
+        "datasetsStandardLink": "Standard for describing datasets",
+        "registrationGuidanceLink": "Guidance for registering data",
+        "norwegianPublicLicenseLink": "Norwegian license for public data"
+      }
+    }
   },
   "truncatedText" : {
     "expanded" : "Hide description",

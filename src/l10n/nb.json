@@ -63,7 +63,6 @@
   "isFree": "Gratis",
   "isOpenAccess": "Åpen for alle",
   "isOpenLicense": "Åpen lisens",
-  "help": "Hjelp",
   "published": "Publisert",
   "lastChanged": "Sist endret",
   "newsArchive": "Se alle aktueltsaker",
@@ -105,16 +104,20 @@
   "menu": {
     "home": "Søk i Felles datakatalog",
     "homeNAP": "Søk i Transportportal.no",
-    "about": "Om Felles Datakatalog",
+    "about": "Om Felles datakatalog",
     "aboutRegistration": "Hjelp til å registrere",
     "reports": "Rapporter",
     "conceptsCompare": "Sammenlign begrep",
     "aboutNap": "Om Transportportal.no",
-    "guidance": "Veiledning",
     "guidanceMetadata": "Metadata",
     "newsArchive": "Aktuelt",
     "organizations": "Virksomheter",
-    "datasets": "Datasettbeskrivelser"
+    "datasets": "Datasettbeskrivelser",
+    "registerData": "Registrere data",
+    "harvestData": "Høste data",
+    "termsOfUse": "Bruksvilkår",
+    "searchInFdk": "Søk i Felles datakatalog",
+    "publishing": "Publisere i Felles datakatalog"
   },
   "query": {
     "intro": "Søk etter innhold",
@@ -642,6 +645,41 @@
     "organisationHomePage": "Hjemmeside",
     "organisationMoreInfo": "Flere opplysninger",
     "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret"
+  },
+  "publishingPage": {
+    "title": "Publisere i Felles datakatalog",
+    "description": "For å kunne oppdage, evaluere og ta i bruk data må de beskrives og publiseres.",
+    "methodSections": {
+      "register": {
+        "title": "Registrere data",
+        "description": "Registreringsløsningen gir deg tilgang til å registrere beskrivelser av datasett, begrep og behandlingsaktiviteter.",
+        "cta": "Logg inn for å registrere",
+        "question": "Ikke registrert i Felles datakatalog før?",
+        "link": "Kom i gang med registrering"
+      },
+      "harvest": {
+        "title": "Høste data",
+        "description": "Felles datakatalog kan høste data fra eksterne datakataloger, slik at dine data blir søkbar i portalen.",
+        "cta": "Logg inn for å administrere høsting",
+        "question": "Ikke høstet til Felles datakatalog før?",
+        "link": "Kom i gang med høsting"
+      }
+    },
+    "informationSections": {
+      "getStartedHelp": {
+        "title": "Hjelp til å komme i gang med registrering",
+        "description": "Registreringsløsningen kan benyttes av alle brukere som ønsker å publisere datainnhold til dataportalen på vegne av sin virksomhet.",
+        "logInMethodIdPortenLink": "Innlogging via ID-porten/Altinn",
+        "logInMethodFdkLink": "Innlogging via Felles brukerhåndtering"
+      },
+      "usefulInfo": {
+        "title": "Nyttig å vite om datasettbeskrivelser",
+        "description": "Før du går i gang med å publisere data til Felles Datakatalog kan det være lurt å ta en titt på lenkene under.",
+        "datasetsStandardLink": "Standard for beskrive datasett",
+        "registrationGuidanceLink": "Veiledning for registrering av data",
+        "norwegianPublicLicenseLink": "Norsk lisens for offentlig data"
+      }
+    }
   },
   "truncatedText" : {
     "expanded" : "Skjul beskrivelsen",
