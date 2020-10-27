@@ -497,6 +497,7 @@
     "lastModified": "Sist endra",
     "changelog": "Endringar fra siste versjon",
     "moreInfo": "Meir informasjon om informasjonsmodellen",
+    "seeAlso": "Se også",
     "identifier": "Identifikator",
     "keywords": "Emneord",
     "category": "Modellkategori",
@@ -563,6 +564,15 @@
         "keywords": "Emneord",
         "qualifiedAttributions": "Innhaldsleverandørar",
         "restrictions": "Avgrensningar",
+        "contactInformation": "Kontaktinformasjon"
+      },
+      "informationModel": {
+        "description": "Beskrivelse",
+        "status": "Status",
+        "usage": "Bruk av modellen",
+        "informationModel": "Informasjonsmodell",
+        "identifiers": "Identifikatorer",
+        "keywords": "Emneord",
         "contactInformation": "Kontaktinformasjon"
       }
     }

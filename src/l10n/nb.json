@@ -497,6 +497,7 @@
     "lastModified": "Sist endret",
     "changelog": "Endringer fra siste versjon",
     "moreInfo": "Mer informasjon om informasjonsmodellen",
+    "seeAlso": "Se også",
     "identifier": "Identifikator",
     "keywords": "Søkeord",
     "category": "Modellkategori",
@@ -563,6 +564,15 @@
         "keywords": "Søkeord",
         "qualifiedAttributions": "Innholdsleverandører",
         "restrictions": "Avgrensninger",
+        "contactInformation": "Kontaktinformasjon"
+      },
+      "informationModel": {
+        "description": "Beskrivelse",
+        "status": "Status",
+        "usage": "Bruk av modellen",
+        "informationModel": "Informasjonsmodell",
+        "identifiers": "Identifikatorer",
+        "keywords": "Søkeord",
         "contactInformation": "Kontaktinformasjon"
       }
     }

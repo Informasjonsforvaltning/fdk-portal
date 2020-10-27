@@ -6,7 +6,7 @@ import {
   IndicatorType
 } from './enums';
 
-export interface InformationModelDocument {
+export interface InformationModel {
   id: string;
   identifier?: string;
   publisher?: Partial<Publisher>;
@@ -14,7 +14,6 @@ export interface InformationModelDocument {
   harvest?: Partial<Harvest>;
   title?: Partial<TextLanguage>;
   name?: Partial<TextLanguage>;
-  version?: string;
   schema?: string;
   objectTypes?: Partial<Node>[];
   codeTypes?: Partial<Node>[];
@@ -23,8 +22,19 @@ export interface InformationModelDocument {
   description?: Partial<TextLanguage>;
   modelDescription?: Partial<TextLanguage>;
   isDescribedByUri?: string;
+  status?: string;
+  issued?: string;
+  modified?: string;
+  validFromIncluding?: string;
+  validToIncluding?: string;
+  version?: string;
+  languages?: string[];
+  keywords?: Partial<TextLanguage<string[]>>;
+  category?: string;
+  landingPage?: string;
   concept?: Partial<Concept>;
-  themes?: any;
+  themes?: LosTheme[];
+  contactPoint?: Partial<InformationModelContactPoint>;
 }
 
 export interface Node {
@@ -43,11 +53,11 @@ export interface Node {
   codeListReference?: string;
 }
 
-export interface TextLanguage {
-  nb: string;
-  nn: string;
-  en: string;
-  no: string;
+export interface TextLanguage<T = string> {
+  nb: T;
+  nn: T;
+  en: T;
+  no: T;
 }
 
 export interface Publisher {
@@ -120,6 +130,12 @@ interface ContactPoint {
   organizationUnit: string;
   hasURL: string;
   hasTelephone: string;
+}
+
+interface InformationModelContactPoint {
+  name: Partial<TextLanguage>;
+  email: string;
+  phone: string;
 }
 
 interface SpatialRestriction {
@@ -265,6 +281,7 @@ export interface ReferenceData {
   themes?: EuTheme[];
   referencetypes?: ReferenceType[];
   mediatypes?: MediaType[];
+  linguisticsystem?: ReferenceType[];
 }
 
 export interface Link {
