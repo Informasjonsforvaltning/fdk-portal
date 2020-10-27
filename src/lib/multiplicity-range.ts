@@ -5,7 +5,7 @@ interface RestrictionParameters {
 export const createMultiplicityRange = ({
   minOccurs,
   maxOccurs
-}: Partial<RestrictionParameters>): string => {
+}: Partial<RestrictionParameters> = {}): string => {
   if (minOccurs && minOccurs === maxOccurs) {
     return minOccurs;
   }

@@ -497,6 +497,7 @@
     "lastModified": "Last modified",
     "changelog": "Changes since last version",
     "moreInfo": "More information about information models",
+    "seeAlso": "See also",
     "identifier": "Identifier",
     "keywords": "Keywords",
     "category": "Model category",
@@ -563,6 +564,15 @@
         "keywords": "Keywords",
         "qualifiedAttributions": "Content providers",
         "restrictions": "Restrictions",
+        "contactInformation": "Contact information"
+      },
+      "informationModel": {
+        "description": "Description",
+        "status": "Status",
+        "usage": "Model usage",
+        "informationModel": "Information model",
+        "identifiers": "Identifiers",
+        "keywords": "Keywords",
         "contactInformation": "Contact information"
       }
     }

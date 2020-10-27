@@ -83,19 +83,6 @@ exports[`should render App correctly 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(InformationModelItemResolver)",
-              "type": [Function],
-            }
-          }
-          exact={true}
-          path="/informationmodels/:id"
-        />
-        <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [Function],
-              "compare": null,
               "displayName": "Connect(ConceptComparePage)",
               "type": [Function],
             }
@@ -136,6 +123,27 @@ exports[`should render App correctly 1`] = `
           }
           exact={true}
           path="/datasets/:datasetId"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "compare": null,
+              "type": Object {
+                "$$typeof": Symbol(react.memo),
+                "compare": null,
+                "type": Object {
+                  "$$typeof": Symbol(react.memo),
+                  "WrappedComponent": [Function],
+                  "compare": null,
+                  "displayName": "Connect(WrappedComponent)",
+                  "type": [Function],
+                },
+              },
+            }
+          }
+          exact={true}
+          path="/informationmodels/:informationModelId"
         />
         <Route
           component={

@@ -7,7 +7,7 @@ import {
   DataService,
   Concept,
   Dataset,
-  InformationModelDocument,
+  InformationModel,
   MediaType,
   Publisher
 } from '../../../types';
@@ -27,7 +27,7 @@ interface Props extends RouteComponentProps<any> {
     | Partial<Dataset>[]
     | Partial<DataService>[]
     | Partial<Concept>[]
-    | Partial<InformationModelDocument>[];
+    | Partial<InformationModel>[];
   aggregations?: any;
   page?: any;
   losItems?: any;

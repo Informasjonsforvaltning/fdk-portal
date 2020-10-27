@@ -19,6 +19,7 @@ const Banner = styled.header`
     width: 42px;
     min-height: 42px;
     min-width: 42px;
+
     ${onMobileView} {
       height: 20px;
       width: 20px;
@@ -64,6 +65,7 @@ const LastPublishedInfo = styled.p`
   margin: 0;
   margin-top: 8px;
   font-size: 20px;
+
   ${onMobileView} {
     font-size: 16px;
   }

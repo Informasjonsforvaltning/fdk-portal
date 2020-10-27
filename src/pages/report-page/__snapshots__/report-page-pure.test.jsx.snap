@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ReportPagePure correctly 1`] = `
-<H
+<K
   theme={
     Object {
       "dark": "#335380",
@@ -75,7 +75,7 @@ exports[`should render ReportPagePure correctly 1`] = `
             className="col-12"
           >
             <b>
-              <i
+              <l
                 active={true}
                 for="pane-1"
               >
@@ -85,8 +85,8 @@ exports[`should render ReportPagePure correctly 1`] = `
                   onClick={[Function]}
                   variant="dataset"
                 />
-              </i>
-              <i
+              </l>
+              <l
                 for="pane-2"
               >
                 <Memo(Tab)
@@ -95,8 +95,8 @@ exports[`should render ReportPagePure correctly 1`] = `
                   onClick={[Function]}
                   variant="dataservice"
                 />
-              </i>
-              <i
+              </l>
+              <l
                 for="pane-3"
               >
                 <Memo(Tab)
@@ -105,8 +105,8 @@ exports[`should render ReportPagePure correctly 1`] = `
                   onClick={[Function]}
                   variant="concept"
                 />
-              </i>
-              <i
+              </l>
+              <l
                 for="pane-4"
               >
                 <Memo(Tab)
@@ -115,35 +115,35 @@ exports[`should render ReportPagePure correctly 1`] = `
                   onClick={[Function]}
                   variant="informationmodel"
                 />
-              </i>
-              <l
+              </l>
+              <a
                 id="pane-1"
               >
                 <withRouter(Connect(Component))
                   datasetsTimeSeries={Object {}}
                   publishers={Object {}}
                 />
-              </l>
-              <l
+              </a>
+              <a
                 id="pane-2"
               >
                 <Memo(Connect(Component)) />
-              </l>
-              <l
+              </a>
+              <a
                 id="pane-3"
               >
                 <withRouter(undefined) />
-              </l>
-              <l
+              </a>
+              <a
                 id="pane-4"
               >
                 <withRouter(undefined) />
-              </l>
+              </a>
             </b>
           </div>
         </div>
       </div>
     </div>
   </section>
-</H>
+</K>
 `;
