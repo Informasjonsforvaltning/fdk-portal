@@ -1,14 +1,22 @@
 @import '../../../node_modules/designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
 
 .fdk-header {
+  align-items: center;
+  display: flex;
+  height: 80px;
   padding: 0 1.2em !important;
   .fdk-logo {
-    height: 8rem !important;
+    height: 38px;
+    @media (min-width: 768px) {
+      height: 50px;
+    }
   }
 
   .nap-logo {
-    height: 6rem !important;
-    margin: 1em 0;
+    height: 40px;
+    @media (min-width: 768px) {
+      height: 60px;
+    }
   }
 
   @include themify($themes) {
