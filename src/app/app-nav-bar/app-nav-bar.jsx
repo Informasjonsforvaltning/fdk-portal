@@ -67,7 +67,7 @@ const getMenuItems = isNap =>
 export function AppNavBar(props) {
   const fdkLogoPath = getConfig().useDemoLogo
     ? 'fdk-logo-demo.svg'
-    : 'fdk-datanorge-logo.svg';
+    : 'fdk-logo-positiv.svg';
   const languageItems = [
     {
       label: localization.lang['norwegian-nb'],
