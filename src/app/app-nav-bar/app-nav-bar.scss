@@ -6,9 +6,9 @@
   height: 80px;
   padding: 0 1.2em !important;
   .fdk-logo {
-    height: 38px;
+    height: 35px;
     @media (min-width: 768px) {
-      height: 50px;
+      height: 40px;
     }
   }
 
@@ -24,11 +24,28 @@
   }
   .nav {
     a {
+      font-size: 1.6rem;
       @include themify($themes) {
         color: themed('color-header') !important;
       }
       &:hover {
         text-decoration: underline;
+      }
+      & > div {
+        border: none;
+        display: block;
+        padding: 0;
+
+        @include themify($themes) {
+          color: themed('color-header') !important;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+
+        & > svg {
+          margin-left: 0.3rem;
+        }
       }
     }
   }
