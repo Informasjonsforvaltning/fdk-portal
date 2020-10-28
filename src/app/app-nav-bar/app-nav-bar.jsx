@@ -47,20 +47,20 @@ const getMenuItems = isNap =>
       ]
     : [
         {
-          label: localization.menu.organizations,
-          url: PATHNAME_ORGANIZATIONS
-        },
-        {
           label: localization.menu.about,
           url: PATHNAME_ABOUT
         },
         {
-          label: localization.menu.publishing,
-          url: PATHNAME_PUBLISHING
+          label: localization.menu.organizations,
+          url: PATHNAME_ORGANIZATIONS
         },
         {
           label: localization.menu.reports,
           url: PATHNAME_REPORTS
+        },
+        {
+          label: localization.menu.publishing,
+          url: PATHNAME_PUBLISHING
         }
       ];
 
@@ -112,73 +112,78 @@ export function AppNavBar(props) {
                 />
               </a>
             </div>
-            <div>
-              {!isTransportportal && (
-                <Nav className="d-none d-lg-inline-flex">
-                  <NavItem>
-                    <Link className="nav-link" to={PATHNAME_ORGANIZATIONS}>
-                      {localization.menu.organizations}
-                    </Link>
-                  </NavItem>
-                  <NavItem>
-                    <Link className="nav-link" to={PATHNAME_ABOUT}>
-                      {localization.menu.about}
-                    </Link>
-                  </NavItem>
-                  <NavItem>
-                    <a href={PATHNAME_PUBLISHING} className="nav-link">
-                      {localization.menu.publishing}
-                    </a>
-                  </NavItem>
-                  <NavItem>
-                    <Link className="nav-link" to={PATHNAME_REPORTS}>
-                      {localization.menu.reports}
-                    </Link>
-                  </NavItem>
-                </Nav>
-              )}
-              {isTransportportal && (
-                <Nav className="d-none d-lg-inline-flex">
-                  <NavItem>
-                    <a className="nav-link" href={PATHNAME_ABOUT_NAP}>
-                      {localization.menu.aboutNap}
-                    </a>
-                  </NavItem>
-                  <NavItem>
-                    <Link className="nav-link" to={PATHNAME_ABOUT_REGISTRATION}>
-                      {localization.menu.aboutRegistration}
-                    </Link>
-                  </NavItem>
-                  <NavItem />
-                  <NavItem>
-                    <Link className="nav-link" to={PATHNAME_ORGANIZATIONS}>
-                      {localization.menu.organizations}
-                    </Link>
-                  </NavItem>
-                  <NavItem>
-                    <Link className="nav-link" to={PATHNAME_REPORTS}>
-                      {localization.menu.reports}
-                    </Link>
-                  </NavItem>
-                </Nav>
-              )}
-            </div>
-            <div>
-              <PortalDropdownMenu
-                desktopView
-                caret
-                title={localization.lang.chosenLanguage}
-                menuItems={languageItems}
-              />
-              <PortalDropdownMenu
-                mobileView
-                caret
-                title={localization.app.menu}
-                menuItems={[
-                  ...getMenuItems(isTransportportal),
-                  ...languageItems
-                ]}
-              />
+            <div className="d-flex align-items-center">
+              <div className="mr-5">
+                {!isTransportportal && (
+                  <Nav className="d-none d-lg-inline-flex">
+                    <NavItem>
+                      <Link className="nav-link" to={PATHNAME_ABOUT}>
+                        {localization.menu.about}
+                      </Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link className="nav-link" to={PATHNAME_ORGANIZATIONS}>
+                        {localization.menu.organizations}
+                      </Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link className="nav-link" to={PATHNAME_REPORTS}>
+                        {localization.menu.reports}
+                      </Link>
+                    </NavItem>
+                    <NavItem>
+                      <a href={PATHNAME_PUBLISHING} className="nav-link">
+                        {localization.menu.publishing}
+                      </a>
+                    </NavItem>
+                  </Nav>
+                )}
+                {isTransportportal && (
+                  <Nav className="d-none d-lg-inline-flex">
+                    <NavItem>
+                      <a className="nav-link" href={PATHNAME_ABOUT_NAP}>
+                        {localization.menu.aboutNap}
+                      </a>
+                    </NavItem>
+                    <NavItem>
+                      <Link
+                        className="nav-link"
+                        to={PATHNAME_ABOUT_REGISTRATION}
+                      >
+                        {localization.menu.aboutRegistration}
+                      </Link>
+                    </NavItem>
+                    <NavItem />
+                    <NavItem>
+                      <Link className="nav-link" to={PATHNAME_ORGANIZATIONS}>
+                        {localization.menu.organizations}
+                      </Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link className="nav-link" to={PATHNAME_REPORTS}>
+                        {localization.menu.reports}
+                      </Link>
+                    </NavItem>
+                  </Nav>
+                )}
+              </div>
+              <div>
+                <PortalDropdownMenu
+                  desktopView
+                  caret
+                  title={localization.lang.chosenLanguage}
+                  menuItems={languageItems}
+                />
+                <PortalDropdownMenu
+                  mobileView
+                  caret
+                  title={localization.app.menu}
+                  menuItems={[
+                    ...getMenuItems(isTransportportal),
+                    ...languageItems
+                  ]}
+                />
+              </div>
             </div>
           </div>
         </div>
