@@ -32,43 +32,4 @@
       }
     }
   }
-  .fdk-button-menu {
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    padding: .8em .9em;
-    @include themify($themes) {
-      background-color: themed('color-button-primary-1');
-      color: themed('color-button-text-primary');
-    }
-  }
-}
-
-.fdk-dropdownmenu {
-  font-size: 1.4rem !important;
-
-  & > * {
-    line-height: 2.56rem !important;
-  }
-}
-
-.fdk-button-lang {
-  font-size: 1.5rem !important;
-  background-color: transparent !important;
-  border-color: transparent !important;
-  text-shadow: none !important;
-  box-shadow: none !important;
-  background-image: none !important;
-  text-decoration: none !important;
-  margin-right: .5em !important;
-  @include themify($themes) {
-    color: themed('color-header') !important;
-  }
-  font-size: 1.5rem;
-  &:focus, &:active, &:hover {
-    @include themify($themes) {
-      color: themed('color-header') !important;
-    }
-    background-color: transparent !important;
-    border-color: transparent !important;
-  }
 }
