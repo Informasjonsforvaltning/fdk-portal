@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Nav, NavItem } from 'reactstrap';
-
+import ExternalLink from '@fellesdatakatalog/link';
 import { ThemeProvider } from 'styled-components';
 
 import PortalDropdownMenu from '../../components/dropdown-menu';
@@ -132,9 +132,13 @@ export function AppNavBar(props) {
                       </Link>
                     </NavItem>
                     <NavItem>
-                      <a href={PATHNAME_PUBLISHING} className="nav-link">
+                      <ExternalLink
+                        href={PATHNAME_PUBLISHING}
+                        className="nav-link"
+                        external
+                      >
                         {localization.menu.publishing}
-                      </a>
+                      </ExternalLink>
                     </NavItem>
                   </Nav>
                 )}
