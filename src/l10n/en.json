@@ -104,11 +104,11 @@
   "menu": {
     "home": "Search in The National Data Catalog",
     "homeNAP": "Search in The National Access Point for Transport Data ",
-    "about": "About The National Data Catalog",
+    "about": "About",
     "aboutRegistration": "Register data",
     "reports": "Reports",
     "conceptsCompare": "Compare concepts",
-    "aboutNap": "About Transportportal.no",
+    "aboutNap": "About",
     "guidanceMetadata": "Metadata",
     "newsArchive": "News",
     "organizations": "Organizations",
@@ -117,7 +117,7 @@
     "harvestData": "Harvest data",
     "termsOfUse": "Terms of use",
     "searchInFdk": "Search in Felles datakatalog",
-    "publishing": "Publishing in The National Data Catalog"
+    "publishing": "Publish"
   },
   "query": {
     "intro": "Search for contents",
