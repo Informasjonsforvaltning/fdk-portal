@@ -51,7 +51,7 @@ const getMenuItems = isNap =>
           url: PATHNAME_ORGANIZATIONS
         },
         {
-          label: localization.about.about,
+          label: localization.menu.about,
           url: PATHNAME_ABOUT
         },
         {
