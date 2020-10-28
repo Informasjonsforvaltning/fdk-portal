@@ -40,6 +40,7 @@ interface dropdownMenuProps {
 const DropdownMenu = styled.nav<dropdownMenuProps>`
   color: ${({ theme }) => theme.extendedColors.neutralDarkest};
   display: ${({ desktopView }) => (desktopView ? 'inherit' : 'none')};
+  position: relative;
 
   ${onMobileView} {
     display: ${({ mobileView }) => (mobileView ? 'inherit' : 'none')};
@@ -90,6 +91,7 @@ const Dropdown = styled.ul<dropdownProps>`
   z-index: 1000;
   position: absolute;
   right: 0;
+  top: 40px;
   overflow-y: auto;
 
   ${({ theme }) =>
