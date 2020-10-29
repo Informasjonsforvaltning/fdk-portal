@@ -43,6 +43,14 @@ const getMenuItems = isNap =>
         {
           label: localization.menu.aboutRegistration,
           url: PATHNAME_ABOUT_REGISTRATION
+        },
+        {
+          label: localization.menu.organizations,
+          url: PATHNAME_ORGANIZATIONS
+        },
+        {
+          label: localization.menu.reports,
+          url: PATHNAME_REPORTS
         }
       ]
     : [
