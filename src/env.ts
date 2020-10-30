@@ -7,6 +7,8 @@ export default validateEnv(
     ENV: Environment.DEVELOPMENT,
     FDK_REGISTRATION_BASE_URI:
       'https://registrering.staging.fellesdatakatalog.digdir.no',
-    ADMIN_GUI_BASE_URI: 'https://admin.staging.fellesdatakatalog.digdir.no'
+    ADMIN_GUI_BASE_URI: 'https://admin.staging.fellesdatakatalog.digdir.no',
+    INFORMATIONMODEL_HARVESTER_HOST:
+      'https://informationmodels.staging.fellesdatakatalog.digdir.no'
   }
 );

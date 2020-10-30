@@ -6,8 +6,6 @@ const env = window.env || {
 };
 
 // override all env variables to staging (inspired by https://www.staging.fellesdatakatalog.digdir.no/config.js)
-// env.INFORMATIONMODEL_HARVESTER_HOST =
-//   'https://informationmodels.staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_API_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_FULLTEXT_HOST = 'https://search.staging.fellesdatakatalog.digdir.no';
@@ -39,7 +37,6 @@ const config = {
   apiApi: defaultToSearchApi(env.API_API_HOST),
   conceptApi: defaultToSearchApi(env.CONCEPT_API_HOST),
   informationmodelApi: defaultToSearchApi(env.INFORMATIONMODEL_API_HOST),
-  informationmodelHarvester: env.INFORMATIONMODEL_HARVESTER_HOST,
   publisherApi: defaultToSearchApi(env.PUBLISHER_API_HOST),
   catalogApi: defaultToSearchApi(env.CATALOG_API_HOST),
   referenceDataApi: defaultToSearchApi(env.REFERENCE_DATA_HOST),
