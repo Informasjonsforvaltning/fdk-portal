@@ -19,7 +19,10 @@ const Row = styled.div`
 `;
 
 const Logo = styled(LogoSVG)`
-  height: 75px;
+  height: 55px;
+  & > path {
+    fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  }
 `;
 
 const Link = styled(LinkBase)`
