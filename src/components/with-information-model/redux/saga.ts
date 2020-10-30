@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
-import { getConfig } from '../../../config';
+import env from '../../../env';
 
 import {
   GET_INFORMATION_MODEL_REQUESTED,
@@ -16,6 +16,8 @@ import {
 } from '../../../api/search-fulltext-api/informationmodels';
 
 import type { InformationModel } from '../../../types';
+
+const { INFORMATIONMODEL_HARVESTER_HOST } = env;
 
 function* getInformationModelRequested({
   payload: { id }
@@ -44,16 +46,16 @@ function* getInformationModelRdfRepresentationsRequested({
   payload: { id, formats }
 }: ReturnType<typeof actions.getInformationModelRdfRepresentationsRequested>) {
   try {
-    const url = `${
-      getConfig().informationmodelHarvester
-    }/informationmodels/${id}`;
-
     const rdfRepresentations = yield all(
       formats.map(function* fetcher(format) {
         try {
           return {
             format,
-            value: yield call(axios.get, url, { headers: { accept: format } })
+            value: yield call(
+              axios.get,
+              `${INFORMATIONMODEL_HARVESTER_HOST}/informationmodels/${id}`,
+              { headers: { accept: format } }
+            )
           };
         } catch (error) {
           return { format, value: null };
