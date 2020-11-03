@@ -6,16 +6,16 @@ const mapSorting = ({ sortfield }: any) =>
     ? { field: 'harvest.firstHarvested', direction: 'desc' }
     : undefined;
 
-const mapFilters = ({ id, identifier, uri, orgPath }: any) => {
+const mapFilters = ({ id, identifiers, uri, orgPath }: any) => {
   const filters = [];
   if (id) {
     filters.push({ _id: id });
   }
-  if (identifier) {
+  if (identifiers) {
     filters.push({
       collection: {
         field: 'identifier.keyword',
-        values: identifier
+        values: identifiers
       }
     });
   }
@@ -44,9 +44,10 @@ export const extractConceptAggregations = (searchResponse: any) =>
 export const extractConceptsTotal = (searchResponse: any) =>
   searchResponse?.page?.totalElements ?? 0;
 
-export const paramsToSearchBody = ({ q, page, ...params }: any) => ({
+export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   q,
   page: page ? Number(page) : undefined,
+  size,
   sorting: mapSorting(params),
   filters: mapFilters(params)
 });

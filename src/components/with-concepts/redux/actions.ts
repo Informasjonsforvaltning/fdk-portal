@@ -7,7 +7,8 @@ import {
 import { Concept } from '../../../types';
 
 interface GetConceptsParams {
-  identifiers?: string;
+  identifiers?: string[];
+  size?: number;
 }
 
 export function getConceptsRequested(params: GetConceptsParams) {

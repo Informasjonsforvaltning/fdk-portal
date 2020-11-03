@@ -94,19 +94,6 @@ exports[`should render App correctly 1`] = `
           component={
             Object {
               "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [Function],
-              "compare": null,
-              "displayName": "Connect(ConceptItemConceptDatasetReferencesResolver)",
-              "type": [Function],
-            }
-          }
-          exact={true}
-          path="/concepts/:id"
-        />
-        <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.memo),
               "compare": null,
               "type": Object {
                 "$$typeof": Symbol(react.memo),
@@ -123,6 +110,27 @@ exports[`should render App correctly 1`] = `
           }
           exact={true}
           path="/datasets/:datasetId"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "compare": null,
+              "type": Object {
+                "$$typeof": Symbol(react.memo),
+                "compare": null,
+                "type": Object {
+                  "$$typeof": Symbol(react.memo),
+                  "WrappedComponent": [Function],
+                  "compare": null,
+                  "displayName": "Connect(WrappedComponent)",
+                  "type": [Function],
+                },
+              },
+            }
+          }
+          exact={true}
+          path="/concepts/:conceptId"
         />
         <Route
           component={

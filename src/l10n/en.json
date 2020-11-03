@@ -470,6 +470,9 @@
     "altLabel": "Alternative term",
     "hiddenLabel": "Hidden term",
     "definition": "Definition",
+    "valid": "Valid",
+    "from": "from",
+    "to": "to",
     "identifier": "Identifier",
     "range": "Range",
     "sample": "Sample",
@@ -564,6 +567,20 @@
         "keywords": "Keywords",
         "qualifiedAttributions": "Content providers",
         "restrictions": "Restrictions",
+        "contactInformation": "Contact information"
+      },
+      "concept": {
+        "description": "Description",
+        "validity": "Validity",
+        "remark": "Remark",
+        "terms": "Alternative and hidden terms",
+        "example": "Example",
+        "subjectAndApplication": "Fag- og bruksområde",
+        "range": "Range",
+        "identifier": "Identifier",
+        "datasetReferences": "References to datasets",
+        "informationModelReferences": "References to information models",
+        "conceptReferences": "References to concepts",
         "contactInformation": "Contact information"
       },
       "informationModel": {
