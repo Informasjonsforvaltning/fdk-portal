@@ -28,7 +28,7 @@ function getSourceRelationshipLabel(sourceRelationship: string) {
       return '';
   }
 }
-const renderSource = ({ sourceRelationship = '', sources = [] }) => {
+const renderSource = ({ sourceRelationship = '', sources = [] }: any) => {
   if (sourceRelationship === 'egendefinert') {
     return (
       <div>
@@ -47,7 +47,7 @@ const renderSource = ({ sourceRelationship = '', sources = [] }) => {
             sourceRelationship
           )}`}
         </span>
-        {sources.map(({ text, uri }, index) => (
+        {sources.map(({ text, uri }: any, index: number) => (
           <Fragment key={`${text}-${uri}`}>
             {index > 0 && ','}
             &nbsp;

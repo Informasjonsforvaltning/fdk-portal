@@ -470,6 +470,9 @@
     "altLabel": "Tillaten term",
     "hiddenLabel": "Frårådd term",
     "definition": "Definisjon",
+    "valid": "Gyldig",
+    "from": "fra",
+    "to": "til",
     "identifier": "Identifikator",
     "range": "Omfang",
     "sample": "Eksempel",
@@ -564,6 +567,20 @@
         "keywords": "Emneord",
         "qualifiedAttributions": "Innhaldsleverandørar",
         "restrictions": "Avgrensningar",
+        "contactInformation": "Kontaktinformasjon"
+      },
+      "concept": {
+        "description": "Beskrivelse",
+        "validity": "Gyldighet",
+        "remark": "Merknad",
+        "terms": "Tillaten og frårådd term",
+        "example": "Eksempel",
+        "subjectAndApplication": "Domain and application",
+        "range": "Omfang",
+        "identifier": "Identifikator",
+        "datasetReferences": "Brukt i datasett",
+        "informationModelReferences": "Brukt i informasjonsmodell",
+        "conceptReferences": "Omgrep relatert til {concept}",
         "contactInformation": "Kontaktinformasjon"
       },
       "informationModel": {

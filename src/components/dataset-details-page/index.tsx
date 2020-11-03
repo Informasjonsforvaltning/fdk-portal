@@ -83,17 +83,18 @@ const DatasetDetailsPage: FC<Props> = ({
     };
   }, [datasetId]);
 
-  const conceptIdentifiers = dataset?.subject?.map(
-    ({ identifier }) => identifier
-  );
+  const conceptIdentifiers =
+    dataset?.subject?.map(({ identifier }) => identifier).filter(Boolean) ?? [];
   const datasetUris =
     dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
   const datasetUri = dataset?.uri ?? '';
 
   useEffect(() => {
-    getConcepts({
-      identifiers: conceptIdentifiers?.join()
-    });
+    if (conceptIdentifiers.length > 0) {
+      getConcepts({
+        identifiers: conceptIdentifiers as string[]
+      });
+    }
   }, [conceptIdentifiers?.join()]);
 
   useEffect(() => {
