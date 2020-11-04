@@ -470,6 +470,9 @@
     "altLabel": "Tillatt term",
     "hiddenLabel": "Frarådet term",
     "definition": "Definisjon",
+    "valid": "Gyldig",
+    "from": "fra",
+    "to": "til",
     "identifier": "Identifikator",
     "range": "Omfang",
     "sample": "Eksempel",
@@ -564,6 +567,20 @@
         "keywords": "Søkeord",
         "qualifiedAttributions": "Innholdsleverandører",
         "restrictions": "Avgrensninger",
+        "contactInformation": "Kontaktinformasjon"
+      },
+      "concept": {
+        "description": "Beskrivelse",
+        "validity": "Gyldighet",
+        "remark": "Merknad",
+        "terms": "Tillatt og frarådet term",
+        "example": "Eksempel",
+        "subjectAndApplication": "Fag- og bruksområde",
+        "range": "Omfang",
+        "identifier": "Identifikator",
+        "datasetReferences": "Brukt i datasett",
+        "informationModelReferences": "Brukt i informasjonsmodell",
+        "conceptReferences": "Begreper relatert til {concept}",
         "contactInformation": "Kontaktinformasjon"
       },
       "informationModel": {
@@ -685,14 +702,14 @@
       "usefulInfo": {
         "title": "Nyttig å vite om datasettbeskrivelser",
         "description": "Før du går i gang med å publisere data til Felles Datakatalog kan det være lurt å ta en titt på lenkene under.",
-        "datasetsStandardLink": "Standard for beskrive datasett",
-        "registrationGuidanceLink": "Veiledning for registrering av data",
+        "datasetsStandardLink": "Standard for beskrivelse av datasett",
+        "registrationGuidanceLink": "Veileder for tilgjengeliggjøring av åpne data",
         "norwegianPublicLicenseLink": "Norsk lisens for offentlig data"
       }
     }
   },
-  "truncatedText" : {
-    "expanded" : "Skjul beskrivelsen",
-    "collapsed" : "Vis hele beskrivelsen"
+  "truncatedText": {
+    "expanded": "Skjul beskrivelsen",
+    "collapsed": "Vis hele beskrivelsen"
   }
 }

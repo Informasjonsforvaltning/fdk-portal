@@ -111,9 +111,26 @@ export interface Concept {
   uri: string;
   identifier: string;
   prefLabel: Partial<TextLanguage>;
-  definition: any;
+  altLabel?: Partial<TextLanguage>[];
+  hiddenLabel?: Partial<TextLanguage>[];
+  definition: ConceptDefinition;
   publisher: Partial<Publisher>;
   example: Partial<TextLanguage>;
+  subject?: Partial<TextLanguage>;
+  application?: Partial<TextLanguage>[];
+  harvest?: Partial<Harvest>;
+  contactPoint?: Partial<ConceptContactPoint>;
+  validFromIncluding?: string;
+  validToIncluding?: string;
+  seeAlso?: string[];
+}
+
+export interface ConceptDefinition {
+  text?: Partial<TextLanguage>;
+  remark?: Partial<TextLanguage>;
+  sources?: Array<{ text?: string; uri?: stirng }>;
+  range?: { text?: Partial<TextLanguage>; uri?: stirng };
+  sourceRelationship?: string;
 }
 
 interface Provenance {
@@ -136,6 +153,11 @@ interface InformationModelContactPoint {
   name: Partial<TextLanguage>;
   email: string;
   phone: string;
+}
+
+interface ConceptContactPoint {
+  email: string;
+  telephone: string;
 }
 
 interface SpatialRestriction {

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme } from '@fellesdatakatalog/theme';
+import { theme, Colour } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
 
 import LogoSVG from '../../images/fdk-logo.svg';
@@ -79,7 +79,14 @@ const NavigationLinks = styled.ul`
   margin-right: 1em;
 
   & > li * {
-    color: ${({ theme }) => theme.extendedColors.neutralDarkest};
+    ${({ theme: extendedTheme }) =>
+      isTransportportal
+        ? css`
+            color: ${extendedTheme.extendedColors.neutralLightest};
+          `
+        : css`
+            color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+          `}
   }
 
   & > li:nth-of-type(n + 2) {

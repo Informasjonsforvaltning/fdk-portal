@@ -12,12 +12,19 @@ import {
 import type { Dataset } from '../../../types';
 
 function* getDatasetsRequested({
-  payload: { params: { uris, size, orgPath } = {} }
+  payload: { params: { uris, size, orgPath, subject } = {} }
 }: ReturnType<typeof actions.getDatasetsRequested>) {
   try {
-    const uriArray = uris?.split(',') ?? [];
-    const searchBody = paramsToSearchBody({ uris: uriArray, size, orgPath });
-    const data = yield call(searchDatasets, searchBody);
+    const data = yield call(
+      searchDatasets,
+      paramsToSearchBody({
+        uris: uris?.split(',') ?? [],
+        size,
+        orgPath,
+        subject
+      })
+    );
+
     if (data) {
       yield put(
         actions.getDatasetsSucceeded(extractDatasets(data) as Dataset[])

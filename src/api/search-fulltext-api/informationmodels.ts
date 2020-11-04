@@ -9,7 +9,12 @@ const mapSorting = ({ sortfield }: any) =>
     ? { field: 'harvest.firstHarvested', direction: 'desc' }
     : undefined;
 
-const mapFilters = ({ id, losTheme: los, orgPath }: any) => {
+const mapFilters = ({
+  id,
+  losTheme: los,
+  orgPath,
+  conceptIdentifiers
+}: any) => {
   const filters = [];
 
   if (id) {
@@ -24,13 +29,18 @@ const mapFilters = ({ id, losTheme: los, orgPath }: any) => {
     filters.push({ orgPath });
   }
 
+  if (conceptIdentifiers) {
+    filters.push(conceptIdentifiers);
+  }
+
   return filters.length > 0 ? filters : undefined;
 };
 
-export const paramsToSearchBody = ({ q, page, ...params }: any) => {
+export const paramsToSearchBody = ({ q, page, size, ...params }: any) => {
   const body = {
     q,
     page: page ? Number(page) : undefined,
+    size,
     sorting: mapSorting(params),
     filters: mapFilters(params)
   };
