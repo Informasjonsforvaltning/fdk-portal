@@ -249,6 +249,7 @@
     "distribution": {
       "title": "Distributions",
       "description": "Description",
+      "noDescription": "No description",
       "downloadUrl": "Download link",
       "download": "Download distribution",
       "format": "Format",

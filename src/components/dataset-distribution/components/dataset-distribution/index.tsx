@@ -47,7 +47,12 @@ const DatasetDistribution: FC<Props> = ({
   <SC.DatasetDistribution data-testid={testIds.root}>
     <ExpansionPanelHead>
       <Summary
-        title={translate(title) || translate(description)}
+        title={
+          translate(title) ||
+          translate(description) ||
+          accessURL?.toLowerCase() ||
+          translate(accessServices[0]?.description)
+        }
         formats={formats.sort(formatSorter)}
         data-testid={testIds.summary}
       />
@@ -64,7 +69,11 @@ const DatasetDistribution: FC<Props> = ({
         <Detail
           property={translations.dataset.distribution.accessUrl}
           value={
-            <ExternalLink uri={accessURL} prefLabel={accessURL} openInNewTab />
+            <ExternalLink
+              uri={accessURL}
+              prefLabel={accessURL.toLowerCase()}
+              openInNewTab
+            />
           }
           data-testid={testIds.detail}
         />
@@ -86,7 +95,10 @@ const DatasetDistribution: FC<Props> = ({
       )}
       <Detail
         property={translations.dataset.distribution.description}
-        value={translate(description)}
+        value={
+          translate(description) ||
+          translations.dataset.distribution.noDescription
+        }
         data-testid={testIds.detail}
       />
       {conformsToUri && (
