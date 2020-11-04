@@ -9,10 +9,10 @@ import localization from '../lib/localization';
 import { MainPage } from '../pages/main-page/main-page';
 import { SearchPage } from '../pages/search-page/search-page';
 import DatasetDetailsPage from '../components/dataset-details-page';
+import InformationModelDetailsPage from '../components/information-model-details-page';
 import { ConnectedDataServiceDetailsPage } from '../pages/data-service-details-page/connected-data-service-details-page';
 import { ConnectedConceptDetailsPage } from '../pages/concept-details-page/connected-concept-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
-import { ConnectedInformationModelDetailsPage } from '../pages/informationmodel-details-page/connected-information-model-details-page';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { AppNavBar } from './app-nav-bar/app-nav-bar';
 import { ReportPage } from '../pages/report-page/report-page';
@@ -111,11 +111,6 @@ export function App({ language, onChangeLanguage }) {
           <Switch>
             <Route
               exact
-              path={`${PATHNAME_INFORMATIONMODELS}/:id`}
-              component={ConnectedInformationModelDetailsPage}
-            />
-            <Route
-              exact
               path={`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`}
               component={ConnectedConceptComparePage}
             />
@@ -128,6 +123,11 @@ export function App({ language, onChangeLanguage }) {
               exact
               path={`${PATHNAME_DATASET_DETAILS}/:datasetId`}
               component={DatasetDetailsPage}
+            />
+            <Route
+              exact
+              path={`${PATHNAME_INFORMATIONMODELS}/:informationModelId`}
+              component={InformationModelDetailsPage}
             />
             <Route
               exact
