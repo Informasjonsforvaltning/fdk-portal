@@ -249,6 +249,7 @@
     "distribution": {
       "title": "Distribusjoner",
       "description": "Beskrivelse",
+      "noDescription": "Ingen beskrivelse",
       "downloadUrl": "Nedlastingslenke",
       "download": "Last ned distribusjon",
       "format": "Format",
