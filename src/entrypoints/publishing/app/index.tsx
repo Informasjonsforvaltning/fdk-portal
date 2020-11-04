@@ -5,7 +5,7 @@ import ThemeProvider from '@fellesdatakatalog/theme';
 
 import TranslationsProvider from '../../../providers/translations';
 
-import store from './redux/store';
+import store from '../redux/store';
 
 import GlobalStyles from '../styles';
 import Router from '../router';
