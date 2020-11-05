@@ -6,6 +6,7 @@ import conceptsSaga from '../components/with-concepts/redux/saga';
 import conceptSaga from '../components/with-concept/redux/saga';
 import datasetsSaga from '../components/with-datasets/redux/saga';
 import dataServicesSaga from '../components/with-data-services/redux/saga';
+import dataServiceSaga from '../components/with-data-service/redux/saga';
 import entitiesSaga from '../components/with-entities/redux/saga';
 import organizationsSaga from '../components/with-organizations/redux/saga';
 import organizationSaga from '../components/with-organization/redux/saga';
@@ -22,6 +23,7 @@ export default function* saga() {
     conceptSaga(),
     datasetsSaga(),
     dataServicesSaga(),
+    dataServiceSaga(),
     entitiesSaga(),
     organizationsSaga(),
     organizationSaga(),

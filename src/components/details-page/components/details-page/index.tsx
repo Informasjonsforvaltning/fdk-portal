@@ -107,7 +107,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   }, []);
 
   useEffect(() => {
-    if (entityUri) {
+    if (entityUri && entityUri !== assessment?.entity.uri) {
       getAssessment(entityUri);
     }
   }, [entityUri]);

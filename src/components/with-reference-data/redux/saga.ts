@@ -9,7 +9,12 @@ function* getReferenceDataRequested({
   payload: { category }
 }: ReturnType<typeof actions.getReferenceDataRequested>) {
   try {
-    const codes = ['referencetypes', 'mediatypes', 'linguisticsystem'];
+    const codes = [
+      'referencetypes',
+      'mediatypes',
+      'linguisticsystem',
+      'apiservicetype'
+    ];
 
     const data = yield call(
       getReferenceData,

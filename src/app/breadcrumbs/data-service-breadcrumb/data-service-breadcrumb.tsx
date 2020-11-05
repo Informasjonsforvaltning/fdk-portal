@@ -4,7 +4,8 @@ import _ from 'lodash';
 import { resolve } from 'react-resolver';
 import {
   searchDataServices,
-  extractDataServices
+  paramsToSearchBody,
+  extractFirstDataService
 } from '../../../api/search-fulltext-api/dataservices';
 import { getTranslateText } from '../../../lib/translateText';
 
@@ -15,13 +16,14 @@ export const PureDataServiceBreadcrumb = ({ dataServiceItem }: any) => (
 );
 
 const mapProps = {
-  dataServiceItem: async (props: any) => {
-    const dataServices = await memoizedSearchDataServices({
-      q: props.match.params.id
-    }).then(extractDataServices);
-
-    return Array.isArray(dataServices) ? dataServices[0] : null;
-  }
+  dataServiceItem: async ({
+    match: { params: { id = undefined } = {} } = {}
+  }) =>
+    id
+      ? memoizedSearchDataServices(paramsToSearchBody({ id }))
+          .then(extractFirstDataService)
+          .catch(() => null)
+      : null
 };
 
 PureDataServiceBreadcrumb.defaultProps = {

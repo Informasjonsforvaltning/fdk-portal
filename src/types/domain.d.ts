@@ -144,7 +144,9 @@ interface AccessRights {
 
 interface ContactPoint {
   email: string;
+  uri: string;
   organizationUnit: string;
+  organizationName: string;
   hasURL: string;
   hasTelephone: string;
 }
@@ -253,6 +255,13 @@ export interface DataService {
   isOpenAccess: boolean;
   isOpenLicense: boolean;
   isFree: boolean;
+  harvest?: Partial<Harvest>;
+  mediaType?: Partial<MediaType>[];
+  endpointURL?: string[];
+  endpointDescription?: string[];
+  conformsTo?: ConformsTo[];
+  servesDataset?: string[];
+  contactPoint?: Partial<ContactPoint>[];
 }
 
 interface License {
@@ -296,6 +305,7 @@ export interface Distribution {
 export interface MediaType {
   code: string;
   name: string;
+  prefLabel?: Partial<TextLanguage>;
 }
 
 export interface ReferenceData {
@@ -304,6 +314,7 @@ export interface ReferenceData {
   referencetypes?: ReferenceType[];
   mediatypes?: MediaType[];
   linguisticsystem?: ReferenceType[];
+  apiservicetype?: ReferenceType[];
 }
 
 export interface Link {
