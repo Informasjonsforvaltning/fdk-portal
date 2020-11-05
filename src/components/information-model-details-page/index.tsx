@@ -80,6 +80,8 @@ const InformationModelDetailsPage: FC<Props> = ({
     };
   }, []);
 
+  const entityId = informationModel?.id;
+  const entityUri = informationModel?.id;
   const identifier = informationModel?.identifier;
   const publisher = informationModel?.publisher;
   const title = translate(informationModel?.title);
@@ -125,6 +127,8 @@ const InformationModelDetailsPage: FC<Props> = ({
         entity={entity}
         title={title}
         publisher={publisher}
+        entityId={entityId}
+        entityUri={entityUri}
         lastPublished={lastPublished}
         isAuthoritative={false}
         isOpenData={false}

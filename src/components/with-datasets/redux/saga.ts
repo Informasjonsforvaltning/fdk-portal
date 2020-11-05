@@ -18,7 +18,7 @@ function* getDatasetsRequested({
     const data = yield call(
       searchDatasets,
       paramsToSearchBody({
-        uris: uris?.split(',') ?? [],
+        uris,
         size,
         orgPath,
         subject

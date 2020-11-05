@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import withBreadcrumbs from 'react-router-breadcrumbs-hoc';
 
 import {
+  PATHNAME_DATASETS,
+  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_CONCEPTS_COMPARE,
   PATHNAME_GUIDANCE,
@@ -33,8 +35,11 @@ const routes = [
       />
     )
   },
-  { path: '/datasets/:id', breadcrumb: DatasetBreadcrumb },
-  { path: '/dataservices/:id', breadcrumb: DataServiceBreadcrumb },
+  { path: `${PATHNAME_DATASETS}/:id`, breadcrumb: DatasetBreadcrumb },
+  {
+    path: `${PATHNAME_DATA_SERVICES}/:id`,
+    breadcrumb: DataServiceBreadcrumb
+  },
   {
     path: `${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`,
     breadcrumb: () => <PathNameBreadcrumb pathName="conceptsCompare" />

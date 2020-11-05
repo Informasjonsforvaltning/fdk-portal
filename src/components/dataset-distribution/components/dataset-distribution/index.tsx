@@ -81,6 +81,7 @@ const DatasetDistribution: FC<Props> = ({
       {licenses?.map(
         ({ uri: licenseUri, prefLabel: licensePrefLabel }: License) => (
           <Detail
+            key={licenseUri}
             property={translations.dataset.distribution.licenseLinkDefault}
             value={
               <ExternalLink

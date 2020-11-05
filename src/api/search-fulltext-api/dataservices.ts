@@ -7,6 +7,7 @@ const mapSorting = ({ sortfield }: any) =>
     : undefined;
 
 const mapFilters = ({
+  id,
   losTheme: los,
   orgPath,
   theme,
@@ -19,6 +20,9 @@ const mapFilters = ({
   last_x_days
 }: any) => {
   const filters = [];
+  if (id) {
+    filters.push({ _id: id });
+  }
   if (los) {
     filters.push({ los });
   }
@@ -69,9 +73,12 @@ export const extractDataServiceAggregations = (searchResponse: any) =>
 export const extractDataServicesTotal = (searchResponse: any) =>
   searchResponse?.page?.totalElements ?? 0;
 
-export const paramsToSearchBody = ({ q, page, ...params }: any) => ({
+export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   q,
   page: page ? Number(page) : undefined,
+  size,
   sorting: mapSorting(params),
   filters: mapFilters(params)
 });
+
+export const extractFirstDataService = ({ hits = [] }: any) => hits[0] ?? {};

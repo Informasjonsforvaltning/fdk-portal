@@ -97,6 +97,8 @@ const ConceptDetailsPage: FC<Props> = ({
     }
   }, [concept?.id]);
 
+  const entityId = concept?.id;
+  const entityUri = concept?.uri;
   const identifier = concept?.identifier;
   const publisher = concept?.publisher;
   const title = translate(concept?.prefLabel);
@@ -181,6 +183,8 @@ const ConceptDetailsPage: FC<Props> = ({
         entity={entity}
         title={title}
         publisher={publisher}
+        entityId={entityId}
+        entityUri={entityUri}
         lastPublished={lastPublished}
         isAuthoritative={false}
         isOpenData={false}
@@ -309,7 +313,11 @@ const ConceptDetailsPage: FC<Props> = ({
           >
             <InlineList>
               {datasets.map(dataset => (
-                <Link to={`${PATHNAME_DATASETS}/${dataset.id}`} as={RouteLink}>
+                <Link
+                  key={dataset.id}
+                  to={`${PATHNAME_DATASETS}/${dataset.id}`}
+                  as={RouteLink}
+                >
                   {translate(dataset.title)}
                 </Link>
               ))}
@@ -327,6 +335,7 @@ const ConceptDetailsPage: FC<Props> = ({
             <InlineList>
               {informationModels.map(informationModel => (
                 <Link
+                  key={informationModel.id}
                   to={`${PATHNAME_INFORMATIONMODELS}/${informationModel.id}`}
                   as={RouteLink}
                 >

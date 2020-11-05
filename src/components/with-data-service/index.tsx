@@ -4,22 +4,22 @@ import { connect } from 'react-redux';
 
 import * as actions from './redux/actions';
 
-import type { Concept } from '../../types';
+import { DataService } from '../../types';
 
 export interface Props {
-  concept: Concept | null;
-  conceptActions: typeof actions;
+  dataService: DataService | null;
+  dataServiceActions: typeof actions;
 }
 
-const withConcept = (Component: ComponentType<any>) => {
+const withDataService = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    concept: state.ConceptReducer.get('concept')?.toJS() ?? null
+    dataService: state.DataServiceReducer.get('dataService')?.toJS() ?? null
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
-    conceptActions: bindActionCreators(actions, dispatch)
+    dataServiceActions: bindActionCreators(actions, dispatch)
   });
 
   return compose<FC>(
@@ -28,4 +28,4 @@ const withConcept = (Component: ComponentType<any>) => {
   )(WrappedComponent);
 };
 
-export default withConcept;
+export default withDataService;
