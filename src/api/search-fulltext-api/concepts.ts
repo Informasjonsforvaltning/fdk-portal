@@ -6,7 +6,7 @@ const mapSorting = ({ sortfield }: any) =>
     ? { field: 'harvest.firstHarvested', direction: 'desc' }
     : undefined;
 
-const mapFilters = ({ id, identifiers, uri, orgPath }: any) => {
+const mapFilters = ({ id, identifiers, uri, orgPath, last_x_days }: any) => {
   const filters = [];
   if (id) {
     filters.push({ _id: id });
@@ -29,6 +29,9 @@ const mapFilters = ({ id, identifiers, uri, orgPath }: any) => {
   }
   if (orgPath) {
     filters.push({ orgPath });
+  }
+  if (last_x_days) {
+    filters.push({ last_x_days });
   }
   return filters.length > 0 ? filters : undefined;
 };
