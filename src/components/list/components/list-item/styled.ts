@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { theme } from '@fellesdatakatalog/theme';
 
 const ListItem = styled(Link)`
   align-items: center;
@@ -7,7 +8,6 @@ const ListItem = styled(Link)`
   border-radius: 2px;
   color: ${({ theme }) => theme.dark} !important;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 0.25em;
   padding: 0.5em 1.5em;
@@ -18,6 +18,10 @@ const ListItem = styled(Link)`
     background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
     color: #fff !important;
     text-decoration: none;
+  }
+
+  & > span:first-child {
+    margin-right: ${theme.spacing('S16')};
   }
 `;
 
