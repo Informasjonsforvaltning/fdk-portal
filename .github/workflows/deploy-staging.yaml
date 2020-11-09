@@ -28,10 +28,10 @@ jobs:
       - run: gcloud auth configure-docker
 
       - name: Build Docker image with GitHub commit sha tag
-        run: docker build . -t eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA -t eu.gcr.io/digdir-fdk-infra/fdk-portal:staging_latest --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+        run: docker build . -t eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA -t eu.gcr.io/digdir-fdk-infra/fdk-portal:staging_latest --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} --push eu.gcr.io/digdir-fdk-infra/fdk-portal
 
-      - name: Publish docker image to Google Cloud
-        run: docker -- push eu.gcr.io/digdir-fdk-infra/fdk-portal
+#      - name: Publish docker image to Google Cloud
+#        run: docker -- push eu.gcr.io/digdir-fdk-infra/fdk-portal
 
       - name: Apply Helm template
         run: |
