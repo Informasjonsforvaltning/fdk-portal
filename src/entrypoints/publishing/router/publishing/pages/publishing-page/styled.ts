@@ -8,21 +8,46 @@ import HarvestIllustrationSVG from '../../../../../../images/illustration-harves
 const PublishingPage = styled.article`
   flex: 1;
   margin-top: ${theme.spacing('S48')};
+
+  @media (max-width: 1020px) {
+    & {
+      margin-top: calc(24px + (48 - 24) * ((100vw - 320px) / (1020 - 320)));
+    }
+  }
 `;
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48')};
   font-weight: ${theme.fontWeight('FW700')};
+
+  @media (max-width: 1020px) {
+    & {
+      font-size: calc(24px + (48 - 24) * ((100vw - 320px) / (1020 - 320)));
+    }
+  }
 `;
 
 const Description = styled.p`
   margin-top: ${theme.spacing('S24')};
   font-size: ${theme.fontSize('FS24')};
   line-height: 1.5;
+
+  @media (max-width: 1020px) {
+    & {
+      margin-top: calc(16px + (24 - 16) * ((100vw - 320px) / (1020 - 320)));
+      font-size: calc(16px + (24 - 16) * ((100vw - 320px) / (1020 - 320)));
+    }
+  }
 `;
 
 const Section = styled.section`
   margin-top: ${theme.spacing('S40')};
+
+  @media (max-width: 1020px) {
+    & {
+      margin-top: calc(20px + (40 - 20) * ((100vw - 320px) / (1020 - 320)));
+    }
+  }
 `;
 
 const Link = styled(LinkBase)`
@@ -33,6 +58,12 @@ const MethodsSection = styled(Section)`
   display: flex;
   border-radius: 8px;
   overflow: hidden;
+
+  @media (max-width: 1020px) {
+    & {
+      flex-direction: column;
+    }
+  }
 `;
 
 const MethodContainer = styled.div`
@@ -47,6 +78,12 @@ const MethodContainer = styled.div`
 
   & > p {
     margin-top: ${theme.spacing('S12')};
+
+    @media (max-width: 400px) {
+      & {
+        font-size: ${theme.fontSize('FS14')};
+      }
+    }
   }
 
   & > a:first-of-type {
@@ -62,11 +99,36 @@ const MethodContainer = styled.div`
     border-radius: 4px;
     box-shadow: 0 2px 4px ${theme.colour(Colour.NEUTRAL, 'N60', 25)};
     text-decoration: none;
+
+    @media (max-width: 900px) {
+      & {
+        margin-bottom: ${theme.spacing('S12')};
+      }
+    }
+
+    @media (max-width: 400px) {
+      & {
+        padding: ${theme.spacing('S8')} ${theme.spacing('S16')};
+        font-size: ${theme.fontSize('FS14')};
+      }
+    }
   }
 
   & > ${Link} {
     margin-top: ${theme.spacing('S8')};
     margin-bottom: ${theme.spacing('S32')};
+
+    @media (max-width: 400px) {
+      & {
+        font-size: ${theme.fontSize('FS14')};
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    & {
+      padding: ${theme.spacing('S24')} ${theme.spacing('S16')};
+    }
   }
 `;
 
@@ -79,6 +141,41 @@ const RegisterIllustration = styled(RegisterIllustrationSVG)`
   bottom: ${theme.spacing('S24')};
   right: ${theme.spacing('S24')};
   height: 125px;
+
+  @media (max-width: 1100px) {
+    & {
+      height: auto;
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 1020px) {
+    & {
+      height: 125px;
+      width: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    & {
+      display: block;
+      position: relative;
+      bottom: auto;
+      right: auto;
+      height: auto;
+      width: 40%;
+      margin-left: auto;
+      margin-top: -45px;
+    }
+  }
+
+  @media (max-width: 490px) {
+    & {
+      height: 80px;
+      width: auto;
+      margin-top: -15px;
+    }
+  }
 `;
 
 const HarvestData = styled(MethodContainer)`
@@ -90,11 +187,52 @@ const HarvestIllustration = styled(HarvestIllustrationSVG)`
   bottom: ${theme.spacing('S24')};
   right: ${theme.spacing('S24')};
   height: 125px;
+
+  @media (max-width: 1100px) {
+    & {
+      height: auto;
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 1020px) {
+    & {
+      height: 125px;
+      width: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    & {
+      display: block;
+      position: relative;
+      bottom: auto;
+      right: auto;
+      height: auto;
+      width: 40%;
+      margin-left: auto;
+      margin-top: -45px;
+    }
+  }
+
+  @media (max-width: 490px) {
+    & {
+      height: 80px;
+      width: auto;
+      margin-top: -15px;
+    }
+  }
 `;
 
 const InformationSection = styled(Section)`
   display: flex;
   margin-top: ${theme.spacing('S64')};
+
+  @media (max-width: 1020px) {
+    & {
+      flex-direction: column;
+    }
+  }
 `;
 
 const InformationBox = styled.div`
@@ -105,6 +243,13 @@ const InformationBox = styled.div`
 
   &:nth-of-type(n + 2) {
     margin-left: ${theme.spacing('S24')};
+
+    @media (max-width: 1020px) {
+      & {
+        margin-left: 0;
+        margin-top: ${theme.spacing('S24')};
+      }
+    }
   }
 
   & > h3 {
@@ -139,6 +284,12 @@ const InformationBox = styled.div`
         border-top: 1px solid black;
         border-right: 1px solid black;
         transform: rotate(45deg);
+      }
+    }
+
+    @media (max-width: 400px) {
+      & {
+        font-size: ${theme.fontSize('FS14')};
       }
     }
   }

@@ -1,42 +1,84 @@
-import React, { memo, FC } from 'react';
+import React, { memo, FC, useState } from 'react';
 import { compose } from 'redux';
 
 import env from '../../../../env';
 
 import Translation from '../../../../components/translation';
+import { Trigger, Menu } from '../dropdown-menu';
 
 import SC from './styled';
 
 const { FDK_REGISTRATION_BASE_URI, ADMIN_GUI_BASE_URI } = env;
 
-const Header: FC = () => (
-  <SC.Header>
-    <SC.Row>
-      <SC.Logo />
-      <SC.NavigationLinks>
-        <li>
-          <SC.Link href={FDK_REGISTRATION_BASE_URI}>
-            <Translation id="menu.registerData" />
-          </SC.Link>
-        </li>
-        <li>
-          <SC.Link href={ADMIN_GUI_BASE_URI}>
-            <Translation id="menu.harvestData" />
-          </SC.Link>
-        </li>
-        <li>
-          <SC.Link href="/publishing/terms-of-use">
-            <Translation id="menu.termsOfUse" />
-          </SC.Link>
-        </li>
-        <li>
-          <SC.Link href="/" target="_self" external>
-            <Translation id="menu.searchInFdk" />
-          </SC.Link>
-        </li>
-      </SC.NavigationLinks>
-    </SC.Row>
-  </SC.Header>
-);
+const Header: FC = () => {
+  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
+
+  const openDropdownMenu = () => setIsDropdownMenuOpen(true);
+  const closeDropdownMenu = () => setIsDropdownMenuOpen(false);
+
+  return (
+    <SC.Header>
+      <SC.Row>
+        <SC.Logo />
+        <SC.NavigationLinks>
+          <li>
+            <SC.Link href={FDK_REGISTRATION_BASE_URI}>
+              <Translation id="menu.registerData" />
+            </SC.Link>
+          </li>
+          <li>
+            <SC.Link href={ADMIN_GUI_BASE_URI}>
+              <Translation id="menu.harvestData" />
+            </SC.Link>
+          </li>
+          <li>
+            <SC.Link href="/publishing/terms-of-use">
+              <Translation id="menu.termsOfUse" />
+            </SC.Link>
+          </li>
+          <li>
+            <SC.Link href="/" target="_self" external>
+              <Translation id="menu.searchInFdk" />
+            </SC.Link>
+          </li>
+        </SC.NavigationLinks>
+        <SC.DropdownMenu
+          isOpen={isDropdownMenuOpen}
+          onClose={closeDropdownMenu}
+        >
+          <Trigger>
+            <SC.MenuButton onClick={openDropdownMenu}>
+              <Translation id="app.menu" />
+            </SC.MenuButton>
+          </Trigger>
+          <Menu>
+            <SC.Menu>
+              <li>
+                <SC.Link href={FDK_REGISTRATION_BASE_URI}>
+                  <Translation id="menu.registerData" />
+                </SC.Link>
+              </li>
+              <li>
+                <SC.Link href={ADMIN_GUI_BASE_URI}>
+                  <Translation id="menu.harvestData" />
+                </SC.Link>
+              </li>
+              <li>
+                <SC.Link href="/publishing/terms-of-use">
+                  <Translation id="menu.termsOfUse" />
+                </SC.Link>
+              </li>
+              <li>
+                <SC.Link href="/" target="_self" external>
+                  <Translation id="menu.searchInFdk" />
+                </SC.Link>
+              </li>
+            </SC.Menu>
+          </Menu>
+        </SC.DropdownMenu>
+      </SC.Row>
+    </SC.Header>
+  );
+};
 
 export default compose<FC>(memo)(Header);
