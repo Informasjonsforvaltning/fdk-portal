@@ -3,16 +3,9 @@ import styled from 'styled-components';
 const Content = styled.div`
   display: flex;
   margin-top: 1rem;
-  @media (min-width: 992px) {
-    flex-direction: row-reverse;
-  }
 `;
 
-const Filters = styled.aside`
-  @media (max-width: 992px) {
-    display: none;
-  }
-`;
+const Filters = styled.aside``;
 
 const SortButtons = styled.div`
   display: flex;
