@@ -13,7 +13,8 @@ const mapFilters = ({
   id,
   losTheme: los,
   orgPath,
-  conceptIdentifiers
+  conceptIdentifiers,
+  last_x_days
 }: any) => {
   const filters = [];
 
@@ -32,7 +33,9 @@ const mapFilters = ({
   if (conceptIdentifiers) {
     filters.push(conceptIdentifiers);
   }
-
+  if (last_x_days) {
+    filters.push({ last_x_days });
+  }
   return filters.length > 0 ? filters : undefined;
 };
 

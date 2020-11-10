@@ -98,10 +98,8 @@ const DatasetDetailsPage: FC<Props> = ({
   }, [conceptIdentifiers?.join()]);
 
   useEffect(() => {
-    if (datasetUris?.length > 0) {
-      getDatasets({
-        uris: datasetUris?.join()
-      });
+    if (datasetUris && datasetUris.length > 0) {
+      getDatasets({ uris: datasetUris });
     }
 
     return () => {

@@ -157,14 +157,22 @@ exports[`should render App correctly 1`] = `
           component={
             Object {
               "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(DataServiceItemReferencedDatasetsReferencedInformationModelsResolver)",
-              "type": [Function],
+              "type": Object {
+                "$$typeof": Symbol(react.memo),
+                "compare": null,
+                "type": Object {
+                  "$$typeof": Symbol(react.memo),
+                  "WrappedComponent": [Function],
+                  "compare": null,
+                  "displayName": "Connect(WrappedComponent)",
+                  "type": [Function],
+                },
+              },
             }
           }
           exact={true}
-          path="/dataservices/:id"
+          path="/dataservices/:dataServiceId"
         />
         <Route
           component={[Function]}

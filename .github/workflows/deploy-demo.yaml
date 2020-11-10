@@ -10,19 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Apply Helm template
-        uses: stefanprodan/kube-tools@v1
-        with:
-          helm: 2.14.3
-          command: |
-            helm init --client-only
-            helm repo add fdk https://informasjonsforvaltning.github.io/helm-chart/
-            helm fetch --untar --untardir ./helm fdk/fdk-portal
-            helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/digdir-fdk-infra/fdk-portal:${{ github.event.client_payload.sha }}" -f ./helm/fdk-portal/values/demo.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
-            chmod o+w ./kubectlapply.yaml
-            cat kubectlapply.yaml
+        run: |
+          helm repo add fdk https://informasjonsforvaltning.github.io/helm-chart/
+          helm fetch --untar --untardir ./helm fdk/fdk-portal
+          helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/digdir-fdk-infra/fdk-portal:${{ github.event.client_payload.sha }}" -f ./helm/fdk-portal/values/demo.yaml ./helm/fdk-portal/ > ./kubectlapply.yaml
+          chmod o+w ./kubectlapply.yaml
+          cat kubectlapply.yaml
 
       - name: Get kubeconfig file from GKE
         uses: machine-learning-apps/gke-kubeconfig@master

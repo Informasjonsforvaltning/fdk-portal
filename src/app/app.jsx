@@ -9,9 +9,9 @@ import localization from '../lib/localization';
 import { MainPage } from '../pages/main-page/main-page';
 import { SearchPage } from '../pages/search-page/search-page';
 import DatasetDetailsPage from '../components/dataset-details-page';
+import DataServiceDetailsPage from '../components/data-service-details-page';
 import ConceptDetailsPage from '../components/concept-details-page';
 import InformationModelDetailsPage from '../components/information-model-details-page';
-import { ConnectedDataServiceDetailsPage } from '../pages/data-service-details-page/connected-data-service-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { AppNavBar } from './app-nav-bar/app-nav-bar';
@@ -131,8 +131,8 @@ export function App({ language, onChangeLanguage }) {
             />
             <Route
               exact
-              path="/dataservices/:id"
-              component={ConnectedDataServiceDetailsPage}
+              path={`${PATHNAME_DATA_SERVICES}/:dataServiceId`}
+              component={DataServiceDetailsPage}
             />
             <Route
               exact

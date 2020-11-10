@@ -249,6 +249,7 @@
     "distribution": {
       "title": "Distributions",
       "description": "Description",
+      "noDescription": "No description",
       "downloadUrl": "Download link",
       "download": "Download distribution",
       "format": "Format",
@@ -459,7 +460,10 @@
       "availability": "Availability"
     },
     "linkDatasetReference": "Link to dataset reference",
-    "apiDescription": "API-description"
+    "apiDescription": "API-description",
+    "endpointUrl": "Endpoint URL",
+    "endpointDescription": "Endpoint description",
+    "goToSpecification": "Go to specification"
   },
   "concept": {
     "remarkHeader": "Remark",
@@ -568,6 +572,14 @@
         "qualifiedAttributions": "Content providers",
         "restrictions": "Restrictions",
         "contactInformation": "Contact information"
+      },
+      "dataService": {
+        "description": "Description",
+        "formats": "Formats",
+        "contactInformation": "Contact information",
+        "usage": "Data service usage",
+        "serviceType": "Service type",
+        "datasetReferences": "Related datasets"
       },
       "concept": {
         "description": "Description",

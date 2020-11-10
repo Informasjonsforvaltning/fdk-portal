@@ -8,7 +8,7 @@ import {
 import type { Dataset } from '../../../types';
 
 interface GetDatasetsParams {
-  uris?: string;
+  uris?: string[];
   size?: number;
   orgPath?: string;
   subject?: string;

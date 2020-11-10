@@ -249,6 +249,7 @@
     "distribution": {
       "title": "Distribusjoner",
       "description": "Beskrivelse",
+      "noDescription": "Ingen beskrivelse",
       "downloadUrl": "Nedlastingslenke",
       "download": "Last ned distribusjon",
       "format": "Format",
@@ -459,7 +460,10 @@
       "availability": "Pålitelegheit"
     },
     "linkDatasetReference": "Lenke til datasettreferanse",
-    "apiDescription": "API-beskrivelse"
+    "apiDescription": "API-beskrivelse",
+    "endpointUrl": "EndepunktsURL",
+    "endpointDescription": "Endepunktsbeskrivelse",
+    "goToSpecification": "Gå til spesifikasjon"
   },
   "concept": {
     "remarkHeader": "Merknad",
@@ -568,6 +572,14 @@
         "qualifiedAttributions": "Innhaldsleverandørar",
         "restrictions": "Avgrensningar",
         "contactInformation": "Kontaktinformasjon"
+      },
+      "dataService": {
+        "description": "Beskrivelse",
+        "formats": "Formater",
+        "contactInformation": "Kontaktinformasjon",
+        "usage": "Ta i bruk datatjenesten",
+        "serviceType": "Tjenestetype",
+        "datasetReferences": "Tilknyttede datasettbeskrivelser"
       },
       "concept": {
         "description": "Beskrivelse",
