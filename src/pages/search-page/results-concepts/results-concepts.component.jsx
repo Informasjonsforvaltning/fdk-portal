@@ -13,7 +13,7 @@ import {
   PATHNAME_CONCEPTS_COMPARE
 } from '../../../constants/constants';
 import localization from '../../../lib/localization';
-import { CompareTerms } from './compare-terms/compare-terms.component';
+import { CompareTerms } from '../compare-terms/compare-terms.component';
 import { FilterTree } from '../filter-tree/filter-tree.component';
 import { getTranslateText } from '../../../lib/translateText';
 import { getSortfield, setPage, setSortfield } from '../search-location-helper';
