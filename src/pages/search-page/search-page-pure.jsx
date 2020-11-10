@@ -1,13 +1,9 @@
 import _ from 'lodash';
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import cx from 'classnames';
 import { detect } from 'detect-browser';
 
-import { ResultsDataset } from './results-dataset/results-dataset.component';
-import { ResultsConcepts } from './results-concepts/results-concepts.component';
-import { ResultsApi } from './results-api/results-api.component';
-import { ResultsInformationModel } from './results-informationmodel/results-informationmodel.component';
 import {
   SearchBox,
   SearchBoxTitle
@@ -18,16 +14,14 @@ import { getConfig } from '../../config';
 
 import './search-page.scss';
 import {
-  HITS_PER_PAGE,
   PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_SEARCH
+  PATHNAME_SEARCH,
+  HITS_PER_PAGE
 } from '../../constants/constants';
 import { parseSearchParams } from '../../lib/location-history-helper';
-import { setFilter, setMultiselectFilterValue } from './search-location-helper';
-import localization from '../../lib/localization';
 import {
   getLosStructure,
   getThemesStructure,
@@ -50,7 +44,6 @@ const SearchPage = props => {
     fetchPublishersIfNeeded,
     fetchReferenceDataIfNeeded,
     fetchInformationModelsIfNeeded,
-    history,
     datasetItems,
     datasetAggregations,
     datasetTotal,
@@ -109,98 +102,6 @@ const SearchPage = props => {
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_THEMES);
   fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_MEDIATYPES);
 
-  const [showFilterModal, setShowFilterModal] = useState(false);
-
-  const openFilterModal = event => {
-    event.preventDefault();
-    setShowFilterModal(true);
-  };
-
-  const closeFilterModal = event => {
-    event.preventDefault();
-    setShowFilterModal(false);
-  };
-
-  const handleFilterThemes = event => {
-    const selectedValue = event.target.value;
-    const add = event.target.checked;
-    setMultiselectFilterValue(history, location, 'theme', selectedValue, add);
-  };
-
-  const handleDatasetFilterAccessRights = event => {
-    const selectedValue = event.target.value;
-    const add = event.target.checked;
-    if (selectedValue === 'OPEN_DATA') {
-      setMultiselectFilterValue(history, location, 'opendata', 'true', add);
-    } else {
-      setMultiselectFilterValue(
-        history,
-        location,
-        'accessrights',
-        selectedValue,
-        add
-      );
-    }
-  };
-
-  const handleApiFilterAvailability = event => {
-    const selectedValue = event.target.value;
-    const add = event.target.checked;
-    setMultiselectFilterValue(
-      history,
-      location,
-      'availability',
-      selectedValue,
-      add
-    );
-  };
-
-  const handleFilterPublisherHierarchy = event => {
-    const selectedValue = event.target.value;
-
-    if (event.target.checked) {
-      setFilter(history, location, { orgPath: selectedValue });
-    } else {
-      setFilter(history, location, { orgPath: null });
-    }
-  };
-
-  const handleDatasetFilterProvenance = event => {
-    const selectedValue = event.target.value;
-    const add = event.target.checked;
-    setMultiselectFilterValue(
-      history,
-      location,
-      'provenance',
-      selectedValue,
-      add
-    );
-  };
-
-  const handleDatasetFilterSpatial = event => {
-    const selectedValue = event.target.value;
-    const add = event.target.checked;
-    setMultiselectFilterValue(history, location, 'spatial', selectedValue, add);
-  };
-
-  const handleFilterFormat = event => {
-    const selectedValue = event.target.value;
-    const add = event.target.checked;
-    setMultiselectFilterValue(history, location, 'format', selectedValue, add);
-  };
-
-  const handleFilterLos = event => {
-    const selectedValue = event.target.value;
-    const add = event.target.checked;
-    setMultiselectFilterValue(
-      history,
-      location,
-      'losTheme',
-      selectedValue,
-      add
-    );
-  };
-
   const topSectionClass = cx(
     'top-section-search',
     'mb-4',
@@ -236,19 +137,6 @@ const SearchPage = props => {
         </SearchBox>
       </section>
       <div className="container">
-        <div className="row mt-3 mb-3 d-lg-none">
-          <div className="col-12">
-            <div className="d-flex justify-content-center">
-              <button
-                type="button"
-                className="fdk-bg-color-neutral-lighter fdk-button w-100"
-                onClick={openFilterModal}
-              >
-                {localization.openFilter}
-              </button>
-            </div>
-          </div>
-        </div>
         <Switch>
           <Route exact path={PATHNAME_SEARCH}>
             <ResultsPage
@@ -257,87 +145,58 @@ const SearchPage = props => {
               page={searchAllEntitiesPage}
               losItems={getLosStructure(referenceData)}
               themesItems={getThemesStructure(referenceData)}
-              mediatypes={_.get(referenceData, [
-                'items',
-                REFERENCEDATA_PATH_MEDIATYPES
-              ])}
+              mediatypes={referenceData?.items?.[REFERENCEDATA_PATH_MEDIATYPES]}
               publishers={publisherItems}
-              onFilterPublisher={handleFilterPublisherHierarchy}
-              onFilterLos={handleFilterLos}
-              onFilterAccessRights={handleDatasetFilterAccessRights}
-              onFilterAvailability={handleApiFilterAvailability}
-              onFilterTheme={handleFilterThemes}
             />
           </Route>
           <Route exact path={PATHNAME_DATASETS}>
-            <ResultsDataset
-              showFilterModal={showFilterModal}
-              closeFilterModal={closeFilterModal}
-              datasetItems={datasetItems}
-              datasetAggregations={datasetAggregations}
-              datasetTotal={datasetTotal}
-              onFilterTheme={handleFilterThemes}
-              onFilterAccessRights={handleDatasetFilterAccessRights}
-              onFilterPublisherHierarchy={handleFilterPublisherHierarchy}
-              onFilterProvenance={handleDatasetFilterProvenance}
-              onFilterSpatial={handleDatasetFilterSpatial}
-              onFilterLos={handleFilterLos}
+            <ResultsPage
+              entities={datasetItems}
+              aggregations={datasetAggregations}
+              page={{
+                totalPages: Math.ceil((datasetTotal || 1) / HITS_PER_PAGE)
+              }}
+              losItems={getLosStructure(referenceData)}
+              themesItems={getThemesStructure(referenceData)}
+              mediatypes={referenceData?.items?.[REFERENCEDATA_PATH_MEDIATYPES]}
               publishers={publisherItems}
-              referenceData={referenceData}
-              hitsPerPage={HITS_PER_PAGE}
             />
           </Route>
           <Route exact path={PATHNAME_DATA_SERVICES}>
-            <ResultsApi
-              showFilterModal={showFilterModal}
-              closeFilterModal={closeFilterModal}
-              dataServiceItems={dataServiceItems}
-              dataServiceTotal={dataServiceTotal}
-              dataServiceAggregations={dataServiceAggregations}
-              onFilterAccessRights={handleDatasetFilterAccessRights}
-              onFilterPublisherHierarchy={handleFilterPublisherHierarchy}
-              onFilterFormat={handleFilterFormat}
-              publisherCounts={_.get(
-                dataServiceAggregations,
-                'orgPath.buckets'
-              )}
+            <ResultsPage
+              entities={dataServiceItems}
+              aggregations={dataServiceAggregations}
+              page={{
+                totalPages: Math.ceil((dataServiceTotal || 1) / HITS_PER_PAGE)
+              }}
+              mediatypes={referenceData?.items?.[REFERENCEDATA_PATH_MEDIATYPES]}
               publishers={publisherItems}
-              hitsPerPage={HITS_PER_PAGE}
-              referenceData={referenceData}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
-            <ResultsConcepts
-              showFilterModal={showFilterModal}
-              closeFilterModal={closeFilterModal}
-              conceptItems={conceptItems}
-              conceptTotal={conceptTotal}
-              conceptAggregations={conceptAggregations}
-              onFilterPublisherHierarchy={handleFilterPublisherHierarchy}
-              publisherCounts={_.get(conceptAggregations, 'orgPath.buckets')}
+            <ResultsPage
+              entities={conceptItems}
+              aggregations={conceptAggregations}
+              page={{
+                totalPages: Math.ceil((conceptTotal || 1) / HITS_PER_PAGE)
+              }}
               publishers={publisherItems}
-              hitsPerPage={HITS_PER_PAGE}
-              conceptsCompare={conceptsCompare}
+              compareConceptList={conceptsCompare}
               addConcept={addConcept}
               removeConcept={removeConcept}
             />
           </Route>
           <Route exact path={PATHNAME_INFORMATIONMODELS}>
-            <ResultsInformationModel
-              showFilterModal={showFilterModal}
-              closeFilterModal={closeFilterModal}
-              informationModelItems={informationModelItems}
-              informationModelTotal={informationModelTotal}
-              informationModelAggregations={informationModelAggregations}
-              onFilterPublisherHierarchy={handleFilterPublisherHierarchy}
-              onFilterLos={handleFilterLos}
-              referenceData={referenceData}
-              publisherCounts={_.get(
-                informationModelAggregations,
-                'orgPath.buckets'
-              )}
+            <ResultsPage
+              entities={informationModelItems}
+              aggregations={informationModelAggregations}
+              page={{
+                totalPages: Math.ceil(
+                  (informationModelTotal || 1) / HITS_PER_PAGE
+                )
+              }}
+              losItems={getLosStructure(referenceData)}
               publishers={publisherItems}
-              hitsPerPage={HITS_PER_PAGE}
             />
           </Route>
         </Switch>
