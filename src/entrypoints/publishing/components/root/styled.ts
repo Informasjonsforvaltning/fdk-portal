@@ -5,7 +5,7 @@ const Root = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: 80px;
+  height: auto;
   width: 1140px;
   margin: 0 auto;
 
