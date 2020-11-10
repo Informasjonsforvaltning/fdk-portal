@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow } from 'enzyme/build';
 import { CompareTerms } from './compare-terms.component';
 
 let defaultProps;
