@@ -1,6 +1,8 @@
-import React, { FC, memo, PropsWithChildren } from 'react';
+import React, { FC, memo, PropsWithChildren, useEffect } from 'react';
+import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
+import keyBy from 'lodash/keyBy';
 
 import SC from './styled';
 import {
@@ -8,7 +10,6 @@ import {
   DataService,
   Dataset,
   InformationModel,
-  MediaType,
   Publisher
 } from '../../../types';
 import localization from '../../../lib/localization';
@@ -19,8 +20,12 @@ import EmptyHits from '../../../components/empty-hits/empty.component';
 import Filters from '../filters';
 import CompareList from '../compare-list';
 import SortButtons from '../sort-buttons';
+import withReferenceData, {
+  Props as ReferenceDataProps
+} from '../../../components/with-reference-data';
+import { getLosByKeys } from '../../../lib/los/los-helper';
 
-interface Props extends RouteComponentProps<any> {
+interface Props extends RouteComponentProps<any>, ReferenceDataProps {
   entities:
     | Partial<Dataset>[]
     | Partial<DataService>[]
@@ -28,9 +33,6 @@ interface Props extends RouteComponentProps<any> {
     | Partial<InformationModel>[];
   aggregations?: any;
   page?: any;
-  losItems?: any;
-  themesItems?: any;
-  mediatypes?: MediaType[];
   publishers: Partial<Publisher>[];
   compareConceptList: Concept[];
   addConcept: (concept: Partial<Concept>) => void;
@@ -43,16 +45,27 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   entities = [],
   aggregations = {},
   page = {},
-  losItems = {},
-  themesItems = [],
-  mediatypes = [],
   publishers = [],
   compareConceptList = [],
   addConcept,
   removeConcept,
   history,
-  location
+  location,
+  referenceData: { los = [], themes = [], mediatypes = [] },
+  referenceDataActions: { getReferenceDataRequested: getReferenceData }
 }) => {
+  useEffect(() => {
+    if (los.length === 0) {
+      getReferenceData('los');
+    }
+    if (themes.length === 0) {
+      getReferenceData('themes');
+    }
+    if (mediatypes.length === 0) {
+      getReferenceData('mediatypes');
+    }
+  }, []);
+
   const searchParams = parseSearchParams(location);
   const { page: pageSearchParam = 0 } = searchParams;
   const { totalPages } = page;
@@ -76,9 +89,9 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
               </span>
               <Filters
                 aggregations={aggregations}
-                themesItems={themesItems}
+                themesItems={keyBy(themes, 'code')}
                 publishers={publishers}
-                losItems={losItems}
+                losItems={getLosByKeys(los)}
                 mediaTypes={mediatypes}
               />
               <CompareList
@@ -89,7 +102,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
             <section className="col-12 col-lg-8">
               <SearchEntities
                 entities={entities}
-                losItems={losItems}
+                losItems={getLosByKeys(los)}
                 compareConceptList={compareConceptList}
                 addConcept={addConcept}
                 removeConcept={removeConcept}
@@ -128,4 +141,4 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default memo(withRouter(ResultsPage));
+export default compose<FC>(memo, withReferenceData, withRouter)(ResultsPage);

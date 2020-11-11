@@ -8,7 +8,6 @@ import {
   addConceptAction,
   removeConceptAction
 } from '../../redux/modules/conceptsCompare';
-import { fetchReferenceDataIfNeededAction } from '../../redux/modules/referenceData';
 
 const mapStateToProps = ({
   datasets,
@@ -16,7 +15,6 @@ const mapStateToProps = ({
   concepts,
   informationModels,
   publishers,
-  referenceData,
   conceptsCompare
 }) => {
   const { datasetItems, datasetAggregations, datasetTotal } = datasets || {
@@ -74,7 +72,6 @@ const mapStateToProps = ({
     informationModelTotal,
     publisherItems,
     isFetchingPublishers,
-    referenceData,
     conceptsCompare: items
   };
 };
@@ -85,8 +82,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchDataServicesIfNeededAction(query)),
   fetchConceptsIfNeeded: query => dispatch(fetchConceptsIfNeededAction(query)),
   fetchPublishersIfNeeded: () => dispatch(fetchPublishersIfNeededAction()),
-  fetchReferenceDataIfNeeded: path =>
-    dispatch(fetchReferenceDataIfNeededAction(path)),
   addConcept: item => dispatch(addConceptAction(item)),
   removeConcept: uri => dispatch(removeConceptAction(uri)),
   fetchInformationModelsIfNeeded: query =>

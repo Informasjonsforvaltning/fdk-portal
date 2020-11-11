@@ -22,15 +22,6 @@ import {
   HITS_PER_PAGE
 } from '../../constants/constants';
 import { parseSearchParams } from '../../lib/location-history-helper';
-import {
-  getLosStructure,
-  getThemesStructure,
-  REFERENCEDATA_PATH_APISTATUS,
-  REFERENCEDATA_PATH_DISTRIBUTIONTYPE,
-  REFERENCEDATA_PATH_LOS,
-  REFERENCEDATA_PATH_MEDIATYPES,
-  REFERENCEDATA_PATH_THEMES
-} from '../../redux/modules/referenceData';
 import { Tabs } from './tabs/tabs';
 import ResultsPage from './results-all-entities/results-all-entities.component';
 
@@ -42,7 +33,6 @@ const SearchPage = props => {
     fetchDataServicesIfNeeded,
     fetchConceptsIfNeeded,
     fetchPublishersIfNeeded,
-    fetchReferenceDataIfNeeded,
     fetchInformationModelsIfNeeded,
     datasetItems,
     datasetAggregations,
@@ -57,7 +47,6 @@ const SearchPage = props => {
     informationModelAggregations,
     informationModelTotal,
     publisherItems,
-    referenceData,
     location,
     conceptsCompare,
     addConcept,
@@ -96,11 +85,6 @@ const SearchPage = props => {
   fetchConceptsIfNeeded(conceptSearchParams);
   fetchInformationModelsIfNeeded(informationModelSearchParams);
   fetchPublishersIfNeeded();
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_DISTRIBUTIONTYPE);
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_APISTATUS);
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_LOS);
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_THEMES);
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_MEDIATYPES);
 
   const topSectionClass = cx(
     'top-section-search',
@@ -143,9 +127,6 @@ const SearchPage = props => {
               entities={searchAllEntitiesHits}
               aggregations={allResultsEntititesAggregations}
               page={searchAllEntitiesPage}
-              losItems={getLosStructure(referenceData)}
-              themesItems={getThemesStructure(referenceData)}
-              mediatypes={referenceData?.items?.[REFERENCEDATA_PATH_MEDIATYPES]}
               publishers={publisherItems}
             />
           </Route>
@@ -156,9 +137,6 @@ const SearchPage = props => {
               page={{
                 totalPages: Math.ceil((datasetTotal || 1) / HITS_PER_PAGE)
               }}
-              losItems={getLosStructure(referenceData)}
-              themesItems={getThemesStructure(referenceData)}
-              mediatypes={referenceData?.items?.[REFERENCEDATA_PATH_MEDIATYPES]}
               publishers={publisherItems}
             />
           </Route>
@@ -169,7 +147,6 @@ const SearchPage = props => {
               page={{
                 totalPages: Math.ceil((dataServiceTotal || 1) / HITS_PER_PAGE)
               }}
-              mediatypes={referenceData?.items?.[REFERENCEDATA_PATH_MEDIATYPES]}
               publishers={publisherItems}
             />
           </Route>
@@ -195,7 +172,6 @@ const SearchPage = props => {
                   (informationModelTotal || 1) / HITS_PER_PAGE
                 )
               }}
-              losItems={getLosStructure(referenceData)}
               publishers={publisherItems}
             />
           </Route>
