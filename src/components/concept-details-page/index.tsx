@@ -166,7 +166,7 @@ const ConceptDetailsPage: FC<Props> = ({
             &nbsp;
             {uri ? (
               <Link href={uri} external>
-                {text || uri}
+                {translate(text) || uri}
               </Link>
             ) : (
               translate(text)
