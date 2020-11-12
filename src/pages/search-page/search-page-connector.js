@@ -17,8 +17,7 @@ const mapStateToProps = ({
   informationModels,
   publishers,
   referenceData,
-  conceptsCompare,
-  searchQuery
+  conceptsCompare
 }) => {
   const { datasetItems, datasetAggregations, datasetTotal } = datasets || {
     datasetItems: null,
@@ -76,8 +75,7 @@ const mapStateToProps = ({
     publisherItems,
     isFetchingPublishers,
     referenceData,
-    conceptsCompare: items,
-    searchQuery
+    conceptsCompare: items
   };
 };
 
