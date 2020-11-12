@@ -14,6 +14,7 @@ import reportSaga from '../components/with-report/redux/saga';
 import assessmentSaga from '../components/with-assessment/redux/saga';
 import informationModelSaga from '../components/with-information-model/redux/saga';
 import informationModelsSaga from '../components/with-information-models/redux/saga';
+import organizationsCatalogSaga from '../components/with-organizations-catalog/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -30,6 +31,7 @@ export default function* saga() {
     reportSaga(),
     assessmentSaga(),
     informationModelSaga(),
-    informationModelsSaga()
+    informationModelsSaga(),
+    organizationsCatalogSaga()
   ]);
 }

@@ -9,8 +9,7 @@ import {
   Concept,
   DataService,
   Dataset,
-  InformationModel,
-  Publisher
+  InformationModel
 } from '../../../types';
 import localization from '../../../lib/localization';
 import { parseSearchParams } from '../../../lib/location-history-helper';
@@ -20,12 +19,18 @@ import EmptyHits from '../../../components/empty-hits/empty.component';
 import Filters from '../filters';
 import CompareList from '../compare-list';
 import SortButtons from '../sort-buttons';
+import withOrganizations, {
+  Props as OrganizationsProps
+} from '../../../components/with-organizations-catalog';
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../components/with-reference-data';
 import { getLosByKeys } from '../../../lib/los/los-helper';
 
-interface Props extends RouteComponentProps<any>, ReferenceDataProps {
+interface Props
+  extends OrganizationsProps,
+    RouteComponentProps<any>,
+    ReferenceDataProps {
   entities:
     | Partial<Dataset>[]
     | Partial<DataService>[]
@@ -33,7 +38,6 @@ interface Props extends RouteComponentProps<any>, ReferenceDataProps {
     | Partial<InformationModel>[];
   aggregations?: any;
   page?: any;
-  publishers: Partial<Publisher>[];
   compareConceptList: Concept[];
   addConcept: (concept: Partial<Concept>) => void;
   removeConcept: (id?: string) => void;
@@ -45,12 +49,13 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   entities = [],
   aggregations = {},
   page = {},
-  publishers = [],
   compareConceptList = [],
   addConcept,
   removeConcept,
   history,
   location,
+  organizations = [],
+  organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
   referenceData: { los = [], themes = [], mediatypes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData }
 }) => {
@@ -63,6 +68,9 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     }
     if (mediatypes.length === 0) {
       getReferenceData('mediatypes');
+    }
+    if (organizations.length === 0) {
+      getOrganizations();
     }
   }, []);
 
@@ -90,7 +98,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
               <Filters
                 aggregations={aggregations}
                 themesItems={keyBy(themes, 'code')}
-                publishers={publishers}
+                publishers={keyBy(organizations, 'orgPath')}
                 losItems={getLosByKeys(los)}
                 mediaTypes={mediatypes}
               />
@@ -141,4 +149,9 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default compose<FC>(memo, withReferenceData, withRouter)(ResultsPage);
+export default compose<FC>(
+  memo,
+  withOrganizations,
+  withReferenceData,
+  withRouter
+)(ResultsPage);
