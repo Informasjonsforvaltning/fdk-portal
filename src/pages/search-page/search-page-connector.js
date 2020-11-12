@@ -3,7 +3,6 @@ import { fetchDatasetsIfNeededAction } from '../../redux/modules/datasets';
 import { fetchDataServicesIfNeededAction } from '../../redux/modules/dataservices';
 import { fetchConceptsIfNeededAction } from '../../redux/modules/concepts';
 import { fetchInformationModelsIfNeededAction } from '../../redux/modules/informationModels';
-import { fetchPublishersIfNeededAction } from '../../redux/modules/publishers';
 import {
   addConceptAction,
   removeConceptAction
@@ -14,7 +13,6 @@ const mapStateToProps = ({
   dataServices,
   concepts,
   informationModels,
-  publishers,
   conceptsCompare
 }) => {
   const { datasetItems, datasetAggregations, datasetTotal } = datasets || {
@@ -49,10 +47,6 @@ const mapStateToProps = ({
     informationModelTotal: null
   };
 
-  const { publisherItems, isFetchingPublishers } = publishers || {
-    publisherItems: null
-  };
-
   const { items } = conceptsCompare || {
     items: {}
   };
@@ -70,8 +64,6 @@ const mapStateToProps = ({
     informationModelItems,
     informationModelAggregations,
     informationModelTotal,
-    publisherItems,
-    isFetchingPublishers,
     conceptsCompare: items
   };
 };
@@ -81,7 +73,6 @@ const mapDispatchToProps = dispatch => ({
   fetchDataServicesIfNeeded: query =>
     dispatch(fetchDataServicesIfNeededAction(query)),
   fetchConceptsIfNeeded: query => dispatch(fetchConceptsIfNeededAction(query)),
-  fetchPublishersIfNeeded: () => dispatch(fetchPublishersIfNeededAction()),
   addConcept: item => dispatch(addConceptAction(item)),
   removeConcept: uri => dispatch(removeConceptAction(uri)),
   fetchInformationModelsIfNeeded: query =>

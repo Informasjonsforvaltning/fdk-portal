@@ -22,6 +22,7 @@ import ReportReducer from '../components/with-report/redux/reducer';
 import AssessmentReducer from '../components/with-assessment/redux/reducer';
 import InformationModelReducer from '../components/with-information-model/redux/reducer';
 import InformationModelsReducer from '../components/with-information-models/redux/reducer';
+import OrganizationsCatalogReducer from '../components/with-organizations-catalog/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -46,5 +47,6 @@ export const rootReducer = combineReducers({
   ReportReducer,
   AssessmentReducer,
   InformationModelReducer,
-  InformationModelsReducer
+  InformationModelsReducer,
+  OrganizationsCatalogReducer
 });

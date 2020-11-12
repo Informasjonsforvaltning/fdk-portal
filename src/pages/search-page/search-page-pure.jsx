@@ -32,7 +32,6 @@ const SearchPage = props => {
     fetchDatasetsIfNeeded,
     fetchDataServicesIfNeeded,
     fetchConceptsIfNeeded,
-    fetchPublishersIfNeeded,
     fetchInformationModelsIfNeeded,
     datasetItems,
     datasetAggregations,
@@ -46,7 +45,6 @@ const SearchPage = props => {
     informationModelItems,
     informationModelAggregations,
     informationModelTotal,
-    publisherItems,
     location,
     conceptsCompare,
     addConcept,
@@ -84,7 +82,6 @@ const SearchPage = props => {
   fetchDataServicesIfNeeded(dataServiceSearchParams);
   fetchConceptsIfNeeded(conceptSearchParams);
   fetchInformationModelsIfNeeded(informationModelSearchParams);
-  fetchPublishersIfNeeded();
 
   const topSectionClass = cx(
     'top-section-search',
@@ -127,7 +124,6 @@ const SearchPage = props => {
               entities={searchAllEntitiesHits}
               aggregations={allResultsEntititesAggregations}
               page={searchAllEntitiesPage}
-              publishers={publisherItems}
             />
           </Route>
           <Route exact path={PATHNAME_DATASETS}>
@@ -137,7 +133,6 @@ const SearchPage = props => {
               page={{
                 totalPages: Math.ceil((datasetTotal || 1) / HITS_PER_PAGE)
               }}
-              publishers={publisherItems}
             />
           </Route>
           <Route exact path={PATHNAME_DATA_SERVICES}>
@@ -147,7 +142,6 @@ const SearchPage = props => {
               page={{
                 totalPages: Math.ceil((dataServiceTotal || 1) / HITS_PER_PAGE)
               }}
-              publishers={publisherItems}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
@@ -157,7 +151,6 @@ const SearchPage = props => {
               page={{
                 totalPages: Math.ceil((conceptTotal || 1) / HITS_PER_PAGE)
               }}
-              publishers={publisherItems}
               compareConceptList={conceptsCompare}
               addConcept={addConcept}
               removeConcept={removeConcept}
@@ -172,7 +165,6 @@ const SearchPage = props => {
                   (informationModelTotal || 1) / HITS_PER_PAGE
                 )
               }}
-              publishers={publisherItems}
             />
           </Route>
         </Switch>
