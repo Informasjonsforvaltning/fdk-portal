@@ -36,7 +36,7 @@ const renderThemes = (themes: any, losItems: any) => {
 };
 
 export const InformationModelItem: FC<Props> = ({
-  informationModel: { id, title = {}, description, publisher = {}, themes },
+  informationModel: { id, title = {}, description, publisher = {}, theme },
   losItems
 }) => {
   return (
@@ -47,8 +47,8 @@ export const InformationModelItem: FC<Props> = ({
       publisher={publisher}
       description={description}
     >
-      {themes && (
-        <SearchHitThemes>{renderThemes(themes, losItems)}</SearchHitThemes>
+      {theme && (
+        <SearchHitThemes>{renderThemes(theme, losItems)}</SearchHitThemes>
       )}
     </SearchHit>
   );

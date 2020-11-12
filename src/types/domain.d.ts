@@ -15,6 +15,12 @@ export interface InformationModel {
   title?: Partial<TextLanguage>;
   name?: Partial<TextLanguage>;
   schema?: string;
+  modelElements?: Record<string, Partial<InformationModelElement>>;
+  modelProperties?: Record<string, Partial<InformationModelProperty>>;
+  isPartOf?: string;
+  hasPart?: string;
+  isReplacedBy?: string;
+  replaces?: string;
   objectTypes?: Partial<Node>[];
   codeTypes?: Partial<Node>[];
   dataTypes?: Partial<Node>[];
@@ -22,19 +28,98 @@ export interface InformationModel {
   description?: Partial<TextLanguage>;
   modelDescription?: Partial<TextLanguage>;
   isDescribedByUri?: string;
+  dctType?: string;
   status?: string;
   issued?: string;
   modified?: string;
   validFromIncluding?: string;
   validToIncluding?: string;
-  version?: string;
-  languages?: string[];
-  keywords?: Partial<TextLanguage<string[]>>;
+  versionInfo?: string;
+  license?: InformationModelLicense[];
+  language?: InformationModelLanguage[];
+  keyword?: Partial<TextLanguage>[];
   category?: string;
+  homepage?: string;
   landingPage?: string;
+  spatial?: SpatialRestriction[];
   concept?: Partial<Concept>;
-  themes?: LosTheme[];
-  contactPoint?: Partial<InformationModelContactPoint>;
+  theme?: EuTheme[];
+  losTheme?: LosTheme[];
+  contactPoint?: Partial<InformationModelContactPoint>[];
+}
+
+export interface ModelCodeElement {
+  identifier: string;
+  prefLabel: Partial<TextLanguage> | null;
+  inScheme: string[] | null;
+  subject: string | null;
+  notation: string | null;
+  topConceptOf: string[] | null;
+  definition: string[] | null;
+  example: string[] | null;
+  exclusionNote: Partial<TextLanguage> | null;
+  previousElement: string[] | null;
+  hiddenLabel: Partial<TextLanguage> | null;
+  inclusionNote: Partial<TextLanguage> | null;
+  note: Partial<TextLanguage> | null;
+  nextElement: string[] | null;
+  scopeNote: Partial<TextLanguage> | null;
+  altLabel: Partial<TextLanguage> | null;
+}
+
+export interface InformationModelElement {
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage> | null;
+  description: Partial<TextLanguage> | null;
+  subject: string | null;
+  belongsToModule: string | null;
+  hasProperty: string[] | null;
+  elementTypes: string[] | null;
+  codeListReference: string | null;
+  codes: Partial<ModelCodeElement>[] | null;
+  typeDefinitionReference: string | null;
+  length: number | null;
+  maxLength: number | null;
+  minInclusive: number | null;
+  maxInclusive: number | null;
+  pattern: number | null;
+  totalDigits: number | null;
+}
+
+export interface InformationModelProperty {
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage> | null;
+  description: Partial<TextLanguage> | null;
+  propertyTypes: string[] | null;
+  minOccurs: number | null;
+  maxOccurs: number | null;
+  hasType: string[] | null;
+  belongsToModule: string | null;
+  isAbstractionOf: string | null;
+  refersTo: string | null;
+  hasDataType: string | null;
+  hasSimpleType: string | null;
+  hasObjectType: string | null;
+  hasValueFrom: string | null;
+  hasSome: string[] | null;
+  hasMember: string | null;
+  contains: string | null;
+  hasSupplier: string | null;
+  hasGeneralConcept: string | null;
+}
+
+interface InformationModelLicense {
+  uri: string;
+  code: string;
+  prefLabel: Partial<TextLanguage>;
+}
+
+interface InformationModelLanguage {
+  uri: string;
+  code: string;
+  prefLabel: Partial<TextLanguage>;
 }
 
 export interface Node {
@@ -53,11 +138,11 @@ export interface Node {
   codeListReference?: string;
 }
 
-export interface TextLanguage<T = string> {
-  nb: T;
-  nn: T;
-  en: T;
-  no: T;
+export interface TextLanguage {
+  nb: string;
+  nn: string;
+  en: string;
+  no: string;
 }
 
 export interface Publisher {
@@ -99,7 +184,7 @@ export interface Property {
   identifier: string;
   name: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  belongsToModule: Partial<TextLanguage>;
+  belongsToModule: string;
   parameters: any;
   type: Partial<Type>;
   isDescribedByUri: string;
@@ -178,9 +263,13 @@ interface ContactPoint {
 }
 
 interface InformationModelContactPoint {
-  name: Partial<TextLanguage>;
+  uri: string;
+  fullname: string;
   email: string;
-  phone: string;
+  organizationName: string;
+  organizationUnit: string;
+  hasURL: string;
+  hasTelephone: string;
 }
 
 interface ConceptContactPoint {

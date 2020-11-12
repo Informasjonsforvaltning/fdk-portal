@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { theme } from '@fellesdatakatalog/theme';
+
 import ExpansionPanel, { SC } from '../../../expansion-panel';
 
 const ObjectTypeElementExpansionPanel = styled(ExpansionPanel)`
@@ -13,22 +15,24 @@ const ObjectTypeElementExpansionPanel = styled(ExpansionPanel)`
   }
 
   ${SC.ExpansionPanel.HeadContent} {
-    color: ${({ theme }) => theme.extendedColors.neutralDarker};
-    font-size: 1.6rem;
-    font-weight: 400;
-    display: flex;
-    flex: 0 0 80%;
+    color: ${({ theme }) => theme.extendedColors.neutralDarker} !important;
+    font-size: 1.6rem !important;
+    font-weight: 400 !important;
+    display: flex !important;
+    flex: 0 0 80% !important;
+    align-items: center;
 
     & > strong:first-of-type {
       flex-basis: 60%;
     }
-    & > div:first-of-type {
-      display: flex;
-      flex-grow: 1;
-      justify-content: space-between;
 
-      & > a {
-        cursor: pointer;
+    & > span:first-of-type {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      & > a:nth-of-type(n + 2) {
+        margin-top: ${theme.spacing('S8')};
       }
     }
   }

@@ -9,31 +9,22 @@ import {
 } from './action-types';
 import * as actions from './actions';
 
-import {
-  searchInformationModels,
-  paramsToSearchBody,
-  extractFirstInformationModel
-} from '../../../api/search-fulltext-api/informationmodels';
-
 import type { InformationModel } from '../../../types';
+import { DataFormat } from '../../../types/enums';
 
-const { INFORMATIONMODEL_HARVESTER_HOST } = env;
+const { SEARCH_API_HOST, INFORMATIONMODEL_HARVESTER_HOST } = env;
 
 function* getInformationModelRequested({
   payload: { id }
 }: ReturnType<typeof actions.getInformationModelRequested>) {
   try {
-    const data = yield call(
-      searchInformationModels,
-      paramsToSearchBody({ id })
+    const { data } = yield call(
+      axios.get,
+      `${SEARCH_API_HOST}/information-models/${id}`
     );
 
     if (data) {
-      yield put(
-        actions.getInformationModelSucceeded(
-          extractFirstInformationModel(data) as InformationModel
-        )
-      );
+      yield put(actions.getInformationModelSucceeded(data as InformationModel));
     } else {
       yield put(actions.getInformationModelFailed(''));
     }
@@ -49,13 +40,17 @@ function* getInformationModelRdfRepresentationsRequested({
     const rdfRepresentations = yield all(
       formats.map(function* fetcher(format) {
         try {
+          const { data } = yield call(
+            axios.get,
+            `${INFORMATIONMODEL_HARVESTER_HOST}/informationmodels/${id}`,
+            { headers: { accept: format } }
+          );
+
           return {
             format,
-            value: yield call(
-              axios.get,
-              `${INFORMATIONMODEL_HARVESTER_HOST}/informationmodels/${id}`,
-              { headers: { accept: format } }
-            )
+            value: [DataFormat.JSON, DataFormat.JSONLD].includes(format)
+              ? JSON.stringify(data, null, 2)
+              : data
           };
         } catch (error) {
           return { format, value: null };
