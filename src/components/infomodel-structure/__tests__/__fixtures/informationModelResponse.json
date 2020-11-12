@@ -1,622 +1,1303 @@
 {
-    "id": "123",
-    "publisher": {},
-    "harvestSourceUri": "harvestSourceUri",
-    "harvest": {
-        "firstHarvested": "2020-01-14T13:05:49.916+0000",
-        "lastHarvested": "2020-02-13T05:10:11.242+0000"
+  "modelElements": {
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse",
+      "title": {
+        "nb": "Adresse"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": null,
+      "belongsToModule": "Adresse",
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#ObjectType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
     },
-    "name": {
-        "nb": "Oppgave over pass og stell av barn"
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer",
+      "title": {
+        "nb": "Adressenummer"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": [
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bokstav",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#nummer"
+      ],
+      "belongsToModule": null,
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#DataType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
     },
-    "objectTypes": [
-        {
-            "identifier": "111111",
-            "modelDescription": {
-                "name": {
-                    "nb": "Leveranse"
-                },
-                "description": {
-                    "nb": "norsk bokmål tekst",
-                    "nn": "nynorsk tekst",
-                    "en": "engelsk tekst"
-                },
-                "identifier": "identifier",
-                "belongsToModule": "inntekt",
-                "concept": {
-                    "anbefaltTerm": {
-                        "nb": "Anbefalt term"
-                    },
-                    "definition": {
-                        "nb": "Definisjon"
-                    },
-                    "publisher": {
-                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                        "id": "974760673",
-                        "name": "REGISTERENHETEN I BRØNNØYSUND",
-                        "orgPath": "/STAT/912660680/974760673",
-                        "prefLabel": {
-                            "nb": "Brønnøysundregistrene"
-                        }
-                    },
-                    "conceptReference": "https://conceptreference.com"
-                }
-            },
-            "attributeList": [
-                {
-                    "name": {
-                        "nb": "norsk bokmål tekst",
-                        "nn": "nynorsk tekst",
-                        "en": "engelsk tekst"
-                    },
-                    "referencedObject": {
-                        "refId": "refId-1",
-                        "name": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        }
-                    },
-                    "range": "0..*",
-                    "elementDescription": {
-                        "name": {
-                            "nb": "Leveranse"
-                        },
-                        "description": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        },
-                        "identifier": "identifier",
-                        "belongsToModule": "inntekt",
-                        "concept": {
-                            "anbefaltTerm": {
-                                "nb": "Anbefalt term"
-                            },
-                            "definition": {
-                                "nb": "Definisjon"
-                            },
-                            "publisher": {
-                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                                "id": "974760673",
-                                "name": "REGISTERENHETEN I BRØNNØYSUND",
-                                "orgPath": "/STAT/912660680/974760673",
-                                "prefLabel": {
-                                    "nb": "Brønnøysundregistrene"
-                                }
-                            },
-                            "conceptReference": "https://conceptreference.com"
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "identifier": "111111",
-            "modelDescription": {
-                "name": {
-                    "nb": "Leveranse"
-                },
-                "description": {
-                    "nb": "norsk bokmål tekst",
-                    "nn": "nynorsk tekst",
-                    "en": "engelsk tekst"
-                },
-                "identifier": "identifier",
-                "belongsToModule": "inntekt",
-                "concept": {
-                    "anbefaltTerm": {
-                        "nb": "Anbefalt term"
-                    },
-                    "definition": {
-                        "nb": "Definisjon"
-                    },
-                    "publisher": {
-                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                        "id": "974760673",
-                        "name": "REGISTERENHETEN I BRØNNØYSUND",
-                        "orgPath": "/STAT/912660680/974760673",
-                        "prefLabel": {
-                            "nb": "Brønnøysundregistrene"
-                        }
-                    },
-                    "conceptReference": "https://conceptreference.com"
-                }
-            },
-            "attributeList": [
-                {
-                    "name": {
-                        "nb": "norsk bokmål tekst",
-                        "nn": "nynorsk tekst",
-                        "en": "engelsk tekst"
-                    },
-                    "referencedObject": {
-                        "refId": "refId-1",
-                        "name": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        }
-                    },
-                    "range": "0..*",
-                    "elementDescription": {
-                        "name": {
-                            "nb": "Leveranse"
-                        },
-                        "description": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        },
-                        "identifier": "identifier",
-                        "belongsToModule": "inntekt",
-                        "concept": {
-                            "anbefaltTerm": {
-                                "nb": "Anbefalt term"
-                            },
-                            "definition": {
-                                "nb": "Definisjon"
-                            },
-                            "publisher": {
-                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                                "id": "974760673",
-                                "name": "REGISTERENHETEN I BRØNNØYSUND",
-                                "orgPath": "/STAT/912660680/974760673",
-                                "prefLabel": {
-                                    "nb": "Brønnøysundregistrene"
-                                }
-                            },
-                            "conceptReference": "https://conceptreference.com"
-                        }
-                    }
-                }
-            ]
-        }
-    ],
-    "codeTypes": [
-        {
-            "identifier": "id-codetype",
-            "modelDescription": {
-                "name": {
-                    "nb": "Leveranse"
-                },
-                "description": {
-                    "nb": "norsk bokmål tekst",
-                    "nn": "nynorsk tekst",
-                    "en": "engelsk tekst"
-                },
-                "identifier": "identifier",
-                "belongsToModule": "inntekt",
-                "concept": {
-                    "anbefaltTerm": {
-                        "nb": "Anbefalt term"
-                    },
-                    "definition": {
-                        "nb": "Definisjon"
-                    },
-                    "publisher": {
-                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                        "id": "974760673",
-                        "name": "REGISTERENHETEN I BRØNNØYSUND",
-                        "orgPath": "/STAT/912660680/974760673",
-                        "prefLabel": {
-                            "nb": "Brønnøysundregistrene"
-                        }
-                    },
-                    "conceptReference": "https://conceptreference.com"
-                }
-            },
-            "codeList": [
-                {
-                    "name": {
-                        "nb": "norsk bokmål tekst",
-                        "nn": "nynorsk tekst",
-                        "en": "engelsk tekst"
-                    },
-                    "referencedObject": {
-                        "refId": "refId-1",
-                        "name": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        }
-                    },
-                    "range": "0..*",
-                    "elementDescription": {
-                        "name": {
-                            "nb": "Leveranse"
-                        },
-                        "description": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        },
-                        "identifier": "identifier",
-                        "belongsToModule": "inntekt",
-                        "concept": {
-                            "anbefaltTerm": {
-                                "nb": "Anbefalt term"
-                            },
-                            "definition": {
-                                "nb": "Definisjon"
-                            },
-                            "publisher": {
-                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                                "id": "974760673",
-                                "name": "REGISTERENHETEN I BRØNNØYSUND",
-                                "orgPath": "/STAT/912660680/974760673",
-                                "prefLabel": {
-                                    "nb": "Brønnøysundregistrene"
-                                }
-                            },
-                            "conceptReference": "https://conceptreference.com"
-                        }
-                    }
-                },
-                {
-                    "name": {
-                        "nb": "norsk bokmål tekst",
-                        "nn": "nynorsk tekst",
-                        "en": "engelsk tekst"
-                    },
-                    "referencedObject": {
-                        "refId": "refId-1",
-                        "name": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        }
-                    },
-                    "range": "0..*",
-                    "elementDescription": {
-                        "name": {
-                            "nb": "Leveranse"
-                        },
-                        "description": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        },
-                        "identifier": "identifier",
-                        "belongsToModule": "inntekt",
-                        "concept": {
-                            "anbefaltTerm": {
-                                "nb": "Anbefalt term"
-                            },
-                            "definition": {
-                                "nb": "Definisjon"
-                            },
-                            "publisher": {
-                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                                "id": "974760673",
-                                "name": "REGISTERENHETEN I BRØNNØYSUND",
-                                "orgPath": "/STAT/912660680/974760673",
-                                "prefLabel": {
-                                    "nb": "Brønnøysundregistrene"
-                                }
-                            },
-                            "conceptReference": "https://conceptreference.com"
-                        }
-                    }
-                }
-            ],
-            "externalCodeList": [
-                "https://externalcodelist.com",
-                "https://externalcodelist2.com"
-            ]
-        }
-    ],
-    "dataTypes": [
-        {
-            "identifier": "id-datatype",
-            "modelDescription": {
-                "name": {
-                    "nb": "Leveranse"
-                },
-                "description": {
-                    "nb": "norsk bokmål tekst",
-                    "nn": "nynorsk tekst",
-                    "en": "engelsk tekst"
-                },
-                "identifier": "identifier",
-                "belongsToModule": "inntekt",
-                "concept": {
-                    "anbefaltTerm": {
-                        "nb": "Anbefalt term"
-                    },
-                    "definition": {
-                        "nb": "Definisjon"
-                    },
-                    "publisher": {
-                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                        "id": "974760673",
-                        "name": "REGISTERENHETEN I BRØNNØYSUND",
-                        "orgPath": "/STAT/912660680/974760673",
-                        "prefLabel": {
-                            "nb": "Brønnøysundregistrene"
-                        }
-                    },
-                    "conceptReference": "https://conceptreference.com"
-                }
-            },
-            "attributeList": [
-                {
-                    "name": {
-                        "nb": "norsk bokmål tekst",
-                        "nn": "nynorsk tekst",
-                        "en": "engelsk tekst"
-                    },
-                    "referencedObject": {
-                        "refId": "refId-1",
-                        "name": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        }
-                    },
-                    "range": "0..*",
-                    "elementDescription": {
-                        "name": {
-                            "nb": "Leveranse"
-                        },
-                        "description": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        },
-                        "identifier": "identifier",
-                        "belongsToModule": "inntekt",
-                        "concept": {
-                            "anbefaltTerm": {
-                                "nb": "Anbefalt term"
-                            },
-                            "definition": {
-                                "nb": "Definisjon"
-                            },
-                            "publisher": {
-                                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                                "id": "974760673",
-                                "name": "REGISTERENHETEN I BRØNNØYSUND",
-                                "orgPath": "/STAT/912660680/974760673",
-                                "prefLabel": {
-                                    "nb": "Brønnøysundregistrene"
-                                }
-                            },
-                            "conceptReference": "https://conceptreference.com"
-                        }
-                    }
-                }
-            ],
-            "extendsFrom": {
-                "id": "111111",
-                "modelDescription": {
-                    "name": {
-                        "nb": "Leveranse"
-                    },
-                    "description": {
-                        "nb": "norsk bokmål tekst",
-                        "nn": "nynorsk tekst",
-                        "en": "engelsk tekst"
-                    },
-                    "identifier": "identifier",
-                    "belongsToModule": "inntekt",
-                    "concept": {
-                        "anbefaltTerm": {
-                            "nb": "Anbefalt term"
-                        },
-                        "definition": {
-                            "nb": "Definisjon"
-                        },
-                        "publisher": {
-                            "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                            "id": "974760673",
-                            "name": "REGISTERENHETEN I BRØNNØYSUND",
-                            "orgPath": "/STAT/912660680/974760673",
-                            "prefLabel": {
-                                "nb": "Brønnøysundregistrene"
-                            }
-                        },
-                        "conceptReference": "https://conceptreference.com"
-                    }
-                },
-                "attributeList": [
-                    {
-                        "name": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        },
-                        "referencedObject": {
-                            "refId": "refId-1",
-                            "name": {
-                                "nb": "norsk bokmål tekst",
-                                "nn": "nynorsk tekst",
-                                "en": "engelsk tekst"
-                            }
-                        },
-                        "range": "0..*",
-                        "elementDescription": {
-                            "name": {
-                                "nb": "Leveranse"
-                            },
-                            "description": {
-                                "nb": "norsk bokmål tekst",
-                                "nn": "nynorsk tekst",
-                                "en": "engelsk tekst"
-                            },
-                            "identifier": "identifier",
-                            "belongsToModule": "inntekt",
-                            "concept": {
-                                "anbefaltTerm": {
-                                    "nb": "Anbefalt term"
-                                },
-                                "definition": {
-                                    "nb": "Definisjon"
-                                },
-                                "publisher": {
-                                    "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                                    "id": "974760673",
-                                    "name": "REGISTERENHETEN I BRØNNØYSUND",
-                                    "orgPath": "/STAT/912660680/974760673",
-                                    "prefLabel": {
-                                        "nb": "Brønnøysundregistrene"
-                                    }
-                                },
-                                "conceptReference": "https://conceptreference.com"
-                            }
-                        }
-                    }
-                ]
-            }
-        }
-    ],
-    "simpleTypes": [
-        {
-            "identifier": "id-simpletype",
-            "modelDescription": {
-                "name": {
-                    "nb": "Leveranse"
-                },
-                "description": {
-                    "nb": "norsk bokmål tekst",
-                    "nn": "nynorsk tekst",
-                    "en": "engelsk tekst"
-                },
-                "identifier": "identifier",
-                "belongsToModule": "inntekt",
-                "concept": {
-                    "anbefaltTerm": {
-                        "nb": "Anbefalt term"
-                    },
-                    "definition": {
-                        "nb": "Definisjon"
-                    },
-                    "publisher": {
-                        "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                        "id": "974760673",
-                        "name": "REGISTERENHETEN I BRØNNØYSUND",
-                        "orgPath": "/STAT/912660680/974760673",
-                        "prefLabel": {
-                            "nb": "Brønnøysundregistrene"
-                        }
-                    },
-                    "conceptReference": "https://conceptreference.com"
-                }
-            },
-            "extendsFrom": {
-                "id": "111111",
-                "modelDescription": {
-                    "name": {
-                        "nb": "Leveranse"
-                    },
-                    "description": {
-                        "nb": "norsk bokmål tekst",
-                        "nn": "nynorsk tekst",
-                        "en": "engelsk tekst"
-                    },
-                    "identifier": "identifier",
-                    "belongsToModule": "inntekt",
-                    "concept": {
-                        "anbefaltTerm": {
-                            "nb": "Anbefalt term"
-                        },
-                        "definition": {
-                            "nb": "Definisjon"
-                        },
-                        "publisher": {
-                            "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                            "id": "974760673",
-                            "name": "REGISTERENHETEN I BRØNNØYSUND",
-                            "orgPath": "/STAT/912660680/974760673",
-                            "prefLabel": {
-                                "nb": "Brønnøysundregistrene"
-                            }
-                        },
-                        "conceptReference": "https://conceptreference.com"
-                    }
-                },
-                "attributeList": [
-                    {
-                        "name": {
-                            "nb": "norsk bokmål tekst",
-                            "nn": "nynorsk tekst",
-                            "en": "engelsk tekst"
-                        },
-                        "referencedObject": {
-                            "refId": "refId-1",
-                            "name": {
-                                "nb": "norsk bokmål tekst",
-                                "nn": "nynorsk tekst",
-                                "en": "engelsk tekst"
-                            }
-                        },
-                        "range": "0..*",
-                        "elementDescription": {
-                            "name": {
-                                "nb": "Leveranse"
-                            },
-                            "description": {
-                                "nb": "norsk bokmål tekst",
-                                "nn": "nynorsk tekst",
-                                "en": "engelsk tekst"
-                            },
-                            "identifier": "identifier",
-                            "belongsToModule": "inntekt",
-                            "concept": {
-                                "anbefaltTerm": {
-                                    "nb": "Anbefalt term"
-                                },
-                                "definition": {
-                                    "nb": "Definisjon"
-                                },
-                                "publisher": {
-                                    "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                                    "id": "974760673",
-                                    "name": "REGISTERENHETEN I BRØNNØYSUND",
-                                    "orgPath": "/STAT/912660680/974760673",
-                                    "prefLabel": {
-                                        "nb": "Brønnøysundregistrene"
-                                    }
-                                },
-                                "conceptReference": "https://conceptreference.com"
-                            }
-                        }
-                    }
-                ]
-            },
-            "definitionReference": [
-                "https://definitionReference1.com",
-                "https://definitionReference2.com"
-            ]
-        }
-    ],
-    "informationModelDescription": {
-        "name": {
-            "nb": "OppgavePassOgStellAvBarn"
-        },
-        "description": {
-            "nb": "Testmodell som demonstrator for utvekslingsmodell"
-        },
-        "identifier": "identifier",
-        "belongsToModule": "inntekt",
-        "concept": {
-            "anbefaltTerm": {
-                "nb": "Anbefalt term"
-            },
-            "definition": {
-                "nb": "Definisjon"
-            },
-            "publisher": {
-                "uri": "http://data.brreg.no/enhetsregisteret/enhet/974760673",
-                "id": "974760673",
-                "name": "REGISTERENHETEN I BRØNNØYSUND",
-                "orgPath": "/STAT/912660680/974760673",
-                "prefLabel": {
-                    "nb": "Brønnøysundregistrene"
-                }
-            },
-            "conceptReference": "https://conceptreference.com"
-        }
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "title": {
+        "nb": "Tekst"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": null,
+      "belongsToModule": null,
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#SimpleType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": "http://www.w3.org/2001/XMLSchema#string",
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": 100,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
     },
-    "schema": "{\"$schema\":\"http://json-schema.org/draft-06/schema#\",\"$id\":\"https://fellesdatakatalog.brreg.no/informationmodels/c207ad40-cf59-47e6-b7a8-35d6c4692067/schema\",\"definitions\":{\"QueryResponse\":{\"type\":\"object\",\"properties\":{\"aggregations\":{\"$ref\":\"#/definitions/Aggregation\"},\"hits\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/ConceptDocument\"}},\"total\":{\"type\":\"integer\",\"format\":\"int64\"}}},\"Aggregation\":{\"type\":\"object\"},\"ConceptDocument\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"The id given by the harvest system\"},\"uri\":{\"type\":\"string\",\"description\":\"The uri of the concept [dct:identifier]\"},\"identifier\":{\"type\":\"string\",\"description\":\"Identifier\"},\"definition\":{\"$ref\":\"#/definitions/Definition\"},\"alternativeDefinition\":{\"$ref\":\"#/definitions/Definition\"},\"subject\":{\"$ref\":\"#/definitions/Subject\"},\"prefLabel\":{\"$ref\":\"#/definitions/PrefLabel\"},\"altLabel\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/AltLabel\"}},\"hiddenLabel\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/HiddenLabel\"}},\"contactPoint\":{\"$ref\":\"#/definitions/ContactPoint\"},\"publisher\":{\"$ref\":\"#/definitions/Publisher\"},\"harvestSourceUri\":{\"type\":\"string\",\"description\":\"The source where the record was harvested from\"},\"harvest\":{\"$ref\":\"#/definitions/HarvestMetadata\"}}},\"Definition\":{\"type\":\"object\",\"description\":\"The definition [skosno:Definisjon]\",\"properties\":{\"text\":{\"type\":\"object\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"the definition text in Norwegian Bokmål\"}}},\"remark\":{\"type\":\"object\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"the definition remark in Norwegian Bokmål\"}}},\"source\":{\"$ref\":\"#/definitions/Source\"},\"targetGroup\":{\"type\":\"string\",\"description\":\"Target group\"},\"lastUpdated\":{\"type\":\"string\",\"description\":\"Date when the definition was last updated\"}}},\"Subject\":{\"type\":\"object\",\"description\":\"Subject [dct:subject]\"},\"PrefLabel\":{\"type\":\"object\",\"description\":\"Preferred label [skosxl:prefLabel]\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"Preferred label [skosxl:prefLabel] in Norwegian Bokmål\"}}},\"AltLabel\":{\"type\":\"object\",\"description\":\"Alternative label [skosxl:altLabel]\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"Preferred label [skosxl:altLabel] in Norwegian Bokmål\"}}},\"HiddenLabel\":{\"type\":\"object\",\"description\":\"Hidden label [skos:hiddenLabel]\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"Hidden label [skosxl:altLabel] in Norwegian Bokmål\"}}},\"ContactPoint\":{\"type\":\"object\",\"description\":\"Hidden label [skos:hiddenLabel]\",\"properties\":{\"email\":{\"type\":\"string\"},\"telephone\":{\"type\":\"string\"}}},\"Publisher\":{\"type\":\"object\",\"description\":\"The publisher of the concept [dct:publisher]\",\"properties\":{\"uri\":{\"type\":\"string\",\"description\":\"Link to the organization entry in The Brønnøysund Register Centre\"},\"id\":{\"type\":\"string\",\"description\":\"Organization number\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the organization as given in the The Brønnøysund Register Centre\"},\"orgPath\":{\"type\":\"string\"},\"prefLabel\":{\"$ref\":\"#/definitions/PrefLabel\"}}},\"HarvestMetadata\":{\"type\":\"object\",\"description\":\"Information about when the concept was first and last harvested by the system\",\"properties\":{\"firstHarvested\":{\"type\":\"string\"},\"lastHarvested\":{\"type\":\"string\"},\"lastChanged\":{\"type\":\"string\"},\"changed\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}},\"Source\":{\"type\":\"object\",\"description\":\"The source of the definition\",\"properties\":{\"uri\":{\"type\":\"string\",\"description\":\"The uri to the source\"},\"prefLabel\":{\"type\":\"object\",\"description\":\"The label of the source\",\"properties\":{\"nb\":{\"type\":\"string\",\"description\":\"Label of the source in Norwegian Bokmål\"}}}}},\"ErrorMessage\":{\"type\":\"object\"}}}"
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+      "title": {
+        "nb": "GeografiskAdresse"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": [
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#geografiskAdresseSpesialiserer"
+      ],
+      "belongsToModule": "Adresse",
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#ObjectType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer",
+      "title": {
+        "nb": "Kommunenummer"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": null,
+      "belongsToModule": null,
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#CodeList"
+      ],
+      "codeListReference": "https://www.ssb.no/klass/klassifikasjoner/131",
+      "codes": [],
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse",
+      "title": {
+        "nb": "Matrikkeladresse"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": [
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressetilleggsnavn",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bruksenhetsnummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#matrikkeladresseSpesialiserer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#matrikkelnummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#undernummer"
+      ],
+      "belongsToModule": "Adresse",
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#ObjectType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer",
+      "title": {
+        "nb": "Matrikkelnummer"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": [
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bruksnummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#festenummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#gårdsnummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#kommunenummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#seksjonsnummer"
+      ],
+      "belongsToModule": null,
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#DataType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall",
+      "title": {
+        "nb": "Heltall"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": null,
+      "belongsToModule": null,
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#SimpleType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse",
+      "title": {
+        "nb": "OffisiellAdresse"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": [
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adresseId",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#offisiellAdresseSpesialiserer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#representasjonspunkt"
+      ],
+      "belongsToModule": "Adresse",
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#ObjectType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt",
+      "title": {
+        "nb": "Punkt"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": [
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#koordinat",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#referansesystem"
+      ],
+      "belongsToModule": null,
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#DataType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse",
+      "title": {
+        "nb": "Postboksadresse"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": [
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksadresseSpesialiserer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksanleggsNavn",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksnummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedPostboksadresse"
+      ],
+      "belongsToModule": "Adresse",
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#ObjectType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed",
+      "title": {
+        "nb": "Poststed"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": [
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postnummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedsnavn"
+      ],
+      "belongsToModule": null,
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#DataType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse",
+      "title": {
+        "nb": "Vegadresse"
+      },
+      "description": null,
+      "subject": null,
+      "hasProperty": [
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressekode",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressenavn",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressenummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressetilleggsnavn",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bruksenhetsnummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#kommunenummer",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedVegadresse",
+        "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#vegadresseSpesialiserer"
+      ],
+      "belongsToModule": "Adresse",
+      "elementTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#ObjectType"
+      ],
+      "codeListReference": null,
+      "codes": null,
+      "typeDefinitionReference": null,
+      "fractionDigits": null,
+      "length": null,
+      "maxInclusive": null,
+      "maxLength": null,
+      "minInclusive": null,
+      "minLength": null,
+      "pattern": null,
+      "totalDigits": null
+    }
+  },
+  "modelProperties": {
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bokstav": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bokstav",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bokstav",
+      "title": {
+        "nb": "bokstav"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#nummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#nummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#nummer",
+      "title": {
+        "nb": "nummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#geografiskAdresseSpesialiserer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#geografiskAdresseSpesialiserer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#geografiskAdresseSpesialiserer",
+      "title": null,
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Specialization"
+      ],
+      "minOccurs": null,
+      "maxOccurs": null,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse",
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressetilleggsnavn": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressetilleggsnavn",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressetilleggsnavn",
+      "title": {
+        "nb": "adressetilleggsnavn"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bruksenhetsnummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bruksenhetsnummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bruksenhetsnummer",
+      "title": {
+        "nb": "bruksenhetsnummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#matrikkeladresseSpesialiserer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#matrikkeladresseSpesialiserer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#matrikkeladresseSpesialiserer",
+      "title": null,
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Specialization"
+      ],
+      "minOccurs": null,
+      "maxOccurs": null,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#matrikkelnummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#matrikkelnummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#matrikkelnummer",
+      "title": {
+        "nb": "matrikkelnummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer",
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bruksnummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bruksnummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#bruksnummer",
+      "title": {
+        "nb": "bruksnummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#festenummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#festenummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#festenummer",
+      "title": {
+        "nb": "festenummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#gårdsnummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#gårdsnummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#gårdsnummer",
+      "title": {
+        "nb": "gårdsnummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#kommunenummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#kommunenummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#kommunenummer",
+      "title": {
+        "nb": "kommunenummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer",
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#seksjonsnummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#seksjonsnummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#seksjonsnummer",
+      "title": {
+        "nb": "seksjonsnummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#undernummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#undernummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#undernummer",
+      "title": {
+        "nb": "undernummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adresseId": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adresseId",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adresseId",
+      "title": {
+        "nb": "adresseId"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#offisiellAdresseSpesialiserer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#offisiellAdresseSpesialiserer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#offisiellAdresseSpesialiserer",
+      "title": null,
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Specialization"
+      ],
+      "minOccurs": null,
+      "maxOccurs": null,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#representasjonspunkt": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#representasjonspunkt",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#representasjonspunkt",
+      "title": {
+        "nb": "representasjonspunkt"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt",
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#koordinat": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#koordinat",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#koordinat",
+      "title": {
+        "nb": "koordinat"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#referansesystem": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#referansesystem",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#referansesystem",
+      "title": {
+        "nb": "referansesystem"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksadresseSpesialiserer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksadresseSpesialiserer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksadresseSpesialiserer",
+      "title": null,
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Specialization"
+      ],
+      "minOccurs": null,
+      "maxOccurs": null,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksanleggsNavn": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksanleggsNavn",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksanleggsNavn",
+      "title": {
+        "nb": "postboksanleggsNavn"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksnummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksnummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postboksnummer",
+      "title": {
+        "nb": "postboksnummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedPostboksadresse": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedPostboksadresse",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedPostboksadresse",
+      "title": {
+        "nb": "poststed"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed",
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postnummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postnummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#postnummer",
+      "title": {
+        "nb": "postnummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedsnavn": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedsnavn",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedsnavn",
+      "title": {
+        "nb": "poststedsnavn"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressekode": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressekode",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressekode",
+      "title": {
+        "nb": "adressekode"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressenavn": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressenavn",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressenavn",
+      "title": {
+        "nb": "adressenavn"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst",
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressenummer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressenummer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#adressenummer",
+      "title": {
+        "nb": "adressenummer"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": null,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer",
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedVegadresse": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedVegadresse",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#poststedVegadresse",
+      "title": {
+        "nb": "poststed"
+      },
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Attribute"
+      ],
+      "minOccurs": 1,
+      "maxOccurs": 1,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed",
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": null,
+      "notification": null
+    },
+    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#vegadresseSpesialiserer": {
+      "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#vegadresseSpesialiserer",
+      "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#vegadresseSpesialiserer",
+      "title": null,
+      "description": null,
+      "subject": null,
+      "propertyTypes": [
+        "http://www.w3.org/2002/07/owl#NamedIndividual",
+        "https://data.norge.no/vocabulary/modelldcatno#Specialization"
+      ],
+      "minOccurs": null,
+      "maxOccurs": null,
+      "hasType": null,
+      "relationPropertyLabel": null,
+      "sequenceNumber": null,
+      "belongsToModule": null,
+      "formsSymmetryWith": null,
+      "isAbstractionOf": null,
+      "refersTo": null,
+      "hasDataType": null,
+      "hasSimpleType": null,
+      "hasObjectType": null,
+      "hasValueFrom": null,
+      "hasSome": null,
+      "hasMember": null,
+      "contains": null,
+      "hasSupplier": null,
+      "hasGeneralConcept": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+      "notification": null
+    }
+  }
 }

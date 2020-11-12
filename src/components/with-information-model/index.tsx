@@ -10,6 +10,8 @@ import { DataFormat } from '../../types/enums';
 export interface Props {
   informationModel: InformationModel | null;
   informationModelRdfRepresentations: Partial<{ [key in DataFormat]: string }>;
+  isLoadingInformationModel: boolean;
+  isLoadingInformationModelRdfRepresentations: boolean;
   informationModelActions: typeof actions;
 }
 
@@ -21,7 +23,13 @@ const withInformationModel = (Component: ComponentType<any>) => {
       state.InformationModelReducer.get('informationModel')?.toJS() ?? null,
     informationModelRdfRepresentations: state.InformationModelReducer.get(
       'informationModelRdfRepresentations'
-    ).toJS()
+    ).toJS(),
+    isLoadingInformationModel: state.InformationModelReducer.get(
+      'isLoadingInformationModel'
+    ),
+    isLoadingInformationModelRdfRepresentations: state.InformationModelReducer.get(
+      'isLoadingInformationModelRdfRepresentations'
+    )
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

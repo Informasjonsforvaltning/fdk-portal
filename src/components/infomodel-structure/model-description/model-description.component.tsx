@@ -1,66 +1,84 @@
-import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FC, ComponentProps } from 'react';
+import { Link as RouteLink } from 'react-router-dom';
+import Scroll from 'react-scroll';
+import Link from '@fellesdatakatalog/link';
+
+import { getTranslateText as translate } from '../../../lib/translateText';
+import localization from '../../../lib/localization';
 
 import SC from './styled';
-import { Concept, TextLanguage } from '../../../types';
-import { getTranslateText } from '../../../lib/translateText';
-import localization from '../../../lib/localization';
+
+import type {
+  Concept,
+  TextLanguage,
+  InformationModelElement
+} from '../../../types';
 
 interface Props {
   identifier?: string;
-  description?: Partial<TextLanguage>;
-  belongsToModule?: Partial<TextLanguage>;
+  description?: Partial<TextLanguage> | null;
+  belongsToModule?: string | null;
   version?: string;
   concept?: Partial<Concept>;
+  abstraction?: Partial<InformationModelElement> | null;
+  realization?: Partial<InformationModelElement> | null;
 }
+
+type ScollLinkType = FC<
+  Omit<ComponentProps<typeof Scroll.Link>, 'as'> & ComponentProps<typeof Link>
+>;
+
+const ScollLink = Link as ScollLinkType;
 
 export const Description: FC<Props> = ({
   identifier,
   description,
   version,
   concept: { id, prefLabel, definition, publisher, uri } = {},
-  belongsToModule
+  belongsToModule,
+  abstraction,
+  realization
 }) => (
   <SC.ModelDescription>
     {description && (
       <SC.DescriptionField>
         <strong>{localization.description}:</strong>
-        {getTranslateText(description)}
+        {translate(description)}
       </SC.DescriptionField>
     )}
 
     {identifier && (
       <SC.DescriptionField>
         <strong>{localization.infoMod.identifier}:</strong>
-        {getTranslateText(identifier)}
+        {translate(identifier)}
       </SC.DescriptionField>
     )}
 
     {version && (
       <SC.DescriptionField>
         <strong>{localization.infoMod.version}:</strong>
-        {getTranslateText(version)}
+        {translate(version)}
       </SC.DescriptionField>
     )}
 
     {prefLabel && (
       <SC.DescriptionField>
         <strong>{localization.facet.concept}:</strong>
-        <Link to={`/concepts/${id}`}>{getTranslateText(prefLabel)}</Link>
+        <RouteLink to={`/concepts/${id}`}>{translate(prefLabel)}</RouteLink>
       </SC.DescriptionField>
     )}
 
     {definition && definition.text && (
       <SC.DescriptionField>
         <strong>{localization.concept.definition}:</strong>
-        {getTranslateText(definition.text)}
+        {translate(definition.text)}
       </SC.DescriptionField>
     )}
 
     {publisher && (
       <SC.DescriptionField>
         <strong>{localization.responsible}:</strong>
-        {getTranslateText(publisher.prefLabel) || publisher.name}
+        {translate(publisher.prefLabel) || publisher.name}
       </SC.DescriptionField>
     )}
 
@@ -73,12 +91,46 @@ export const Description: FC<Props> = ({
       </SC.DescriptionField>
     )}
 
-    {getTranslateText(belongsToModule) && (
+    {translate(belongsToModule) && (
       <SC.DescriptionField>
         <strong>
           {localization.infoMod.modelDescription.belongsToModule}:
         </strong>
-        {getTranslateText(belongsToModule)}
+        {translate(belongsToModule)}
+      </SC.DescriptionField>
+    )}
+
+    {abstraction && (
+      <SC.DescriptionField>
+        <strong>{localization.infoMod.modelDescription.abstractionOf}:</strong>
+        <ScollLink
+          to={abstraction.identifier ?? abstraction.uri ?? ''}
+          spy
+          smooth
+          isDynamic
+          offset={0}
+          duration={1500}
+          as={Scroll.Link}
+        >
+          {translate(abstraction.title)}
+        </ScollLink>
+      </SC.DescriptionField>
+    )}
+
+    {realization && (
+      <SC.DescriptionField>
+        <strong>{localization.infoMod.modelDescription.realizationOf}:</strong>
+        <ScollLink
+          to={realization.identifier ?? realization.uri ?? ''}
+          spy
+          smooth
+          isDynamic
+          offset={0}
+          duration={1500}
+          as={Scroll.Link}
+        >
+          {translate(realization.title)}
+        </ScollLink>
       </SC.DescriptionField>
     )}
   </SC.ModelDescription>

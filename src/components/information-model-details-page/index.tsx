@@ -1,24 +1,26 @@
-import React, { memo, FC, useEffect } from 'react';
+import React, { memo, FC, useState, useEffect, Fragment } from 'react';
 import { compose } from 'redux';
-import { RouteComponentProps, Link } from 'react-router-dom';
+import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Alignment } from '@fellesdatakatalog/theme';
 import { Tab, Pane } from '@fellesdatakatalog/tabs';
+import Link from '@fellesdatakatalog/link';
 
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 
-import { PATHNAME_INFORMATIONMODELS } from '../../constants/constants';
+import {
+  PATHNAME_INFORMATIONMODELS,
+  PATHNAME_CONCEPTS
+} from '../../constants/constants';
 
 import { themeFDK } from '../../app/theme';
 
 import withInformationModel, {
   Props as InformationModelProps
 } from '../with-information-model';
-import withReferenceData, {
-  Props as ReferenceDataProps
-} from '../with-reference-data';
+import withConcepts, { Props as ConceptsProps } from '../with-concepts';
 
 import DetailsPage, {
   ContentSection,
@@ -27,7 +29,6 @@ import DetailsPage, {
   KeyValueListItem
 } from '../details-page';
 
-import { Structure } from '../structure/structure.component';
 import { InfoModelStructure } from '../infomodel-structure/infomodel-structure.component';
 
 import SC from './styled';
@@ -41,28 +42,32 @@ interface RouteParams {
 
 interface Props
   extends InformationModelProps,
-    ReferenceDataProps,
+    ConceptsProps,
     RouteComponentProps<RouteParams> {}
 
 const InformationModelDetailsPage: FC<Props> = ({
   informationModel,
   informationModelRdfRepresentations,
-  referenceData: { linguisticsystem },
+  concepts,
+  isLoadingInformationModel,
+  isLoadingInformationModelRdfRepresentations,
   informationModelActions: {
     getInformationModelRequested: getInformationModel,
     getInformationModelRdfRepresentationsRequested: getInformationModelRdfRepresentations,
     resetInformationModel
   },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData },
+  conceptsActions: { getConceptsRequested: getConcepts },
   match: {
     params: { informationModelId }
   }
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
   const entity = Entity.INFORMATION_MODEL;
   const theme = { entityColours: themeFDK.extendedColors[entity] };
 
   useEffect(() => {
-    if (!informationModel || informationModel.id !== informationModelId) {
+    if (informationModel?.id !== informationModelId) {
       getInformationModel(informationModelId);
       getInformationModelRdfRepresentations(informationModelId, [
         DataFormat.TURTLE,
@@ -71,55 +76,86 @@ const InformationModelDetailsPage: FC<Props> = ({
       ]);
     }
 
-    if (!linguisticsystem) {
-      getReferenceData('linguisticsystem');
-    }
+    setIsMounted(true);
 
     return () => {
       resetInformationModel();
     };
   }, []);
 
+  const isLoading =
+    !isMounted ||
+    isLoadingInformationModel ||
+    isLoadingInformationModelRdfRepresentations;
+
+  const informationModelStatus: { [key: string]: string } = {
+    'http://purl.org/adms/status/Completed':
+      translations.infoMod.statusCompleted,
+    'http://purl.org/adms/status/Deprecated':
+      translations.infoMod.statusDeprecated,
+    'http://purl.org/adms/status/UnderDevelopment':
+      translations.infoMod.statusUnderDevelopment,
+    'http://purl.org/adms/status/Withdrawn':
+      translations.infoMod.statusWithdrawn
+  };
+
   const entityId = informationModel?.id;
   const entityUri = informationModel?.id;
-  const identifier = informationModel?.identifier;
+  const identifier = informationModel?.identifier?.[0];
   const publisher = informationModel?.publisher;
   const title = translate(informationModel?.title);
   const description = translate(
     informationModel?.description ?? informationModel?.modelDescription
   );
-  const status = informationModel?.status;
+  const type = informationModel?.dctType;
+  const status = informationModel?.status
+    ? translate(informationModelStatus?.[informationModel.status])
+    : null;
   const issued = formatDate(dateStringToDate(informationModel?.issued));
   const modified = formatDate(dateStringToDate(informationModel?.modified));
-  const version = informationModel?.version;
+  const version = informationModel?.versionInfo;
   const validFromIncluding = formatDate(
     dateStringToDate(informationModel?.validFromIncluding)
   );
   const validToIncluding = formatDate(
     dateStringToDate(informationModel?.validToIncluding)
   );
-  const landingPage = informationModel?.landingPage;
-  const languages = informationModel?.languages ?? [];
+  const licenses = informationModel?.license ?? [];
+  const languages = informationModel?.language ?? [];
+  const seeAlso = informationModel?.homepage;
   const keywords =
-    informationModel?.keywords?.[
-      translations.getLanguage() as 'nb' | 'nn' | 'no' | 'en'
-    ]?.filter(Boolean) ?? [];
+    informationModel?.keyword
+      ?.filter(keyword => translations.getLanguage() in keyword)
+      .map(translate)
+      .filter(Boolean) ?? [];
+  const spatialRestrictions = informationModel?.spatial ?? [];
   const lastPublished = formatDate(
     dateStringToDate(informationModel?.harvest?.firstHarvested)
   );
   const informationModelCategory = informationModel?.category;
-  const isNewInformationModel =
-    informationModel?.objectTypes ||
-    informationModel?.codeTypes ||
-    informationModel?.dataTypes ||
-    informationModel?.simpleTypes;
-  const hasInformationModel = informationModel?.schema || isNewInformationModel;
+  const modelElements = informationModel?.modelElements ?? {};
+  const modelProperties = informationModel?.modelProperties ?? {};
+  const isPartOf = informationModel?.isPartOf;
+  const hasPart = informationModel?.hasPart;
+  const isReplacedBy = informationModel?.isReplacedBy;
+  const replaces = informationModel?.replaces;
   const contactPoint = informationModel?.contactPoint;
-  const themes: Theme[] =
-    informationModel?.themes?.map(({ uri: id }) => ({ id })) ?? [];
-  const schema = informationModel?.schema
-    ? JSON.parse(informationModel.schema)
-    : null;
+  const themes: Theme[] = [
+    ...(informationModel?.losTheme?.map(({ uri: id }) => ({ id })) ?? []),
+    ...(informationModel?.theme?.map(({ id }) => ({ id })) ?? [])
+  ];
+
+  const conceptIdentifiers = Object.values(modelElements)
+    .map(({ subject }) => subject)
+    .filter(Boolean);
+
+  useEffect(() => {
+    if (conceptIdentifiers.length > 0) {
+      getConcepts({
+        identifiers: conceptIdentifiers as string[]
+      });
+    }
+  }, [conceptIdentifiers]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -163,7 +199,7 @@ const InformationModelDetailsPage: FC<Props> = ({
             <KeyValueList>
               {status && (
                 <KeyValueListItem
-                  property={translations.infoMod.status}
+                  property={translations.infoMod.modelStatus}
                   value={status}
                 />
               )}
@@ -202,7 +238,11 @@ const InformationModelDetailsPage: FC<Props> = ({
             </KeyValueList>
           </ContentSection>
         )}
-        {(languages.length > 0 || informationModelCategory || landingPage) && (
+        {(type ||
+          licenses.length > 0 ||
+          languages.length > 0 ||
+          informationModelCategory ||
+          seeAlso) && (
           <ContentSection
             id="usage"
             title={
@@ -216,25 +256,39 @@ const InformationModelDetailsPage: FC<Props> = ({
                   value={informationModelCategory}
                 />
               )}
+              {licenses.length > 0 && (
+                <KeyValueListItem
+                  property={translations.infoMod.license}
+                  value={licenses.map(({ uri, code, prefLabel }) => (
+                    <Fragment key={code}>
+                      <SC.Link href={uri} external>
+                        {translate(prefLabel) || uri}
+                      </SC.Link>
+                      <br />
+                    </Fragment>
+                  ))}
+                />
+              )}
+              {type && (
+                <KeyValueListItem
+                  property={translations.infoMod.type}
+                  value={type}
+                />
+              )}
               {languages.length > 0 && (
                 <KeyValueListItem
                   property={translations.infoMod.language}
                   value={languages
-                    .map(language =>
-                      translate(
-                        linguisticsystem?.find(({ uri }) => uri === language)
-                          ?.prefLabel
-                      )
-                    )
+                    .map(({ prefLabel }) => translate(prefLabel))
                     .filter(Boolean)
                     .join(', ')}
                 />
               )}
-              {landingPage && (
+              {seeAlso && (
                 <KeyValueListItem
                   property={translations.infoMod.seeAlso}
                   value={
-                    <SC.Link href={landingPage} external>
+                    <SC.Link href={seeAlso} external>
                       {translations.infoMod.moreInfo}
                     </SC.Link>
                   }
@@ -243,95 +297,80 @@ const InformationModelDetailsPage: FC<Props> = ({
             </KeyValueList>
           </ContentSection>
         )}
-        {hasInformationModel && (
-          <ContentSection
-            id="information-model"
-            title={
-              translations.detailsPage.sectionTitles.informationModel
-                .informationModel
-            }
-          >
-            <SC.Tabs tabsAlignment={Alignment.LEFT}>
-              {(isNewInformationModel ||
-                (schema &&
-                  typeof schema === 'object' &&
-                  !Array.isArray(schema))) && (
-                <Tab for="structure-pane" active>
-                  <SC.Tab>{translations.infoMod.tabs.structure}</SC.Tab>
-                </Tab>
-              )}
-              {schema && (
-                <Tab for="json-pane" active>
-                  <SC.Tab>{translations.infoMod.tabs.json}</SC.Tab>
-                </Tab>
-              )}
-              {informationModelRdfRepresentations?.[DataFormat.TURTLE] && (
-                <Tab for="turtle-pane">
-                  <SC.Tab>{translations.infoMod.tabs.turtle}</SC.Tab>
-                </Tab>
-              )}
-              {informationModelRdfRepresentations?.[DataFormat.JSONLD] && (
-                <Tab for="jsonld-pane">
-                  <SC.Tab>{translations.infoMod.tabs.jsonld}</SC.Tab>
-                </Tab>
-              )}
-              {informationModelRdfRepresentations?.[DataFormat.RDF_XML] && (
-                <Tab for="rdfxml-pane">
-                  <SC.Tab>{translations.infoMod.tabs.rdfxml}</SC.Tab>
-                </Tab>
-              )}
-              {((informationModel && isNewInformationModel) ||
-                schema?.definitions) && (
-                <Pane id="structure-pane">
-                  <SC.Pane>
-                    {informationModel && isNewInformationModel && (
+        {!isLoading &&
+          (Object.values(modelElements).length > 0 ||
+            informationModelRdfRepresentations?.[DataFormat.TURTLE] ||
+            informationModelRdfRepresentations?.[DataFormat.JSONLD] ||
+            informationModelRdfRepresentations?.[DataFormat.RDF_XML]) && (
+            <ContentSection
+              id="information-model"
+              title={
+                translations.detailsPage.sectionTitles.informationModel
+                  .informationModel
+              }
+            >
+              <SC.Tabs tabsAlignment={Alignment.LEFT}>
+                {Object.values(modelElements).length > 0 && (
+                  <Tab for="structure-pane">
+                    <SC.Tab>{translations.infoMod.tabs.structure}</SC.Tab>
+                  </Tab>
+                )}
+                {informationModelRdfRepresentations?.[DataFormat.TURTLE] && (
+                  <Tab for="turtle-pane">
+                    <SC.Tab>{translations.infoMod.tabs.turtle}</SC.Tab>
+                  </Tab>
+                )}
+                {informationModelRdfRepresentations?.[DataFormat.JSONLD] && (
+                  <Tab for="jsonld-pane">
+                    <SC.Tab>{translations.infoMod.tabs.jsonld}</SC.Tab>
+                  </Tab>
+                )}
+                {informationModelRdfRepresentations?.[DataFormat.RDF_XML] && (
+                  <Tab for="rdfxml-pane">
+                    <SC.Tab>{translations.infoMod.tabs.rdfxml}</SC.Tab>
+                  </Tab>
+                )}
+                {Object.values(modelElements).length > 0 && (
+                  <Pane id="structure-pane">
+                    <SC.Pane>
                       <InfoModelStructure
-                        informationModelDocument={informationModel}
+                        modelElements={modelElements}
+                        modelProperties={modelProperties}
+                        concepts={concepts}
                       />
-                    )}
-                    {schema?.definitions && (
-                      <Structure definitions={schema.definitions} />
-                    )}
-                  </SC.Pane>
-                </Pane>
-              )}
-              {schema && (
-                <Pane id="json-pane">
-                  <SC.Pane>
-                    <SC.Code>{JSON.stringify(schema, null, 2)}</SC.Code>
-                  </SC.Pane>
-                </Pane>
-              )}
-              {informationModelRdfRepresentations?.[DataFormat.TURTLE] && (
-                <Pane id="turtle-pane">
-                  <SC.Pane>
-                    <SC.Code>
-                      {informationModelRdfRepresentations[DataFormat.TURTLE]}
-                    </SC.Code>
-                  </SC.Pane>
-                </Pane>
-              )}
-              {informationModelRdfRepresentations?.[DataFormat.JSONLD] && (
-                <Pane id="jsonld-pane">
-                  <SC.Pane>
-                    <SC.Code>
-                      {informationModelRdfRepresentations[DataFormat.JSONLD]}
-                    </SC.Code>
-                  </SC.Pane>
-                </Pane>
-              )}
-              {informationModelRdfRepresentations?.[DataFormat.RDF_XML] && (
-                <Pane id="rdfxml-pane">
-                  <SC.Pane>
-                    <SC.Code>
-                      {informationModelRdfRepresentations[DataFormat.RDF_XML]}
-                    </SC.Code>
-                  </SC.Pane>
-                </Pane>
-              )}
-            </SC.Tabs>
-          </ContentSection>
-        )}
+                    </SC.Pane>
+                  </Pane>
+                )}
+                {informationModelRdfRepresentations?.[DataFormat.TURTLE] && (
+                  <Pane id="turtle-pane">
+                    <SC.Pane>
+                      <SC.Code>
+                        {informationModelRdfRepresentations[DataFormat.TURTLE]}
+                      </SC.Code>
+                    </SC.Pane>
+                  </Pane>
+                )}
+                {informationModelRdfRepresentations?.[DataFormat.JSONLD] && (
+                  <Pane id="jsonld-pane">
+                    <SC.Pane>
+                      <SC.Code>
+                        {informationModelRdfRepresentations[DataFormat.JSONLD]}
+                      </SC.Code>
+                    </SC.Pane>
+                  </Pane>
+                )}
+                {informationModelRdfRepresentations?.[DataFormat.RDF_XML] && (
+                  <Pane id="rdfxml-pane">
+                    <SC.Pane>
+                      <SC.Code>
+                        {informationModelRdfRepresentations[DataFormat.RDF_XML]}
+                      </SC.Code>
+                    </SC.Pane>
+                  </Pane>
+                )}
+              </SC.Tabs>
+            </ContentSection>
+          )}
         {identifier && (
           <ContentSection
             id="identifiers"
@@ -364,6 +403,7 @@ const InformationModelDetailsPage: FC<Props> = ({
                     keyword
                   )}`}
                   key={`${keyword}-${index}`}
+                  as={RouteLink}
                 >
                   {keyword}
                 </Link>
@@ -371,7 +411,85 @@ const InformationModelDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
-        {contactPoint && (
+        {(isPartOf || hasPart || isReplacedBy || replaces) && (
+          <ContentSection
+            id="information-model-references"
+            title={
+              translations.detailsPage.sectionTitles.informationModel.relations
+            }
+          >
+            <KeyValueList>
+              {isPartOf && (
+                <KeyValueListItem
+                  property={translations.infoMod.isPartOf}
+                  value={isPartOf}
+                />
+              )}
+              {hasPart && (
+                <KeyValueListItem
+                  property={translations.infoMod.hasPart}
+                  value={hasPart}
+                />
+              )}
+              {isReplacedBy && (
+                <KeyValueListItem
+                  property={translations.infoMod.isReplacedBy}
+                  value={isReplacedBy}
+                />
+              )}
+              {replaces && (
+                <KeyValueListItem
+                  property={translations.infoMod.replaces}
+                  value={replaces}
+                />
+              )}
+            </KeyValueList>
+          </ContentSection>
+        )}
+        {concepts.length > 0 && (
+          <ContentSection
+            id="concept-references"
+            title={
+              translations.detailsPage.sectionTitles.informationModel
+                .conceptReferences
+            }
+          >
+            <KeyValueList>
+              {concepts.map(
+                ({ id, prefLabel, definition: { text: definition } }) =>
+                  id && (
+                    <KeyValueListItem
+                      key={id}
+                      property={
+                        <Link to={`${PATHNAME_CONCEPTS}/${id}`} as={RouteLink}>
+                          {translate(prefLabel)}
+                        </Link>
+                      }
+                      value={translate(definition)}
+                    />
+                  )
+              )}
+            </KeyValueList>
+          </ContentSection>
+        )}
+        {spatialRestrictions.length > 0 && (
+          <ContentSection
+            id="spatial-restrictions"
+            title={
+              translations.detailsPage.sectionTitles.informationModel
+                .spatialRestrictions
+            }
+          >
+            <InlineList>
+              {spatialRestrictions.map(({ uri, prefLabel }) => (
+                <SC.Link href={uri} key={uri} external>
+                  {translate(prefLabel) ?? uri}
+                </SC.Link>
+              ))}
+            </InlineList>
+          </ContentSection>
+        )}
+        {contactPoint && contactPoint.length > 0 && (
           <ContentSection
             id="contact-information"
             title={
@@ -379,34 +497,51 @@ const InformationModelDetailsPage: FC<Props> = ({
                 .contactInformation
             }
           >
-            <KeyValueList>
-              {contactPoint.name && (
-                <KeyValueListItem
-                  property={translations.name}
-                  value={translate(contactPoint.name)}
-                />
-              )}
-              {contactPoint.email && (
-                <KeyValueListItem
-                  property={translations.email}
-                  value={
-                    <a
-                      title={contactPoint.email}
-                      href={`mailto:${contactPoint.email}`}
-                      rel="noopener noreferrer"
-                    >
-                      {contactPoint.email}
-                    </a>
-                  }
-                />
-              )}
-              {contactPoint.phone && (
-                <KeyValueListItem
-                  property={translations.phone}
-                  value={contactPoint.phone}
-                />
-              )}
-            </KeyValueList>
+            {contactPoint?.map(
+              (
+                {
+                  fullname,
+                  organizationName,
+                  organizationUnit,
+                  email,
+                  hasTelephone
+                },
+                index
+              ) => (
+                <KeyValueList
+                  key={`${fullname}-${email}-${hasTelephone}-${index}`}
+                >
+                  {(fullname || organizationName || organizationUnit) && (
+                    <KeyValueListItem
+                      property={translations.name}
+                      value={translate(
+                        fullname || organizationName || organizationUnit
+                      )}
+                    />
+                  )}
+                  {email && (
+                    <KeyValueListItem
+                      property={translations.email}
+                      value={
+                        <a
+                          title={email}
+                          href={`mailto:${email}`}
+                          rel="noopener noreferrer"
+                        >
+                          {email}
+                        </a>
+                      }
+                    />
+                  )}
+                  {hasTelephone && (
+                    <KeyValueListItem
+                      property={translations.phone}
+                      value={hasTelephone}
+                    />
+                  )}
+                </KeyValueList>
+              )
+            )}
           </ContentSection>
         )}
       </DetailsPage>
@@ -417,5 +552,5 @@ const InformationModelDetailsPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withInformationModel,
-  withReferenceData
+  withConcepts
 )(InformationModelDetailsPage);

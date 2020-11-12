@@ -18,7 +18,7 @@ import {
 import { DatasetBreadcrumb } from './dataset-breadcrumb/dataset-breadcrumb';
 import { DataServiceBreadcrumb } from './data-service-breadcrumb/data-service-breadcrumb';
 import { ConceptBreadcrumb } from './concept-breadcrumb/concept-breadcrumb';
-import { InformationModelBreadcrumb } from './informationModel-breadbrumb/information-breadcrumb';
+import InformationModelBreadcrumb from './informationModel-breadbrumb';
 import { PathNameBreadcrumb } from './pathname-breadcrumb/pathname-breadcrumb';
 import './breadcrumbs.scss';
 import { getConfig } from '../../config';

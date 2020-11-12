@@ -493,7 +493,12 @@
       "jsonld": "JSON-LD",
       "rdfxml": "RDF/XML"
     },
+    "type": "Type",
     "status": "Status",
+    "statusCompleted": "Fullført",
+    "statusDeprecated": "Foreldet",
+    "statusUnderDevelopment": "Under utvikling",
+    "statusWithdrawn": "Tilbaketrukket",
     "modelStatus": "Modellstatus",
     "language": "Språk",
     "issued": "Utgjevingsdato",
@@ -506,7 +511,12 @@
     "moreInfo": "Meir informasjon om informasjonsmodellen",
     "seeAlso": "Se også",
     "identifier": "Identifikator",
+    "isPartOf": "En del av",
+    "hasPart": "Har del",
+    "isReplacedBy": "Erstattes av",
+    "replaces": "Erstatter",
     "keywords": "Emneord",
+    "license": "Lisens",
     "category": "Modellkategori",
     "relatedAPIHeader": "Høyrer til API",
     "informationModelDescription": "Informasjonsmodelbeskrivelse",
@@ -517,6 +527,7 @@
       "dataType": "Datatype",
       "simpleType": "Enkelttype",
       "attribute": "Attributt",
+      "association": "Assosiasjon",
       "role": "Rolle",
       "extendsFrom": "Arver frå",
       "code": "Kode",
@@ -524,9 +535,19 @@
       "definitionReference": "Referanse til definisjon",
       "restrictions": "Verdirestriksjonar"
     },
+    "restriction": {
+      "valueLength": "Lengde",
+      "maxLength": "Maksimum lengde",
+      "minInclusive": "Minimum verdi",
+      "maxInclusive": "Maksimum verdi",
+      "pattern": "Mønster",
+      "totalDigits": "Antall siffer"
+    },
     "modelDescription": {
       "belongsToModule": "Høyrer til modul",
-      "conceptReference": "Omgrepsreferanse"
+      "conceptReference": "Omgrepsreferanse",
+      "abstractionOf": "Abstraksjon av",
+      "realizationOf": "Realisering av"
     }
   },
   "sourceRelationship": {
@@ -602,6 +623,9 @@
         "informationModel": "Informasjonsmodell",
         "identifiers": "Identifikatorer",
         "keywords": "Emneord",
+        "relations": "Relasjoner",
+        "conceptReferences": "Omgrep brukt om modellen",
+        "spatialRestrictions": "Geografisk avgrensning",
         "contactInformation": "Kontaktinformasjon"
       }
     }

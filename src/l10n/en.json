@@ -493,7 +493,12 @@
       "jsonld": "JSON-LD",
       "rdfxml": "RDF/XML"
     },
+    "type": "Type",
     "status": "Status",
+    "statusCompleted": "Completed",
+    "statusDeprecated": "Deprecated",
+    "statusUnderDevelopment": "Under development",
+    "statusWithdrawn": "Withdrawn",
     "modelStatus": "Model status",
     "language": "Language",
     "issued": "Issued",
@@ -506,7 +511,12 @@
     "moreInfo": "More information about information models",
     "seeAlso": "See also",
     "identifier": "Identifier",
+    "isPartOf": "Is part of",
+    "hasPart": "Has part",
+    "isReplacedBy": "Is replaced by",
+    "replaces": "Replaces",
     "keywords": "Keywords",
+    "license": "License",
     "category": "Model category",
     "relatedAPIHeader": "Belongs to API",
     "informationModelDescription": "Information Model Description",
@@ -517,6 +527,7 @@
       "dataType": "Data type",
       "simpleType": "Simple type",
       "attribute": "Attribute",
+      "association": "Association",
       "role": "Role",
       "extendsFrom": "Extends from",
       "code": "Code",
@@ -524,9 +535,19 @@
       "definitionReference": "Definition reference",
       "restrictions": "Value restrictions"
     },
+    "restriction": {
+      "valueLength": "Length",
+      "maxLength": "Max length",
+      "minInclusive": "Min value",
+      "maxInclusive": "Max value",
+      "pattern": "Pattern",
+      "totalDigits": "Total digits"
+    },
     "modelDescription": {
       "belongsToModule": "Belongs to module",
-      "conceptReference": "Concept reference"
+      "conceptReference": "Concept reference",
+      "abstractionOf": "Abstraction of",
+      "realizationOf": "Realization of"
     }
   },
   "sourceRelationship": {
@@ -602,6 +623,9 @@
         "informationModel": "Information model",
         "identifiers": "Identifiers",
         "keywords": "Keywords",
+        "relations": "Relations",
+        "conceptReferences": "Concepts used about the model",
+        "spatialRestrictions": "Spatial restrictions",
         "contactInformation": "Contact information"
       }
     }

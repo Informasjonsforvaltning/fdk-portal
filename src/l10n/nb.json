@@ -493,7 +493,12 @@
       "jsonld": "JSON-LD",
       "rdfxml": "RDF/XML"
     },
+    "type": "Type",
     "status": "Status",
+    "statusCompleted": "Fullført",
+    "statusDeprecated": "Foreldet",
+    "statusUnderDevelopment": "Under utvikling",
+    "statusWithdrawn": "Tilbaketrukket",
     "modelStatus": "Modellstatus",
     "language": "Språk",
     "issued": "Utgitt",
@@ -506,7 +511,12 @@
     "moreInfo": "Mer informasjon om informasjonsmodellen",
     "seeAlso": "Se også",
     "identifier": "Identifikator",
+    "isPartOf": "En del av",
+    "hasPart": "Har del",
+    "isReplacedBy": "Erstattes av",
+    "replaces": "Erstatter",
     "keywords": "Søkeord",
+    "license": "Lisens",
     "category": "Modellkategori",
     "relatedAPIHeader": "Tilhører API",
     "informationModelDescription": "Informasjonsmodelbeskrivelse",
@@ -517,6 +527,7 @@
       "dataType": "Datatype",
       "simpleType": "Enkelttype",
       "attribute": "Attributt",
+      "association": "Assosiasjon",
       "role": "Rolle",
       "extendsFrom": "Arver fra",
       "code": "Kode",
@@ -524,9 +535,19 @@
       "definitionReference": "Referanse til definisjon",
       "restrictions": "Verdirestriksjoner"
     },
+    "restriction": {
+      "valueLength": "Lengde",
+      "maxLength": "Maksimum lengde",
+      "minInclusive": "Minimum verdi",
+      "maxInclusive": "Maksimum verdi",
+      "pattern": "Mønster",
+      "totalDigits": "Antall siffer"
+    },
     "modelDescription": {
       "belongsToModule": "Tilhører modul",
-      "conceptReference": "Begrepsreferanse"
+      "conceptReference": "Begrepsreferanse",
+      "abstractionOf": "Abstraksjon av",
+      "realizationOf": "Realisering av"
     }
   },
   "sourceRelationship": {
@@ -602,6 +623,9 @@
         "informationModel": "Informasjonsmodell",
         "identifiers": "Identifikatorer",
         "keywords": "Søkeord",
+        "relations": "Relasjoner",
+        "conceptReferences": "Begrep brukt om modellen",
+        "spatialRestrictions": "Geografisk avgrensning",
         "contactInformation": "Kontaktinformasjon"
       }
     }
