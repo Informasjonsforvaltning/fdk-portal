@@ -2,7 +2,7 @@ import { searchFullTextApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
 
 const mapSorting = ({ sortfield }: any) =>
-  sortfield === 'modified'
+  sortfield === 'harvest.firstHarvested'
     ? { field: 'harvest.firstHarvested', direction: 'desc' }
     : undefined;
 

@@ -5,7 +5,7 @@ export const searchInformationModels = (body: any) =>
   searchFullTextApiPost('/informationmodels', body);
 
 const mapSorting = ({ sortfield }: any) =>
-  sortfield === 'modified'
+  sortfield === 'harvest.firstHarvested'
     ? { field: 'harvest.firstHarvested', direction: 'desc' }
     : undefined;
 
