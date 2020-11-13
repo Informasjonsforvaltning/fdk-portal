@@ -8,6 +8,7 @@ import { DataService } from '../../../types';
 
 interface GetDataServicesParams {
   dataseturi?: string;
+  size?: number;
 }
 
 export function getDataServicesRequested(params: GetDataServicesParams) {

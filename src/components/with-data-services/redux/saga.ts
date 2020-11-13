@@ -12,7 +12,7 @@ import type { DataService } from '../../../types';
 
 function* getDataServicesRequested({
   payload: {
-    params: { dataseturi }
+    params: { dataseturi, size }
   }
 }: ReturnType<typeof actions.getDataServicesRequested>) {
   if (!dataseturi) {
@@ -20,7 +20,7 @@ function* getDataServicesRequested({
   }
 
   try {
-    const body = paramsToSearchBody({ dataseturi });
+    const body = paramsToSearchBody({ dataseturi, size });
     const data = yield call(searchDataServices, body);
     if (data?.hits) {
       yield put(actions.getDataServicesSucceeded(data?.hits as DataService[]));
