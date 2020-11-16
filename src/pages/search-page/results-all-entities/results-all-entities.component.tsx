@@ -27,10 +27,7 @@ import withReferenceData, {
 } from '../../../components/with-reference-data';
 import { getLosByKeys } from '../../../lib/los/los-helper';
 
-interface Props
-  extends OrganizationsProps,
-    RouteComponentProps<any>,
-    ReferenceDataProps {
+interface ExternalProps {
   entities:
     | Partial<Dataset>[]
     | Partial<DataService>[]
@@ -38,12 +35,15 @@ interface Props
     | Partial<InformationModel>[];
   aggregations?: any;
   page?: any;
-  compareConceptList: Concept[];
-  addConcept: (concept: Partial<Concept>) => void;
-  removeConcept: (id?: string) => void;
-  showFilterModal: () => void;
-  closeFilterModal: () => void;
+  compareConceptList?: Concept[];
+  addConcept?: (concept: Partial<Concept>) => void;
+  removeConcept?: (id?: string) => void;
 }
+interface Props
+  extends ExternalProps,
+    OrganizationsProps,
+    RouteComponentProps<any>,
+    ReferenceDataProps {}
 
 const ResultsPage: FC<PropsWithChildren<Props>> = ({
   entities = [],
@@ -51,7 +51,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   page = {},
   compareConceptList = [],
   addConcept,
-  removeConcept,
+  removeConcept = () => {},
   history,
   location,
   organizations = [],
@@ -149,7 +149,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default compose<FC>(
+export default compose<FC<ExternalProps>>(
   memo,
   withOrganizations,
   withReferenceData,
