@@ -1,8 +1,6 @@
 import _ from 'lodash';
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import cx from 'classnames';
-import { detect } from 'detect-browser';
+import React, { FC } from 'react';
+import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 
 import {
   SearchBox,
@@ -24,34 +22,63 @@ import {
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { Tabs } from './tabs/tabs';
 import ResultsPage from './results-all-entities/results-all-entities.component';
+import { Concept, DataService, Dataset, InformationModel } from '../../types';
 
-const browser = detect();
+interface AllEntities {
+  hits:
+    | Partial<Dataset>[]
+    | Partial<DataService>[]
+    | Partial<Concept>[]
+    | Partial<InformationModel>[];
+  page: any;
+  aggregations: any;
+}
 
-const SearchPage = props => {
-  const {
-    fetchDatasetsIfNeeded,
-    fetchDataServicesIfNeeded,
-    fetchConceptsIfNeeded,
-    fetchInformationModelsIfNeeded,
-    datasetItems,
-    datasetAggregations,
-    datasetTotal,
-    dataServiceItems,
-    dataServiceAggregations,
-    dataServiceTotal,
-    conceptItems,
-    conceptAggregations,
-    conceptTotal,
-    informationModelItems,
-    informationModelAggregations,
-    informationModelTotal,
-    location,
-    conceptsCompare,
-    addConcept,
-    removeConcept,
-    searchAllEntities
-  } = props;
-
+interface Props extends RouteComponentProps {
+  fetchDatasetsIfNeeded: (params: any) => void;
+  fetchDataServicesIfNeeded: (params: any) => void;
+  fetchConceptsIfNeeded: (params: any) => void;
+  fetchInformationModelsIfNeeded: (params: any) => void;
+  datasetItems: Partial<Dataset>[];
+  datasetAggregations: any;
+  datasetTotal: any;
+  dataServiceItems: Partial<DataService>[];
+  dataServiceAggregations: any;
+  dataServiceTotal: any;
+  conceptItems: Partial<Concept>[];
+  conceptAggregations: any;
+  conceptTotal: any;
+  informationModelItems: Partial<InformationModel>[];
+  informationModelAggregations: any;
+  informationModelTotal: any;
+  conceptsCompare: any;
+  addConcept: (concept: Partial<Concept>) => void;
+  removeConcept: (id?: string | undefined) => void;
+  searchAllEntities: AllEntities;
+}
+const SearchPage: FC<Props> = ({
+  fetchDatasetsIfNeeded,
+  fetchDataServicesIfNeeded,
+  fetchConceptsIfNeeded,
+  fetchInformationModelsIfNeeded,
+  datasetItems,
+  datasetAggregations,
+  datasetTotal,
+  dataServiceItems,
+  dataServiceAggregations,
+  dataServiceTotal,
+  conceptItems,
+  conceptAggregations,
+  conceptTotal,
+  informationModelItems,
+  informationModelAggregations,
+  informationModelTotal,
+  location,
+  conceptsCompare,
+  addConcept,
+  removeConcept,
+  searchAllEntities
+}) => {
   const {
     hits: searchAllEntitiesHits,
     page: searchAllEntitiesPage,
@@ -83,20 +110,9 @@ const SearchPage = props => {
   fetchConceptsIfNeeded(conceptSearchParams);
   fetchInformationModelsIfNeeded(informationModelSearchParams);
 
-  const topSectionClass = cx(
-    'top-section-search',
-    'mb-4',
-    'd-flex',
-    'flex-column',
-    'justify-content-between',
-    {
-      'top-section-search--image': !!(browser && browser.name !== 'ie')
-    }
-  );
-
   return (
     <div>
-      <section className={topSectionClass}>
+      <section className="top-section-search mb-4 d-flex flex-column justify-content-between top-section-search--image">
         <SearchBox>
           <SearchBoxTitle>
             <HitsStats
