@@ -57,7 +57,7 @@ const getFilterLabel = (
       return (
         localization.facet.publishers[name] ||
         getTranslateText(referencedItem?.prefLabel) ||
-        capitalize(name)
+        capitalize(referencedItem?.name)
       );
     }
     case Filter.THEME:
