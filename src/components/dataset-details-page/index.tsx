@@ -92,14 +92,15 @@ const DatasetDetailsPage: FC<Props> = ({
   useEffect(() => {
     if (conceptIdentifiers.length > 0) {
       getConcepts({
-        identifiers: conceptIdentifiers as string[]
+        identifiers: conceptIdentifiers as string[],
+        size: 1000
       });
     }
   }, [conceptIdentifiers?.join()]);
 
   useEffect(() => {
     if (datasetUris && datasetUris.length > 0) {
-      getDatasets({ uris: datasetUris });
+      getDatasets({ uris: datasetUris, size: 1000 });
     }
 
     return () => {
@@ -108,7 +109,7 @@ const DatasetDetailsPage: FC<Props> = ({
   }, [datasetUris?.join()]);
 
   useEffect(() => {
-    getDataServices({ dataseturi: datasetUri });
+    getDataServices({ dataseturi: datasetUri, size: 1000 });
   }, [datasetUri]);
 
   const entity = Entity.DATASET;
