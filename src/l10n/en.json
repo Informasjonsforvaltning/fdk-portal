@@ -41,6 +41,7 @@
   "conceptLabel": "Concept",
   "informationModelLabel": "Information model",
   "dataServiceLabel": "Data service",
+  "serviceLabel": "Public service",
   "activeFilter": "Enabled filters",
   "goTo": "Go to",
   "linkToFdk": "Link to the National Data Catalog",
@@ -541,7 +542,8 @@
         "dataset": "Dataset description",
         "dataservice": "Data service description",
         "concept": "Concept description",
-        "infomod": "Information model description"
+        "infomod": "Information model description",
+        "publicservice": "Public service description"
       }
     },
     "publisher": "Owner: {publisher}",
