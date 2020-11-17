@@ -32,7 +32,8 @@ import {
   PATHNAME_NEWS_ARCHIVE,
   PATHNAME_GUIDANCE,
   PATHNAME_GUIDANCE_METADATA,
-  PATHNAME_ORGANIZATIONS
+  PATHNAME_ORGANIZATIONS,
+  PATHNAME_PUBLIC_SERVICES
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
@@ -105,6 +106,7 @@ export function App({ language, onChangeLanguage }) {
         <Route exact path={PATHNAME_DATA_SERVICES} component={SearchPage} />
         <Route exact path={PATHNAME_CONCEPTS} component={SearchPage} />
         <Route exact path={PATHNAME_INFORMATIONMODELS} component={SearchPage} />
+        <Route exact path={PATHNAME_PUBLIC_SERVICES} component={SearchPage} />
         <Route exact path={PATHNAME_NEWS_ARCHIVE} component={NewsArchivePage} />
         <Route path={PATHNAME_ORGANIZATIONS} component={OrganizationsRouter} />
         <ScrollToTop>

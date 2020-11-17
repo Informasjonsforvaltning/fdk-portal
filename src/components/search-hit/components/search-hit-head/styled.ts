@@ -4,6 +4,7 @@ import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
 import ConceptIconBase from '../../../../images/icon-catalog-concept-lg.svg';
 import InfomodIconBase from '../../../../images/icon-catalog-infomod-lg.svg';
 import AuthoritativeIconBase from '../../../../images/icon-authoritative-md.svg';
+import ServiceIconBase from '../../../../images/icon-catalog-service-lg.svg';
 
 const Head = styled.div`
     background-color: ${({ theme }) => theme.light};
@@ -67,6 +68,10 @@ const AuthoritativeIcon = styled(AuthoritativeIconBase)`
   width: 1.2em;
 `;
 
+const ServiceIcon = styled(ServiceIconBase)`
+  height: 3em;
+`;
+
 export default {
   Head,
   HeadTypeIndicator,
@@ -78,5 +83,6 @@ export default {
   ApiIcon,
   ConceptIcon,
   InfomodIcon,
-  AuthoritativeIcon
+  AuthoritativeIcon,
+  ServiceIcon
 };

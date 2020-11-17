@@ -133,6 +133,24 @@ export interface ConceptDefinition {
   sourceRelationship?: string;
 }
 
+export interface PublicService {
+  type: string;
+  id: string;
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  hasCompetentAuthority: Partial<Publisher>[];
+  harvest: Partial<Harvest>;
+}
+
+export interface ESPage {
+  currentPage: number;
+  size: number;
+  totalElements: number;
+  totalPages: number;
+}
+
 interface Provenance {
   code: string;
   prefLabel: Partial<TextLanguage>;

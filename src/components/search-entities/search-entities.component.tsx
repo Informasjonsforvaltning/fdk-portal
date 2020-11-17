@@ -10,6 +10,7 @@ import { DatasetItem } from '../dataset-item/dataset-item.component';
 import { DataServiceItem } from '../data-service-item/data-service-item.component';
 import { ConceptItem } from '../concept-item/concept-item.component';
 import { InformationModelItem } from '../informationmodel-item/informationmodel-item.component';
+import { PublicServiceItem } from '../public-service-item/public-service-item';
 
 interface Props {
   entities: any;
@@ -93,6 +94,18 @@ const renderEntity = (
           }
         >
           <InformationModelItem informationModel={entity} losItems={losItems} />
+        </ThemeProvider>
+      );
+    case Entity.PUBLIC_SERVICE:
+      return (
+        <ThemeProvider
+          theme={
+            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+              Entity.PUBLIC_SERVICE
+            ]
+          }
+        >
+          <PublicServiceItem publicService={entity} />
         </ThemeProvider>
       );
     default:

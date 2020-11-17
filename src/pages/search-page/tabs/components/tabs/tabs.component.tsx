@@ -9,10 +9,12 @@ import {
   PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
-  PATHNAME_INFORMATIONMODELS
+  PATHNAME_INFORMATIONMODELS,
+  PATHNAME_PUBLIC_SERVICES
 } from '../../../../../constants/constants';
 import { getLinkForTab } from '../../../search-location-helper';
 import { Entity } from '../../../../../types/enums';
+import { getConfig } from '../../../../../config';
 
 interface Props {
   countResults?: number;
@@ -20,6 +22,7 @@ interface Props {
   countConcepts: number;
   countApis: number;
   countInformationModels: number;
+  countPublicServices: number;
 }
 
 const Tabs: FC<Props & RouteComponentProps> = ({
@@ -28,6 +31,7 @@ const Tabs: FC<Props & RouteComponentProps> = ({
   countApis,
   countConcepts,
   countInformationModels,
+  countPublicServices,
   location
 }) => (
   <SC.Tabs>
@@ -95,6 +99,21 @@ const Tabs: FC<Props & RouteComponentProps> = ({
         {countInformationModels})
       </SC.Label>
     </Tab>
+    {getConfig().showPublicService && (
+      <Tab
+        active={location.pathname === PATHNAME_PUBLIC_SERVICES}
+        tabLink={getLinkForTab(location, PATHNAME_PUBLIC_SERVICES)}
+        label={localization.informationModelLabel}
+      >
+        <SC.IconPlaceholder type={Entity.PUBLIC_SERVICE}>
+          <SC.ServiceIcon />
+        </SC.IconPlaceholder>
+        <SC.Label>
+          {localization.page.serviceTab}&nbsp;(
+          {countPublicServices})
+        </SC.Label>
+      </Tab>
+    )}
   </SC.Tabs>
 );
 

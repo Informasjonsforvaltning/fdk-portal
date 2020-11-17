@@ -9,7 +9,8 @@ import {
   Concept,
   DataService,
   Dataset,
-  InformationModel
+  InformationModel,
+  PublicService
 } from '../../../types';
 import localization from '../../../lib/localization';
 import { parseSearchParams } from '../../../lib/location-history-helper';
@@ -32,7 +33,8 @@ interface ExternalProps {
     | Partial<Dataset>[]
     | Partial<DataService>[]
     | Partial<Concept>[]
-    | Partial<InformationModel>[];
+    | Partial<InformationModel>[]
+    | Partial<PublicService>[];
   aggregations?: any;
   page?: any;
   compareConceptList?: Concept[];
