@@ -41,6 +41,7 @@
   "conceptLabel": "Omgrep",
   "informationModelLabel": "Informasjonsmodell",
   "dataServiceLabel": "Datateneste",
+  "serviceLabel": "Teneste",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
@@ -541,7 +542,8 @@
         "dataset": "Datasettbeskrivelse",
         "dataservice": "Datatenestebeskrivelse",
         "concept": "Omgrepsbeskrivelse",
-        "infomod": "Informasjonsmodellbeskrivelse"
+        "infomod": "Informasjonsmodellbeskrivelse",
+        "publicservice": "Tenestebeskrivelse"
       }
     },
     "publisher": "Eigar: {publisher}",

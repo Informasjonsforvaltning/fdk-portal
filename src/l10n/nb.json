@@ -41,6 +41,7 @@
   "conceptLabel": "Begrep",
   "informationModelLabel": "Informasjonsmodell",
   "dataServiceLabel": "Datatjeneste",
+  "serviceLabel": "Tjeneste",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
@@ -541,7 +542,8 @@
         "dataset": "Datasettbeskrivelse",
         "dataservice": "Datatjenestebeskrivelse",
         "concept": "Begrepsbeskrivelse",
-        "infomod": "Informasjonsmodellbeskrivelse"
+        "infomod": "Informasjonsmodellbeskrivelse",
+        "publicservice": "Tjenestebeskrivelse"
       }
     },
     "publisher": "Eier: {publisher}",
