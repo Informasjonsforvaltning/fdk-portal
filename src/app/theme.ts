@@ -86,6 +86,11 @@ export const themeFDK = {
         darker: '#593380',
         lightest: '#E4D5F2'
       }
+    },
+    [Entity.PUBLIC_SERVICE]: {
+      dark: '#803353',
+      light: '#f2d5e1',
+      lighter: '#f7f0f3'
     }
   }
 };
@@ -165,6 +170,11 @@ export const themeNAP = {
       dark: '#593380',
       light: '#E4D5F2',
       lighter: '#F4F0F7'
+    },
+    [Entity.PUBLIC_SERVICE]: {
+      dark: '#f1a9c5',
+      light: '#f2d5e1',
+      lighter: '#f7f0f3'
     }
   }
 };

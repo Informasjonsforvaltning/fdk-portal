@@ -27,6 +27,7 @@ export const SearchHitHead: FC<Props> = ({
       {type === SearchTypes.dataservice && <SC.ApiIcon />}
       {type === SearchTypes.concept && <SC.ConceptIcon />}
       {type === SearchTypes.informationModel && <SC.InfomodIcon />}
+      {type === SearchTypes.publicService && <SC.ServiceIcon />}
     </SC.HeadTypeIndicator>
     <SC.HeadInformation>
       <SC.Header>
@@ -51,6 +52,7 @@ export const SearchHitHead: FC<Props> = ({
         {type === SearchTypes.concept && localization.conceptLabel}
         {type === SearchTypes.informationModel &&
           localization.informationModelLabel}
+        {type === SearchTypes.publicService && localization.serviceLabel}
       </SC.Type>
     </SC.HeadInformation>
   </SC.Head>

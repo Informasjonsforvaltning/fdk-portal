@@ -150,7 +150,8 @@
     "datasetTab": "Datasets",
     "apiTab": "APIs",
     "termTab": "Concepts",
-    "informationModelTab": "Information models"
+    "informationModelTab": "Information models",
+    "serviceTab": "Service"
   },
   "hitstats": {
     "nosearch": "Search among {0} datasets, {1} APIs, {2} concepts and {3} information models",

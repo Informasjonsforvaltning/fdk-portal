@@ -150,7 +150,8 @@
     "datasetTab": "Datasett",
     "apiTab": "API",
     "termTab": "Omgrep",
-    "informationModelTab": "Informasjonsmodellar"
+    "informationModelTab": "Informasjonsmodellar",
+    "serviceTab": "Teneste"
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API, {2} omgrep og {3} informasjonsmodellar",

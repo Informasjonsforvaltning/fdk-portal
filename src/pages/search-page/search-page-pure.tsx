@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { compose } from 'redux';
 import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 
 import {
@@ -17,12 +18,17 @@ import {
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_SEARCH,
-  HITS_PER_PAGE
+  HITS_PER_PAGE,
+  PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { Tabs } from './tabs/tabs';
 import ResultsPage from './results-all-entities/results-all-entities.component';
 import { Concept, DataService, Dataset, InformationModel } from '../../types';
+import withPublicServices, {
+  Props as PublicServicesProps
+} from '../../components/with-public-services';
+import { generateQueryKey, shouldFetch } from './lib/fetch-helper';
 
 interface AllEntities {
   hits:
@@ -34,7 +40,7 @@ interface AllEntities {
   aggregations: any;
 }
 
-interface Props extends RouteComponentProps {
+interface Props extends PublicServicesProps, RouteComponentProps {
   fetchDatasetsIfNeeded: (params: any) => void;
   fetchDataServicesIfNeeded: (params: any) => void;
   fetchConceptsIfNeeded: (params: any) => void;
@@ -56,6 +62,7 @@ interface Props extends RouteComponentProps {
   removeConcept: (id?: string | undefined) => void;
   searchAllEntities: AllEntities;
 }
+
 const SearchPage: FC<Props> = ({
   fetchDatasetsIfNeeded,
   fetchDataServicesIfNeeded,
@@ -77,8 +84,13 @@ const SearchPage: FC<Props> = ({
   conceptsCompare,
   addConcept,
   removeConcept,
-  searchAllEntities
+  searchAllEntities,
+  publicServices,
+  publicServicesAggregations,
+  publicServicesPage,
+  publicServicesActions: { getPublicServicesRequested: getPublicServices }
 }) => {
+  const [searchQuery, setSearchQuery] = useState('#');
   const {
     hits: searchAllEntitiesHits,
     page: searchAllEntitiesPage,
@@ -104,6 +116,20 @@ const SearchPage: FC<Props> = ({
     location.pathname === PATHNAME_INFORMATIONMODELS
       ? locationSearch
       : locationSearchParamQ;
+  const publicServiceSearchParams =
+    location.pathname === PATHNAME_PUBLIC_SERVICES
+      ? locationSearch
+      : locationSearchParamQ;
+
+  useEffect(() => {
+    if (
+      getConfig().showPublicService &&
+      shouldFetch(publicServiceSearchParams, searchQuery)
+    ) {
+      getPublicServices(publicServiceSearchParams);
+      setSearchQuery(generateQueryKey(publicServiceSearchParams));
+    }
+  }, [publicServiceSearchParams]);
 
   fetchDatasetsIfNeeded(datasetSearchParams);
   fetchDataServicesIfNeeded(dataServiceSearchParams);
@@ -129,6 +155,7 @@ const SearchPage: FC<Props> = ({
               countConcepts={conceptTotal || 0}
               countApis={dataServiceTotal || 0}
               countInformationModels={informationModelTotal || 0}
+              countPublicServices={publicServicesPage?.totalElements || 0}
             />
           )}
         </SearchBox>
@@ -183,10 +210,17 @@ const SearchPage: FC<Props> = ({
               }}
             />
           </Route>
+          <Route exact path={PATHNAME_PUBLIC_SERVICES}>
+            <ResultsPage
+              entities={publicServices}
+              aggregations={publicServicesAggregations ?? {}}
+              page={publicServicesPage ?? {}}
+            />
+          </Route>
         </Switch>
       </div>
     </div>
   );
 };
 
-export default SearchPage;
+export default compose<FC<Props>>(withPublicServices)(SearchPage);
