@@ -546,7 +546,9 @@
         "publicservice": "Tjenestebeskrivelse"
       }
     },
-    "publisher": "Eier: {publisher}",
+    "owner": "Eier: {publisher}",
+    "provider": "Tilbyder: {publisher}",
+    "responsible": "Ansvarlig: {publisher}",
     "openData": "Åpne data",
     "publicData": "Kan deles offentlig",
     "restrictedData": "Begrenset offentlighet",

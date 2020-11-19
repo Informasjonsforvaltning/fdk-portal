@@ -546,7 +546,9 @@
         "publicservice": "Tenestebeskrivelse"
       }
     },
-    "publisher": "Eigar: {publisher}",
+    "owner": "Eigar: {publisher}",
+    "provider": "Tilbydar: {publisher}",
+    "responsible": "Ansvarleg: {publisher}",
     "openData": "Opne data",
     "publicData": "Kan deles offentleg",
     "restrictedData": "Begrensa offentlegheit",

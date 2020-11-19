@@ -546,7 +546,9 @@
         "publicservice": "Public service description"
       }
     },
-    "publisher": "Owner: {publisher}",
+    "owner": "Owner: {publisher}",
+    "provider": "Provider: {publisher}",
+    "responsible": "Responsible: {publisher}",
     "openData": "Open data",
     "publicData": "Public data",
     "restrictedData": "Restricted data",
