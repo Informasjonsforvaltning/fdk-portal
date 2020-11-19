@@ -138,6 +138,14 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   const isLosTheme = ({ uri, name, losPaths }: EnrichedTheme) =>
     !!uri && !!name && !!losPaths;
 
+  const publisherLabel = {
+    [Entity.DATASET]: translations.detailsPage.owner,
+    [Entity.DATA_SERVICE]: translations.detailsPage.provider,
+    [Entity.CONCEPT]: translations.detailsPage.responsible,
+    [Entity.INFORMATION_MODEL]: translations.detailsPage.owner,
+    [Entity.PUBLIC_SERVICE]: translations.detailsPage.owner
+  };
+
   const publisherName = translate(publisher?.prefLabel || publisher?.name);
 
   return (
@@ -150,7 +158,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       />
       <SC.SubBanner>
         <SC.Publisher>
-          {translations.formatString(translations.detailsPage.publisher, {
+          {translations.formatString(publisherLabel[entity], {
             publisher: publisherName
           })}
         </SC.Publisher>
