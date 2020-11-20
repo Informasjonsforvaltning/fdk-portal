@@ -608,6 +608,9 @@
         "identifiers": "Identifiers",
         "keywords": "Keywords",
         "contactInformation": "Contact information"
+      },
+      "publicService": {
+        "description": "Description"
       }
     }
   },

@@ -608,6 +608,9 @@
         "identifiers": "Identifikatorer",
         "keywords": "Søkeord",
         "contactInformation": "Kontaktinformasjon"
+      },
+      "publicService": {
+        "description": "Beskrivelse"
       }
     }
   },
