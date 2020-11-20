@@ -12,6 +12,7 @@ import DatasetDetailsPage from '../components/dataset-details-page';
 import DataServiceDetailsPage from '../components/data-service-details-page';
 import ConceptDetailsPage from '../components/concept-details-page';
 import InformationModelDetailsPage from '../components/information-model-details-page';
+import PublicServiceDetailsPage from '../components/public-service-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { AppNavBar } from './app-nav-bar/app-nav-bar';
@@ -135,6 +136,11 @@ export function App({ language, onChangeLanguage }) {
               exact
               path={`${PATHNAME_DATA_SERVICES}/:dataServiceId`}
               component={DataServiceDetailsPage}
+            />
+            <Route
+              exact
+              path={`${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`}
+              component={PublicServiceDetailsPage}
             />
             <Route
               exact

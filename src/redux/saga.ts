@@ -16,6 +16,7 @@ import informationModelSaga from '../components/with-information-model/redux/sag
 import informationModelsSaga from '../components/with-information-models/redux/saga';
 import organizationsCatalogSaga from '../components/with-organizations-catalog/redux/saga';
 import publicServicesSaga from '../components/with-public-services/redux/saga';
+import publicServiceSaga from '../components/with-public-service/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -34,6 +35,7 @@ export default function* saga() {
     informationModelSaga(),
     informationModelsSaga(),
     organizationsCatalogSaga(),
-    publicServicesSaga()
+    publicServicesSaga(),
+    publicServiceSaga()
   ]);
 }
