@@ -63,6 +63,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
           <DetailsPage
             entity={entity}
             title={title}
+            publisher={publicService?.hasCompetentAuthority[0]}
             entityId={publicService?.id}
             entityUri={publicService?.uri}
             lastPublished={lastPublished}
