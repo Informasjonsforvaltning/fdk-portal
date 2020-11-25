@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 
 import * as actions from './redux/actions';
 import type { ESPage, PublicService } from '../../types';
+import { PublicServiceEvent } from '../../types';
 
 export interface Props {
   publicServices: Partial<PublicService>[];
   publicServicesAggregations: any;
   publicServicesPage: ESPage;
+  publicServicesEvents: PublicServiceEvent[];
   publicServicesActions: typeof actions;
 }
 
@@ -21,7 +23,10 @@ const withPublicServices = (Component: ComponentType<any>) => {
       state.PublicServicesReducer.get('publicServicesAggregations')?.toJS() ??
       null,
     publicServicesPage:
-      state.PublicServicesReducer.get('publicServicesPage')?.toJS() ?? null
+      state.PublicServicesReducer.get('publicServicesPage')?.toJS() ?? null,
+    publicServicesEvents: state.PublicServicesReducer.get(
+      'publicServicesEvents'
+    )?.toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

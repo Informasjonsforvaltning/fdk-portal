@@ -181,7 +181,8 @@
       "ANNET": "Anna"
     },
     "provenance": "Opphav",
-    "format": "Format"
+    "format": "Format",
+    "lifeEvents": "Livshendelser"
   },
   "result": {
     "dataset": "Datasett",

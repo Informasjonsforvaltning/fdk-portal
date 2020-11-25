@@ -9,11 +9,13 @@ import {
 } from './action-types';
 
 import type { Actions } from '../../../types';
+import { PublicService, PublicServiceEvent } from '../../../types';
 
 const initialState = fromJS({
   publicServices: [],
   publicServicesAggregations: null,
-  publicServicesPage: null
+  publicServicesPage: null,
+  publicServicesEvents: []
 });
 
 export default function reducer(
@@ -33,6 +35,29 @@ export default function reducer(
         .set(
           'publicServicesPage',
           fromJS(action.payload.publicServiceData.page)
+        )
+        .set(
+          'publicServicesEvents',
+          fromJS(
+            action.payload.publicServiceData.hits?.reduce(
+              (unique: any, { isGroupedBy }: PublicService) => {
+                isGroupedBy?.forEach(
+                  (publicServiceEvent: PublicServiceEvent) => {
+                    if (
+                      !unique.some(
+                        ({ uri }: PublicServiceEvent) =>
+                          uri === publicServiceEvent.uri
+                      )
+                    ) {
+                      unique.push(publicServiceEvent);
+                    }
+                  }
+                );
+                return unique;
+              },
+              []
+            )
+          )
         );
     case GET_PUBLIC_SERVICES_FAILED:
       return state.setIn(
@@ -47,7 +72,8 @@ export default function reducer(
       return state
         .set('publicServices', null)
         .set('publicServicesAggregations', null)
-        .set('publicServicesPage', null);
+        .set('publicServicesPage', null)
+        .set('publicServicesEvents', null);
     default:
       return state;
   }

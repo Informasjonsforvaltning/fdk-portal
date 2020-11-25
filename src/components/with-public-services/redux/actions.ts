@@ -9,6 +9,7 @@ interface GetPublicServicesParams {
   q?: string;
   size?: number;
   orgPath?: string;
+  isGroupedBy?: string;
 }
 
 export function getPublicServicesRequested(params: GetPublicServicesParams) {

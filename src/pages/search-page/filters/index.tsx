@@ -22,6 +22,7 @@ import {
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import { FilterBox } from '../../../components/filter-box/filter-box.component';
 import { getConfig } from '../../../config';
+import { PublicServiceEvent } from '../../../types';
 
 interface Props extends RouteComponentProps {
   themesItems?: any;
@@ -29,6 +30,7 @@ interface Props extends RouteComponentProps {
   losItems?: any;
   mediaTypes: any;
   aggregations: any;
+  publicServicesEvents?: PublicServiceEvent[];
 }
 
 const FiltersPure: FC<Props> = ({
@@ -38,7 +40,8 @@ const FiltersPure: FC<Props> = ({
   mediaTypes = [],
   aggregations = {},
   history,
-  location: { pathname } = {}
+  location: { pathname } = {},
+  publicServicesEvents = []
 }) => {
   const [filterOpen, setFilterOpen] = useState(false);
 
@@ -50,7 +53,8 @@ const FiltersPure: FC<Props> = ({
     theme: themeParam,
     spatial: spatialParam,
     provenance: provenanceParam,
-    format: formatParam
+    format: formatParam,
+    isGroupedBy: isGroupedByParam
   } = searchParams;
 
   const handleFilterThemes = ({
@@ -107,6 +111,12 @@ const FiltersPure: FC<Props> = ({
     target: { value, checked }
   }: ChangeEvent<HTMLInputElement>) => {
     setMultiselectFilterValue(history, location, 'losTheme', value, checked);
+  };
+
+  const handleFilterIsGroupedBy = ({
+    target: { value, checked }
+  }: ChangeEvent<HTMLInputElement>) => {
+    setMultiselectFilterValue(history, location, 'isGroupedBy', value, checked);
   };
 
   const getFilters = () => {
@@ -263,6 +273,13 @@ const FiltersPure: FC<Props> = ({
       case PATHNAME_PUBLIC_SERVICES:
         return (
           <>
+            <FilterBox
+              title={localization.facet.lifeEvents}
+              filter={aggregations.isGroupedBy}
+              onClick={handleFilterIsGroupedBy}
+              activeFilter={isGroupedByParam}
+              referenceDataItems={keyBy(publicServicesEvents, 'uri')}
+            />
             <FilterTree
               title={localization.provider}
               aggregations={aggregations.hasCompetentAuthority.buckets}
@@ -287,6 +304,7 @@ const FiltersPure: FC<Props> = ({
         themesItems={themesItems}
         publishers={publishers}
         losItems={losItems}
+        PublicServiceEvents={keyBy(publicServicesEvents, 'uri')}
       />
       <SC.Filters>{getFilters()}</SC.Filters>
     </>
