@@ -13,13 +13,13 @@ import {
 
 function* getPublicServicesRequested({
   payload: {
-    params: { size, q }
+    params: { size, q, orgPath }
   }
 }: ReturnType<typeof actions.getPublicServicesRequested>) {
   try {
     const data = yield call(
       searchPublicServices,
-      paramsToSearchBody({ size, q })
+      paramsToSearchBody({ size, q, orgPath })
     );
 
     if (data) {
