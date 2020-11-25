@@ -21,6 +21,8 @@ const SearchLink = styled(Link)<{ type?: Entity }>`
   text-decoration: none;
   word-break: break-all;
   transition: all 200ms ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
 
   svg {
     path {
@@ -36,6 +38,7 @@ const SearchLink = styled(Link)<{ type?: Entity }>`
   }
 
   @media (min-width: 992px) {
+    justify-content: center;
     flex-flow: column;
     font-size: 1.6rem;
     width: 23%;
