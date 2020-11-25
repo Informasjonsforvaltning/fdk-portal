@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import DatasetIconBase from '../../../../images/icon-catalog-dataset-lg.svg';
@@ -8,7 +8,7 @@ import InfomodIconBase from '../../../../images/icon-catalog-infomod-lg.svg';
 import PublicServiceIconBase from '../../../../images/icon-catalog-service-lg.svg';
 import { Entity } from '../../../../types/enums';
 
-const SearchLink = styled(Link)<{ type?: Entity }>`
+const SearchLink = styled(Link)<{ type?: Entity; smallWidth?: boolean }>`
   align-items: center;
   background-color: ${({ type, theme }) =>
     type ? theme.extendedColors[type]?.light : '#FFF'};
@@ -41,8 +41,18 @@ const SearchLink = styled(Link)<{ type?: Entity }>`
     justify-content: center;
     flex-flow: column;
     font-size: 1.6rem;
-    width: 23%;
 
+    ${({ smallWidth }) => {
+      if (smallWidth) {
+        return css`
+          width: 19%;
+        `;
+      }
+
+      return css`
+        width: 23%;
+      `;
+    }}
     span:last-child {
       font-size: 1.8rem;
     }
