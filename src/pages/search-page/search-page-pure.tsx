@@ -88,6 +88,7 @@ const SearchPage: FC<Props> = ({
   publicServices,
   publicServicesAggregations,
   publicServicesPage,
+  publicServicesEvents,
   publicServicesActions: { getPublicServicesRequested: getPublicServices }
 }) => {
   const [searchQuery, setSearchQuery] = useState('#');
@@ -215,6 +216,7 @@ const SearchPage: FC<Props> = ({
               entities={publicServices}
               aggregations={publicServicesAggregations ?? {}}
               page={publicServicesPage ?? {}}
+              publicServicesEvents={publicServicesEvents}
             />
           </Route>
         </Switch>

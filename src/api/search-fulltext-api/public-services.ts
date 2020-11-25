@@ -6,7 +6,14 @@ const mapSorting = ({ sortfield }: any) =>
     ? { field: 'harvest.firstHarvested', direction: 'desc' }
     : undefined;
 
-const mapFilters = ({ id, identifiers, uri, last_x_days, orgPath }: any) => {
+const mapFilters = ({
+  id,
+  identifiers,
+  uri,
+  last_x_days,
+  orgPath,
+  isGroupedBy
+}: any) => {
   const filters = [];
   if (id) {
     filters.push({ _id: id });
@@ -35,6 +42,14 @@ const mapFilters = ({ id, identifiers, uri, last_x_days, orgPath }: any) => {
       collection: {
         field: 'hasCompetentAuthority.orgPath',
         values: [orgPath]
+      }
+    });
+  }
+  if (isGroupedBy) {
+    filters.push({
+      collection: {
+        field: 'isGroupedBy.uri.keyword',
+        values: [isGroupedBy]
       }
     });
   }

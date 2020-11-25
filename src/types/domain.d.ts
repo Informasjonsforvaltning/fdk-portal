@@ -133,6 +133,13 @@ export interface ConceptDefinition {
   sourceRelationship?: string;
 }
 
+export interface PublicServiceEvent {
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  type: string;
+}
 export interface PublicService {
   type: string;
   id: string;
@@ -140,6 +147,7 @@ export interface PublicService {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
+  isGroupedBy: PublicServiceEvent[];
   hasCompetentAuthority: Partial<Publisher>[];
   harvest: Partial<Harvest>;
 }

@@ -30,6 +30,7 @@ interface Props extends RouteComponentProps {
   themesItems: ThemesItems;
   losItems: LosThemeItems;
   publishers: any;
+  PublicServiceEvents: any;
 }
 
 interface ReferenceDataItems {
@@ -76,6 +77,11 @@ const getFilterLabel = (
       return localization.formatString(localization.addedLastDays, {
         days: filterValue
       });
+    case 'isGroupedBy':
+      return (
+        getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
+        filterValue
+      );
     default:
       return localization[filterValue.toLowerCase()] || capitalize(filterValue);
   }
@@ -109,7 +115,8 @@ const FilterPillsPure: FC<Props> = ({
   location,
   themesItems,
   publishers,
-  losItems
+  losItems,
+  PublicServiceEvents
 }) => {
   if (!isFilterNotEmpty(location)) {
     return null;
@@ -120,7 +127,8 @@ const FilterPillsPure: FC<Props> = ({
   const referenceDataItems: ReferenceDataItems = {
     theme: themesItems,
     losTheme: losItems,
-    orgPath: publishers
+    orgPath: publishers,
+    isGroupedBy: PublicServiceEvents
   };
 
   return (

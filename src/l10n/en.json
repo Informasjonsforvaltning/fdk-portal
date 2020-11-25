@@ -181,7 +181,8 @@
       "ANNET": "Other"
     },
     "provenance": "Provenance",
-    "format": "Format"
+    "format": "Format",
+    "lifeEvents": "Life events"
   },
   "result": {
     "dataset": "Dataset",

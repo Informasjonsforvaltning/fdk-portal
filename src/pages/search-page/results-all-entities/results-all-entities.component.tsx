@@ -7,6 +7,7 @@ import keyBy from 'lodash/keyBy';
 import SC from './styled';
 import {
   Concept,
+  PublicServiceEvent,
   DataService,
   Dataset,
   InformationModel,
@@ -40,6 +41,7 @@ interface ExternalProps {
   compareConceptList?: Concept[];
   addConcept?: (concept: Partial<Concept>) => void;
   removeConcept?: (id?: string) => void;
+  publicServicesEvents?: PublicServiceEvent[];
 }
 interface Props
   extends ExternalProps,
@@ -59,7 +61,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   organizations = [],
   organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
   referenceData: { los = [], themes = [], mediatypes = [] },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData }
+  referenceDataActions: { getReferenceDataRequested: getReferenceData },
+  publicServicesEvents
 }) => {
   useEffect(() => {
     if (los.length === 0) {
@@ -103,6 +106,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 publishers={keyBy(organizations, 'orgPath')}
                 losItems={getLosByKeys(los)}
                 mediaTypes={mediatypes}
+                publicServicesEvents={publicServicesEvents}
               />
               <CompareList
                 conceptsCompareList={compareConceptList}
