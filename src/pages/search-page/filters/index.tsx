@@ -7,6 +7,7 @@ import {
   PATHNAME_DATA_SERVICES,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
+  PATHNAME_PUBLIC_SERVICES,
   PATHNAME_SEARCH
 } from '../../../constants/constants';
 import SC from './styled';
@@ -253,6 +254,18 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.responsible}
               aggregations={aggregations.orgPath.buckets}
+              handleFiltering={handleFilterPublisherHierarchy}
+              activeFilter={orgPathFilterParam?.toString()}
+              referenceDataItems={publishers}
+            />
+          </>
+        );
+      case PATHNAME_PUBLIC_SERVICES:
+        return (
+          <>
+            <FilterTree
+              title={localization.provider}
+              aggregations={aggregations.hasCompetentAuthority.buckets}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}

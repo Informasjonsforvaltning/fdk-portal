@@ -8,6 +8,7 @@ import {
 interface GetPublicServicesParams {
   q?: string;
   size?: number;
+  orgPath?: string;
 }
 
 export function getPublicServicesRequested(params: GetPublicServicesParams) {
