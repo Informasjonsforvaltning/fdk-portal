@@ -143,7 +143,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     [Entity.DATA_SERVICE]: translations.detailsPage.provider,
     [Entity.CONCEPT]: translations.detailsPage.responsible,
     [Entity.INFORMATION_MODEL]: translations.detailsPage.owner,
-    [Entity.PUBLIC_SERVICE]: translations.detailsPage.owner
+    [Entity.PUBLIC_SERVICE]: translations.detailsPage.provider
   };
 
   const publisherName = translate(publisher?.prefLabel || publisher?.name);
