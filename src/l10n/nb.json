@@ -151,7 +151,7 @@
     "apiTab": "API-er",
     "termTab": "Begreper",
     "informationModelTab": "Informasjonsmodeller",
-    "serviceTab": "Tjeneste"
+    "serviceTab": "Tjenester"
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API-er, {2} begreper og {3} informasjonsmodeller",
