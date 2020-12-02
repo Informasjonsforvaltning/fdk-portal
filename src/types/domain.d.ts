@@ -49,6 +49,7 @@ export interface InformationModel {
 }
 
 export interface ModelCodeElement {
+  uri: string;
   identifier: string;
   prefLabel: Partial<TextLanguage> | null;
   inScheme: string[] | null;

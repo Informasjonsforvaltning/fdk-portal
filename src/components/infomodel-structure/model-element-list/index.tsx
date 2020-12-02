@@ -22,9 +22,9 @@ const ModelElementList: FC<Props> = ({ title, properties, modelElements }) =>
   properties && properties.length > 0 ? (
     <>
       <ListTitleSC.ListTitle>{title}</ListTitleSC.ListTitle>
-      {properties.map(property => (
+      {properties.map((property, index) => (
         <Element
-          key={property.identifier}
+          key={property.identifier ?? property.uri ?? `property-${index}`}
           property={property}
           code={property}
           modelElements={modelElements}

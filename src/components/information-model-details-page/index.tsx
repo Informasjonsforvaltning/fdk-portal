@@ -155,7 +155,7 @@ const InformationModelDetailsPage: FC<Props> = ({
         identifiers: conceptIdentifiers as string[]
       });
     }
-  }, [conceptIdentifiers]);
+  }, [conceptIdentifiers.join()]);
 
   return (
     <ThemeProvider theme={theme}>
