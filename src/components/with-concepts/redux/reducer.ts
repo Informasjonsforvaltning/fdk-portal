@@ -1,7 +1,11 @@
 import { fromJS } from 'immutable';
 
 import * as actions from './actions';
-import { GET_CONCEPTS_REQUESTED, GET_CONCEPTS_SUCCEEDED } from './action-types';
+import {
+  GET_CONCEPTS_REQUESTED,
+  GET_CONCEPTS_SUCCEEDED,
+  RESET_CONCEPTS
+} from './action-types';
 
 import { Actions } from '../../../types';
 
@@ -18,6 +22,8 @@ export default function reducer(
       return state.set('concepts', fromJS([]));
     case GET_CONCEPTS_SUCCEEDED:
       return state.set('concepts', fromJS(action.payload.concepts));
+    case RESET_CONCEPTS:
+      return state.set('concepts', fromJS([]));
     default:
       return state;
   }
