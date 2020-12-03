@@ -56,7 +56,7 @@ const InformationModelDetailsPage: FC<Props> = ({
     getInformationModelRdfRepresentationsRequested: getInformationModelRdfRepresentations,
     resetInformationModel
   },
-  conceptsActions: { getConceptsRequested: getConcepts },
+  conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
   match: {
     params: { informationModelId }
   }
@@ -80,6 +80,7 @@ const InformationModelDetailsPage: FC<Props> = ({
 
     return () => {
       resetInformationModel();
+      resetConcepts();
     };
   }, []);
 
