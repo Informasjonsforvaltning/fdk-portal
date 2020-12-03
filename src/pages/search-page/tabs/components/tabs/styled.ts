@@ -5,6 +5,7 @@ import DatasetIconBase from '../../../../../images/icon-catalog-dataset-md.svg';
 import ApiIconBase from '../../../../../images/icon-catalog-api-md.svg';
 import ConceptIconBase from '../../../../../images/icon-catalog-concept-md.svg';
 import InfomodIconBase from '../../../../../images/icon-catalog-infomod-md.svg';
+import ServiceIconBase from '../../../../../images/icon-catalog-service-md.svg';
 
 import { Entity } from '../../../../../types/enums';
 
@@ -86,6 +87,16 @@ const InfomodIcon = styled(InfomodIconBase)`
   }
 `;
 
+const ServiceIcon = styled(ServiceIconBase)`
+  padding: 0.5em;
+  height: 3em;
+  fill: ${({ theme }) => theme.extendedColors[Entity.PUBLIC_SERVICE].dark};
+
+  @media (min-width: 768px) {
+    height: 2em;
+  }
+`;
+
 export default {
   Tabs,
   Label,
@@ -94,5 +105,6 @@ export default {
   DatasetIcon,
   ApiIcon,
   ConceptIcon,
-  InfomodIcon
+  InfomodIcon,
+  ServiceIcon
 };

@@ -6,6 +6,7 @@ import DatasetIcon from '../../../../images/icon-catalog-dataset-lg.svg';
 import ApiIcon from '../../../../images/icon-catalog-api-lg.svg';
 import ConceptIcon from '../../../../images/icon-catalog-concept-lg.svg';
 import InformationModelIcon from '../../../../images/icon-catalog-infomod-lg.svg';
+import PublicServiceIcon from '../../../../images/icon-catalog-service-lg.svg';
 import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
 
 import SC from './styled';
@@ -42,6 +43,10 @@ const Banner: FC<Props> = ({
     [Entity.INFORMATION_MODEL]: {
       icon: InformationModelIcon,
       translation: translations.detailsPage.banner.entity.infomod
+    },
+    [Entity.PUBLIC_SERVICE]: {
+      icon: PublicServiceIcon,
+      translation: translations.detailsPage.banner.entity.publicservice
     }
   };
 

@@ -1,8 +1,7 @@
 import _ from 'lodash';
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import cx from 'classnames';
-import { detect } from 'detect-browser';
+import React, { FC, useEffect, useState } from 'react';
+import { compose } from 'redux';
+import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 
 import {
   SearchBox,
@@ -19,52 +18,80 @@ import {
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_SEARCH,
-  HITS_PER_PAGE
+  HITS_PER_PAGE,
+  PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 import { parseSearchParams } from '../../lib/location-history-helper';
-import {
-  getLosStructure,
-  getThemesStructure,
-  REFERENCEDATA_PATH_APISTATUS,
-  REFERENCEDATA_PATH_DISTRIBUTIONTYPE,
-  REFERENCEDATA_PATH_LOS,
-  REFERENCEDATA_PATH_MEDIATYPES,
-  REFERENCEDATA_PATH_THEMES
-} from '../../redux/modules/referenceData';
 import { Tabs } from './tabs/tabs';
 import ResultsPage from './results-all-entities/results-all-entities.component';
+import { Concept, DataService, Dataset, InformationModel } from '../../types';
+import withPublicServices, {
+  Props as PublicServicesProps
+} from '../../components/with-public-services';
+import { generateQueryKey, shouldFetch } from './lib/fetch-helper';
 
-const browser = detect();
+interface AllEntities {
+  hits:
+    | Partial<Dataset>[]
+    | Partial<DataService>[]
+    | Partial<Concept>[]
+    | Partial<InformationModel>[];
+  page: any;
+  aggregations: any;
+}
 
-const SearchPage = props => {
-  const {
-    fetchDatasetsIfNeeded,
-    fetchDataServicesIfNeeded,
-    fetchConceptsIfNeeded,
-    fetchPublishersIfNeeded,
-    fetchReferenceDataIfNeeded,
-    fetchInformationModelsIfNeeded,
-    datasetItems,
-    datasetAggregations,
-    datasetTotal,
-    dataServiceItems,
-    dataServiceAggregations,
-    dataServiceTotal,
-    conceptItems,
-    conceptAggregations,
-    conceptTotal,
-    informationModelItems,
-    informationModelAggregations,
-    informationModelTotal,
-    publisherItems,
-    referenceData,
-    location,
-    conceptsCompare,
-    addConcept,
-    removeConcept,
-    searchAllEntities
-  } = props;
+interface Props extends PublicServicesProps, RouteComponentProps {
+  fetchDatasetsIfNeeded: (params: any) => void;
+  fetchDataServicesIfNeeded: (params: any) => void;
+  fetchConceptsIfNeeded: (params: any) => void;
+  fetchInformationModelsIfNeeded: (params: any) => void;
+  datasetItems: Partial<Dataset>[];
+  datasetAggregations: any;
+  datasetTotal: any;
+  dataServiceItems: Partial<DataService>[];
+  dataServiceAggregations: any;
+  dataServiceTotal: any;
+  conceptItems: Partial<Concept>[];
+  conceptAggregations: any;
+  conceptTotal: any;
+  informationModelItems: Partial<InformationModel>[];
+  informationModelAggregations: any;
+  informationModelTotal: any;
+  conceptsCompare: any;
+  addConcept: (concept: Partial<Concept>) => void;
+  removeConcept: (id?: string | undefined) => void;
+  searchAllEntities: AllEntities;
+}
 
+const SearchPage: FC<Props> = ({
+  fetchDatasetsIfNeeded,
+  fetchDataServicesIfNeeded,
+  fetchConceptsIfNeeded,
+  fetchInformationModelsIfNeeded,
+  datasetItems,
+  datasetAggregations,
+  datasetTotal,
+  dataServiceItems,
+  dataServiceAggregations,
+  dataServiceTotal,
+  conceptItems,
+  conceptAggregations,
+  conceptTotal,
+  informationModelItems,
+  informationModelAggregations,
+  informationModelTotal,
+  location,
+  conceptsCompare,
+  addConcept,
+  removeConcept,
+  searchAllEntities,
+  publicServices,
+  publicServicesAggregations,
+  publicServicesPage,
+  publicServicesEvents,
+  publicServicesActions: { getPublicServicesRequested: getPublicServices }
+}) => {
+  const [searchQuery, setSearchQuery] = useState('#');
   const {
     hits: searchAllEntitiesHits,
     page: searchAllEntitiesPage,
@@ -90,32 +117,29 @@ const SearchPage = props => {
     location.pathname === PATHNAME_INFORMATIONMODELS
       ? locationSearch
       : locationSearchParamQ;
+  const publicServiceSearchParams =
+    location.pathname === PATHNAME_PUBLIC_SERVICES
+      ? locationSearch
+      : locationSearchParamQ;
+
+  useEffect(() => {
+    if (
+      getConfig().showPublicService &&
+      shouldFetch(publicServiceSearchParams, searchQuery)
+    ) {
+      getPublicServices(publicServiceSearchParams);
+      setSearchQuery(generateQueryKey(publicServiceSearchParams));
+    }
+  }, [publicServiceSearchParams]);
 
   fetchDatasetsIfNeeded(datasetSearchParams);
   fetchDataServicesIfNeeded(dataServiceSearchParams);
   fetchConceptsIfNeeded(conceptSearchParams);
   fetchInformationModelsIfNeeded(informationModelSearchParams);
-  fetchPublishersIfNeeded();
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_DISTRIBUTIONTYPE);
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_APISTATUS);
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_LOS);
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_THEMES);
-  fetchReferenceDataIfNeeded(REFERENCEDATA_PATH_MEDIATYPES);
-
-  const topSectionClass = cx(
-    'top-section-search',
-    'mb-4',
-    'd-flex',
-    'flex-column',
-    'justify-content-between',
-    {
-      'top-section-search--image': !!(browser && browser.name !== 'ie')
-    }
-  );
 
   return (
     <div>
-      <section className={topSectionClass}>
+      <section className="top-section-search mb-4 d-flex flex-column justify-content-between top-section-search--image">
         <SearchBox>
           <SearchBoxTitle>
             <HitsStats
@@ -132,6 +156,7 @@ const SearchPage = props => {
               countConcepts={conceptTotal || 0}
               countApis={dataServiceTotal || 0}
               countInformationModels={informationModelTotal || 0}
+              countPublicServices={publicServicesPage?.totalElements || 0}
             />
           )}
         </SearchBox>
@@ -143,10 +168,6 @@ const SearchPage = props => {
               entities={searchAllEntitiesHits}
               aggregations={allResultsEntititesAggregations}
               page={searchAllEntitiesPage}
-              losItems={getLosStructure(referenceData)}
-              themesItems={getThemesStructure(referenceData)}
-              mediatypes={referenceData?.items?.[REFERENCEDATA_PATH_MEDIATYPES]}
-              publishers={publisherItems}
             />
           </Route>
           <Route exact path={PATHNAME_DATASETS}>
@@ -156,10 +177,6 @@ const SearchPage = props => {
               page={{
                 totalPages: Math.ceil((datasetTotal || 1) / HITS_PER_PAGE)
               }}
-              losItems={getLosStructure(referenceData)}
-              themesItems={getThemesStructure(referenceData)}
-              mediatypes={referenceData?.items?.[REFERENCEDATA_PATH_MEDIATYPES]}
-              publishers={publisherItems}
             />
           </Route>
           <Route exact path={PATHNAME_DATA_SERVICES}>
@@ -169,8 +186,6 @@ const SearchPage = props => {
               page={{
                 totalPages: Math.ceil((dataServiceTotal || 1) / HITS_PER_PAGE)
               }}
-              mediatypes={referenceData?.items?.[REFERENCEDATA_PATH_MEDIATYPES]}
-              publishers={publisherItems}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
@@ -180,7 +195,6 @@ const SearchPage = props => {
               page={{
                 totalPages: Math.ceil((conceptTotal || 1) / HITS_PER_PAGE)
               }}
-              publishers={publisherItems}
               compareConceptList={conceptsCompare}
               addConcept={addConcept}
               removeConcept={removeConcept}
@@ -195,8 +209,14 @@ const SearchPage = props => {
                   (informationModelTotal || 1) / HITS_PER_PAGE
                 )
               }}
-              losItems={getLosStructure(referenceData)}
-              publishers={publisherItems}
+            />
+          </Route>
+          <Route exact path={PATHNAME_PUBLIC_SERVICES}>
+            <ResultsPage
+              entities={publicServices}
+              aggregations={publicServicesAggregations ?? {}}
+              page={publicServicesPage ?? {}}
+              publicServicesEvents={publicServicesEvents}
             />
           </Route>
         </Switch>
@@ -205,4 +225,4 @@ const SearchPage = props => {
   );
 };
 
-export default SearchPage;
+export default compose<FC<Props>>(withPublicServices)(SearchPage);

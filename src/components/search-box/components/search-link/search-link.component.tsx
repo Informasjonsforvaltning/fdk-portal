@@ -5,10 +5,14 @@ import {
   PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
-  PATHNAME_INFORMATIONMODELS
+  PATHNAME_INFORMATIONMODELS,
+  PATHNAME_PUBLIC_SERVICES
 } from '../../../../constants/constants';
 import localization from '../../../../lib/localization';
 import { Entity } from '../../../../types/enums';
+import { getConfig } from '../../../../config';
+
+const smallWidth = !!getConfig().showPublicService;
 
 interface Props {
   entity: Entity;
@@ -35,13 +39,18 @@ const SearchLink: FC<Props> = ({ entity }) => {
       path: PATHNAME_INFORMATIONMODELS,
       icon: SC.InfomodIcon,
       translation: localization.informationModelLabel
+    },
+    [Entity.PUBLIC_SERVICE]: {
+      path: PATHNAME_PUBLIC_SERVICES,
+      icon: SC.PublicServiceIcon,
+      translation: localization.serviceLabel
     }
   };
 
   const { path, icon: Icon, translation } = categoriesLink[entity];
 
   return (
-    <SC.SearchLink to={path} type={entity}>
+    <SC.SearchLink to={path} type={entity} smallWidth={smallWidth}>
       <Icon />
       <span>{localization.showOnly}</span>
       <span>{translation.toLowerCase()}</span>

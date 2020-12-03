@@ -1,363 +1,445 @@
 import React, { FC } from 'react';
-import Scroll from 'react-scroll';
+import Link from '@fellesdatakatalog/link';
 
-import SC from './styled';
-import { InformationModel } from '../../types';
-import { getTranslateText } from '../../lib/translateText';
+import translations from '../../lib/localization';
+import { getTranslateText as translate } from '../../lib/translateText';
+
 import { Description } from './model-description/model-description.component';
-import localization from '../../lib/localization';
 import { ExpansionIndicatorDetails } from './expansion-indicator-details/expansion-indicator-details.component';
 import { ExpansionPanelHead, ExpansionPanelBody } from '../expansion-panel';
-import { ModelElementList } from './model-element-list/model-element-list.component';
+import ModelElementList from './model-element-list';
+import ValueRestrictions from './value-restrictions';
 import ListTitleSC from './list-title/styled';
-import { LinkExternal } from '../link-external/link-external.component';
 import ModelFieldSC from './model-field/styled';
 
-const ScrollLink = Scroll.Link;
+import SC from './styled';
+
+import type {
+  InformationModelElement,
+  InformationModelProperty,
+  Concept
+} from '../../types';
 
 interface Props {
-  informationModelDocument: InformationModel;
+  modelElements: Record<string, Partial<InformationModelElement>>;
+  modelProperties: Record<string, Partial<InformationModelProperty>>;
+  concepts: Concept[];
 }
 
 export const InfoModelStructure: FC<Props> = ({
-  informationModelDocument: {
-    name,
-    identifier,
-    modelDescription,
-    version,
-    concept,
-    objectTypes,
-    codeTypes,
-    dataTypes,
-    simpleTypes
-  }
-}) => (
-  <SC.InfoModelStructure>
-    <SC.Title>{getTranslateText(name)}</SC.Title>
+  modelElements,
+  modelProperties,
+  concepts
+}) => {
+  const rootObjectTypes = Object.values(modelElements)
+    .filter(Boolean)
+    .filter(({ elementTypes }) =>
+      elementTypes?.some(type => type.split('#').includes('RootObjectType'))
+    );
 
-    <SC.Section>
-      <SC.ObjectTypeExpansionPanel
-        showWithoutHeadAndPadding
-        shouldExpandOnHeadClick={false}
-        expansionIndicator={{
-          expand: <ExpansionIndicatorDetails />,
-          collapse: <ExpansionIndicatorDetails isExpanded />
-        }}
-      >
-        <ExpansionPanelBody>
-          <Description
-            identifier={identifier}
-            version={version}
-            concept={concept}
-            description={modelDescription}
-          />
-        </ExpansionPanelBody>
-      </SC.ObjectTypeExpansionPanel>
-    </SC.Section>
+  const objectTypes = Object.values(modelElements)
+    .filter(Boolean)
+    .filter(({ elementTypes }) =>
+      elementTypes?.some(type => type.split('#').includes('ObjectType'))
+    );
 
-    {objectTypes && (
-      <SC.Section>
-        <SC.SectionHeader>
-          {localization.infoMod.structure.objectType}
-        </SC.SectionHeader>
-        {objectTypes.map(node => (
-          <SC.ObjectTypeExpansionPanel
-            key={node.identifier}
-            id={node.identifier}
-          >
-            <ExpansionPanelHead>
-              {getTranslateText(node.name)}
-            </ExpansionPanelHead>
-            <ExpansionPanelBody>
-              {(node.identifier || node.concept) && (
-                <SC.ObjectTypeExpansionPanel
-                  showWithoutHeadAndPadding
-                  shouldExpandOnHeadClick={false}
-                  expansionIndicator={{
-                    expand: <ExpansionIndicatorDetails />,
-                    collapse: <ExpansionIndicatorDetails isExpanded />
-                  }}
-                >
-                  <ExpansionPanelBody>
-                    <Description
-                      identifier={node.identifier}
-                      description={node.description}
-                      concept={node.concept}
-                      belongsToModule={node.belongsToModule}
-                    />
-                  </ExpansionPanelBody>
-                </SC.ObjectTypeExpansionPanel>
-              )}
-              <ModelElementList
-                title={localization.infoMod.structure.attribute}
-                properties={node.attributes}
-              />
-              <ModelElementList
-                title={localization.infoMod.structure.role}
-                properties={node.roles}
-              />
+  const codeLists = Object.values(modelElements)
+    .filter(Boolean)
+    .filter(({ elementTypes }) =>
+      elementTypes?.some(type => type.split('#').includes('CodeList'))
+    );
 
-              {node.isSubclassOf?.identifier && (
-                <>
-                  <ListTitleSC.ListTitle>
-                    {localization.infoMod.structure.extendsFrom}
-                  </ListTitleSC.ListTitle>
-                  <ModelFieldSC.ModelField>
-                    <ScrollLink
-                      to={node.isSubclassOf.identifier}
-                      spy
-                      smooth
-                      isDynamic
-                      offset={0}
-                      duration={1500}
+  const dataTypes = Object.values(modelElements)
+    .filter(Boolean)
+    .filter(({ elementTypes }) =>
+      elementTypes?.some(type => type.split('#').includes('DataType'))
+    );
+
+  const simpleTypes = Object.values(modelElements)
+    .filter(Boolean)
+    .filter(({ elementTypes }) =>
+      elementTypes?.some(type => type.split('#').includes('SimpleType'))
+    );
+
+  const unwrapAttributes = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(({ propertyTypes }) =>
+        propertyTypes?.some(
+          type =>
+            type.split('#').includes('Attribute') ||
+            type.split('#').includes('Collection') ||
+            type.split('#').includes('Composition') ||
+            type.split('#').includes('Choice')
+        )
+      )
+      .filter(Boolean) ?? [];
+
+  const unwrapAssociations = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(({ propertyTypes }) =>
+        propertyTypes?.some(type => type.split('#').includes('Association'))
+      )
+      .filter(Boolean) ?? [];
+
+  const unwrapRoles = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(({ propertyTypes }) =>
+        propertyTypes?.some(type => type.split('#').includes('Role'))
+      )
+      .filter(Boolean) ?? [];
+
+  const unwrapAbstraction = (properties?: string[] | null) => {
+    const isAbstractionOf = (
+      properties
+        ?.map(property => modelProperties[property])
+        .filter(({ propertyTypes }) =>
+          propertyTypes?.some(type => type.split('#').includes('Abstraction'))
+        )
+        .filter(Boolean) ?? []
+    ).shift()?.isAbstractionOf;
+
+    return isAbstractionOf ? modelElements[isAbstractionOf] : null;
+  };
+
+  const unwrapRealization = (properties?: string[] | null) => {
+    const isRealizationOf = (
+      properties
+        ?.map(property => modelProperties[property])
+        .filter(({ propertyTypes }) =>
+          propertyTypes?.some(type => type.split('#').includes('Realization'))
+        )
+        .filter(Boolean) ?? []
+    ).shift()?.hasSupplier;
+
+    return isRealizationOf ? modelElements[isRealizationOf] : null;
+  };
+
+  const conceptMap = concepts.reduce<Record<string, Concept>>(
+    (previous, current) => ({ ...previous, [current.identifier]: current }),
+    {}
+  );
+
+  return (
+    <SC.InfoModelStructure>
+      {rootObjectTypes.length > 0 && (
+        <SC.Section>
+          <SC.SectionHeader>
+            {translations.infoMod.structure.rootObjectType}
+          </SC.SectionHeader>
+          {rootObjectTypes.map(
+            ({
+              identifier,
+              uri,
+              title,
+              description,
+              belongsToModule,
+              subject,
+              hasProperty
+            }) => (
+              <SC.ObjectTypeExpansionPanel
+                key={`${identifier}-${uri}`}
+                id={identifier}
+              >
+                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelBody>
+                  {(identifier || description || belongsToModule) && (
+                    <SC.ObjectTypeExpansionPanel
+                      showWithoutHeadAndPadding
+                      shouldExpandOnHeadClick={false}
+                      expansionIndicator={{
+                        expand: <ExpansionIndicatorDetails />,
+                        collapse: <ExpansionIndicatorDetails isExpanded />
+                      }}
                     >
-                      <span>
-                        {getTranslateText(node.isSubclassOf.name) ||
-                          node.isSubclassOf.identifier}
-                      </span>
-                    </ScrollLink>
-                  </ModelFieldSC.ModelField>
-                </>
-              )}
-            </ExpansionPanelBody>
-          </SC.ObjectTypeExpansionPanel>
-        ))}
-      </SC.Section>
-    )}
+                      <ExpansionPanelBody>
+                        <Description
+                          identifier={identifier}
+                          description={description}
+                          concept={subject ? conceptMap[subject] : undefined}
+                          abstraction={unwrapAbstraction(hasProperty)}
+                          realization={unwrapRealization(hasProperty)}
+                          belongsToModule={belongsToModule}
+                        />
+                      </ExpansionPanelBody>
+                    </SC.ObjectTypeExpansionPanel>
+                  )}
+                  <ModelElementList
+                    title={translations.infoMod.structure.attribute}
+                    properties={unwrapAttributes(hasProperty)}
+                    modelElements={modelElements}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.association}
+                    properties={unwrapAssociations(hasProperty)}
+                    modelElements={modelElements}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.role}
+                    properties={unwrapRoles(hasProperty)}
+                    modelElements={modelElements}
+                  />
+                </ExpansionPanelBody>
+              </SC.ObjectTypeExpansionPanel>
+            )
+          )}
+        </SC.Section>
+      )}
 
-    {codeTypes && (
-      <SC.Section>
-        <SC.SectionHeader>
-          {localization.infoMod.structure.codeList}
-        </SC.SectionHeader>
-        {codeTypes.map(node => (
-          <SC.ObjectTypeExpansionPanel
-            key={node.identifier}
-            id={node.identifier}
-          >
-            <ExpansionPanelHead>
-              {getTranslateText(node.name)}
-            </ExpansionPanelHead>
-            <ExpansionPanelBody>
-              {(node.identifier || node.concept) && (
-                <SC.ObjectTypeExpansionPanel
-                  showWithoutHeadAndPadding
-                  shouldExpandOnHeadClick={false}
-                  expansionIndicator={{
-                    expand: <ExpansionIndicatorDetails />,
-                    collapse: <ExpansionIndicatorDetails isExpanded />
-                  }}
-                >
-                  <ExpansionPanelBody>
-                    <Description
-                      identifier={node.identifier}
-                      description={node.description}
-                      concept={node.concept}
-                      belongsToModule={node.belongsToModule}
-                    />
-                  </ExpansionPanelBody>
-                </SC.ObjectTypeExpansionPanel>
-              )}
-
-              {node.codeListReference && (
-                <>
-                  <ListTitleSC.ListTitle>
-                    {localization.infoMod.structure.externalCodelist}
-                  </ListTitleSC.ListTitle>
-                  <ModelFieldSC.ModelField>
-                    <LinkExternal
-                      uri={node.codeListReference}
-                      prefLabel={node.codeListReference}
-                      openInNewTab={false}
-                    />
-                  </ModelFieldSC.ModelField>
-                </>
-              )}
-
-              <ModelElementList
-                title={localization.infoMod.structure.code}
-                properties={node.properties}
-              />
-
-              {node.isSubclassOf?.identifier && (
-                <>
-                  <ListTitleSC.ListTitle>
-                    {localization.infoMod.structure.extendsFrom}
-                  </ListTitleSC.ListTitle>
-                  <ModelFieldSC.ModelField>
-                    <ScrollLink
-                      to={node.isSubclassOf.identifier}
-                      spy
-                      smooth
-                      isDynamic
-                      offset={0}
-                      duration={1500}
+      {objectTypes.length > 0 && (
+        <SC.Section>
+          <SC.SectionHeader>
+            {translations.infoMod.structure.objectType}
+          </SC.SectionHeader>
+          {objectTypes.map(
+            ({
+              identifier,
+              uri,
+              title,
+              description,
+              belongsToModule,
+              subject,
+              hasProperty
+            }) => (
+              <SC.ObjectTypeExpansionPanel
+                key={`${identifier}-${uri}`}
+                id={identifier}
+              >
+                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelBody>
+                  {(identifier || description || belongsToModule) && (
+                    <SC.ObjectTypeExpansionPanel
+                      showWithoutHeadAndPadding
+                      shouldExpandOnHeadClick={false}
+                      expansionIndicator={{
+                        expand: <ExpansionIndicatorDetails />,
+                        collapse: <ExpansionIndicatorDetails isExpanded />
+                      }}
                     >
-                      <span>
-                        {getTranslateText(node.isSubclassOf.name) ||
-                          node.isSubclassOf.identifier}
-                      </span>
-                    </ScrollLink>
-                  </ModelFieldSC.ModelField>
-                </>
-              )}
-            </ExpansionPanelBody>
-          </SC.ObjectTypeExpansionPanel>
-        ))}
-      </SC.Section>
-    )}
+                      <ExpansionPanelBody>
+                        <Description
+                          identifier={identifier}
+                          description={description}
+                          concept={subject ? conceptMap[subject] : undefined}
+                          abstraction={unwrapAbstraction(hasProperty)}
+                          realization={unwrapRealization(hasProperty)}
+                          belongsToModule={belongsToModule}
+                        />
+                      </ExpansionPanelBody>
+                    </SC.ObjectTypeExpansionPanel>
+                  )}
+                  <ModelElementList
+                    title={translations.infoMod.structure.attribute}
+                    properties={unwrapAttributes(hasProperty)}
+                    modelElements={modelElements}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.association}
+                    properties={unwrapAssociations(hasProperty)}
+                    modelElements={modelElements}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.role}
+                    properties={unwrapRoles(hasProperty)}
+                    modelElements={modelElements}
+                  />
+                </ExpansionPanelBody>
+              </SC.ObjectTypeExpansionPanel>
+            )
+          )}
+        </SC.Section>
+      )}
 
-    {dataTypes && (
-      <SC.Section>
-        <SC.SectionHeader>
-          {localization.infoMod.structure.dataType}
-        </SC.SectionHeader>
-        {dataTypes.map(node => (
-          <SC.ObjectTypeExpansionPanel
-            key={node.identifier}
-            id={node.identifier}
-          >
-            <ExpansionPanelHead>
-              {getTranslateText(node.name)}
-            </ExpansionPanelHead>
-            <ExpansionPanelBody>
-              {(node.identifier || node.concept) && (
-                <SC.ObjectTypeExpansionPanel
-                  showWithoutHeadAndPadding
-                  shouldExpandOnHeadClick={false}
-                  expansionIndicator={{
-                    expand: <ExpansionIndicatorDetails />,
-                    collapse: <ExpansionIndicatorDetails isExpanded />
-                  }}
-                >
-                  <ExpansionPanelBody>
-                    <Description
-                      identifier={node.identifier}
-                      description={node.description}
-                      concept={node.concept}
-                      belongsToModule={node.belongsToModule}
-                    />
-                  </ExpansionPanelBody>
-                </SC.ObjectTypeExpansionPanel>
-              )}
-              <ModelElementList
-                title={localization.infoMod.structure.attribute}
-                properties={node.attributes}
-              />
-              <ModelElementList
-                title={localization.infoMod.structure.role}
-                properties={node.roles}
-              />
-
-              {node.isSubclassOf?.identifier && (
-                <>
-                  <ListTitleSC.ListTitle>
-                    {localization.infoMod.structure.extendsFrom}
-                  </ListTitleSC.ListTitle>
-                  <ModelFieldSC.ModelField>
-                    <ScrollLink
-                      to={node.isSubclassOf.identifier}
-                      spy
-                      smooth
-                      isDynamic
-                      offset={0}
-                      duration={1500}
+      {codeLists.length > 0 && (
+        <SC.Section>
+          <SC.SectionHeader>
+            {translations.infoMod.structure.codeList}
+          </SC.SectionHeader>
+          {codeLists.map(
+            ({
+              identifier,
+              uri,
+              title,
+              description,
+              belongsToModule,
+              codeListReference,
+              codes
+            }) => (
+              <SC.ObjectTypeExpansionPanel
+                key={`${identifier}-${uri}`}
+                id={identifier}
+              >
+                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelBody>
+                  {(identifier || description || belongsToModule) && (
+                    <SC.ObjectTypeExpansionPanel
+                      showWithoutHeadAndPadding
+                      shouldExpandOnHeadClick={false}
+                      expansionIndicator={{
+                        expand: <ExpansionIndicatorDetails />,
+                        collapse: <ExpansionIndicatorDetails isExpanded />
+                      }}
                     >
-                      <span>
-                        {getTranslateText(node.isSubclassOf.name) ||
-                          node.isSubclassOf.identifier}
-                      </span>
-                    </ScrollLink>
-                  </ModelFieldSC.ModelField>
-                </>
-              )}
-            </ExpansionPanelBody>
-          </SC.ObjectTypeExpansionPanel>
-        ))}
-      </SC.Section>
-    )}
+                      <ExpansionPanelBody>
+                        <Description
+                          identifier={identifier}
+                          description={description}
+                          belongsToModule={belongsToModule}
+                        />
+                      </ExpansionPanelBody>
+                    </SC.ObjectTypeExpansionPanel>
+                  )}
+                  {codes && codes.length > 0 && (
+                    <ModelElementList
+                      title={translations.infoMod.structure.code}
+                      properties={codes}
+                      modelElements={modelElements}
+                    />
+                  )}
+                  {codeListReference && (
+                    <>
+                      <ListTitleSC.ListTitle>
+                        {translations.infoMod.structure.externalCodelist}
+                      </ListTitleSC.ListTitle>
+                      <ModelFieldSC.ModelField>
+                        <Link href={codeListReference} external>
+                          {codeListReference}
+                        </Link>
+                      </ModelFieldSC.ModelField>
+                    </>
+                  )}
+                </ExpansionPanelBody>
+              </SC.ObjectTypeExpansionPanel>
+            )
+          )}
+        </SC.Section>
+      )}
 
-    {simpleTypes && (
-      <SC.Section>
-        <SC.SectionHeader>
-          {localization.infoMod.structure.simpleType}
-        </SC.SectionHeader>
-        {simpleTypes.map(node => (
-          <SC.ObjectTypeExpansionPanel
-            key={node.identifier}
-            id={node.identifier}
-          >
-            <ExpansionPanelHead>
-              {getTranslateText(node.name)}
-            </ExpansionPanelHead>
-            <ExpansionPanelBody>
-              {(node.identifier || node.concept) && (
-                <SC.ObjectTypeExpansionPanel
-                  showWithoutHeadAndPadding
-                  shouldExpandOnHeadClick={false}
-                  expansionIndicator={{
-                    expand: <ExpansionIndicatorDetails />,
-                    collapse: <ExpansionIndicatorDetails isExpanded />
-                  }}
-                >
-                  <ExpansionPanelBody>
-                    <Description
-                      identifier={node.identifier}
-                      description={node.description}
-                      concept={node.concept}
-                      belongsToModule={node.belongsToModule}
-                    />
-                  </ExpansionPanelBody>
-                </SC.ObjectTypeExpansionPanel>
-              )}
-              {node.typeDefinitionReference && (
-                <>
-                  <ListTitleSC.ListTitle>
-                    {localization.infoMod.structure.definitionReference}
-                  </ListTitleSC.ListTitle>
-                  <ModelFieldSC.ModelField>
-                    <LinkExternal
-                      uri={node.typeDefinitionReference}
-                      prefLabel={node.typeDefinitionReference}
-                      openInNewTab={false}
-                    />
-                  </ModelFieldSC.ModelField>
-                </>
-              )}
-              <ModelElementList
-                title={localization.infoMod.structure.attribute}
-                properties={node.attributes}
-              />
-              <ModelElementList
-                title={localization.infoMod.structure.role}
-                properties={node.roles}
-              />
-              {node.isSubclassOf?.identifier && (
-                <>
-                  <ListTitleSC.ListTitle>
-                    {localization.infoMod.structure.extendsFrom}
-                  </ListTitleSC.ListTitle>
-                  <ModelFieldSC.ModelField>
-                    <ScrollLink
-                      to={node.isSubclassOf.identifier}
-                      spy
-                      smooth
-                      isDynamic
-                      offset={0}
-                      duration={1500}
+      {dataTypes.length > 0 && (
+        <SC.Section>
+          <SC.SectionHeader>
+            {translations.infoMod.structure.dataType}
+          </SC.SectionHeader>
+          {dataTypes.map(
+            ({
+              identifier,
+              uri,
+              title,
+              description,
+              belongsToModule,
+              subject,
+              hasProperty
+            }) => (
+              <SC.ObjectTypeExpansionPanel
+                key={`${identifier}-${uri}`}
+                id={identifier}
+              >
+                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelBody>
+                  {(identifier || description || belongsToModule) && (
+                    <SC.ObjectTypeExpansionPanel
+                      showWithoutHeadAndPadding
+                      shouldExpandOnHeadClick={false}
+                      expansionIndicator={{
+                        expand: <ExpansionIndicatorDetails />,
+                        collapse: <ExpansionIndicatorDetails isExpanded />
+                      }}
                     >
-                      <span>
-                        {getTranslateText(node.isSubclassOf.name) ||
-                          node.isSubclassOf.identifier}
-                      </span>
-                    </ScrollLink>
-                  </ModelFieldSC.ModelField>
-                </>
-              )}
-            </ExpansionPanelBody>
-          </SC.ObjectTypeExpansionPanel>
-        ))}
-      </SC.Section>
-    )}
-  </SC.InfoModelStructure>
-);
+                      <ExpansionPanelBody>
+                        <Description
+                          identifier={identifier}
+                          description={description}
+                          concept={subject ? conceptMap[subject] : undefined}
+                          belongsToModule={belongsToModule}
+                        />
+                      </ExpansionPanelBody>
+                    </SC.ObjectTypeExpansionPanel>
+                  )}
+                  <ModelElementList
+                    title={translations.infoMod.structure.attribute}
+                    properties={unwrapAttributes(hasProperty)}
+                    modelElements={modelElements}
+                  />
+                </ExpansionPanelBody>
+              </SC.ObjectTypeExpansionPanel>
+            )
+          )}
+        </SC.Section>
+      )}
+
+      {simpleTypes.length > 0 && (
+        <SC.Section>
+          <SC.SectionHeader>
+            {translations.infoMod.structure.simpleType}
+          </SC.SectionHeader>
+          {simpleTypes.map(
+            ({
+              identifier,
+              uri,
+              title,
+              description,
+              belongsToModule,
+              typeDefinitionReference,
+              length,
+              maxLength,
+              minInclusive,
+              maxInclusive,
+              pattern,
+              totalDigits
+            }) => (
+              <SC.ObjectTypeExpansionPanel
+                key={`${identifier}-${uri}`}
+                id={identifier}
+              >
+                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelBody>
+                  {(identifier || description || belongsToModule) && (
+                    <SC.ObjectTypeExpansionPanel
+                      showWithoutHeadAndPadding
+                      shouldExpandOnHeadClick={false}
+                      expansionIndicator={{
+                        expand: <ExpansionIndicatorDetails />,
+                        collapse: <ExpansionIndicatorDetails isExpanded />
+                      }}
+                    >
+                      <ExpansionPanelBody>
+                        <Description
+                          identifier={identifier}
+                          description={description}
+                          belongsToModule={belongsToModule}
+                        />
+                      </ExpansionPanelBody>
+                    </SC.ObjectTypeExpansionPanel>
+                  )}
+                  {typeDefinitionReference && (
+                    <>
+                      <ListTitleSC.ListTitle>
+                        {translations.infoMod.structure.definitionReference}
+                      </ListTitleSC.ListTitle>
+                      <ModelFieldSC.ModelField>
+                        <Link href={typeDefinitionReference} external>
+                          {typeDefinitionReference}
+                        </Link>
+                      </ModelFieldSC.ModelField>
+                    </>
+                  )}
+                  <ValueRestrictions
+                    title={translations.infoMod.structure.restrictions}
+                    length={length}
+                    maxLength={maxLength}
+                    minInclusive={minInclusive}
+                    maxInclusive={maxInclusive}
+                    pattern={pattern}
+                    totalDigits={totalDigits}
+                  />
+                </ExpansionPanelBody>
+              </SC.ObjectTypeExpansionPanel>
+            )
+          )}
+        </SC.Section>
+      )}
+    </SC.InfoModelStructure>
+  );
+};

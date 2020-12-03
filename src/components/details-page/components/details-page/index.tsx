@@ -18,7 +18,8 @@ import {
   PATHNAME_DATASETS,
   PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
-  PATHNAME_INFORMATIONMODELS
+  PATHNAME_INFORMATIONMODELS,
+  PATHNAME_PUBLIC_SERVICES
 } from '../../../../constants/constants';
 
 import withReferenceData, {
@@ -69,7 +70,8 @@ const rootPaths = {
   [Entity.DATASET]: PATHNAME_DATASETS,
   [Entity.DATA_SERVICE]: PATHNAME_DATA_SERVICES,
   [Entity.CONCEPT]: PATHNAME_CONCEPTS,
-  [Entity.INFORMATION_MODEL]: PATHNAME_INFORMATIONMODELS
+  [Entity.INFORMATION_MODEL]: PATHNAME_INFORMATIONMODELS,
+  [Entity.PUBLIC_SERVICE]: PATHNAME_PUBLIC_SERVICES
 };
 
 const DetailsPage: FC<PropsWithChildren<Props>> = ({
@@ -136,6 +138,14 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   const isLosTheme = ({ uri, name, losPaths }: EnrichedTheme) =>
     !!uri && !!name && !!losPaths;
 
+  const publisherLabel = {
+    [Entity.DATASET]: translations.detailsPage.owner,
+    [Entity.DATA_SERVICE]: translations.detailsPage.provider,
+    [Entity.CONCEPT]: translations.detailsPage.responsible,
+    [Entity.INFORMATION_MODEL]: translations.detailsPage.owner,
+    [Entity.PUBLIC_SERVICE]: translations.detailsPage.provider
+  };
+
   const publisherName = translate(publisher?.prefLabel || publisher?.name);
 
   return (
@@ -148,7 +158,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       />
       <SC.SubBanner>
         <SC.Publisher>
-          {translations.formatString(translations.detailsPage.publisher, {
+          {translations.formatString(publisherLabel[entity], {
             publisher: publisherName
           })}
         </SC.Publisher>

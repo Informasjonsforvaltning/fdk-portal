@@ -3,7 +3,7 @@ import { cmsApiGet } from './host';
 
 export const getRecentNewsEntities = (pageLimit: number) =>
   cmsApiGet(
-    `/node/news?page[limit]=${pageLimit}&sort=-created&include=field_modules,field_modules.field_image,field_modules.field_image.field_media_image,field_global_taxonomy,field_modules.field_remote_video`
+    `/node/news?filter[status]=1&page[limit]=${pageLimit}&sort=-created&include=field_modules,field_modules.field_image,field_modules.field_image.field_media_image,field_global_taxonomy,field_modules.field_remote_video`
   ).then(deserialize);
 
 export const getNewsEntity = (id: string) =>

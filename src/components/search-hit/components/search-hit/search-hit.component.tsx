@@ -32,6 +32,8 @@ function getPublisherLabel(type: SearchTypes) {
       return `${localization.responsible}:`;
     case SearchTypes.informationModel:
       return `${localization.responsible}:`;
+    case SearchTypes.publicService:
+      return `${localization.provider}:`;
     default:
       return '';
   }

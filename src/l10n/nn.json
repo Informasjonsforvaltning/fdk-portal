@@ -41,6 +41,7 @@
   "conceptLabel": "Omgrep",
   "informationModelLabel": "Informasjonsmodell",
   "dataServiceLabel": "Datateneste",
+  "serviceLabel": "Teneste",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
@@ -149,7 +150,8 @@
     "datasetTab": "Datasett",
     "apiTab": "API",
     "termTab": "Omgrep",
-    "informationModelTab": "Informasjonsmodellar"
+    "informationModelTab": "Informasjonsmodellar",
+    "serviceTab": "Tenester"
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API, {2} omgrep og {3} informasjonsmodellar",
@@ -179,7 +181,8 @@
       "ANNET": "Anna"
     },
     "provenance": "Opphav",
-    "format": "Format"
+    "format": "Format",
+    "lifeEvents": "Livshendelser"
   },
   "result": {
     "dataset": "Datasett",
@@ -493,7 +496,12 @@
       "jsonld": "JSON-LD",
       "rdfxml": "RDF/XML"
     },
+    "type": "Type",
     "status": "Status",
+    "statusCompleted": "Fullført",
+    "statusDeprecated": "Foreldet",
+    "statusUnderDevelopment": "Under utvikling",
+    "statusWithdrawn": "Tilbaketrukket",
     "modelStatus": "Modellstatus",
     "language": "Språk",
     "issued": "Utgjevingsdato",
@@ -506,7 +514,12 @@
     "moreInfo": "Meir informasjon om informasjonsmodellen",
     "seeAlso": "Se også",
     "identifier": "Identifikator",
+    "isPartOf": "En del av",
+    "hasPart": "Har del",
+    "isReplacedBy": "Erstattes av",
+    "replaces": "Erstatter",
     "keywords": "Emneord",
+    "license": "Lisens",
     "category": "Modellkategori",
     "relatedAPIHeader": "Høyrer til API",
     "informationModelDescription": "Informasjonsmodelbeskrivelse",
@@ -517,6 +530,7 @@
       "dataType": "Datatype",
       "simpleType": "Enkelttype",
       "attribute": "Attributt",
+      "association": "Assosiasjon",
       "role": "Rolle",
       "extendsFrom": "Arver frå",
       "code": "Kode",
@@ -524,9 +538,19 @@
       "definitionReference": "Referanse til definisjon",
       "restrictions": "Verdirestriksjonar"
     },
+    "restriction": {
+      "valueLength": "Lengde",
+      "maxLength": "Maksimum lengde",
+      "minInclusive": "Minimum verdi",
+      "maxInclusive": "Maksimum verdi",
+      "pattern": "Mønster",
+      "totalDigits": "Antall siffer"
+    },
     "modelDescription": {
       "belongsToModule": "Høyrer til modul",
-      "conceptReference": "Omgrepsreferanse"
+      "conceptReference": "Omgrepsreferanse",
+      "abstractionOf": "Abstraksjon av",
+      "realizationOf": "Realisering av"
     }
   },
   "sourceRelationship": {
@@ -541,10 +565,13 @@
         "dataset": "Datasettbeskrivelse",
         "dataservice": "Datatenestebeskrivelse",
         "concept": "Omgrepsbeskrivelse",
-        "infomod": "Informasjonsmodellbeskrivelse"
+        "infomod": "Informasjonsmodellbeskrivelse",
+        "publicservice": "Tenestebeskrivelse"
       }
     },
-    "publisher": "Eigar: {publisher}",
+    "owner": "Eigar: {publisher}",
+    "provider": "Tilbydar: {publisher}",
+    "responsible": "Ansvarleg: {publisher}",
     "openData": "Opne data",
     "publicData": "Kan deles offentleg",
     "restrictedData": "Begrensa offentlegheit",
@@ -602,7 +629,13 @@
         "informationModel": "Informasjonsmodell",
         "identifiers": "Identifikatorer",
         "keywords": "Emneord",
+        "relations": "Relasjoner",
+        "conceptReferences": "Omgrep brukt om modellen",
+        "spatialRestrictions": "Geografisk avgrensning",
         "contactInformation": "Kontaktinformasjon"
+      },
+      "publicService": {
+        "description": "Beskrivelse"
       }
     }
   },
@@ -613,77 +646,77 @@
       "accessibility": "Tilgjengelegheit",
       "findability": "Søkbarheit",
       "interoperability": "Interoperabilitet",
-      "readability": "Lesbarhet",
+      "readability": "Lesbarheit",
       "reusability": "Gjenbrukbarheit"
     },
     "tooltipText": {
       "accessibility": "Metadata og data kan delast og utvekslast maskinelt via opne, veldefinerte grensesnitt og format.",
-      "findability": "Første steg for å nytta data er å finna han. Metadata og data skal vera enkelt å finna både for menneske og maskiner.",
-      "interoperability": "Metadata og data er beskrivne og dokumenterte med utgangspunkt i standardar.",
-      "readability": "Metadata og data er representerte på ein brukarvennleg og forståeleg måte.",
-      "reusability": "Metadata og data er beskrivne godt nok til at innhaldet enkelt lèt seg vurdera og gjenbruka."
+      "findability": "Første steg for å ta i bruk data er å finne den. Metadata og data skal være enkelt å finne både for menneske og maskinar.",
+      "interoperability": "Metadata og data kan delast og utvekslast maskinelt via opne, veldefinerte grensesnitt og formater.",
+      "readability": "Metadata og data er representert på ein brukarvennleg og forståeleg måte.",
+      "reusability": "Metadata og data kan delast og utvekslast maskinelt via opne, veldefinerte grensesnitt og formater."
     },
     "indicator": {
       "distributableData": "Tilgangslenke er oppgitt",
       "keywordUsage": "Nøkkelord er oppgitt",
       "subjectUsage": "Begrep er oppgitt",
-      "geoSearch": "Datasettet er geografisk avgrenset",
+      "geoSearch": "Datasettet er geografisk avgrensa",
       "controlledVocabularyUsage": "Distribusjon har mediatype",
       "licenseInformation": "Distribusjonslisensen er oppgitt",
       "contactPoint": "Kontaktinformasjon er oppgitt",
       "title": "Tittel er konsis",
       "titleNoOrgName": "Organisasjonens navn er ikke med i tittel",
       "description": "Beskrivelsen er konsis",
-      "descriptionWithoutTitle": "Tittelen er ikke en del av beskrivelsen"
+      "descriptionWithoutTitle": "Tittelen er ikkje ein del av beskrivinga"
     },
     "indicatorDescription": {
-      "distributableData": "Det finnes en tilgangsURL til datasett på distribusjon eller endpointURL på en tilknyttet datatjeneste.",
-      "keywordUsage": "Det finnes et eller flere nøkkelord tilknyttet datasettbeskrivelsen.",
-      "subjectUsage": "Det finnes et eller flere begreper tilknyttet datasettbeskrivelsen.",
-      "geoSearch": "Datasettet er geografisk avgrenset.",
-      "controlledVocabularyUsage": "Det finnes et eller flere format på distribusjonen til datasettbeskrivelsen som finnes i IANAs liste over mediatyper.",
-      "licenseInformation": "Det finnes en lisens for å gjenbruke datasettet på distribusjonsklassen til datasettet.",
-      "contactPoint": "Det finnes kontaktinformasjon for hvem konsument kan henvende seg til.",
+      "distributableData": "Det finnast ein tilgangsURL til datasett på distribusjon eller endpointURL på ein tilknytta datateneste.",
+      "keywordUsage": "Det finnast eit eller fleire nøkkelord tilknytta datasettbeskrivinga.",
+      "subjectUsage": "Det finnast eit eller fleire omgreper tilknytta datasettbeskrivinga.",
+      "geoSearch": "Datasettet er geografisk avgrensa.",
+      "controlledVocabularyUsage": "Det finnast eit eller fleire format på distribusjonen til datasett beskrivinga som finnast i IANAs liste over mediatypar.",
+      "licenseInformation": "Detfinnasteinlisens for å gjenbruke datasettet på distribusjonsklassen til datasettet.",
+      "contactPoint": "Det finnast kontaktinformasjon for kven konsument kan vende seg til.",
       "title": "Tittel er mindre enn 100 tegn.",
-      "titleNoOrgName": "Organisasjonens navn er ikke med i tittel.",
-      "description": "Beskrivelsen er mindre enn 400 tegn, ikke regnet med mellomrom.",
-      "descriptionWithoutTitle": "Tittelen er ikke en del av beskrivelsen."
+      "titleNoOrgName": "Organisasjonen sitt namn er ikkje med i tittel.",
+      "description": "Beskrivinga er mindre enn 400 tegn, ikkje regna med mellomrom.",
+      "descriptionWithoutTitle": "Tittelen er ikkje ein del av beskrivinga."
     },
     "indicatorWeight": "Vekt: {weight}",
-    "descriptionsTotal": "skildringar totalt",
-    "newDescriptions": "nye skildringar {0}",
+    "descriptionsTotal": "beskrivingar totalt",
+    "newDescriptions": "nye beskrivingar {0}",
     "lastYear": "siste år",
     "lastMonth": "siste månad",
     "lastWeek": "siste veke",
-    "metadataQualityIsExcellent": "Metadatakvaliteten er utmerket",
+    "metadataQualityIsExcellent": "Metadatakvaliteten er utmerkt",
     "metadataQualityIsGood": "Metadatakvaliteten er god",
-    "metadataQualityIsSufficient": "Metadatakvaliteten er tilstrekkelig",
-    "metadataQualityIsPoor": "Metadatakvaliteten er dårlig",
+    "metadataQualityIsSufficient": "Metadatakvaliteten er tilstrekkeleg",
+    "metadataQualityIsPoor": "Metadatakvaliteten er dårleg",
     "metaDataMiddle": "middels",
     "datasetIs": "datasett som er {0}",
     "authoritativeSources": "autoritative kjelder",
     "open": "opne",
     "metadataQualityCatalog": "metadatakvaliteten for datakatalogen er {0}",
-    "metadataQualitySatisfiedCriteria": "av kriteriane er oppfyld",
+    "metadataQualitySatisfiedCriteria": "av kriteriaer oppfylt",
     "organizationPageTitle": "Innhald for {organizationName}",
-    "organizationDatasetCatalogPageTitle": "Datasettbeskrivelsene til {organizationName}",
-    "organizationDatasetCatalogPageSubtitle": "Metadatakvalitet for datasettbeskrivelsene",
-    "organizationDatasetPageSubtitle": "Metadatakvalitet for datasettbeskrivelsen av",
-    "datasetCatalogStatistics": "Datasettbeskrivelser",
-    "datasetTitle": "Tittel på datasettbeskrivelse",
-    "loadMoreDatasets": "Last inn flere datasettbeskrivelser (gjenstår: {count})",
-    "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",
-    "whatIsMetadataQualityFaqDescription": "Metadatakvalitet er ment som et hjelpeverktøy til dataeiere slik at de kan vurdere metadata mot ulike indikatorer.",
-    "whatIsMetadataQualityFaqLink": "Lær mer om metadatakvalitet",
-    "averageRatingForOrganization": "Gjennomsnitt for virksomheten",
-    "organisationName": "Virksomhetsnavn",
+    "organizationDatasetCatalogPageTitle": "Datasettbeskrivingane til {organizationName}",
+    "organizationDatasetCatalogPageSubtitle": "Metadatakvalitet for datasettbeskrivingane",
+    "organizationDatasetPageSubtitle": "Metadatakvalitet for datasettbeskrivinga av",
+    "datasetCatalogStatistics": "Datasettbeskrivingar",
+    "datasetTitle": "Tittel på datasettbeskriving",
+    "loadMoreDatasets": "Last inn flere datasettbeskrivingar (står att: {count})",
+    "whatIsMetadataQualityFaqTitle": "Kva er metadatakvalitet?",
+    "whatIsMetadataQualityFaqDescription": "Metadatakvalitet er meint som eit hjelpeverktøy til dataeiere slik at dei kan vurdere metadata mot ulike indikatorar.",
+    "whatIsMetadataQualityFaqLink": "Lær meir om metadatakvalitet",
+    "averageRatingForOrganization": "Gjennomsnitt for verksemden",
+    "organisationName": "Verksemdsnamn",
     "organisationNumber": "Organisasjonsnummer",
     "organisationForm": "Organisasjonsform",
     "organisationBusinessCodes": "Næringskode(r)",
     "organisationInstitutionalSectorCode": "Institusjonell sektorkode",
-    "organisationHomePage": "Hjemmeside",
-    "organisationMoreInfo": "Flere opplysninger",
-    "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret"
+    "organisationHomePage": "Heimeside",
+    "organisationMoreInfo": "Fleire opplysningar",
+    "organisationInEnhetsregisteret": "Opplysningar om {organizationName} i Enhetsregisteret"
   },
   "publishingPage": {
     "title": "Publisere i Felles datakatalog",

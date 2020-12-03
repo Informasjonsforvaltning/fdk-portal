@@ -11,15 +11,6 @@ const InfoModelStructure = styled.div`
   }
 `;
 
-const Title = styled.h2`
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 1em;
-  font-size: 2.4rem;
-  font-weight: 600;
-`;
-
 const Section = styled.div``;
 
 const SectionHeader = styled.h3`
@@ -66,7 +57,6 @@ const ObjectTypeExpansionPanel = styled(ExpansionPanel)<{
 
 export default {
   InfoModelStructure,
-  Title,
   Section,
   SectionHeader,
   ObjectTypeExpansionPanel

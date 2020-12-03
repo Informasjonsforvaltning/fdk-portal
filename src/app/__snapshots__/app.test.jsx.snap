@@ -63,6 +63,11 @@ exports[`should render App correctly 1`] = `
     <Route
       component={[Function]}
       exact={true}
+      path="/public-services"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
       path="/news-archive"
     />
     <Route
@@ -173,6 +178,27 @@ exports[`should render App correctly 1`] = `
           }
           exact={true}
           path="/dataservices/:dataServiceId"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "compare": null,
+              "type": Object {
+                "$$typeof": Symbol(react.memo),
+                "compare": null,
+                "type": Object {
+                  "$$typeof": Symbol(react.memo),
+                  "WrappedComponent": [Function],
+                  "compare": null,
+                  "displayName": "Connect(WrappedComponent)",
+                  "type": [Function],
+                },
+              },
+            }
+          }
+          exact={true}
+          path="/public-services/:publicServiceId"
         />
         <Route
           component={[Function]}

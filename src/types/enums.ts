@@ -13,14 +13,16 @@ export enum SearchTypes {
   dataset,
   dataservice,
   concept,
-  informationModel
+  informationModel,
+  publicService
 }
 
 export enum Entity {
   DATASET = 'dataset',
   DATA_SERVICE = 'dataservice',
   CONCEPT = 'concept',
-  INFORMATION_MODEL = 'informationmodel'
+  INFORMATION_MODEL = 'informationmodel',
+  PUBLIC_SERVICE = 'public_service'
 }
 
 export enum DataFormat {

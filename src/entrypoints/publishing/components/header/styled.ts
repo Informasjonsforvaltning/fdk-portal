@@ -110,10 +110,12 @@ const MenuButton = styled.button`
 `;
 
 const Menu = styled.ul`
+  position: relative;
   border-radius: 5px;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  z-index: 1;
 
   & > li > a {
     display: block;

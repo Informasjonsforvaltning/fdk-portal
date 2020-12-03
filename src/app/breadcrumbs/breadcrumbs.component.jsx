@@ -13,17 +13,19 @@ import {
   PATHNAME_MAIN_PAGE,
   PATHNAME_NEWS_ARCHIVE,
   PATHNAME_NEWS_ARTICLE,
-  PATHNAME_ORGANIZATIONS
+  PATHNAME_ORGANIZATIONS,
+  PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 import { DatasetBreadcrumb } from './dataset-breadcrumb/dataset-breadcrumb';
 import { DataServiceBreadcrumb } from './data-service-breadcrumb/data-service-breadcrumb';
 import { ConceptBreadcrumb } from './concept-breadcrumb/concept-breadcrumb';
-import { InformationModelBreadcrumb } from './informationModel-breadbrumb/information-breadcrumb';
+import InformationModelBreadcrumb from './informationModel-breadbrumb';
 import { PathNameBreadcrumb } from './pathname-breadcrumb/pathname-breadcrumb';
 import './breadcrumbs.scss';
 import { getConfig } from '../../config';
 import { NewsBreadcrumb } from './news-breadcrumb/news-breadcrumb';
 import OrganizationBreadcrumb from './organization-breadcrumb';
+import PublicServiceBreadcrumb from './public-service-breadcrumb';
 
 // define some custom breadcrumbs for certain routes (optional)
 const routes = [
@@ -89,6 +91,10 @@ const routes = [
   {
     path: `${PATHNAME_ORGANIZATIONS}/:organizationId/datasets/:id`,
     breadcrumb: DatasetBreadcrumb
+  },
+  {
+    path: `${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`,
+    breadcrumb: () => <PublicServiceBreadcrumb />
   }
 ];
 
