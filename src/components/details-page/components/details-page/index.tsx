@@ -142,7 +142,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     [Entity.DATASET]: translations.detailsPage.owner,
     [Entity.DATA_SERVICE]: translations.detailsPage.provider,
     [Entity.CONCEPT]: translations.detailsPage.responsible,
-    [Entity.INFORMATION_MODEL]: translations.detailsPage.owner,
+    [Entity.INFORMATION_MODEL]: translations.detailsPage.responsible,
     [Entity.PUBLIC_SERVICE]: translations.detailsPage.provider
   };
 
