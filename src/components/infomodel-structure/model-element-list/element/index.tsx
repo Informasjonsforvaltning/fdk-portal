@@ -92,7 +92,7 @@ const Element: FC<Props> = ({ property, code, modelElements, concepts }) => {
         <span>
           {type && (
             <ScollLink
-              to={type.identifier ?? type.uri ?? ''}
+              to={type.uri ?? type.identifier ?? ''}
               spy
               smooth
               isDynamic
@@ -106,7 +106,7 @@ const Element: FC<Props> = ({ property, code, modelElements, concepts }) => {
           {types?.map(({ identifier, uri, title }, index) => (
             <ScollLink
               key={identifier ?? uri ?? `scroll-link-${index}`}
-              to={identifier ?? uri ?? ''}
+              to={uri ?? identifier ?? ''}
               spy
               smooth
               isDynamic
