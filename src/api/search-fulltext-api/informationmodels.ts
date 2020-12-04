@@ -14,7 +14,8 @@ const mapFilters = ({
   losTheme: los,
   orgPath,
   conceptIdentifiers,
-  last_x_days
+  last_x_days,
+  keywords
 }: any) => {
   const filters = [];
 
@@ -28,6 +29,10 @@ const mapFilters = ({
 
   if (orgPath) {
     filters.push({ orgPath });
+  }
+
+  if (keywords) {
+    filters.push({ keywords });
   }
 
   if (conceptIdentifiers) {
