@@ -35,10 +35,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
               realization={null}
+              specialization={null}
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -426,6 +428,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Attribute"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -813,6 +816,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Association"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -1228,10 +1232,39 @@ exports[`InfoModelStructure component should render with props 1`] = `
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
               realization={null}
+              specialization={
+                Object {
+                  "belongsToModule": "Adresse",
+                  "codeListReference": null,
+                  "codes": null,
+                  "description": null,
+                  "elementTypes": Array [
+                    "http://www.w3.org/2002/07/owl#NamedIndividual",
+                    "https://data.norge.no/vocabulary/modelldcatno#ObjectType",
+                  ],
+                  "fractionDigits": null,
+                  "hasProperty": null,
+                  "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse",
+                  "length": null,
+                  "maxInclusive": null,
+                  "maxLength": null,
+                  "minInclusive": null,
+                  "minLength": null,
+                  "pattern": null,
+                  "subject": null,
+                  "title": Object {
+                    "nb": "Adresse",
+                  },
+                  "totalDigits": null,
+                  "typeDefinitionReference": null,
+                  "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse",
+                }
+              }
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -1619,6 +1652,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Attribute"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -2006,6 +2040,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Association"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -2421,10 +2456,41 @@ exports[`InfoModelStructure component should render with props 1`] = `
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
               realization={null}
+              specialization={
+                Object {
+                  "belongsToModule": "Adresse",
+                  "codeListReference": null,
+                  "codes": null,
+                  "description": null,
+                  "elementTypes": Array [
+                    "http://www.w3.org/2002/07/owl#NamedIndividual",
+                    "https://data.norge.no/vocabulary/modelldcatno#ObjectType",
+                  ],
+                  "fractionDigits": null,
+                  "hasProperty": Array [
+                    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#geografiskAdresseSpesialiserer",
+                  ],
+                  "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+                  "length": null,
+                  "maxInclusive": null,
+                  "maxLength": null,
+                  "minInclusive": null,
+                  "minLength": null,
+                  "pattern": null,
+                  "subject": null,
+                  "title": Object {
+                    "nb": "GeografiskAdresse",
+                  },
+                  "totalDigits": null,
+                  "typeDefinitionReference": null,
+                  "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+                }
+              }
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -2943,6 +3009,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Attribute"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -3330,6 +3397,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Association"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -3745,10 +3813,41 @@ exports[`InfoModelStructure component should render with props 1`] = `
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
               realization={null}
+              specialization={
+                Object {
+                  "belongsToModule": "Adresse",
+                  "codeListReference": null,
+                  "codes": null,
+                  "description": null,
+                  "elementTypes": Array [
+                    "http://www.w3.org/2002/07/owl#NamedIndividual",
+                    "https://data.norge.no/vocabulary/modelldcatno#ObjectType",
+                  ],
+                  "fractionDigits": null,
+                  "hasProperty": Array [
+                    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#geografiskAdresseSpesialiserer",
+                  ],
+                  "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+                  "length": null,
+                  "maxInclusive": null,
+                  "maxLength": null,
+                  "minInclusive": null,
+                  "minLength": null,
+                  "pattern": null,
+                  "subject": null,
+                  "title": Object {
+                    "nb": "GeografiskAdresse",
+                  },
+                  "totalDigits": null,
+                  "typeDefinitionReference": null,
+                  "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+                }
+              }
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -4203,6 +4302,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Attribute"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -4590,6 +4690,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Association"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -5005,10 +5106,41 @@ exports[`InfoModelStructure component should render with props 1`] = `
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
               realization={null}
+              specialization={
+                Object {
+                  "belongsToModule": "Adresse",
+                  "codeListReference": null,
+                  "codes": null,
+                  "description": null,
+                  "elementTypes": Array [
+                    "http://www.w3.org/2002/07/owl#NamedIndividual",
+                    "https://data.norge.no/vocabulary/modelldcatno#ObjectType",
+                  ],
+                  "fractionDigits": null,
+                  "hasProperty": Array [
+                    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#geografiskAdresseSpesialiserer",
+                  ],
+                  "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+                  "length": null,
+                  "maxInclusive": null,
+                  "maxLength": null,
+                  "minInclusive": null,
+                  "minLength": null,
+                  "pattern": null,
+                  "subject": null,
+                  "title": Object {
+                    "nb": "GeografiskAdresse",
+                  },
+                  "totalDigits": null,
+                  "typeDefinitionReference": null,
+                  "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+                }
+              }
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -5495,6 +5627,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Attribute"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -5882,6 +6015,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Association"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -6297,10 +6431,41 @@ exports[`InfoModelStructure component should render with props 1`] = `
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
               realization={null}
+              specialization={
+                Object {
+                  "belongsToModule": "Adresse",
+                  "codeListReference": null,
+                  "codes": null,
+                  "description": null,
+                  "elementTypes": Array [
+                    "http://www.w3.org/2002/07/owl#NamedIndividual",
+                    "https://data.norge.no/vocabulary/modelldcatno#ObjectType",
+                  ],
+                  "fractionDigits": null,
+                  "hasProperty": Array [
+                    "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#geografiskAdresseSpesialiserer",
+                  ],
+                  "identifier": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+                  "length": null,
+                  "maxInclusive": null,
+                  "maxLength": null,
+                  "minInclusive": null,
+                  "minLength": null,
+                  "pattern": null,
+                  "subject": null,
+                  "title": Object {
+                    "nb": "GeografiskAdresse",
+                  },
+                  "totalDigits": null,
+                  "typeDefinitionReference": null,
+                  "uri": "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse",
+                }
+              }
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -6915,6 +7080,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Attribute"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -7302,6 +7468,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Association"
         />
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -7717,9 +7884,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
         >
           <Memo(ExpansionPanelBody)>
             <Component
+              abstraction={null}
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
+              realization={null}
+              specialization={null}
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
@@ -7763,13 +7933,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
         >
           <Memo(ExpansionPanelBody)>
             <Component
+              abstraction={null}
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
+              realization={null}
+              specialization={null}
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -8247,13 +8421,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
         >
           <Memo(ExpansionPanelBody)>
             <Component
+              abstraction={null}
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
+              realization={null}
+              specialization={null}
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -8827,13 +9005,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
         >
           <Memo(ExpansionPanelBody)>
             <Component
+              abstraction={null}
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
+              realization={null}
+              specialization={null}
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -9311,13 +9493,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
         >
           <Memo(ExpansionPanelBody)>
             <Component
+              abstraction={null}
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
+              realization={null}
+              specialization={null}
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
         <Memo(ModelElementList)
+          concepts={Object {}}
           modelElements={
             Object {
               "https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse": Object {
@@ -9800,9 +9986,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
         >
           <Memo(ExpansionPanelBody)>
             <Component
+              abstraction={null}
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
+              realization={null}
+              specialization={null}
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
@@ -9850,9 +10039,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
         >
           <Memo(ExpansionPanelBody)>
             <Component
+              abstraction={null}
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
+              realization={null}
+              specialization={null}
             />
           </Memo(ExpansionPanelBody)>
         </Styled(Component)>
