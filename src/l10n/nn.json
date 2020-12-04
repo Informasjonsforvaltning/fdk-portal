@@ -550,7 +550,8 @@
       "belongsToModule": "Høyrer til modul",
       "conceptReference": "Omgrepsreferanse",
       "abstractionOf": "Abstraksjon av",
-      "realizationOf": "Realisering av"
+      "realizationOf": "Realisering av",
+      "specializationOf": "Spesialisering av"
     }
   },
   "sourceRelationship": {
