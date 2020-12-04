@@ -7,18 +7,25 @@ import ListTitleSC from '../list-title/styled';
 import type {
   InformationModelElement,
   InformationModelProperty,
-  ModelCodeElement
+  ModelCodeElement,
+  Concept
 } from '../../../types';
 
 interface ExternalProps {
   title: string;
   properties?: Partial<InformationModelProperty | ModelCodeElement>[];
   modelElements: Record<string, Partial<InformationModelElement>>;
+  concepts: Record<string, Concept>;
 }
 
 interface Props extends ExternalProps {}
 
-const ModelElementList: FC<Props> = ({ title, properties, modelElements }) =>
+const ModelElementList: FC<Props> = ({
+  title,
+  properties,
+  modelElements,
+  concepts
+}) =>
   properties && properties.length > 0 ? (
     <>
       <ListTitleSC.ListTitle>{title}</ListTitleSC.ListTitle>
@@ -28,6 +35,7 @@ const ModelElementList: FC<Props> = ({ title, properties, modelElements }) =>
           property={property}
           code={property}
           modelElements={modelElements}
+          concepts={concepts}
         />
       ))}
     </>

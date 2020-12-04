@@ -10,10 +10,7 @@ import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 
-import {
-  PATHNAME_INFORMATIONMODELS,
-  PATHNAME_CONCEPTS
-} from '../../constants/constants';
+import { PATHNAME_INFORMATIONMODELS } from '../../constants/constants';
 
 import { themeFDK } from '../../app/theme';
 
@@ -147,13 +144,15 @@ const InformationModelDetailsPage: FC<Props> = ({
   ];
 
   const conceptIdentifiers = Object.values(modelElements)
+    .concat(Object.values(modelProperties))
     .map(({ subject }) => subject)
     .filter(Boolean);
 
   useEffect(() => {
     if (conceptIdentifiers.length > 0) {
       getConcepts({
-        identifiers: conceptIdentifiers as string[]
+        identifiers: conceptIdentifiers as string[],
+        size: 1000
       });
     }
   }, [conceptIdentifiers.join()]);
@@ -443,32 +442,6 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.replaces}
                   value={replaces}
                 />
-              )}
-            </KeyValueList>
-          </ContentSection>
-        )}
-        {concepts.length > 0 && (
-          <ContentSection
-            id="concept-references"
-            title={
-              translations.detailsPage.sectionTitles.informationModel
-                .conceptReferences
-            }
-          >
-            <KeyValueList>
-              {concepts.map(
-                ({ id, prefLabel, definition: { text: definition } }) =>
-                  id && (
-                    <KeyValueListItem
-                      key={id}
-                      property={
-                        <Link to={`${PATHNAME_CONCEPTS}/${id}`} as={RouteLink}>
-                          {translate(prefLabel)}
-                        </Link>
-                      }
-                      value={translate(definition)}
-                    />
-                  )
               )}
             </KeyValueList>
           </ContentSection>
