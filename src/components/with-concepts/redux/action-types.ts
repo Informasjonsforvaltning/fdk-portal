@@ -1,3 +1,5 @@
 export const GET_CONCEPTS_REQUESTED = 'GET_CONCEPTS_REQUESTED' as const;
 export const GET_CONCEPTS_SUCCEEDED = 'GET_CONCEPTS_SUCCEEDED' as const;
 export const GET_CONCEPTS_FAILED = 'GET_CONCEPTS_FAILED' as const;
+
+export const RESET_CONCEPTS = 'RESET_CONCEPTS' as const;

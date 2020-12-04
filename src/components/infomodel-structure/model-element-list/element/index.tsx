@@ -17,13 +17,15 @@ import SC from './styled';
 import type {
   InformationModelElement,
   InformationModelProperty,
-  ModelCodeElement
+  ModelCodeElement,
+  Concept
 } from '../../../../types';
 
 interface ExternalProps {
   property: Partial<InformationModelProperty>;
   code: Partial<ModelCodeElement>;
   modelElements: Record<string, Partial<InformationModelElement>>;
+  concepts: Record<string, Concept>;
 }
 
 interface Props extends ExternalProps {}
@@ -32,7 +34,7 @@ type ScollLinkType = FC<
   Omit<ComponentProps<typeof Scroll.Link>, 'as'> & ComponentProps<typeof Link>
 >;
 
-const Element: FC<Props> = ({ property, code, modelElements }) => {
+const Element: FC<Props> = ({ property, code, modelElements, concepts }) => {
   const identifier = property.identifier || code.identifier;
   const title = translate(property.title || code.prefLabel);
   const description = translate(property.description);
@@ -53,6 +55,7 @@ const Element: FC<Props> = ({ property, code, modelElements }) => {
   const notation = code.notation;
   const minOccurs = property.minOccurs;
   const maxOccurs = property.maxOccurs;
+  const subject = property.subject ?? code.subject;
 
   const ScollLink = Link as ScollLinkType;
 
@@ -89,7 +92,7 @@ const Element: FC<Props> = ({ property, code, modelElements }) => {
         <span>
           {type && (
             <ScollLink
-              to={type.identifier ?? type.uri ?? ''}
+              to={type.uri ?? type.identifier ?? ''}
               spy
               smooth
               isDynamic
@@ -103,7 +106,7 @@ const Element: FC<Props> = ({ property, code, modelElements }) => {
           {types?.map(({ identifier, uri, title }, index) => (
             <ScollLink
               key={identifier ?? uri ?? `scroll-link-${index}`}
-              to={identifier ?? uri ?? ''}
+              to={uri ?? identifier ?? ''}
               spy
               smooth
               isDynamic
@@ -119,8 +122,16 @@ const Element: FC<Props> = ({ property, code, modelElements }) => {
         <span>{renderMultiplicityRange()}</span>
       </ExpansionPanelHead>
       <ExpansionPanelBody>
-        {(identifier || description || belongsToModule) && (
-          <Description identifier={identifier} description={description} />
+        {(identifier ||
+          description ||
+          belongsToModule ||
+          (subject && concepts[subject])) && (
+          <Description
+            identifier={identifier}
+            description={description}
+            concept={subject ? concepts[subject] : undefined}
+            belongsToModule={belongsToModule}
+          />
         )}
       </ExpansionPanelBody>
     </SC.ObjectTypeElementExpansionPanel>

@@ -1,7 +1,8 @@
 import {
   GET_CONCEPTS_REQUESTED,
   GET_CONCEPTS_SUCCEEDED,
-  GET_CONCEPTS_FAILED
+  GET_CONCEPTS_FAILED,
+  RESET_CONCEPTS
 } from './action-types';
 
 import { Concept } from '../../../types';
@@ -35,5 +36,11 @@ export function getConceptsFailed(message: string) {
     payload: {
       message
     }
+  };
+}
+
+export function resetConcepts() {
+  return {
+    type: RESET_CONCEPTS
   };
 }

@@ -22,6 +22,7 @@ interface Props {
   concept?: Partial<Concept>;
   abstraction?: Partial<InformationModelElement> | null;
   realization?: Partial<InformationModelElement> | null;
+  specialization?: Partial<InformationModelElement> | null;
 }
 
 type ScollLinkType = FC<
@@ -37,7 +38,8 @@ export const Description: FC<Props> = ({
   concept: { id, prefLabel, definition, publisher, uri } = {},
   belongsToModule,
   abstraction,
-  realization
+  realization,
+  specialization
 }) => (
   <SC.ModelDescription>
     {description && (
@@ -130,6 +132,25 @@ export const Description: FC<Props> = ({
           as={Scroll.Link}
         >
           {translate(realization.title)}
+        </ScollLink>
+      </SC.DescriptionField>
+    )}
+
+    {specialization && (
+      <SC.DescriptionField>
+        <strong>
+          {localization.infoMod.modelDescription.specializationOf}:
+        </strong>
+        <ScollLink
+          to={specialization.identifier ?? specialization.uri ?? ''}
+          spy
+          smooth
+          isDynamic
+          offset={0}
+          duration={1500}
+          as={Scroll.Link}
+        >
+          {translate(specialization.title)}
         </ScollLink>
       </SC.DescriptionField>
     )}

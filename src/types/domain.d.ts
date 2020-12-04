@@ -93,6 +93,7 @@ export interface InformationModelProperty {
   identifier: string;
   title: Partial<TextLanguage> | null;
   description: Partial<TextLanguage> | null;
+  subject: string | null;
   propertyTypes: string[] | null;
   minOccurs: number | null;
   maxOccurs: number | null;
