@@ -141,7 +141,7 @@ export const InfoModelStructure: FC<Props> = ({
             }) => (
               <SC.ObjectTypeExpansionPanel
                 key={`${identifier}-${uri}`}
-                id={identifier}
+                id={uri ?? identifier ?? ''}
               >
                 <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
                 <ExpansionPanelBody>
@@ -205,7 +205,7 @@ export const InfoModelStructure: FC<Props> = ({
             }) => (
               <SC.ObjectTypeExpansionPanel
                 key={`${identifier}-${uri}`}
-                id={identifier}
+                id={uri ?? identifier ?? ''}
               >
                 <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
                 <ExpansionPanelBody>
@@ -269,7 +269,7 @@ export const InfoModelStructure: FC<Props> = ({
             }) => (
               <SC.ObjectTypeExpansionPanel
                 key={`${identifier}-${uri}`}
-                id={identifier}
+                id={uri ?? identifier ?? ''}
               >
                 <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
                 <ExpansionPanelBody>
@@ -334,7 +334,7 @@ export const InfoModelStructure: FC<Props> = ({
             }) => (
               <SC.ObjectTypeExpansionPanel
                 key={`${identifier}-${uri}`}
-                id={identifier}
+                id={uri ?? identifier ?? ''}
               >
                 <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
                 <ExpansionPanelBody>
@@ -391,7 +391,7 @@ export const InfoModelStructure: FC<Props> = ({
             }) => (
               <SC.ObjectTypeExpansionPanel
                 key={`${identifier}-${uri}`}
-                id={identifier}
+                id={uri ?? identifier ?? ''}
               >
                 <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
                 <ExpansionPanelBody>
