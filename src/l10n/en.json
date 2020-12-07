@@ -551,7 +551,7 @@
       "conceptReference": "Concept reference",
       "abstractionOf": "Abstraction of",
       "realizationOf": "Realization of",
-      "specializationOf": "Specialization of"
+      "specializationOf": "Specializes"
     }
   },
   "sourceRelationship": {

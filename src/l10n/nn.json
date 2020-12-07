@@ -551,7 +551,7 @@
       "conceptReference": "Omgrepsreferanse",
       "abstractionOf": "Abstraksjon av",
       "realizationOf": "Realisering av",
-      "specializationOf": "Spesialisering av"
+      "specializationOf": "Spesialiserer"
     }
   },
   "sourceRelationship": {
