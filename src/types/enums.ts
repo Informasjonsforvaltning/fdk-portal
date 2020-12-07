@@ -6,7 +6,8 @@ export enum Environment {
 export enum GoogleAnalyticsTrackingId {
   FELLESDATAKATALOG = 'UA-110098477-1',
   TRANSPORTPORTAL = 'UA-110098477-4',
-  LOCALHOST = 'UA-41886511-1'
+  LOCALHOST = 'UA-41886511-1',
+  SVV = 'G-FPXKJ83PBS'
 }
 
 export enum SearchTypes {
