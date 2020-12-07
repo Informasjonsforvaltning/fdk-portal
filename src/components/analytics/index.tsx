@@ -20,7 +20,10 @@ const Analytics: FC = () => {
     }
 
     if (isTransportPortal) {
-      ReactGA.initialize(GoogleAnalyticsTrackingId.TRANSPORTPORTAL);
+      ReactGA.initialize([
+        { trackingId: GoogleAnalyticsTrackingId.TRANSPORTPORTAL },
+        { trackingId: GoogleAnalyticsTrackingId.SVV }
+      ]);
     }
 
     if (isLocalhost) {
