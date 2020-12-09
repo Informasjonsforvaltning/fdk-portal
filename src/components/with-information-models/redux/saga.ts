@@ -17,10 +17,7 @@ function* getInformationModelsRequested({
   try {
     const data = yield call(
       searchInformationModels,
-      paramsToSearchBody({
-        conceptIdentifiers: conceptIdentifiers?.join(),
-        size
-      })
+      paramsToSearchBody({ conceptIdentifiers, size })
     );
 
     if (data) {
