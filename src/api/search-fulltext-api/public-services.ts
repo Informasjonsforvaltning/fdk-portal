@@ -12,7 +12,8 @@ const mapFilters = ({
   uri,
   last_x_days,
   orgPath,
-  isGroupedBy
+  isGroupedBy,
+  keywords
 }: any) => {
   const filters = [];
   if (id) {
@@ -52,6 +53,9 @@ const mapFilters = ({
         values: [isGroupedBy]
       }
     });
+  }
+  if (keywords) {
+    filters.push({ keywords });
   }
   return filters.length > 0 ? filters : undefined;
 };
