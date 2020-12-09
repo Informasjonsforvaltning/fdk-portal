@@ -8,6 +8,7 @@ import {
 
 export interface InformationModel {
   id: string;
+  uri: string;
   identifier?: string;
   publisher?: Partial<Publisher>;
   harvestSourceUri?: string;

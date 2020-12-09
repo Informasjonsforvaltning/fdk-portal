@@ -88,7 +88,7 @@ const ConceptDetailsPage: FC<Props> = ({
       getDatasets({ subject: concept.identifier, size: 1000 });
       getInformationModels({
         conceptIdentifiers: [concept.identifier],
-        size: 3
+        size: 1000
       });
     }
 

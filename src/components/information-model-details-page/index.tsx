@@ -18,6 +18,9 @@ import withInformationModel, {
   Props as InformationModelProps
 } from '../with-information-model';
 import withConcepts, { Props as ConceptsProps } from '../with-concepts';
+import withInformationModels, {
+  Props as InformationModelsProps
+} from '../with-information-models';
 
 import DetailsPage, {
   ContentSection,
@@ -30,7 +33,7 @@ import { InfoModelStructure } from '../infomodel-structure/infomodel-structure.c
 
 import SC from './styled';
 
-import type { Theme } from '../../types';
+import type { InformationModel, Theme } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
 
 interface RouteParams {
@@ -40,12 +43,14 @@ interface RouteParams {
 interface Props
   extends InformationModelProps,
     ConceptsProps,
+    InformationModelsProps,
     RouteComponentProps<RouteParams> {}
 
 const InformationModelDetailsPage: FC<Props> = ({
   informationModel,
   informationModelRdfRepresentations,
   concepts,
+  informationModels,
   isLoadingInformationModel,
   isLoadingInformationModelRdfRepresentations,
   informationModelActions: {
@@ -54,6 +59,9 @@ const InformationModelDetailsPage: FC<Props> = ({
     resetInformationModel
   },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
+  informationModelsActions: {
+    getInformationModelsRequested: getInformationModels
+  },
   match: {
     params: { informationModelId }
   }
@@ -148,6 +156,18 @@ const InformationModelDetailsPage: FC<Props> = ({
     .map(({ subject }) => subject)
     .filter(Boolean);
 
+  const informationModelIdentifiers = ([
+    isPartOf,
+    hasPart,
+    isReplacedBy,
+    replaces
+  ] as string[]).filter(Boolean);
+
+  const informationModelsMap = informationModels.reduce(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
+    {} as Record<string, InformationModel>
+  );
+
   useEffect(() => {
     if (conceptIdentifiers.length > 0) {
       getConcepts({
@@ -156,6 +176,12 @@ const InformationModelDetailsPage: FC<Props> = ({
       });
     }
   }, [conceptIdentifiers.join()]);
+
+  useEffect(() => {
+    if (informationModelIdentifiers.length > 0) {
+      getInformationModels({ informationModelIdentifiers, size: 4 });
+    }
+  }, [informationModelIdentifiers.join()]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -422,25 +448,69 @@ const InformationModelDetailsPage: FC<Props> = ({
               {isPartOf && (
                 <KeyValueListItem
                   property={translations.infoMod.isPartOf}
-                  value={isPartOf}
+                  value={
+                    informationModelsMap[isPartOf] ? (
+                      <Link
+                        to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[isPartOf].id}`}
+                        as={RouteLink}
+                      >
+                        {translate(informationModelsMap[isPartOf].title)}
+                      </Link>
+                    ) : (
+                      isPartOf
+                    )
+                  }
                 />
               )}
               {hasPart && (
                 <KeyValueListItem
                   property={translations.infoMod.hasPart}
-                  value={hasPart}
+                  value={
+                    informationModelsMap[hasPart] ? (
+                      <Link
+                        to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[hasPart].id}`}
+                        as={RouteLink}
+                      >
+                        {translate(informationModelsMap[hasPart].title)}
+                      </Link>
+                    ) : (
+                      hasPart
+                    )
+                  }
                 />
               )}
               {isReplacedBy && (
                 <KeyValueListItem
                   property={translations.infoMod.isReplacedBy}
-                  value={isReplacedBy}
+                  value={
+                    informationModelsMap[isReplacedBy] ? (
+                      <Link
+                        to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[isReplacedBy].id}`}
+                        as={RouteLink}
+                      >
+                        {translate(informationModelsMap[isReplacedBy].title)}
+                      </Link>
+                    ) : (
+                      isReplacedBy
+                    )
+                  }
                 />
               )}
               {replaces && (
                 <KeyValueListItem
                   property={translations.infoMod.replaces}
-                  value={replaces}
+                  value={
+                    informationModelsMap[replaces] ? (
+                      <Link
+                        to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[replaces].id}`}
+                        as={RouteLink}
+                      >
+                        {translate(informationModelsMap[replaces].title)}
+                      </Link>
+                    ) : (
+                      replaces
+                    )
+                  }
                 />
               )}
             </KeyValueList>
@@ -526,5 +596,6 @@ const InformationModelDetailsPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withInformationModel,
-  withConcepts
+  withConcepts,
+  withInformationModels
 )(InformationModelDetailsPage);
