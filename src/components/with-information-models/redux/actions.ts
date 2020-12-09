@@ -8,6 +8,7 @@ import type { InformationModel } from '../../../types';
 
 interface GetInformationModelsParams {
   conceptIdentifiers?: string[];
+  informationModelIdentifiers?: string[];
   size?: number;
 }
 
