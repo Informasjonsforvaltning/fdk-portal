@@ -139,6 +139,7 @@ const InformationModelDetailsPage: FC<Props> = ({
     dateStringToDate(informationModel?.harvest?.firstHarvested)
   );
   const informationModelCategory = informationModel?.category;
+  const conceptIdentifiers = informationModel?.containsSubjects ?? [];
   const modelElements = informationModel?.modelElements ?? {};
   const modelProperties = informationModel?.modelProperties ?? {};
   const isPartOf = informationModel?.isPartOf;
@@ -150,11 +151,6 @@ const InformationModelDetailsPage: FC<Props> = ({
     ...(informationModel?.losTheme?.map(({ uri: id }) => ({ id })) ?? []),
     ...(informationModel?.theme?.map(({ id }) => ({ id })) ?? [])
   ];
-
-  const conceptIdentifiers = Object.values(modelElements)
-    .concat(Object.values(modelProperties))
-    .map(({ subject }) => subject)
-    .filter(Boolean);
 
   const informationModelIdentifiers = ([
     isPartOf,
