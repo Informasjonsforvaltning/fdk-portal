@@ -93,7 +93,7 @@ const ConceptDetailsPage: FC<Props> = ({
     }
 
     if (concept?.seeAlso && concept?.seeAlso.length > 0) {
-      getConcepts({ identifiers: concept.seeAlso, size: 3 });
+      getConcepts({ identifiers: concept.seeAlso, size: 1000 });
     }
   }, [concept?.id]);
 
