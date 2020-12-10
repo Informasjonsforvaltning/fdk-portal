@@ -32,6 +32,7 @@ import {
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 import { PublicService } from '../../types';
+import SC from './styled';
 
 interface RouteParams {
   publicServiceId: string;
@@ -107,6 +108,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   return isMounted
     ? publicService && (
         <ThemeProvider theme={theme}>
+          <SC.BetaRibbon>BETA</SC.BetaRibbon>
           <DetailsPage
             entity={entity}
             title={title}
