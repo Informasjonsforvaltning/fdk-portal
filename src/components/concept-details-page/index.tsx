@@ -88,12 +88,12 @@ const ConceptDetailsPage: FC<Props> = ({
       getDatasets({ subject: concept.identifier, size: 1000 });
       getInformationModels({
         conceptIdentifiers: [concept.identifier],
-        size: 3
+        size: 1000
       });
     }
 
     if (concept?.seeAlso && concept?.seeAlso.length > 0) {
-      getConcepts({ identifiers: concept.seeAlso, size: 3 });
+      getConcepts({ identifiers: concept.seeAlso, size: 1000 });
     }
   }, [concept?.id]);
 

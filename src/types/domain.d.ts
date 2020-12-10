@@ -8,6 +8,7 @@ import {
 
 export interface InformationModel {
   id: string;
+  uri: string;
   identifier?: string;
   publisher?: Partial<Publisher>;
   harvestSourceUri?: string;
@@ -15,6 +16,7 @@ export interface InformationModel {
   title?: Partial<TextLanguage>;
   name?: Partial<TextLanguage>;
   schema?: string;
+  containsSubjects?: string[];
   modelElements?: Record<string, Partial<InformationModelElement>>;
   modelProperties?: Record<string, Partial<InformationModelProperty>>;
   isPartOf?: string;

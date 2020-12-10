@@ -35,7 +35,7 @@ export const Description: FC<Props> = ({
   identifier,
   description,
   version,
-  concept: { id, prefLabel, definition, publisher, uri } = {},
+  concept: { id, prefLabel, definition, publisher } = {},
   belongsToModule,
   abstraction,
   realization,
@@ -81,15 +81,6 @@ export const Description: FC<Props> = ({
       <SC.DescriptionField>
         <strong>{localization.responsible}:</strong>
         {translate(publisher.prefLabel) || publisher.name}
-      </SC.DescriptionField>
-    )}
-
-    {uri && (
-      <SC.DescriptionField>
-        <strong>
-          {localization.infoMod.modelDescription.conceptReference}:
-        </strong>
-        {uri}
       </SC.DescriptionField>
     )}
 

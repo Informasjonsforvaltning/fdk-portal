@@ -12,13 +12,16 @@ import {
 import type { InformationModel } from '../../../types';
 
 function* getInformationModelsRequested({
-  payload: { params: { conceptIdentifiers, size } = {} }
+  payload: {
+    params: { conceptIdentifiers, informationModelIdentifiers, size } = {}
+  }
 }: ReturnType<typeof actions.getInformationModelsRequested>) {
   try {
     const data = yield call(
       searchInformationModels,
       paramsToSearchBody({
-        conceptIdentifiers: conceptIdentifiers?.join(),
+        conceptIdentifiers,
+        informationModelIdentifiers,
         size
       })
     );

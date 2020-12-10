@@ -14,6 +14,7 @@ const mapFilters = ({
   losTheme: los,
   orgPath,
   conceptIdentifiers,
+  informationModelIdentifiers,
   last_x_days,
   keywords
 }: any) => {
@@ -35,12 +36,31 @@ const mapFilters = ({
     filters.push({ keywords });
   }
 
-  if (conceptIdentifiers) {
-    filters.push(conceptIdentifiers);
+  if (Array.isArray(conceptIdentifiers) && conceptIdentifiers.length > 0) {
+    filters.push({
+      collection: {
+        field: 'containsSubjects',
+        values: conceptIdentifiers
+      }
+    });
   }
+
+  if (
+    Array.isArray(informationModelIdentifiers) &&
+    informationModelIdentifiers.length > 0
+  ) {
+    filters.push({
+      collection: {
+        field: 'uri',
+        values: informationModelIdentifiers
+      }
+    });
+  }
+
   if (last_x_days) {
     filters.push({ last_x_days });
   }
+
   return filters.length > 0 ? filters : undefined;
 };
 

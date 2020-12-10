@@ -548,7 +548,6 @@
     },
     "modelDescription": {
       "belongsToModule": "Belongs to module",
-      "conceptReference": "Concept reference",
       "abstractionOf": "Abstraction of",
       "realizationOf": "Realization of",
       "specializationOf": "Specializes"
