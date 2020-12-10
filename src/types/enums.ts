@@ -9,6 +9,10 @@ export enum GoogleAnalyticsTrackingId {
   LOCALHOST = 'UA-41886511-1'
 }
 
+export enum GoogleTagManagerId {
+  SVV = 'G-FPXKJ83PBS'
+}
+
 export enum SearchTypes {
   dataset,
   dataservice,

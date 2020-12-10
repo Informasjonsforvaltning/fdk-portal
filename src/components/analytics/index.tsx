@@ -1,8 +1,12 @@
 import { FC, memo, useEffect } from 'react';
 import { compose } from 'redux';
 import ReactGA from 'react-ga';
+import GoogleTagManager from 'react-gtm-module';
 
-import { GoogleAnalyticsTrackingId } from '../../types/enums';
+import {
+  GoogleAnalyticsTrackingId,
+  GoogleTagManagerId
+} from '../../types/enums';
 
 const Analytics: FC = () => {
   const { hostname, pathname, search } = location;
@@ -21,6 +25,9 @@ const Analytics: FC = () => {
 
     if (isTransportPortal) {
       ReactGA.initialize(GoogleAnalyticsTrackingId.TRANSPORTPORTAL);
+      GoogleTagManager.initialize({
+        gtmId: GoogleTagManagerId.SVV
+      });
     }
 
     if (isLocalhost) {
