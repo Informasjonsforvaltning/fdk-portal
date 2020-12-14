@@ -36,6 +36,11 @@ export default css`
       background: ${({ theme }) =>
         theme.extendedColors[Entity.INFORMATION_MODEL].lighter};
     }
+
+    &.${Entity.PUBLIC_SERVICE} {
+      background: ${({ theme }) =>
+        theme.extendedColors[Entity.PUBLIC_SERVICE].lighter};
+    }
   }
 
   footer {
