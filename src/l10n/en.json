@@ -73,6 +73,9 @@
   "addedLastDays": "Added last {days} days",
   "nationalDataCatalog": "National Data Catalog",
   "nap": "The National Access Point for Transport Data",
+  "language": "Language",
+  "industryCode": "Industry code",
+  "requires": "Requires",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -635,7 +638,11 @@
         "contactInformation": "Contact information"
       },
       "publicService": {
-        "description": "Description"
+        "description": "Description",
+        "usage": "Public service usage",
+        "keywords": "Keywords",
+        "relatedServices": "Related services",
+        "conceptReferences": "Concepts used in the service"
       }
     }
   },
