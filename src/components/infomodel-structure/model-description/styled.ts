@@ -1,19 +1,31 @@
 import styled from 'styled-components';
+import { theme, Colour } from '@fellesdatakatalog/theme';
+import LinkBase from '@fellesdatakatalog/link';
+import Scroll from 'react-scroll';
 
 const ModelDescription = styled.div`
-  color: ${({ theme }) => theme.extendedColors.neutralDarker};
-  font-size: 1.6rem;
-  font-weight: 400;
   display: flex;
   flex-direction: column;
 `;
 
 const DescriptionField = styled.div`
   display: flex;
-  margin-bottom: 0.3em;
+
+  &:nth-of-type(n + 2) {
+    margin-top: ${theme.spacing('S4')};
+  }
+
   & > :first-child {
     flex: 0 0 25%;
   }
 `;
 
-export default { ModelDescription, DescriptionField };
+const Link = styled(LinkBase)`
+  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
+`;
+
+const ScrollLink = styled(Scroll.Link)`
+  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
+`;
+
+export default { ModelDescription, DescriptionField, Link, ScrollLink };

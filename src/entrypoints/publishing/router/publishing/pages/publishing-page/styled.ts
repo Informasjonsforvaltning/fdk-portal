@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
-import LinkBase from '@fellesdatakatalog/link';
 
 import RegisterIllustrationSVG from '../../../../../../images/illustration-register.svg';
 import HarvestIllustrationSVG from '../../../../../../images/illustration-harvest.svg';
@@ -48,10 +47,6 @@ const Section = styled.section`
       margin-top: calc(20px + (40 - 20) * ((100vw - 320px) / (1020 - 320)));
     }
   }
-`;
-
-const Link = styled(LinkBase)`
-  line-height: 1;
 `;
 
 const MethodsSection = styled(Section)`
@@ -114,7 +109,7 @@ const MethodContainer = styled.div`
     }
   }
 
-  & > ${Link} {
+  & > a {
     margin-top: ${theme.spacing('S8')};
     margin-bottom: ${theme.spacing('S32')};
 
@@ -299,7 +294,6 @@ export default {
   PublishingPage,
   Title,
   Description,
-  Link,
   MethodsSection,
   RegisterData,
   RegisterIllustration,

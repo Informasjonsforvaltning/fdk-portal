@@ -97,3 +97,10 @@ export enum IndicatorType {
   DESCRIPTION = 'description',
   DESCRIPTION_WITHOUT_TITLE = 'descriptionWithoutTitle'
 }
+
+export enum ModelElementType {
+  ATTRIBUTE = 'attribute',
+  ROLE = 'role',
+  CODE_ELEMENT = 'code_element',
+  ASSOCIATION = 'association'
+}

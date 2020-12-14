@@ -1,32 +1,77 @@
-import styled from 'styled-components';
-import { theme } from '@fellesdatakatalog/theme';
+import styled, { css } from 'styled-components';
+import { theme, Colour } from '@fellesdatakatalog/theme';
+import Scroll from 'react-scroll';
 
-import ExpansionPanel, { SC } from '../../../expansion-panel';
+import ExpansionPanelBase, { SC } from '../../../expansion-panel';
 
-const ObjectTypeElementExpansionPanel = styled(ExpansionPanel)`
-  background-color: transparent;
+import { ModelElementType } from '../../../../types/enums';
+
+const ElementTitle = styled.span<{ $type: ModelElementType }>`
+  display: flex;
+  align-items: center;
+
+  &:before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    margin-right: ${theme.spacing('S8')};
+
+    ${({ $type }) => {
+      switch ($type) {
+        case ModelElementType.ATTRIBUTE:
+          return css`
+            content: '\\2022';
+            transform: scale(2) translateY(1px);
+          `;
+        case ModelElementType.ROLE:
+          return css`
+            content: '\\2192';
+          `;
+        case ModelElementType.ASSOCIATION:
+          return css`
+            content: '\\21FE';
+            transform: scale(1.4);
+          `;
+        case ModelElementType.CODE_ELEMENT:
+          return css`
+            content: '\\25A0';
+            transform: scale(1.5) translateY(1px);
+          `;
+        default:
+          return css`
+            content: '';
+          `;
+      }
+    }}
+  }
+`;
+
+const ExpansionPanel = styled(ExpansionPanelBase)`
   border-radius: none;
-  border-bottom: 1px solid;
-  border-bottom-color: ${({ theme }) => theme.extendedColors.neutralLighter};
-  margin-bottom: 0.5em;
+  border-bottom: 1px solid ${theme.colour(Colour.VIOLET, 'V30')};
+  background: transparent;
 
   ${SC.ExpansionPanel.Head} {
-    padding: 0.5em 0;
+    padding: ${theme.spacing('S8')} 0;
   }
 
   ${SC.ExpansionPanel.HeadContent} {
-    color: ${({ theme }) => theme.extendedColors.neutralDarker} !important;
-    font-size: 1.6rem !important;
-    font-weight: 400 !important;
-    display: flex !important;
-    flex: 0 0 80% !important;
+    display: flex;
+    flex: 0 0 80%;
     align-items: center;
 
-    & > strong:first-of-type {
+    & > * {
+      font-size: ${theme.fontSize('FS16')};
+      font-weight: ${theme.fontWeight('FW400')};
+      color: ${theme.colour(Colour.NEUTRAL, 'N60')};
+    }
+
+    & > ${ElementTitle} {
       flex-basis: 60%;
     }
 
-    & > span:first-of-type {
+    & > span:nth-of-type(2) {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -38,4 +83,8 @@ const ObjectTypeElementExpansionPanel = styled(ExpansionPanel)`
   }
 `;
 
-export default { ObjectTypeElementExpansionPanel };
+const ScrollLink = styled(Scroll.Link)`
+  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
+`;
+
+export default { ElementTitle, ExpansionPanel, ScrollLink };

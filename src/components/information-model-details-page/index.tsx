@@ -4,7 +4,6 @@ import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Alignment } from '@fellesdatakatalog/theme';
 import { Tab, Pane } from '@fellesdatakatalog/tabs';
-import Link from '@fellesdatakatalog/link';
 
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
@@ -28,8 +27,7 @@ import DetailsPage, {
   KeyValueList,
   KeyValueListItem
 } from '../details-page';
-
-import { InfoModelStructure } from '../infomodel-structure/infomodel-structure.component';
+import InfoModelStructure from '../infomodel-structure';
 
 import SC from './styled';
 
@@ -333,61 +331,53 @@ const InformationModelDetailsPage: FC<Props> = ({
             >
               <SC.Tabs tabsAlignment={Alignment.LEFT}>
                 {Object.values(modelElements).length > 0 && (
-                  <Tab for="structure-pane">
-                    <SC.Tab>{translations.infoMod.tabs.structure}</SC.Tab>
+                  <Tab for="structure-pane" as={SC.Tab}>
+                    {translations.infoMod.tabs.structure}
                   </Tab>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.TURTLE] && (
-                  <Tab for="turtle-pane">
-                    <SC.Tab>{translations.infoMod.tabs.turtle}</SC.Tab>
+                  <Tab for="turtle-pane" as={SC.Tab}>
+                    {translations.infoMod.tabs.turtle}
                   </Tab>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.JSONLD] && (
-                  <Tab for="jsonld-pane">
-                    <SC.Tab>{translations.infoMod.tabs.jsonld}</SC.Tab>
+                  <Tab for="jsonld-pane" as={SC.Tab}>
+                    {translations.infoMod.tabs.jsonld}
                   </Tab>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.RDF_XML] && (
-                  <Tab for="rdfxml-pane">
-                    <SC.Tab>{translations.infoMod.tabs.rdfxml}</SC.Tab>
+                  <Tab for="rdfxml-pane" as={SC.Tab}>
+                    {translations.infoMod.tabs.rdfxml}
                   </Tab>
                 )}
                 {Object.values(modelElements).length > 0 && (
-                  <Pane id="structure-pane">
-                    <SC.Pane>
-                      <InfoModelStructure
-                        modelElements={modelElements}
-                        modelProperties={modelProperties}
-                        concepts={concepts}
-                      />
-                    </SC.Pane>
+                  <Pane id="structure-pane" as={SC.Pane}>
+                    <InfoModelStructure
+                      modelElements={modelElements}
+                      modelProperties={modelProperties}
+                      concepts={concepts}
+                    />
                   </Pane>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.TURTLE] && (
-                  <Pane id="turtle-pane">
-                    <SC.Pane>
-                      <SC.Code>
-                        {informationModelRdfRepresentations[DataFormat.TURTLE]}
-                      </SC.Code>
-                    </SC.Pane>
+                  <Pane id="turtle-pane" as={SC.Pane}>
+                    <SC.Code>
+                      {informationModelRdfRepresentations[DataFormat.TURTLE]}
+                    </SC.Code>
                   </Pane>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.JSONLD] && (
-                  <Pane id="jsonld-pane">
-                    <SC.Pane>
-                      <SC.Code>
-                        {informationModelRdfRepresentations[DataFormat.JSONLD]}
-                      </SC.Code>
-                    </SC.Pane>
+                  <Pane id="jsonld-pane" as={SC.Pane}>
+                    <SC.Code>
+                      {informationModelRdfRepresentations[DataFormat.JSONLD]}
+                    </SC.Code>
                   </Pane>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.RDF_XML] && (
-                  <Pane id="rdfxml-pane">
-                    <SC.Pane>
-                      <SC.Code>
-                        {informationModelRdfRepresentations[DataFormat.RDF_XML]}
-                      </SC.Code>
-                    </SC.Pane>
+                  <Pane id="rdfxml-pane" as={SC.Pane}>
+                    <SC.Code>
+                      {informationModelRdfRepresentations[DataFormat.RDF_XML]}
+                    </SC.Code>
                   </Pane>
                 )}
               </SC.Tabs>
@@ -420,15 +410,15 @@ const InformationModelDetailsPage: FC<Props> = ({
           >
             <InlineList>
               {keywords.map((keyword, index) => (
-                <Link
+                <SC.Link
                   to={`${PATHNAME_INFORMATIONMODELS}?keywords=${encodeURIComponent(
                     keyword
                   )}`}
                   key={`${keyword}-${index}`}
-                  as={RouteLink}
+                  forwardedAs={RouteLink}
                 >
                   {keyword}
-                </Link>
+                </SC.Link>
               ))}
             </InlineList>
           </ContentSection>
@@ -446,12 +436,12 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.isPartOf}
                   value={
                     informationModelsMap[isPartOf] ? (
-                      <Link
+                      <SC.Link
                         to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[isPartOf].id}`}
-                        as={RouteLink}
+                        forwardedAs={RouteLink}
                       >
                         {translate(informationModelsMap[isPartOf].title)}
-                      </Link>
+                      </SC.Link>
                     ) : (
                       isPartOf
                     )
@@ -463,12 +453,12 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.hasPart}
                   value={
                     informationModelsMap[hasPart] ? (
-                      <Link
+                      <SC.Link
                         to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[hasPart].id}`}
-                        as={RouteLink}
+                        forwardedAs={RouteLink}
                       >
                         {translate(informationModelsMap[hasPart].title)}
-                      </Link>
+                      </SC.Link>
                     ) : (
                       hasPart
                     )
@@ -480,12 +470,12 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.isReplacedBy}
                   value={
                     informationModelsMap[isReplacedBy] ? (
-                      <Link
+                      <SC.Link
                         to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[isReplacedBy].id}`}
-                        as={RouteLink}
+                        forwardedAs={RouteLink}
                       >
                         {translate(informationModelsMap[isReplacedBy].title)}
-                      </Link>
+                      </SC.Link>
                     ) : (
                       isReplacedBy
                     )
@@ -497,12 +487,12 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.replaces}
                   value={
                     informationModelsMap[replaces] ? (
-                      <Link
+                      <SC.Link
                         to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[replaces].id}`}
-                        as={RouteLink}
+                        forwardedAs={RouteLink}
                       >
                         {translate(informationModelsMap[replaces].title)}
-                      </Link>
+                      </SC.Link>
                     ) : (
                       replaces
                     )
@@ -563,13 +553,13 @@ const InformationModelDetailsPage: FC<Props> = ({
                     <KeyValueListItem
                       property={translations.email}
                       value={
-                        <a
+                        <SC.Link
                           title={email}
                           href={`mailto:${email}`}
                           rel="noopener noreferrer"
                         >
                           {email}
-                        </a>
+                        </SC.Link>
                       }
                     />
                   )}
