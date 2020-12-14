@@ -4,7 +4,7 @@ import TabsBase from '@fellesdatakatalog/tabs';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 
 const Link = styled(LinkBase)`
-  line-height: 1;
+  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
 `;
 
 const Tabs = styled(TabsBase)`
@@ -14,8 +14,17 @@ const Tabs = styled(TabsBase)`
 `;
 
 const Tab = styled.span`
-  display: flex;
-  padding: ${theme.spacing('S4')} ${theme.spacing('S8')};
+  padding: ${theme.spacing('S6')} ${theme.spacing('S12')};
+
+  &.active,
+  &:before,
+  &:after {
+    border-color: ${theme.colour(Colour.VIOLET, 'V30')};
+  }
+
+  &:not(.active) {
+    color: ${theme.colour(Colour.VIOLET, 'V50')};
+  }
 `;
 
 const Pane = styled.div`

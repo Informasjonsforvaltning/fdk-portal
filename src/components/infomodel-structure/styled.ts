@@ -1,63 +1,71 @@
 import styled, { css } from 'styled-components';
-import ExpansionPanel, { SC } from '../expansion-panel';
+import { theme, Colour } from '@fellesdatakatalog/theme';
+import LinkBase from '@fellesdatakatalog/link';
 
-const InfoModelStructure = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 1em;
+import ExpansionPanelBase, { SC } from '../expansion-panel';
 
-  a {
-    cursor: pointer;
+interface ExpansionPanelProps {
+  showWithoutHeadAndPadding?: boolean;
+}
+
+const Section = styled.section`
+  margin-top: ${theme.spacing('S32')};
+
+  & > h3 {
+    margin-bottom: ${theme.spacing('S12')};
+    font-size: ${theme.fontSize('FS20')};
+    font-weight: ${theme.fontWeight('FW400')};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `;
 
-const Section = styled.div``;
-
-const SectionHeader = styled.h3`
-  color: ${({ theme }) => theme.extendedColors.neutralDark};
-  font-size: 2rem;
-  font-weight: 300;
-  margin: 1em 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
-
-const ObjectTypeExpansionPanel = styled(ExpansionPanel)<{
-  showWithoutHeadAndPadding?: boolean;
-}>`
-  background-color: ${({ theme }) => theme.extendedColors.neutralLightest};
+const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
+  padding: ${theme.spacing('S16')};
   border-radius: 5px;
-  margin-bottom: 0.5em;
-  padding: 1em;
+  background: ${theme.colour(Colour.VIOLET, 'V20')};
+
+  &:nth-of-type(n + 2) {
+    margin-top: ${theme.spacing('S8')};
+  }
 
   ${({ showWithoutHeadAndPadding }) =>
     showWithoutHeadAndPadding &&
     css`
-      background-color: transparent;
       padding: 0;
+      background: transparent;
     `}
 
   ${SC.ExpansionPanel.HeadContent} {
+    font-size: ${theme.fontSize('FS20')};
+    font-weight: ${theme.fontWeight('FW700')};
+    color: ${theme.colour(Colour.VIOLET, 'V50')};
+
     ${({ showWithoutHeadAndPadding }) =>
       showWithoutHeadAndPadding &&
       css`
         display: none;
       `}
+  }
 
-    color: ${({ theme }) => theme.extendedColors.link};
-    font-size: 2rem;
-    font-weight: 600;
+  ${SC.ExpansionPanel.ExpandIcon}, ${SC.ExpansionPanel.CollapseIcon} {
+    & > path {
+      fill: ${theme.colour(Colour.VIOLET, 'V50')};
+    }
   }
 
   ${SC.ExpansionPanel.Body} {
-    padding: 1em;
+    padding: ${theme.spacing('S16')};
   }
 `;
 
+const Link = styled(LinkBase)`
+  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
+`;
+
 export default {
-  InfoModelStructure,
   Section,
-  SectionHeader,
-  ObjectTypeExpansionPanel
+  ExpansionPanel,
+  Link
 };

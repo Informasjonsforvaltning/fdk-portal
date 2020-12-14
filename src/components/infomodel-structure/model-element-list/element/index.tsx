@@ -9,8 +9,8 @@ import {
   ExpansionPanelBody,
   ExpansionPanelHead
 } from '../../../expansion-panel';
-import { ExpansionIndicatorDetails } from '../../expansion-indicator-details/expansion-indicator-details.component';
-import { Description } from '../../model-description/model-description.component';
+import ExpansionIndicatorDetails from '../../expansion-indicator-details';
+import Description from '../../model-description';
 
 import SC from './styled';
 
@@ -20,12 +20,14 @@ import type {
   ModelCodeElement,
   Concept
 } from '../../../../types';
+import { ModelElementType } from '../../../../types/enums';
 
 interface ExternalProps {
   property: Partial<InformationModelProperty>;
   code: Partial<ModelCodeElement>;
   modelElements: Record<string, Partial<InformationModelElement>>;
   concepts: Record<string, Concept>;
+  type: ModelElementType;
 }
 
 interface Props extends ExternalProps {}
@@ -34,7 +36,13 @@ type ScollLinkType = FC<
   Omit<ComponentProps<typeof Scroll.Link>, 'as'> & ComponentProps<typeof Link>
 >;
 
-const Element: FC<Props> = ({ property, code, modelElements, concepts }) => {
+const Element: FC<Props> = ({
+  property,
+  code,
+  modelElements,
+  concepts,
+  type
+}) => {
   const identifier = property.identifier || code.identifier;
   const title = translate(property.title || code.prefLabel);
   const description = translate(property.description);
@@ -48,8 +56,8 @@ const Element: FC<Props> = ({ property, code, modelElements, concepts }) => {
     property.hasMember ??
     property.contains;
   const typeUris = property.hasType ?? property.hasSome;
-  const type = typeUri ? modelElements[typeUri] : null;
-  const types = typeUris
+  const modelElementType = typeUri ? modelElements[typeUri] : null;
+  const modelElementTypes = typeUris
     ? typeUris.map(uri => modelElements[uri]).filter(Boolean)
     : null;
   const notation = code.notation;
@@ -80,7 +88,7 @@ const Element: FC<Props> = ({ property, code, modelElements, concepts }) => {
   };
 
   return (
-    <SC.ObjectTypeElementExpansionPanel
+    <SC.ExpansionPanel
       shouldExpandOnHeadClick={false}
       expansionIndicator={{
         expand: <ExpansionIndicatorDetails />,
@@ -88,22 +96,22 @@ const Element: FC<Props> = ({ property, code, modelElements, concepts }) => {
       }}
     >
       <ExpansionPanelHead>
-        <strong>{title}</strong>
+        <SC.ElementTitle $type={type}>{title}</SC.ElementTitle>
         <span>
-          {type && (
+          {modelElementType && (
             <ScollLink
-              to={type.uri ?? type.identifier ?? ''}
+              to={modelElementType.uri ?? modelElementType.identifier ?? ''}
               spy
               smooth
               isDynamic
               offset={0}
               duration={1500}
-              as={Scroll.Link}
+              as={SC.ScrollLink}
             >
-              {translate(type.title)}
+              {translate(modelElementType.title)}
             </ScollLink>
           )}
-          {types?.map(({ identifier, uri, title }, index) => (
+          {modelElementTypes?.map(({ identifier, uri, title }, index) => (
             <ScollLink
               key={identifier ?? uri ?? `scroll-link-${index}`}
               to={uri ?? identifier ?? ''}
@@ -112,7 +120,7 @@ const Element: FC<Props> = ({ property, code, modelElements, concepts }) => {
               isDynamic
               offset={0}
               duration={1500}
-              as={Scroll.Link}
+              as={SC.ScrollLink}
             >
               {translate(title)}
             </ScollLink>
@@ -134,7 +142,7 @@ const Element: FC<Props> = ({ property, code, modelElements, concepts }) => {
           />
         )}
       </ExpansionPanelBody>
-    </SC.ObjectTypeElementExpansionPanel>
+    </SC.ExpansionPanel>
   );
 };
 

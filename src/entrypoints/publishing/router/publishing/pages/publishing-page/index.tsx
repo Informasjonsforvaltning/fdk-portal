@@ -1,6 +1,7 @@
 import React, { memo, FC } from 'react';
 import { compose } from 'redux';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link as RouteLink, RouteComponentProps } from 'react-router-dom';
+import Link from '@fellesdatakatalog/link';
 
 import env from '../../../../../../env';
 
@@ -34,7 +35,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => (
         <p>
           <Translation id="publishingPage.methodSections.register.question" />
         </p>
-        <Link to={`${url}/about-registration`} component={SC.Link}>
+        <Link to={`${url}/about-registration`} as={RouteLink}>
           <Translation id="publishingPage.methodSections.register.link" />
         </Link>
         <SC.RegisterIllustration />
@@ -52,7 +53,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => (
         <p>
           <Translation id="publishingPage.methodSections.harvest.question" />
         </p>
-        <Link to={`${url}/about-harvesting`} component={SC.Link}>
+        <Link to={`${url}/about-harvesting`} as={RouteLink}>
           <Translation id="publishingPage.methodSections.harvest.link" />
         </Link>
         <SC.HarvestIllustration />
@@ -61,23 +62,23 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => (
     <SC.InformationSection>
       <SC.InformationBox>
         <h3>
-          <Link to={`${url}/about-registration`}>
+          <RouteLink to={`${url}/about-registration`}>
             <Translation id="publishingPage.informationSections.getStartedHelp.title" />
-          </Link>
+          </RouteLink>
         </h3>
         <p>
           <Translation id="publishingPage.informationSections.getStartedHelp.description" />
         </p>
         <ul>
           <li>
-            <SC.Link href={`${url}/about-registration#id-porten`}>
+            <Link href={`${url}/about-registration#id-porten`}>
               <Translation id="publishingPage.informationSections.getStartedHelp.logInMethodIdPortenLink" />
-            </SC.Link>
+            </Link>
           </li>
           <li>
-            <SC.Link href={`${url}/about-registration#felles-brukerhandtering`}>
+            <Link href={`${url}/about-registration#felles-brukerhandtering`}>
               <Translation id="publishingPage.informationSections.getStartedHelp.logInMethodFdkLink" />
-            </SC.Link>
+            </Link>
           </li>
         </ul>
       </SC.InformationBox>
@@ -92,19 +93,19 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => (
         </p>
         <ul>
           <li>
-            <SC.Link href="https://informasjonsforvaltning.github.io/dcat-ap-no">
+            <Link href="https://informasjonsforvaltning.github.io/dcat-ap-no">
               <Translation id="publishingPage.informationSections.usefulInfo.datasetsStandardLink" />
-            </SC.Link>
+            </Link>
           </li>
           <li>
-            <SC.Link href="https://doc.difi.no/data/veileder-apne-data">
+            <Link href="https://doc.difi.no/data/veileder-apne-data">
               <Translation id="publishingPage.informationSections.usefulInfo.registrationGuidanceLink" />
-            </SC.Link>
+            </Link>
           </li>
           <li>
-            <SC.Link href="https://data.norge.no/nlod/no">
+            <Link href="https://data.norge.no/nlod/no">
               <Translation id="publishingPage.informationSections.usefulInfo.norwegianPublicLicenseLink" />
-            </SC.Link>
+            </Link>
           </li>
         </ul>
       </SC.InformationBox>

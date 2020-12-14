@@ -10,12 +10,14 @@ import type {
   ModelCodeElement,
   Concept
 } from '../../../types';
+import { ModelElementType } from '../../../types/enums';
 
 interface ExternalProps {
   title: string;
   properties?: Partial<InformationModelProperty | ModelCodeElement>[];
   modelElements: Record<string, Partial<InformationModelElement>>;
   concepts: Record<string, Concept>;
+  type: ModelElementType;
 }
 
 interface Props extends ExternalProps {}
@@ -24,7 +26,8 @@ const ModelElementList: FC<Props> = ({
   title,
   properties,
   modelElements,
-  concepts
+  concepts,
+  type
 }) =>
   properties && properties.length > 0 ? (
     <>
@@ -36,6 +39,7 @@ const ModelElementList: FC<Props> = ({
           code={property}
           modelElements={modelElements}
           concepts={concepts}
+          type={type}
         />
       ))}
     </>

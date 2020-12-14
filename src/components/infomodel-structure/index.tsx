@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
-import Link from '@fellesdatakatalog/link';
+import React, { memo, FC } from 'react';
+import { compose } from 'redux';
 
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 
-import { Description } from './model-description/model-description.component';
-import { ExpansionIndicatorDetails } from './expansion-indicator-details/expansion-indicator-details.component';
+import Description from './model-description';
+import ExpansionIndicatorDetails from './expansion-indicator-details';
 import { ExpansionPanelHead, ExpansionPanelBody } from '../expansion-panel';
 import ModelElementList from './model-element-list';
 import ValueRestrictions from './value-restrictions';
@@ -19,14 +19,17 @@ import type {
   InformationModelProperty,
   Concept
 } from '../../types';
+import { ModelElementType } from '../../types/enums';
 
-interface Props {
+interface ExternalProps {
   modelElements: Record<string, Partial<InformationModelElement>>;
   modelProperties: Record<string, Partial<InformationModelProperty>>;
   concepts: Concept[];
 }
 
-export const InfoModelStructure: FC<Props> = ({
+interface Props extends ExternalProps {}
+
+const InfoModelStructure: FC<Props> = ({
   modelElements,
   modelProperties,
   concepts
@@ -138,12 +141,10 @@ export const InfoModelStructure: FC<Props> = ({
   );
 
   return (
-    <SC.InfoModelStructure>
+    <>
       {rootObjectTypes.length > 0 && (
         <SC.Section>
-          <SC.SectionHeader>
-            {translations.infoMod.structure.rootObjectType}
-          </SC.SectionHeader>
+          <h3>{translations.infoMod.structure.rootObjectType}</h3>
           {rootObjectTypes.map(
             ({
               identifier,
@@ -154,7 +155,7 @@ export const InfoModelStructure: FC<Props> = ({
               subject,
               hasProperty
             }) => (
-              <SC.ObjectTypeExpansionPanel
+              <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
@@ -167,7 +168,7 @@ export const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty) ||
                     unwrapSpecialization(hasProperty)) && (
-                    <SC.ObjectTypeExpansionPanel
+                    <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
@@ -186,28 +187,31 @@ export const InfoModelStructure: FC<Props> = ({
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
-                    </SC.ObjectTypeExpansionPanel>
+                    </SC.ExpansionPanel>
                   )}
                   <ModelElementList
                     title={translations.infoMod.structure.attribute}
                     properties={unwrapAttributes(hasProperty)}
                     modelElements={modelElements}
                     concepts={conceptMap}
+                    type={ModelElementType.ATTRIBUTE}
                   />
                   <ModelElementList
                     title={translations.infoMod.structure.association}
                     properties={unwrapAssociations(hasProperty)}
                     modelElements={modelElements}
                     concepts={conceptMap}
+                    type={ModelElementType.ASSOCIATION}
                   />
                   <ModelElementList
                     title={translations.infoMod.structure.role}
                     properties={unwrapRoles(hasProperty)}
                     modelElements={modelElements}
                     concepts={conceptMap}
+                    type={ModelElementType.ROLE}
                   />
                 </ExpansionPanelBody>
-              </SC.ObjectTypeExpansionPanel>
+              </SC.ExpansionPanel>
             )
           )}
         </SC.Section>
@@ -215,9 +219,7 @@ export const InfoModelStructure: FC<Props> = ({
 
       {objectTypes.length > 0 && (
         <SC.Section>
-          <SC.SectionHeader>
-            {translations.infoMod.structure.objectType}
-          </SC.SectionHeader>
+          <h3>{translations.infoMod.structure.objectType}</h3>
           {objectTypes.map(
             ({
               identifier,
@@ -228,7 +230,7 @@ export const InfoModelStructure: FC<Props> = ({
               subject,
               hasProperty
             }) => (
-              <SC.ObjectTypeExpansionPanel
+              <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
@@ -241,7 +243,7 @@ export const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty) ||
                     unwrapSpecialization(hasProperty)) && (
-                    <SC.ObjectTypeExpansionPanel
+                    <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
@@ -260,28 +262,31 @@ export const InfoModelStructure: FC<Props> = ({
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
-                    </SC.ObjectTypeExpansionPanel>
+                    </SC.ExpansionPanel>
                   )}
                   <ModelElementList
                     title={translations.infoMod.structure.attribute}
                     properties={unwrapAttributes(hasProperty)}
                     modelElements={modelElements}
                     concepts={conceptMap}
+                    type={ModelElementType.ATTRIBUTE}
                   />
                   <ModelElementList
                     title={translations.infoMod.structure.association}
                     properties={unwrapAssociations(hasProperty)}
                     modelElements={modelElements}
                     concepts={conceptMap}
+                    type={ModelElementType.ASSOCIATION}
                   />
                   <ModelElementList
                     title={translations.infoMod.structure.role}
                     properties={unwrapRoles(hasProperty)}
                     modelElements={modelElements}
                     concepts={conceptMap}
+                    type={ModelElementType.ROLE}
                   />
                 </ExpansionPanelBody>
-              </SC.ObjectTypeExpansionPanel>
+              </SC.ExpansionPanel>
             )
           )}
         </SC.Section>
@@ -289,9 +294,7 @@ export const InfoModelStructure: FC<Props> = ({
 
       {codeLists.length > 0 && (
         <SC.Section>
-          <SC.SectionHeader>
-            {translations.infoMod.structure.codeList}
-          </SC.SectionHeader>
+          <h3>{translations.infoMod.structure.codeList}</h3>
           {codeLists.map(
             ({
               identifier,
@@ -304,7 +307,7 @@ export const InfoModelStructure: FC<Props> = ({
               subject,
               hasProperty
             }) => (
-              <SC.ObjectTypeExpansionPanel
+              <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
@@ -317,7 +320,7 @@ export const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty) ||
                     unwrapSpecialization(hasProperty)) && (
-                    <SC.ObjectTypeExpansionPanel
+                    <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
@@ -336,7 +339,7 @@ export const InfoModelStructure: FC<Props> = ({
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
-                    </SC.ObjectTypeExpansionPanel>
+                    </SC.ExpansionPanel>
                   )}
                   {codes && codes.length > 0 && (
                     <ModelElementList
@@ -344,6 +347,7 @@ export const InfoModelStructure: FC<Props> = ({
                       properties={codes}
                       modelElements={modelElements}
                       concepts={conceptMap}
+                      type={ModelElementType.CODE_ELEMENT}
                     />
                   )}
                   {codeListReference && (
@@ -352,14 +356,14 @@ export const InfoModelStructure: FC<Props> = ({
                         {translations.infoMod.structure.externalCodelist}
                       </ListTitleSC.ListTitle>
                       <ModelFieldSC.ModelField>
-                        <Link href={codeListReference} external>
+                        <SC.Link href={codeListReference} external>
                           {codeListReference}
-                        </Link>
+                        </SC.Link>
                       </ModelFieldSC.ModelField>
                     </>
                   )}
                 </ExpansionPanelBody>
-              </SC.ObjectTypeExpansionPanel>
+              </SC.ExpansionPanel>
             )
           )}
         </SC.Section>
@@ -367,9 +371,7 @@ export const InfoModelStructure: FC<Props> = ({
 
       {dataTypes.length > 0 && (
         <SC.Section>
-          <SC.SectionHeader>
-            {translations.infoMod.structure.dataType}
-          </SC.SectionHeader>
+          <h3>{translations.infoMod.structure.dataType}</h3>
           {dataTypes.map(
             ({
               identifier,
@@ -380,7 +382,7 @@ export const InfoModelStructure: FC<Props> = ({
               subject,
               hasProperty
             }) => (
-              <SC.ObjectTypeExpansionPanel
+              <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
@@ -393,7 +395,7 @@ export const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty) ||
                     unwrapSpecialization(hasProperty)) && (
-                    <SC.ObjectTypeExpansionPanel
+                    <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
@@ -412,16 +414,17 @@ export const InfoModelStructure: FC<Props> = ({
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
-                    </SC.ObjectTypeExpansionPanel>
+                    </SC.ExpansionPanel>
                   )}
                   <ModelElementList
                     title={translations.infoMod.structure.attribute}
                     properties={unwrapAttributes(hasProperty)}
                     modelElements={modelElements}
                     concepts={conceptMap}
+                    type={ModelElementType.ATTRIBUTE}
                   />
                 </ExpansionPanelBody>
-              </SC.ObjectTypeExpansionPanel>
+              </SC.ExpansionPanel>
             )
           )}
         </SC.Section>
@@ -429,9 +432,7 @@ export const InfoModelStructure: FC<Props> = ({
 
       {simpleTypes.length > 0 && (
         <SC.Section>
-          <SC.SectionHeader>
-            {translations.infoMod.structure.simpleType}
-          </SC.SectionHeader>
+          <h3>{translations.infoMod.structure.simpleType}</h3>
           {simpleTypes.map(
             ({
               identifier,
@@ -449,7 +450,7 @@ export const InfoModelStructure: FC<Props> = ({
               subject,
               hasProperty
             }) => (
-              <SC.ObjectTypeExpansionPanel
+              <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
@@ -462,7 +463,7 @@ export const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty) ||
                     unwrapSpecialization(hasProperty)) && (
-                    <SC.ObjectTypeExpansionPanel
+                    <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
@@ -481,7 +482,7 @@ export const InfoModelStructure: FC<Props> = ({
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
-                    </SC.ObjectTypeExpansionPanel>
+                    </SC.ExpansionPanel>
                   )}
                   {typeDefinitionReference && (
                     <>
@@ -489,9 +490,9 @@ export const InfoModelStructure: FC<Props> = ({
                         {translations.infoMod.structure.definitionReference}
                       </ListTitleSC.ListTitle>
                       <ModelFieldSC.ModelField>
-                        <Link href={typeDefinitionReference} external>
+                        <SC.Link href={typeDefinitionReference} external>
                           {typeDefinitionReference}
-                        </Link>
+                        </SC.Link>
                       </ModelFieldSC.ModelField>
                     </>
                   )}
@@ -505,11 +506,13 @@ export const InfoModelStructure: FC<Props> = ({
                     totalDigits={totalDigits}
                   />
                 </ExpansionPanelBody>
-              </SC.ObjectTypeExpansionPanel>
+              </SC.ExpansionPanel>
             )
           )}
         </SC.Section>
       )}
-    </SC.InfoModelStructure>
+    </>
   );
 };
+
+export default compose<FC<ExternalProps>>(memo)(InfoModelStructure);
