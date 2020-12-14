@@ -7,7 +7,7 @@ import type { ESPage, PublicService } from '../../types';
 import { PublicServiceEvent } from '../../types';
 
 export interface Props {
-  publicServices: Partial<PublicService>[];
+  publicServices: PublicService[];
   publicServicesAggregations: any;
   publicServicesPage: ESPage;
   publicServicesEvents: PublicServiceEvent[];
