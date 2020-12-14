@@ -73,6 +73,9 @@
   "addedLastDays": "Nye siste {days} dager",
   "nationalDataCatalog": "Felles datakatalog",
   "nap": "Transportportalen",
+  "language": "Språk",
+  "industryCode": "Næringskode",
+  "requires": "Krev",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -635,7 +638,11 @@
         "contactInformation": "Kontaktinformasjon"
       },
       "publicService": {
-        "description": "Beskrivelse"
+        "description": "Beskrivelse",
+        "usage": "Bruk av tenesten",
+        "keywords": "Emneord",
+        "relatedServices": "Relaterte tenester",
+        "conceptReferences": "Omgrep brukt i tenesten"
       }
     }
   },

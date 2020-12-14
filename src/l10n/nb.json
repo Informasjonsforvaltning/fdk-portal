@@ -73,6 +73,9 @@
   "addedLastDays": "Nye siste {days} dager",
   "nationalDataCatalog": "Felles datakatalog",
   "nap": "Transportportalen",
+  "language": "Språk",
+  "industryCode": "Næringskode",
+  "requires": "Krever",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -635,7 +638,11 @@
         "contactInformation": "Kontaktinformasjon"
       },
       "publicService": {
-        "description": "Beskrivelse"
+        "description": "Beskrivelse",
+        "usage": "Bruk av tjenesten",
+        "keywords": "Søkeord",
+        "relatedServices": "Relaterte tjenester",
+        "conceptReferences": "Begreper brukt i tjenesten"
       }
     }
   },

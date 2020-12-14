@@ -222,6 +222,12 @@ export interface ConceptDefinition {
   sourceRelationship?: string;
 }
 
+export interface PublicServiceLanguage {
+  uri: string;
+  code: string;
+  prefLabel: Partial<TextLanguage>;
+}
+
 export interface PublicServiceEvent {
   uri: string;
   identifier: string;
@@ -229,6 +235,7 @@ export interface PublicServiceEvent {
   description: Partial<TextLanguage>;
   type: string;
 }
+
 export interface PublicService {
   type: string;
   id: string;
@@ -236,9 +243,14 @@ export interface PublicService {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  isGroupedBy: PublicServiceEvent[];
-  hasCompetentAuthority: Partial<Publisher>[];
-  harvest: Partial<Harvest>;
+  isGroupedBy?: PublicServiceEvent[];
+  hasCompetentAuthority?: Partial<Publisher>[];
+  harvest?: Partial<Harvest>;
+  keyword?: Partial<TextLanguage>[];
+  sector?: Partial<Concept>[];
+  isClassifiedBy?: Partial<Concept>[];
+  language?: PublicServiceLanguage[];
+  requires?: PublicService[];
 }
 
 export interface ESPage {
