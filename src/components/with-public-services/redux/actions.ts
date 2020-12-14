@@ -11,6 +11,7 @@ interface GetPublicServicesParams {
   orgPath?: string;
   isGroupedBy?: string;
   keywords?: string;
+  publicServiceIdentifiers?: string[];
 }
 
 export function getPublicServicesRequested(params: GetPublicServicesParams) {

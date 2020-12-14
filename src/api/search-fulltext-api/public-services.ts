@@ -13,7 +13,8 @@ const mapFilters = ({
   last_x_days,
   orgPath,
   isGroupedBy,
-  keywords
+  keywords,
+  publicServiceIdentifiers
 }: any) => {
   const filters = [];
   if (id) {
@@ -56,6 +57,17 @@ const mapFilters = ({
   }
   if (keywords) {
     filters.push({ keywords });
+  }
+  if (
+    Array.isArray(publicServiceIdentifiers) &&
+    publicServiceIdentifiers.length > 0
+  ) {
+    filters.push({
+      collection: {
+        field: 'uri',
+        values: publicServiceIdentifiers
+      }
+    });
   }
   return filters.length > 0 ? filters : undefined;
 };
