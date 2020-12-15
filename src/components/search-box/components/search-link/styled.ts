@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { theme, Colour } from '@fellesdatakatalog/theme';
 
 import DatasetIconBase from '../../../../images/icon-catalog-dataset-lg.svg';
 import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
@@ -18,6 +19,7 @@ const SearchLink = styled(Link)<{ type?: Entity; smallWidth?: boolean }>`
   font-size: 1.8rem;
   margin-bottom: 1em;
   padding: 1em;
+  position: relative;
   text-decoration: none;
   word-break: break-all;
   transition: all 200ms ease-in-out;
@@ -124,11 +126,24 @@ const PublicServiceIcon = styled(PublicServiceIconBase)`
   }
 `;
 
+const BetaRibbon = styled.span`
+  position: absolute;
+  top: 8px;
+  right: -33px;
+  transform: rotate(45deg);
+  padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
+  font-size: ${theme.fontSize('FS20')};
+  font-weight: ${theme.fontWeight('FW700')};
+  color: ${theme.colour(Colour.NEUTRAL, 'N60')};
+  background: ${theme.colour(Colour.YELLOW, 'Y30')};
+`;
+
 export default {
   SearchLink,
   DatasetIcon,
   ApiIcon,
   ConceptIcon,
   InfomodIcon,
-  PublicServiceIcon
+  PublicServiceIcon,
+  BetaRibbon
 };
