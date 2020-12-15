@@ -23,6 +23,7 @@ export const PublicServiceItem: FC<Props> = ({
       title={title}
       publisher={hasCompetentAuthority?.[0]}
       description={description}
+      beta
     />
   );
 };
