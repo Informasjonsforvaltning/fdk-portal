@@ -2,7 +2,7 @@
 
 exports[`should render App correctly 1`] = `
 <div
-  className="theme-fdk"
+  className="position-relative overflow-hidden theme-fdk"
 >
   <div>
     <a
