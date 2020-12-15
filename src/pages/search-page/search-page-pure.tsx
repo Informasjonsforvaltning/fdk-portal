@@ -123,10 +123,7 @@ const SearchPage: FC<Props> = ({
       : locationSearchParamQ;
 
   useEffect(() => {
-    if (
-      getConfig().showPublicService &&
-      shouldFetch(publicServiceSearchParams, searchQuery)
-    ) {
+    if (shouldFetch(publicServiceSearchParams, searchQuery)) {
       getPublicServices(publicServiceSearchParams);
       setSearchQuery(generateQueryKey(publicServiceSearchParams));
     }

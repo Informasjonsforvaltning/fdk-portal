@@ -42,9 +42,7 @@ const MainPage: FC<Props> = ({
         <SearchLink entity={Entity.DATA_SERVICE} />
         <SearchLink entity={Entity.CONCEPT} />
         <SearchLink entity={Entity.INFORMATION_MODEL} />
-        {getConfig().showPublicService && (
-          <SearchLink entity={Entity.PUBLIC_SERVICE} beta />
-        )}
+        <SearchLink entity={Entity.PUBLIC_SERVICE} beta />
       </SearchBox>
       <main id="content" className="container">
         <SC.Content className="row">
