@@ -16,9 +16,10 @@ const smallWidth = !!getConfig().showPublicService;
 
 interface Props {
   entity: Entity;
+  beta?: boolean;
 }
 
-const SearchLink: FC<Props> = ({ entity }) => {
+const SearchLink: FC<Props> = ({ entity, beta = false }) => {
   const categoriesLink = {
     [Entity.DATASET]: {
       path: PATHNAME_DATASETS,
@@ -51,6 +52,7 @@ const SearchLink: FC<Props> = ({ entity }) => {
 
   return (
     <SC.SearchLink to={path} type={entity} smallWidth={smallWidth}>
+      {beta && <SC.BetaRibbon>BETA</SC.BetaRibbon>}
       <Icon />
       <span>{localization.showOnly}</span>
       <span>{translation.toLowerCase()}</span>
