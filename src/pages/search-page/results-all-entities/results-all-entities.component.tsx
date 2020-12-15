@@ -4,8 +4,30 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import keyBy from 'lodash/keyBy';
 
+import env from '../../../env';
+
+import localization from '../../../lib/localization';
+import { parseSearchParams } from '../../../lib/location-history-helper';
+import { getLosByKeys } from '../../../lib/los/los-helper';
+import { setPage } from '../search-location-helper';
+
+import withOrganizations, {
+  Props as OrganizationsProps
+} from '../../../components/with-organizations-catalog';
+import withReferenceData, {
+  Props as ReferenceDataProps
+} from '../../../components/with-reference-data';
+
+import SearchEntities from '../../../components/search-entities/search-entities.component';
+import EmptyHits from '../../../components/empty-hits/empty.component';
+
+import Filters from '../filters';
+import CompareList from '../compare-list';
+import SortButtons from '../sort-buttons';
+
 import SC from './styled';
-import {
+
+import type {
   Concept,
   PublicServiceEvent,
   DataService,
@@ -13,21 +35,9 @@ import {
   InformationModel,
   PublicService
 } from '../../../types';
-import localization from '../../../lib/localization';
-import { parseSearchParams } from '../../../lib/location-history-helper';
-import { setPage } from '../search-location-helper';
-import SearchEntities from '../../../components/search-entities/search-entities.component';
-import EmptyHits from '../../../components/empty-hits/empty.component';
-import Filters from '../filters';
-import CompareList from '../compare-list';
-import SortButtons from '../sort-buttons';
-import withOrganizations, {
-  Props as OrganizationsProps
-} from '../../../components/with-organizations-catalog';
-import withReferenceData, {
-  Props as ReferenceDataProps
-} from '../../../components/with-reference-data';
-import { getLosByKeys } from '../../../lib/los/los-helper';
+import { Entity, FeedType } from '../../../types/enums';
+
+const { SEARCH_API_HOST } = env;
 
 interface ExternalProps {
   entities:
@@ -36,6 +46,7 @@ interface ExternalProps {
     | Partial<Concept>[]
     | Partial<InformationModel>[]
     | Partial<PublicService>[];
+  entityType?: Entity;
   aggregations?: any;
   page?: any;
   compareConceptList?: Concept[];
@@ -51,6 +62,7 @@ interface Props
 
 const ResultsPage: FC<PropsWithChildren<Props>> = ({
   entities = [],
+  entityType,
   aggregations = {},
   page = {},
   compareConceptList = [],
@@ -140,6 +152,18 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                   forcePage={parseInt(pageSearchParam?.toString(), 10)}
                   disableInitialCallback
                 />
+                {entityType === Entity.DATASET && (
+                  <SC.FeedLinks>
+                    {[FeedType.RSS, FeedType.ATOM].map(type => (
+                      <SC.FeedLink
+                        href={`${SEARCH_API_HOST}/datasets.${type}${location.search}`}
+                      >
+                        {localization.feedType[type]}
+                        <SC.FeedIcon />
+                      </SC.FeedLink>
+                    ))}
+                  </SC.FeedLinks>
+                )}
               </SC.Pagination>
             </section>
           </SC.Content>

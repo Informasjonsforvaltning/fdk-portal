@@ -763,5 +763,9 @@
   "truncatedText": {
     "expanded": "Skjul skildringa",
     "collapsed": "Vis heile skildringa"
+  },
+  "feedType": {
+    "rss": "RSS",
+    "atom": "Atom"
   }
 }
