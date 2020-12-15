@@ -105,6 +105,7 @@ const Tabs: FC<Props & RouteComponentProps> = ({
         tabLink={getLinkForTab(location, PATHNAME_PUBLIC_SERVICES)}
         label={localization.informationModelLabel}
       >
+        <SC.BetaRibbon>BETA</SC.BetaRibbon>
         <SC.IconPlaceholder type={Entity.PUBLIC_SERVICE}>
           <SC.ServiceIcon />
         </SC.IconPlaceholder>

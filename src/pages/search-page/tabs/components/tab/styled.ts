@@ -23,6 +23,8 @@ const Tab = styled.li<{ active?: boolean }>`
 
   justify-content: center;
   list-style-type: none;
+  position: relative;
+  overflow: hidden;
 
   ${({ active }) =>
     active &&
