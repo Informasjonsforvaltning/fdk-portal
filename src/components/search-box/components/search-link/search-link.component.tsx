@@ -10,9 +10,6 @@ import {
 } from '../../../../constants/constants';
 import localization from '../../../../lib/localization';
 import { Entity } from '../../../../types/enums';
-import { getConfig } from '../../../../config';
-
-const smallWidth = !!getConfig().showPublicService;
 
 interface Props {
   entity: Entity;
@@ -51,7 +48,7 @@ const SearchLink: FC<Props> = ({ entity, beta = false }) => {
   const { path, icon: Icon, translation } = categoriesLink[entity];
 
   return (
-    <SC.SearchLink to={path} type={entity} smallWidth={smallWidth}>
+    <SC.SearchLink to={path} type={entity} smallWidth>
       {beta && <SC.BetaRibbon>BETA</SC.BetaRibbon>}
       <Icon />
       <span>{localization.showOnly}</span>
