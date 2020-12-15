@@ -16,6 +16,7 @@ import withPublicService, {
 import withPublicServices, {
   Props as PublicServicesProps
 } from '../with-public-services';
+import withConcepts, { Props as ConceptsProps } from '../with-concepts';
 
 import DetailsPage, {
   ContentSection,
@@ -39,7 +40,8 @@ interface RouteParams {
 }
 
 interface Props
-  extends PublicServiceProps,
+  extends ConceptsProps,
+    PublicServiceProps,
     PublicServicesProps,
     RouteComponentProps<RouteParams> {}
 
@@ -54,6 +56,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
     getPublicServicesRequested: getPublicServices,
     resetPublicServices
   },
+  concepts,
+  conceptsActions: { getConceptsRequested: getConcepts },
   match: {
     params: { publicServiceId }
   }
@@ -87,6 +91,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const keywords =
     publicService?.keyword?.map(translate)?.filter(Boolean) ?? [];
   const requiredServices = publicService?.requires || [];
+  const isClassifiedBy = publicService?.isClassifiedBy || [];
 
   const publicServiceIdentifiers = (requiredServices.map(
     ({ uri }) => uri
@@ -97,11 +102,26 @@ const PublicServiceDetailsPage: FC<Props> = ({
     {} as Record<string, any>
   );
 
+  const conceptsIdentifiers = (isClassifiedBy.map(
+    ({ uri }) => uri
+  ) as string[]).filter(Boolean);
+
+  const conceptsMap = concepts?.reduce(
+    (previous, current) => ({ ...previous, [current.identifier]: current }),
+    {} as Record<string, any>
+  );
+
   useEffect(() => {
     if (publicServiceIdentifiers.length > 0) {
       getPublicServices({ publicServiceIdentifiers, size: 1000 });
     }
   }, [publicServiceIdentifiers.join()]);
+
+  useEffect(() => {
+    if (conceptsIdentifiers.length > 0) {
+      getConcepts({ identifiers: conceptsIdentifiers, size: 1000 });
+    }
+  }, [conceptsIdentifiers.join()]);
 
   const themes: Theme[] = [];
 
@@ -218,40 +238,39 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 </KeyValueList>
               </ContentSection>
             )}
-            {publicService?.isClassifiedBy &&
-              publicService.isClassifiedBy.length > 0 && (
-                <ContentSection
-                  id="concept-references"
-                  title={
-                    translations.detailsPage.sectionTitles.publicService
-                      .conceptReferences
-                  }
-                >
-                  <KeyValueList>
-                    {publicService.isClassifiedBy?.map(
-                      ({ uri, id, prefLabel, definition }) =>
-                        uri && (
-                          <KeyValueListItem
-                            key={uri}
-                            property={
-                              id ? (
-                                <Link
-                                  as={RouterLink}
-                                  to={`${PATHNAME_CONCEPTS}/${id}`}
-                                >
-                                  {translate(prefLabel)}
-                                </Link>
-                              ) : (
-                                translate(prefLabel)
-                              )
-                            }
-                            value={translate(definition)}
-                          />
-                        )
-                    )}
-                  </KeyValueList>
-                </ContentSection>
-              )}
+            {isClassifiedBy.length > 0 && (
+              <ContentSection
+                id="concept-references"
+                title={
+                  translations.detailsPage.sectionTitles.publicService
+                    .conceptReferences
+                }
+              >
+                <KeyValueList>
+                  {isClassifiedBy?.map(
+                    ({ uri, prefLabel }) =>
+                      uri && (
+                        <KeyValueListItem
+                          key={uri}
+                          property={
+                            conceptsMap[uri] ? (
+                              <Link
+                                as={RouterLink}
+                                to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
+                              >
+                                {translate(conceptsMap[uri].prefLabel)}
+                              </Link>
+                            ) : (
+                              translate(prefLabel)
+                            )
+                          }
+                          value=""
+                        />
+                      )
+                  )}
+                </KeyValueList>
+              </ContentSection>
+            )}
           </DetailsPage>
         </ThemeProvider>
       )
@@ -260,6 +279,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
 export default compose(
   memo,
+  withConcepts,
   withPublicService,
   withPublicServices
 )(PublicServiceDetailsPage);
