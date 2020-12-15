@@ -39,7 +39,7 @@ const mapFilters = ({
   if (Array.isArray(conceptIdentifiers) && conceptIdentifiers.length > 0) {
     filters.push({
       collection: {
-        field: 'containsSubjects',
+        field: 'containsSubjects.keyword',
         values: conceptIdentifiers
       }
     });
