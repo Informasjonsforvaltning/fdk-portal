@@ -1,4 +1,4 @@
-import React, { memo, FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import translations from '../../../../lib/localization';
 
@@ -54,6 +54,9 @@ const Banner: FC<Props> = ({
 
   return (
     <SC.Banner>
+      {entity === Entity.PUBLIC_SERVICE && (
+        <SC.BetaRibbon>{translations.dataset.sample}</SC.BetaRibbon>
+      )}
       <Icon />
       <SC.Content>
         <SC.Title>
