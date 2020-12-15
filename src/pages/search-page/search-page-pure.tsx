@@ -24,11 +24,18 @@ import {
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { Tabs } from './tabs/tabs';
 import ResultsPage from './results-all-entities/results-all-entities.component';
-import { Concept, DataService, Dataset, InformationModel } from '../../types';
 import withPublicServices, {
   Props as PublicServicesProps
 } from '../../components/with-public-services';
 import { generateQueryKey, shouldFetch } from './lib/fetch-helper';
+
+import type {
+  Concept,
+  DataService,
+  Dataset,
+  InformationModel
+} from '../../types';
+import { Entity } from '../../types/enums';
 
 interface AllEntities {
   hits:
@@ -177,6 +184,7 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((datasetTotal || 1) / HITS_PER_PAGE)
               }}
+              entityType={Entity.DATASET}
             />
           </Route>
           <Route exact path={PATHNAME_DATA_SERVICES}>
@@ -186,6 +194,7 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((dataServiceTotal || 1) / HITS_PER_PAGE)
               }}
+              entityType={Entity.DATA_SERVICE}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
@@ -195,6 +204,7 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((conceptTotal || 1) / HITS_PER_PAGE)
               }}
+              entityType={Entity.CONCEPT}
               compareConceptList={conceptsCompare}
               addConcept={addConcept}
               removeConcept={removeConcept}
@@ -209,6 +219,7 @@ const SearchPage: FC<Props> = ({
                   (informationModelTotal || 1) / HITS_PER_PAGE
                 )
               }}
+              entityType={Entity.INFORMATION_MODEL}
             />
           </Route>
           <Route exact path={PATHNAME_PUBLIC_SERVICES}>
@@ -216,6 +227,7 @@ const SearchPage: FC<Props> = ({
               entities={publicServices}
               aggregations={publicServicesAggregations ?? {}}
               page={publicServicesPage ?? {}}
+              entityType={Entity.PUBLIC_SERVICE}
               publicServicesEvents={publicServicesEvents}
             />
           </Route>

@@ -763,5 +763,9 @@
   "truncatedText": {
     "expanded": "Skjul beskrivelsen",
     "collapsed": "Vis hele beskrivelsen"
+  },
+  "feedType": {
+    "rss": "RSS",
+    "atom": "Atom"
   }
 }

@@ -763,5 +763,9 @@
   "truncatedText": {
     "expanded": "Hide description",
     "collapsed": "Show full description"
+  },
+  "feedType": {
+    "rss": "RSS",
+    "atom": "Atom"
   }
 }

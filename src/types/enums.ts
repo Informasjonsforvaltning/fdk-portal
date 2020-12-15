@@ -104,3 +104,8 @@ export enum ModelElementType {
   CODE_ELEMENT = 'code_element',
   ASSOCIATION = 'association'
 }
+
+export enum FeedType {
+  RSS = 'rss',
+  ATOM = 'atom'
+}
