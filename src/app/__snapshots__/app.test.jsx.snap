@@ -2,7 +2,7 @@
 
 exports[`should render App correctly 1`] = `
 <div
-  className="theme-fdk"
+  className="position-relative overflow-hidden theme-fdk"
 >
   <div>
     <a
@@ -186,14 +186,14 @@ exports[`should render App correctly 1`] = `
               "compare": null,
               "type": Object {
                 "$$typeof": Symbol(react.memo),
-                "compare": null,
-                "type": Object {
+                "WrappedComponent": Object {
                   "$$typeof": Symbol(react.memo),
-                  "WrappedComponent": [Function],
                   "compare": null,
-                  "displayName": "Connect(WrappedComponent)",
                   "type": [Function],
                 },
+                "compare": null,
+                "displayName": "Connect(Component)",
+                "type": [Function],
               },
             }
           }

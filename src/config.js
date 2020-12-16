@@ -49,8 +49,7 @@ const config = {
   reportApi: { host: env.REPORT_API_HOST },
   metadataQualityAssessmentApi: {
     host: env.METADATA_QUALITY_ASSESSMENT_API_HOST
-  },
-  showPublicService: localStorage.getItem('publicService')
+  }
 };
 
 export const getConfig = () => config;

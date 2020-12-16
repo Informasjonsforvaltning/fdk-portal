@@ -2,8 +2,9 @@ import React from 'react';
 import { cleanup } from '@testing-library/react';
 import { shallow } from 'enzyme';
 
+import InfoModelStructure from '..';
+
 import * as informationModel from './__fixtures/informationModelResponse.json';
-import { InfoModelStructure } from '../infomodel-structure.component';
 
 afterEach(cleanup);
 
@@ -18,6 +19,7 @@ describe('InfoModelStructure component', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
   it('should render with props', () => {
     const container = shallow(
       <InfoModelStructure {...informationModel} concepts={[]} />

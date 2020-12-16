@@ -74,8 +74,8 @@ exports[`should render ReportPagePure correctly 1`] = `
           <div
             className="col-12"
           >
-            <b>
-              <l
+            <O>
+              <s
                 active={true}
                 for="pane-1"
               >
@@ -85,8 +85,8 @@ exports[`should render ReportPagePure correctly 1`] = `
                   onClick={[Function]}
                   variant="dataset"
                 />
-              </l>
-              <l
+              </s>
+              <s
                 for="pane-2"
               >
                 <Memo(Tab)
@@ -95,8 +95,8 @@ exports[`should render ReportPagePure correctly 1`] = `
                   onClick={[Function]}
                   variant="dataservice"
                 />
-              </l>
-              <l
+              </s>
+              <s
                 for="pane-3"
               >
                 <Memo(Tab)
@@ -105,8 +105,8 @@ exports[`should render ReportPagePure correctly 1`] = `
                   onClick={[Function]}
                   variant="concept"
                 />
-              </l>
-              <l
+              </s>
+              <s
                 for="pane-4"
               >
                 <Memo(Tab)
@@ -115,31 +115,31 @@ exports[`should render ReportPagePure correctly 1`] = `
                   onClick={[Function]}
                   variant="informationmodel"
                 />
-              </l>
-              <a
+              </s>
+              <b
                 id="pane-1"
               >
                 <withRouter(Connect(Component))
                   datasetsTimeSeries={Object {}}
                   publishers={Object {}}
                 />
-              </a>
-              <a
+              </b>
+              <b
                 id="pane-2"
               >
                 <Memo(Connect(Component)) />
-              </a>
-              <a
+              </b>
+              <b
                 id="pane-3"
               >
                 <withRouter(undefined) />
-              </a>
-              <a
+              </b>
+              <b
                 id="pane-4"
               >
                 <withRouter(undefined) />
-              </a>
-            </b>
+              </b>
+            </O>
           </div>
         </div>
       </div>

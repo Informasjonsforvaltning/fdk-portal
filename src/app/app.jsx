@@ -58,7 +58,7 @@ export function App({ language, onChangeLanguage }) {
   // and full-render app each time when the language is changed
   localization.setLanguage(language);
 
-  const themeClass = cx({
+  const themeClass = cx('position-relative overflow-hidden', {
     'theme-nap': getConfig().themeNap,
     'theme-fdk': !getConfig().themeNap
   });

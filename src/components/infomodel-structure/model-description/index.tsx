@@ -1,4 +1,5 @@
-import React, { FC, ComponentProps } from 'react';
+import React, { memo, FC, ComponentProps } from 'react';
+import { compose } from 'redux';
 import { Link as RouteLink } from 'react-router-dom';
 import Scroll from 'react-scroll';
 import Link from '@fellesdatakatalog/link';
@@ -14,7 +15,7 @@ import type {
   InformationModelElement
 } from '../../../types';
 
-interface Props {
+interface ExternalProps {
   identifier?: string;
   description?: Partial<TextLanguage> | null;
   belongsToModule?: string | null;
@@ -25,13 +26,15 @@ interface Props {
   specialization?: Partial<InformationModelElement> | null;
 }
 
+interface Props extends ExternalProps {}
+
 type ScollLinkType = FC<
   Omit<ComponentProps<typeof Scroll.Link>, 'as'> & ComponentProps<typeof Link>
 >;
 
 const ScollLink = Link as ScollLinkType;
 
-export const Description: FC<Props> = ({
+const Description: FC<Props> = ({
   identifier,
   description,
   version,
@@ -66,7 +69,9 @@ export const Description: FC<Props> = ({
     {prefLabel && (
       <SC.DescriptionField>
         <strong>{localization.facet.concept}:</strong>
-        <RouteLink to={`/concepts/${id}`}>{translate(prefLabel)}</RouteLink>
+        <SC.Link to={`/concepts/${id}`} forwardedAs={RouteLink}>
+          {translate(prefLabel)}
+        </SC.Link>
       </SC.DescriptionField>
     )}
 
@@ -103,7 +108,7 @@ export const Description: FC<Props> = ({
           isDynamic
           offset={0}
           duration={1500}
-          as={Scroll.Link}
+          as={SC.ScrollLink}
         >
           {translate(abstraction.title)}
         </ScollLink>
@@ -120,7 +125,7 @@ export const Description: FC<Props> = ({
           isDynamic
           offset={0}
           duration={1500}
-          as={Scroll.Link}
+          as={SC.ScrollLink}
         >
           {translate(realization.title)}
         </ScollLink>
@@ -139,7 +144,7 @@ export const Description: FC<Props> = ({
           isDynamic
           offset={0}
           duration={1500}
-          as={Scroll.Link}
+          as={SC.ScrollLink}
         >
           {translate(specialization.title)}
         </ScollLink>
@@ -147,3 +152,5 @@ export const Description: FC<Props> = ({
     )}
   </SC.ModelDescription>
 );
+
+export default compose<FC<ExternalProps>>(memo)(Description);

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colour, theme } from '@fellesdatakatalog/theme';
 
 import RoundedTagSC from '../../../rounded-tag/styled';
 
@@ -7,6 +8,8 @@ const SearchHit = styled.article`
   border-radius: 5px;
   padding: 1em;
   margin-bottom: 1em;
+  position: relative;
+  overflow: hidden;
 
   a {
     text-decoration: none;
@@ -116,6 +119,18 @@ const Data = styled.div`
   margin-bottom: 1em;
 `;
 
+const BetaRibbon = styled.span`
+  position: absolute;
+  top: 20px;
+  right: -35px;
+  transform: rotate(45deg);
+  padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
+  font-size: 1rem;
+  font-weight: ${theme.fontWeight('FW700')};
+  color: ${theme.colour(Colour.RED, 'R30')};
+  background: ${theme.colour(Colour.RED, 'R60')};
+`;
+
 export default {
   SearchHit,
   Publisher,
@@ -124,5 +139,6 @@ export default {
   AccessRight,
   Theme,
   Format,
-  Data
+  Data,
+  BetaRibbon
 };

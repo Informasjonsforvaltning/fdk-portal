@@ -2,7 +2,7 @@ import React from 'react';
 import { cleanup } from '@testing-library/react';
 import { shallow } from 'enzyme';
 
-import { Description } from '../model-description.component';
+import Description from '..';
 import { TextLanguage } from '../../../../types';
 
 afterEach(cleanup);
@@ -12,7 +12,9 @@ describe('Description component', () => {
     const description: Partial<TextLanguage> = {
       nb: 'test description'
     };
+
     const container = shallow(<Description description={description} />);
+
     expect(container).toMatchSnapshot();
   });
 });

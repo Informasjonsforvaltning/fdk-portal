@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colour, theme } from '@fellesdatakatalog/theme';
 
 const onMobileView = '@media (max-width: 768px)';
 
@@ -9,6 +10,8 @@ const Banner = styled.header`
   border-radius: 5px;
   color: ${({ theme }) => theme.entityColours.dark};
   background: ${({ theme }) => theme.entityColours.light};
+  position: relative;
+  overflow: hidden;
 
   & svg > path {
     fill: ${({ theme }) => theme.entityColours.dark};
@@ -71,4 +74,16 @@ const LastPublishedInfo = styled.p`
   }
 `;
 
-export default { Banner, Content, Title, LastPublishedInfo };
+const BetaRibbon = styled.span`
+  position: absolute;
+  top: 25px;
+  right: -40px;
+  transform: rotate(45deg);
+  padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
+  font-size: 1rem;
+  font-weight: ${theme.fontWeight('FW700')};
+  color: ${theme.colour(Colour.RED, 'R30')};
+  background: ${theme.colour(Colour.RED, 'R60')};
+`;
+
+export default { Banner, Content, Title, LastPublishedInfo, BetaRibbon };
