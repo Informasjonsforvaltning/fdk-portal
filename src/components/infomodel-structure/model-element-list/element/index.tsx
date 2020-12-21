@@ -54,7 +54,8 @@ const Element: FC<Props> = ({
     property.hasValueFrom ??
     property.refersTo ??
     property.hasMember ??
-    property.contains;
+    property.contains ??
+    property.hasGeneralConcept;
   const typeUris = property.hasType ?? property.hasSome;
   const modelElementType = typeUri ? modelElements[typeUri] : null;
   const modelElementTypes = typeUris
