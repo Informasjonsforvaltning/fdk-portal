@@ -38,6 +38,11 @@ const ElementTitle = styled.span<{ $type: ModelElementType }>`
             content: '\\25A0';
             transform: scale(1.5) translateY(1px);
           `;
+        case ModelElementType.SPECIALIZATION:
+          return css`
+            content: '\\21FE';
+            transform: scale(1.5) translateY(-2px);
+          `;
         default:
           return css`
             content: '';
