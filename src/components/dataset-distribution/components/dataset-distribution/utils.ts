@@ -1,6 +1,7 @@
+import type { MediaType } from '../../../../types';
 import { DataFormat } from '../../../../types/enums';
 
-const priorities: { [key: string]: number } = {
+const priorities: Record<string, number> = {
   [DataFormat.JSON]: 1,
   [DataFormat.CSV]: 2,
   [DataFormat.XML]: 3,
@@ -15,15 +16,25 @@ const priorities: { [key: string]: number } = {
   [DataFormat.TURTLE]: 12,
   [DataFormat.JSONLD]: 13,
   [DataFormat.TXT]: 14,
-  [DataFormat.SIRI]: 15
+  [DataFormat.SIRI]: 15,
+  [DataFormat.UNKNOWN]: 16
 };
 
-export const formatSorter = (a: DataFormat, b: DataFormat): number => {
+export const toFormat = (format: string): string =>
+  Object.values(DataFormat).find(v => format.includes(v)) ?? format;
+
+export const toMediaType = (mediaTypes: MediaType[]) => (
+  format: string
+): string => mediaTypes.find(({ uri }) => uri.includes(format))?.name ?? format;
+
+export const formatSorter = (a: string, b: string): number => {
   if (!(a in priorities)) {
     return 1;
   }
+
   if (!(b in priorities)) {
     return -1;
   }
+
   return priorities[a] > priorities[b] ? 1 : -1;
 };

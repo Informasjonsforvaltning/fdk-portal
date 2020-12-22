@@ -1,4 +1,5 @@
 import React, { memo, FC } from 'react';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 
 import translations from '../../../../lib/localization';
@@ -21,13 +22,16 @@ import SC from './styled';
 
 import testIds from './test-ids';
 
-import { formatSorter } from './utils';
+import { toFormat, formatSorter, toMediaType } from './utils';
 
-import { Distribution, License } from '../../../../types';
+import { Distribution, License, MediaType } from '../../../../types';
 
-interface Props {
+interface ExternalProps {
   distribution: Partial<Distribution>;
+  mediaTypes?: MediaType[];
 }
+
+interface Props extends ExternalProps {}
 
 const DatasetDistribution: FC<Props> = ({
   distribution: {
@@ -42,7 +46,8 @@ const DatasetDistribution: FC<Props> = ({
     ] = [],
     page: [{ uri: pageUri = null } = {}] = [],
     accessService: accessServices = []
-  }
+  },
+  mediaTypes = []
 }) => (
   <SC.DatasetDistribution data-testid={testIds.root}>
     <ExpansionPanelHead>
@@ -53,7 +58,7 @@ const DatasetDistribution: FC<Props> = ({
           accessURL?.toLowerCase() ||
           translate(accessServices[0]?.description)
         }
-        formats={formats.sort(formatSorter)}
+        formats={formats.map(toFormat).sort(formatSorter)}
         data-testid={testIds.summary}
       />
     </ExpansionPanelHead>
@@ -61,7 +66,11 @@ const DatasetDistribution: FC<Props> = ({
       {formats.length > 0 && (
         <Detail
           property={translations.dataset.distribution.format}
-          value={formats.sort(formatSorter).join(', ')}
+          value={formats
+            .map(toFormat)
+            .sort(formatSorter)
+            .map(toMediaType(mediaTypes))
+            .join(', ')}
           data-testid={testIds.detail}
         />
       )}
@@ -151,4 +160,4 @@ const DatasetDistribution: FC<Props> = ({
   </SC.DatasetDistribution>
 );
 
-export default memo(DatasetDistribution);
+export default compose<FC<ExternalProps>>(memo)(DatasetDistribution);

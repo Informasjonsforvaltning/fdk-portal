@@ -6,6 +6,8 @@ import { Expectation, renderWithTheme } from '../../../../../../test/utils';
 
 import DatasetDistribution from '..';
 
+import { formatSorter } from '../utils';
+
 import testIds from '../test-ids';
 
 import { DataFormat } from '../../../../../types/enums';
@@ -159,7 +161,7 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(2);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.join(', ')
+      format.sort(formatSorter).join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
       description.en

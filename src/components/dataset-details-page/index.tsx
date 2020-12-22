@@ -57,7 +57,7 @@ interface Props
 
 const DatasetDetailsPage: FC<Props> = ({
   dataset,
-  referenceData: { referencetypes },
+  referenceData: { referencetypes: referenceTypes, mediatypes: mediaTypes },
   concepts,
   datasets,
   dataServices,
@@ -74,8 +74,13 @@ const DatasetDetailsPage: FC<Props> = ({
     if (datasetId) {
       getDataset(datasetId);
     }
-    if (!referencetypes) {
+
+    if (!referenceTypes) {
       getReferenceData('referencetypes');
+    }
+
+    if (!mediaTypes) {
+      getReferenceData('mediatypes');
     }
 
     return () => {
@@ -231,6 +236,7 @@ const DatasetDetailsPage: FC<Props> = ({
                 <DatasetDistribution
                   key={distribution.uri || `distribution-${index}`}
                   distribution={distribution}
+                  mediaTypes={mediaTypes}
                 />
               ))}
             </ContentSection>
@@ -522,7 +528,7 @@ const DatasetDetailsPage: FC<Props> = ({
                   <KeyValueListItem
                     key={id}
                     property={translate(
-                      referencetypes?.find(
+                      referenceTypes?.find(
                         ({ uri: referenceUri }) =>
                           referenceUri ===
                           datasetReferenceTypes.find(
@@ -548,7 +554,7 @@ const DatasetDetailsPage: FC<Props> = ({
                     <KeyValueListItem
                       key={`${uri}-${index}`}
                       property={translate(
-                        referencetypes?.find(
+                        referenceTypes?.find(
                           ({ uri: referenceTypesUri }) =>
                             referenceTypesUri === referenceTypeUri
                         )?.prefLabel
