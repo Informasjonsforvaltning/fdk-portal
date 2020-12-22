@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
+import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
-import { Dataset, MediaType } from '../../types';
-import { SearchTypes } from '../../types/enums';
+import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
+
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
-import PublicIconBase from '../../images/icon-access-open-md.svg';
 import {
   SearchHit,
   SearchHitFormats,
@@ -12,9 +12,13 @@ import {
   SearchHitAccessRights,
   SearchHitOpenData
 } from '../search-hit/search-hit';
-import localization from '../../lib/localization';
-import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
+
 import ReactTooltipSC from '../tooltip/styled';
+
+import PublicIconBase from '../../images/icon-access-open-md.svg';
+
+import type { Dataset, MediaType } from '../../types';
+import { SearchTypes } from '../../types/enums';
 
 interface Props {
   dataset: Dataset;
@@ -79,23 +83,6 @@ const renderThemes = (themes: any, losItems: any) => {
     .filter(Boolean);
 };
 
-const renderFormats = (distributions: any, mediatypes: MediaType[]) => {
-  if (!(distributions && distributions.length > 0)) {
-    return null;
-  }
-
-  const formats: string[] = distributions.reduce(
-    (previous: any, current: any) => [...previous, ...(current?.format ?? [])],
-    []
-  );
-
-  return [...new Set(formats)].map((item: any, index: number) => (
-    <span key={`format-${item}-${index}`}>
-      {mediatypes?.find(({ code }) => code === item)?.name ?? item}
-    </span>
-  ));
-};
-
 export const DatasetItem: FC<Props> = ({
   dataset: {
     id,
@@ -110,6 +97,16 @@ export const DatasetItem: FC<Props> = ({
   losItems,
   mediatypes = []
 }) => {
+  const formats = distribution
+    ?.reduce(
+      (previous, { format = [] }) => [...previous, ...format],
+      [] as string[]
+    )
+    .map(
+      format =>
+        mediatypes?.find(({ uri }) => uri.includes(format))?.name ?? format
+    );
+
   return (
     <SearchHit
       id={id}
@@ -143,7 +140,9 @@ export const DatasetItem: FC<Props> = ({
       <SearchHitThemes>{renderThemes(theme, losItems)}</SearchHitThemes>
 
       <SearchHitFormats>
-        {renderFormats(distribution, mediatypes)}
+        {[...new Set(formats)].map((format, index) => (
+          <span key={`format-${format}-${index}`}>{format}</span>
+        ))}
       </SearchHitFormats>
     </SearchHit>
   );

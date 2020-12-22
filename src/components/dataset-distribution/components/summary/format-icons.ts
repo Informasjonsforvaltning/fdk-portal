@@ -34,4 +34,4 @@ export default {
   [DataFormat.TXT]: TxtIcon,
   [DataFormat.SIRI]: SiriIcon,
   [DataFormat.UNKNOWN]: UnknownIcon
-};
+} as Record<string, any>;
