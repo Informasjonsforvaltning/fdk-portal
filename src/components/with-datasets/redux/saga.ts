@@ -12,7 +12,7 @@ import {
 import type { Dataset } from '../../../types';
 
 function* getDatasetsRequested({
-  payload: { params: { uris, size, orgPath, subject } = {} }
+  payload: { params: { uris, size, orgPath, subject, filters } = {} }
 }: ReturnType<typeof actions.getDatasetsRequested>) {
   try {
     const data = yield call(
@@ -21,7 +21,8 @@ function* getDatasetsRequested({
         uris,
         size,
         orgPath,
-        subject
+        subject,
+        ...filters
       })
     );
 

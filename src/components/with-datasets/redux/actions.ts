@@ -12,6 +12,7 @@ interface GetDatasetsParams {
   size?: number;
   orgPath?: string;
   subject?: string;
+  filters?: any;
 }
 
 export function getDatasetsRequested(params?: GetDatasetsParams) {
