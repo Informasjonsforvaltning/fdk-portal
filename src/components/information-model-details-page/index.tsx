@@ -9,7 +9,10 @@ import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 
-import { PATHNAME_INFORMATIONMODELS } from '../../constants/constants';
+import {
+  PATHNAME_DATASET_DETAILS,
+  PATHNAME_INFORMATIONMODELS
+} from '../../constants/constants';
 
 import { themeFDK } from '../../app/theme';
 
@@ -31,14 +34,10 @@ import InfoModelStructure from '../infomodel-structure';
 
 import SC from './styled';
 
-import type { Dataset, InformationModel, Theme } from '../../types';
+import type { InformationModel, Theme } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
-import { searchPageConnector } from '../../pages/search-page/search-page-connector';
+import withDatasets, { Props as DatasetProps } from '../with-datasets';
 
-interface DatasetRelations {
-  datasetItems: Partial<Dataset>[];
-  fetchDatasetsIfNeeded: (params: any) => void;
-}
 interface RouteParams {
   informationModelId: string;
 }
@@ -48,7 +47,7 @@ interface Props
     ConceptsProps,
     InformationModelsProps,
     RouteComponentProps<RouteParams>,
-    DatasetRelations {}
+    DatasetProps {}
 
 const InformationModelDetailsPage: FC<Props> = ({
   informationModel,
@@ -69,8 +68,8 @@ const InformationModelDetailsPage: FC<Props> = ({
   match: {
     params: { informationModelId }
   },
-  datasetItems,
-  fetchDatasetsIfNeeded
+  datasets,
+  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets }
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -89,13 +88,20 @@ const InformationModelDetailsPage: FC<Props> = ({
 
     setIsMounted(true);
 
-    fetchDatasetsIfNeeded({ filters: { info_model: informationModel?.id } });
-
     return () => {
       resetInformationModel();
       resetConcepts();
     };
   }, []);
+
+  useEffect(() => {
+    if (!isLoadingInformationModel && informationModel?.uri) {
+      getDatasets({ filters: { info_model: informationModel?.uri } });
+    }
+    return () => {
+      resetDatasets();
+    };
+  }, [informationModel?.uri]);
 
   const isLoading =
     !isMounted ||
@@ -433,7 +439,7 @@ const InformationModelDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
-        {datasetItems?.length > 0 && (
+        {datasets?.length > 0 && (
           <ContentSection
             id="dataset-relations"
             title={
@@ -442,11 +448,11 @@ const InformationModelDetailsPage: FC<Props> = ({
             }
           >
             <InlineList>
-              {datasetItems.map(
+              {datasets.map(
                 (dataset, index) =>
                   dataset.uri && (
                     <SC.Link
-                      to={dataset.uri}
+                      to={`${PATHNAME_DATASET_DETAILS}/${dataset.id}`}
                       key={`dataset-relation-${index}`}
                       forwardedAs={RouteLink}
                     >
@@ -618,5 +624,5 @@ export default compose<FC>(
   withInformationModel,
   withConcepts,
   withInformationModels,
-  searchPageConnector
+  withDatasets
 )(InformationModelDetailsPage);

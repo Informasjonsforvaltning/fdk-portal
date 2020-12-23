@@ -26,7 +26,8 @@ const mapFilters = ({
   format,
   subjectExists,
   catalog_name,
-  keywords
+  keywords,
+  info_model
 }: any) => {
   const filters = [];
   if (id) {
@@ -95,6 +96,11 @@ const mapFilters = ({
   }
   if (keywords) {
     filters.push({ keywords });
+  }
+  if (info_model) {
+    filters.push({
+      info_model
+    });
   }
 
   // Filter out NAP data if filterTransportDatasets in conf is true
