@@ -23,6 +23,7 @@ import withConcepts, { Props as ConceptsProps } from '../with-concepts';
 import withInformationModels, {
   Props as InformationModelsProps
 } from '../with-information-models';
+import withDatasets, { Props as DatasetProps } from '../with-datasets';
 
 import DetailsPage, {
   ContentSection,
@@ -36,7 +37,6 @@ import SC from './styled';
 
 import type { InformationModel, Theme } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
-import withDatasets, { Props as DatasetProps } from '../with-datasets';
 
 interface RouteParams {
   informationModelId: string;
@@ -96,7 +96,7 @@ const InformationModelDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (!isLoadingInformationModel && informationModel?.uri) {
-      getDatasets({ filters: { info_model: informationModel?.uri } });
+      getDatasets({ info_model: informationModel?.uri });
     }
     return () => {
       resetDatasets();
@@ -449,11 +449,11 @@ const InformationModelDetailsPage: FC<Props> = ({
           >
             <InlineList>
               {datasets.map(
-                (dataset, index) =>
+                dataset =>
                   dataset.uri && (
                     <SC.Link
                       to={`${PATHNAME_DATASET_DETAILS}/${dataset.id}`}
-                      key={`dataset-relation-${index}`}
+                      key={`relation-${dataset.uri}`}
                       forwardedAs={RouteLink}
                     >
                       {translate(dataset.title)}
