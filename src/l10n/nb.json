@@ -635,7 +635,8 @@
         "relations": "Relasjoner",
         "conceptReferences": "Begrep brukt om modellen",
         "spatialRestrictions": "Geografisk avgrensning",
-        "contactInformation": "Kontaktinformasjon"
+        "contactInformation": "Kontaktinformasjon",
+        "datasetRelations": "Relatert til datasett"
       },
       "publicService": {
         "description": "Beskrivelse",

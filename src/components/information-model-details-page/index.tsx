@@ -31,9 +31,14 @@ import InfoModelStructure from '../infomodel-structure';
 
 import SC from './styled';
 
-import type { InformationModel, Theme } from '../../types';
+import type { Dataset, InformationModel, Theme } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
+import { searchPageConnector } from '../../pages/search-page/search-page-connector';
 
+interface DatasetRelations {
+  datasetItems: Partial<Dataset>[];
+  fetchDatasetsIfNeeded: (params: any) => void;
+}
 interface RouteParams {
   informationModelId: string;
 }
@@ -42,7 +47,8 @@ interface Props
   extends InformationModelProps,
     ConceptsProps,
     InformationModelsProps,
-    RouteComponentProps<RouteParams> {}
+    RouteComponentProps<RouteParams>,
+    DatasetRelations {}
 
 const InformationModelDetailsPage: FC<Props> = ({
   informationModel,
@@ -62,7 +68,9 @@ const InformationModelDetailsPage: FC<Props> = ({
   },
   match: {
     params: { informationModelId }
-  }
+  },
+  datasetItems,
+  fetchDatasetsIfNeeded
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -80,6 +88,8 @@ const InformationModelDetailsPage: FC<Props> = ({
     }
 
     setIsMounted(true);
+
+    fetchDatasetsIfNeeded({ filters: { info_model: informationModel?.id } });
 
     return () => {
       resetInformationModel();
@@ -423,6 +433,30 @@ const InformationModelDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
+        {datasetItems?.length > 0 && (
+          <ContentSection
+            id="dataset-relations"
+            title={
+              translations.detailsPage.sectionTitles.informationModel
+                .datasetRelations
+            }
+          >
+            <InlineList>
+              {datasetItems.map(
+                (dataset, index) =>
+                  dataset.uri && (
+                    <SC.Link
+                      to={dataset.uri}
+                      key={`dataset-relation-${index}`}
+                      forwardedAs={RouteLink}
+                    >
+                      {translate(dataset.title)}
+                    </SC.Link>
+                  )
+              )}
+            </InlineList>
+          </ContentSection>
+        )}
         {(isPartOf || hasPart || isReplacedBy || replaces) && (
           <ContentSection
             id="information-model-references"
@@ -583,5 +617,6 @@ export default compose<FC>(
   memo,
   withInformationModel,
   withConcepts,
-  withInformationModels
+  withInformationModels,
+  searchPageConnector
 )(InformationModelDetailsPage);
