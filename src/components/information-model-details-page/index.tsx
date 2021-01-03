@@ -37,6 +37,7 @@ import SC from './styled';
 
 import type { InformationModel, Theme } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
+import { getConfig } from '../../config';
 
 interface RouteParams {
   informationModelId: string;
@@ -95,13 +96,15 @@ const InformationModelDetailsPage: FC<Props> = ({
   }, []);
 
   useEffect(() => {
-    if (!isLoadingInformationModel && informationModel?.uri) {
-      getDatasets({ info_model: informationModel?.uri });
+    if (location.pathname) {
+      getDatasets({
+        info_model: getConfig().searchHost.host + location.pathname
+      });
     }
     return () => {
       resetDatasets();
     };
-  }, [informationModel?.uri]);
+  }, [location.pathname]);
 
   const isLoading =
     !isMounted ||
