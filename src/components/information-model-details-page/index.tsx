@@ -87,24 +87,18 @@ const InformationModelDetailsPage: FC<Props> = ({
       ]);
     }
 
+    getDatasets({
+      info_model: getConfig().searchHost.host + location.pathname
+    });
+
     setIsMounted(true);
 
     return () => {
       resetInformationModel();
       resetConcepts();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (location.pathname) {
-      getDatasets({
-        info_model: getConfig().searchHost.host + location.pathname
-      });
-    }
-    return () => {
       resetDatasets();
     };
-  }, [location.pathname]);
+  }, []);
 
   const isLoading =
     !isMounted ||
