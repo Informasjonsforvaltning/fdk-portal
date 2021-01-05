@@ -49,7 +49,7 @@
     "@fellesdatakatalog/tabs": "^1.0.1",
     "@fellesdatakatalog/theme": "^0.4.2",
     "apexcharts": "^3.19.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.2",
     "classnames": "^2.2.5",
     "clean-deep": "^3.3.0",
