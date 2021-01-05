@@ -30,7 +30,7 @@ const ElementTitle = styled.span<{ $type: ModelElementType }>`
           `;
         case ModelElementType.ASSOCIATION:
           return css`
-            content: '\\21FE';
+            content: '-';
             transform: scale(1.4);
           `;
         case ModelElementType.CODE_ELEMENT:
