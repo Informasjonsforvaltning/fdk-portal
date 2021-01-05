@@ -11,6 +11,7 @@ import { getTranslateText as translate } from '../../lib/translateText';
 
 import {
   PATHNAME_DATASET_DETAILS,
+  PATHNAME_DATA_SERVICES,
   PATHNAME_INFORMATIONMODELS
 } from '../../constants/constants';
 
@@ -24,6 +25,9 @@ import withInformationModels, {
   Props as InformationModelsProps
 } from '../with-information-models';
 import withDatasets, { Props as DatasetProps } from '../with-datasets';
+import withDataServices, {
+  Props as DataServicesProps
+} from '../with-data-services';
 
 import DetailsPage, {
   ContentSection,
@@ -48,7 +52,8 @@ interface Props
     ConceptsProps,
     InformationModelsProps,
     RouteComponentProps<RouteParams>,
-    DatasetProps {}
+    DatasetProps,
+    DataServicesProps {}
 
 const InformationModelDetailsPage: FC<Props> = ({
   informationModel,
@@ -70,7 +75,9 @@ const InformationModelDetailsPage: FC<Props> = ({
     params: { informationModelId }
   },
   datasets,
-  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets }
+  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
+  dataServices,
+  dataServicesActions: { getDataServicesRequested: getDataservices }
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -99,6 +106,14 @@ const InformationModelDetailsPage: FC<Props> = ({
       resetDatasets();
     };
   }, []);
+
+  useEffect(() => {
+    if (informationModel?.uri) {
+      getDataservices({
+        endpointDescription: informationModel.uri
+      });
+    }
+  }, [informationModel?.uri]);
 
   const isLoading =
     !isMounted ||
@@ -460,6 +475,30 @@ const InformationModelDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
+        {dataServices?.length > 0 && (
+          <ContentSection
+            id="dataservice-relations"
+            title={
+              translations.detailsPage.sectionTitles.informationModel
+                .dataServiceRelations
+            }
+          >
+            <InlineList>
+              {dataServices.map(
+                dataService =>
+                  dataService.uri && (
+                    <SC.Link
+                      to={`${PATHNAME_DATA_SERVICES}/${dataService.id}`}
+                      key={`relation-${dataService.uri}`}
+                      forwardedAs={RouteLink}
+                    >
+                      {translate(dataService.title)}
+                    </SC.Link>
+                  )
+              )}
+            </InlineList>
+          </ContentSection>
+        )}
         {(isPartOf || hasPart || isReplacedBy || replaces) && (
           <ContentSection
             id="information-model-references"
@@ -621,5 +660,6 @@ export default compose<FC>(
   withInformationModel,
   withConcepts,
   withInformationModels,
-  withDatasets
+  withDatasets,
+  withDataServices
 )(InformationModelDetailsPage);

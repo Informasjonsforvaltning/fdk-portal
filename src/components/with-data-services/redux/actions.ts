@@ -9,6 +9,7 @@ import { DataService } from '../../../types';
 interface GetDataServicesParams {
   dataseturi?: string;
   size?: number;
+  endpointDescription?: string;
 }
 
 export function getDataServicesRequested(params: GetDataServicesParams) {

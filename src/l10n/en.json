@@ -636,7 +636,9 @@
         "conceptReferences": "Concepts used about the model",
         "spatialRestrictions": "Spatial restrictions",
         "contactInformation": "Contact information",
-        "datasetRelations": "Relatert til datasett"
+        "datasetRelations": "Related to dataset",
+        "dataServiceRelations": "Related to data service (API)" 
+
       },
       "publicService": {
         "description": "Description",
