@@ -12,12 +12,12 @@ interface ExternalProps {
 interface Props extends ExternalProps {}
 
 const ExpansionIndicatorDetails: FC<Props> = ({ isExpanded = false }) => (
-  <>
+  <SC.IndicatorContainer>
     {isExpanded ? <SC.CollapseIcon /> : <SC.ExpandIcon />}
     <SC.IndicatorText>
       {isExpanded ? localization.closeDetails : localization.showDetails}
     </SC.IndicatorText>
-  </>
+  </SC.IndicatorContainer>
 );
 
 export default compose<FC<ExternalProps>>(memo)(ExpansionIndicatorDetails);

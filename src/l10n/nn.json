@@ -539,7 +539,10 @@
       "code": "Kode",
       "externalCodelist": "Ekstern kodeliste",
       "definitionReference": "Referanse til definisjon",
-      "restrictions": "Verdirestriksjonar"
+      "restrictions": "Verdirestriksjonar",
+      "choice": "Valfri eigenskap",
+      "multipleChoice": "Val (fleirval)"
+
     },
     "restriction": {
       "valueLength": "Lengde",
