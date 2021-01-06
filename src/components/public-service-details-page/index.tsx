@@ -92,6 +92,12 @@ const PublicServiceDetailsPage: FC<Props> = ({
     publicService?.keyword?.map(translate)?.filter(Boolean) ?? [];
   const requiredServices = publicService?.requires || [];
   const isClassifiedBy = publicService?.isClassifiedBy || [];
+  const produces = publicService?.produces ?? [];
+  const hasCriterion = publicService?.hasCriterion ?? [];
+  const follows = publicService?.follows ?? [];
+  const hasLegalResource = publicService?.hasLegalResource ?? [];
+  const hasParticipation = publicService?.hasParticipation ?? [];
+  const hasInput = publicService?.hasInput ?? [];
 
   const publicServiceIdentifiers = (requiredServices.map(
     ({ uri }) => uri
@@ -205,6 +211,130 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 </InlineList>
               </ContentSection>
             )}
+
+            {hasCriterion.length > 0 && (
+              <ContentSection
+                id="hasCriterion"
+                title={
+                  translations.detailsPage.sectionTitles.publicService.criterion
+                }
+              >
+                <KeyValueList>
+                  {hasCriterion.map(({ name, type }, index) => (
+                    <KeyValueListItem
+                      key={`${translate(name)}-${index}`}
+                      property={translate(name)}
+                      value={type
+                        .map(({ prefLabel }) => translate(prefLabel))
+                        .filter(Boolean)
+                        .join(', ')}
+                    />
+                  ))}
+                </KeyValueList>
+              </ContentSection>
+            )}
+
+            {produces.length > 0 && (
+              <ContentSection
+                id="produces"
+                title={
+                  translations.detailsPage.sectionTitles.publicService.produces
+                }
+              >
+                <KeyValueList>
+                  {produces.map(({ name, description }, index) => (
+                    <KeyValueListItem
+                      key={`${translate(name)}-${index}`}
+                      property={translate(name)}
+                      value={translate(description)}
+                    />
+                  ))}
+                </KeyValueList>
+              </ContentSection>
+            )}
+
+            {follows.length > 0 && (
+              <ContentSection
+                id="follows"
+                title={
+                  translations.detailsPage.sectionTitles.publicService.follows
+                }
+              >
+                <KeyValueList>
+                  {follows.map(({ name, description }, index) => (
+                    <KeyValueListItem
+                      key={`${translate(name)}-${index}`}
+                      property={translate(name)}
+                      value={translate(description)}
+                    />
+                  ))}
+                </KeyValueList>
+              </ContentSection>
+            )}
+
+            {hasLegalResource.length > 0 && (
+              <ContentSection
+                id="hasLegalResource"
+                title={
+                  translations.detailsPage.sectionTitles.publicService
+                    .legalResources
+                }
+              >
+                <KeyValueList>
+                  {hasLegalResource.map(({ description }, index) => (
+                    <KeyValueListItem
+                      key={`${translate(description)}-${index}`}
+                      property={translate(description)}
+                      value=""
+                    />
+                  ))}
+                </KeyValueList>
+              </ContentSection>
+            )}
+
+            {hasParticipation.length > 0 && (
+              <ContentSection
+                id="hasParticipation"
+                title={
+                  translations.detailsPage.sectionTitles.publicService
+                    .participation
+                }
+              >
+                <KeyValueList>
+                  {hasParticipation.map(({ description, role }, index) => (
+                    <KeyValueListItem
+                      key={`${translate(description)}-${index}`}
+                      property={translate(description)}
+                      value={role
+                        .map(({ prefLabel }) => translate(prefLabel))
+                        .filter(Boolean)
+                        .join(', ')}
+                    />
+                  ))}
+                </KeyValueList>
+              </ContentSection>
+            )}
+
+            {hasInput.length > 0 && (
+              <ContentSection
+                id="hasInput"
+                title={
+                  translations.detailsPage.sectionTitles.publicService
+                    .attachment
+                }
+              >
+                <KeyValueList>
+                  {hasInput.map(({ name, description }, index) => (
+                    <KeyValueListItem
+                      key={`${translate(name)}-${index}`}
+                      property={translate(name)}
+                      value={translate(description)}
+                    />
+                  ))}
+                </KeyValueList>
+              </ContentSection>
+            )}
+
             {requiredServices.length > 0 && (
               <ContentSection
                 id="relatedServices"

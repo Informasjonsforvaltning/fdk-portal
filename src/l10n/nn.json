@@ -647,7 +647,14 @@
         "usage": "Bruk av tenesten",
         "keywords": "Emneord",
         "relatedServices": "Relaterte tenester",
-        "conceptReferences": "Omgrep brukt i tenesten"
+        "conceptReferences": "Omgrep brukt i tenesten",
+        "criterion": "Vilkår",
+        "produces": "Tenesteresultat",
+        "contactPoint": "Kontaktinformasjon",
+        "follows": "Saksbehandlingsreglar",
+        "legalResources": "Heimlar",
+        "attachment": "Vedleggskrav",
+        "participation": "Deltagende"
       }
     }
   },
