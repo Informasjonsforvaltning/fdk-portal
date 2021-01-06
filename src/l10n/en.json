@@ -539,7 +539,9 @@
       "code": "Code",
       "externalCodelist": "External codelist",
       "definitionReference": "Definition reference",
-      "restrictions": "Value restrictions"
+      "restrictions": "Value restrictions",
+      "choice": "Optional property",
+      "multipleChoice": "Choice (multiple choice)"
     },
     "restriction": {
       "valueLength": "Length",

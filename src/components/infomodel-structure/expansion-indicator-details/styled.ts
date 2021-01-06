@@ -28,4 +28,10 @@ const IndicatorText = styled.span`
   color: ${theme.colour(Colour.VIOLET, 'V50')};
 `;
 
-export default { CollapseIcon, ExpandIcon, IndicatorText };
+const IndicatorContainer = styled.span`
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+`;
+
+export default { CollapseIcon, ExpandIcon, IndicatorText, IndicatorContainer };

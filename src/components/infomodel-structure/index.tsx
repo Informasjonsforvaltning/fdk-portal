@@ -72,9 +72,28 @@ const InfoModelStructure: FC<Props> = ({
           type =>
             type.split('#').includes('Attribute') ||
             type.split('#').includes('Collection') ||
-            type.split('#').includes('Composition') ||
-            type.split('#').includes('Choice')
+            type.split('#').includes('Composition')
         )
+      )
+      .filter(Boolean) ?? [];
+
+  const unwrapMultipleChoices = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(
+        ({ propertyTypes, hasSome }) =>
+          propertyTypes?.some(type => type.split('#').includes('Choice')) &&
+          hasSome
+      )
+      .filter(Boolean) ?? [];
+
+  const unwrapChoices = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(
+        ({ propertyTypes, hasSome }) =>
+          propertyTypes?.some(type => type.split('#').includes('Choice')) &&
+          !hasSome
       )
       .filter(Boolean) ?? [];
 
@@ -285,6 +304,20 @@ const InfoModelStructure: FC<Props> = ({
                     modelElements={modelElements}
                     concepts={conceptMap}
                     type={ModelElementType.ROLE}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.multipleChoice}
+                    properties={unwrapMultipleChoices(hasProperty)}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.MULTIPLE_CHOICE}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.choice}
+                    properties={unwrapChoices(hasProperty)}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.CHOICE}
                   />
                   <ModelElementList
                     title={
