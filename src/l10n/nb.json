@@ -644,7 +644,14 @@
         "usage": "Bruk av tjenesten",
         "keywords": "Søkeord",
         "relatedServices": "Relaterte tjenester",
-        "conceptReferences": "Begreper brukt i tjenesten"
+        "conceptReferences": "Begreper brukt i tjenesten",
+        "criterion": "Vilkår",
+        "produces": "Tjenesteresultat",
+        "contactPoint": "Kontaktinformasjon",
+        "follows": "Saksbehandlingsregler",
+        "legalResources": "Hjemler",
+        "attachment": "Vedleggskrav",
+        "participation": "Deltagende"
       }
     }
   },

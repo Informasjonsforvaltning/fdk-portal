@@ -645,7 +645,14 @@
         "usage": "Public service usage",
         "keywords": "Keywords",
         "relatedServices": "Related services",
-        "conceptReferences": "Concepts used in the service"
+        "conceptReferences": "Concepts used in the service",
+        "criterion": "Criterion",
+        "produces": "Service output",
+        "contactPoint": "Contact information",
+        "follows": "Processing rules",
+        "legalResources": "Legal basis",
+        "attachment": "Attachment requirements",
+        "participation": "Participation"
       }
     }
   },
