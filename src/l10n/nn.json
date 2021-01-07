@@ -539,7 +539,10 @@
       "code": "Kode",
       "externalCodelist": "Ekstern kodeliste",
       "definitionReference": "Referanse til definisjon",
-      "restrictions": "Verdirestriksjonar"
+      "restrictions": "Verdirestriksjonar",
+      "choice": "Valfri eigenskap",
+      "multipleChoice": "Val (fleirval)"
+
     },
     "restriction": {
       "valueLength": "Lengde",
@@ -635,7 +638,9 @@
         "relations": "Relasjoner",
         "conceptReferences": "Omgrep brukt om modellen",
         "spatialRestrictions": "Geografisk avgrensning",
-        "contactInformation": "Kontaktinformasjon"
+        "contactInformation": "Kontaktinformasjon",
+        "datasetRelations": "Relatert til datasett",
+        "dataServiceRelations": "Relatert til datateneste (API)"
       },
       "publicService": {
         "description": "Beskrivelse",
@@ -763,5 +768,9 @@
   "truncatedText": {
     "expanded": "Skjul skildringa",
     "collapsed": "Vis heile skildringa"
+  },
+  "feedType": {
+    "rss": "RSS",
+    "atom": "Atom"
   }
 }

@@ -539,7 +539,9 @@
       "code": "Code",
       "externalCodelist": "External codelist",
       "definitionReference": "Definition reference",
-      "restrictions": "Value restrictions"
+      "restrictions": "Value restrictions",
+      "choice": "Optional property",
+      "multipleChoice": "Choice (multiple choice)"
     },
     "restriction": {
       "valueLength": "Length",
@@ -635,7 +637,10 @@
         "relations": "Relations",
         "conceptReferences": "Concepts used about the model",
         "spatialRestrictions": "Spatial restrictions",
-        "contactInformation": "Contact information"
+        "contactInformation": "Contact information",
+        "datasetRelations": "Related to dataset",
+        "dataServiceRelations": "Related to data service (API)" 
+
       },
       "publicService": {
         "description": "Description",
@@ -763,5 +768,9 @@
   "truncatedText": {
     "expanded": "Hide description",
     "collapsed": "Show full description"
+  },
+  "feedType": {
+    "rss": "RSS",
+    "atom": "Atom"
   }
 }

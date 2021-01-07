@@ -423,7 +423,7 @@ export interface Distribution {
   type: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  format: DataFormat[];
+  format: string[];
   license: License[];
   openLicense: boolean;
   accessURL: string[];
@@ -434,6 +434,7 @@ export interface Distribution {
 }
 
 export interface MediaType {
+  uri: string;
   code: string;
   name: string;
   prefLabel?: Partial<TextLanguage>;

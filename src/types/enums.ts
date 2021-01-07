@@ -102,5 +102,13 @@ export enum ModelElementType {
   ATTRIBUTE = 'attribute',
   ROLE = 'role',
   CODE_ELEMENT = 'code_element',
-  ASSOCIATION = 'association'
+  ASSOCIATION = 'association',
+  SPECIALIZATION = 'specialization',
+  CHOICE = 'choice',
+  MULTIPLE_CHOICE = 'multiple_choice'
+}
+
+export enum FeedType {
+  RSS = 'rss',
+  ATOM = 'atom'
 }

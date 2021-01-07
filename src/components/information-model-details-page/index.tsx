@@ -9,7 +9,11 @@ import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 
-import { PATHNAME_INFORMATIONMODELS } from '../../constants/constants';
+import {
+  PATHNAME_DATASET_DETAILS,
+  PATHNAME_DATA_SERVICES,
+  PATHNAME_INFORMATIONMODELS
+} from '../../constants/constants';
 
 import { themeFDK } from '../../app/theme';
 
@@ -20,6 +24,10 @@ import withConcepts, { Props as ConceptsProps } from '../with-concepts';
 import withInformationModels, {
   Props as InformationModelsProps
 } from '../with-information-models';
+import withDatasets, { Props as DatasetProps } from '../with-datasets';
+import withDataServices, {
+  Props as DataServicesProps
+} from '../with-data-services';
 
 import DetailsPage, {
   ContentSection,
@@ -33,6 +41,7 @@ import SC from './styled';
 
 import type { InformationModel, Theme } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
+import { getConfig } from '../../config';
 
 interface RouteParams {
   informationModelId: string;
@@ -42,7 +51,9 @@ interface Props
   extends InformationModelProps,
     ConceptsProps,
     InformationModelsProps,
-    RouteComponentProps<RouteParams> {}
+    RouteComponentProps<RouteParams>,
+    DatasetProps,
+    DataServicesProps {}
 
 const InformationModelDetailsPage: FC<Props> = ({
   informationModel,
@@ -62,7 +73,11 @@ const InformationModelDetailsPage: FC<Props> = ({
   },
   match: {
     params: { informationModelId }
-  }
+  },
+  datasets,
+  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
+  dataServices,
+  dataServicesActions: { getDataServicesRequested: getDataservices }
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -79,13 +94,26 @@ const InformationModelDetailsPage: FC<Props> = ({
       ]);
     }
 
+    getDatasets({
+      info_model: getConfig().searchHost.host + location.pathname
+    });
+
     setIsMounted(true);
 
     return () => {
       resetInformationModel();
       resetConcepts();
+      resetDatasets();
     };
   }, []);
+
+  useEffect(() => {
+    if (informationModel?.uri) {
+      getDataservices({
+        endpointDescription: informationModel.uri
+      });
+    }
+  }, [informationModel?.uri]);
 
   const isLoading =
     !isMounted ||
@@ -423,6 +451,54 @@ const InformationModelDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
+        {datasets?.length > 0 && (
+          <ContentSection
+            id="dataset-relations"
+            title={
+              translations.detailsPage.sectionTitles.informationModel
+                .datasetRelations
+            }
+          >
+            <InlineList>
+              {datasets.map(
+                dataset =>
+                  dataset.uri && (
+                    <SC.Link
+                      to={`${PATHNAME_DATASET_DETAILS}/${dataset.id}`}
+                      key={`relation-${dataset.uri}`}
+                      forwardedAs={RouteLink}
+                    >
+                      {translate(dataset.title)}
+                    </SC.Link>
+                  )
+              )}
+            </InlineList>
+          </ContentSection>
+        )}
+        {dataServices?.length > 0 && (
+          <ContentSection
+            id="dataservice-relations"
+            title={
+              translations.detailsPage.sectionTitles.informationModel
+                .dataServiceRelations
+            }
+          >
+            <InlineList>
+              {dataServices.map(
+                dataService =>
+                  dataService.uri && (
+                    <SC.Link
+                      to={`${PATHNAME_DATA_SERVICES}/${dataService.id}`}
+                      key={`relation-${dataService.uri}`}
+                      forwardedAs={RouteLink}
+                    >
+                      {translate(dataService.title)}
+                    </SC.Link>
+                  )
+              )}
+            </InlineList>
+          </ContentSection>
+        )}
         {(isPartOf || hasPart || isReplacedBy || replaces) && (
           <ContentSection
             id="information-model-references"
@@ -583,5 +659,7 @@ export default compose<FC>(
   memo,
   withInformationModel,
   withConcepts,
-  withInformationModels
+  withInformationModels,
+  withDatasets,
+  withDataServices
 )(InformationModelDetailsPage);

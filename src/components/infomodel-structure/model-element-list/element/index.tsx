@@ -54,7 +54,8 @@ const Element: FC<Props> = ({
     property.hasValueFrom ??
     property.refersTo ??
     property.hasMember ??
-    property.contains;
+    property.contains ??
+    property.hasGeneralConcept;
   const typeUris = property.hasType ?? property.hasSome;
   const modelElementType = typeUri ? modelElements[typeUri] : null;
   const modelElementTypes = typeUris
@@ -111,23 +112,25 @@ const Element: FC<Props> = ({
               {translate(modelElementType.title)}
             </ScollLink>
           )}
-          {modelElementTypes?.map(({ identifier, uri, title }, index) => (
-            <ScollLink
-              key={identifier ?? uri ?? `scroll-link-${index}`}
-              to={uri ?? identifier ?? ''}
-              spy
-              smooth
-              isDynamic
-              offset={0}
-              duration={1500}
-              as={SC.ScrollLink}
-            >
-              {translate(title)}
-            </ScollLink>
-          ))}
+          <SC.ElementTypesContainer>
+            {modelElementTypes?.map(({ identifier, uri, title }, index) => (
+              <ScollLink
+                key={identifier ?? uri ?? `scroll-link-${index}`}
+                to={uri ?? identifier ?? ''}
+                spy
+                smooth
+                isDynamic
+                offset={0}
+                duration={1500}
+                as={SC.ScrollLink}
+              >
+                {translate(title)}
+              </ScollLink>
+            ))}
+          </SC.ElementTypesContainer>
           {notation}
         </span>
-        <span>{renderMultiplicityRange()}</span>
+        <SC.MultiplicityRange>{renderMultiplicityRange()}</SC.MultiplicityRange>
       </ExpansionPanelHead>
       <ExpansionPanelBody>
         {(identifier ||

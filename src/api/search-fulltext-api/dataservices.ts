@@ -17,7 +17,8 @@ const mapFilters = ({
   provenance,
   format,
   dataseturi,
-  last_x_days
+  last_x_days,
+  endpointDescription
 }: any) => {
   const filters = [];
   if (id) {
@@ -57,6 +58,9 @@ const mapFilters = ({
   }
   if (last_x_days) {
     filters.push({ last_x_days });
+  }
+  if (endpointDescription) {
+    filters.push({ 'endpointDescription.keyword': endpointDescription });
   }
 
   return filters.length > 0 ? filters : undefined;

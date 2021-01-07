@@ -10,7 +10,7 @@ import { DataFormat } from '../../../../types/enums';
 
 interface Props {
   title: string;
-  formats: DataFormat[];
+  formats: string[];
 }
 
 const Summary: FC<Props> = ({ title, formats, ...props }) => (

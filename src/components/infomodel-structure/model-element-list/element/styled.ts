@@ -9,6 +9,7 @@ import { ModelElementType } from '../../../../types/enums';
 const ElementTitle = styled.span<{ $type: ModelElementType }>`
   display: flex;
   align-items: center;
+  align-self: start;
 
   &:before {
     display: flex;
@@ -30,13 +31,26 @@ const ElementTitle = styled.span<{ $type: ModelElementType }>`
           `;
         case ModelElementType.ASSOCIATION:
           return css`
-            content: '\\21FE';
+            content: '-';
             transform: scale(1.4);
           `;
         case ModelElementType.CODE_ELEMENT:
           return css`
             content: '\\25A0';
             transform: scale(1.5) translateY(1px);
+          `;
+        case ModelElementType.SPECIALIZATION:
+          return css`
+            content: '\\21FE';
+            transform: scale(1.5) translateY(-2px);
+          `;
+        case ModelElementType.CHOICE:
+          return css`
+            content: '\\2299';
+          `;
+        case ModelElementType.MULTIPLE_CHOICE:
+          return css`
+            content: '\\2611';
           `;
         default:
           return css`
@@ -87,4 +101,25 @@ const ScrollLink = styled(Scroll.Link)`
   color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
 `;
 
-export default { ElementTitle, ExpansionPanel, ScrollLink };
+const MultiplicityRange = styled.span`
+  align-self: flex-start;
+`;
+
+const ElementTypesContainer = styled.span`
+  padding-top: ${theme.spacing('S8')};
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  & > a:nth-of-type(n + 2) {
+    margin-top: ${theme.spacing('S8')};
+  }
+`;
+
+export default {
+  ElementTitle,
+  ExpansionPanel,
+  ScrollLink,
+  MultiplicityRange,
+  ElementTypesContainer
+};

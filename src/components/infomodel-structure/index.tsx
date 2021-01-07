@@ -72,9 +72,28 @@ const InfoModelStructure: FC<Props> = ({
           type =>
             type.split('#').includes('Attribute') ||
             type.split('#').includes('Collection') ||
-            type.split('#').includes('Composition') ||
-            type.split('#').includes('Choice')
+            type.split('#').includes('Composition')
         )
+      )
+      .filter(Boolean) ?? [];
+
+  const unwrapMultipleChoices = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(
+        ({ propertyTypes, hasSome }) =>
+          propertyTypes?.some(type => type.split('#').includes('Choice')) &&
+          hasSome
+      )
+      .filter(Boolean) ?? [];
+
+  const unwrapChoices = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(
+        ({ propertyTypes, hasSome }) =>
+          propertyTypes?.some(type => type.split('#').includes('Choice')) &&
+          !hasSome
       )
       .filter(Boolean) ?? [];
 
@@ -94,6 +113,14 @@ const InfoModelStructure: FC<Props> = ({
       )
       .filter(Boolean) ?? [];
 
+  const unwrapSpecialization = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(({ propertyTypes }) =>
+        propertyTypes?.some(type => type.split('#').includes('Specialization'))
+      )
+      .filter(Boolean) ?? [];
+
   const unwrapAbstraction = (properties?: string[] | null) => {
     const isAbstractionOf = (
       properties
@@ -104,7 +131,7 @@ const InfoModelStructure: FC<Props> = ({
         .filter(Boolean) ?? []
     ).shift()?.isAbstractionOf;
 
-    return isAbstractionOf ? modelElements[isAbstractionOf] : null;
+    return isAbstractionOf ? modelElements[isAbstractionOf] : undefined;
   };
 
   const unwrapRealization = (properties?: string[] | null) => {
@@ -117,22 +144,7 @@ const InfoModelStructure: FC<Props> = ({
         .filter(Boolean) ?? []
     ).shift()?.hasSupplier;
 
-    return isRealizationOf ? modelElements[isRealizationOf] : null;
-  };
-
-  const unwrapSpecialization = (properties?: string[] | null) => {
-    const isSpecializationOf = (
-      properties
-        ?.map(property => modelProperties[property])
-        .filter(({ propertyTypes }) =>
-          propertyTypes?.some(type =>
-            type.split('#').includes('Specialization')
-          )
-        )
-        .filter(Boolean) ?? []
-    ).shift()?.hasGeneralConcept;
-
-    return isSpecializationOf ? modelElements[isSpecializationOf] : null;
+    return isRealizationOf ? modelElements[isRealizationOf] : undefined;
   };
 
   const conceptMap = concepts.reduce<Record<string, Concept>>(
@@ -166,8 +178,7 @@ const InfoModelStructure: FC<Props> = ({
                     belongsToModule ||
                     (subject && conceptMap[subject]) ||
                     unwrapAbstraction(hasProperty) ||
-                    unwrapRealization(hasProperty) ||
-                    unwrapSpecialization(hasProperty)) && (
+                    unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
@@ -183,7 +194,6 @@ const InfoModelStructure: FC<Props> = ({
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
                           realization={unwrapRealization(hasProperty)}
-                          specialization={unwrapSpecialization(hasProperty)}
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
@@ -209,6 +219,18 @@ const InfoModelStructure: FC<Props> = ({
                     modelElements={modelElements}
                     concepts={conceptMap}
                     type={ModelElementType.ROLE}
+                  />
+                  <ModelElementList
+                    title={
+                      translations.infoMod.modelDescription.specializationOf
+                    }
+                    properties={unwrapSpecialization(hasProperty).map(spec => ({
+                      ...spec,
+                      title
+                    }))}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.SPECIALIZATION}
                   />
                 </ExpansionPanelBody>
               </SC.ExpansionPanel>
@@ -241,8 +263,7 @@ const InfoModelStructure: FC<Props> = ({
                     belongsToModule ||
                     (subject && conceptMap[subject]) ||
                     unwrapAbstraction(hasProperty) ||
-                    unwrapRealization(hasProperty) ||
-                    unwrapSpecialization(hasProperty)) && (
+                    unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
@@ -258,7 +279,6 @@ const InfoModelStructure: FC<Props> = ({
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
                           realization={unwrapRealization(hasProperty)}
-                          specialization={unwrapSpecialization(hasProperty)}
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
@@ -284,6 +304,32 @@ const InfoModelStructure: FC<Props> = ({
                     modelElements={modelElements}
                     concepts={conceptMap}
                     type={ModelElementType.ROLE}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.multipleChoice}
+                    properties={unwrapMultipleChoices(hasProperty)}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.MULTIPLE_CHOICE}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.choice}
+                    properties={unwrapChoices(hasProperty)}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.CHOICE}
+                  />
+                  <ModelElementList
+                    title={
+                      translations.infoMod.modelDescription.specializationOf
+                    }
+                    properties={unwrapSpecialization(hasProperty).map(spec => ({
+                      ...spec,
+                      title
+                    }))}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.SPECIALIZATION}
                   />
                 </ExpansionPanelBody>
               </SC.ExpansionPanel>
@@ -318,8 +364,7 @@ const InfoModelStructure: FC<Props> = ({
                     belongsToModule ||
                     (subject && conceptMap[subject]) ||
                     unwrapAbstraction(hasProperty) ||
-                    unwrapRealization(hasProperty) ||
-                    unwrapSpecialization(hasProperty)) && (
+                    unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
@@ -335,7 +380,6 @@ const InfoModelStructure: FC<Props> = ({
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
                           realization={unwrapRealization(hasProperty)}
-                          specialization={unwrapSpecialization(hasProperty)}
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
@@ -393,8 +437,7 @@ const InfoModelStructure: FC<Props> = ({
                     belongsToModule ||
                     (subject && conceptMap[subject]) ||
                     unwrapAbstraction(hasProperty) ||
-                    unwrapRealization(hasProperty) ||
-                    unwrapSpecialization(hasProperty)) && (
+                    unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
@@ -410,7 +453,6 @@ const InfoModelStructure: FC<Props> = ({
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
                           realization={unwrapRealization(hasProperty)}
-                          specialization={unwrapSpecialization(hasProperty)}
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
@@ -422,6 +464,18 @@ const InfoModelStructure: FC<Props> = ({
                     modelElements={modelElements}
                     concepts={conceptMap}
                     type={ModelElementType.ATTRIBUTE}
+                  />
+                  <ModelElementList
+                    title={
+                      translations.infoMod.modelDescription.specializationOf
+                    }
+                    properties={unwrapSpecialization(hasProperty).map(spec => ({
+                      ...spec,
+                      title
+                    }))}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.SPECIALIZATION}
                   />
                 </ExpansionPanelBody>
               </SC.ExpansionPanel>
@@ -461,8 +515,7 @@ const InfoModelStructure: FC<Props> = ({
                     belongsToModule ||
                     (subject && conceptMap[subject]) ||
                     unwrapAbstraction(hasProperty) ||
-                    unwrapRealization(hasProperty) ||
-                    unwrapSpecialization(hasProperty)) && (
+                    unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
@@ -478,7 +531,6 @@ const InfoModelStructure: FC<Props> = ({
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
                           realization={unwrapRealization(hasProperty)}
-                          specialization={unwrapSpecialization(hasProperty)}
                           belongsToModule={belongsToModule}
                         />
                       </ExpansionPanelBody>
