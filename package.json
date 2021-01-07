@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@fellesdatakatalog/external-footer": "^0.1.9",
-    "@fellesdatakatalog/internal-footer": "^0.2.2",
+    "@fellesdatakatalog/internal-footer": "^0.3.2",
     "@fellesdatakatalog/link": "^0.2.1",
     "@fellesdatakatalog/tabs": "^1.0.1",
     "@fellesdatakatalog/theme": "^0.4.2",
