@@ -151,7 +151,13 @@ const DatasetDetailsPage: FC<Props> = ({
     languages: dataset?.language ?? [],
     moreInformationPage: dataset?.landingPage?.[0]
   };
-  const samples = dataset?.sample ?? [];
+  const samples =
+    dataset?.sample?.filter(
+      ({ description, format: formats, accessURL: accessURLs }) =>
+        translate(description) ||
+        Array.isArray(formats) ||
+        Array.isArray(accessURLs)
+    ) ?? [];
   const provenance = {
     provenance: translate(dataset?.provenance?.prefLabel),
     frequency: translate(dataset?.accrualPeriodicity?.prefLabel),
@@ -391,7 +397,7 @@ const DatasetDetailsPage: FC<Props> = ({
             >
               {samples.map(
                 (
-                  { description, format: formats, accessURL: [accessURL] },
+                  { description, format: formats, accessURL: accessURLs },
                   index
                 ) => (
                   <KeyValueList key={`sample-${index}`}>
@@ -403,16 +409,18 @@ const DatasetDetailsPage: FC<Props> = ({
                       property={translations.dataset.distribution.format}
                       value={formats?.join(', ')}
                     />
-                    <KeyValueListItem
-                      property={translations.dataset.distribution.accessUrl}
-                      value={
-                        <ExternalLink
-                          uri={accessURL}
-                          prefLabel={accessURL}
-                          openInNewTab
-                        />
-                      }
-                    />
+                    {Array.isArray(accessURLs) && (
+                      <KeyValueListItem
+                        property={translations.dataset.distribution.accessUrl}
+                        value={
+                          <ExternalLink
+                            uri={accessURLs?.[0]}
+                            prefLabel={accessURLs?.[0]}
+                            openInNewTab
+                          />
+                        }
+                      />
+                    )}
                   </KeyValueList>
                 )
               )}
