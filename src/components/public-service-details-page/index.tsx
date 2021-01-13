@@ -160,7 +160,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 {description}
               </ContentSection>
             )}
-            {(languages.length > 0 || sectors.length > 0) && (
+            {(languages.length > 0 ||
+              sectors.length > 0 ||
+              hasLegalResource.length > 0) && (
               <ContentSection
                 id="usage"
                 title={
@@ -175,6 +177,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         .map(({ prefLabel }) => translate(prefLabel))
                         .filter(Boolean)
                         .join(', ')}
+                    />
+                  )}
+                  {hasLegalResource.length > 0 && (
+                    <KeyValueListItem
+                      property={
+                        translations.detailsPage.sectionTitles.publicService
+                          .legalResources
+                      }
+                      value={hasLegalResource
+                        .map(({ description, uri, url }) => (
+                          <Link key={uri} href={url} external>
+                            {translate(description)}
+                          </Link>
+                        ))
+                        .filter(Boolean)}
                     />
                   )}
                   {sectors.length > 0 && (
@@ -266,26 +283,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       key={`${translate(name)}-${index}`}
                       property={translate(name)}
                       value={translate(description)}
-                    />
-                  ))}
-                </KeyValueList>
-              </ContentSection>
-            )}
-
-            {hasLegalResource.length > 0 && (
-              <ContentSection
-                id="hasLegalResource"
-                title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .legalResources
-                }
-              >
-                <KeyValueList>
-                  {hasLegalResource.map(({ description }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(description)}-${index}`}
-                      property={translate(description)}
-                      value=""
                     />
                   ))}
                 </KeyValueList>
