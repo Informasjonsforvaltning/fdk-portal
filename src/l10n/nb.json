@@ -76,6 +76,7 @@
   "language": "Språk",
   "industryCode": "Næringskode",
   "requires": "Krever",
+  "days": "dager",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -653,7 +654,11 @@
         "follows": "Saksbehandlingsregler",
         "legalResources": "Hjemler",
         "attachment": "Vedleggskrav",
-        "participation": "Deltagende"
+        "participation": "Deltagende",
+        "channel": "Tjenestekanal",
+        "cost": "Gebyr",
+        "processingTime": "Behandlingstid",
+        "relation": "Relatert til"
       }
     }
   },

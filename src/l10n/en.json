@@ -76,6 +76,7 @@
   "language": "Language",
   "industryCode": "Industry code",
   "requires": "Requires",
+  "days": "days",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -654,7 +655,11 @@
         "follows": "Processing rules",
         "legalResources": "Legal basis",
         "attachment": "Attachment requirements",
-        "participation": "Participation"
+        "participation": "Participation",
+        "channel": "Channel",
+        "cost": "Cost",
+        "processingTime": "Processing time",
+        "relation": "Related to"
       }
     }
   },
