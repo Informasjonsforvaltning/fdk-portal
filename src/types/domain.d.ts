@@ -285,6 +285,22 @@ export interface PublicServiceParticipation {
   role: PublicServiceType[];
 }
 
+export interface PublicServiceChannel {
+  uri: string;
+  identifier: string;
+  type: PublicServiceType;
+}
+
+export interface PublicServiceCost {
+  uri: string;
+  identifier: string;
+  description: Partial<TextLanguage>;
+  currency: string;
+  ifAccessedThrough: PublicServiceChannel;
+  isDefinedBy: Partial<Publisher>[];
+  value: string;
+}
+
 export interface PublicService {
   type: string;
   id: string;
@@ -306,6 +322,10 @@ export interface PublicService {
   hasLegalResource?: PublicServiceLegalResource[];
   hasInput?: PublicServiceInput[];
   hasParticipation?: PublicServiceParticipation[];
+  hasChannel?: PublicServiceChannel[];
+  processingTime?: string;
+  hasCost?: PublicServiceCost[];
+  relation?: PublicService[];
 }
 
 export interface ESPage {

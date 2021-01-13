@@ -76,6 +76,7 @@
   "language": "Språk",
   "industryCode": "Næringskode",
   "requires": "Krev",
+  "days": "dagar",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -654,7 +655,11 @@
         "follows": "Saksbehandlingsreglar",
         "legalResources": "Heimlar",
         "attachment": "Vedleggskrav",
-        "participation": "Deltagende"
+        "participation": "Deltagende",
+        "channel": "Tenestekanal",
+        "cost": "Gebyr",
+        "processingTime": "Behandlingstid",
+        "relation": "Relatert til"
       }
     }
   },
