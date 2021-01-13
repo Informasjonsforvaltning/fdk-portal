@@ -268,6 +268,7 @@ export interface PublicServiceRule {
 export interface PublicServiceLegalResource {
   uri: string;
   description: Partial<TextLanguage>;
+  url: string;
 }
 
 export interface PublicServiceInput {
