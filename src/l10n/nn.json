@@ -613,7 +613,8 @@
         "contactInformation": "Kontaktinformasjon",
         "usage": "Ta i bruk datatjenesten",
         "serviceType": "Tjenestetype",
-        "datasetReferences": "Tilknyttede datasettbeskrivelser"
+        "datasetReferences": "Tilknyttede datasettbeskrivelser",
+        "informationModelReferences": "Informasjonsmodellar"
       },
       "concept": {
         "description": "Beskrivelse",

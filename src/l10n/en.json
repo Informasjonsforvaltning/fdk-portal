@@ -612,7 +612,8 @@
         "contactInformation": "Contact information",
         "usage": "Data service usage",
         "serviceType": "Service type",
-        "datasetReferences": "Related datasets"
+        "datasetReferences": "Related datasets",
+        "informationModelReferences": "Information models"
       },
       "concept": {
         "description": "Description",
