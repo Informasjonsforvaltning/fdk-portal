@@ -10,7 +10,10 @@ import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
-import { PATHNAME_DATASETS } from '../../constants/constants';
+import {
+  PATHNAME_DATASETS,
+  PATHNAME_INFORMATIONMODELS
+} from '../../constants/constants';
 
 import { themeFDK } from '../../app/theme';
 
@@ -21,6 +24,9 @@ import withReferenceData, {
   Props as ReferenceDataProps
 } from '../with-reference-data';
 import withDatasets, { Props as DatasetsProps } from '../with-datasets';
+import withInformationModels, {
+  Props as InformationModelsProps
+} from '../with-information-models';
 
 import DetailsPage, {
   ContentSection,
@@ -28,6 +34,8 @@ import DetailsPage, {
   KeyValueListItem,
   InlineList
 } from '../details-page';
+
+import SC from './styled';
 
 import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
@@ -40,15 +48,20 @@ interface Props
   extends DataServiceProps,
     ReferenceDataProps,
     DatasetsProps,
+    InformationModelsProps,
     RouteComponentProps<RouteParams> {}
 
 const DataserviceDetailsPage: FC<Props> = ({
   dataService,
   referenceData: { apiservicetype },
   datasets,
+  informationModels,
   dataServiceActions: { getDataServiceRequested: getDataService },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   datasetsActions: { getDatasetsRequested: getDatasets },
+  informationModelsActions: {
+    getInformationModelsRequested: getInformationModels
+  },
   match: {
     params: { dataServiceId }
   }
@@ -77,6 +90,14 @@ const DataserviceDetailsPage: FC<Props> = ({
       getDatasets({ uris: dataService.servesDataset, size: 1000 });
     }
   }, [dataService?.id]);
+
+  useEffect(() => {
+    if (dataService?.endpointDescription) {
+      getInformationModels({
+        informationModelIdentifiers: dataService.endpointDescription
+      });
+    }
+  }, [dataService?.endpointDescription?.join()]);
 
   const entityId = dataService?.id;
   const entityUri = dataService?.uri;
@@ -252,6 +273,30 @@ const DataserviceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
+        {informationModels?.length > 0 && (
+          <ContentSection
+            id="informationModel-relations"
+            title={
+              translations.detailsPage.sectionTitles.dataService
+                .informationModelReferences
+            }
+          >
+            <InlineList column>
+              {informationModels.map(
+                ({ id, uri, title }) =>
+                  uri && (
+                    <SC.Link
+                      to={`${PATHNAME_INFORMATIONMODELS}/${id}`}
+                      key={`relation-${uri}`}
+                      forwardedAs={RouteLink}
+                    >
+                      {translate(title)}
+                    </SC.Link>
+                  )
+              )}
+            </InlineList>
+          </ContentSection>
+        )}
       </DetailsPage>
     </ThemeProvider>
   ) : null;
@@ -261,5 +306,6 @@ export default compose<FC>(
   memo,
   withDataService,
   withReferenceData,
-  withDatasets
+  withDatasets,
+  withInformationModels
 )(DataserviceDetailsPage);
