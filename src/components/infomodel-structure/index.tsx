@@ -68,12 +68,23 @@ const InfoModelStructure: FC<Props> = ({
     properties
       ?.map(property => modelProperties[property])
       .filter(({ propertyTypes }) =>
-        propertyTypes?.some(
-          type =>
-            type.split('#').includes('Attribute') ||
-            type.split('#').includes('Collection') ||
-            type.split('#').includes('Composition')
-        )
+        propertyTypes?.some(type => type.split('#').includes('Attribute'))
+      )
+      .filter(Boolean) ?? [];
+
+  const unwrapCollections = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(({ propertyTypes }) =>
+        propertyTypes?.some(type => type.split('#').includes('Collection'))
+      )
+      .filter(Boolean) ?? [];
+
+  const unwrapCompositions = (properties?: string[] | null) =>
+    properties
+      ?.map(property => modelProperties[property])
+      .filter(({ propertyTypes }) =>
+        propertyTypes?.some(type => type.split('#').includes('Composition'))
       )
       .filter(Boolean) ?? [];
 
@@ -330,6 +341,20 @@ const InfoModelStructure: FC<Props> = ({
                     modelElements={modelElements}
                     concepts={conceptMap}
                     type={ModelElementType.SPECIALIZATION}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.collection}
+                    properties={unwrapCollections(hasProperty)}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.COLLECTION}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.composition}
+                    properties={unwrapCompositions(hasProperty)}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.COMPOSITION}
                   />
                 </ExpansionPanelBody>
               </SC.ExpansionPanel>
