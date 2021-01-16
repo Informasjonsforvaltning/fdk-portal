@@ -542,7 +542,9 @@
       "definitionReference": "Referanse til definisjon",
       "restrictions": "Verdirestriksjoner",
       "choice": "Valgfri egenskap",
-      "multipleChoice": "Valg (flervalg)"
+      "multipleChoice": "Valg (flervalg)",
+      "collection": "Samling",
+      "composition": "Komposisjon"
     },
     "restriction": {
       "valueLength": "Lengde",

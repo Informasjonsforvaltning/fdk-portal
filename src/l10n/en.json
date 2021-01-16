@@ -542,7 +542,9 @@
       "definitionReference": "Definition reference",
       "restrictions": "Value restrictions",
       "choice": "Optional property",
-      "multipleChoice": "Choice (multiple choice)"
+      "multipleChoice": "Choice (multiple choice)",
+      "collection": "Collection",
+      "composition": "Compostition"
     },
     "restriction": {
       "valueLength": "Length",

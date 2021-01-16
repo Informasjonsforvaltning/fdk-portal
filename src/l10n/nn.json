@@ -542,7 +542,9 @@
       "definitionReference": "Referanse til definisjon",
       "restrictions": "Verdirestriksjonar",
       "choice": "Valfri eigenskap",
-      "multipleChoice": "Val (fleirval)"
+      "multipleChoice": "Val (fleirval)",
+      "collection": "Samling",
+      "composition": "Komposisjon"
 
     },
     "restriction": {

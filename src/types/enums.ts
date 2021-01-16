@@ -105,7 +105,9 @@ export enum ModelElementType {
   ASSOCIATION = 'association',
   SPECIALIZATION = 'specialization',
   CHOICE = 'choice',
-  MULTIPLE_CHOICE = 'multiple_choice'
+  MULTIPLE_CHOICE = 'multiple_choice',
+  COLLECTION = 'collection',
+  COMPOSITION = 'composition'
 }
 
 export enum FeedType {
