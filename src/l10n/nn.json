@@ -76,6 +76,7 @@
   "language": "Språk",
   "industryCode": "Næringskode",
   "requires": "Krev",
+  "days": "dagar",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -541,7 +542,9 @@
       "definitionReference": "Referanse til definisjon",
       "restrictions": "Verdirestriksjonar",
       "choice": "Valfri eigenskap",
-      "multipleChoice": "Val (fleirval)"
+      "multipleChoice": "Val (fleirval)",
+      "collection": "Samling",
+      "composition": "Komposisjon"
 
     },
     "restriction": {
@@ -612,7 +615,8 @@
         "contactInformation": "Kontaktinformasjon",
         "usage": "Ta i bruk datatjenesten",
         "serviceType": "Tjenestetype",
-        "datasetReferences": "Tilknyttede datasettbeskrivelser"
+        "datasetReferences": "Tilknyttede datasettbeskrivelser",
+        "informationModelReferences": "Informasjonsmodellar"
       },
       "concept": {
         "description": "Beskrivelse",
@@ -647,7 +651,18 @@
         "usage": "Bruk av tenesten",
         "keywords": "Emneord",
         "relatedServices": "Relaterte tenester",
-        "conceptReferences": "Omgrep brukt i tenesten"
+        "conceptReferences": "Omgrep brukt i tenesten",
+        "criterion": "Vilkår",
+        "produces": "Tenesteresultat",
+        "contactPoint": "Kontaktinformasjon",
+        "follows": "Saksbehandlingsreglar",
+        "legalResources": "Heimlar",
+        "attachment": "Vedleggskrav",
+        "participation": "Deltagende",
+        "channel": "Tenestekanal",
+        "cost": "Gebyr",
+        "processingTime": "Behandlingstid",
+        "relation": "Relatert til"
       }
     }
   },

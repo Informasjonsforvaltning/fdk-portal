@@ -459,7 +459,7 @@ const InformationModelDetailsPage: FC<Props> = ({
                 .datasetRelations
             }
           >
-            <InlineList>
+            <InlineList column>
               {datasets.map(
                 dataset =>
                   dataset.uri && (
@@ -483,7 +483,7 @@ const InformationModelDetailsPage: FC<Props> = ({
                 .dataServiceRelations
             }
           >
-            <InlineList>
+            <InlineList column>
               {dataServices.map(
                 dataService =>
                   dataService.uri && (

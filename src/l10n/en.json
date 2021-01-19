@@ -76,6 +76,7 @@
   "language": "Language",
   "industryCode": "Industry code",
   "requires": "Requires",
+  "days": "days",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -541,7 +542,9 @@
       "definitionReference": "Definition reference",
       "restrictions": "Value restrictions",
       "choice": "Optional property",
-      "multipleChoice": "Choice (multiple choice)"
+      "multipleChoice": "Choice (multiple choice)",
+      "collection": "Collection",
+      "composition": "Compostition"
     },
     "restriction": {
       "valueLength": "Length",
@@ -611,7 +614,8 @@
         "contactInformation": "Contact information",
         "usage": "Data service usage",
         "serviceType": "Service type",
-        "datasetReferences": "Related datasets"
+        "datasetReferences": "Related datasets",
+        "informationModelReferences": "Information models"
       },
       "concept": {
         "description": "Description",
@@ -647,7 +651,18 @@
         "usage": "Public service usage",
         "keywords": "Keywords",
         "relatedServices": "Related services",
-        "conceptReferences": "Concepts used in the service"
+        "conceptReferences": "Concepts used in the service",
+        "criterion": "Criterion",
+        "produces": "Service output",
+        "contactPoint": "Contact information",
+        "follows": "Processing rules",
+        "legalResources": "Legal basis",
+        "attachment": "Attachment requirements",
+        "participation": "Participation",
+        "channel": "Channel",
+        "cost": "Cost",
+        "processingTime": "Processing time",
+        "relation": "Related to"
       }
     }
   },

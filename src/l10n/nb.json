@@ -76,6 +76,7 @@
   "language": "Språk",
   "industryCode": "Næringskode",
   "requires": "Krever",
+  "days": "dager",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -541,7 +542,9 @@
       "definitionReference": "Referanse til definisjon",
       "restrictions": "Verdirestriksjoner",
       "choice": "Valgfri egenskap",
-      "multipleChoice": "Valg (flervalg)"
+      "multipleChoice": "Valg (flervalg)",
+      "collection": "Samling",
+      "composition": "Komposisjon"
     },
     "restriction": {
       "valueLength": "Lengde",
@@ -611,7 +614,8 @@
         "contactInformation": "Kontaktinformasjon",
         "usage": "Ta i bruk datatjenesten",
         "serviceType": "Tjenestetype",
-        "datasetReferences": "Tilknyttede datasettbeskrivelser"
+        "datasetReferences": "Tilknyttede datasettbeskrivelser",
+        "informationModelReferences": "Informasjonsmodeller"
       },
       "concept": {
         "description": "Beskrivelse",
@@ -646,7 +650,18 @@
         "usage": "Bruk av tjenesten",
         "keywords": "Søkeord",
         "relatedServices": "Relaterte tjenester",
-        "conceptReferences": "Begreper brukt i tjenesten"
+        "conceptReferences": "Begreper brukt i tjenesten",
+        "criterion": "Vilkår",
+        "produces": "Tjenesteresultat",
+        "contactPoint": "Kontaktinformasjon",
+        "follows": "Saksbehandlingsregler",
+        "legalResources": "Hjemler",
+        "attachment": "Vedleggskrav",
+        "participation": "Deltagende",
+        "channel": "Tjenestekanal",
+        "cost": "Gebyr",
+        "processingTime": "Behandlingstid",
+        "relation": "Relatert til"
       }
     }
   },

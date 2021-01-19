@@ -52,6 +52,14 @@ const ElementTitle = styled.span<{ $type: ModelElementType }>`
           return css`
             content: '\\2611';
           `;
+        case ModelElementType.COLLECTION:
+          return css`
+            content: '\\25C7';
+          `;
+        case ModelElementType.COMPOSITION:
+          return css`
+            content: '\\25C6';
+          `;
         default:
           return css`
             content: '';

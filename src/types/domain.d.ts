@@ -222,6 +222,11 @@ export interface ConceptDefinition {
   sourceRelationship?: string;
 }
 
+export interface PublicServiceType {
+  uri: string;
+  prefLabel: Partial<TextLanguage>;
+}
+
 export interface PublicServiceLanguage {
   uri: string;
   code: string;
@@ -234,6 +239,66 @@ export interface PublicServiceEvent {
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   type: string;
+}
+
+export interface PublicServiceOutput {
+  uri: string;
+  identifier: string;
+  name: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  type: Partial<Concept>[];
+}
+
+export interface PublicServiceCriterionRequirement {
+  uri: string;
+  identifier: string;
+  name: Partial<TextLanguage>;
+  type: Partial<Concept>[];
+}
+
+export interface PublicServiceRule {
+  uri: string;
+  identifier: string;
+  name: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  language: PublicServiceLanguage[];
+  implements: PublicService[];
+}
+
+export interface PublicServiceLegalResource {
+  uri: string;
+  description: Partial<TextLanguage>;
+  url: string;
+}
+
+export interface PublicServiceInput {
+  uri: string;
+  identifier: string;
+  name: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+}
+
+export interface PublicServiceParticipation {
+  uri: string;
+  identifier: string;
+  description: Partial<TextLanguage>;
+  role: PublicServiceType[];
+}
+
+export interface PublicServiceChannel {
+  uri: string;
+  identifier: string;
+  type: PublicServiceType;
+}
+
+export interface PublicServiceCost {
+  uri: string;
+  identifier: string;
+  description: Partial<TextLanguage>;
+  currency: string;
+  ifAccessedThrough: PublicServiceChannel;
+  isDefinedBy: Partial<Publisher>[];
+  value: string;
 }
 
 export interface PublicService {
@@ -251,6 +316,16 @@ export interface PublicService {
   isClassifiedBy?: Partial<Concept>[];
   language?: PublicServiceLanguage[];
   requires?: PublicService[];
+  produces?: PublicServiceOutput[];
+  hasCriterion?: PublicServiceCriterionRequirement[];
+  follows?: PublicServiceRule[];
+  hasLegalResource?: PublicServiceLegalResource[];
+  hasInput?: PublicServiceInput[];
+  hasParticipation?: PublicServiceParticipation[];
+  hasChannel?: PublicServiceChannel[];
+  processingTime?: string;
+  hasCost?: PublicServiceCost[];
+  relation?: PublicService[];
 }
 
 export interface ESPage {

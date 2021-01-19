@@ -63,7 +63,7 @@ const DatasetDetailsPage: FC<Props> = ({
   dataServices,
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  conceptsActions: { getConceptsRequested: getConcepts },
+  conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
   datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
   dataServicesActions: { getDataServicesRequested: getDataServices },
   match: {
@@ -101,6 +101,10 @@ const DatasetDetailsPage: FC<Props> = ({
         size: 1000
       });
     }
+
+    return () => {
+      resetConcepts();
+    };
   }, [conceptIdentifiers?.join()]);
 
   useEffect(() => {
