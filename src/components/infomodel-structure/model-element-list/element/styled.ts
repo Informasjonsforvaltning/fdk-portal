@@ -1,72 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 import Scroll from 'react-scroll';
 
 import ExpansionPanelBase, { SC } from '../../../expansion-panel';
 
-import { ModelElementType } from '../../../../types/enums';
-
-const ElementTitle = styled.span<{ $type: ModelElementType }>`
+const ElementTitle = styled.span`
   display: flex;
   align-items: center;
   align-self: start;
-
-  &:before {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 16px;
-    margin-right: ${theme.spacing('S8')};
-
-    ${({ $type }) => {
-      switch ($type) {
-        case ModelElementType.ATTRIBUTE:
-          return css`
-            content: '\\2022';
-            transform: scale(2) translateY(1px);
-          `;
-        case ModelElementType.ROLE:
-          return css`
-            content: '\\2192';
-          `;
-        case ModelElementType.ASSOCIATION:
-          return css`
-            content: '-';
-            transform: scale(1.4);
-          `;
-        case ModelElementType.CODE_ELEMENT:
-          return css`
-            content: '\\25A0';
-            transform: scale(1.5) translateY(1px);
-          `;
-        case ModelElementType.SPECIALIZATION:
-          return css`
-            content: '\\21FE';
-            transform: scale(1.5) translateY(-2px);
-          `;
-        case ModelElementType.CHOICE:
-          return css`
-            content: '\\2299';
-          `;
-        case ModelElementType.MULTIPLE_CHOICE:
-          return css`
-            content: '\\2611';
-          `;
-        case ModelElementType.COLLECTION:
-          return css`
-            content: '\\25C7';
-          `;
-        case ModelElementType.COMPOSITION:
-          return css`
-            content: '\\25C6';
-          `;
-        default:
-          return css`
-            content: '';
-          `;
-      }
-    }}
-  }
 `;
 
 const ExpansionPanel = styled(ExpansionPanelBase)`
@@ -82,6 +23,13 @@ const ExpansionPanel = styled(ExpansionPanelBase)`
     display: flex;
     flex: 0 0 80%;
     align-items: center;
+
+    & > svg {
+      align-self: start;
+      width: 16px;
+      margin-top: ${theme.spacing('S4')};
+      margin-right: ${theme.spacing('S8')};
+    }
 
     & > * {
       font-size: ${theme.fontSize('FS16')};
@@ -113,14 +61,18 @@ const MultiplicityRange = styled.span`
   align-self: flex-start;
 `;
 
-const ElementTypesContainer = styled.span`
-  padding-top: ${theme.spacing('S8')};
+const ElementTypesContainer = styled.span<{ length: number }>`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 
   & > a:nth-of-type(n + 2) {
     margin-top: ${theme.spacing('S8')};
+  }
+
+  & > a:first-of-type {
+    margin-top: ${({ length }) =>
+      length > 1 ? theme.spacing('S24') : theme.spacing('S4')};
   }
 `;
 
