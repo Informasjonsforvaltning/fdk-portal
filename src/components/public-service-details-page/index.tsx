@@ -191,10 +191,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         .join(', ')}
                     />
                   )}
-                  {languages.length > 0 && (
+                  {sectors.length > 0 && (
                     <KeyValueListItem
-                      property={translations.language}
-                      value={languages
+                      property={translations.industryCode}
+                      value={sectors
                         .map(({ prefLabel }) => translate(prefLabel))
                         .filter(Boolean)
                         .join(', ')}
@@ -209,6 +209,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       value={`${moment.duration(processingTime).asDays()} ${
                         translations.days
                       }`}
+                    />
+                  )}
+                  {hasCost.length > 0 && (
+                    <KeyValueListItem
+                      property={
+                        translations.detailsPage.sectionTitles.publicService
+                          .cost
+                      }
+                      value={hasCost
+                        .map(({ uri, description }) => (
+                          <SC.ListItemValue key={uri}>
+                            {translate(description)}
+                          </SC.ListItemValue>
+                        ))
+                        .filter(Boolean)}
                     />
                   )}
                   {hasLegalResource.length > 0 && (
@@ -226,38 +241,31 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         .filter(Boolean)}
                     />
                   )}
-                  {sectors.length > 0 && (
+                  {follows.length > 0 && (
                     <KeyValueListItem
-                      property={translations.industryCode}
-                      value={sectors
+                      property={
+                        translations.detailsPage.sectionTitles.publicService
+                          .follows
+                      }
+                      value={follows
+                        .map(({ uri, description }) => (
+                          <SC.ListItemValue key={uri}>
+                            {translate(description)}
+                          </SC.ListItemValue>
+                        ))
+                        .filter(Boolean)}
+                    />
+                  )}
+                  {languages.length > 0 && (
+                    <KeyValueListItem
+                      property={translations.language}
+                      value={languages
                         .map(({ prefLabel }) => translate(prefLabel))
                         .filter(Boolean)
                         .join(', ')}
                     />
                   )}
                 </KeyValueList>
-              </ContentSection>
-            )}
-            {keywords.length > 0 && (
-              <ContentSection
-                id="keywords"
-                title={
-                  translations.detailsPage.sectionTitles.publicService.keywords
-                }
-              >
-                <InlineList>
-                  {keywords.map((keyword, index) => (
-                    <Link
-                      as={RouterLink}
-                      to={`${PATHNAME_PUBLIC_SERVICES}?keywords=${encodeURIComponent(
-                        keyword
-                      )}`}
-                      key={`${keyword}-${index}`}
-                    >
-                      {keyword}
-                    </Link>
-                  ))}
-                </InlineList>
               </ContentSection>
             )}
 
@@ -302,15 +310,16 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </ContentSection>
             )}
 
-            {follows.length > 0 && (
+            {hasInput.length > 0 && (
               <ContentSection
-                id="follows"
+                id="hasInput"
                 title={
-                  translations.detailsPage.sectionTitles.publicService.follows
+                  translations.detailsPage.sectionTitles.publicService
+                    .attachment
                 }
               >
                 <KeyValueList>
-                  {follows.map(({ name, description }, index) => (
+                  {hasInput.map(({ name, description }, index) => (
                     <KeyValueListItem
                       key={`${translate(name)}-${index}`}
                       property={translate(name)}
@@ -344,41 +353,63 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </ContentSection>
             )}
 
-            {hasInput.length > 0 && (
+            {keywords.length > 0 && (
               <ContentSection
-                id="hasInput"
+                id="keywords"
                 title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .attachment
+                  translations.detailsPage.sectionTitles.publicService.keywords
                 }
               >
-                <KeyValueList>
-                  {hasInput.map(({ name, description }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(name)}-${index}`}
-                      property={translate(name)}
-                      value={translate(description)}
-                    />
+                <InlineList>
+                  {keywords.map((keyword, index) => (
+                    <Link
+                      as={RouterLink}
+                      to={`${PATHNAME_PUBLIC_SERVICES}?keywords=${encodeURIComponent(
+                        keyword
+                      )}`}
+                      key={`${keyword}-${index}`}
+                    >
+                      {keyword}
+                    </Link>
                   ))}
-                </KeyValueList>
+                </InlineList>
               </ContentSection>
             )}
 
-            {hasCost.length > 0 && (
+            {isClassifiedBy.length > 0 && (
               <ContentSection
-                id="hasCost"
+                id="concept-references"
                 title={
-                  translations.detailsPage.sectionTitles.publicService.cost
+                  translations.detailsPage.sectionTitles.publicService
+                    .conceptReferences
                 }
               >
                 <KeyValueList>
-                  {hasCost.map(({ description, uri }) => (
-                    <KeyValueListItem
-                      key={uri}
-                      property={translate(description)}
-                      value=""
-                    />
-                  ))}
+                  {isClassifiedBy?.map(
+                    ({ uri, prefLabel }) =>
+                      uri && (
+                        <KeyValueListItem
+                          key={uri}
+                          property={
+                            conceptsMap[uri] ? (
+                              <Link
+                                as={RouterLink}
+                                to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
+                              >
+                                {translate(conceptsMap[uri].prefLabel)}
+                              </Link>
+                            ) : (
+                              translate(prefLabel)
+                            )
+                          }
+                          value={
+                            conceptsMap[uri]
+                              ? translate(conceptsMap[uri].definition?.text)
+                              : ''
+                          }
+                        />
+                      )
+                  )}
                 </KeyValueList>
               </ContentSection>
             )}
@@ -438,39 +469,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         </InlineList>
                       }
                     />
-                  )}
-                </KeyValueList>
-              </ContentSection>
-            )}
-            {isClassifiedBy.length > 0 && (
-              <ContentSection
-                id="concept-references"
-                title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .conceptReferences
-                }
-              >
-                <KeyValueList>
-                  {isClassifiedBy?.map(
-                    ({ uri, prefLabel }) =>
-                      uri && (
-                        <KeyValueListItem
-                          key={uri}
-                          property={
-                            conceptsMap[uri] ? (
-                              <Link
-                                as={RouterLink}
-                                to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
-                              >
-                                {translate(conceptsMap[uri].prefLabel)}
-                              </Link>
-                            ) : (
-                              translate(prefLabel)
-                            )
-                          }
-                          value=""
-                        />
-                      )
                   )}
                 </KeyValueList>
               </ContentSection>
