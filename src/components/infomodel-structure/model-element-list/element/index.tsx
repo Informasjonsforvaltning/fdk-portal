@@ -22,6 +22,15 @@ import type {
 } from '../../../../types';
 import { ModelElementType } from '../../../../types/enums';
 
+import AssociationIcon from '../../../../images/icon-infomod-accosiation-sm.svg';
+import AttributeIcon from '../../../../images/icon-infomod-attribute-sm.svg';
+import ChoiceIcon from '../../../../images/icon-infomod-choice-sm.svg';
+import CodeIcon from '../../../../images/icon-infomod-code-sm.svg';
+import CollectionIcon from '../../../../images/icon-infomod-collection-sm.svg';
+import CompositionIcon from '../../../../images/icon-infomod-composition-sm.svg';
+import MultipleChoiceIcon from '../../../../images/icon-infomod-choice-multiple-sm.svg';
+import RoleIcon from '../../../../images/icon-infomod-role-sm.svg';
+
 interface ExternalProps {
   property: Partial<InformationModelProperty>;
   code: Partial<ModelCodeElement>;
@@ -88,6 +97,28 @@ const Element: FC<Props> = ({
     return null;
   };
 
+  const renderElementIcon = (type: ModelElementType) => {
+    switch (type) {
+      case ModelElementType.ASSOCIATION:
+        return <AssociationIcon />;
+      case ModelElementType.CHOICE:
+        return <ChoiceIcon />;
+      case ModelElementType.CODE_ELEMENT:
+        return <CodeIcon />;
+      case ModelElementType.COLLECTION:
+        return <CollectionIcon />;
+      case ModelElementType.COMPOSITION:
+        return <CompositionIcon />;
+      case ModelElementType.MULTIPLE_CHOICE:
+        return <MultipleChoiceIcon />;
+      case ModelElementType.ROLE:
+        return <RoleIcon />;
+      case ModelElementType.ATTRIBUTE:
+      default:
+        return <AttributeIcon />;
+    }
+  };
+
   return (
     <SC.ExpansionPanel
       shouldExpandOnHeadClick={false}
@@ -97,7 +128,8 @@ const Element: FC<Props> = ({
       }}
     >
       <ExpansionPanelHead>
-        <SC.ElementTitle $type={type}>{title}</SC.ElementTitle>
+        {renderElementIcon(type)}
+        <SC.ElementTitle>{title}</SC.ElementTitle>
         <span>
           {modelElementType && (
             <ScollLink
@@ -112,7 +144,7 @@ const Element: FC<Props> = ({
               {translate(modelElementType.title)}
             </ScollLink>
           )}
-          <SC.ElementTypesContainer>
+          <SC.ElementTypesContainer length={modelElementTypes?.length ?? 0}>
             {modelElementTypes?.map(({ identifier, uri, title }, index) => (
               <ScollLink
                 key={identifier ?? uri ?? `scroll-link-${index}`}
