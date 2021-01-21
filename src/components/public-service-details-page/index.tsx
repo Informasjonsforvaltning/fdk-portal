@@ -102,6 +102,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const hasCost = publicService?.hasCost ?? [];
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
+  const contactPoints = publicService?.hasContactPoint || [];
 
   const publicServiceIdentifiers = [
     ...requiredServices.map(({ uri }) => uri).filter(Boolean),
@@ -472,6 +473,79 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       )
                   )}
                 </KeyValueList>
+              </ContentSection>
+            )}
+
+            {contactPoints.length > 0 && (
+              <ContentSection
+                id="hasContactPoint"
+                title={
+                  translations.detailsPage.sectionTitles.publicService
+                    .contactPoint
+                }
+              >
+                {contactPoints.map(
+                  ({
+                    uri,
+                    contactType,
+                    description,
+                    email,
+                    name,
+                    telephone,
+                    url
+                  }) => (
+                    <KeyValueList key={uri}>
+                      {contactType && (
+                        <KeyValueListItem
+                          property=""
+                          value={translate(contactType)}
+                        />
+                      )}
+                      {description && (
+                        <KeyValueListItem
+                          property={translations.description}
+                          value={translate(description)}
+                        />
+                      )}
+                      {name && (
+                        <KeyValueListItem
+                          property={translations.name}
+                          value={translate(name)}
+                        />
+                      )}
+                      {email && (
+                        <KeyValueListItem
+                          property={translations.email}
+                          value={
+                            <a
+                              title={email}
+                              href={`mailto:${email}`}
+                              rel="noopener noreferrer"
+                            >
+                              {email}
+                            </a>
+                          }
+                        />
+                      )}
+                      {telephone && (
+                        <KeyValueListItem
+                          property={translations.phone}
+                          value={telephone}
+                        />
+                      )}
+                      {url && (
+                        <KeyValueListItem
+                          property={translations.contactPoint}
+                          value={
+                            <Link href={url} external>
+                              {url}
+                            </Link>
+                          }
+                        />
+                      )}
+                    </KeyValueList>
+                  )
+                )}
               </ContentSection>
             )}
           </DetailsPage>

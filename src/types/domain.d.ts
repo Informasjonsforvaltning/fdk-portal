@@ -301,6 +301,16 @@ export interface PublicServiceCost {
   value: string;
 }
 
+interface PublicServiceContactPoint {
+  uri: string;
+  contactType: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  email: string;
+  name: Partial<TextLanguage>;
+  telephone: string;
+  url: string;
+}
+
 export interface PublicService {
   type: string;
   id: string;
@@ -326,6 +336,7 @@ export interface PublicService {
   processingTime?: string;
   hasCost?: PublicServiceCost[];
   relation?: PublicService[];
+  hasContactPoint?: PublicServiceContactPoint[];
 }
 
 export interface ESPage {
