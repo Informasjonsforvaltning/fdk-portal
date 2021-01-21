@@ -1,4 +1,4 @@
-import React, { memo, FC, useEffect, useState } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -383,6 +383,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   translations.detailsPage.sectionTitles.publicService
                     .conceptReferences
                 }
+                boxStyle
+                iconEntity={Entity.CONCEPT}
               >
                 <KeyValueList>
                   {isClassifiedBy?.map(
@@ -421,6 +423,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   translations.detailsPage.sectionTitles.publicService
                     .relatedServices
                 }
+                boxStyle
+                iconEntity={Entity.PUBLIC_SERVICE}
               >
                 <KeyValueList>
                   {requiredServices.length > 0 && (
