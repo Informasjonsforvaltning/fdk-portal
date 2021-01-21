@@ -13,6 +13,11 @@ const BetaRibbon = styled.span`
   background: ${theme.colour(Colour.YELLOW, 'Y30')};
 `;
 
+const ListItemValue = styled.div`
+  margin-bottom: ${theme.spacing('S10')};
+`;
+
 export default {
-  BetaRibbon
+  BetaRibbon,
+  ListItemValue
 };
