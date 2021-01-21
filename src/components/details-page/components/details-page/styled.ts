@@ -6,6 +6,10 @@ const onMobileView = '@media (max-width: 768px)';
 
 const DetailsPage = styled.article`
   flex: 1 0 auto;
+
+  a {
+    color: ${({ theme }) => theme.entityColours.dark} !important;
+  }
 `;
 
 const Publisher = styled.p`
