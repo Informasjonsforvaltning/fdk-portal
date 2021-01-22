@@ -35,8 +35,8 @@ const Header = styled.div`
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.entityColours.light};
   display: flex;
-  margin-bottom: ${theme.spacing('S10')};;
-  padding: ${theme.spacing('S10')}; 0;
+  margin-bottom: ${theme.spacing('S10')};
+  padding: ${theme.spacing('S10')} 0;
 `;
 
 const IconPlaceholder = styled.div`
