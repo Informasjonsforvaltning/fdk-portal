@@ -1,13 +1,14 @@
 import {
   DataFormat,
   RatingCategory,
-  Entity as EntityType,
+  Entity as EntityEnum,
   DimensionType,
   IndicatorType
 } from './enums';
 
 export interface InformationModel {
   id: string;
+  type: EntityEnum.INFORMATION_MODEL;
   uri: string;
   identifier?: string;
   publisher?: Partial<Publisher>;
@@ -195,6 +196,7 @@ export interface Property {
 
 export interface Concept {
   id: string;
+  type: EntityEnum.CONCEPT;
   uri: string;
   identifier: string;
   prefLabel: Partial<TextLanguage>;
@@ -310,8 +312,8 @@ interface PublicServiceContactPoint {
 }
 
 export interface PublicService {
-  type: string;
   id: string;
+  type: EntityEnum.PUBLIC_SERVICE;
   uri: string;
   identifier: string;
   title: Partial<TextLanguage>;
@@ -420,7 +422,7 @@ interface LegalBasis {
 
 export interface Dataset {
   id: string;
-  type: string;
+  type: EntityEnum.DATASET;
   uri: string;
   publisher: Partial<Publisher>;
   title: Partial<TextLanguage>;
@@ -461,6 +463,7 @@ export interface Dataset {
 
 export interface DataService {
   id: string;
+  type: EntityEnum.DATA_SERVICE;
   uri: string;
   publisher: Partial<Publisher>;
   title: Partial<TextLanguage>;
@@ -620,9 +623,9 @@ export interface Catalog {
   uri?: string;
 }
 
-export interface Entity {
+export interface AssessmentEntity {
   uri: string;
-  type: EntityType;
+  type: EntityEnum;
   catalog: Catalog;
 }
 
@@ -640,7 +643,7 @@ export interface Dimension {
 
 export interface Assessment {
   id: string;
-  entity: Entity;
+  entity: AssessmentEntity;
   rating: Rating;
   dimensions: Dimension[];
   updated: string;
@@ -675,6 +678,13 @@ export interface EnhetsregisteretOrganization {
     beskrivelse: string;
   };
 }
+
+export type Entity =
+  | Dataset
+  | DataService
+  | Concept
+  | InformationModel
+  | PublicService;
 
 export interface DropdownMenuItem {
   label: string;

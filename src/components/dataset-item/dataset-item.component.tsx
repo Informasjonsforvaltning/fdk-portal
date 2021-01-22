@@ -23,7 +23,7 @@ import type { Dataset, MediaType } from '../../types';
 import { SearchTypes } from '../../types/enums';
 
 interface Props {
-  dataset: Dataset;
+  dataset: Partial<Dataset>;
   mediatypes?: MediaType[];
 }
 

@@ -12,7 +12,7 @@ import type { InformationModel } from '../../types';
 import { SearchTypes } from '../../types/enums';
 
 interface Props {
-  informationModel: InformationModel;
+  informationModel: Partial<InformationModel>;
 }
 
 export const InformationModelItem: FC<Props> = ({

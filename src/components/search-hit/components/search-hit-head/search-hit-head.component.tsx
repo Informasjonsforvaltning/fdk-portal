@@ -16,9 +16,9 @@ import {
 } from '../../../../constants/constants';
 
 interface Props {
-  id: string;
+  id?: string;
   type: SearchTypes;
-  title: Partial<TextLanguage>;
+  title?: Partial<TextLanguage>;
   isAuthoritative?: boolean;
 }
 
