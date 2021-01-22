@@ -661,7 +661,8 @@
         "channel": "Tjenestekanal",
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
-        "relation": "Relatert til"
+        "relation": "Relatert til",
+        "requiredBy": "Krevd av"
       }
     }
   },
