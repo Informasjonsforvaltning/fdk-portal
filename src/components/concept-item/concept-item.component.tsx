@@ -10,7 +10,7 @@ import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
 
 interface Props {
-  concept: Concept;
+  concept: Partial<Concept>;
   concepts?: Concept[];
   onAddConcept?: (concept: Partial<Concept>) => void;
   onDeleteConcept?: (id?: string) => void;
@@ -64,7 +64,7 @@ const renderSource = ({ sourceRelationship = '', sources = [] }: any) => {
   return null;
 };
 
-const renderExample = (example: Partial<TextLanguage>) => {
+const renderExample = (example?: Partial<TextLanguage>) => {
   if (!example) {
     return null;
   }
@@ -127,7 +127,7 @@ export const ConceptItem: FC<Props> = ({
       type={SearchTypes.concept}
       title={prefLabel}
       publisher={publisher}
-      description={definition.text || null}
+      description={definition?.text}
     >
       <SearchHitData>
         {renderSource(definition)}
