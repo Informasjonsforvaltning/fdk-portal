@@ -1,4 +1,4 @@
-import type { EnvironmentVariables } from '../../types';
+import type { EnvironmentVariables, EuTheme, LosTheme } from '../../types';
 
 function assertIsDefined<T>(
   key: string,
@@ -14,4 +14,14 @@ export const validateEnv = (
 ): EnvironmentVariables => {
   Object.entries(env).forEach(([key, value]) => assertIsDefined(key, value));
   return env;
+};
+
+export const isEuTheme = (theme: EuTheme | LosTheme): theme is EuTheme => {
+  const { id, title, code } = theme as EuTheme;
+  return !!id && !!title && !!code;
+};
+
+export const isLosTheme = (theme: EuTheme | LosTheme): theme is LosTheme => {
+  const { uri, name, losPaths } = theme as LosTheme;
+  return !!uri && !!name && !!losPaths;
 };

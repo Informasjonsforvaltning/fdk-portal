@@ -14,7 +14,6 @@ import { PublicServiceItem } from '../public-service-item/public-service-item';
 
 interface Props {
   entities: any;
-  losItems: any;
   mediatypes?: MediaType[];
   compareConceptList?: Concept[] | undefined;
   addConcept?: (concept: Partial<Concept>) => void;
@@ -24,18 +23,13 @@ interface Props {
 const renderEntity = (
   entity: any,
   {
-    losItems,
     mediatypes,
     compareConceptList,
     addConcept,
     removeConcept
   }: Pick<
     Props,
-    | 'losItems'
-    | 'mediatypes'
-    | 'compareConceptList'
-    | 'addConcept'
-    | 'removeConcept'
+    'mediatypes' | 'compareConceptList' | 'addConcept' | 'removeConcept'
   >
 ) => {
   switch (entity.type) {
@@ -48,11 +42,7 @@ const renderEntity = (
             ]
           }
         >
-          <DatasetItem
-            dataset={entity}
-            losItems={losItems}
-            mediatypes={mediatypes}
-          />
+          <DatasetItem dataset={entity} mediatypes={mediatypes} />
         </ThemeProvider>
       );
     case Entity.DATA_SERVICE:
@@ -93,7 +83,7 @@ const renderEntity = (
             ]
           }
         >
-          <InformationModelItem informationModel={entity} losItems={losItems} />
+          <InformationModelItem informationModel={entity} />
         </ThemeProvider>
       );
     case Entity.PUBLIC_SERVICE:
@@ -115,30 +105,24 @@ const renderEntity = (
 
 const SearchEntities: FC<Props> = ({
   entities,
-  losItems,
   mediatypes,
   compareConceptList,
   addConcept,
   removeConcept
-}) => {
-  if (losItems && entities && Array.isArray(entities)) {
-    return (
-      <div>
-        {entities.map((entity: any) => (
-          <ErrorBoundary key={entity.id}>
-            {renderEntity(entity, {
-              losItems,
-              mediatypes,
-              compareConceptList,
-              addConcept,
-              removeConcept
-            })}
-          </ErrorBoundary>
-        ))}
-      </div>
-    );
-  }
-  return null;
-};
+}) =>
+  Array.isArray(entities) ? (
+    <div>
+      {entities.map(entity => (
+        <ErrorBoundary key={entity.id}>
+          {renderEntity(entity, {
+            mediatypes,
+            compareConceptList,
+            addConcept,
+            removeConcept
+          })}
+        </ErrorBoundary>
+      ))}
+    </div>
+  ) : null;
 
 export default memo(SearchEntities);

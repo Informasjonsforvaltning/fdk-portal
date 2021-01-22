@@ -12,9 +12,7 @@ afterEach(cleanup);
 describe('SearchEntities', () => {
   const entities = extractEntities(response);
   it(Expectation.STRUCTURE, () => {
-    const container = shallow(
-      <SearchEntities entities={entities} losItems={[]} />
-    );
+    const container = shallow(<SearchEntities entities={entities} />);
     expect(container).toMatchSnapshot();
   });
 });

@@ -163,10 +163,6 @@ export interface Harvest {
   lastHarvested: string;
 }
 
-export interface Theme {
-  id: string;
-}
-
 export interface LosTheme {
   uri: string;
   name: Partial<TextLanguage>;
@@ -178,6 +174,8 @@ export interface EuTheme {
   title: Partial<TextLanguage>;
   code?: string;
 }
+
+export type Theme = LosTheme | EuTheme;
 
 export interface Type {
   identifier: string;

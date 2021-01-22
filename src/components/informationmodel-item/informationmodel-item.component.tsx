@@ -1,44 +1,32 @@
 import React, { FC } from 'react';
 
-import { InformationModel } from '../../types';
-import { SearchTypes } from '../../types/enums';
-import { SearchHit, SearchHitThemes } from '../search-hit/search-hit';
-import { getTranslateText } from '../../lib/translateText';
-import { RoundedTag } from '../rounded-tag/rounded-tag.component';
+import { getTranslateText as translate } from '../../lib/translateText';
 import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
+
+import { SearchHit, SearchHitThemes } from '../search-hit/search-hit';
+import { RoundedTag } from '../rounded-tag/rounded-tag.component';
+
+import { isLosTheme, isEuTheme } from '../../utils/common';
+
+import type { InformationModel } from '../../types';
+import { SearchTypes } from '../../types/enums';
 
 interface Props {
   informationModel: InformationModel;
-  losItems: any;
 }
 
-const renderThemes = (themes: any, losItems: any) => {
-  return themes
-    .map((theme: any, index: number) => {
-      const losItem: any =
-        Object.values(losItems).find(
-          (losItem: any) => losItem.uri === theme.uri
-        ) || {};
-      const losPath: any = losItem?.losPaths ? losItem.losPaths[0] : '';
-      const prefLabel = getTranslateText(losItem.prefLabel);
-      return (
-        prefLabel && (
-          <RoundedTag
-            key={`dataset-theme-${index}`}
-            to={patchSearchQuery('losTheme', losPath)}
-          >
-            <span>{prefLabel}</span>
-          </RoundedTag>
-        )
-      );
-    })
-    .filter(Boolean);
-};
-
 export const InformationModelItem: FC<Props> = ({
-  informationModel: { id, title = {}, description, publisher = {}, theme },
-  losItems
+  informationModel: {
+    id,
+    title = {},
+    description,
+    publisher = {},
+    losTheme: losThemes,
+    theme: euThemes
+  }
 }) => {
+  const themes = [...(losThemes ?? []), ...(euThemes ?? [])];
+
   return (
     <SearchHit
       id={id}
@@ -47,8 +35,33 @@ export const InformationModelItem: FC<Props> = ({
       publisher={publisher}
       description={description}
     >
-      {theme && (
-        <SearchHitThemes>{renderThemes(theme, losItems)}</SearchHitThemes>
+      {Array.isArray(losThemes) && (
+        <SearchHitThemes>
+          {themes.map(theme => {
+            if (isLosTheme(theme)) {
+              const { uri, name, losPaths: [losPath] = [] } = theme;
+              return (
+                <RoundedTag
+                  key={uri}
+                  to={patchSearchQuery('losTheme', losPath)}
+                >
+                  <span>{translate(name)}</span>
+                </RoundedTag>
+              );
+            }
+
+            if (isEuTheme(theme)) {
+              const { id, title, code } = theme;
+              return (
+                <RoundedTag key={id} to={patchSearchQuery('theme', code)}>
+                  <span>{translate(title)}</span>
+                </RoundedTag>
+              );
+            }
+
+            return null;
+          })}
+        </SearchHitThemes>
       )}
     </SearchHit>
   );

@@ -22,16 +22,10 @@ interface Props extends EntitiesProps, ReferenceDataProps {
 const MainPage: FC<Props> = ({
   news,
   entities,
-  entitiesActions: { getEntitiesRequested: getEntities },
-  referenceData: { los },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData }
+  entitiesActions: { getEntitiesRequested: getEntities }
 }) => {
   useEffect(() => {
     getEntities();
-
-    if (!los) {
-      getReferenceData('los');
-    }
   }, []);
 
   return (
@@ -50,7 +44,7 @@ const MainPage: FC<Props> = ({
             <HeaderSC.Header>
               <span>{localization.sort.modified}</span>
             </HeaderSC.Header>
-            <SearchEntities entities={entities} losItems={los} />
+            <SearchEntities entities={entities} />
           </section>
           <section className="col-12 col-lg-4">
             <HeaderSC.Header>

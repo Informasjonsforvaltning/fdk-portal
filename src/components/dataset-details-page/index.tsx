@@ -40,7 +40,6 @@ import ExternalLink from '../link-external';
 
 import SC from './styled';
 
-import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
 
 interface RouteParams {
@@ -194,10 +193,7 @@ const DatasetDetailsPage: FC<Props> = ({
         )
     ) ?? [];
 
-  const themes: Theme[] = [
-    ...(dataset?.losTheme?.map(({ uri: id }) => ({ id })) ?? []),
-    ...(dataset?.theme?.map(({ id }) => ({ id })) ?? [])
-  ];
+  const themes = [...(dataset?.losTheme ?? []), ...(dataset?.theme ?? [])];
 
   return (
     dataset && (

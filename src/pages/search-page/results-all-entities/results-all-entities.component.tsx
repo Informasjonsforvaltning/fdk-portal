@@ -128,7 +128,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
             <section className="col-12 col-lg-8">
               <SearchEntities
                 entities={entities}
-                losItems={getLosByKeys(los)}
                 compareConceptList={compareConceptList}
                 addConcept={addConcept}
                 removeConcept={removeConcept}
