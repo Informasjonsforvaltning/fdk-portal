@@ -39,7 +39,7 @@ import InfoModelStructure from '../infomodel-structure';
 
 import SC from './styled';
 
-import type { InformationModel, Theme } from '../../types';
+import type { InformationModel } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
 import { getConfig } from '../../config';
 
@@ -173,9 +173,9 @@ const InformationModelDetailsPage: FC<Props> = ({
   const isReplacedBy = informationModel?.isReplacedBy;
   const replaces = informationModel?.replaces;
   const contactPoint = informationModel?.contactPoint;
-  const themes: Theme[] = [
-    ...(informationModel?.losTheme?.map(({ uri: id }) => ({ id })) ?? []),
-    ...(informationModel?.theme?.map(({ id }) => ({ id })) ?? [])
+  const themes = [
+    ...(informationModel?.losTheme ?? []),
+    ...(informationModel?.theme ?? [])
   ];
 
   const informationModelIdentifiers = ([

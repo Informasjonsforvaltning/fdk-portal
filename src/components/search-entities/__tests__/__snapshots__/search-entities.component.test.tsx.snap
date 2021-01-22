@@ -650,7 +650,6 @@ exports[`SearchEntities must render correct structure 1`] = `
             "uri": "http://brreg.no/catalogs/910244132/datasets/e238edd9-b05c-435c-a844-89bb27d883bb",
           }
         }
-        losItems={Array []}
       />
     </ThemeProvider>
   </ErrorBoundary>
@@ -693,7 +692,6 @@ exports[`SearchEntities must render correct structure 1`] = `
             "type": "informationmodel",
           }
         }
-        losItems={Array []}
       />
     </ThemeProvider>
   </ErrorBoundary>
