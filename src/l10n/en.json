@@ -544,7 +544,8 @@
       "choice": "Optional property",
       "multipleChoice": "Choice (multiple choice)",
       "collection": "Collection",
-      "composition": "Compostition"
+      "composition": "Compostition",
+      "relation": "Relational property"
     },
     "restriction": {
       "valueLength": "Length",

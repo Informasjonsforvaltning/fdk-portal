@@ -3,6 +3,7 @@ import { compose } from 'redux';
 
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
+import { resolvePropertySymmetries } from './utils';
 
 import Description from './model-description';
 import ExpansionIndicatorDetails from './expansion-indicator-details';
@@ -31,9 +32,11 @@ interface Props extends ExternalProps {}
 
 const InfoModelStructure: FC<Props> = ({
   modelElements,
-  modelProperties,
+  modelProperties: initialModelProperties,
   concepts
 }) => {
+  const modelProperties = resolvePropertySymmetries(initialModelProperties);
+
   const rootObjectTypes = Object.values(modelElements)
     .filter(Boolean)
     .filter(({ elementTypes }) =>
@@ -119,8 +122,10 @@ const InfoModelStructure: FC<Props> = ({
   const unwrapRoles = (properties?: string[] | null) =>
     properties
       ?.map(property => modelProperties[property])
-      .filter(({ propertyTypes }) =>
-        propertyTypes?.some(type => type.split('#').includes('Role'))
+      .filter(
+        ({ propertyTypes, formsSymmetryWith }) =>
+          propertyTypes?.some(type => type.split('#').includes('Role')) &&
+          !formsSymmetryWith
       )
       .filter(Boolean) ?? [];
 
@@ -157,6 +162,18 @@ const InfoModelStructure: FC<Props> = ({
 
     return isRealizationOf ? modelElements[isRealizationOf] : undefined;
   };
+
+  const unwrapRelational = (properties?: string[] | null) =>
+    properties?.reduce((previous, property) => {
+      const symmetricProp = modelProperties[property].formsSymmetryWith;
+      return symmetricProp
+        ? [
+            ...previous,
+            modelProperties[property],
+            modelProperties[symmetricProp]
+          ]
+        : previous;
+    }, [] as Partial<InformationModelProperty>[]);
 
   const conceptMap = concepts.reduce<Record<string, Concept>>(
     (previous, current) => ({ ...previous, [current.identifier]: current }),
@@ -355,6 +372,13 @@ const InfoModelStructure: FC<Props> = ({
                     modelElements={modelElements}
                     concepts={conceptMap}
                     type={ModelElementType.COMPOSITION}
+                  />
+                  <ModelElementList
+                    title={translations.infoMod.structure.relation}
+                    properties={unwrapRelational(hasProperty)}
+                    modelElements={modelElements}
+                    concepts={conceptMap}
+                    type={ModelElementType.BIDIR_OUT}
                   />
                 </ExpansionPanelBody>
               </SC.ExpansionPanel>
