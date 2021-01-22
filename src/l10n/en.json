@@ -662,7 +662,8 @@
         "channel": "Channel",
         "cost": "Cost",
         "processingTime": "Processing time",
-        "relation": "Related to"
+        "relation": "Related to",
+        "requiredBy": "Required by"
       }
     }
   },

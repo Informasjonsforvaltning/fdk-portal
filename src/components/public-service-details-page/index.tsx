@@ -26,7 +26,7 @@ import DetailsPage, {
   KeyValueListItem
 } from '../details-page';
 
-import type { Theme } from '../../types';
+import type { Theme, PublicService } from '../../types';
 import { Entity } from '../../types/enums';
 
 import {
@@ -52,9 +52,12 @@ const PublicServiceDetailsPage: FC<Props> = ({
     resetPublicService
   },
   publicServices,
+  publicServicesRequiredBy,
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
-    resetPublicServices
+    resetPublicServices,
+    getPublicServicesRequiredByRequested: getPublicServicesRequiredBy,
+    resetPublicServicesRequiredBy
   },
   concepts,
   conceptsActions: { getConceptsRequested: getConcepts },
@@ -78,8 +81,15 @@ const PublicServiceDetailsPage: FC<Props> = ({
       setIsMounted(false);
       resetPublicService();
       resetPublicServices();
+      resetPublicServicesRequiredBy();
     };
   }, [publicServiceId]);
+
+  useEffect(() => {
+    if (publicService?.uri) {
+      getPublicServicesRequiredBy({ requiredByServiceUri: publicService.uri });
+    }
+  }, [publicService?.uri]);
 
   const title = translate(publicService?.title);
   const description = translate(publicService?.description);
@@ -112,6 +122,11 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const publicServicesMap = publicServices?.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, any>
+  );
+
+  const publicServicesRequiredByMap = publicServicesRequiredBy?.reduce(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
+    {} as Record<string, PublicService>
   );
 
   const conceptsIdentifiers = (isClassifiedBy.map(
@@ -416,7 +431,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </ContentSection>
             )}
 
-            {(requiredServices.length > 0 || relation.length > 0) && (
+            {(requiredServices.length > 0 ||
+              relation.length > 0 ||
+              publicServicesRequiredBy.length > 0) && (
               <ContentSection
                 id="relatedServices"
                 title={
@@ -466,6 +483,29 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         ) : (
                           translate(title)
                         )
+                      )}
+                    />
+                  )}
+                  {publicServicesRequiredBy.length > 0 && (
+                    <KeyValueListItem
+                      property={
+                        translations.detailsPage.sectionTitles.publicService
+                          .requiredBy
+                      }
+                      value={publicServicesRequiredBy.map(
+                        ({ uri, title }, index) =>
+                          publicServicesRequiredByMap?.[uri] ? (
+                            <SC.ListItemValue key={`${uri}-${index}`}>
+                              <Link
+                                as={RouterLink}
+                                to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesRequiredByMap[uri]?.id}`}
+                              >
+                                {translate(title)}
+                              </Link>
+                            </SC.ListItemValue>
+                          ) : (
+                            translate(title)
+                          )
                       )}
                     />
                   )}
