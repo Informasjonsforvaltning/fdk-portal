@@ -544,7 +544,8 @@
       "choice": "Valgfri egenskap",
       "multipleChoice": "Valg (flervalg)",
       "collection": "Samling",
-      "composition": "Komposisjon"
+      "composition": "Komposisjon",
+      "relation": "Relasjonsegenskap"
     },
     "restriction": {
       "valueLength": "Lengde",

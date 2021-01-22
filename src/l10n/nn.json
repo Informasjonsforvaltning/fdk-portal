@@ -544,7 +544,8 @@
       "choice": "Valfri eigenskap",
       "multipleChoice": "Val (fleirval)",
       "collection": "Samling",
-      "composition": "Komposisjon"
+      "composition": "Komposisjon",
+      "relation": "Relasjonseigenskap"
 
     },
     "restriction": {

@@ -1,8 +1,39 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 import Scroll from 'react-scroll';
 
-import ExpansionPanelBase, { SC } from '../../../expansion-panel';
+import ExpansionPanelBase, { SC, Props } from '../../../expansion-panel';
+import { ModelElementType } from '../../../../types/enums';
+
+interface ExpansionPanelProps extends Props {
+  type: ModelElementType;
+}
+
+const applyBidirStyling = (type: ModelElementType) => {
+  switch (type) {
+    case ModelElementType.BIDIR_OUT:
+      return css`
+        margin-left: ${theme.spacing('S16')};
+        border-bottom: none;
+
+        ${SC.ExpansionPanel.Head} {
+          padding: 0 0;
+        }
+      `;
+
+    case ModelElementType.BIDIR_IN:
+      return css`
+        margin-left: ${theme.spacing('S16')};
+
+        ${SC.ExpansionPanel.Head} {
+          padding: 0 0 ${theme.spacing('S8')} 0;
+        }
+      `;
+
+    default:
+      return css``;
+  }
+};
 
 const ElementTitle = styled.span`
   display: flex;
@@ -10,7 +41,7 @@ const ElementTitle = styled.span`
   align-self: start;
 `;
 
-const ExpansionPanel = styled(ExpansionPanelBase)`
+const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
   border-radius: none;
   border-bottom: 1px solid ${theme.colour(Colour.VIOLET, 'V30')};
   background: transparent;
@@ -18,6 +49,8 @@ const ExpansionPanel = styled(ExpansionPanelBase)`
   ${SC.ExpansionPanel.Head} {
     padding: ${theme.spacing('S8')} 0;
   }
+
+  ${({ type }) => applyBidirStyling(type)}
 
   ${SC.ExpansionPanel.HeadContent} {
     display: flex;
