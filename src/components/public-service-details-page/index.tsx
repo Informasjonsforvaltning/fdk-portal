@@ -430,23 +430,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   {requiredServices.length > 0 && (
                     <KeyValueListItem
                       property={translations.requires}
-                      value={
-                        <InlineList>
-                          {requiredServices.map(({ uri, title }, index) =>
-                            publicServicesMap?.[uri] ? (
-                              <Link
-                                as={RouterLink}
-                                to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
-                                key={`${uri}-${index}`}
-                              >
-                                {translate(title)}
-                              </Link>
-                            ) : (
-                              translate(title)
-                            )
-                          )}
-                        </InlineList>
-                      }
+                      value={requiredServices.map(({ uri, title }, index) =>
+                        publicServicesMap?.[uri] ? (
+                          <SC.ListItemValue key={`${uri}-${index}`}>
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
+                              key={`${uri}-${index}`}
+                            >
+                              {translate(title)}
+                            </Link>
+                          </SC.ListItemValue>
+                        ) : (
+                          translate(title)
+                        )
+                      )}
                     />
                   )}
                   {relation.length > 0 && (
@@ -455,23 +453,20 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         translations.detailsPage.sectionTitles.publicService
                           .relation
                       }
-                      value={
-                        <InlineList>
-                          {relation.map(({ uri, title }, index) =>
-                            publicServicesMap?.[uri] ? (
-                              <Link
-                                as={RouterLink}
-                                to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
-                                key={`${uri}-${index}`}
-                              >
-                                {translate(title)}
-                              </Link>
-                            ) : (
-                              translate(title)
-                            )
-                          )}
-                        </InlineList>
-                      }
+                      value={relation.map(({ uri, title }, index) =>
+                        publicServicesMap?.[uri] ? (
+                          <SC.ListItemValue key={`${uri}-${index}`}>
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
+                            >
+                              {translate(title)}
+                            </Link>
+                          </SC.ListItemValue>
+                        ) : (
+                          translate(title)
+                        )
+                      )}
                     />
                   )}
                 </KeyValueList>
