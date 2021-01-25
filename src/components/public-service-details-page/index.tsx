@@ -53,11 +53,14 @@ const PublicServiceDetailsPage: FC<Props> = ({
   },
   publicServices,
   publicServicesRequiredBy,
+  publicServicesRelatedBy,
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
     resetPublicServices,
     getPublicServicesRequiredByRequested: getPublicServicesRequiredBy,
-    resetPublicServicesRequiredBy
+    resetPublicServicesRequiredBy,
+    getPublicServicesRelatedByRequested: getPublicServicesRelatedBy,
+    resetPublicServicesRelatedBy
   },
   concepts,
   conceptsActions: { getConceptsRequested: getConcepts },
@@ -82,12 +85,14 @@ const PublicServiceDetailsPage: FC<Props> = ({
       resetPublicService();
       resetPublicServices();
       resetPublicServicesRequiredBy();
+      resetPublicServicesRelatedBy();
     };
   }, [publicServiceId]);
 
   useEffect(() => {
     if (publicService?.uri) {
       getPublicServicesRequiredBy({ requiredByServiceUri: publicService.uri });
+      getPublicServicesRelatedBy({ relatedByServiceUri: publicService.uri });
     }
   }, [publicService?.uri]);
 
@@ -125,6 +130,11 @@ const PublicServiceDetailsPage: FC<Props> = ({
   );
 
   const publicServicesRequiredByMap = publicServicesRequiredBy?.reduce(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
+    {} as Record<string, PublicService>
+  );
+
+  const publicServicesRelatedByMap = publicServicesRelatedBy?.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, PublicService>
   );
@@ -433,7 +443,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
             {(requiredServices.length > 0 ||
               relation.length > 0 ||
-              publicServicesRequiredBy.length > 0) && (
+              publicServicesRequiredBy.length > 0 ||
+              publicServicesRelatedBy.length > 0) && (
               <ContentSection
                 id="relatedServices"
                 title={
@@ -499,6 +510,29 @@ const PublicServiceDetailsPage: FC<Props> = ({
                               <Link
                                 as={RouterLink}
                                 to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesRequiredByMap[uri]?.id}`}
+                              >
+                                {translate(title)}
+                              </Link>
+                            </SC.ListItemValue>
+                          ) : (
+                            translate(title)
+                          )
+                      )}
+                    />
+                  )}
+                  {publicServicesRelatedBy.length > 0 && (
+                    <KeyValueListItem
+                      property={
+                        translations.detailsPage.sectionTitles.publicService
+                          .relatedBy
+                      }
+                      value={publicServicesRelatedBy.map(
+                        ({ uri, title }, index) =>
+                          publicServicesRelatedByMap?.[uri] ? (
+                            <SC.ListItemValue key={`${uri}-${index}`}>
+                              <Link
+                                as={RouterLink}
+                                to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesRelatedByMap[uri]?.id}`}
                               >
                                 {translate(title)}
                               </Link>

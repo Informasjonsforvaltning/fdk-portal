@@ -9,7 +9,11 @@ import {
   GET_PUBLIC_SERVICES_REQUIRED_BY_FAILED,
   GET_PUBLIC_SERVICES_REQUIRED_BY_REQUESTED,
   GET_PUBLIC_SERVICES_REQUIRED_BY_SUCCEEDED,
-  RESET_PUBLIC_SERVICES_REQUIRED_BY
+  RESET_PUBLIC_SERVICES_REQUIRED_BY,
+  GET_PUBLIC_SERVICES_RELATED_BY_FAILED,
+  GET_PUBLIC_SERVICES_RELATED_BY_REQUESTED,
+  GET_PUBLIC_SERVICES_RELATED_BY_SUCCEEDED,
+  RESET_PUBLIC_SERVICES_RELATED_BY
 } from './action-types';
 
 import type { Actions } from '../../../types';
@@ -20,7 +24,8 @@ const initialState = fromJS({
   publicServicesAggregations: null,
   publicServicesPage: null,
   publicServicesEvents: [],
-  publicServicesRequiredBy: []
+  publicServicesRequiredBy: [],
+  publicServicesRelatedBy: []
 });
 
 export default function reducer(
@@ -90,6 +95,17 @@ export default function reducer(
       return state;
     case RESET_PUBLIC_SERVICES_REQUIRED_BY:
       return state.set('publicServicesRequiredBy', fromJS([]));
+    case GET_PUBLIC_SERVICES_RELATED_BY_REQUESTED:
+      return state.set('publicServicesRelatedBy', fromJS([]));
+    case GET_PUBLIC_SERVICES_RELATED_BY_SUCCEEDED:
+      return state.set(
+        'publicServicesRelatedBy',
+        fromJS(action.payload.publicServiceData)
+      );
+    case GET_PUBLIC_SERVICES_RELATED_BY_FAILED:
+      return state;
+    case RESET_PUBLIC_SERVICES_RELATED_BY:
+      return state.set('publicServicesRelatedBy', fromJS([]));
     default:
       return state;
   }

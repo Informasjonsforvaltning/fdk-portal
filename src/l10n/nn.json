@@ -663,7 +663,8 @@
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
-        "requiredBy": "Krevd av"
+        "requiredBy": "Krevd av",
+        "relatedBy": "Relatert av"
       }
     }
   },
