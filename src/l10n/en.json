@@ -663,7 +663,8 @@
         "cost": "Cost",
         "processingTime": "Processing time",
         "relation": "Related to",
-        "requiredBy": "Required by"
+        "requiredBy": "Required by",
+        "relatedBy": "Related by"
       }
     }
   },

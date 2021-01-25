@@ -13,6 +13,7 @@ export interface Props {
   publicServicesEvents: PublicServiceEvent[];
   publicServicesActions: typeof actions;
   publicServicesRequiredBy: PublicService[];
+  publicServicesRelatedBy: PublicService[];
 }
 
 const withPublicServices = (Component: ComponentType<any>) => {
@@ -30,6 +31,9 @@ const withPublicServices = (Component: ComponentType<any>) => {
     )?.toJS(),
     publicServicesRequiredBy: state.PublicServicesReducer.get(
       'publicServicesRequiredBy'
+    ).toJS(),
+    publicServicesRelatedBy: state.PublicServicesReducer.get(
+      'publicServicesRelatedBy'
     ).toJS()
   });
 
