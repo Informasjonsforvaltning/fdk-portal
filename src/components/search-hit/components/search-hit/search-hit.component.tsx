@@ -14,11 +14,11 @@ import SearchHitFormats from '../search-hit-formats/search-hit-formats';
 import SearchHitData from '../search-hit-data/search-hit-data.component';
 
 interface Props {
-  id: string;
+  id?: string;
   type: SearchTypes;
-  title: Partial<TextLanguage>;
+  title?: Partial<TextLanguage>;
   description?: Partial<TextLanguage> | null;
-  publisher: Partial<Publisher>;
+  publisher?: Partial<Publisher>;
   isAuthoritative?: boolean;
   beta?: boolean;
 }

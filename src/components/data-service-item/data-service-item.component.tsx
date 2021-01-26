@@ -9,7 +9,7 @@ import localization from '../../lib/localization';
 import ReactTooltipSC from '../tooltip/styled';
 
 interface Props {
-  dataService: DataService;
+  dataService: Partial<DataService>;
 }
 
 export const DataServiceItem: FC<Props> = ({

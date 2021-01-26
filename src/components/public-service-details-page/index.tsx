@@ -1,4 +1,4 @@
-import React, { memo, FC, useEffect, useState } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -102,6 +102,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const hasCost = publicService?.hasCost ?? [];
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
+  const contactPoints = publicService?.hasContactPoint || [];
 
   const publicServiceIdentifiers = [
     ...requiredServices.map(({ uri }) => uri).filter(Boolean),
@@ -190,10 +191,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         .join(', ')}
                     />
                   )}
-                  {languages.length > 0 && (
+                  {sectors.length > 0 && (
                     <KeyValueListItem
-                      property={translations.language}
-                      value={languages
+                      property={translations.industryCode}
+                      value={sectors
                         .map(({ prefLabel }) => translate(prefLabel))
                         .filter(Boolean)
                         .join(', ')}
@@ -208,6 +209,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       value={`${moment.duration(processingTime).asDays()} ${
                         translations.days
                       }`}
+                    />
+                  )}
+                  {hasCost.length > 0 && (
+                    <KeyValueListItem
+                      property={
+                        translations.detailsPage.sectionTitles.publicService
+                          .cost
+                      }
+                      value={hasCost
+                        .map(({ uri, description }) => (
+                          <SC.ListItemValue key={uri}>
+                            {translate(description)}
+                          </SC.ListItemValue>
+                        ))
+                        .filter(Boolean)}
                     />
                   )}
                   {hasLegalResource.length > 0 && (
@@ -225,38 +241,31 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         .filter(Boolean)}
                     />
                   )}
-                  {sectors.length > 0 && (
+                  {follows.length > 0 && (
                     <KeyValueListItem
-                      property={translations.industryCode}
-                      value={sectors
+                      property={
+                        translations.detailsPage.sectionTitles.publicService
+                          .follows
+                      }
+                      value={follows
+                        .map(({ uri, description }) => (
+                          <SC.ListItemValue key={uri}>
+                            {translate(description)}
+                          </SC.ListItemValue>
+                        ))
+                        .filter(Boolean)}
+                    />
+                  )}
+                  {languages.length > 0 && (
+                    <KeyValueListItem
+                      property={translations.language}
+                      value={languages
                         .map(({ prefLabel }) => translate(prefLabel))
                         .filter(Boolean)
                         .join(', ')}
                     />
                   )}
                 </KeyValueList>
-              </ContentSection>
-            )}
-            {keywords.length > 0 && (
-              <ContentSection
-                id="keywords"
-                title={
-                  translations.detailsPage.sectionTitles.publicService.keywords
-                }
-              >
-                <InlineList>
-                  {keywords.map((keyword, index) => (
-                    <Link
-                      as={RouterLink}
-                      to={`${PATHNAME_PUBLIC_SERVICES}?keywords=${encodeURIComponent(
-                        keyword
-                      )}`}
-                      key={`${keyword}-${index}`}
-                    >
-                      {keyword}
-                    </Link>
-                  ))}
-                </InlineList>
               </ContentSection>
             )}
 
@@ -301,15 +310,16 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </ContentSection>
             )}
 
-            {follows.length > 0 && (
+            {hasInput.length > 0 && (
               <ContentSection
-                id="follows"
+                id="hasInput"
                 title={
-                  translations.detailsPage.sectionTitles.publicService.follows
+                  translations.detailsPage.sectionTitles.publicService
+                    .attachment
                 }
               >
                 <KeyValueList>
-                  {follows.map(({ name, description }, index) => (
+                  {hasInput.map(({ name, description }, index) => (
                     <KeyValueListItem
                       key={`${translate(name)}-${index}`}
                       property={translate(name)}
@@ -343,41 +353,65 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </ContentSection>
             )}
 
-            {hasInput.length > 0 && (
+            {keywords.length > 0 && (
               <ContentSection
-                id="hasInput"
+                id="keywords"
                 title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .attachment
+                  translations.detailsPage.sectionTitles.publicService.keywords
                 }
               >
-                <KeyValueList>
-                  {hasInput.map(({ name, description }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(name)}-${index}`}
-                      property={translate(name)}
-                      value={translate(description)}
-                    />
+                <InlineList>
+                  {keywords.map((keyword, index) => (
+                    <Link
+                      as={RouterLink}
+                      to={`${PATHNAME_PUBLIC_SERVICES}?keywords=${encodeURIComponent(
+                        keyword
+                      )}`}
+                      key={`${keyword}-${index}`}
+                    >
+                      {keyword}
+                    </Link>
                   ))}
-                </KeyValueList>
+                </InlineList>
               </ContentSection>
             )}
 
-            {hasCost.length > 0 && (
+            {isClassifiedBy.length > 0 && (
               <ContentSection
-                id="hasCost"
+                id="concept-references"
                 title={
-                  translations.detailsPage.sectionTitles.publicService.cost
+                  translations.detailsPage.sectionTitles.publicService
+                    .conceptReferences
                 }
+                boxStyle
+                iconEntity={Entity.CONCEPT}
               >
                 <KeyValueList>
-                  {hasCost.map(({ description, uri }) => (
-                    <KeyValueListItem
-                      key={uri}
-                      property={translate(description)}
-                      value=""
-                    />
-                  ))}
+                  {isClassifiedBy?.map(
+                    ({ uri, prefLabel }) =>
+                      uri && (
+                        <KeyValueListItem
+                          key={uri}
+                          property={
+                            conceptsMap[uri] ? (
+                              <Link
+                                as={RouterLink}
+                                to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
+                              >
+                                {translate(conceptsMap[uri].prefLabel)}
+                              </Link>
+                            ) : (
+                              translate(prefLabel)
+                            )
+                          }
+                          value={
+                            conceptsMap[uri]
+                              ? translate(conceptsMap[uri].definition?.text)
+                              : ''
+                          }
+                        />
+                      )
+                  )}
                 </KeyValueList>
               </ContentSection>
             )}
@@ -389,6 +423,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   translations.detailsPage.sectionTitles.publicService
                     .relatedServices
                 }
+                boxStyle
+                iconEntity={Entity.PUBLIC_SERVICE}
               >
                 <KeyValueList>
                   {requiredServices.length > 0 && (
@@ -441,37 +477,77 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 </KeyValueList>
               </ContentSection>
             )}
-            {isClassifiedBy.length > 0 && (
+
+            {contactPoints.length > 0 && (
               <ContentSection
-                id="concept-references"
+                id="hasContactPoint"
                 title={
                   translations.detailsPage.sectionTitles.publicService
-                    .conceptReferences
+                    .contactPoint
                 }
               >
-                <KeyValueList>
-                  {isClassifiedBy?.map(
-                    ({ uri, prefLabel }) =>
-                      uri && (
+                {contactPoints.map(
+                  ({
+                    uri,
+                    contactType,
+                    description,
+                    email,
+                    name,
+                    telephone,
+                    url
+                  }) => (
+                    <KeyValueList key={uri}>
+                      {contactType && (
                         <KeyValueListItem
-                          key={uri}
-                          property={
-                            conceptsMap[uri] ? (
-                              <Link
-                                as={RouterLink}
-                                to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
-                              >
-                                {translate(conceptsMap[uri].prefLabel)}
-                              </Link>
-                            ) : (
-                              translate(prefLabel)
-                            )
-                          }
-                          value=""
+                          property=""
+                          value={translate(contactType)}
                         />
-                      )
-                  )}
-                </KeyValueList>
+                      )}
+                      {description && (
+                        <KeyValueListItem
+                          property={translations.description}
+                          value={translate(description)}
+                        />
+                      )}
+                      {name && (
+                        <KeyValueListItem
+                          property={translations.name}
+                          value={translate(name)}
+                        />
+                      )}
+                      {email && (
+                        <KeyValueListItem
+                          property={translations.email}
+                          value={
+                            <a
+                              title={email}
+                              href={`mailto:${email}`}
+                              rel="noopener noreferrer"
+                            >
+                              {email}
+                            </a>
+                          }
+                        />
+                      )}
+                      {telephone && (
+                        <KeyValueListItem
+                          property={translations.phone}
+                          value={telephone}
+                        />
+                      )}
+                      {url && (
+                        <KeyValueListItem
+                          property={translations.contactPoint}
+                          value={
+                            <Link href={url} external>
+                              {url}
+                            </Link>
+                          }
+                        />
+                      )}
+                    </KeyValueList>
+                  )
+                )}
               </ContentSection>
             )}
           </DetailsPage>

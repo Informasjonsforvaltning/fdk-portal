@@ -32,6 +32,8 @@ import withAssessment, {
 import Banner from '../banner';
 import ContentSection from '../content-section';
 
+import { isLosTheme, isEuTheme } from '../../../../utils/common';
+
 import OpenAccessIcon from '../../../../images/icon-access-open-md.svg';
 import PublicAccessIcon from '../../../../images/icon-access-public-md.svg';
 import RestrictedAccessIcon from '../../../../images/icon-access-restricted-md.svg';
@@ -39,15 +41,13 @@ import NonPublicAccessIcon from '../../../../images/icon-access-non-public-md.sv
 
 import SC from './styled';
 
-import { LosTheme, EuTheme, Publisher, Theme } from '../../../../types';
+import { Publisher, Theme } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
 import {
   determineRatingIcon,
   calculateRatingPercentage
 } from '../../../../pages/organizations/pages/dataset-page/index';
-
-interface EnrichedTheme extends Partial<LosTheme>, Partial<EuTheme> {}
 
 interface ExternalProps {
   entity: Entity;
@@ -127,17 +127,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       : null
   )?.filter(Boolean);
 
-  const themeIds = themes.map(({ id }) => id).filter(Boolean);
-  const enrichedThemes: EnrichedTheme[] = [
-    ...(losThemes?.filter(({ uri }) => themeIds.includes(uri)) ?? []),
-    ...(euThemes?.filter(({ id }) => themeIds.includes(id)) ?? [])
-  ];
-
-  const isEuTheme = ({ id, title, code }: EnrichedTheme) =>
-    !!id && !!title && !!code;
-  const isLosTheme = ({ uri, name, losPaths }: EnrichedTheme) =>
-    !!uri && !!name && !!losPaths;
-
   const publisherLabel = {
     [Entity.DATASET]: translations.detailsPage.owner,
     [Entity.DATA_SERVICE]: translations.detailsPage.provider,
@@ -208,15 +197,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
             {translations.detailsPage.nonPublicData}
           </Link>
         )}
-        {enrichedThemes.map(theme => {
-          if (isEuTheme(theme)) {
-            const { id, title, code } = theme;
-            return (
-              <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
-                {translate(title)}
-              </Link>
-            );
-          }
+        {themes.map(theme => {
           if (isLosTheme(theme)) {
             const { uri, name, losPaths: [losPath] = [] } = theme;
             return (
@@ -225,6 +206,16 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
               </Link>
             );
           }
+
+          if (isEuTheme(theme)) {
+            const { id, title, code } = theme;
+            return (
+              <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
+                {translate(title)}
+              </Link>
+            );
+          }
+
           return null;
         })}
       </SC.Themes>

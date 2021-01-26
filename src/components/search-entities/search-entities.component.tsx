@@ -1,41 +1,40 @@
 import React, { FC, memo } from 'react';
+import { compose } from 'redux';
 import { ThemeProvider } from 'styled-components';
 
 import { getConfig } from '../../config';
 import { themeFDK, themeNAP } from '../../app/theme';
-import { Entity } from '../../types/enums';
+
 import { ErrorBoundary } from '../error-boundary/error-boundary';
-import { Concept, MediaType } from '../../types';
 import { DatasetItem } from '../dataset-item/dataset-item.component';
 import { DataServiceItem } from '../data-service-item/data-service-item.component';
 import { ConceptItem } from '../concept-item/concept-item.component';
 import { InformationModelItem } from '../informationmodel-item/informationmodel-item.component';
 import { PublicServiceItem } from '../public-service-item/public-service-item';
 
-interface Props {
-  entities: any;
-  losItems: any;
+import type { Entity as EntityType, Concept, MediaType } from '../../types';
+import { Entity } from '../../types/enums';
+
+interface ExternalProps {
+  entities: Partial<EntityType>[];
   mediatypes?: MediaType[];
-  compareConceptList?: Concept[] | undefined;
+  compareConceptList?: Concept[];
   addConcept?: (concept: Partial<Concept>) => void;
   removeConcept?: (id?: string) => void;
 }
 
+interface Props extends ExternalProps {}
+
 const renderEntity = (
-  entity: any,
+  entity: Partial<EntityType>,
   {
-    losItems,
     mediatypes,
     compareConceptList,
     addConcept,
     removeConcept
   }: Pick<
     Props,
-    | 'losItems'
-    | 'mediatypes'
-    | 'compareConceptList'
-    | 'addConcept'
-    | 'removeConcept'
+    'mediatypes' | 'compareConceptList' | 'addConcept' | 'removeConcept'
   >
 ) => {
   switch (entity.type) {
@@ -48,11 +47,7 @@ const renderEntity = (
             ]
           }
         >
-          <DatasetItem
-            dataset={entity}
-            losItems={losItems}
-            mediatypes={mediatypes}
-          />
+          <DatasetItem dataset={entity} mediatypes={mediatypes} />
         </ThemeProvider>
       );
     case Entity.DATA_SERVICE:
@@ -93,7 +88,7 @@ const renderEntity = (
             ]
           }
         >
-          <InformationModelItem informationModel={entity} losItems={losItems} />
+          <InformationModelItem informationModel={entity} />
         </ThemeProvider>
       );
     case Entity.PUBLIC_SERVICE:
@@ -115,30 +110,24 @@ const renderEntity = (
 
 const SearchEntities: FC<Props> = ({
   entities,
-  losItems,
   mediatypes,
   compareConceptList,
   addConcept,
   removeConcept
-}) => {
-  if (losItems && entities && Array.isArray(entities)) {
-    return (
-      <div>
-        {entities.map((entity: any) => (
-          <ErrorBoundary key={entity.id}>
-            {renderEntity(entity, {
-              losItems,
-              mediatypes,
-              compareConceptList,
-              addConcept,
-              removeConcept
-            })}
-          </ErrorBoundary>
-        ))}
-      </div>
-    );
-  }
-  return null;
-};
+}) =>
+  Array.isArray(entities) ? (
+    <div>
+      {entities.map(entity => (
+        <ErrorBoundary key={entity.id}>
+          {renderEntity(entity, {
+            mediatypes,
+            compareConceptList,
+            addConcept,
+            removeConcept
+          })}
+        </ErrorBoundary>
+      ))}
+    </div>
+  ) : null;
 
-export default memo(SearchEntities);
+export default compose<FC<ExternalProps>>(memo)(SearchEntities);

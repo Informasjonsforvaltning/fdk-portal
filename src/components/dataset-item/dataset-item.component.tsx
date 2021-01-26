@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import localization from '../../lib/localization';
-import { getTranslateText } from '../../lib/translateText';
+import { getTranslateText as translate } from '../../lib/translateText';
 import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
@@ -13,6 +13,8 @@ import {
   SearchHitOpenData
 } from '../search-hit/search-hit';
 
+import { isLosTheme, isEuTheme } from '../../utils/common';
+
 import ReactTooltipSC from '../tooltip/styled';
 
 import PublicIconBase from '../../images/icon-access-open-md.svg';
@@ -21,8 +23,7 @@ import type { Dataset, MediaType } from '../../types';
 import { SearchTypes } from '../../types/enums';
 
 interface Props {
-  dataset: Dataset;
-  losItems: any;
+  dataset: Partial<Dataset>;
   mediatypes?: MediaType[];
 }
 
@@ -47,54 +48,18 @@ const renderAccessRights = (accessRight: any) => {
   return null;
 };
 
-const renderThemes = (themes: any, losItems: any) => {
-  const isEuTheme = ({ id, title, code }: any) => !!id && !!title && !!code;
-  const isLosTheme = ({ uri, prefLabel, losPaths }: any) =>
-    !!uri && !!prefLabel && !!losPaths;
-
-  return themes
-    ?.map((theme: any) =>
-      theme.id && !theme.code
-        ? Object.values(losItems).find(
-            (losItem: any) => losItem.uri === theme.id
-          ) ?? null
-        : theme
-    )
-    .filter(Boolean)
-    .map((theme: any) => {
-      if (isEuTheme(theme)) {
-        const { id, title, code } = theme;
-        return (
-          <RoundedTag key={id} to={patchSearchQuery('theme', code)}>
-            <span>{getTranslateText(title)}</span>
-          </RoundedTag>
-        );
-      }
-      if (isLosTheme(theme)) {
-        const { uri, prefLabel, losPaths: [losPath] = [] } = theme;
-        return (
-          <RoundedTag key={uri} to={patchSearchQuery('losTheme', losPath)}>
-            <span>{getTranslateText(prefLabel)}</span>
-          </RoundedTag>
-        );
-      }
-      return null;
-    })
-    .filter(Boolean);
-};
-
 export const DatasetItem: FC<Props> = ({
   dataset: {
     id,
     title,
     description,
     publisher,
-    theme,
+    losTheme: losThemes,
+    theme: euThemes,
     distribution = [],
     accessRights = {},
     provenance = {}
   },
-  losItems,
   mediatypes = []
 }) => {
   const formats = distribution
@@ -106,6 +71,8 @@ export const DatasetItem: FC<Props> = ({
       format =>
         mediatypes?.find(({ uri }) => uri.includes(format))?.name ?? format
     );
+
+  const themes = [...(losThemes ?? []), ...(euThemes ?? [])];
 
   return (
     <SearchHit
@@ -137,7 +104,29 @@ export const DatasetItem: FC<Props> = ({
         </SearchHitAccessRights>
       )}
 
-      <SearchHitThemes>{renderThemes(theme, losItems)}</SearchHitThemes>
+      <SearchHitThemes>
+        {themes.map(theme => {
+          if (isLosTheme(theme)) {
+            const { uri, name, losPaths: [losPath] = [] } = theme;
+            return (
+              <RoundedTag key={uri} to={patchSearchQuery('losTheme', losPath)}>
+                <span>{translate(name)}</span>
+              </RoundedTag>
+            );
+          }
+
+          if (isEuTheme(theme)) {
+            const { id, title, code } = theme;
+            return (
+              <RoundedTag key={id} to={patchSearchQuery('theme', code)}>
+                <span>{translate(title)}</span>
+              </RoundedTag>
+            );
+          }
+
+          return null;
+        })}
+      </SearchHitThemes>
 
       <SearchHitFormats>
         {[...new Set(formats)].map((format, index) => (

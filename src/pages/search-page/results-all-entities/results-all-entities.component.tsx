@@ -28,24 +28,16 @@ import SortButtons from '../sort-buttons';
 import SC from './styled';
 
 import type {
+  Entity as EntityType,
   Concept,
-  PublicServiceEvent,
-  DataService,
-  Dataset,
-  InformationModel,
-  PublicService
+  PublicServiceEvent
 } from '../../../types';
 import { Entity, FeedType } from '../../../types/enums';
 
 const { SEARCH_API_HOST } = env;
 
 interface ExternalProps {
-  entities:
-    | Partial<Dataset>[]
-    | Partial<DataService>[]
-    | Partial<Concept>[]
-    | Partial<InformationModel>[]
-    | Partial<PublicService>[];
+  entities: Partial<EntityType>[];
   entityType?: Entity;
   aggregations?: any;
   page?: any;
@@ -128,7 +120,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
             <section className="col-12 col-lg-8">
               <SearchEntities
                 entities={entities}
-                losItems={getLosByKeys(los)}
                 compareConceptList={compareConceptList}
                 addConcept={addConcept}
                 removeConcept={removeConcept}
