@@ -30,6 +30,7 @@ import CollectionIcon from '../../../../images/icon-infomod-collection-sm.svg';
 import CompositionIcon from '../../../../images/icon-infomod-composition-sm.svg';
 import MultipleChoiceIcon from '../../../../images/icon-infomod-choice-multiple-sm.svg';
 import RoleIcon from '../../../../images/icon-infomod-role-sm.svg';
+import SpecializationIcon from '../../../../images/icon-infomod-specialization-sm.svg';
 
 interface ExternalProps {
   property: Partial<InformationModelProperty>;
@@ -113,6 +114,8 @@ const Element: FC<Props> = ({
         return <MultipleChoiceIcon />;
       case ModelElementType.ROLE:
         return <RoleIcon />;
+      case ModelElementType.SPECIALIZATION:
+        return <SpecializationIcon />;
       case ModelElementType.ATTRIBUTE:
       default:
         return <AttributeIcon />;
