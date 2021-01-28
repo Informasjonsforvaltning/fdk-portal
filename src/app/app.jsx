@@ -95,6 +95,7 @@ export function App({ language, onChangeLanguage }) {
       <Breadcrumbs />
 
       <Switch>
+        <Redirect from="/:url*(/+)" to={location.pathname.slice(0, -1)} />
         <Route exact path={PATHNAME_MAIN_PAGE}>
           {getConfig().themeNap ? (
             <Redirect to={PATHNAME_DATASETS} />

@@ -29,6 +29,10 @@ exports[`should render App correctly 1`] = `
   />
   <Component />
   <Switch>
+    <Redirect
+      from="/:url*(/+)"
+      to=""
+    />
     <Route
       exact={true}
       path="/"
