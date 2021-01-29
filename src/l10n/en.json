@@ -470,7 +470,8 @@
     "apiDescription": "API-description",
     "endpointUrl": "Endpoint URL",
     "endpointDescription": "Endpoint description",
-    "goToSpecification": "Go to specification"
+    "goToSpecification": "Go to specification",
+    "landingPage": "More information about this data service"
   },
   "concept": {
     "remarkHeader": "Remark",
@@ -644,7 +645,7 @@
         "spatialRestrictions": "Spatial restrictions",
         "contactInformation": "Contact information",
         "datasetRelations": "Related to dataset",
-        "dataServiceRelations": "Related to data service (API)" 
+        "dataServiceRelations": "Related to data service (API)"
 
       },
       "publicService": {

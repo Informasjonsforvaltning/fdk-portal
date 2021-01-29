@@ -115,6 +115,7 @@ const DataserviceDetailsPage: FC<Props> = ({
       .filter(Boolean) ?? [];
   const endpointUrls = dataService?.endpointURL ?? [];
   const endpointDescriptions = dataService?.endpointDescription ?? [];
+  const landingPage = dataService?.landingPage?.[0];
   const conformsTo =
     dataService?.conformsTo
       ?.map(({ uri }) =>
@@ -163,7 +164,9 @@ const DataserviceDetailsPage: FC<Props> = ({
             {formats.join(', ')}
           </ContentSection>
         )}
-        {(endpointUrls.length > 0 || endpointDescriptions.length > 0) && (
+        {(endpointUrls.length > 0 ||
+          endpointDescriptions.length > 0 ||
+          landingPage) && (
           <ContentSection
             id="usage"
             title={translations.detailsPage.sectionTitles.dataService.usage}
@@ -187,6 +190,16 @@ const DataserviceDetailsPage: FC<Props> = ({
                   }
                 />
               ))}
+              {landingPage && (
+                <KeyValueListItem
+                  property=""
+                  value={
+                    <Link href={landingPage} external>
+                      {translations.api.landingPage}
+                    </Link>
+                  }
+                />
+              )}
             </KeyValueList>
           </ContentSection>
         )}

@@ -470,7 +470,8 @@
     "apiDescription": "API-beskrivelse",
     "endpointUrl": "EndepunktsURL",
     "endpointDescription": "Endepunktsbeskrivelse",
-    "goToSpecification": "Gå til spesifikasjon"
+    "goToSpecification": "Gå til spesifikasjon",
+    "landingPage": "Mer informasjon om datatjenesten"
   },
   "concept": {
     "remarkHeader": "Merknad",
