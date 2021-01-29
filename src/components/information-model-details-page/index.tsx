@@ -105,7 +105,7 @@ const InformationModelDetailsPage: FC<Props> = ({
       resetConcepts();
       resetDatasets();
     };
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (informationModel?.uri) {
