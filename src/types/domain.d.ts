@@ -479,6 +479,7 @@ export interface DataService {
   mediaType?: Partial<MediaType>[];
   endpointURL?: string[];
   endpointDescription?: string[];
+  landingPage: string[];
   conformsTo?: ConformsTo[];
   servesDataset?: string[];
   contactPoint?: Partial<ContactPoint>[];
