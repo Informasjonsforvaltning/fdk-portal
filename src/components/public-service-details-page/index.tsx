@@ -31,6 +31,7 @@ import { Entity } from '../../types/enums';
 
 import {
   PATHNAME_CONCEPTS,
+  PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 import SC from './styled';
@@ -364,16 +365,36 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 }
               >
                 <KeyValueList>
-                  {hasParticipation.map(({ description, role }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(description)}-${index}`}
-                      property={translate(description)}
-                      value={role
-                        .map(({ prefLabel }) => translate(prefLabel))
-                        .filter(Boolean)
-                        .join(', ')}
-                    />
-                  ))}
+                  {hasParticipation.map(
+                    ({ description, role, agents = [] }, index) => (
+                      <KeyValueListItem
+                        key={`${translate(description)}-${index}`}
+                        property={
+                          <>
+                            {agents.map(
+                              ({ uri, identifier, name, title }, index) => (
+                                <SC.ListItemValue key={`${uri}-${index}`}>
+                                  <Link
+                                    as={RouterLink}
+                                    to={`${PATHNAME_ORGANIZATIONS}/${identifier}`}
+                                  >
+                                    {translate(title) ?? name}
+                                  </Link>
+                                </SC.ListItemValue>
+                              )
+                            )}
+                            <SC.LightWeightLabel>
+                              {translate(description)}
+                            </SC.LightWeightLabel>
+                          </>
+                        }
+                        value={role
+                          .map(({ prefLabel }) => translate(prefLabel))
+                          .filter(Boolean)
+                          .join(', ')}
+                      />
+                    )
+                  )}
                 </KeyValueList>
               </ContentSection>
             )}

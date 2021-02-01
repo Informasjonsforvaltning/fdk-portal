@@ -280,11 +280,20 @@ export interface PublicServiceInput {
   description: Partial<TextLanguage>;
 }
 
+export interface PublicServiceAgent {
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage>;
+  name: string;
+  playsRole: string[];
+}
+
 export interface PublicServiceParticipation {
   uri: string;
   identifier: string;
   description: Partial<TextLanguage>;
   role: PublicServiceType[];
+  agents: PublicServiceAgent[];
 }
 
 export interface PublicServiceChannel {
