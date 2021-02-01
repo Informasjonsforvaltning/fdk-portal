@@ -138,7 +138,9 @@ const Element: FC<Props> = ({
     >
       <ExpansionPanelHead>
         {renderElementIcon(type)}
-        <SC.ElementTitle>{title}</SC.ElementTitle>
+        <SC.ElementTitle>
+          {type === ModelElementType.CODE_ELEMENT ? notation : title}
+        </SC.ElementTitle>
         <span>
           {modelElementType && (
             <ScollLink
@@ -169,7 +171,7 @@ const Element: FC<Props> = ({
               </ScollLink>
             ))}
           </SC.ElementTypesContainer>
-          {notation}
+          {type === ModelElementType.CODE_ELEMENT ? title : notation}
         </span>
         <SC.MultiplicityRange>{renderMultiplicityRange()}</SC.MultiplicityRange>
       </ExpansionPanelHead>
