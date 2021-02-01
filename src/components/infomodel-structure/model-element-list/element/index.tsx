@@ -29,7 +29,9 @@ import CodeIcon from '../../../../images/icon-infomod-code-sm.svg';
 import CollectionIcon from '../../../../images/icon-infomod-collection-sm.svg';
 import CompositionIcon from '../../../../images/icon-infomod-composition-sm.svg';
 import MultipleChoiceIcon from '../../../../images/icon-infomod-choice-multiple-sm.svg';
-import RoleIcon from '../../../../images/icon-infomod-role-sm.svg';
+import RoleIconRight from '../../../../images/icon-infomod-role-right-sm.svg';
+import RoleIconLeft from '../../../../images/icon-infomod-role-left-sm.svg';
+import SpecializationIcon from '../../../../images/icon-infomod-specialization-sm.svg';
 
 interface ExternalProps {
   property: Partial<InformationModelProperty>;
@@ -101,6 +103,10 @@ const Element: FC<Props> = ({
     switch (type) {
       case ModelElementType.ASSOCIATION:
         return <AssociationIcon />;
+      case ModelElementType.BIDIR_IN:
+        return <RoleIconLeft />;
+      case ModelElementType.BIDIR_OUT:
+        return <RoleIconRight />;
       case ModelElementType.CHOICE:
         return <ChoiceIcon />;
       case ModelElementType.CODE_ELEMENT:
@@ -112,7 +118,9 @@ const Element: FC<Props> = ({
       case ModelElementType.MULTIPLE_CHOICE:
         return <MultipleChoiceIcon />;
       case ModelElementType.ROLE:
-        return <RoleIcon />;
+        return <RoleIconRight />;
+      case ModelElementType.SPECIALIZATION:
+        return <SpecializationIcon />;
       case ModelElementType.ATTRIBUTE:
       default:
         return <AttributeIcon />;
@@ -126,6 +134,7 @@ const Element: FC<Props> = ({
         expand: <ExpansionIndicatorDetails />,
         collapse: <ExpansionIndicatorDetails isExpanded />
       }}
+      type={type}
     >
       <ExpansionPanelHead>
         {renderElementIcon(type)}

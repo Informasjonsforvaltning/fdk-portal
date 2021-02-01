@@ -107,7 +107,9 @@ export enum ModelElementType {
   CHOICE = 'choice',
   MULTIPLE_CHOICE = 'multiple_choice',
   COLLECTION = 'collection',
-  COMPOSITION = 'composition'
+  COMPOSITION = 'composition',
+  BIDIR_IN = 'bidir_in',
+  BIDIR_OUT = 'bidir_out'
 }
 
 export enum FeedType {

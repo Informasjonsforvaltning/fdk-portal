@@ -12,6 +12,8 @@ export interface Props {
   publicServicesPage: ESPage;
   publicServicesEvents: PublicServiceEvent[];
   publicServicesActions: typeof actions;
+  publicServicesRequiredBy: PublicService[];
+  publicServicesRelatedBy: PublicService[];
 }
 
 const withPublicServices = (Component: ComponentType<any>) => {
@@ -26,7 +28,13 @@ const withPublicServices = (Component: ComponentType<any>) => {
       state.PublicServicesReducer.get('publicServicesPage')?.toJS() ?? null,
     publicServicesEvents: state.PublicServicesReducer.get(
       'publicServicesEvents'
-    )?.toJS()
+    )?.toJS(),
+    publicServicesRequiredBy: state.PublicServicesReducer.get(
+      'publicServicesRequiredBy'
+    ).toJS(),
+    publicServicesRelatedBy: state.PublicServicesReducer.get(
+      'publicServicesRelatedBy'
+    ).toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

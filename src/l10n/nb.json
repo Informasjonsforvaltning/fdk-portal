@@ -470,7 +470,8 @@
     "apiDescription": "API-beskrivelse",
     "endpointUrl": "EndepunktsURL",
     "endpointDescription": "Endepunktsbeskrivelse",
-    "goToSpecification": "Gå til spesifikasjon"
+    "goToSpecification": "Gå til spesifikasjon",
+    "landingPage": "Mer informasjon om datatjenesten"
   },
   "concept": {
     "remarkHeader": "Merknad",
@@ -544,7 +545,8 @@
       "choice": "Valgfri egenskap",
       "multipleChoice": "Valg (flervalg)",
       "collection": "Samling",
-      "composition": "Komposisjon"
+      "composition": "Komposisjon",
+      "relation": "Relasjonsegenskap"
     },
     "restriction": {
       "valueLength": "Lengde",
@@ -661,7 +663,9 @@
         "channel": "Tjenestekanal",
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
-        "relation": "Relatert til"
+        "relation": "Relatert til",
+        "requiredBy": "Krevd av",
+        "relatedBy": "Relatert av"
       }
     }
   },

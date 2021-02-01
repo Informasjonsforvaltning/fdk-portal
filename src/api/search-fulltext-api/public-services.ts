@@ -14,7 +14,9 @@ const mapFilters = ({
   orgPath,
   isGroupedBy,
   keywords,
-  publicServiceIdentifiers
+  publicServiceIdentifiers,
+  requiredByServiceUri,
+  relatedByServiceUri
 }: any) => {
   const filters = [];
   if (id) {
@@ -68,6 +70,12 @@ const mapFilters = ({
         values: publicServiceIdentifiers
       }
     });
+  }
+  if (requiredByServiceUri) {
+    filters.push({ required_by_service: requiredByServiceUri });
+  }
+  if (relatedByServiceUri) {
+    filters.push({ related_by_service: relatedByServiceUri });
   }
   return filters.length > 0 ? filters : undefined;
 };

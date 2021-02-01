@@ -470,7 +470,8 @@
     "apiDescription": "API-description",
     "endpointUrl": "Endpoint URL",
     "endpointDescription": "Endpoint description",
-    "goToSpecification": "Go to specification"
+    "goToSpecification": "Go to specification",
+    "landingPage": "More information about this data service"
   },
   "concept": {
     "remarkHeader": "Remark",
@@ -544,7 +545,8 @@
       "choice": "Optional property",
       "multipleChoice": "Choice (multiple choice)",
       "collection": "Collection",
-      "composition": "Compostition"
+      "composition": "Compostition",
+      "relation": "Relational property"
     },
     "restriction": {
       "valueLength": "Length",
@@ -623,7 +625,7 @@
         "remark": "Remark",
         "terms": "Alternative and hidden terms",
         "example": "Example",
-        "subjectAndApplication": "Fag- og bruksområde",
+        "subjectAndApplication": "Domain and application",
         "range": "Range",
         "identifier": "Identifier",
         "datasetReferences": "References to datasets",
@@ -643,7 +645,7 @@
         "spatialRestrictions": "Spatial restrictions",
         "contactInformation": "Contact information",
         "datasetRelations": "Related to dataset",
-        "dataServiceRelations": "Related to data service (API)" 
+        "dataServiceRelations": "Related to data service (API)"
 
       },
       "publicService": {
@@ -662,7 +664,9 @@
         "channel": "Channel",
         "cost": "Cost",
         "processingTime": "Processing time",
-        "relation": "Related to"
+        "relation": "Related to",
+        "requiredBy": "Required by",
+        "relatedBy": "Related by"
       }
     }
   },

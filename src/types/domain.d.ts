@@ -113,6 +113,8 @@ export interface InformationModelProperty {
   contains: string | null;
   hasSupplier: string | null;
   hasGeneralConcept: string | null;
+  formsSymmetryWith: string | null;
+  relationPropertyLabel: Partial<TextLanguage> | null;
 }
 
 interface InformationModelLicense {
@@ -477,6 +479,7 @@ export interface DataService {
   mediaType?: Partial<MediaType>[];
   endpointURL?: string[];
   endpointDescription?: string[];
+  landingPage: string[];
   conformsTo?: ConformsTo[];
   servesDataset?: string[];
   contactPoint?: Partial<ContactPoint>[];
