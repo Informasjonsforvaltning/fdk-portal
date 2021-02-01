@@ -18,7 +18,8 @@ import SC from './styled';
 import type {
   InformationModelElement,
   InformationModelProperty,
-  Concept
+  Concept,
+  ModelCodeElement
 } from '../../types';
 import { ModelElementType } from '../../types/enums';
 
@@ -54,6 +55,16 @@ const InfoModelStructure: FC<Props> = ({
     .filter(({ elementTypes }) =>
       elementTypes?.some(type => type.split('#').includes('CodeList'))
     );
+
+  const codeSort = (codes: Partial<ModelCodeElement>[]) =>
+    codes
+      .sort(
+        (
+          { notation: a }: Partial<ModelCodeElement>,
+          { notation: b }: Partial<ModelCodeElement>
+        ) => a?.localeCompare(b ?? '') ?? 1
+      )
+      .filter(code => code);
 
   const dataTypes = Object.values(modelElements)
     .filter(Boolean)
@@ -437,7 +448,7 @@ const InfoModelStructure: FC<Props> = ({
                   {codes && codes.length > 0 && (
                     <ModelElementList
                       title={translations.infoMod.structure.code}
-                      properties={codes}
+                      properties={codeSort(codes)}
                       modelElements={modelElements}
                       concepts={conceptMap}
                       type={ModelElementType.CODE_ELEMENT}
