@@ -329,6 +329,7 @@ export interface PublicService {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
+  isDescribedAt?: Partial<Concept>[];
   isGroupedBy?: PublicServiceEvent[];
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
