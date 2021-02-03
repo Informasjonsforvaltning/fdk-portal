@@ -666,7 +666,8 @@
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
         "requiredBy": "Krevd av",
-        "relatedBy": "Relatert av"
+        "relatedBy": "Relatert av",
+        "isDescribedAt": "Tilknyttede datasettbeskrivelser"
       }
     }
   },

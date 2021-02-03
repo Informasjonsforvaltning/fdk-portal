@@ -666,7 +666,8 @@
         "processingTime": "Processing time",
         "relation": "Related to",
         "requiredBy": "Required by",
-        "relatedBy": "Related by"
+        "relatedBy": "Related by",
+        "isDescribedAt": "Associated datasets"
       }
     }
   },
