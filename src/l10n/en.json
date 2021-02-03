@@ -41,7 +41,8 @@
   "conceptLabel": "Concept",
   "informationModelLabel": "Information model",
   "dataServiceLabel": "Data service",
-  "serviceLabel": "Public service",
+  "serviceLabel": "Public service and event",
+  "service": "Public service",
   "activeFilter": "Enabled filters",
   "goTo": "Go to",
   "linkToFdk": "Link to the National Data Catalog",
@@ -155,7 +156,7 @@
     "apiTab": "APIs",
     "termTab": "Concepts",
     "informationModelTab": "Information models",
-    "serviceTab": "Services"
+    "serviceTab": "Services and events"
   },
   "hitstats": {
     "nosearch": "Search among {0} datasets, {1} APIs, {2} concepts and {3} information models",

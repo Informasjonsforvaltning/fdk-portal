@@ -67,7 +67,7 @@ export const SearchHitHead: FC<Props> = ({
         {type === SearchTypes.concept && localization.conceptLabel}
         {type === SearchTypes.informationModel &&
           localization.informationModelLabel}
-        {type === SearchTypes.publicService && localization.serviceLabel}
+        {type === SearchTypes.publicService && localization.service}
       </SC.Type>
     </SC.HeadInformation>
   </SC.Head>

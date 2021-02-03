@@ -41,7 +41,8 @@
   "conceptLabel": "Omgrep",
   "informationModelLabel": "Informasjonsmodell",
   "dataServiceLabel": "Datateneste",
-  "serviceLabel": "Teneste",
+  "serviceLabel": "Teneste og hending",
+  "service": "Teneste",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
@@ -155,7 +156,7 @@
     "apiTab": "API",
     "termTab": "Omgrep",
     "informationModelTab": "Informasjonsmodellar",
-    "serviceTab": "Tenester"
+    "serviceTab": "Tenester og hendingar"
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API, {2} omgrep og {3} informasjonsmodellar",

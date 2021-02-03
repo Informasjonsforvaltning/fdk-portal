@@ -41,7 +41,8 @@
   "conceptLabel": "Begrep",
   "informationModelLabel": "Informasjonsmodell",
   "dataServiceLabel": "Datatjeneste",
-  "serviceLabel": "Tjeneste",
+  "serviceLabel": "Tjeneste og hendelse",
+  "service": "Tjeneste",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
@@ -155,7 +156,7 @@
     "apiTab": "API-er",
     "termTab": "Begreper",
     "informationModelTab": "Informasjonsmodeller",
-    "serviceTab": "Tjenester"
+    "serviceTab": "Tjenester og hendelser"
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API-er, {2} begreper og {3} informasjonsmodeller",
