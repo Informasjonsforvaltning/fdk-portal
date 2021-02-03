@@ -11,6 +11,7 @@ import { DataServiceItem } from '../data-service-item/data-service-item.componen
 import { ConceptItem } from '../concept-item/concept-item.component';
 import { InformationModelItem } from '../informationmodel-item/informationmodel-item.component';
 import { PublicServiceItem } from '../public-service-item/public-service-item';
+import EventItem from '../event-item';
 
 import type { Entity as EntityType, Concept, MediaType } from '../../types';
 import { Entity } from '../../types/enums';
@@ -101,6 +102,18 @@ const renderEntity = (
           }
         >
           <PublicServiceItem publicService={entity} />
+        </ThemeProvider>
+      );
+    case Entity.EVENT:
+      return (
+        <ThemeProvider
+          theme={
+            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+              Entity.EVENT
+            ]
+          }
+        >
+          <EventItem event={entity} />
         </ThemeProvider>
       );
     default:

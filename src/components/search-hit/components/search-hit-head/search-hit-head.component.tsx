@@ -27,7 +27,8 @@ const detailLinks = {
   [SearchTypes.dataservice]: PATHNAME_DATA_SERVICES,
   [SearchTypes.concept]: PATHNAME_CONCEPTS,
   [SearchTypes.informationModel]: PATHNAME_INFORMATIONMODELS,
-  [SearchTypes.publicService]: PATHNAME_PUBLIC_SERVICES
+  [SearchTypes.publicService]: PATHNAME_PUBLIC_SERVICES,
+  [SearchTypes.event]: PATHNAME_PUBLIC_SERVICES
 };
 
 export const SearchHitHead: FC<Props> = ({
@@ -43,6 +44,7 @@ export const SearchHitHead: FC<Props> = ({
       {type === SearchTypes.concept && <SC.ConceptIcon />}
       {type === SearchTypes.informationModel && <SC.InfomodIcon />}
       {type === SearchTypes.publicService && <SC.ServiceIcon />}
+      {type === SearchTypes.event && <SC.ServiceIcon />}
     </SC.HeadTypeIndicator>
     <SC.HeadInformation>
       <SC.Header>
@@ -68,6 +70,7 @@ export const SearchHitHead: FC<Props> = ({
         {type === SearchTypes.informationModel &&
           localization.informationModelLabel}
         {type === SearchTypes.publicService && localization.service}
+        {type === SearchTypes.event && localization.event}
       </SC.Type>
     </SC.HeadInformation>
   </SC.Head>

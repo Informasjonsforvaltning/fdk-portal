@@ -47,6 +47,10 @@ const Banner: FC<Props> = ({
     [Entity.PUBLIC_SERVICE]: {
       icon: PublicServiceIcon,
       translation: translations.detailsPage.banner.entity.publicservice
+    },
+    [Entity.EVENT]: {
+      icon: PublicServiceIcon,
+      translation: translations.detailsPage.banner.entity.event
     }
   };
 

@@ -350,6 +350,15 @@ export interface PublicService {
   relation?: PublicService[];
   hasContactPoint?: PublicServiceContactPoint[];
 }
+export interface Event {
+  id: string;
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  type: EntityEnum.EVENT;
+  hasCompetentAuthority?: Partial<Publisher>[];
+}
 
 export interface ESPage {
   currentPage: number;
@@ -697,7 +706,8 @@ export type Entity =
   | DataService
   | Concept
   | InformationModel
-  | PublicService;
+  | PublicService
+  | Event;
 
 export interface DropdownMenuItem {
   label: string;

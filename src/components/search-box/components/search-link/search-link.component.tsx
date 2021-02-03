@@ -12,7 +12,12 @@ import localization from '../../../../lib/localization';
 import { Entity } from '../../../../types/enums';
 
 interface Props {
-  entity: Entity;
+  entity:
+    | Entity.DATASET
+    | Entity.DATA_SERVICE
+    | Entity.CONCEPT
+    | Entity.INFORMATION_MODEL
+    | Entity.PUBLIC_SERVICE;
   beta?: boolean;
 }
 

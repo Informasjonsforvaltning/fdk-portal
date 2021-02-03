@@ -43,6 +43,7 @@
   "dataServiceLabel": "Data service",
   "serviceLabel": "Public service and event",
   "service": "Public service",
+  "event": "Event",
   "activeFilter": "Enabled filters",
   "goTo": "Go to",
   "linkToFdk": "Link to the National Data Catalog",
@@ -577,7 +578,8 @@
         "dataservice": "Data service description",
         "concept": "Concept description",
         "infomod": "Information model description",
-        "publicservice": "Public service description"
+        "publicservice": "Public service description",
+        "event": "Event description"
       }
     },
     "owner": "Owner: {publisher}",
