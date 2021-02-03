@@ -43,6 +43,7 @@
   "dataServiceLabel": "Datatjeneste",
   "serviceLabel": "Tjeneste og hendelse",
   "service": "Tjeneste",
+  "event": "Hendelse",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
@@ -577,7 +578,8 @@
         "dataservice": "Datatjenestebeskrivelse",
         "concept": "Begrepsbeskrivelse",
         "infomod": "Informasjonsmodellbeskrivelse",
-        "publicservice": "Tjenestebeskrivelse"
+        "publicservice": "Tjenestebeskrivelse",
+        "event": "Hendelsesbeskrivelse"
       }
     },
     "owner": "Eier: {publisher}",

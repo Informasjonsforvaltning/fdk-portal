@@ -71,7 +71,8 @@ const rootPaths = {
   [Entity.DATA_SERVICE]: PATHNAME_DATA_SERVICES,
   [Entity.CONCEPT]: PATHNAME_CONCEPTS,
   [Entity.INFORMATION_MODEL]: PATHNAME_INFORMATIONMODELS,
-  [Entity.PUBLIC_SERVICE]: PATHNAME_PUBLIC_SERVICES
+  [Entity.PUBLIC_SERVICE]: PATHNAME_PUBLIC_SERVICES,
+  [Entity.EVENT]: PATHNAME_PUBLIC_SERVICES
 };
 
 const DetailsPage: FC<PropsWithChildren<Props>> = ({
@@ -132,7 +133,8 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     [Entity.DATA_SERVICE]: translations.detailsPage.provider,
     [Entity.CONCEPT]: translations.detailsPage.responsible,
     [Entity.INFORMATION_MODEL]: translations.detailsPage.responsible,
-    [Entity.PUBLIC_SERVICE]: translations.detailsPage.provider
+    [Entity.PUBLIC_SERVICE]: translations.detailsPage.provider,
+    [Entity.EVENT]: translations.detailsPage.provider
   };
 
   const publisherName = translate(publisher?.prefLabel || publisher?.name);

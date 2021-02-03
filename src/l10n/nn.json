@@ -43,6 +43,7 @@
   "dataServiceLabel": "Datateneste",
   "serviceLabel": "Teneste og hending",
   "service": "Teneste",
+  "event": "Hending",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
@@ -578,7 +579,8 @@
         "dataservice": "Datatenestebeskrivelse",
         "concept": "Omgrepsbeskrivelse",
         "infomod": "Informasjonsmodellbeskrivelse",
-        "publicservice": "Tenestebeskrivelse"
+        "publicservice": "Tenestebeskrivelse",
+        "event": "Hendingsbeskrivelse"
       }
     },
     "owner": "Eigar: {publisher}",
