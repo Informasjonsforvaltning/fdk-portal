@@ -17,6 +17,8 @@ import type { PublicService } from '../../../types';
 
 interface GetPublicServicesParams {
   q?: string;
+  page?: string;
+  sortfield?: string;
   size?: number;
   orgPath?: string;
   isGroupedBy?: string;
