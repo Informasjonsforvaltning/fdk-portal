@@ -19,6 +19,8 @@ import {
 function* getPublicServicesRequested({
   payload: {
     params: {
+      page,
+      sortfield,
       size,
       q,
       orgPath,
@@ -32,6 +34,8 @@ function* getPublicServicesRequested({
     const data = yield call(
       searchPublicServices,
       paramsToSearchBody({
+        page,
+        sortfield,
         size,
         q,
         orgPath,
