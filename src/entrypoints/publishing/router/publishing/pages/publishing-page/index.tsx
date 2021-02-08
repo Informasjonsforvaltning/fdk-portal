@@ -107,6 +107,11 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => (
               <Translation id="publishingPage.informationSections.usefulInfo.norwegianPublicLicenseLink" />
             </Link>
           </li>
+          <li>
+            <Link href="/validator">
+              <Translation id="publishingPage.informationSections.usefulInfo.validatorLink" />
+            </Link>
+          </li>
         </ul>
       </SC.InformationBox>
     </SC.InformationSection>
