@@ -784,7 +784,8 @@
         "description": "It is a good idea to have a look at the links below before publishing data in Felles Datakatalog.",
         "datasetsStandardLink": "Standard for describing datasets",
         "registrationGuidanceLink": "Guidance for registering data",
-        "norwegianPublicLicenseLink": "Norwegian license for public data"
+        "norwegianPublicLicenseLink": "Norwegian license for public data",
+        "validatorLink": "Validation of RDF files"
       }
     }
   },
