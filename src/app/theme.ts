@@ -93,8 +93,8 @@ export const themeFDK = {
       lighter: '#f7f0f3'
     },
     [Entity.EVENT]: {
-      dark: '#f2d5e1',
-      light: '#803353',
+      dark: '#803353',
+      light: '#f2d5e1',
       lighter: '#f7f0f3'
     }
   }

@@ -24,6 +24,8 @@ const icon = (iconEntity?: Entity) => {
       return <SC.InfomodIcon />;
     case Entity.PUBLIC_SERVICE:
       return <SC.ServiceIcon />;
+    case Entity.EVENT:
+      return <SC.ServiceIcon />;
     default:
       return null;
   }

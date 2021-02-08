@@ -57,10 +57,11 @@ const Banner: FC<Props> = ({
   const { icon: Icon, translation } = entityDetails[entity];
 
   return (
-    <SC.Banner>
-      {entity === Entity.PUBLIC_SERVICE && (
-        <SC.BetaRibbon>{translations.dataset.sample}</SC.BetaRibbon>
-      )}
+    <SC.Banner inverted={entity === Entity.EVENT}>
+      {entity === Entity.PUBLIC_SERVICE ||
+        (entity === Entity.EVENT && (
+          <SC.BetaRibbon inverted>{translations.dataset.sample}</SC.BetaRibbon>
+        ))}
       <Icon />
       <SC.Content>
         <SC.Title>

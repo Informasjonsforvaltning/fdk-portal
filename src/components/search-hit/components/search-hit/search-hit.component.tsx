@@ -91,7 +91,11 @@ export const SearchHit: FC<Props> = ({
 
   return (
     <SC.SearchHit>
-      {beta && <SC.BetaRibbon>{localization.dataset.sample}</SC.BetaRibbon>}
+      {beta && (
+        <SC.BetaRibbon inverted={type === SearchTypes.event}>
+          {localization.dataset.sample}
+        </SC.BetaRibbon>
+      )}
       <SearchHitHead
         id={id}
         type={type}

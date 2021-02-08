@@ -19,7 +19,8 @@ import {
   PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_PUBLIC_SERVICES
+  PATHNAME_PUBLIC_SERVICES,
+  PATHNAME_EVENTS
 } from '../../../../constants/constants';
 
 import withReferenceData, {
@@ -72,7 +73,7 @@ const rootPaths = {
   [Entity.CONCEPT]: PATHNAME_CONCEPTS,
   [Entity.INFORMATION_MODEL]: PATHNAME_INFORMATIONMODELS,
   [Entity.PUBLIC_SERVICE]: PATHNAME_PUBLIC_SERVICES,
-  [Entity.EVENT]: PATHNAME_PUBLIC_SERVICES
+  [Entity.EVENT]: PATHNAME_EVENTS
 };
 
 const DetailsPage: FC<PropsWithChildren<Props>> = ({

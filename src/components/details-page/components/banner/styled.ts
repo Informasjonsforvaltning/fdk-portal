@@ -1,20 +1,24 @@
 import styled from 'styled-components';
 import { Colour, theme } from '@fellesdatakatalog/theme';
+import type { InvertedColorProps } from '../../../../types';
 
 const onMobileView = '@media (max-width: 768px)';
 
-const Banner = styled.header`
+const Banner = styled.header<InvertedColorProps>`
   display: flex;
   width: 100%;
   padding: 18px;
   border-radius: 5px;
-  color: ${({ theme }) => theme.entityColours.dark};
-  background: ${({ theme }) => theme.entityColours.light};
+  color: ${({ theme, inverted }) =>
+    inverted ? theme.entityColours.light : theme.entityColours.dark};
+  background: ${({ theme, inverted }) =>
+    inverted ? theme.entityColours.dark : theme.entityColours.light};
   position: relative;
   overflow: hidden;
 
   & svg > path {
-    fill: ${({ theme }) => theme.entityColours.dark};
+    fill: ${({ theme, inverted }) =>
+      inverted ? theme.entityColours.light : theme.entityColours.dark};
   }
 
   & > svg {
@@ -74,7 +78,7 @@ const LastPublishedInfo = styled.p`
   }
 `;
 
-const BetaRibbon = styled.span`
+const BetaRibbon = styled.span<InvertedColorProps>`
   position: absolute;
   top: 25px;
   right: -40px;
@@ -82,8 +86,14 @@ const BetaRibbon = styled.span`
   padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
   font-size: 1rem;
   font-weight: ${theme.fontWeight('FW700')};
-  color: ${theme.colour(Colour.RED, 'R30')};
-  background: ${theme.colour(Colour.RED, 'R60')};
+  color: ${({ inverted }) =>
+    inverted
+      ? theme.colour(Colour.RED, 'R60')
+      : theme.colour(Colour.RED, 'R30')};
+  background: ${({ inverted }) =>
+    inverted
+      ? theme.colour(Colour.RED, 'R30')
+      : theme.colour(Colour.RED, 'R60')};
 `;
 
 export default { Banner, Content, Title, LastPublishedInfo, BetaRibbon };
