@@ -25,6 +25,7 @@ import InformationModelsReducer from '../components/with-information-models/redu
 import OrganizationsCatalogReducer from '../components/with-organizations-catalog/redux/reducer';
 import PublicServicesReducer from '../components/with-public-services/redux/reducer';
 import PublicServiceReducer from '../components/with-public-service/redux/reducer';
+import EventReducer from '../components/with-event/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -52,5 +53,6 @@ export const rootReducer = combineReducers({
   InformationModelsReducer,
   OrganizationsCatalogReducer,
   PublicServicesReducer,
-  PublicServiceReducer
+  PublicServiceReducer,
+  EventReducer
 });

@@ -14,7 +14,8 @@ import {
   PATHNAME_NEWS_ARCHIVE,
   PATHNAME_NEWS_ARTICLE,
   PATHNAME_ORGANIZATIONS,
-  PATHNAME_PUBLIC_SERVICES
+  PATHNAME_PUBLIC_SERVICES,
+  PATHNAME_EVENTS
 } from '../../constants/constants';
 import { DatasetBreadcrumb } from './dataset-breadcrumb/dataset-breadcrumb';
 import { DataServiceBreadcrumb } from './data-service-breadcrumb/data-service-breadcrumb';
@@ -26,6 +27,7 @@ import { getConfig } from '../../config';
 import { NewsBreadcrumb } from './news-breadcrumb/news-breadcrumb';
 import OrganizationBreadcrumb from './organization-breadcrumb';
 import PublicServiceBreadcrumb from './public-service-breadcrumb';
+import EventBreadcrumb from './event-breadcrumb';
 
 // define some custom breadcrumbs for certain routes (optional)
 const routes = [
@@ -95,6 +97,10 @@ const routes = [
   {
     path: `${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`,
     breadcrumb: () => <PublicServiceBreadcrumb />
+  },
+  {
+    path: `${PATHNAME_EVENTS}/:eventId`,
+    breadcrumb: () => <EventBreadcrumb />
   }
 ];
 

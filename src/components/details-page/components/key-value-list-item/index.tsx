@@ -13,7 +13,7 @@ const KeyValueListItem: FC<PropsWithChildren<Props>> = ({
   ...props
 }) => (
   <SC.ListItem {...props}>
-    <SC.Property>{property}</SC.Property>
+    {property && <SC.Property>{property}</SC.Property>}
     <SC.Value>{value}</SC.Value>
   </SC.ListItem>
 );
