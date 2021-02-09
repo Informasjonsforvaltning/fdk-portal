@@ -41,7 +41,9 @@
   "conceptLabel": "Concept",
   "informationModelLabel": "Information model",
   "dataServiceLabel": "Data service",
-  "serviceLabel": "Public service",
+  "serviceLabel": "Public service and event",
+  "service": "Public service",
+  "event": "Event",
   "activeFilter": "Enabled filters",
   "goTo": "Go to",
   "linkToFdk": "Link to the National Data Catalog",
@@ -155,7 +157,7 @@
     "apiTab": "APIs",
     "termTab": "Concepts",
     "informationModelTab": "Information models",
-    "serviceTab": "Services"
+    "serviceTab": "Services and events"
   },
   "hitstats": {
     "nosearch": "Search among {0} datasets, {1} APIs, {2} concepts and {3} information models",
@@ -576,7 +578,8 @@
         "dataservice": "Data service description",
         "concept": "Concept description",
         "infomod": "Information model description",
-        "publicservice": "Public service description"
+        "publicservice": "Public service description",
+        "event": "Event description"
       }
     },
     "owner": "Owner: {publisher}",
@@ -666,7 +669,8 @@
         "processingTime": "Processing time",
         "relation": "Related to",
         "requiredBy": "Required by",
-        "relatedBy": "Related by"
+        "relatedBy": "Related by",
+        "isDescribedAt": "Associated datasets"
       }
     }
   },
@@ -780,7 +784,8 @@
         "description": "It is a good idea to have a look at the links below before publishing data in Felles Datakatalog.",
         "datasetsStandardLink": "Standard for describing datasets",
         "registrationGuidanceLink": "Guidance for registering data",
-        "norwegianPublicLicenseLink": "Norwegian license for public data"
+        "norwegianPublicLicenseLink": "Norwegian license for public data",
+        "validatorLink": "Validation of RDF files"
       }
     }
   },

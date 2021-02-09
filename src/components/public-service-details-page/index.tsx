@@ -18,6 +18,7 @@ import withPublicServices, {
   Props as PublicServicesProps
 } from '../with-public-services';
 import withConcepts, { Props as ConceptsProps } from '../with-concepts';
+import withDatasets, { Props as DatasetsProps } from '../with-datasets';
 
 import DetailsPage, {
   ContentSection,
@@ -31,6 +32,8 @@ import { Entity } from '../../types/enums';
 
 import {
   PATHNAME_CONCEPTS,
+  PATHNAME_DATASETS,
+  PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 import SC from './styled';
@@ -41,6 +44,7 @@ interface RouteParams {
 
 interface Props
   extends ConceptsProps,
+    DatasetsProps,
     PublicServiceProps,
     PublicServicesProps,
     RouteComponentProps<RouteParams> {}
@@ -64,6 +68,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
   },
   concepts,
   conceptsActions: { getConceptsRequested: getConcepts },
+  datasets,
+  datasetsActions: { getDatasetsRequested: getDatasets },
   match: {
     params: { publicServiceId }
   }
@@ -118,6 +124,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
   const contactPoints = publicService?.hasContactPoint || [];
+  const isDescribedAt = publicService?.isDescribedAt ?? [];
 
   const publicServiceIdentifiers = [
     ...requiredServices.map(({ uri }) => uri).filter(Boolean),
@@ -148,6 +155,15 @@ const PublicServiceDetailsPage: FC<Props> = ({
     {} as Record<string, any>
   );
 
+  const datasetsUris = (isDescribedAt.map(({ uri }) => uri) as string[]).filter(
+    Boolean
+  );
+
+  const datasetsMap = datasets?.reduce(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
+    {} as Record<string, any>
+  );
+
   useEffect(() => {
     if (publicServiceIdentifiers.length > 0) {
       getPublicServices({ publicServiceIdentifiers, size: 1000 });
@@ -159,6 +175,12 @@ const PublicServiceDetailsPage: FC<Props> = ({
       getConcepts({ identifiers: conceptsIdentifiers, size: 1000 });
     }
   }, [conceptsIdentifiers.join()]);
+
+  useEffect(() => {
+    if (datasetsUris.length > 0) {
+      getDatasets({ uris: datasetsUris, size: 1000 });
+    }
+  }, [datasetsUris.join()]);
 
   const themes: Theme[] = [];
 
@@ -364,16 +386,36 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 }
               >
                 <KeyValueList>
-                  {hasParticipation.map(({ description, role }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(description)}-${index}`}
-                      property={translate(description)}
-                      value={role
-                        .map(({ prefLabel }) => translate(prefLabel))
-                        .filter(Boolean)
-                        .join(', ')}
-                    />
-                  ))}
+                  {hasParticipation.map(
+                    ({ description, role, agents = [] }, index) => (
+                      <KeyValueListItem
+                        key={`${translate(description)}-${index}`}
+                        property={
+                          <>
+                            {agents.map(
+                              ({ uri, identifier, name, title }, index) => (
+                                <SC.ListItemValue key={`${uri}-${index}`}>
+                                  <Link
+                                    as={RouterLink}
+                                    to={`${PATHNAME_ORGANIZATIONS}/${identifier}`}
+                                  >
+                                    {translate(title) ?? name}
+                                  </Link>
+                                </SC.ListItemValue>
+                              )
+                            )}
+                            <SC.LightWeightLabel>
+                              {translate(description)}
+                            </SC.LightWeightLabel>
+                          </>
+                        }
+                        value={role
+                          .map(({ prefLabel }) => translate(prefLabel))
+                          .filter(Boolean)
+                          .join(', ')}
+                      />
+                    )
+                  )}
                 </KeyValueList>
               </ContentSection>
             )}
@@ -547,6 +589,46 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </ContentSection>
             )}
 
+            {isDescribedAt.length > 0 && (
+              <ContentSection
+                id="isDescribedAt"
+                title={
+                  translations.detailsPage.sectionTitles.publicService
+                    .isDescribedAt
+                }
+                boxStyle
+                iconEntity={Entity.DATASET}
+              >
+                <KeyValueList>
+                  {isDescribedAt?.map(
+                    ({ uri }) =>
+                      uri && (
+                        <KeyValueListItem
+                          key={uri}
+                          property={
+                            datasetsMap[uri] ? (
+                              <Link
+                                as={RouterLink}
+                                to={`${PATHNAME_DATASETS}/${datasetsMap[uri].id}`}
+                              >
+                                {translate(datasetsMap[uri].title)}
+                              </Link>
+                            ) : (
+                              translate(uri)
+                            )
+                          }
+                          value={
+                            datasetsMap[uri]
+                              ? translate(datasetsMap[uri].description)
+                              : ''
+                          }
+                        />
+                      )
+                  )}
+                </KeyValueList>
+              </ContentSection>
+            )}
+
             {contactPoints.length > 0 && (
               <ContentSection
                 id="hasContactPoint"
@@ -628,6 +710,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
 export default compose(
   memo,
   withConcepts,
+  withDatasets,
   withPublicService,
   withPublicServices
 )(PublicServiceDetailsPage);

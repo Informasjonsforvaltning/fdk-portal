@@ -41,7 +41,9 @@
   "conceptLabel": "Begrep",
   "informationModelLabel": "Informasjonsmodell",
   "dataServiceLabel": "Datatjeneste",
-  "serviceLabel": "Tjeneste",
+  "serviceLabel": "Tjeneste og hendelse",
+  "service": "Tjeneste",
+  "event": "Hendelse",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",
   "linkToFdk": "Lenke til Felles datakatalog",
@@ -155,7 +157,7 @@
     "apiTab": "API-er",
     "termTab": "Begreper",
     "informationModelTab": "Informasjonsmodeller",
-    "serviceTab": "Tjenester"
+    "serviceTab": "Tjenester og hendelser"
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API-er, {2} begreper og {3} informasjonsmodeller",
@@ -576,7 +578,8 @@
         "dataservice": "Datatjenestebeskrivelse",
         "concept": "Begrepsbeskrivelse",
         "infomod": "Informasjonsmodellbeskrivelse",
-        "publicservice": "Tjenestebeskrivelse"
+        "publicservice": "Tjenestebeskrivelse",
+        "event": "Hendelsesbeskrivelse"
       }
     },
     "owner": "Eier: {publisher}",
@@ -665,7 +668,8 @@
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
         "requiredBy": "Krevd av",
-        "relatedBy": "Relatert av"
+        "relatedBy": "Relatert av",
+        "isDescribedAt": "Tilknyttede datasettbeskrivelser"
       }
     }
   },
@@ -779,7 +783,8 @@
         "description": "Før du går i gang med å publisere data til Felles Datakatalog kan det være lurt å ta en titt på lenkene under.",
         "datasetsStandardLink": "Standard for beskrivelse av datasett",
         "registrationGuidanceLink": "Veileder for tilgjengeliggjøring av åpne data",
-        "norwegianPublicLicenseLink": "Norsk lisens for offentlig data"
+        "norwegianPublicLicenseLink": "Norsk lisens for offentlig data",
+        "validatorLink": "Validering av RDF-filer"
       }
     }
   },

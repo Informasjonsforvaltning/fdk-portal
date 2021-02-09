@@ -280,11 +280,20 @@ export interface PublicServiceInput {
   description: Partial<TextLanguage>;
 }
 
+export interface PublicServiceAgent {
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage>;
+  name: string;
+  playsRole: string[];
+}
+
 export interface PublicServiceParticipation {
   uri: string;
   identifier: string;
   description: Partial<TextLanguage>;
   role: PublicServiceType[];
+  agents: PublicServiceAgent[];
 }
 
 export interface PublicServiceChannel {
@@ -320,6 +329,7 @@ export interface PublicService {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
+  isDescribedAt?: Partial<Concept>[];
   isGroupedBy?: PublicServiceEvent[];
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
@@ -339,6 +349,15 @@ export interface PublicService {
   hasCost?: PublicServiceCost[];
   relation?: PublicService[];
   hasContactPoint?: PublicServiceContactPoint[];
+}
+export interface Event {
+  id: string;
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  type: EntityEnum.EVENT;
+  hasCompetentAuthority?: Partial<Publisher>[];
 }
 
 export interface ESPage {
@@ -687,7 +706,8 @@ export type Entity =
   | DataService
   | Concept
   | InformationModel
-  | PublicService;
+  | PublicService
+  | Event;
 
 export interface DropdownMenuItem {
   label: string;
