@@ -85,6 +85,8 @@ const EventDetailsPage: FC<Props> = ({
               <ContentSection
                 id="description"
                 title={translations.detailsPage.sectionTitles.event.description}
+                entityTheme={entity}
+                truncate
               >
                 {description}
               </ContentSection>
@@ -112,7 +114,7 @@ const EventDetailsPage: FC<Props> = ({
                   translations.detailsPage.sectionTitles.event.relatedServices
                 }
                 boxStyle
-                iconEntity={Entity.PUBLIC_SERVICE}
+                entityIcon={Entity.PUBLIC_SERVICE}
               >
                 <KeyValueListItem
                   property={null}

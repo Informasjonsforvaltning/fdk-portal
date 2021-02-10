@@ -197,8 +197,10 @@ const ConceptDetailsPage: FC<Props> = ({
           <ContentSection
             id="description"
             title={translations.detailsPage.sectionTitles.concept.description}
+            entityTheme={Entity.CONCEPT}
+            truncate
           >
-            <SC.Description>{description}</SC.Description>
+            {description}
             <SC.Sources>{renderSources()}</SC.Sources>
           </ContentSection>
         )}

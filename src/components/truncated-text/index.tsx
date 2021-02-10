@@ -12,16 +12,19 @@ import translations from '../../lib/localization';
 
 import SC from './styled';
 
+import { Entity } from '../../types/enums';
+
 interface Props {
-  content: string;
   visibleLines: number;
   lineHeight: number;
+  entityTheme?: Entity;
 }
 
 const TruncatedText: FC<PropsWithChildren<Props>> = ({
-  content,
   visibleLines,
-  lineHeight
+  lineHeight,
+  entityTheme,
+  children
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [truncate, setTruncated] = useState(false);
@@ -34,21 +37,26 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
   }, [height]);
 
   return (
-    <div>
+    <SC.TruncateContainer>
       <SC.TextContent
         ref={ref}
         lineHeight={lineHeight}
         truncate={truncate && !expanded}
         visibleLines={visibleLines + 1}
+        entity={entityTheme}
       >
-        {content}
+        {children}
       </SC.TextContent>
       {truncate && (
-        <SC.ExpandButton onClick={() => setExpanded(!expanded)} open={expanded}>
+        <SC.ExpandButton
+          onClick={() => setExpanded(!expanded)}
+          open={expanded}
+          entity={entityTheme}
+        >
           {translations.truncatedText[expanded ? 'expanded' : 'collapsed']}
         </SC.ExpandButton>
       )}
-    </div>
+    </SC.TruncateContainer>
   );
 };
 
