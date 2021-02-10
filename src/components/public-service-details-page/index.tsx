@@ -209,6 +209,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   translations.detailsPage.sectionTitles.publicService
                     .description
                 }
+                entityTheme={Entity.PUBLIC_SERVICE}
+                truncate
               >
                 {description}
               </ContentSection>
@@ -451,7 +453,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     .conceptReferences
                 }
                 boxStyle
-                iconEntity={Entity.CONCEPT}
+                entityIcon={Entity.CONCEPT}
               >
                 <KeyValueList>
                   {isClassifiedBy?.map(
@@ -494,7 +496,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     .relatedServices
                 }
                 boxStyle
-                iconEntity={Entity.PUBLIC_SERVICE}
+                entityIcon={Entity.PUBLIC_SERVICE}
               >
                 <KeyValueList>
                   {requiredServices.length > 0 && (
@@ -597,7 +599,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     .isDescribedAt
                 }
                 boxStyle
-                iconEntity={Entity.DATASET}
+                entityIcon={Entity.DATASET}
               >
                 <KeyValueList>
                   {isDescribedAt?.map(

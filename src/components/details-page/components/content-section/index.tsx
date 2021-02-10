@@ -9,11 +9,13 @@ interface Props {
   id: string;
   title: string;
   boxStyle?: boolean;
-  iconEntity?: Entity;
+  entityIcon?: Entity;
+  entityTheme?: Entity;
+  truncate?: boolean;
 }
 
-const icon = (iconEntity?: Entity) => {
-  switch (iconEntity) {
+const icon = (entity?: Entity) => {
+  switch (entity) {
     case Entity.DATASET:
       return <SC.DatasetIcon />;
     case Entity.DATA_SERVICE:
@@ -35,20 +37,28 @@ const ContentSection: FC<PropsWithChildren<Props>> = ({
   id,
   title,
   boxStyle = false,
-  iconEntity,
+  entityIcon,
+  entityTheme,
+  truncate,
   children
 }) => {
   return (
     <SC.ContentSection id={id} boxStyle={boxStyle}>
       <SC.Header>
-        {iconEntity && (
-          <SC.IconPlaceholder>{icon(iconEntity)}</SC.IconPlaceholder>
+        {entityIcon && (
+          <SC.IconPlaceholder>{icon(entityIcon)}</SC.IconPlaceholder>
         )}
         <SC.Title>{title}</SC.Title>
       </SC.Header>
 
-      {typeof children === 'string' ? (
-        <TruncatedText content={children} visibleLines={4} lineHeight={20} />
+      {truncate ? (
+        <TruncatedText
+          visibleLines={4}
+          lineHeight={20}
+          entityTheme={entityTheme ?? Entity.DATASET}
+        >
+          {children}
+        </TruncatedText>
       ) : (
         children
       )}

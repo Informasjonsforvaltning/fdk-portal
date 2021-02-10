@@ -152,6 +152,8 @@ const DataserviceDetailsPage: FC<Props> = ({
             title={
               translations.detailsPage.sectionTitles.dataService.description
             }
+            entityTheme={Entity.DATA_SERVICE}
+            truncate
           >
             {parse(convertToSanitizedHtml(description))}
           </ContentSection>
