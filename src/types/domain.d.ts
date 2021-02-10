@@ -235,14 +235,6 @@ export interface PublicServiceLanguage {
   prefLabel: Partial<TextLanguage>;
 }
 
-export interface PublicServiceEvent {
-  uri: string;
-  identifier: string;
-  title: Partial<TextLanguage>;
-  description: Partial<TextLanguage>;
-  type: string;
-}
-
 export interface PublicServiceOutput {
   uri: string;
   identifier: string;
@@ -330,7 +322,7 @@ export interface PublicService {
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   isDescribedAt?: Partial<Concept>[];
-  isGroupedBy?: PublicServiceEvent[];
+  isGroupedBy?: string[];
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
   keyword?: Partial<TextLanguage>[];

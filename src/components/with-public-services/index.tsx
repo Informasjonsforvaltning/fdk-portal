@@ -4,13 +4,11 @@ import { connect } from 'react-redux';
 
 import * as actions from './redux/actions';
 import type { ESPage, PublicService } from '../../types';
-import { PublicServiceEvent } from '../../types';
 
 export interface Props {
   publicServices: PublicService[];
   publicServicesAggregations: any;
   publicServicesPage: ESPage;
-  publicServicesEvents: PublicServiceEvent[];
   publicServicesActions: typeof actions;
   publicServicesRequiredBy: PublicService[];
   publicServicesRelatedBy: PublicService[];
@@ -26,9 +24,6 @@ const withPublicServices = (Component: ComponentType<any>) => {
       null,
     publicServicesPage:
       state.PublicServicesReducer.get('publicServicesPage')?.toJS() ?? null,
-    publicServicesEvents: state.PublicServicesReducer.get(
-      'publicServicesEvents'
-    )?.toJS(),
     publicServicesRequiredBy: state.PublicServicesReducer.get(
       'publicServicesRequiredBy'
     ).toJS(),

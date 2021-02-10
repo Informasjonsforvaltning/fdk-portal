@@ -18,6 +18,7 @@ import organizationsCatalogSaga from '../components/with-organizations-catalog/r
 import publicServicesSaga from '../components/with-public-services/redux/saga';
 import publicServiceSaga from '../components/with-public-service/redux/saga';
 import eventSaga from '../components/with-event/redux/saga';
+import eventsSaga from '../components/with-events/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -38,6 +39,7 @@ export default function* saga() {
     organizationsCatalogSaga(),
     publicServicesSaga(),
     publicServiceSaga(),
-    eventSaga()
+    eventSaga(),
+    eventsSaga()
   ]);
 }
