@@ -116,7 +116,7 @@ const FiltersPure: FC<Props> = ({
   const handleFilterIsGroupedBy = ({
     target: { value, checked }
   }: ChangeEvent<HTMLInputElement>) => {
-    setMultiselectFilterValue(history, location, 'isGroupedBy', value, checked);
+    setMultiselectFilterValue(history, location, 'event', value, checked);
   };
 
   const getFilters = () => {

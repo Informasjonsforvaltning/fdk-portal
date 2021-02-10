@@ -31,13 +31,13 @@ import SortButtons from '../sort-buttons';
 import SC from './styled';
 
 import type { Entity as EntityType, Concept } from '../../../types';
-import { Entity, FeedType } from '../../../types/enums';
+import { FeedType } from '../../../types/enums';
+import { PATHNAME_DATASETS } from '../../../constants/constants';
 
 const { SEARCH_API_HOST } = env;
 
 interface ExternalProps {
   entities: Partial<EntityType>[];
-  entityType?: Entity;
   aggregations?: any;
   page?: any;
   compareConceptList?: Concept[];
@@ -53,7 +53,6 @@ interface Props
 
 const ResultsPage: FC<PropsWithChildren<Props>> = ({
   entities = [],
-  entityType,
   aggregations = {},
   page = {},
   compareConceptList = [],
@@ -87,6 +86,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   }, []);
 
   const searchParams = parseSearchParams(location);
+  const path = location.pathname;
   const { page: pageSearchParam = 0 } = searchParams;
   const { totalPages } = page;
 
@@ -146,7 +146,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                   forcePage={parseInt(pageSearchParam?.toString(), 10)}
                   disableInitialCallback
                 />
-                {entityType === Entity.DATASET && (
+                {path === PATHNAME_DATASETS && (
                   <SC.FeedLinks>
                     {[FeedType.RSS, FeedType.ATOM].map(type => (
                       <SC.FeedLink
