@@ -17,6 +17,9 @@ import withOrganizations, {
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../components/with-reference-data';
+import withEvents, {
+  Props as EventsProps
+} from '../../../components/with-events';
 
 import SearchEntities from '../../../components/search-entities/search-entities.component';
 import EmptyHits from '../../../components/empty-hits/empty.component';
@@ -27,11 +30,7 @@ import SortButtons from '../sort-buttons';
 
 import SC from './styled';
 
-import type {
-  Entity as EntityType,
-  Concept,
-  PublicServiceEvent
-} from '../../../types';
+import type { Entity as EntityType, Concept } from '../../../types';
 import { Entity, FeedType } from '../../../types/enums';
 
 const { SEARCH_API_HOST } = env;
@@ -44,11 +43,11 @@ interface ExternalProps {
   compareConceptList?: Concept[];
   addConcept?: (concept: Partial<Concept>) => void;
   removeConcept?: (id?: string) => void;
-  publicServicesEvents?: PublicServiceEvent[];
 }
 interface Props
   extends ExternalProps,
     OrganizationsProps,
+    EventsProps,
     RouteComponentProps<any>,
     ReferenceDataProps {}
 
@@ -66,7 +65,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
   referenceData: { los = [], themes = [], mediatypes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  publicServicesEvents
+  events,
+  eventsActions: { getEventsRequested: getEvents }
 }) => {
   useEffect(() => {
     if (los.length === 0) {
@@ -80,6 +80,9 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     }
     if (organizations.length === 0) {
       getOrganizations();
+    }
+    if (events.length === 0) {
+      getEvents({ size: 1000 });
     }
   }, []);
 
@@ -110,7 +113,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 publishers={keyBy(organizations, 'orgPath')}
                 losItems={getLosByKeys(los)}
                 mediaTypes={mediatypes}
-                publicServicesEvents={publicServicesEvents}
+                events={events}
               />
               <CompareList
                 conceptsCompareList={compareConceptList}
@@ -174,5 +177,6 @@ export default compose<FC<ExternalProps>>(
   memo,
   withOrganizations,
   withReferenceData,
+  withEvents,
   withRouter
 )(ResultsPage);
