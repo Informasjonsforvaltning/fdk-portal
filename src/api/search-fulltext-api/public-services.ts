@@ -52,7 +52,7 @@ const mapFilters = ({
   if (isGroupedBy) {
     filters.push({
       collection: {
-        field: 'isGroupedBy.uri.keyword',
+        field: 'isGroupedBy.keyword',
         values: [isGroupedBy]
       }
     });
