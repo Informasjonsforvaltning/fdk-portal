@@ -349,9 +349,17 @@ export interface Event {
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   type: EntityEnum.EVENT;
+  eventTypes?: SkosConcept[];
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
   relatedService?: Partial<InformationModel>[];
+}
+
+export interface SkosConcept {
+  id: string;
+  uri: string;
+  identifier: string;
+  prefLabel: Partial<TextLanguage>;
 }
 
 export interface ESPage {
