@@ -33,7 +33,7 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
   const { height } = useResize(ref);
 
   useEffect(() => {
-    setTruncated(height / lineHeight > visibleLines);
+    setTruncated(height / lineHeight > visibleLines + 3);
   }, [height]);
 
   return (
