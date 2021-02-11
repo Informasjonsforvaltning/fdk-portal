@@ -61,7 +61,7 @@ const EventDetailsPage: FC<Props> = ({
   );
   const themes: Theme[] = [];
   const relatedServices = event?.relatedService ?? [];
-  const eventTypes = event?.eventType ?? [];
+  const eventTypes = event?.eventTypes ?? [];
 
   return isMounted
     ? event && (
