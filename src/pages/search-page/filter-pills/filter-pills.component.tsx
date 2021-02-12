@@ -63,6 +63,7 @@ const getFilterLabel = (
       );
     }
     case Filter.THEME:
+    case Filter.EVENT:
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
         filterValue
@@ -78,11 +79,6 @@ const getFilterLabel = (
       return localization.formatString(localization.addedLastDays, {
         days: filterValue
       });
-    case 'isGroupedBy':
-      return (
-        getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
-        filterValue
-      );
     default:
       return localization[filterValue.toLowerCase()] || capitalize(filterValue);
   }
@@ -129,7 +125,7 @@ const FilterPillsPure: FC<Props> = ({
     [Filter.THEME]: themesItems,
     [Filter.LOS]: losItems,
     [Filter.ORGPATH]: publishers,
-    isGroupedBy: keyBy(events, 'uri')
+    [Filter.EVENT]: keyBy(events, 'uri')
   };
 
   return (
