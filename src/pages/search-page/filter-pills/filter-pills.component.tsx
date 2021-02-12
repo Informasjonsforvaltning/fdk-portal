@@ -126,9 +126,9 @@ const FilterPillsPure: FC<Props> = ({
   const locationSearch: any = parseSearchParams(location);
 
   const referenceDataItems: ReferenceDataItems = {
-    theme: themesItems,
-    losTheme: losItems,
-    orgPath: publishers,
+    [Filter.THEME]: themesItems,
+    [Filter.LOS]: losItems,
+    [Filter.ORGPATH]: publishers,
     isGroupedBy: keyBy(events, 'uri')
   };
 
