@@ -76,6 +76,7 @@
   "nationalDataCatalog": "Felles datakatalog",
   "nap": "Transportportalen",
   "language": "Språk",
+  "eventType": "Hendingstype",
   "industryCode": "Næringskode",
   "requires": "Krev",
   "days": "dagar",
@@ -671,6 +672,11 @@
         "requiredBy": "Krevd av",
         "relatedBy": "Relatert av",
         "isDescribedAt": "Tilknyttede datasettbeskrivelser"
+      },
+      "event": {
+        "description": "Beskrivelse",
+        "relatedServices": "Relaterte tenester",
+        "usage": "Bruk av hendinga"
       }
     }
   },

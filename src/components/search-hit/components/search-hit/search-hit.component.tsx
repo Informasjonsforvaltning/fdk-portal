@@ -6,12 +6,12 @@ import { SearchTypes } from '../../../../types/enums';
 import { SearchHitHead } from '../search-hit-head/search-hit-head.component';
 import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
-import { truncateTextWithEllipsis } from '../../../../lib/stringUtils';
 import SearchHitAccessRights from '../search-hit-access-rigths/search-hit-access-rights.component';
 import SearchHitOpenData from '../search-hit-open-data/search-hit-open-data.component';
 import SearchHitThemes from '../search-hit-themes/searh-hit-themes.component';
 import SearchHitFormats from '../search-hit-formats/search-hit-formats';
 import SearchHitData from '../search-hit-data/search-hit-data.component';
+import TruncatedText from '../../../truncated-text';
 
 interface Props {
   id?: string;
@@ -91,7 +91,11 @@ export const SearchHit: FC<Props> = ({
 
   return (
     <SC.SearchHit>
-      {beta && <SC.BetaRibbon>{localization.dataset.sample}</SC.BetaRibbon>}
+      {beta && (
+        <SC.BetaRibbon inverted={type === SearchTypes.event}>
+          {localization.dataset.sample}
+        </SC.BetaRibbon>
+      )}
       <SearchHitHead
         id={id}
         type={type}
@@ -107,9 +111,9 @@ export const SearchHit: FC<Props> = ({
       {renderSearchHitOpenData()}
       {renderSearchHitAccessRights()}
       {description && (
-        <SC.Description>
-          {truncateTextWithEllipsis(getTranslateText(description), 220)}
-        </SC.Description>
+        <TruncatedText visibleLines={4} lineHeight={20}>
+          {getTranslateText(description)}
+        </TruncatedText>
       )}
       {renderSearchHitData()}
       {renderSearchHitThemes()}

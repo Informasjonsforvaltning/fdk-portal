@@ -76,6 +76,7 @@
   "nationalDataCatalog": "National Data Catalog",
   "nap": "The National Access Point for Transport Data",
   "language": "Language",
+  "eventType": "Event type",
   "industryCode": "Industry code",
   "requires": "Requires",
   "days": "days",
@@ -90,7 +91,7 @@
     "expired": "expired",
     "willBeValid": "will be valid",
     "expiredInfo": "The concept expired on",
-    "willBeValidInfo": "The concept will be valid startring from"
+    "willBeValidInfo": "The concept will be valid from"
   },
   "app": {
     "menu": "Menu"
@@ -671,6 +672,12 @@
         "requiredBy": "Required by",
         "relatedBy": "Related by",
         "isDescribedAt": "Associated datasets"
+      },
+      "event": {
+        "description": "Description",
+        "relatedServices": "Related services",
+        "usage": "Event usage"
+
       }
     }
   },

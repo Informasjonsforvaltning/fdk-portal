@@ -13,6 +13,7 @@ import DataServiceDetailsPage from '../components/data-service-details-page';
 import ConceptDetailsPage from '../components/concept-details-page';
 import InformationModelDetailsPage from '../components/information-model-details-page';
 import PublicServiceDetailsPage from '../components/public-service-details-page';
+import EventDetailsPage from '../components/event-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import { AppNavBar } from './app-nav-bar/app-nav-bar';
@@ -34,7 +35,8 @@ import {
   PATHNAME_GUIDANCE,
   PATHNAME_GUIDANCE_METADATA,
   PATHNAME_ORGANIZATIONS,
-  PATHNAME_PUBLIC_SERVICES
+  PATHNAME_PUBLIC_SERVICES,
+  PATHNAME_EVENTS
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
@@ -142,6 +144,11 @@ export function App({ language, onChangeLanguage }) {
               exact
               path={`${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`}
               component={PublicServiceDetailsPage}
+            />
+            <Route
+              exact
+              path={`${PATHNAME_EVENTS}/:eventId`}
+              component={EventDetailsPage}
             />
             <Route
               exact

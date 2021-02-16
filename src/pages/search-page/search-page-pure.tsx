@@ -24,9 +24,9 @@ import {
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { Tabs } from './tabs/tabs';
 import ResultsPage from './results-all-entities/results-all-entities.component';
-import withPublicServices, {
-  Props as PublicServicesProps
-} from '../../components/with-public-services';
+import withPublicServicesAndEvents, {
+  Props as PublicServicesAndEventsProps
+} from '../../components/with-public-services-and-events';
 import { generateQueryKey, shouldFetch } from './lib/fetch-helper';
 
 import type {
@@ -35,7 +35,6 @@ import type {
   Dataset,
   InformationModel
 } from '../../types';
-import { Entity } from '../../types/enums';
 
 interface AllEntities {
   hits:
@@ -47,7 +46,7 @@ interface AllEntities {
   aggregations: any;
 }
 
-interface Props extends PublicServicesProps, RouteComponentProps {
+interface Props extends PublicServicesAndEventsProps, RouteComponentProps {
   fetchDatasetsIfNeeded: (params: any) => void;
   fetchDataServicesIfNeeded: (params: any) => void;
   fetchConceptsIfNeeded: (params: any) => void;
@@ -92,11 +91,12 @@ const SearchPage: FC<Props> = ({
   addConcept,
   removeConcept,
   searchAllEntities,
-  publicServices,
-  publicServicesAggregations,
-  publicServicesPage,
-  publicServicesEvents,
-  publicServicesActions: { getPublicServicesRequested: getPublicServices }
+  publicServicesAndEvents,
+  publicServicesAndEventsAggregations,
+  publicServicesAndEventsPage,
+  publicServicesAndEventsActions: {
+    getPublicServicesAndEventsRequested: getPublicServicesAndEvents
+  }
 }) => {
   const [searchQuery, setSearchQuery] = useState('#');
   const {
@@ -131,7 +131,7 @@ const SearchPage: FC<Props> = ({
 
   useEffect(() => {
     if (shouldFetch(publicServiceSearchParams, searchQuery)) {
-      getPublicServices(publicServiceSearchParams);
+      getPublicServicesAndEvents(publicServiceSearchParams);
       setSearchQuery(generateQueryKey(publicServiceSearchParams));
     }
   }, [publicServiceSearchParams]);
@@ -160,7 +160,9 @@ const SearchPage: FC<Props> = ({
               countConcepts={conceptTotal || 0}
               countApis={dataServiceTotal || 0}
               countInformationModels={informationModelTotal || 0}
-              countPublicServices={publicServicesPage?.totalElements || 0}
+              countPublicServices={
+                publicServicesAndEventsPage?.totalElements || 0
+              }
             />
           )}
         </SearchBox>
@@ -181,7 +183,6 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((datasetTotal || 1) / HITS_PER_PAGE)
               }}
-              entityType={Entity.DATASET}
             />
           </Route>
           <Route exact path={PATHNAME_DATA_SERVICES}>
@@ -191,7 +192,6 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((dataServiceTotal || 1) / HITS_PER_PAGE)
               }}
-              entityType={Entity.DATA_SERVICE}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
@@ -201,7 +201,6 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((conceptTotal || 1) / HITS_PER_PAGE)
               }}
-              entityType={Entity.CONCEPT}
               compareConceptList={conceptsCompare}
               addConcept={addConcept}
               removeConcept={removeConcept}
@@ -216,16 +215,13 @@ const SearchPage: FC<Props> = ({
                   (informationModelTotal || 1) / HITS_PER_PAGE
                 )
               }}
-              entityType={Entity.INFORMATION_MODEL}
             />
           </Route>
           <Route exact path={PATHNAME_PUBLIC_SERVICES}>
             <ResultsPage
-              entities={publicServices}
-              aggregations={publicServicesAggregations ?? {}}
-              page={publicServicesPage ?? {}}
-              entityType={Entity.PUBLIC_SERVICE}
-              publicServicesEvents={publicServicesEvents}
+              entities={publicServicesAndEvents}
+              aggregations={publicServicesAndEventsAggregations ?? {}}
+              page={publicServicesAndEventsPage ?? {}}
             />
           </Route>
         </Switch>
@@ -234,4 +230,4 @@ const SearchPage: FC<Props> = ({
   );
 };
 
-export default compose<FC<Props>>(withPublicServices)(SearchPage);
+export default compose<FC<Props>>(withPublicServicesAndEvents)(SearchPage);

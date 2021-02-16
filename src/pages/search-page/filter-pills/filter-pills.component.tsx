@@ -2,6 +2,7 @@ import React, { FC, memo } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import capitalize from 'lodash/capitalize';
 import get from 'lodash/get';
+import keyBy from 'lodash/keyBy';
 
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { omit } from '../../../lib/omit';
@@ -15,7 +16,7 @@ import {
 } from '../search-location-helper';
 
 import SC from './styled';
-import { EuTheme, LosTheme } from '../../../types';
+import type { EuTheme, LosTheme, Event } from '../../../types';
 import { Filter } from '../../../types/enums';
 
 interface ThemesItems {
@@ -30,7 +31,7 @@ interface Props extends RouteComponentProps {
   themesItems: ThemesItems;
   losItems: LosThemeItems;
   publishers: any;
-  PublicServiceEvents: any;
+  events: Event[];
 }
 
 interface ReferenceDataItems {
@@ -62,6 +63,7 @@ const getFilterLabel = (
       );
     }
     case Filter.THEME:
+    case Filter.EVENT:
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
         filterValue
@@ -77,11 +79,6 @@ const getFilterLabel = (
       return localization.formatString(localization.addedLastDays, {
         days: filterValue
       });
-    case 'isGroupedBy':
-      return (
-        getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
-        filterValue
-      );
     default:
       return localization[filterValue.toLowerCase()] || capitalize(filterValue);
   }
@@ -116,7 +113,7 @@ const FilterPillsPure: FC<Props> = ({
   themesItems,
   publishers,
   losItems,
-  PublicServiceEvents
+  events
 }) => {
   if (!isFilterNotEmpty(location)) {
     return null;
@@ -125,10 +122,10 @@ const FilterPillsPure: FC<Props> = ({
   const locationSearch: any = parseSearchParams(location);
 
   const referenceDataItems: ReferenceDataItems = {
-    theme: themesItems,
-    losTheme: losItems,
-    orgPath: publishers,
-    isGroupedBy: PublicServiceEvents
+    [Filter.THEME]: themesItems,
+    [Filter.LOS]: losItems,
+    [Filter.ORGPATH]: publishers,
+    [Filter.EVENT]: keyBy(events, 'uri')
   };
 
   return (

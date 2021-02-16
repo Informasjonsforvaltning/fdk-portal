@@ -235,14 +235,6 @@ export interface PublicServiceLanguage {
   prefLabel: Partial<TextLanguage>;
 }
 
-export interface PublicServiceEvent {
-  uri: string;
-  identifier: string;
-  title: Partial<TextLanguage>;
-  description: Partial<TextLanguage>;
-  type: string;
-}
-
 export interface PublicServiceOutput {
   uri: string;
   identifier: string;
@@ -330,7 +322,7 @@ export interface PublicService {
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   isDescribedAt?: Partial<Concept>[];
-  isGroupedBy?: PublicServiceEvent[];
+  isGroupedBy?: string[];
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
   keyword?: Partial<TextLanguage>[];
@@ -357,7 +349,17 @@ export interface Event {
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   type: EntityEnum.EVENT;
+  eventTypes?: SkosConcept[];
   hasCompetentAuthority?: Partial<Publisher>[];
+  harvest?: Partial<Harvest>;
+  relatedService?: Partial<InformationModel>[];
+}
+
+export interface SkosConcept {
+  id: string;
+  uri: string;
+  identifier: string;
+  prefLabel: Partial<TextLanguage>;
 }
 
 export interface ESPage {
@@ -719,4 +721,8 @@ export interface DropdownButtonItem extends DropdownMenuItem {
 
 export interface DropdownLinkItem extends DropdownMenuItem {
   url: string;
+}
+
+export interface InvertedColorProps {
+  inverted?: boolean;
 }

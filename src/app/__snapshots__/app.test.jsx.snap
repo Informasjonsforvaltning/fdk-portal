@@ -205,6 +205,27 @@ exports[`should render App correctly 1`] = `
           path="/public-services/:publicServiceId"
         />
         <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "compare": null,
+              "type": Object {
+                "$$typeof": Symbol(react.memo),
+                "compare": null,
+                "type": Object {
+                  "$$typeof": Symbol(react.memo),
+                  "WrappedComponent": [Function],
+                  "compare": null,
+                  "displayName": "Connect(WrappedComponent)",
+                  "type": [Function],
+                },
+              },
+            }
+          }
+          exact={true}
+          path="/events/:eventId"
+        />
+        <Route
           component={[Function]}
           exact={true}
           path="/news/:id"

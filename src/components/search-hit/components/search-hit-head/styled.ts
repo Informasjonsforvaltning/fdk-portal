@@ -5,20 +5,23 @@ import ConceptIconBase from '../../../../images/icon-catalog-concept-lg.svg';
 import InfomodIconBase from '../../../../images/icon-catalog-infomod-lg.svg';
 import AuthoritativeIconBase from '../../../../images/icon-authoritative-md.svg';
 import ServiceIconBase from '../../../../images/icon-catalog-service-lg.svg';
+import type { InvertedColorProps } from '../../../../types';
 
-const Head = styled.div`
-    background-color: ${({ theme }) => theme.light};
+const Head = styled.div<InvertedColorProps>`
+    background-color:  ${({ theme, inverted }) =>
+      inverted ? theme.dark : theme.light};
     border-radius: 5px;
-    color: ${({ theme }) => theme.dark};
+    color:  ${({ theme, inverted }) => (inverted ? theme.light : theme.dark)};
     display: flex;
     padding: .5em;
     margin-bottom: 1em;
     
     a {
-      color: ${({ theme }) => theme.dark} !important;
+      color:  ${({ theme, inverted }) =>
+        inverted ? theme.light : theme.dark} !important;
     }
     svg > path {
-      fill: ${({ theme }) => theme.dark};
+      fill:  ${({ theme, inverted }) => (inverted ? theme.light : theme.dark)};
     }
   }
 `;

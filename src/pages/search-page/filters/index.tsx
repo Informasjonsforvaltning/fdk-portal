@@ -22,7 +22,7 @@ import {
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import { FilterBox } from '../../../components/filter-box/filter-box.component';
 import { getConfig } from '../../../config';
-import { PublicServiceEvent } from '../../../types';
+import type { Event } from '../../../types';
 
 interface Props extends RouteComponentProps {
   themesItems?: any;
@@ -30,7 +30,7 @@ interface Props extends RouteComponentProps {
   losItems?: any;
   mediaTypes: any;
   aggregations: any;
-  publicServicesEvents?: PublicServiceEvent[];
+  events?: Event[];
 }
 
 const FiltersPure: FC<Props> = ({
@@ -41,7 +41,7 @@ const FiltersPure: FC<Props> = ({
   aggregations = {},
   history,
   location: { pathname } = {},
-  publicServicesEvents = []
+  events = []
 }) => {
   const [filterOpen, setFilterOpen] = useState(false);
 
@@ -116,7 +116,7 @@ const FiltersPure: FC<Props> = ({
   const handleFilterIsGroupedBy = ({
     target: { value, checked }
   }: ChangeEvent<HTMLInputElement>) => {
-    setMultiselectFilterValue(history, location, 'isGroupedBy', value, checked);
+    setMultiselectFilterValue(history, location, 'event', value, checked);
   };
 
   const getFilters = () => {
@@ -278,7 +278,7 @@ const FiltersPure: FC<Props> = ({
               filter={aggregations.isGroupedBy}
               onClick={handleFilterIsGroupedBy}
               activeFilter={isGroupedByParam}
-              referenceDataItems={keyBy(publicServicesEvents, 'uri')}
+              referenceDataItems={keyBy(events, 'uri')}
             />
             <FilterTree
               title={localization.provider}
@@ -304,7 +304,7 @@ const FiltersPure: FC<Props> = ({
         themesItems={themesItems}
         publishers={publishers}
         losItems={losItems}
-        PublicServiceEvents={keyBy(publicServicesEvents, 'uri')}
+        events={events}
       />
       <SC.Filters>{getFilters()}</SC.Filters>
     </>

@@ -17,6 +17,9 @@ import informationModelsSaga from '../components/with-information-models/redux/s
 import organizationsCatalogSaga from '../components/with-organizations-catalog/redux/saga';
 import publicServicesSaga from '../components/with-public-services/redux/saga';
 import publicServiceSaga from '../components/with-public-service/redux/saga';
+import publicServicesAndEventsSaga from '../components/with-public-services-and-events/redux/saga';
+import eventSaga from '../components/with-event/redux/saga';
+import eventsSaga from '../components/with-events/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -36,6 +39,9 @@ export default function* saga() {
     informationModelsSaga(),
     organizationsCatalogSaga(),
     publicServicesSaga(),
-    publicServiceSaga()
+    publicServiceSaga(),
+    publicServicesAndEventsSaga(),
+    eventSaga(),
+    eventsSaga()
   ]);
 }

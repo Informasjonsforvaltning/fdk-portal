@@ -76,6 +76,7 @@
   "nationalDataCatalog": "Felles datakatalog",
   "nap": "Transportportalen",
   "language": "Språk",
+  "eventType": "Hendelsestype",
   "industryCode": "Næringskode",
   "requires": "Krever",
   "days": "dager",
@@ -670,6 +671,11 @@
         "requiredBy": "Krevd av",
         "relatedBy": "Relatert av",
         "isDescribedAt": "Tilknyttede datasettbeskrivelser"
+      },
+      "event": {
+        "description": "Beskrivelse",
+        "relatedServices": "Relaterte tjenester",
+        "usage": "Bruk av hendelsen"
       }
     }
   },

@@ -41,6 +41,10 @@ export default css`
       background: ${({ theme }) =>
         theme.extendedColors[Entity.PUBLIC_SERVICE].lighter};
     }
+
+    &.${Entity.EVENT} {
+      background: ${({ theme }) => theme.extendedColors[Entity.EVENT].lighter};
+    }
   }
 
   footer {

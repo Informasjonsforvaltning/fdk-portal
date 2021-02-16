@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchHitHead component should render with properties 1`] = `
-<styled.div>
+<styled.div
+  inverted={false}
+>
   <styled.div>
     <Styled(SvgIconCatalogDatasetLg) />
   </styled.div>

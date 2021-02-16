@@ -228,6 +228,8 @@ const InformationModelDetailsPage: FC<Props> = ({
               translations.detailsPage.sectionTitles.informationModel
                 .description
             }
+            entityTheme={Entity.INFORMATION_MODEL}
+            truncate
           >
             {description}
           </ContentSection>

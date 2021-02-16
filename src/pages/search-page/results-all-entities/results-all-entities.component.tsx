@@ -17,6 +17,9 @@ import withOrganizations, {
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../components/with-reference-data';
+import withEvents, {
+  Props as EventsProps
+} from '../../../components/with-events';
 
 import SearchEntities from '../../../components/search-entities/search-entities.component';
 import EmptyHits from '../../../components/empty-hits/empty.component';
@@ -27,34 +30,29 @@ import SortButtons from '../sort-buttons';
 
 import SC from './styled';
 
-import type {
-  Entity as EntityType,
-  Concept,
-  PublicServiceEvent
-} from '../../../types';
-import { Entity, FeedType } from '../../../types/enums';
+import type { Entity as EntityType, Concept } from '../../../types';
+import { FeedType } from '../../../types/enums';
+import { PATHNAME_DATASETS } from '../../../constants/constants';
 
 const { SEARCH_API_HOST } = env;
 
 interface ExternalProps {
   entities: Partial<EntityType>[];
-  entityType?: Entity;
   aggregations?: any;
   page?: any;
   compareConceptList?: Concept[];
   addConcept?: (concept: Partial<Concept>) => void;
   removeConcept?: (id?: string) => void;
-  publicServicesEvents?: PublicServiceEvent[];
 }
 interface Props
   extends ExternalProps,
     OrganizationsProps,
+    EventsProps,
     RouteComponentProps<any>,
     ReferenceDataProps {}
 
 const ResultsPage: FC<PropsWithChildren<Props>> = ({
   entities = [],
-  entityType,
   aggregations = {},
   page = {},
   compareConceptList = [],
@@ -66,7 +64,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
   referenceData: { los = [], themes = [], mediatypes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  publicServicesEvents
+  events,
+  eventsActions: { getEventsRequested: getEvents }
 }) => {
   useEffect(() => {
     if (los.length === 0) {
@@ -81,9 +80,13 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     if (organizations.length === 0) {
       getOrganizations();
     }
+    if (events.length === 0) {
+      getEvents({ size: 1000 });
+    }
   }, []);
 
   const searchParams = parseSearchParams(location);
+  const path = location.pathname;
   const { page: pageSearchParam = 0 } = searchParams;
   const { totalPages } = page;
 
@@ -110,7 +113,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 publishers={keyBy(organizations, 'orgPath')}
                 losItems={getLosByKeys(los)}
                 mediaTypes={mediatypes}
-                publicServicesEvents={publicServicesEvents}
+                events={events}
               />
               <CompareList
                 conceptsCompareList={compareConceptList}
@@ -143,7 +146,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                   forcePage={parseInt(pageSearchParam?.toString(), 10)}
                   disableInitialCallback
                 />
-                {entityType === Entity.DATASET && (
+                {path === PATHNAME_DATASETS && (
                   <SC.FeedLinks>
                     {[FeedType.RSS, FeedType.ATOM].map(type => (
                       <SC.FeedLink
@@ -174,5 +177,6 @@ export default compose<FC<ExternalProps>>(
   memo,
   withOrganizations,
   withReferenceData,
+  withEvents,
   withRouter
 )(ResultsPage);

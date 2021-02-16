@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Colour, theme } from '@fellesdatakatalog/theme';
 
 import RoundedTagSC from '../../../rounded-tag/styled';
+import type { InvertedColorProps } from '../../../../types';
 
 const SearchHit = styled.article`
   background-color: #fff;
@@ -119,7 +120,7 @@ const Data = styled.div`
   margin-bottom: 1em;
 `;
 
-const BetaRibbon = styled.span`
+const BetaRibbon = styled.span<InvertedColorProps>`
   position: absolute;
   top: 20px;
   right: -35px;
@@ -127,8 +128,14 @@ const BetaRibbon = styled.span`
   padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
   font-size: 1rem;
   font-weight: ${theme.fontWeight('FW700')};
-  color: ${theme.colour(Colour.RED, 'R30')};
-  background: ${theme.colour(Colour.RED, 'R60')};
+  color: ${({ inverted }) =>
+    inverted
+      ? theme.colour(Colour.RED, 'R60')
+      : theme.colour(Colour.RED, 'R30')};
+  background: ${({ inverted }) =>
+    inverted
+      ? theme.colour(Colour.RED, 'R30')
+      : theme.colour(Colour.RED, 'R60')};
 `;
 
 export default {

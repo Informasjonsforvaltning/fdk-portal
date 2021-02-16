@@ -5,7 +5,12 @@ type textContentProps = {
   lineHeight: number;
   truncate: boolean;
   visibleLines: number;
+  entity?: Entity;
 };
+
+const TruncateContainer = styled.div`
+  margin-bottom: 1em;
+`;
 
 const TextContent = styled.div<textContentProps>`
   position: relative;
@@ -14,21 +19,23 @@ const TextContent = styled.div<textContentProps>`
   -webkit-box-orient: vertical;
   line-height: ${({ lineHeight }) => lineHeight || 20}px;
 
-  ${({ truncate, lineHeight, visibleLines }) =>
+  ${({ truncate, lineHeight, visibleLines, entity }) =>
     truncate &&
     css`
       -webkit-line-clamp: ${visibleLines};
+      height: ${visibleLines * lineHeight}px;
 
       &:before {
         content: '';
         width: 100%;
-        height: 100%;
+        height: ${visibleLines * lineHeight}px;
         position: absolute;
         left: 0;
         top: 0;
         background: linear-gradient(
           transparent ${lineHeight * 3}px,
-          ${({ theme }) => theme.extendedColors[Entity.DATASET].lighter}
+          ${({ theme }) =>
+            entity ? theme.extendedColors[entity].lighter : '#FFF'}
         );
       }
     `}
@@ -36,15 +43,17 @@ const TextContent = styled.div<textContentProps>`
 
 type expandButtonProps = {
   open: boolean;
+  entity?: Entity;
 };
 
 const ExpandButton = styled.button<expandButtonProps>`
   border: none;
   border-bottom-style: dotted;
-  border-bottom-color: ${({ theme }) => theme.entityColours.neutralDarker};
-  color: ${({ theme }) => theme.entityColours.neutralDarker};
-  background-color: ${({ theme }) =>
-    theme.extendedColors[Entity.DATASET].lighter};
+  border-bottom-color: ${({ theme }) =>
+    theme?.entityColours?.neutralDarker ?? theme.dark};
+  color: ${({ theme }) => theme?.entityColours?.neutralDarker ?? theme.dark};
+  background-color: ${({ theme, entity }) =>
+    entity ? theme.extendedColors[entity].lighter : '#FFF'};
 
   &:before {
     font-family: FontAwesome;
@@ -66,4 +75,4 @@ const ExpandButton = styled.button<expandButtonProps>`
           }
         `}
 `;
-export default { TextContent, ExpandButton };
+export default { TruncateContainer, TextContent, ExpandButton };

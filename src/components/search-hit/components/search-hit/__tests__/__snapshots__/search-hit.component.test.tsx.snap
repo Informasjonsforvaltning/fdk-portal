@@ -21,8 +21,11 @@ exports[`SearchHit component should render with properties 1`] = `
       Test direktorat
     </span>
   </styled.div>
-  <styled.p>
+  <TruncatedText
+    lineHeight={20}
+    visibleLines={4}
+  >
     Test datasett beskrivelse
-  </styled.p>
+  </TruncatedText>
 </styled.article>
 `;

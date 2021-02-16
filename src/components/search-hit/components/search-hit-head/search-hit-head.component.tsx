@@ -12,7 +12,8 @@ import {
   PATHNAME_DATA_SERVICES,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_PUBLIC_SERVICES
+  PATHNAME_PUBLIC_SERVICES,
+  PATHNAME_EVENTS
 } from '../../../../constants/constants';
 
 interface Props {
@@ -28,7 +29,7 @@ const detailLinks = {
   [SearchTypes.concept]: PATHNAME_CONCEPTS,
   [SearchTypes.informationModel]: PATHNAME_INFORMATIONMODELS,
   [SearchTypes.publicService]: PATHNAME_PUBLIC_SERVICES,
-  [SearchTypes.event]: PATHNAME_PUBLIC_SERVICES
+  [SearchTypes.event]: PATHNAME_EVENTS
 };
 
 export const SearchHitHead: FC<Props> = ({
@@ -37,7 +38,7 @@ export const SearchHitHead: FC<Props> = ({
   title,
   isAuthoritative = false
 }) => (
-  <SC.Head>
+  <SC.Head inverted={type === SearchTypes.event}>
     <SC.HeadTypeIndicator>
       {type === SearchTypes.dataset && <SC.DatasetIcon />}
       {type === SearchTypes.dataservice && <SC.ApiIcon />}
