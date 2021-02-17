@@ -77,6 +77,7 @@
   "nap": "Transportportalen",
   "language": "Språk",
   "eventType": "Hendingstype",
+  "dctType": "Type",
   "industryCode": "Næringskode",
   "requires": "Krev",
   "days": "dagar",
