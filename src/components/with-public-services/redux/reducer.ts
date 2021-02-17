@@ -55,7 +55,7 @@ export default function reducer(
       );
     case RESET_PUBLIC_SERVICES:
       return state
-        .set('publicServices', null)
+        .set('publicServices', fromJS([]))
         .set('publicServicesAggregations', null)
         .set('publicServicesPage', null);
     case GET_PUBLIC_SERVICES_REQUIRED_BY_REQUESTED:
