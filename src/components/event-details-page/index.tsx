@@ -11,6 +11,9 @@ import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { themeFDK } from '../../app/theme';
 
 import withEvent, { Props as EventProps } from '../with-event';
+import withPublicServices, {
+  Props as PublicServicesProps
+} from '../with-public-services';
 
 import DetailsPage, {
   ContentSection,
@@ -28,14 +31,22 @@ interface RouteParams {
   eventId: string;
 }
 
-interface Props extends RouteComponentProps<RouteParams>, EventProps {}
+interface Props
+  extends RouteComponentProps<RouteParams>,
+    EventProps,
+    PublicServicesProps {}
 
 const EventDetailsPage: FC<Props> = ({
   match: {
     params: { eventId }
   },
   event,
-  eventActions: { getEventRequested: getEvent }
+  eventActions: { getEventRequested: getEvent },
+  publicServices,
+  publicServicesActions: {
+    getPublicServicesRequested: getPublicServices,
+    resetPublicServices
+  }
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -47,12 +58,14 @@ const EventDetailsPage: FC<Props> = ({
       getEvent(eventId);
     }
 
+    getPublicServices({});
     setIsMounted(true);
 
     return () => {
       setIsMounted(false);
+      resetPublicServices();
     };
-  }, [eventId]);
+  }, []);
 
   const title = translate(event?.title);
   const description = translate(event?.description);
@@ -60,8 +73,9 @@ const EventDetailsPage: FC<Props> = ({
     dateStringToDate(event?.harvest?.firstHarvested)
   );
   const themes: Theme[] = [];
-  const relatedServices = event?.relatedService ?? [];
-  const eventTypes = event?.eventTypes ?? [];
+  const relation = new Set(event?.relation ?? []);
+  const relatedServices = publicServices.filter(({ uri }) => relation.has(uri));
+  const eventTypes = event?.dctType ?? [];
 
   return isMounted
     ? event && (
@@ -139,4 +153,4 @@ const EventDetailsPage: FC<Props> = ({
     : null;
 };
 
-export default compose(memo, withEvent)(EventDetailsPage);
+export default compose(memo, withEvent, withPublicServices)(EventDetailsPage);
