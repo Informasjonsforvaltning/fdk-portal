@@ -349,10 +349,10 @@ export interface Event {
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   type: EntityEnum.EVENT;
-  eventTypes?: SkosConcept[];
+  dctType?: SkosConcept[];
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
-  relatedService?: Partial<InformationModel>[];
+  relation?: string[];
 }
 
 export interface SkosConcept {
