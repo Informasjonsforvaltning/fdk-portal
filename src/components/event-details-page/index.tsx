@@ -75,7 +75,7 @@ const EventDetailsPage: FC<Props> = ({
   const themes: Theme[] = [];
   const relation = new Set(event?.relation ?? []);
   const relatedServices = publicServices.filter(({ uri }) => relation.has(uri));
-  const eventTypes = event?.dctType ?? [];
+  const dctTypes = event?.dctType ?? [];
 
   return isMounted
     ? event && (
@@ -105,15 +105,15 @@ const EventDetailsPage: FC<Props> = ({
                 {description}
               </ContentSection>
             )}
-            {eventTypes.length > 0 && (
+            {dctTypes.length > 0 && (
               <ContentSection
                 id="usage"
                 title={translations.detailsPage.sectionTitles.event.usage}
               >
                 <KeyValueList>
                   <KeyValueListItem
-                    property={translations.eventType}
-                    value={eventTypes
+                    property={translations.dctType}
+                    value={dctTypes
                       ?.map(({ prefLabel }) => translate(prefLabel))
                       .filter(Boolean)
                       .join(', ')}
