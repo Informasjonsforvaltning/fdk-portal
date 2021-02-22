@@ -1,9 +1,10 @@
 import React, { memo, FC, useEffect } from 'react';
 import { compose } from 'redux';
-import { RouteComponentProps, Link } from 'react-router-dom';
+import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import parse from 'html-react-parser';
 import sanitise from 'sanitize-html';
+import Link from '@fellesdatakatalog/link';
 
 import { getConfig } from '../../config';
 import translations from '../../lib/localization';
@@ -37,7 +38,6 @@ import DetailsPage, {
   KeyValueListItem
 } from '../details-page';
 import DatasetDistribution from '../dataset-distribution';
-import ExternalLink from '../link-external';
 
 import SC from './styled';
 
@@ -283,12 +283,9 @@ const DatasetDetailsPage: FC<Props> = ({
                           ({ uri, prefLabel }) =>
                             uri &&
                             prefLabel && (
-                              <ExternalLink
-                                key={uri}
-                                uri={uri}
-                                prefLabel={prefLabel}
-                                openInNewTab
-                              />
+                              <Link key={uri} href={uri} external>
+                                {translate(prefLabel)}
+                              </Link>
                             )
                         )}
                       </SC.ExternalLinkList>
@@ -304,12 +301,9 @@ const DatasetDetailsPage: FC<Props> = ({
                           ({ uri, prefLabel }) =>
                             uri &&
                             prefLabel && (
-                              <ExternalLink
-                                key={uri}
-                                uri={uri}
-                                prefLabel={prefLabel}
-                                openInNewTab
-                              />
+                              <Link key={uri} href={uri} external>
+                                {translate(prefLabel)}
+                              </Link>
                             )
                         )}
                       </SC.ExternalLinkList>
@@ -325,12 +319,9 @@ const DatasetDetailsPage: FC<Props> = ({
                           ({ uri, prefLabel }) =>
                             uri &&
                             prefLabel && (
-                              <ExternalLink
-                                key={uri}
-                                uri={uri}
-                                prefLabel={prefLabel}
-                                openInNewTab
-                              />
+                              <Link key={uri} href={uri} external>
+                                {translate(prefLabel)}
+                              </Link>
                             )
                         )}
                       </SC.ExternalLinkList>
@@ -352,12 +343,9 @@ const DatasetDetailsPage: FC<Props> = ({
                           ({ uri, prefLabel }) =>
                             uri &&
                             prefLabel && (
-                              <ExternalLink
-                                key={uri}
-                                uri={uri}
-                                prefLabel={prefLabel}
-                                openInNewTab
-                              />
+                              <Link key={uri} href={uri} external>
+                                {translate(prefLabel)}
+                              </Link>
                             )
                         )}
                       </SC.ExternalLinkList>
@@ -373,12 +361,9 @@ const DatasetDetailsPage: FC<Props> = ({
                           ({ uri, prefLabel }) =>
                             uri &&
                             prefLabel && (
-                              <ExternalLink
-                                key={uri}
-                                uri={uri}
-                                prefLabel={prefLabel}
-                                openInNewTab
-                              />
+                              <Link key={uri} href={uri} external>
+                                {translate(prefLabel)}
+                              </Link>
                             )
                         )}
                       </SC.ExternalLinkList>
@@ -398,11 +383,9 @@ const DatasetDetailsPage: FC<Props> = ({
                   <KeyValueListItem
                     property=""
                     value={
-                      <ExternalLink
-                        uri={usage.moreInformationPage}
-                        prefLabel={translations.dataset.landingPage}
-                        openInNewTab
-                      />
+                      <Link href={usage.moreInformationPage} external>
+                        {translations.dataset.landingPage}
+                      </Link>
                     }
                   />
                 )}
@@ -432,11 +415,9 @@ const DatasetDetailsPage: FC<Props> = ({
                       <KeyValueListItem
                         property={translations.dataset.distribution.accessUrl}
                         value={
-                          <ExternalLink
-                            uri={accessURLs?.[0]}
-                            prefLabel={accessURLs?.[0]}
-                            openInNewTab
-                          />
+                          <Link href={accessURLs?.[0]} external>
+                            {translate(accessURLs?.[0])}
+                          </Link>
                         }
                       />
                     )}
@@ -531,7 +512,10 @@ const DatasetDetailsPage: FC<Props> = ({
                       <KeyValueListItem
                         key={id}
                         property={
-                          <Link to={`${PATHNAME_CONCEPTS}/${id}`}>
+                          <Link
+                            to={`${PATHNAME_CONCEPTS}/${id}`}
+                            as={RouteLink}
+                          >
                             {translate(prefLabel)}
                           </Link>
                         }
@@ -564,7 +548,10 @@ const DatasetDetailsPage: FC<Props> = ({
                       )?.prefLabel
                     )}
                     value={
-                      <Link to={`${PATHNAME_DATASET_DETAILS}/${id}`}>
+                      <Link
+                        to={`${PATHNAME_DATASET_DETAILS}/${id}`}
+                        as={RouteLink}
+                      >
                         {translate(title)}
                       </Link>
                     }
@@ -587,9 +574,9 @@ const DatasetDetailsPage: FC<Props> = ({
                         )?.prefLabel
                       )}
                       value={
-                        <a href={uri} rel="noopener noreferrer">
+                        <Link href={uri} rel="noopener noreferrer">
                           {uri}
-                        </a>
+                        </Link>
                       }
                     />
                   )
@@ -613,7 +600,10 @@ const DatasetDetailsPage: FC<Props> = ({
                       <KeyValueListItem
                         key={id}
                         property={
-                          <Link to={`${PATHNAME_DATA_SERVICES}/${id}`}>
+                          <Link
+                            to={`${PATHNAME_DATA_SERVICES}/${id}`}
+                            as={RouteLink}
+                          >
                             {translate(title)}
                           </Link>
                         }
@@ -632,10 +622,11 @@ const DatasetDetailsPage: FC<Props> = ({
               <InlineList>
                 {keywords.map((keyword, index) => (
                   <Link
+                    key={`${keyword}-${index}`}
                     to={`${PATHNAME_DATASETS}?keywords=${encodeURIComponent(
                       keyword
                     )}`}
-                    key={`${keyword}-${index}`}
+                    as={RouteLink}
                   >
                     {keyword}
                   </Link>
@@ -674,11 +665,9 @@ const DatasetDetailsPage: FC<Props> = ({
                     property={translations.dataset.spatial}
                     value={
                       uri ? (
-                        <ExternalLink
-                          uri={uri}
-                          prefLabel={translate(name) || uri}
-                          openInNewTab
-                        />
+                        <Link href={uri} external>
+                          {translate(name) || uri}
+                        </Link>
                       ) : (
                         translate(name) || uri
                       )
@@ -718,11 +707,9 @@ const DatasetDetailsPage: FC<Props> = ({
                       <KeyValueListItem
                         property={translations.contactPoint}
                         value={
-                          <ExternalLink
-                            uri={hasURL}
-                            prefLabel={organizationUnit ?? hasURL}
-                            openInNewTab
-                          />
+                          <Link href={hasURL} external>
+                            {organizationUnit ?? hasURL}
+                          </Link>
                         }
                       />
                     )}
@@ -730,13 +717,13 @@ const DatasetDetailsPage: FC<Props> = ({
                       <KeyValueListItem
                         property={translations.email}
                         value={
-                          <a
+                          <Link
                             title={email}
                             href={`mailto:${email}`}
                             rel="noopener noreferrer"
                           >
                             {email}
-                          </a>
+                          </Link>
                         }
                       />
                     )}
