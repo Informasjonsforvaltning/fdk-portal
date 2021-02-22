@@ -28,6 +28,7 @@ import withDatasets, { Props as DatasetsProps } from '../with-datasets';
 import withDataServices, {
   Props as DataServicesProps
 } from '../with-data-services';
+import withKartverket, { Props as KartverketProps } from '../with-kartverket';
 
 import DetailsPage, {
   ContentSection,
@@ -52,6 +53,7 @@ interface Props
     ConceptsProps,
     DatasetsProps,
     DataServicesProps,
+    KartverketProps,
     RouteComponentProps<RouteParams> {}
 
 const DatasetDetailsPage: FC<Props> = ({
@@ -60,11 +62,16 @@ const DatasetDetailsPage: FC<Props> = ({
   concepts,
   datasets,
   dataServices,
+  administrativeUnits,
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
   datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
   dataServicesActions: { getDataServicesRequested: getDataServices },
+  kartverketActions: {
+    listAdministrativeUnitsRequested: listAdministrativeUnits,
+    resetAdministrativeUnits
+  },
   match: {
     params: { datasetId }
   }
@@ -92,6 +99,7 @@ const DatasetDetailsPage: FC<Props> = ({
   const datasetUris =
     dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
   const datasetUri = dataset?.uri ?? '';
+  const spatialUris = dataset?.spatial?.map(({ uri }) => uri) ?? [];
 
   useEffect(() => {
     if (conceptIdentifiers.length > 0) {
@@ -105,6 +113,16 @@ const DatasetDetailsPage: FC<Props> = ({
       resetConcepts();
     };
   }, [conceptIdentifiers?.join()]);
+
+  useEffect(() => {
+    if (spatialUris.length > 0) {
+      listAdministrativeUnits(spatialUris);
+    }
+
+    return () => {
+      resetAdministrativeUnits();
+    };
+  }, [spatialUris?.join()]);
 
   useEffect(() => {
     if (datasetUris && datasetUris.length > 0) {
@@ -180,7 +198,6 @@ const DatasetDetailsPage: FC<Props> = ({
   const datasetReferenceTypes = dataset?.references ?? [];
   const keywords = dataset?.keyword?.map(translate)?.filter(Boolean) ?? [];
   const qualifiedAttributions = dataset?.qualifiedAttributions ?? [];
-  const spatialRestrictions = dataset?.spatial ?? [];
   const temporalRestrictions = dataset?.temporal ?? [];
   const contactPoints = dataset?.contactPoint ?? [];
 
@@ -642,7 +659,7 @@ const DatasetDetailsPage: FC<Props> = ({
                 .join(', ')}
             </ContentSection>
           )}
-          {(spatialRestrictions.length > 0 ||
+          {(administrativeUnits.length > 0 ||
             temporalRestrictions.length > 0) && (
             <ContentSection
               id="restrictions"
@@ -651,19 +668,19 @@ const DatasetDetailsPage: FC<Props> = ({
               }
             >
               <KeyValueList>
-                {spatialRestrictions.map(({ code, uri, prefLabel }) => (
+                {administrativeUnits.map(({ uri, name }) => (
                   <KeyValueListItem
-                    key={`${code}-${uri}`}
+                    key={uri}
                     property={translations.dataset.spatial}
                     value={
                       uri ? (
                         <ExternalLink
                           uri={uri}
-                          prefLabel={translate(prefLabel) || uri}
+                          prefLabel={translate(name) || uri}
                           openInNewTab
                         />
                       ) : (
-                        translate(prefLabel) || uri
+                        translate(name) || uri
                       )
                     }
                   />
@@ -746,5 +763,6 @@ export default compose(
   withReferenceData,
   withConcepts,
   withDatasets,
-  withDataServices
+  withDataServices,
+  withKartverket
 )(DatasetDetailsPage);
