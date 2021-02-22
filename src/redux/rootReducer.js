@@ -28,6 +28,7 @@ import PublicServiceReducer from '../components/with-public-service/redux/reduce
 import PublicServicesAndEventsReducer from '../components/with-public-services-and-events/redux/reducer';
 import EventReducer from '../components/with-event/redux/reducer';
 import EventsReducer from '../components/with-events/redux/reducer';
+import KartverketReducer from '../components/with-kartverket/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -58,5 +59,6 @@ export const rootReducer = combineReducers({
   PublicServiceReducer,
   PublicServicesAndEventsReducer,
   EventReducer,
-  EventsReducer
+  EventsReducer,
+  KartverketReducer
 });

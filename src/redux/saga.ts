@@ -20,6 +20,7 @@ import publicServiceSaga from '../components/with-public-service/redux/saga';
 import publicServicesAndEventsSaga from '../components/with-public-services-and-events/redux/saga';
 import eventSaga from '../components/with-event/redux/saga';
 import eventsSaga from '../components/with-events/redux/saga';
+import kartverketSaga from '../components/with-kartverket/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -42,6 +43,7 @@ export default function* saga() {
     publicServiceSaga(),
     publicServicesAndEventsSaga(),
     eventSaga(),
-    eventsSaga()
+    eventsSaga(),
+    kartverketSaga()
   ]);
 }

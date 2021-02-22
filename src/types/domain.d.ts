@@ -3,7 +3,8 @@ import {
   RatingCategory,
   Entity as EntityEnum,
   DimensionType,
-  IndicatorType
+  IndicatorType,
+  AdministrativeUnitType
 } from './enums';
 
 export interface InformationModel {
@@ -725,4 +726,10 @@ export interface DropdownLinkItem extends DropdownMenuItem {
 
 export interface InvertedColorProps {
   inverted?: boolean;
+}
+
+export interface AdministrativeUnit {
+  uri: string;
+  type: AdministrativeUnitType;
+  name: Partial<TextLanguage>;
 }

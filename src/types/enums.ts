@@ -119,3 +119,9 @@ export enum FeedType {
   RSS = 'rss',
   ATOM = 'atom'
 }
+
+export enum AdministrativeUnitType {
+  NATION = 'http://rdf.kartverket.no/onto/adm_enhet_4.0.owl#Nasjon',
+  COUNTY = 'http://rdf.kartverket.no/onto/adm_enhet_4.0.owl#Fylke',
+  MUNICIPALITY = 'http://rdf.kartverket.no/onto/adm_enhet_4.0.owl#Kommune'
+}
