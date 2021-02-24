@@ -22,7 +22,7 @@ import DetailsPage, {
 } from '../details-page';
 
 import type { Theme } from '../../types';
-import { Entity } from '../../types/enums';
+import { Entity, SpecializedEventType } from '../../types/enums';
 
 import { PATHNAME_PUBLIC_SERVICES } from '../../constants/constants';
 import SC from './styled';
@@ -76,6 +76,7 @@ const EventDetailsPage: FC<Props> = ({
   const relation = new Set(event?.relation ?? []);
   const relatedServices = publicServices.filter(({ uri }) => relation.has(uri));
   const dctTypes = event?.dctType ?? [];
+  const specializedType = event?.specialized_type;
 
   return isMounted
     ? event && (
@@ -105,19 +106,36 @@ const EventDetailsPage: FC<Props> = ({
                 {description}
               </ContentSection>
             )}
-            {dctTypes.length > 0 && (
+            {(dctTypes.length > 0 || specializedType) && (
               <ContentSection
                 id="usage"
                 title={translations.detailsPage.sectionTitles.event.usage}
               >
                 <KeyValueList>
-                  <KeyValueListItem
-                    property={translations.dctType}
-                    value={dctTypes
-                      ?.map(({ prefLabel }) => translate(prefLabel))
-                      .filter(Boolean)
-                      .join(', ')}
-                  />
+                  {dctTypes.length > 0 && (
+                    <KeyValueListItem
+                      property={translations.dctType}
+                      value={dctTypes
+                        ?.map(({ prefLabel }) => translate(prefLabel))
+                        .filter(Boolean)
+                        .join(', ')}
+                    />
+                  )}
+                  {specializedType && (
+                    <KeyValueListItem
+                      property={translations.eventType}
+                      value={(() => {
+                        switch (specializedType) {
+                          case SpecializedEventType.LIFEEVENT:
+                            return 'cv:LifeEvent';
+                          case SpecializedEventType.BUSINESSEVENT:
+                            return 'cv:BusinessEvent';
+                          default:
+                            return '';
+                        }
+                      })()}
+                    />
+                  )}
                 </KeyValueList>
               </ContentSection>
             )}
