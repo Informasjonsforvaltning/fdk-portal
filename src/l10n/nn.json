@@ -77,6 +77,8 @@
   "nap": "Transportportalen",
   "language": "Språk",
   "eventType": "Hendingstype",
+  "businessEvent": "Næring",
+  "lifeEvent": "Innbyggar",
   "dctType": "Type",
   "industryCode": "Næringskode",
   "requires": "Krev",

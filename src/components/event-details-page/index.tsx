@@ -127,9 +127,9 @@ const EventDetailsPage: FC<Props> = ({
                       value={(() => {
                         switch (specializedType) {
                           case SpecializedEventType.LIFEEVENT:
-                            return 'cv:LifeEvent';
+                            return translations.lifeEvent;
                           case SpecializedEventType.BUSINESSEVENT:
-                            return 'cv:BusinessEvent';
+                            return translations.businessEvent;
                           default:
                             return '';
                         }

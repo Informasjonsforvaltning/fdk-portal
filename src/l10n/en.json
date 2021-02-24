@@ -77,6 +77,8 @@
   "nap": "The National Access Point for Transport Data",
   "language": "Language",
   "eventType": "Event type",
+  "businessEvent": "Business event",
+  "lifeEvent": "Life event",
   "dctType": "Type",
   "industryCode": "Industry code",
   "requires": "Requires",
