@@ -8,6 +8,7 @@ import type { Dataset } from '../../types';
 
 export interface Props {
   datasets: Dataset[];
+  datasetsRelations: Dataset[];
   datasetsActions: typeof actions;
   isLoadingDatasets: boolean;
 }
@@ -17,6 +18,7 @@ const withDatasets = (Component: ComponentType<any>) => {
 
   const mapStateToProps = (state: any) => ({
     datasets: state.DatasetsReducer.get('datasets').toJS(),
+    datasetsRelations: state.DatasetsReducer.get('datasetsRelations').toJS(),
     isLoadingDatasets: state.DatasetsReducer.get('isLoadingDatasets')
   });
 

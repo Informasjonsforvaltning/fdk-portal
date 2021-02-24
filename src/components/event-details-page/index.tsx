@@ -20,6 +20,7 @@ import DetailsPage, {
   KeyValueList,
   KeyValueListItem
 } from '../details-page';
+import RelationList from '../relation-list';
 
 import type { Theme } from '../../types';
 import { Entity, SpecializedEventType } from '../../types/enums';
@@ -43,9 +44,12 @@ const EventDetailsPage: FC<Props> = ({
   event,
   eventActions: { getEventRequested: getEvent },
   publicServices,
+  publicServicesRelations,
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
-    resetPublicServices
+    resetPublicServices,
+    getPublicServicesRelationsRequested: getPublicServicesRelations,
+    resetPublicServicesRelations
   }
 }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -66,6 +70,15 @@ const EventDetailsPage: FC<Props> = ({
       resetPublicServices();
     };
   }, []);
+
+  useEffect(() => {
+    if (event?.uri) {
+      getPublicServicesRelations({ isDescribedAt: event.uri });
+    }
+    return () => {
+      resetPublicServicesRelations();
+    };
+  }, [event?.uri]);
 
   const title = translate(event?.title);
   const description = translate(event?.description);
@@ -162,6 +175,17 @@ const EventDetailsPage: FC<Props> = ({
                       </SC.ListItemValue>
                     ) : null
                   )}
+                />
+              </ContentSection>
+            )}
+            {publicServicesRelations.length > 0 && (
+              <ContentSection
+                id="relationList"
+                title={translations.detailsPage.relationList.title.event}
+              >
+                <RelationList
+                  parentIdentifier={event.uri}
+                  publicServices={publicServicesRelations}
                 />
               </ContentSection>
             )}

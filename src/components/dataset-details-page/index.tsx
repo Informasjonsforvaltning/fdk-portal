@@ -14,7 +14,6 @@ import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import {
   PATHNAME_DATASETS,
   PATHNAME_DATASET_DETAILS,
-  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS
 } from '../../constants/constants';
 
@@ -26,6 +25,9 @@ import withReferenceData, {
 } from '../with-reference-data';
 import withConcepts, { Props as ConceptsProps } from '../with-concepts';
 import withDatasets, { Props as DatasetsProps } from '../with-datasets';
+import withPublicServices, {
+  Props as PublicServicesProps
+} from '../with-public-services';
 import withDataServices, {
   Props as DataServicesProps
 } from '../with-data-services';
@@ -38,6 +40,7 @@ import DetailsPage, {
   KeyValueListItem
 } from '../details-page';
 import DatasetDistribution from '../dataset-distribution';
+import RelationList from '../relation-list';
 
 import SC from './styled';
 
@@ -54,6 +57,7 @@ interface Props
     DatasetsProps,
     DataServicesProps,
     KartverketProps,
+    PublicServicesProps,
     RouteComponentProps<RouteParams> {}
 
 const DatasetDetailsPage: FC<Props> = ({
@@ -61,16 +65,30 @@ const DatasetDetailsPage: FC<Props> = ({
   referenceData: { referencetypes: referenceTypes, mediatypes: mediaTypes },
   concepts,
   datasets,
-  dataServices,
   administrativeUnits,
+  datasetsRelations,
+  publicServicesRelations,
+  dataServicesRelations,
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
-  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
-  dataServicesActions: { getDataServicesRequested: getDataServices },
   kartverketActions: {
     listAdministrativeUnitsRequested: listAdministrativeUnits,
     resetAdministrativeUnits
+  },
+  datasetsActions: {
+    getDatasetsRequested: getDatasets,
+    resetDatasets,
+    getDatasetsRelationsRequested: getDatasetsRelations,
+    resetDatasetsRelations
+  },
+  dataServicesActions: {
+    getDataServicesRelationsRequested: getDataServicesRelations,
+    resetDataServicesRelations
+  },
+  publicServicesActions: {
+    getPublicServicesRequested: getPublicServicesRelations,
+    resetPublicServicesRelations
   },
   match: {
     params: { datasetId }
@@ -98,7 +116,6 @@ const DatasetDetailsPage: FC<Props> = ({
     dataset?.subject?.map(({ identifier }) => identifier).filter(Boolean) ?? [];
   const datasetUris =
     dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
-  const datasetUri = dataset?.uri ?? '';
   const spatialUris = dataset?.spatial?.map(({ uri }) => uri) ?? [];
 
   useEffect(() => {
@@ -135,8 +152,17 @@ const DatasetDetailsPage: FC<Props> = ({
   }, [datasetUris?.join()]);
 
   useEffect(() => {
-    getDataServices({ dataseturi: datasetUri, size: 1000 });
-  }, [datasetUri]);
+    if (dataset?.uri) {
+      getDatasetsRelations({ referencesSource: dataset.uri });
+      getDataServicesRelations({ dataseturi: dataset.uri });
+      getPublicServicesRelations({ isDescribedAt: dataset.uri });
+    }
+    return () => {
+      resetDatasetsRelations();
+      resetDataServicesRelations();
+      resetPublicServicesRelations();
+    };
+  }, [dataset?.uri]);
 
   const entity = Entity.DATASET;
 
@@ -194,7 +220,6 @@ const DatasetDetailsPage: FC<Props> = ({
   };
   const referencedConcepts = concepts;
   const referencedDatasets = datasets;
-  const referencedDataServices = dataServices;
   const datasetReferenceTypes = dataset?.references ?? [];
   const keywords = dataset?.keyword?.map(translate)?.filter(Boolean) ?? [];
   const qualifiedAttributions = dataset?.qualifiedAttributions ?? [];
@@ -584,36 +609,6 @@ const DatasetDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
-
-          {referencedDataServices.length > 0 && (
-            <ContentSection
-              id="dataservice-references"
-              title={
-                translations.detailsPage.sectionTitles.dataset
-                  .dataserviceReferences
-              }
-            >
-              <KeyValueList>
-                {referencedDataServices.map(
-                  ({ id, title, description, descriptionFormatted }) =>
-                    id && (
-                      <KeyValueListItem
-                        key={id}
-                        property={
-                          <Link
-                            to={`${PATHNAME_DATA_SERVICES}/${id}`}
-                            as={RouteLink}
-                          >
-                            {translate(title)}
-                          </Link>
-                        }
-                        value={translate(descriptionFormatted || description)}
-                      />
-                    )
-                )}
-              </KeyValueList>
-            </ContentSection>
-          )}
           {keywords.length > 0 && (
             <ContentSection
               id="keywords"
@@ -632,6 +627,21 @@ const DatasetDetailsPage: FC<Props> = ({
                   </Link>
                 ))}
               </InlineList>
+            </ContentSection>
+          )}
+          {(datasetsRelations.length > 0 ||
+            publicServicesRelations.length > 0 ||
+            dataServicesRelations.length > 0) && (
+            <ContentSection
+              id="relationList"
+              title={translations.detailsPage.relationList.title.dataset}
+            >
+              <RelationList
+                parentIdentifier={dataset.uri}
+                datasets={datasetsRelations}
+                publicServices={publicServicesRelations}
+                dataServices={dataServicesRelations}
+              />
             </ContentSection>
           )}
           {qualifiedAttributions.length > 0 && (
@@ -751,5 +761,6 @@ export default compose(
   withConcepts,
   withDatasets,
   withDataServices,
+  withPublicServices,
   withKartverket
 )(DatasetDetailsPage);

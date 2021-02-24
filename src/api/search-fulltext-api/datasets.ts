@@ -27,7 +27,9 @@ const mapFilters = ({
   subjectExists,
   catalog_name,
   keywords,
-  info_model
+  info_model,
+  referencesSource,
+  conformsTo
 }: any) => {
   const filters = [];
   if (id) {
@@ -100,6 +102,16 @@ const mapFilters = ({
   if (info_model) {
     filters.push({
       info_model
+    });
+  }
+  if (referencesSource) {
+    filters.push({
+      'references.source.uri.keyword': referencesSource
+    });
+  }
+  if (conformsTo) {
+    filters.push({
+      'conformsTo.uri.keyword': conformsTo
     });
   }
 

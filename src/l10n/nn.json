@@ -681,6 +681,25 @@
         "relatedServices": "Relaterte tenester",
         "usage": "Bruk av hendinga"
       }
+    },
+    "relationList": {
+      "title": {
+        "dataset": "Andre som relaterer til dette datasettet",
+        "dataservice": "Andre som relaterer til denne datatenesta",
+        "concept": "Andre som relaterer til dette omgrepet",
+        "informationmodel": "Andre som relaterer til denne informasjonsmodellen",
+        "public_service": "Andre som relaterer til denne tenesta",
+        "event": "Andre som relaterer til denne hendinga"
+      },
+      "subtitle": {
+        "dataset":"Datasett",
+        "dataservice":"Datateneste",
+        "concept":"Omgrep", 
+        "informationmodel":"Informasjonsmodell",
+        "public_service":"Teneste",
+        "event":"Hending"
+      },
+      "referenceType": "relasjonstype"
     }
   },
   "metadataQualityPage": {

@@ -680,6 +680,25 @@
         "relatedServices": "Relaterte tjenester",
         "usage": "Bruk av hendelsen"
       }
+    },
+    "relationList": {
+      "title": {
+        "dataset": "Andre som relaterer til dette datasettet",
+        "dataservice": "Andre som relaterer til denne datatjenesten",
+        "concept": "Andre som relaterer til dette begrepet",
+        "informationmodel": "Andre som relaterer til denne informasjonsmodellen",
+        "public_service": "Andre som relaterer til denne tjenesten",
+        "event": "Andre som relaterer til denne hendelsen"
+      },
+      "subtitle": {
+        "dataset":"Datasett",
+        "dataservice":"Datatjeneste", 
+        "concept":"Begrep", 
+        "informationmodel":"Informasjonsmodell",
+        "public_service":"Tjeneste", 
+        "event":"Hendelse"
+      },
+      "referenceType": "relasjonstype"
     }
   },
   "metadataQualityPage": {

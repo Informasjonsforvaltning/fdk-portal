@@ -323,8 +323,8 @@ export interface PublicService {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  isDescribedAt?: Partial<Concept>[];
-  isGroupedBy?: string[];
+  isDescribedAt?: Partial<PublicService>[];
+  isGroupedBy?: Partial<PublicService>[];
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
   keyword?: Partial<TextLanguage>[];
@@ -530,6 +530,7 @@ interface EndpointDescription {
 export interface AccessService {
   description: Partial<TextLanguage>;
   endpointDescription: EndpointDescription[];
+  uri: string;
 }
 
 export interface Distribution {
