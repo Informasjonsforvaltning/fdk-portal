@@ -11,6 +11,9 @@ import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { themeFDK } from '../../app/theme';
 
 import withEvent, { Props as EventProps } from '../with-event';
+import withPublicServices, {
+  Props as PublicServicesProps
+} from '../with-public-services';
 
 import DetailsPage, {
   ContentSection,
@@ -19,7 +22,7 @@ import DetailsPage, {
 } from '../details-page';
 
 import type { Theme } from '../../types';
-import { Entity } from '../../types/enums';
+import { Entity, SpecializedEventType } from '../../types/enums';
 
 import { PATHNAME_PUBLIC_SERVICES } from '../../constants/constants';
 import SC from './styled';
@@ -28,14 +31,22 @@ interface RouteParams {
   eventId: string;
 }
 
-interface Props extends RouteComponentProps<RouteParams>, EventProps {}
+interface Props
+  extends RouteComponentProps<RouteParams>,
+    EventProps,
+    PublicServicesProps {}
 
 const EventDetailsPage: FC<Props> = ({
   match: {
     params: { eventId }
   },
   event,
-  eventActions: { getEventRequested: getEvent }
+  eventActions: { getEventRequested: getEvent },
+  publicServices,
+  publicServicesActions: {
+    getPublicServicesRequested: getPublicServices,
+    resetPublicServices
+  }
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -47,12 +58,14 @@ const EventDetailsPage: FC<Props> = ({
       getEvent(eventId);
     }
 
+    getPublicServices({});
     setIsMounted(true);
 
     return () => {
       setIsMounted(false);
+      resetPublicServices();
     };
-  }, [eventId]);
+  }, []);
 
   const title = translate(event?.title);
   const description = translate(event?.description);
@@ -60,8 +73,10 @@ const EventDetailsPage: FC<Props> = ({
     dateStringToDate(event?.harvest?.firstHarvested)
   );
   const themes: Theme[] = [];
-  const relatedServices = event?.relatedService ?? [];
-  const eventTypes = event?.eventTypes ?? [];
+  const relation = new Set(event?.relation ?? []);
+  const relatedServices = publicServices.filter(({ uri }) => relation.has(uri));
+  const dctTypes = event?.dctType ?? [];
+  const specializedType = event?.specialized_type;
 
   return isMounted
     ? event && (
@@ -91,19 +106,36 @@ const EventDetailsPage: FC<Props> = ({
                 {description}
               </ContentSection>
             )}
-            {eventTypes.length > 0 && (
+            {(dctTypes.length > 0 || specializedType) && (
               <ContentSection
                 id="usage"
                 title={translations.detailsPage.sectionTitles.event.usage}
               >
                 <KeyValueList>
-                  <KeyValueListItem
-                    property={translations.eventType}
-                    value={eventTypes
-                      ?.map(({ prefLabel }) => translate(prefLabel))
-                      .filter(Boolean)
-                      .join(', ')}
-                  />
+                  {dctTypes.length > 0 && (
+                    <KeyValueListItem
+                      property={translations.dctType}
+                      value={dctTypes
+                        ?.map(({ prefLabel }) => translate(prefLabel))
+                        .filter(Boolean)
+                        .join(', ')}
+                    />
+                  )}
+                  {specializedType && (
+                    <KeyValueListItem
+                      property={translations.eventType}
+                      value={(() => {
+                        switch (specializedType) {
+                          case SpecializedEventType.LIFEEVENT:
+                            return 'cv:LifeEvent';
+                          case SpecializedEventType.BUSINESSEVENT:
+                            return 'cv:BusinessEvent';
+                          default:
+                            return '';
+                        }
+                      })()}
+                    />
+                  )}
                 </KeyValueList>
               </ContentSection>
             )}
@@ -139,4 +171,4 @@ const EventDetailsPage: FC<Props> = ({
     : null;
 };
 
-export default compose(memo, withEvent)(EventDetailsPage);
+export default compose(memo, withEvent, withPublicServices)(EventDetailsPage);

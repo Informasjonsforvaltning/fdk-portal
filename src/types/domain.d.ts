@@ -3,7 +3,9 @@ import {
   RatingCategory,
   Entity as EntityEnum,
   DimensionType,
-  IndicatorType
+  IndicatorType,
+  AdministrativeUnitType,
+  SpecializedEventType
 } from './enums';
 
 export interface InformationModel {
@@ -349,10 +351,11 @@ export interface Event {
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   type: EntityEnum.EVENT;
-  eventTypes?: SkosConcept[];
+  dctType?: SkosConcept[];
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
-  relatedService?: Partial<InformationModel>[];
+  relation?: string[];
+  specialized_type?: SpecializedEventType;
 }
 
 export interface SkosConcept {
@@ -725,4 +728,10 @@ export interface DropdownLinkItem extends DropdownMenuItem {
 
 export interface InvertedColorProps {
   inverted?: boolean;
+}
+
+export interface AdministrativeUnit {
+  uri: string;
+  type: AdministrativeUnitType;
+  name: Partial<TextLanguage>;
 }

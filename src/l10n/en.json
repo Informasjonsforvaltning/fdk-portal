@@ -77,6 +77,7 @@
   "nap": "The National Access Point for Transport Data",
   "language": "Language",
   "eventType": "Event type",
+  "dctType": "Type",
   "industryCode": "Industry code",
   "requires": "Requires",
   "days": "days",
