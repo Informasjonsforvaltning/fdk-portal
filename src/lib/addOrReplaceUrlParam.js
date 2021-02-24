@@ -22,10 +22,13 @@ export function getParamFromLocation(location, param) {
   return queryObj && queryObj[param];
 }
 
-export function patchSearchQuery(key, value) {
+export function patchSearchQuery(key, value, removePageFilter = true) {
   const query = qs.parse(location.search, {
     ignoreQueryPrefix: true
   });
+  if (removePageFilter) {
+    query.page = undefined;
+  }
   query[key] = [...new Set([...(query[key] || '').split(','), value])]
     .filter(Boolean)
     .join();
