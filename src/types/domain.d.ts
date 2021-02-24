@@ -4,7 +4,8 @@ import {
   Entity as EntityEnum,
   DimensionType,
   IndicatorType,
-  AdministrativeUnitType
+  AdministrativeUnitType,
+  SpecializedEventType
 } from './enums';
 
 export interface InformationModel {
@@ -354,6 +355,7 @@ export interface Event {
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
   relation?: string[];
+  specialized_type?: SpecializedEventType;
 }
 
 export interface SkosConcept {
