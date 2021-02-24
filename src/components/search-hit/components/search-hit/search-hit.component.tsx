@@ -11,6 +11,7 @@ import SearchHitOpenData from '../search-hit-open-data/search-hit-open-data.comp
 import SearchHitThemes from '../search-hit-themes/searh-hit-themes.component';
 import SearchHitFormats from '../search-hit-formats/search-hit-formats';
 import SearchHitData from '../search-hit-data/search-hit-data.component';
+import SearchHitEvents from '../search-hit-events';
 import TruncatedText from '../../../truncated-text';
 
 interface Props {
@@ -82,6 +83,13 @@ export const SearchHit: FC<Props> = ({
       ) : null
     )?.shift();
 
+  const renderSearchHitEvents = () =>
+    Children.map(children, child =>
+      isValidElement(child) && child.type === SearchHitEvents ? (
+        <SC.Event>{child}</SC.Event>
+      ) : null
+    )?.shift();
+
   const renderSearchHitData = () =>
     Children.map(children, child =>
       isValidElement(child) && child.type === SearchHitData ? (
@@ -117,6 +125,7 @@ export const SearchHit: FC<Props> = ({
       )}
       {renderSearchHitData()}
       {renderSearchHitThemes()}
+      {renderSearchHitEvents()}
       {renderSearchHitFormats()}
     </SC.SearchHit>
   );
