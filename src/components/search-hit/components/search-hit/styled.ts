@@ -101,6 +101,24 @@ const Theme = styled.div`
   }
 `;
 
+const Event = styled.div`
+  display: flex;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+
+  ${RoundedTagSC.RoundedTagWithLink} {
+    background-color: ${({ theme }) => theme.dark};
+    color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0 0.6em;
+    &:hover {
+      background-color: ${theme.colour(Colour.NEUTRAL, 'N70')} !important;
+      text-decoration: none;
+    }
+  }
+`;
+
 const Format = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -145,6 +163,7 @@ export default {
   OpenData,
   AccessRight,
   Theme,
+  Event,
   Format,
   Data,
   BetaRibbon
