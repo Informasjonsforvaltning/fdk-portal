@@ -77,6 +77,8 @@
   "nap": "Transportportalen",
   "language": "Språk",
   "eventType": "Hendelsestype",
+  "businessEvent": "Næring",
+  "lifeEvent": "Innbygger",
   "dctType": "Type",
   "industryCode": "Næringskode",
   "requires": "Krever",
