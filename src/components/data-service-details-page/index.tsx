@@ -34,6 +34,7 @@ import DetailsPage, {
   KeyValueListItem,
   InlineList
 } from '../details-page';
+import RelationList from '../relation-list';
 
 import SC from './styled';
 
@@ -56,9 +57,14 @@ const DataserviceDetailsPage: FC<Props> = ({
   referenceData: { apiservicetype },
   datasets,
   informationModels,
+  datasetsRelations,
   dataServiceActions: { getDataServiceRequested: getDataService },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  datasetsActions: { getDatasetsRequested: getDatasets },
+  datasetsActions: {
+    getDatasetsRequested: getDatasets,
+    getDatasetsRelationsRequested: getDatasetsRelations,
+    resetDatasetsRelations
+  },
   informationModelsActions: {
     getInformationModelsRequested: getInformationModels
   },
@@ -98,6 +104,15 @@ const DataserviceDetailsPage: FC<Props> = ({
       });
     }
   }, [dataService?.endpointDescription?.join()]);
+
+  useEffect(() => {
+    if (dataService?.uri) {
+      getDatasetsRelations({ referencesSource: dataService.uri });
+    }
+    return () => {
+      resetDatasetsRelations();
+    };
+  }, [dataService?.uri]);
 
   const entityId = dataService?.id;
   const entityUri = dataService?.uri;
@@ -310,6 +325,17 @@ const DataserviceDetailsPage: FC<Props> = ({
                   )
               )}
             </InlineList>
+          </ContentSection>
+        )}
+        {datasetsRelations.length > 0 && (
+          <ContentSection
+            id="relationList"
+            title={translations.detailsPage.relationList.title.dataservice}
+          >
+            <RelationList
+              parentIdentifier={dataService?.uri}
+              datasets={datasetsRelations}
+            />
           </ContentSection>
         )}
       </DetailsPage>

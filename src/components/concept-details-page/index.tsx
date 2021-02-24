@@ -1,23 +1,12 @@
 import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
-import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../lib/localization';
-import {
-  dateStringToDate,
-  formatDate,
-  isDateBeforeToday,
-  isDateAfterToday
-} from '../../lib/date-utils';
+import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
-
-import {
-  PATHNAME_DATASETS,
-  PATHNAME_INFORMATIONMODELS,
-  PATHNAME_CONCEPTS
-} from '../../constants/constants';
 
 import { themeFDK } from '../../app/theme';
 
@@ -27,13 +16,16 @@ import withInformationModels, {
   Props as InformationModelsProps
 } from '../with-information-models';
 import withConcepts, { Props as ConceptsProps } from '../with-concepts';
+import withPublicServices, {
+  Props as PublicServicesProps
+} from '../with-public-services';
 
 import DetailsPage, {
   ContentSection,
   KeyValueList,
-  KeyValueListItem,
-  InlineList
+  KeyValueListItem
 } from '../details-page';
+import RelationList from '../relation-list';
 
 import SC from './styled';
 
@@ -49,19 +41,33 @@ interface Props
     DatasetsProps,
     InformationModelsProps,
     ConceptsProps,
+    PublicServicesProps,
     RouteComponentProps<RouteParams> {}
 
 const ConceptDetailsPage: FC<Props> = ({
   concept,
-  datasets,
-  informationModels,
-  concepts,
+  datasetsRelations,
+  publicServicesRelations,
+  conceptsRelations,
+  informationModelsRelations,
   conceptActions: { getConceptRequested: getConcept },
-  datasetsActions: { getDatasetsRequested: getDatasets },
+  conceptsActions: {
+    getConceptsRelationsRequested: getConceptsRelations,
+    resetConceptsRelations
+  },
+  datasetsActions: {
+    getDatasetsRelationsRequested: getDatasetsRelations,
+    resetDatasetsRelations
+  },
   informationModelsActions: {
-    getInformationModelsRequested: getInformationModels
+    getInformationModelsRelationsRequested: getInformationmodelsRelations,
+    resetInformationModelsRelations
   },
   conceptsActions: { getConceptsRequested: getConcepts },
+  publicServicesActions: {
+    getPublicServicesRelationsRequested: getPublicServicesRelations,
+    resetPublicServicesRelations
+  },
   match: {
     params: { conceptId }
   }
@@ -84,18 +90,27 @@ const ConceptDetailsPage: FC<Props> = ({
   }, []);
 
   useEffect(() => {
-    if (concept?.identifier) {
-      getDatasets({ subject: concept.identifier, size: 1000 });
-      getInformationModels({
-        conceptIdentifiers: [concept.identifier],
-        size: 1000
-      });
-    }
-
     if (concept?.seeAlso && concept?.seeAlso.length > 0) {
       getConcepts({ identifiers: concept.seeAlso, size: 1000 });
     }
   }, [concept?.id]);
+
+  useEffect(() => {
+    if (concept?.identifier) {
+      getConceptsRelations({ seeAlso: concept.identifier });
+      getDatasetsRelations({ subject: concept.identifier });
+      getInformationmodelsRelations({
+        conceptIdentifiers: [concept.identifier]
+      });
+      getPublicServicesRelations({ isClassifiedBy: concept.identifier });
+    }
+    return () => {
+      resetConceptsRelations();
+      resetDatasetsRelations();
+      resetInformationModelsRelations();
+      resetPublicServicesRelations();
+    };
+  }, [concept?.identifier]);
 
   const entityId = concept?.id;
   const entityUri = concept?.uri;
@@ -139,9 +154,6 @@ const ConceptDetailsPage: FC<Props> = ({
   );
   const validToIncluding = formatDate(
     dateStringToDate(concept?.validToIncluding)
-  );
-  const seeAlsoConceptReferences = concepts.filter(({ identifier }) =>
-    concept?.seeAlso?.includes(identifier)
   );
   const contactPoint = concept?.contactPoint;
   const themes: Theme[] = [];
@@ -306,89 +318,21 @@ const ConceptDetailsPage: FC<Props> = ({
             {identifier}
           </ContentSection>
         )}
-        {datasets.length > 0 && (
+        {(conceptsRelations.length > 0 ||
+          datasetsRelations.length > 0 ||
+          publicServicesRelations.length > 0 ||
+          informationModelsRelations.length > 0) && (
           <ContentSection
-            id="dataset-references"
-            title={
-              translations.detailsPage.sectionTitles.concept.datasetReferences
-            }
+            id="relationList"
+            title={translations.detailsPage.relationList.title.concept}
           >
-            <InlineList>
-              {datasets.map(dataset => (
-                <Link
-                  key={dataset.id}
-                  to={`${PATHNAME_DATASETS}/${dataset.id}`}
-                  as={RouteLink}
-                >
-                  {translate(dataset.title)}
-                </Link>
-              ))}
-            </InlineList>
-          </ContentSection>
-        )}
-        {informationModels.length > 0 && (
-          <ContentSection
-            id="information-model-references"
-            title={
-              translations.detailsPage.sectionTitles.concept
-                .informationModelReferences
-            }
-          >
-            <InlineList>
-              {informationModels.map(informationModel => (
-                <Link
-                  key={informationModel.id}
-                  to={`${PATHNAME_INFORMATIONMODELS}/${informationModel.id}`}
-                  as={RouteLink}
-                >
-                  {translate(informationModel.title)}
-                </Link>
-              ))}
-            </InlineList>
-          </ContentSection>
-        )}
-        {seeAlsoConceptReferences.length > 0 && (
-          <ContentSection
-            id="concept-references"
-            title={
-              translations.formatString(
-                translations.detailsPage.sectionTitles.concept
-                  .conceptReferences,
-                { concept: translate(concept?.prefLabel) }
-              ) as string
-            }
-          >
-            <KeyValueList>
-              {seeAlsoConceptReferences.map(concept => {
-                const isExpired = isDateBeforeToday(
-                  dateStringToDate(validToIncluding)
-                );
-                const isWillBeValid = isDateAfterToday(
-                  dateStringToDate(validFromIncluding)
-                );
-
-                return (
-                  <KeyValueListItem
-                    key={concept.id}
-                    property={translations.conceptReferences.seeAlso}
-                    value={
-                      <Link
-                        to={`${PATHNAME_CONCEPTS}/${concept.id}`}
-                        as={RouteLink}
-                      >
-                        {translate(concept.prefLabel)}
-                        {isExpired && (
-                          <>&nbsp;({translations.validity.expired})</>
-                        )}
-                        {!isExpired && isWillBeValid && (
-                          <>&nbsp;({translations.validity.willBeValid})</>
-                        )}
-                      </Link>
-                    }
-                  />
-                );
-              })}
-            </KeyValueList>
+            <RelationList
+              parentIdentifier={concept?.identifier}
+              concepts={conceptsRelations}
+              datasets={datasetsRelations}
+              publicServices={publicServicesRelations}
+              informationModels={informationModelsRelations}
+            />
           </ContentSection>
         )}
         {(contactPoint?.email || contactPoint?.telephone) && (
@@ -432,5 +376,6 @@ export default compose<FC>(
   withConcept,
   withDatasets,
   withInformationModels,
-  withConcepts
+  withConcepts,
+  withPublicServices
 )(ConceptDetailsPage);

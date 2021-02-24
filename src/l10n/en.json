@@ -682,6 +682,25 @@
         "usage": "Event usage"
 
       }
+    },
+    "relationList": {
+      "title": {
+        "dataset": "Others relating to this dataset",
+        "dataservice": "Others relating to this data service",
+        "concept": "Others relating to this concept",
+        "informationmodel": "Others relating to this information model",
+        "public_service": "Others relating to this public service",
+        "event": "Others relating to this event"
+      },
+      "subtitle": {
+        "dataset":"Dataset",
+        "dataservice":"Data service", 
+        "concept":"Concept", 
+        "informationmodel":"Information model",
+        "public_service":"Public service", 
+        "event":"Event"
+      },
+      "referenceType": "relation type"
     }
   },
   "metadataQualityPage": {

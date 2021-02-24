@@ -11,7 +11,6 @@ import { getTranslateText as translate } from '../../lib/translateText';
 
 import {
   PATHNAME_DATASET_DETAILS,
-  PATHNAME_DATA_SERVICES,
   PATHNAME_INFORMATIONMODELS
 } from '../../constants/constants';
 
@@ -36,6 +35,7 @@ import DetailsPage, {
   KeyValueListItem
 } from '../details-page';
 import InfoModelStructure from '../infomodel-structure';
+import RelationList from '../relation-list';
 
 import SC from './styled';
 
@@ -62,6 +62,10 @@ const InformationModelDetailsPage: FC<Props> = ({
   informationModels,
   isLoadingInformationModel,
   isLoadingInformationModelRdfRepresentations,
+  datasets,
+  datasetsRelations,
+  dataServicesRelations,
+  informationModelsRelations,
   informationModelActions: {
     getInformationModelRequested: getInformationModel,
     getInformationModelRdfRepresentationsRequested: getInformationModelRdfRepresentations,
@@ -69,15 +73,23 @@ const InformationModelDetailsPage: FC<Props> = ({
   },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
   informationModelsActions: {
-    getInformationModelsRequested: getInformationModels
+    getInformationModelsRequested: getInformationModels,
+    getInformationModelsRelationsRequested: getInformationmodelsRelations,
+    resetInformationModelsRelations
+  },
+  datasetsActions: {
+    getDatasetsRequested: getDatasets,
+    resetDatasets,
+    getDatasetsRelationsRequested: getDatasetsRelations,
+    resetDatasetsRelations
+  },
+  dataServicesActions: {
+    getDataServicesRelationsRequested: getDataServicesRelations,
+    resetDataServicesRelations
   },
   match: {
     params: { informationModelId }
-  },
-  datasets,
-  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
-  dataServices,
-  dataServicesActions: { getDataServicesRequested: getDataservices }
+  }
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -106,14 +118,6 @@ const InformationModelDetailsPage: FC<Props> = ({
       resetDatasets();
     };
   }, [location.pathname]);
-
-  useEffect(() => {
-    if (informationModel?.uri) {
-      getDataservices({
-        endpointDescription: informationModel.uri
-      });
-    }
-  }, [informationModel?.uri]);
 
   const isLoading =
     !isMounted ||
@@ -204,6 +208,19 @@ const InformationModelDetailsPage: FC<Props> = ({
       getInformationModels({ informationModelIdentifiers, size: 4 });
     }
   }, [informationModelIdentifiers.join()]);
+
+  useEffect(() => {
+    if (informationModel?.uri) {
+      getDatasetsRelations({ conformsTo: informationModel.uri });
+      getDataServicesRelations({ endpointDescription: informationModel.uri });
+      getInformationmodelsRelations({ relations: informationModel.uri });
+    }
+    return () => {
+      resetDatasetsRelations();
+      resetDataServicesRelations();
+      resetInformationModelsRelations();
+    };
+  }, [informationModel?.uri]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -431,6 +448,22 @@ const InformationModelDetailsPage: FC<Props> = ({
             </KeyValueList>
           </ContentSection>
         )}
+        {(datasetsRelations.length > 0 ||
+          dataServicesRelations.length > 0 ||
+          informationModelsRelations.length > 0) && (
+          <ContentSection
+            id="relationList"
+            title={translations.detailsPage.relationList.title.informationmodel}
+          >
+            <RelationList
+              parentIdentifier={informationModel?.uri}
+              datasets={datasetsRelations}
+              dataServices={dataServicesRelations}
+              informationModels={informationModelsRelations}
+            />
+          </ContentSection>
+        )}
+
         {keywords.length > 0 && (
           <ContentSection
             id="keywords"
@@ -471,30 +504,6 @@ const InformationModelDetailsPage: FC<Props> = ({
                       forwardedAs={RouteLink}
                     >
                       {translate(dataset.title)}
-                    </SC.Link>
-                  )
-              )}
-            </InlineList>
-          </ContentSection>
-        )}
-        {dataServices?.length > 0 && (
-          <ContentSection
-            id="dataservice-relations"
-            title={
-              translations.detailsPage.sectionTitles.informationModel
-                .dataServiceRelations
-            }
-          >
-            <InlineList column>
-              {dataServices.map(
-                dataService =>
-                  dataService.uri && (
-                    <SC.Link
-                      to={`${PATHNAME_DATA_SERVICES}/${dataService.id}`}
-                      key={`relation-${dataService.uri}`}
-                      forwardedAs={RouteLink}
-                    >
-                      {translate(dataService.title)}
                     </SC.Link>
                   )
               )}

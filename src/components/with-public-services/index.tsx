@@ -12,6 +12,7 @@ export interface Props {
   publicServicesActions: typeof actions;
   publicServicesRequiredBy: PublicService[];
   publicServicesRelatedBy: PublicService[];
+  publicServicesRelations: PublicService[];
 }
 
 const withPublicServices = (Component: ComponentType<any>) => {
@@ -29,7 +30,10 @@ const withPublicServices = (Component: ComponentType<any>) => {
     ).toJS(),
     publicServicesRelatedBy: state.PublicServicesReducer.get(
       'publicServicesRelatedBy'
-    ).toJS()
+    ).toJS(),
+    publicServicesRelations: state.PublicServicesReducer.get(
+      'publicServicesRelations'
+    )?.toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

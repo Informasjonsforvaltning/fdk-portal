@@ -19,6 +19,7 @@ import withPublicServices, {
 } from '../with-public-services';
 import withConcepts, { Props as ConceptsProps } from '../with-concepts';
 import withDatasets, { Props as DatasetsProps } from '../with-datasets';
+import withEvents, { Props as EventsProps } from '../with-events';
 
 import DetailsPage, {
   ContentSection,
@@ -26,6 +27,7 @@ import DetailsPage, {
   KeyValueList,
   KeyValueListItem
 } from '../details-page';
+import RelationList from '../relation-list';
 
 import type { Theme, PublicService } from '../../types';
 import { Entity } from '../../types/enums';
@@ -47,29 +49,38 @@ interface Props
     DatasetsProps,
     PublicServiceProps,
     PublicServicesProps,
+    EventsProps,
     RouteComponentProps<RouteParams> {}
 
 const PublicServiceDetailsPage: FC<Props> = ({
+  concepts,
+  datasets,
   publicService,
+  publicServices,
+  publicServicesRequiredBy,
+  publicServicesRelatedBy,
+  eventsRelations,
+  publicServicesRelations,
   publicServiceActions: {
     getPublicServiceRequested: getPublicService,
     resetPublicService
   },
-  publicServices,
-  publicServicesRequiredBy,
-  publicServicesRelatedBy,
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
     resetPublicServices,
     getPublicServicesRequiredByRequested: getPublicServicesRequiredBy,
     resetPublicServicesRequiredBy,
     getPublicServicesRelatedByRequested: getPublicServicesRelatedBy,
-    resetPublicServicesRelatedBy
+    resetPublicServicesRelatedBy,
+    getPublicServicesRelationsRequested: getPublicServicesRelations,
+    resetPublicServicesRelations
   },
-  concepts,
   conceptsActions: { getConceptsRequested: getConcepts },
-  datasets,
   datasetsActions: { getDatasetsRequested: getDatasets },
+  eventsActions: {
+    getEventsRelationsRequested: getEventsRelations,
+    resetEventsRelations
+  },
   match: {
     params: { publicServiceId }
   }
@@ -124,7 +135,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
   const contactPoints = publicService?.hasContactPoint || [];
-  const isDescribedAt = publicService?.isDescribedAt ?? [];
+  const datasetsUris = publicService?.isDescribedAt ?? [];
 
   const publicServiceIdentifiers = [
     ...requiredServices.map(({ uri }) => uri).filter(Boolean),
@@ -155,10 +166,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
     {} as Record<string, any>
   );
 
-  const datasetsUris = (isDescribedAt.map(({ uri }) => uri) as string[]).filter(
-    Boolean
-  );
-
   const datasetsMap = datasets?.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, any>
@@ -181,6 +188,17 @@ const PublicServiceDetailsPage: FC<Props> = ({
       getDatasets({ uris: datasetsUris, size: 1000 });
     }
   }, [datasetsUris.join()]);
+
+  useEffect(() => {
+    if (publicService?.uri) {
+      getEventsRelations({ relation: publicService.uri });
+      getPublicServicesRelations({ requiresOrRelates: publicService.uri });
+    }
+    return () => {
+      resetPublicServicesRelations();
+      resetEventsRelations();
+    };
+  }, [publicService?.uri]);
 
   const themes: Theme[] = [];
 
@@ -445,6 +463,22 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </ContentSection>
             )}
 
+            {(eventsRelations.length > 0 ||
+              publicServicesRelations.length > 0) && (
+              <ContentSection
+                id="relationList"
+                title={
+                  translations.detailsPage.relationList.title.public_service
+                }
+              >
+                <RelationList
+                  parentIdentifier={publicService.uri}
+                  events={eventsRelations}
+                  publicServices={publicServicesRelations}
+                />
+              </ContentSection>
+            )}
+
             {isClassifiedBy.length > 0 && (
               <ContentSection
                 id="concept-references"
@@ -591,7 +625,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </ContentSection>
             )}
 
-            {isDescribedAt.length > 0 && (
+            {datasetsUris.length > 0 && (
               <ContentSection
                 id="isDescribedAt"
                 title={
@@ -602,8 +636,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 entityIcon={Entity.DATASET}
               >
                 <KeyValueList>
-                  {isDescribedAt?.map(
-                    ({ uri }) =>
+                  {datasetsUris?.map(
+                    uri =>
                       uri && (
                         <KeyValueListItem
                           key={uri}
@@ -714,5 +748,6 @@ export default compose(
   withConcepts,
   withDatasets,
   withPublicService,
-  withPublicServices
+  withPublicServices,
+  withEvents
 )(PublicServiceDetailsPage);
