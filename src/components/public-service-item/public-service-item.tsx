@@ -47,13 +47,13 @@ const PublicServiceItemPure: FC<Props> = ({
       beta
     >
       <SearchHitEvents>
-        {isGroupedBy.map(uri => {
-          return (
+        {isGroupedBy.map(({ uri }) =>
+          uri ? (
             <RoundedTag key={uri} to={patchSearchQuery('event', uri)}>
               <span>{translate(eventsMap?.[uri]?.title) ?? uri}</span>
             </RoundedTag>
-          );
-        })}
+          ) : null
+        )}
       </SearchHitEvents>
     </SearchHit>
   );

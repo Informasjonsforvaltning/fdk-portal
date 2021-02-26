@@ -135,8 +135,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
   const contactPoints = publicService?.hasContactPoint || [];
-  const datasetsUris = publicService?.isDescribedAt ?? [];
-
+  const datasetsUris =
+    (publicService?.isDescribedAt
+      ?.map(({ uri }) => uri)
+      .filter(Boolean) as string[]) ?? [];
   const publicServiceIdentifiers = [
     ...requiredServices.map(({ uri }) => uri).filter(Boolean),
     ...relation.map(({ uri }) => uri).filter(Boolean)
