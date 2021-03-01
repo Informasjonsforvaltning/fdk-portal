@@ -1,12 +1,17 @@
 import React, { memo, FC, useLayoutEffect, Fragment } from 'react';
 import { compose } from 'redux';
+import { Link as RouteLink } from 'react-router-dom';
 import type { RouteComponentProps } from 'react-router-dom';
+
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
-import { PATHNAME_GUIDANCE_METADATA } from '../../../../constants/constants';
+import {
+  PATHNAME_GUIDANCE_METADATA,
+  PATHNAME_DATASET_DETAILS
+} from '../../../../constants/constants';
 
 import withOrganization, {
   Props as OrganizationProps
@@ -192,6 +197,11 @@ const DatasetPage: FC<Props> = ({
           </SC.BannerRating>
         </div>
       </SC.Banner>
+      <SC.DatasetLink>
+        <Link to={`${PATHNAME_DATASET_DETAILS}/${datasetId}`} as={RouteLink}>
+          {translations.metadataQualityPage.goToDataset}
+        </Link>
+      </SC.DatasetLink>
       <SC.Section>
         <SC.Table>
           <SC.TableHead>

@@ -692,10 +692,10 @@
       },
       "subtitle": {
         "dataset":"Datasett",
-        "dataservice":"Datatjeneste", 
-        "concept":"Begrep", 
+        "dataservice":"Datatjeneste",
+        "concept":"Begrep",
         "informationmodel":"Informasjonsmodell",
-        "public_service":"Tjeneste", 
+        "public_service":"Tjeneste",
         "event":"Hendelse"
       },
       "referenceType": "relasjonstype"
@@ -778,7 +778,8 @@
     "organisationInstitutionalSectorCode": "Institusjonell sektorkode",
     "organisationHomePage": "Hjemmeside",
     "organisationMoreInfo": "Flere opplysninger",
-    "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret"
+    "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret",
+    "goToDataset": "Gå til datasettbeskrivelse"
   },
   "publishingPage": {
     "title": "Publisere i Felles datakatalog",

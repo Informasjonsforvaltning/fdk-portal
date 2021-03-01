@@ -456,6 +456,13 @@ const Question = styled.div`
   }
 `;
 
+const DatasetLink = styled.div`
+  margin-top: ${theme.spacing('S16')};
+  & > a > * {
+    color: ${theme.colour(Colour.BLUE, 'B50')};
+  }
+`;
+
 export default {
   DatasetPage,
   BetaRibbon,
@@ -477,5 +484,6 @@ export default {
   FrequentlyAskedQuestions,
   Question,
   QuestionIcon,
-  DimensionContainer
+  DimensionContainer,
+  DatasetLink
 };
