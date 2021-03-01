@@ -569,7 +569,7 @@ const DatasetDetailsPage: FC<Props> = ({
                           referenceUri ===
                           datasetReferenceTypes.find(
                             ({ source }) => source.uri === uri
-                          )?.referenceType.uri
+                          )?.referenceType?.uri
                       )?.prefLabel
                     )}
                     value={
@@ -586,7 +586,7 @@ const DatasetDetailsPage: FC<Props> = ({
                   (
                     {
                       source: { uri },
-                      referenceType: { uri: referenceTypeUri }
+                      referenceType: { uri: referenceTypeUri } = {}
                     },
                     index
                   ) => (
