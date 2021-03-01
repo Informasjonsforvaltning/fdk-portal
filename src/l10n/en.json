@@ -694,10 +694,10 @@
       },
       "subtitle": {
         "dataset":"Dataset",
-        "dataservice":"Data service", 
-        "concept":"Concept", 
+        "dataservice":"Data service",
+        "concept":"Concept",
         "informationmodel":"Information model",
-        "public_service":"Public service", 
+        "public_service":"Public service",
         "event":"Event"
       },
       "referenceType": "relation type"
@@ -780,7 +780,8 @@
     "organisationInstitutionalSectorCode": "Institutional sector code",
     "organisationHomePage": "Home page",
     "organisationMoreInfo": "More info",
-    "organisationInEnhetsregisteret": "Information about {organizationName} in Enhetsregisteret"
+    "organisationInEnhetsregisteret": "Information about {organizationName} in Enhetsregisteret",
+    "goToDataset": "Go to dataset"
   },
   "publishingPage": {
     "title": "Publishing in Felles datakatalog",

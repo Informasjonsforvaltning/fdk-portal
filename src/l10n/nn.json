@@ -694,7 +694,7 @@
       "subtitle": {
         "dataset":"Datasett",
         "dataservice":"Datateneste",
-        "concept":"Omgrep", 
+        "concept":"Omgrep",
         "informationmodel":"Informasjonsmodell",
         "public_service":"Teneste",
         "event":"Hending"
@@ -779,7 +779,8 @@
     "organisationInstitutionalSectorCode": "Institusjonell sektorkode",
     "organisationHomePage": "Heimeside",
     "organisationMoreInfo": "Fleire opplysningar",
-    "organisationInEnhetsregisteret": "Opplysningar om {organizationName} i Enhetsregisteret"
+    "organisationInEnhetsregisteret": "Opplysningar om {organizationName} i Enhetsregisteret",
+    "goToDataset": "Gå til datasettbeskriving"
   },
   "publishingPage": {
     "title": "Publisere i Felles datakatalog",
