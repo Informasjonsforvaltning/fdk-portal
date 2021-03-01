@@ -46,7 +46,7 @@ const mapFilters = ({
     });
   }
   if (event) {
-    filters.push({ event });
+    filters.push({ event: event.split(',') });
   }
   return filters.length > 0 ? filters : undefined;
 };
