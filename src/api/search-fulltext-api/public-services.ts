@@ -16,7 +16,10 @@ const mapFilters = ({
   keywords,
   publicServiceIdentifiers,
   requiredByServiceUri,
-  relatedByServiceUri
+  relatedByServiceUri,
+  isDescribedAt,
+  isClassifiedBy,
+  requiresOrRelates
 }: any) => {
   const filters = [];
   if (id) {
@@ -77,6 +80,17 @@ const mapFilters = ({
   if (relatedByServiceUri) {
     filters.push({ related_by_service: relatedByServiceUri });
   }
+  if (isDescribedAt) {
+    filters.push({ 'isDescribedAt.uri.keyword': isDescribedAt });
+  }
+  if (isClassifiedBy) {
+    filters.push({ 'isClassifiedBy.uri.keyword': isClassifiedBy });
+  }
+
+  if (requiresOrRelates) {
+    filters.push({ requires_or_relates: requiresOrRelates });
+  }
+
   return filters.length > 0 ? filters : undefined;
 };
 

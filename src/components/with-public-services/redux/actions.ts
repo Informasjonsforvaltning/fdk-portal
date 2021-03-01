@@ -10,7 +10,11 @@ import {
   GET_PUBLIC_SERVICES_RELATED_BY_REQUESTED,
   GET_PUBLIC_SERVICES_RELATED_BY_SUCCEEDED,
   GET_PUBLIC_SERVICES_RELATED_BY_FAILED,
-  RESET_PUBLIC_SERVICES_RELATED_BY
+  RESET_PUBLIC_SERVICES_RELATED_BY,
+  GET_PUBLIC_SERVICES_RELATIONS_REQUESTED,
+  GET_PUBLIC_SERVICES_RELATIONS_SUCCEEDED,
+  GET_PUBLIC_SERVICES_RELATIONS_FAILED,
+  RESET_PUBLIC_SERVICES_RELATIONS
 } from './action-types';
 
 import type { PublicService } from '../../../types';
@@ -26,6 +30,9 @@ interface GetPublicServicesParams {
   publicServiceIdentifiers?: string[];
   requiredByServiceUri?: string;
   relatedByServiceUri?: string;
+  isDescribedAt?: string;
+  isClassifiedBy?: string;
+  requiresOrRelates?: string;
 }
 
 export function getPublicServicesRequested(params: GetPublicServicesParams) {
@@ -132,5 +139,42 @@ export function getPublicServicesRelatedByFailed(message: string) {
 export function resetPublicServicesRelatedBy() {
   return {
     type: RESET_PUBLIC_SERVICES_RELATED_BY
+  };
+}
+
+export function getPublicServicesRelationsRequested(
+  params: GetPublicServicesParams
+) {
+  return {
+    type: GET_PUBLIC_SERVICES_RELATIONS_REQUESTED,
+    payload: {
+      params
+    }
+  };
+}
+
+export function getPublicServicesRelationsSucceeded(
+  publicServiceData: PublicService[]
+) {
+  return {
+    type: GET_PUBLIC_SERVICES_RELATIONS_SUCCEEDED,
+    payload: {
+      publicServiceData
+    }
+  };
+}
+
+export function getPublicServicesRelationsFailed(message: string) {
+  return {
+    type: GET_PUBLIC_SERVICES_RELATIONS_FAILED,
+    payload: {
+      message
+    }
+  };
+}
+
+export function resetPublicServicesRelations() {
+  return {
+    type: RESET_PUBLIC_SERVICES_RELATIONS
   };
 }

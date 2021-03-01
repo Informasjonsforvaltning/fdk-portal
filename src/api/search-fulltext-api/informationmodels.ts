@@ -16,7 +16,8 @@ const mapFilters = ({
   conceptIdentifiers,
   informationModelIdentifiers,
   last_x_days,
-  keywords
+  keywords,
+  relations
 }: any) => {
   const filters = [];
 
@@ -59,6 +60,10 @@ const mapFilters = ({
 
   if (last_x_days) {
     filters.push({ last_x_days });
+  }
+
+  if (relations) {
+    filters.push({ informationmodel_relation: relations });
   }
 
   return filters.length > 0 ? filters : undefined;

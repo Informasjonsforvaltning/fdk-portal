@@ -77,6 +77,8 @@
   "nap": "The National Access Point for Transport Data",
   "language": "Language",
   "eventType": "Event type",
+  "businessEvent": "Business event",
+  "lifeEvent": "Life event",
   "dctType": "Type",
   "industryCode": "Industry code",
   "requires": "Requires",
@@ -680,6 +682,25 @@
         "usage": "Event usage"
 
       }
+    },
+    "relationList": {
+      "title": {
+        "dataset": "Others relating to this dataset",
+        "dataservice": "Others relating to this data service",
+        "concept": "Others relating to this concept",
+        "informationmodel": "Others relating to this information model",
+        "public_service": "Others relating to this public service",
+        "event": "Others relating to this event"
+      },
+      "subtitle": {
+        "dataset":"Dataset",
+        "dataservice":"Data service",
+        "concept":"Concept",
+        "informationmodel":"Information model",
+        "public_service":"Public service",
+        "event":"Event"
+      },
+      "referenceType": "relation type"
     }
   },
   "metadataQualityPage": {
@@ -759,7 +780,8 @@
     "organisationInstitutionalSectorCode": "Institutional sector code",
     "organisationHomePage": "Home page",
     "organisationMoreInfo": "More info",
-    "organisationInEnhetsregisteret": "Information about {organizationName} in Enhetsregisteret"
+    "organisationInEnhetsregisteret": "Information about {organizationName} in Enhetsregisteret",
+    "goToDataset": "Go to dataset"
   },
   "publishingPage": {
     "title": "Publishing in Felles datakatalog",

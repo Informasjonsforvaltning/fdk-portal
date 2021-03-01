@@ -77,6 +77,8 @@
   "nap": "Transportportalen",
   "language": "Språk",
   "eventType": "Hendelsestype",
+  "businessEvent": "Næring",
+  "lifeEvent": "Innbygger",
   "dctType": "Type",
   "industryCode": "Næringskode",
   "requires": "Krever",
@@ -678,6 +680,25 @@
         "relatedServices": "Relaterte tjenester",
         "usage": "Bruk av hendelsen"
       }
+    },
+    "relationList": {
+      "title": {
+        "dataset": "Andre som relaterer til dette datasettet",
+        "dataservice": "Andre som relaterer til denne datatjenesten",
+        "concept": "Andre som relaterer til dette begrepet",
+        "informationmodel": "Andre som relaterer til denne informasjonsmodellen",
+        "public_service": "Andre som relaterer til denne tjenesten",
+        "event": "Andre som relaterer til denne hendelsen"
+      },
+      "subtitle": {
+        "dataset":"Datasett",
+        "dataservice":"Datatjeneste",
+        "concept":"Begrep",
+        "informationmodel":"Informasjonsmodell",
+        "public_service":"Tjeneste",
+        "event":"Hendelse"
+      },
+      "referenceType": "relasjonstype"
     }
   },
   "metadataQualityPage": {
@@ -757,7 +778,8 @@
     "organisationInstitutionalSectorCode": "Institusjonell sektorkode",
     "organisationHomePage": "Hjemmeside",
     "organisationMoreInfo": "Flere opplysninger",
-    "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret"
+    "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret",
+    "goToDataset": "Gå til datasettbeskrivelse"
   },
   "publishingPage": {
     "title": "Publisere i Felles datakatalog",

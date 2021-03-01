@@ -6,10 +6,16 @@ const mapSorting = ({ sortfield }: any) =>
     ? { field: 'harvest.firstHarvested', direction: 'desc' }
     : undefined;
 
-const mapFilters = ({ id }: any) => {
+const mapFilters = ({ id, relation }: any) => {
   const filters = [];
   if (id) {
     filters.push({ _id: id });
+  }
+
+  if (relation) {
+    filters.push({
+      'relation.keyword': relation
+    });
   }
 
   return filters.length > 0 ? filters : undefined;
