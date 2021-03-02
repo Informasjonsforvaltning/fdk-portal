@@ -22,8 +22,9 @@ import {
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import { FilterBox } from '../../../components/filter-box/filter-box.component';
 import { getConfig } from '../../../config';
-import type { Event } from '../../../types';
+import type { Event, EventType } from '../../../types';
 import { keyPrefixForest } from '../../../lib/key-prefix-forest';
+import { eventTypesKeyPrefixForest } from '../../../lib/event-type-key-prefix-forest';
 
 interface Props extends RouteComponentProps {
   themesItems?: any;
@@ -32,6 +33,7 @@ interface Props extends RouteComponentProps {
   mediaTypes: any;
   aggregations: any;
   events?: Event[];
+  eventTypes?: Record<string, EventType>;
 }
 
 const FiltersPure: FC<Props> = ({
@@ -42,7 +44,8 @@ const FiltersPure: FC<Props> = ({
   aggregations = {},
   history,
   location: { pathname } = {},
-  events = []
+  events = [],
+  eventTypes = {}
 }) => {
   const [filterOpen, setFilterOpen] = useState(false);
 
@@ -55,7 +58,8 @@ const FiltersPure: FC<Props> = ({
     spatial: spatialParam,
     provenance: provenanceParam,
     format: formatParam,
-    isGroupedBy: isGroupedByParam
+    isGroupedBy: isGroupedByParam,
+    eventType: eventTypeParam
   } = searchParams;
 
   const handleFilterThemes = ({
@@ -118,6 +122,12 @@ const FiltersPure: FC<Props> = ({
     target: { value, checked }
   }: ChangeEvent<HTMLInputElement>) => {
     setMultiselectFilterValue(history, location, 'event', value, checked);
+  };
+
+  const handleFilterEventType = ({
+    target: { value, checked }
+  }: ChangeEvent<HTMLInputElement>) => {
+    setMultiselectFilterValue(history, location, 'eventType', value, checked);
   };
 
   const getFilters = () => {
@@ -280,6 +290,16 @@ const FiltersPure: FC<Props> = ({
       case PATHNAME_PUBLIC_SERVICES:
         return (
           <>
+            <FilterTree
+              title={localization.facet.events}
+              aggregationsForest={eventTypesKeyPrefixForest(
+                aggregations.associatedBroaderTypesByEvents.buckets,
+                eventTypes
+              )}
+              handleFiltering={handleFilterEventType}
+              activeFilter={eventTypeParam?.toString()}
+              referenceDataItems={eventTypes}
+            />
             <FilterBox
               title={localization.facet.lifeEvents}
               filter={aggregations.isGroupedBy}
