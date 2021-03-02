@@ -358,6 +358,12 @@ export interface Event {
   specialized_type?: SpecializedEventType;
 }
 
+export interface EventType {
+  uri: string;
+  prefLabel: Partial<TextLanguage>;
+  broader?: string[];
+}
+
 export interface SkosConcept {
   id: string;
   uri: string;
