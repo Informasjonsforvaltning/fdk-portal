@@ -192,7 +192,8 @@
     },
     "provenance": "Provenance",
     "format": "Format",
-    "lifeEvents": "Life events"
+    "lifeEvents": "Life events",
+    "events": "Events"
   },
   "result": {
     "dataset": "Dataset",

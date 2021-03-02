@@ -33,7 +33,7 @@ import SortButtons from '../sort-buttons';
 
 import SC from './styled';
 
-import type { Entity as EntityType, Concept } from '../../../types';
+import type { Entity as EntityType, Concept, EventType } from '../../../types';
 import { FeedType } from '../../../types/enums';
 import { PATHNAME_DATASETS } from '../../../constants/constants';
 
@@ -94,6 +94,11 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     }
   }, []);
 
+  const eventTypesMap = eventTypes?.reduce(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
+    {} as Record<string, EventType>
+  );
+
   const searchParams = parseSearchParams(location);
   const path = location.pathname;
   const { page: pageSearchParam = 0 } = searchParams;
@@ -123,6 +128,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 losItems={getLosByKeys(los)}
                 mediaTypes={mediatypes}
                 events={events}
+                eventTypes={eventTypesMap}
               />
               <CompareList
                 conceptsCompareList={compareConceptList}
