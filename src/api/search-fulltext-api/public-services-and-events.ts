@@ -12,7 +12,8 @@ const mapFilters = ({
   uri,
   last_x_days,
   orgPath,
-  event
+  event,
+  eventType
 }: any) => {
   const filters = [];
   if (id) {
@@ -47,6 +48,9 @@ const mapFilters = ({
   }
   if (event) {
     filters.push({ event: event.split(',') });
+  }
+  if (eventType) {
+    filters.push({ eventType: eventType.split(',') });
   }
   return filters.length > 0 ? filters : undefined;
 };

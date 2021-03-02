@@ -21,7 +21,8 @@ function* getPublicServicesAndEventsRequested({
       orgPath,
       event,
       keywords,
-      publicServiceAndEventIdentifiers
+      publicServiceAndEventIdentifiers,
+      eventType
     }
   }
 }: ReturnType<typeof actions.getPublicServicesAndEventsRequested>) {
@@ -36,7 +37,8 @@ function* getPublicServicesAndEventsRequested({
         orgPath,
         event,
         keywords,
-        publicServiceAndEventIdentifiers
+        publicServiceAndEventIdentifiers,
+        eventType
       })
     );
 
