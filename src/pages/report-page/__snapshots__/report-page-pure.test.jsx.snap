@@ -34,7 +34,7 @@ exports[`should render ReportPagePure correctly 1`] = `
         />
         <FilterTree
           activeFilter={null}
-          aggregations={Array []}
+          aggregationsForest={Array []}
           collapseItems={false}
           handleFiltering={[Function]}
           referenceDataItems={Object {}}
