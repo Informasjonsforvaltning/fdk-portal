@@ -21,6 +21,7 @@ import TabContent, { Variant } from '../../components/tab/tab.component';
 import { FilterTree } from '../search-page/filter-tree/filter-tree.component';
 import { setFilter } from '../search-page/search-location-helper';
 import { getTranslateText as translate } from '../../lib/translateText';
+import { keyPrefixForest } from '../../lib/key-prefix-forest';
 
 export function ReportPagePure({
   location,
@@ -108,7 +109,7 @@ export function ReportPagePure({
 
             <FilterTree
               title={localization.organization}
-              aggregations={orgPaths[activeTab]}
+              aggregationsForest={keyPrefixForest(orgPaths[activeTab])}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPath}
               referenceDataItems={publishers}

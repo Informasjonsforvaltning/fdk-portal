@@ -8,7 +8,6 @@ import { FilterOption } from '../../../components/filter-option/filter-option.co
 import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
 import './filter-tree.scss';
-import { keyPrefixForest } from '../../../lib/key-prefix-forest';
 
 import CollapseTextIcon from '../../../img/icon-collapse-text-sm.svg';
 import ExpandTextIcon from '../../../img/icon-expand-text-sm.svg';
@@ -179,7 +178,7 @@ const mainTree = ({
 export const FilterTree = props => {
   const {
     title,
-    aggregations,
+    aggregationsForest,
     handleFiltering,
     activeFilter,
     referenceDataItems,
@@ -214,9 +213,7 @@ export const FilterTree = props => {
     }
   };
 
-  const aggregationsForest = keyPrefixForest(aggregations);
-
-  if (Array.isArray(aggregations) && aggregations.length > 0) {
+  if (Array.isArray(aggregationsForest) && aggregationsForest.length > 0) {
     return (
       <div className="fdk-filter-tree">
         <div className="fdk-panel__header">
@@ -282,7 +279,7 @@ export const FilterTree = props => {
 
 FilterTree.defaultProps = {
   title: null,
-  aggregations: null,
+  aggregationsForest: null,
   activeFilter: null,
   referenceDataItems: null,
   collapseItems: false
@@ -290,7 +287,7 @@ FilterTree.defaultProps = {
 
 FilterTree.propTypes = {
   title: PropTypes.string,
-  aggregations: PropTypes.array,
+  aggregationsForest: PropTypes.array,
   handleFiltering: PropTypes.func.isRequired,
   activeFilter: PropTypes.string,
   referenceDataItems: PropTypes.object,
