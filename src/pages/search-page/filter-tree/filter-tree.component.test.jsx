@@ -5,7 +5,7 @@ import { FilterTree } from './filter-tree.component';
 import publishers from '../../../../test/fixtures/publishers';
 import { normalizeAggregations } from '../../../lib/normalizeAggregations';
 import datasetsApiResponse from './__fixtures/datasetsApiResponse.json';
-import { keyPrefixForest } from "../../../lib/key-prefix-forest";
+import { keyPrefixForest } from '../../../lib/key-prefix-forest';
 
 const normalizedDatasetsApiResponse = normalizeAggregations(
   datasetsApiResponse
