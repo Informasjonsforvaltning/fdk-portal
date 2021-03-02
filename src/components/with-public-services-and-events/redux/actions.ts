@@ -16,6 +16,7 @@ interface GetPublicServicesAndEventsParams {
   event?: string;
   keywords?: string;
   publicServiceAndEventIdentifiers?: string[];
+  eventType?: string;
 }
 
 export function getPublicServicesAndEventsRequested(
