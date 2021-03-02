@@ -324,7 +324,7 @@ export interface PublicService {
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   isDescribedAt?: Partial<PublicService>[];
-  isGroupedBy?: Partial<PublicService>[];
+  isGroupedBy?: string[];
   hasCompetentAuthority?: Partial<Publisher>[];
   harvest?: Partial<Harvest>;
   keyword?: Partial<TextLanguage>[];
