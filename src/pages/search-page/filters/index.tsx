@@ -22,7 +22,7 @@ import {
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import { FilterBox } from '../../../components/filter-box/filter-box.component';
 import { getConfig } from '../../../config';
-import type { Event, EventType } from '../../../types';
+import type { EventType } from '../../../types';
 import { keyPrefixForest } from '../../../lib/key-prefix-forest';
 import { eventTypesKeyPrefixForest } from '../../../lib/event-type-key-prefix-forest';
 
@@ -32,7 +32,6 @@ interface Props extends RouteComponentProps {
   losItems?: any;
   mediaTypes: any;
   aggregations: any;
-  events?: Event[];
   eventTypes?: Record<string, EventType>;
 }
 
@@ -44,7 +43,6 @@ const FiltersPure: FC<Props> = ({
   aggregations = {},
   history,
   location: { pathname } = {},
-  events = [],
   eventTypes = {}
 }) => {
   const [filterOpen, setFilterOpen] = useState(false);
@@ -58,7 +56,6 @@ const FiltersPure: FC<Props> = ({
     spatial: spatialParam,
     provenance: provenanceParam,
     format: formatParam,
-    isGroupedBy: isGroupedByParam,
     eventType: eventTypeParam
   } = searchParams;
 
@@ -116,12 +113,6 @@ const FiltersPure: FC<Props> = ({
     target: { value, checked }
   }: ChangeEvent<HTMLInputElement>) => {
     setMultiselectFilterValue(history, location, 'losTheme', value, checked);
-  };
-
-  const handleFilterIsGroupedBy = ({
-    target: { value, checked }
-  }: ChangeEvent<HTMLInputElement>) => {
-    setMultiselectFilterValue(history, location, 'event', value, checked);
   };
 
   const handleFilterEventType = ({
@@ -300,13 +291,6 @@ const FiltersPure: FC<Props> = ({
               activeFilter={eventTypeParam?.toString()}
               referenceDataItems={eventTypes}
             />
-            <FilterBox
-              title={localization.facet.lifeEvents}
-              filter={aggregations.isGroupedBy}
-              onClick={handleFilterIsGroupedBy}
-              activeFilter={isGroupedByParam}
-              referenceDataItems={keyBy(events, 'uri')}
-            />
             <FilterTree
               title={localization.provider}
               aggregationsForest={keyPrefixForest(
@@ -333,7 +317,6 @@ const FiltersPure: FC<Props> = ({
         themesItems={themesItems}
         publishers={publishers}
         losItems={losItems}
-        events={events}
         eventTypes={eventTypes}
       />
       <SC.Filters>{getFilters()}</SC.Filters>

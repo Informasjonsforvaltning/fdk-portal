@@ -17,9 +17,6 @@ import withOrganizations, {
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../components/with-reference-data';
-import withEvents, {
-  Props as EventsProps
-} from '../../../components/with-events';
 import withEventTypes, {
   Props as EventTypesProps
 } from '../../../components/with-event-types';
@@ -50,7 +47,6 @@ interface ExternalProps {
 interface Props
   extends ExternalProps,
     OrganizationsProps,
-    EventsProps,
     EventTypesProps,
     RouteComponentProps<any>,
     ReferenceDataProps {}
@@ -68,8 +64,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
   referenceData: { los = [], themes = [], mediatypes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  events,
-  eventsActions: { getEventsRequested: getEvents },
   eventTypes,
   eventTypesActions: { getEventTypesRequested: getEventTypes }
 }) => {
@@ -85,9 +79,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     }
     if (organizations.length === 0) {
       getOrganizations();
-    }
-    if (events.length === 0) {
-      getEvents({ size: 1000 });
     }
     if (eventTypes.length === 0) {
       getEventTypes();
@@ -127,7 +118,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 publishers={keyBy(organizations, 'orgPath')}
                 losItems={getLosByKeys(los)}
                 mediaTypes={mediatypes}
-                events={events}
                 eventTypes={eventTypesMap}
               />
               <CompareList
@@ -192,7 +182,6 @@ export default compose<FC<ExternalProps>>(
   memo,
   withOrganizations,
   withReferenceData,
-  withEvents,
   withEventTypes,
   withRouter
 )(ResultsPage);
