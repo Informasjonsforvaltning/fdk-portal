@@ -69,7 +69,8 @@ export enum Filter {
   PAGE = 'page',
   SORTFIELD = 'sortfield',
   CATALOGNAME = 'catalog_name',
-  EVENT = 'event'
+  EVENT = 'event',
+  EVENT_TYPE = 'eventType'
 }
 
 export enum RatingCategory {

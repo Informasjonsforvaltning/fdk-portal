@@ -334,6 +334,7 @@ const FiltersPure: FC<Props> = ({
         publishers={publishers}
         losItems={losItems}
         events={events}
+        eventTypes={eventTypes}
       />
       <SC.Filters>{getFilters()}</SC.Filters>
     </>
