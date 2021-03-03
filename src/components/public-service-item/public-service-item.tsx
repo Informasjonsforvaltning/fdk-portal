@@ -1,19 +1,19 @@
 import React, { FC, useEffect } from 'react';
 import { compose } from 'redux';
 
-import { PublicService } from '../../types';
+import { EventType, PublicService } from '../../types';
 import { SearchTypes } from '../../types/enums';
 import { SearchHit, SearchHitEvents } from '../search-hit/search-hit';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 import { getTranslateText as translate } from '../../lib/translateText';
-import withEvents, { Props as EventsProps } from '../with-events';
+import withEventTypes, { Props as EventTypesProps } from '../with-event-types';
 
 interface ExternalProps {
   publicService: Partial<PublicService>;
 }
 
-interface Props extends ExternalProps, EventsProps {}
+interface Props extends ExternalProps, EventTypesProps {}
 
 const PublicServiceItemPure: FC<Props> = ({
   publicService: {
@@ -21,20 +21,20 @@ const PublicServiceItemPure: FC<Props> = ({
     title = {},
     description = {},
     hasCompetentAuthority = [],
-    isGroupedBy = []
+    associatedBroaderTypesByEvents = []
   },
-  events,
-  eventsActions: { getEventsRequested: getEvents }
+  eventTypes,
+  eventTypesActions: { getEventTypesRequested: getEventTypes }
 }) => {
   useEffect(() => {
-    if (events.length === 0) {
-      getEvents({ size: 1000 });
+    if (eventTypes.length === 0) {
+      getEventTypes();
     }
   }, []);
 
-  const eventsMap = events?.reduce(
+  const eventTypesMap = eventTypes?.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
-    {} as Record<string, any>
+    {} as Record<string, EventType>
   );
 
   return (
@@ -47,10 +47,10 @@ const PublicServiceItemPure: FC<Props> = ({
       beta
     >
       <SearchHitEvents>
-        {isGroupedBy.map(uri =>
+        {associatedBroaderTypesByEvents.map(uri =>
           uri ? (
-            <RoundedTag key={uri} to={patchSearchQuery('event', uri)}>
-              <span>{translate(eventsMap?.[uri]?.title) ?? uri}</span>
+            <RoundedTag key={uri} to={patchSearchQuery('eventType', uri)}>
+              <span>{translate(eventTypesMap?.[uri]?.prefLabel) ?? uri}</span>
             </RoundedTag>
           ) : null
         )}
@@ -59,6 +59,6 @@ const PublicServiceItemPure: FC<Props> = ({
   );
 };
 
-export const PublicServiceItem = compose<FC<ExternalProps>>(withEvents)(
+export const PublicServiceItem = compose<FC<ExternalProps>>(withEventTypes)(
   PublicServiceItemPure
 );

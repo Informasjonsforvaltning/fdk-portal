@@ -343,6 +343,7 @@ export interface PublicService {
   hasCost?: PublicServiceCost[];
   relation?: PublicService[];
   hasContactPoint?: PublicServiceContactPoint[];
+  associatedBroaderTypesByEvents?: string[];
 }
 export interface Event {
   id: string;
