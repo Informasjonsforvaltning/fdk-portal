@@ -87,7 +87,7 @@ const DatasetDetailsPage: FC<Props> = ({
     resetDataServicesRelations
   },
   publicServicesActions: {
-    getPublicServicesRequested: getPublicServicesRelations,
+    getPublicServicesRelationsRequested: getPublicServicesRelations,
     resetPublicServicesRelations
   },
   match: {
