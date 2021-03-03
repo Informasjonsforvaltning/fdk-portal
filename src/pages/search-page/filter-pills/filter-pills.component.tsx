@@ -16,7 +16,7 @@ import {
 } from '../search-location-helper';
 
 import SC from './styled';
-import type { EuTheme, LosTheme, Event } from '../../../types';
+import type { EuTheme, LosTheme, Event, EventType } from '../../../types';
 import { Filter } from '../../../types/enums';
 
 interface ThemesItems {
@@ -32,6 +32,7 @@ interface Props extends RouteComponentProps {
   losItems: LosThemeItems;
   publishers: any;
   events: Event[];
+  eventTypes?: Record<string, EventType>;
 }
 
 interface ReferenceDataItems {
@@ -69,6 +70,7 @@ const getFilterLabel = (
         filterValue
       );
     case Filter.LOS:
+    case Filter.EVENT_TYPE:
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'prefLabel'])) ||
         filterValue
@@ -113,7 +115,8 @@ const FilterPillsPure: FC<Props> = ({
   themesItems,
   publishers,
   losItems,
-  events
+  events,
+  eventTypes = {}
 }) => {
   if (!isFilterNotEmpty(location)) {
     return null;
@@ -125,7 +128,8 @@ const FilterPillsPure: FC<Props> = ({
     [Filter.THEME]: themesItems,
     [Filter.LOS]: losItems,
     [Filter.ORGPATH]: publishers,
-    [Filter.EVENT]: keyBy(events, 'uri')
+    [Filter.EVENT]: keyBy(events, 'uri'),
+    [Filter.EVENT_TYPE]: eventTypes
   };
 
   return (
