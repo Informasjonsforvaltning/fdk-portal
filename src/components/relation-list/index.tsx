@@ -55,14 +55,14 @@ const renderReferenceString = (
 ) => {
   if (parentIdentifier) {
     const referenceTypes = references?.reduce(
-      (previous, { source, referenceType }) => {
+      (previous, { source = {}, referenceType = {} }) => {
         return source?.uri === parentIdentifier && referenceType?.prefLabel
           ? [...previous, translate(referenceType.prefLabel).toLowerCase()]
           : previous;
       },
       [] as string[]
     );
-    return referenceTypes.length > 0
+    return referenceTypes?.length > 0
       ? `  (${
           translations.detailsPage.relationList.referenceType
         }: ${referenceTypes.join(', ')})`
