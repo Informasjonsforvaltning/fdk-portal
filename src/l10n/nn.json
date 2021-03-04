@@ -192,7 +192,8 @@
     },
     "provenance": "Opphav",
     "format": "Format",
-    "lifeEvents": "Livshendelser"
+    "lifeEvents": "Livshendelser",
+    "events": "Hendingar"
   },
   "result": {
     "dataset": "Datasett",

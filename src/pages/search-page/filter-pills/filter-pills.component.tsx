@@ -2,7 +2,6 @@ import React, { FC, memo } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import capitalize from 'lodash/capitalize';
 import get from 'lodash/get';
-import keyBy from 'lodash/keyBy';
 
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { omit } from '../../../lib/omit';
@@ -16,7 +15,7 @@ import {
 } from '../search-location-helper';
 
 import SC from './styled';
-import type { EuTheme, LosTheme, Event } from '../../../types';
+import type { EuTheme, LosTheme, EventType } from '../../../types';
 import { Filter } from '../../../types/enums';
 
 interface ThemesItems {
@@ -31,7 +30,7 @@ interface Props extends RouteComponentProps {
   themesItems: ThemesItems;
   losItems: LosThemeItems;
   publishers: any;
-  events: Event[];
+  eventTypes?: Record<string, EventType>;
 }
 
 interface ReferenceDataItems {
@@ -63,12 +62,12 @@ const getFilterLabel = (
       );
     }
     case Filter.THEME:
-    case Filter.EVENT:
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
         filterValue
       );
     case Filter.LOS:
+    case Filter.EVENT_TYPE:
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'prefLabel'])) ||
         filterValue
@@ -113,7 +112,7 @@ const FilterPillsPure: FC<Props> = ({
   themesItems,
   publishers,
   losItems,
-  events
+  eventTypes = {}
 }) => {
   if (!isFilterNotEmpty(location)) {
     return null;
@@ -125,7 +124,7 @@ const FilterPillsPure: FC<Props> = ({
     [Filter.THEME]: themesItems,
     [Filter.LOS]: losItems,
     [Filter.ORGPATH]: publishers,
-    [Filter.EVENT]: keyBy(events, 'uri')
+    [Filter.EVENT_TYPE]: eventTypes
   };
 
   return (

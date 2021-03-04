@@ -343,6 +343,7 @@ export interface PublicService {
   hasCost?: PublicServiceCost[];
   relation?: PublicService[];
   hasContactPoint?: PublicServiceContactPoint[];
+  associatedBroaderTypesByEvents?: string[];
 }
 export interface Event {
   id: string;
@@ -356,6 +357,12 @@ export interface Event {
   harvest?: Partial<Harvest>;
   relation?: string[];
   specialized_type?: SpecializedEventType;
+}
+
+export interface EventType {
+  uri: string;
+  prefLabel: Partial<TextLanguage>;
+  broader?: string[];
 }
 
 export interface SkosConcept {

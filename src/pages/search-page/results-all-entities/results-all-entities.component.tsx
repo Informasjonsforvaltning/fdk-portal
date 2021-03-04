@@ -17,9 +17,9 @@ import withOrganizations, {
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../components/with-reference-data';
-import withEvents, {
-  Props as EventsProps
-} from '../../../components/with-events';
+import withEventTypes, {
+  Props as EventTypesProps
+} from '../../../components/with-event-types';
 
 import SearchEntities from '../../../components/search-entities/search-entities.component';
 import EmptyHits from '../../../components/empty-hits/empty.component';
@@ -30,7 +30,7 @@ import SortButtons from '../sort-buttons';
 
 import SC from './styled';
 
-import type { Entity as EntityType, Concept } from '../../../types';
+import type { Entity as EntityType, Concept, EventType } from '../../../types';
 import { FeedType } from '../../../types/enums';
 import { PATHNAME_DATASETS } from '../../../constants/constants';
 
@@ -47,7 +47,7 @@ interface ExternalProps {
 interface Props
   extends ExternalProps,
     OrganizationsProps,
-    EventsProps,
+    EventTypesProps,
     RouteComponentProps<any>,
     ReferenceDataProps {}
 
@@ -64,8 +64,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
   referenceData: { los = [], themes = [], mediatypes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  events,
-  eventsActions: { getEventsRequested: getEvents }
+  eventTypes,
+  eventTypesActions: { getEventTypesRequested: getEventTypes }
 }) => {
   useEffect(() => {
     if (los.length === 0) {
@@ -80,10 +80,15 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     if (organizations.length === 0) {
       getOrganizations();
     }
-    if (events.length === 0) {
-      getEvents({ size: 1000 });
+    if (eventTypes.length === 0) {
+      getEventTypes();
     }
   }, []);
+
+  const eventTypesMap = eventTypes?.reduce(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
+    {} as Record<string, EventType>
+  );
 
   const searchParams = parseSearchParams(location);
   const path = location.pathname;
@@ -113,7 +118,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 publishers={keyBy(organizations, 'orgPath')}
                 losItems={getLosByKeys(los)}
                 mediaTypes={mediatypes}
-                events={events}
+                eventTypes={eventTypesMap}
               />
               <CompareList
                 conceptsCompareList={compareConceptList}
@@ -177,6 +182,6 @@ export default compose<FC<ExternalProps>>(
   memo,
   withOrganizations,
   withReferenceData,
-  withEvents,
+  withEventTypes,
   withRouter
 )(ResultsPage);
