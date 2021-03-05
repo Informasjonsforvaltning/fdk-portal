@@ -15,7 +15,8 @@ export const FilterOption = props => {
     onClick,
     active,
     referenceDataItems,
-    displayClass
+    displayClass,
+    capitalize
   } = props;
   const optionLabel = labelRaw || label;
 
@@ -43,7 +44,8 @@ export const FilterOption = props => {
   }
   if (textLabel && textLabel === textLabel.toUpperCase()) {
     textLabel =
-      localization[textLabel.toLowerCase()] || `${_capitalize(textLabel)}`;
+      localization[textLabel.toLowerCase()] ||
+      (capitalize ? `${_capitalize(textLabel)}` : textLabel);
   }
 
   const id = encodeURIComponent(itemKey + value);
@@ -88,7 +90,8 @@ FilterOption.defaultProps = {
   count: null,
   active: null,
   referenceDataItems: null,
-  displayClass: null
+  displayClass: null,
+  capitalize: true
 };
 
 FilterOption.propTypes = {
@@ -100,5 +103,6 @@ FilterOption.propTypes = {
   onClick: PropTypes.func.isRequired,
   active: PropTypes.bool,
   referenceDataItems: PropTypes.object,
-  displayClass: PropTypes.string
+  displayClass: PropTypes.string,
+  capitalize: PropTypes.bool
 };
