@@ -43,6 +43,7 @@ exports[`should render FilterBox correctly 1`] = `
         <div>
           <FilterOption
             active={false}
+            capitalize={true}
             count={104}
             displayClass={null}
             itemKey={0}
@@ -73,6 +74,7 @@ exports[`should render FilterBox correctly 1`] = `
           />
           <FilterOption
             active={false}
+            capitalize={true}
             count={11}
             displayClass={null}
             itemKey={0}
@@ -103,6 +105,7 @@ exports[`should render FilterBox correctly 1`] = `
           />
           <FilterOption
             active={false}
+            capitalize={true}
             count={8}
             displayClass={null}
             itemKey={0}
@@ -133,6 +136,7 @@ exports[`should render FilterBox correctly 1`] = `
           />
           <FilterOption
             active={false}
+            capitalize={true}
             count={7}
             displayClass={null}
             itemKey={0}
@@ -163,6 +167,7 @@ exports[`should render FilterBox correctly 1`] = `
           />
           <FilterOption
             active={false}
+            capitalize={true}
             count={1}
             displayClass={null}
             itemKey={0}
@@ -212,6 +217,7 @@ exports[`should render FilterBox correctly 1`] = `
               <div>
                 <FilterOption
                   active={false}
+                  capitalize={true}
                   count={1}
                   displayClass={null}
                   itemKey={0}
@@ -305,6 +311,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
         <div>
           <FilterOption
             active={true}
+            capitalize={true}
             count={104}
             displayClass={null}
             itemKey={0}
@@ -335,6 +342,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
           />
           <FilterOption
             active={false}
+            capitalize={true}
             count={11}
             displayClass={null}
             itemKey={0}
@@ -365,6 +373,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
           />
           <FilterOption
             active={false}
+            capitalize={true}
             count={8}
             displayClass={null}
             itemKey={0}
@@ -395,6 +404,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
           />
           <FilterOption
             active={false}
+            capitalize={true}
             count={7}
             displayClass={null}
             itemKey={0}
@@ -425,6 +435,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
           />
           <FilterOption
             active={false}
+            capitalize={true}
             count={1}
             displayClass={null}
             itemKey={0}
@@ -474,6 +485,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
               <div>
                 <FilterOption
                   active={false}
+                  capitalize={true}
                   count={1}
                   displayClass={null}
                   itemKey={0}

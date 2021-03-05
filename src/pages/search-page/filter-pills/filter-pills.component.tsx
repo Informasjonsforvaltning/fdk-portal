@@ -15,22 +15,15 @@ import {
 } from '../search-location-helper';
 
 import SC from './styled';
-import type { EuTheme, LosTheme, EventType } from '../../../types';
+import type { EuTheme, LosTheme, EventType, MediaType } from '../../../types';
 import { Filter } from '../../../types/enums';
 
-interface ThemesItems {
-  [key: string]: Partial<EuTheme>;
-}
-
-interface LosThemeItems {
-  [key: string]: Partial<LosTheme>;
-}
-
 interface Props extends RouteComponentProps {
-  themesItems: ThemesItems;
-  losItems: LosThemeItems;
+  themesItems: Record<string, Partial<EuTheme>>;
+  losItems: Record<string, Partial<LosTheme>>;
   publishers: any;
   eventTypes?: Record<string, EventType>;
+  mediaTypes?: Record<string, Partial<MediaType>>;
 }
 
 interface ReferenceDataItems {
@@ -56,7 +49,7 @@ const getFilterLabel = (
         return capitalize(filterValue.replace(/^\/|\/$/g, ''));
       }
       return (
-        localization.facet.publishers[name] ||
+        localization.facet.publishers[filterValue.replace(/^\/|\/$/g, '')] ||
         getTranslateText(referencedItem?.prefLabel) ||
         capitalize(referencedItem?.name)
       );
@@ -71,6 +64,12 @@ const getFilterLabel = (
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'prefLabel'])) ||
         filterValue
+      );
+    case Filter.FORMAT:
+      return (
+        referenceDataItems.find(
+          ({ code }: { code: string }) => code === filterValue
+        )?.name ?? filterValue
       );
     case Filter.OPENDATA:
       return localization.open_data;
@@ -112,7 +111,8 @@ const FilterPillsPure: FC<Props> = ({
   themesItems,
   publishers,
   losItems,
-  eventTypes = {}
+  eventTypes,
+  mediaTypes = {}
 }) => {
   if (!isFilterNotEmpty(location)) {
     return null;
@@ -124,7 +124,8 @@ const FilterPillsPure: FC<Props> = ({
     [Filter.THEME]: themesItems,
     [Filter.LOS]: losItems,
     [Filter.ORGPATH]: publishers,
-    [Filter.EVENT_TYPE]: eventTypes
+    [Filter.EVENT_TYPE]: eventTypes,
+    [Filter.FORMAT]: mediaTypes
   };
 
   return (
