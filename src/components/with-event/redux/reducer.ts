@@ -11,7 +11,8 @@ import {
 import type { Actions } from '../../../types';
 
 const initialState = fromJS({
-  event: null
+  event: null,
+  isLoadingEvent: false
 });
 
 export default function reducer(
@@ -20,13 +21,15 @@ export default function reducer(
 ) {
   switch (action.type) {
     case GET_EVENT_REQUESTED:
-      return state.set('event', null);
+      return state.set('event', null).set('isLoadingEvent', true);
     case GET_EVENT_SUCCEEDED:
-      return state.set('event', fromJS(action.payload.event));
+      return state
+        .set('event', fromJS(action.payload.event))
+        .set('isLoadingEvent', false);
     case GET_EVENT_FAILED:
-      return state;
+      return state.set('isLoadingEvent', false);
     case RESET_EVENT:
-      return state.set('event', null);
+      return state.set('event', null).set('isLoadingEvent', false);
     default:
       return state;
   }

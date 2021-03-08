@@ -16,9 +16,10 @@ function* getEventRequested({
 }: ReturnType<typeof actions.getEventRequested>) {
   try {
     const data = yield call(searchEvents, paramsToSearchBody({ id }));
+    const event = extractFirstEvent(data) as Event;
 
-    if (data?.hits) {
-      yield put(actions.getEventSucceeded(extractFirstEvent(data) as Event));
+    if (event) {
+      yield put(actions.getEventSucceeded(event));
     } else {
       yield put(actions.getEventFailed(''));
     }

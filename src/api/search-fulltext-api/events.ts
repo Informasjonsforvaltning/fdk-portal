@@ -40,4 +40,4 @@ export const extractEventsAggregations = (searchResponse: any) =>
 export const extractEventsPage = (searchResponse: any) =>
   searchResponse.page ?? {};
 
-export const extractFirstEvent = ({ hits = [] }: any) => hits[0] ?? {};
+export const extractFirstEvent = ({ hits = [] }: any) => hits[0];

@@ -22,9 +22,10 @@ function* getInformationModelRequested({
       axios.get,
       `${SEARCH_API_HOST}/information-models/${id}`
     );
+    const informationModel = data as InformationModel;
 
-    if (data) {
-      yield put(actions.getInformationModelSucceeded(data as InformationModel));
+    if (informationModel) {
+      yield put(actions.getInformationModelSucceeded(informationModel));
     } else {
       yield put(actions.getInformationModelFailed(''));
     }

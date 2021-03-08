@@ -19,12 +19,14 @@ import withConcepts, { Props as ConceptsProps } from '../with-concepts';
 import withPublicServices, {
   Props as PublicServicesProps
 } from '../with-public-services';
+import withErrorBoundary from '../with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
   KeyValueList,
   KeyValueListItem
 } from '../details-page';
+import ErrorPage from '../error-page';
 import RelationList from '../relation-list';
 
 import SC from './styled';
@@ -46,6 +48,7 @@ interface Props
 
 const ConceptDetailsPage: FC<Props> = ({
   concept,
+  isLoadingConcept,
   datasetsRelations,
   publicServicesRelations,
   conceptsRelations,
@@ -73,6 +76,8 @@ const ConceptDetailsPage: FC<Props> = ({
   }
 }) => {
   const [isMounted, setIsMounted] = useState(false);
+
+  const renderPage = isLoadingConcept || !isMounted || concept !== null;
 
   const entity = Entity.CONCEPT;
   const theme = { entityColours: themeFDK.extendedColors[entity] };
@@ -189,7 +194,7 @@ const ConceptDetailsPage: FC<Props> = ({
     ) : null;
   };
 
-  return isMounted ? (
+  return renderPage ? (
     <ThemeProvider theme={theme}>
       <DetailsPage
         entity={entity}
@@ -207,7 +212,7 @@ const ConceptDetailsPage: FC<Props> = ({
       >
         {description && (
           <ContentSection
-            id="description"
+            id='description'
             title={translations.detailsPage.sectionTitles.concept.description}
             entityTheme={Entity.CONCEPT}
             truncate
@@ -218,7 +223,7 @@ const ConceptDetailsPage: FC<Props> = ({
         )}
         {(validFromIncluding || validToIncluding) && (
           <ContentSection
-            id="validity"
+            id='validity'
             title={translations.detailsPage.sectionTitles.concept.validity}
           >
             <KeyValueList>
@@ -241,7 +246,7 @@ const ConceptDetailsPage: FC<Props> = ({
         )}
         {remark && (
           <ContentSection
-            id="remark"
+            id='remark'
             title={translations.detailsPage.sectionTitles.concept.remark}
           >
             {remark}
@@ -249,7 +254,7 @@ const ConceptDetailsPage: FC<Props> = ({
         )}
         {(altLabels.length > 0 || hiddenLabels.length > 0) && (
           <ContentSection
-            id="terms"
+            id='terms'
             title={translations.detailsPage.sectionTitles.concept.terms}
           >
             <KeyValueList>
@@ -270,7 +275,7 @@ const ConceptDetailsPage: FC<Props> = ({
         )}
         {example && (
           <ContentSection
-            id="example"
+            id='example'
             title={translations.detailsPage.sectionTitles.concept.example}
           >
             {example}
@@ -278,7 +283,7 @@ const ConceptDetailsPage: FC<Props> = ({
         )}
         {(subject || applications.length > 0) && (
           <ContentSection
-            id="domain"
+            id='domain'
             title={
               translations.detailsPage.sectionTitles.concept
                 .subjectAndApplication
@@ -302,7 +307,7 @@ const ConceptDetailsPage: FC<Props> = ({
         )}
         {range && (
           <ContentSection
-            id="range"
+            id='range'
             title={translations.detailsPage.sectionTitles.concept.range}
           >
             <Link href={rangeUri} external>
@@ -312,7 +317,7 @@ const ConceptDetailsPage: FC<Props> = ({
         )}
         {identifier && (
           <ContentSection
-            id="identifier"
+            id='identifier'
             title={translations.detailsPage.sectionTitles.concept.identifier}
           >
             {identifier}
@@ -323,7 +328,7 @@ const ConceptDetailsPage: FC<Props> = ({
           publicServicesRelations.length > 0 ||
           informationModelsRelations.length > 0) && (
           <ContentSection
-            id="relationList"
+            id='relationList'
             title={translations.detailsPage.relationList.title.concept}
           >
             <RelationList
@@ -337,7 +342,7 @@ const ConceptDetailsPage: FC<Props> = ({
         )}
         {(contactPoint?.email || contactPoint?.telephone) && (
           <ContentSection
-            id="contact-information"
+            id='contact-information'
             title={
               translations.detailsPage.sectionTitles.concept.contactInformation
             }
@@ -350,7 +355,7 @@ const ConceptDetailsPage: FC<Props> = ({
                     <a
                       title={contactPoint.email}
                       href={`mailto:${contactPoint.email}`}
-                      rel="noopener noreferrer"
+                      rel='noopener noreferrer'
                     >
                       {contactPoint.email}
                     </a>
@@ -368,7 +373,9 @@ const ConceptDetailsPage: FC<Props> = ({
         )}
       </DetailsPage>
     </ThemeProvider>
-  ) : null;
+  ) : (
+    <ErrorPage errorCode='404' />
+  );
 };
 
 export default compose<FC>(
@@ -377,5 +384,6 @@ export default compose<FC>(
   withDatasets,
   withInformationModels,
   withConcepts,
-  withPublicServices
+  withPublicServices,
+  withErrorBoundary(ErrorPage)
 )(ConceptDetailsPage);

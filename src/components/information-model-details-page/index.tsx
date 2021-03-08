@@ -27,6 +27,7 @@ import withDatasets, { Props as DatasetProps } from '../with-datasets';
 import withDataServices, {
   Props as DataServicesProps
 } from '../with-data-services';
+import withErrorBoundary from '../with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
@@ -34,6 +35,7 @@ import DetailsPage, {
   KeyValueList,
   KeyValueListItem
 } from '../details-page';
+import ErrorPage from '../error-page';
 import InfoModelStructure from '../infomodel-structure';
 import RelationList from '../relation-list';
 
@@ -123,6 +125,8 @@ const InformationModelDetailsPage: FC<Props> = ({
     !isMounted ||
     isLoadingInformationModel ||
     isLoadingInformationModelRdfRepresentations;
+
+  const renderPage = isLoading || informationModel !== null;
 
   const informationModelStatus: { [key: string]: string } = {
     'http://purl.org/adms/status/Completed':
@@ -222,7 +226,7 @@ const InformationModelDetailsPage: FC<Props> = ({
     };
   }, [informationModel?.uri]);
 
-  return (
+  return renderPage ? (
     <ThemeProvider theme={theme}>
       <DetailsPage
         entity={entity}
@@ -240,7 +244,7 @@ const InformationModelDetailsPage: FC<Props> = ({
       >
         {description && (
           <ContentSection
-            id="description"
+            id='description'
             title={
               translations.detailsPage.sectionTitles.informationModel
                 .description
@@ -258,7 +262,7 @@ const InformationModelDetailsPage: FC<Props> = ({
           validFromIncluding ||
           validToIncluding) && (
           <ContentSection
-            id="status"
+            id='status'
             title={
               translations.detailsPage.sectionTitles.informationModel.status
             }
@@ -311,7 +315,7 @@ const InformationModelDetailsPage: FC<Props> = ({
           informationModelCategory ||
           seeAlso) && (
           <ContentSection
-            id="usage"
+            id='usage'
             title={
               translations.detailsPage.sectionTitles.informationModel.usage
             }
@@ -370,7 +374,7 @@ const InformationModelDetailsPage: FC<Props> = ({
             informationModelRdfRepresentations?.[DataFormat.JSONLD] ||
             informationModelRdfRepresentations?.[DataFormat.RDF_XML]) && (
             <ContentSection
-              id="information-model"
+              id='information-model'
               title={
                 translations.detailsPage.sectionTitles.informationModel
                   .informationModel
@@ -378,27 +382,27 @@ const InformationModelDetailsPage: FC<Props> = ({
             >
               <SC.Tabs tabsAlignment={Alignment.LEFT}>
                 {Object.values(modelElements).length > 0 && (
-                  <Tab for="structure-pane" as={SC.Tab}>
+                  <Tab for='structure-pane' as={SC.Tab}>
                     {translations.infoMod.tabs.structure}
                   </Tab>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.TURTLE] && (
-                  <Tab for="turtle-pane" as={SC.Tab}>
+                  <Tab for='turtle-pane' as={SC.Tab}>
                     {translations.infoMod.tabs.turtle}
                   </Tab>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.JSONLD] && (
-                  <Tab for="jsonld-pane" as={SC.Tab}>
+                  <Tab for='jsonld-pane' as={SC.Tab}>
                     {translations.infoMod.tabs.jsonld}
                   </Tab>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.RDF_XML] && (
-                  <Tab for="rdfxml-pane" as={SC.Tab}>
+                  <Tab for='rdfxml-pane' as={SC.Tab}>
                     {translations.infoMod.tabs.rdfxml}
                   </Tab>
                 )}
                 {Object.values(modelElements).length > 0 && (
-                  <Pane id="structure-pane" as={SC.Pane}>
+                  <Pane id='structure-pane' as={SC.Pane}>
                     <InfoModelStructure
                       modelElements={modelElements}
                       modelProperties={modelProperties}
@@ -407,21 +411,21 @@ const InformationModelDetailsPage: FC<Props> = ({
                   </Pane>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.TURTLE] && (
-                  <Pane id="turtle-pane" as={SC.Pane}>
+                  <Pane id='turtle-pane' as={SC.Pane}>
                     <SC.Code>
                       {informationModelRdfRepresentations[DataFormat.TURTLE]}
                     </SC.Code>
                   </Pane>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.JSONLD] && (
-                  <Pane id="jsonld-pane" as={SC.Pane}>
+                  <Pane id='jsonld-pane' as={SC.Pane}>
                     <SC.Code>
                       {informationModelRdfRepresentations[DataFormat.JSONLD]}
                     </SC.Code>
                   </Pane>
                 )}
                 {informationModelRdfRepresentations?.[DataFormat.RDF_XML] && (
-                  <Pane id="rdfxml-pane" as={SC.Pane}>
+                  <Pane id='rdfxml-pane' as={SC.Pane}>
                     <SC.Code>
                       {informationModelRdfRepresentations[DataFormat.RDF_XML]}
                     </SC.Code>
@@ -432,7 +436,7 @@ const InformationModelDetailsPage: FC<Props> = ({
           )}
         {identifier && (
           <ContentSection
-            id="identifiers"
+            id='identifiers'
             title={
               translations.detailsPage.sectionTitles.informationModel
                 .identifiers
@@ -452,7 +456,7 @@ const InformationModelDetailsPage: FC<Props> = ({
           dataServicesRelations.length > 0 ||
           informationModelsRelations.length > 0) && (
           <ContentSection
-            id="relationList"
+            id='relationList'
             title={translations.detailsPage.relationList.title.informationmodel}
           >
             <RelationList
@@ -466,7 +470,7 @@ const InformationModelDetailsPage: FC<Props> = ({
 
         {keywords.length > 0 && (
           <ContentSection
-            id="keywords"
+            id='keywords'
             title={
               translations.detailsPage.sectionTitles.informationModel.keywords
             }
@@ -488,7 +492,7 @@ const InformationModelDetailsPage: FC<Props> = ({
         )}
         {datasets?.length > 0 && (
           <ContentSection
-            id="dataset-relations"
+            id='dataset-relations'
             title={
               translations.detailsPage.sectionTitles.informationModel
                 .datasetRelations
@@ -512,7 +516,7 @@ const InformationModelDetailsPage: FC<Props> = ({
         )}
         {(isPartOf || hasPart || isReplacedBy || replaces) && (
           <ContentSection
-            id="information-model-references"
+            id='information-model-references'
             title={
               translations.detailsPage.sectionTitles.informationModel.relations
             }
@@ -591,7 +595,7 @@ const InformationModelDetailsPage: FC<Props> = ({
         )}
         {spatialRestrictions.length > 0 && (
           <ContentSection
-            id="spatial-restrictions"
+            id='spatial-restrictions'
             title={
               translations.detailsPage.sectionTitles.informationModel
                 .spatialRestrictions
@@ -608,7 +612,7 @@ const InformationModelDetailsPage: FC<Props> = ({
         )}
         {contactPoint && contactPoint.length > 0 && (
           <ContentSection
-            id="contact-information"
+            id='contact-information'
             title={
               translations.detailsPage.sectionTitles.informationModel
                 .contactInformation
@@ -643,7 +647,7 @@ const InformationModelDetailsPage: FC<Props> = ({
                         <SC.Link
                           title={email}
                           href={`mailto:${email}`}
-                          rel="noopener noreferrer"
+                          rel='noopener noreferrer'
                         >
                           {email}
                         </SC.Link>
@@ -663,6 +667,8 @@ const InformationModelDetailsPage: FC<Props> = ({
         )}
       </DetailsPage>
     </ThemeProvider>
+  ) : (
+    <ErrorPage errorCode='404' />
   );
 };
 
@@ -672,5 +678,6 @@ export default compose<FC>(
   withConcepts,
   withInformationModels,
   withDatasets,
-  withDataServices
+  withDataServices,
+  withErrorBoundary(ErrorPage)
 )(InformationModelDetailsPage);

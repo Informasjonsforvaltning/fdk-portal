@@ -1,14 +1,13 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component, ComponentType, ErrorInfo } from 'react';
 
 interface Props {
-  fallback?: ReactNode;
+  fallback?: ComponentType<any>;
 }
-
 interface State {
   hasError: boolean;
+  errorCode?: string;
 }
-
-class ErrorBoundary extends Component<Props, State> {
+export default class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -18,15 +17,13 @@ class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo);
-    this.setState({ hasError: true });
+    this.setState({ hasError: true, errorCode: error.message });
   }
 
   render() {
-    const { hasError } = this.state;
-    const { fallback, children } = this.props;
+    const { hasError, errorCode } = this.state;
+    const { fallback: Fallback, children } = this.props;
 
-    return hasError ? fallback : children;
+    return hasError && Fallback ? <Fallback errorCode={errorCode} /> : children;
   }
 }
-
-export default ErrorBoundary;

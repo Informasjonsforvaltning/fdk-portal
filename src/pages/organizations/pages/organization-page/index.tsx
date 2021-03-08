@@ -12,6 +12,8 @@ import withOrganization, {
 import withReport, {
   Props as ReportProps
 } from '../../../../components/with-report';
+import withErrorBoundary from '../../../../components/with-error-boundary';
+import ErrorPage from '../../../../components/error-page';
 
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';
@@ -130,7 +132,7 @@ const OrganizationPage: FC<Props> = ({
   };
 
   return (
-    <SC.OrganizationPage className="container">
+    <SC.OrganizationPage className='container'>
       <SC.BetaRibbon>BETA</SC.BetaRibbon>
       <SC.Title>
         {translations.formatString(
@@ -364,5 +366,6 @@ const OrganizationPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withOrganization,
-  withReport
+  withReport,
+  withErrorBoundary(ErrorPage)
 )(OrganizationPage);

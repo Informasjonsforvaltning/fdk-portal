@@ -16,6 +16,8 @@ import {
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
+import withErrorBoundary from '../../../../components/with-error-boundary';
+import ErrorPage from '../../../../components/error-page';
 
 import ExpansionPanel, {
   ExpansionPanelHead,
@@ -174,7 +176,7 @@ const DatasetPage: FC<Props> = ({
   };
 
   return (
-    <SC.DatasetPage className="container">
+    <SC.DatasetPage className='container'>
       <SC.Banner>
         <SC.BetaRibbon>BETA</SC.BetaRibbon>
         <h1>
@@ -187,7 +189,7 @@ const DatasetPage: FC<Props> = ({
             {isAuthoritative && (
               <div data-tip={translations.authoritativeDatasetTooltip}>
                 <SC.AuthoritativeIcon />
-                <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
+                <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
               </div>
             )}
           </SC.Title>
@@ -216,7 +218,7 @@ const DatasetPage: FC<Props> = ({
             {dataset?.assessment?.dimensions?.map(
               ({ type, rating, indicators }) => (
                 <Fragment key={type}>
-                  <tr className="section-row">
+                  <tr className='section-row'>
                     <td>
                       <div>
                         <SC.DimensionContainer>
@@ -233,8 +235,8 @@ const DatasetPage: FC<Props> = ({
                           </div>
                           <ReactTooltipSC.ReactTooltipStyled
                             id={`${type}_tooltip`}
-                            effect="solid"
-                            place="top"
+                            effect='solid'
+                            place='top'
                             multiline
                           />
                         </SC.DimensionContainer>
@@ -247,7 +249,7 @@ const DatasetPage: FC<Props> = ({
                   </tr>
                   {indicators.map(({ type, conforms, weight }) => (
                     <tr key={type}>
-                      <ExpansionPanel as="td">
+                      <ExpansionPanel as='td'>
                         <ExpansionPanelHead>
                           <span>
                             {conforms ? <SC.CheckIcon /> : <SC.CrossIcon />}
@@ -296,4 +298,8 @@ const DatasetPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withOrganization)(DatasetPage);
+export default compose<FC>(
+  memo,
+  withOrganization,
+  withErrorBoundary(ErrorPage)
+)(DatasetPage);

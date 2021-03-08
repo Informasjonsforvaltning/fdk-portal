@@ -825,5 +825,22 @@
   "feedType": {
     "rss": "RSS",
     "atom": "Atom"
+  },
+  "errorPage":{
+    "serverError":{
+      "title": "Dette er flaut...",
+      "content1": "Det har visst skjedd noe teknisk krøll i vår ende.",
+      "content2": "Vi jobber med å rette opp feilen. Prøv igjen om en liten stund."
+    },
+    "clientError":{
+      "title": "Vi beklager!",
+      "content1": "Vi finner ikke siden du leter etter.",
+      "content2": "Gå tilbake til ",
+      "content3": "eller helt tilbake til<a href=\"https://data.norge.no/\">startsiden</a>.",
+      "backLink": " siden du kom fra "
+    }
+  },
+  "breadcrumb": {
+    "notFound": "Ingen tittel"
   }
 }

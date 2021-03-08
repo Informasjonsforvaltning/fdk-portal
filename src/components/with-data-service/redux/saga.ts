@@ -16,13 +16,10 @@ function* getDataServiceRequested({
 }: ReturnType<typeof actions.getDataServiceRequested>) {
   try {
     const data = yield call(searchDataServices, paramsToSearchBody({ id }));
+    const dataService = extractFirstDataService(data) as DataService;
 
-    if (data?.hits) {
-      yield put(
-        actions.getDataServiceSucceeded(
-          extractFirstDataService(data) as DataService
-        )
-      );
+    if (dataService) {
+      yield put(actions.getDataServiceSucceeded(dataService));
     } else {
       yield put(actions.getDataServiceFailed(''));
     }

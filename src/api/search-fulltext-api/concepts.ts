@@ -67,4 +67,4 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   filters: mapFilters(params)
 });
 
-export const extractFirstConcept = ({ hits = [] }: any) => hits[0] ?? {};
+export const extractFirstConcept = ({ hits = [] }: any) => hits[0];

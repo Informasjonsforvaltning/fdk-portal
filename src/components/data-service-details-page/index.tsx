@@ -27,6 +27,7 @@ import withDatasets, { Props as DatasetsProps } from '../with-datasets';
 import withInformationModels, {
   Props as InformationModelsProps
 } from '../with-information-models';
+import withErrorBoundary from '../with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
@@ -34,6 +35,7 @@ import DetailsPage, {
   KeyValueListItem,
   InlineList
 } from '../details-page';
+import ErrorPage from '../error-page';
 import RelationList from '../relation-list';
 
 import SC from './styled';
@@ -54,6 +56,7 @@ interface Props
 
 const DataserviceDetailsPage: FC<Props> = ({
   dataService,
+  isLoadingDataService,
   referenceData: { apiservicetype },
   datasets,
   informationModels,
@@ -76,6 +79,8 @@ const DataserviceDetailsPage: FC<Props> = ({
 
   const entity = Entity.DATA_SERVICE;
   const theme = { entityColours: themeFDK.extendedColors[entity] };
+
+  const renderPage = isLoadingDataService || !isMounted || dataService !== null;
 
   useEffect(() => {
     if (dataService?.id !== dataServiceId) {
@@ -145,7 +150,7 @@ const DataserviceDetailsPage: FC<Props> = ({
   const contactPoint = dataService?.contactPoint ?? [];
   const themes: Theme[] = [];
 
-  return isMounted ? (
+  return renderPage ? (
     <ThemeProvider theme={theme}>
       <DetailsPage
         entity={entity}
@@ -163,7 +168,7 @@ const DataserviceDetailsPage: FC<Props> = ({
       >
         {description && (
           <ContentSection
-            id="description"
+            id='description'
             title={
               translations.detailsPage.sectionTitles.dataService.description
             }
@@ -175,7 +180,7 @@ const DataserviceDetailsPage: FC<Props> = ({
         )}
         {formats.length > 0 && (
           <ContentSection
-            id="formats"
+            id='formats'
             title={translations.detailsPage.sectionTitles.dataService.formats}
           >
             {formats.join(', ')}
@@ -185,7 +190,7 @@ const DataserviceDetailsPage: FC<Props> = ({
           endpointDescriptions.length > 0 ||
           landingPage) && (
           <ContentSection
-            id="usage"
+            id='usage'
             title={translations.detailsPage.sectionTitles.dataService.usage}
           >
             <KeyValueList>
@@ -209,7 +214,7 @@ const DataserviceDetailsPage: FC<Props> = ({
               ))}
               {landingPage && (
                 <KeyValueListItem
-                  property=""
+                  property=''
                   value={
                     <Link href={landingPage} external>
                       {translations.api.landingPage}
@@ -222,7 +227,7 @@ const DataserviceDetailsPage: FC<Props> = ({
         )}
         {conformsTo.length > 0 && (
           <ContentSection
-            id="service-type"
+            id='service-type'
             title={
               translations.detailsPage.sectionTitles.dataService.serviceType
             }
@@ -232,7 +237,7 @@ const DataserviceDetailsPage: FC<Props> = ({
         )}
         {datasets.length > 0 && (
           <ContentSection
-            id="dataset-references"
+            id='dataset-references'
             title={
               translations.detailsPage.sectionTitles.dataService
                 .datasetReferences
@@ -257,7 +262,7 @@ const DataserviceDetailsPage: FC<Props> = ({
               organizationName || hasURL || email || hasTelephone
           ) && (
             <ContentSection
-              id="contact-information"
+              id='contact-information'
               title={
                 translations.detailsPage.sectionTitles.dataService
                   .contactInformation
@@ -285,7 +290,7 @@ const DataserviceDetailsPage: FC<Props> = ({
                           value={
                             <Link
                               href={`mailto:${email}`}
-                              rel="noopener noreferrer"
+                              rel='noopener noreferrer'
                             >
                               {email}
                             </Link>
@@ -305,7 +310,7 @@ const DataserviceDetailsPage: FC<Props> = ({
           )}
         {informationModels?.length > 0 && (
           <ContentSection
-            id="informationModel-relations"
+            id='informationModel-relations'
             title={
               translations.detailsPage.sectionTitles.dataService
                 .informationModelReferences
@@ -329,7 +334,7 @@ const DataserviceDetailsPage: FC<Props> = ({
         )}
         {datasetsRelations.length > 0 && (
           <ContentSection
-            id="relationList"
+            id='relationList'
             title={translations.detailsPage.relationList.title.dataservice}
           >
             <RelationList
@@ -340,7 +345,9 @@ const DataserviceDetailsPage: FC<Props> = ({
         )}
       </DetailsPage>
     </ThemeProvider>
-  ) : null;
+  ) : (
+    <ErrorPage errorCode='404' />
+  );
 };
 
 export default compose<FC>(
@@ -348,5 +355,6 @@ export default compose<FC>(
   withDataService,
   withReferenceData,
   withDatasets,
-  withInformationModels
+  withInformationModels,
+  withErrorBoundary(ErrorPage)
 )(DataserviceDetailsPage);

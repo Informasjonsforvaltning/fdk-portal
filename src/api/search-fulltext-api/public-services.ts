@@ -114,4 +114,4 @@ export const extractPublicServicesAggregations = (searchResponse: any) =>
 export const extractPublicServicesPage = (searchResponse: any) =>
   searchResponse.page ?? {};
 
-export const extractFirstPublicService = ({ hits = [] }: any) => hits[0] ?? {};
+export const extractFirstPublicService = ({ hits = [] }: any) => hits[0];

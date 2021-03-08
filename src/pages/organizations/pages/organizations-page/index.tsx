@@ -10,6 +10,8 @@ import { getTranslateText as translate } from '../../../../lib/translateText';
 import withOrganizations, {
   Props as OrganizationsProps
 } from '../../../../components/with-organizations';
+import withErrorBoundary from '../../../../components/with-error-boundary';
+import ErrorPage from '../../../../components/error-page';
 
 import SC from './styled';
 
@@ -41,30 +43,30 @@ const OrganizationsPage: FC<Props> = ({
   }, []);
 
   return (
-    <main className="container">
-      <div className="row mb-5">
-        <div className="col-12">
+    <main className='container'>
+      <div className='row mb-5'>
+        <div className='col-12'>
           <SC.Header>{localization.searchOrganizations}</SC.Header>
         </div>
       </div>
-      <div className="row mb-5">
-        <SC.SearchBox className="col-12">
+      <div className='row mb-5'>
+        <SC.SearchBox className='col-12'>
           <SC.Filter>
-            <label className="uu-invisible" htmlFor="searchBox">
+            <label className='uu-invisible' htmlFor='searchBox'>
               {localization.searchOrganization}
             </label>
             <input
               aria-label={localization.searchOrganization}
-              autoComplete="off"
+              autoComplete='off'
               placeholder={localization.searchOrganization}
-              type="text"
+              type='text'
               value={searchQuery}
               onChange={({ target: { value } }) => setSearchQuery(value)}
             />
             <button
               aria-label={localization.query.reset}
-              className="search-clear"
-              type="button"
+              className='search-clear'
+              type='button'
               onClick={() => setSearchQuery('')}
             >
               <SC.ClearIcon />
@@ -72,7 +74,7 @@ const OrganizationsPage: FC<Props> = ({
           </SC.Filter>
         </SC.SearchBox>
       </div>
-      <div className="row">
+      <div className='row'>
         {filterOrganizationsByName(searchQuery).map(
           (
             {
@@ -102,7 +104,7 @@ const OrganizationsPage: FC<Props> = ({
             }
 
             return (
-              <SC.Box key={id} className="col-12" to={`${url}/${id}`}>
+              <SC.Box key={id} className='col-12' to={`${url}/${id}`}>
                 <SC.SortLabel>{sortLabel}</SC.SortLabel>
                 <SC.Title>{translate(name)}</SC.Title>
                 <SC.Info>
@@ -126,4 +128,8 @@ const OrganizationsPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withOrganizations)(OrganizationsPage);
+export default compose<FC>(
+  memo,
+  withOrganizations,
+  withErrorBoundary(ErrorPage)
+)(OrganizationsPage);

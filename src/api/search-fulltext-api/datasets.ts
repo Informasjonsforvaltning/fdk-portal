@@ -149,4 +149,4 @@ export const extractDatasetAggregations = (searchResponse: any) =>
 export const extractDatasetsTotal = (searchResponse: any) =>
   searchResponse?.page?.totalElements ?? 0;
 
-export const extractFirstDataset = ({ hits = [] }: any) => hits[0] ?? {};
+export const extractFirstDataset = ({ hits = [] }: any) => hits[0];

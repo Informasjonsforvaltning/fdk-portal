@@ -1,8 +1,8 @@
-import React, { ComponentType, ReactNode } from 'react';
+import React, { ComponentType } from 'react';
 
 import ErrorBoundary from './error-boundary';
 
-const withErrorBoundary = (fallback?: ReactNode) => (
+const withErrorBoundary = (fallback?: ComponentType<any>) => (
   Component: ComponentType<any>
 ) => (props: any) => {
   return (
