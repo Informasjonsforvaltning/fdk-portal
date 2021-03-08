@@ -8,13 +8,15 @@ import type { Event } from '../../types';
 export interface Props {
   event: Event | null;
   eventActions: typeof actions;
+  isLoadingEvent: boolean;
 }
 
 const withEvent = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    event: state.EventReducer.get('event')?.toJS() ?? null
+    event: state.EventReducer.get('event')?.toJS() ?? null,
+    isLoadingEvent: state.EventReducer.get('isLoadingEvent')
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

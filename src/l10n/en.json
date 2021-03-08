@@ -827,5 +827,22 @@
   "feedType": {
     "rss": "RSS",
     "atom": "Atom"
+  },
+  "errorPage":{
+    "serverError":{
+      "title": "This is embarrasing...",
+      "content1": "There are some technical hiccups on our end.",
+      "content2": "We are working on correcting the error. Try again in a little while."
+    },
+    "clientError":{
+      "title": "We're sorry!",
+      "content1": "We can't find the page you're looking for.",
+      "content2": "Go back to the ",
+      "content3": "or go back to the<a href=\"https://data.norge.no/\">start page</a>.",
+      "backLink": " page you came from "
+    }
+  },
+  "breadcrumb": {
+    "notFound": "No title"
   }
 }

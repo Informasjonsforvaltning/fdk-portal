@@ -9,13 +9,15 @@ import { Dataset } from '../../types';
 export interface Props {
   dataset: Dataset | null;
   datasetActions: typeof actions;
+  isLoadingDataset: boolean;
 }
 
 const withDataset = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    dataset: state.DatasetReducer.get('dataset')?.toJS() ?? null
+    dataset: state.DatasetReducer.get('dataset')?.toJS() ?? null,
+    isLoadingDataset: state.DatasetReducer.get('isLoadingDataset')
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

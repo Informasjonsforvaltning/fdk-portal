@@ -9,7 +9,6 @@ import ThemeProvider from '@fellesdatakatalog/theme';
 
 import { configureStore } from '../../redux/configureStore';
 import { ConnectedApp } from '../../app/connected-app';
-import { ErrorBoundary } from '../../components/error-boundary/error-boundary';
 import { getConfig } from '../../config';
 import { themeFDK, themeNAP } from '../../app/theme';
 import GlobalStyles from '../../app/styles';
@@ -23,13 +22,11 @@ render(
   <ThemeProvider theme={theme}>
     <GlobalStyles />
     <Analytics />
-    <ErrorBoundary>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Route component={ConnectedApp} />
-        </BrowserRouter>
-      </Provider>
-    </ErrorBoundary>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Route component={ConnectedApp} />
+      </BrowserRouter>
+    </Provider>
   </ThemeProvider>,
   document.getElementById('root')
 );

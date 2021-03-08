@@ -16,11 +16,10 @@ function* getConceptRequested({
 }: ReturnType<typeof actions.getConceptRequested>) {
   try {
     const data = yield call(searchConcepts, paramsToSearchBody({ id }));
+    const concept = extractFirstConcept(data) as Concept;
 
-    if (data) {
-      yield put(
-        actions.getConceptSucceeded(extractFirstConcept(data) as Concept)
-      );
+    if (concept) {
+      yield put(actions.getConceptSucceeded(concept));
     } else {
       yield put(actions.getConceptFailed(''));
     }

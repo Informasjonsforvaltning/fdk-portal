@@ -1,4 +1,4 @@
-import React, { memo, FC, useEffect } from 'react';
+import React, { memo, FC, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -32,6 +32,7 @@ import withDataServices, {
   Props as DataServicesProps
 } from '../with-data-services';
 import withKartverket, { Props as KartverketProps } from '../with-kartverket';
+import withErrorBoundary from '../with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
@@ -39,6 +40,7 @@ import DetailsPage, {
   KeyValueList,
   KeyValueListItem
 } from '../details-page';
+import ErrorPage from '../error-page';
 import DatasetDistribution from '../dataset-distribution';
 import RelationList from '../relation-list';
 
@@ -62,6 +64,7 @@ interface Props
 
 const DatasetDetailsPage: FC<Props> = ({
   dataset,
+  isLoadingDataset,
   referenceData: { referencetypes: referenceTypes, mediatypes: mediaTypes },
   concepts,
   datasets,
@@ -94,9 +97,14 @@ const DatasetDetailsPage: FC<Props> = ({
     params: { datasetId }
   }
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  const renderPage = isLoadingDataset || !isMounted || dataset !== null;
+
   useEffect(() => {
     if (datasetId) {
       getDataset(datasetId);
+      setIsMounted(true);
     }
 
     if (!referenceTypes) {
@@ -237,520 +245,513 @@ const DatasetDetailsPage: FC<Props> = ({
 
   const themes = [...(dataset?.losTheme ?? []), ...(dataset?.theme ?? [])];
 
-  return (
-    dataset && (
-      <ThemeProvider theme={theme}>
-        <DetailsPage
-          entity={entity}
-          title={title}
-          publisher={dataset?.publisher}
-          entityId={dataset?.id}
-          entityUri={dataset?.uri}
-          lastPublished={lastPublished}
-          isAuthoritative={isAuthoritative}
-          isOpenData={isOpenData}
-          isPublicData={isPublicData}
-          isRestrictedData={isRestrictedData}
-          isNonPublicData={isNonPublicData}
-          themes={themes}
-        >
-          {description && (
-            <ContentSection
-              id="description"
-              title={translations.detailsPage.sectionTitles.dataset.description}
-              entityTheme={Entity.DATASET}
-              truncate
-            >
-              {description}
-            </ContentSection>
-          )}
-          {objective && (
-            <ContentSection
-              id="objective"
-              title={translations.detailsPage.sectionTitles.dataset.objective}
-            >
-              {objective}
-            </ContentSection>
-          )}
-          {distributions.length > 0 && (
-            <ContentSection
-              id="distributions"
-              title={
-                translations.formatString(
-                  translations.detailsPage.sectionTitles.dataset.distributions,
-                  { count: distributions.length }
-                ) as string
-              }
-            >
-              {distributions.map((distribution, index) => (
-                <DatasetDistribution
-                  key={distribution.uri || `distribution-${index}`}
-                  distribution={distribution}
-                  mediaTypes={mediaTypes}
-                />
-              ))}
-            </ContentSection>
-          )}
-          {Object.values(usage)
-            .filter(Boolean)
-            .filter(item => item && item?.length > 0).length > 0 && (
-            <ContentSection
-              id="usage"
-              title={translations.detailsPage.sectionTitles.dataset.usage}
-            >
-              <KeyValueList>
-                {usage.legalBasisForRestriction.length > 0 && (
-                  <KeyValueListItem
-                    property={translations.dataset.legalBasisForRestriction}
-                    value={
-                      <SC.ExternalLinkList>
-                        {usage.legalBasisForRestriction.map(
-                          ({ uri, prefLabel }) =>
-                            uri &&
-                            prefLabel && (
-                              <Link key={uri} href={uri} external>
-                                {translate(prefLabel)}
-                              </Link>
-                            )
-                        )}
-                      </SC.ExternalLinkList>
-                    }
-                  />
-                )}
-                {usage.legalBasisForProcessing.length > 0 && (
-                  <KeyValueListItem
-                    property={translations.dataset.legalBasisForProcessing}
-                    value={
-                      <SC.ExternalLinkList>
-                        {usage.legalBasisForProcessing.map(
-                          ({ uri, prefLabel }) =>
-                            uri &&
-                            prefLabel && (
-                              <Link key={uri} href={uri} external>
-                                {translate(prefLabel)}
-                              </Link>
-                            )
-                        )}
-                      </SC.ExternalLinkList>
-                    }
-                  />
-                )}
-                {usage.legalBasisForAccess.length > 0 && (
-                  <KeyValueListItem
-                    property={translations.dataset.legalBasisForAccess}
-                    value={
-                      <SC.ExternalLinkList>
-                        {usage.legalBasisForAccess.map(
-                          ({ uri, prefLabel }) =>
-                            uri &&
-                            prefLabel && (
-                              <Link key={uri} href={uri} external>
-                                {translate(prefLabel)}
-                              </Link>
-                            )
-                        )}
-                      </SC.ExternalLinkList>
-                    }
-                  />
-                )}
-                {usage.type && (
-                  <KeyValueListItem
-                    property={translations.dataset.type}
-                    value={usage.type}
-                  />
-                )}
-                {usage.standards.length > 0 && (
-                  <KeyValueListItem
-                    property={translations.dataset.conformsTo}
-                    value={
-                      <SC.ExternalLinkList>
-                        {usage.standards.map(
-                          ({ uri, prefLabel }) =>
-                            uri &&
-                            prefLabel && (
-                              <Link key={uri} href={uri} external>
-                                {translate(prefLabel)}
-                              </Link>
-                            )
-                        )}
-                      </SC.ExternalLinkList>
-                    }
-                  />
-                )}
-                {usage.informationModelReferences.length > 0 && (
-                  <KeyValueListItem
-                    property={translations.dataset.informationModel}
-                    value={
-                      <SC.ExternalLinkList>
-                        {usage.informationModelReferences.map(
-                          ({ uri, prefLabel }) =>
-                            uri &&
-                            prefLabel && (
-                              <Link key={uri} href={uri} external>
-                                {translate(prefLabel)}
-                              </Link>
-                            )
-                        )}
-                      </SC.ExternalLinkList>
-                    }
-                  />
-                )}
-                {usage.languages.length > 0 && (
-                  <KeyValueListItem
-                    property={translations.dataset.language}
-                    value={usage.languages
-                      .map(({ prefLabel }) => prefLabel && translate(prefLabel))
-                      .filter(Boolean)
-                      .join(', ')}
-                  />
-                )}
-                {usage.moreInformationPage && (
-                  <KeyValueListItem
-                    property=""
-                    value={
-                      <Link href={usage.moreInformationPage} external>
-                        {translations.dataset.landingPage}
-                      </Link>
-                    }
-                  />
-                )}
-              </KeyValueList>
-            </ContentSection>
-          )}
-          {samples.length > 0 && (
-            <ContentSection
-              id="sample"
-              title={translations.detailsPage.sectionTitles.dataset.sample}
-            >
-              {samples.map(
-                (
-                  { description, format: formats, accessURL: accessURLs },
-                  index
-                ) => (
-                  <KeyValueList key={`sample-${index}`}>
-                    <KeyValueListItem
-                      property={translations.dataset.distribution.description}
-                      value={translate(description)}
-                    />
-                    <KeyValueListItem
-                      property={translations.dataset.distribution.format}
-                      value={formats?.join(', ')}
-                    />
-                    {Array.isArray(accessURLs) && (
-                      <KeyValueListItem
-                        property={translations.dataset.distribution.accessUrl}
-                        value={
-                          <Link href={accessURLs?.[0]} external>
-                            {translate(accessURLs?.[0])}
-                          </Link>
-                        }
-                      />
-                    )}
-                  </KeyValueList>
-                )
-              )}
-            </ContentSection>
-          )}
-          {Object.values(provenance).filter(Boolean).length > 0 && (
-            <ContentSection
-              id="provenance"
-              title={translations.detailsPage.sectionTitles.dataset.provenance}
-            >
-              <KeyValueList>
-                {provenance.provenance && (
-                  <KeyValueListItem
-                    property={translations.dataset.provenance}
-                    value={provenance.provenance}
-                  />
-                )}
-                {provenance.frequency && (
-                  <KeyValueListItem
-                    property={translations.dataset.frequency}
-                    value={provenance.frequency}
-                  />
-                )}
-                {provenance.issued && (
-                  <KeyValueListItem
-                    property={translations.dataset.issued}
-                    value={provenance.issued}
-                  />
-                )}
-                {provenance.modified && (
-                  <KeyValueListItem
-                    property={translations.dataset.modified}
-                    value={provenance.modified}
-                  />
-                )}
-              </KeyValueList>
-            </ContentSection>
-          )}
-          {Object.values(quality).filter(Boolean).length > 0 && (
-            <ContentSection
-              id="quality"
-              title={translations.detailsPage.sectionTitles.dataset.quality}
-            >
-              <KeyValueList>
-                {quality.currentness && (
-                  <KeyValueListItem
-                    property={translations.dataset.currentness}
-                    value={translate(quality.currentness)}
-                  />
-                )}
-                {quality.completeness && (
-                  <KeyValueListItem
-                    property={translations.dataset.completenessAnnotation}
-                    value={translate(quality.completeness)}
-                  />
-                )}
-                {quality.accuracy && (
-                  <KeyValueListItem
-                    property={translations.dataset.accuracyAnnotation}
-                    value={translate(quality.accuracy)}
-                  />
-                )}
-                {quality.relevance && (
-                  <KeyValueListItem
-                    property={translations.dataset.relevanceAnnotation}
-                    value={translate(quality.relevance)}
-                  />
-                )}
-                {quality.availability && (
-                  <KeyValueListItem
-                    property={translations.dataset.availabilityAnnotations}
-                    value={translate(quality.availability)}
-                  />
-                )}
-              </KeyValueList>
-            </ContentSection>
-          )}
-          {referencedConcepts.length > 0 && (
-            <ContentSection
-              id="concept-references"
-              title={
-                translations.detailsPage.sectionTitles.dataset.conceptReferences
-              }
-            >
-              <KeyValueList>
-                {referencedConcepts.map(
-                  ({ id, prefLabel, definition: { text: definition } }) =>
-                    id && (
-                      <KeyValueListItem
-                        key={id}
-                        property={
-                          <Link
-                            to={`${PATHNAME_CONCEPTS}/${id}`}
-                            as={RouteLink}
-                          >
-                            {translate(prefLabel)}
-                          </Link>
-                        }
-                        value={translate(definition)}
-                      />
-                    )
-                )}
-              </KeyValueList>
-            </ContentSection>
-          )}
-          {(referencedDatasets.length > 0 ||
-            referencedResourcesUnResolved.length > 0) && (
-            <ContentSection
-              id="dataset-references"
-              title={
-                translations.detailsPage.sectionTitles.dataset.datasetReferences
-              }
-            >
-              <KeyValueList>
-                {referencedDatasets?.map(({ id, uri, title }) => (
-                  <KeyValueListItem
-                    key={id}
-                    property={translate(
-                      referenceTypes?.find(
-                        ({ uri: referenceUri }) =>
-                          referenceUri ===
-                          datasetReferenceTypes.find(
-                            ({ source }) => source.uri === uri
-                          )?.referenceType?.uri
-                      )?.prefLabel
-                    )}
-                    value={
-                      <Link
-                        to={`${PATHNAME_DATASET_DETAILS}/${id}`}
-                        as={RouteLink}
-                      >
-                        {translate(title)}
-                      </Link>
-                    }
-                  />
-                ))}
-                {referencedResourcesUnResolved?.map(
-                  (
-                    {
-                      source: { uri },
-                      referenceType: { uri: referenceTypeUri } = {}
-                    },
-                    index
-                  ) => (
-                    <KeyValueListItem
-                      key={`${uri}-${index}`}
-                      property={translate(
-                        referenceTypes?.find(
-                          ({ uri: referenceTypesUri }) =>
-                            referenceTypesUri === referenceTypeUri
-                        )?.prefLabel
+  return renderPage ? (
+    <ThemeProvider theme={theme}>
+      <DetailsPage
+        entity={entity}
+        title={title}
+        publisher={dataset?.publisher}
+        entityId={dataset?.id}
+        entityUri={dataset?.uri}
+        lastPublished={lastPublished}
+        isAuthoritative={isAuthoritative}
+        isOpenData={isOpenData}
+        isPublicData={isPublicData}
+        isRestrictedData={isRestrictedData}
+        isNonPublicData={isNonPublicData}
+        themes={themes}
+      >
+        {description && (
+          <ContentSection
+            id='description'
+            title={translations.detailsPage.sectionTitles.dataset.description}
+            entityTheme={Entity.DATASET}
+            truncate
+          >
+            {description}
+          </ContentSection>
+        )}
+        {objective && (
+          <ContentSection
+            id='objective'
+            title={translations.detailsPage.sectionTitles.dataset.objective}
+          >
+            {objective}
+          </ContentSection>
+        )}
+        {distributions.length > 0 && (
+          <ContentSection
+            id='distributions'
+            title={
+              translations.formatString(
+                translations.detailsPage.sectionTitles.dataset.distributions,
+                { count: distributions.length }
+              ) as string
+            }
+          >
+            {distributions.map((distribution, index) => (
+              <DatasetDistribution
+                key={distribution.uri || `distribution-${index}`}
+                distribution={distribution}
+                mediaTypes={mediaTypes}
+              />
+            ))}
+          </ContentSection>
+        )}
+        {Object.values(usage)
+          .filter(Boolean)
+          .filter(item => item && item?.length > 0).length > 0 && (
+          <ContentSection
+            id='usage'
+            title={translations.detailsPage.sectionTitles.dataset.usage}
+          >
+            <KeyValueList>
+              {usage.legalBasisForRestriction.length > 0 && (
+                <KeyValueListItem
+                  property={translations.dataset.legalBasisForRestriction}
+                  value={
+                    <SC.ExternalLinkList>
+                      {usage.legalBasisForRestriction.map(
+                        ({ uri, prefLabel }) =>
+                          uri &&
+                          prefLabel && (
+                            <Link key={uri} href={uri} external>
+                              {translate(prefLabel)}
+                            </Link>
+                          )
                       )}
+                    </SC.ExternalLinkList>
+                  }
+                />
+              )}
+              {usage.legalBasisForProcessing.length > 0 && (
+                <KeyValueListItem
+                  property={translations.dataset.legalBasisForProcessing}
+                  value={
+                    <SC.ExternalLinkList>
+                      {usage.legalBasisForProcessing.map(
+                        ({ uri, prefLabel }) =>
+                          uri &&
+                          prefLabel && (
+                            <Link key={uri} href={uri} external>
+                              {translate(prefLabel)}
+                            </Link>
+                          )
+                      )}
+                    </SC.ExternalLinkList>
+                  }
+                />
+              )}
+              {usage.legalBasisForAccess.length > 0 && (
+                <KeyValueListItem
+                  property={translations.dataset.legalBasisForAccess}
+                  value={
+                    <SC.ExternalLinkList>
+                      {usage.legalBasisForAccess.map(
+                        ({ uri, prefLabel }) =>
+                          uri &&
+                          prefLabel && (
+                            <Link key={uri} href={uri} external>
+                              {translate(prefLabel)}
+                            </Link>
+                          )
+                      )}
+                    </SC.ExternalLinkList>
+                  }
+                />
+              )}
+              {usage.type && (
+                <KeyValueListItem
+                  property={translations.dataset.type}
+                  value={usage.type}
+                />
+              )}
+              {usage.standards.length > 0 && (
+                <KeyValueListItem
+                  property={translations.dataset.conformsTo}
+                  value={
+                    <SC.ExternalLinkList>
+                      {usage.standards.map(
+                        ({ uri, prefLabel }) =>
+                          uri &&
+                          prefLabel && (
+                            <Link key={uri} href={uri} external>
+                              {translate(prefLabel)}
+                            </Link>
+                          )
+                      )}
+                    </SC.ExternalLinkList>
+                  }
+                />
+              )}
+              {usage.informationModelReferences.length > 0 && (
+                <KeyValueListItem
+                  property={translations.dataset.informationModel}
+                  value={
+                    <SC.ExternalLinkList>
+                      {usage.informationModelReferences.map(
+                        ({ uri, prefLabel }) =>
+                          uri &&
+                          prefLabel && (
+                            <Link key={uri} href={uri} external>
+                              {translate(prefLabel)}
+                            </Link>
+                          )
+                      )}
+                    </SC.ExternalLinkList>
+                  }
+                />
+              )}
+              {usage.languages.length > 0 && (
+                <KeyValueListItem
+                  property={translations.dataset.language}
+                  value={usage.languages
+                    .map(({ prefLabel }) => prefLabel && translate(prefLabel))
+                    .filter(Boolean)
+                    .join(', ')}
+                />
+              )}
+              {usage.moreInformationPage && (
+                <KeyValueListItem
+                  property=''
+                  value={
+                    <Link href={usage.moreInformationPage} external>
+                      {translations.dataset.landingPage}
+                    </Link>
+                  }
+                />
+              )}
+            </KeyValueList>
+          </ContentSection>
+        )}
+        {samples.length > 0 && (
+          <ContentSection
+            id='sample'
+            title={translations.detailsPage.sectionTitles.dataset.sample}
+          >
+            {samples.map(
+              (
+                { description, format: formats, accessURL: accessURLs },
+                index
+              ) => (
+                <KeyValueList key={`sample-${index}`}>
+                  <KeyValueListItem
+                    property={translations.dataset.distribution.description}
+                    value={translate(description)}
+                  />
+                  <KeyValueListItem
+                    property={translations.dataset.distribution.format}
+                    value={formats?.join(', ')}
+                  />
+                  {Array.isArray(accessURLs) && (
+                    <KeyValueListItem
+                      property={translations.dataset.distribution.accessUrl}
                       value={
-                        <Link href={uri} rel="noopener noreferrer">
-                          {uri}
+                        <Link href={accessURLs?.[0]} external>
+                          {translate(accessURLs?.[0])}
                         </Link>
                       }
                     />
-                  )
-                )}
-              </KeyValueList>
-            </ContentSection>
-          )}
-          {keywords.length > 0 && (
-            <ContentSection
-              id="keywords"
-              title={translations.detailsPage.sectionTitles.dataset.keywords}
-            >
-              <InlineList>
-                {keywords.map((keyword, index) => (
-                  <Link
-                    key={`${keyword}-${index}`}
-                    to={`${PATHNAME_DATASETS}?keywords=${encodeURIComponent(
-                      keyword
-                    )}`}
-                    as={RouteLink}
-                  >
-                    {keyword}
-                  </Link>
-                ))}
-              </InlineList>
-            </ContentSection>
-          )}
-          {(datasetsRelations.length > 0 ||
-            publicServicesRelations.length > 0 ||
-            dataServicesRelations.length > 0) && (
-            <ContentSection
-              id="relationList"
-              title={translations.detailsPage.relationList.title.dataset}
-            >
-              <RelationList
-                parentIdentifier={dataset.uri}
-                datasets={datasetsRelations}
-                publicServices={publicServicesRelations}
-                dataServices={dataServicesRelations}
-              />
-            </ContentSection>
-          )}
-          {qualifiedAttributions.length > 0 && (
-            <ContentSection
-              id="qualifiedAttributions"
-              title={
-                translations.detailsPage.sectionTitles.dataset
-                  .qualifiedAttributions
-              }
-            >
-              {qualifiedAttributions
-                .map(
-                  ({ agent: { name, prefLabel } }) =>
-                    translate(prefLabel) || name
-                )
-                .join(', ')}
-            </ContentSection>
-          )}
-          {(administrativeUnits.length > 0 ||
-            temporalRestrictions.length > 0) && (
-            <ContentSection
-              id="restrictions"
-              title={
-                translations.detailsPage.sectionTitles.dataset.restrictions
-              }
-            >
-              <KeyValueList>
-                {administrativeUnits.map(({ uri, name }) => (
-                  <KeyValueListItem
-                    key={uri}
-                    property={translations.dataset.spatial}
-                    value={
-                      uri ? (
-                        <Link href={uri} external>
-                          {translate(name) || uri}
+                  )}
+                </KeyValueList>
+              )
+            )}
+          </ContentSection>
+        )}
+        {Object.values(provenance).filter(Boolean).length > 0 && (
+          <ContentSection
+            id='provenance'
+            title={translations.detailsPage.sectionTitles.dataset.provenance}
+          >
+            <KeyValueList>
+              {provenance.provenance && (
+                <KeyValueListItem
+                  property={translations.dataset.provenance}
+                  value={provenance.provenance}
+                />
+              )}
+              {provenance.frequency && (
+                <KeyValueListItem
+                  property={translations.dataset.frequency}
+                  value={provenance.frequency}
+                />
+              )}
+              {provenance.issued && (
+                <KeyValueListItem
+                  property={translations.dataset.issued}
+                  value={provenance.issued}
+                />
+              )}
+              {provenance.modified && (
+                <KeyValueListItem
+                  property={translations.dataset.modified}
+                  value={provenance.modified}
+                />
+              )}
+            </KeyValueList>
+          </ContentSection>
+        )}
+        {Object.values(quality).filter(Boolean).length > 0 && (
+          <ContentSection
+            id='quality'
+            title={translations.detailsPage.sectionTitles.dataset.quality}
+          >
+            <KeyValueList>
+              {quality.currentness && (
+                <KeyValueListItem
+                  property={translations.dataset.currentness}
+                  value={translate(quality.currentness)}
+                />
+              )}
+              {quality.completeness && (
+                <KeyValueListItem
+                  property={translations.dataset.completenessAnnotation}
+                  value={translate(quality.completeness)}
+                />
+              )}
+              {quality.accuracy && (
+                <KeyValueListItem
+                  property={translations.dataset.accuracyAnnotation}
+                  value={translate(quality.accuracy)}
+                />
+              )}
+              {quality.relevance && (
+                <KeyValueListItem
+                  property={translations.dataset.relevanceAnnotation}
+                  value={translate(quality.relevance)}
+                />
+              )}
+              {quality.availability && (
+                <KeyValueListItem
+                  property={translations.dataset.availabilityAnnotations}
+                  value={translate(quality.availability)}
+                />
+              )}
+            </KeyValueList>
+          </ContentSection>
+        )}
+        {referencedConcepts.length > 0 && (
+          <ContentSection
+            id='concept-references'
+            title={
+              translations.detailsPage.sectionTitles.dataset.conceptReferences
+            }
+          >
+            <KeyValueList>
+              {referencedConcepts.map(
+                ({ id, prefLabel, definition: { text: definition } }) =>
+                  id && (
+                    <KeyValueListItem
+                      key={id}
+                      property={
+                        <Link to={`${PATHNAME_CONCEPTS}/${id}`} as={RouteLink}>
+                          {translate(prefLabel)}
                         </Link>
-                      ) : (
-                        translate(name) || uri
-                      )
-                    }
-                  />
-                ))}
-                {temporalRestrictions.map(({ startDate, endDate }) => (
+                      }
+                      value={translate(definition)}
+                    />
+                  )
+              )}
+            </KeyValueList>
+          </ContentSection>
+        )}
+        {(referencedDatasets.length > 0 ||
+          referencedResourcesUnResolved.length > 0) && (
+          <ContentSection
+            id='dataset-references'
+            title={
+              translations.detailsPage.sectionTitles.dataset.datasetReferences
+            }
+          >
+            <KeyValueList>
+              {referencedDatasets?.map(({ id, uri, title }) => (
+                <KeyValueListItem
+                  key={id}
+                  property={translate(
+                    referenceTypes?.find(
+                      ({ uri: referenceUri }) =>
+                        referenceUri ===
+                        datasetReferenceTypes.find(
+                          ({ source }) => source.uri === uri
+                        )?.referenceType?.uri
+                    )?.prefLabel
+                  )}
+                  value={
+                    <Link
+                      to={`${PATHNAME_DATASET_DETAILS}/${id}`}
+                      as={RouteLink}
+                    >
+                      {translate(title)}
+                    </Link>
+                  }
+                />
+              ))}
+              {referencedResourcesUnResolved?.map(
+                (
+                  {
+                    source: { uri },
+                    referenceType: { uri: referenceTypeUri } = {}
+                  },
+                  index
+                ) => (
                   <KeyValueListItem
-                    key={`${startDate}-${endDate}`}
-                    property={translations.dataset.temporal}
+                    key={`${uri}-${index}`}
+                    property={translate(
+                      referenceTypes?.find(
+                        ({ uri: referenceTypesUri }) =>
+                          referenceTypesUri === referenceTypeUri
+                      )?.prefLabel
+                    )}
                     value={
-                      startDate && endDate
-                        ? `${formatDate(
-                            dateStringToDate(startDate)
-                          )} - ${formatDate(dateStringToDate(endDate))}`
-                        : formatDate(dateStringToDate(startDate || endDate))
+                      <Link href={uri} rel='noopener noreferrer'>
+                        {uri}
+                      </Link>
                     }
                   />
-                ))}
-              </KeyValueList>
-            </ContentSection>
-          )}
-          {contactPoints.length > 0 && (
-            <ContentSection
-              id="contact-information"
-              title={
-                translations.detailsPage.sectionTitles.dataset
-                  .contactInformation
-              }
-            >
-              {contactPoints.map(
-                ({ organizationUnit, email, hasURL, hasTelephone }) => (
-                  <KeyValueList
-                    key={`${organizationUnit}-${email}-${hasURL}-${hasTelephone}`}
-                  >
-                    {hasURL && (
-                      <KeyValueListItem
-                        property={translations.contactPoint}
-                        value={
-                          <Link href={hasURL} external>
-                            {organizationUnit ?? hasURL}
-                          </Link>
-                        }
-                      />
-                    )}
-                    {email && (
-                      <KeyValueListItem
-                        property={translations.email}
-                        value={
-                          <Link
-                            title={email}
-                            href={`mailto:${email}`}
-                            rel="noopener noreferrer"
-                          >
-                            {email}
-                          </Link>
-                        }
-                      />
-                    )}
-                    {hasTelephone && (
-                      <KeyValueListItem
-                        property={translations.phone}
-                        value={hasTelephone}
-                      />
-                    )}
-                  </KeyValueList>
                 )
               )}
-            </ContentSection>
-          )}
-        </DetailsPage>
-      </ThemeProvider>
-    )
+            </KeyValueList>
+          </ContentSection>
+        )}
+        {keywords.length > 0 && (
+          <ContentSection
+            id='keywords'
+            title={translations.detailsPage.sectionTitles.dataset.keywords}
+          >
+            <InlineList>
+              {keywords.map((keyword, index) => (
+                <Link
+                  key={`${keyword}-${index}`}
+                  to={`${PATHNAME_DATASETS}?keywords=${encodeURIComponent(
+                    keyword
+                  )}`}
+                  as={RouteLink}
+                >
+                  {keyword}
+                </Link>
+              ))}
+            </InlineList>
+          </ContentSection>
+        )}
+        {(datasetsRelations.length > 0 ||
+          publicServicesRelations.length > 0 ||
+          dataServicesRelations.length > 0) && (
+          <ContentSection
+            id='relationList'
+            title={translations.detailsPage.relationList.title.dataset}
+          >
+            <RelationList
+              parentIdentifier={dataset?.uri}
+              datasets={datasetsRelations}
+              publicServices={publicServicesRelations}
+              dataServices={dataServicesRelations}
+            />
+          </ContentSection>
+        )}
+        {qualifiedAttributions.length > 0 && (
+          <ContentSection
+            id='qualifiedAttributions'
+            title={
+              translations.detailsPage.sectionTitles.dataset
+                .qualifiedAttributions
+            }
+          >
+            {qualifiedAttributions
+              .map(
+                ({ agent: { name, prefLabel } }) => translate(prefLabel) || name
+              )
+              .join(', ')}
+          </ContentSection>
+        )}
+        {(administrativeUnits.length > 0 ||
+          temporalRestrictions.length > 0) && (
+          <ContentSection
+            id='restrictions'
+            title={translations.detailsPage.sectionTitles.dataset.restrictions}
+          >
+            <KeyValueList>
+              {administrativeUnits.map(({ uri, name }) => (
+                <KeyValueListItem
+                  key={uri}
+                  property={translations.dataset.spatial}
+                  value={
+                    uri ? (
+                      <Link href={uri} external>
+                        {translate(name) || uri}
+                      </Link>
+                    ) : (
+                      translate(name) || uri
+                    )
+                  }
+                />
+              ))}
+              {temporalRestrictions.map(({ startDate, endDate }) => (
+                <KeyValueListItem
+                  key={`${startDate}-${endDate}`}
+                  property={translations.dataset.temporal}
+                  value={
+                    startDate && endDate
+                      ? `${formatDate(
+                          dateStringToDate(startDate)
+                        )} - ${formatDate(dateStringToDate(endDate))}`
+                      : formatDate(dateStringToDate(startDate || endDate))
+                  }
+                />
+              ))}
+            </KeyValueList>
+          </ContentSection>
+        )}
+        {contactPoints.length > 0 && (
+          <ContentSection
+            id='contact-information'
+            title={
+              translations.detailsPage.sectionTitles.dataset.contactInformation
+            }
+          >
+            {contactPoints.map(
+              ({ organizationUnit, email, hasURL, hasTelephone }) => (
+                <KeyValueList
+                  key={`${organizationUnit}-${email}-${hasURL}-${hasTelephone}`}
+                >
+                  {hasURL && (
+                    <KeyValueListItem
+                      property={translations.contactPoint}
+                      value={
+                        <Link href={hasURL} external>
+                          {organizationUnit ?? hasURL}
+                        </Link>
+                      }
+                    />
+                  )}
+                  {email && (
+                    <KeyValueListItem
+                      property={translations.email}
+                      value={
+                        <Link
+                          title={email}
+                          href={`mailto:${email}`}
+                          rel='noopener noreferrer'
+                        >
+                          {email}
+                        </Link>
+                      }
+                    />
+                  )}
+                  {hasTelephone && (
+                    <KeyValueListItem
+                      property={translations.phone}
+                      value={hasTelephone}
+                    />
+                  )}
+                </KeyValueList>
+              )
+            )}
+          </ContentSection>
+        )}
+      </DetailsPage>
+    </ThemeProvider>
+  ) : (
+    <ErrorPage errorCode='404' />
   );
 };
 
@@ -762,5 +763,6 @@ export default compose(
   withDatasets,
   withDataServices,
   withPublicServices,
-  withKartverket
+  withKartverket,
+  withErrorBoundary(ErrorPage)
 )(DatasetDetailsPage);

@@ -15,10 +15,10 @@ function* getDatasetRequested({
   try {
     const params = paramsToSearchBody({ id });
     const data = yield call(searchDatasets, params);
-    if (data) {
-      yield put(
-        actions.getDatasetSucceeded(extractFirstDataset(data) as Dataset)
-      );
+    const dataset = extractFirstDataset(data) as Dataset;
+
+    if (dataset) {
+      yield put(actions.getDatasetSucceeded(dataset));
     } else {
       yield put(actions.getDatasetFailed(''));
     }

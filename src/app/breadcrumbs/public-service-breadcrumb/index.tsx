@@ -6,11 +6,14 @@ import withPublicService, {
 } from '../../../components/with-public-service';
 
 import { getTranslateText as translate } from '../../../lib/translateText';
+import translations from '../../../lib/localization';
 
 interface Props extends PublicServiceProps {}
 
 const PublicServiceBreadcrumb: FC<Props> = ({ publicService }) => (
-  <span>{translate(publicService?.title)}</span>
+  <span>
+    {translate(publicService?.title ?? translations.breadcrumb.notFound)}
+  </span>
 );
 
 export default compose<FC>(memo, withPublicService)(PublicServiceBreadcrumb);

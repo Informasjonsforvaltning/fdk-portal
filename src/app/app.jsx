@@ -47,6 +47,8 @@ import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import { parseSearchParams } from '../lib/location-history-helper';
 
+import ErrorPage from '../components/error-page';
+
 export function App({ language, onChangeLanguage }) {
   useEffect(() => {
     const params = parseSearchParams(location);
@@ -78,16 +80,16 @@ export function App({ language, onChangeLanguage }) {
       {getConfig().themeNap && <DocumentMeta {...{ title: 'NAP' }} />}
       <div>
         <a
-          id="focus-element"
-          className="uu-invisible"
+          id='focus-element'
+          className='uu-invisible'
           href={`${location.pathname}#content`}
-          aria-hidden="true"
+          aria-hidden='true'
         >
           Hopp til hovedinnhold
         </a>
       </div>
-      <div id="skip-link-wrap">
-        <a id="skip-link" href={`${location.pathname}#content`}>
+      <div id='skip-link-wrap'>
+        <a id='skip-link' href={`${location.pathname}#content`}>
           Hopp til hovedinnhold
         </a>
       </div>
@@ -97,7 +99,7 @@ export function App({ language, onChangeLanguage }) {
       <Breadcrumbs />
 
       <Switch>
-        <Redirect from="/:url*(/+)" to={location.pathname.slice(0, -1)} />
+        <Redirect from='/:url*(/+)' to={location.pathname.slice(0, -1)} />
         <Route exact path={PATHNAME_MAIN_PAGE}>
           {getConfig().themeNap ? (
             <Redirect to={PATHNAME_DATASETS} />
@@ -168,6 +170,7 @@ export function App({ language, onChangeLanguage }) {
               path={PATHNAME_GUIDANCE_METADATA}
               component={CmsArticlePage}
             />
+            <Route render={() => <ErrorPage errorCode='404' />} />
           </Switch>
         </ScrollToTop>
       </Switch>
@@ -176,24 +179,24 @@ export function App({ language, onChangeLanguage }) {
         <Footer />
       ) : (
         <>
-          <div className="fdk-footer d-md-none">
-            <div className="container">
-              <div className="row">
-                <div className="col-sm-12 text-center mb-2">
-                  <p className="fdk-p-footer">{footerText}</p>
+          <div className='fdk-footer d-md-none'>
+            <div className='container'>
+              <div className='row'>
+                <div className='col-sm-12 text-center mb-2'>
+                  <p className='fdk-p-footer'>{footerText}</p>
                 </div>
-                <div className="col-sm-12 text-center mb-2">
-                  <p className="fdk-p-footer">
-                    <a href="https://www.brreg.no/personvernerklaering/">
+                <div className='col-sm-12 text-center mb-2'>
+                  <p className='fdk-p-footer'>
+                    <a href='https://www.brreg.no/personvernerklaering/'>
                       {localization.footer.information}
                       {localization.footer.privacy}
-                      <i className="fa fa-external-link fdk-fa-right" />
+                      <i className='fa fa-external-link fdk-fa-right' />
                     </a>
                   </p>
                 </div>
 
-                <div className="col-sm-12 text-center mb-2">
-                  <p className="fdk-p-footer">
+                <div className='col-sm-12 text-center mb-2'>
+                  <p className='fdk-p-footer'>
                     <a href={`mailto:${footerEmail}`}>{footerEmail}</a>
                   </p>
                 </div>
@@ -201,29 +204,29 @@ export function App({ language, onChangeLanguage }) {
             </div>
           </div>
 
-          <div className="fdk-footer d-none d-md-block">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-3">
-                  <p className="fdk-p-footer">
-                    <a href="https://www.digdir.no/om-oss/personvernerklaering/706">
+          <div className='fdk-footer d-none d-md-block'>
+            <div className='container'>
+              <div className='row'>
+                <div className='col-md-3'>
+                  <p className='fdk-p-footer'>
+                    <a href='https://www.digdir.no/om-oss/personvernerklaering/706'>
                       {localization.footer.information}
                       <br />
                       {localization.footer.privacy}
-                      <i className="fa fa-external-link fdk-fa-right" />
+                      <i className='fa fa-external-link fdk-fa-right' />
                     </a>
                   </p>
                 </div>
-                <div className="col-md-6 text-center">
-                  <span className="uu-invisible" aria-hidden="false">
+                <div className='col-md-6 text-center'>
+                  <span className='uu-invisible' aria-hidden='false'>
                     Felles Datakatalog.
                   </span>
-                  <p className="fdk-p-footer">{footerText}</p>
+                  <p className='fdk-p-footer'>{footerText}</p>
                 </div>
-                <div className="col-md-3 text-right">
-                  <p className="fdk-p-footer">
+                <div className='col-md-3 text-right'>
+                  <p className='fdk-p-footer'>
                     <a href={`mailto:${footerEmail}`}>
-                      <span className="uu-invisible" aria-hidden="false">
+                      <span className='uu-invisible' aria-hidden='false'>
                         Mailadresse.
                       </span>
                       {localization.footer.contact}

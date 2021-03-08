@@ -20,6 +20,7 @@ import withPublicServices, {
 import withConcepts, { Props as ConceptsProps } from '../with-concepts';
 import withDatasets, { Props as DatasetsProps } from '../with-datasets';
 import withEvents, { Props as EventsProps } from '../with-events';
+import withErrorBoundary from '../with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
@@ -27,6 +28,7 @@ import DetailsPage, {
   KeyValueList,
   KeyValueListItem
 } from '../details-page';
+import ErrorPage from '../error-page';
 import RelationList from '../relation-list';
 
 import type { Theme, PublicService } from '../../types';
@@ -53,6 +55,7 @@ interface Props
     RouteComponentProps<RouteParams> {}
 
 const PublicServiceDetailsPage: FC<Props> = ({
+  isLoadingPublicService,
   concepts,
   datasets,
   publicService,
@@ -89,6 +92,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
   const entity = Entity.PUBLIC_SERVICE;
   const theme = { entityColours: themeFDK.extendedColors[entity] };
+
+  const renderPage =
+    isLoadingPublicService || !isMounted || publicService !== null;
 
   useEffect(() => {
     if (publicService?.id !== publicServiceId) {
@@ -204,545 +210,540 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
   const themes: Theme[] = [];
 
-  return isMounted
-    ? publicService && (
-        <ThemeProvider theme={theme}>
-          <SC.BetaRibbon>BETA</SC.BetaRibbon>
-          <DetailsPage
-            entity={entity}
-            title={title}
-            publisher={publicService?.hasCompetentAuthority?.[0]}
-            entityId={publicService?.id}
-            entityUri={publicService?.uri}
-            lastPublished={lastPublished}
-            isAuthoritative={false}
-            isOpenData={false}
-            isPublicData={false}
-            isRestrictedData={false}
-            isNonPublicData={false}
-            themes={themes}
-          >
-            {description && (
-              <ContentSection
-                id="description"
-                title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .description
-                }
-                entityTheme={Entity.PUBLIC_SERVICE}
-                truncate
-              >
-                {description}
-              </ContentSection>
-            )}
+  return renderPage ? (
+    publicService && (
+      <ThemeProvider theme={theme}>
+        <SC.BetaRibbon>BETA</SC.BetaRibbon>
+        <DetailsPage
+          entity={entity}
+          title={title}
+          publisher={publicService?.hasCompetentAuthority?.[0]}
+          entityId={publicService?.id}
+          entityUri={publicService?.uri}
+          lastPublished={lastPublished}
+          isAuthoritative={false}
+          isOpenData={false}
+          isPublicData={false}
+          isRestrictedData={false}
+          isNonPublicData={false}
+          themes={themes}
+        >
+          {description && (
+            <ContentSection
+              id='description'
+              title={
+                translations.detailsPage.sectionTitles.publicService.description
+              }
+              entityTheme={Entity.PUBLIC_SERVICE}
+              truncate
+            >
+              {description}
+            </ContentSection>
+          )}
 
-            {(languages.length > 0 ||
-              sectors.length > 0 ||
-              hasLegalResource.length > 0 ||
-              hasChannel.length > 0 ||
-              processingTime) && (
-              <ContentSection
-                id="usage"
-                title={
-                  translations.detailsPage.sectionTitles.publicService.usage
-                }
-              >
-                <KeyValueList>
-                  {hasChannel.length > 0 && (
+          {(languages.length > 0 ||
+            sectors.length > 0 ||
+            hasLegalResource.length > 0 ||
+            hasChannel.length > 0 ||
+            processingTime) && (
+            <ContentSection
+              id='usage'
+              title={translations.detailsPage.sectionTitles.publicService.usage}
+            >
+              <KeyValueList>
+                {hasChannel.length > 0 && (
+                  <KeyValueListItem
+                    property={
+                      translations.detailsPage.sectionTitles.publicService
+                        .channel
+                    }
+                    value={hasChannel
+                      .map(({ type }) => translate(type?.prefLabel))
+                      .filter(Boolean)
+                      .join(', ')}
+                  />
+                )}
+                {sectors.length > 0 && (
+                  <KeyValueListItem
+                    property={translations.industryCode}
+                    value={sectors
+                      .map(({ prefLabel }) => translate(prefLabel))
+                      .filter(Boolean)
+                      .join(', ')}
+                  />
+                )}
+                {processingTime && (
+                  <KeyValueListItem
+                    property={
+                      translations.detailsPage.sectionTitles.publicService
+                        .processingTime
+                    }
+                    value={`${moment.duration(processingTime).asDays()} ${
+                      translations.days
+                    }`}
+                  />
+                )}
+                {hasCost.length > 0 && (
+                  <KeyValueListItem
+                    property={
+                      translations.detailsPage.sectionTitles.publicService.cost
+                    }
+                    value={hasCost
+                      .map(({ uri, description }) => (
+                        <SC.ListItemValue key={uri}>
+                          {translate(description)}
+                        </SC.ListItemValue>
+                      ))
+                      .filter(Boolean)}
+                  />
+                )}
+                {hasLegalResource.length > 0 && (
+                  <KeyValueListItem
+                    property={
+                      translations.detailsPage.sectionTitles.publicService
+                        .legalResources
+                    }
+                    value={hasLegalResource
+                      .map(({ description, uri, url }) => (
+                        <Link key={uri} href={url} external>
+                          {translate(description)}
+                        </Link>
+                      ))
+                      .filter(Boolean)}
+                  />
+                )}
+                {follows.length > 0 && (
+                  <KeyValueListItem
+                    property={
+                      translations.detailsPage.sectionTitles.publicService
+                        .follows
+                    }
+                    value={follows
+                      .map(({ uri, description }) => (
+                        <SC.ListItemValue key={uri}>
+                          {translate(description)}
+                        </SC.ListItemValue>
+                      ))
+                      .filter(Boolean)}
+                  />
+                )}
+                {languages.length > 0 && (
+                  <KeyValueListItem
+                    property={translations.language}
+                    value={languages
+                      .map(({ prefLabel }) => translate(prefLabel))
+                      .filter(Boolean)
+                      .join(', ')}
+                  />
+                )}
+              </KeyValueList>
+            </ContentSection>
+          )}
+
+          {hasCriterion.length > 0 && (
+            <ContentSection
+              id='hasCriterion'
+              title={
+                translations.detailsPage.sectionTitles.publicService.criterion
+              }
+            >
+              <KeyValueList>
+                {hasCriterion.map(({ name, type }, index) => (
+                  <KeyValueListItem
+                    key={`${translate(name)}-${index}`}
+                    property={translate(name)}
+                    value={type
+                      .map(({ prefLabel }) => translate(prefLabel))
+                      .filter(Boolean)
+                      .join(', ')}
+                  />
+                ))}
+              </KeyValueList>
+            </ContentSection>
+          )}
+
+          {produces.length > 0 && (
+            <ContentSection
+              id='produces'
+              title={
+                translations.detailsPage.sectionTitles.publicService.produces
+              }
+            >
+              <KeyValueList>
+                {produces.map(({ name, description }, index) => (
+                  <KeyValueListItem
+                    key={`${translate(name)}-${index}`}
+                    property={translate(name)}
+                    value={translate(description)}
+                  />
+                ))}
+              </KeyValueList>
+            </ContentSection>
+          )}
+
+          {hasInput.length > 0 && (
+            <ContentSection
+              id='hasInput'
+              title={
+                translations.detailsPage.sectionTitles.publicService.attachment
+              }
+            >
+              <KeyValueList>
+                {hasInput.map(({ name, description }, index) => (
+                  <KeyValueListItem
+                    key={`${translate(name)}-${index}`}
+                    property={translate(name)}
+                    value={translate(description)}
+                  />
+                ))}
+              </KeyValueList>
+            </ContentSection>
+          )}
+
+          {hasParticipation.length > 0 && (
+            <ContentSection
+              id='hasParticipation'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .participation
+              }
+            >
+              <KeyValueList>
+                {hasParticipation.map(
+                  ({ description, role, agents = [] }, index) => (
                     <KeyValueListItem
+                      key={`${translate(description)}-${index}`}
                       property={
-                        translations.detailsPage.sectionTitles.publicService
-                          .channel
-                      }
-                      value={hasChannel
-                        .map(({ type }) => translate(type?.prefLabel))
-                        .filter(Boolean)
-                        .join(', ')}
-                    />
-                  )}
-                  {sectors.length > 0 && (
-                    <KeyValueListItem
-                      property={translations.industryCode}
-                      value={sectors
-                        .map(({ prefLabel }) => translate(prefLabel))
-                        .filter(Boolean)
-                        .join(', ')}
-                    />
-                  )}
-                  {processingTime && (
-                    <KeyValueListItem
-                      property={
-                        translations.detailsPage.sectionTitles.publicService
-                          .processingTime
-                      }
-                      value={`${moment.duration(processingTime).asDays()} ${
-                        translations.days
-                      }`}
-                    />
-                  )}
-                  {hasCost.length > 0 && (
-                    <KeyValueListItem
-                      property={
-                        translations.detailsPage.sectionTitles.publicService
-                          .cost
-                      }
-                      value={hasCost
-                        .map(({ uri, description }) => (
-                          <SC.ListItemValue key={uri}>
-                            {translate(description)}
-                          </SC.ListItemValue>
-                        ))
-                        .filter(Boolean)}
-                    />
-                  )}
-                  {hasLegalResource.length > 0 && (
-                    <KeyValueListItem
-                      property={
-                        translations.detailsPage.sectionTitles.publicService
-                          .legalResources
-                      }
-                      value={hasLegalResource
-                        .map(({ description, uri, url }) => (
-                          <Link key={uri} href={url} external>
-                            {translate(description)}
-                          </Link>
-                        ))
-                        .filter(Boolean)}
-                    />
-                  )}
-                  {follows.length > 0 && (
-                    <KeyValueListItem
-                      property={
-                        translations.detailsPage.sectionTitles.publicService
-                          .follows
-                      }
-                      value={follows
-                        .map(({ uri, description }) => (
-                          <SC.ListItemValue key={uri}>
-                            {translate(description)}
-                          </SC.ListItemValue>
-                        ))
-                        .filter(Boolean)}
-                    />
-                  )}
-                  {languages.length > 0 && (
-                    <KeyValueListItem
-                      property={translations.language}
-                      value={languages
-                        .map(({ prefLabel }) => translate(prefLabel))
-                        .filter(Boolean)
-                        .join(', ')}
-                    />
-                  )}
-                </KeyValueList>
-              </ContentSection>
-            )}
-
-            {hasCriterion.length > 0 && (
-              <ContentSection
-                id="hasCriterion"
-                title={
-                  translations.detailsPage.sectionTitles.publicService.criterion
-                }
-              >
-                <KeyValueList>
-                  {hasCriterion.map(({ name, type }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(name)}-${index}`}
-                      property={translate(name)}
-                      value={type
-                        .map(({ prefLabel }) => translate(prefLabel))
-                        .filter(Boolean)
-                        .join(', ')}
-                    />
-                  ))}
-                </KeyValueList>
-              </ContentSection>
-            )}
-
-            {produces.length > 0 && (
-              <ContentSection
-                id="produces"
-                title={
-                  translations.detailsPage.sectionTitles.publicService.produces
-                }
-              >
-                <KeyValueList>
-                  {produces.map(({ name, description }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(name)}-${index}`}
-                      property={translate(name)}
-                      value={translate(description)}
-                    />
-                  ))}
-                </KeyValueList>
-              </ContentSection>
-            )}
-
-            {hasInput.length > 0 && (
-              <ContentSection
-                id="hasInput"
-                title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .attachment
-                }
-              >
-                <KeyValueList>
-                  {hasInput.map(({ name, description }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(name)}-${index}`}
-                      property={translate(name)}
-                      value={translate(description)}
-                    />
-                  ))}
-                </KeyValueList>
-              </ContentSection>
-            )}
-
-            {hasParticipation.length > 0 && (
-              <ContentSection
-                id="hasParticipation"
-                title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .participation
-                }
-              >
-                <KeyValueList>
-                  {hasParticipation.map(
-                    ({ description, role, agents = [] }, index) => (
-                      <KeyValueListItem
-                        key={`${translate(description)}-${index}`}
-                        property={
-                          <>
-                            {agents.map(
-                              ({ uri, identifier, name, title }, index) => (
-                                <SC.ListItemValue key={`${uri}-${index}`}>
-                                  <Link
-                                    as={RouterLink}
-                                    to={`${PATHNAME_ORGANIZATIONS}/${identifier}`}
-                                  >
-                                    {translate(title) ?? name}
-                                  </Link>
-                                </SC.ListItemValue>
-                              )
-                            )}
-                            <SC.LightWeightLabel>
-                              {translate(description)}
-                            </SC.LightWeightLabel>
-                          </>
-                        }
-                        value={role
-                          .map(({ prefLabel }) => translate(prefLabel))
-                          .filter(Boolean)
-                          .join(', ')}
-                      />
-                    )
-                  )}
-                </KeyValueList>
-              </ContentSection>
-            )}
-
-            {keywords.length > 0 && (
-              <ContentSection
-                id="keywords"
-                title={
-                  translations.detailsPage.sectionTitles.publicService.keywords
-                }
-              >
-                <InlineList>
-                  {keywords.map((keyword, index) => (
-                    <Link
-                      as={RouterLink}
-                      to={`${PATHNAME_PUBLIC_SERVICES}?keywords=${encodeURIComponent(
-                        keyword
-                      )}`}
-                      key={`${keyword}-${index}`}
-                    >
-                      {keyword}
-                    </Link>
-                  ))}
-                </InlineList>
-              </ContentSection>
-            )}
-
-            {(eventsRelations.length > 0 ||
-              publicServicesRelations.length > 0) && (
-              <ContentSection
-                id="relationList"
-                title={
-                  translations.detailsPage.relationList.title.public_service
-                }
-              >
-                <RelationList
-                  parentIdentifier={publicService.uri}
-                  events={eventsRelations}
-                  publicServices={publicServicesRelations}
-                />
-              </ContentSection>
-            )}
-
-            {isClassifiedBy.length > 0 && (
-              <ContentSection
-                id="concept-references"
-                title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .conceptReferences
-                }
-                boxStyle
-                entityIcon={Entity.CONCEPT}
-              >
-                <KeyValueList>
-                  {isClassifiedBy?.map(
-                    ({ uri, prefLabel }) =>
-                      uri && (
-                        <KeyValueListItem
-                          key={uri}
-                          property={
-                            conceptsMap[uri] ? (
-                              <Link
-                                as={RouterLink}
-                                to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
-                              >
-                                {translate(conceptsMap[uri].prefLabel)}
-                              </Link>
-                            ) : (
-                              translate(prefLabel)
+                        <>
+                          {agents.map(
+                            ({ uri, identifier, name, title }, index) => (
+                              <SC.ListItemValue key={`${uri}-${index}`}>
+                                <Link
+                                  as={RouterLink}
+                                  to={`${PATHNAME_ORGANIZATIONS}/${identifier}`}
+                                >
+                                  {translate(title) ?? name}
+                                </Link>
+                              </SC.ListItemValue>
                             )
-                          }
-                          value={
-                            conceptsMap[uri]
-                              ? translate(conceptsMap[uri].definition?.text)
-                              : ''
-                          }
-                        />
-                      )
-                  )}
-                </KeyValueList>
-              </ContentSection>
-            )}
-
-            {(requiredServices.length > 0 ||
-              relation.length > 0 ||
-              publicServicesRequiredBy.length > 0 ||
-              publicServicesRelatedBy.length > 0) && (
-              <ContentSection
-                id="relatedServices"
-                title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .relatedServices
-                }
-                boxStyle
-                entityIcon={Entity.PUBLIC_SERVICE}
-              >
-                <KeyValueList>
-                  {requiredServices.length > 0 && (
-                    <KeyValueListItem
-                      property={translations.requires}
-                      value={requiredServices.map(({ uri, title }, index) =>
-                        publicServicesMap?.[uri] ? (
-                          <SC.ListItemValue key={`${uri}-${index}`}>
-                            <Link
-                              as={RouterLink}
-                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
-                              key={`${uri}-${index}`}
-                            >
-                              {translate(title)}
-                            </Link>
-                          </SC.ListItemValue>
-                        ) : (
-                          translate(title)
-                        )
-                      )}
-                    />
-                  )}
-                  {relation.length > 0 && (
-                    <KeyValueListItem
-                      property={
-                        translations.detailsPage.sectionTitles.publicService
-                          .relation
+                          )}
+                          <SC.LightWeightLabel>
+                            {translate(description)}
+                          </SC.LightWeightLabel>
+                        </>
                       }
-                      value={relation.map(({ uri, title }, index) =>
-                        publicServicesMap?.[uri] ? (
-                          <SC.ListItemValue key={`${uri}-${index}`}>
-                            <Link
-                              as={RouterLink}
-                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
-                            >
-                              {translate(title)}
-                            </Link>
-                          </SC.ListItemValue>
-                        ) : (
-                          translate(title)
-                        )
-                      )}
+                      value={role
+                        .map(({ prefLabel }) => translate(prefLabel))
+                        .filter(Boolean)
+                        .join(', ')}
                     />
-                  )}
-                  {publicServicesRequiredBy.length > 0 && (
-                    <KeyValueListItem
-                      property={
-                        translations.detailsPage.sectionTitles.publicService
-                          .requiredBy
-                      }
-                      value={publicServicesRequiredBy.map(
-                        ({ uri, title }, index) =>
-                          publicServicesRequiredByMap?.[uri] ? (
-                            <SC.ListItemValue key={`${uri}-${index}`}>
-                              <Link
-                                as={RouterLink}
-                                to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesRequiredByMap[uri]?.id}`}
-                              >
-                                {translate(title)}
-                              </Link>
-                            </SC.ListItemValue>
-                          ) : (
-                            translate(title)
-                          )
-                      )}
-                    />
-                  )}
-                  {publicServicesRelatedBy.length > 0 && (
-                    <KeyValueListItem
-                      property={
-                        translations.detailsPage.sectionTitles.publicService
-                          .relatedBy
-                      }
-                      value={publicServicesRelatedBy.map(
-                        ({ uri, title }, index) =>
-                          publicServicesRelatedByMap?.[uri] ? (
-                            <SC.ListItemValue key={`${uri}-${index}`}>
-                              <Link
-                                as={RouterLink}
-                                to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesRelatedByMap[uri]?.id}`}
-                              >
-                                {translate(title)}
-                              </Link>
-                            </SC.ListItemValue>
-                          ) : (
-                            translate(title)
-                          )
-                      )}
-                    />
-                  )}
-                </KeyValueList>
-              </ContentSection>
-            )}
-
-            {datasetsUris.length > 0 && (
-              <ContentSection
-                id="isDescribedAt"
-                title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .isDescribedAt
-                }
-                boxStyle
-                entityIcon={Entity.DATASET}
-              >
-                <KeyValueList>
-                  {datasetsUris?.map(
-                    uri =>
-                      uri && (
-                        <KeyValueListItem
-                          key={uri}
-                          property={
-                            datasetsMap[uri] ? (
-                              <Link
-                                as={RouterLink}
-                                to={`${PATHNAME_DATASETS}/${datasetsMap[uri].id}`}
-                              >
-                                {translate(datasetsMap[uri].title)}
-                              </Link>
-                            ) : (
-                              translate(uri)
-                            )
-                          }
-                          value={
-                            datasetsMap[uri]
-                              ? translate(datasetsMap[uri].description)
-                              : ''
-                          }
-                        />
-                      )
-                  )}
-                </KeyValueList>
-              </ContentSection>
-            )}
-
-            {contactPoints.length > 0 && (
-              <ContentSection
-                id="hasContactPoint"
-                title={
-                  translations.detailsPage.sectionTitles.publicService
-                    .contactPoint
-                }
-              >
-                {contactPoints.map(
-                  ({
-                    uri,
-                    contactType,
-                    description,
-                    email,
-                    name,
-                    telephone,
-                    url
-                  }) => (
-                    <KeyValueList key={uri}>
-                      {contactType && (
-                        <KeyValueListItem
-                          property=""
-                          value={translate(contactType)}
-                        />
-                      )}
-                      {description && (
-                        <KeyValueListItem
-                          property={translations.description}
-                          value={translate(description)}
-                        />
-                      )}
-                      {name && (
-                        <KeyValueListItem
-                          property={translations.name}
-                          value={translate(name)}
-                        />
-                      )}
-                      {email && (
-                        <KeyValueListItem
-                          property={translations.email}
-                          value={
-                            <a
-                              title={email}
-                              href={`mailto:${email}`}
-                              rel="noopener noreferrer"
-                            >
-                              {email}
-                            </a>
-                          }
-                        />
-                      )}
-                      {telephone && (
-                        <KeyValueListItem
-                          property={translations.phone}
-                          value={telephone}
-                        />
-                      )}
-                      {url && (
-                        <KeyValueListItem
-                          property={translations.contactPoint}
-                          value={
-                            <Link href={url} external>
-                              {url}
-                            </Link>
-                          }
-                        />
-                      )}
-                    </KeyValueList>
                   )
                 )}
-              </ContentSection>
-            )}
-          </DetailsPage>
-        </ThemeProvider>
-      )
-    : null;
+              </KeyValueList>
+            </ContentSection>
+          )}
+
+          {keywords.length > 0 && (
+            <ContentSection
+              id='keywords'
+              title={
+                translations.detailsPage.sectionTitles.publicService.keywords
+              }
+            >
+              <InlineList>
+                {keywords.map((keyword, index) => (
+                  <Link
+                    as={RouterLink}
+                    to={`${PATHNAME_PUBLIC_SERVICES}?keywords=${encodeURIComponent(
+                      keyword
+                    )}`}
+                    key={`${keyword}-${index}`}
+                  >
+                    {keyword}
+                  </Link>
+                ))}
+              </InlineList>
+            </ContentSection>
+          )}
+
+          {(eventsRelations.length > 0 ||
+            publicServicesRelations.length > 0) && (
+            <ContentSection
+              id='relationList'
+              title={translations.detailsPage.relationList.title.public_service}
+            >
+              <RelationList
+                parentIdentifier={publicService.uri}
+                events={eventsRelations}
+                publicServices={publicServicesRelations}
+              />
+            </ContentSection>
+          )}
+
+          {isClassifiedBy.length > 0 && (
+            <ContentSection
+              id='concept-references'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .conceptReferences
+              }
+              boxStyle
+              entityIcon={Entity.CONCEPT}
+            >
+              <KeyValueList>
+                {isClassifiedBy?.map(
+                  ({ uri, prefLabel }) =>
+                    uri && (
+                      <KeyValueListItem
+                        key={uri}
+                        property={
+                          conceptsMap[uri] ? (
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
+                            >
+                              {translate(conceptsMap[uri].prefLabel)}
+                            </Link>
+                          ) : (
+                            translate(prefLabel)
+                          )
+                        }
+                        value={
+                          conceptsMap[uri]
+                            ? translate(conceptsMap[uri].definition?.text)
+                            : ''
+                        }
+                      />
+                    )
+                )}
+              </KeyValueList>
+            </ContentSection>
+          )}
+
+          {(requiredServices.length > 0 ||
+            relation.length > 0 ||
+            publicServicesRequiredBy.length > 0 ||
+            publicServicesRelatedBy.length > 0) && (
+            <ContentSection
+              id='relatedServices'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .relatedServices
+              }
+              boxStyle
+              entityIcon={Entity.PUBLIC_SERVICE}
+            >
+              <KeyValueList>
+                {requiredServices.length > 0 && (
+                  <KeyValueListItem
+                    property={translations.requires}
+                    value={requiredServices.map(({ uri, title }, index) =>
+                      publicServicesMap?.[uri] ? (
+                        <SC.ListItemValue key={`${uri}-${index}`}>
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
+                            key={`${uri}-${index}`}
+                          >
+                            {translate(title)}
+                          </Link>
+                        </SC.ListItemValue>
+                      ) : (
+                        translate(title)
+                      )
+                    )}
+                  />
+                )}
+                {relation.length > 0 && (
+                  <KeyValueListItem
+                    property={
+                      translations.detailsPage.sectionTitles.publicService
+                        .relation
+                    }
+                    value={relation.map(({ uri, title }, index) =>
+                      publicServicesMap?.[uri] ? (
+                        <SC.ListItemValue key={`${uri}-${index}`}>
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
+                          >
+                            {translate(title)}
+                          </Link>
+                        </SC.ListItemValue>
+                      ) : (
+                        translate(title)
+                      )
+                    )}
+                  />
+                )}
+                {publicServicesRequiredBy.length > 0 && (
+                  <KeyValueListItem
+                    property={
+                      translations.detailsPage.sectionTitles.publicService
+                        .requiredBy
+                    }
+                    value={publicServicesRequiredBy.map(
+                      ({ uri, title }, index) =>
+                        publicServicesRequiredByMap?.[uri] ? (
+                          <SC.ListItemValue key={`${uri}-${index}`}>
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesRequiredByMap[uri]?.id}`}
+                            >
+                              {translate(title)}
+                            </Link>
+                          </SC.ListItemValue>
+                        ) : (
+                          translate(title)
+                        )
+                    )}
+                  />
+                )}
+                {publicServicesRelatedBy.length > 0 && (
+                  <KeyValueListItem
+                    property={
+                      translations.detailsPage.sectionTitles.publicService
+                        .relatedBy
+                    }
+                    value={publicServicesRelatedBy.map(
+                      ({ uri, title }, index) =>
+                        publicServicesRelatedByMap?.[uri] ? (
+                          <SC.ListItemValue key={`${uri}-${index}`}>
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesRelatedByMap[uri]?.id}`}
+                            >
+                              {translate(title)}
+                            </Link>
+                          </SC.ListItemValue>
+                        ) : (
+                          translate(title)
+                        )
+                    )}
+                  />
+                )}
+              </KeyValueList>
+            </ContentSection>
+          )}
+
+          {datasetsUris.length > 0 && (
+            <ContentSection
+              id='isDescribedAt'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .isDescribedAt
+              }
+              boxStyle
+              entityIcon={Entity.DATASET}
+            >
+              <KeyValueList>
+                {datasetsUris?.map(
+                  uri =>
+                    uri && (
+                      <KeyValueListItem
+                        key={uri}
+                        property={
+                          datasetsMap[uri] ? (
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_DATASETS}/${datasetsMap[uri].id}`}
+                            >
+                              {translate(datasetsMap[uri].title)}
+                            </Link>
+                          ) : (
+                            translate(uri)
+                          )
+                        }
+                        value={
+                          datasetsMap[uri]
+                            ? translate(datasetsMap[uri].description)
+                            : ''
+                        }
+                      />
+                    )
+                )}
+              </KeyValueList>
+            </ContentSection>
+          )}
+
+          {contactPoints.length > 0 && (
+            <ContentSection
+              id='hasContactPoint'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .contactPoint
+              }
+            >
+              {contactPoints.map(
+                ({
+                  uri,
+                  contactType,
+                  description,
+                  email,
+                  name,
+                  telephone,
+                  url
+                }) => (
+                  <KeyValueList key={uri}>
+                    {contactType && (
+                      <KeyValueListItem
+                        property=''
+                        value={translate(contactType)}
+                      />
+                    )}
+                    {description && (
+                      <KeyValueListItem
+                        property={translations.description}
+                        value={translate(description)}
+                      />
+                    )}
+                    {name && (
+                      <KeyValueListItem
+                        property={translations.name}
+                        value={translate(name)}
+                      />
+                    )}
+                    {email && (
+                      <KeyValueListItem
+                        property={translations.email}
+                        value={
+                          <a
+                            title={email}
+                            href={`mailto:${email}`}
+                            rel='noopener noreferrer'
+                          >
+                            {email}
+                          </a>
+                        }
+                      />
+                    )}
+                    {telephone && (
+                      <KeyValueListItem
+                        property={translations.phone}
+                        value={telephone}
+                      />
+                    )}
+                    {url && (
+                      <KeyValueListItem
+                        property={translations.contactPoint}
+                        value={
+                          <Link href={url} external>
+                            {url}
+                          </Link>
+                        }
+                      />
+                    )}
+                  </KeyValueList>
+                )
+              )}
+            </ContentSection>
+          )}
+        </DetailsPage>
+      </ThemeProvider>
+    )
+  ) : (
+    <ErrorPage errorCode='404' />
+  );
 };
 
 export default compose(
@@ -751,5 +752,6 @@ export default compose(
   withDatasets,
   withPublicService,
   withPublicServices,
-  withEvents
+  withEvents,
+  withErrorBoundary(ErrorPage)
 )(PublicServiceDetailsPage);

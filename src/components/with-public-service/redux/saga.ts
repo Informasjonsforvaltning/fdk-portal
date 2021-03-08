@@ -16,13 +16,10 @@ function* getPublicServiceRequested({
 }: ReturnType<typeof actions.getPublicServiceRequested>) {
   try {
     const data = yield call(searchPublicServices, paramsToSearchBody({ id }));
+    const publicService = extractFirstPublicService(data) as PublicService;
 
-    if (data?.hits) {
-      yield put(
-        actions.getPublicServiceSucceeded(
-          extractFirstPublicService(data) as PublicService
-        )
-      );
+    if (publicService) {
+      yield put(actions.getPublicServiceSucceeded(publicService));
     } else {
       yield put(actions.getPublicServiceFailed(''));
     }

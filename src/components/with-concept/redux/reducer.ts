@@ -10,7 +10,8 @@ import {
 import type { Actions } from '../../../types';
 
 const initialState = fromJS({
-  concept: null
+  concept: null,
+  isLoadingConcept: false
 });
 
 export default function reducer(
@@ -19,11 +20,13 @@ export default function reducer(
 ) {
   switch (action.type) {
     case GET_CONCEPT_REQUESTED:
-      return state.set('concept', null);
+      return state.set('concept', null).set('isLoadingConcept', true);
     case GET_CONCEPT_SUCCEEDED:
-      return state.set('concept', fromJS(action.payload.concept));
+      return state
+        .set('concept', fromJS(action.payload.concept))
+        .set('isLoadingConcept', false);
     case GET_CONCEPT_FAILED:
-      return state;
+      return state.set('isLoadingConcept', false);
     default:
       return state;
   }
