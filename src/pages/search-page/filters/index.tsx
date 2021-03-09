@@ -245,6 +245,7 @@ const FiltersPure: FC<Props> = ({
             <FilterBox
               htmlKey={2}
               title={localization.facet.format}
+              capitalizeOption={false}
               filter={aggregations.formats}
               onClick={handleFilterFormat}
               activeFilter={formatParam}
