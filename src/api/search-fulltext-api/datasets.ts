@@ -83,9 +83,6 @@ const mapFilters = ({
   if (last_x_days) {
     filters.push({ last_x_days });
   }
-  if (format) {
-    filters.push({ format });
-  }
   if (subjectExists) {
     filters.push({
       exists: 'subject'
@@ -112,6 +109,14 @@ const mapFilters = ({
   if (conformsTo) {
     filters.push({
       'conformsTo.uri.keyword': conformsTo
+    });
+  }
+  if (format) {
+    filters.push({
+      collection: {
+        field: 'distribution.mediaType.code.keyword',
+        values: format.split(',')
+      }
     });
   }
 

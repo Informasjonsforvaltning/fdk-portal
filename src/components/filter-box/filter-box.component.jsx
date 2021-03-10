@@ -31,7 +31,13 @@ export class FilterBox extends React.Component {
     this.setState({ open: !open });
   }
 
-  _renderOptions({ buckets }, onClick, activeFilter, allFilters) {
+  _renderOptions(
+    { buckets },
+    onClick,
+    activeFilter,
+    allFilters,
+    capitalizeOption
+  ) {
     const { open } = this.state;
     const { htmlKey, referenceDataItems } = this.props;
     const filters = [];
@@ -61,6 +67,7 @@ export class FilterBox extends React.Component {
             count={item.count}
             onClick={onClick}
             active={active}
+            capitalize={capitalizeOption}
             referenceDataItems={referenceDataItems}
           />
         );
@@ -101,7 +108,14 @@ export class FilterBox extends React.Component {
 
   render() {
     const { openFilter } = this.state;
-    const { title, filter, onClick, activeFilter, filters } = this.props;
+    const {
+      title,
+      filter,
+      onClick,
+      activeFilter,
+      filters,
+      capitalizeOption
+    } = this.props;
 
     if (_.get(filter, 'buckets', []).length > 0) {
       return (
@@ -118,7 +132,13 @@ export class FilterBox extends React.Component {
           <Collapse isOpen={openFilter}>
             <div className="fdk-panel__content">
               <div className="fdk-items-list">
-                {this._renderOptions(filter, onClick, activeFilter, filters)}
+                {this._renderOptions(
+                  filter,
+                  onClick,
+                  activeFilter,
+                  filters,
+                  capitalizeOption
+                )}
               </div>
             </div>
           </Collapse>
@@ -134,7 +154,8 @@ FilterBox.defaultProps = {
   title: null,
   activeFilter: null,
   referenceDataItems: null,
-  filters: null
+  filters: null,
+  capitalizeOption: true
 };
 
 FilterBox.propTypes = {
@@ -144,7 +165,8 @@ FilterBox.propTypes = {
   onClick: PropTypes.func.isRequired,
   activeFilter: PropTypes.string,
   referenceDataItems: PropTypes.object,
-  filters: PropTypes.object
+  filters: PropTypes.object,
+  capitalizeOption: PropTypes.bool
 };
 
 // export default FilterBox;

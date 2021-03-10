@@ -209,13 +209,22 @@ const FiltersPure: FC<Props> = ({
             />
             <FilterBox
               htmlKey={3}
+              title={localization.facet.format}
+              filter={aggregations.mediaType}
+              onClick={handleFilterFormat}
+              activeFilter={formatParam}
+              capitalizeOption={false}
+              referenceDataItems={keyBy(mediaTypes, 'code')}
+            />
+            <FilterBox
+              htmlKey={4}
               title={localization.facet.spatial}
               filter={aggregations.spatial}
               onClick={handleDatasetFilterSpatial}
               activeFilter={spatialParam}
             />
             <FilterBox
-              htmlKey={4}
+              htmlKey={5}
               title={localization.facet.provenance}
               filter={aggregations.provenance}
               onClick={handleDatasetFilterProvenance}
@@ -236,6 +245,7 @@ const FiltersPure: FC<Props> = ({
             <FilterBox
               htmlKey={2}
               title={localization.facet.format}
+              capitalizeOption={false}
               filter={aggregations.formats}
               onClick={handleFilterFormat}
               activeFilter={formatParam}
@@ -318,6 +328,7 @@ const FiltersPure: FC<Props> = ({
         publishers={publishers}
         losItems={losItems}
         eventTypes={eventTypes}
+        mediaTypes={mediaTypes}
       />
       <SC.Filters>{getFilters()}</SC.Filters>
     </>
