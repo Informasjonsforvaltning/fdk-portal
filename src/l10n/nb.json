@@ -842,5 +842,6 @@
   },
   "breadcrumb": {
     "notFound": "Ingen tittel"
-  }
+  },
+  "sampleData": "Eksempeldata"
 }
