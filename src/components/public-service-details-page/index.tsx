@@ -31,7 +31,7 @@ import DetailsPage, {
 import ErrorPage from '../error-page';
 import RelationList from '../relation-list';
 
-import type { Theme, PublicService } from '../../types';
+import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
 
 import {
@@ -153,16 +153,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const publicServicesMap = publicServices?.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, any>
-  );
-
-  const publicServicesRequiredByMap = publicServicesRequiredBy?.reduce(
-    (previous, current) => ({ ...previous, [current.uri]: current }),
-    {} as Record<string, PublicService>
-  );
-
-  const publicServicesRelatedByMap = publicServicesRelatedBy?.reduce(
-    (previous, current) => ({ ...previous, [current.uri]: current }),
-    {} as Record<string, PublicService>
   );
 
   const conceptsIdentifiers = (isClassifiedBy.map(
@@ -466,20 +456,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
             </ContentSection>
           )}
 
-          {(eventsRelations.length > 0 ||
-            publicServicesRelations.length > 0) && (
-            <ContentSection
-              id='relationList'
-              title={translations.detailsPage.relationList.title.public_service}
-            >
-              <RelationList
-                parentIdentifier={publicService.uri}
-                events={eventsRelations}
-                publicServices={publicServicesRelations}
-              />
-            </ContentSection>
-          )}
-
           {isClassifiedBy.length > 0 && (
             <ContentSection
               id='concept-references'
@@ -576,52 +552,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     )}
                   />
                 )}
-                {publicServicesRequiredBy.length > 0 && (
-                  <KeyValueListItem
-                    property={
-                      translations.detailsPage.sectionTitles.publicService
-                        .requiredBy
-                    }
-                    value={publicServicesRequiredBy.map(
-                      ({ uri, title }, index) =>
-                        publicServicesRequiredByMap?.[uri] ? (
-                          <SC.ListItemValue key={`${uri}-${index}`}>
-                            <Link
-                              as={RouterLink}
-                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesRequiredByMap[uri]?.id}`}
-                            >
-                              {translate(title)}
-                            </Link>
-                          </SC.ListItemValue>
-                        ) : (
-                          translate(title)
-                        )
-                    )}
-                  />
-                )}
-                {publicServicesRelatedBy.length > 0 && (
-                  <KeyValueListItem
-                    property={
-                      translations.detailsPage.sectionTitles.publicService
-                        .relatedBy
-                    }
-                    value={publicServicesRelatedBy.map(
-                      ({ uri, title }, index) =>
-                        publicServicesRelatedByMap?.[uri] ? (
-                          <SC.ListItemValue key={`${uri}-${index}`}>
-                            <Link
-                              as={RouterLink}
-                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesRelatedByMap[uri]?.id}`}
-                            >
-                              {translate(title)}
-                            </Link>
-                          </SC.ListItemValue>
-                        ) : (
-                          translate(title)
-                        )
-                    )}
-                  />
-                )}
               </KeyValueList>
             </ContentSection>
           )}
@@ -665,7 +595,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
-
           {contactPoints.length > 0 && (
             <ContentSection
               id='hasContactPoint'
@@ -736,6 +665,19 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   </KeyValueList>
                 )
               )}
+            </ContentSection>
+          )}
+          {(eventsRelations.length > 0 ||
+            publicServicesRelations.length > 0) && (
+            <ContentSection
+              id='relationList'
+              title={translations.detailsPage.relationList.title.public_service}
+            >
+              <RelationList
+                parentIdentifier={publicService.uri}
+                events={eventsRelations}
+                publicServices={publicServicesRelations}
+              />
             </ContentSection>
           )}
         </DetailsPage>

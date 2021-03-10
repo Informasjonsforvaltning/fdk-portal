@@ -204,9 +204,15 @@ const RelationsList: FC<Props> = ({
           <SC.RelationLinks>
             {publicServices.map(({ uri, title, id }) =>
               uri && id && title ? (
-                <Link as={RouterLink} to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}>
-                  {translate(title ?? uri)}
-                </Link>
+                <span>
+                  <Link
+                    as={RouterLink}
+                    to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}
+                  >
+                    {translate(title ?? uri)}
+                  </Link>
+                  ({translate(translations.sampleData)})
+                </span>
               ) : null
             )}
           </SC.RelationLinks>
@@ -225,9 +231,12 @@ const RelationsList: FC<Props> = ({
           <SC.RelationLinks>
             {events.map(({ uri, title, id }) =>
               uri && id && title ? (
-                <Link as={RouterLink} to={`${PATHNAME_EVENTS}/${id}`}>
-                  {translate(title ?? uri)}
-                </Link>
+                <span>
+                  <Link as={RouterLink} to={`${PATHNAME_EVENTS}/${id}`}>
+                    {translate(title ?? uri)}
+                  </Link>
+                  ({translate(translations.sampleData)})
+                </span>
               ) : null
             )}
           </SC.RelationLinks>

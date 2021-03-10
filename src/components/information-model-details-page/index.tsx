@@ -9,10 +9,7 @@ import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 
-import {
-  PATHNAME_DATASET_DETAILS,
-  PATHNAME_INFORMATIONMODELS
-} from '../../constants/constants';
+import { PATHNAME_INFORMATIONMODELS } from '../../constants/constants';
 
 import { themeFDK } from '../../app/theme';
 
@@ -64,7 +61,6 @@ const InformationModelDetailsPage: FC<Props> = ({
   informationModels,
   isLoadingInformationModel,
   isLoadingInformationModelRdfRepresentations,
-  datasets,
   datasetsRelations,
   dataServicesRelations,
   informationModelsRelations,
@@ -80,8 +76,6 @@ const InformationModelDetailsPage: FC<Props> = ({
     resetInformationModelsRelations
   },
   datasetsActions: {
-    getDatasetsRequested: getDatasets,
-    resetDatasets,
     getDatasetsRelationsRequested: getDatasetsRelations,
     resetDatasetsRelations
   },
@@ -108,16 +102,11 @@ const InformationModelDetailsPage: FC<Props> = ({
       ]);
     }
 
-    getDatasets({
-      info_model: getConfig().searchHost.host + location.pathname
-    });
-
     setIsMounted(true);
 
     return () => {
       resetInformationModel();
       resetConcepts();
-      resetDatasets();
     };
   }, [location.pathname]);
 
@@ -215,16 +204,25 @@ const InformationModelDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (informationModel?.uri) {
-      getDatasetsRelations({ conformsTo: informationModel.uri });
       getDataServicesRelations({ endpointDescription: informationModel.uri });
       getInformationmodelsRelations({ relations: informationModel.uri });
     }
     return () => {
-      resetDatasetsRelations();
       resetDataServicesRelations();
       resetInformationModelsRelations();
     };
   }, [informationModel?.uri]);
+
+  useEffect(() => {
+    if (informationModel?.id) {
+      getDatasetsRelations({
+        relatedToInfoModel: getConfig().searchHost.host + location.pathname
+      });
+    }
+    return () => {
+      resetDatasetsRelations();
+    };
+  }, [informationModel?.id]);
 
   return renderPage ? (
     <ThemeProvider theme={theme}>
@@ -452,21 +450,6 @@ const InformationModelDetailsPage: FC<Props> = ({
             </KeyValueList>
           </ContentSection>
         )}
-        {(datasetsRelations.length > 0 ||
-          dataServicesRelations.length > 0 ||
-          informationModelsRelations.length > 0) && (
-          <ContentSection
-            id='relationList'
-            title={translations.detailsPage.relationList.title.informationmodel}
-          >
-            <RelationList
-              parentIdentifier={informationModel?.uri}
-              datasets={datasetsRelations}
-              dataServices={dataServicesRelations}
-              informationModels={informationModelsRelations}
-            />
-          </ContentSection>
-        )}
 
         {keywords.length > 0 && (
           <ContentSection
@@ -487,30 +470,6 @@ const InformationModelDetailsPage: FC<Props> = ({
                   {keyword}
                 </SC.Link>
               ))}
-            </InlineList>
-          </ContentSection>
-        )}
-        {datasets?.length > 0 && (
-          <ContentSection
-            id='dataset-relations'
-            title={
-              translations.detailsPage.sectionTitles.informationModel
-                .datasetRelations
-            }
-          >
-            <InlineList column>
-              {datasets.map(
-                dataset =>
-                  dataset.uri && (
-                    <SC.Link
-                      to={`${PATHNAME_DATASET_DETAILS}/${dataset.id}`}
-                      key={`relation-${dataset.uri}`}
-                      forwardedAs={RouteLink}
-                    >
-                      {translate(dataset.title)}
-                    </SC.Link>
-                  )
-              )}
             </InlineList>
           </ContentSection>
         )}
@@ -663,6 +622,21 @@ const InformationModelDetailsPage: FC<Props> = ({
                 </KeyValueList>
               )
             )}
+          </ContentSection>
+        )}
+        {(datasetsRelations.length > 0 ||
+          dataServicesRelations.length > 0 ||
+          informationModelsRelations.length > 0) && (
+          <ContentSection
+            id='relationList'
+            title={translations.detailsPage.relationList.title.informationmodel}
+          >
+            <RelationList
+              parentIdentifier={informationModel?.uri}
+              datasets={datasetsRelations}
+              dataServices={dataServicesRelations}
+              informationModels={informationModelsRelations}
+            />
           </ContentSection>
         )}
       </DetailsPage>

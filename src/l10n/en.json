@@ -844,5 +844,6 @@
   },
   "breadcrumb": {
     "notFound": "No title"
-  }
+  },
+  "sampleData": "Example data"
 }

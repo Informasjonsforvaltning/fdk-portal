@@ -633,21 +633,7 @@ const DatasetDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
-        {(datasetsRelations.length > 0 ||
-          publicServicesRelations.length > 0 ||
-          dataServicesRelations.length > 0) && (
-          <ContentSection
-            id='relationList'
-            title={translations.detailsPage.relationList.title.dataset}
-          >
-            <RelationList
-              parentIdentifier={dataset?.uri}
-              datasets={datasetsRelations}
-              publicServices={publicServicesRelations}
-              dataServices={dataServicesRelations}
-            />
-          </ContentSection>
-        )}
+
         {qualifiedAttributions.length > 0 && (
           <ContentSection
             id='qualifiedAttributions'
@@ -746,6 +732,21 @@ const DatasetDetailsPage: FC<Props> = ({
                 </KeyValueList>
               )
             )}
+          </ContentSection>
+        )}
+        {(datasetsRelations.length > 0 ||
+          publicServicesRelations.length > 0 ||
+          dataServicesRelations.length > 0) && (
+          <ContentSection
+            id='relationList'
+            title={translations.detailsPage.relationList.title.dataset}
+          >
+            <RelationList
+              parentIdentifier={dataset?.uri}
+              datasets={datasetsRelations}
+              publicServices={publicServicesRelations}
+              dataServices={dataServicesRelations}
+            />
           </ContentSection>
         )}
       </DetailsPage>

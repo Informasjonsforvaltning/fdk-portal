@@ -29,7 +29,8 @@ const mapFilters = ({
   keywords,
   info_model,
   referencesSource,
-  conformsTo
+  conformsTo,
+  relatedToInfoModel
 }: any) => {
   const filters = [];
   if (id) {
@@ -118,6 +119,9 @@ const mapFilters = ({
         values: format.split(',')
       }
     });
+  }
+  if (relatedToInfoModel) {
+    filters.push({ dataset_info_model_relations: relatedToInfoModel });
   }
 
   // Filter out NAP data if filterTransportDatasets in conf is true
