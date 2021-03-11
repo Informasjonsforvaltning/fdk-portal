@@ -37,6 +37,10 @@ const PublicServiceItemPure: FC<Props> = ({
     {} as Record<string, EventType>
   );
 
+  const uniqueAssociatedBroaderTypesByEvents = Array.from(
+    new Set(associatedBroaderTypesByEvents)
+  );
+
   return (
     <SearchHit
       id={id}
@@ -47,7 +51,7 @@ const PublicServiceItemPure: FC<Props> = ({
       beta
     >
       <SearchHitEvents>
-        {associatedBroaderTypesByEvents.map(uri =>
+        {uniqueAssociatedBroaderTypesByEvents.map(uri =>
           uri ? (
             <RoundedTag key={uri} to={patchSearchQuery('eventType', uri)}>
               <span>{translate(eventTypesMap?.[uri]?.prefLabel) ?? uri}</span>
