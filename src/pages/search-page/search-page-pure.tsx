@@ -143,7 +143,7 @@ const SearchPage: FC<Props> = ({
 
   return (
     <div>
-      <section className="top-section-search mb-4 d-flex flex-column justify-content-between top-section-search--image">
+      <section className='top-section-search mb-4 d-flex flex-column justify-content-between top-section-search--image'>
         <SearchBox>
           <SearchBoxTitle>
             <HitsStats
@@ -167,7 +167,7 @@ const SearchPage: FC<Props> = ({
           )}
         </SearchBox>
       </section>
-      <div className="container">
+      <div className='container'>
         <Switch>
           <Route exact path={PATHNAME_SEARCH}>
             <ResultsPage

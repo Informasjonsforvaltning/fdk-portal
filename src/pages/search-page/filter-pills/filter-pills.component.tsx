@@ -146,7 +146,7 @@ const FilterPillsPure: FC<Props> = ({
       </SC.Pills>
       <SC.ClearButton
         onClick={() => clearFilters(history, location)}
-        type="button"
+        type='button'
       >
         {localization.query.clear}
       </SC.ClearButton>

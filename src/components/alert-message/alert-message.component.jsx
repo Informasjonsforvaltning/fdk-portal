@@ -19,7 +19,7 @@ export const AlertMessage = props => {
     'fa-check': type === 'success'
   });
   return (
-    <div className={alertClassnames} role="alert">
+    <div className={alertClassnames} role='alert'>
       <i className={iconClassnames} />
       <span>{children}</span>
     </div>

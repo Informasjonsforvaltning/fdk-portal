@@ -101,15 +101,15 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   };
 
   return (
-    <main id="content">
+    <main id='content'>
       {entities && entities.length > 0 ? (
         <>
-          <div className="row">
+          <div className='row'>
             <SortButtons />
           </div>
-          <SC.Content className="row">
-            <SC.Filters className="col-lg-4">
-              <span className="uu-invisible" aria-hidden="false">
+          <SC.Content className='row'>
+            <SC.Filters className='col-lg-4'>
+              <span className='uu-invisible' aria-hidden='false'>
                 {localization.filter}
               </span>
               <Filters
@@ -125,7 +125,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 removeConcept={removeConcept}
               />
             </SC.Filters>
-            <section className="col-12 col-lg-8">
+            <section className='col-12 col-lg-8'>
               <SearchEntities
                 entities={entities}
                 compareConceptList={compareConceptList}
@@ -134,7 +134,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 mediatypes={mediatypes}
               />
               <SC.Pagination>
-                <span className="uu-invisible" aria-hidden="false">
+                <span className='uu-invisible' aria-hidden='false'>
                   Sidepaginering.
                 </span>
                 <ReactPaginate
@@ -144,10 +144,10 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                   previousLabel={localization.page.prev}
                   nextLabel={localization.page.next}
                   breakLabel={<span>...</span>}
-                  breakClassName="break-me"
-                  containerClassName="pagination"
+                  breakClassName='break-me'
+                  containerClassName='pagination'
                   onPageChange={onPageChange}
-                  activeClassName="active"
+                  activeClassName='active'
                   forcePage={parseInt(pageSearchParam?.toString(), 10)}
                   disableInitialCallback
                 />
@@ -168,8 +168,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
           </SC.Content>
         </>
       ) : (
-        <div className="row">
-          <div className="col-12">
+        <div className='row'>
+          <div className='col-12'>
             <EmptyHits />
           </div>
         </div>

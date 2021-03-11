@@ -90,12 +90,12 @@ export function ReportPagePure({
         ]
       }
     >
-      <section className="container">
-        <div className="row">
-          <div className="col-md-4">
+      <section className='container'>
+        <div className='row'>
+          <div className='col-md-4'>
             {isFilterActive({ orgPath }) && (
               <SC.ClearButton
-                className="fdk-button fade-in-500"
+                className='fdk-button fade-in-500'
                 onClick={clearSearch}
               >
                 {localization.query.clear}
@@ -115,14 +115,14 @@ export function ReportPagePure({
               referenceDataItems={publishers}
             />
           </div>
-          <div className="col-md-8">
-            <div className="row">
-              <div className="col-12">
+          <div className='col-md-8'>
+            <div className='row'>
+              <div className='col-12'>
                 <SC.Title>{localization.menu.reports}</SC.Title>
               </div>
             </div>
-            <div className="row">
-              <div className="col-12">
+            <div className='row'>
+              <div className='col-12'>
                 <SC.SubTitle>
                   {localization.report.title}{' '}
                   {orgPath
@@ -138,8 +138,8 @@ export function ReportPagePure({
                 </SC.SubTitle>
               </div>
             </div>
-            <div className="row mb-5">
-              <div className="col-12">
+            <div className='row mb-5'>
+              <div className='col-12'>
                 {getConfig().themeNap ? (
                   <DatasetReport
                     datasetsReport={datasetsReport}
@@ -148,7 +148,7 @@ export function ReportPagePure({
                   />
                 ) : (
                   <Tabs>
-                    <Tab for="pane-1" active>
+                    <Tab for='pane-1' active>
                       <TabContent
                         variant={Variant.DATASET}
                         label={localization.page.datasetTab}
@@ -156,7 +156,7 @@ export function ReportPagePure({
                         active={activeTab === Variant.DATASET}
                       />
                     </Tab>
-                    <Tab for="pane-2">
+                    <Tab for='pane-2'>
                       <TabContent
                         variant={Variant.DATA_SERVICE}
                         label={localization.page.apiTab}
@@ -164,7 +164,7 @@ export function ReportPagePure({
                         active={activeTab === Variant.DATA_SERVICE}
                       />
                     </Tab>
-                    <Tab for="pane-3">
+                    <Tab for='pane-3'>
                       <TabContent
                         variant={Variant.CONCEPT}
                         label={localization.page.termTab}
@@ -172,7 +172,7 @@ export function ReportPagePure({
                         active={activeTab === Variant.CONCEPT}
                       />
                     </Tab>
-                    <Tab for="pane-4">
+                    <Tab for='pane-4'>
                       <TabContent
                         variant={Variant.INFORMATION_MODEL}
                         label={localization.page.informationModelTab}
@@ -180,26 +180,26 @@ export function ReportPagePure({
                         active={activeTab === Variant.INFORMATION_MODEL}
                       />
                     </Tab>
-                    <Pane id="pane-1">
+                    <Pane id='pane-1'>
                       <DatasetReport
                         datasetsReport={datasetsReport}
                         datasetsTimeSeries={datasetsTimeSeries}
                         publishers={publishers}
                       />
                     </Pane>
-                    <Pane id="pane-2">
+                    <Pane id='pane-2'>
                       <DataserviceReport
                         dataServicesReport={dataServicesReport}
                         dataServicesTimeSeries={dataServicesTimeSeries}
                       />
                     </Pane>
-                    <Pane id="pane-3">
+                    <Pane id='pane-3'>
                       <ConceptReport
                         conceptsReport={conceptsReport}
                         conceptsTimeSeries={conceptsTimeSeries}
                       />
                     </Pane>
-                    <Pane id="pane-4">
+                    <Pane id='pane-4'>
                       <InformationModelReport
                         informationModelsReport={informationModelsReport}
                         informationModelsTimeSeries={

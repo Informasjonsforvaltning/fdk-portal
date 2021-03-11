@@ -85,14 +85,14 @@ export class FilterBox extends React.Component {
                 <div>{options(buckets.slice(5))}</div>
               </Collapse>
               <button
-                type="button"
-                className="fdk-toggleList"
+                type='button'
+                className='fdk-toggleList'
                 onClick={this.toggleList}
               >
                 <img
                   src={open ? CollapseTextIcon : ExpandTextIcon}
-                  alt=""
-                  className="mr-2"
+                  alt=''
+                  className='mr-2'
                 />
                 {open
                   ? localization.facet.showfewer
@@ -119,19 +119,19 @@ export class FilterBox extends React.Component {
 
     if (_.get(filter, 'buckets', []).length > 0) {
       return (
-        <div className="fdk-panel--filter">
-          <div className="fdk-panel__header">
+        <div className='fdk-panel--filter'>
+          <div className='fdk-panel__header'>
             <button
-              type="button"
-              className="fdk-toggleFilter p-0 d-flex justify-content-between align-items-center w-100"
+              type='button'
+              className='fdk-toggleFilter p-0 d-flex justify-content-between align-items-center w-100'
               onClick={this.toggleFilter}
             >
               <span>{title}</span>
             </button>
           </div>
           <Collapse isOpen={openFilter}>
-            <div className="fdk-panel__content">
-              <div className="fdk-items-list">
+            <div className='fdk-panel__content'>
+              <div className='fdk-items-list'>
                 {this._renderOptions(
                   filter,
                   onClick,

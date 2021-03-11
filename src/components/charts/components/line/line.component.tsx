@@ -69,7 +69,7 @@ const LineChart: FC<Props> = ({
     <Chart
       options={options}
       series={series}
-      type="area"
+      type='area'
       width={500}
       height={320}
     />

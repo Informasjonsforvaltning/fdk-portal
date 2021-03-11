@@ -74,9 +74,9 @@ const DataserviceReport: FC<Props> = ({
 
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.DATA_SERVICE]}>
-      <main id="content">
-        <div className="row">
-          <div className="col-12 col-md-6">
+      <main id='content'>
+        <div className='row'>
+          <div className='col-12 col-md-6'>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_DATA_SERVICES}${searchParams}`}
@@ -91,7 +91,7 @@ const DataserviceReport: FC<Props> = ({
               </StatisticsRegular>
             </BoxRegular>
           </div>
-          <div className="col-12 col-md-6">
+          <div className='col-12 col-md-6'>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_DATA_SERVICES}${patchSearchQuery(
@@ -108,10 +108,10 @@ const DataserviceReport: FC<Props> = ({
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-12">
+        <div className='row'>
+          <div className='col-12'>
             <BoxRegular>
-              <StatisticsRegular to="" as="div">
+              <StatisticsRegular to='' as='div'>
                 <IllustrationWithCount
                   icon={<ApiIcon />}
                   count={organizationCount}
@@ -125,8 +125,8 @@ const DataserviceReport: FC<Props> = ({
         </div>
 
         {timeSeriesData?.length > 0 && timeSeriesData?.length > 0 && (
-          <div className="row">
-            <div className="col-12">
+          <div className='row'>
+            <div className='col-12'>
               <BoxRegular
                 header={localization.report.growth}
                 subHeader={
@@ -144,8 +144,8 @@ const DataserviceReport: FC<Props> = ({
         )}
 
         {Array.isArray(topMostUsedFormats) && topMostUsedFormats?.length > 0 && (
-          <div className="row">
-            <div className="col-12">
+          <div className='row'>
+            <div className='col-12'>
               <BoxRegular header={localization.report.usedFormats}>
                 <FormatPie
                   formats={topMostUsedFormats.splice(0, 4)}
