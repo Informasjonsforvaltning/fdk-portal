@@ -57,7 +57,7 @@ const DropdownMenu: FC<Props> = ({
     <>
       <SC.GlobalStyle dropdownOpen={open} />
       <SC.DropdownMenu
-        role="navigation"
+        role='navigation'
         ref={ref}
         onClick={handleClick}
         onFocus={() => setOpen(true)}

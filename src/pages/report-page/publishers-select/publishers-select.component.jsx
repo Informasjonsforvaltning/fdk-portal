@@ -10,8 +10,8 @@ export function PublishersSelect({ publishers, value, onChange }) {
   const options = _.chain(publishers).values().sortBy('name').value();
 
   return (
-    <div className="section fdk-report-search-publishers">
-      <div className="fdk-report-search-publishers__header mb-2">
+    <div className='section fdk-report-search-publishers'>
+      <div className='fdk-report-search-publishers__header mb-2'>
         {localization.report.searchPublisher}
       </div>
       <Select

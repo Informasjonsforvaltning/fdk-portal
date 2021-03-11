@@ -141,7 +141,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   const publisherName = translate(publisher?.prefLabel || publisher?.name);
 
   return (
-    <SC.DetailsPage className="container">
+    <SC.DetailsPage className='container'>
       <Banner
         entity={entity}
         title={title}
@@ -168,7 +168,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       </SC.SubBanner>
       <SC.Themes>
         {isOpenData && (
-          <Link to={`${rootPaths[entity]}?opendata=true`} className="open-data">
+          <Link to={`${rootPaths[entity]}?opendata=true`} className='open-data'>
             <OpenAccessIcon />
             {translations.detailsPage.openData}
           </Link>
@@ -176,7 +176,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         {isPublicData && (
           <Link
             to={`${rootPaths[entity]}?accessrights=PUBLIC`}
-            className="public-data"
+            className='public-data'
           >
             <PublicAccessIcon />
             {translations.detailsPage.publicData}
@@ -185,7 +185,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         {isRestrictedData && (
           <Link
             to={`${rootPaths[entity]}?accessrights=RESTRICTED`}
-            className="restricted-data"
+            className='restricted-data'
           >
             <RestrictedAccessIcon />
             {translations.detailsPage.restrictedData}
@@ -194,7 +194,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         {isNonPublicData && (
           <Link
             to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
-            className="non-public-data"
+            className='non-public-data'
           >
             <NonPublicAccessIcon />
             {translations.detailsPage.nonPublicData}
@@ -231,7 +231,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           menuItems={menuItems}
         />
 
-        {navOpen && <SC.SideMenuSmall title="" menuItems={menuItems} />}
+        {navOpen && <SC.SideMenuSmall title='' menuItems={menuItems} />}
 
         <SC.Content>{renderContentSections()}</SC.Content>
       </SC.Page>

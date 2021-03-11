@@ -68,7 +68,7 @@ const subTree = ({
           key={`${node.key}|${i}`}
           nodeLabel={label}
           defaultCollapsed={collapsed}
-          itemClassName="tree-view_main d-flex flex-row-reverse align-items-start"
+          itemClassName='tree-view_main d-flex flex-row-reverse align-items-start'
           onClick={onClickArrow}
         >
           {subTree({
@@ -142,13 +142,13 @@ const mainTree = ({
       }
 
       return (
-        <div key={`panel${i}`} className="section">
+        <div key={`panel${i}`} className='section'>
           <TreeView
             key={`${node.key}|${i}`}
             className={node.key}
             nodeLabel={label}
             defaultCollapsed={collapsed}
-            itemClassName="tree-view_main d-flex flex-row-reverse align-items-start"
+            itemClassName='tree-view_main d-flex flex-row-reverse align-items-start'
             onClick={onClickArrow}
           >
             {subTree({
@@ -215,19 +215,19 @@ export const FilterTree = props => {
 
   if (Array.isArray(aggregationsForest) && aggregationsForest.length > 0) {
     return (
-      <div className="fdk-filter-tree">
-        <div className="fdk-panel__header">
+      <div className='fdk-filter-tree'>
+        <div className='fdk-panel__header'>
           <button
-            type="button"
-            className="fdk-publisher-toggle p-0 d-flex justify-content-between align-items-center w-100"
+            type='button'
+            className='fdk-publisher-toggle p-0 d-flex justify-content-between align-items-center w-100'
             onClick={handleToggleOpenFilter}
           >
             <span>{title}</span>
           </button>
         </div>
         <Collapse isOpen={openFilter}>
-          <div className="fdk-panel__content">
-            <div className="fdk-items-list">
+          <div className='fdk-panel__content'>
+            <div className='fdk-items-list'>
               {mainTree({
                 aggregationsForest: collapseItems
                   ? aggregationsForest.slice(0, 5)
@@ -253,14 +253,14 @@ export const FilterTree = props => {
                     </div>
                   </Collapse>
                   <button
-                    type="button"
-                    className="fdk-toggleList"
+                    type='button'
+                    className='fdk-toggleList'
                     onClick={handleToggleOpenList}
                   >
                     <img
                       src={openList ? CollapseTextIcon : ExpandTextIcon}
-                      alt=""
-                      className="mr-2"
+                      alt=''
+                      className='mr-2'
                     />
                     {openList
                       ? localization.facet.showfewer

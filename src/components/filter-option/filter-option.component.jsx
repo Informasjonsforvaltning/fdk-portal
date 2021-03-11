@@ -55,28 +55,28 @@ export const FilterOption = props => {
   return (
     <div className={`checkbox ${displayClass}`}>
       <label
-        className="checkbox_label"
+        className='checkbox_label'
         onKeyPress={() => {
           inputRef.click();
         }}
-        tabIndex="0"
+        tabIndex='0'
         // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-        role="button"
+        role='button'
         htmlFor={id}
       >
         <input
           ref={input => {
             inputRef = input;
           }}
-          type="checkbox"
+          type='checkbox'
           id={id}
-          tabIndex="-1"
+          tabIndex='-1'
           checked={active}
           onChange={e => onClick(e)}
-          className="list-group-item fdk-label fdk-label-default"
+          className='list-group-item fdk-label fdk-label-default'
           value={value}
         />
-        <span className="checkbox-replacement" />
+        <span className='checkbox-replacement' />
         {textLabel} {count ? `(${count})` : ''}
       </label>
     </div>

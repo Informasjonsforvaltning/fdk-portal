@@ -24,7 +24,7 @@ const renderTitle = (label, items, field) => {
     ));
 
   return (
-    <thead className="sticky">
+    <thead className='sticky'>
       <tr>
         <th>{label}</th>
         {fields(items)}
@@ -42,7 +42,7 @@ const existValuesOnAnyItem = (items, fieldPath) =>
 const renderFieldValue = (item, fieldPath, fieldPathFallback, index) => {
   const fieldValue = _.get(item, fieldPath) || _.get(item, fieldPathFallback);
   const renderArrayItem = (value, index) => (
-    <span key={index} className="mr-2">
+    <span key={index} className='mr-2'>
       {getTranslateText(value)}
     </span>
   );
@@ -117,8 +117,8 @@ const renderRemoveItem = (items, history, conceptIdsArray, removeConcept) => {
     Object.keys(items).map((item, index) => (
       <td key={`row-button-${index}`}>
         <button
-          type="button"
-          className="btn fdk-text-size-15 fdk-color-link bg-transparent"
+          type='button'
+          className='btn fdk-text-size-15 fdk-color-link bg-transparent'
           onClick={() => {
             onDeleteConcept(
               _.get(items, [item, 'id']),
@@ -128,7 +128,7 @@ const renderRemoveItem = (items, history, conceptIdsArray, removeConcept) => {
             );
           }}
         >
-          <i className="fa fa-minus-circle" />
+          <i className='fa fa-minus-circle' />
           &nbsp;
           {localization.compare.removeCompare}
         </button>
@@ -162,20 +162,20 @@ export const ConceptComparePage = props => {
   };
 
   return (
-    <main id="content" className="container">
+    <main id='content' className='container'>
       <article>
-        <div className="row">
-          <div className="col-12">
+        <div className='row'>
+          <div className='col-12'>
             <DocumentMeta {...meta} />
             {conceptsCompare && (
               <>
-                <h1 className="title">
+                <h1 className='title'>
                   {localization.menu.conceptsCompare} (
                   {Object.keys(conceptsCompare).length})
                 </h1>
 
-                <section className="scrollable">
-                  <table className="table">
+                <section className='scrollable'>
+                  <table className='table'>
                     {renderTitle(
                       localization.facet.concept,
                       conceptsCompare,

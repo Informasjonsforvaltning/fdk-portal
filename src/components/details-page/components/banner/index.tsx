@@ -69,7 +69,7 @@ const Banner: FC<Props> = ({
           {isAuthoritative && (
             <div data-tip={translations.authoritativeDatasetTooltip}>
               <AuthoritativeIcon />
-              <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
+              <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
             </div>
           )}
         </SC.Title>

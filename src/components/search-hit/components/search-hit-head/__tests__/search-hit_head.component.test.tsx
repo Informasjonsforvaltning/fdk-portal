@@ -11,7 +11,7 @@ describe('SearchHitHead component', () => {
   it('should render with properties', () => {
     const container = shallow(
       <SearchHitHead
-        id="123"
+        id='123'
         type={SearchTypes.dataset}
         title={{ nb: 'Test datasett' }}
       />

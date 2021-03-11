@@ -43,11 +43,11 @@ export const PublishersTreePure = props => {
         .toLowerCase()}`;
       const label = (
         <span
-          className="node"
+          className='node'
           onClick={() => onChange(node)}
           onKeyPress={() => onChange(node)}
-          role="button"
-          tabIndex="0"
+          role='button'
+          tabIndex='0'
         >
           {name}
         </span>
@@ -73,8 +73,8 @@ export const PublishersTreePure = props => {
           }`}
           onClick={() => onChange(node)}
           onKeyPress={() => onChange(node)}
-          role="button"
-          tabIndex="0"
+          role='button'
+          tabIndex='0'
         >
           {name}
         </div>
@@ -98,17 +98,17 @@ export const PublishersTreePure = props => {
 
       const label = (
         <span
-          className="mainTree-btn node"
+          className='mainTree-btn node'
           onClick={() => onChange(node)}
           onKeyPress={() => onChange(node)}
-          role="button"
-          tabIndex="0"
+          role='button'
+          tabIndex='0'
         >
           <strong>{name}</strong>
         </span>
       );
       return (
-        <div key={`panel${i}`} className="section fdk-report-tree-panel">
+        <div key={`panel${i}`} className='section fdk-report-tree-panel'>
           <TreeView
             key={`${name}|${i}`}
             nodeLabel={label}

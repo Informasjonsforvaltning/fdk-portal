@@ -24,69 +24,69 @@ const MaintenancePage: FC = () => {
     : localization.footer.mailNap;
 
   return (
-    <SC.MaintenancePage className="site theme-fdk">
+    <SC.MaintenancePage className='site theme-fdk'>
       <ConnectedAppNavBar />
-      <SC.PageContent className="container">
+      <SC.PageContent className='container'>
         <SC.Heading>Vi har flyttet!</SC.Heading>
         <SC.Subheading>
           <p>Felles Datakatalog har flyttet til Digitaliseringsdirektoratet.</p>
           <p>Du finner oss her:</p>
         </SC.Subheading>
         <SC.Link
-          uri="https://fellesdatakatalog.digdir.no"
-          prefLabel="fellesdatakatalog.digdir.no"
+          uri='https://fellesdatakatalog.digdir.no'
+          prefLabel='fellesdatakatalog.digdir.no'
         />
         <SC.RedirectionNotice>
           Du blir automatisk videresendt innen 10 sekunder.
         </SC.RedirectionNotice>
       </SC.PageContent>
-      <div className="fdk-footer d-md-none">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 text-center mb-2">
-              <p className="fdk-p-footer">{footerText}</p>
+      <div className='fdk-footer d-md-none'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-sm-12 text-center mb-2'>
+              <p className='fdk-p-footer'>{footerText}</p>
             </div>
-            <div className="col-sm-12 text-center mb-2">
-              <p className="fdk-p-footer">
-                <a href="https://www.brreg.no/personvernerklaering/">
+            <div className='col-sm-12 text-center mb-2'>
+              <p className='fdk-p-footer'>
+                <a href='https://www.brreg.no/personvernerklaering/'>
                   {localization.footer.information}
                   {localization.footer.privacy}
-                  <i className="fa fa-external-link fdk-fa-right" />
+                  <i className='fa fa-external-link fdk-fa-right' />
                 </a>
               </p>
             </div>
 
-            <div className="col-sm-12 text-center mb-2">
-              <p className="fdk-p-footer">
+            <div className='col-sm-12 text-center mb-2'>
+              <p className='fdk-p-footer'>
                 <a href={`mailto:${footerEmail}`}>{footerEmail}</a>
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="fdk-footer d-none d-md-block">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-3">
-              <p className="fdk-p-footer">
-                <a href="https://www.brreg.no/personvernerklaering/">
+      <div className='fdk-footer d-none d-md-block'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-3'>
+              <p className='fdk-p-footer'>
+                <a href='https://www.brreg.no/personvernerklaering/'>
                   {localization.footer.information}
                   <br />
                   {localization.footer.privacy}
-                  <i className="fa fa-external-link fdk-fa-right" />
+                  <i className='fa fa-external-link fdk-fa-right' />
                 </a>
               </p>
             </div>
-            <div className="col-md-6 text-center">
-              <span className="uu-invisible" aria-hidden="false">
+            <div className='col-md-6 text-center'>
+              <span className='uu-invisible' aria-hidden='false'>
                 Felles Datakatalog.
               </span>
-              <p className="fdk-p-footer">{footerText}</p>
+              <p className='fdk-p-footer'>{footerText}</p>
             </div>
-            <div className="col-md-3 text-right">
-              <p className="fdk-p-footer">
+            <div className='col-md-3 text-right'>
+              <p className='fdk-p-footer'>
                 <a href={`mailto:${footerEmail}`}>
-                  <span className="uu-invisible" aria-hidden="false">
+                  <span className='uu-invisible' aria-hidden='false'>
                     Mailadresse.
                   </span>
                   {localization.footer.contact}

@@ -23,22 +23,22 @@ const Header: FC = () => {
         <SC.NavigationLinks>
           <li>
             <SC.Link href={FDK_REGISTRATION_BASE_URI}>
-              <Translation id="menu.registerData" />
+              <Translation id='menu.registerData' />
             </SC.Link>
           </li>
           <li>
             <SC.Link href={ADMIN_GUI_BASE_URI}>
-              <Translation id="menu.harvestData" />
+              <Translation id='menu.harvestData' />
             </SC.Link>
           </li>
           <li>
-            <SC.Link href="/publishing/terms-of-use">
-              <Translation id="menu.termsOfUse" />
+            <SC.Link href='/publishing/terms-of-use'>
+              <Translation id='menu.termsOfUse' />
             </SC.Link>
           </li>
           <li>
-            <SC.Link href="/" target="_self" external>
-              <Translation id="menu.searchInFdk" />
+            <SC.Link href='/' target='_self' external>
+              <Translation id='menu.searchInFdk' />
             </SC.Link>
           </li>
         </SC.NavigationLinks>
@@ -48,29 +48,29 @@ const Header: FC = () => {
         >
           <Trigger>
             <SC.MenuButton onClick={openDropdownMenu}>
-              <Translation id="app.menu" />
+              <Translation id='app.menu' />
             </SC.MenuButton>
           </Trigger>
           <Menu>
             <SC.Menu>
               <li>
                 <SC.Link href={FDK_REGISTRATION_BASE_URI}>
-                  <Translation id="menu.registerData" />
+                  <Translation id='menu.registerData' />
                 </SC.Link>
               </li>
               <li>
                 <SC.Link href={ADMIN_GUI_BASE_URI}>
-                  <Translation id="menu.harvestData" />
+                  <Translation id='menu.harvestData' />
                 </SC.Link>
               </li>
               <li>
-                <SC.Link href="/publishing/terms-of-use">
-                  <Translation id="menu.termsOfUse" />
+                <SC.Link href='/publishing/terms-of-use'>
+                  <Translation id='menu.termsOfUse' />
                 </SC.Link>
               </li>
               <li>
-                <SC.Link href="/" target="_self" external>
-                  <Translation id="menu.searchInFdk" />
+                <SC.Link href='/' target='_self' external>
+                  <Translation id='menu.searchInFdk' />
                 </SC.Link>
               </li>
             </SC.Menu>

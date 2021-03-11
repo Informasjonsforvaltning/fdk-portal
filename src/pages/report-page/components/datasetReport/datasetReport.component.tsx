@@ -102,9 +102,9 @@ const DatasetReport: FC<Props> = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <main id="content">
-        <div className="row">
-          <div className="col-12 col-md-6">
+      <main id='content'>
+        <div className='row'>
+          <div className='col-12 col-md-6'>
             <BoxRegular>
               <StatisticsRegular to={`${PATHNAME_DATASETS}${searchParams}`}>
                 <IllustrationWithCount
@@ -117,7 +117,7 @@ const DatasetReport: FC<Props> = ({
               </StatisticsRegular>
             </BoxRegular>
           </div>
-          <div className="col-12 col-md-6">
+          <div className='col-12 col-md-6'>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_DATASETS}${patchSearchQuery(
@@ -134,10 +134,10 @@ const DatasetReport: FC<Props> = ({
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-12">
+        <div className='row'>
+          <div className='col-12'>
             <BoxRegular>
-              <StatisticsRegular to="" as="div">
+              <StatisticsRegular to='' as='div'>
                 <IllustrationWithCount
                   icon={<DatasetIcon />}
                   count={organizationCount}
@@ -160,8 +160,8 @@ const DatasetReport: FC<Props> = ({
         </div>
 
         {timeSeriesData?.length > 0 && timeSeriesData?.length > 0 && (
-          <div className="row">
-            <div className="col-12">
+          <div className='row'>
+            <div className='col-12'>
               <BoxRegular
                 header={localization.report.growth}
                 subHeader={localization.report.growthFromFirstPublish}
@@ -178,8 +178,8 @@ const DatasetReport: FC<Props> = ({
 
         {Number(totalObjects) > 0 && (
           <div>
-            <div className="row">
-              <div className="col-12">
+            <div className='row'>
+              <div className='col-12'>
                 <BoxRegular header={localization.accessLevel}>
                   <StatisticsRegular
                     to={`${PATHNAME_DATASETS}${patchSearchQuery(
@@ -212,7 +212,7 @@ const DatasetReport: FC<Props> = ({
                               fill={
                                 theme.extendedColors[Entity.DATASET].graph.dark
                               }
-                              viewBox="0 0 70 70"
+                              viewBox='0 0 70 70'
                             />
                           )}
                         />
@@ -254,7 +254,7 @@ const DatasetReport: FC<Props> = ({
                               key={dataIndex}
                               x={40}
                               y={35}
-                              viewBox="0 0 70 70"
+                              viewBox='0 0 70 70'
                             />
                           )}
                         />
@@ -296,7 +296,7 @@ const DatasetReport: FC<Props> = ({
                               key={dataIndex}
                               x={37}
                               y={35}
-                              viewBox="0 0 70 70"
+                              viewBox='0 0 70 70'
                             />
                           )}
                         />
@@ -338,7 +338,7 @@ const DatasetReport: FC<Props> = ({
                               key={dataIndex}
                               x={35}
                               y={35}
-                              viewBox="0 0 70 70"
+                              viewBox='0 0 70 70'
                             />
                           )}
                         />
@@ -378,7 +378,7 @@ const DatasetReport: FC<Props> = ({
                               key={dataIndex}
                               x={35}
                               y={35}
-                              viewBox="0 0 100 100"
+                              viewBox='0 0 100 100'
                             />
                           )}
                         />
@@ -393,8 +393,8 @@ const DatasetReport: FC<Props> = ({
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-12">
+            <div className='row'>
+              <div className='col-12'>
                 <BoxRegular>
                   <StatisticsRegular
                     to={`${PATHNAME_DATASETS}${patchSearchQuery(
@@ -414,8 +414,8 @@ const DatasetReport: FC<Props> = ({
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-12">
+            <div className='row'>
+              <div className='col-12'>
                 <BoxRegular>
                   <StatisticsRegular
                     to={`${PATHNAME_DATASETS}${patchSearchQuery(
@@ -445,7 +445,7 @@ const DatasetReport: FC<Props> = ({
                               key={dataIndex}
                               x={37}
                               y={38}
-                              viewBox="0 0 90 90"
+                              viewBox='0 0 90 90'
                               fill={
                                 theme.extendedColors[Entity.DATASET].graph.dark
                               }
@@ -465,8 +465,8 @@ const DatasetReport: FC<Props> = ({
 
             {Array.isArray(topMostUsedFormats) &&
               topMostUsedFormats?.length > 0 && (
-                <div className="row">
-                  <div className="col-12">
+                <div className='row'>
+                  <div className='col-12'>
                     <BoxRegular header={localization.report.usedFormats}>
                       <FormatPie
                         formats={topMostUsedFormats}
@@ -479,8 +479,8 @@ const DatasetReport: FC<Props> = ({
               )}
 
             {Array.isArray(topMostUsedThemes) && topMostUsedThemes?.length > 0 && (
-              <div className="row">
-                <div className="col-12">
+              <div className='row'>
+                <div className='col-12'>
                   <BoxRegular
                     variant={BoxFlowVariant.COLUMN}
                     header={localization.report.usedThemes}
@@ -506,8 +506,8 @@ const DatasetReport: FC<Props> = ({
               </div>
             )}
 
-            <div className="row">
-              <div className="col-12">
+            <div className='row'>
+              <div className='col-12'>
                 <BoxRegular header={localization.report.datasetCatalogs}>
                   {Array.isArray(catalogs) && catalogs?.length > 0 && (
                     <List

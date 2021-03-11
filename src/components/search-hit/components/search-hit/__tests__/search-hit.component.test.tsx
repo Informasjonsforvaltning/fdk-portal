@@ -11,7 +11,7 @@ describe('SearchHit component', () => {
   it('should render with properties', () => {
     const container = shallow(
       <SearchHit
-        id="123"
+        id='123'
         type={SearchTypes.dataset}
         title={{ nb: 'Test datasett' }}
         description={{ nb: 'Test datasett beskrivelse' }}

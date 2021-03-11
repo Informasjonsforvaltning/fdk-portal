@@ -91,7 +91,7 @@ export const DatasetItem: FC<Props> = ({
               <span>{localization.openData}</span>
             </RoundedTag>
           </div>
-          <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
+          <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
         </SearchHitOpenData>
       )}
 
@@ -100,7 +100,7 @@ export const DatasetItem: FC<Props> = ({
           <div data-tip={localization.publicDatasetTooltip}>
             {renderAccessRights(accessRights)}
           </div>
-          <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
+          <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
         </SearchHitAccessRights>
       )}
 

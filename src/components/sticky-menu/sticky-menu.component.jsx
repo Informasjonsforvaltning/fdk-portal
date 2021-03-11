@@ -6,9 +6,9 @@ import './sticky-menu.scss';
 const ScrollLink = Scroll.Link;
 
 const renderMenuItem = menuItem => (
-  <li className="border-top py-3" key={menuItem.name}>
+  <li className='border-top py-3' key={menuItem.name}>
     <ScrollLink
-      className="smoothScroll d-flex justify-content-between"
+      className='smoothScroll d-flex justify-content-between'
       to={menuItem.name}
       spy
       smooth
@@ -23,17 +23,17 @@ const renderMenuItem = menuItem => (
 
 const renderMenu = menuItems =>
   menuItems && (
-    <ul className="p-0">
+    <ul className='p-0'>
       {menuItems.map(menuItem => renderMenuItem(menuItem))}
     </ul>
   );
 
 export const StickyMenu = ({ title, menuItems }) => (
-  <nav className="sticky-menu sticky-top py-5 py-md-4" aria-hidden="true">
-    <span className="uu-invisible" aria-hidden="false">
+  <nav className='sticky-menu sticky-top py-5 py-md-4' aria-hidden='true'>
+    <span className='uu-invisible' aria-hidden='false'>
       Sidemeny:
     </span>
-    {title && <h3 className="pb-3">{title}</h3>}
+    {title && <h3 className='pb-3'>{title}</h3>}
     {renderMenu(menuItems)}
   </nav>
 );

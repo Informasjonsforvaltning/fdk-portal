@@ -30,12 +30,12 @@ const renderNewsItems = (news: News[]) =>
 
 const NewsArchivePage: FC<Props> = ({ news }) => {
   return (
-    <main className="container">
-      <div className="row">
-        <SC.Header className="col-12">{localization.news}</SC.Header>
+    <main className='container'>
+      <div className='row'>
+        <SC.Header className='col-12'>{localization.news}</SC.Header>
       </div>
-      <div className="row">
-        <SC.Content className="col-12">{renderNewsItems(news)}</SC.Content>
+      <div className='row'>
+        <SC.Content className='col-12'>{renderNewsItems(news)}</SC.Content>
       </div>
     </main>
   );
