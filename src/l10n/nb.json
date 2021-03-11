@@ -836,7 +836,7 @@
       "title": "Vi beklager!",
       "content1": "Vi finner ikke siden du leter etter.",
       "content2": "Gå tilbake til ",
-      "content3": "eller helt tilbake til<a href=\"https://data.norge.no/\">startsiden</a>.",
+      "content3": "eller helt tilbake til<a href=\"\">startsiden</a>.",
       "backLink": " siden du kom fra "
     }
   },

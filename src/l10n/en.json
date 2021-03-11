@@ -838,7 +838,7 @@
       "title": "We're sorry!",
       "content1": "We can't find the page you're looking for.",
       "content2": "Go back to the ",
-      "content3": "or go back to the<a href=\"https://data.norge.no/\">start page</a>.",
+      "content3": "or go back to the<a href=\"\">start page</a>.",
       "backLink": " page you came from "
     }
   },
