@@ -279,11 +279,16 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       translations.detailsPage.sectionTitles.publicService.cost
                     }
                     value={hasCost
-                      .map(({ uri, description }) => (
-                        <SC.ListItemValue key={uri}>
-                          {translate(description)}
-                        </SC.ListItemValue>
-                      ))
+                      .map(
+                        ({ uri, currency = '', description, value = '' }) => (
+                          <SC.ListItemValue key={uri}>
+                            {value}{' '}
+                            {currency.substring(currency.lastIndexOf('/') + 1)}
+                            {value || currency ? '. ' : ' '}
+                            {translate(description)}
+                          </SC.ListItemValue>
+                        )
+                      )
                       .filter(Boolean)}
                   />
                 )}
