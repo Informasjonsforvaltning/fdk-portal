@@ -20,6 +20,7 @@ import withPublicServices, {
 import withConcepts, { Props as ConceptsProps } from '../with-concepts';
 import withDatasets, { Props as DatasetsProps } from '../with-datasets';
 import withEvents, { Props as EventsProps } from '../with-events';
+import withKartverket, { Props as KartverketProps } from '../with-kartverket';
 import withErrorBoundary from '../with-error-boundary';
 
 import DetailsPage, {
@@ -52,6 +53,7 @@ interface Props
     PublicServiceProps,
     PublicServicesProps,
     EventsProps,
+    KartverketProps,
     RouteComponentProps<RouteParams> {}
 
 const PublicServiceDetailsPage: FC<Props> = ({
@@ -83,6 +85,11 @@ const PublicServiceDetailsPage: FC<Props> = ({
   eventsActions: {
     getEventsRelationsRequested: getEventsRelations,
     resetEventsRelations
+  },
+  administrativeUnits,
+  kartverketActions: {
+    listAdministrativeUnitsRequested: listAdministrativeUnits,
+    resetAdministrativeUnits
   },
   match: {
     params: { publicServiceId }
@@ -149,6 +156,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
     ...requiredServices.map(({ uri }) => uri).filter(Boolean),
     ...relation.map(({ uri }) => uri).filter(Boolean)
   ];
+  const spatial = publicService?.spatial ?? [];
 
   const publicServicesMap = publicServices?.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
@@ -192,9 +200,13 @@ const PublicServiceDetailsPage: FC<Props> = ({
       getEventsRelations({ relation: publicService.uri });
       getPublicServicesRelations({ requiresOrRelates: publicService.uri });
     }
+    if (spatial.length > 0) {
+      listAdministrativeUnits(spatial);
+    }
     return () => {
       resetPublicServicesRelations();
       resetEventsRelations();
+      resetAdministrativeUnits();
     };
   }, [publicService?.uri]);
 
@@ -331,6 +343,24 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       .join(', ')}
                   />
                 )}
+                {administrativeUnits.map(({ uri, name }) => (
+                  <KeyValueListItem
+                    key={uri}
+                    property={
+                      translations.detailsPage.sectionTitles.publicService
+                        .spatial
+                    }
+                    value={
+                      uri ? (
+                        <Link href={uri} external>
+                          {translate(name) || uri}
+                        </Link>
+                      ) : (
+                        translate(name) || uri
+                      )
+                    }
+                  />
+                ))}
               </KeyValueList>
             </ContentSection>
           )}
@@ -700,5 +730,6 @@ export default compose(
   withPublicService,
   withPublicServices,
   withEvents,
+  withKartverket,
   withErrorBoundary(ErrorPage)
 )(PublicServiceDetailsPage);

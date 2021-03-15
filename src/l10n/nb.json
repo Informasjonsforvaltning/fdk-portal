@@ -674,7 +674,8 @@
         "relation": "Relatert til",
         "requiredBy": "Krevd av",
         "relatedBy": "Relatert av",
-        "isDescribedAt": "Tilknyttede datasettbeskrivelser"
+        "isDescribedAt": "Tilknyttede datasettbeskrivelser",
+        "spatial": "Geografisk avgrensning"
       },
       "event": {
         "description": "Beskrivelse",
