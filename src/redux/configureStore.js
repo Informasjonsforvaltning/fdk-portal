@@ -9,7 +9,11 @@ import { apiMiddleware } from 'redux-api-middleware';
 import { rootReducer } from './rootReducer';
 import RootSaga from './saga';
 
-const sagaMiddleware = createSagaMiddleware({ context: {} });
+import LoggingService from '../services/logging';
+
+const sagaMiddleware = createSagaMiddleware({
+  context: { logging: LoggingService }
+});
 
 export function configureStore(storeConfig) {
   const middlewares = [thunk, apiMiddleware, sagaMiddleware];
@@ -29,7 +33,7 @@ export function configureStore(storeConfig) {
 
   if (module.hot) {
     module.hot.accept('./rootReducer', () => {
-      /* eslint-disable-next-line global-require */
+      // eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
       store.replaceReducer(require('./rootReducer').rootReducer);
     });
   }

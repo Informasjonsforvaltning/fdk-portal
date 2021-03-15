@@ -3,6 +3,8 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { GET_CONCEPT_REQUESTED } from './action-types';
 import * as actions from './actions';
 
+import LoggingService, { Severity } from '../../../services/logging';
+
 import {
   searchConcepts,
   paramsToSearchBody,
@@ -21,10 +23,22 @@ function* getConceptRequested({
     if (concept) {
       yield put(actions.getConceptSucceeded(concept));
     } else {
+      LoggingService.postLogEntry({
+        message: `Could not get concept with ID: ${id}`,
+        severity: Severity.WARN
+      });
       yield put(actions.getConceptFailed(''));
     }
-  } catch (e) {
-    yield put(actions.getConceptFailed(e.message));
+  } catch (error) {
+    const { name, message, stack: trace } = error as Error;
+    LoggingService.postLogEntry({
+      message:
+        message ?? `Application error when getting concept with ID: ${id}`,
+      severity: Severity.ERROR,
+      name,
+      trace
+    });
+    yield put(actions.getConceptFailed(message));
   }
 }
 

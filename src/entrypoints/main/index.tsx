@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import ThemeProvider from '@fellesdatakatalog/theme';
 
+import LoggingProvider from '../../providers/logging';
+
 import { configureStore } from '../../redux/configureStore';
 import { ConnectedApp } from '../../app/connected-app';
 import { getConfig } from '../../config';
@@ -21,12 +23,14 @@ const theme = getConfig().themeNap ? themeNAP : themeFDK;
 render(
   <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <Analytics />
-    <Provider store={store}>
-      <BrowserRouter>
-        <Route component={ConnectedApp} />
-      </BrowserRouter>
-    </Provider>
+    <LoggingProvider>
+      <Analytics />
+      <Provider store={store}>
+        <BrowserRouter>
+          <Route component={ConnectedApp} />
+        </BrowserRouter>
+      </Provider>
+    </LoggingProvider>
   </ThemeProvider>,
   document.getElementById('root')
 );

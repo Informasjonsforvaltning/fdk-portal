@@ -9,6 +9,8 @@ import {
   paramsToSearchBody
 } from '../../../api/search-fulltext-api/public-services';
 
+import LoggingService, { Severity } from '../../../services/logging';
+
 import { PublicService } from '../../../types';
 
 function* getPublicServiceRequested({
@@ -21,10 +23,22 @@ function* getPublicServiceRequested({
     if (publicService) {
       yield put(actions.getPublicServiceSucceeded(publicService));
     } else {
-      yield put(actions.getPublicServiceFailed(''));
+      LoggingService.postLogEntry({
+        message: `Could not get public service with ID: ${id}`,
+        severity: Severity.WARN
+      });
     }
-  } catch (e) {
-    yield put(actions.getPublicServiceFailed(e.message));
+  } catch (error) {
+    const { name, message, stack: trace } = error as Error;
+    LoggingService.postLogEntry({
+      message:
+        message ??
+        `Application error when getting public service with ID: ${id}`,
+      severity: Severity.ERROR,
+      name,
+      trace
+    });
+    yield put(actions.getPublicServiceFailed(message));
   }
 }
 
