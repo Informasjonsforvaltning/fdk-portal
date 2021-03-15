@@ -1,9 +1,11 @@
-import { Environment } from './enums';
+import { Namespace } from './enums';
 
 export interface EnvironmentVariables {
-  ENV: Environment;
+  NAMESPACE: Namespace;
+  CONTAINER_IMAGE: string;
   SEARCH_API_HOST: string;
   FDK_REGISTRATION_BASE_URI: string;
   ADMIN_GUI_BASE_URI: string;
   INFORMATIONMODEL_HARVESTER_HOST: string;
+  FDK_LOGGING_FUNCTION_URI: string;
 }

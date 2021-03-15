@@ -9,6 +9,8 @@ import {
 } from './action-types';
 import * as actions from './actions';
 
+import LoggingService, { Severity } from '../../../services/logging';
+
 import type { InformationModel } from '../../../types';
 import { DataFormat } from '../../../types/enums';
 
@@ -27,10 +29,23 @@ function* getInformationModelRequested({
     if (informationModel) {
       yield put(actions.getInformationModelSucceeded(informationModel));
     } else {
+      LoggingService.postLogEntry({
+        message: `Could not get information model with ID: ${id}`,
+        severity: Severity.WARN
+      });
       yield put(actions.getInformationModelFailed(''));
     }
-  } catch (e) {
-    yield put(actions.getInformationModelFailed(e.message));
+  } catch (error) {
+    const { name, message, stack: trace } = error as Error;
+    LoggingService.postLogEntry({
+      message:
+        message ??
+        `Application error when getting information model with ID: ${id}`,
+      severity: Severity.ERROR,
+      name,
+      trace
+    });
+    yield put(actions.getInformationModelFailed(message));
   }
 }
 

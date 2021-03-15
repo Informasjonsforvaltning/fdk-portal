@@ -1,13 +1,20 @@
 import React, { Component, ComponentType, ErrorInfo } from 'react';
 
-interface Props {
+import {
+  withLogging,
+  Props as LoggingProps,
+  Severity
+} from '../../providers/logging';
+
+interface Props extends LoggingProps {
   fallback?: ComponentType<any>;
 }
+
 interface State {
   hasError: boolean;
   errorCode?: string;
 }
-export default class ErrorBoundary extends Component<Props, State> {
+class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -16,7 +23,14 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error:', error, errorInfo);
+    const { loggingService } = this.props;
+    loggingService.postLogEntry({
+      name: error.name,
+      message: error.message,
+      severity: Severity.ERROR,
+      trace: errorInfo.componentStack
+    });
+
     this.setState({ hasError: true, errorCode: error.message });
   }
 
@@ -27,3 +41,5 @@ export default class ErrorBoundary extends Component<Props, State> {
     return hasError && Fallback ? <Fallback errorCode={errorCode} /> : children;
   }
 }
+
+export default withLogging(ErrorBoundary);

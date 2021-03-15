@@ -3,6 +3,8 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { GET_DATA_SERVICE_REQUESTED } from './action-types';
 import * as actions from './actions';
 
+import LoggingService, { Severity } from '../../../services/logging';
+
 import {
   searchDataServices,
   paramsToSearchBody,
@@ -21,10 +23,22 @@ function* getDataServiceRequested({
     if (dataService) {
       yield put(actions.getDataServiceSucceeded(dataService));
     } else {
+      LoggingService.postLogEntry({
+        message: `Could not get data service with ID: ${id}`,
+        severity: Severity.WARN
+      });
       yield put(actions.getDataServiceFailed(''));
     }
-  } catch (e) {
-    yield put(actions.getDataServiceFailed(e.message));
+  } catch (error) {
+    const { name, message, stack: trace } = error as Error;
+    LoggingService.postLogEntry({
+      message:
+        message ?? `Application error when getting data service with ID: ${id}`,
+      severity: Severity.ERROR,
+      name,
+      trace
+    });
+    yield put(actions.getDataServiceFailed(message));
   }
 }
 
