@@ -675,7 +675,8 @@
         "relation": "Related to",
         "requiredBy": "Required by",
         "relatedBy": "Related by",
-        "isDescribedAt": "Associated datasets"
+        "isDescribedAt": "Associated datasets",
+        "spatial": "Spatial restrictions"
       },
       "event": {
         "description": "Description",
