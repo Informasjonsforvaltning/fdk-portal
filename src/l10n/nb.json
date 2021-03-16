@@ -679,7 +679,7 @@
       },
       "event": {
         "description": "Beskrivelse",
-        "relatedServices": "Relaterte tjenester",
+        "relatedServices": "Tjenester som inngår i hendelse",
         "usage": "Bruk av hendelsen"
       }
     },
