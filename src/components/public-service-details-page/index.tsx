@@ -630,6 +630,19 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
+          {(eventsRelations.length > 0 ||
+            publicServicesRelations.length > 0) && (
+            <ContentSection
+              id='relationList'
+              title={translations.detailsPage.relationList.title.public_service}
+            >
+              <RelationList
+                parentIdentifier={publicService.uri}
+                events={eventsRelations}
+                publicServices={publicServicesRelations}
+              />
+            </ContentSection>
+          )}
           {contactPoints.length > 0 && (
             <ContentSection
               id='hasContactPoint'
@@ -700,19 +713,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   </KeyValueList>
                 )
               )}
-            </ContentSection>
-          )}
-          {(eventsRelations.length > 0 ||
-            publicServicesRelations.length > 0) && (
-            <ContentSection
-              id='relationList'
-              title={translations.detailsPage.relationList.title.public_service}
-            >
-              <RelationList
-                parentIdentifier={publicService.uri}
-                events={eventsRelations}
-                publicServices={publicServicesRelations}
-              />
             </ContentSection>
           )}
         </DetailsPage>

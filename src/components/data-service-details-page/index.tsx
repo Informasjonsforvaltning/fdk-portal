@@ -256,6 +256,17 @@ const DataserviceDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
+        {datasetsRelations.length > 0 && (
+          <ContentSection
+            id='relationList'
+            title={translations.detailsPage.relationList.title.dataservice}
+          >
+            <RelationList
+              parentIdentifier={dataService?.uri}
+              datasets={datasetsRelations}
+            />
+          </ContentSection>
+        )}
         {contactPoint.length > 0 &&
           contactPoint.some(
             ({ organizationName, hasURL, email, hasTelephone }) =>
@@ -330,17 +341,6 @@ const DataserviceDetailsPage: FC<Props> = ({
                   )
               )}
             </InlineList>
-          </ContentSection>
-        )}
-        {datasetsRelations.length > 0 && (
-          <ContentSection
-            id='relationList'
-            title={translations.detailsPage.relationList.title.dataservice}
-          >
-            <RelationList
-              parentIdentifier={dataService?.uri}
-              datasets={datasetsRelations}
-            />
           </ContentSection>
         )}
       </DetailsPage>
