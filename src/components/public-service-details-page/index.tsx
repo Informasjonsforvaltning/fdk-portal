@@ -62,8 +62,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
   datasets,
   publicService,
   publicServices,
-  publicServicesRequiredBy,
-  publicServicesRelatedBy,
   eventsRelations,
   publicServicesRelations,
   publicServiceActions: {
@@ -73,10 +71,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
     resetPublicServices,
-    getPublicServicesRequiredByRequested: getPublicServicesRequiredBy,
-    resetPublicServicesRequiredBy,
-    getPublicServicesRelatedByRequested: getPublicServicesRelatedBy,
-    resetPublicServicesRelatedBy,
     getPublicServicesRelationsRequested: getPublicServicesRelations,
     resetPublicServicesRelations
   },
@@ -114,17 +108,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
       setIsMounted(false);
       resetPublicService();
       resetPublicServices();
-      resetPublicServicesRequiredBy();
-      resetPublicServicesRelatedBy();
     };
   }, [publicServiceId]);
-
-  useEffect(() => {
-    if (publicService?.uri) {
-      getPublicServicesRequiredBy({ requiredByServiceUri: publicService.uri });
-      getPublicServicesRelatedBy({ relatedByServiceUri: publicService.uri });
-    }
-  }, [publicService?.uri]);
 
   const title = translate(publicService?.title);
   const description = translate(publicService?.description);
@@ -531,10 +516,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
             </ContentSection>
           )}
 
-          {(requiredServices.length > 0 ||
-            relation.length > 0 ||
-            publicServicesRequiredBy.length > 0 ||
-            publicServicesRelatedBy.length > 0) && (
+          {(requiredServices.length > 0 || relation.length > 0) && (
             <ContentSection
               id='relatedServices'
               title={
