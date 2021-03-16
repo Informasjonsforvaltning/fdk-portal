@@ -15,8 +15,9 @@ const RelationLinks = styled.div`
   margin-bottom: ${theme.spacing('S4')};
   margin-left: 35px;
 
-  & > a {
+  & a {
     margin-top: ${theme.spacing('S4')};
+    margin-right: ${theme.spacing('S8')};
   }
 
   & :last-child {
