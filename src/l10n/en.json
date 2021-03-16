@@ -680,7 +680,7 @@
       },
       "event": {
         "description": "Description",
-        "relatedServices": "Related services",
+        "relatedServices": "Services included in event",
         "usage": "Event usage"
 
       }

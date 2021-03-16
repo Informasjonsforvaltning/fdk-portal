@@ -680,7 +680,7 @@
       },
       "event": {
         "description": "Beskrivelse",
-        "relatedServices": "Relaterte tenester",
+        "relatedServices": "Tenester som inngår i hending",
         "usage": "Bruk av hendinga"
       }
     },
