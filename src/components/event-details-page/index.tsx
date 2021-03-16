@@ -67,7 +67,7 @@ const EventDetailsPage: FC<Props> = ({
       getEvent(eventId);
     }
 
-    getPublicServices({});
+    getPublicServices({ size: 1000 });
     setIsMounted(true);
 
     return () => {
@@ -78,7 +78,7 @@ const EventDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (event?.uri) {
-      getPublicServicesRelations({ isDescribedAt: event.uri });
+      getPublicServicesRelations({ isGroupedBy: event.uri });
     }
     return () => {
       resetPublicServicesRelations();
