@@ -323,6 +323,23 @@ const ConceptDetailsPage: FC<Props> = ({
             {identifier}
           </ContentSection>
         )}
+        {(conceptsRelations.length > 0 ||
+          datasetsRelations.length > 0 ||
+          publicServicesRelations.length > 0 ||
+          informationModelsRelations.length > 0) && (
+          <ContentSection
+            id='relationList'
+            title={translations.detailsPage.relationList.title.concept}
+          >
+            <RelationList
+              parentIdentifier={concept?.identifier}
+              concepts={conceptsRelations}
+              datasets={datasetsRelations}
+              publicServices={publicServicesRelations}
+              informationModels={informationModelsRelations}
+            />
+          </ContentSection>
+        )}
         {(contactPoint?.email || contactPoint?.telephone) && (
           <ContentSection
             id='contact-information'
@@ -352,23 +369,6 @@ const ConceptDetailsPage: FC<Props> = ({
                 />
               )}
             </KeyValueList>
-          </ContentSection>
-        )}
-        {(conceptsRelations.length > 0 ||
-          datasetsRelations.length > 0 ||
-          publicServicesRelations.length > 0 ||
-          informationModelsRelations.length > 0) && (
-          <ContentSection
-            id='relationList'
-            title={translations.detailsPage.relationList.title.concept}
-          >
-            <RelationList
-              parentIdentifier={concept?.identifier}
-              concepts={conceptsRelations}
-              datasets={datasetsRelations}
-              publicServices={publicServicesRelations}
-              informationModels={informationModelsRelations}
-            />
           </ContentSection>
         )}
       </DetailsPage>

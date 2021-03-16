@@ -569,6 +569,21 @@ const InformationModelDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
+        {(datasetsRelations.length > 0 ||
+          dataServicesRelations.length > 0 ||
+          informationModelsRelations.length > 0) && (
+          <ContentSection
+            id='relationList'
+            title={translations.detailsPage.relationList.title.informationmodel}
+          >
+            <RelationList
+              parentIdentifier={informationModel?.uri}
+              datasets={datasetsRelations}
+              dataServices={dataServicesRelations}
+              informationModels={informationModelsRelations}
+            />
+          </ContentSection>
+        )}
         {contactPoint && contactPoint.length > 0 && (
           <ContentSection
             id='contact-information'
@@ -622,21 +637,6 @@ const InformationModelDetailsPage: FC<Props> = ({
                 </KeyValueList>
               )
             )}
-          </ContentSection>
-        )}
-        {(datasetsRelations.length > 0 ||
-          dataServicesRelations.length > 0 ||
-          informationModelsRelations.length > 0) && (
-          <ContentSection
-            id='relationList'
-            title={translations.detailsPage.relationList.title.informationmodel}
-          >
-            <RelationList
-              parentIdentifier={informationModel?.uri}
-              datasets={datasetsRelations}
-              dataServices={dataServicesRelations}
-              informationModels={informationModelsRelations}
-            />
           </ContentSection>
         )}
       </DetailsPage>

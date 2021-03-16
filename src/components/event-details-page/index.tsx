@@ -157,6 +157,17 @@ const EventDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
+          {publicServicesRelations.length > 0 && (
+            <ContentSection
+              id='relationList'
+              title={translations.detailsPage.relationList.title.event}
+            >
+              <RelationList
+                parentIdentifier={event.uri}
+                publicServices={publicServicesRelations}
+              />
+            </ContentSection>
+          )}
           {relatedServices.length > 0 && (
             <ContentSection
               id='relatedServices'
@@ -180,17 +191,6 @@ const EventDetailsPage: FC<Props> = ({
                     </SC.ListItemValue>
                   ) : null
                 )}
-              />
-            </ContentSection>
-          )}
-          {publicServicesRelations.length > 0 && (
-            <ContentSection
-              id='relationList'
-              title={translations.detailsPage.relationList.title.event}
-            >
-              <RelationList
-                parentIdentifier={event.uri}
-                publicServices={publicServicesRelations}
               />
             </ContentSection>
           )}
