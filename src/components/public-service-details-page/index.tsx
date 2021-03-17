@@ -38,6 +38,7 @@ import { Entity } from '../../types/enums';
 import {
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
+  PATHNAME_EVENTS,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
@@ -58,6 +59,7 @@ interface Props
 
 const PublicServiceDetailsPage: FC<Props> = ({
   isLoadingPublicService,
+  events,
   concepts,
   datasets,
   publicService,
@@ -77,6 +79,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
   conceptsActions: { getConceptsRequested: getConcepts },
   datasetsActions: { getDatasetsRequested: getDatasets },
   eventsActions: {
+    getEventsRequested: getEvents,
+    resetEvents,
     getEventsRelationsRequested: getEventsRelations,
     resetEventsRelations
   },
@@ -122,6 +126,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
     publicService?.keyword?.map(translate)?.filter(Boolean) ?? [];
   const requiredServices = publicService?.requires || [];
   const isClassifiedBy = publicService?.isClassifiedBy || [];
+  const isGroupedBy = publicService?.isGroupedBy || [];
   const produces = publicService?.produces ?? [];
   const hasCriterion = publicService?.hasCriterion ?? [];
   const follows = publicService?.follows ?? [];
@@ -162,6 +167,11 @@ const PublicServiceDetailsPage: FC<Props> = ({
     {} as Record<string, any>
   );
 
+  const eventsMap = events?.reduce(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
+    {} as Record<string, any>
+  );
+
   useEffect(() => {
     if (publicServiceIdentifiers.length > 0) {
       getPublicServices({ publicServiceIdentifiers, size: 1000 });
@@ -179,6 +189,15 @@ const PublicServiceDetailsPage: FC<Props> = ({
       getDatasets({ uris: datasetsUris, size: 1000 });
     }
   }, [datasetsUris.join()]);
+
+  useEffect(() => {
+    if (isGroupedBy.length > 0) {
+      getEvents({ uris: isGroupedBy });
+    }
+    return () => {
+      resetEvents();
+    };
+  }, [isGroupedBy.join()]);
 
   useEffect(() => {
     if (publicService?.uri) {
@@ -512,6 +531,45 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       />
                     )
                 )}
+              </KeyValueList>
+            </ContentSection>
+          )}
+
+          {isGroupedBy.length > 0 && (
+            <ContentSection
+              id='related-events'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .relatedEvents
+              }
+              boxStyle
+              entityIcon={Entity.EVENT}
+            >
+              <KeyValueList>
+                {isGroupedBy?.map(uri => {
+                  return eventsMap[uri] ? (
+                    <KeyValueListItem
+                      key={uri}
+                      property={
+                        eventsMap[uri].id ? (
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_EVENTS}/${eventsMap[uri].id}`}
+                          >
+                            {translate(eventsMap[uri].title ?? uri)}
+                          </Link>
+                        ) : (
+                          uri
+                        )
+                      }
+                      value={
+                        eventsMap[uri].descripton
+                          ? translate(eventsMap[uri].description)
+                          : ''
+                      }
+                    />
+                  ) : null;
+                })}
               </KeyValueList>
             </ContentSection>
           )}

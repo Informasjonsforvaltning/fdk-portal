@@ -660,6 +660,7 @@
         "usage": "Bruk av tjenesten",
         "keywords": "Søkeord",
         "relatedServices": "Relaterte tjenester",
+        "relatedEvents": "Relaterte hendelser",
         "conceptReferences": "Begreper brukt i tjenesten",
         "criterion": "Vilkår",
         "produces": "Tjenesteresultat",
