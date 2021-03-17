@@ -661,6 +661,7 @@
         "usage": "Bruk av tenesten",
         "keywords": "Emneord",
         "relatedServices": "Relaterte tenester",
+        "relatedEvents": "Relaterte hendingar",
         "conceptReferences": "Omgrep brukt i tenesten",
         "criterion": "Vilkår",
         "produces": "Tenesteresultat",

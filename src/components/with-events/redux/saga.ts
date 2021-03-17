@@ -16,13 +16,13 @@ import type { Event } from '../../../types';
 
 function* getEventsRequested({
   payload: {
-    params: { size, relation }
+    params: { size, relation, uris }
   }
 }: ReturnType<typeof actions.getEventsRequested>) {
   try {
     const data = yield call(
       searchEvents,
-      paramsToSearchBody({ size, relation })
+      paramsToSearchBody({ size, relation, uris })
     );
 
     if (data) {
@@ -37,13 +37,13 @@ function* getEventsRequested({
 
 function* getEventsRelationsRequested({
   payload: {
-    params: { size, relation }
+    params: { size, relation, uris }
   }
 }: ReturnType<typeof actions.getEventsRelationsRequested>) {
   try {
     const data = yield call(
       searchEvents,
-      paramsToSearchBody({ size, relation })
+      paramsToSearchBody({ size, relation, uris })
     );
 
     if (data) {

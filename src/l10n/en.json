@@ -661,6 +661,7 @@
         "usage": "Public service usage",
         "keywords": "Keywords",
         "relatedServices": "Related services",
+        "relatedEvents": "Related events",
         "conceptReferences": "Concepts used in the service",
         "criterion": "Criterion",
         "produces": "Service output",
