@@ -13,7 +13,7 @@ services:
       - ORGANIZATION_HOST=https://organization-bff.staging.fellesdatakatalog.digdir.no
       - ORGANIZATION_CATALOGUE_HOST=https://organization-catalogue.staging.fellesdatakatalog.digdir.no
       - REPORT_API_HOST=https://reports-bff.staging.fellesdatakatalog.digdir.no
-      - METADATA_QUALITY_ASSESSMENT_API_HOST=https://metadata-quality.staging.fellesdatakatalog.digdir.no/assessment/entity
+      - METADATA_QUALITY_ASSESSMENT_API_HOST=https://metadata-quality.staging.fellesdatakatalog.digdir.no
       - FDK_REGISTRATION_BASE_URI=https://registrering.staging.fellesdatakatalog.digdir.no
       - ADMIN_GUI_BASE_URI=https://admin.staging.fellesdatakatalog.digdir.no
       - INFORMATIONMODEL_HARVESTER_HOST=https://informationmodels.staging.fellesdatakatalog.digdir.no
