@@ -9,13 +9,15 @@ import { DataService } from '../../types';
 export interface Props {
   dataService: DataService | null;
   dataServiceActions: typeof actions;
+  isLoadingDataService: boolean;
 }
 
 const withDataService = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    dataService: state.DataServiceReducer.get('dataService')?.toJS() ?? null
+    dataService: state.DataServiceReducer.get('dataService')?.toJS() ?? null,
+    isLoadingDataService: state.DataServiceReducer.get('isLoadingDataService')
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

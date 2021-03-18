@@ -10,7 +10,8 @@ import {
 import type { Actions } from '../../../types';
 
 const initialState = fromJS({
-  dataService: null
+  dataService: null,
+  isLoadingDataService: false
 });
 
 export default function reducer(
@@ -19,11 +20,13 @@ export default function reducer(
 ) {
   switch (action.type) {
     case GET_DATA_SERVICE_REQUESTED:
-      return state.set('dataService', null);
+      return state.set('dataService', null).set('isLoadingDataService', true);
     case GET_DATA_SERVICE_SUCCEEDED:
-      return state.set('dataService', fromJS(action.payload.dataService));
+      return state
+        .set('dataService', fromJS(action.payload.dataService))
+        .set('isLoadingDataService', false);
     case GET_DATA_SERVICE_FAILED:
-      return state;
+      return state.set('isLoadingDataService', false);
     default:
       return state;
   }

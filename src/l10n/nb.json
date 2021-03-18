@@ -660,6 +660,7 @@
         "usage": "Bruk av tjenesten",
         "keywords": "Søkeord",
         "relatedServices": "Relaterte tjenester",
+        "relatedEvents": "Relaterte hendelser",
         "conceptReferences": "Begreper brukt i tjenesten",
         "criterion": "Vilkår",
         "produces": "Tjenesteresultat",
@@ -674,11 +675,12 @@
         "relation": "Relatert til",
         "requiredBy": "Krevd av",
         "relatedBy": "Relatert av",
-        "isDescribedAt": "Tilknyttede datasettbeskrivelser"
+        "isDescribedAt": "Tilknyttede datasettbeskrivelser",
+        "spatial": "Geografisk avgrensning"
       },
       "event": {
         "description": "Beskrivelse",
-        "relatedServices": "Relaterte tjenester",
+        "relatedServices": "Tjenester som inngår i hendelse",
         "usage": "Bruk av hendelsen"
       }
     },
@@ -825,5 +827,23 @@
   "feedType": {
     "rss": "RSS",
     "atom": "Atom"
-  }
+  },
+  "errorPage":{
+    "serverError":{
+      "title": "Dette er flaut...",
+      "content1": "Det har visst skjedd noe teknisk krøll i vår ende.",
+      "content2": "Vi jobber med å rette opp feilen. Prøv igjen om en liten stund."
+    },
+    "clientError":{
+      "title": "Vi beklager!",
+      "content1": "Vi finner ikke siden du leter etter.",
+      "content2": "Gå tilbake til ",
+      "content3": "eller helt tilbake til<a href=\"\">startsiden</a>.",
+      "backLink": " siden du kom fra "
+    }
+  },
+  "breadcrumb": {
+    "notFound": "Ingen tittel"
+  },
+  "sampleData": "Eksempeldata"
 }

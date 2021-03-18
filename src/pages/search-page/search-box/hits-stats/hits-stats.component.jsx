@@ -61,8 +61,8 @@ export const HitsStats = props => {
   }
 
   return (
-    <div data-qa="hits-stats">
-      <div data-qa="info">{content}</div>
+    <div data-qa='hits-stats'>
+      <div data-qa='info'>{content}</div>
     </div>
   );
 };

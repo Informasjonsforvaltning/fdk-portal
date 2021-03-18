@@ -38,9 +38,9 @@ const InformationModelReport: FC<Props> = ({
   timeSeriesData.push([Date.now(), totalObjects]);
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.INFORMATION_MODEL]}>
-      <main id="content">
-        <div className="row">
-          <div className="col-12 col-md-6">
+      <main id='content'>
+        <div className='row'>
+          <div className='col-12 col-md-6'>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_INFORMATIONMODELS}${searchParams}`}
@@ -55,7 +55,7 @@ const InformationModelReport: FC<Props> = ({
               </StatisticsRegular>
             </BoxRegular>
           </div>
-          <div className="col-12 col-md-6">
+          <div className='col-12 col-md-6'>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_INFORMATIONMODELS}${patchSearchQuery(
@@ -72,10 +72,10 @@ const InformationModelReport: FC<Props> = ({
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-12">
+        <div className='row'>
+          <div className='col-12'>
             <BoxRegular>
-              <StatisticsRegular to="" as="div">
+              <StatisticsRegular to='' as='div'>
                 <IllustrationWithCount
                   icon={<InfoModIcon />}
                   count={organizationCount}
@@ -88,8 +88,8 @@ const InformationModelReport: FC<Props> = ({
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-12">
+        <div className='row'>
+          <div className='col-12'>
             <BoxRegular
               header={localization.report.growth}
               subHeader={

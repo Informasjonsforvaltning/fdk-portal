@@ -15,7 +15,7 @@ const renderItems = items =>
 export const SingleColGrid = props => {
   const { title, items } = props;
   return (
-    <section className="mb-5 list-type1" name={title}>
+    <section className='mb-5 list-type1' name={title}>
       <div>
         <h3>{title}</h3>
       </div>

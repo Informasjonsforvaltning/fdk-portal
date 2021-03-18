@@ -34,7 +34,7 @@ const ArticleItem: FC<Props> = ({
       <header>
         {date && (
           <SC.Date>
-            <Moment format="DD.MM.YYYY">{date}</Moment>
+            <Moment format='DD.MM.YYYY'>{date}</Moment>
           </SC.Date>
         )}
         {title && <SC.Title>{title}</SC.Title>}

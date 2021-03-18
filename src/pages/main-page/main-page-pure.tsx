@@ -38,15 +38,15 @@ const MainPage: FC<Props> = ({
         <SearchLink entity={Entity.INFORMATION_MODEL} />
         <SearchLink entity={Entity.PUBLIC_SERVICE} beta />
       </SearchBox>
-      <main id="content" className="container">
-        <SC.Content className="row">
-          <section className="col-12 col-lg-8">
+      <main id='content' className='container'>
+        <SC.Content className='row'>
+          <section className='col-12 col-lg-8'>
             <HeaderSC.Header>
               <span>{localization.sort.modified}</span>
             </HeaderSC.Header>
             <SearchEntities entities={entities} />
           </section>
-          <section className="col-12 col-lg-4">
+          <section className='col-12 col-lg-4'>
             <HeaderSC.Header>
               <span>{localization.news}</span>
             </HeaderSC.Header>
@@ -57,10 +57,10 @@ const MainPage: FC<Props> = ({
               <SC.Twitter>
                 <h2>{localization.newsFromDatakatalogenOnTwitter}</h2>
                 <a
-                  className="twitter-timeline"
-                  data-width="600"
-                  data-height="500"
-                  href="https://twitter.com/datakatalogen?ref_src=twsrc%5Etfw"
+                  className='twitter-timeline'
+                  data-width='600'
+                  data-height='500'
+                  href='https://twitter.com/datakatalogen?ref_src=twsrc%5Etfw'
                 >
                   Tweets by datakatalogen
                 </a>

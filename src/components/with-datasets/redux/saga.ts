@@ -24,7 +24,8 @@ function* getDatasetsRequested({
       info_model,
       referencesSource,
       accessService,
-      conformsTo
+      conformsTo,
+      relatedToInfoModel
     } = {}
   }
 }: ReturnType<typeof actions.getDatasetsRequested>) {
@@ -39,7 +40,8 @@ function* getDatasetsRequested({
         info_model,
         referencesSource,
         accessService,
-        conformsTo
+        conformsTo,
+        relatedToInfoModel
       })
     );
 
@@ -65,7 +67,8 @@ function* getDatasetsRelationsRequested({
       info_model,
       referencesSource,
       accessService,
-      conformsTo
+      conformsTo,
+      relatedToInfoModel
     } = {}
   }
 }: ReturnType<typeof actions.getDatasetsRelationsRequested>) {
@@ -80,7 +83,8 @@ function* getDatasetsRelationsRequested({
         info_model,
         referencesSource,
         accessService,
-        conformsTo
+        conformsTo,
+        relatedToInfoModel
       })
     );
 

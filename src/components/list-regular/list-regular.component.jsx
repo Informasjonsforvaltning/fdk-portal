@@ -9,7 +9,7 @@ export const ListRegular = ({ title, name, bottomMargin, children }) => {
       name={name || title}
     >
       {title && (
-        <div className="list-regular--item">
+        <div className='list-regular--item'>
           <h3>{title}</h3>
         </div>
       )}

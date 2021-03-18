@@ -9,6 +9,8 @@ import {
   paramsToSearchBody
 } from '../../../api/search-fulltext-api/events';
 
+import LoggingService, { Severity } from '../../../services/logging';
+
 import type { Event } from '../../../types';
 
 function* getEventRequested({
@@ -16,14 +18,26 @@ function* getEventRequested({
 }: ReturnType<typeof actions.getEventRequested>) {
   try {
     const data = yield call(searchEvents, paramsToSearchBody({ id }));
+    const event = extractFirstEvent(data) as Event;
 
-    if (data?.hits) {
-      yield put(actions.getEventSucceeded(extractFirstEvent(data) as Event));
+    if (event) {
+      yield put(actions.getEventSucceeded(event));
     } else {
+      LoggingService.postLogEntry({
+        message: `Could not get event with ID: ${id}`,
+        severity: Severity.WARN
+      });
       yield put(actions.getEventFailed(''));
     }
-  } catch (e) {
-    yield put(actions.getEventFailed(e.message));
+  } catch (error) {
+    const { name, message, stack: trace } = error as Error;
+    LoggingService.postLogEntry({
+      message: message ?? `Application error when getting event with ID: ${id}`,
+      severity: Severity.ERROR,
+      name,
+      trace
+    });
+    yield put(actions.getEventFailed(message));
   }
 }
 

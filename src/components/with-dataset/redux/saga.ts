@@ -9,21 +9,35 @@ import {
   extractFirstDataset
 } from '../../../api/search-fulltext-api/datasets';
 
+import LoggingService, { Severity } from '../../../services/logging';
+
 function* getDatasetRequested({
   payload: { id }
 }: ReturnType<typeof actions.getDatasetRequested>) {
   try {
     const params = paramsToSearchBody({ id });
     const data = yield call(searchDatasets, params);
-    if (data) {
-      yield put(
-        actions.getDatasetSucceeded(extractFirstDataset(data) as Dataset)
-      );
+    const dataset = extractFirstDataset(data) as Dataset;
+
+    if (dataset) {
+      yield put(actions.getDatasetSucceeded(dataset));
     } else {
+      LoggingService.postLogEntry({
+        message: `Could not get dataset with ID: ${id}`,
+        severity: Severity.WARN
+      });
       yield put(actions.getDatasetFailed(''));
     }
-  } catch (e) {
-    yield put(actions.getDatasetFailed(e.message));
+  } catch (error) {
+    const { name, message, stack: trace } = error as Error;
+    LoggingService.postLogEntry({
+      message:
+        message ?? `Application error when getting dataset with ID: ${id}`,
+      severity: Severity.ERROR,
+      name,
+      trace
+    });
+    yield put(actions.getDatasetFailed(message));
   }
 }
 

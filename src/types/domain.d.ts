@@ -344,6 +344,7 @@ export interface PublicService {
   relation?: PublicService[];
   hasContactPoint?: PublicServiceContactPoint[];
   associatedBroaderTypesByEvents?: string[];
+  spatial: string[];
 }
 export interface Event {
   id: string;

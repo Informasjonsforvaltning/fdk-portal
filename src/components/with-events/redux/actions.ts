@@ -14,6 +14,7 @@ import type { Event } from '../../../types';
 interface GetEventsParams {
   size?: number;
   relation?: string;
+  uris?: string[];
 }
 
 export function getEventsRequested(params: GetEventsParams) {

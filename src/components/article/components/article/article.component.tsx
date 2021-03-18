@@ -70,21 +70,21 @@ const Article: FC<Partial<Props>> = ({
   field_modules,
   relatedNews
 }) => (
-  <main id="content" className="container">
+  <main id='content' className='container'>
     <SC.Article>
-      <div className="row">
+      <div className='row'>
         <div className={relatedNews ? 'col-12 col-lg-8' : 'col-12'}>
           {publishedDate && (
             <SC.Date>
               <span>{localization.published} </span>
-              <Moment format="DD.MM.YYYY">{publishedDate}</Moment>
+              <Moment format='DD.MM.YYYY'>{publishedDate}</Moment>
               {lastChangedDate && (
                 <>
                   <span>
                     &nbsp;{' / '}
                     {localization.lastChanged}{' '}
                   </span>
-                  <Moment format="DD.MM.YYYY">{lastChangedDate}</Moment>
+                  <Moment format='DD.MM.YYYY'>{lastChangedDate}</Moment>
                 </>
               )}
             </SC.Date>
@@ -104,7 +104,7 @@ const Article: FC<Partial<Props>> = ({
           )}
         </div>
         {relatedNews && (
-          <aside className="col-12 col-lg-4">
+          <aside className='col-12 col-lg-4'>
             <SC.AsideContent>
               <NewsList news={relatedNews} />
             </SC.AsideContent>

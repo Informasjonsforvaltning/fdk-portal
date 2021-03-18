@@ -92,7 +92,7 @@ exports[`should render App correctly 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(ConceptComparePage)",
+              "displayName": "Connect(Component)",
               "type": [Function],
             }
           }
@@ -262,6 +262,9 @@ exports[`should render App correctly 1`] = `
           component={[Function]}
           exact={true}
           path="/guidance/metadata"
+        />
+        <Route
+          render={[Function]}
         />
       </Switch>
     </withRouter(ScrollToTop)>

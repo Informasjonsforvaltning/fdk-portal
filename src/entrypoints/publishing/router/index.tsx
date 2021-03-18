@@ -16,8 +16,8 @@ const Router: FC = () => (
     <Root>
       <Suspense fallback={null}>
         <Switch>
-          <Route path="/publishing" component={routes.publishing} />
-          <Redirect to="/publishing" />
+          <Route path='/publishing' component={routes.publishing} />
+          <Redirect to='/publishing' />
         </Switch>
       </Suspense>
     </Root>

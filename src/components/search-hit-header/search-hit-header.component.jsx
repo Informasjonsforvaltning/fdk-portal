@@ -68,7 +68,7 @@ const renderThemes = (themes, losItems, darkThemeBackground) => {
             to={`${getContextRootLink()}${patchSearchQuery('losTheme', theme)}`}
             className={themeClass}
           >
-            <span className="uu-invisible" aria-hidden="false">
+            <span className='uu-invisible' aria-hidden='false'>
               Datasettets tema.
             </span>
             {getTranslateText(prefLabel || title)}
@@ -89,17 +89,17 @@ const renderTitle = (
 ) => {
   const titleTag = (Tag, title) => (
     <Tag
-      className="mr-3 search-hit-header-title"
+      className='mr-3 search-hit-header-title'
       name={getTranslateText(title)}
     >
       {getTranslateText(title)}
       {isExpired && (
-        <span className="fdk-expired">
+        <span className='fdk-expired'>
           &nbsp;({localization.validity.expired})
         </span>
       )}
       {!isExpired && isWillBeValid && (
-        <span className="fdk-will-be-valid">
+        <span className='fdk-will-be-valid'>
           &nbsp;({localization.validity.willBeValid})
         </span>
       )}
@@ -116,7 +116,7 @@ const renderTitle = (
     }
     return (
       <Link
-        className="search-hit__title-link"
+        className='search-hit__title-link'
         title={`${localization.apiLabel}: ${title}`}
         to={titleLink}
       >
@@ -157,7 +157,7 @@ export const SearchHitHeader = props => {
   return (
     <>
       {title && (
-        <div className="mb-2 d-flex flex-wrap align-items-center">
+        <div className='mb-2 d-flex flex-wrap align-items-center'>
           {renderTitle(
             Tag,
             title,
@@ -175,7 +175,7 @@ export const SearchHitHeader = props => {
         </div>
       )}
 
-      <div className="mb-4 d-flex flex-wrap align-items-baseline">
+      <div className='mb-4 d-flex flex-wrap align-items-baseline'>
         {publisherItems &&
           renderPublisher(publisherLabel, publisher, publisherItems, catalog)}
 
@@ -190,7 +190,7 @@ export const SearchHitHeader = props => {
       </div>
 
       {(isExpired || isWillBeValid) && (
-        <AlertMessage type={isExpired ? 'danger' : 'warning'} classNames="mb-4">
+        <AlertMessage type={isExpired ? 'danger' : 'warning'} classNames='mb-4'>
           {isExpired
             ? localization.validity.expiredInfo
             : localization.validity.willBeValidInfo}
@@ -202,7 +202,7 @@ export const SearchHitHeader = props => {
       )}
 
       {(nationalComponent || !!themes.length) && (
-        <div className="mb-4 d-flex flex-wrap align-items-baseline align-items-center">
+        <div className='mb-4 d-flex flex-wrap align-items-baseline align-items-center'>
           {nationalComponent && <LabelNational />}
           {renderThemes(themes, losItems, darkThemeBackground)}
         </div>

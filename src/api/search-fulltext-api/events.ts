@@ -6,7 +6,7 @@ const mapSorting = ({ sortfield }: any) =>
     ? { field: 'harvest.firstHarvested', direction: 'desc' }
     : undefined;
 
-const mapFilters = ({ id, relation }: any) => {
+const mapFilters = ({ id, relation, uris }: any) => {
   const filters = [];
   if (id) {
     filters.push({ _id: id });
@@ -15,6 +15,15 @@ const mapFilters = ({ id, relation }: any) => {
   if (relation) {
     filters.push({
       'relation.keyword': relation
+    });
+  }
+
+  if (uris) {
+    filters.push({
+      collection: {
+        field: 'uri',
+        values: uris
+      }
     });
   }
 
@@ -40,4 +49,4 @@ export const extractEventsAggregations = (searchResponse: any) =>
 export const extractEventsPage = (searchResponse: any) =>
   searchResponse.page ?? {};
 
-export const extractFirstEvent = ({ hits = [] }: any) => hits[0] ?? {};
+export const extractFirstEvent = ({ hits = [] }: any) => hits[0];

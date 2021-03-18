@@ -20,6 +20,7 @@ interface GetDatasetsParams {
   referencesSource?: string;
   accessService?: string;
   conformsTo?: string;
+  relatedToInfoModel?: string;
 }
 
 export function getDatasetsRequested(params?: GetDatasetsParams) {

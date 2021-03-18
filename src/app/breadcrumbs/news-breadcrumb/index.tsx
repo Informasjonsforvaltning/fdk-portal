@@ -3,6 +3,8 @@ import memoize from 'lodash/memoize';
 import { resolve } from 'react-resolver';
 
 import { getTranslateText } from '../../../lib/translateText';
+import translations from '../../../lib/localization';
+
 import { News as NewsInterface } from '../../../types';
 import {
   extractNewsData,
@@ -15,8 +17,8 @@ interface Props {
   newsItem?: Partial<NewsInterface>;
 }
 
-export const PureNewsBreadcrumb: FC<Props> = ({ newsItem: { title } = {} }) => (
-  <span>{getTranslateText(title)}</span>
+const PureNewsBreadcrumb: FC<Props> = ({ newsItem: { title } = {} }) => (
+  <span>{getTranslateText(title ?? translations.breadcrumb.notFound)}</span>
 );
 
 const mapProps = {
@@ -26,4 +28,4 @@ const mapProps = {
       .catch(() => [])
 };
 
-export const NewsBreadcrumb = resolve(mapProps)(PureNewsBreadcrumb);
+export default resolve(mapProps)(PureNewsBreadcrumb);

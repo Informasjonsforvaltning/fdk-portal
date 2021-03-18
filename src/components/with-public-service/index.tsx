@@ -8,6 +8,7 @@ import type { PublicService } from '../../types';
 export interface Props {
   publicService: PublicService | null;
   publicServiceActions: typeof actions;
+  isLoadingPublicService: boolean;
 }
 
 const withPublicService = (Component: ComponentType<any>) => {
@@ -15,7 +16,10 @@ const withPublicService = (Component: ComponentType<any>) => {
 
   const mapStateToProps = (state: any) => ({
     publicService:
-      state.PublicServiceReducer.get('publicService')?.toJS() ?? null
+      state.PublicServiceReducer.get('publicService')?.toJS() ?? null,
+    isLoadingPublicService: state.PublicServiceReducer.get(
+      'isLoadingPublicService'
+    )
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

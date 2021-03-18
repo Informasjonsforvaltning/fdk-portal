@@ -41,7 +41,7 @@ export const DataServiceItem: FC<Props> = ({
               <span>{localization.openApi}</span>
             </RoundedTag>
           </div>
-          <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
+          <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
         </SearchHitOpenData>
       )}
     </SearchHit>

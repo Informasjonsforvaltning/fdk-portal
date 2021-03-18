@@ -29,7 +29,8 @@ const mapFilters = ({
   keywords,
   info_model,
   referencesSource,
-  conformsTo
+  conformsTo,
+  relatedToInfoModel
 }: any) => {
   const filters = [];
   if (id) {
@@ -119,6 +120,9 @@ const mapFilters = ({
       }
     });
   }
+  if (relatedToInfoModel) {
+    filters.push({ dataset_info_model_relations: relatedToInfoModel });
+  }
 
   // Filter out NAP data if filterTransportDatasets in conf is true
   if (getConfig().filterTransportDatasets) {
@@ -149,4 +153,4 @@ export const extractDatasetAggregations = (searchResponse: any) =>
 export const extractDatasetsTotal = (searchResponse: any) =>
   searchResponse?.page?.totalElements ?? 0;
 
-export const extractFirstDataset = ({ hits = [] }: any) => hits[0] ?? {};
+export const extractFirstDataset = ({ hits = [] }: any) => hits[0];

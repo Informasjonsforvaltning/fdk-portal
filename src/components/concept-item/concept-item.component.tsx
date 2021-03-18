@@ -87,9 +87,9 @@ const renderAddRemoveCompareButton = (
         onClick={() => {
           onAddConcept(item);
         }}
-        type="button"
+        type='button'
       >
-        <i className="fa fa-plus-circle mr-2" />
+        <i className='fa fa-plus-circle mr-2' />
         {localization.compare.addCompare}
       </SC.ButtonCompare>
     );
@@ -99,9 +99,9 @@ const renderAddRemoveCompareButton = (
       onClick={() => {
         onDeleteConcept(item.id);
       }}
-      type="button"
+      type='button'
     >
-      <i className="fa fa-minus-circle mr-2" />
+      <i className='fa fa-minus-circle mr-2' />
       {localization.compare.removeCompare}
     </SC.ButtonCompare>
   );

@@ -59,7 +59,7 @@ export const SearchHitHead: FC<Props> = ({
         {isAuthoritative && (
           <div data-tip={localization.authoritativeDatasetTooltip}>
             <SC.AuthoritativeIcon />
-            <ReactTooltipSC.ReactTooltipStyled effect="solid" multiline />
+            <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
           </div>
         )}
       </SC.Header>

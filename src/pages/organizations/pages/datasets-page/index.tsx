@@ -8,6 +8,8 @@ import { getConfig } from '../../../../config';
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
+import withErrorBoundary from '../../../../components/with-error-boundary';
+import ErrorPage from '../../../../components/error-page';
 
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';
@@ -97,7 +99,7 @@ const DatasetsPage: FC<Props> = ({
   };
 
   return (
-    <SC.DatasetsPage className="container">
+    <SC.DatasetsPage className='container'>
       <SC.BetaRibbon>BETA</SC.BetaRibbon>
       <SC.Title>
         {translations.formatString(
@@ -241,4 +243,8 @@ const DatasetsPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withOrganization)(DatasetsPage);
+export default compose<FC>(
+  memo,
+  withOrganization,
+  withErrorBoundary(ErrorPage)
+)(DatasetsPage);

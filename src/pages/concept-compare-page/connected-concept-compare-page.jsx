@@ -1,8 +1,13 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+
 import {
   fetchConceptsToCompareIfNeededAction,
   removeConceptAction
 } from '../../redux/modules/conceptsCompare';
+
+import ErrorPage from '../../components/error-page';
+import withErrorBoundary from '../../components/with-error-boundary';
 import { ConceptComparePage } from './concept-compare-page';
 
 const mapStateToProps = ({ conceptsCompare }) => {
@@ -21,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   removeConcept: uri => dispatch(removeConceptAction(uri))
 });
 
-export const ConnectedConceptComparePage = connect(
-  mapStateToProps,
-  mapDispatchToProps
+export const ConnectedConceptComparePage = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withErrorBoundary(ErrorPage)
 )(ConceptComparePage);

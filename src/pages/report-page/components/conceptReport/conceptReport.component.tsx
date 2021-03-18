@@ -44,9 +44,9 @@ const ConceptReport: FC<Props> = ({
   timeSeriesData.push([Date.now(), totalObjects]);
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.CONCEPT]}>
-      <main id="content">
-        <div className="row">
-          <div className="col-12 col-md-6">
+      <main id='content'>
+        <div className='row'>
+          <div className='col-12 col-md-6'>
             <BoxRegular>
               <StatisticsRegular to={`${PATHNAME_CONCEPTS}${searchParams}`}>
                 <IllustrationWithCount
@@ -59,7 +59,7 @@ const ConceptReport: FC<Props> = ({
               </StatisticsRegular>
             </BoxRegular>
           </div>
-          <div className="col-12 col-md-6">
+          <div className='col-12 col-md-6'>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_CONCEPTS}${patchSearchQuery(
@@ -76,10 +76,10 @@ const ConceptReport: FC<Props> = ({
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-12">
+        <div className='row'>
+          <div className='col-12'>
             <BoxRegular>
-              <StatisticsRegular to="" as="div">
+              <StatisticsRegular to='' as='div'>
                 <IllustrationWithCount
                   icon={<ConceptIcon />}
                   count={organizationCount}
@@ -93,8 +93,8 @@ const ConceptReport: FC<Props> = ({
         </div>
 
         {timeSeriesData?.length > 0 && timeSeriesData?.length > 0 && (
-          <div className="row">
-            <div className="col-12">
+          <div className='row'>
+            <div className='col-12'>
               <BoxRegular
                 header={localization.report.growth}
                 subHeader={localization.report.conceptGrowthFromFirstPublish}
@@ -110,8 +110,8 @@ const ConceptReport: FC<Props> = ({
         )}
 
         {allReferencedConcepts?.length > 0 && (
-          <div className="row">
-            <div className="col-12">
+          <div className='row'>
+            <div className='col-12'>
               <BoxRegular header={localization.report.conceptReferenced}>
                 {allReferencedConcepts.map(
                   ({ id, prefLabel }: Partial<Concept>) => (

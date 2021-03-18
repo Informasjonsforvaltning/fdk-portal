@@ -28,7 +28,7 @@ export const PublisherLabel = props => {
     _.capitalize(_.get(publisherItem, 'name', ''));
 
   return (
-    <span className="mr-3">
+    <span className='mr-3'>
       {label}&nbsp;
       <Tag>
         {publisherPrefLabel}

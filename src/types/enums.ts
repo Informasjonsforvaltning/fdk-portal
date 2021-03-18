@@ -1,6 +1,8 @@
-export enum Environment {
+export enum Namespace {
+  DEMO = 'demo',
+  STAGING = 'staging',
   DEVELOPMENT = 'development',
-  PRODUCTION = 'production'
+  PRODUCTION = 'prod'
 }
 
 export enum GoogleAnalyticsTrackingId {

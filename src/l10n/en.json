@@ -661,6 +661,7 @@
         "usage": "Public service usage",
         "keywords": "Keywords",
         "relatedServices": "Related services",
+        "relatedEvents": "Related events",
         "conceptReferences": "Concepts used in the service",
         "criterion": "Criterion",
         "produces": "Service output",
@@ -675,11 +676,12 @@
         "relation": "Related to",
         "requiredBy": "Required by",
         "relatedBy": "Related by",
-        "isDescribedAt": "Associated datasets"
+        "isDescribedAt": "Associated datasets",
+        "spatial": "Spatial restrictions"
       },
       "event": {
         "description": "Description",
-        "relatedServices": "Related services",
+        "relatedServices": "Services included in event",
         "usage": "Event usage"
 
       }
@@ -827,5 +829,23 @@
   "feedType": {
     "rss": "RSS",
     "atom": "Atom"
-  }
+  },
+  "errorPage":{
+    "serverError":{
+      "title": "This is embarrasing...",
+      "content1": "There are some technical hiccups on our end.",
+      "content2": "We are working on correcting the error. Try again in a little while."
+    },
+    "clientError":{
+      "title": "We're sorry!",
+      "content1": "We can't find the page you're looking for.",
+      "content2": "Go back to the ",
+      "content3": "or go back to the<a href=\"\">start page</a>.",
+      "backLink": " page you came from "
+    }
+  },
+  "breadcrumb": {
+    "notFound": "No title"
+  },
+  "sampleData": "Example data"
 }

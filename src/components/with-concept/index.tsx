@@ -9,13 +9,15 @@ import type { Concept } from '../../types';
 export interface Props {
   concept: Concept | null;
   conceptActions: typeof actions;
+  isLoadingConcept: boolean;
 }
 
 const withConcept = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    concept: state.ConceptReducer.get('concept')?.toJS() ?? null
+    concept: state.ConceptReducer.get('concept')?.toJS() ?? null,
+    isLoadingConcept: state.ConceptReducer.get('isLoadingConcept')
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
