@@ -214,6 +214,11 @@ const PublicServiceDetailsPage: FC<Props> = ({
     };
   }, [publicService?.uri]);
 
+  const administrativeUnitsMap = administrativeUnits?.reduce(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
+    {} as Record<string, any>
+  );
+
   const themes: Theme[] = [];
 
   return renderPage ? (
@@ -347,24 +352,25 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       .join(', ')}
                   />
                 )}
-                {administrativeUnits.map(({ uri, name }) => (
+                {spatial.length > 0 && (
                   <KeyValueListItem
-                    key={uri}
                     property={
                       translations.detailsPage.sectionTitles.publicService
                         .spatial
                     }
-                    value={
-                      uri ? (
-                        <Link href={uri} external>
-                          {translate(name) || uri}
-                        </Link>
-                      ) : (
-                        translate(name) || uri
+                    value={spatial
+                      .map(uri =>
+                        administrativeUnitsMap[uri] ? (
+                          <Link key={uri} href={uri} external>
+                            {translate(administrativeUnitsMap[uri]?.name)}
+                          </Link>
+                        ) : (
+                          uri
+                        )
                       )
-                    }
+                      .filter(Boolean)}
                   />
-                ))}
+                )}
               </KeyValueList>
             </ContentSection>
           )}
