@@ -2,12 +2,14 @@ import React, { memo, FC, useState, useEffect, Fragment } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import parse from 'html-react-parser';
 import { Alignment } from '@fellesdatakatalog/theme';
 import { Tab, Pane } from '@fellesdatakatalog/tabs';
 
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
+import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
 import { PATHNAME_INFORMATIONMODELS } from '../../constants/constants';
 
@@ -250,7 +252,7 @@ const InformationModelDetailsPage: FC<Props> = ({
             entityTheme={Entity.INFORMATION_MODEL}
             truncate
           >
-            {description}
+            {parse(convertToSanitizedHtml(description))}
           </ContentSection>
         )}
         {(status ||
