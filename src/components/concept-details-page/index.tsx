@@ -2,11 +2,13 @@ import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import parse from 'html-react-parser';
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
+import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
 import { themeFDK } from '../../app/theme';
 
@@ -217,7 +219,7 @@ const ConceptDetailsPage: FC<Props> = ({
             entityTheme={Entity.CONCEPT}
             truncate
           >
-            {description}
+            {parse(convertToSanitizedHtml(description))}
             <SC.Sources>{renderSources()}</SC.Sources>
           </ContentSection>
         )}
