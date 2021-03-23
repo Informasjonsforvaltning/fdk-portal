@@ -15,7 +15,11 @@ const mapDispatchToProps = dispatch => ({
   onChangeLanguage: language => dispatch(setLanguageAction(language))
 });
 
+const ConnectedErrorPage = compose(
+  connect(mapStateToProps, mapDispatchToProps)
+)(ErrorPage);
+
 export const ConnectedApp = compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withErrorBoundary(ErrorPage)
+  withErrorBoundary(ConnectedErrorPage)
 )(App);
