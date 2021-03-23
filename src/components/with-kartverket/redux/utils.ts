@@ -17,11 +17,11 @@ const rdfs = Namespace('http://www.w3.org/2000/01/rdf-schema#');
 export const getAdministrativeUnit = async (
   uri: string
 ): Promise<AdministrativeUnit> => {
-  const fetcher = new Fetcher(graph(), { withCredentials: false });
+  const fetcher = new Fetcher(graph(), {});
 
   await fetcher.load(
     `https://rdf.kartverket.no/api/1.0/adminstrative_unit/describe?uri=${uri}&mode=CBD&format=text/turtle`,
-    {}
+    { withCredentials: false }
   );
 
   const subject = fetcher.store.anyStatementMatching(
