@@ -4,27 +4,7 @@ exports[`should render App correctly 1`] = `
 <div
   className="position-relative overflow-hidden theme-fdk"
 >
-  <div>
-    <a
-      aria-hidden="true"
-      className="uu-invisible"
-      href="/#content"
-      id="focus-element"
-    >
-      Hopp til hovedinnhold
-    </a>
-  </div>
-  <div
-    id="skip-link-wrap"
-  >
-    <a
-      href="/#content"
-      id="skip-link"
-    >
-      Hopp til hovedinnhold
-    </a>
-  </div>
-  <Component
+  <Header
     onChangeLanguage={[Function]}
   />
   <Component />
@@ -269,6 +249,6 @@ exports[`should render App correctly 1`] = `
       </Switch>
     </withRouter(ScrollToTop)>
   </Switch>
-  <w />
+  <Footer />
 </div>
 `;
