@@ -52,6 +52,8 @@
     "@fellesdatakatalog/link": "^0.2.1",
     "@fellesdatakatalog/tabs": "^1.0.1",
     "@fellesdatakatalog/theme": "^0.4.2",
+    "@types/classnames": "^2.2.11",
+    "@types/react-document-meta": "^3.0.0",
     "apexcharts": "^3.25.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.2",
