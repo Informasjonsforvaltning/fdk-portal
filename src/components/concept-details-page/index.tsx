@@ -2,14 +2,11 @@ import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import parse from 'html-react-parser';
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
-import { convertToSanitizedHtml } from '../../lib/markdown-converter';
-
 import { themeFDK } from '../../app/theme';
 
 import withConcept, { Props as ConceptProps } from '../with-concept';
@@ -33,8 +30,10 @@ import RelationList from '../relation-list';
 
 import SC from './styled';
 
-import type { Theme } from '../../types';
+import type { Theme, Language } from '../../types';
 import { Entity } from '../../types/enums';
+import MultiLingualField from '../multilingual-field';
+import { deepKeys } from '../../lib/deep-keys';
 
 interface RouteParams {
   conceptId: string;
@@ -79,6 +78,17 @@ const ConceptDetailsPage: FC<Props> = ({
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
+  const [selectedLanguages, setSelectedLanguages] = useState<Language[] | []>([
+    { code: 'nb' },
+    { code: 'nn' },
+    { code: 'en' }
+  ]);
+  const [
+    determinedLanguagesFromConcept,
+    setDeterminedLanguagesFromConcept
+  ] = useState<string[]>([]);
+  const [isLanguagesDetermined, setLanguagesDetermined] = useState(false);
+
   const renderPage = isLoadingConcept || !isMounted || concept !== null;
 
   const entity = Entity.CONCEPT;
@@ -93,6 +103,7 @@ const ConceptDetailsPage: FC<Props> = ({
 
     return function cleanup() {
       setIsMounted(false);
+      setLanguagesDetermined(false);
     };
   }, []);
 
@@ -119,38 +130,63 @@ const ConceptDetailsPage: FC<Props> = ({
     };
   }, [concept?.identifier]);
 
+  const translatableFields = [
+    'prefLabel',
+    'altLabel',
+    'hiddenLabel',
+    'definition',
+    'example',
+    'subject',
+    'application'
+  ];
+
+  const getUsedLanguages = () =>
+    concept
+      ? [
+          ...new Set(
+            deepKeys(
+              Object.fromEntries(
+                Object.entries(concept).filter(([key]) =>
+                  translatableFields.includes(key)
+                )
+              ),
+              (__: any, v: string) => !!v
+            ).filter(key => ['nb', 'nn', 'no', 'en'].includes(key))
+          )
+        ]
+      : [];
+
+  useEffect(() => {
+    if (concept && !isLanguagesDetermined) {
+      setDeterminedLanguagesFromConcept(getUsedLanguages());
+      setLanguagesDetermined(true);
+    }
+    if (determinedLanguagesFromConcept) {
+      const languages: Language[] = [...new Set(selectedLanguages)].map(
+        language => ({
+          ...language,
+          selected: !!(translations.getLanguage() === language.code),
+          disabled: !determinedLanguagesFromConcept.includes(language.code)
+        })
+      );
+      setSelectedLanguages(languages);
+    }
+  }, [concept, translations.getLanguage()]);
+
   const entityId = concept?.id;
   const entityUri = concept?.uri;
   const identifier = concept?.identifier;
   const publisher = concept?.publisher;
   const title = concept?.prefLabel ?? {};
-  const description = translate(concept?.definition.text);
+  const description = concept?.definition.text;
   const sourceRelationship = concept?.definition.sourceRelationship;
   const sources = concept?.definition.sources ?? [];
-  const remark = translate(concept?.definition.remark);
-  const altLabels =
-    concept?.altLabel
-      ?.filter(
-        label =>
-          label?.[translations.getLanguage() as 'nb' | 'nn' | 'no' | 'en']
-      )
-      .filter(Boolean) ?? [];
-  const hiddenLabels =
-    concept?.hiddenLabel
-      ?.filter(
-        label =>
-          label?.[translations.getLanguage() as 'nb' | 'nn' | 'no' | 'en']
-      )
-      .filter(Boolean) ?? [];
-  const example = translate(concept?.example);
-  const subject = translate(concept?.subject);
-  const applications =
-    concept?.application
-      ?.filter(
-        application =>
-          application?.[translations.getLanguage() as 'nb' | 'nn' | 'no' | 'en']
-      )
-      .filter(Boolean) ?? [];
+  const remark = concept?.definition.remark;
+  const altLabels = concept?.altLabel ?? [];
+  const hiddenLabels = concept?.hiddenLabel ?? [];
+  const example = concept?.example;
+  const subject = concept?.subject;
+  const applications = concept?.application ?? [];
   const range = translate(concept?.definition.range?.text);
   const rangeUri = concept?.definition.range?.uri;
   const lastPublished = formatDate(
@@ -196,6 +232,18 @@ const ConceptDetailsPage: FC<Props> = ({
     ) : null;
   };
 
+  const toggleLanguage = (code: string) => {
+    const languages: Language[] = [...new Set(selectedLanguages)].map(
+      language => ({
+        ...language,
+        selected:
+          language.code === code ? !language.selected : language.selected,
+        disabled: !determinedLanguagesFromConcept.includes(language.code)
+      })
+    );
+    setSelectedLanguages(languages);
+  };
+
   return renderPage ? (
     <ThemeProvider theme={theme}>
       <DetailsPage
@@ -211,6 +259,8 @@ const ConceptDetailsPage: FC<Props> = ({
         isRestrictedData={false}
         isNonPublicData={false}
         themes={themes}
+        toggleLanguage={toggleLanguage}
+        languages={selectedLanguages}
       >
         {description && (
           <ContentSection
@@ -219,7 +269,11 @@ const ConceptDetailsPage: FC<Props> = ({
             entityTheme={Entity.CONCEPT}
             truncate
           >
-            {parse(convertToSanitizedHtml(description))}
+            <MultiLingualField
+              languages={selectedLanguages}
+              text={description}
+              convertToMarkUp
+            />
             <SC.Sources>{renderSources()}</SC.Sources>
           </ContentSection>
         )}
@@ -251,7 +305,7 @@ const ConceptDetailsPage: FC<Props> = ({
             id='remark'
             title={translations.detailsPage.sectionTitles.concept.remark}
           >
-            {remark}
+            <MultiLingualField languages={selectedLanguages} text={remark} />
           </ContentSection>
         )}
         {(altLabels.length > 0 || hiddenLabels.length > 0) && (
@@ -263,13 +317,27 @@ const ConceptDetailsPage: FC<Props> = ({
               {altLabels.length > 0 && (
                 <KeyValueListItem
                   property={translations.concept.altLabel}
-                  value={altLabels.map(translate).join(', ')}
+                  value={altLabels.map((altLabel, index) => (
+                    <MultiLingualField
+                      key={index}
+                      languages={selectedLanguages}
+                      text={altLabel}
+                      useFallback={false}
+                    />
+                  ))}
                 />
               )}
               {hiddenLabels.length > 0 && (
                 <KeyValueListItem
                   property={translations.concept.hiddenLabel}
-                  value={hiddenLabels.map(translate).join(', ')}
+                  value={hiddenLabels.map((hiddenLabel, index) => (
+                    <MultiLingualField
+                      key={index}
+                      languages={selectedLanguages}
+                      text={hiddenLabel}
+                      useFallback={false}
+                    />
+                  ))}
                 />
               )}
             </KeyValueList>
@@ -280,7 +348,7 @@ const ConceptDetailsPage: FC<Props> = ({
             id='example'
             title={translations.detailsPage.sectionTitles.concept.example}
           >
-            {example}
+            <MultiLingualField languages={selectedLanguages} text={example} />
           </ContentSection>
         )}
         {(subject || applications.length > 0) && (
@@ -295,13 +363,26 @@ const ConceptDetailsPage: FC<Props> = ({
               {subject && (
                 <KeyValueListItem
                   property={translations.concept.subject}
-                  value={subject}
+                  value={
+                    <MultiLingualField
+                      languages={selectedLanguages}
+                      text={subject}
+                      useFallback={false}
+                    />
+                  }
                 />
               )}
               {applications.length > 0 && (
                 <KeyValueListItem
                   property={translations.concept.application}
-                  value={applications.map(translate).join(', ')}
+                  value={applications.map((application, index) => (
+                    <MultiLingualField
+                      key={index}
+                      languages={selectedLanguages}
+                      text={application}
+                      useFallback={false}
+                    />
+                  ))}
                 />
               )}
             </KeyValueList>
