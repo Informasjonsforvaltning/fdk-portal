@@ -2,12 +2,14 @@ import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import parse from 'html-react-parser';
 import Link from '@fellesdatakatalog/link';
 import moment from 'moment';
 
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
+import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
 import { themeFDK } from '../../app/theme';
 
@@ -214,6 +216,11 @@ const PublicServiceDetailsPage: FC<Props> = ({
     };
   }, [publicService?.uri]);
 
+  const administrativeUnitsMap = administrativeUnits?.reduce(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
+    {} as Record<string, any>
+  );
+
   const themes: Theme[] = [];
 
   return renderPage ? (
@@ -243,7 +250,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
               entityTheme={Entity.PUBLIC_SERVICE}
               truncate
             >
-              {description}
+              {parse(convertToSanitizedHtml(description))}
             </ContentSection>
           )}
 
@@ -347,24 +354,25 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       .join(', ')}
                   />
                 )}
-                {administrativeUnits.map(({ uri, name }) => (
+                {spatial.length > 0 && (
                   <KeyValueListItem
-                    key={uri}
                     property={
                       translations.detailsPage.sectionTitles.publicService
                         .spatial
                     }
-                    value={
-                      uri ? (
-                        <Link href={uri} external>
-                          {translate(name) || uri}
-                        </Link>
-                      ) : (
-                        translate(name) || uri
+                    value={spatial
+                      .map(uri =>
+                        administrativeUnitsMap[uri] ? (
+                          <Link key={uri} href={uri} external>
+                            {translate(administrativeUnitsMap[uri]?.name)}
+                          </Link>
+                        ) : (
+                          uri
+                        )
                       )
-                    }
+                      .filter(Boolean)}
                   />
-                ))}
+                )}
               </KeyValueList>
             </ContentSection>
           )}

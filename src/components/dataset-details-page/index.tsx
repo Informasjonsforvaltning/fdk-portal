@@ -10,6 +10,7 @@ import { getConfig } from '../../config';
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
+import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
 import {
   PATHNAME_DATASETS,
@@ -268,7 +269,7 @@ const DatasetDetailsPage: FC<Props> = ({
             entityTheme={Entity.DATASET}
             truncate
           >
-            {description}
+            {parse(convertToSanitizedHtml(description))}
           </ContentSection>
         )}
         {objective && (
@@ -276,7 +277,7 @@ const DatasetDetailsPage: FC<Props> = ({
             id='objective'
             title={translations.detailsPage.sectionTitles.dataset.objective}
           >
-            {objective}
+            {parse(convertToSanitizedHtml(objective))}
           </ContentSection>
         )}
         {distributions.length > 0 && (

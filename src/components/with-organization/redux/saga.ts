@@ -31,7 +31,7 @@ function* getOrganizationRequested({
   try {
     const organization = yield call(getOrganizationFromCatalog, id);
 
-    if (organization) {
+    if (organization && typeof organization === 'object') {
       yield put(actions.getOrganizationSucceeded(organization as Publisher));
     } else {
       yield put(actions.getOrganizationFailed(''));

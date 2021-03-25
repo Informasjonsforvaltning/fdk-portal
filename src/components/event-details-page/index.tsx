@@ -2,11 +2,13 @@ import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import parse from 'html-react-parser';
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
+import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
 import { themeFDK } from '../../app/theme';
 
@@ -121,7 +123,7 @@ const EventDetailsPage: FC<Props> = ({
               entityTheme={entity}
               truncate
             >
-              {description}
+              {parse(convertToSanitizedHtml(description))}
             </ContentSection>
           )}
           {(dctTypes.length > 0 || specializedType) && (
