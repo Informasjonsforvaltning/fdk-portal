@@ -13,21 +13,24 @@ import SC from './styled';
 
 import { Entity } from '../../../../types/enums';
 import ReactTooltipSC from '../../../tooltip/styled';
-import { TextLanguage } from '../../../../types';
+import { Language, TextLanguage } from '../../../../types';
 import { getTranslateText as translate } from '../../../../lib/translateText';
+import MultiLingualField from '../../../multilingual-field/components/multilingual-field';
 
 interface Props {
   entity: Entity;
   title: Partial<TextLanguage>;
   lastPublished: string;
   isAuthoritative: boolean;
+  languages?: Language[];
 }
 
 const Banner: FC<Props> = ({
   entity,
   title,
   lastPublished,
-  isAuthoritative
+  isAuthoritative,
+  languages = []
 }) => {
   const entityDetails = {
     [Entity.DATASET]: {
@@ -75,6 +78,10 @@ const Banner: FC<Props> = ({
             </div>
           )}
         </SC.Title>
+        {entity === Entity.CONCEPT &&
+          languages.filter(({ selected }) => selected)?.length > 1 && (
+            <MultiLingualField languages={languages} text={title} />
+          )}
         <SC.LastPublishedInfo>
           {translations.formatString(
             translations.detailsPage.banner.lastPublishedInfo,
