@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { Colour, theme } from '@fellesdatakatalog/theme';
 
 import { getConfig } from '../../../../config';
 
@@ -29,6 +29,13 @@ const BetaRibbon = styled.span`
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48')};
   font-weight: ${theme.fontWeight('FW700')};
+
+  @media (max-width: 900px) {
+    & {
+      font-size: ${theme.fontSize('FS32')};
+      word-break: break-word;
+    }
+  }
 `;
 
 const Section = styled.section`
@@ -40,6 +47,7 @@ const Box = styled.div`
   padding: ${theme.spacing('S24')};
   border-radius: 4px;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  margin-bottom: ${theme.spacing('S8')};
 `;
 
 const OrganizationInformation = styled.div`
@@ -59,6 +67,12 @@ const OrganizationInformation = styled.div`
   }
 
   & > ul > li {
+    @media (max-width: 900px) {
+      & {
+        flex-direction: column;
+      }
+    }
+
     display: flex;
     padding: ${theme.spacing('S10')} 0;
     line-height: 26px;
@@ -128,6 +142,15 @@ const DatasetCataloguesStatistics = styled.div`
 
     & > ${Box}:nth-of-type(n+2) {
       margin-left: ${theme.spacing('S8')};
+    }
+
+    @media (max-width: 900px) {
+      & {
+        flex-direction: column;
+      }
+      & > ${Box}:nth-of-type(n+2) {
+        margin-left: 0;
+      }
     }
   }
 `;
