@@ -134,7 +134,7 @@ const InformationModelDetailsPage: FC<Props> = ({
   const entityUri = informationModel?.id;
   const identifier = informationModel?.identifier?.[0];
   const publisher = informationModel?.publisher;
-  const title = translate(informationModel?.title);
+  const title = informationModel?.title ?? {};
   const description = translate(
     informationModel?.description ?? informationModel?.modelDescription
   );

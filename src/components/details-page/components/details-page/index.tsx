@@ -42,7 +42,7 @@ import NonPublicAccessIcon from '../../../../images/icon-access-non-public-md.sv
 
 import SC from './styled';
 
-import { Publisher, Theme } from '../../../../types';
+import { Publisher, TextLanguage, Theme } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
 import {
@@ -52,7 +52,7 @@ import {
 
 interface ExternalProps {
   entity: Entity;
-  title: string;
+  title: Partial<TextLanguage>;
   publisher?: Partial<Publisher>;
   entityId?: string;
   entityUri?: string;
@@ -125,7 +125,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
   const menuItems = Children.map(children, child =>
     isValidElement(child) && child.type === ContentSection
-      ? { id: child.props.id, title: child.props.title }
+      ? { id: child.props.id, title: translate(child.props.title) }
       : null
   )?.filter(Boolean);
 
