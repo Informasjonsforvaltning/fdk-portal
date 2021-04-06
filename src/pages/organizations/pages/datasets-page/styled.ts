@@ -29,6 +29,13 @@ const BetaRibbon = styled.span`
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48')};
   font-weight: ${theme.fontWeight('FW700')};
+
+  @media (max-width: 900px) {
+    & {
+      font-size: ${theme.fontSize('FS32')};
+      word-break: break-word;
+    }
+  }
 `;
 
 const Subtitle = styled.h2`
