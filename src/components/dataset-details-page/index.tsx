@@ -189,7 +189,7 @@ const DatasetDetailsPage: FC<Props> = ({
   const isRestrictedData = dataset?.accessRights?.code === 'RESTRICTED';
   const isNonPublicData = dataset?.accessRights?.code === 'NON_PUBLIC';
 
-  const title = translate(dataset?.title);
+  const title = dataset?.title ?? {};
   const description = parse(sanitise(translate(dataset?.descriptionFormatted)));
 
   const lastPublished = formatDate(

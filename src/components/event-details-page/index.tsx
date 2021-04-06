@@ -87,7 +87,7 @@ const EventDetailsPage: FC<Props> = ({
     };
   }, [event?.uri]);
 
-  const title = translate(event?.title);
+  const title = event?.title ?? {};
   const description = translate(event?.description);
   const lastPublished = formatDate(
     dateStringToDate(event?.harvest?.firstHarvested)

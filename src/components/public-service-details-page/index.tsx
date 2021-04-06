@@ -117,7 +117,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
     };
   }, [publicServiceId]);
 
-  const title = translate(publicService?.title);
+  const title = publicService?.title ?? {};
   const description = translate(publicService?.description);
   const lastPublished = formatDate(
     dateStringToDate(publicService?.harvest?.firstHarvested)

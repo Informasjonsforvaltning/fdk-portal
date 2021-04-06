@@ -13,10 +13,12 @@ import SC from './styled';
 
 import { Entity } from '../../../../types/enums';
 import ReactTooltipSC from '../../../tooltip/styled';
+import { TextLanguage } from '../../../../types';
+import { getTranslateText as translate } from '../../../../lib/translateText';
 
 interface Props {
   entity: Entity;
-  title: string;
+  title: Partial<TextLanguage>;
   lastPublished: string;
   isAuthoritative: boolean;
 }
@@ -65,7 +67,7 @@ const Banner: FC<Props> = ({
       <Icon />
       <SC.Content>
         <SC.Title>
-          {title}
+          {translate(title)}
           {isAuthoritative && (
             <div data-tip={translations.authoritativeDatasetTooltip}>
               <AuthoritativeIcon />
