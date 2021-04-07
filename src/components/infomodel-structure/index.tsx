@@ -228,7 +228,7 @@ const InfoModelStructure: FC<Props> = ({
                     >
                       <ExpansionPanelBody>
                         <Description
-                          identifier={identifier}
+                          identifier={identifier ?? uri}
                           description={description}
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
@@ -313,7 +313,7 @@ const InfoModelStructure: FC<Props> = ({
                     >
                       <ExpansionPanelBody>
                         <Description
-                          identifier={identifier}
+                          identifier={identifier ?? uri}
                           description={description}
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
@@ -435,7 +435,7 @@ const InfoModelStructure: FC<Props> = ({
                     >
                       <ExpansionPanelBody>
                         <Description
-                          identifier={identifier}
+                          identifier={identifier ?? uri}
                           description={description}
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
@@ -508,7 +508,7 @@ const InfoModelStructure: FC<Props> = ({
                     >
                       <ExpansionPanelBody>
                         <Description
-                          identifier={identifier}
+                          identifier={identifier ?? uri}
                           description={description}
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
@@ -586,7 +586,7 @@ const InfoModelStructure: FC<Props> = ({
                     >
                       <ExpansionPanelBody>
                         <Description
-                          identifier={identifier}
+                          identifier={identifier ?? uri}
                           description={description}
                           concept={subject ? conceptMap[subject] : undefined}
                           abstraction={unwrapAbstraction(hasProperty)}
