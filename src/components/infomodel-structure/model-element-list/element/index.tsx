@@ -54,7 +54,8 @@ const Element: FC<Props> = ({
   concepts,
   type
 }) => {
-  const identifier = property.identifier || code.identifier;
+  const identifier =
+    property.identifier || code.identifier || property.uri || code.uri;
   const title = translate(property.title || code.prefLabel);
   const description = translate(property.description);
   const belongsToModule = property.belongsToModule;

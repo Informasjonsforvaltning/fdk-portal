@@ -132,7 +132,7 @@ const InformationModelDetailsPage: FC<Props> = ({
 
   const entityId = informationModel?.id;
   const entityUri = informationModel?.id;
-  const identifier = informationModel?.identifier?.[0];
+  const identifier = informationModel?.identifier?.[0] ?? informationModel?.uri;
   const publisher = informationModel?.publisher;
   const title = informationModel?.title ?? {};
   const description = translate(
