@@ -509,6 +509,9 @@
       "rdfxml": "RDF/XML"
     },
     "type": "Type",
+    "types": {
+      "#physicalModel": "Physical model"
+    },
     "status": "Status",
     "statusCompleted": "Completed",
     "statusDeprecated": "Deprecated",
