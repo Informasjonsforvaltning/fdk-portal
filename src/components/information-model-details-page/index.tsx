@@ -138,7 +138,10 @@ const InformationModelDetailsPage: FC<Props> = ({
   const description = translate(
     informationModel?.description ?? informationModel?.modelDescription
   );
-  const type = informationModel?.dctType;
+  const iriType = informationModel?.dctType?.match(/#.*/)?.[0];
+  const type = iriType
+    ? translations.infoMod.types[iriType]
+    : informationModel?.dctType;
   const status = informationModel?.status
     ? translate(informationModelStatus?.[informationModel.status])
     : null;
