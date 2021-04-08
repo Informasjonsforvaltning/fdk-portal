@@ -168,21 +168,25 @@ const EventDetailsPage: FC<Props> = ({
               boxStyle
               entityIcon={Entity.PUBLIC_SERVICE}
             >
-              <KeyValueListItem
-                property={null}
-                value={relatedServices.map(({ uri, title, id }, index) =>
-                  uri && title && id ? (
-                    <SC.ListItemValue key={`${uri}-${index}`}>
-                      <Link
-                        as={RouterLink}
-                        to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}
-                      >
-                        {translate(title)}
-                      </Link>
-                    </SC.ListItemValue>
-                  ) : null
+              <KeyValueList>
+                {relatedServices?.map(
+                  ({ uri, title, id, description }, index) =>
+                    uri && title && id ? (
+                      <KeyValueListItem
+                        key={`${uri}-${index}`}
+                        property={
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}
+                          >
+                            {translate(title)}
+                          </Link>
+                        }
+                        value={translate(description)}
+                      />
+                    ) : null
                 )}
-              />
+              </KeyValueList>
             </ContentSection>
           )}
           {publicServicesRelations.length > 0 && (
