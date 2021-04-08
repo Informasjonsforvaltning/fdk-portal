@@ -180,7 +180,7 @@ const ConceptDetailsPage: FC<Props> = ({
           }`}
         </span>
         {sources.map(({ text, uri }, index) => (
-          <span key={`${text}-${uri}`}>
+          <span key={`${text}-${uri}-${index}`}>
             {index > 0 && ','}
             &nbsp;
             {uri ? (
