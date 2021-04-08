@@ -1,10 +1,10 @@
 import React, {
-  memo,
+  Children,
   FC,
+  isValidElement,
+  memo,
   PropsWithChildren,
   useEffect,
-  Children,
-  isValidElement,
   useState
 } from 'react';
 import { compose } from 'redux';
@@ -15,12 +15,12 @@ import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
 import {
-  PATHNAME_DATASETS,
-  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
+  PATHNAME_DATA_SERVICES,
+  PATHNAME_DATASETS,
+  PATHNAME_EVENTS,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_PUBLIC_SERVICES,
-  PATHNAME_EVENTS
+  PATHNAME_PUBLIC_SERVICES
 } from '../../../../constants/constants';
 
 import withReferenceData, {
@@ -33,7 +33,7 @@ import withAssessment, {
 import Banner from '../banner';
 import ContentSection from '../content-section';
 
-import { isLosTheme, isEuTheme } from '../../../../utils/common';
+import { isEuTheme, isLosTheme } from '../../../../utils/common';
 
 import OpenAccessIcon from '../../../../images/icon-access-open-md.svg';
 import PublicAccessIcon from '../../../../images/icon-access-public-md.svg';
@@ -46,8 +46,8 @@ import { Publisher, TextLanguage, Theme } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
 import {
-  determineRatingIcon,
-  calculateRatingPercentage
+  calculateRatingPercentage,
+  determineRatingIcon
 } from '../../../../pages/organizations/pages/dataset-page/index';
 
 interface ExternalProps {
