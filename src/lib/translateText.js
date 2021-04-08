@@ -19,12 +19,3 @@ export function getTranslateText(textObj, language) {
     null
   );
 }
-
-export function getTranslateTextWithLanguageCode(textObj, language) {
-  const selectedLanguage = language || localization.getLanguage();
-  if (typeof textObj === 'string') {
-    return textObj;
-  }
-
-  return textObj?.[selectedLanguage] || null;
-}

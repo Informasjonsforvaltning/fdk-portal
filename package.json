@@ -47,7 +47,6 @@
     "xmldom": "^0.5.0"
   },
   "dependencies": {
-    "@fellesdatakatalog/button": "^0.2.3",
     "@fellesdatakatalog/external-footer": "^0.1.9",
     "@fellesdatakatalog/internal-footer": "^0.3.2",
     "@fellesdatakatalog/link": "^0.2.1",

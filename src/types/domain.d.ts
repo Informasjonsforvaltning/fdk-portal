@@ -744,9 +744,3 @@ export interface AdministrativeUnit {
   type: AdministrativeUnitType;
   name: Partial<TextLanguage>;
 }
-
-export interface Language {
-  code: string;
-  selected?: boolean;
-  disabled?: boolean;
-}

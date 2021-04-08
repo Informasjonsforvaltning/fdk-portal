@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import { Colour, theme, Unit } from '@fellesdatakatalog/theme';
-
-import { SC } from '../../../multilingual-field';
+import { Colour, theme } from '@fellesdatakatalog/theme';
 import type { InvertedColorProps } from '../../../../types';
 
 const onMobileView = '@media (max-width: 768px)';
@@ -40,19 +38,6 @@ const Banner = styled.header<InvertedColorProps>`
 
 const Content = styled.div`
   margin-left: 12px;
-
-  & > ${SC.MultiLingualField.MultiLingualField} {
-    font-size: ${theme.fontSize('FS20', Unit.EM)};
-    font-weight: ${theme.fontWeight('FW700')};
-
-    & > ${SC.MultiLingualField.LanguageField} {
-      margin-bottom: 0;
-      & > ${SC.MultiLingualField.LanguageIndicator} {
-        background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-        font-size: 0.5em;
-      }
-    }
-  }
 `;
 
 const Title = styled.h1`
