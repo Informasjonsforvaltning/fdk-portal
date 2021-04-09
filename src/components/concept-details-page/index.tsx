@@ -7,6 +7,7 @@ import Link from '@fellesdatakatalog/link';
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
+import { deepKeys } from '../../lib/deep-keys';
 import { themeFDK } from '../../app/theme';
 
 import withConcept, { Props as ConceptProps } from '../with-concept';
@@ -26,14 +27,13 @@ import DetailsPage, {
   KeyValueListItem
 } from '../details-page';
 import ErrorPage from '../error-page';
+import MultiLingualField from '../multilingual-field';
 import RelationList from '../relation-list';
 
 import SC from './styled';
 
 import type { Theme, Language } from '../../types';
 import { Entity } from '../../types/enums';
-import MultiLingualField from '../multilingual-field';
-import { deepKeys } from '../../lib/deep-keys';
 
 interface RouteParams {
   conceptId: string;
