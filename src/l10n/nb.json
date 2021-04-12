@@ -663,7 +663,7 @@
         "usage": "Bruk av tjenesten",
         "keywords": "Søkeord",
         "relatedServices": "Relaterte tjenester",
-        "relatedEvents": "Hendelser som inngår i tjeneste",
+        "relatedEvents": "Tjenesten inngår i hendelsene",
         "conceptReferences": "Begreper brukt i tjenesten",
         "criterion": "Vilkår",
         "produces": "Tjenesteresultat",
@@ -683,7 +683,7 @@
       },
       "event": {
         "description": "Beskrivelse",
-        "relatedServices": "Tjenester som inngår i hendelse",
+        "relatedServices": "Tjenester som inngår i hendelsen",
         "usage": "Bruk av hendelsen"
       }
     },

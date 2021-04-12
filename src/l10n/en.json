@@ -664,7 +664,7 @@
         "usage": "Public service usage",
         "keywords": "Keywords",
         "relatedServices": "Related services",
-        "relatedEvents": "Events that are part of service",
+        "relatedEvents": "The service is included in these events",
         "conceptReferences": "Concepts used in the service",
         "criterion": "Criterion",
         "produces": "Service output",
@@ -684,7 +684,7 @@
       },
       "event": {
         "description": "Description",
-        "relatedServices": "Services included in event",
+        "relatedServices": "Services included in the event",
         "usage": "Event usage"
 
       }
