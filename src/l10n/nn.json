@@ -664,7 +664,7 @@
         "usage": "Bruk av tenesten",
         "keywords": "Emneord",
         "relatedServices": "Relaterte tenester",
-        "relatedEvents": "Hendingar som inngår i teneste",
+        "relatedEvents": "Tenesta som inngår i hendingane",
         "conceptReferences": "Omgrep brukt i tenesten",
         "criterion": "Vilkår",
         "produces": "Tenesteresultat",
@@ -684,7 +684,7 @@
       },
       "event": {
         "description": "Beskrivelse",
-        "relatedServices": "Tenester som inngår i hending",
+        "relatedServices": "Tenester som inngår i hendinga",
         "usage": "Bruk av hendinga"
       }
     },
