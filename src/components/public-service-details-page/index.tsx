@@ -117,7 +117,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
     };
   }, [publicServiceId]);
 
-  const title = translate(publicService?.title);
+  const title = publicService?.title ?? {};
   const description = translate(publicService?.description);
   const lastPublished = formatDate(
     dateStringToDate(publicService?.harvest?.firstHarvested)
@@ -554,8 +554,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
               entityIcon={Entity.EVENT}
             >
               <KeyValueList>
-                {isGroupedBy?.map(uri => {
-                  return eventsMap[uri] ? (
+                {isGroupedBy?.map(uri =>
+                  eventsMap[uri] ? (
                     <KeyValueListItem
                       key={uri}
                       property={
@@ -570,14 +570,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           uri
                         )
                       }
-                      value={
-                        eventsMap[uri].descripton
-                          ? translate(eventsMap[uri].description)
-                          : ''
-                      }
+                      value={translate(eventsMap[uri].description)}
                     />
-                  ) : null;
-                })}
+                  ) : null
+                )}
               </KeyValueList>
             </ContentSection>
           )}

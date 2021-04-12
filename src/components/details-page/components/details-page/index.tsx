@@ -1,10 +1,10 @@
 import React, {
-  memo,
+  Children,
   FC,
+  isValidElement,
+  memo,
   PropsWithChildren,
   useEffect,
-  Children,
-  isValidElement,
   useState
 } from 'react';
 import { compose } from 'redux';
@@ -15,12 +15,12 @@ import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
 import {
-  PATHNAME_DATASETS,
-  PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
+  PATHNAME_DATA_SERVICES,
+  PATHNAME_DATASETS,
+  PATHNAME_EVENTS,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_PUBLIC_SERVICES,
-  PATHNAME_EVENTS
+  PATHNAME_PUBLIC_SERVICES
 } from '../../../../constants/constants';
 
 import withReferenceData, {
@@ -33,7 +33,7 @@ import withAssessment, {
 import Banner from '../banner';
 import ContentSection from '../content-section';
 
-import { isLosTheme, isEuTheme } from '../../../../utils/common';
+import { isEuTheme, isLosTheme } from '../../../../utils/common';
 
 import OpenAccessIcon from '../../../../images/icon-access-open-md.svg';
 import PublicAccessIcon from '../../../../images/icon-access-public-md.svg';
@@ -42,17 +42,19 @@ import NonPublicAccessIcon from '../../../../images/icon-access-non-public-md.sv
 
 import SC from './styled';
 
-import { Publisher, Theme } from '../../../../types';
+import { Language, Publisher, TextLanguage, Theme } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
 import {
-  determineRatingIcon,
-  calculateRatingPercentage
+  calculateRatingPercentage,
+  determineRatingIcon
 } from '../../../../pages/organizations/pages/dataset-page/index';
+
+import LanguagePicker from '../../../language-picker';
 
 interface ExternalProps {
   entity: Entity;
-  title: string;
+  title: Partial<TextLanguage>;
   publisher?: Partial<Publisher>;
   entityId?: string;
   entityUri?: string;
@@ -63,6 +65,8 @@ interface ExternalProps {
   isRestrictedData: boolean;
   isNonPublicData: boolean;
   themes: Theme[];
+  toggleLanguage?: (code: string) => void;
+  languages?: Language[];
 }
 
 interface Props extends ReferenceDataProps, AssessmentProps, ExternalProps {}
@@ -90,6 +94,8 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   isRestrictedData,
   isNonPublicData,
   themes = [],
+  toggleLanguage = () => {},
+  languages = [],
   referenceData: { los: losThemes, themes: euThemes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   assessmentActions: { getAssessmentRequested: getAssessment },
@@ -125,7 +131,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
   const menuItems = Children.map(children, child =>
     isValidElement(child) && child.type === ContentSection
-      ? { id: child.props.id, title: child.props.title }
+      ? { id: child.props.id, title: translate(child.props.title) }
       : null
   )?.filter(Boolean);
 
@@ -147,6 +153,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         title={title}
         lastPublished={lastPublished}
         isAuthoritative={isAuthoritative}
+        languages={languages}
       />
       <SC.SubBanner>
         <SC.Publisher>
@@ -233,7 +240,15 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
         {navOpen && <SC.SideMenuSmall title='' menuItems={menuItems} />}
 
-        <SC.Content>{renderContentSections()}</SC.Content>
+        <SC.Content>
+          {entity === Entity.CONCEPT && (
+            <LanguagePicker
+              languages={languages}
+              toggleLanguage={toggleLanguage}
+            />
+          )}
+          {renderContentSections()}
+        </SC.Content>
       </SC.Page>
     </SC.DetailsPage>
   );

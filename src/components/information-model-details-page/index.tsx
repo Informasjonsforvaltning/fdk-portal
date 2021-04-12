@@ -132,13 +132,16 @@ const InformationModelDetailsPage: FC<Props> = ({
 
   const entityId = informationModel?.id;
   const entityUri = informationModel?.id;
-  const identifier = informationModel?.identifier?.[0];
+  const identifier = informationModel?.identifier?.[0] ?? informationModel?.uri;
   const publisher = informationModel?.publisher;
-  const title = translate(informationModel?.title);
+  const title = informationModel?.title ?? {};
   const description = translate(
     informationModel?.description ?? informationModel?.modelDescription
   );
-  const type = informationModel?.dctType;
+  const iriType = informationModel?.dctType?.match(/#.*/)?.[0];
+  const type = iriType
+    ? translations.infoMod.types[iriType]
+    : informationModel?.dctType;
   const status = informationModel?.status
     ? translate(informationModelStatus?.[informationModel.status])
     : null;

@@ -509,6 +509,9 @@
       "rdfxml": "RDF/XML"
     },
     "type": "Type",
+    "types": {
+      "#physicalModel": "Fysisk modell"
+    },
     "status": "Status",
     "statusCompleted": "Fullført",
     "statusDeprecated": "Foreldet",
@@ -660,7 +663,7 @@
         "usage": "Bruk av tjenesten",
         "keywords": "Søkeord",
         "relatedServices": "Relaterte tjenester",
-        "relatedEvents": "Relaterte hendelser",
+        "relatedEvents": "Hendelser som inngår i tjeneste",
         "conceptReferences": "Begreper brukt i tjenesten",
         "criterion": "Vilkår",
         "produces": "Tjenesteresultat",
@@ -723,7 +726,7 @@
     },
     "indicator": {
       "distributableData": "Tilgangslenke er oppgitt",
-      "keywordUsage": "Nøkkelord er oppgitt",
+      "keywordUsage": "Søkeord er oppgitt",
       "subjectUsage": "Begrep er oppgitt",
       "geoSearch": "Datasettet er geografisk avgrenset",
       "controlledVocabularyUsage": "Distribusjon har mediatype",
@@ -736,7 +739,7 @@
     },
     "indicatorDescription": {
       "distributableData": "Det finnes en tilgangsURL til datasett på distribusjon eller endpointURL på en tilknyttet datatjeneste.",
-      "keywordUsage": "Det finnes et eller flere nøkkelord tilknyttet datasettbeskrivelsen.",
+      "keywordUsage": "Det finnes et eller flere søkeord tilknyttet datasettbeskrivelsen.",
       "subjectUsage": "Det finnes et eller flere begreper tilknyttet datasettbeskrivelsen.",
       "geoSearch": "Datasettet er geografisk avgrenset.",
       "controlledVocabularyUsage": "Det finnes et eller flere format på distribusjonen til datasettbeskrivelsen som finnes i IANAs liste over mediatyper.",

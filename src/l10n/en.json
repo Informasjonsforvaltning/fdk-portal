@@ -509,6 +509,9 @@
       "rdfxml": "RDF/XML"
     },
     "type": "Type",
+    "types": {
+      "#physicalModel": "Physical model"
+    },
     "status": "Status",
     "statusCompleted": "Completed",
     "statusDeprecated": "Deprecated",
@@ -661,7 +664,7 @@
         "usage": "Public service usage",
         "keywords": "Keywords",
         "relatedServices": "Related services",
-        "relatedEvents": "Related events",
+        "relatedEvents": "Events that are part of service",
         "conceptReferences": "Concepts used in the service",
         "criterion": "Criterion",
         "produces": "Service output",

@@ -121,7 +121,7 @@ const DataserviceDetailsPage: FC<Props> = ({
 
   const entityId = dataService?.id;
   const entityUri = dataService?.uri;
-  const title = translate(dataService?.title);
+  const title = dataService?.title ?? {};
   const publisher = dataService?.publisher;
   const lastPublished = formatDate(
     dateStringToDate(dataService?.harvest?.firstHarvested)
