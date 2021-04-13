@@ -1,4 +1,4 @@
-import React, { memo, FC, useState, useEffect } from 'react';
+import React, { memo, FC, MouseEvent, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -232,7 +232,8 @@ const ConceptDetailsPage: FC<Props> = ({
     ) : null;
   };
 
-  const toggleLanguage = (code: string) => {
+  const toggleLanguage = (e: MouseEvent<HTMLButtonElement>, code: string) => {
+    e.currentTarget.blur();
     const languages: Language[] = [...new Set(selectedLanguages)].map(
       language => ({
         ...language,
