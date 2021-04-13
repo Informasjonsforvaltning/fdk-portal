@@ -3,6 +3,7 @@ import React, {
   FC,
   isValidElement,
   memo,
+  MouseEvent,
   PropsWithChildren,
   useEffect,
   useState
@@ -65,7 +66,7 @@ interface ExternalProps {
   isRestrictedData: boolean;
   isNonPublicData: boolean;
   themes: Theme[];
-  toggleLanguage?: (code: string) => void;
+  toggleLanguage?: (e: MouseEvent<HTMLButtonElement>, code: string) => void;
   languages?: Language[];
 }
 

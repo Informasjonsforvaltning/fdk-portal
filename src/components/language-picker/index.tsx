@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, HTMLAttributes, MouseEvent } from 'react';
 
 import SC from './styled';
 import { Language } from '../../types';
@@ -7,7 +7,7 @@ import translations from '../../lib/localization';
 export interface Props extends HTMLAttributes<HTMLElement> {
   languages: Language[];
   title?: string;
-  toggleLanguage: (code: string) => void;
+  toggleLanguage: (e: MouseEvent<HTMLButtonElement>, code: string) => void;
 }
 
 const LanguagePicker: FC<Props> = ({ languages, toggleLanguage }) => {
@@ -24,7 +24,7 @@ const LanguagePicker: FC<Props> = ({ languages, toggleLanguage }) => {
           key={`${code}-${index}`}
           selected={selected}
           disabled={disabled}
-          onClick={() => toggleLanguage(code)}
+          onClick={e => toggleLanguage(e, code)}
         >
           {selected && <SC.CheckedIcon />}
           {languageTranslations[code]}
