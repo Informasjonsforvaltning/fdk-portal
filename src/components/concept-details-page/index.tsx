@@ -157,16 +157,17 @@ const ConceptDetailsPage: FC<Props> = ({
       : [];
 
   useEffect(() => {
+    const usedLanguages: string[] = getUsedLanguages();
     if (concept && !isLanguagesDetermined) {
-      setDeterminedLanguagesFromConcept(getUsedLanguages());
+      setDeterminedLanguagesFromConcept(usedLanguages);
       setLanguagesDetermined(true);
     }
-    if (determinedLanguagesFromConcept) {
+    if (usedLanguages.length > 0) {
       const languages: Language[] = [...new Set(selectedLanguages)].map(
         language => ({
           ...language,
           selected: !!(translations.getLanguage() === language.code),
-          disabled: !determinedLanguagesFromConcept.includes(language.code)
+          disabled: !usedLanguages.includes(language.code)
         })
       );
       setSelectedLanguages(languages);
