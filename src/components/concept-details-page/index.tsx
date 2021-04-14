@@ -83,11 +83,11 @@ const ConceptDetailsPage: FC<Props> = ({
     { code: 'nn' },
     { code: 'en' }
   ]);
+
   const [
     determinedLanguagesFromConcept,
     setDeterminedLanguagesFromConcept
   ] = useState<string[]>([]);
-  const [isLanguagesDetermined, setLanguagesDetermined] = useState(false);
 
   const renderPage = isLoadingConcept || !isMounted || concept !== null;
 
@@ -103,7 +103,8 @@ const ConceptDetailsPage: FC<Props> = ({
 
     return function cleanup() {
       setIsMounted(false);
-      setLanguagesDetermined(false);
+      setSelectedLanguages([{ code: 'nb' }, { code: 'nn' }, { code: 'en' }]);
+      setDeterminedLanguagesFromConcept([]);
     };
   }, []);
 
@@ -158,9 +159,8 @@ const ConceptDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     const usedLanguages: string[] = getUsedLanguages();
-    if (concept && !isLanguagesDetermined) {
+    if (concept) {
       setDeterminedLanguagesFromConcept(usedLanguages);
-      setLanguagesDetermined(true);
     }
     if (usedLanguages.length > 0) {
       const languages: Language[] = [...new Set(selectedLanguages)].map(
