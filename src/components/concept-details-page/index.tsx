@@ -32,7 +32,7 @@ import RelationList from '../relation-list';
 
 import SC from './styled';
 
-import type { Theme, Language } from '../../types';
+import type { Theme, Language, TextLanguage } from '../../types';
 import { Entity } from '../../types/enums';
 
 interface RouteParams {
@@ -157,6 +157,18 @@ const ConceptDetailsPage: FC<Props> = ({
         ]
       : [];
 
+  const hasFieldSelectedLanguage = (field: Partial<TextLanguage>[]): boolean =>
+    field?.length > 0
+      ? Object.keys(
+          field.reduce((result, obj) => Object.assign(result, obj), {})
+        ).some(label =>
+          selectedLanguages
+            .filter(({ selected }) => selected)
+            .map(({ code }: Language) => code)
+            .includes(label)
+        )
+      : false;
+
   useEffect(() => {
     const usedLanguages: string[] = getUsedLanguages();
     if (concept) {
@@ -166,7 +178,9 @@ const ConceptDetailsPage: FC<Props> = ({
       const languages: Language[] = [...new Set(selectedLanguages)].map(
         language => ({
           ...language,
-          selected: !!(translations.getLanguage() === language.code),
+          selected:
+            translations.getLanguage() === language.code &&
+            usedLanguages.includes(language.code),
           disabled: !usedLanguages.includes(language.code)
         })
       );
@@ -310,13 +324,15 @@ const ConceptDetailsPage: FC<Props> = ({
             <MultiLingualField languages={selectedLanguages} text={remark} />
           </ContentSection>
         )}
-        {(altLabels.length > 0 || hiddenLabels.length > 0) && (
+        {(hasFieldSelectedLanguage(altLabels) ||
+          (hiddenLabels.length > 0 &&
+            hasFieldSelectedLanguage(hiddenLabels))) && (
           <ContentSection
             id='terms'
             title={translations.detailsPage.sectionTitles.concept.terms}
           >
             <KeyValueList>
-              {altLabels.length > 0 && (
+              {hasFieldSelectedLanguage(altLabels) && (
                 <KeyValueListItem
                   property={translations.concept.altLabel}
                   value={altLabels.map((altLabel, index) => (
@@ -329,7 +345,7 @@ const ConceptDetailsPage: FC<Props> = ({
                   ))}
                 />
               )}
-              {hiddenLabels.length > 0 && (
+              {hasFieldSelectedLanguage(hiddenLabels) && (
                 <KeyValueListItem
                   property={translations.concept.hiddenLabel}
                   value={hiddenLabels.map((hiddenLabel, index) => (
@@ -353,7 +369,8 @@ const ConceptDetailsPage: FC<Props> = ({
             <MultiLingualField languages={selectedLanguages} text={example} />
           </ContentSection>
         )}
-        {(subject || applications.length > 0) && (
+        {((subject && hasFieldSelectedLanguage([subject])) ||
+          hasFieldSelectedLanguage(applications)) && (
           <ContentSection
             id='domain'
             title={
@@ -362,7 +379,7 @@ const ConceptDetailsPage: FC<Props> = ({
             }
           >
             <KeyValueList>
-              {subject && (
+              {subject && hasFieldSelectedLanguage([subject]) && (
                 <KeyValueListItem
                   property={translations.concept.subject}
                   value={
@@ -374,19 +391,20 @@ const ConceptDetailsPage: FC<Props> = ({
                   }
                 />
               )}
-              {applications.length > 0 && (
-                <KeyValueListItem
-                  property={translations.concept.application}
-                  value={applications.map((application, index) => (
-                    <MultiLingualField
-                      key={index}
-                      languages={selectedLanguages}
-                      text={application}
-                      useFallback={false}
-                    />
-                  ))}
-                />
-              )}
+              {applications.length > 0 &&
+                hasFieldSelectedLanguage(applications) && (
+                  <KeyValueListItem
+                    property={translations.concept.application}
+                    value={applications.map((application, index) => (
+                      <MultiLingualField
+                        key={index}
+                        languages={selectedLanguages}
+                        text={application}
+                        useFallback={false}
+                      />
+                    ))}
+                  />
+                )}
             </KeyValueList>
           </ContentSection>
         )}
