@@ -4,6 +4,10 @@ import { Link as RouteLink } from 'react-router-dom';
 import type { RouteComponentProps } from 'react-router-dom';
 
 import Link from '@fellesdatakatalog/link';
+import ExpansionPanel, {
+  ExpansionPanelHead,
+  ExpansionPanelBody
+} from '@fellesdatakatalog/expansion-panel';
 
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
@@ -18,11 +22,6 @@ import withOrganization, {
 } from '../../../../components/with-organization';
 import withErrorBoundary from '../../../../components/with-error-boundary';
 import ErrorPage from '../../../../components/error-page';
-
-import ExpansionPanel, {
-  ExpansionPanelHead,
-  ExpansionPanelBody
-} from '../../../../components/expansion-panel';
 
 import SC from './styled';
 import ReactTooltipSC from '../../../../components/tooltip/styled';

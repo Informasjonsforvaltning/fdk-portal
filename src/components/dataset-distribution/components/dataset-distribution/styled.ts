@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import ExpansionPanel, { SC } from '../../../expansion-panel';
+import ExpansionPanel, { SC } from '@fellesdatakatalog/expansion-panel';
 
 const DatasetDistribution = styled(ExpansionPanel)`
   background: white;
