@@ -10,6 +10,8 @@ export interface Props {
   publicServicesAggregations: any;
   publicServicesPage: ESPage;
   publicServicesActions: typeof actions;
+  publicServicesRequiredBy: PublicService[];
+  publicServicesRelatedBy: PublicService[];
   publicServicesRelations: PublicService[];
 }
 
@@ -23,6 +25,12 @@ const withPublicServices = (Component: ComponentType<any>) => {
       null,
     publicServicesPage:
       state.PublicServicesReducer.get('publicServicesPage')?.toJS() ?? null,
+    publicServicesRequiredBy: state.PublicServicesReducer.get(
+      'publicServicesRequiredBy'
+    ).toJS(),
+    publicServicesRelatedBy: state.PublicServicesReducer.get(
+      'publicServicesRelatedBy'
+    ).toJS(),
     publicServicesRelations: state.PublicServicesReducer.get(
       'publicServicesRelations'
     )?.toJS()
