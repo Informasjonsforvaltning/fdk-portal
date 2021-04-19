@@ -83,6 +83,8 @@
   "industryCode": "Næringskode",
   "requires": "Krever",
   "days": "dager",
+  "requiredBy": "Krevd av",
+  "relatedBy": "Relatert av",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -676,8 +678,6 @@
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
-        "requiredBy": "Krevd av",
-        "relatedBy": "Relatert av",
         "isDescribedAt": "Tilknyttede datasettbeskrivelser",
         "spatial": "Geografisk avgrensning"
       },

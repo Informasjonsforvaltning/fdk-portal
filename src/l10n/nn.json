@@ -83,6 +83,8 @@
   "industryCode": "Næringskode",
   "requires": "Krev",
   "days": "dagar",
+  "requiredBy": "Krevd av",
+  "relatedBy": "Relatert av",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -677,8 +679,6 @@
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
-        "requiredBy": "Krevd av",
-        "relatedBy": "Relatert av",
         "isDescribedAt": "Tilknyttede datasettbeskrivelser",
         "spatial": "Geografisk avgrensning"
       },

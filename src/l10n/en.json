@@ -83,6 +83,8 @@
   "industryCode": "Industry code",
   "requires": "Requires",
   "days": "days",
+  "requiredBy": "Required by",
+  "relatedBy": "Related by",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -677,8 +679,6 @@
         "cost": "Cost",
         "processingTime": "Processing time",
         "relation": "Related to",
-        "requiredBy": "Required by",
-        "relatedBy": "Related by",
         "isDescribedAt": "Associated datasets",
         "spatial": "Spatial restrictions"
       },

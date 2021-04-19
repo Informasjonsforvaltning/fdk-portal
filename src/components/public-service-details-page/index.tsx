@@ -32,7 +32,7 @@ import DetailsPage, {
   KeyValueListItem
 } from '../details-page';
 import ErrorPage from '../error-page';
-import RelationList from '../relation-list';
+import RelationList, { ItemWithRelationType } from '../relation-list';
 
 import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
@@ -66,8 +66,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
   datasets,
   publicService,
   publicServices,
+  publicServicesRequiredBy,
+  publicServicesRelatedBy,
   eventsRelations,
-  publicServicesRelations,
   publicServiceActions: {
     getPublicServiceRequested: getPublicService,
     resetPublicService
@@ -75,8 +76,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
     resetPublicServices,
-    getPublicServicesRelationsRequested: getPublicServicesRelations,
-    resetPublicServicesRelations
+    getPublicServicesRequiredByRequested: getPublicServicesRequiredBy,
+    resetPublicServicesRequiredBy,
+    getPublicServicesRelatedByRequested: getPublicServicesRelatedBy,
+    resetPublicServicesRelatedBy
   },
   conceptsActions: { getConceptsRequested: getConcepts },
   datasetsActions: { getDatasetsRequested: getDatasets },
@@ -114,8 +117,17 @@ const PublicServiceDetailsPage: FC<Props> = ({
       setIsMounted(false);
       resetPublicService();
       resetPublicServices();
+      resetPublicServicesRequiredBy();
+      resetPublicServicesRelatedBy();
     };
   }, [publicServiceId]);
+
+  useEffect(() => {
+    if (publicService?.uri) {
+      getPublicServicesRequiredBy({ requiredByServiceUri: publicService.uri });
+      getPublicServicesRelatedBy({ relatedByServiceUri: publicService.uri });
+    }
+  }, [publicService?.uri]);
 
   const title = publicService?.title ?? {};
   const description = translate(publicService?.description);
@@ -204,13 +216,11 @@ const PublicServiceDetailsPage: FC<Props> = ({
   useEffect(() => {
     if (publicService?.uri) {
       getEventsRelations({ relation: publicService.uri });
-      getPublicServicesRelations({ requiresOrRelates: publicService.uri });
     }
     if (spatial.length > 0) {
       listAdministrativeUnits(spatial);
     }
     return () => {
-      resetPublicServicesRelations();
       resetEventsRelations();
       resetAdministrativeUnits();
     };
@@ -219,6 +229,18 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const administrativeUnitsMap = administrativeUnits?.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, any>
+  );
+
+  const eventsRelationsWithRelationType: ItemWithRelationType[] = eventsRelations.map(
+    relation => ({ relation, relationType: translations.relatedBy })
+  );
+
+  const publicServicesRequiredByWithRelationType: ItemWithRelationType[] = publicServicesRequiredBy.map(
+    relation => ({ relation, relationType: translations.requiredBy })
+  );
+
+  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] = publicServicesRelatedBy.map(
+    relation => ({ relation, relationType: translations.relatedBy })
   );
 
   const themes: Theme[] = [];
@@ -675,15 +697,19 @@ const PublicServiceDetailsPage: FC<Props> = ({
             </ContentSection>
           )}
           {(eventsRelations.length > 0 ||
-            publicServicesRelations.length > 0) && (
+            publicServicesRequiredBy.length > 0 ||
+            publicServicesRelatedBy.length > 0) && (
             <ContentSection
               id='relationList'
               title={translations.detailsPage.relationList.title.public_service}
             >
               <RelationList
                 parentIdentifier={publicService.uri}
-                events={eventsRelations}
-                publicServices={publicServicesRelations}
+                events={eventsRelationsWithRelationType}
+                publicServices={[
+                  ...publicServicesRequiredByWithRelationType,
+                  ...publicServicesRelatedByWithRelationType
+                ]}
               />
             </ContentSection>
           )}

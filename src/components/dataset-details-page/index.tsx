@@ -43,7 +43,7 @@ import DetailsPage, {
 } from '../details-page';
 import ErrorPage from '../error-page';
 import DatasetDistribution from '../dataset-distribution';
-import RelationList from '../relation-list';
+import RelationList, { ItemWithRelationType } from '../relation-list';
 
 import SC from './styled';
 
@@ -172,6 +172,10 @@ const DatasetDetailsPage: FC<Props> = ({
       resetPublicServicesRelations();
     };
   }, [dataset?.uri]);
+
+  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] = publicServicesRelations.map(
+    relation => ({ relation, relationType: translate(translations.sampleData) })
+  );
 
   const entity = Entity.DATASET;
 
@@ -698,7 +702,7 @@ const DatasetDetailsPage: FC<Props> = ({
             <RelationList
               parentIdentifier={dataset?.uri}
               datasets={datasetsRelations}
-              publicServices={publicServicesRelations}
+              publicServices={publicServicesRelatedByWithRelationType}
               dataServices={dataServicesRelations}
             />
           </ContentSection>
