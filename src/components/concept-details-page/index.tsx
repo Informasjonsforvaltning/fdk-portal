@@ -28,7 +28,7 @@ import DetailsPage, {
 } from '../details-page';
 import ErrorPage from '../error-page';
 import MultiLingualField from '../multilingual-field';
-import RelationList from '../relation-list';
+import RelationList, { ItemWithRelationType } from '../relation-list';
 
 import SC from './styled';
 
@@ -130,6 +130,10 @@ const ConceptDetailsPage: FC<Props> = ({
       resetPublicServicesRelations();
     };
   }, [concept?.identifier]);
+
+  const publicServicesRelationsWithRelationType: ItemWithRelationType[] = publicServicesRelations.map(
+    relation => ({ relation, relationType: translations.sampleData })
+  );
 
   const translatableFields = [
     'prefLabel',
@@ -438,7 +442,7 @@ const ConceptDetailsPage: FC<Props> = ({
               parentIdentifier={concept?.identifier}
               concepts={conceptsRelations}
               datasets={datasetsRelations}
-              publicServices={publicServicesRelations}
+              publicServices={publicServicesRelationsWithRelationType}
               informationModels={informationModelsRelations}
             />
           </ContentSection>
