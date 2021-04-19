@@ -1,5 +1,7 @@
 import { cleanup } from '@testing-library/react';
 
+import { SC as ExpansionPanelSC } from '@fellesdatakatalog/expansion-panel';
+
 import { themeFDK as theme } from '../../../../../app/theme';
 
 import {
@@ -8,8 +10,6 @@ import {
   expectStyleRules,
   renderWithTheme
 } from '../../../../../../test/utils';
-
-import { SC as ExpansionPanelSC } from '../../../../expansion-panel';
 
 import SC from '../styled';
 

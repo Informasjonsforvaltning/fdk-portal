@@ -1,13 +1,17 @@
 import React, { memo, FC } from 'react';
 import { compose } from 'redux';
 
+import {
+  ExpansionPanelHead,
+  ExpansionPanelBody
+} from '@fellesdatakatalog/expansion-panel';
+
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { resolvePropertySymmetries } from './utils';
 
 import Description from './model-description';
 import ExpansionIndicatorDetails from './expansion-indicator-details';
-import { ExpansionPanelHead, ExpansionPanelBody } from '../expansion-panel';
 import ModelElementList from './model-element-list';
 import ValueRestrictions from './value-restrictions';
 import ListTitleSC from './list-title/styled';

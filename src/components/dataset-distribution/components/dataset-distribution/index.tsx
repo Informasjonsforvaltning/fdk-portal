@@ -2,15 +2,16 @@ import React, { memo, FC } from 'react';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 
+import {
+  ExpansionPanelHead,
+  ExpansionPanelBody
+} from '@fellesdatakatalog/expansion-panel';
+
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
 import { PATHNAME_DATA_SERVICES } from '../../../../constants/constants';
 
-import {
-  ExpansionPanelHead,
-  ExpansionPanelBody
-} from '../../../expansion-panel';
 import ExternalLink from '../../../link-external';
 
 import Summary from '../summary';
