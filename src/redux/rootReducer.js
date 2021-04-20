@@ -20,6 +20,7 @@ import OrganizationsReducer from '../components/with-organizations/redux/reducer
 import OrganizationReducer from '../components/with-organization/redux/reducer';
 import ReportReducer from '../components/with-report/redux/reducer';
 import AssessmentReducer from '../components/with-assessment/redux/reducer';
+import AssessmentsReducer from '../components/with-assessments/redux/reducer';
 import InformationModelReducer from '../components/with-information-model/redux/reducer';
 import InformationModelsReducer from '../components/with-information-models/redux/reducer';
 import OrganizationsCatalogReducer from '../components/with-organizations-catalog/redux/reducer';
@@ -53,6 +54,7 @@ export const rootReducer = combineReducers({
   OrganizationReducer,
   ReportReducer,
   AssessmentReducer,
+  AssessmentsReducer,
   InformationModelReducer,
   InformationModelsReducer,
   OrganizationsCatalogReducer,

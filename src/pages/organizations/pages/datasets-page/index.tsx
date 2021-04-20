@@ -8,6 +8,9 @@ import { getConfig } from '../../../../config';
 import withAssessment, {
   Props as AssessmentProps
 } from '../../../../components/with-assessment';
+import withAssessments, {
+  Props as AssessmentsProps
+} from '../../../../components/with-assessments';
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
@@ -32,6 +35,7 @@ interface RouteParams {
 
 interface Props
   extends AssessmentProps,
+    AssessmentsProps,
     OrganizationProps,
     RouteComponentProps<RouteParams> {}
 
@@ -43,8 +47,8 @@ const DatasetsPage: FC<Props> = ({
   assessmentsPage,
   assessmentPageSize,
   hasMoreAssessments,
-  assessmentActions: {
-    getCatalogRatingRequested: getCatalogRating,
+  assessmentActions: { getCatalogRatingRequested: getCatalogRating },
+  assessmentsActions: {
     getPagedAssessmentsRequested: getAssessments,
     loadMoreAssessmentsRequested: loadMoreAssessments
   },
@@ -270,6 +274,7 @@ const DatasetsPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withAssessment,
+  withAssessments,
   withOrganization,
   withErrorBoundary(ErrorPage)
 )(DatasetsPage);

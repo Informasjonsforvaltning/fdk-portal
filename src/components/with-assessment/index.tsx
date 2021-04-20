@@ -8,12 +8,7 @@ import type { Assessment, Rating } from '../../types';
 
 export interface Props {
   assessment: Assessment | null;
-  assessments: Assessment[] | [];
   catalogRating: Rating | null;
-  totalAssessments: number | 0;
-  assessmentsPage: number | 0;
-  assessmentPageSize: number | 0;
-  hasMoreAssessments: boolean | false;
   assessmentActions: typeof actions;
 }
 const withAssessment = (Component: ComponentType<any>) => {
@@ -21,12 +16,7 @@ const withAssessment = (Component: ComponentType<any>) => {
 
   const mapStateToProps = (state: any) => ({
     assessment: state.AssessmentReducer.get('assessment')?.toJS() ?? null,
-    assessments: state.AssessmentReducer.get('assessments').toJS(),
-    catalogRating: state.AssessmentReducer.get('catalogRating')?.toJS() ?? null,
-    totalAssessments: state.AssessmentReducer.get('totalAssessments'),
-    assessmentsPage: state.AssessmentReducer.get('assessmentsPage'),
-    assessmentPageSize: state.AssessmentReducer.get('assessmentPageSize'),
-    hasMoreAssessments: state.AssessmentReducer.get('hasMoreAssessments')
+    catalogRating: state.AssessmentReducer.get('catalogRating')?.toJS() ?? null
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
