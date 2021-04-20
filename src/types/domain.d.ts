@@ -594,16 +594,14 @@ export interface News extends NewsItemAttributes {
   links: Partial<Links>;
 }
 
-export interface Organization {
+export interface OrgSummary {
   id: string;
-  organization: {
-    name: Partial<TextLanguage>;
-    orgPath: string;
-  };
-  dataset_count: number;
-  concept_count: number;
-  dataservice_count: number;
-  informationmodel_count: number;
+  name: string;
+  prefLabel: Partial<TextLanguage>;
+  datasetCount: number;
+  conceptCount: number;
+  dataserviceCount: number;
+  informationmodelCount: number;
 }
 
 interface QualifiedAttribution {
@@ -654,6 +652,26 @@ export interface Rating {
   dimensionsRating: Record<DimensionType, Pick<Rating, 'score' | 'maxScore'>>;
 }
 
+export interface OrgRating {
+  organization: {
+    organizationId: string;
+    orgType: string;
+    sectorCode: string;
+    industryCode: string;
+    homepage: string;
+  };
+  datasets: {
+    total: number;
+    new: number;
+    authoritative: number;
+    open: number;
+    quality: {
+      category: RatingCategory;
+      percentage: number;
+    };
+  };
+}
+
 export interface Catalog {
   id: string;
   uri?: string;
@@ -661,6 +679,7 @@ export interface Catalog {
 
 export interface AssessmentEntity {
   uri: string;
+  title: Partial<TextLanguage>;
   type: EntityEnum;
   catalog: Catalog;
 }
@@ -683,6 +702,14 @@ export interface Assessment {
   rating: Rating;
   dimensions: Dimension[];
   updated: string;
+}
+
+export interface PagedAssessments {
+  content: Assessment[];
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
 }
 
 interface EnhetsregisteretAdresse {

@@ -17,6 +17,9 @@ import {
   PATHNAME_DATASET_DETAILS
 } from '../../../../constants/constants';
 
+import withAssessment, {
+  Props as AssessmentProps
+} from '../../../../components/with-assessment';
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
@@ -38,7 +41,10 @@ interface RouteParams {
   datasetId: string;
 }
 
-interface Props extends OrganizationProps, RouteComponentProps<RouteParams> {}
+interface Props
+  extends AssessmentProps,
+    OrganizationProps,
+    RouteComponentProps<RouteParams> {}
 
 export const determineRatingIcon = (r: Rating | null | undefined) => {
   switch (r?.category) {
@@ -65,11 +71,9 @@ export const calculateRatingPercentage = (
 
 const DatasetPage: FC<Props> = ({
   organization,
-  dataset,
-  organizationActions: {
-    getOrganizationRequested: getOrganization,
-    getOrganizationDatasetRequested: getOrganizationDataset
-  },
+  assessment,
+  assessmentActions: { getAssessmentRequested: getAssessment },
+  organizationActions: { getOrganizationRequested: getOrganization },
   match: {
     params: { organizationId, datasetId }
   }
@@ -79,12 +83,10 @@ const DatasetPage: FC<Props> = ({
       getOrganization(organizationId);
     }
 
-    if (dataset?.id !== datasetId) {
-      getOrganizationDataset(organizationId, datasetId);
+    if (assessment?.id !== datasetId) {
+      getAssessment(datasetId);
     }
   }, []);
-
-  const isAuthoritative = dataset?.provenance?.code === 'NASJONAL';
 
   const determineDimensionTranslation = (dimensionType: DimensionType) => {
     switch (dimensionType) {
@@ -183,18 +185,10 @@ const DatasetPage: FC<Props> = ({
         </h1>
         <div>
           <SC.DatasetIcon />
-          <SC.Title>
-            {translate(dataset?.title)}
-            {isAuthoritative && (
-              <div data-tip={translations.authoritativeDatasetTooltip}>
-                <SC.AuthoritativeIcon />
-                <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
-              </div>
-            )}
-          </SC.Title>
+          <SC.Title>{translate(assessment?.entity?.title)}</SC.Title>
           <SC.BannerRating>
-            {determineRatingIcon(dataset?.assessment?.rating)}
-            <p>{calculateRatingPercentage(dataset?.assessment?.rating)}%</p>
+            {determineRatingIcon(assessment?.rating)}
+            <p>{calculateRatingPercentage(assessment?.rating)}%</p>
           </SC.BannerRating>
         </div>
       </SC.Banner>
@@ -214,64 +208,58 @@ const DatasetPage: FC<Props> = ({
             </tr>
           </SC.TableHead>
           <SC.TableBody>
-            {dataset?.assessment?.dimensions?.map(
-              ({ type, rating, indicators }) => (
-                <Fragment key={type}>
-                  <tr className='section-row'>
-                    <td>
-                      <div>
-                        <SC.DimensionContainer>
-                          <p>{determineDimensionTranslation(type)}</p>
-                          <div
-                            data-tip={
-                              translations.metadataQualityPage.tooltipText?.[
-                                type
-                              ]
-                            }
-                            data-for={`${type}_tooltip`}
-                          >
-                            <SC.QuestionIcon />
-                          </div>
-                          <ReactTooltipSC.ReactTooltipStyled
-                            id={`${type}_tooltip`}
-                            effect='solid'
-                            place='top'
-                            multiline
-                          />
-                        </SC.DimensionContainer>
-                        <div>
-                          {determineRatingIcon(rating)}
-                          <span>{calculateRatingPercentage(rating)}%</span>
+            {assessment?.dimensions?.map(({ type, rating, indicators }) => (
+              <Fragment key={type}>
+                <tr className='section-row'>
+                  <td>
+                    <div>
+                      <SC.DimensionContainer>
+                        <p>{determineDimensionTranslation(type)}</p>
+                        <div
+                          data-tip={
+                            translations.metadataQualityPage.tooltipText?.[type]
+                          }
+                          data-for={`${type}_tooltip`}
+                        >
+                          <SC.QuestionIcon />
                         </div>
+                        <ReactTooltipSC.ReactTooltipStyled
+                          id={`${type}_tooltip`}
+                          effect='solid'
+                          place='top'
+                          multiline
+                        />
+                      </SC.DimensionContainer>
+                      <div>
+                        {determineRatingIcon(rating)}
+                        <span>{calculateRatingPercentage(rating)}%</span>
                       </div>
-                    </td>
+                    </div>
+                  </td>
+                </tr>
+                {indicators.map(({ type, conforms, weight }) => (
+                  <tr key={type}>
+                    <ExpansionPanel as='td'>
+                      <ExpansionPanelHead>
+                        <span>
+                          {conforms ? <SC.CheckIcon /> : <SC.CrossIcon />}
+                        </span>
+                        <p>{determineIndicatorTranslation(type)}</p>
+                      </ExpansionPanelHead>
+                      <ExpansionPanelBody>
+                        <p>{determineIndicatorDescriptionTranslation(type)}</p>
+                        <span>
+                          {translations.formatString(
+                            translations.metadataQualityPage.indicatorWeight,
+                            { weight }
+                          )}
+                        </span>
+                      </ExpansionPanelBody>
+                    </ExpansionPanel>
                   </tr>
-                  {indicators.map(({ type, conforms, weight }) => (
-                    <tr key={type}>
-                      <ExpansionPanel as='td'>
-                        <ExpansionPanelHead>
-                          <span>
-                            {conforms ? <SC.CheckIcon /> : <SC.CrossIcon />}
-                          </span>
-                          <p>{determineIndicatorTranslation(type)}</p>
-                        </ExpansionPanelHead>
-                        <ExpansionPanelBody>
-                          <p>
-                            {determineIndicatorDescriptionTranslation(type)}
-                          </p>
-                          <span>
-                            {translations.formatString(
-                              translations.metadataQualityPage.indicatorWeight,
-                              { weight }
-                            )}
-                          </span>
-                        </ExpansionPanelBody>
-                      </ExpansionPanel>
-                    </tr>
-                  ))}
-                </Fragment>
-              )
-            )}
+                ))}
+              </Fragment>
+            ))}
           </SC.TableBody>
         </SC.Table>
       </SC.Section>
@@ -299,6 +287,7 @@ const DatasetPage: FC<Props> = ({
 
 export default compose<FC>(
   memo,
+  withAssessment,
   withOrganization,
   withErrorBoundary(ErrorPage)
 )(DatasetPage);

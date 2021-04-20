@@ -6,12 +6,12 @@ import {
   GET_ORGANIZATIONS_SUCCEEDED
 } from './action-types';
 
-import { Actions, Organization } from '../../../types';
+import { Actions, OrgSummary } from '../../../types';
 import { SortOrder } from '../../../types/enums';
 import localization from '../../../lib/localization';
 
 const sortOrganizationsByName = (
-  organizations: Organization[],
+  organizations: OrgSummary[],
   order: SortOrder
 ) => {
   return organizations.sort((a: any, b: any) => {
