@@ -11,9 +11,9 @@ import withAssessment, {
 interface Props extends AssessmentProps {}
 
 const AssessmentBreadcrumb: FC<Props> = ({ assessment }) => (
-  <span>
-    {translate(assessment?.entity?.title ?? translations.breadcrumb.notFound)}
-  </span>
+  <>
+    {translate(assessment?.entity?.title) ?? translations.breadcrumb.notFound}
+  </>
 );
 
 export default compose<FC>(memo, withAssessment)(AssessmentBreadcrumb);
