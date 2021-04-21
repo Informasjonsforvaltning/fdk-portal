@@ -95,7 +95,7 @@ const OrganizationsPage: FC<Props> = ({
                 previousOrganizationName.charAt(0) !==
                   currentOrganizationName.charAt(0))
             ) {
-              sortLabel = name?.charAt(0);
+              sortLabel = currentOrganizationName.charAt(0);
             }
 
             return (
