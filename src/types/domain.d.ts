@@ -704,8 +704,8 @@ export interface Assessment {
   updated: string;
 }
 
-export interface PagedAssessments {
-  content: Assessment[];
+export interface Paged<T> {
+  content: T[];
   totalPages: number;
   totalElements: number;
   size: number;

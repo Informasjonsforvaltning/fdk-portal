@@ -7,7 +7,7 @@ import {
   GET_ASSESSMENTS_FAILED
 } from './action-types';
 
-import type { PagedAssessments } from '../../../types';
+import type { Assessment, Paged } from '../../../types';
 
 export function getPagedAssessmentsRequested(
   catalogId: string,
@@ -27,7 +27,7 @@ export function getPagedAssessmentsRequested(
 }
 
 export function getPagedAssessmentsSucceeded(
-  pagedAssessments: PagedAssessments
+  pagedAssessments: Paged<Assessment>
 ) {
   return {
     type: GET_ASSESSMENTS_SUCCEEDED,
@@ -69,7 +69,7 @@ export function loadMoreAssessmentsRequested(
 }
 
 export function loadMoreAssessmentsSucceeded(
-  pagedAssessments: PagedAssessments
+  pagedAssessments: Paged<Assessment>
 ) {
   return {
     type: LOAD_MORE_ASSESSMENTS_SUCCEEDED,

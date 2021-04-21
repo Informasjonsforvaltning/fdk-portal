@@ -9,7 +9,7 @@ import {
 } from './action-types';
 import * as actions from './actions';
 
-import type { PagedAssessments } from '../../../types';
+import type { Assessment, Paged } from '../../../types';
 
 function* getPagedAssessmentsRequested({
   payload: { catalogId, entityType, context, page }
@@ -29,7 +29,9 @@ function* getPagedAssessmentsRequested({
     );
 
     if (data) {
-      yield put(actions.getPagedAssessmentsSucceeded(data as PagedAssessments));
+      yield put(
+        actions.getPagedAssessmentsSucceeded(data as Paged<Assessment>)
+      );
     } else {
       yield put(actions.getPagedAssessmentsFailed(''));
     }
@@ -56,7 +58,9 @@ function* loadMoreAssessmentsRequested({
     );
 
     if (data) {
-      yield put(actions.loadMoreAssessmentsSucceeded(data as PagedAssessments));
+      yield put(
+        actions.loadMoreAssessmentsSucceeded(data as Paged<Assessment>)
+      );
     } else {
       yield put(actions.loadMoreAssessmentsFailed(''));
     }
