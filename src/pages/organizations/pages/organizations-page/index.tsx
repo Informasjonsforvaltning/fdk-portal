@@ -31,8 +31,8 @@ const OrganizationsPage: FC<Props> = ({
 
   const filterOrganizationsByName = (query: string) =>
     query
-      ? organizations.filter(organization =>
-          (translate(organization?.prefLabel) || organization?.name || '')
+      ? organizations.filter(({ prefLabel, name }) =>
+          (translate(prefLabel) ?? name ?? '')
             .toLowerCase()
             .includes(query.toLowerCase())
         )
@@ -77,13 +77,7 @@ const OrganizationsPage: FC<Props> = ({
       <div className='row'>
         {filterOrganizationsByName(searchQuery).map(
           (
-            {
-              id,
-              name,
-              prefLabel,
-              datasetCount,
-              dataserviceCount
-            }: OrganizationSummary,
+            { id, name, prefLabel, datasetCount, dataserviceCount },
             index: number,
             organizations: OrganizationSummary[]
           ) => {

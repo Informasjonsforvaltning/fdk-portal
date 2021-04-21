@@ -26,7 +26,7 @@ import ExpandIcon from '../../../../images/icon-expand-text-sm.svg';
 
 import SC from './styled';
 
-import type { Assessment, Rating } from '../../../../types';
+import type { Rating } from '../../../../types';
 import { RatingCategory, DimensionType } from '../../../../types/enums';
 
 interface RouteParams {
@@ -153,7 +153,7 @@ const DatasetsPage: FC<Props> = ({
             </tr>
           </SC.TableHead>
           <SC.TableBody>
-            {Array.from(assessments).map((assessment: Assessment) => (
+            {assessments.map(assessment => (
               <tr
                 key={assessment.id}
                 onClick={() => push(`${url}/${assessment.id}`)}
