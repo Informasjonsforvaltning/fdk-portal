@@ -32,22 +32,28 @@ export default function reducer(
         .set('hasMoreAssessments', false);
     case GET_ASSESSMENTS_SUCCEEDED:
       return state
-        .set('assessments', fromJS(action.payload.assessments))
-        .set('totalAssessments', action.payload.totalAssessments)
-        .set('assessmentPageSize', action.payload.assessmentPageSize)
-        .set('assessmentsPage', action.payload.assessmentsPage)
-        .set('hasMoreAssessments', action.payload.hasMoreAssessments);
+        .set('assessments', fromJS(action.payload.content))
+        .set('totalAssessments', action.payload.totalElements)
+        .set('assessmentPageSize', action.payload.size)
+        .set('assessmentsPage', action.payload.number)
+        .set(
+          'hasMoreAssessments',
+          action.payload.number + 1 < action.payload.totalPages
+        );
     case LOAD_MORE_ASSESSMENTS_REQUESTED:
       return state;
     case LOAD_MORE_ASSESSMENTS_SUCCEEDED:
       return state
         .update('assessments', (assessments: any) =>
-          assessments.concat(fromJS(action.payload.assessments))
+          assessments.concat(fromJS(action.payload.content))
         )
-        .set('totalAssessments', action.payload.totalAssessments)
-        .set('assessmentPageSize', action.payload.assessmentPageSize)
-        .set('assessmentsPage', action.payload.assessmentsPage)
-        .set('hasMoreAssessments', action.payload.hasMoreAssessments);
+        .set('totalAssessments', action.payload.totalElements)
+        .set('assessmentPageSize', action.payload.size)
+        .set('assessmentsPage', action.payload.number)
+        .set(
+          'hasMoreAssessments',
+          action.payload.number + 1 < action.payload.totalPages
+        );
     default:
       return state;
   }

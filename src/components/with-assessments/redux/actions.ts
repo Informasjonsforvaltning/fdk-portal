@@ -31,14 +31,7 @@ export function getPagedAssessmentsSucceeded(
 ) {
   return {
     type: GET_ASSESSMENTS_SUCCEEDED,
-    payload: {
-      assessments: pagedAssessments.content,
-      totalAssessments: pagedAssessments.totalElements,
-      assessmentPageSize: pagedAssessments.size,
-      assessmentsPage: pagedAssessments.number,
-      hasMoreAssessments:
-        pagedAssessments.number + 1 < pagedAssessments.totalPages
-    }
+    payload: pagedAssessments
   };
 }
 
@@ -73,14 +66,7 @@ export function loadMoreAssessmentsSucceeded(
 ) {
   return {
     type: LOAD_MORE_ASSESSMENTS_SUCCEEDED,
-    payload: {
-      assessments: pagedAssessments.content,
-      totalAssessments: pagedAssessments.totalElements,
-      assessmentPageSize: pagedAssessments.size,
-      assessmentsPage: pagedAssessments.number,
-      hasMoreAssessments:
-        pagedAssessments.number + 1 < pagedAssessments.totalPages
-    }
+    payload: pagedAssessments
   };
 }
 
