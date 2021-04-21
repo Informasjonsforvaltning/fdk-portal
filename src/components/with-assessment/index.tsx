@@ -4,17 +4,19 @@ import { connect } from 'react-redux';
 
 import * as actions from './redux/actions';
 
-import type { Assessment } from '../../types';
+import type { Assessment, Rating } from '../../types';
 
 export interface Props {
   assessment: Assessment | null;
+  catalogRating: Rating | null;
   assessmentActions: typeof actions;
 }
 const withAssessment = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    assessment: state.AssessmentReducer.get('assessment')?.toJS() ?? null
+    assessment: state.AssessmentReducer.get('assessment')?.toJS() ?? null,
+    catalogRating: state.AssessmentReducer.get('catalogRating')?.toJS() ?? null
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

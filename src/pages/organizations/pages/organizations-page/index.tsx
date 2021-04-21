@@ -15,7 +15,7 @@ import ErrorPage from '../../../../components/error-page';
 
 import SC from './styled';
 
-import type { Organization } from '../../../../types';
+import type { OrganizationSummary } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
 interface Props extends OrganizationsProps, RouteComponentProps {}
@@ -31,8 +31,8 @@ const OrganizationsPage: FC<Props> = ({
 
   const filterOrganizationsByName = (query: string) =>
     query
-      ? organizations.filter(({ organization }) =>
-          (translate(organization?.name) || '')
+      ? organizations.filter(({ prefLabel, name }) =>
+          (translate(prefLabel) ?? name ?? '')
             .toLowerCase()
             .includes(query.toLowerCase())
         )
@@ -77,20 +77,15 @@ const OrganizationsPage: FC<Props> = ({
       <div className='row'>
         {filterOrganizationsByName(searchQuery).map(
           (
-            {
-              id,
-              organization: { name },
-              dataset_count,
-              dataservice_count
-            }: Organization,
+            { id, name, prefLabel, datasetCount, dataserviceCount },
             index: number,
-            organizations: Organization[]
+            organizations: OrganizationSummary[]
           ) => {
             let sortLabel = '';
-            const previousOrganizationName = translate(
-              organizations[index - 1]?.organization?.name
-            );
-            const currentOrganizationName = translate(name);
+            const previousOrganizationName =
+              translate(organizations[index - 1]?.prefLabel) ||
+              organizations[index - 1]?.name;
+            const currentOrganizationName = translate(prefLabel) || name;
 
             if (
               index === 0 ||
@@ -100,21 +95,21 @@ const OrganizationsPage: FC<Props> = ({
                 previousOrganizationName.charAt(0) !==
                   currentOrganizationName.charAt(0))
             ) {
-              sortLabel = translate(name)?.charAt(0);
+              sortLabel = name?.charAt(0);
             }
 
             return (
               <SC.Box key={id} className='col-12' to={`${url}/${id}`}>
                 <SC.SortLabel>{sortLabel}</SC.SortLabel>
-                <SC.Title>{translate(name)}</SC.Title>
+                <SC.Title>{translate(prefLabel) || name}</SC.Title>
                 <SC.Info>
                   <SC.CountTag type={Entity.DATASET}>
-                    {dataset_count}
+                    {datasetCount}
                   </SC.CountTag>
                   {!isTransportportal && (
                     <>
                       <SC.CountTag type={Entity.DATA_SERVICE}>
-                        {dataservice_count}
+                        {dataserviceCount}
                       </SC.CountTag>
                     </>
                   )}

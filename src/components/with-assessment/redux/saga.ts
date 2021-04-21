@@ -3,23 +3,23 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { getConfig } from '../../../config';
 
-import { GET_ASSESSMENT_REQUESTED } from './action-types';
+import {
+  GET_ASSESSMENT_REQUESTED,
+  GET_CATALOG_RATING_REQUESTED
+} from './action-types';
 import * as actions from './actions';
 
-import type { Assessment } from '../../../types';
+import type { Assessment, Rating } from '../../../types';
 
 function* getAssessmentRequested({
-  payload: { uri }
+  payload: { id }
 }: ReturnType<typeof actions.getAssessmentRequested>) {
   try {
     const { data } = yield call(
       axios.get,
-      `${getConfig().metadataQualityAssessmentApi.host}/assessment/entity`,
-      {
-        params: {
-          entityUri: uri
-        }
-      }
+      `${
+        getConfig().metadataQualityAssessmentApi.host
+      }/assessments/entities/${id}`
     );
 
     if (data) {
@@ -32,6 +32,35 @@ function* getAssessmentRequested({
   }
 }
 
+function* getCatalogRatingRequested({
+  payload: { catalogId, entityType, contexts }
+}: ReturnType<typeof actions.getCatalogRatingRequested>) {
+  try {
+    const { data } = yield call(
+      axios.get,
+      `${getConfig().metadataQualityAssessmentApi.host}/rating/catalog`,
+      {
+        params: {
+          catalogId,
+          entityType,
+          contexts
+        }
+      }
+    );
+
+    if (data) {
+      yield put(actions.getCatalogRatingSucceeded(data as Rating));
+    } else {
+      yield put(actions.getCatalogRatingFailed(''));
+    }
+  } catch (e) {
+    yield put(actions.getCatalogRatingFailed(e.message));
+  }
+}
+
 export default function* saga() {
-  yield all([takeLatest(GET_ASSESSMENT_REQUESTED, getAssessmentRequested)]);
+  yield all([
+    takeLatest(GET_ASSESSMENT_REQUESTED, getAssessmentRequested),
+    takeLatest(GET_CATALOG_RATING_REQUESTED, getCatalogRatingRequested)
+  ]);
 }

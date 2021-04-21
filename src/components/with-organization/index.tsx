@@ -6,8 +6,7 @@ import * as actions from './redux/actions';
 
 import type {
   Publisher,
-  Rating,
-  Dataset,
+  OrganizationCountsAndRating,
   EnhetsregisteretOrganization
 } from '../../types';
 
@@ -15,13 +14,7 @@ export interface Props {
   organization: Publisher | null;
   isLoadingOrganization: boolean;
   enhetsregisteretOrganization: EnhetsregisteretOrganization | null;
-  datasets: Dataset[];
-  dataset: Dataset | null;
-  datasetsPage: number;
-  hasMoreDatasets: boolean;
-  datasetsPageSize: number;
-  datasetsCount: number;
-  rating: Rating | null;
+  rating: OrganizationCountsAndRating | null;
   organizationActions: typeof actions;
 }
 
@@ -36,12 +29,6 @@ const withOrganization = (Component: ComponentType<any>) => {
     enhetsregisteretOrganization:
       state.OrganizationReducer.get('enhetsregisteretOrganization')?.toJS() ??
       null,
-    datasets: state.OrganizationReducer.get('datasets').toJS(),
-    dataset: state.OrganizationReducer.get('dataset')?.toJS() ?? null,
-    datasetsPage: state.OrganizationReducer.get('datasetsPage'),
-    hasMoreDatasets: state.OrganizationReducer.get('hasMoreDatasets'),
-    datasetsPageSize: state.OrganizationReducer.get('datasetsPageSize'),
-    datasetsCount: state.OrganizationReducer.get('datasetsCount'),
     rating: state.OrganizationReducer.get('rating')?.toJS() ?? null
   });
 

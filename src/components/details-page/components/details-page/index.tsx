@@ -87,7 +87,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   publisher,
   assessment,
   entityId,
-  entityUri,
   lastPublished,
   isAuthoritative,
   isOpenData,
@@ -118,10 +117,10 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   }, []);
 
   useEffect(() => {
-    if (entityUri && entityUri !== assessment?.entity.uri) {
-      getAssessment(entityUri);
+    if (entityId && entityId !== assessment?.id) {
+      getAssessment(entityId);
     }
-  }, [entityUri]);
+  }, [entityId]);
 
   const [navOpen, setNavOpen] = useState(false);
 
