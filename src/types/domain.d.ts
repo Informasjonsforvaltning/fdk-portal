@@ -661,10 +661,10 @@ export interface OrgRating {
     homepage: string;
   };
   datasets: {
-    total: number;
-    new: number;
-    authoritative: number;
-    open: number;
+    totalCount: number;
+    newCount: number;
+    authoritativeCount: number;
+    openCount: number;
     quality: {
       category: RatingCategory;
       percentage: number;

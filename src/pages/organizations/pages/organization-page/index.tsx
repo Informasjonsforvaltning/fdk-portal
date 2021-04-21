@@ -233,7 +233,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<DatasetIcon />}
-                    count={rating?.datasets?.total ?? 0}
+                    count={rating?.datasets?.totalCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.metadataQualityPage.descriptionsTotal}
@@ -249,7 +249,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<NewIcon />}
-                    count={rating?.datasets?.new ?? 0}
+                    count={rating?.datasets?.newCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
@@ -268,7 +268,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<AuthoritativeIcon />}
-                    count={rating?.datasets?.authoritative ?? 0}
+                    count={rating?.datasets?.authoritativeCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
@@ -287,7 +287,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<AccessOpenIcon />}
-                    count={rating?.datasets?.open ?? 0}
+                    count={rating?.datasets?.openCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
