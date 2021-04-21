@@ -1,4 +1,4 @@
-import React, { memo, FC, MouseEvent, useState, useEffect } from 'react';
+import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -84,11 +84,6 @@ const ConceptDetailsPage: FC<Props> = ({
     { code: 'en' }
   ]);
 
-  const [
-    determinedLanguagesFromConcept,
-    setDeterminedLanguagesFromConcept
-  ] = useState<string[]>([]);
-
   const renderPage = isLoadingConcept || !isMounted || concept !== null;
 
   const entity = Entity.CONCEPT;
@@ -104,7 +99,6 @@ const ConceptDetailsPage: FC<Props> = ({
     return function cleanup() {
       setIsMounted(false);
       setSelectedLanguages([{ code: 'nb' }, { code: 'nn' }, { code: 'en' }]);
-      setDeterminedLanguagesFromConcept([]);
     };
   }, []);
 
@@ -175,16 +169,11 @@ const ConceptDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     const usedLanguages: string[] = getUsedLanguages();
-    if (concept) {
-      setDeterminedLanguagesFromConcept(usedLanguages);
-    }
     if (usedLanguages.length > 0) {
       const languages: Language[] = [...new Set(selectedLanguages)].map(
         language => ({
           ...language,
-          selected:
-            translations.getLanguage() === language.code &&
-            usedLanguages.includes(language.code),
+          selected: usedLanguages.includes(language.code),
           disabled: !usedLanguages.includes(language.code)
         })
       );
@@ -251,19 +240,6 @@ const ConceptDetailsPage: FC<Props> = ({
     ) : null;
   };
 
-  const toggleLanguage = (e: MouseEvent<HTMLButtonElement>, code: string) => {
-    e.currentTarget.blur();
-    const languages: Language[] = [...new Set(selectedLanguages)].map(
-      language => ({
-        ...language,
-        selected:
-          language.code === code ? !language.selected : language.selected,
-        disabled: !determinedLanguagesFromConcept.includes(language.code)
-      })
-    );
-    setSelectedLanguages(languages);
-  };
-
   return renderPage ? (
     <ThemeProvider theme={theme}>
       <DetailsPage
@@ -279,7 +255,6 @@ const ConceptDetailsPage: FC<Props> = ({
         isRestrictedData={false}
         isNonPublicData={false}
         themes={themes}
-        toggleLanguage={toggleLanguage}
         languages={selectedLanguages}
       >
         {description && (

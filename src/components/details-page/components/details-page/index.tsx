@@ -3,7 +3,6 @@ import React, {
   FC,
   isValidElement,
   memo,
-  MouseEvent,
   PropsWithChildren,
   useEffect,
   useState
@@ -51,8 +50,6 @@ import {
   determineRatingIcon
 } from '../../../../pages/organizations/pages/dataset-page/index';
 
-import LanguagePicker from '../../../language-picker';
-
 interface ExternalProps {
   entity: Entity;
   title: Partial<TextLanguage>;
@@ -66,7 +63,6 @@ interface ExternalProps {
   isRestrictedData: boolean;
   isNonPublicData: boolean;
   themes: Theme[];
-  toggleLanguage?: (e: MouseEvent<HTMLButtonElement>, code: string) => void;
   languages?: Language[];
 }
 
@@ -94,7 +90,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   isRestrictedData,
   isNonPublicData,
   themes = [],
-  toggleLanguage = () => {},
   languages = [],
   referenceData: { los: losThemes, themes: euThemes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
@@ -240,15 +235,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
         {navOpen && <SC.SideMenuSmall title='' menuItems={menuItems} />}
 
-        <SC.Content>
-          {entity === Entity.CONCEPT && (
-            <LanguagePicker
-              languages={languages}
-              toggleLanguage={toggleLanguage}
-            />
-          )}
-          {renderContentSections()}
-        </SC.Content>
+        <SC.Content>{renderContentSections()}</SC.Content>
       </SC.Page>
     </SC.DetailsPage>
   );
