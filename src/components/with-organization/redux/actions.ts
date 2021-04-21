@@ -13,7 +13,7 @@ import {
 
 import type {
   Publisher,
-  OrgRating,
+  OrganizationCountsAndRating,
   EnhetsregisteretOrganization
 } from '../../../types';
 
@@ -82,7 +82,9 @@ export function getOrganizationRatingRequested(id: string) {
   };
 }
 
-export function getOrganizationRatingSucceeded(rating: OrgRating) {
+export function getOrganizationRatingSucceeded(
+  rating: OrganizationCountsAndRating
+) {
   return {
     type: GET_ORGANIZATION_RATING_SUCCEEDED,
     payload: {

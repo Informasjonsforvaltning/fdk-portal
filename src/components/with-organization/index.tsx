@@ -6,7 +6,7 @@ import * as actions from './redux/actions';
 
 import type {
   Publisher,
-  OrgRating,
+  OrganizationCountsAndRating,
   EnhetsregisteretOrganization
 } from '../../types';
 
@@ -14,7 +14,7 @@ export interface Props {
   organization: Publisher | null;
   isLoadingOrganization: boolean;
   enhetsregisteretOrganization: EnhetsregisteretOrganization | null;
-  rating: OrgRating | null;
+  rating: OrganizationCountsAndRating | null;
   organizationActions: typeof actions;
 }
 

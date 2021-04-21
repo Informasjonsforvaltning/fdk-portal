@@ -13,7 +13,7 @@ import { getEnhetsregisteretOrganization } from './operations';
 
 import type {
   Publisher,
-  OrgRating,
+  OrganizationCountsAndRating,
   EnhetsregisteretOrganization
 } from '../../../types';
 
@@ -60,7 +60,11 @@ function* getOrganizationRatingRequested({
     const data = yield call(getOrganizationData, id);
 
     if (data) {
-      yield put(actions.getOrganizationRatingSucceeded(data as OrgRating));
+      yield put(
+        actions.getOrganizationRatingSucceeded(
+          data as OrganizationCountsAndRating
+        )
+      );
     } else {
       yield put(actions.getOrganizationRatingFailed(''));
     }

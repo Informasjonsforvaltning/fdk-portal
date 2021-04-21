@@ -15,7 +15,7 @@ import ErrorPage from '../../../../components/error-page';
 
 import SC from './styled';
 
-import type { OrgSummary } from '../../../../types';
+import type { OrganizationSummary } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
 interface Props extends OrganizationsProps, RouteComponentProps {}
@@ -77,9 +77,15 @@ const OrganizationsPage: FC<Props> = ({
       <div className='row'>
         {filterOrganizationsByName(searchQuery).map(
           (
-            { id, name, prefLabel, datasetCount, dataserviceCount }: OrgSummary,
+            {
+              id,
+              name,
+              prefLabel,
+              datasetCount,
+              dataserviceCount
+            }: OrganizationSummary,
             index: number,
-            organizations: OrgSummary[]
+            organizations: OrganizationSummary[]
           ) => {
             let sortLabel = '';
             const previousOrganizationName =

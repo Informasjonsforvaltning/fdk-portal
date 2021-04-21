@@ -594,7 +594,7 @@ export interface News extends NewsItemAttributes {
   links: Partial<Links>;
 }
 
-export interface OrgSummary {
+export interface OrganizationSummary {
   id: string;
   name: string;
   prefLabel: Partial<TextLanguage>;
@@ -652,7 +652,7 @@ export interface Rating {
   dimensionsRating: Record<DimensionType, Pick<Rating, 'score' | 'maxScore'>>;
 }
 
-export interface OrgRating {
+export interface OrganizationCountsAndRating {
   organization: {
     organizationId: string;
     orgType: string;

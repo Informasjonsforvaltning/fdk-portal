@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import * as actions from './redux/actions';
-import { OrgSummary } from '../../types';
+import { OrganizationSummary } from '../../types';
 
 export interface Props {
-  organizations: OrgSummary[];
+  organizations: OrganizationSummary[];
   organizationsActions: typeof actions;
 }
 
