@@ -85,7 +85,11 @@ const Banner: FC<Props> = ({
         </SC.Title>
         {entity === Entity.CONCEPT &&
           languages.filter(({ selected }) => selected)?.length > 1 && (
-            <MultiLingualField languages={languages} text={title} />
+            <MultiLingualField
+              languages={languages}
+              text={title}
+              skippedLanguages={[translations.getLanguage()]}
+            />
           )}
         <SC.LastPublishedInfo>
           {translations.formatString(
