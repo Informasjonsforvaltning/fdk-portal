@@ -39,14 +39,14 @@ export function getAssessmentFailed(message: string) {
 export function getCatalogRatingRequested(
   catalogId: string,
   entityType: string,
-  context: string
+  contexts: string
 ) {
   return {
     type: GET_CATALOG_RATING_REQUESTED,
     payload: {
       catalogId,
       entityType,
-      context
+      contexts
     }
   };
 }

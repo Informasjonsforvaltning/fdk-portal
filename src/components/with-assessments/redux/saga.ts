@@ -12,7 +12,7 @@ import * as actions from './actions';
 import type { Assessment, Paged } from '../../../types';
 
 function* getPagedAssessmentsRequested({
-  payload: { catalogId, entityType, context, page }
+  payload: { catalogId, entityType, contexts, page }
 }: ReturnType<typeof actions.getPagedAssessmentsRequested>) {
   try {
     const { data } = yield call(
@@ -22,7 +22,7 @@ function* getPagedAssessmentsRequested({
         params: {
           catalogId,
           entityType,
-          context,
+          contexts,
           page
         }
       }
@@ -41,7 +41,7 @@ function* getPagedAssessmentsRequested({
 }
 
 function* loadMoreAssessmentsRequested({
-  payload: { catalogId, entityType, context, page }
+  payload: { catalogId, entityType, contexts, page }
 }: ReturnType<typeof actions.loadMoreAssessmentsRequested>) {
   try {
     const { data } = yield call(
@@ -51,7 +51,7 @@ function* loadMoreAssessmentsRequested({
         params: {
           catalogId,
           entityType,
-          context,
+          contexts,
           page
         }
       }

@@ -12,7 +12,7 @@ import type { Assessment, Paged } from '../../../types';
 export function getPagedAssessmentsRequested(
   catalogId: string,
   entityType: string,
-  context: string,
+  contexts: string,
   page: number
 ) {
   return {
@@ -20,7 +20,7 @@ export function getPagedAssessmentsRequested(
     payload: {
       catalogId,
       entityType,
-      context,
+      contexts,
       page
     }
   };
@@ -54,7 +54,7 @@ export function getPagedAssessmentsFailed(message: string) {
 export function loadMoreAssessmentsRequested(
   catalogId: string,
   entityType: string,
-  context: string,
+  contexts: string,
   page: number
 ) {
   return {
@@ -62,7 +62,7 @@ export function loadMoreAssessmentsRequested(
     payload: {
       catalogId,
       entityType,
-      context,
+      contexts,
       page
     }
   };

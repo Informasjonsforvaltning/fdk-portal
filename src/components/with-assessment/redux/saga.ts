@@ -33,7 +33,7 @@ function* getAssessmentRequested({
 }
 
 function* getCatalogRatingRequested({
-  payload: { catalogId, entityType, context }
+  payload: { catalogId, entityType, contexts }
 }: ReturnType<typeof actions.getCatalogRatingRequested>) {
   try {
     const { data } = yield call(
@@ -43,7 +43,7 @@ function* getCatalogRatingRequested({
         params: {
           catalogId,
           entityType,
-          context
+          contexts
         }
       }
     );
