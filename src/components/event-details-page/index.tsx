@@ -24,7 +24,7 @@ import DetailsPage, {
   KeyValueListItem
 } from '../details-page';
 import ErrorPage from '../error-page';
-import RelationList from '../relation-list';
+import RelationList, { ItemWithRelationType } from '../relation-list';
 
 import type { Theme } from '../../types';
 import { Entity, SpecializedEventType } from '../../types/enums';
@@ -86,6 +86,10 @@ const EventDetailsPage: FC<Props> = ({
       resetPublicServicesRelations();
     };
   }, [event?.uri]);
+
+  const publicServicesRelationsWithRelationType: ItemWithRelationType[] = publicServicesRelations.map(
+    relation => ({ relation, relationType: translations.relatedBy })
+  );
 
   const title = event?.title ?? {};
   const description = translate(event?.description);
@@ -196,7 +200,7 @@ const EventDetailsPage: FC<Props> = ({
             >
               <RelationList
                 parentIdentifier={event.uri}
-                publicServices={publicServicesRelations}
+                publicServices={publicServicesRelationsWithRelationType}
               />
             </ContentSection>
           )}

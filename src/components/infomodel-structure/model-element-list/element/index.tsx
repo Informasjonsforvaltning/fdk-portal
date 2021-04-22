@@ -2,13 +2,13 @@ import React, { memo, FC, ComponentProps } from 'react';
 import { compose } from 'redux';
 import Scroll from 'react-scroll';
 import Link from '@fellesdatakatalog/link';
-
-import { getTranslateText as translate } from '../../../../lib/translateText';
-
 import {
   ExpansionPanelBody,
   ExpansionPanelHead
-} from '../../../expansion-panel';
+} from '@fellesdatakatalog/expansion-panel';
+
+import { getTranslateText as translate } from '../../../../lib/translateText';
+
 import ExpansionIndicatorDetails from '../../expansion-indicator-details';
 import Description from '../../model-description';
 

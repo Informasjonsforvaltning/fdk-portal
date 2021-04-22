@@ -27,6 +27,7 @@ function* getPublicServiceRequested({
         message: `Could not get public service with ID: ${id}`,
         severity: Severity.WARN
       });
+      yield put(actions.getPublicServiceFailed(''));
     }
   } catch (error) {
     const { name, message, stack: trace } = error as Error;

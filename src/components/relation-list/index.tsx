@@ -37,14 +37,19 @@ import type {
   PublicService
 } from '../../types';
 
+export interface ItemWithRelationType {
+  relation: Partial<Event> | Partial<PublicService>;
+  relationType: string;
+}
+
 interface RelationProps {
   parentIdentifier?: string;
   datasets?: Dataset[];
   dataServices?: DataService[];
   concepts?: Concept[];
   informationModels?: InformationModel[];
-  publicServices?: PublicService[];
-  events?: Event[];
+  publicServices?: ItemWithRelationType[];
+  events?: ItemWithRelationType[];
 }
 
 interface Props extends RelationProps {}
@@ -202,18 +207,22 @@ const RelationsList: FC<Props> = ({
           </SC.Banner>
 
           <SC.RelationLinks>
-            {publicServices.map(({ uri, title, id }) =>
-              uri && id && title ? (
-                <span>
-                  <Link
-                    as={RouterLink}
-                    to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}
-                  >
-                    {translate(title ?? uri)}
-                  </Link>
-                  ({translate(translations.sampleData)})
-                </span>
-              ) : null
+            {publicServices.map(
+              ({
+                relation: { id, title, uri },
+                relationType
+              }: ItemWithRelationType) =>
+                uri && id && title ? (
+                  <span>
+                    <Link
+                      as={RouterLink}
+                      to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}
+                    >
+                      {translate(title ?? uri)}
+                    </Link>
+                    ({relationType})
+                  </span>
+                ) : null
             )}
           </SC.RelationLinks>
         </SC.Relation>
@@ -229,15 +238,19 @@ const RelationsList: FC<Props> = ({
           </SC.Banner>
 
           <SC.RelationLinks>
-            {events.map(({ uri, title, id }) =>
-              uri && id && title ? (
-                <span>
-                  <Link as={RouterLink} to={`${PATHNAME_EVENTS}/${id}`}>
-                    {translate(title ?? uri)}
-                  </Link>
-                  ({translate(translations.sampleData)})
-                </span>
-              ) : null
+            {events.map(
+              ({
+                relation: { id, title, uri },
+                relationType
+              }: ItemWithRelationType) =>
+                uri && id && title ? (
+                  <span>
+                    <Link as={RouterLink} to={`${PATHNAME_EVENTS}/${id}`}>
+                      {translate(title ?? uri)}
+                    </Link>
+                    ({relationType})
+                  </span>
+                ) : null
             )}
           </SC.RelationLinks>
         </SC.Relation>

@@ -6,29 +6,23 @@ import {
   GET_ORGANIZATIONS_SUCCEEDED
 } from './action-types';
 
-import { Actions, Organization } from '../../../types';
+import { Actions, OrganizationSummary } from '../../../types';
 import { SortOrder } from '../../../types/enums';
 import localization from '../../../lib/localization';
 
 const sortOrganizationsByName = (
-  organizations: Organization[],
+  organizations: OrganizationSummary[],
   order: SortOrder
 ) => {
   return organizations.sort((a: any, b: any) => {
     const aObject =
-      a.getIn(['organization', 'name', localization.getLanguage()]) ??
-      a.getIn(['organization', 'name', 'nb']) ??
-      a.getIn(['organization', 'name', 'nn']) ??
-      a.getIn(['organization', 'name', 'no']) ??
-      a.getIn(['organization', 'name', 'en']);
+      a.getIn(['prefLabel', localization.getLanguage()]) ?? a.getIn(['name']);
     const bObject =
-      b.getIn(['organization', 'name', localization.getLanguage()]) ??
-      b.getIn(['organization', 'name', 'nb']) ??
-      b.getIn(['organization', 'name', 'nn']) ??
-      b.getIn(['organization', 'name', 'no']) ??
-      b.getIn(['organization', 'name', 'en']);
+      b.getIn(['prefLabel', localization.getLanguage()]) ?? b.getIn(['name']);
 
-    return aObject?.localeCompare(bObject) * (order === SortOrder.ASC ? 1 : -1);
+    return (
+      aObject?.localeCompare(bObject, 'no') * (order === SortOrder.ASC ? 1 : -1)
+    );
   });
 };
 

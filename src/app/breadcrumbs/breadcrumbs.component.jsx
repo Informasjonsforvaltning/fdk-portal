@@ -17,6 +17,7 @@ import {
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_EVENTS
 } from '../../constants/constants';
+import AssessmentBreadcrumb from './assessment-breadcrumb';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import DataServiceBreadcrumb from './data-service-breadcrumb';
 import ConceptBreadcrumb from './concept-breadcrumb';
@@ -92,7 +93,7 @@ const routes = [
   },
   {
     path: `${PATHNAME_ORGANIZATIONS}/:organizationId/datasets/:id`,
-    breadcrumb: DatasetBreadcrumb
+    breadcrumb: AssessmentBreadcrumb
   },
   {
     path: `${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`,

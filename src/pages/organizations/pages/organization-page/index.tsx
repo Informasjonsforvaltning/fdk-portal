@@ -54,20 +54,13 @@ interface Props
     RouteComponentProps<RouteParams> {}
 
 const OrganizationPage: FC<Props> = ({
-  datasets,
   organization,
-  enhetsregisteretOrganization,
   rating,
-  datasetsReport,
   organizationActions: {
     getOrganizationRequested: getOrganization,
-    getEnhetsregisteretOrganizationRequested: getEnhetsregisteretOrganization,
-    getCatalogRatingRequested: getRating
+    getOrganizationRatingRequested: getRating
   },
-  reportActions: {
-    getDatasetsReportRequested: getDatasetsReport,
-    resetDatasetsReport
-  },
+  reportActions: { resetDatasetsReport },
   match: {
     url,
     params: { organizationId }
@@ -81,7 +74,9 @@ const OrganizationPage: FC<Props> = ({
   useLayoutEffect(() => {
     if (organization?.organizationId !== organizationId) {
       getOrganization(organizationId);
-      getEnhetsregisteretOrganization(organizationId);
+    }
+
+    if (rating?.organization?.organizationId !== organizationId) {
       getRating(organizationId);
     }
 
@@ -90,21 +85,8 @@ const OrganizationPage: FC<Props> = ({
     };
   }, []);
 
-  useLayoutEffect(() => {
-    if (organization?.organizationId === organizationId) {
-      getDatasetsReport({
-        orgPath: organization.orgPath,
-        themeprofile: isTransportportal ? 'transport' : undefined
-      });
-    }
-  }, [organization?.organizationId]);
-
-  const ratingPercentage = Math.round(
-    ((rating?.score ?? 0) / (rating?.maxScore ?? 0)) * 100
-  );
-
   const determineRatingIcon = () => {
-    switch (rating?.category) {
+    switch (rating?.datasets?.quality?.category) {
       case RatingCategory.EXCELLENT:
         return <SC.ExcellentQualityIcon />;
       case RatingCategory.GOOD:
@@ -118,7 +100,7 @@ const OrganizationPage: FC<Props> = ({
   };
 
   const determineRatingTranslation = () => {
-    switch (rating?.category) {
+    switch (rating?.datasets?.quality?.category) {
       case RatingCategory.EXCELLENT:
         return translations.metadataQualityPage.metadataQualityIsExcellent;
       case RatingCategory.GOOD:
@@ -144,27 +126,26 @@ const OrganizationPage: FC<Props> = ({
         )}
       </SC.Title>
       <SC.Section>
-        {enhetsregisteretOrganization && (
+        {organization && rating?.organization && (
           <SC.OrganizationInformation>
-            {showOrganizationLogo &&
-              enhetsregisteretOrganization.organisasjonsnummer && (
-                <img
-                  src={`https://orglogo.difi.no/api/logo/org/${enhetsregisteretOrganization.organisasjonsnummer}`}
-                  alt={`${enhetsregisteretOrganization.navn} logo`}
-                  onError={() => setShowOrganizationLogo(false)}
-                />
-              )}
+            {showOrganizationLogo && organization.organizationId && (
+              <img
+                src={`https://orglogo.difi.no/api/logo/org/${organization.organizationId}`}
+                alt={`${organization.name} logo`}
+                onError={() => setShowOrganizationLogo(false)}
+              />
+            )}
             <ul>
               <li>
                 <span>{translations.metadataQualityPage.organisationName}</span>
-                <span>{enhetsregisteretOrganization.navn}</span>
+                <span>{organization.name}</span>
               </li>
               <li>
                 <span>
                   {translations.metadataQualityPage.organisationNumber}
                 </span>
                 <span>
-                  {enhetsregisteretOrganization.organisasjonsnummer.replace(
+                  {organization.organizationId.replace(
                     /\B(?=(\d{3})+(?!\d))/g,
                     ' '
                   )}
@@ -172,19 +153,17 @@ const OrganizationPage: FC<Props> = ({
               </li>
               <li>
                 <span>{translations.metadataQualityPage.organisationForm}</span>
-                <span>
-                  {enhetsregisteretOrganization.organisasjonsform.beskrivelse}
-                </span>
+                <span>{rating.organization.orgType}</span>
               </li>
-              {enhetsregisteretOrganization.naeringskode1 && (
+              {rating.organization.industryCode && (
                 <li>
                   <span>
                     {translations.metadataQualityPage.organisationBusinessCodes}
                   </span>
-                  <span>{`${enhetsregisteretOrganization.naeringskode1.kode} ${enhetsregisteretOrganization.naeringskode1.beskrivelse}`}</span>
+                  <span>{`${rating.organization.industryCode}`}</span>
                 </li>
               )}
-              {enhetsregisteretOrganization.institusjonellSektorkode && (
+              {rating.organization.sectorCode && (
                 <li>
                   <span>
                     {
@@ -192,26 +171,23 @@ const OrganizationPage: FC<Props> = ({
                         .organisationInstitutionalSectorCode
                     }
                   </span>
-                  <span>{`${enhetsregisteretOrganization.institusjonellSektorkode.kode} ${enhetsregisteretOrganization.institusjonellSektorkode.beskrivelse}`}</span>
+                  <span>{`${rating.organization.sectorCode}`}</span>
                 </li>
               )}
-              {enhetsregisteretOrganization.hjemmeside && (
+              {rating.organization.homepage && (
                 <li>
                   <span>
                     {translations.metadataQualityPage.organisationHomePage}
                   </span>
                   <span>
                     <Link
-                      href={`//${enhetsregisteretOrganization.hjemmeside.replace(
+                      href={`//${rating.organization.homepage.replace(
                         /\/$/,
                         ''
                       )}`}
                       external
                     >
-                      {enhetsregisteretOrganization.hjemmeside.replace(
-                        /\/$/,
-                        ''
-                      )}
+                      {rating.organization.homepage.replace(/\/$/, '')}
                     </Link>
                   </span>
                 </li>
@@ -222,15 +198,14 @@ const OrganizationPage: FC<Props> = ({
                 </span>
                 <span>
                   <Link
-                    href={`https://data.brreg.no/enhetsregisteret/oppslag/enheter/${enhetsregisteretOrganization.organisasjonsnummer}`}
+                    href={`https://data.brreg.no/enhetsregisteret/oppslag/enheter/${organization.organizationId}`}
                     external
                   >
                     {translations.formatString(
                       translations.metadataQualityPage
                         .organisationInEnhetsregisteret,
                       {
-                        organizationName:
-                          enhetsregisteretOrganization.navn ?? ''
+                        organizationName: organization.name ?? ''
                       }
                     )}
                   </Link>
@@ -258,7 +233,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<DatasetIcon />}
-                    count={datasetsReport?.totalObjects ?? 0}
+                    count={rating?.datasets?.totalCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.metadataQualityPage.descriptionsTotal}
@@ -274,7 +249,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<NewIcon />}
-                    count={datasetsReport?.newLastWeek ?? 0}
+                    count={rating?.datasets?.newCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
@@ -293,7 +268,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<AuthoritativeIcon />}
-                    count={datasetsReport?.nationalComponent ?? 0}
+                    count={rating?.datasets?.authoritativeCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
@@ -312,7 +287,7 @@ const OrganizationPage: FC<Props> = ({
                 >
                   <IllustrationWithCount
                     icon={<AccessOpenIcon />}
-                    count={datasetsReport?.opendata ?? 0}
+                    count={rating?.datasets?.openCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
@@ -322,15 +297,13 @@ const OrganizationPage: FC<Props> = ({
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
               </SC.Box>
-              {datasets.length > 0 && rating && (
+              {rating && (
                 <SC.Box>
                   <StatisticsRegular to={`${url}/datasets`}>
                     <StatisticsRegularSC.StatisticsRegular.Label>
                       <IllustrationWithCount
                         icon={determineRatingIcon()}
-                        percentage={
-                          isNaN(ratingPercentage) ? 0 : ratingPercentage
-                        }
+                        percentage={rating?.datasets?.quality?.percentage || 0}
                       />
                       {determineRatingTranslation()}
                     </StatisticsRegularSC.StatisticsRegular.Label>

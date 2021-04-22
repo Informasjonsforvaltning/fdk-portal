@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 
-import { getConfig } from '../../../../config';
+import { SC as ExpansionPanelSC } from '@fellesdatakatalog/expansion-panel';
 
-import { SC as ExpansionPanelSC } from '../../../../components/expansion-panel';
+import { getConfig } from '../../../../config';
 
 import DatasetSVG from '../../../../images/icon-catalog-dataset-lg.svg';
 import AuthoritativeSVG from '../../../../images/icon-authoritative-md.svg';

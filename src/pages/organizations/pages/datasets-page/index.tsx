@@ -5,6 +5,12 @@ import Link from '@fellesdatakatalog/link';
 
 import { getConfig } from '../../../../config';
 
+import withAssessment, {
+  Props as AssessmentProps
+} from '../../../../components/with-assessment';
+import withAssessments, {
+  Props as AssessmentsProps
+} from '../../../../components/with-assessments';
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
@@ -27,36 +33,42 @@ interface RouteParams {
   organizationId: string;
 }
 
-interface Props extends OrganizationProps, RouteComponentProps<RouteParams> {}
+interface Props
+  extends AssessmentProps,
+    AssessmentsProps,
+    OrganizationProps,
+    RouteComponentProps<RouteParams> {}
 
 const DatasetsPage: FC<Props> = ({
   organization,
-  datasets,
-  rating,
-  datasetsPage,
-  hasMoreDatasets,
-  datasetsCount,
-  datasetsPageSize,
-  organizationActions: {
-    getOrganizationRequested: getOrganization,
-    getOrganizationDatasetsRequested: getOrganizationDatasets,
-    loadMoreOrganizationDatasetsRequested: loadMoreOrganizationDatasets
+  assessments,
+  catalogRating,
+  totalAssessments,
+  assessmentsPage,
+  assessmentPageSize,
+  hasMoreAssessments,
+  assessmentActions: { getCatalogRatingRequested: getCatalogRating },
+  assessmentsActions: {
+    getPagedAssessmentsRequested: getAssessments,
+    loadMoreAssessmentsRequested: loadMoreAssessments
   },
+  organizationActions: { getOrganizationRequested: getOrganization },
   history: { push },
   match: {
     url,
     params: { organizationId }
   }
 }) => {
-  const [datasetsRequested, setDatasetsRequested] = useState(false);
+  const [assessmentsRequested, setAssessmentsRequested] = useState(false);
 
   const isTransportportal = getConfig().themeNap;
 
   const loadMoreDatasets = () =>
-    loadMoreOrganizationDatasets(
+    loadMoreAssessments(
       organizationId,
-      datasetsPage + 1,
-      isTransportportal ? 'transportportal' : undefined
+      'dataset',
+      isTransportportal ? 'NAP' : 'FDK',
+      assessmentsPage + 1
     );
 
   useLayoutEffect(() => {
@@ -66,14 +78,23 @@ const DatasetsPage: FC<Props> = ({
   }, []);
 
   useLayoutEffect(() => {
-    if (organization && !datasetsRequested) {
-      getOrganizationDatasets(
-        organization.organizationId,
-        isTransportportal ? 'transportportal' : undefined
+    if (!assessmentsRequested) {
+      getAssessments(
+        organizationId,
+        'dataset',
+        isTransportportal ? 'NAP' : 'FDK',
+        0
       );
-      setDatasetsRequested(true);
+
+      getCatalogRating(
+        organizationId,
+        'dataset',
+        isTransportportal ? 'NAP' : 'FDK'
+      );
+
+      setAssessmentsRequested(true);
     }
-  }, [organization?.organizationId]);
+  });
 
   const calculateRatingPercentage = (
     r: Pick<Rating, 'score' | 'maxScore'> | null | undefined
@@ -132,9 +153,12 @@ const DatasetsPage: FC<Props> = ({
             </tr>
           </SC.TableHead>
           <SC.TableBody>
-            {datasets.map(({ id, title, assessment }) => (
-              <tr key={id} onClick={() => push(`${url}/${id}`)}>
-                <td>{translate(title)}</td>
+            {assessments.map(assessment => (
+              <tr
+                key={assessment.id}
+                onClick={() => push(`${url}/${assessment.id}`)}
+              >
+                <td>{translate(assessment.entity?.title)}</td>
                 <td>
                   <SC.MetadataCellContents>
                     {determineRatingIcon(assessment?.rating)}
@@ -187,13 +211,17 @@ const DatasetsPage: FC<Props> = ({
             ))}
           </SC.TableBody>
         </SC.Table>
-        {hasMoreDatasets && (
+        {hasMoreAssessments && (
           <SC.LoadMoreButton onClick={loadMoreDatasets}>
             <ExpandIcon />
             <span>
               {translations.formatString(
                 translations.metadataQualityPage.loadMoreDatasets,
-                { count: datasetsCount - (datasetsPage + 1) * datasetsPageSize }
+                {
+                  count:
+                    totalAssessments -
+                    (assessmentsPage + 1) * assessmentPageSize
+                }
               )}
             </span>
           </SC.LoadMoreButton>
@@ -203,8 +231,8 @@ const DatasetsPage: FC<Props> = ({
             {translations.metadataQualityPage.averageRatingForOrganization}
           </div>
           <SC.MetadataCellContents>
-            {determineRatingIcon(rating)}
-            <span>{calculateRatingPercentage(rating)}%</span>
+            {determineRatingIcon(catalogRating)}
+            <span>{calculateRatingPercentage(catalogRating)}%</span>
           </SC.MetadataCellContents>
           {[
             DimensionType.ACCESSIBILITY,
@@ -215,7 +243,7 @@ const DatasetsPage: FC<Props> = ({
           ].map(dimension => (
             <div key={dimension}>
               {`${calculateRatingPercentage(
-                rating?.dimensionsRating?.[dimension]
+                catalogRating?.dimensionsRating?.[dimension]
               )}%`}
             </div>
           ))}
@@ -245,6 +273,8 @@ const DatasetsPage: FC<Props> = ({
 
 export default compose<FC>(
   memo,
+  withAssessment,
+  withAssessments,
   withOrganization,
   withErrorBoundary(ErrorPage)
 )(DatasetsPage);

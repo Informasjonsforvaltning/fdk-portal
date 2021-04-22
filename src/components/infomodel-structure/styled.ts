@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
-
-import ExpansionPanelBase, { SC } from '../expansion-panel';
+import ExpansionPanelBase, { SC } from '@fellesdatakatalog/expansion-panel';
 
 interface ExpansionPanelProps {
   showWithoutHeadAndPadding?: boolean;
