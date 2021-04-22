@@ -34,6 +34,7 @@ import SC from './styled';
 
 import type { Theme, Language, TextLanguage } from '../../types';
 import { Entity } from '../../types/enums';
+import { languageSorter } from '../../lib/languageSorter';
 
 interface RouteParams {
   conceptId: string;
@@ -314,7 +315,7 @@ const ConceptDetailsPage: FC<Props> = ({
               {hasFieldSelectedLanguage(altLabels) && (
                 <KeyValueListItem
                   property={translations.concept.altLabel}
-                  value={altLabels.map((altLabel, index) => (
+                  value={languageSorter(altLabels).map((altLabel, index) => (
                     <MultiLingualField
                       key={index}
                       languages={selectedLanguages}
@@ -327,14 +328,16 @@ const ConceptDetailsPage: FC<Props> = ({
               {hasFieldSelectedLanguage(hiddenLabels) && (
                 <KeyValueListItem
                   property={translations.concept.hiddenLabel}
-                  value={hiddenLabels.map((hiddenLabel, index) => (
-                    <MultiLingualField
-                      key={index}
-                      languages={selectedLanguages}
-                      text={hiddenLabel}
-                      useFallback={false}
-                    />
-                  ))}
+                  value={languageSorter(hiddenLabels).map(
+                    (hiddenLabel, index) => (
+                      <MultiLingualField
+                        key={index}
+                        languages={selectedLanguages}
+                        text={hiddenLabel}
+                        useFallback={false}
+                      />
+                    )
+                  )}
                 />
               )}
             </KeyValueList>
@@ -374,14 +377,16 @@ const ConceptDetailsPage: FC<Props> = ({
                 hasFieldSelectedLanguage(applications) && (
                   <KeyValueListItem
                     property={translations.concept.application}
-                    value={applications.map((application, index) => (
-                      <MultiLingualField
-                        key={index}
-                        languages={selectedLanguages}
-                        text={application}
-                        useFallback={false}
-                      />
-                    ))}
+                    value={languageSorter(applications).map(
+                      (application, index) => (
+                        <MultiLingualField
+                          key={index}
+                          languages={selectedLanguages}
+                          text={application}
+                          useFallback={false}
+                        />
+                      )
+                    )}
                   />
                 )}
             </KeyValueList>
