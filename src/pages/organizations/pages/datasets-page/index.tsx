@@ -83,7 +83,7 @@ const DatasetsPage: FC<Props> = ({
         organizationId,
         'dataset',
         isTransportportal ? 'NAP' : 'FDK',
-        assessmentsPage
+        0
       );
 
       getCatalogRating(
