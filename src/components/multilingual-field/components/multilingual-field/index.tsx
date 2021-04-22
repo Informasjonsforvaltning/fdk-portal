@@ -48,9 +48,7 @@ const renderTextField = ({
     textArray.length > 0 &&
     textArray.map((item: any, index: number) => (
       <SC.LanguageField key={index}>
-        {selectedLanguages?.length > 1 && Object.keys(item)?.length === 1 && (
-          <SC.LanguageIndicator>{Object.keys(item)}</SC.LanguageIndicator>
-        )}
+        <SC.LanguageIndicator>{Object.keys(item)}</SC.LanguageIndicator>
         {convertToMarkUp
           ? parse(convertToSanitizedHtml(getTranslateText(item)))
           : getTranslateText(item)}
