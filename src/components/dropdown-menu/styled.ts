@@ -58,7 +58,7 @@ const Title = styled.button<titleProps>`
   ${({ theme }) =>
     isTransportportal
       ? css`
-          background-color: ${theme.extendedColors.neutralDarkest};
+          background-color: ${theme.extendedColors.neutralDark};
           color: ${theme.extendedColors.neutralLightest};
         `
       : css`

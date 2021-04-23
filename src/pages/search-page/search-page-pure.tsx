@@ -143,30 +143,28 @@ const SearchPage: FC<Props> = ({
 
   return (
     <div>
-      <section className='top-section-search mb-4 d-flex flex-column justify-content-between top-section-search--image'>
-        <SearchBox>
-          <SearchBoxTitle>
-            <HitsStats
-              countDatasets={datasetTotal}
-              countApis={dataServiceTotal}
-              countTerms={conceptTotal}
-              countInformationModels={informationModelTotal}
-            />
-          </SearchBoxTitle>
-          {!getConfig().themeNap && (
-            <Tabs
-              countResults={searchAllEntities?.page?.totalElements || 0}
-              countDatasets={datasetTotal || 0}
-              countConcepts={conceptTotal || 0}
-              countApis={dataServiceTotal || 0}
-              countInformationModels={informationModelTotal || 0}
-              countPublicServices={
-                publicServicesAndEventsPage?.totalElements || 0
-              }
-            />
-          )}
-        </SearchBox>
-      </section>
+      <SearchBox>
+        <SearchBoxTitle>
+          <HitsStats
+            countDatasets={datasetTotal}
+            countApis={dataServiceTotal}
+            countTerms={conceptTotal}
+            countInformationModels={informationModelTotal}
+          />
+        </SearchBoxTitle>
+        {!getConfig().themeNap && (
+          <Tabs
+            countResults={searchAllEntities?.page?.totalElements || 0}
+            countDatasets={datasetTotal || 0}
+            countConcepts={conceptTotal || 0}
+            countApis={dataServiceTotal || 0}
+            countInformationModels={informationModelTotal || 0}
+            countPublicServices={
+              publicServicesAndEventsPage?.totalElements || 0
+            }
+          />
+        )}
+      </SearchBox>
       <div className='container'>
         <Switch>
           <Route exact path={PATHNAME_SEARCH}>

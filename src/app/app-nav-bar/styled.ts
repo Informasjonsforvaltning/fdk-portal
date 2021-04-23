@@ -19,7 +19,7 @@ const Header = styled.header`
   ${({ theme }) =>
     isTransportportal
       ? css`
-          background-color: ${theme.extendedColors.neutralDarkest};
+          background-color: ${theme.extendedColors.neutralDark};
           color: ${theme.extendedColors.neutralLightest};
         `
       : css`
