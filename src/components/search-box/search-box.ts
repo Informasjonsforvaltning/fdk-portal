@@ -2,4 +2,4 @@ export { default as SearchBox } from './components/search-box/search-box.compone
 
 export { default as SearchLink } from './components/search-link/search-link.component';
 
-export { default as SearchBoxTitle } from './components/search-box-title/search-box-title.component';
+export { default as SearchBoxHeader } from './components/search-box-header/search-box-header.component';

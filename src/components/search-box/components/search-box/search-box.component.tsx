@@ -9,13 +9,13 @@ import React, {
 import SC from './styled';
 import SearchForm from '../search-form/search-form.component';
 import SearchLink from '../search-link/search-link.component';
-import SearchBoxTitle from '../search-box-title/search-box-title.component';
+import SearchBoxHeader from '../search-box-header/search-box-header.component';
 import { Tabs } from '../../../../pages/search-page/tabs/tabs';
 
 const SearchBox: FC<PropsWithChildren<any>> = ({ children }) => {
-  const renderSearchBoxTitle = () =>
+  const renderSearchBoxHeader = () =>
     Children.map(children, child =>
-      isValidElement(child) && child.type === SearchBoxTitle ? child : null
+      isValidElement(child) && child.type === SearchBoxHeader ? child : null
     )?.shift();
 
   const renderSearchLinks = () =>
@@ -31,7 +31,7 @@ const SearchBox: FC<PropsWithChildren<any>> = ({ children }) => {
   return (
     <SC.SearchBox>
       <SC.Content>
-        {renderSearchBoxTitle()}
+        {renderSearchBoxHeader()}
         <SearchForm />
         {Children.count(renderSearchLinks()) > 0 && (
           <SC.SearchLinks>{renderSearchLinks()}</SC.SearchLinks>

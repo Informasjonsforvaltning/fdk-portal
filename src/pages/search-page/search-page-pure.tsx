@@ -5,7 +5,7 @@ import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 
 import {
   SearchBox,
-  SearchBoxTitle
+  SearchBoxHeader
 } from '../../components/search-box/search-box';
 
 import { HitsStats } from './search-box/hits-stats/hits-stats.component';
@@ -144,14 +144,14 @@ const SearchPage: FC<Props> = ({
   return (
     <div>
       <SearchBox>
-        <SearchBoxTitle>
+        <SearchBoxHeader>
           <HitsStats
             countDatasets={datasetTotal}
             countApis={dataServiceTotal}
             countTerms={conceptTotal}
             countInformationModels={informationModelTotal}
           />
-        </SearchBoxTitle>
+        </SearchBoxHeader>
         {!getConfig().themeNap && (
           <Tabs
             countResults={searchAllEntities?.page?.totalElements || 0}
