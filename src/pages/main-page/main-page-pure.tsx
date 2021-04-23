@@ -31,7 +31,9 @@ const MainPage: FC<Props> = ({
   return (
     <div>
       <SearchBox>
-        <SearchBoxHeader large>{localization.searchBoxHeader}</SearchBoxHeader>
+        <SearchBoxHeader as='h1' large>
+          {localization.searchBoxHeader}
+        </SearchBoxHeader>
         <SearchLink entity={Entity.DATASET} />
         <SearchLink entity={Entity.DATA_SERVICE} />
         <SearchLink entity={Entity.CONCEPT} />
