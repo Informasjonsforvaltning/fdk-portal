@@ -14,15 +14,19 @@ export interface Props {
   text?: Partial<TextLanguage>;
   convertToMarkUp?: boolean;
   useFallback?: boolean;
+  skippedLanguages?: string[];
 }
 
 const renderTextField = ({
   languages,
   text,
   convertToMarkUp,
-  useFallback
+  useFallback,
+  skippedLanguages
 }: Props) => {
-  const selectedLanguages = languages.filter(({ selected }) => selected);
+  const selectedLanguages = languages.filter(
+    ({ code, selected }) => selected && !skippedLanguages?.includes(code)
+  );
   const textArray: any = [];
 
   selectedLanguages.forEach(({ code }) => {
@@ -44,9 +48,7 @@ const renderTextField = ({
     textArray.length > 0 &&
     textArray.map((item: any, index: number) => (
       <SC.LanguageField key={index}>
-        {selectedLanguages?.length > 1 && Object.keys(item)?.length === 1 && (
-          <SC.LanguageIndicator>{Object.keys(item)}</SC.LanguageIndicator>
-        )}
+        <SC.LanguageIndicator>{Object.keys(item)}</SC.LanguageIndicator>
         {convertToMarkUp
           ? parse(convertToSanitizedHtml(getTranslateText(item)))
           : getTranslateText(item)}
@@ -59,10 +61,17 @@ const MultiLingualField: FC<Props> = ({
   languages,
   text = {},
   convertToMarkUp = false,
-  useFallback = true
+  useFallback = true,
+  skippedLanguages = []
 }) => (
   <SC.MultiLingualField>
-    {renderTextField({ languages, text, convertToMarkUp, useFallback })}
+    {renderTextField({
+      languages,
+      text,
+      convertToMarkUp,
+      useFallback,
+      skippedLanguages
+    })}
   </SC.MultiLingualField>
 );
 

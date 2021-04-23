@@ -69,23 +69,34 @@ const Banner: FC<Props> = ({
         ))}
       <Icon />
       <SC.Content>
-        <SC.Title>
-          {translate(
-            title,
-            languages.filter(({ selected }) => selected)?.length === 1
-              ? languages.filter(({ selected }) => selected).shift()?.code
-              : undefined
+        <SC.TitleWrapper>
+          {entity === Entity.CONCEPT && (
+            <SC.LanguageIndicator>
+              {translations.getLanguage()}
+            </SC.LanguageIndicator>
           )}
-          {isAuthoritative && (
-            <div data-tip={translations.authoritativeDatasetTooltip}>
-              <AuthoritativeIcon />
-              <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
-            </div>
-          )}
-        </SC.Title>
+          <SC.Title>
+            {translate(
+              title,
+              languages.filter(({ selected }) => selected)?.length === 1
+                ? languages.filter(({ selected }) => selected).shift()?.code
+                : undefined
+            )}
+            {isAuthoritative && (
+              <div data-tip={translations.authoritativeDatasetTooltip}>
+                <AuthoritativeIcon />
+                <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
+              </div>
+            )}
+          </SC.Title>
+        </SC.TitleWrapper>
         {entity === Entity.CONCEPT &&
           languages.filter(({ selected }) => selected)?.length > 1 && (
-            <MultiLingualField languages={languages} text={title} />
+            <MultiLingualField
+              languages={languages}
+              text={title}
+              skippedLanguages={[translations.getLanguage()]}
+            />
           )}
         <SC.LastPublishedInfo>
           {translations.formatString(
