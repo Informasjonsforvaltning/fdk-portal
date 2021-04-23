@@ -14,6 +14,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   height: 80px;
+  position: relative;
   z-index: 10;
 
   ${({ theme }) =>
