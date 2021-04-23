@@ -55,6 +55,11 @@ const Content = styled.div`
   }
 `;
 
+const TitleWrapper = styled.div`
+  align-items: center;
+  display: flex;
+`;
+
 const Title = styled.h1`
   display: flex inline;
   margin: 0;
@@ -111,4 +116,17 @@ const BetaRibbon = styled.span<InvertedColorProps>`
       : theme.colour(Colour.RED, 'R60')};
 `;
 
-export default { Banner, Content, Title, LastPublishedInfo, BetaRibbon };
+const LanguageIndicator = styled(SC.MultiLingualField.LanguageIndicator)`
+  background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  font-size: 1em;
+`;
+
+export default {
+  Banner,
+  Content,
+  TitleWrapper,
+  Title,
+  LastPublishedInfo,
+  BetaRibbon,
+  LanguageIndicator
+};
