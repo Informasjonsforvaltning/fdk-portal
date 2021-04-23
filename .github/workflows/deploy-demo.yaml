@@ -3,6 +3,7 @@ name: Deploy to demo
 on:
   repository_dispatch:
     types: [deploy-demo]
+  workflow_dispatch:
 
 jobs:
   deploy-demo:
