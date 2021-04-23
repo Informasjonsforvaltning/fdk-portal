@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Colour, theme } from '@fellesdatakatalog/theme';
 
-import SearchBoxTitleSC from '../search-box-title/styled';
+import SearchBoxHeaderSC from '../search-box-header/styled';
 import SearchBoxBackground from '../../../../img/illustration-search-dark.svg';
 import { getConfig } from '../../../../config';
 
@@ -59,7 +59,7 @@ const Content = styled.div`
     width: 100%;
   }
 
-  ${SearchBoxTitleSC.Title} {
+  ${SearchBoxHeaderSC.SearchBoxHeader} {
     margin-bottom: 1em;
     text-align: center;
   }

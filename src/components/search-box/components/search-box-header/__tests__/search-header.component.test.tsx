@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 
-import Title from '../search-box-title.component';
+import SearchBoxHeader from '../search-box-header.component';
 
 afterEach(cleanup);
 
-describe('Title component', () => {
+describe('SearchBoxHeader component', () => {
   it('must render single text child node correctly', () => {
     const text = 'text child';
 
-    const { container } = render(<Title>{text}</Title>);
+    const { container } = render(<SearchBoxHeader>{text}</SearchBoxHeader>);
 
     expect(container).not.toBeEmptyDOMElement();
     expect(container.children).toHaveLength(1);
