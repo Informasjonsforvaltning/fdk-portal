@@ -12,19 +12,7 @@ exports[`should render HitsStats correctly when no hits 1`] = `
 </div>
 `;
 
-exports[`should render HitsStats correctly when no initial search 1`] = `
-<div
-  data-qa="hits-stats"
->
-  <div
-    data-qa="info"
-  >
-    Search among 100 datasets, 0 APIs, 100 concepts and 0 information models
-  </div>
-</div>
-`;
-
-exports[`should render HitsStats correctly when search performed  1`] = `
+exports[`should render HitsStats correctly with hits  1`] = `
 <div
   data-qa="hits-stats"
 >
