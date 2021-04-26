@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import localization from '../../../../lib/localization';
-import { getConfig } from '../../../../config';
 
 export const HitsStats = props => {
   const {
@@ -22,43 +21,28 @@ export const HitsStats = props => {
     return null;
   }
 
-  let content = '';
+  const nohits =
+    countDatasets === 0 &&
+    countApis === 0 &&
+    countTerms === 0 &&
+    countInformationModels === 0;
 
-  if (getConfig().themeNap) {
-    let template;
-    if (!filteringOrTextSearchPerformed) {
-      template = localization.hitstats.nosearchNap;
-    } else if (countDatasets === 0) {
-      template = localization.hitstats.nohits;
-    } else {
-      template = localization.hitstats.searchNap;
-    }
-
-    content = localization.formatString(template, countDatasets);
+  let template;
+  if (!filteringOrTextSearchPerformed) {
+    template = localization.hitstats.nosearch;
+  } else if (nohits) {
+    template = localization.hitstats.nohits;
   } else {
-    const nohits =
-      countDatasets === 0 &&
-      countApis === 0 &&
-      countTerms === 0 &&
-      countInformationModels === 0;
-
-    let template;
-    if (!filteringOrTextSearchPerformed) {
-      template = localization.hitstats.nosearch;
-    } else if (nohits) {
-      template = localization.hitstats.nohits;
-    } else {
-      template = localization.hitstats.search;
-    }
-
-    content = localization.formatString(
-      template,
-      countDatasets,
-      countApis,
-      countTerms,
-      countInformationModels
-    );
+    template = localization.hitstats.search;
   }
+
+  const content = localization.formatString(
+    template,
+    countDatasets,
+    countApis,
+    countTerms,
+    countInformationModels
+  );
 
   return (
     <div data-qa='hits-stats'>
