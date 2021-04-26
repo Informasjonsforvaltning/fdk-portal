@@ -85,6 +85,7 @@
   "days": "dager",
   "requiredBy": "Krevd av",
   "relatedBy": "Relatert av",
+  "collaborationBetween": "Et samarbeid mellom:",
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
