@@ -7,8 +7,7 @@ export const HitsStats = props => {
     countDatasets,
     countTerms,
     countApis,
-    countInformationModels,
-    filteringOrTextSearchPerformed
+    countInformationModels
   } = props;
 
   // Do not show anything if we don't have the stats yet
@@ -28,9 +27,7 @@ export const HitsStats = props => {
     countInformationModels === 0;
 
   let template;
-  if (!filteringOrTextSearchPerformed) {
-    template = localization.hitstats.nosearch;
-  } else if (nohits) {
+  if (nohits) {
     template = localization.hitstats.nohits;
   } else {
     template = localization.hitstats.search;
@@ -55,14 +52,12 @@ HitsStats.defaultProps = {
   countDatasets: 0,
   countTerms: 0,
   countApis: 0,
-  countInformationModels: 0,
-  filteringOrTextSearchPerformed: false
+  countInformationModels: 0
 };
 
 HitsStats.propTypes = {
   countDatasets: PropTypes.number,
   countTerms: PropTypes.number,
   countApis: PropTypes.number,
-  countInformationModels: PropTypes.number,
-  filteringOrTextSearchPerformed: PropTypes.bool
+  countInformationModels: PropTypes.number
 };
