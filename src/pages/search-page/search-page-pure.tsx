@@ -5,7 +5,8 @@ import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 
 import {
   SearchBox,
-  SearchBoxHeader
+  SearchBoxHeader,
+  SC
 } from '../../components/search-box/search-box';
 
 import { HitsStats } from './search-box/hits-stats/hits-stats.component';
@@ -21,9 +22,11 @@ import {
   HITS_PER_PAGE,
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
+import translations from '../../lib/localization';
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { Tabs } from './tabs/tabs';
 import ResultsPage from './results-all-entities/results-all-entities.component';
+import TransportPortalLogos from '../../components/transport-portal-logos';
 import withPublicServicesAndEvents, {
   Props as PublicServicesAndEventsProps
 } from '../../components/with-public-services-and-events';
@@ -143,16 +146,16 @@ const SearchPage: FC<Props> = ({
 
   return (
     <div>
-      <SearchBox>
-        <SearchBoxHeader>
-          <HitsStats
-            countDatasets={datasetTotal}
-            countApis={dataServiceTotal}
-            countTerms={conceptTotal}
-            countInformationModels={informationModelTotal}
-          />
-        </SearchBoxHeader>
-        {!getConfig().themeNap && (
+      {!getConfig().themeNap && (
+        <SearchBox>
+          <SearchBoxHeader>
+            <HitsStats
+              countDatasets={datasetTotal}
+              countApis={dataServiceTotal}
+              countTerms={conceptTotal}
+              countInformationModels={informationModelTotal}
+            />
+          </SearchBoxHeader>
           <Tabs
             countResults={searchAllEntities?.page?.totalElements || 0}
             countDatasets={datasetTotal || 0}
@@ -163,8 +166,18 @@ const SearchPage: FC<Props> = ({
               publicServicesAndEventsPage?.totalElements || 0
             }
           />
-        )}
-      </SearchBox>
+        </SearchBox>
+      )}
+      {getConfig().themeNap && (
+        <SearchBox>
+          <SearchBoxHeader>
+            <SC.SearchBox.SearchHeaderLogosTitle>
+              {translations.collaborationBetween}
+            </SC.SearchBox.SearchHeaderLogosTitle>
+            <TransportPortalLogos />
+          </SearchBoxHeader>
+        </SearchBox>
+      )}
       <div className='container'>
         <Switch>
           <Route exact path={PATHNAME_SEARCH}>
