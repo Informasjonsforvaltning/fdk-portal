@@ -29,7 +29,7 @@ const SearchBox = styled.section`
         `}
 
   @media (max-width: 900px) {
-    background-size: 70%;
+    background-size: 60%;
     font-size: 1.1rem;
   }
 `;
@@ -77,8 +77,14 @@ const SearchLinks = styled.div`
   }
 `;
 
+const SearchHeaderLogosTitle = styled.div`
+  font-size: 1.8rem;
+  font-weight: 400;
+`;
+
 export default {
   SearchBox,
   Content,
-  SearchLinks
+  SearchLinks,
+  SearchHeaderLogosTitle
 };
