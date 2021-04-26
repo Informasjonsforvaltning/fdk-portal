@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render HitsStats correctly when no hits 1`] = `
+<span>
+  Sorry, no hits
+</span>
+`;
+
+exports[`should render HitsStats correctly with hits  1`] = `
+<span>
+  Search gave 100 hit(s) among datasets, 100 hit(s) among APIs, 100 hit(s) among concepts 100 hit(s) among information models
+</span>
+`;
