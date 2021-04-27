@@ -17,14 +17,14 @@ const Header = styled.header`
   position: relative;
   z-index: 10;
 
-  ${({ theme }) =>
+  ${({ theme: extendedTheme }) =>
     isTransportportal
       ? css`
-          background-color: ${theme.extendedColors.neutralDark};
-          color: ${theme.extendedColors.neutralLightest};
+          background-color: ${extendedTheme.extendedColors.neutralDark};
+          color: ${theme.colour(Colour.NEUTRAL, 'N0')};
         `
       : css`
-          background-color: ${theme.extendedColors.headerBg};
+          background-color: ${extendedTheme.extendedColors.headerBg};
         `}
 `;
 
@@ -81,10 +81,10 @@ const NavigationLinks = styled.ul`
   margin-right: 1em;
 
   & > li * {
-    ${({ theme: extendedTheme }) =>
+    ${() =>
       isTransportportal
         ? css`
-            color: ${extendedTheme.extendedColors.neutralLightest};
+            color: ${theme.colour(Colour.NEUTRAL, 'N0')};
           `
         : css`
             color: ${theme.colour(Colour.NEUTRAL, 'N70')};
