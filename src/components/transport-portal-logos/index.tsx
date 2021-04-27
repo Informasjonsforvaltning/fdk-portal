@@ -14,3 +14,5 @@ const TransportPortalLogos: FC<Props> = () => (
 );
 
 export default TransportPortalLogos;
+
+export { SC as TransportPortalLogosSC };
