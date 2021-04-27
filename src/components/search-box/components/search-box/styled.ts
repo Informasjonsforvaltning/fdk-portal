@@ -12,6 +12,7 @@ const SearchBox = styled.section`
   background-repeat: no-repeat;
   background-position: top right;
   background-image: url(${SearchBoxBackground});
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
   flex-flow: column;
   font-size: 1.6rem;
@@ -21,15 +22,13 @@ const SearchBox = styled.section`
     isTransportPortal
       ? css`
           background-color: ${extendedTheme.extendedColors.neutralDarkest};
-          color: ${extendedTheme.extendedColors.neutralLightest};
         `
       : css`
           background-color: ${theme.colour(Colour.NEUTRAL, 'N60')};
-          color: ${theme.colour(Colour.NEUTRAL, 'N0')};
         `}
 
   @media (max-width: 900px) {
-    background-size: 60%;
+    background-size: 40%;
     font-size: 1.1rem;
   }
 `;
