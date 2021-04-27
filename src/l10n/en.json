@@ -228,7 +228,8 @@
     "informationCookies": "Cookies",
     "twitter": "The National Data Catalog on Twitter",
     "footerText": "The Norwegian Digitalisation Agency managing the National Data Catalog.",
-    "contactTitle": "Contact"
+    "contactTitle": "Contact",
+    "privacyStatement": "Privacy statement"
   },
   "sort": {
     "by": "Sort by",
