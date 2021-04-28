@@ -104,9 +104,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     <main id='content'>
       {entities && entities.length > 0 ? (
         <>
-          <div className='row'>
-            <SortButtons />
-          </div>
+          <SortButtons />
           <SC.Content className='row'>
             <SC.Filters className='col-lg-4'>
               <span className='uu-invisible' aria-hidden='false'>

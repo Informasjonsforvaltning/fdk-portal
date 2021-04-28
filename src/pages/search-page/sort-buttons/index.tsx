@@ -35,7 +35,7 @@ const SortButtons: FC<RouteComponentProps> = ({ history, location }) => {
   };
 
   return (
-    <SC.SortButtons className='col-12'>
+    <SC.SortButtons>
       <ButtonToggleSC.ButtonToggle
         onClick={onSortByScoreClick}
         selected={sortField === undefined}
