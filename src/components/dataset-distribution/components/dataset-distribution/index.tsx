@@ -145,10 +145,9 @@ const DatasetDistribution: FC<Props> = ({
       )}
       {downloadURL && (
         <SC.Section>
-          <SC.DownloadButton href={downloadURL}>
-            <DownloadIcon />
+          <SC.DownloadLink href={downloadURL} icon={<DownloadIcon />}>
             {translations.dataset.distribution.download}
-          </SC.DownloadButton>
+          </SC.DownloadLink>
         </SC.Section>
       )}
       {pageUri && (

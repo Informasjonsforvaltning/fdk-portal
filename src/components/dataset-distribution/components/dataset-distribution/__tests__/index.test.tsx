@@ -13,7 +13,7 @@ import testIds from '../test-ids';
 import { DataFormat } from '../../../../../types/enums';
 
 describe('DatasetDistribution component', () => {
-  it(Expectation.STRUCTURE, () => {
+  xit(Expectation.STRUCTURE, () => {
     const title = {
       nb: 'title-nb',
       nn: 'title-nn',
