@@ -51,6 +51,7 @@ export interface InformationModel {
   theme?: EuTheme[];
   losTheme?: LosTheme[];
   contactPoint?: Partial<InformationModelContactPoint>[];
+  temporal?: Partial<TemporalRestriction>[];
 }
 
 export interface ModelCodeElement {
