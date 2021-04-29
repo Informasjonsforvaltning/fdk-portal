@@ -1,20 +1,34 @@
-import styled from 'styled-components';
-import SearchBoxTitleSC from '../search-box-title/styled';
+import styled, { css } from 'styled-components';
+import { Colour, theme } from '@fellesdatakatalog/theme';
 
+import SearchBoxHeaderSC from '../search-box-header/styled';
 import SearchBoxBackground from '../../../../img/illustration-search-dark.svg';
+import { getConfig } from '../../../../config';
+
+const isTransportPortal = getConfig().themeNap;
 
 const SearchBox = styled.section`
   align-items: center;
-  background-color: ${({ theme }) => theme.extendedColors.searchBoxBg};
   background-repeat: no-repeat;
   background-position: top right;
   background-image: url(${SearchBoxBackground});
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
   flex-flow: column;
   font-size: 1.6rem;
+  margin-bottom: 1em;
 
-  @media (max-width: 768px) {
-    background-size: 70%;
+  ${({ theme: extendedTheme }) =>
+    isTransportPortal
+      ? css`
+          background-color: ${extendedTheme.extendedColors.neutralDarkest};
+        `
+      : css`
+          background-color: ${theme.colour(Colour.NEUTRAL, 'N60')};
+        `}
+
+  @media (max-width: 900px) {
+    background-size: 40%;
     font-size: 1.1rem;
   }
 `;
@@ -44,8 +58,7 @@ const Content = styled.div`
     width: 100%;
   }
 
-  ${SearchBoxTitleSC.Title} {
-    color: ${({ theme }) => theme.extendedColors.headerBg};
+  ${SearchBoxHeaderSC.SearchBoxHeader} {
     margin-bottom: 1em;
     text-align: center;
   }
@@ -63,8 +76,14 @@ const SearchLinks = styled.div`
   }
 `;
 
+const SearchHeaderLogosTitle = styled.div`
+  font-size: 1.8rem;
+  font-weight: 400;
+`;
+
 export default {
   SearchBox,
   Content,
-  SearchLinks
+  SearchLinks,
+  SearchHeaderLogosTitle
 };

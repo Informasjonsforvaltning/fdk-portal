@@ -85,6 +85,7 @@
   "days": "days",
   "requiredBy": "Required by",
   "relatedBy": "Related by",
+  "collaborationBetween": "A collaboration between:",
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
@@ -227,7 +228,8 @@
     "informationCookies": "Cookies",
     "twitter": "The National Data Catalog on Twitter",
     "footerText": "The Norwegian Digitalisation Agency managing the National Data Catalog.",
-    "contactTitle": "Contact"
+    "contactTitle": "Contact",
+    "privacyStatement": "Privacy statement"
   },
   "sort": {
     "by": "Sort by",

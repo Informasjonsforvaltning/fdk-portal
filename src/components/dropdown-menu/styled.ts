@@ -1,4 +1,6 @@
 import styled, { css, createGlobalStyle } from 'styled-components';
+import { theme, Colour } from '@fellesdatakatalog/theme';
+
 import { getConfig } from '../../config';
 
 const isTransportportal = getConfig().themeNap;
@@ -55,14 +57,14 @@ const Title = styled.button<titleProps>`
   padding: 10px;
   font-size: 16px;
   border: none;
-  ${({ theme }) =>
+  ${({ theme: extendedTheme }) =>
     isTransportportal
       ? css`
-          background-color: ${theme.extendedColors.neutralDarkest};
-          color: ${theme.extendedColors.neutralLightest};
+          background-color: ${extendedTheme.extendedColors.neutralDark};
+          color: ${theme.colour(Colour.NEUTRAL, 'N0')};
         `
       : css`
-          background-color: ${theme.extendedColors.headerBg};
+          background-color: ${extendedTheme.extendedColors.headerBg};
         `}
 
   ${({ caret }) =>

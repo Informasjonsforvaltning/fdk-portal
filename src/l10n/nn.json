@@ -85,6 +85,7 @@
   "days": "dagar",
   "requiredBy": "Krevd av",
   "relatedBy": "Relatert av",
+  "collaborationBetween": "Eit samarbeid mellom:",
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
@@ -227,7 +228,8 @@
     "informationCookies": "Informasjonskapslar",
     "twitter": "Felles datakatalog på Twitter",
     "footerText": "Digitaliseringsdirektoratet forvaltar Felles Datakatalog.",
-    "contactTitle": "Kontakt"
+    "contactTitle": "Kontakt",
+    "privacyStatement": "Personvernerklæring"
   },
   "sort": {
     "by": "Sorter på",

@@ -4,7 +4,7 @@ import SC from './styled';
 import localization from '../../lib/localization';
 import {
   SearchBox,
-  SearchBoxTitle,
+  SearchBoxHeader,
   SearchLink
 } from '../../components/search-box/search-box';
 import HeaderSC from './components/header/styled';
@@ -31,7 +31,9 @@ const MainPage: FC<Props> = ({
   return (
     <div>
       <SearchBox>
-        <SearchBoxTitle large>{localization.searchBoxHeader}</SearchBoxTitle>
+        <SearchBoxHeader as='h1' large>
+          {localization.searchBoxHeader}
+        </SearchBoxHeader>
         <SearchLink entity={Entity.DATASET} />
         <SearchLink entity={Entity.DATA_SERVICE} />
         <SearchLink entity={Entity.CONCEPT} />

@@ -5,7 +5,8 @@ import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 
 import {
   SearchBox,
-  SearchBoxTitle
+  SearchBoxHeader,
+  SC
 } from '../../components/search-box/search-box';
 
 import { HitsStats } from './search-box/hits-stats/hits-stats.component';
@@ -21,9 +22,11 @@ import {
   HITS_PER_PAGE,
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
+import translations from '../../lib/localization';
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { Tabs } from './tabs/tabs';
 import ResultsPage from './results-all-entities/results-all-entities.component';
+import TransportPortalLogos from '../../components/transport-portal-logos';
 import withPublicServicesAndEvents, {
   Props as PublicServicesAndEventsProps
 } from '../../components/with-public-services-and-events';
@@ -143,30 +146,38 @@ const SearchPage: FC<Props> = ({
 
   return (
     <div>
-      <section className='top-section-search mb-4 d-flex flex-column justify-content-between top-section-search--image'>
+      {!getConfig().themeNap && (
         <SearchBox>
-          <SearchBoxTitle>
+          <SearchBoxHeader>
             <HitsStats
               countDatasets={datasetTotal}
               countApis={dataServiceTotal}
               countTerms={conceptTotal}
               countInformationModels={informationModelTotal}
             />
-          </SearchBoxTitle>
-          {!getConfig().themeNap && (
-            <Tabs
-              countResults={searchAllEntities?.page?.totalElements || 0}
-              countDatasets={datasetTotal || 0}
-              countConcepts={conceptTotal || 0}
-              countApis={dataServiceTotal || 0}
-              countInformationModels={informationModelTotal || 0}
-              countPublicServices={
-                publicServicesAndEventsPage?.totalElements || 0
-              }
-            />
-          )}
+          </SearchBoxHeader>
+          <Tabs
+            countResults={searchAllEntities?.page?.totalElements || 0}
+            countDatasets={datasetTotal || 0}
+            countConcepts={conceptTotal || 0}
+            countApis={dataServiceTotal || 0}
+            countInformationModels={informationModelTotal || 0}
+            countPublicServices={
+              publicServicesAndEventsPage?.totalElements || 0
+            }
+          />
         </SearchBox>
-      </section>
+      )}
+      {getConfig().themeNap && (
+        <SearchBox>
+          <SearchBoxHeader>
+            <SC.SearchBox.SearchHeaderLogosTitle>
+              {translations.collaborationBetween}
+            </SC.SearchBox.SearchHeaderLogosTitle>
+            <TransportPortalLogos />
+          </SearchBoxHeader>
+        </SearchBox>
+      )}
       <div className='container'>
         <Switch>
           <Route exact path={PATHNAME_SEARCH}>
