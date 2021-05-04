@@ -1,6 +1,6 @@
-import { formatSorter } from '../utils';
+import { formatSorter } from '..';
 
-import { DataFormat } from '../../../../../types/enums';
+import { DataFormat } from '../../../types/enums';
 
 describe('DatasetDistribution utils', () => {
   describe('formatSorter', () => {

@@ -23,7 +23,11 @@ import SC from './styled';
 
 import testIds from './test-ids';
 
-import { toFormat, formatSorter, toMediaType } from './utils';
+import {
+  toFormat,
+  formatSorter,
+  toMediaType
+} from '../../../../utils/mediatype';
 
 import { Distribution, License, MediaType } from '../../../../types';
 

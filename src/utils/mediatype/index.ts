@@ -1,5 +1,5 @@
-import type { MediaType } from '../../../../types';
-import { DataFormat } from '../../../../types/enums';
+import type { MediaType } from '../../types';
+import { DataFormat } from '../../types/enums';
 
 const priorities: Record<string, number> = {
   [DataFormat.JSON]: 1,
@@ -20,12 +20,18 @@ const priorities: Record<string, number> = {
   [DataFormat.UNKNOWN]: 16
 };
 
+const stripUri = (format: string) =>
+  format
+    .replace('https://www.iana.org/assignments/media-types/', '')
+    .replace('http://publications.europa.eu/resource/authority/file-type/', '');
+
 export const toFormat = (format: string): string =>
-  Object.values(DataFormat).find(v => format.includes(v)) ?? format;
+  Object.values(DataFormat).find(v => format.includes(v)) ?? stripUri(format);
 
 export const toMediaType = (mediaTypes: MediaType[]) => (
   format: string
-): string => mediaTypes.find(({ uri }) => uri.includes(format))?.name ?? format;
+): string =>
+  mediaTypes.find(({ uri }) => uri.includes(format))?.name ?? stripUri(format);
 
 export const formatSorter = (a: string, b: string): number => {
   if (!(a in priorities)) {
