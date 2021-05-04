@@ -77,7 +77,10 @@ const OrganizationPage: FC<Props> = ({
     }
 
     if (rating?.organization?.organizationId !== organizationId) {
-      getRating(organizationId);
+      getRating(
+        organizationId,
+        isTransportportal ? 'transportportal' : undefined
+      );
     }
 
     return () => {

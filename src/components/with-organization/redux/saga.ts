@@ -54,10 +54,10 @@ function* getEnhetsregisteretOrganizationRequested({
 }
 
 function* getOrganizationRatingRequested({
-  payload: { id }
+  payload: { id, filter }
 }: ReturnType<typeof actions.getOrganizationRatingRequested>) {
   try {
-    const data = yield call(getOrganizationData, id);
+    const data = yield call(getOrganizationData, id, filter);
 
     if (data) {
       yield put(
