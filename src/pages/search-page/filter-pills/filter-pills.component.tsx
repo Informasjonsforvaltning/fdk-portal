@@ -54,6 +54,16 @@ const getFilterLabel = (
         capitalize(referencedItem?.name)
       );
     }
+    case Filter.ORGANIZATION_NUMBER: {
+      const referencedItem: any = Object.values(referenceDataItems).find(
+        ({ id }: any) => id === filterValue
+      );
+
+      return (
+        getTranslateText(referencedItem?.prefLabel) ||
+        capitalize(referencedItem?.name)
+      );
+    }
     case Filter.THEME:
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
@@ -124,6 +134,7 @@ const FilterPillsPure: FC<Props> = ({
     [Filter.THEME]: themesItems,
     [Filter.LOS]: losItems,
     [Filter.ORGPATH]: publishers,
+    [Filter.ORGANIZATION_NUMBER]: publishers,
     [Filter.EVENT_TYPE]: eventTypes,
     [Filter.FORMAT]: mediaTypes
   };
