@@ -66,6 +66,7 @@ export enum Filter {
   FORMAT = 'format',
   LOS = 'losTheme',
   ORGPATH = 'orgPath',
+  ORGANIZATION_NUMBER = 'organizationNumber',
   THEME = 'theme',
   Q = 'q',
   PAGE = 'page',

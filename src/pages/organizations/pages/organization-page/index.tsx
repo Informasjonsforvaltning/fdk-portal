@@ -227,8 +227,8 @@ const OrganizationPage: FC<Props> = ({
               <SC.Box>
                 <StatisticsRegular
                   to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                    Filter.ORGPATH,
-                    organization?.orgPath
+                    Filter.ORGANIZATION_NUMBER,
+                    organization?.organizationId
                   )}`}
                 >
                   <IllustrationWithCount

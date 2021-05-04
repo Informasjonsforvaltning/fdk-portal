@@ -133,16 +133,18 @@ const SearchPage: FC<Props> = ({
       : locationSearchParamQ;
 
   useEffect(() => {
+    fetchDatasetsIfNeeded(datasetSearchParams);
+    fetchDataServicesIfNeeded(dataServiceSearchParams);
+    fetchConceptsIfNeeded(conceptSearchParams);
+    fetchInformationModelsIfNeeded(informationModelSearchParams);
+  }, []);
+
+  useEffect(() => {
     if (shouldFetch(publicServiceSearchParams, searchQuery)) {
       getPublicServicesAndEvents(publicServiceSearchParams);
       setSearchQuery(generateQueryKey(publicServiceSearchParams));
     }
   }, [publicServiceSearchParams]);
-
-  fetchDatasetsIfNeeded(datasetSearchParams);
-  fetchDataServicesIfNeeded(dataServiceSearchParams);
-  fetchConceptsIfNeeded(conceptSearchParams);
-  fetchInformationModelsIfNeeded(informationModelSearchParams);
 
   return (
     <div>
