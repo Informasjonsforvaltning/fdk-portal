@@ -523,6 +523,7 @@
     "statusWithdrawn": "Withdrawn",
     "modelStatus": "Model status",
     "language": "Language",
+    "hasFormats": "Alternative representation of the model",
     "issued": "Issued",
     "valid": "Valid",
     "from": "from",

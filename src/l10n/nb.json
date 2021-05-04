@@ -523,6 +523,7 @@
     "statusWithdrawn": "Tilbaketrukket",
     "modelStatus": "Modellstatus",
     "language": "Språk",
+    "hasFormats": "Alternativ representasjon av modellen",
     "issued": "Utgitt",
     "valid": "Gyldig",
     "from": "fra",

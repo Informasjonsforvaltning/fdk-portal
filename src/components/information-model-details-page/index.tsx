@@ -180,6 +180,7 @@ const InformationModelDetailsPage: FC<Props> = ({
     ...(informationModel?.theme ?? [])
   ];
   const temporalRestrictions = informationModel?.temporal ?? [];
+  const hasFormats = informationModel?.hasFormat ?? [];
 
   const informationModelIdentifiers = ([
     isPartOf,
@@ -355,6 +356,7 @@ const InformationModelDetailsPage: FC<Props> = ({
         {(type ||
           licenses.length > 0 ||
           languages.length > 0 ||
+          hasFormats.length > 0 ||
           informationModelCategory ||
           seeAlso) && (
           <ContentSection
@@ -396,6 +398,27 @@ const InformationModelDetailsPage: FC<Props> = ({
                     .map(({ prefLabel }) => translate(prefLabel))
                     .filter(Boolean)
                     .join(', ')}
+                />
+              )}
+              {hasFormats.length > 0 && (
+                <KeyValueListItem
+                  property={translations.infoMod.hasFormats}
+                  value={hasFormats.map(({ uri, title, format }) => (
+                    <SC.Format key={uri}>
+                      <SC.Link href={uri} external>
+                        {translate(title)}
+                      </SC.Link>
+                      {format && (
+                        <SC.FormatTag>
+                          {translations.format}:{' '}
+                          {format.substr(
+                            format.lastIndexOf('/') + 1,
+                            format.length
+                          )}
+                        </SC.FormatTag>
+                      )}
+                    </SC.Format>
+                  ))}
                 />
               )}
               {seeAlso && (
