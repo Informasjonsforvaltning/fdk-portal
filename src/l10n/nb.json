@@ -870,5 +870,50 @@
   "breadcrumb": {
     "notFound": "Ingen tittel"
   },
-  "sampleData": "Eksempeldata"
+  "sampleData": "Eksempeldata",
+  "community": {
+    "title": "Community",
+    "subtitle": {
+      "link": "vårt community.",
+      "mention": " innlegg i ",
+      "mentionPlural": " innlegg i ",
+      "empty": {
+        "dataset": "Dette datasettet er ikke omtalt i ",
+        "dataservice": "Denne datatjenesten er ikke omtalt i ",
+        "concept": "Dette begrepet er ikke omtalt i ",
+        "informationmodel": "Denne informasjonsmodellen er ikke omtalt i ",
+        "public_service": "Denne tjenesten er ikke omtalt i ",
+        "event": "Denne hendelsen er ikke omtalt i "
+      },
+      "content" : {
+        "dataset": "Dette datasettet er omtalt i ",
+        "dataservice": "Denne datatjenesten er omtalt i ",
+        "concept": "Dette begrepet er omtalt i ",
+        "informationmodel": "Denne informasjonsmodellen er omtalt i ",
+        "public_service": "Denne tjenesten er omtalt i ",
+        "event": "Denne hendelsen er omtalt i "
+      }
+    },
+    "timeago": {
+      "singular": {
+        "seconds": "Noen få sekunder siden",
+        "minutes": "Ett minutt siden",
+        "hours": "En time siden",
+        "days": "En dag siden",
+        "months": "En måned",
+        "years": "Ett år siden"
+      },
+      "plural": {
+        "seconds": "Noen få sekunder siden",
+        "minutes": "minutter siden",
+        "hours": "timer siden",
+        "days": "dager siden",
+        "months": "måneder siden",
+        "years": "år siden"
+      }
+    },
+    "votes": "Stemmer",
+    "replies": "Svar",
+    "views": "Visninger"
+  }
 }

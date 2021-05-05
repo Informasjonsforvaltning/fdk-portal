@@ -1,0 +1,4 @@
+export const SEARCH_TOPICS_REQUESTED = 'SEARCH_TOPICS_REQUESTED' as const;
+export const SEARCH_TOPICS_SUCCEEDED = 'SEARCH_TOPICS_SUCCEEDED' as const;
+export const SEARCH_TOPICS_FAILED = 'SEARCH_TOPICS_FAILED' as const;
+export const RESET_TOPICS = 'RESET_TOPICS' as const;

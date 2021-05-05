@@ -794,6 +794,114 @@ export interface Language {
   disabled?: boolean;
 }
 
+export interface CommunityCategory {
+  cid: number;
+  name: string;
+  slug: string;
+  icon: string;
+  backgroundImage: string;
+  imageClass: string;
+  bgColor: string;
+  color: string;
+  disabled: number;
+}
+
+export interface CommunityTopic {
+  tid: number;
+  uid: number;
+  cid: number;
+  title: string;
+  slug: string;
+  mainPid: number;
+  posts: CommunityPost[];
+  postcount: number;
+  viewcount: number;
+  postercount: number;
+  scheduled: number;
+  deleted: number;
+  deleterUid: number;
+  titleRaw: string;
+  locked: number;
+  pinned: number;
+  timestamp: number;
+  timestampISO: string;
+  lastposttime: number;
+  lastposttimeISO: string;
+  pinExpiry: number;
+  pinExpiryISO: string;
+  upvotes: number;
+  downvotes: number;
+  votes: number;
+  teaserPid: number;
+  numThumbs: number;
+  category: CommunityCategory;
+  user: CommunityUser;
+  teaser: CommunityTeaser;
+  tags: CommunityTag[] | undefined;
+  isOwner: boolean;
+  ignored: boolean;
+  unread: boolean;
+  bookmark: number;
+  unreplied: boolean;
+  icons: string[];
+  thumb: string;
+  index: number;
+}
+
+export interface CommunityUser {
+  uid: number;
+  username: string;
+  displayname: string;
+  fullname: string;
+  userslug: string;
+  reputation: number;
+  postcount: number;
+  picture: string;
+  signature: string;
+  banned: number;
+  status: string;
+  'icon:text': string;
+  'icon:bgColor': string;
+  banned_until_readable: string;
+}
+
+export interface CommunityPost {
+  pid: number;
+  tid: number;
+  content: string;
+  uid: number;
+  timestamp: number;
+  deleted: boolean;
+  upvotes: number;
+  downvotes: number;
+  votes: number;
+  timestampISO: string;
+  user: CommunityUser;
+  topic: CommunityTopic;
+  category: CommunityCategory;
+  isMainPost: boolean;
+  replies: number;
+}
+
+export interface CommunityTeaser {
+  pid: number;
+  uid: number;
+  timestamp: number;
+  tid: number;
+  content: string;
+  timestampISO: string;
+  user: CommunityUser;
+  index: number;
+}
+
+export interface CommunityTag {
+  value: string;
+  valueEscaped: string;
+  color: string;
+  bgColor: string;
+  score: number;
+}
+
 export interface InformationModelFormat {
   uri: string;
   title: Partial<TextLanguage>;

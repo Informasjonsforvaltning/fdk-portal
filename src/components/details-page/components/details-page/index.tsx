@@ -32,6 +32,7 @@ import withAssessment, {
 
 import Banner from '../banner';
 import ContentSection from '../content-section';
+import CommunityTopics from '../community-topics';
 
 import { isEuTheme, isLosTheme } from '../../../../utils/common';
 
@@ -49,6 +50,9 @@ import {
   calculateRatingPercentage,
   determineRatingIcon
 } from '../../../../pages/organizations/pages/dataset-page/index';
+import withCommunity, {
+  Props as CommunityProps
+} from '../../../with-community';
 
 interface ExternalProps {
   entity: Entity;
@@ -66,7 +70,11 @@ interface ExternalProps {
   languages?: Language[];
 }
 
-interface Props extends ReferenceDataProps, AssessmentProps, ExternalProps {}
+interface Props
+  extends ReferenceDataProps,
+    AssessmentProps,
+    ExternalProps,
+    CommunityProps {}
 
 const rootPaths = {
   [Entity.DATASET]: PATHNAME_DATASETS,
@@ -91,9 +99,11 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   isNonPublicData,
   themes = [],
   languages = [],
+  topics,
   referenceData: { los: losThemes, themes: euThemes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   assessmentActions: { getAssessmentRequested: getAssessment },
+  communityActions: { searchTopicsRequested: searchTopics, resetTopics },
   children
 }) => {
   useEffect(() => {
@@ -112,23 +122,40 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   }, []);
 
   useEffect(() => {
-    if (entityId && entityId !== assessment?.id) {
-      getAssessment(entityId);
+    if (entityId) {
+      searchTopics(entityId);
+      if (entityId !== assessment?.id) {
+        getAssessment(entityId);
+      }
     }
+    return () => {
+      resetTopics();
+    };
   }, [entityId]);
 
   const [navOpen, setNavOpen] = useState(false);
 
-  const renderContentSections = () =>
-    Children.map(children, child =>
-      isValidElement(child) && child.type === ContentSection ? child : null
-    )?.filter(Boolean);
+  const communitySection = (
+    <ContentSection id='community_section' title={translations.community.title}>
+      <CommunityTopics entityType={entity} topics={topics} />
+    </ContentSection>
+  );
 
-  const menuItems = Children.map(children, child =>
-    isValidElement(child) && child.type === ContentSection
-      ? { id: child.props.id, title: translate(child.props.title) }
-      : null
-  )?.filter(Boolean);
+  const contentSections = Children.toArray(children).concat([communitySection]);
+
+  const renderContentSections = () =>
+    contentSections
+      .map(child =>
+        isValidElement(child) && child.type === ContentSection ? child : null
+      )
+      ?.filter(Boolean);
+
+  const menuItems = contentSections
+    .filter(child => isValidElement(child) && child.type === ContentSection)
+    .map((child: any) => ({
+      id: child.props.id,
+      title: translate(child.props.title)
+    }));
 
   const publisherLabel = {
     [Entity.DATASET]: translations.detailsPage.owner,
@@ -244,5 +271,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 export default compose<FC<ExternalProps>>(
   memo,
   withAssessment,
-  withReferenceData
+  withReferenceData,
+  withCommunity
 )(DetailsPage);
