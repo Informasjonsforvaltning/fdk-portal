@@ -872,5 +872,50 @@
   "breadcrumb": {
     "notFound": "No title"
   },
-  "sampleData": "Example data"
+  "sampleData": "Example data",
+  "community": {
+    "title": "Community",
+    "subtitle": {
+      "link": "our community.",
+      "mention": " thread in our ",
+      "mentionPlural": " threads in our ",
+      "empty": {
+        "dataset": "This dataset has no mentions in ",
+        "dataservice": "This data service has no mentions in ",
+        "concept": "This concept has no mentions in ",
+        "informationmodel": "This information model has no mentions in ",
+        "public_service": "This public service has no mentions in ",
+        "event": "This event has no mentions in "
+      },
+      "content" : {
+        "dataset": "This dataset is mentioned in ",
+        "dataservice": "This data service is mentioned in ",
+        "concept": "This concept is mentioned in ",
+        "informationmodel": "This information model is mentioned in ",
+        "public_service": "This public service is mentioned in ",
+        "event": "This event is mentioned in "
+      }
+    },
+    "timeago": {
+      "singular": {
+        "seconds": "A few seconds ago",
+        "minutes": "A minute ago",
+        "hours": "An hour ago",
+        "days": "A day ago",
+        "months": "A month ago",
+        "years": "A year ago"
+      },
+      "plural": {
+        "seconds": "A few seconds ago",
+        "minutes": "minutes ago",
+        "hours": "hours ago",
+        "days": "days ago",
+        "months": "months ago",
+        "years": "years ago"
+      }
+    },
+    "votes": "Votes",
+    "replies": "Replies",
+    "views": "Views"
+  }
 }
