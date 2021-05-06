@@ -36,4 +36,15 @@ const Code = styled.pre`
   overflow-wrap: break-word;
 `;
 
-export default { Link, Tabs, Tab, Pane, Code };
+const Format = styled.div`
+  align-items: baseline;
+  display: inline-flex;
+  margin-bottom: 0.5em;
+`;
+
+const FormatTag = styled.span`
+  margin-left: 0.5em;
+  white-space: pre;
+`;
+
+export default { Link, Tabs, Tab, Pane, Code, Format, FormatTag };

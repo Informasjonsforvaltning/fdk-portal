@@ -15,6 +15,8 @@ import {
 
 import { isLosTheme, isEuTheme } from '../../utils/common';
 
+import { toFormat, formatSorter, toMediaType } from '../../utils/mediatype';
+
 import ReactTooltipSC from '../tooltip/styled';
 
 import PublicIconBase from '../../images/icon-access-open-md.svg';
@@ -67,10 +69,9 @@ export const DatasetItem: FC<Props> = ({
       (previous, { format = [] }) => [...previous, ...format],
       [] as string[]
     )
-    .map(
-      format =>
-        mediatypes?.find(({ uri }) => uri.includes(format))?.name ?? format
-    );
+    .map(toFormat)
+    .sort(formatSorter)
+    .map(toMediaType(mediatypes));
 
   const themes = [...(losThemes ?? []), ...(euThemes ?? [])];
 

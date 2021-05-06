@@ -179,6 +179,8 @@ const InformationModelDetailsPage: FC<Props> = ({
     ...(informationModel?.losTheme ?? []),
     ...(informationModel?.theme ?? [])
   ];
+  const temporalRestrictions = informationModel?.temporal ?? [];
+  const hasFormats = informationModel?.hasFormat ?? [];
 
   const informationModelIdentifiers = ([
     isPartOf,
@@ -263,7 +265,8 @@ const InformationModelDetailsPage: FC<Props> = ({
           modified ||
           version ||
           validFromIncluding ||
-          validToIncluding) && (
+          validToIncluding ||
+          temporalRestrictions.length > 0) && (
           <ContentSection
             id='status'
             title={
@@ -289,6 +292,44 @@ const InformationModelDetailsPage: FC<Props> = ({
                   value={modified}
                 />
               )}
+              {temporalRestrictions.map(({ startDate, endDate }) => {
+                if (startDate && endDate) {
+                  return (
+                    <KeyValueListItem
+                      key={`${startDate}-${endDate}`}
+                      property={translations.infoMod.valid}
+                      value={`${translations.infoMod.from} ${formatDate(
+                        dateStringToDate(startDate)
+                      )} ${translations.infoMod.to} ${formatDate(
+                        dateStringToDate(endDate)
+                      )}`}
+                    />
+                  );
+                }
+                if (startDate) {
+                  return (
+                    <KeyValueListItem
+                      key={`${startDate}-${endDate}`}
+                      property={translations.infoMod.valid}
+                      value={`${translations.infoMod.from} ${formatDate(
+                        dateStringToDate(startDate)
+                      )}`}
+                    />
+                  );
+                }
+                if (endDate) {
+                  return (
+                    <KeyValueListItem
+                      key={`${startDate}-${endDate}`}
+                      property={translations.infoMod.valid}
+                      value={`${translations.infoMod.to} ${formatDate(
+                        dateStringToDate(endDate)
+                      )}`}
+                    />
+                  );
+                }
+                return null;
+              })}
               {version && (
                 <KeyValueListItem
                   property={translations.infoMod.version}
@@ -315,6 +356,7 @@ const InformationModelDetailsPage: FC<Props> = ({
         {(type ||
           licenses.length > 0 ||
           languages.length > 0 ||
+          hasFormats.length > 0 ||
           informationModelCategory ||
           seeAlso) && (
           <ContentSection
@@ -356,6 +398,27 @@ const InformationModelDetailsPage: FC<Props> = ({
                     .map(({ prefLabel }) => translate(prefLabel))
                     .filter(Boolean)
                     .join(', ')}
+                />
+              )}
+              {hasFormats.length > 0 && (
+                <KeyValueListItem
+                  property={translations.infoMod.hasFormats}
+                  value={hasFormats.map(({ uri, title, format }) => (
+                    <SC.Format key={uri}>
+                      <SC.Link href={uri} external>
+                        {translate(title)}
+                      </SC.Link>
+                      {format && (
+                        <SC.FormatTag>
+                          {translations.format}:{' '}
+                          {format.substr(
+                            format.lastIndexOf('/') + 1,
+                            format.length
+                          )}
+                        </SC.FormatTag>
+                      )}
+                    </SC.Format>
+                  ))}
                 />
               )}
               {seeAlso && (

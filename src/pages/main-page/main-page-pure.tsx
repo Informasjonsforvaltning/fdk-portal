@@ -22,9 +22,15 @@ interface Props extends EntitiesProps, ReferenceDataProps {
 const MainPage: FC<Props> = ({
   news,
   entities,
-  entitiesActions: { getEntitiesRequested: getEntities }
+  entitiesActions: { getEntitiesRequested: getEntities },
+  referenceData: { mediatypes: mediaTypes },
+  referenceDataActions: { getReferenceDataRequested: getReferenceData }
 }) => {
   useEffect(() => {
+    if (!mediaTypes) {
+      getReferenceData('mediatypes');
+    }
+
     getEntities();
   }, []);
 
@@ -46,7 +52,7 @@ const MainPage: FC<Props> = ({
             <HeaderSC.Header>
               <span>{localization.sort.modified}</span>
             </HeaderSC.Header>
-            <SearchEntities entities={entities} />
+            <SearchEntities entities={entities} mediatypes={mediaTypes} />
           </section>
           <section className='col-12 col-lg-4'>
             <HeaderSC.Header>

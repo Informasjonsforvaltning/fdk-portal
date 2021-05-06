@@ -73,11 +73,12 @@ export function getEnhetsregisteretOrganizationFailed(message: string) {
   };
 }
 
-export function getOrganizationRatingRequested(id: string) {
+export function getOrganizationRatingRequested(id: string, filter?: string) {
   return {
     type: GET_ORGANIZATION_RATING_REQUESTED,
     payload: {
-      id
+      id,
+      filter
     }
   };
 }

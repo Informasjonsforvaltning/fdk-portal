@@ -51,6 +51,8 @@ export interface InformationModel {
   theme?: EuTheme[];
   losTheme?: LosTheme[];
   contactPoint?: Partial<InformationModelContactPoint>[];
+  temporal?: Partial<TemporalRestriction>[];
+  hasFormat?: Partial<InformationModelFormat>[];
 }
 
 export interface ModelCodeElement {
@@ -776,4 +778,11 @@ export interface Language {
   code: string;
   selected?: boolean;
   disabled?: boolean;
+}
+
+export interface InformationModelFormat {
+  uri: string;
+  title: Partial<TextLanguage>;
+  format: string;
+  language: string;
 }

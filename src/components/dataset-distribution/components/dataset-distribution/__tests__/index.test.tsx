@@ -6,7 +6,7 @@ import { Expectation, renderWithTheme } from '../../../../../../test/utils';
 
 import DatasetDistribution from '..';
 
-import { formatSorter } from '../utils';
+import { formatSorter } from '../../../../../utils/mediatype';
 
 import testIds from '../test-ids';
 
