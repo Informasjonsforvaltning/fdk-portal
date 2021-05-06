@@ -47,4 +47,22 @@ const FormatTag = styled.span`
   white-space: pre;
 `;
 
-export default { Link, Tabs, Tab, Pane, Code, Format, FormatTag };
+const ValueListColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    margin-bottom: 0.5em;
+  }
+`;
+
+export default {
+  Link,
+  Tabs,
+  Tab,
+  Pane,
+  Code,
+  Format,
+  FormatTag,
+  ValueListColumn
+};

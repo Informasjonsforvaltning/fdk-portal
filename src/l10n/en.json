@@ -524,6 +524,8 @@
     "modelStatus": "Model status",
     "language": "Language",
     "hasFormats": "Alternative representation of the model",
+    "isProfileOf": "Is profile of",
+    "conformsTo": "Conforms to",
     "issued": "Issued",
     "valid": "Valid",
     "from": "from",
