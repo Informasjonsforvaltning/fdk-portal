@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 
 import * as actions from './redux/actions';
 
-import type { CommunityTopic } from '../../types';
+import type { CommunityPost, CommunityTopic } from '../../types';
 
 export interface Props {
   topics: CommunityTopic[];
+  posts: CommunityPost[];
   communityActions: typeof actions;
 }
 
@@ -15,7 +16,8 @@ const withCommunity = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    topics: state.CommunityReducer.get('topics').toJS()
+    topics: state.CommunityReducer.get('topics').toJS(),
+    posts: state.CommunityReducer.get('posts').toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

@@ -895,6 +895,7 @@
       }
     },
     "timeago": {
+      "postPrefix" : "skrev for ",
       "singular": {
         "seconds": "Noen få sekunder siden",
         "minutes": "Ett minutt siden",

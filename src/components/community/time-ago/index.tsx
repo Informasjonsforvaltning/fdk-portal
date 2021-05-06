@@ -4,6 +4,7 @@ import translations from '../../../lib/localization';
 
 interface Props {
   startTime: number;
+  lowercase?: boolean;
 }
 
 const timeAgoString = (startTime: number): string => {
@@ -35,8 +36,12 @@ const timeAgoString = (startTime: number): string => {
   return singular.seconds;
 };
 
-const TimeAgo: FC<Props> = ({ startTime }) => (
-  <span>{timeAgoString(startTime)}</span>
+const TimeAgo: FC<Props> = ({ startTime, lowercase }) => (
+  <span>
+    {lowercase
+      ? timeAgoString(startTime).toLowerCase()
+      : timeAgoString(startTime)}
+  </span>
 );
 
 export default TimeAgo;

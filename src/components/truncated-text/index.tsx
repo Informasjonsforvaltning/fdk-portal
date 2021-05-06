@@ -18,11 +18,13 @@ interface Props {
   visibleLines: number;
   lineHeight: number;
   entityTheme?: Entity;
+  onlyTruncate?: boolean;
 }
 
 const TruncatedText: FC<PropsWithChildren<Props>> = ({
   visibleLines,
   lineHeight,
+  onlyTruncate,
   entityTheme,
   children
 }) => {
@@ -47,7 +49,7 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
       >
         {children}
       </SC.TextContent>
-      {truncate && (
+      {truncate && !onlyTruncate && (
         <SC.ExpandButton
           onClick={() => setExpanded(!expanded)}
           open={expanded}

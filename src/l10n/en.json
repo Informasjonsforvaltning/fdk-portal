@@ -897,6 +897,7 @@
       }
     },
     "timeago": {
+      "postPrefix" : "wrote ",
       "singular": {
         "seconds": "A few seconds ago",
         "minutes": "A minute ago",

@@ -133,3 +133,10 @@ export enum SpecializedEventType {
   LIFEEVENT = 'life_event',
   BUSINESSEVENT = 'business_event'
 }
+
+export enum CommunityTerm {
+  DAY = 'day',
+  WEEK = 'week',
+  MONTH = 'month',
+  ALL = ''
+}
