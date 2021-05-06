@@ -4,6 +4,11 @@ import { theme, Colour } from '@fellesdatakatalog/theme';
 const User = styled.a`
   display: inline-flex;
   flex-direction: row;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
 `;
 
 const Icon = styled.div<{ colour: string }>`
@@ -18,6 +23,11 @@ const Icon = styled.div<{ colour: string }>`
   height: 23px;
   border-radius: 50%;
   margin-right: 5px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
 `;
 
 const Picture = styled.img`
@@ -30,6 +40,12 @@ const Picture = styled.img`
 const Name = styled.span<{ colour: string }>`
   color: ${({ colour }) => colour};
   font-weight: ${theme.fontWeight('FW700')};
+  margin-right: 5px;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: ${({ colour }) => colour};
+  }
 `;
 
 export default { User, Icon, Name, Picture };
