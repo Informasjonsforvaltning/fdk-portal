@@ -137,7 +137,12 @@ const SearchPage: FC<Props> = ({
     fetchDataServicesIfNeeded(dataServiceSearchParams);
     fetchConceptsIfNeeded(conceptSearchParams);
     fetchInformationModelsIfNeeded(informationModelSearchParams);
-  }, []);
+  }, [
+    datasetSearchParams,
+    dataServiceSearchParams,
+    conceptSearchParams,
+    informationModelSearchParams
+  ]);
 
   useEffect(() => {
     if (shouldFetch(publicServiceSearchParams, searchQuery)) {
