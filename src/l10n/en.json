@@ -536,6 +536,7 @@
     "moreInfo": "More information about information models",
     "seeAlso": "See also",
     "identifier": "Identifier",
+    "specifiedIdentifier": "Specified identifier",
     "isPartOf": "Is part of",
     "hasPart": "Has part",
     "isReplacedBy": "Is replaced by",

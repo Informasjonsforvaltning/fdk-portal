@@ -536,6 +536,7 @@
     "moreInfo": "Meir informasjon om informasjonsmodellen",
     "seeAlso": "Se også",
     "identifier": "Identifikator",
+    "specifiedIdentifier": "Angitt identifikator",
     "isPartOf": "En del av",
     "hasPart": "Har del",
     "isReplacedBy": "Erstattes av",

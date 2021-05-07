@@ -132,7 +132,8 @@ const InformationModelDetailsPage: FC<Props> = ({
 
   const entityId = informationModel?.id;
   const entityUri = informationModel?.id;
-  const identifier = informationModel?.identifier?.[0] ?? informationModel?.uri;
+  const identifier = informationModel?.uri;
+  const dctIdentifier = informationModel?.identifier?.[0];
   const publisher = informationModel?.publisher;
   const title = informationModel?.title ?? {};
   const description = translate(
@@ -556,7 +557,7 @@ const InformationModelDetailsPage: FC<Props> = ({
               </SC.Tabs>
             </ContentSection>
           )}
-        {identifier && (
+        {(identifier || dctIdentifier) && (
           <ContentSection
             id='identifiers'
             title={
@@ -564,17 +565,28 @@ const InformationModelDetailsPage: FC<Props> = ({
                 .identifiers
             }
           >
-            <KeyValueList>
-              {identifier && (
-                <KeyValueListItem
-                  property={translations.infoMod.identifier}
-                  value={identifier}
-                />
-              )}
-            </KeyValueList>
+            {identifier && (
+              <KeyValueList>
+                {identifier && (
+                  <KeyValueListItem
+                    property={translations.infoMod.identifier}
+                    value={identifier}
+                  />
+                )}
+              </KeyValueList>
+            )}
+            {dctIdentifier && (
+              <KeyValueList>
+                {dctIdentifier && (
+                  <KeyValueListItem
+                    property={translations.infoMod.specifiedIdentifier}
+                    value={dctIdentifier}
+                  />
+                )}
+              </KeyValueList>
+            )}
           </ContentSection>
         )}
-
         {keywords.length > 0 && (
           <ContentSection
             id='keywords'
