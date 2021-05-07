@@ -68,7 +68,7 @@
     "font-awesome": "^4.7.0",
     "html-react-parser": "^0.13.0",
     "immutable": "^4.0.0-rc.12",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment": "^2.27.0",
     "prop-types": "^15.6.2",
     "qs": "^6.9.4",
