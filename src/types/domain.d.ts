@@ -674,6 +674,10 @@ export interface OrganizationCountsAndRating {
       percentage: number;
     };
   };
+  dataservices: {
+    totalCount: number;
+    newCount: number;
+  };
 }
 
 export interface Catalog {
