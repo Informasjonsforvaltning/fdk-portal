@@ -779,6 +779,7 @@
     "organizationDatasetCatalogPageSubtitle": "Metadata quality for the dataset descriptions",
     "organizationDatasetPageSubtitle": "Metadata quality for the dataset description of",
     "datasetCatalogStatistics": "Dataset descriptions",
+    "dataserviceCatalogStatistics": "API descriptions",
     "datasetTitle": "Title of dataset description",
     "loadMoreDatasets": "Load more dataset descriptions (remaining: {count})",
     "whatIsMetadataQualityFaqTitle": "What is metadata quality?",
