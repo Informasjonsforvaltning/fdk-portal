@@ -830,6 +830,13 @@
       }
     }
   },
+  "organizationsPage": {
+    "datasetsDescription": "datasettbeskrivelser",
+    "dataserviceDescription": "API-beskrivelser",
+    "conceptsDescription": "begrepsbeskrivelser",
+    "informationModelsDescription": "informasjonsmodellbeskrivelser",
+    "organization": "Virksomhet"
+  },
   "truncatedText": {
     "expanded": "Skjul beskrivelsen",
     "collapsed": "Vis hele beskrivelsen"

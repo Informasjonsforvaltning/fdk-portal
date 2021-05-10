@@ -832,6 +832,13 @@
       }
     }
   },
+  "organizationsPage": {
+    "datasetsDescription": "dataset descriptions",
+    "dataserviceDescription": "dataservice descriptions",
+    "conceptsDescription": "concept descriptions",
+    "informationModelsDescription": "information model descriptions",
+    "organization": "Organization"
+  },
   "truncatedText": {
     "expanded": "Hide description",
     "collapsed": "Show full description"

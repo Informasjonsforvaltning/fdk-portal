@@ -2,6 +2,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import ClearIconBase from '../../../../images/icon-clear.svg';
+import DatasetIconBase from '../../../../images/icon-catalog-dataset-lg.svg';
+import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
+import ConceptIconBase from '../../../../images/icon-catalog-concept-lg.svg';
+import InfomodelIconBase from '../../../../images/icon-catalog-infomod-lg.svg';
+import CaretUpBase from '../../../../images/icon-caret-up-sm.svg';
+import CaretDownBase from '../../../../images/icon-caret-down-sm.svg';
+import CaretBothBase from '../../../../images/icon-caret-both-sm.svg';
 
 import { Entity } from '../../../../types/enums';
 
@@ -120,8 +127,98 @@ const CountTag = styled.div<{ type?: Entity }>`
   width: 50px;
 
   &:nth-of-type(n + 2) {
-    margin-left: 0.5em;
+    margin-left: 1.5em;
   }
+`;
+
+const SortRow = styled.div`
+  align-items: center;
+  background-color: ${({ theme }) => theme.extendedColors.neutralDarker};
+  border-radius: 5px;
+  color: #fff !important;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.5em;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+
+  & ${Title} {
+    padding-left: 1.5em;
+    font-weight: 700;
+  }
+`;
+
+const DatasetIcon = styled(DatasetIconBase)`
+  width: 30px;
+  height: 30px;
+  & > path {
+    fill: ${({ theme }) => theme.extendedColors.dataset.light};
+  }
+`;
+
+const ApiIcon = styled(ApiIconBase)`
+  width: 30px;
+  height: 30px;
+  & > path {
+    fill: ${({ theme }) => theme.extendedColors.dataservice.light};
+  }
+`;
+
+const ConceptIcon = styled(ConceptIconBase)`
+  width: 30px;
+  height: 30px;
+  & > path {
+    fill: ${({ theme }) => theme.extendedColors.concept.light};
+  }
+`;
+
+const InfomodelIcon = styled(InfomodelIconBase)`
+  width: 30px;
+  height: 30px;
+  & > path {
+    fill: ${({ theme }) => theme.extendedColors.informationmodel.light};
+  }
+`;
+
+const CaretUp = styled(CaretUpBase)`
+  width: 20px;
+  height: 20px;
+`;
+
+const CaretDown = styled(CaretDownBase)`
+  width: 20px;
+  height: 20px;
+`;
+
+const CaretBoth = styled(CaretBothBase)`
+  width: 20px;
+  height: 20px;
+`;
+
+const SortButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  width: 50px;
+
+  &:nth-of-type(n + 2) {
+    margin-left: 1.5em;
+  }
+
+  &:hover > svg > path {
+    fill: #fff;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const TitleSortButton = styled(SortButton)`
+  width: auto;
 `;
 
 export default {
@@ -133,5 +230,15 @@ export default {
   SortLabel,
   Title,
   Info,
-  CountTag
+  CountTag,
+  SortRow,
+  SortButton,
+  TitleSortButton,
+  DatasetIcon,
+  ApiIcon,
+  ConceptIcon,
+  InfomodelIcon,
+  CaretUp,
+  CaretDown,
+  CaretBoth
 };
