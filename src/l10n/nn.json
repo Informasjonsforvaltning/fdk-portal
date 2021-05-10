@@ -831,6 +831,13 @@
       }
     }
   },
+  "organizationsPage": {
+    "datasetsDescription": "datasettskildringar",
+    "dataserviceDescription": "API-skildringar",
+    "conceptsDescription": "omgrepsskildringar",
+    "informationModelsDescription": "informasjonsmodellskildringar",
+    "organization": "Verksemd"
+  },
   "truncatedText": {
     "expanded": "Skjul skildringa",
     "collapsed": "Vis heile skildringa"

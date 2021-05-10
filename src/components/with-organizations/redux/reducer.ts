@@ -6,25 +6,7 @@ import {
   GET_ORGANIZATIONS_SUCCEEDED
 } from './action-types';
 
-import { Actions, OrganizationSummary } from '../../../types';
-import { SortOrder } from '../../../types/enums';
-import localization from '../../../lib/localization';
-
-const sortOrganizationsByName = (
-  organizations: OrganizationSummary[],
-  order: SortOrder
-) => {
-  return organizations.sort((a: any, b: any) => {
-    const aObject =
-      a.getIn(['prefLabel', localization.getLanguage()]) ?? a.getIn(['name']);
-    const bObject =
-      b.getIn(['prefLabel', localization.getLanguage()]) ?? b.getIn(['name']);
-
-    return (
-      aObject?.localeCompare(bObject, 'no') * (order === SortOrder.ASC ? 1 : -1)
-    );
-  });
-};
+import { Actions } from '../../../types';
 
 const initialState = fromJS({
   organizations: []
@@ -38,13 +20,7 @@ export default function reducer(
     case GET_ORGANIZATIONS_REQUESTED:
       return state.set('organizations', fromJS([]));
     case GET_ORGANIZATIONS_SUCCEEDED:
-      return state.set(
-        'organizations',
-        sortOrganizationsByName(
-          fromJS(action.payload.organizations),
-          SortOrder.ASC
-        )
-      );
+      return state.set('organizations', fromJS(action.payload.organizations));
     default:
       return state;
   }
