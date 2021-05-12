@@ -18,7 +18,8 @@ const mapFilters = ({
   format,
   dataseturi,
   last_x_days,
-  endpointDescription
+  endpointDescription,
+  organizationNumber
 }: any) => {
   const filters = [];
   if (id) {
@@ -61,6 +62,12 @@ const mapFilters = ({
   }
   if (endpointDescription) {
     filters.push({ 'endpointDescription.keyword': endpointDescription });
+  }
+
+  if (/^\d{9}$/.test(organizationNumber ?? '')) {
+    filters.push({
+      'publisher.id.keyword': organizationNumber
+    });
   }
 
   return filters.length > 0 ? filters : undefined;
