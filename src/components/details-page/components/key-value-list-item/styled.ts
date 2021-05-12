@@ -17,7 +17,7 @@ const Property = styled.div`
 `;
 
 const Value = styled.div`
-  flex-basis: 60%;
+  width: 60%;
 `;
 
 export default { ListItem, Property, Value };
