@@ -22,10 +22,10 @@ import { Entity, SortOrder } from '../../../../types/enums';
 interface Props extends OrganizationsProps, RouteComponentProps {}
 
 const stringCompare = (a: string, b: string, sortMode: SortOrder) =>
-  a.localeCompare(b) * (sortMode === SortOrder.ASC ? 1 : -1);
+  a.localeCompare(b, 'no') * (sortMode === SortOrder.ASC ? 1 : -1);
 
 const numberCompare = (a: number, b: number, sortMode: SortOrder) =>
-  a - b * (sortMode === SortOrder.ASC ? 1 : -1);
+  (a - b) * (sortMode === SortOrder.ASC ? 1 : -1);
 
 const OrganizationsPage: FC<Props> = ({
   organizations,
