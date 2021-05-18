@@ -19,23 +19,21 @@ export const getEventTypes = async (): Promise<EventType[]> => {
     skos('Concept')
   );
 
-  return eventTypes.map((item: any) => {
-    return {
-      uri: item.subject.value ?? '',
-      prefLabel: fetcher.store
-        .statementsMatching(item.subject, skos('prefLabel'))
-        .map(({ object }) => object as Literal)
-        .filter(isLiteral)
-        .reduce(
-          (previous, { value, language }) => ({
-            ...previous,
-            [language]: value
-          }),
-          {}
-        ),
-      broader: fetcher.store
-        .statementsMatching(item.subject, skos('broader'))
-        .map(({ object }) => object.value)
-    };
-  });
+  return eventTypes.map((item: any) => ({
+    uri: item.subject.value ?? '',
+    prefLabel: fetcher.store
+      .statementsMatching(item.subject, skos('prefLabel'))
+      .map(({ object }) => object as Literal)
+      .filter(isLiteral)
+      .reduce(
+        (previous, { value, language }) => ({
+          ...previous,
+          [language]: value
+        }),
+        {}
+      ),
+    broader: fetcher.store
+      .statementsMatching(item.subject, skos('broader'))
+      .map(({ object }) => object.value)
+  }));
 };

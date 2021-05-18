@@ -51,10 +51,10 @@ export const InformationModelItem: FC<Props> = ({
             }
 
             if (isEuTheme(theme)) {
-              const { id, title, code } = theme;
+              const { id: themeId, title: themeTitle, code } = theme;
               return (
-                <RoundedTag key={id} to={patchSearchQuery('theme', code)}>
-                  <span>{translate(title)}</span>
+                <RoundedTag key={themeId} to={patchSearchQuery('theme', code)}>
+                  <span>{translate(themeTitle)}</span>
                 </RoundedTag>
               );
             }

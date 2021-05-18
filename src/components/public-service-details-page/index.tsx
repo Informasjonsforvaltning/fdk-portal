@@ -167,9 +167,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
     {} as Record<string, any>
   );
 
-  const conceptsIdentifiers = (isClassifiedBy.map(
-    ({ uri }) => uri
-  ) as string[]).filter(Boolean);
+  const conceptsIdentifiers = (
+    isClassifiedBy.map(({ uri }) => uri) as string[]
+  ).filter(Boolean);
 
   const conceptsMap = concepts?.reduce(
     (previous, current) => ({ ...previous, [current.identifier]: current }),
@@ -231,17 +231,23 @@ const PublicServiceDetailsPage: FC<Props> = ({
     {} as Record<string, any>
   );
 
-  const eventsRelationsWithRelationType: ItemWithRelationType[] = eventsRelations.map(
-    relation => ({ relation, relationType: translations.relatedBy })
-  );
+  const eventsRelationsWithRelationType: ItemWithRelationType[] =
+    eventsRelations.map(eventRelation => ({
+      relation: eventRelation,
+      relationType: translations.relatedBy
+    }));
 
-  const publicServicesRequiredByWithRelationType: ItemWithRelationType[] = publicServicesRequiredBy.map(
-    relation => ({ relation, relationType: translations.requiredBy })
-  );
+  const publicServicesRequiredByWithRelationType: ItemWithRelationType[] =
+    publicServicesRequiredBy.map(publicServiceRelation => ({
+      relation: publicServiceRelation,
+      relationType: translations.requiredBy
+    }));
 
-  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] = publicServicesRelatedBy.map(
-    relation => ({ relation, relationType: translations.relatedBy })
-  );
+  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
+    publicServicesRelatedBy.map(publicServiceRelation => ({
+      relation: publicServiceRelation,
+      relationType: translations.relatedBy
+    }));
 
   const themes: Theme[] = [];
 
@@ -325,12 +331,17 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     }
                     value={hasCost
                       .map(
-                        ({ uri, currency = '', description, value = '' }) => (
+                        ({
+                          uri,
+                          currency = '',
+                          description: costDescription,
+                          value = ''
+                        }) => (
                           <SC.ListItemValue key={uri}>
                             {value}{' '}
                             {currency.substring(currency.lastIndexOf('/') + 1)}
                             {value || currency ? '. ' : ' '}
-                            {translate(description)}
+                            {translate(costDescription)}
                           </SC.ListItemValue>
                         )
                       )
@@ -344,11 +355,17 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         .legalResources
                     }
                     value={hasLegalResource
-                      .map(({ description, uri, url }) => (
-                        <Link key={uri} href={url} external>
-                          {translate(description)}
-                        </Link>
-                      ))
+                      .map(
+                        ({
+                          description: legalResourceDescription,
+                          uri,
+                          url
+                        }) => (
+                          <Link key={uri} href={url} external>
+                            {translate(legalResourceDescription)}
+                          </Link>
+                        )
+                      )
                       .filter(Boolean)}
                   />
                 )}
@@ -359,9 +376,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         .follows
                     }
                     value={follows
-                      .map(({ uri, description }) => (
+                      .map(({ uri, description: followsDescription }) => (
                         <SC.ListItemValue key={uri}>
-                          {translate(description)}
+                          {translate(followsDescription)}
                         </SC.ListItemValue>
                       ))
                       .filter(Boolean)}
@@ -429,13 +446,15 @@ const PublicServiceDetailsPage: FC<Props> = ({
               }
             >
               <KeyValueList>
-                {produces.map(({ name, description }, index) => (
-                  <KeyValueListItem
-                    key={`${translate(name)}-${index}`}
-                    property={translate(name)}
-                    value={translate(description)}
-                  />
-                ))}
+                {produces.map(
+                  ({ name, description: producesDescription }, index) => (
+                    <KeyValueListItem
+                      key={`${translate(name)}-${index}`}
+                      property={translate(name)}
+                      value={translate(producesDescription)}
+                    />
+                  )
+                )}
               </KeyValueList>
             </ContentSection>
           )}
@@ -448,13 +467,15 @@ const PublicServiceDetailsPage: FC<Props> = ({
               }
             >
               <KeyValueList>
-                {hasInput.map(({ name, description }, index) => (
-                  <KeyValueListItem
-                    key={`${translate(name)}-${index}`}
-                    property={translate(name)}
-                    value={translate(description)}
-                  />
-                ))}
+                {hasInput.map(
+                  ({ name, description: hasInputDescription }, index) => (
+                    <KeyValueListItem
+                      key={`${translate(name)}-${index}`}
+                      property={translate(name)}
+                      value={translate(hasInputDescription)}
+                    />
+                  )
+                )}
               </KeyValueList>
             </ContentSection>
           )}
@@ -469,25 +490,35 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               <KeyValueList>
                 {hasParticipation.map(
-                  ({ description, role, agents = [] }, index) => (
+                  (
+                    {
+                      description: hasParticipationDescription,
+                      role,
+                      agents = []
+                    },
+                    index
+                  ) => (
                     <KeyValueListItem
-                      key={`${translate(description)}-${index}`}
+                      key={`${translate(hasParticipationDescription)}-${index}`}
                       property={
                         <>
                           {agents.map(
-                            ({ uri, identifier, name, title }, index) => (
-                              <SC.ListItemValue key={`${uri}-${index}`}>
+                            (
+                              { uri, identifier, name, title: agentTitle },
+                              agentIndex
+                            ) => (
+                              <SC.ListItemValue key={`${uri}-${agentIndex}`}>
                                 <Link
                                   as={RouterLink}
                                   to={`${PATHNAME_ORGANIZATIONS}/${identifier}`}
                                 >
-                                  {translate(title) ?? name}
+                                  {translate(agentTitle) ?? name}
                                 </Link>
                               </SC.ListItemValue>
                             )
                           )}
                           <SC.LightWeightLabel>
-                            {translate(description)}
+                            {translate(hasParticipationDescription)}
                           </SC.LightWeightLabel>
                         </>
                       }
@@ -614,20 +645,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 {requiredServices.length > 0 && (
                   <KeyValueListItem
                     property={translations.requires}
-                    value={requiredServices.map(({ uri, title }, index) =>
-                      publicServicesMap?.[uri] ? (
-                        <SC.ListItemValue key={`${uri}-${index}`}>
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
-                            key={`${uri}-${index}`}
-                          >
-                            {translate(title)}
-                          </Link>
-                        </SC.ListItemValue>
-                      ) : (
-                        translate(title)
-                      )
+                    value={requiredServices.map(
+                      ({ uri, title: requiredServiceTitle }, index) =>
+                        publicServicesMap?.[uri] ? (
+                          <SC.ListItemValue key={`${uri}-${index}`}>
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
+                              key={`${uri}-${index}`}
+                            >
+                              {translate(requiredServiceTitle)}
+                            </Link>
+                          </SC.ListItemValue>
+                        ) : (
+                          translate(requiredServiceTitle)
+                        )
                     )}
                   />
                 )}
@@ -637,19 +669,20 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       translations.detailsPage.sectionTitles.publicService
                         .relation
                     }
-                    value={relation.map(({ uri, title }, index) =>
-                      publicServicesMap?.[uri] ? (
-                        <SC.ListItemValue key={`${uri}-${index}`}>
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
-                          >
-                            {translate(title)}
-                          </Link>
-                        </SC.ListItemValue>
-                      ) : (
-                        translate(title)
-                      )
+                    value={relation.map(
+                      ({ uri, title: relationTitle }, index) =>
+                        publicServicesMap?.[uri] ? (
+                          <SC.ListItemValue key={`${uri}-${index}`}>
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
+                            >
+                              {translate(relationTitle)}
+                            </Link>
+                          </SC.ListItemValue>
+                        ) : (
+                          translate(relationTitle)
+                        )
                     )}
                   />
                 )}
@@ -725,7 +758,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 ({
                   uri,
                   contactType,
-                  description,
+                  description: contactPointDescription,
                   email,
                   name,
                   telephone,
@@ -738,10 +771,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         value={translate(contactType)}
                       />
                     )}
-                    {description && (
+                    {contactPointDescription && (
                       <KeyValueListItem
                         property={translations.description}
-                        value={translate(description)}
+                        value={translate(contactPointDescription)}
                       />
                     )}
                     {name && (

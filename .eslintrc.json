@@ -1,27 +1,42 @@
 {
-  "root": true,
   "env": {
     "browser": true,
-    "es6": true,
+    "es2020": true,
     "jest": true
   },
   "extends": [
     "airbnb",
     "prettier",
     "plugin:@typescript-eslint/recommended",
-    "prettier/react",
-    "plugin:eslint-comments/recommended",
     "plugin:json/recommended",
-    "plugin:import/typescript"
+    "plugin:eslint-comments/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:jsx-a11y/strict"
   ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
   "plugins": [
     "@typescript-eslint",
+    "react",
+    "html",
+    "json",
     "prettier",
-    "react-hooks",
+    "jsx-a11y",
     "eslint-comments",
-    "html"
+    "react-hooks"
   ],
-  "parser": "@typescript-eslint/parser",
   "rules": {
     "prettier/prettier": [
       "error",
@@ -30,7 +45,28 @@
         "singleQuote": true,
         "jsxSingleQuote": true,
         "trailingComma": "none",
-        "arrowParens": "avoid"
+        "arrowParens": "avoid",
+        "endOfLine": "auto"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "./webpack/*",
+          "./src/types/**/*",
+          "./test/**/*",
+          "**/__tests__/**/*",
+          "**/*test.{js,jsx,ts,tsx}"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-empty-function": [
+      "error",
+      {
+        "allow": [
+          "arrowFunctions"
+        ]
       }
     ],
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -40,28 +76,38 @@
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/member-delimiter-style": "off",
-    "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
-    "no-console": ["error", { "allow": ["warn", "error"] }],
-    "import/no-named-as-default": 2,
-    "import/prefer-default-export": 0,
-    "no-else-return": 2,
-    "no-shadow": 0,
-    "no-underscore-dangle": 0,
-    "wrap-iife": 2,
-    "camelcase": "off",
-    "class-methods-use-this": "off",
-    "react/prop-types": 0,
-    "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
-    "react/jsx-filename-extension": [
+    "@typescript-eslint/no-unused-vars": [
       "error",
       {
-        "extensions": [
-          ".jsx",
-          ".tsx"
-        ]
+        "ignoreRestSiblings": true
       }
     ],
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-shadow": [
+      "error"
+    ],
+    "react/jsx-one-expression-per-line": "off",
+    "react/prefer-stateless-function": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-array-index-key": "off",
+    "react/no-unused-state": "off",
+    "react/jsx-indent": "off",
+    "react/prop-types": "off",
+    "jsx-a11y/label-has-for": "off",
+    "react/require-default-props": "off",
+    "react/jsx-curly-newline": "off",
+    "no-use-before-define": "off",
+    "no-restricted-globals": "off",
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "no-shadow": "off",
+    "camelcase": "off",
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -72,20 +118,33 @@
         "tsx": "never"
       }
     ],
-    "react/no-array-index-key": "off",
-    "react/jsx-props-no-spreading": "off",
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["accumulator", "item"] }],
-    "no-restricted-globals": ["error", "event", "fdescribe"],
-    "react/no-danger": 0,
-    "jsx-a11y/anchor-is-valid": [ "error", {
-      "components": [ "Link" ],
-      "specialLink": [ "hrefLeft", "hrefRight", "to" ],
-      "aspects": [ "noHref", "invalidHref", "preferButton" ]
-    }],
-    "prefer-destructuring":"off",
-    "react-hooks/rules-of-hooks": "error",
-    "jsx-a11y/label-has-for": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["webpack/*", "webpack.*", "**/test/**/*.{js,jsx,ts,tsx}", "**/*test.{js,jsx,ts,tsx}", "src/types/*.d.ts"]}]
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": [
+          "Link"
+        ],
+        "specialLink": [
+          "hrefLeft",
+          "hrefRight",
+          "to"
+        ],
+        "aspects": [
+          "noHref",
+          "invalidHref",
+          "preferButton"
+        ]
+      }
+    ]
   },
   "overrides": [
     {
@@ -94,6 +153,24 @@
       ],
       "rules": {
         "no-unused-expressions": "off"
+      }
+    },
+    {
+      "files": [
+        "./test/**/*",
+        "**/__tests__/**/*.[jt]s?(x)"
+      ],
+      "rules": {
+        "no-console": [
+          "error",
+          {
+            "allow": [
+              "warn",
+              "error"
+            ]
+          }
+        ],
+        "@typescript-eslint/no-non-null-assertion": "off"
       }
     }
   ]

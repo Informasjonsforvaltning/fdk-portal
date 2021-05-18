@@ -47,19 +47,18 @@ const OrganizationsPage: FC<Props> = ({
       ? SortOrder.DSC
       : SortOrder.ASC;
 
-  const compareOrganizations = (
-    field: keyof OrganizationSummary,
-    sortOrder: SortOrder
-  ) => (a: OrganizationSummary, b: OrganizationSummary) => {
-    if (typeof a[field] === 'number' && typeof b[field] === 'number') {
-      return numberCompare(a[field] as number, b[field] as number, sortOrder);
-    }
-    return stringCompare(
-      translate(a[field]) ?? a.name ?? '',
-      translate(b[field]) ?? b.name ?? '',
-      sortOrder
-    );
-  };
+  const compareOrganizations =
+    (field: keyof OrganizationSummary, sortOrder: SortOrder) =>
+    (a: OrganizationSummary, b: OrganizationSummary) => {
+      if (typeof a[field] === 'number' && typeof b[field] === 'number') {
+        return numberCompare(a[field] as number, b[field] as number, sortOrder);
+      }
+      return stringCompare(
+        translate(a[field]) ?? a.name ?? '',
+        translate(b[field]) ?? b.name ?? '',
+        sortOrder
+      );
+    };
 
   const applySort = (field: keyof OrganizationSummary) => () => {
     const order = determineNextSortOrder(field);
@@ -198,12 +197,12 @@ const OrganizationsPage: FC<Props> = ({
               informationmodelCount
             },
             index: number,
-            organizations: OrganizationSummary[]
+            organizationSummaries: OrganizationSummary[]
           ) => {
             let sortLabel = '';
             const previousOrganizationName =
-              translate(organizations[index - 1]?.prefLabel) ||
-              organizations[index - 1]?.name;
+              translate(organizationSummaries[index - 1]?.prefLabel) ||
+              organizationSummaries[index - 1]?.name;
             const currentOrganizationName = translate(prefLabel) || name;
 
             if (

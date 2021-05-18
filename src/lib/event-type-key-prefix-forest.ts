@@ -29,8 +29,8 @@ export function eventTypesKeyPrefixForest(
   enhancedList.forEach(item => {
     const children = getChildren(item);
 
-    children.forEach(item => {
-      item.hasParent = true;
+    children.forEach(child => {
+      child.hasParent = true;
     });
 
     item.children = children;

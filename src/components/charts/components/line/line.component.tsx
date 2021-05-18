@@ -17,7 +17,7 @@ const LineChart: FC<Props> = ({
 }) => {
   const options = {
     chart: {
-      type: 'area',
+      type: 'area' as const,
       height: 350,
       zoom: {
         enabled: false
@@ -31,20 +31,18 @@ const LineChart: FC<Props> = ({
       enabled: false
     },
     stroke: {
-      curve: 'smooth'
+      curve: 'smooth' as const
     },
     xaxis: {
-      type: 'datetime',
+      type: 'datetime' as const,
       tickAmount: 8,
       max: new Date().getTime(),
       labels: {
-        formatter: (val: any) => {
-          return moment(new Date(val)).format('DD MMM YY');
-        }
+        formatter: (val: any) => moment(new Date(val)).format('DD MMM YY')
       }
     },
     legend: {
-      horizontalAlign: 'left'
+      horizontalAlign: 'left' as const
     },
     responsive: [
       {

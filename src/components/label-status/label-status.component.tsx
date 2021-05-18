@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import cx from 'classnames';
 import _ from 'lodash';
 
@@ -9,7 +8,17 @@ import {
   REFERENCEDATA_PATH_APISTATUS
 } from '../../redux/modules/referenceData';
 
-export const LabelStatus = ({ tag: Tag, statusCode, referenceData }) => {
+interface Props {
+  tag?: any;
+  statusCode: 'STABLE' | 'DEPRECATED' | 'EXPERIMENTAL' | 'REMOVED';
+  referenceData?: Record<string, any>;
+}
+
+export const LabelStatus: FC<Props> = ({
+  tag: Tag = 'h3',
+  statusCode,
+  referenceData
+}) => {
   if (statusCode === 'STABLE' || !referenceData) {
     return null;
   }
@@ -36,20 +45,4 @@ export const LabelStatus = ({ tag: Tag, statusCode, referenceData }) => {
       ({apiStatusLabel ? apiStatusLabel.toLowerCase() : null})
     </Tag>
   );
-};
-
-LabelStatus.defaultProps = {
-  tag: 'h3',
-  referenceData: null
-};
-
-LabelStatus.propTypes = {
-  tag: PropTypes.string,
-  statusCode: PropTypes.oneOf([
-    'STABLE',
-    'DEPRECATED',
-    'EXPERIMENTAL',
-    'REMOVED'
-  ]).isRequired,
-  referenceData: PropTypes.object
 };

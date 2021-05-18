@@ -16,7 +16,7 @@ function* getDatasetRequested({
 }: ReturnType<typeof actions.getDatasetRequested>) {
   try {
     const params = paramsToSearchBody({ id });
-    const data = yield call(searchDatasets, params);
+    const data: Record<string, any> = yield call(searchDatasets, params);
     const dataset = extractFirstDataset(data) as Dataset;
 
     if (dataset) {

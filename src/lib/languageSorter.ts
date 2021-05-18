@@ -7,21 +7,18 @@ const priorities: Record<string, number> = {
   [Language.EN]: 3
 };
 
-export const languageSorter = (languageArray: Partial<TextLanguage>[]) => {
-  return languageArray.sort(
-    (a: Partial<TextLanguage>, b: Partial<TextLanguage>) => {
-      const aKey = Object.keys(a)[0];
-      const bKey = Object.keys(b)[0];
+export const languageSorter = (languageArray: Partial<TextLanguage>[]) =>
+  languageArray.sort((a: Partial<TextLanguage>, b: Partial<TextLanguage>) => {
+    const aKey = Object.keys(a)[0];
+    const bKey = Object.keys(b)[0];
 
-      if (!(aKey in priorities)) {
-        return 1;
-      }
-
-      if (!(bKey in priorities)) {
-        return -1;
-      }
-
-      return priorities[aKey] > priorities[bKey] ? 1 : -1;
+    if (!(aKey in priorities)) {
+      return 1;
     }
-  );
-};
+
+    if (!(bKey in priorities)) {
+      return -1;
+    }
+
+    return priorities[aKey] > priorities[bKey] ? 1 : -1;
+  });

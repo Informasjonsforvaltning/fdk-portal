@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import _ from 'lodash';
 import qs from 'qs';
 import DocumentMeta from 'react-document-meta';
@@ -9,63 +9,71 @@ import { getTranslateText } from '../../lib/translateText';
 import { LinkExternal } from '../../components/link-external/link-external.component';
 import './concept-compare.scss';
 
-const onDeleteConcept = (id, history, conceptIdsArray, removeConcept) => {
+interface Props {
+  fetchConceptsToCompareIfNeeded?: (ids: string[]) => void;
+  removeConcept?: (id: string) => void;
+  conceptsCompare?: Record<string, any>;
+}
+
+const onDeleteConcept = (
+  id: string,
+  history: any,
+  conceptIdsArray: any[],
+  removeConcept: any
+) => {
   removeConcept(id);
   const filteredConceptIds = conceptIdsArray.filter(item => item !== id);
   history.push(`?compare=${filteredConceptIds}`);
 };
 
-const renderTitle = (label, items, field) => {
-  const fields = items =>
-    Object.keys(items).map((item, index) => (
-      <th key={`row-title-${field}-${index}`}>
-        <h3>{getTranslateText(_.get(items[item], field))}</h3>
-      </th>
-    ));
+const renderTitle = (label: any, items: any, field: any) => (
+  <thead className='sticky'>
+    <tr>
+      <th>{label}</th>
+      {Object.keys(items).map((item, index) => (
+        <th key={`row-title-${field}-${index}`}>
+          <h3>{getTranslateText(_.get(items[item], field))}</h3>
+        </th>
+      ))}
+    </tr>
+  </thead>
+);
 
-  return (
-    <thead className='sticky'>
-      <tr>
-        <th>{label}</th>
-        {fields(items)}
-      </tr>
-    </thead>
-  );
-};
+const existFieldValue = (value: any) =>
+  Array.isArray(value) ? value.some(Boolean) : !!value;
 
-const existFieldValue = value =>
-  Array.isArray(value) ? value.some(valueItem => !!valueItem) : !!value;
-
-const existValuesOnAnyItem = (items, fieldPath) =>
+const existValuesOnAnyItem = (items: any, fieldPath: string[]) =>
   Object.values(items).some(item => existFieldValue(_.get(item, fieldPath)));
 
-const renderFieldValue = (item, fieldPath, fieldPathFallback, index) => {
+const renderFieldValue = (
+  item: any,
+  fieldPath: string[],
+  fieldPathFallback: string[],
+  index: number
+) => {
   const fieldValue = _.get(item, fieldPath) || _.get(item, fieldPathFallback);
-  const renderArrayItem = (value, index) => (
-    <span key={index} className='mr-2'>
-      {getTranslateText(value)}
-    </span>
-  );
 
   return (
     <td key={`row-${fieldPath}-${index}`}>
       {Array.isArray(fieldValue)
-        ? fieldValue.map(renderArrayItem)
+        ? fieldValue.map((value, fieldIndex) => (
+            <span key={fieldIndex} className='mr-2'>
+              {getTranslateText(value)}
+            </span>
+          ))
         : getTranslateText(fieldValue)}
     </td>
   );
 };
 
-const renderRow = (label, items, fieldPath, fieldPathFallback = []) => {
-  if (
-    !(
-      existValuesOnAnyItem(items, fieldPath) ||
-      existValuesOnAnyItem(items, fieldPathFallback)
-    )
-  ) {
-    return null;
-  }
-  return (
+const renderRow = (
+  label: any,
+  items: any,
+  fieldPath: string[],
+  fieldPathFallback: string[] = []
+) =>
+  existValuesOnAnyItem(items, fieldPath) ||
+  existValuesOnAnyItem(items, fieldPathFallback) ? (
     <tr>
       <td>
         <strong>{label}</strong>
@@ -74,47 +82,43 @@ const renderRow = (label, items, fieldPath, fieldPathFallback = []) => {
         renderFieldValue(item, fieldPath, fieldPathFallback, index)
       )}
     </tr>
-  );
-};
+  ) : null;
 
-const renderRowUrl = (label, items, fieldPath) => {
-  const urlItem = (item, fieldPath, index) => {
-    const fieldValue = _.get(item, fieldPath);
-    return (
-      <td key={`row-${fieldPath}-${index}`}>
-        {_.get(fieldValue, 'uri') ? (
-          <LinkExternal
-            uri={_.get(fieldValue, 'uri')}
-            prefLabel={
-              _.get(fieldValue, 'prefLabel') || _.get(fieldValue, 'uri')
-            }
-          />
-        ) : (
-          getTranslateText(_.get(fieldValue, 'prefLabel'))
-        )}
-      </td>
-    );
-  };
-
-  if (!existValuesOnAnyItem(items, fieldPath)) {
-    return null;
-  }
-
-  return (
+const renderRowUrl = (label: any, items: any, fieldPath: any) =>
+  existValuesOnAnyItem(items, fieldPath) ? (
     <tr>
       <td>
         <strong>{label}</strong>
       </td>
-      {Object.values(items).map((item, index) =>
-        urlItem(item, fieldPath, index)
-      )}
+      {Object.values(items)
+        .map(item => _.get(item, fieldPath))
+        .map((fieldValue, index) => (
+          <td key={`row-${fieldPath}-${index}`}>
+            {_.get(fieldValue, 'uri') ? (
+              <LinkExternal
+                uri={_.get(fieldValue, 'uri')}
+                prefLabel={
+                  _.get(fieldValue, 'prefLabel') || _.get(fieldValue, 'uri')
+                }
+                openInNewTab={false}
+              />
+            ) : (
+              getTranslateText(_.get(fieldValue, 'prefLabel'))
+            )}
+          </td>
+        ))}
     </tr>
-  );
-};
+  ) : null;
 
-const renderRemoveItem = (items, history, conceptIdsArray, removeConcept) => {
-  const removeButtons = items =>
-    Object.keys(items).map((item, index) => (
+const renderRemoveItem = (
+  items: any,
+  history: any,
+  conceptIdsArray: any[],
+  removeConcept: any
+) => (
+  <tr>
+    <td />
+    {Object.keys(items).map((item, index) => (
       <td key={`row-button-${index}`}>
         <button
           type='button'
@@ -133,40 +137,35 @@ const renderRemoveItem = (items, history, conceptIdsArray, removeConcept) => {
           {localization.compare.removeCompare}
         </button>
       </td>
-    ));
+    ))}
+  </tr>
+);
 
-  return (
-    <tr>
-      <td />
-      {removeButtons(items)}
-    </tr>
-  );
-};
+export const ConceptComparePage: FC<Props> = ({
+  conceptsCompare,
+  fetchConceptsToCompareIfNeeded,
+  removeConcept
+}) => {
+  const history = useHistory();
+  const { search } = useLocation();
 
-export const ConceptComparePage = props => {
-  const {
-    conceptsCompare,
-    fetchConceptsToCompareIfNeeded,
-    removeConcept,
-    location,
-    history
-  } = props;
-  const search = qs.parse(_.get(location, 'search'), {
+  const searchParameters = qs.parse(search, {
     ignoreQueryPrefix: true
   });
-  const conceptIdsArray = _.get(search, 'compare', '').split(',');
-  fetchConceptsToCompareIfNeeded(conceptIdsArray);
+  const conceptIdsArray = ((searchParameters?.compare ?? '') as string).split(
+    ','
+  );
 
-  const meta = {
-    title: localization.menu.conceptsCompare
-  };
+  useEffect(() => {
+    fetchConceptsToCompareIfNeeded?.(conceptIdsArray);
+  }, [searchParameters?.compare]);
 
   return (
     <main id='content' className='container'>
       <article>
         <div className='row'>
           <div className='col-12'>
-            <DocumentMeta {...meta} />
+            <DocumentMeta title={localization.menu.conceptsCompare} />
             {conceptsCompare && (
               <>
                 <h1 className='title'>
@@ -201,17 +200,17 @@ export const ConceptComparePage = props => {
                       {renderRow(
                         localization.compare.subject,
                         conceptsCompare,
-                        'subject'
+                        ['subject']
                       )}
                       {renderRow(
                         localization.compare.altLabel,
                         conceptsCompare,
-                        'altLabel'
+                        ['altLabel']
                       )}
                       {renderRow(
                         localization.compare.hiddenLabel,
                         conceptsCompare,
-                        'hiddenLabel'
+                        ['hiddenLabel']
                       )}
 
                       {renderRemoveItem(
@@ -230,14 +229,4 @@ export const ConceptComparePage = props => {
       </article>
     </main>
   );
-};
-
-ConceptComparePage.defaultProps = {
-  conceptsCompare: null,
-  fetchConceptsToCompareIfNeeded: _.noop
-};
-
-ConceptComparePage.propTypes = {
-  fetchConceptsToCompareIfNeeded: PropTypes.func,
-  conceptsCompare: PropTypes.object
 };

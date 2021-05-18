@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
 
@@ -22,11 +21,30 @@ import { AlertMessage } from '../alert-message/alert-message.component';
 import { LinkExternal } from '../link-external/link-external.component';
 import { getConfig } from '../../config';
 
+interface Props {
+  tag: any;
+  title?: string | Record<string, any>;
+  titleLink?: string;
+  publisherLabel?: string;
+  publisher?: Record<string, any>;
+  publisherTag?: string;
+  publisherItems?: Record<string, any>;
+  theme?: any[];
+  nationalComponent?: boolean;
+  statusCode?: 'STABLE' | 'DEPRECATED' | 'EXPERIMENTAL' | 'REMOVED';
+  referenceData?: Record<string, any>;
+  darkThemeBackground?: boolean;
+  externalLink?: boolean;
+  validFromIncluding?: string;
+  validToIncluding?: string;
+  catalog?: any;
+}
+
 const renderPublisher = (
-  publisherLabel,
-  publisher,
-  publisherItems,
-  catalog
+  publisherLabel: any,
+  publisher: any,
+  publisherItems: any,
+  catalog: any
 ) => {
   if (!publisher) {
     return null;
@@ -42,7 +60,7 @@ const renderPublisher = (
   );
 };
 
-const renderThemes = (themes, losItems, darkThemeBackground) => {
+const renderThemes = (themes: any, losItems: any, darkThemeBackground: any) => {
   const themeClass = cx('align-self-center mr-2 mb-2', {
     'fdk-label': !darkThemeBackground,
     'fdk-label-details': darkThemeBackground
@@ -57,9 +75,14 @@ const renderThemes = (themes, losItems, darkThemeBackground) => {
   };
 
   return themes
-    .map(({ id, title }) => {
-      const { uri, prefLabel, losPaths: [theme = ''] = [] } =
-        Object.values(losItems).find(({ uri }) => uri === id) || {};
+    .map(({ id, title }: any) => {
+      const {
+        uri,
+        prefLabel,
+        losPaths: [theme = ''] = []
+      }: any = Object.values(losItems).find(
+        ({ uri: losUri }: any) => losUri === id
+      ) || {};
       return (
         uri &&
         theme && (
@@ -80,19 +103,19 @@ const renderThemes = (themes, losItems, darkThemeBackground) => {
 };
 
 const renderTitle = (
-  Tag,
-  title,
-  titleLink,
-  externalLink,
-  isExpired,
-  isWillBeValid
+  Tag: any,
+  title: any,
+  titleLink: any,
+  externalLink: any,
+  isExpired: any,
+  isWillBeValid: any
 ) => {
-  const titleTag = (Tag, title) => (
-    <Tag
+  const titleTag = (TitleTag: any, tagTitle: any) => (
+    <TitleTag
       className='mr-3 search-hit-header-title'
-      name={getTranslateText(title)}
+      name={getTranslateText(tagTitle)}
     >
-      {getTranslateText(title)}
+      {getTranslateText(tagTitle)}
       {isExpired && (
         <span className='fdk-expired'>
           &nbsp;({localization.validity.expired})
@@ -103,7 +126,7 @@ const renderTitle = (
           &nbsp;({localization.validity.willBeValid})
         </span>
       )}
-    </Tag>
+    </TitleTag>
   );
   if (titleLink) {
     if (externalLink) {
@@ -111,6 +134,7 @@ const renderTitle = (
         <LinkExternal
           uri={getConfig().searchHost.host.concat(titleLink)}
           prefLabel={title}
+          openInNewTab={false}
         />
       );
     }
@@ -127,26 +151,24 @@ const renderTitle = (
   return titleTag(Tag, title);
 };
 
-export const SearchHitHeader = props => {
-  const {
-    tag: Tag,
-    title,
-    titleLink,
-    catalog,
-    publisherLabel,
-    publisher,
-    publisherTag,
-    publisherItems,
-    theme: themes = [],
-    nationalComponent,
-    statusCode,
-    referenceData,
-    darkThemeBackground,
-    externalLink,
-    validFromIncluding,
-    validToIncluding
-  } = props;
-
+export const SearchHitHeader: FC<Props> = ({
+  tag: Tag = 'h1',
+  title,
+  titleLink,
+  catalog,
+  publisherLabel,
+  publisher,
+  publisherTag = 'span',
+  publisherItems,
+  theme: themes = [],
+  nationalComponent,
+  statusCode,
+  referenceData,
+  darkThemeBackground,
+  externalLink,
+  validFromIncluding,
+  validToIncluding
+}) => {
   const validFromIncludingDate = dateStringToDate(validFromIncluding);
   const validToIncludingDate = dateStringToDate(validToIncluding);
 
@@ -209,40 +231,4 @@ export const SearchHitHeader = props => {
       )}
     </>
   );
-};
-
-SearchHitHeader.defaultProps = {
-  tag: 'h1',
-  title: null,
-  titleLink: null,
-  publisherLabel: null,
-  publisher: null,
-  publisherTag: 'span',
-  publisherItems: null,
-  theme: [],
-  nationalComponent: false,
-  statusCode: null,
-  referenceData: null,
-  darkThemeBackground: false,
-  externalLink: false,
-  validFromIncluding: null,
-  validToIncluding: null
-};
-
-SearchHitHeader.propTypes = {
-  tag: PropTypes.string,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  titleLink: PropTypes.string,
-  publisherLabel: PropTypes.string,
-  publisher: PropTypes.object,
-  publisherTag: PropTypes.string,
-  publisherItems: PropTypes.object,
-  theme: PropTypes.array,
-  nationalComponent: PropTypes.bool,
-  statusCode: PropTypes.string,
-  referenceData: PropTypes.object,
-  darkThemeBackground: PropTypes.bool,
-  externalLink: PropTypes.bool,
-  validFromIncluding: PropTypes.string,
-  validToIncluding: PropTypes.string
 };

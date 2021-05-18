@@ -11,7 +11,7 @@ function* getDatasetsReportRequested({
   payload: { params }
 }: ReturnType<typeof actions.getDatasetsReportRequested>) {
   try {
-    const data = yield call(getDatasetsReport, params);
+    const data: DatasetsReport = yield call(getDatasetsReport, params);
 
     if (data) {
       yield put(actions.getDatasetsReportSucceeded(data as DatasetsReport));

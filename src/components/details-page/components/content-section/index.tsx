@@ -41,29 +41,27 @@ const ContentSection: FC<PropsWithChildren<Props>> = ({
   entityTheme,
   truncate,
   children
-}) => {
-  return (
-    <SC.ContentSection id={id} boxStyle={boxStyle}>
-      <SC.Header>
-        {entityIcon && (
-          <SC.IconPlaceholder>{icon(entityIcon)}</SC.IconPlaceholder>
-        )}
-        <SC.Title>{title}</SC.Title>
-      </SC.Header>
-
-      {truncate ? (
-        <TruncatedText
-          visibleLines={4}
-          lineHeight={20}
-          entityTheme={entityTheme ?? Entity.DATASET}
-        >
-          {children}
-        </TruncatedText>
-      ) : (
-        children
+}) => (
+  <SC.ContentSection id={id} boxStyle={boxStyle}>
+    <SC.Header>
+      {entityIcon && (
+        <SC.IconPlaceholder>{icon(entityIcon)}</SC.IconPlaceholder>
       )}
-    </SC.ContentSection>
-  );
-};
+      <SC.Title>{title}</SC.Title>
+    </SC.Header>
+
+    {truncate ? (
+      <TruncatedText
+        visibleLines={4}
+        lineHeight={20}
+        entityTheme={entityTheme ?? Entity.DATASET}
+      >
+        {children}
+      </TruncatedText>
+    ) : (
+      children
+    )}
+  </SC.ContentSection>
+);
 
 export default ContentSection;

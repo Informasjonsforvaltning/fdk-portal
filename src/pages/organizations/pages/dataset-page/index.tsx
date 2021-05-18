@@ -1,13 +1,13 @@
 import React, { memo, FC, useLayoutEffect, Fragment } from 'react';
 import { compose } from 'redux';
 import { Link as RouteLink } from 'react-router-dom';
-import type { RouteComponentProps } from 'react-router-dom';
 
 import Link from '@fellesdatakatalog/link';
 import ExpansionPanel, {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '@fellesdatakatalog/expansion-panel';
+import type { RouteComponentProps } from 'react-router-dom';
 
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
@@ -237,17 +237,21 @@ const DatasetPage: FC<Props> = ({
                     </div>
                   </td>
                 </tr>
-                {indicators.map(({ type, conforms, weight }) => (
-                  <tr key={type}>
+                {indicators.map(({ type: indicatorType, conforms, weight }) => (
+                  <tr key={indicatorType}>
                     <ExpansionPanel as='td'>
                       <ExpansionPanelHead>
                         <span>
                           {conforms ? <SC.CheckIcon /> : <SC.CrossIcon />}
                         </span>
-                        <p>{determineIndicatorTranslation(type)}</p>
+                        <p>{determineIndicatorTranslation(indicatorType)}</p>
                       </ExpansionPanelHead>
                       <ExpansionPanelBody>
-                        <p>{determineIndicatorDescriptionTranslation(type)}</p>
+                        <p>
+                          {determineIndicatorDescriptionTranslation(
+                            indicatorType
+                          )}
+                        </p>
                         <span>
                           {translations.formatString(
                             translations.metadataQualityPage.indicatorWeight,

@@ -42,7 +42,6 @@ exports[`should render SearchHitHeader with harvest dates 1`] = `
           "valid": true,
         }
       }
-      tag="span"
     />
   </div>
 </Fragment>

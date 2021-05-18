@@ -11,6 +11,7 @@ interface Props {
   variant?: Entity;
   active: boolean;
   label: string;
+  onClick?: () => void;
   as?: keyof JSX.IntrinsicElements | ComponentType<any>;
 }
 

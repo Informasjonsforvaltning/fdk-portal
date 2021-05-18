@@ -17,7 +17,10 @@ function* getDataServiceRequested({
   payload: { id }
 }: ReturnType<typeof actions.getDataServiceRequested>) {
   try {
-    const data = yield call(searchDataServices, paramsToSearchBody({ id }));
+    const data: Record<string, any> = yield call(
+      searchDataServices,
+      paramsToSearchBody({ id })
+    );
     const dataService = extractFirstDataService(data) as DataService;
 
     if (dataService) {

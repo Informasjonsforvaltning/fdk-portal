@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import _ from 'lodash';
 import { shallow } from 'enzyme';
 
@@ -9,13 +10,19 @@ const conceptItems = _.get(conceptsResponse, ['_embedded', 'concepts']);
 const conceptsCompare = _.keyBy(conceptItems, 'id');
 
 test('should render ConceptComparePage correctly with no apiItem', () => {
-  const wrapper = shallow(<ConceptComparePage />);
+  const wrapper = shallow(
+    <MemoryRouter initialEntries={[{ pathname: '/', key: 'testKey' }]}>
+      <ConceptComparePage />
+    </MemoryRouter>
+  );
   expect(wrapper).toMatchSnapshot();
 });
 
 test('should render ConceptComparePage correctly with conceptItem', () => {
   const wrapper = shallow(
-    <ConceptComparePage conceptsCompare={conceptsCompare} />
+    <MemoryRouter initialEntries={[{ pathname: '/', key: 'testKey' }]}>
+      <ConceptComparePage conceptsCompare={conceptsCompare} />
+    </MemoryRouter>
   );
   expect(wrapper).toMatchSnapshot();
 });

@@ -180,8 +180,7 @@ export default [
             children: []
           },
           {
-            name:
-              'DIREKTORATET FOR MINERALFORVALTNING MED BERGMESTEREN FOR SVALBARD',
+            name: 'DIREKTORATET FOR MINERALFORVALTNING MED BERGMESTEREN FOR SVALBARD',
             orgPath: '/STAT/912660680/974760282',
             children: []
           },

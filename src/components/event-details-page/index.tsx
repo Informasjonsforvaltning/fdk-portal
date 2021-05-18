@@ -87,9 +87,11 @@ const EventDetailsPage: FC<Props> = ({
     };
   }, [event?.uri]);
 
-  const publicServicesRelationsWithRelationType: ItemWithRelationType[] = publicServicesRelations.map(
-    relation => ({ relation, relationType: translations.relatedBy })
-  );
+  const publicServicesRelationsWithRelationType: ItemWithRelationType[] =
+    publicServicesRelations.map(relation => ({
+      relation,
+      relationType: translations.relatedBy
+    }));
 
   const title = event?.title ?? {};
   const description = translate(event?.description);
@@ -174,8 +176,16 @@ const EventDetailsPage: FC<Props> = ({
             >
               <KeyValueList>
                 {relatedServices?.map(
-                  ({ uri, title, id, description }, index) =>
-                    uri && title && id ? (
+                  (
+                    {
+                      uri,
+                      title: relatedServiceTitle,
+                      id,
+                      description: relatedServiceDescription
+                    },
+                    index
+                  ) =>
+                    uri && relatedServiceTitle && id ? (
                       <KeyValueListItem
                         key={`${uri}-${index}`}
                         property={
@@ -183,10 +193,10 @@ const EventDetailsPage: FC<Props> = ({
                             as={RouterLink}
                             to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}
                           >
-                            {translate(title)}
+                            {translate(relatedServiceTitle)}
                           </Link>
                         }
-                        value={translate(description)}
+                        value={translate(relatedServiceDescription)}
                       />
                     ) : null
                 )}

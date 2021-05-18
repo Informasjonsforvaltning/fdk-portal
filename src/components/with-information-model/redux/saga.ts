@@ -53,7 +53,7 @@ function* getInformationModelRdfRepresentationsRequested({
   payload: { id, formats }
 }: ReturnType<typeof actions.getInformationModelRdfRepresentationsRequested>) {
   try {
-    const rdfRepresentations = yield all(
+    const rdfRepresentations: any[] = yield all(
       formats.map(function* fetcher(format) {
         try {
           const { data } = yield call(

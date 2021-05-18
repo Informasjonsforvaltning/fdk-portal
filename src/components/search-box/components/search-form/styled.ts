@@ -22,7 +22,7 @@ const SearchForm = styled.form`
 
   input {
     border: none;
-    color: ${({ theme }) => theme.extendedColors.neutralDarker};
+    color: ${({ theme: t }) => t.extendedColors.neutralDarker};
     flex: 1;
     line-height: normal;
     outline: none;
@@ -45,7 +45,7 @@ const SearchForm = styled.form`
     align-items: center;
     border: none;
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.extendedColors.neutralDarker};
+    background-color: ${({ theme: t }) => t.extendedColors.neutralDarker};
     color: #fff;
     display: flex;
     font-size: 0.7em;
@@ -54,7 +54,7 @@ const SearchForm = styled.form`
     line-height: 1.2;
 
     &:hover {
-      background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
+      background-color: ${({ theme: t }) => t.extendedColors.neutralDarkest};
     }
 
     & > img {
@@ -69,7 +69,7 @@ const ClearIcon = styled(ClearIconBase)`
   height: 20px;
 
   & > path {
-    fill: ${({ theme }) => theme.extendedColors.neutralDarker};
+    fill: ${({ theme: t }) => t.extendedColors.neutralDarker};
   }
 
   @media (max-width: 768px) {

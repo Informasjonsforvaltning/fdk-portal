@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import qs from 'qs';
 import capitalize from 'lodash/capitalize';
 import Tabs, { Tab, Pane } from '@fellesdatakatalog/tabs';
@@ -23,25 +23,39 @@ import { setFilter } from '../search-page/search-location-helper';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { keyPrefixForest } from '../../lib/key-prefix-forest';
 
-export function ReportPagePure({
-  location,
-  history,
+interface Props {
+  fetchPublishersIfNeeded: () => void;
+  publishers?: any;
+  datasetsTimeSeries?: any;
+  dataServicesReport?: any;
+  dataServicesTimeSeries?: any;
+  informationModelsReport?: any;
+  informationModelsTimeSeries?: any;
+  datasetsReport?: any;
+  conceptsReport?: any;
+  conceptsTimeSeries?: any;
+}
+
+export const ReportPagePure: FC<Props> = ({
   fetchPublishersIfNeeded,
-  publishers,
+  publishers = {},
   dataServicesReport,
   dataServicesTimeSeries,
   informationModelsReport,
   informationModelsTimeSeries,
   datasetsReport,
-  datasetsTimeSeries,
+  datasetsTimeSeries = {},
   conceptsReport,
   conceptsTimeSeries
-}) {
+}) => {
+  const history = useHistory();
+  const { search } = useLocation();
+
   const [activeTab, setActiveTab] = useState(Variant.DATASET);
 
-  function selectPublisher(publisher) {
-    const orgPath = publisher && publisher.orgPath;
-    const currentSearch = qs.parse(location.search, {
+  function selectPublisher(publisher: any) {
+    const orgPath = publisher?.orgPath;
+    const currentSearch = qs.parse(search, {
       ignoreQueryPrefix: true
     });
     const newSearch = { ...currentSearch, orgPath };
@@ -62,10 +76,10 @@ export function ReportPagePure({
 
   fetchPublishersIfNeeded();
 
-  const orgPath = getParamFromLocation(location, 'orgPath');
+  const orgPath = (getParamFromLocation(location, 'orgPath') ?? '') as string;
   const selectedPublisher = publishers && publishers[orgPath];
 
-  const handleFilterPublisherHierarchy = event => {
+  const handleFilterPublisherHierarchy = (event: any) => {
     const selectedValue = event.target.value;
 
     if (event.target.checked) {
@@ -79,7 +93,9 @@ export function ReportPagePure({
     [Variant.DATASET]: datasetsReport?.orgPaths ?? [],
     [Variant.DATA_SERVICE]: dataServicesReport?.orgPaths ?? [],
     [Variant.CONCEPT]: conceptsReport?.orgPaths ?? [],
-    [Variant.INFORMATION_MODEL]: informationModelsReport?.orgPaths ?? []
+    [Variant.INFORMATION_MODEL]: informationModelsReport?.orgPaths ?? [],
+    [Variant.PUBLIC_SERVICE]: [],
+    [Variant.EVENT]: []
   };
 
   return (
@@ -216,18 +232,4 @@ export function ReportPagePure({
       </section>
     </ThemeProvider>
   );
-}
-
-ReportPagePure.defaultProps = {
-  fetchPublishersIfNeeded: PropTypes.func,
-  publishers: {},
-  datasetsTimeSeries: {}
-};
-
-ReportPagePure.propTypes = {
-  fetchPublishersIfNeeded: PropTypes.func,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  publishers: PropTypes.object,
-  datasetsTimeSeries: PropTypes.object
 };
