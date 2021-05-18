@@ -524,6 +524,8 @@
     "modelStatus": "Modellstatus",
     "language": "Språk",
     "hasFormats": "Alternativ representasjon av modellen",
+    "isProfileOf": "Er profil av",
+    "conformsTo": "Er i samsvar med",
     "issued": "Utgitt",
     "valid": "Gyldig",
     "from": "fra",
@@ -534,6 +536,7 @@
     "moreInfo": "Mer informasjon om informasjonsmodellen",
     "seeAlso": "Se også",
     "identifier": "Identifikator",
+    "specifiedIdentifier": "Angitt identifikator",
     "isPartOf": "En del av",
     "hasPart": "Har del",
     "isReplacedBy": "Erstattes av",
@@ -774,6 +777,7 @@
     "organizationDatasetCatalogPageSubtitle": "Metadatakvalitet for datasettbeskrivelsene",
     "organizationDatasetPageSubtitle": "Metadatakvalitet for datasettbeskrivelsen av",
     "datasetCatalogStatistics": "Datasettbeskrivelser",
+    "dataserviceCatalogStatistics": "API-beskrivelser",
     "datasetTitle": "Tittel på datasettbeskrivelse",
     "loadMoreDatasets": "Last inn flere datasettbeskrivelser (gjenstår: {count})",
     "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",
@@ -825,6 +829,13 @@
         "validatorLink": "Validering av RDF-filer"
       }
     }
+  },
+  "organizationsPage": {
+    "datasetsDescription": "datasettbeskrivelser",
+    "dataserviceDescription": "API-beskrivelser",
+    "conceptsDescription": "begrepsbeskrivelser",
+    "informationModelsDescription": "informasjonsmodellbeskrivelser",
+    "organization": "Virksomhet"
   },
   "truncatedText": {
     "expanded": "Skjul beskrivelsen",

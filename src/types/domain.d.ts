@@ -53,6 +53,8 @@ export interface InformationModel {
   contactPoint?: Partial<InformationModelContactPoint>[];
   temporal?: Partial<TemporalRestriction>[];
   hasFormat?: Partial<InformationModelFormat>[];
+  conformsTo?: Partial<DctStandard>[];
+  isProfileOf?: Partial<DctStandard>[];
 }
 
 export interface ModelCodeElement {
@@ -672,6 +674,10 @@ export interface OrganizationCountsAndRating {
       percentage: number;
     };
   };
+  dataservices: {
+    totalCount: number;
+    newCount: number;
+  };
 }
 
 export interface Catalog {
@@ -785,4 +791,11 @@ export interface InformationModelFormat {
   title: Partial<TextLanguage>;
   format: string;
   language: string;
+}
+
+export interface DctStandard {
+  uri: string;
+  title: Partial<TextLanguage>;
+  seeAlso: string[];
+  versionInfo: string;
 }

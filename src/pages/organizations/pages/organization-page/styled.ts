@@ -103,7 +103,7 @@ const OrganizationInformation = styled.div`
   }
 `;
 
-const DatasetCataloguesStatistics = styled.div`
+const CataloguesStatistics = styled.div`
   & > h2 {
     display: flex;
     align-items: center;
@@ -119,21 +119,6 @@ const DatasetCataloguesStatistics = styled.div`
       min-width: 40px;
       margin-right: ${theme.spacing('S12')};
     }
-
-    ${() =>
-      isTransportportal
-        ? css`
-            background: ${theme.colour(Colour.GREEN, 'G20')};
-            color: ${theme.colour(Colour.GREEN, 'G50')};
-
-            & > svg > path {
-              fill: ${theme.colour(Colour.GREEN, 'G50')};
-            }
-          `
-        : css`
-            background: ${theme.colour(Colour.BLUE, 'B30')};
-            color: ${theme.colour(Colour.BLUE, 'B50')};
-          `}
   }
 
   & > div {
@@ -152,6 +137,32 @@ const DatasetCataloguesStatistics = styled.div`
         margin-left: 0;
       }
     }
+  }
+`;
+
+const DatasetCataloguesStatistics = styled(CataloguesStatistics)`
+  & > h2 {
+    ${() =>
+      isTransportportal
+        ? css`
+            background: ${theme.colour(Colour.GREEN, 'G20')};
+            color: ${theme.colour(Colour.GREEN, 'G50')};
+
+            & > svg > path {
+              fill: ${theme.colour(Colour.GREEN, 'G50')};
+            }
+          `
+        : css`
+            background: ${theme.colour(Colour.BLUE, 'B30')};
+            color: ${theme.colour(Colour.BLUE, 'B50')};
+          `}
+  }
+`;
+
+const DataserviceCataloguesStatistics = styled(CataloguesStatistics)`
+  & > h2 {
+    background: ${theme.colour(Colour.BROWN, 'B30')};
+    color: ${theme.colour(Colour.BROWN, 'B50')};
   }
 `;
 
@@ -217,6 +228,7 @@ export default {
   Box,
   OrganizationInformation,
   DatasetCataloguesStatistics,
+  DataserviceCataloguesStatistics,
   PoorQualityIcon,
   SufficientQualityIcon,
   GoodQualityIcon,

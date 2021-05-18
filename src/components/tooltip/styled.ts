@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 
 const ReactTooltipStyled = styled(ReactTooltip)`
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.5em;
   padding: 1.5em;

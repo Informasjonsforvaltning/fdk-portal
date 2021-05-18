@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Colour, theme } from '@fellesdatakatalog/theme';
+import Link from '@fellesdatakatalog/link';
 
 import ExpansionPanel, { SC } from '@fellesdatakatalog/expansion-panel';
 
@@ -38,32 +40,10 @@ const Section = styled.div`
   border-top: 1px solid #dfe1e2;
 `;
 
-const DownloadButton = styled.a`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  background: ${({ theme }) => theme.extendedColors.neutralDarkest};
-  color: white !important;
-  box-shadow: 0 2px 4px rgba(45, 55, 65, 0.25);
-
-  &:hover {
-    background: black;
-  }
-
-  & > svg {
-    height: 16px;
-    width: 16px;
-    min-height: 16px;
-    min-width: 16px;
-    margin-right: 8px;
-
-    & path {
-      fill: white;
-    }
+const DownloadLink = styled(Link)`
+  & > i > svg > path {
+    fill: ${theme.colour(Colour.BLUE, 'B50')};
   }
 `;
 
-export default { DatasetDistribution, Section, DownloadButton };
+export default { DatasetDistribution, Section, DownloadLink };

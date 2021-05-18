@@ -40,11 +40,44 @@ const Format = styled.div`
   align-items: baseline;
   display: inline-flex;
   margin-bottom: 0.5em;
+
+  @media (max-width: 900px) {
+    display: block;
+  }
 `;
 
 const FormatTag = styled.span`
   margin-left: 0.5em;
   white-space: pre;
+
+  @media (max-width: 900px) {
+    margin-left: 0;
+  }
 `;
 
-export default { Link, Tabs, Tab, Pane, Code, Format, FormatTag };
+const ValueListColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    margin-bottom: 0.5em;
+  }
+
+  & > a > div {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`;
+
+export default {
+  Link,
+  Tabs,
+  Tab,
+  Pane,
+  Code,
+  Format,
+  FormatTag,
+  ValueListColumn
+};

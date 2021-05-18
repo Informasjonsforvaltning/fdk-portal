@@ -132,7 +132,8 @@ const InformationModelDetailsPage: FC<Props> = ({
 
   const entityId = informationModel?.id;
   const entityUri = informationModel?.id;
-  const identifier = informationModel?.identifier?.[0] ?? informationModel?.uri;
+  const identifier = informationModel?.uri;
+  const dctIdentifier = informationModel?.identifier?.[0];
   const publisher = informationModel?.publisher;
   const title = informationModel?.title ?? {};
   const description = translate(
@@ -181,6 +182,8 @@ const InformationModelDetailsPage: FC<Props> = ({
   ];
   const temporalRestrictions = informationModel?.temporal ?? [];
   const hasFormats = informationModel?.hasFormat ?? [];
+  const isProfileOf = informationModel?.isProfileOf ?? [];
+  const conformsTo = informationModel?.conformsTo ?? [];
 
   const informationModelIdentifiers = ([
     isPartOf,
@@ -357,6 +360,8 @@ const InformationModelDetailsPage: FC<Props> = ({
           licenses.length > 0 ||
           languages.length > 0 ||
           hasFormats.length > 0 ||
+          isProfileOf.length > 0 ||
+          conformsTo.length > 0 ||
           informationModelCategory ||
           seeAlso) && (
           <ContentSection
@@ -406,7 +411,7 @@ const InformationModelDetailsPage: FC<Props> = ({
                   value={hasFormats.map(({ uri, title, format }) => (
                     <SC.Format key={uri}>
                       <SC.Link href={uri} external>
-                        {translate(title)}
+                        {translate(title) ?? uri}
                       </SC.Link>
                       {format && (
                         <SC.FormatTag>
@@ -419,6 +424,58 @@ const InformationModelDetailsPage: FC<Props> = ({
                       )}
                     </SC.Format>
                   ))}
+                />
+              )}
+              {isProfileOf.length > 0 && (
+                <KeyValueListItem
+                  property={translations.infoMod.isProfileOf}
+                  value={isProfileOf.map(
+                    ({ uri, title, seeAlso, versionInfo }) => (
+                      <SC.ValueListColumn key={uri}>
+                        <SC.Link href={uri} external>
+                          {translate(title) ?? uri}
+                        </SC.Link>
+                        <div>
+                          <span>{translations.infoMod.version}: </span>
+                          <span>{versionInfo}</span>
+                        </div>
+                        {seeAlso && seeAlso.length > 0 && (
+                          <div>{translations.infoMod.seeAlso}:</div>
+                        )}
+                        {seeAlso?.map(uri => (
+                          <SC.Link key={uri} href={uri} external>
+                            {uri}
+                          </SC.Link>
+                        ))}
+                      </SC.ValueListColumn>
+                    )
+                  )}
+                />
+              )}
+              {conformsTo.length > 0 && (
+                <KeyValueListItem
+                  property={translations.infoMod.conformsTo}
+                  value={conformsTo.map(
+                    ({ uri, title, seeAlso, versionInfo }) => (
+                      <SC.ValueListColumn key={uri}>
+                        <SC.Link href={uri} external>
+                          {translate(title) ?? uri}
+                        </SC.Link>
+                        <div>
+                          <span>{translations.infoMod.version}: </span>
+                          <span>{versionInfo}</span>
+                        </div>
+                        {seeAlso && seeAlso.length > 0 && (
+                          <div>{translations.infoMod.seeAlso}:</div>
+                        )}
+                        {seeAlso?.map(uri => (
+                          <SC.Link key={uri} href={uri} external>
+                            {uri}
+                          </SC.Link>
+                        ))}
+                      </SC.ValueListColumn>
+                    )
+                  )}
                 />
               )}
               {seeAlso && (
@@ -500,7 +557,7 @@ const InformationModelDetailsPage: FC<Props> = ({
               </SC.Tabs>
             </ContentSection>
           )}
-        {identifier && (
+        {(identifier || dctIdentifier) && (
           <ContentSection
             id='identifiers'
             title={
@@ -508,17 +565,28 @@ const InformationModelDetailsPage: FC<Props> = ({
                 .identifiers
             }
           >
-            <KeyValueList>
-              {identifier && (
-                <KeyValueListItem
-                  property={translations.infoMod.identifier}
-                  value={identifier}
-                />
-              )}
-            </KeyValueList>
+            {identifier && (
+              <KeyValueList>
+                {identifier && (
+                  <KeyValueListItem
+                    property={translations.infoMod.identifier}
+                    value={identifier}
+                  />
+                )}
+              </KeyValueList>
+            )}
+            {dctIdentifier && (
+              <KeyValueList>
+                {dctIdentifier && (
+                  <KeyValueListItem
+                    property={translations.infoMod.specifiedIdentifier}
+                    value={dctIdentifier}
+                  />
+                )}
+              </KeyValueList>
+            )}
           </ContentSection>
         )}
-
         {keywords.length > 0 && (
           <ContentSection
             id='keywords'
