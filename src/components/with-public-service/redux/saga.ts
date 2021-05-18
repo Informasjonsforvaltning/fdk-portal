@@ -17,7 +17,10 @@ function* getPublicServiceRequested({
   payload: { id }
 }: ReturnType<typeof actions.getPublicServiceRequested>) {
   try {
-    const data = yield call(searchPublicServices, paramsToSearchBody({ id }));
+    const data: Record<string, any> = yield call(
+      searchPublicServices,
+      paramsToSearchBody({ id })
+    );
     const publicService = extractFirstPublicService(data) as PublicService;
 
     if (publicService) {

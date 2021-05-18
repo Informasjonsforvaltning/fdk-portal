@@ -12,5 +12,6 @@ const LoggingProvider: FC<PropsWithChildren<Props>> = ({ children }) => (
 );
 
 export default compose<FC>(memo)(LoggingProvider);
-export { withLogging, ServiceProps as Props } from './hoc';
+export { withLogging } from './hoc';
+export type { ServiceProps as Props } from './hoc';
 export { Severity } from '../../services/logging';

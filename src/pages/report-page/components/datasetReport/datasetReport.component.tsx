@@ -1,4 +1,5 @@
 import React, { FC, memo, useEffect } from 'react';
+import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { PieChart } from 'react-minimal-pie-chart';
 import ThemeProvider from '@fellesdatakatalog/theme';
@@ -38,11 +39,16 @@ import withReferenceData, {
 import FormatPie from '../formatPie/formatPie.component';
 import { sortKeyWithCount } from '../../sort-helper';
 
-interface Props extends RouteComponentProps, ReferenceDataProps {
+interface ExternalProps {
   datasetsReport: Partial<DatasetsReport>;
   datasetsTimeSeries: any;
   publishers?: any;
 }
+
+interface Props
+  extends ExternalProps,
+    RouteComponentProps,
+    ReferenceDataProps {}
 
 const DatasetReport: FC<Props> = ({
   publishers = {},
@@ -540,4 +546,8 @@ const DatasetReport: FC<Props> = ({
   );
 };
 
-export default withRouter(withReferenceData(memo(DatasetReport)));
+export default compose<FC<ExternalProps>>(
+  memo,
+  withRouter,
+  withReferenceData
+)(DatasetReport);

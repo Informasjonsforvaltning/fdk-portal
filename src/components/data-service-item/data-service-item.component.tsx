@@ -23,27 +23,25 @@ export const DataServiceItem: FC<Props> = ({
     isOpenLicense,
     isFree
   }
-}) => {
-  return (
-    <SearchHit
-      id={id}
-      type={SearchTypes.dataservice}
-      title={title}
-      publisher={publisher}
-      description={description || null}
-      isAuthoritative={nationalComponent}
-    >
-      {isOpenAccess && isOpenLicense && isFree && (
-        <SearchHitOpenData>
-          <div data-tip={localization.openApiTooltip}>
-            <RoundedTag>
-              <PublicIconBase />
-              <span>{localization.openApi}</span>
-            </RoundedTag>
-          </div>
-          <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
-        </SearchHitOpenData>
-      )}
-    </SearchHit>
-  );
-};
+}) => (
+  <SearchHit
+    id={id}
+    type={SearchTypes.dataservice}
+    title={title}
+    publisher={publisher}
+    description={description || null}
+    isAuthoritative={nationalComponent}
+  >
+    {isOpenAccess && isOpenLicense && isFree && (
+      <SearchHitOpenData>
+        <div data-tip={localization.openApiTooltip}>
+          <RoundedTag>
+            <PublicIconBase />
+            <span>{localization.openApi}</span>
+          </RoundedTag>
+        </div>
+        <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
+      </SearchHitOpenData>
+    )}
+  </SearchHit>
+);

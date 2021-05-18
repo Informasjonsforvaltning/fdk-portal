@@ -15,9 +15,9 @@ import { setSearchText } from '../../../../pages/search-page/search-location-hel
 import { PATHNAME_MAIN_PAGE } from '../../../../constants/constants';
 import SearchIcon from '../../../../img/icon-search-lg.svg';
 
-const SearchForm: FC<PropsWithChildren<
-  HTMLAttributes<HTMLElement> & RouteComponentProps
->> = ({ history, location }) => {
+interface Props extends HTMLAttributes<HTMLElement>, RouteComponentProps {}
+
+const SearchForm: FC<PropsWithChildren<Props>> = ({ history, location }) => {
   const locationSearch = parseSearchParams(location);
   const [searchQuery, setSearchQuery] = useState(
     locationSearch.q?.toString() || ''

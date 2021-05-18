@@ -68,7 +68,8 @@ const InformationModelDetailsPage: FC<Props> = ({
   informationModelsRelations,
   informationModelActions: {
     getInformationModelRequested: getInformationModel,
-    getInformationModelRdfRepresentationsRequested: getInformationModelRdfRepresentations,
+    getInformationModelRdfRepresentationsRequested:
+      getInformationModelRdfRepresentations,
     resetInformationModel
   },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
@@ -185,12 +186,9 @@ const InformationModelDetailsPage: FC<Props> = ({
   const isProfileOf = informationModel?.isProfileOf ?? [];
   const conformsTo = informationModel?.conformsTo ?? [];
 
-  const informationModelIdentifiers = ([
-    isPartOf,
-    hasPart,
-    isReplacedBy,
-    replaces
-  ] as string[]).filter(Boolean);
+  const informationModelIdentifiers = (
+    [isPartOf, hasPart, isReplacedBy, replaces] as string[]
+  ).filter(Boolean);
 
   const informationModelsMap = informationModels.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
@@ -408,43 +406,51 @@ const InformationModelDetailsPage: FC<Props> = ({
               {hasFormats.length > 0 && (
                 <KeyValueListItem
                   property={translations.infoMod.hasFormats}
-                  value={hasFormats.map(({ uri, title, format }) => (
-                    <SC.Format key={uri}>
-                      <SC.Link href={uri} external>
-                        {translate(title) ?? uri}
-                      </SC.Link>
-                      {format && (
-                        <SC.FormatTag>
-                          {translations.format}:{' '}
-                          {format.substr(
-                            format.lastIndexOf('/') + 1,
-                            format.length
-                          )}
-                        </SC.FormatTag>
-                      )}
-                    </SC.Format>
-                  ))}
+                  value={hasFormats.map(
+                    ({ uri, title: formatTitle, format }) => (
+                      <SC.Format key={uri}>
+                        <SC.Link href={uri} external>
+                          {translate(formatTitle) ?? uri}
+                        </SC.Link>
+                        {format && (
+                          <SC.FormatTag>
+                            {translations.format}:{' '}
+                            {format.substr(
+                              format.lastIndexOf('/') + 1,
+                              format.length
+                            )}
+                          </SC.FormatTag>
+                        )}
+                      </SC.Format>
+                    )
+                  )}
                 />
               )}
               {isProfileOf.length > 0 && (
                 <KeyValueListItem
                   property={translations.infoMod.isProfileOf}
                   value={isProfileOf.map(
-                    ({ uri, title, seeAlso, versionInfo }) => (
+                    ({
+                      uri,
+                      title: isProfileOfTitle,
+                      seeAlso: isProfileOfSeeAlso,
+                      versionInfo
+                    }) => (
                       <SC.ValueListColumn key={uri}>
                         <SC.Link href={uri} external>
-                          {translate(title) ?? uri}
+                          {translate(isProfileOfTitle) ?? uri}
                         </SC.Link>
                         <div>
                           <span>{translations.infoMod.version}: </span>
                           <span>{versionInfo}</span>
                         </div>
-                        {seeAlso && seeAlso.length > 0 && (
-                          <div>{translations.infoMod.seeAlso}:</div>
-                        )}
-                        {seeAlso?.map(uri => (
-                          <SC.Link key={uri} href={uri} external>
-                            {uri}
+                        {isProfileOfSeeAlso &&
+                          isProfileOfSeeAlso.length > 0 && (
+                            <div>{translations.infoMod.seeAlso}:</div>
+                          )}
+                        {isProfileOfSeeAlso?.map(seeAlsoUri => (
+                          <SC.Link key={seeAlsoUri} href={seeAlsoUri} external>
+                            {seeAlsoUri}
                           </SC.Link>
                         ))}
                       </SC.ValueListColumn>
@@ -456,21 +462,26 @@ const InformationModelDetailsPage: FC<Props> = ({
                 <KeyValueListItem
                   property={translations.infoMod.conformsTo}
                   value={conformsTo.map(
-                    ({ uri, title, seeAlso, versionInfo }) => (
+                    ({
+                      uri,
+                      title: conformsToTitle,
+                      seeAlso: conformsToSeeAlso,
+                      versionInfo
+                    }) => (
                       <SC.ValueListColumn key={uri}>
                         <SC.Link href={uri} external>
-                          {translate(title) ?? uri}
+                          {translate(conformsToTitle) ?? uri}
                         </SC.Link>
                         <div>
                           <span>{translations.infoMod.version}: </span>
                           <span>{versionInfo}</span>
                         </div>
-                        {seeAlso && seeAlso.length > 0 && (
+                        {conformsToSeeAlso && conformsToSeeAlso.length > 0 && (
                           <div>{translations.infoMod.seeAlso}:</div>
                         )}
-                        {seeAlso?.map(uri => (
-                          <SC.Link key={uri} href={uri} external>
-                            {uri}
+                        {conformsToSeeAlso?.map(seeAlsoUri => (
+                          <SC.Link key={seeAlsoUri} href={seeAlsoUri} external>
+                            {seeAlsoUri}
                           </SC.Link>
                         ))}
                       </SC.ValueListColumn>

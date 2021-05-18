@@ -20,7 +20,7 @@ function* getEventsRequested({
   }
 }: ReturnType<typeof actions.getEventsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchEvents,
       paramsToSearchBody({ size, relation, uris })
     );
@@ -41,7 +41,7 @@ function* getEventsRelationsRequested({
   }
 }: ReturnType<typeof actions.getEventsRelationsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchEvents,
       paramsToSearchBody({ size, relation, uris })
     );

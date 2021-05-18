@@ -22,7 +22,7 @@ export function keyPrefixForest(list) {
   list.forEach(item => {
     const children = getChildren(item);
 
-    children.forEach(item => _.set(item, 'hasParent', true));
+    children.forEach(child => _.set(child, 'hasParent', true));
 
     _.set(item, 'children', children);
   });

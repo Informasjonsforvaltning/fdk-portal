@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import { theme } from '@fellesdatakatalog/theme';
 
 const MultiLingualField = styled.div`
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
 const LanguageField = styled.div`
@@ -14,9 +13,9 @@ const LanguageField = styled.div`
 `;
 
 const LanguageIndicator = styled.span`
-  background-color: ${({ theme }) => theme.entityColours.light};
+  background-color: ${({ theme: t }) => t.entityColours.light};
   border-radius: 5px;
-  color: ${({ theme }) => theme.entityColours.dark};
+  color: ${({ theme: t }) => t.entityColours.dark};
   font-weight: ${theme.fontWeight('FW700')};
   padding: 0.1em 0.3em;
   margin-right: 0.5em;

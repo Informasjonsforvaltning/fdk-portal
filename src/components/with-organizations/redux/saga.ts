@@ -12,7 +12,7 @@ function* getOrganizationsRequested({
   payload: { filter }
 }: ReturnType<typeof actions.getOrganizationsRequested>) {
   try {
-    const data = yield call(getOrganizations, filter);
+    const data: Record<string, any> = yield call(getOrganizations, filter);
     const organizations = extractOrganizations(data);
 
     if (organizations) {

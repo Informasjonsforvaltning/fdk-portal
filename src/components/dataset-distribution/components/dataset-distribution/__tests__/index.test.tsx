@@ -615,12 +615,8 @@ describe('DatasetDistribution component', () => {
   });
 
   it('must not be expanded by default', () => {
-    const {
-      container,
-      getByTestId,
-      queryByTestId,
-      queryAllByTestId
-    } = renderWithTheme(<DatasetDistribution distribution={{}} />, { theme });
+    const { container, getByTestId, queryByTestId, queryAllByTestId } =
+      renderWithTheme(<DatasetDistribution distribution={{}} />, { theme });
 
     const datasetDistributionRootElement = getByTestId(testIds.root);
     const datasetDistributionSummaryElement = getByTestId(testIds.summary);

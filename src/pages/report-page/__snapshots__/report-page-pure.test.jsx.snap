@@ -1,149 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ReportPagePure correctly 1`] = `
-<K
-  theme={
+<Router
+  history={
     Object {
-      "dark": "#335380",
-      "graph": Object {
-        "dark": "#4B6B96",
-        "darker": "#335380",
-        "light": "#89A2C4",
-        "lighter": "#AFC2DB",
-        "lightest": "#D5E1F2",
-        "medium": "#6885AD",
+      "action": "POP",
+      "block": [Function],
+      "canGo": [Function],
+      "createHref": [Function],
+      "entries": Array [
+        Object {
+          "hash": "",
+          "key": "7pf9fo",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+      ],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "index": 0,
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "key": "7pf9fo",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
       },
-      "light": "#D5E1F2",
-      "lighter": "#F0F3F7",
+      "push": [Function],
+      "replace": [Function],
     }
   }
 >
-  <section
-    className="container"
-  >
-    <div
-      className="row"
-    >
-      <div
-        className="col-md-4"
-      >
-        <PublishersSelect
-          onChange={[Function]}
-          publishers={Object {}}
-          value={null}
-        />
-        <FilterTree
-          activeFilter={null}
-          aggregationsForest={Array []}
-          collapseItems={false}
-          handleFiltering={[Function]}
-          referenceDataItems={Object {}}
-          title="Organization"
-        />
-      </div>
-      <div
-        className="col-md-8"
-      >
-        <div
-          className="row"
-        >
-          <div
-            className="col-12"
-          >
-            <styled.h1>
-              Reports
-            </styled.h1>
-          </div>
-        </div>
-        <div
-          className="row"
-        >
-          <div
-            className="col-12"
-          >
-            <styled.h1>
-              Showing numbers for
-               
-              all entities
-            </styled.h1>
-          </div>
-        </div>
-        <div
-          className="row mb-5"
-        >
-          <div
-            className="col-12"
-          >
-            <O>
-              <s
-                active={true}
-                for="pane-1"
-              >
-                <Memo(Tab)
-                  active={true}
-                  label="Datasets"
-                  onClick={[Function]}
-                  variant="dataset"
-                />
-              </s>
-              <s
-                for="pane-2"
-              >
-                <Memo(Tab)
-                  active={false}
-                  label="APIs"
-                  onClick={[Function]}
-                  variant="dataservice"
-                />
-              </s>
-              <s
-                for="pane-3"
-              >
-                <Memo(Tab)
-                  active={false}
-                  label="Concepts"
-                  onClick={[Function]}
-                  variant="concept"
-                />
-              </s>
-              <s
-                for="pane-4"
-              >
-                <Memo(Tab)
-                  active={false}
-                  label="Information models"
-                  onClick={[Function]}
-                  variant="informationmodel"
-                />
-              </s>
-              <b
-                id="pane-1"
-              >
-                <withRouter(Connect(Component))
-                  datasetsTimeSeries={Object {}}
-                  publishers={Object {}}
-                />
-              </b>
-              <b
-                id="pane-2"
-              >
-                <Memo(Connect(Component)) />
-              </b>
-              <b
-                id="pane-3"
-              >
-                <withRouter(undefined) />
-              </b>
-              <b
-                id="pane-4"
-              >
-                <withRouter(undefined) />
-              </b>
-            </O>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</K>
+  <ReportPagePure
+    fetchPublishersIfNeeded={[MockFunction]}
+    history={
+      Object {
+        "push": [Function],
+      }
+    }
+    location={
+      Object {
+        "search": "",
+      }
+    }
+  />
+</Router>
 `;

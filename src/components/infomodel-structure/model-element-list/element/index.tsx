@@ -58,7 +58,7 @@ const Element: FC<Props> = ({
     property.identifier || code.identifier || property.uri || code.uri;
   const title = translate(property.title || code.prefLabel);
   const description = translate(property.description);
-  const belongsToModule = property.belongsToModule;
+  const { minOccurs, maxOccurs, belongsToModule } = property;
   const typeUri =
     property.hasDataType ??
     property.hasSimpleType ??
@@ -73,9 +73,7 @@ const Element: FC<Props> = ({
   const modelElementTypes = typeUris
     ? typeUris.map(uri => modelElements[uri]).filter(Boolean)
     : null;
-  const notation = code.notation;
-  const minOccurs = property.minOccurs;
-  const maxOccurs = property.maxOccurs;
+  const { notation } = code;
   const subject = property.subject ?? code.subject;
 
   const ScollLink = Link as ScollLinkType;
@@ -100,8 +98,8 @@ const Element: FC<Props> = ({
     return null;
   };
 
-  const renderElementIcon = (type: ModelElementType) => {
-    switch (type) {
+  const renderElementIcon = (elementType: ModelElementType) => {
+    switch (elementType) {
       case ModelElementType.ASSOCIATION:
         return <AssociationIcon />;
       case ModelElementType.BIDIR_IN:
@@ -157,20 +155,31 @@ const Element: FC<Props> = ({
             </ScollLink>
           )}
           <SC.ElementTypesContainer length={modelElementTypes?.length ?? 0}>
-            {modelElementTypes?.map(({ identifier, uri, title }, index) => (
-              <ScollLink
-                key={identifier ?? uri ?? `scroll-link-${index}`}
-                to={uri ?? identifier ?? ''}
-                spy
-                smooth
-                isDynamic
-                offset={0}
-                duration={1500}
-                as={SC.ScrollLink}
-              >
-                {translate(title)}
-              </ScollLink>
-            ))}
+            {modelElementTypes?.map(
+              (
+                {
+                  identifier: modelElementTypeIdentifier,
+                  uri,
+                  title: modelElementTypeTitle
+                },
+                index
+              ) => (
+                <ScollLink
+                  key={
+                    modelElementTypeIdentifier ?? uri ?? `scroll-link-${index}`
+                  }
+                  to={uri ?? modelElementTypeIdentifier ?? ''}
+                  spy
+                  smooth
+                  isDynamic
+                  offset={0}
+                  duration={1500}
+                  as={SC.ScrollLink}
+                >
+                  {translate(modelElementTypeTitle)}
+                </ScollLink>
+              )
+            )}
           </SC.ElementTypesContainer>
           {type === ModelElementType.CODE_ELEMENT ? title : notation}
         </span>

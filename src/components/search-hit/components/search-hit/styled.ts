@@ -43,7 +43,7 @@ const OpenData = styled.div`
   }
 
   ${RoundedTagSC.RoundedTag} {
-    background-color: ${({ theme }) => theme.dark};
+    background-color: ${({ theme: t }) => t.dark};
     color: #fff !important;
     &:hover {
       color: #fff;
@@ -61,13 +61,13 @@ const AccessRight = styled.div`
     width: 20px;
     margin-right: 0.5em;
     path {
-      fill: ${({ theme }) => theme.dark};
+      fill: ${({ theme: t }) => t.dark};
     }
   }
 
   ${RoundedTagSC.RoundedTag} {
-    background-color: ${({ theme }) => theme.light};
-    color: ${({ theme }) => theme.dark};
+    background-color: ${({ theme: t }) => t.light};
+    color: ${({ theme: t }) => t.dark};
     &:hover {
       color: #fff !important;
       cursor: default;
@@ -88,8 +88,8 @@ const Theme = styled.div`
   flex-wrap: wrap;
 
   ${RoundedTagSC.RoundedTagWithLink} {
-    background-color: ${({ theme }) => theme.lighter};
-    color: ${({ theme }) => theme.dark} !important;
+    background-color: ${({ theme: t }) => t.lighter};
+    color: ${({ theme: t }) => t.dark} !important;
     margin-right: 0.5em;
     margin-bottom: 0.5em;
     padding: 0 0.6em;
@@ -107,7 +107,7 @@ const Event = styled.div`
   flex-wrap: wrap;
 
   ${RoundedTagSC.RoundedTagWithLink} {
-    background-color: ${({ theme }) => theme.dark};
+    background-color: ${({ theme: t }) => t.dark};
     color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
     margin-right: 0.5em;
     margin-bottom: 0.5em;
@@ -125,7 +125,7 @@ const Format = styled.div`
   margin-bottom: 1em;
   span {
     border: 1px solid;
-    border-color: ${({ theme }) => theme.dark};
+    border-color: ${({ theme: t }) => t.dark};
     border-radius: 5px;
     font-size: 1.3rem;
     padding: 0.3em 0.8em;

@@ -17,7 +17,10 @@ function* getConceptRequested({
   payload: { id }
 }: ReturnType<typeof actions.getConceptRequested>) {
   try {
-    const data = yield call(searchConcepts, paramsToSearchBody({ id }));
+    const data: Record<string, any> = yield call(
+      searchConcepts,
+      paramsToSearchBody({ id })
+    );
     const concept = extractFirstConcept(data) as Concept;
 
     if (concept) {

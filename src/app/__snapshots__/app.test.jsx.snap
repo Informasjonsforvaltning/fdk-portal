@@ -72,7 +72,6 @@ exports[`should render App correctly 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(Component)",
               "type": [Function],
             }
           }
@@ -92,7 +91,6 @@ exports[`should render App correctly 1`] = `
                   "type": [Function],
                 },
                 "compare": null,
-                "displayName": "Connect(Component)",
                 "type": [Function],
               },
             }
@@ -112,7 +110,6 @@ exports[`should render App correctly 1`] = `
                   "$$typeof": Symbol(react.memo),
                   "WrappedComponent": [Function],
                   "compare": null,
-                  "displayName": "Connect(WrappedComponent)",
                   "type": [Function],
                 },
               },
@@ -133,7 +130,6 @@ exports[`should render App correctly 1`] = `
                   "$$typeof": Symbol(react.memo),
                   "WrappedComponent": [Function],
                   "compare": null,
-                  "displayName": "Connect(WrappedComponent)",
                   "type": [Function],
                 },
               },
@@ -154,7 +150,6 @@ exports[`should render App correctly 1`] = `
                   "$$typeof": Symbol(react.memo),
                   "WrappedComponent": [Function],
                   "compare": null,
-                  "displayName": "Connect(WrappedComponent)",
                   "type": [Function],
                 },
               },
@@ -176,7 +171,6 @@ exports[`should render App correctly 1`] = `
                   "type": [Function],
                 },
                 "compare": null,
-                "displayName": "Connect(Component)",
                 "type": [Function],
               },
             }
@@ -196,7 +190,6 @@ exports[`should render App correctly 1`] = `
                   "$$typeof": Symbol(react.memo),
                   "WrappedComponent": [Function],
                   "compare": null,
-                  "displayName": "Connect(WrappedComponent)",
                   "type": [Function],
                 },
               },
@@ -216,7 +209,6 @@ exports[`should render App correctly 1`] = `
               "$$typeof": Symbol(react.memo),
               "WrappedComponent": [Function],
               "compare": null,
-              "displayName": "Connect(DatasetsReportDatasetsTimeSeriesDataServicesReportDataServicesTimeSeriesConceptsReportConceptsTimeSeriesInformationModelsReportInformationModelsTimeSeriesResolver)",
               "type": [Function],
             }
           }

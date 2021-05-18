@@ -10,7 +10,7 @@ import {
 
 function* getOrganizationsFromCatalogRequested() {
   try {
-    const data = yield call(getOrganizations);
+    const data: Record<string, any> = yield call(getOrganizations);
     const organizations = extractOrganizations(data);
 
     if (organizations) {

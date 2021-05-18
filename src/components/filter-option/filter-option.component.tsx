@@ -1,23 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, ChangeEventHandler } from 'react';
 import _capitalize from 'lodash/capitalize';
 
 import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
 
-export const FilterOption = props => {
-  const {
-    itemKey,
-    value,
-    labelRaw,
-    label,
-    count,
-    onClick,
-    active,
-    referenceDataItems,
-    displayClass,
-    capitalize
-  } = props;
+interface Props {
+  itemKey: number;
+  value?: string;
+  labelRaw?: string;
+  label?: string;
+  count?: number;
+  onClick: ChangeEventHandler;
+  active?: boolean;
+  referenceDataItems?: Record<string, any>;
+  displayClass?: string;
+  capitalize?: boolean;
+}
+
+export const FilterOption: FC<Props> = ({
+  itemKey,
+  value,
+  labelRaw,
+  label,
+  count,
+  onClick,
+  active,
+  referenceDataItems,
+  displayClass,
+  capitalize = true
+}) => {
   const optionLabel = labelRaw || label;
 
   let textLabel;
@@ -40,7 +51,7 @@ export const FilterOption = props => {
       optionLabel.substr(optionLabel.lastIndexOf('/') + 1, optionLabel.length)
     );
   } else {
-    textLabel = localization[optionLabel] || optionLabel;
+    textLabel = (optionLabel && localization[optionLabel]) || optionLabel;
   }
   if (textLabel && textLabel === textLabel.toUpperCase()) {
     textLabel =
@@ -48,9 +59,9 @@ export const FilterOption = props => {
       (capitalize ? `${_capitalize(textLabel)}` : textLabel);
   }
 
-  const id = encodeURIComponent(itemKey + value);
+  const id = encodeURIComponent(itemKey + (value ?? ''));
 
-  let inputRef;
+  let inputRef: any;
 
   return (
     <div className={`checkbox ${displayClass}`}>
@@ -59,7 +70,7 @@ export const FilterOption = props => {
         onKeyPress={() => {
           inputRef.click();
         }}
-        tabIndex='0'
+        tabIndex={0}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
         role='button'
         htmlFor={id}
@@ -70,9 +81,9 @@ export const FilterOption = props => {
           }}
           type='checkbox'
           id={id}
-          tabIndex='-1'
+          tabIndex={-1}
           checked={active}
-          onChange={e => onClick(e)}
+          onChange={onClick}
           className='list-group-item fdk-label fdk-label-default'
           value={value}
         />
@@ -81,28 +92,4 @@ export const FilterOption = props => {
       </label>
     </div>
   );
-};
-
-FilterOption.defaultProps = {
-  value: null,
-  labelRaw: null,
-  label: null,
-  count: null,
-  active: null,
-  referenceDataItems: null,
-  displayClass: null,
-  capitalize: true
-};
-
-FilterOption.propTypes = {
-  itemKey: PropTypes.number.isRequired,
-  value: PropTypes.string,
-  labelRaw: PropTypes.string,
-  label: PropTypes.string,
-  count: PropTypes.number,
-  onClick: PropTypes.func.isRequired,
-  active: PropTypes.bool,
-  referenceDataItems: PropTypes.object,
-  displayClass: PropTypes.string,
-  capitalize: PropTypes.bool
 };

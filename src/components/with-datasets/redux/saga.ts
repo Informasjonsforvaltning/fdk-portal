@@ -30,7 +30,7 @@ function* getDatasetsRequested({
   }
 }: ReturnType<typeof actions.getDatasetsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchDatasets,
       paramsToSearchBody({
         uris,
@@ -73,7 +73,7 @@ function* getDatasetsRelationsRequested({
   }
 }: ReturnType<typeof actions.getDatasetsRelationsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchDatasets,
       paramsToSearchBody({
         uris,

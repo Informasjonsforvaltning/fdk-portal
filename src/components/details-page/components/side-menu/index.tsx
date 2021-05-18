@@ -20,10 +20,10 @@ const SideMenu: FC<Props> = ({ menuItems = [], title = '', ...props }) => (
     <SC.Menu>
       {title && <SC.Title>{title}</SC.Title>}
       <ul>
-        {menuItems.map(({ id, title }) => (
+        {menuItems.map(({ id, title: menuItemTitle }) => (
           <SC.MenuItem key={id}>
             <Link to={id} smooth isDynamic spy>
-              {title}
+              {menuItemTitle}
             </Link>
           </SC.MenuItem>
         ))}

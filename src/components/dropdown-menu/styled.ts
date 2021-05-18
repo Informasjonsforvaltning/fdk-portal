@@ -40,7 +40,7 @@ interface dropdownMenuProps {
 }
 
 const DropdownMenu = styled.nav<dropdownMenuProps>`
-  color: ${({ theme }) => theme.extendedColors.neutralDarkest};
+  color: ${({ theme: t }) => t.extendedColors.neutralDarkest};
   display: ${({ desktopView }) => (desktopView ? 'inherit' : 'none')};
   position: relative;
 
@@ -89,20 +89,20 @@ const bannerHeight = '8rem';
 const Dropdown = styled.ul<dropdownProps>`
   display: ${({ open }) => (open ? 'flex' : 'none')};
   flex-direction: column;
-  border: 1px solid ${({ theme }) => theme.extendedColors.neutralLight};
+  border: 1px solid ${({ theme: t }) => t.extendedColors.neutralLight};
   z-index: 1000;
   position: absolute;
   right: 0;
   top: 40px;
   overflow-y: auto;
 
-  ${({ theme }) =>
+  ${({ theme: t }) =>
     isTransportportal
       ? css`
-          background-color: ${theme.extendedColors.header};
+          background-color: ${t.extendedColors.header};
         `
       : css`
-          background-color: ${theme.extendedColors.headerBg};
+          background-color: ${t.extendedColors.headerBg};
         `}
 
   ${onMobileView} {

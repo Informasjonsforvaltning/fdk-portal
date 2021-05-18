@@ -1,10 +1,10 @@
+import { Configuration, ProvidePlugin } from 'webpack';
 import { resolve } from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-export default {
+const configuration: Configuration = {
   entry: {
     main: './src/entrypoints/main/index.tsx',
     publishing: './src/entrypoints/publishing/index.tsx',
@@ -12,10 +12,15 @@ export default {
   },
   output: {
     path: resolve(__dirname, '..', 'dist'),
-    publicPath: '/'
+    publicPath: '/',
+    clean: true
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    fallback: {
+      path: require.resolve('path-browserify'),
+      buffer: require.resolve('buffer')
+    }
   },
   optimization: {
     runtimeChunk: 'single',
@@ -29,19 +34,19 @@ export default {
       cacheGroups: {
         default: false,
         mainVendors: {
-          test: ({ resource = '' }) => resource.includes('node_modules'),
+          test: ({ resource = '' }: any) => resource.includes('node_modules'),
           name: 'main.vendors',
           filename: '[name].bundle.js',
           chunks: ({ name }) => name === 'main'
         },
         publishingVendors: {
-          test: ({ resource = '' }) => resource.includes('node_modules'),
+          test: ({ resource = '' }: any) => resource.includes('node_modules'),
           name: 'publishing.vendors',
           filename: '[name].bundle.js',
           chunks: ({ name }) => name === 'publishing'
         },
         maintenanceVendors: {
-          test: ({ resource = '' }) => resource.includes('node_modules'),
+          test: ({ resource = '' }: any) => resource.includes('node_modules'),
           name: 'maintenance.vendors',
           filename: '[name].bundle.js',
           chunks: ({ name }) => name === 'maintenance'
@@ -75,7 +80,10 @@ export default {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'resolve-url-loader',
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true }
+          }
         ]
       },
       {
@@ -92,27 +100,26 @@ export default {
         include: [resolve(__dirname, '..', 'src', 'images')]
       },
       {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-      },
-      {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader',
-        exclude: [resolve(__dirname, '..', 'src', 'images')]
-      },
-      {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: 'url-loader',
-            options: { limit: 10000 } // Convert images < 10k to base64 strings
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images',
+              publicPath: 'images'
+            }
           }
         ]
+      },
+      {
+        test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader',
+        exclude: [resolve(__dirname, '..', 'src', 'images')]
       }
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/entrypoints/main/index.html',
       filename: 'index.html',
@@ -138,7 +145,12 @@ export default {
       filename: '[name].styles.css'
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: './src/img/*', to: './img', flatten: true }]
+      patterns: [{ from: './src/img/*', to: './img' }]
+    }),
+    new ProvidePlugin({
+      process: 'process'
     })
   ]
 };
+
+export default configuration;

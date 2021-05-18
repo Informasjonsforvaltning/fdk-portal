@@ -21,7 +21,7 @@ function* getOrganizationRequested({
   payload: { id }
 }: ReturnType<typeof actions.getOrganizationRequested>) {
   try {
-    const organization = yield call(getOrganizationFromCatalog, id);
+    const organization: Publisher = yield call(getOrganizationFromCatalog, id);
 
     if (organization && typeof organization === 'object') {
       yield put(actions.getOrganizationSucceeded(organization as Publisher));
@@ -57,7 +57,11 @@ function* getOrganizationRatingRequested({
   payload: { id, filter }
 }: ReturnType<typeof actions.getOrganizationRatingRequested>) {
   try {
-    const data = yield call(getOrganizationData, id, filter);
+    const data: OrganizationCountsAndRating = yield call(
+      getOrganizationData,
+      id,
+      filter
+    );
 
     if (data) {
       yield put(

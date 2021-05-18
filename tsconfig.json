@@ -8,9 +8,9 @@
       "esnext",
       "dom"
     ],
+    "outDir": "dist",
     "allowJs": true,
     "sourceMap": true,
-    "outDir": "./dist/",
     "esModuleInterop": true,
     "isolatedModules": false,
     "downlevelIteration": true,
@@ -24,8 +24,11 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "resolveJsonModule": true,
+    "moduleResolution": "node",
     "types": [
       "node",
       "jest"
@@ -33,14 +36,13 @@
     "typeRoots": [
       "node_modules/@types",
       "src/types/*"
-    ],
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
+    ]
   },
   "include": [
-    "./src/**/*"
+    "src/**/*"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/**/__tests__/**/*"
   ]
 }

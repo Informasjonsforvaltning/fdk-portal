@@ -11,8 +11,8 @@ interface Props {
   news?: News[];
 }
 
-const renderNewsItems = (news: News[]) => {
-  return news?.map((item: News) => {
+const renderNewsItems = (news: News[]) =>
+  news?.map((item: News) => {
     const image = findParagraphImage(item.field_modules);
     return (
       <Item
@@ -29,7 +29,6 @@ const renderNewsItems = (news: News[]) => {
       />
     );
   });
-};
 
 const NewsList: FC<Props> = ({ news }) => {
   if (news && news.length > 0) {

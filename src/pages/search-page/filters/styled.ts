@@ -5,7 +5,7 @@ const onMobileView = '@media (max-width: 768px)';
 
 const FilterToggle = styled.button`
   display: none;
-  color: ${({ theme }) => theme.extendedColors.neutralDarker};
+  color: ${({ theme: t }) => t.extendedColors.neutralDarker};
 
   ${onMobileView} {
     display: flex;
@@ -14,17 +14,17 @@ const FilterToggle = styled.button`
     padding: 13px;
     border-radius: 5px;
     border: none;
-    background-color: ${({ theme }) => theme.extendedColors.neutralLight};
+    background-color: ${({ theme: t }) => t.extendedColors.neutralLight};
     width: 100%;
   }
 
   &:hover {
-    color: ${({ theme }) => theme.extendedColors.neutralDarkest};
+    color: ${({ theme: t }) => t.extendedColors.neutralDarkest};
   }
 
   &:active {
     background: black;
-    color: ${({ theme }) => theme.extendedColors.neutralLighter};
+    color: ${({ theme: t }) => t.extendedColors.neutralLighter};
   }
 `;
 

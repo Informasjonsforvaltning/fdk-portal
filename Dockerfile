@@ -1,11 +1,11 @@
-FROM node:12 AS build
+FROM node:lts AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm set progress=false && \
   npm config set depth 0 && \
   npm ci
 RUN npm audit --production --audit-level=moderate
-COPY babel.config.js tsconfig.json jest.config.js ./
+COPY babel.config.js tsconfig.json tsconfig.test.json tsconfig.webpack.json jest.config.js ./
 COPY webpack ./webpack
 COPY test ./test
 COPY src ./src
@@ -26,5 +26,5 @@ COPY --chown=app:app nginx.conf /etc/nginx/conf.d/default.conf
 COPY --chown=app:app --from=build /app/dist ./
 COPY --chown=app:app entrypoint.sh config.template.js ./
 RUN dos2unix entrypoint.sh && chmod +x entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT [ "./entrypoint.sh" ]
 EXPOSE 8080

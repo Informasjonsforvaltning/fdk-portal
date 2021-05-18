@@ -14,7 +14,7 @@ export const organizationsApi = ({ path, method, data, params }: Props) =>
     method,
     data,
     params
-  }).then(({ data }) => data);
+  }).then(({ data: responseData }) => responseData);
 
 export const organizationsApiGet = (
   path: string,

@@ -118,7 +118,7 @@ export const ConceptItem: FC<Props> = ({
   if (concepts) {
     showCompareButton = !some(
       concepts,
-      (concept: Partial<Concept>) => concept.uri === uri
+      ({ uri: conceptUri }: Partial<Concept>) => conceptUri === uri
     );
   }
   return (

@@ -9,7 +9,3 @@ node_modules
 .lintstagedrc
 
 package-lock.json
-
-*.sh
-*.scss
-*.md

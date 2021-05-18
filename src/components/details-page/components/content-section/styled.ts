@@ -33,7 +33,7 @@ const Title = styled.h2`
 
 const Header = styled.div`
   align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.entityColours.light};
+  border-bottom: 1px solid ${({ theme: t }) => t.entityColours.light};
   display: flex;
   margin-bottom: ${theme.spacing('S10')};
   padding: ${theme.spacing('S10')} 0;
@@ -41,7 +41,7 @@ const Header = styled.div`
 
 const IconPlaceholder = styled.div`
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.entityColours.light};
+  background-color: ${({ theme: t }) => t.entityColours.light};
   margin-right: ${theme.spacing('S16')};
   padding: ${theme.spacing('S6')}; ;
 `;
@@ -50,7 +50,7 @@ const DatasetIcon = styled(DatasetIconBase)`
   height: 2em;
 
   & > path {
-    fill: ${({ theme }) => theme.entityColours.dark};
+    fill: ${({ theme: t }) => t.entityColours.dark};
   }
 `;
 
@@ -58,7 +58,7 @@ const ApiIcon = styled(ApiIconBase)`
   height: 2em;
 
   & > path {
-    fill: ${({ theme }) => theme.entityColours.dark};
+    fill: ${({ theme: t }) => t.entityColours.dark};
   }
 `;
 
@@ -66,7 +66,7 @@ const ConceptIcon = styled(ConceptIconBase)`
   height: 2em;
 
   & > path {
-    fill: ${({ theme }) => theme.entityColours.dark};
+    fill: ${({ theme: t }) => t.entityColours.dark};
   }
 `;
 
@@ -74,7 +74,7 @@ const InfomodIcon = styled(InfomodIconBase)`
   height: 2em;
 
   & > path {
-    fill: ${({ theme }) => theme.entityColours.dark};
+    fill: ${({ theme: t }) => t.entityColours.dark};
   }
 `;
 
@@ -82,7 +82,7 @@ const ServiceIcon = styled(ServiceIconBase)`
   height: 2em;
 
   & > path {
-    fill: ${({ theme }) => theme.entityColours.dark};
+    fill: ${({ theme: t }) => t.entityColours.dark};
   }
 `;
 

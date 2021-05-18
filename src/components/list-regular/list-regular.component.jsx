@@ -2,21 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './list-regular.scss';
 
-export const ListRegular = ({ title, name, bottomMargin, children }) => {
-  return (
-    <section
-      className={`list-regular ${bottomMargin ? 'mb-5' : ''}`}
-      name={name || title}
-    >
-      {title && (
-        <div className='list-regular--item'>
-          <h3>{title}</h3>
-        </div>
-      )}
-      {children}
-    </section>
-  );
-};
+export const ListRegular = ({ title, name, bottomMargin, children }) => (
+  <section
+    className={`list-regular ${bottomMargin ? 'mb-5' : ''}`}
+    name={name || title}
+  >
+    {title && (
+      <div className='list-regular--item'>
+        <h3>{title}</h3>
+      </div>
+    )}
+    {children}
+  </section>
+);
 
 ListRegular.defaultProps = {
   title: null,
