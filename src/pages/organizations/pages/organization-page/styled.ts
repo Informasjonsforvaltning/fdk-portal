@@ -104,6 +104,10 @@ const OrganizationInformation = styled.div`
 `;
 
 const CataloguesStatistics = styled.div`
+  &:nth-of-type(n + 2) {
+    margin-top: ${theme.spacing('S16')};
+  }
+
   & > h2 {
     display: flex;
     align-items: center;
@@ -163,6 +167,20 @@ const DataserviceCataloguesStatistics = styled(CataloguesStatistics)`
   & > h2 {
     background: ${theme.colour(Colour.BROWN, 'B30')};
     color: ${theme.colour(Colour.BROWN, 'B50')};
+  }
+`;
+
+const ConceptCataloguesStatistics = styled(CataloguesStatistics)`
+  & > h2 {
+    background: ${theme.colour(Colour.CYAN, 'C30')};
+    color: ${theme.colour(Colour.CYAN, 'C50')};
+  }
+`;
+
+const InformationModelCataloguesStatistics = styled(CataloguesStatistics)`
+  & > h2 {
+    background: ${theme.colour(Colour.VIOLET, 'V30')};
+    color: ${theme.colour(Colour.VIOLET, 'V50')};
   }
 `;
 
@@ -229,6 +247,8 @@ export default {
   OrganizationInformation,
   DatasetCataloguesStatistics,
   DataserviceCataloguesStatistics,
+  ConceptCataloguesStatistics,
+  InformationModelCataloguesStatistics,
   PoorQualityIcon,
   SufficientQualityIcon,
   GoodQualityIcon,

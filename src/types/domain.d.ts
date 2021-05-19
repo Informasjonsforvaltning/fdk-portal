@@ -678,6 +678,14 @@ export interface OrganizationCountsAndRating {
     totalCount: number;
     newCount: number;
   };
+  concepts: {
+    totalCount: number;
+    newCount: number;
+  };
+  informationmodels: {
+    totalCount: number;
+    newCount: number;
+  };
 }
 
 export interface Catalog {
