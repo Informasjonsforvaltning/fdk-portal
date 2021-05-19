@@ -12,7 +12,8 @@ const mapFilters = ({
   uri,
   orgPath,
   last_x_days,
-  seeAlso
+  seeAlso,
+  organizationNumber
 }: any) => {
   const filters = [];
   if (id) {
@@ -45,6 +46,13 @@ const mapFilters = ({
       'references.source.uri.keyword': seeAlso
     });
   }
+
+  if (/^\d{9}$/.test(organizationNumber ?? '')) {
+    filters.push({
+      'publisher.id.keyword': organizationNumber
+    });
+  }
+
   return filters.length > 0 ? filters : undefined;
 };
 
