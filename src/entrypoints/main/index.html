@@ -14,6 +14,7 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="Felles datakatalog" />
 		<meta property="og:description" content="Felles Datakatalog er en oversikt over hvilke data de ulike offentlige virksomhetene har, hvordan de henger sammen og hva de betyr. Datakatalogen gjør det mulig for deg å søke i opplysningene hos offentlige virksomheter og bruke de til for eksempel analyseformål." />
+		<script src="https://web2.questback.com/Scripts/questback.popup-1.0.1.min.js"></script>
 		<script>
 			if (
 			  location.hostname.indexOf('nap.') >= 0 ||
@@ -26,6 +27,9 @@
 			  document.write(
 			    '<link rel="icon" type="image/x-icon" href="/img/favicon.ico">'
 			  );
+			  document.write(
+    '\x3Cscript type="text/javascript">questback.popup.create("https://response.questback.com/difi/bofuzshh6m", {title: "Har du 2 minutter?",text: "Vi ønsker tilbakemelding på arbeidet vi gjør for å formidle åpne data fra det offentlige, og hjelp til å forbedre innsatsen. Vil du delta på en kort brukerundersøkelse?", buttons: [{type: "participate",text: "Ja"},{type: "decline",text: "Nei"}]});\x3C/script>'
+  );
 			}
 		</script>
 		<link rel="alternate" type="application/rss+xml" title="RSS"
