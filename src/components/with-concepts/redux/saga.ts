@@ -20,7 +20,7 @@ function* getConceptsRequested({
   }
 }: ReturnType<typeof actions.getConceptsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchConcepts,
       paramsToSearchBody({ identifiers, size, seeAlso })
     );
@@ -43,7 +43,7 @@ function* getConceptsRelationsRequested({
   }
 }: ReturnType<typeof actions.getConceptsRelationsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchConcepts,
       paramsToSearchBody({ identifiers, size, seeAlso })
     );

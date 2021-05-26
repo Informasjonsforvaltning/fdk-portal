@@ -173,9 +173,11 @@ const DatasetDetailsPage: FC<Props> = ({
     };
   }, [dataset?.uri]);
 
-  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] = publicServicesRelations.map(
-    relation => ({ relation, relationType: translate(translations.sampleData) })
-  );
+  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
+    publicServicesRelations.map(relation => ({
+      relation,
+      relationType: translate(translations.sampleData)
+    }));
 
   const entity = Entity.DATASET;
 
@@ -213,8 +215,12 @@ const DatasetDetailsPage: FC<Props> = ({
   };
   const samples =
     dataset?.sample?.filter(
-      ({ description, format: formats, accessURL: accessURLs }) =>
-        translate(description) ||
+      ({
+        description: sampleDescription,
+        format: formats,
+        accessURL: accessURLs
+      }) =>
+        translate(sampleDescription) ||
         Array.isArray(formats) ||
         Array.isArray(accessURLs)
     ) ?? [];
@@ -436,13 +442,17 @@ const DatasetDetailsPage: FC<Props> = ({
           >
             {samples.map(
               (
-                { description, format: formats, accessURL: accessURLs },
+                {
+                  description: sampleDescription,
+                  format: formats,
+                  accessURL: accessURLs
+                },
                 index
               ) => (
                 <KeyValueList key={`sample-${index}`}>
                   <KeyValueListItem
                     property={translations.dataset.distribution.description}
-                    value={translate(description)}
+                    value={translate(sampleDescription)}
                   />
                   <KeyValueListItem
                     property={translations.dataset.distribution.format}
@@ -569,7 +579,7 @@ const DatasetDetailsPage: FC<Props> = ({
             }
           >
             <KeyValueList>
-              {referencedDatasets?.map(({ id, uri, title }) => (
+              {referencedDatasets?.map(({ id, uri, title: datasetTitle }) => (
                 <KeyValueListItem
                   key={id}
                   property={translate(
@@ -586,7 +596,7 @@ const DatasetDetailsPage: FC<Props> = ({
                       to={`${PATHNAME_DATASET_DETAILS}/${id}`}
                       as={RouteLink}
                     >
-                      {translate(title)}
+                      {translate(datasetTitle)}
                     </Link>
                   }
                 />

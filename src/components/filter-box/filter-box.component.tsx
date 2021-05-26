@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Collapse } from 'reactstrap';
 import _ from 'lodash';
 
@@ -10,8 +9,24 @@ import './filter-box.scss';
 import CollapseTextIcon from '../../img/icon-collapse-text-sm.svg';
 import ExpandTextIcon from '../../img/icon-expand-text-sm.svg';
 
-export class FilterBox extends React.Component {
-  constructor(props) {
+interface Props {
+  htmlKey?: number;
+  title?: string;
+  filter: Record<string, any>;
+  onClick: (...args: any[]) => void;
+  activeFilter?: any;
+  referenceDataItems?: Record<string, any>;
+  filters?: Record<string, any>;
+  capitalizeOption?: boolean;
+}
+
+interface State {
+  openFilter: boolean;
+  open: boolean;
+}
+
+export class FilterBox extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       openFilter: true,
@@ -32,22 +47,22 @@ export class FilterBox extends React.Component {
   }
 
   _renderOptions(
-    { buckets },
-    onClick,
-    activeFilter,
-    allFilters,
-    capitalizeOption
+    { buckets }: any,
+    onClick: any,
+    activeFilter: any,
+    allFilters: any,
+    capitalizeOption: any
   ) {
     const { open } = this.state;
     const { htmlKey, referenceDataItems } = this.props;
-    const filters = [];
+    const filters: any[] = [];
     if (activeFilter) {
       filters.push(...activeFilter.split(','));
     }
     if (allFilters && 'opendata' in allFilters) {
       filters.push('OPEN_DATA');
     }
-    const options = items =>
+    const options = (items: any[]) =>
       items.map((item, index) => {
         // generate unique key, this is used by FilterOption on label htmlFor
         let itemKey = 0;
@@ -114,7 +129,7 @@ export class FilterBox extends React.Component {
       onClick,
       activeFilter,
       filters,
-      capitalizeOption
+      capitalizeOption = true
     } = this.props;
 
     if (_.get(filter, 'buckets', []).length > 0) {
@@ -148,25 +163,3 @@ export class FilterBox extends React.Component {
     return null;
   }
 }
-
-FilterBox.defaultProps = {
-  htmlKey: null,
-  title: null,
-  activeFilter: null,
-  referenceDataItems: null,
-  filters: null,
-  capitalizeOption: true
-};
-
-FilterBox.propTypes = {
-  htmlKey: PropTypes.number,
-  title: PropTypes.string,
-  filter: PropTypes.object.isRequired,
-  onClick: PropTypes.func.isRequired,
-  activeFilter: PropTypes.string,
-  referenceDataItems: PropTypes.object,
-  filters: PropTypes.object,
-  capitalizeOption: PropTypes.bool
-};
-
-// export default FilterBox;

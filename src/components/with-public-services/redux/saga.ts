@@ -7,7 +7,6 @@ import {
   GET_PUBLIC_SERVICES_RELATIONS_REQUESTED
 } from './action-types';
 import * as actions from './actions';
-import type { PublicService } from '../../../types';
 
 import {
   extractPublicServices,
@@ -16,6 +15,8 @@ import {
   paramsToSearchBody,
   searchPublicServices
 } from '../../../api/search-fulltext-api/public-services';
+
+import type { PublicService } from '../../../types';
 
 function* getPublicServicesRequested({
   payload: {
@@ -35,7 +36,7 @@ function* getPublicServicesRequested({
   }
 }: ReturnType<typeof actions.getPublicServicesRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchPublicServices,
       paramsToSearchBody({
         page,
@@ -74,7 +75,7 @@ function* getPublicServicesRequiredByRequested({
   }
 }: ReturnType<typeof actions.getPublicServicesRequiredByRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchPublicServices,
       paramsToSearchBody({
         requiredByServiceUri,
@@ -102,7 +103,7 @@ function* getPublicServicesRelatedByRequested({
   }
 }: ReturnType<typeof actions.getPublicServicesRelatedByRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchPublicServices,
       paramsToSearchBody({
         relatedByServiceUri,
@@ -144,7 +145,7 @@ function* getPublicServicesRelationsRequested({
   }
 }: ReturnType<typeof actions.getPublicServicesRelationsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchPublicServices,
       paramsToSearchBody({
         page,

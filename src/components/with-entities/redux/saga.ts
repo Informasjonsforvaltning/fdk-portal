@@ -10,8 +10,9 @@ import {
 
 function* getEntitiesRequested() {
   try {
-    const data = yield call(getRecentEntities);
+    const data: Record<string, any> = yield call(getRecentEntities);
     const entities = extractEntities(data);
+
     if (entities) {
       yield put(actions.getEntitiesSucceeded(entities as any));
     } else {

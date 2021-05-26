@@ -1,6 +1,5 @@
+import React, { FC } from 'react';
 import _ from 'lodash';
-import React from 'react';
-import PropTypes from 'prop-types';
 import TreeView from 'react-treeview';
 import cx from 'classnames';
 import { resolve } from 'react-resolver';
@@ -9,14 +8,20 @@ import localization from '../../../lib/localization';
 import './publishers-tree.scss';
 import { getPublisherHierarchy } from '../../../api/publishers';
 
+interface Props {
+  onChange?: (...args: any[]) => void;
+  value?: any;
+  publishers?: any[];
+}
+
 const loadPublisherHierarchy = () =>
   getPublisherHierarchy()
     .then(data => data.hits)
-    .catch(console.error);
+    .catch(() => {});
 
 const memoizedLoadPublisherHierarhy = _.memoize(loadPublisherHierarchy);
 
-function isItemCollapsed(itemOrgPath, chosenOrgPath) {
+function isItemCollapsed(itemOrgPath: any, chosenOrgPath: any) {
   if (chosenOrgPath) {
     const parentOrgPath = chosenOrgPath.substr(
       0,
@@ -29,12 +34,13 @@ function isItemCollapsed(itemOrgPath, chosenOrgPath) {
   return true;
 }
 
-export const PublishersTreePure = props => {
-  const { onChange, value, publishers } = props;
-  const { orgPath } = value || {};
-
-  const subTree = publishers =>
-    publishers.map((node, i) => {
+export const PublishersTreePure: FC<Props> = ({
+  onChange,
+  value: { orgPath } = {},
+  publishers = []
+}) => {
+  const subTree = (subtreePublishers: any[]) =>
+    subtreePublishers.map((node, i) => {
       const chosenClass = cx({
         'tree-item_chosen': node.orgPath === orgPath
       });
@@ -44,10 +50,10 @@ export const PublishersTreePure = props => {
       const label = (
         <span
           className='node'
-          onClick={() => onChange(node)}
-          onKeyPress={() => onChange(node)}
+          onClick={() => onChange?.(node)}
+          onKeyPress={() => onChange?.(node)}
           role='button'
-          tabIndex='0'
+          tabIndex={0}
         >
           {name}
         </span>
@@ -71,18 +77,18 @@ export const PublishersTreePure = props => {
           className={`node tree-view_item ${
             node.orgPath === orgPath ? 'tree-item_chosen' : ''
           }`}
-          onClick={() => onChange(node)}
-          onKeyPress={() => onChange(node)}
+          onClick={() => onChange?.(node)}
+          onKeyPress={() => onChange?.(node)}
           role='button'
-          tabIndex='0'
+          tabIndex={0}
         >
           {name}
         </div>
       );
     });
 
-  const mainTree = publishers =>
-    publishers.map((node, i) => {
+  const mainTree = (mainTreePublishers: any[]) =>
+    mainTreePublishers.map((node, i) => {
       const chosenClass = cx('tree-view_main', {
         'tree-item_chosen': node.orgPath === orgPath
       });
@@ -99,10 +105,10 @@ export const PublishersTreePure = props => {
       const label = (
         <span
           className='mainTree-btn node'
-          onClick={() => onChange(node)}
-          onKeyPress={() => onChange(node)}
+          onClick={() => onChange?.(node)}
+          onKeyPress={() => onChange?.(node)}
           role='button'
-          tabIndex='0'
+          tabIndex={0}
         >
           <strong>{name}</strong>
         </span>
@@ -123,22 +129,9 @@ export const PublishersTreePure = props => {
       );
     });
 
-  if (publishers && publishers.length > 0) {
-    return <div key={orgPath}>{mainTree(publishers)}</div>;
-  }
-  return null;
-};
-
-PublishersTreePure.defaultProps = {
-  onChange: _.noop,
-  value: null,
-  publishers: []
-};
-
-PublishersTreePure.propTypes = {
-  onChange: PropTypes.func,
-  value: PropTypes.object,
-  publishers: PropTypes.array
+  return publishers && publishers.length > 0 ? (
+    <div key={orgPath}>{mainTree(publishers)}</div>
+  ) : null;
 };
 
 const mapProps = {

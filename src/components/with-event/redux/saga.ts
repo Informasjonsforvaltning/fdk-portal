@@ -17,7 +17,10 @@ function* getEventRequested({
   payload: { id }
 }: ReturnType<typeof actions.getEventRequested>) {
   try {
-    const data = yield call(searchEvents, paramsToSearchBody({ id }));
+    const data: Record<string, any> = yield call(
+      searchEvents,
+      paramsToSearchBody({ id })
+    );
     const event = extractFirstEvent(data) as Event;
 
     if (event) {

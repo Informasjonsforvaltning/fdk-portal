@@ -126,9 +126,11 @@ const ConceptDetailsPage: FC<Props> = ({
     };
   }, [concept?.identifier]);
 
-  const publicServicesRelationsWithRelationType: ItemWithRelationType[] = publicServicesRelations.map(
-    relation => ({ relation, relationType: translations.sampleData })
-  );
+  const publicServicesRelationsWithRelationType: ItemWithRelationType[] =
+    publicServicesRelations.map(relation => ({
+      relation,
+      relationType: translations.sampleData
+    }));
 
   const translatableFields = [
     'prefLabel',

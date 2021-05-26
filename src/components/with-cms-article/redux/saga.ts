@@ -14,7 +14,7 @@ function* getCmsArticleRequested({
   payload: { id }
 }: ReturnType<typeof actions.getCmsArticleRequested>) {
   try {
-    const data = yield call(getArticleEntity, id);
+    const data: Record<string, any> = yield call(getArticleEntity, id);
 
     if (data) {
       yield put(

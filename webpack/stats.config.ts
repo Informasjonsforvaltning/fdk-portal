@@ -1,9 +1,10 @@
 import { merge } from 'webpack-merge';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import type { Configuration } from 'webpack';
 
 import prodConfig from './prod.config';
 
-export default merge(prodConfig, {
+const configuration: Configuration = merge(prodConfig, {
   plugins: [
     new BundleAnalyzerPlugin({
       openAnalyzer: true,
@@ -11,3 +12,5 @@ export default merge(prodConfig, {
     })
   ]
 });
+
+export default configuration;

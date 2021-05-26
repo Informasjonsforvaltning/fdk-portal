@@ -1,7 +1,7 @@
 import React, { memo, FC, useState, useLayoutEffect } from 'react';
 import { compose } from 'redux';
-import type { RouteComponentProps } from 'react-router-dom';
 import Link from '@fellesdatakatalog/link';
+import type { RouteComponentProps } from 'react-router-dom';
 
 import { getConfig } from '../../../../config';
 

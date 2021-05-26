@@ -16,9 +16,8 @@ const withInformationModels = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    informationModels: state.InformationModelsReducer.get(
-      'informationModels'
-    ).toJS(),
+    informationModels:
+      state.InformationModelsReducer.get('informationModels').toJS(),
     informationModelsRelations: state.InformationModelsReducer.get(
       'informationModelsRelations'
     ).toJS()

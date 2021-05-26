@@ -11,10 +11,10 @@ import { Entity } from '../../../../types/enums';
 
 const SearchLink = styled(Link)<{ type?: Entity; smallWidth?: boolean }>`
   align-items: center;
-  background-color: ${({ type, theme }) =>
-    type ? theme.extendedColors[type]?.light : '#FFF'};
+  background-color: ${({ type, theme: t }) =>
+    type ? t.extendedColors[type]?.light : '#FFF'};
   border-radius: 5px;
-  color: ${({ theme }) => theme.extendedColors.neutralDarker} !important;
+  color: ${({ theme: t }) => t.extendedColors.neutralDarker} !important;
   display: flex;
   font-size: 1.8rem;
   margin-bottom: 1em;
@@ -28,8 +28,8 @@ const SearchLink = styled(Link)<{ type?: Entity; smallWidth?: boolean }>`
 
   svg {
     path {
-      fill: ${({ type, theme }) =>
-        type ? theme.extendedColors[type]?.dark : '#121619'};
+      fill: ${({ type, theme: t }) =>
+        type ? t.extendedColors[type]?.dark : '#121619'};
     }
   }
 

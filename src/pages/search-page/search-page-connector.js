@@ -21,15 +21,12 @@ const mapStateToProps = ({
     datasetTotal: null
   };
 
-  const {
-    dataServiceItems,
-    dataServiceAggregations,
-    dataServiceTotal
-  } = dataServices || {
-    dataServiceItems: null,
-    dataServiceAggregations: null,
-    dataServiceTotal: null
-  };
+  const { dataServiceItems, dataServiceAggregations, dataServiceTotal } =
+    dataServices || {
+      dataServiceItems: null,
+      dataServiceAggregations: null,
+      dataServiceTotal: null
+    };
 
   const { conceptItems, conceptAggregations, conceptTotal } = concepts || {
     conceptItems: null,

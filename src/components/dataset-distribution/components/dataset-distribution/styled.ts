@@ -25,7 +25,7 @@ const DatasetDistribution = styled(ExpansionPanel)`
       margin-left: 24px;
 
       & > svg > path {
-        fill: ${({ theme }) => theme.extendedColors.dataset.dark};
+        fill: ${({ theme: t }) => t.extendedColors.dataset.dark};
       }
     }
   }

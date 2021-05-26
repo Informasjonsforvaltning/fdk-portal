@@ -27,10 +27,10 @@ const TranslationsProvider: FC<PropsWithChildren<Props>> = ({
   const [isInitialised, setIsInitialised] = useState(false);
   const [language, setLanguage] = useState<Language>(getLanguageFromCookies());
 
-  const onChangeLanguage = (language: Language) => {
-    cookies?.set(Cookie.LANGUAGE, language, cookieOptions);
+  const onChangeLanguage = (nextLanguage: Language) => {
+    cookies?.set(Cookie.LANGUAGE, nextLanguage, cookieOptions);
 
-    setLanguage(language);
+    setLanguage(nextLanguage);
   };
 
   const init = async () => {
@@ -51,5 +51,7 @@ const TranslationsProvider: FC<PropsWithChildren<Props>> = ({
 };
 
 export default compose<FC>(memo, withCookies)(TranslationsProvider);
-export { withTranslations, ServiceProps as Props } from './hoc';
-export { Language, Tokens } from '../../services/translations';
+export { withTranslations } from './hoc';
+export type { ServiceProps as Props } from './hoc';
+export { Language } from '../../services/translations';
+export type { Tokens } from '../../services/translations';

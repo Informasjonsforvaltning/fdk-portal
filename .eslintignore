@@ -1,6 +1,8 @@
 dist
 coverage
 node_modules
+resources
+
 
 .gitignore
 .dockerignore
@@ -9,7 +11,3 @@ node_modules
 .lintstagedrc
 
 package-lock.json
-
-*.sh
-*.scss
-*.md

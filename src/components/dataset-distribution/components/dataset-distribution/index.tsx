@@ -130,13 +130,16 @@ const DatasetDistribution: FC<Props> = ({
         />
       )}
       {accessServices?.map(
-        ({ description, endpointDescription: [endpointDescription] }) => (
+        ({
+          description: accessServiceDescription,
+          endpointDescription: [endpointDescription]
+        }) => (
           <Detail
             key={endpointDescription.uri}
             property={translations.dataset.distribution.dataService}
             value={
               <Link to={`${PATHNAME_DATA_SERVICES}/${endpointDescription.uri}`}>
-                {translate(description)}
+                {translate(accessServiceDescription)}
               </Link>
             }
             data-testid={testIds.detail}

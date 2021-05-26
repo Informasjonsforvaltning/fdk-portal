@@ -23,12 +23,8 @@ describe('Summary component', () => {
       DataFormat.UNKNOWN
     ];
 
-    const {
-      getByTestId,
-      getAllByTestId,
-      queryAllByTestId,
-      rerender
-    } = renderWithTheme(<Summary title={title} formats={[]} />, { theme });
+    const { getByTestId, getAllByTestId, queryAllByTestId, rerender } =
+      renderWithTheme(<Summary title={title} formats={[]} />, { theme });
 
     let summaryRootElement = getByTestId(testIds.root);
     let summaryTitleElement = getByTestId(testIds.title);

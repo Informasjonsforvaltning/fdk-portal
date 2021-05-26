@@ -31,10 +31,15 @@ import withReferenceData, {
 import FormatPie from '../formatPie/formatPie.component';
 import { sortKeyWithCount } from '../../sort-helper';
 
-interface Props extends RouteComponentProps, ReferenceDataProps {
+interface ExternalProps {
   dataServicesReport?: Partial<DataServiceReport>;
   dataServicesTimeSeries?: any;
 }
+
+interface Props
+  extends ExternalProps,
+    RouteComponentProps,
+    ReferenceDataProps {}
 
 const DataserviceReport: FC<Props> = ({
   location,
@@ -162,7 +167,7 @@ const DataserviceReport: FC<Props> = ({
   );
 };
 
-export default compose<FC>(
+export default compose<FC<ExternalProps>>(
   memo,
   withReferenceData,
   withRouter

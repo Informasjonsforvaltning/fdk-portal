@@ -2,21 +2,21 @@
 
 exports[`should render FilterOption correctly 1`] = `
 <div
-  className="checkbox null"
+  className="checkbox undefined"
 >
   <label
     className="checkbox_label"
     htmlFor="4AGRI"
     onKeyPress={[Function]}
     role="button"
-    tabIndex="0"
+    tabIndex={0}
   >
     <input
       checked={false}
       className="list-group-item fdk-label fdk-label-default"
       id="4AGRI"
-      onChange={[Function]}
-      tabIndex="-1"
+      onChange={[MockFunction]}
+      tabIndex={-1}
       type="checkbox"
       value="AGRI"
     />
@@ -32,21 +32,21 @@ exports[`should render FilterOption correctly 1`] = `
 
 exports[`should render FilterOption correctly with no corresponding theme 1`] = `
 <div
-  className="checkbox null"
+  className="checkbox undefined"
 >
   <label
     className="checkbox_label"
     htmlFor="4JUST"
     onKeyPress={[Function]}
     role="button"
-    tabIndex="0"
+    tabIndex={0}
   >
     <input
       checked={false}
       className="list-group-item fdk-label fdk-label-default"
       id="4JUST"
-      onChange={[Function]}
-      tabIndex="-1"
+      onChange={[MockFunction]}
+      tabIndex={-1}
       type="checkbox"
       value="JUST"
     />
@@ -69,14 +69,14 @@ exports[`should render FilterOption correctly with no theme 1`] = `
     htmlFor="0PUBLIC"
     onKeyPress={[Function]}
     role="button"
-    tabIndex="0"
+    tabIndex={0}
   >
     <input
       checked={false}
       className="list-group-item fdk-label fdk-label-default"
       id="0PUBLIC"
-      onChange={[Function]}
-      tabIndex="-1"
+      onChange={[MockFunction]}
+      tabIndex={-1}
       type="checkbox"
       value="PUBLIC"
     />

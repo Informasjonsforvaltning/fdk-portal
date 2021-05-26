@@ -23,8 +23,7 @@ export default [
           nb: 'Jordbruk, fiskeri, skogbruk og mat',
           da: 'Landbrug, fiskeri, skovbrug og fødevarer',
           sl: 'Kmetijstvo, ribištvo, gozdarstvo in prehrana',
-          sk:
-            'Poľnohospodárstvo, rybné hospodárstvo, lesníctvo a potravinárstvo',
+          sk: 'Poľnohospodárstvo, rybné hospodárstvo, lesníctvo a potravinárstvo',
           hr: 'Poljoprivreda, ribarstvo, šumarstvo i hrana',
           ga: 'Talmhaíocht, iascach, foraoiseacht agus bia',
           pl: 'Rolnictwo, rybołówstwo, leśnictwo i żywność',
@@ -65,8 +64,7 @@ export default [
           nb: 'Jordbruk, fiskeri, skogbruk og mat',
           da: 'Landbrug, fiskeri, skovbrug og fødevarer',
           sl: 'Kmetijstvo, ribištvo, gozdarstvo in prehrana',
-          sk:
-            'Poľnohospodárstvo, rybné hospodárstvo, lesníctvo a potravinárstvo',
+          sk: 'Poľnohospodárstvo, rybné hospodárstvo, lesníctvo a potravinárstvo',
           hr: 'Poljoprivreda, ribarstvo, šumarstvo i hrana',
           ga: 'Talmhaíocht, iascach, foraoiseacht agus bia',
           pl: 'Rolnictwo, rybołówstwo, leśnictwo i żywność',

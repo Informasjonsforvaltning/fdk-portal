@@ -5,6 +5,8 @@ import * as actions from './actions';
 
 import { getReferenceData } from '../../../api/referenceData';
 
+import type { ReferenceType } from '../../../types';
+
 function* getReferenceDataRequested({
   payload: { category }
 }: ReturnType<typeof actions.getReferenceDataRequested>) {
@@ -16,7 +18,7 @@ function* getReferenceDataRequested({
       'apiservicetype'
     ];
 
-    const data = yield call(
+    const data: ReferenceType[] = yield call(
       getReferenceData,
       codes.includes(category) ? `codes/${category}` : category
     );

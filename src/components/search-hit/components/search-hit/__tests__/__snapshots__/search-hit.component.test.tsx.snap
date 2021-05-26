@@ -2,7 +2,7 @@
 
 exports[`SearchHit component should render with properties 1`] = `
 <styled.article>
-  <Component
+  <SearchHitHead
     id="123"
     isAuthoritative={false}
     title={

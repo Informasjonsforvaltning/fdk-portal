@@ -11,16 +11,16 @@ const Banner = styled.header<InvertedColorProps>`
   width: 100%;
   padding: 18px;
   border-radius: 5px;
-  color: ${({ theme, inverted }) =>
-    inverted ? theme.entityColours.light : theme.entityColours.dark};
-  background: ${({ theme, inverted }) =>
-    inverted ? theme.entityColours.dark : theme.entityColours.light};
+  color: ${({ theme: t, inverted }) =>
+    inverted ? t.entityColours.light : t.entityColours.dark};
+  background: ${({ theme: t, inverted }) =>
+    inverted ? t.entityColours.dark : t.entityColours.light};
   position: relative;
   overflow: hidden;
 
   & svg > path {
-    fill: ${({ theme, inverted }) =>
-      inverted ? theme.entityColours.light : theme.entityColours.dark};
+    fill: ${({ theme: t, inverted }) =>
+      inverted ? t.entityColours.light : t.entityColours.dark};
   }
 
   & > svg {

@@ -34,7 +34,7 @@ export function getParentTypeRef(schema) {
   // as convention, if object requires multiple schemas and some of them are declared
   // as reference, then these are considered parents
 
-  const allOf = schema.allOf;
+  const { allOf } = schema;
 
   if (!Array.isArray(allOf)) {
     return undefined;

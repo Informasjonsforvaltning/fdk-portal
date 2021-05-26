@@ -8,6 +8,7 @@ exports[`should render PublisherLabel with no prefLabel 1`] = `
    
   <span>
     Ramsund og rognan revisjon
+     (registered in null)
   </span>
 </span>
 `;
@@ -22,6 +23,7 @@ exports[`should render PublisherLabel with publisher 1`] = `
    
   <span>
     Ramsund og Rognan revisjon
+     (registered in null)
   </span>
 </span>
 `;

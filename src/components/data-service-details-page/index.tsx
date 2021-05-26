@@ -201,12 +201,12 @@ const DataserviceDetailsPage: FC<Props> = ({
                   value={url}
                 />
               ))}
-              {endpointDescriptions.map(description => (
+              {endpointDescriptions.map(endpointDescription => (
                 <KeyValueListItem
-                  key={description}
+                  key={endpointDescription}
                   property={translations.api.endpointDescription}
                   value={
-                    <Link href={description} external>
+                    <Link href={endpointDescription} external>
                       {translations.api.goToSpecification}
                     </Link>
                   }
@@ -329,14 +329,14 @@ const DataserviceDetailsPage: FC<Props> = ({
           >
             <InlineList column>
               {informationModels.map(
-                ({ id, uri, title }) =>
+                ({ id, uri, title: informationModelTitle }) =>
                   uri && (
                     <SC.Link
                       to={`${PATHNAME_INFORMATIONMODELS}/${id}`}
                       key={`relation-${uri}`}
                       forwardedAs={RouteLink}
                     >
-                      {translate(title)}
+                      {translate(informationModelTitle)}
                     </SC.Link>
                   )
               )}

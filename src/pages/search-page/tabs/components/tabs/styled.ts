@@ -33,10 +33,8 @@ const Label = styled.span`
 
 const IconPlaceholder = styled.div<{ type?: Entity }>`
   border-radius: 50%;
-  background-color: ${({ type, theme }) =>
-    type
-      ? theme.extendedColors[type]?.light
-      : theme.extendedColors.neutralLight};
+  background-color: ${({ type, theme: t }) =>
+    type ? t.extendedColors[type]?.light : t.extendedColors.neutralLight};
 `;
 
 const AllIcon = styled(AllIconBase)`
@@ -51,7 +49,7 @@ const AllIcon = styled(AllIconBase)`
 const DatasetIcon = styled(DatasetIconBase)`
   padding: 0.5em;
   height: 3em;
-  fill: ${({ theme }) => theme.extendedColors[Entity.DATASET].dark};
+  fill: ${({ theme: t }) => t.extendedColors[Entity.DATASET].dark};
 
   @media (min-width: 768px) {
     height: 2em;
@@ -61,7 +59,7 @@ const DatasetIcon = styled(DatasetIconBase)`
 const ApiIcon = styled(ApiIconBase)`
   padding: 0.5em;
   height: 3em;
-  fill: ${({ theme }) => theme.extendedColors[Entity.DATA_SERVICE].dark};
+  fill: ${({ theme: t }) => t.extendedColors[Entity.DATA_SERVICE].dark};
 
   @media (min-width: 768px) {
     height: 2em;
@@ -71,7 +69,7 @@ const ApiIcon = styled(ApiIconBase)`
 const ConceptIcon = styled(ConceptIconBase)`
   padding: 0.5em;
   height: 3em;
-  fill: ${({ theme }) => theme.extendedColors[Entity.CONCEPT].dark};
+  fill: ${({ theme: t }) => t.extendedColors[Entity.CONCEPT].dark};
 
   @media (min-width: 768px) {
     height: 2em;
@@ -81,7 +79,7 @@ const ConceptIcon = styled(ConceptIconBase)`
 const InfomodIcon = styled(InfomodIconBase)`
   padding: 0.5em;
   height: 3em;
-  fill: ${({ theme }) => theme.extendedColors[Entity.INFORMATION_MODEL].dark};
+  fill: ${({ theme: t }) => t.extendedColors[Entity.INFORMATION_MODEL].dark};
 
   @media (min-width: 768px) {
     height: 2em;
@@ -91,7 +89,7 @@ const InfomodIcon = styled(InfomodIconBase)`
 const ServiceIcon = styled(ServiceIconBase)`
   padding: 0.5em;
   height: 3em;
-  fill: ${({ theme }) => theme.extendedColors[Entity.PUBLIC_SERVICE].dark};
+  fill: ${({ theme: t }) => t.extendedColors[Entity.PUBLIC_SERVICE].dark};
 
   @media (min-width: 768px) {
     height: 2em;

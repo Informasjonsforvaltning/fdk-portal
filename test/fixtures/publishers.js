@@ -25,8 +25,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.130',
       code: '84.130',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
+        no: 'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
       }
     },
     sektorkode: {
@@ -47,8 +46,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.130',
       code: '84.130',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
+        no: 'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
       }
     },
     sektorkode: {
@@ -69,8 +67,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.130',
       code: '84.130',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
+        no: 'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
       }
     },
     sektorkode: {
@@ -109,8 +106,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.130',
       code: '84.130',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
+        no: 'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
       }
     },
     sektorkode: {
@@ -181,8 +177,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.120',
       code: '84.120',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
+        no: 'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
       }
     },
     sektorkode: {
@@ -222,8 +217,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.130',
       code: '84.130',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
+        no: 'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
       }
     },
     sektorkode: {
@@ -244,8 +238,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.130',
       code: '84.130',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
+        no: 'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
       }
     },
     sektorkode: {
@@ -299,8 +292,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.120',
       code: '84.120',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
+        no: 'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
       }
     },
     sektorkode: {
@@ -320,8 +312,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.130',
       code: '84.130',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
+        no: 'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
       }
     },
     sektorkode: {
@@ -341,8 +332,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.130',
       code: '84.130',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
+        no: 'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
       }
     },
     sektorkode: {
@@ -363,8 +353,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.120',
       code: '84.120',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
+        no: 'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
       }
     },
     sektorkode: {
@@ -403,8 +392,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.120',
       code: '84.120',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
+        no: 'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
       }
     },
     sektorkode: {
@@ -538,8 +526,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.120',
       code: '84.120',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
+        no: 'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
       }
     },
     sektorkode: {
@@ -559,8 +546,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.130',
       code: '84.130',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
+        no: 'Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked'
       }
     },
     sektorkode: {
@@ -580,8 +566,7 @@ export default {
       uri: 'http://www.ssb.no/nace/sn2007/84.120',
       code: '84.120',
       prefLabel: {
-        no:
-          'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
+        no: 'Offentlig administrasjon tilknyttet helsestell, sosial virksomhet,undervisning, kirke, kultur og miljøvern'
       }
     },
     sektorkode: {

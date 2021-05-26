@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme } from '@fellesdatakatalog/theme';
 
 const Relation = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.entityColours.light};
+  border-bottom: 1px solid ${({ theme: t }) => t.entityColours.light};
   & :last-of-type {
     border-bottom: none;
   }
@@ -44,11 +44,11 @@ const IconBackground = styled.span`
   border-radius: 50%;
   height: 25px;
   width: 25px;
-  background-color: ${({ theme }) => theme.entityColours.light};
+  background-color: ${({ theme: t }) => t.entityColours.light};
 
   & path {
-    fill: ${({ theme }) => theme.entityColours.dark};
-    color: ${({ theme }) => theme.entityColours.dark};
+    fill: ${({ theme: t }) => t.entityColours.dark};
+    color: ${({ theme: t }) => t.entityColours.dark};
   }
 `;
 

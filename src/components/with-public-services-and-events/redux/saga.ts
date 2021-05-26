@@ -27,7 +27,7 @@ function* getPublicServicesAndEventsRequested({
   }
 }: ReturnType<typeof actions.getPublicServicesAndEventsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchPublicServicesAndEvents,
       paramsToSearchBody({
         page,

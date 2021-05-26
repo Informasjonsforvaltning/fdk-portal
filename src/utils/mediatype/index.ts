@@ -28,10 +28,11 @@ const stripUri = (format: string) =>
 export const toFormat = (format: string): string =>
   Object.values(DataFormat).find(v => format.includes(v)) ?? stripUri(format);
 
-export const toMediaType = (mediaTypes: MediaType[]) => (
-  format: string
-): string =>
-  mediaTypes.find(({ uri }) => uri.includes(format))?.name ?? stripUri(format);
+export const toMediaType =
+  (mediaTypes: MediaType[]) =>
+  (format: string): string =>
+    mediaTypes.find(({ uri }) => uri.includes(format))?.name ??
+    stripUri(format);
 
 export const formatSorter = (a: string, b: string): number => {
   if (!(a in priorities)) {

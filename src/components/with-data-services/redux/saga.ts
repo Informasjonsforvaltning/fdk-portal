@@ -29,7 +29,7 @@ function* getDataServicesRequested({
       endpointDescription,
       servesDataset
     });
-    const data = yield call(searchDataServices, body);
+    const data: Record<string, any> = yield call(searchDataServices, body);
     if (data?.hits) {
       yield put(actions.getDataServicesSucceeded(data?.hits as DataService[]));
     } else {
@@ -56,7 +56,7 @@ function* getDataServicesRelationsRequested({
       endpointDescription,
       servesDataset
     });
-    const data = yield call(searchDataServices, body);
+    const data: Record<string, any> = yield call(searchDataServices, body);
     if (data?.hits) {
       yield put(
         actions.getDataServicesRelationsSucceeded(data?.hits as DataService[])

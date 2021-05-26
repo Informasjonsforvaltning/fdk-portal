@@ -778,6 +778,8 @@
     "organizationDatasetPageSubtitle": "Metadatakvalitet for datasettbeskrivelsen av",
     "datasetCatalogStatistics": "Datasettbeskrivelser",
     "dataserviceCatalogStatistics": "API-beskrivelser",
+    "conceptCatalogStatistics": "Begrepsbeskrivelser",
+    "informationModelCatalogStatistics": "Informasjonsmodellbeskrivelser",
     "datasetTitle": "Tittel på datasettbeskrivelse",
     "loadMoreDatasets": "Last inn flere datasettbeskrivelser (gjenstår: {count})",
     "whatIsMetadataQualityFaqTitle": "Hva er metadatakvalitet?",

@@ -25,7 +25,7 @@ function* getInformationModelsRequested({
   }
 }: ReturnType<typeof actions.getInformationModelsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchInformationModels,
       paramsToSearchBody({
         conceptIdentifiers,
@@ -60,7 +60,7 @@ function* getInformationModelsRelationsRequested({
   }
 }: ReturnType<typeof actions.getInformationModelsRelationsRequested>) {
   try {
-    const data = yield call(
+    const data: Record<string, any> = yield call(
       searchInformationModels,
       paramsToSearchBody({
         conceptIdentifiers,

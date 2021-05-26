@@ -4,9 +4,9 @@ import { theme } from '@fellesdatakatalog/theme';
 
 const ListItem = styled(Link)`
   align-items: center;
-  background-color: ${({ theme }) => theme.lighter};
+  background-color: ${({ theme: t }) => t.lighter};
   border-radius: 2px;
-  color: ${({ theme }) => theme.dark} !important;
+  color: ${({ theme: t }) => t.dark} !important;
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.25em;
@@ -15,7 +15,7 @@ const ListItem = styled(Link)`
   transition: all 200ms ease-in-out;
 
   &:hover {
-    background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
+    background-color: ${({ theme: t }) => t.extendedColors.neutralDarkest};
     color: #fff !important;
     text-decoration: none;
   }

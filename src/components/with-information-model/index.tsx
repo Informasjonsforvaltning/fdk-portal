@@ -27,9 +27,10 @@ const withInformationModel = (Component: ComponentType<any>) => {
     isLoadingInformationModel: state.InformationModelReducer.get(
       'isLoadingInformationModel'
     ),
-    isLoadingInformationModelRdfRepresentations: state.InformationModelReducer.get(
-      'isLoadingInformationModelRdfRepresentations'
-    )
+    isLoadingInformationModelRdfRepresentations:
+      state.InformationModelReducer.get(
+        'isLoadingInformationModelRdfRepresentations'
+      )
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

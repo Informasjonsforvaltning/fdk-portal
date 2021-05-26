@@ -16,7 +16,7 @@ export const organizationsCatalogApi = ({ path, method, data }: Props) =>
     method,
     data
   })
-    .then(({ data }) => data)
+    .then(({ data: responseData }) => responseData)
     .catch(() => null);
 
 export const organizationsCatalogApiGet = (path: string) =>
