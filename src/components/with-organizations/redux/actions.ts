@@ -1,8 +1,11 @@
 import {
   GET_ORGANIZATIONS_REQUESTED,
   GET_ORGANIZATIONS_SUCCEEDED,
-  GET_ORGANIZATIONS_FAILED
+  GET_ORGANIZATIONS_FAILED,
+  SORT_ORGANIZATIONS
 } from './action-types';
+
+import { SortOrder } from '../../../types/enums';
 
 export function getOrganizationsRequested(filter?: string) {
   return {
@@ -27,6 +30,16 @@ export function getOrganizationsFailed(message: string) {
     type: GET_ORGANIZATIONS_FAILED,
     payload: {
       message
+    }
+  };
+}
+
+export function sortOrganizations(selector: string[], order: SortOrder) {
+  return {
+    type: SORT_ORGANIZATIONS,
+    payload: {
+      selector,
+      order
     }
   };
 }
