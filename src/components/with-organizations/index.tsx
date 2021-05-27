@@ -1,9 +1,10 @@
-import React, { ComponentType, memo } from 'react';
+import React, { memo, FC, ComponentType } from 'react';
+import { compose, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
 
 import * as actions from './redux/actions';
-import { OrganizationSummary } from '../../types';
+
+import type { OrganizationSummary } from '../../types';
 
 export interface Props {
   organizations: OrganizationSummary[];
@@ -21,7 +22,10 @@ const withOrganizations = (Component: ComponentType<any>) => {
     organizationsActions: bindActionCreators(actions, dispatch)
   });
 
-  return connect(mapStateToProps, mapDispatchToProps)(memo(WrappedComponent));
+  return compose<FC>(
+    connect(mapStateToProps, mapDispatchToProps),
+    memo
+  )(WrappedComponent);
 };
 
 export default withOrganizations;
