@@ -11,61 +11,53 @@ import withOrganizations, {
   Props as OrganizationsProps
 } from '../../../../components/with-organizations';
 import withErrorBoundary from '../../../../components/with-error-boundary';
+
 import ErrorPage from '../../../../components/error-page';
-import ReactTooltipSC from '../../../../components/tooltip/styled';
 
 import SC from './styled';
+import ReactTooltipSC from '../../../../components/tooltip/styled';
 
 import type { OrganizationSummary } from '../../../../types';
 import { Entity, SortOrder } from '../../../../types/enums';
 
 interface Props extends OrganizationsProps, RouteComponentProps {}
 
-const stringCompare = (a: string, b: string, sortMode: SortOrder) =>
-  a.localeCompare(b, 'no') * (sortMode === SortOrder.ASC ? 1 : -1);
-
-const numberCompare = (a: number, b: number, sortMode: SortOrder) =>
-  (a - b) * (sortMode === SortOrder.ASC ? 1 : -1);
-
 const OrganizationsPage: FC<Props> = ({
   organizations,
-  organizationsActions: { getOrganizationsRequested: getOrganizations },
+  organizationsActions: {
+    getOrganizationsRequested: getOrganizations,
+    sortOrganizations
+  },
   match: { url }
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const [sortState, setSortState] = useState<{
-    field: keyof OrganizationSummary;
+    selector: string[];
     order: SortOrder;
   }>({
-    field: 'prefLabel',
+    selector: ['prefLabel'],
     order: SortOrder.ASC
   });
 
-  const determineNextSortOrder = (field: keyof OrganizationSummary) =>
-    field === sortState.field && sortState.order === SortOrder.ASC
+  const determineNextSortOrder = (nextSelector: string[]) => {
+    const { selector, order } = sortState;
+    const isSameSelector = selector.every(i => nextSelector.includes(i));
+
+    if (!isSameSelector && !nextSelector.includes('prefLabel')) {
+      return SortOrder.DSC;
+    }
+
+    return isSameSelector && order === SortOrder.ASC
       ? SortOrder.DSC
       : SortOrder.ASC;
+  };
 
-  const compareOrganizations =
-    (field: keyof OrganizationSummary, sortOrder: SortOrder) =>
-    (a: OrganizationSummary, b: OrganizationSummary) => {
-      if (typeof a[field] === 'number' && typeof b[field] === 'number') {
-        return numberCompare(a[field] as number, b[field] as number, sortOrder);
-      }
-      return stringCompare(
-        translate(a[field]) ?? a.name ?? '',
-        translate(b[field]) ?? b.name ?? '',
-        sortOrder
-      );
-    };
+  const applySort = (selector: string[], nextOrder?: SortOrder) => () => {
+    const order = nextOrder ?? determineNextSortOrder(selector);
 
-  const applySort = (field: keyof OrganizationSummary) => () => {
-    const order = determineNextSortOrder(field);
-
-    organizations.sort(compareOrganizations(field, order));
-
-    setSortState({ field, order });
+    sortOrganizations(selector, order);
+    setSortState({ selector, order });
   };
 
   const isTransportportal = getConfig().themeNap;
@@ -79,8 +71,8 @@ const OrganizationsPage: FC<Props> = ({
         )
       : organizations;
 
-  const renderCaret = (field: keyof OrganizationSummary) => {
-    if (field === sortState.field) {
+  const renderCaret = (selector: string[]) => {
+    if (sortState.selector.every(i => selector.includes(i))) {
       return sortState.order === SortOrder.ASC ? (
         <SC.CaretUp />
       ) : (
@@ -93,10 +85,6 @@ const OrganizationsPage: FC<Props> = ({
   useEffect(() => {
     getOrganizations(isTransportportal ? 'transportportal' : undefined);
   }, []);
-
-  useEffect(() => {
-    applySort('prefLabel')();
-  }, [organizations]);
 
   return (
     <main className='container'>
@@ -133,52 +121,55 @@ const OrganizationsPage: FC<Props> = ({
       <div className='row'>
         <SC.SortRow className='col-12'>
           <SC.Title>
-            <SC.TitleSortButton type='button' onClick={applySort('prefLabel')}>
+            <SC.TitleSortButton
+              type='button'
+              onClick={applySort(['prefLabel'])}
+            >
               {localization.organizationsPage.organization}
-              {renderCaret('prefLabel')}
+              {renderCaret(['prefLabel'])}
             </SC.TitleSortButton>
           </SC.Title>
           <SC.Info>
             <SC.SortButton
               type='button'
-              onClick={applySort('datasetCount')}
+              onClick={applySort(['datasetCount'])}
               data-tip={localization.organizationsPage.datasetsDescription}
             >
               <SC.DatasetIcon />
-              {renderCaret('datasetCount')}
+              {renderCaret(['datasetCount'])}
               <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
             </SC.SortButton>
             {!isTransportportal && (
               <>
                 <SC.SortButton
                   type='button'
-                  onClick={applySort('dataserviceCount')}
+                  onClick={applySort(['dataserviceCount'])}
                   data-tip={
                     localization.organizationsPage.dataserviceDescription
                   }
                 >
                   <SC.ApiIcon />
-                  {renderCaret('dataserviceCount')}
+                  {renderCaret(['dataserviceCount'])}
                   <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
                 </SC.SortButton>
                 <SC.SortButton
                   type='button'
-                  onClick={applySort('conceptCount')}
+                  onClick={applySort(['conceptCount'])}
                   data-tip={localization.organizationsPage.conceptsDescription}
                 >
                   <SC.ConceptIcon />
-                  {renderCaret('conceptCount')}
+                  {renderCaret(['conceptCount'])}
                   <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
                 </SC.SortButton>
                 <SC.SortButton
                   type='button'
-                  onClick={applySort('informationmodelCount')}
+                  onClick={applySort(['informationmodelCount'])}
                   data-tip={
                     localization.organizationsPage.informationModelsDescription
                   }
                 >
                   <SC.InfomodelIcon />
-                  {renderCaret('informationmodelCount')}
+                  {renderCaret(['informationmodelCount'])}
                   <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
                 </SC.SortButton>
               </>
@@ -206,7 +197,7 @@ const OrganizationsPage: FC<Props> = ({
             const currentOrganizationName = translate(prefLabel) || name;
 
             if (
-              sortState.field === 'prefLabel' &&
+              sortState.selector.includes('prefLabel') &&
               (index === 0 ||
                 (index > 0 &&
                   previousOrganizationName &&
