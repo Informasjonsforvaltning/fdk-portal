@@ -78,7 +78,10 @@ const ContentWrapper = styled.div`
 
 const NavigationLinks = styled.ul`
   display: flex;
+  align-items: center;
+  margin-bottom: 0px;
   margin-right: 1em;
+  font-size: 16px;
 
   & > li * {
     ${() =>
