@@ -92,9 +92,25 @@ const Dropdown = styled.ul<dropdownProps>`
   border: 1px solid ${({ theme: t }) => t.extendedColors.neutralLight};
   z-index: 1000;
   position: absolute;
-  right: 0;
   top: 40px;
-  overflow-y: auto;
+  box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+
+  > li {
+    font-size: 16px;
+    padding: 10px;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: ${({ theme: t }) => t.extendedColors.neutralLight};
+    }
+
+    > button {
+      border: none;
+      background-color: transparent;
+      width: 100%;
+    }
+  }
 
   ${({ theme: t }) =>
     isTransportportal
@@ -110,6 +126,17 @@ const Dropdown = styled.ul<dropdownProps>`
     width: 100vw;
     height: calc(100vh - ${bannerHeight});
     top: ${bannerHeight};
+
+    > li {
+      font-size: 18px;
+      margin-left: 20px;
+      margin-top: 20px;
+
+      > button {
+        border: none;
+        background-color: transparent;
+      }
+    }
   }
 `;
 

@@ -22,6 +22,8 @@ export const PATHNAME_GUIDANCE = '/guidance';
 export const PATHNAME_GUIDANCE_METADATA = '/guidance/metadata';
 export const PATHNAME_ORGANIZATIONS = '/organizations';
 export const PATHNAME_PUBLISHING = '/publishing';
+export const PATHNAME_SPARQL = '/sparql';
+export const PATHNAME_COMMUNITY = 'https://datalandsbyen.norge.no/';
 
 export const PARAGRAPH__BODY = 'paragraph--body';
 export const PARAGRAPH__IMAGE = 'paragraph--image';
