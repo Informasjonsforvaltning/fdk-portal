@@ -1,14 +1,22 @@
 import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../lib/localization';
-import { dateStringToDate, formatDate } from '../../lib/date-utils';
+import {
+  dateStringToDate,
+  formatDate,
+  isDateBeforeToday,
+  isDateAfterToday
+} from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { deepKeys } from '../../lib/deep-keys';
+import { languageSorter } from '../../lib/languageSorter';
 import { themeFDK } from '../../app/theme';
+
+import { PATHNAME_CONCEPTS } from '../../constants/constants';
 
 import withConcept, { Props as ConceptProps } from '../with-concept';
 import withDatasets, { Props as DatasetsProps } from '../with-datasets';
@@ -34,7 +42,6 @@ import SC from './styled';
 
 import type { Theme, Language, TextLanguage } from '../../types';
 import { Entity } from '../../types/enums';
-import { languageSorter } from '../../lib/languageSorter';
 
 interface RouteParams {
   conceptId: string;
@@ -50,6 +57,7 @@ interface Props
 
 const ConceptDetailsPage: FC<Props> = ({
   concept,
+  concepts: seeAlsoConceptReferences,
   isLoadingConcept,
   datasetsRelations,
   publicServicesRelations,
@@ -57,7 +65,9 @@ const ConceptDetailsPage: FC<Props> = ({
   informationModelsRelations,
   conceptActions: { getConceptRequested: getConcept },
   conceptsActions: {
+    getConceptsRequested: getConcepts,
     getConceptsRelationsRequested: getConceptsRelations,
+    resetConcepts,
     resetConceptsRelations
   },
   datasetsActions: {
@@ -68,7 +78,6 @@ const ConceptDetailsPage: FC<Props> = ({
     getInformationModelsRelationsRequested: getInformationmodelsRelations,
     resetInformationModelsRelations
   },
-  conceptsActions: { getConceptsRequested: getConcepts },
   publicServicesActions: {
     getPublicServicesRelationsRequested: getPublicServicesRelations,
     resetPublicServicesRelations
@@ -100,17 +109,20 @@ const ConceptDetailsPage: FC<Props> = ({
     return function cleanup() {
       setIsMounted(false);
       setSelectedLanguages([{ code: 'nb' }, { code: 'nn' }, { code: 'en' }]);
+      resetConcepts();
+      resetConceptsRelations();
+      resetDatasetsRelations();
+      resetInformationModelsRelations();
+      resetPublicServicesRelations();
     };
-  }, []);
-
-  useEffect(() => {
-    if (concept?.seeAlso && concept?.seeAlso.length > 0) {
-      getConcepts({ identifiers: concept.seeAlso, size: 1000 });
-    }
-  }, [concept?.id]);
+  }, [conceptId]);
 
   useEffect(() => {
     if (concept?.identifier) {
+      if (Array.isArray(concept?.seeAlso) && concept?.seeAlso.length > 0) {
+        getConcepts({ identifiers: concept.seeAlso, size: 1000 });
+      }
+
       getConceptsRelations({ seeAlso: concept.identifier });
       getDatasetsRelations({ subject: concept.identifier });
       getInformationmodelsRelations({
@@ -118,12 +130,6 @@ const ConceptDetailsPage: FC<Props> = ({
       });
       getPublicServicesRelations({ isClassifiedBy: concept.identifier });
     }
-    return () => {
-      resetConceptsRelations();
-      resetDatasetsRelations();
-      resetInformationModelsRelations();
-      resetPublicServicesRelations();
-    };
   }, [concept?.identifier]);
 
   const publicServicesRelationsWithRelationType: ItemWithRelationType[] =
@@ -427,6 +433,47 @@ const ConceptDetailsPage: FC<Props> = ({
               publicServices={publicServicesRelationsWithRelationType}
               informationModels={informationModelsRelations}
             />
+          </ContentSection>
+        )}
+        {seeAlsoConceptReferences.length > 0 && (
+          <ContentSection
+            id='concept-references'
+            title={
+              translations.formatString(
+                translations.detailsPage.sectionTitles.concept
+                  .conceptReferences,
+                { concept: translate(concept?.prefLabel) }
+              ) as string
+            }
+          >
+            <KeyValueList>
+              {seeAlsoConceptReferences.map(({ id, prefLabel }) => {
+                const isExpired = isDateBeforeToday(
+                  dateStringToDate(validToIncluding)
+                );
+                const isWillBeValid = isDateAfterToday(
+                  dateStringToDate(validFromIncluding)
+                );
+
+                return (
+                  <KeyValueListItem
+                    key={id}
+                    property={translations.conceptReferences.seeAlso}
+                    value={
+                      <Link to={`${PATHNAME_CONCEPTS}/${id}`} as={RouteLink}>
+                        {translate(prefLabel)}
+                        {isExpired && (
+                          <>&nbsp;({translations.validity.expired})</>
+                        )}
+                        {!isExpired && isWillBeValid && (
+                          <>&nbsp;({translations.validity.willBeValid})</>
+                        )}
+                      </Link>
+                    }
+                  />
+                );
+              })}
+            </KeyValueList>
           </ContentSection>
         )}
         {(contactPoint?.email || contactPoint?.telephone) && (

@@ -43,7 +43,7 @@ const mapFilters = ({
   }
   if (seeAlso) {
     filters.push({
-      'references.source.uri.keyword': seeAlso
+      'seeAlso.keyword': seeAlso
     });
   }
 
