@@ -149,7 +149,11 @@ const RelationsList: FC<Props> = ({
           {concepts.map(
             ({ uri, prefLabel, id, validToIncluding, validFromIncluding }) =>
               uri && id && prefLabel ? (
-                <Link as={RouterLink} to={`${PATHNAME_CONCEPTS}/${id}`}>
+                <Link
+                  key={id ?? uri}
+                  as={RouterLink}
+                  to={`${PATHNAME_CONCEPTS}/${id}`}
+                >
                   {translate(prefLabel ?? uri)}
                   {isExpired(validToIncluding) && (
                     <>&nbsp;({translations.validity.expired})</>
