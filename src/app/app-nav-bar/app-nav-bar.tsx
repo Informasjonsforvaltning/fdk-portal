@@ -27,94 +27,74 @@ interface Props {
   onChangeLanguage: (language: string) => void;
 }
 
-const menuItems = () =>
-  isTransportportal ? (
-    <>
-      <li key={localization.menu.aboutNap}>
-        <SC.Link href={PATHNAME_ABOUT_NAP}>
-          {localization.menu.aboutNap}
-        </SC.Link>
-      </li>
-      <li key={localization.menu.aboutRegistration}>
-        <SC.Link as={RouteLink} to={PATHNAME_ABOUT_REGISTRATION}>
-          {localization.menu.aboutRegistration}
-        </SC.Link>
-      </li>
-      <li key={localization.menu.organizations}>
-        <SC.Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
-          {localization.menu.organizations}
-        </SC.Link>
-      </li>
-      <li key={localization.menu.tools.tools}>
-        <PortalDropdownMenu
-          desktopView
-          openOnHover
-          caret={false}
-          mobileView={false}
-          title={localization.menu.tools.tools}
-        >
-          <li key={localization.menu.tools.reports}>
-            <SC.Link as={RouteLink} to={PATHNAME_REPORTS}>
-              {localization.menu.tools.reports}
-            </SC.Link>
-          </li>
-          <li key={localization.menu.tools.sparql}>
-            <SC.Link as={RouteLink} to={PATHNAME_SPARQL}>
-              {localization.menu.tools.sparql}
-            </SC.Link>
-          </li>
-        </PortalDropdownMenu>
-      </li>
-      <li key={localization.menu.community}>
-        <SC.Link href={PATHNAME_COMMUNITY}>
-          {localization.menu.community}
-        </SC.Link>
-      </li>
-    </>
-  ) : (
-    <>
-      <li key={localization.menu.about}>
-        <SC.Link as={RouteLink} to={PATHNAME_ABOUT}>
-          {localization.menu.about}
-        </SC.Link>
-      </li>
-      <li key={localization.menu.organizations}>
-        <SC.Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
-          {localization.menu.organizations}
-        </SC.Link>
-      </li>
-      <li key={localization.menu.tools.tools}>
-        <PortalDropdownMenu
-          desktopView
-          openOnHover
-          caret={false}
-          mobileView={false}
-          title={localization.menu.tools.tools}
-        >
-          <li key={localization.menu.tools.reports}>
-            <SC.Link as={RouteLink} to={PATHNAME_REPORTS}>
-              {localization.menu.tools.reports}
-            </SC.Link>
-          </li>
-          <li key={localization.menu.tools.sparql}>
-            <SC.Link as={RouteLink} to={PATHNAME_SPARQL}>
-              {localization.menu.tools.sparql}
-            </SC.Link>
-          </li>
-        </PortalDropdownMenu>
-      </li>
-      <li key={localization.menu.community}>
-        <SC.Link href={PATHNAME_COMMUNITY}>
-          {localization.menu.community}
-        </SC.Link>
-      </li>
-      <li key={localization.menu.publishing}>
-        <SC.Link href={PATHNAME_PUBLISHING} external>
-          {localization.menu.publishing}
-        </SC.Link>
-      </li>
-    </>
-  );
+const transportItems = (
+  <>
+    <li key={localization.menu.aboutNap}>
+      <SC.Link href={PATHNAME_ABOUT_NAP}>{localization.menu.aboutNap}</SC.Link>
+    </li>
+    <li key={localization.menu.aboutRegistration}>
+      <SC.Link as={RouteLink} to={PATHNAME_ABOUT_REGISTRATION}>
+        {localization.menu.aboutRegistration}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.organizations}>
+      <SC.Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
+        {localization.menu.organizations}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.tools.reports}>
+      <SC.Link as={RouteLink} to={PATHNAME_REPORTS}>
+        {localization.menu.tools.reports}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.community}>
+      <SC.Link href={PATHNAME_COMMUNITY}>{localization.menu.community}</SC.Link>
+    </li>
+  </>
+);
+
+const fdkItems = (
+  <>
+    <li key={localization.menu.about}>
+      <SC.Link as={RouteLink} to={PATHNAME_ABOUT}>
+        {localization.menu.about}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.organizations}>
+      <SC.Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
+        {localization.menu.organizations}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.tools.tools} className='hideOnMobileView'>
+      <PortalDropdownMenu
+        desktopView
+        openOnHover
+        caret={false}
+        mobileView={false}
+        title={localization.menu.tools.tools}
+      >
+        <li key={localization.menu.tools.reports}>
+          <SC.Link as={RouteLink} to={PATHNAME_REPORTS}>
+            {localization.menu.tools.reports}
+          </SC.Link>
+        </li>
+        <li key={localization.menu.tools.sparql}>
+          <SC.Link as={RouteLink} to={PATHNAME_SPARQL}>
+            {localization.menu.tools.sparql}
+          </SC.Link>
+        </li>
+      </PortalDropdownMenu>
+    </li>
+    <li key={localization.menu.community}>
+      <SC.Link href={PATHNAME_COMMUNITY}>{localization.menu.community}</SC.Link>
+    </li>
+    <li key={localization.menu.publishing}>
+      <SC.Link href={PATHNAME_PUBLISHING} external>
+        {localization.menu.publishing}
+      </SC.Link>
+    </li>
+  </>
+);
 
 const languageButtons = ({
   onChangeLanguage
@@ -154,7 +134,9 @@ export const AppNavBar: FC<Props> = onChangeLanguage => (
           {isTransportportal ? <SC.NapLogo /> : Logo}
         </SC.Link>
         <SC.ContentWrapper>
-          <SC.NavigationLinks>{menuItems()}</SC.NavigationLinks>
+          <SC.NavigationLinks>
+            {isTransportportal ? transportItems : fdkItems}
+          </SC.NavigationLinks>
 
           <PortalDropdownMenu
             desktopView
@@ -171,7 +153,7 @@ export const AppNavBar: FC<Props> = onChangeLanguage => (
           caret
           title={localization.app.menu}
         >
-          {menuItems()}
+          {isTransportportal ? transportItems : fdkItems}
           {languageButtons(onChangeLanguage)}
         </PortalDropdownMenu>
       </SC.Container>

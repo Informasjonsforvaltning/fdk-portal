@@ -55,7 +55,7 @@ interface titleProps {
 
 const Title = styled.button<titleProps>`
   padding: 10px;
-  font-size: 16px;
+  font-size: ${theme.fontSize('FS16')};
   border: none;
   ${({ theme: extendedTheme }) =>
     isTransportportal
@@ -97,8 +97,8 @@ const Dropdown = styled.ul<dropdownProps>`
   border-radius: 5px;
 
   > li {
-    font-size: 16px;
-    padding: 10px;
+    font-size: ${theme.fontSize('FS16')};
+    padding: ${theme.spacing('S8')};
     white-space: nowrap;
 
     &:hover {
@@ -109,6 +109,7 @@ const Dropdown = styled.ul<dropdownProps>`
       border: none;
       background-color: transparent;
       width: 100%;
+      text-align: left;
     }
   }
 
@@ -122,13 +123,19 @@ const Dropdown = styled.ul<dropdownProps>`
         `}
 
   ${onMobileView} {
+    border-radius: 0px;
     position: fixed;
     width: 100vw;
     height: calc(100vh - ${bannerHeight});
     top: ${bannerHeight};
+    right: 0px;
+
+    > .hideOnMobileView {
+      display: none;
+    }
 
     > li {
-      font-size: 18px;
+      font-size: ${theme.fontSize('FS20')};
       margin-left: 20px;
       margin-top: 20px;
 
