@@ -4,6 +4,8 @@ import { ThemeProvider } from 'styled-components';
 
 import PortalDropdownMenu from '../../components/dropdown-menu';
 
+import env from '../../env';
+
 import localization from '../../lib/localization';
 import {
   PATHNAME_REPORTS,
@@ -13,8 +15,7 @@ import {
   PATHNAME_HOME_NAP,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLISHING,
-  PATHNAME_SPARQL,
-  PATHNAME_COMMUNITY
+  PATHNAME_SPARQL
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
@@ -22,6 +23,8 @@ import { getConfig } from '../../config';
 import SC from './styled';
 
 const isTransportportal = getConfig().themeNap;
+
+const { FDK_COMMUNITY_BASE_URI } = env;
 
 interface Props {
   onChangeLanguage: (language: string) => void;
@@ -48,7 +51,9 @@ const transportItems = (
       </SC.Link>
     </li>
     <li key={localization.menu.community}>
-      <SC.Link href={PATHNAME_COMMUNITY}>{localization.menu.community}</SC.Link>
+      <SC.Link href={FDK_COMMUNITY_BASE_URI}>
+        {localization.menu.community}
+      </SC.Link>
     </li>
   </>
 );
@@ -79,14 +84,16 @@ const fdkItems = (
           </SC.Link>
         </li>
         <li key={localization.menu.tools.sparql}>
-          <SC.Link as={RouteLink} to={PATHNAME_SPARQL}>
+          <SC.Link href={PATHNAME_SPARQL}>
             {localization.menu.tools.sparql}
           </SC.Link>
         </li>
       </PortalDropdownMenu>
     </li>
     <li key={localization.menu.community}>
-      <SC.Link href={PATHNAME_COMMUNITY}>{localization.menu.community}</SC.Link>
+      <SC.Link href={FDK_COMMUNITY_BASE_URI}>
+        {localization.menu.community}
+      </SC.Link>
     </li>
     <li key={localization.menu.publishing}>
       <SC.Link href={PATHNAME_PUBLISHING} external>
