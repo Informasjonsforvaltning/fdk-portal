@@ -13,6 +13,8 @@ export default validateEnv(
     INFORMATIONMODEL_HARVESTER_HOST:
       'https://informationmodels.staging.fellesdatakatalog.digdir.no',
     FDK_LOGGING_FUNCTION_URI:
-      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/cloud-logging'
+      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/cloud-logging',
+    FDK_COMMUNITY_BASE_URI:
+      'https://community.staging.fellesdatakatalog.digdir.no/'
   }
 );

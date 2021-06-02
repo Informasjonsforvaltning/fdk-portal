@@ -8,4 +8,5 @@ export interface EnvironmentVariables {
   ADMIN_GUI_BASE_URI: string;
   INFORMATIONMODEL_HARVESTER_HOST: string;
   FDK_LOGGING_FUNCTION_URI: string;
+  FDK_COMMUNITY_BASE_URI: string;
 }
