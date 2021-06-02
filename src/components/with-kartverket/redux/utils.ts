@@ -31,7 +31,7 @@ export const getAdministrativeUnit = async (
   )?.subject;
 
   return {
-    uri: subject?.value ?? '',
+    uri: subject?.value ?? uri,
     name: fetcher.store
       .statementsMatching(subject, rdfs('label'))
       .map(({ object }) => object as Literal)

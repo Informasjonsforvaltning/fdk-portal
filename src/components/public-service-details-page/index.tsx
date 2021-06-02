@@ -403,7 +403,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       .map(uri =>
                         administrativeUnitsMap[uri] ? (
                           <Link key={uri} href={uri} external>
-                            {translate(administrativeUnitsMap[uri]?.name)}
+                            {translate(administrativeUnitsMap[uri]?.name) ||
+                              uri}
                           </Link>
                         ) : (
                           uri
