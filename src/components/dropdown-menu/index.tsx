@@ -1,25 +1,29 @@
-import React, { memo, FC, useState, useRef, useEffect } from 'react';
-
-import { DropdownMenuItem } from '../../types';
-
-import MenuItem from './components/menu-item/index';
+import React, {
+  memo,
+  FC,
+  useState,
+  useRef,
+  useEffect,
+  PropsWithChildren
+} from 'react';
 
 import SC from './styled';
 
 interface Props {
   title: string;
   caret: boolean;
-  menuItems: DropdownMenuItem[];
   desktopView: boolean;
   mobileView: boolean;
+  openOnHover?: boolean;
 }
 
-const DropdownMenu: FC<Props> = ({
+const DropdownMenu: FC<PropsWithChildren<Props>> = ({
   title,
   caret,
-  menuItems,
   desktopView,
-  mobileView
+  mobileView,
+  openOnHover = false,
+  children
 }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLElement>(null);
@@ -38,7 +42,7 @@ const DropdownMenu: FC<Props> = ({
     }
   };
 
-  const handleClick = () => {
+  const handleMouseEvent = () => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     setOpen(!open);
@@ -59,17 +63,15 @@ const DropdownMenu: FC<Props> = ({
       <SC.DropdownMenu
         role='navigation'
         ref={ref}
-        onClick={handleClick}
+        onClick={openOnHover ? () => {} : handleMouseEvent}
+        onMouseOver={openOnHover ? handleMouseEvent : () => {}}
+        onMouseOut={openOnHover ? handleMouseEvent : () => {}}
         onFocus={() => setOpen(true)}
         desktopView={desktopView}
         mobileView={mobileView}
       >
         <SC.Title caret={caret}>{title}</SC.Title>
-        <SC.Dropdown open={open}>
-          {menuItems.map((menuItem, index) => (
-            <MenuItem key={`menuItem_${index}`} content={menuItem} />
-          ))}
-        </SC.Dropdown>
+        <SC.Dropdown open={open}>{children}</SC.Dropdown>
       </SC.DropdownMenu>
     </>
   );

@@ -120,7 +120,12 @@
     "homeNAP": "Søk i Transportportal.no",
     "about": "Om Felles datakatalog",
     "aboutRegistration": "Hjelp til å registrere",
-    "reports": "Rapportar",
+    "tools": {
+      "tools": "Verktøy",
+      "reports": "Rapportar",
+      "sparql": "SPARQL-spørjing"
+    },
+    "community": "Datalandsbyen",
     "conceptsCompare": "Samanlikne omgrep",
     "aboutNap": "Om Transportportal.no",
     "guidanceMetadata": "Metadata",
@@ -220,6 +225,7 @@
     "aboutFDKTitle": "Om Felles datakatalog",
     "guidance": "Veiledning",
     "reports": "Rapportar",
+    "sparql": "SPARQL-spørjing",
     "aboutFDK": "Om Felles datakatalog",
     "guideToRegister": "Hjelp til å registrere",
     "news": "Aktuelt",

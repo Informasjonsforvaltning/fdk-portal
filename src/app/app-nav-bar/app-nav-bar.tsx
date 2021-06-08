@@ -4,6 +4,8 @@ import { ThemeProvider } from 'styled-components';
 
 import PortalDropdownMenu from '../../components/dropdown-menu';
 
+import env from '../../env';
+
 import localization from '../../lib/localization';
 import {
   PATHNAME_REPORTS,
@@ -12,7 +14,8 @@ import {
   PATHNAME_ABOUT_NAP,
   PATHNAME_HOME_NAP,
   PATHNAME_ORGANIZATIONS,
-  PATHNAME_PUBLISHING
+  PATHNAME_PUBLISHING,
+  PATHNAME_SPARQL
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
@@ -21,127 +24,146 @@ import SC from './styled';
 
 const isTransportportal = getConfig().themeNap;
 
+const { FDK_COMMUNITY_BASE_URI } = env;
+
 interface Props {
   onChangeLanguage: (language: string) => void;
 }
 
-const getMenuItems: any = (isNap: boolean) =>
-  isNap
-    ? [
-        {
-          label: localization.menu.aboutNap,
-          url: PATHNAME_ABOUT_NAP,
-          hrefLink: true
-        },
-        {
-          label: localization.menu.aboutRegistration,
-          url: PATHNAME_ABOUT_REGISTRATION
-        },
-        {
-          label: localization.menu.organizations,
-          url: PATHNAME_ORGANIZATIONS
-        },
-        {
-          label: localization.menu.reports,
-          url: PATHNAME_REPORTS
-        }
-      ]
-    : [
-        {
-          label: localization.menu.about,
-          url: PATHNAME_ABOUT
-        },
-        {
-          label: localization.menu.organizations,
-          url: PATHNAME_ORGANIZATIONS
-        },
-        {
-          label: localization.menu.reports,
-          url: PATHNAME_REPORTS
-        },
-        {
-          label: localization.menu.publishing,
-          url: PATHNAME_PUBLISHING,
-          hrefLink: true,
-          externalIcon: true
-        }
-      ];
+const transportItems = (
+  <>
+    <li key={localization.menu.aboutNap}>
+      <SC.Link href={PATHNAME_ABOUT_NAP}>{localization.menu.aboutNap}</SC.Link>
+    </li>
+    <li key={localization.menu.aboutRegistration}>
+      <SC.Link as={RouteLink} to={PATHNAME_ABOUT_REGISTRATION}>
+        {localization.menu.aboutRegistration}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.organizations}>
+      <SC.Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
+        {localization.menu.organizations}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.tools.reports}>
+      <SC.Link as={RouteLink} to={PATHNAME_REPORTS}>
+        {localization.menu.tools.reports}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.community}>
+      <SC.Link href={FDK_COMMUNITY_BASE_URI}>
+        {localization.menu.community}
+      </SC.Link>
+    </li>
+  </>
+);
 
-const MenuItems: FC = () =>
-  getMenuItems(isTransportportal).map(
-    ({ label, url, hrefLink = false, externalIcon = false }: any) => (
-      <li key={label}>
-        {hrefLink ? (
-          <SC.Link href={url} {...(externalIcon && { external: true })}>
-            {label}
+const fdkItems = (
+  <>
+    <li key={localization.menu.about}>
+      <SC.Link as={RouteLink} to={PATHNAME_ABOUT}>
+        {localization.menu.about}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.organizations}>
+      <SC.Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
+        {localization.menu.organizations}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.tools.tools} className='hideOnMobileView'>
+      <PortalDropdownMenu
+        desktopView
+        openOnHover
+        caret={false}
+        mobileView={false}
+        title={localization.menu.tools.tools}
+      >
+        <li key={localization.menu.tools.reports}>
+          <SC.Link as={RouteLink} to={PATHNAME_REPORTS}>
+            {localization.menu.tools.reports}
           </SC.Link>
-        ) : (
-          <SC.Link
-            as={RouteLink}
-            to={url}
-            {...(externalIcon && { external: true })}
-          >
-            {label}
+        </li>
+        <li key={localization.menu.tools.sparql}>
+          <SC.Link href={PATHNAME_SPARQL}>
+            {localization.menu.tools.sparql}
           </SC.Link>
-        )}
-      </li>
-    )
-  );
+        </li>
+      </PortalDropdownMenu>
+    </li>
+    <li key={localization.menu.community}>
+      <SC.Link href={FDK_COMMUNITY_BASE_URI}>
+        {localization.menu.community}
+      </SC.Link>
+    </li>
+    <li key={localization.menu.publishing}>
+      <SC.Link href={PATHNAME_PUBLISHING} external>
+        {localization.menu.publishing}
+      </SC.Link>
+    </li>
+  </>
+);
 
-export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => {
-  const Logo = getConfig().useDemoLogo ? <SC.DemoLogo /> : <SC.Logo />;
+const languageButtons = ({
+  onChangeLanguage
+}: {
+  onChangeLanguage: (language: string) => void;
+}) => (
+  <>
+    <li>
+      <button type='button' onClick={() => onChangeLanguage('nb')}>
+        {localization.lang['norwegian-nb']}
+      </button>
+    </li>
+    <li>
+      <button type='button' onClick={() => onChangeLanguage('nn')}>
+        {localization.lang['norwegian-nn']}
+      </button>
+    </li>
+    <li>
+      <button type='button' onClick={() => onChangeLanguage('en')}>
+        {localization.lang['english-en']}
+      </button>
+    </li>
+  </>
+);
+const Logo = getConfig().useDemoLogo ? <SC.DemoLogo /> : <SC.Logo />;
 
-  const languageItems = [
-    {
-      label: localization.lang['norwegian-nb'],
-      onClick: () => onChangeLanguage('nb')
-    },
-    {
-      label: localization.lang['norwegian-nn'],
-      onClick: () => onChangeLanguage('nn')
-    },
-    {
-      label: localization.lang['english-en'],
-      onClick: () => onChangeLanguage('en')
-    }
-  ];
+export const AppNavBar: FC<Props> = onChangeLanguage => (
+  <ThemeProvider theme={isTransportportal ? themeNAP : themeFDK}>
+    <SC.Header>
+      <SC.Container>
+        <SC.Link
+          title={
+            isTransportportal ? localization.linkToNap : localization.linkToFdk
+          }
+          href={isTransportportal ? PATHNAME_HOME_NAP : '/'}
+        >
+          {isTransportportal ? <SC.NapLogo /> : Logo}
+        </SC.Link>
+        <SC.ContentWrapper>
+          <SC.NavigationLinks>
+            {isTransportportal ? transportItems : fdkItems}
+          </SC.NavigationLinks>
 
-  return (
-    <ThemeProvider theme={isTransportportal ? themeNAP : themeFDK}>
-      <SC.Header>
-        <SC.Container>
-          <SC.Link
-            title={
-              isTransportportal
-                ? localization.linkToNap
-                : localization.linkToFdk
-            }
-            href={isTransportportal ? PATHNAME_HOME_NAP : '/'}
-          >
-            {isTransportportal ? <SC.NapLogo /> : Logo}
-          </SC.Link>
-          <SC.ContentWrapper>
-            <SC.NavigationLinks>
-              <MenuItems />
-            </SC.NavigationLinks>
-
-            <PortalDropdownMenu
-              desktopView
-              mobileView={false}
-              caret
-              title={localization.lang.chosenLanguage}
-              menuItems={languageItems}
-            />
-          </SC.ContentWrapper>
           <PortalDropdownMenu
-            desktopView={false}
-            mobileView
+            desktopView
+            mobileView={false}
             caret
-            title={localization.app.menu}
-            menuItems={[...getMenuItems(isTransportportal), ...languageItems]}
-          />
-        </SC.Container>
-      </SC.Header>
-    </ThemeProvider>
-  );
-};
+            title={localization.lang.chosenLanguage}
+          >
+            {languageButtons(onChangeLanguage)}
+          </PortalDropdownMenu>
+        </SC.ContentWrapper>
+        <PortalDropdownMenu
+          desktopView={false}
+          mobileView
+          caret
+          title={localization.app.menu}
+        >
+          {isTransportportal ? transportItems : fdkItems}
+          {languageButtons(onChangeLanguage)}
+        </PortalDropdownMenu>
+      </SC.Container>
+    </SC.Header>
+  </ThemeProvider>
+);

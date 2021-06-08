@@ -55,7 +55,7 @@ interface titleProps {
 
 const Title = styled.button<titleProps>`
   padding: 10px;
-  font-size: 16px;
+  font-size: ${theme.fontSize('FS16')};
   border: none;
   ${({ theme: extendedTheme }) =>
     isTransportportal
@@ -92,9 +92,26 @@ const Dropdown = styled.ul<dropdownProps>`
   border: 1px solid ${({ theme: t }) => t.extendedColors.neutralLight};
   z-index: 1000;
   position: absolute;
-  right: 0;
   top: 40px;
-  overflow-y: auto;
+  box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+
+  > li {
+    font-size: ${theme.fontSize('FS16')};
+    padding: ${theme.spacing('S8')};
+    white-space: nowrap;
+
+    &:hover {
+      background-color: ${({ theme: t }) => t.extendedColors.neutralLight};
+    }
+
+    > button {
+      border: none;
+      background-color: transparent;
+      width: 100%;
+      text-align: left;
+    }
+  }
 
   ${({ theme: t }) =>
     isTransportportal
@@ -106,10 +123,27 @@ const Dropdown = styled.ul<dropdownProps>`
         `}
 
   ${onMobileView} {
+    border-radius: 0px;
     position: fixed;
     width: 100vw;
     height: calc(100vh - ${bannerHeight});
     top: ${bannerHeight};
+    right: 0px;
+
+    > .hideOnMobileView {
+      display: none;
+    }
+
+    > li {
+      font-size: ${theme.fontSize('FS20')};
+      margin-left: 20px;
+      margin-top: 20px;
+
+      > button {
+        border: none;
+        background-color: transparent;
+      }
+    }
   }
 `;
 
