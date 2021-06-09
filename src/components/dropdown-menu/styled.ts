@@ -105,7 +105,12 @@ const Dropdown = styled.ul<dropdownProps>`
       background-color: ${({ theme: t }) => t.extendedColors.neutralLight};
     }
 
+    > a {
+      color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+    }
+
     > button {
+      color: ${theme.colour(Colour.NEUTRAL, 'N70')};
       border: none;
       background-color: transparent;
       width: 100%;
