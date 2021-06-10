@@ -871,7 +871,8 @@
     }
   },
   "breadcrumb": {
-    "notFound": "No title"
+    "notFound": "No title",
+    "sparql": "Sparql tool"
   },
   "sampleData": "Example data",
   "community": {
