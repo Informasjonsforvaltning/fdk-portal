@@ -15,8 +15,7 @@ const timeAgoString = (startTime: number): string => {
   const months = Math.floor(days / 30);
   const years = Math.floor(months / 12);
 
-  const singular = translations.community.timeago.singular;
-  const plural = translations.community.timeago.plural;
+  const { singular, plural } = translations.community.timeago;
 
   if (years) {
     return years > 1 ? `${years} ${plural.years}` : singular.years;

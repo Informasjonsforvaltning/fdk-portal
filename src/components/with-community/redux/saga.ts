@@ -20,11 +20,13 @@ function* searchTopicsRequested({
 }: ReturnType<typeof actions.searchTopicsRequested>) {
   try {
     const postHits: CommunityPost[] = yield call(searchCommunity, queryTerm);
-    const topics: CommunityTopic[] = (yield all(
-      extractTopicsFromSearch(postHits).map(({ tid }) =>
-        call(getTopicById, tid)
-      )
-    )).filter(Boolean);
+    const topics: CommunityTopic[] = (
+      (yield all(
+        extractTopicsFromSearch(postHits).map(({ tid }) =>
+          call(getTopicById, tid)
+        )
+      )) as CommunityTopic[]
+    ).filter(Boolean);
 
     if (topics.length > 0) {
       yield put(actions.searchTopicsSucceeded(topics));
