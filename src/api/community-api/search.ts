@@ -8,17 +8,17 @@ const { FDK_COMMUNITY_BASE_URI } = env;
 
 export const searchCommunity = (queryTerm: string) =>
   axios
-    .get(`${FDK_COMMUNITY_BASE_URI}api/search?term=${queryTerm}`)
+    .get(`${FDK_COMMUNITY_BASE_URI}/api/search?term=${queryTerm}`)
     .then(({ data }) => data);
 
 export const getTopicById = (tid: number) =>
   axios
-    .get(`${FDK_COMMUNITY_BASE_URI}api/topic/${tid}`)
+    .get(`${FDK_COMMUNITY_BASE_URI}/api/topic/${tid}`)
     .then(({ data }) => data);
 
 export const getRecentPosts = (term: CommunityTerm) =>
   axios
-    .get(`${FDK_COMMUNITY_BASE_URI}api/recent/posts/${term}`)
+    .get(`${FDK_COMMUNITY_BASE_URI}/api/recent/posts/${term}`)
     .then(({ data }) => data);
 
 export const extractTopicsFromSearch = (

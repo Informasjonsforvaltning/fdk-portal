@@ -13,7 +13,7 @@ interface Props {
 }
 
 const User: FC<Props> = ({ user }) => (
-  <SC.User href={`${FDK_COMMUNITY_BASE_URI}user/${user.userslug}`}>
+  <SC.User href={`${FDK_COMMUNITY_BASE_URI}/user/${user.userslug}`}>
     {user.picture ? (
       <SC.Picture src={user.picture} />
     ) : (

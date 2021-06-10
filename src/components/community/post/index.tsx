@@ -21,7 +21,7 @@ interface Props {
 
 const PostLink: FC<Props> = ({ post }) => (
   <SC.PostLink
-    href={`${FDK_COMMUNITY_BASE_URI}topic/${post.topic.slug}/${post.pid}`}
+    href={`${FDK_COMMUNITY_BASE_URI}/topic/${post.topic.slug}/${post.pid}`}
   >
     <h3>{post.topic.title}</h3>
     <SC.Content>
