@@ -17,8 +17,8 @@ interface Props {
   topics: CommunityTopic[];
 }
 
-const CommunityTopics: FC<Props> = ({ entityType, topics }) => {
-  return topics.length > 0 ? (
+const CommunityTopics: FC<Props> = ({ entityType, topics }) =>
+  topics.length > 0 ? (
     <>
       <span>
         {translations.community.subtitle.content[entityType]}
@@ -42,6 +42,5 @@ const CommunityTopics: FC<Props> = ({ entityType, topics }) => {
       </a>
     </span>
   );
-};
 
 export default CommunityTopics;

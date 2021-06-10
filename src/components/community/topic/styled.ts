@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme as themeFDK, Colour } from '@fellesdatakatalog/theme';
 
 const Topic = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  background-color: ${themeFDK.colour(Colour.NEUTRAL, 'N0')};
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
@@ -18,7 +18,7 @@ const Info = styled.div`
 
   & h3 {
     display: inline-block;
-    font-weight: ${theme.fontWeight('FW500')};
+    font-weight: ${themeFDK.fontWeight('FW500')};
     color: ${({ theme }) => theme.entityColours.dark};
     border-bottom: 1px solid;
     border-bottom-color: ${({ theme }) => theme.entityColours.dark};
@@ -51,8 +51,8 @@ const Statistics = styled.ul`
 `;
 
 const BigNumber = styled.span`
-  font-weight: ${theme.fontWeight('FW700')};
-  font-size: ${theme.fontSize('FS16')};
+  font-weight: ${themeFDK.fontWeight('FW700')};
+  font-size: ${themeFDK.fontSize('FS16')};
 `;
 
 export default { Topic, Info, Statistics, BigNumber };
