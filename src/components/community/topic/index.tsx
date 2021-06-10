@@ -21,7 +21,7 @@ const Topic: FC<Props> = ({ topic }) => {
   return (
     <SC.Topic>
       <SC.Info>
-        <a href={`${FDK_COMMUNITY_BASE_URI}topic/${topic.slug}`}>
+        <a href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}>
           <h3>{topic.title}</h3>
         </a>
         <div>
