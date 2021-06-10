@@ -869,7 +869,8 @@
     }
   },
   "breadcrumb": {
-    "notFound": "Ingen tittel"
+    "notFound": "Ingen tittel",
+    "sparql": "Sparql verktøy"
   },
   "sampleData": "Eksempeldata",
   "community": {

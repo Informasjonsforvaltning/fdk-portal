@@ -241,6 +241,11 @@ exports[`should render App correctly 1`] = `
           path="/guidance/metadata"
         />
         <Route
+          exact={true}
+          path="/sparql"
+          render={[Function]}
+        />
+        <Route
           render={[Function]}
         />
       </Switch>

@@ -1,7 +1,11 @@
 import { merge } from 'webpack-merge';
 import type { Configuration } from 'webpack';
+import ModuleFederationPlugin from 'webpack/lib/container/ModuleFederationPlugin';
 
 import baseConfig from './base.config';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const deps = require('../package.json').dependencies;
 
 const configuration: Configuration = merge(baseConfig, {
   mode: 'production',
@@ -39,7 +43,21 @@ const configuration: Configuration = merge(baseConfig, {
         }
       }
     }
-  }
+  },
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'portal',
+      remotes: {
+        sparql_gui:
+          'sparql_gui@https://sparql.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
+      },
+      shared: {
+        ...deps,
+        react: { singleton: true },
+        'react-dom': { singleton: true }
+      }
+    })
+  ]
 });
 
 export default configuration;
