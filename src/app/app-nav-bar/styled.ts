@@ -83,14 +83,22 @@ const NavigationLinks = styled.ul`
   margin-right: 1em;
   font-size: ${theme.fontSize('FS16')};
 
-  & > li * {
+  & li {
     ${() =>
       isTransportportal
         ? css`
-            color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+            & > a,
+            & > a > div,
+            & > button {
+              color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+            }
           `
         : css`
-            color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+            & > a,
+            & > a > div,
+            & > button {
+              color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+            }
           `}
   }
 

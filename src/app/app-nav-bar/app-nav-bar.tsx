@@ -30,7 +30,7 @@ interface Props {
   onChangeLanguage: (language: string) => void;
 }
 
-const transportItems = (
+const transportItems = () => (
   <>
     <li key={localization.menu.aboutNap}>
       <SC.Link href={PATHNAME_ABOUT_NAP}>{localization.menu.aboutNap}</SC.Link>
@@ -58,7 +58,7 @@ const transportItems = (
   </>
 );
 
-const fdkItems = (
+const fdkItems = () => (
   <>
     <li key={localization.menu.about}>
       <SC.Link as={RouteLink} to={PATHNAME_ABOUT}>
@@ -142,7 +142,7 @@ export const AppNavBar: FC<Props> = onChangeLanguage => (
         </SC.Link>
         <SC.ContentWrapper>
           <SC.NavigationLinks>
-            {isTransportportal ? transportItems : fdkItems}
+            {isTransportportal ? transportItems() : fdkItems()}
           </SC.NavigationLinks>
 
           <PortalDropdownMenu
@@ -160,7 +160,7 @@ export const AppNavBar: FC<Props> = onChangeLanguage => (
           caret
           title={localization.app.menu}
         >
-          {isTransportportal ? transportItems : fdkItems}
+          {isTransportportal ? transportItems() : fdkItems()}
           {languageButtons(onChangeLanguage)}
         </PortalDropdownMenu>
       </SC.Container>
