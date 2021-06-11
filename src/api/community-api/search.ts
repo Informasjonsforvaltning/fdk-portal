@@ -23,10 +23,16 @@ export const getRecentPosts = (term: CommunityTerm) =>
 
 export const extractTopicsFromSearch = (
   searchResponse: any
-): CommunityTopic[] => [
-  ...new Set(
-    searchResponse.posts?.map(
-      ({ topic }: CommunityPost) => topic
-    ) as CommunityTopic[]
-  )
-];
+): CommunityTopic[] => {
+  const postIds = new Set();
+  const uniqueTopics: CommunityTopic[] = [];
+
+  searchResponse.posts.forEach(({ topic }: CommunityPost) => {
+    if (!postIds.has(topic.tid)) {
+      uniqueTopics.push(topic);
+      postIds.add(topic.tid);
+    }
+  });
+
+  return uniqueTopics;
+};
