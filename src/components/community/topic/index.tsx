@@ -21,9 +21,11 @@ const Topic: FC<Props> = ({ topic }) => {
   return (
     <SC.Topic>
       <SC.Info>
-        <a href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}>
-          <h3>{topic.title}</h3>
-        </a>
+        <h3>
+          <SC.TopicTitle href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}>
+            {topic.title}
+          </SC.TopicTitle>
+        </h3>
         <div>
           {topic?.tags?.map((tag, index) => (
             <Tag key={`tag_${index}`} {...tag} />

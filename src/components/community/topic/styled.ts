@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import LinkBase from '@fellesdatakatalog/link';
 import { theme as themeFDK, Colour } from '@fellesdatakatalog/theme';
 
 const Topic = styled.div`
@@ -16,22 +17,17 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
 
-  & h3 {
-    display: inline-block;
-    font-weight: ${themeFDK.fontWeight('FW500')};
-    color: ${({ theme }) => theme.entityColours.dark};
-    border-bottom: 1px solid;
-    border-bottom-color: ${({ theme }) => theme.entityColours.dark};
-    margin-bottom: 5px;
+  & > div {
+    padding-top: 10px;
 
-    &:hover {
-      border-bottom: none;
+    & > * {
+      margin-right: 5px;
     }
   }
+`;
 
-  & > div > * {
-    margin-right: 5px;
-  }
+const TopicTitle = styled(LinkBase)`
+  font-weight: ${themeFDK.fontWeight('FW700')};
 `;
 
 const Statistics = styled.ul`
@@ -55,4 +51,4 @@ const BigNumber = styled.span`
   font-size: ${themeFDK.fontSize('FS16')};
 `;
 
-export default { Topic, Info, Statistics, BigNumber };
+export default { Topic, Info, TopicTitle, Statistics, BigNumber };
