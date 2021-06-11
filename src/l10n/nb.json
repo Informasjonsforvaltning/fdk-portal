@@ -872,9 +872,9 @@
   },
   "sampleData": "Eksempeldata",
   "community": {
-    "title": "Community",
+    "title": "Datalandsbyen",
     "subtitle": {
-      "link": "vårt community.",
+      "link": "datalandsbyen.",
       "mention": " innlegg i ",
       "mentionPlural": " innlegg i ",
       "empty": {

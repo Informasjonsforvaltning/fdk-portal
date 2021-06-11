@@ -3,7 +3,7 @@ import { theme, Colour } from '@fellesdatakatalog/theme';
 
 const User = styled.a`
   display: inline-flex;
-  flex-direction: row;
+  align-items: center;
   text-decoration: none;
 
   &:hover {

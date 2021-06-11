@@ -12,6 +12,12 @@ const TruncateContainer = styled.div`
   margin-bottom: 1em;
 `;
 
+const TextContainer = styled.div<textContentProps>`
+  max-height: ${({ lineHeight, visibleLines, truncate }) =>
+    truncate ? lineHeight * visibleLines : 1000}px;
+  overflow: hidden;
+`;
+
 const TextContent = styled.div<textContentProps>`
   position: relative;
   overflow: hidden;
@@ -22,9 +28,6 @@ const TextContent = styled.div<textContentProps>`
   ${({ truncate, lineHeight, visibleLines, entity }) =>
     truncate &&
     css`
-      -webkit-line-clamp: ${visibleLines};
-      height: ${visibleLines * lineHeight}px;
-
       &:before {
         content: '';
         width: 100%;
@@ -75,4 +78,4 @@ const ExpandButton = styled.button<expandButtonProps>`
           }
         `}
 `;
-export default { TruncateContainer, TextContent, ExpandButton };
+export default { TruncateContainer, TextContainer, TextContent, ExpandButton };
