@@ -15,6 +15,6 @@ export default validateEnv(
     FDK_LOGGING_FUNCTION_URI:
       'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/cloud-logging',
     FDK_COMMUNITY_BASE_URI:
-      'https://community.staging.fellesdatakatalog.digdir.no/'
+      'https://community.staging.fellesdatakatalog.digdir.no'
   }
 );

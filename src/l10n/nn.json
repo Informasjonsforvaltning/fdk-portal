@@ -1,5 +1,5 @@
 {
-  "apiLabel": "API",
+  "apiLabel": "API ",
   "description": "Skildring",
   "showFullDescription": "Vis heile skildringa",
   "showMore": "Vis mer",
@@ -9,7 +9,7 @@
   "format": "Format",
   "datasetReferences": "Tilknytta datasettskildringar",
   "informationModelReferences": "Informasjonsmodellar",
-  "apiInfo": "Bruk av API",
+  "apiInfo": "Bruk av API ",
   "accessLevel": "Tilgangsnivå",
   "contactInfo": "Kontaktinformasjon",
   "contactPoint": "Kontaktpunkt",
@@ -35,7 +35,7 @@
   "statusRemoved": "Denne versjonen av API-et er avvikla.",
   "statusDeprecated": "Denne versjonen av API-et er forelda og vil fases ut {0} {1}. ",
   "statusReplacedUrl": "Ny versjon er dokumentert her.",
-  "during": "i",
+  "during": "i ",
   "resultsLabel": "Alle",
   "datasetLabel": "Datasett",
   "conceptLabel": "Omgrep",
@@ -51,7 +51,7 @@
   "showDetails": "Vis detaljar",
   "closeDetails": "Skjul detaljar",
   "openData": "Opne data",
-  "openApi": "Opent API",
+  "openApi": "Opent API ",
   "showHitsFor": "Viser {0} treff for {1}",
   "authoritativeDatasetTooltip": "Dette datasettet er ein autoritativ<br> kjelde. Det meinar at det kjem<br> frå ein troverdig, overordna kjelde.",
   "openDataTooltip": "Datasett som er publisert under ein open <br> lisens slik at alle kan få tilgang, bruka<br> og dela. Dette omfattar òg løysingar som<br> krev brukeregistrering/API-nøklar,<br> så lenge alle kan få tilgang.",
@@ -62,7 +62,7 @@
   "publisher": "Utgivar",
   "news": "Aktuelt",
   "datasetAccessRights": "Tilgangsnivå for datasett",
-  "apiAvailability": "Tilgjengelegheit for API",
+  "apiAvailability": "Tilgjengelegheit for API ",
   "isFree": "Gratis",
   "isOpenAccess": "Open for alle",
   "isOpenLicense": "Open lisens",
@@ -166,7 +166,7 @@
     "prev": "Forrige side",
     "resultsTab": "Alle",
     "datasetTab": "Datasett",
-    "apiTab": "API",
+    "apiTab": "API ",
     "termTab": "Omgrep",
     "informationModelTab": "Informasjonsmodellar",
     "serviceTab": "Tenester og hendingar"
@@ -182,11 +182,11 @@
   "facet": {
     "organisation": "Eigar",
     "theme": "Tema",
-    "themeEU": "EU-tema (under utfasing)",
+    "themeEU": "EU-tema",
     "accessRight": "Tilgang",
     "concept": "Tilrådd term",
     "legal": "Heimel",
-    "spatial": "Geografi",
+    "spatial": "Geografi ",
     "temporal": "Tidsperiode",
     "standard": "Standard",
     "showmore": "Vis fleire",
@@ -308,7 +308,7 @@
     "restrictions": "Restriksjonar",
     "comments": "Kommentar",
     "objective": "Føremål",
-    "registeredIn": "registrert i",
+    "registeredIn": "registrert i ",
     "related": "Relasjonar",
     "relates": "Relatert",
     "restriction": "Restriksjon",
@@ -347,7 +347,7 @@
     "compareTerms": "Samanlikne omgrep",
     "removeTerms": "Fjern",
     "altLabel": "Også kjent som:",
-    "docCount": "Brukt i",
+    "docCount": "Brukt i ",
     "docCountPart2": "datasett"
   },
   "compare": {
@@ -377,10 +377,10 @@
     "typeToSearch": "Skriv for å søke",
     "catalogs": "Katalogar",
     "datasetTab": "Rapport for datasett",
-    "apiTab": "Rapport for API",
+    "apiTab": "Rapport for API ",
     "conceptTab": "Rapport for omgrep",
     "datasets": "datasett",
-    "apis": "API",
+    "apis": "API ",
     "concepts": "omgrep",
     "newPastWeek": "nye siste veke",
     "aggregation": {
@@ -549,8 +549,8 @@
     "replaces": "Erstatter",
     "keywords": "Emneord",
     "license": "Lisens",
-    "category": "Modellkategori",
-    "relatedAPIHeader": "Høyrer til API",
+    "category": "Modellkategori ",
+    "relatedAPIHeader": "Høyrer til API ",
     "informationModelDescription": "Informasjonsmodelbeskrivelse",
     "structure": {
       "rootObjectType": "Rotobjekttype",
@@ -576,8 +576,8 @@
     "restriction": {
       "valueLength": "Lengde",
       "maxLength": "Maksimum lengde",
-      "minInclusive": "Minimum verdi",
-      "maxInclusive": "Maksimum verdi",
+      "minInclusive": "Minimum verdi ",
+      "maxInclusive": "Maksimum verdi ",
       "pattern": "Mønster",
       "totalDigits": "Antall siffer"
     },
@@ -871,5 +871,51 @@
   "breadcrumb": {
     "notFound": "Ingen tittel"
   },
-  "sampleData": "Eksempeldata"
+  "sampleData": "Eksempeldata",
+  "community": {
+    "title": "Datalandsbyen",
+    "subtitle": {
+      "link": "datalandsbyen.",
+      "mention": " innlegg i ",
+      "mentionPlural": " innlegg i ",
+      "empty": {
+        "dataset": "Dette datasettet er ikkje omtalt i ",
+        "dataservice": "Denne datatenesta er ikkje omtalt i ",
+        "concept": "Dette omgrepet er ikkje omtalt i ",
+        "informationmodel": "Denne informasjonsmodellen er ikkje omtalt i ",
+        "public_service": "Denne tenesta er ikkje omtalt i ",
+        "event": "Denne hendinga er ikkje omtalt i "
+      },
+      "content" : {
+        "dataset": "Dette datasettet er omtalt i ",
+        "dataservice": "Denne datatenesta er omtalt i ",
+        "concept": "Dette omgrepet er omtalt i ",
+        "informationmodel": "Denne informasjonsmodellen er omtalt i ",
+        "public_service": "Denne tenesta er omtalt i ",
+        "event": "Denne hendinga er omtalt i "
+      }
+    },
+    "timeago": {
+      "postPrefix" : "skrev for ",
+      "singular": {
+        "seconds": "Nokre få sekund sidan",
+        "minutes": "Eitt minutt sidan",
+        "hours": "Ein time sidan",
+        "days": "Ein dag sidan",
+        "months": "Ein månad",
+        "years": "Eitt år sidan"
+      },
+      "plural": {
+        "seconds": "Nokre få sekund sidan",
+        "minutes": "minutt sidan",
+        "hours": "timar sidan",
+        "days": "dagar sidan",
+        "months": "månader sidan",
+        "years": "år sidan"
+      }
+    },
+    "votes": "Stemmer",
+    "replies": "Svar",
+    "views": "Visningar"
+  }
 }

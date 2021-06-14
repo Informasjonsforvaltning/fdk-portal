@@ -64,7 +64,7 @@
     "clean-deep": "^3.3.0",
     "core-js": "^3.13.1",
     "deserialize-json-api": "^1.4.0",
-    "designsystemet": "git+https://github.com/Informasjonsforvaltning/designsystemet.git#1.4.25",
+    "designsystemet": "git+https://git@github.com/Informasjonsforvaltning/designsystemet.git#1.4.25",
     "font-awesome": "^4.7.0",
     "html-react-parser": "^1.2.6",
     "immutable": "^4.0.0-rc.12",

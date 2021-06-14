@@ -12,26 +12,34 @@ import NewsList from '../../components/news-list/news-list-component';
 import SearchEntities from '../../components/search-entities/search-entities.component';
 import { Props as EntitiesProps } from '../../components/with-entities';
 import { Props as ReferenceDataProps } from '../../components/with-reference-data';
-import { Entity } from '../../types/enums';
+import { Props as CommunityProps } from '../../components/with-community';
+import { CommunityTerm, Entity } from '../../types/enums';
 import { getConfig } from '../../config';
+import Post from '../../components/community/post';
 
-interface Props extends EntitiesProps, ReferenceDataProps {
+interface Props extends EntitiesProps, ReferenceDataProps, CommunityProps {
   news?: any;
 }
 
 const MainPage: FC<Props> = ({
   news,
   entities,
+  posts,
   entitiesActions: { getEntitiesRequested: getEntities },
   referenceData: { mediatypes: mediaTypes },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData }
+  referenceDataActions: { getReferenceDataRequested: getReferenceData },
+  communityActions: { getRecentPostsRequested: getRecentPosts, resetPosts }
 }) => {
   useEffect(() => {
     if (!mediaTypes) {
       getReferenceData('mediatypes');
     }
 
+    getRecentPosts(CommunityTerm.ALL);
     getEntities();
+    return () => {
+      resetPosts();
+    };
   }, []);
 
   return (
@@ -55,6 +63,16 @@ const MainPage: FC<Props> = ({
             <SearchEntities entities={entities} mediatypes={mediaTypes} />
           </section>
           <section className='col-12 col-lg-4'>
+            <HeaderSC.Header>
+              <span>{localization.community.title}</span>
+            </HeaderSC.Header>
+            {posts.length > 0 ? (
+              <SC.CommunityPosts>
+                {posts.slice(0, 3).map(post => (
+                  <Post post={post} />
+                ))}
+              </SC.CommunityPosts>
+            ) : null}
             <HeaderSC.Header>
               <span>{localization.news}</span>
             </HeaderSC.Header>

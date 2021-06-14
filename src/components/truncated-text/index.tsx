@@ -18,11 +18,13 @@ interface Props {
   visibleLines: number;
   lineHeight: number;
   entityTheme?: Entity;
+  onlyTruncate?: boolean;
 }
 
 const TruncatedText: FC<PropsWithChildren<Props>> = ({
   visibleLines,
   lineHeight,
+  onlyTruncate,
   entityTheme,
   children
 }) => {
@@ -38,16 +40,22 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
 
   return (
     <SC.TruncateContainer>
-      <SC.TextContent
-        ref={ref}
+      <SC.TextContainer
         lineHeight={lineHeight}
+        visibleLines={visibleLines}
         truncate={truncate && !expanded}
-        visibleLines={visibleLines + 1}
-        entity={entityTheme}
       >
-        {children}
-      </SC.TextContent>
-      {truncate && (
+        <SC.TextContent
+          ref={ref}
+          lineHeight={lineHeight}
+          truncate={truncate && !expanded}
+          visibleLines={visibleLines}
+          entity={entityTheme}
+        >
+          {children}
+        </SC.TextContent>
+      </SC.TextContainer>
+      {truncate && !onlyTruncate && (
         <SC.ExpandButton
           onClick={() => setExpanded(!expanded)}
           open={expanded}

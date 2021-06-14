@@ -21,4 +21,10 @@ const Twitter = styled.div`
   }
 `;
 
-export default { Content, Twitter };
+const CommunityPosts = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+`;
+
+export default { Content, Twitter, CommunityPosts };

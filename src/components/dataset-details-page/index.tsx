@@ -121,13 +121,10 @@ const DatasetDetailsPage: FC<Props> = ({
     };
   }, [datasetId]);
 
-  const conceptIdentifiers =
-    dataset?.subject?.map(({ identifier }) => identifier).filter(Boolean) ?? [];
-  const datasetUris =
-    dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
-  const spatialUris = dataset?.spatial?.map(({ uri }) => uri) ?? [];
-
   useEffect(() => {
+    const conceptIdentifiers =
+      dataset?.subject?.map(({ identifier }) => identifier).filter(Boolean) ??
+      [];
     if (conceptIdentifiers.length > 0) {
       getConcepts({
         identifiers: conceptIdentifiers as string[],
@@ -135,43 +132,32 @@ const DatasetDetailsPage: FC<Props> = ({
       });
     }
 
-    return () => {
-      resetConcepts();
-    };
-  }, [conceptIdentifiers?.join()]);
-
-  useEffect(() => {
-    if (spatialUris.length > 0) {
-      listAdministrativeUnits(spatialUris);
-    }
-
-    return () => {
-      resetAdministrativeUnits();
-    };
-  }, [spatialUris?.join()]);
-
-  useEffect(() => {
+    const datasetUris =
+      dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
     if (datasetUris && datasetUris.length > 0) {
       getDatasets({ uris: datasetUris, size: 1000 });
     }
 
-    return () => {
-      resetDatasets();
-    };
-  }, [datasetUris?.join()]);
+    const spatialUris = dataset?.spatial?.map(({ uri }) => uri) ?? [];
+    if (spatialUris.length > 0) {
+      listAdministrativeUnits(spatialUris);
+    }
 
-  useEffect(() => {
     if (dataset?.uri) {
       getDatasetsRelations({ referencesSource: dataset.uri });
       getDataServicesRelations({ dataseturi: dataset.uri });
       getPublicServicesRelations({ isDescribedAt: dataset.uri });
     }
+
     return () => {
+      resetConcepts();
+      resetAdministrativeUnits();
+      resetDatasets();
       resetDatasetsRelations();
       resetDataServicesRelations();
       resetPublicServicesRelations();
     };
-  }, [dataset?.uri]);
+  }, [dataset?.id]);
 
   const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
     publicServicesRelations.map(relation => ({
@@ -237,6 +223,7 @@ const DatasetDetailsPage: FC<Props> = ({
     availability: dataset?.hasAvailabilityAnnotation?.hasBody,
     currentness: dataset?.hasCurrentnessAnnotation?.hasBody
   };
+
   const referencedConcepts = concepts;
   const referencedDatasets = datasets;
   const datasetReferenceTypes = dataset?.references ?? [];
@@ -302,7 +289,7 @@ const DatasetDetailsPage: FC<Props> = ({
           >
             {distributions.map((distribution, index) => (
               <DatasetDistribution
-                key={distribution.uri || `distribution-${index}`}
+                key={`${distribution.uri || 'distribution'}-${index}`}
                 distribution={distribution}
                 mediaTypes={mediaTypes}
               />
@@ -323,10 +310,10 @@ const DatasetDetailsPage: FC<Props> = ({
                   value={
                     <SC.ExternalLinkList>
                       {usage.legalBasisForRestriction.map(
-                        ({ uri, prefLabel }) =>
+                        ({ uri, prefLabel }, index) =>
                           uri &&
                           prefLabel && (
-                            <Link key={uri} href={uri} external>
+                            <Link key={`${uri}-${index}`} href={uri} external>
                               {translate(prefLabel)}
                             </Link>
                           )
@@ -341,10 +328,10 @@ const DatasetDetailsPage: FC<Props> = ({
                   value={
                     <SC.ExternalLinkList>
                       {usage.legalBasisForProcessing.map(
-                        ({ uri, prefLabel }) =>
+                        ({ uri, prefLabel }, index) =>
                           uri &&
                           prefLabel && (
-                            <Link key={uri} href={uri} external>
+                            <Link key={`${uri}-${index}`} href={uri} external>
                               {translate(prefLabel)}
                             </Link>
                           )
@@ -359,10 +346,10 @@ const DatasetDetailsPage: FC<Props> = ({
                   value={
                     <SC.ExternalLinkList>
                       {usage.legalBasisForAccess.map(
-                        ({ uri, prefLabel }) =>
+                        ({ uri, prefLabel }, index) =>
                           uri &&
                           prefLabel && (
-                            <Link key={uri} href={uri} external>
+                            <Link key={`${uri}-${index}`} href={uri} external>
                               {translate(prefLabel)}
                             </Link>
                           )
@@ -383,10 +370,10 @@ const DatasetDetailsPage: FC<Props> = ({
                   value={
                     <SC.ExternalLinkList>
                       {usage.standards.map(
-                        ({ uri, prefLabel }) =>
+                        ({ uri, prefLabel }, index) =>
                           uri &&
                           prefLabel && (
-                            <Link key={uri} href={uri} external>
+                            <Link key={`${uri}-${index}`} href={uri} external>
                               {translate(prefLabel)}
                             </Link>
                           )
@@ -401,10 +388,10 @@ const DatasetDetailsPage: FC<Props> = ({
                   value={
                     <SC.ExternalLinkList>
                       {usage.informationModelReferences.map(
-                        ({ uri, prefLabel }) =>
+                        ({ uri, prefLabel }, index) =>
                           uri &&
                           prefLabel && (
-                            <Link key={uri} href={uri} external>
+                            <Link key={`${uri}-${index}`} href={uri} external>
                               {translate(prefLabel)}
                             </Link>
                           )
@@ -554,10 +541,10 @@ const DatasetDetailsPage: FC<Props> = ({
           >
             <KeyValueList>
               {referencedConcepts.map(
-                ({ id, prefLabel, definition: { text: definition } }) =>
+                ({ id, prefLabel, definition: { text: definition } }, index) =>
                   id && (
                     <KeyValueListItem
-                      key={id}
+                      key={`${id}-${index}`}
                       property={
                         <Link to={`${PATHNAME_CONCEPTS}/${id}`} as={RouteLink}>
                           {translate(prefLabel)}
@@ -579,28 +566,30 @@ const DatasetDetailsPage: FC<Props> = ({
             }
           >
             <KeyValueList>
-              {referencedDatasets?.map(({ id, uri, title: datasetTitle }) => (
-                <KeyValueListItem
-                  key={id}
-                  property={translate(
-                    referenceTypes?.find(
-                      ({ uri: referenceUri }) =>
-                        referenceUri ===
-                        datasetReferenceTypes.find(
-                          ({ source }) => source.uri === uri
-                        )?.referenceType?.uri
-                    )?.prefLabel
-                  )}
-                  value={
-                    <Link
-                      to={`${PATHNAME_DATASET_DETAILS}/${id}`}
-                      as={RouteLink}
-                    >
-                      {translate(datasetTitle)}
-                    </Link>
-                  }
-                />
-              ))}
+              {referencedDatasets?.map(
+                ({ id, uri, title: datasetTitle }, index) => (
+                  <KeyValueListItem
+                    key={`${id}-${index}`}
+                    property={translate(
+                      referenceTypes?.find(
+                        ({ uri: referenceUri }) =>
+                          referenceUri ===
+                          datasetReferenceTypes.find(
+                            ({ source }) => source.uri === uri
+                          )?.referenceType?.uri
+                      )?.prefLabel
+                    )}
+                    value={
+                      <Link
+                        to={`${PATHNAME_DATASET_DETAILS}/${id}`}
+                        as={RouteLink}
+                      >
+                        {translate(datasetTitle)}
+                      </Link>
+                    }
+                  />
+                )
+              )}
               {referencedResourcesUnResolved?.map(
                 (
                   {
@@ -671,9 +660,9 @@ const DatasetDetailsPage: FC<Props> = ({
             title={translations.detailsPage.sectionTitles.dataset.restrictions}
           >
             <KeyValueList>
-              {administrativeUnits.map(({ uri, name }) => (
+              {administrativeUnits.map(({ uri, name }, index) => (
                 <KeyValueListItem
-                  key={uri}
+                  key={`${uri}-${index}`}
                   property={translations.dataset.spatial}
                   value={
                     uri ? (
@@ -686,9 +675,9 @@ const DatasetDetailsPage: FC<Props> = ({
                   }
                 />
               ))}
-              {temporalRestrictions.map(({ startDate, endDate }) => (
+              {temporalRestrictions.map(({ startDate, endDate }, index) => (
                 <KeyValueListItem
-                  key={`${startDate}-${endDate}`}
+                  key={`${startDate}-${endDate}-${index}`}
                   property={translations.dataset.temporal}
                   value={
                     startDate && endDate
@@ -725,9 +714,9 @@ const DatasetDetailsPage: FC<Props> = ({
             }
           >
             {contactPoints.map(
-              ({ organizationUnit, email, hasURL, hasTelephone }) => (
+              ({ organizationUnit, email, hasURL, hasTelephone }, index) => (
                 <KeyValueList
-                  key={`${organizationUnit}-${email}-${hasURL}-${hasTelephone}`}
+                  key={`${organizationUnit}-${email}-${hasURL}-${hasTelephone}-${index}`}
                 >
                   {hasURL && (
                     <KeyValueListItem
