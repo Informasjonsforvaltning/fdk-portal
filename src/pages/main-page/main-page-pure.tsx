@@ -1,5 +1,6 @@
 import React, { FC, memo, useEffect } from 'react';
 
+import env from '../../env';
 import SC from './styled';
 import localization from '../../lib/localization';
 import {
@@ -16,6 +17,8 @@ import { Props as CommunityProps } from '../../components/with-community';
 import { CommunityTerm, Entity } from '../../types/enums';
 import { getConfig } from '../../config';
 import Post from '../../components/community/post';
+
+const { FDK_COMMUNITY_BASE_URI } = env;
 
 interface Props extends EntitiesProps, ReferenceDataProps, CommunityProps {
   news?: any;
@@ -71,6 +74,9 @@ const MainPage: FC<Props> = ({
                 {posts.slice(0, 3).map(post => (
                   <Post post={post} />
                 ))}
+                <SC.Link href={`${FDK_COMMUNITY_BASE_URI}/recent`}>
+                  {localization.community.seeMore}
+                </SC.Link>
               </SC.CommunityPosts>
             ) : null}
             <HeaderSC.Header>

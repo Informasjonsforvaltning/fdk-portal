@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import LinkBase from '@fellesdatakatalog/link';
+import { theme } from '@fellesdatakatalog/theme';
 
 const Content = styled.div`
   display: flex;
@@ -27,4 +29,10 @@ const CommunityPosts = styled.div`
   margin-bottom: 2em;
 `;
 
-export default { Content, Twitter, CommunityPosts };
+const Link = styled(LinkBase)`
+  font-size: ${theme.fontSize('FS16')};
+  font-weight: ${theme.fontWeight('FW700')};
+  margin-top: ${theme.spacing('S8')};
+`;
+
+export default { Content, Twitter, CommunityPosts, Link };
