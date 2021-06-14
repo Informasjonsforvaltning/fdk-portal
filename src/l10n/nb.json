@@ -873,6 +873,7 @@
   "sampleData": "Eksempeldata",
   "community": {
     "title": "Datalandsbyen",
+    "seeMore": "Se flere nylige innlegg",
     "subtitle": {
       "link": "datalandsbyen.",
       "mention": " innlegg i ",

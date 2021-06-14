@@ -42,6 +42,10 @@ const TextContent = styled.div<textContentProps>`
         );
       }
     `}
+
+  & img {
+    display: none;
+  }
 `;
 
 type expandButtonProps = {
