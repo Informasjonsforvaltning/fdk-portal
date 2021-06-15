@@ -23,7 +23,7 @@ const PostLink: FC<Props> = ({ post }) => (
   <SC.PostLink
     href={`${FDK_COMMUNITY_BASE_URI}/topic/${post.topic.slug}/${post.pid}`}
   >
-    <h3>{post.topic.title}</h3>
+    <h3>{post.topic.titleRaw}</h3>
     <SC.Content>
       <SC.UserInfo>
         <User user={post.user} />
