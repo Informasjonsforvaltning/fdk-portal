@@ -118,38 +118,6 @@ const DatasetDetailsPage: FC<Props> = ({
 
     return () => {
       resetDataset();
-    };
-  }, [datasetId]);
-
-  useEffect(() => {
-    const conceptIdentifiers =
-      dataset?.subject?.map(({ identifier }) => identifier).filter(Boolean) ??
-      [];
-    if (conceptIdentifiers.length > 0) {
-      getConcepts({
-        identifiers: conceptIdentifiers as string[],
-        size: 1000
-      });
-    }
-
-    const datasetUris =
-      dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
-    if (datasetUris && datasetUris.length > 0) {
-      getDatasets({ uris: datasetUris, size: 1000 });
-    }
-
-    const spatialUris = dataset?.spatial?.map(({ uri }) => uri) ?? [];
-    if (spatialUris.length > 0) {
-      listAdministrativeUnits(spatialUris);
-    }
-
-    if (dataset?.uri) {
-      getDatasetsRelations({ referencesSource: dataset.uri });
-      getDataServicesRelations({ dataseturi: dataset.uri });
-      getPublicServicesRelations({ isDescribedAt: dataset.uri });
-    }
-
-    return () => {
       resetConcepts();
       resetAdministrativeUnits();
       resetDatasets();
@@ -157,7 +125,39 @@ const DatasetDetailsPage: FC<Props> = ({
       resetDataServicesRelations();
       resetPublicServicesRelations();
     };
-  }, [dataset?.id]);
+  }, [datasetId, getDataset]);
+
+  useEffect(() => {
+    if (isMounted) {
+      const conceptIdentifiers =
+        dataset?.subject?.map(({ identifier }) => identifier).filter(Boolean) ??
+        [];
+
+      if (conceptIdentifiers.length > 0) {
+        getConcepts({
+          identifiers: conceptIdentifiers as string[],
+          size: 1000
+        });
+      }
+
+      const datasetUris =
+        dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
+      if (datasetUris && datasetUris.length > 0) {
+        getDatasets({ uris: datasetUris, size: 1000 });
+      }
+
+      const spatialUris = dataset?.spatial?.map(({ uri }) => uri) ?? [];
+      if (spatialUris.length > 0) {
+        listAdministrativeUnits(spatialUris);
+      }
+
+      if (dataset?.uri) {
+        getDatasetsRelations({ referencesSource: dataset.uri });
+        getDataServicesRelations({ dataseturi: dataset.uri });
+        getPublicServicesRelations({ isDescribedAt: dataset.uri });
+      }
+    }
+  }, [dataset?.id, isMounted]);
 
   const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
     publicServicesRelations.map(relation => ({

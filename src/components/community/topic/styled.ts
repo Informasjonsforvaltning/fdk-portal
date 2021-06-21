@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import LinkBase from '@fellesdatakatalog/link';
 import { theme as themeFDK, Colour } from '@fellesdatakatalog/theme';
 
 const Topic = styled.div`
@@ -26,8 +25,13 @@ const Info = styled.div`
   }
 `;
 
-const TopicTitle = styled(LinkBase)`
+const TopicTitle = styled.a`
   font-weight: ${themeFDK.fontWeight('FW700')};
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
 `;
 
 const Statistics = styled.ul`
