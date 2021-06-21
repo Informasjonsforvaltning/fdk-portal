@@ -10,8 +10,6 @@ import {
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
-import { PATHNAME_DATA_SERVICES } from '../../../../constants/constants';
-
 import ExternalLink from '../../../link-external';
 
 import Summary from '../summary';
@@ -29,9 +27,15 @@ import {
   toMediaType
 } from '../../../../utils/mediatype';
 
-import { Distribution, License, MediaType } from '../../../../types';
+import {
+  AccessService,
+  Distribution,
+  License,
+  MediaType
+} from '../../../../types';
 
 interface ExternalProps {
+  accessServices?: AccessService[];
   distribution: Partial<Distribution>;
   mediaTypes?: MediaType[];
 }
@@ -49,10 +53,10 @@ const DatasetDistribution: FC<Props> = ({
     conformsTo: [
       { uri: conformsToUri = null, prefLabel: conformsToPrefLabel = null } = {}
     ] = [],
-    page: [{ uri: pageUri = null } = {}] = [],
-    accessService: accessServices = []
+    page: [{ uri: pageUri = null } = {}] = []
   },
-  mediaTypes = []
+  mediaTypes = [],
+  accessServices = []
 }) => (
   <SC.DatasetDistribution data-testid={testIds.root}>
     <ExpansionPanelHead>
@@ -130,15 +134,12 @@ const DatasetDistribution: FC<Props> = ({
         />
       )}
       {accessServices?.map(
-        ({
-          description: accessServiceDescription,
-          endpointDescription: [endpointDescription]
-        }) => (
+        ({ description: accessServiceDescription, uri: accessServiceUri }) => (
           <Detail
-            key={endpointDescription.uri}
+            key={accessServiceUri}
             property={translations.dataset.distribution.dataService}
             value={
-              <Link to={`${PATHNAME_DATA_SERVICES}/${endpointDescription.uri}`}>
+              <Link to={accessServiceUri}>
                 {translate(accessServiceDescription)}
               </Link>
             }

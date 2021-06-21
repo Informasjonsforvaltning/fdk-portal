@@ -535,13 +535,9 @@ interface Page {
   uri: string;
 }
 
-interface EndpointDescription {
-  uri: string;
-}
-
 export interface AccessService {
   description: Partial<TextLanguage>;
-  endpointDescription: EndpointDescription[];
+  endpointDescription?: string[];
   uri: string;
 }
 

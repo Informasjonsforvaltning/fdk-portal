@@ -15,10 +15,10 @@ import type { DataService } from '../../../types';
 
 function* getDataServicesRequested({
   payload: {
-    params: { dataseturi, size, endpointDescription, servesDataset }
+    params: { dataseturi, size, endpointDescription, servesDataset, uris }
   }
 }: ReturnType<typeof actions.getDataServicesRequested>) {
-  if (!dataseturi && !endpointDescription) {
+  if (!dataseturi && !endpointDescription && !uris) {
     return;
   }
 
@@ -27,7 +27,8 @@ function* getDataServicesRequested({
       dataseturi,
       size,
       endpointDescription,
-      servesDataset
+      servesDataset,
+      uris
     });
     const data: Record<string, any> = yield call(searchDataServices, body);
     if (data?.hits) {
@@ -42,10 +43,10 @@ function* getDataServicesRequested({
 
 function* getDataServicesRelationsRequested({
   payload: {
-    params: { dataseturi, size, endpointDescription, servesDataset }
+    params: { dataseturi, size, endpointDescription, servesDataset, uris }
   }
 }: ReturnType<typeof actions.getDataServicesRelationsRequested>) {
-  if (!dataseturi && !endpointDescription) {
+  if (!dataseturi && !endpointDescription && !uris) {
     return;
   }
 
@@ -54,7 +55,8 @@ function* getDataServicesRelationsRequested({
       dataseturi,
       size,
       endpointDescription,
-      servesDataset
+      servesDataset,
+      uris
     });
     const data: Record<string, any> = yield call(searchDataServices, body);
     if (data?.hits) {

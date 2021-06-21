@@ -19,7 +19,8 @@ const mapFilters = ({
   dataseturi,
   last_x_days,
   endpointDescription,
-  organizationNumber
+  organizationNumber,
+  uris
 }: any) => {
   const filters = [];
   if (id) {
@@ -67,6 +68,15 @@ const mapFilters = ({
   if (/^\d{9}$/.test(organizationNumber ?? '')) {
     filters.push({
       'publisher.id.keyword': organizationNumber
+    });
+  }
+
+  if (uris) {
+    filters.push({
+      collection: {
+        field: 'uri',
+        values: uris
+      }
     });
   }
 
