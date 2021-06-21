@@ -133,9 +133,6 @@ const DatasetDetailsPage: FC<Props> = ({
         dataset?.subject?.map(({ identifier }) => identifier).filter(Boolean) ??
         [];
 
-      // eslint-disable-next-line no-console
-      console.log('dataset', dataset?.id, conceptIdentifiers);
-
       if (conceptIdentifiers.length > 0) {
         getConcepts({
           identifiers: conceptIdentifiers as string[],
