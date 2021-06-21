@@ -16,6 +16,7 @@ interface GetDataServicesParams {
   size?: number;
   endpointDescription?: string;
   servesDataset?: string;
+  uris?: string[];
 }
 
 export function getDataServicesRequested(params: GetDataServicesParams) {
