@@ -15,7 +15,8 @@ import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 import {
   PATHNAME_DATASETS,
   PATHNAME_DATASET_DETAILS,
-  PATHNAME_CONCEPTS
+  PATHNAME_CONCEPTS,
+  PATHNAME_DATA_SERVICES
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../../app/theme';
@@ -48,6 +49,7 @@ import RelationList, { ItemWithRelationType } from '../relation-list';
 import SC from './styled';
 
 import { Entity } from '../../types/enums';
+import { AccessService, Distribution } from '../../types';
 
 interface RouteParams {
   datasetId?: string;
@@ -72,6 +74,7 @@ const DatasetDetailsPage: FC<Props> = ({
   administrativeUnits,
   datasetsRelations,
   publicServicesRelations,
+  dataServices,
   dataServicesRelations,
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
@@ -87,6 +90,8 @@ const DatasetDetailsPage: FC<Props> = ({
     resetDatasetsRelations
   },
   dataServicesActions: {
+    getDataServicesRequested: getDataServices,
+    resetDataServices,
     getDataServicesRelationsRequested: getDataServicesRelations,
     resetDataServicesRelations
   },
@@ -121,6 +126,7 @@ const DatasetDetailsPage: FC<Props> = ({
       resetConcepts();
       resetAdministrativeUnits();
       resetDatasets();
+      resetDataServices();
       resetDatasetsRelations();
       resetDataServicesRelations();
       resetPublicServicesRelations();
@@ -155,6 +161,14 @@ const DatasetDetailsPage: FC<Props> = ({
         getDatasetsRelations({ referencesSource: dataset.uri });
         getDataServicesRelations({ dataseturi: dataset.uri });
         getPublicServicesRelations({ isDescribedAt: dataset.uri });
+      }
+
+      const accessUris =
+        dataset?.distribution
+          ?.flatMap(({ accessService }) => accessService?.map(({ uri }) => uri))
+          ?.filter((accessUri): accessUri is string => !!accessUri) ?? [];
+      if (accessUris.length > 0) {
+        getDataServices({ uris: accessUris });
       }
     }
   }, [dataset?.id, isMounted]);
@@ -241,6 +255,24 @@ const DatasetDetailsPage: FC<Props> = ({
         )
     ) ?? [];
 
+  const mapAccessServices = (distribution: Distribution) => {
+    const accessServices: AccessService[] = [];
+    distribution?.accessService?.forEach(({ uri }) => {
+      if (uri) {
+        const dataService = dataServices.find(ds => ds.uri === uri);
+        dataService
+          ? accessServices.push({
+              description: dataService.title,
+              endpointDescription: dataService.endpointDescription,
+              uri: `${PATHNAME_DATA_SERVICES}/${dataService.id}`
+            })
+          : accessServices.push({ description: { nb: uri }, uri });
+      }
+    });
+
+    return accessServices;
+  };
+
   const themes = [...(dataset?.losTheme ?? []), ...(dataset?.theme ?? [])];
 
   return renderPage ? (
@@ -292,6 +324,7 @@ const DatasetDetailsPage: FC<Props> = ({
                 key={`${distribution.uri || 'distribution'}-${index}`}
                 distribution={distribution}
                 mediaTypes={mediaTypes}
+                accessServices={mapAccessServices(distribution)}
               />
             ))}
           </ContentSection>
