@@ -2,13 +2,12 @@ import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import parse from 'html-react-parser';
+
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
-import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
 import { themeFDK } from '../../app/theme';
 
@@ -31,6 +30,7 @@ import { Entity, SpecializedEventType } from '../../types/enums';
 
 import { PATHNAME_PUBLIC_SERVICES } from '../../constants/constants';
 import SC from './styled';
+import Markdown from '../markdown';
 
 interface RouteParams {
   eventId: string;
@@ -129,7 +129,7 @@ const EventDetailsPage: FC<Props> = ({
               entityTheme={entity}
               truncate
             >
-              {parse(convertToSanitizedHtml(description))}
+              <Markdown>{description}</Markdown>
             </ContentSection>
           )}
           {(dctTypes.length > 0 || specializedType) && (

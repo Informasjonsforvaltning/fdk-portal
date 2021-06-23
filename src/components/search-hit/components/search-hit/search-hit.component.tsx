@@ -13,6 +13,7 @@ import SearchHitFormats from '../search-hit-formats/search-hit-formats';
 import SearchHitData from '../search-hit-data/search-hit-data.component';
 import SearchHitEvents from '../search-hit-events';
 import TruncatedText from '../../../truncated-text';
+import Markdown from '../../../markdown';
 
 interface Props {
   id?: string;
@@ -120,7 +121,7 @@ export const SearchHit: FC<Props> = ({
       {renderSearchHitAccessRights()}
       {description && (
         <TruncatedText visibleLines={4} lineHeight={20}>
-          {getTranslateText(description)}
+          <Markdown>{getTranslateText(description)}</Markdown>
         </TruncatedText>
       )}
       {renderSearchHitData()}

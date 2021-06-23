@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
-import parse from 'html-react-parser';
 import { useHistory } from 'react-router-dom';
 
-import { convertToSanitizedHtml } from '../../../../lib/markdown-converter';
+import parse from 'html-react-parser';
+import sanitizeHtml from 'sanitize-html';
+
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
@@ -24,9 +25,7 @@ const Error400: FC = () => {
           {translate(translations.errorPage.clientError.backLink)}
         </SC.Link>
         {parse(
-          convertToSanitizedHtml(
-            translate(translations.errorPage.clientError.content3)
-          )
+          sanitizeHtml(translate(translations.errorPage.clientError.content3))
         )}
       </span>
     </SC.Error400>

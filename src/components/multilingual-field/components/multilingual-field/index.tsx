@@ -1,13 +1,12 @@
 import React, { FC } from 'react';
-import parse from 'html-react-parser';
 
-import { convertToSanitizedHtml } from '../../../../lib/markdown-converter';
 import SC from './styled';
 import { Language, TextLanguage } from '../../../../types';
 import {
   getTranslateText,
   getTranslateTextWithLanguageCode
 } from '../../../../lib/translateText';
+import Markdown from '../../../markdown';
 
 export interface Props {
   languages: Language[];
@@ -49,9 +48,11 @@ const renderTextField = ({
     textArray.map((item: any, index: number) => (
       <SC.LanguageField key={index}>
         <SC.LanguageIndicator>{Object.keys(item)}</SC.LanguageIndicator>
-        {convertToMarkUp
-          ? parse(convertToSanitizedHtml(getTranslateText(item)))
-          : getTranslateText(item)}
+        {convertToMarkUp ? (
+          <Markdown>{getTranslateText(item)}</Markdown>
+        ) : (
+          getTranslateText(item)
+        )}
       </SC.LanguageField>
     ))
   );

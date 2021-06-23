@@ -299,7 +299,7 @@ const DatasetDetailsPage: FC<Props> = ({
             entityTheme={Entity.DATASET}
             truncate
           >
-            <Markdown text={description} />
+            <Markdown>{description}</Markdown>
           </ContentSection>
         )}
         {objective && (
@@ -307,7 +307,7 @@ const DatasetDetailsPage: FC<Props> = ({
             id='objective'
             title={translations.detailsPage.sectionTitles.dataset.objective}
           >
-            <Markdown text={objective} />
+            <Markdown>{objective}</Markdown>
           </ContentSection>
         )}
         {distributions.length > 0 && (

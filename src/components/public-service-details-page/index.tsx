@@ -2,14 +2,12 @@ import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import parse from 'html-react-parser';
 import Link from '@fellesdatakatalog/link';
 import moment from 'moment';
 
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
-import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
 import { themeFDK } from '../../app/theme';
 
@@ -45,6 +43,7 @@ import {
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 import SC from './styled';
+import Markdown from '../markdown';
 
 interface RouteParams {
   publicServiceId: string;
@@ -278,7 +277,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
               entityTheme={Entity.PUBLIC_SERVICE}
               truncate
             >
-              {parse(convertToSanitizedHtml(description))}
+              <Markdown>{description}</Markdown>
             </ContentSection>
           )}
 

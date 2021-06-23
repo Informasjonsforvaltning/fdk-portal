@@ -2,13 +2,11 @@ import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import parse from 'html-react-parser';
 import Link from '@fellesdatakatalog/link';
 
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
-import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
 import {
   PATHNAME_DATASETS,
@@ -42,6 +40,7 @@ import SC from './styled';
 
 import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
+import Markdown from '../markdown';
 
 interface RouteParams {
   dataServiceId: string;
@@ -175,7 +174,7 @@ const DataserviceDetailsPage: FC<Props> = ({
             entityTheme={Entity.DATA_SERVICE}
             truncate
           >
-            {parse(convertToSanitizedHtml(description))}
+            <Markdown>{description}</Markdown>
           </ContentSection>
         )}
         {formats.length > 0 && (

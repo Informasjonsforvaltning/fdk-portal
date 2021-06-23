@@ -2,7 +2,6 @@ import React, { FC, memo } from 'react';
 import Moment from 'react-moment';
 
 import SC from './styled';
-import { convertToSanitizedHtml } from '../../../../lib/markdown-converter';
 import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
 import {
@@ -17,6 +16,7 @@ import {
   PARAGRAPH__IMAGE,
   PARAGRAPH__VIDEO
 } from '../../../../constants/constants';
+import Markdown from '../../../markdown';
 
 interface Props {
   publishedDate: string;
@@ -31,14 +31,9 @@ export const renderFieldModule = (fieldModule: any) => {
   switch (fieldModule.type) {
     case PARAGRAPH__BODY:
       return (
-        <SC.Body
-          key={fieldModule.id}
-          dangerouslySetInnerHTML={{
-            __html: convertToSanitizedHtml(
-              getParagraphBodyProcessed(fieldModule)
-            )
-          }}
-        />
+        <SC.Body key={fieldModule.id}>
+          <Markdown>{getParagraphBodyProcessed(fieldModule)}</Markdown>
+        </SC.Body>
       );
     case PARAGRAPH__IMAGE: {
       const image = getParagraphImage(fieldModule);
@@ -93,11 +88,9 @@ const Article: FC<Partial<Props>> = ({
           {title && <SC.Title>{getTranslateText(title)}</SC.Title>}
 
           {abstract && (
-            <SC.Abstract
-              dangerouslySetInnerHTML={{
-                __html: convertToSanitizedHtml(abstract)
-              }}
-            />
+            <SC.Abstract>
+              <Markdown>{abstract}</Markdown>
+            </SC.Abstract>
           )}
           {field_modules?.map((fieldModule: any) =>
             renderFieldModule(fieldModule)
