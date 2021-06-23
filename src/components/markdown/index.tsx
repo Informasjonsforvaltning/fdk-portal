@@ -1,14 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 
-interface Props {
-  text: string;
-}
-
-const Markdown: FC<Props> = ({ text }) => (
-  <ReactMarkdown remarkPlugins={[gfm]}>{text}</ReactMarkdown>
+const Markdown: FC<PropsWithChildren<any>> = ({ children }) => (
+  <ReactMarkdown remarkPlugins={[gfm]}>{children}</ReactMarkdown>
 );
 
 export default Markdown;
