@@ -17,6 +17,11 @@ const ReactMarkdown = styled(ReactMarkdownBase)`
     display: list-item;
     margin-left: 1.2em;
   }
+
+  ul > li.task-list-item {
+    list-style: none;
+    margin-left: 0;
+  }
 `;
 
 export default {

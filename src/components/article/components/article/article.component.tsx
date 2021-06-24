@@ -1,6 +1,9 @@
 import React, { FC, memo } from 'react';
 import Moment from 'react-moment';
 
+import parse from 'html-react-parser';
+import sanitizeHtml from 'sanitize-html';
+
 import SC from './styled';
 import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
@@ -16,7 +19,6 @@ import {
   PARAGRAPH__IMAGE,
   PARAGRAPH__VIDEO
 } from '../../../../constants/constants';
-import Markdown from '../../../markdown';
 
 interface Props {
   publishedDate: string;
@@ -32,9 +34,7 @@ export const renderFieldModule = (fieldModule: any) => {
     case PARAGRAPH__BODY:
       return (
         <SC.Body key={fieldModule.id}>
-          <Markdown allowHtml>
-            {getParagraphBodyProcessed(fieldModule)}
-          </Markdown>
+          {parse(sanitizeHtml(getParagraphBodyProcessed(fieldModule)))}
         </SC.Body>
       );
     case PARAGRAPH__IMAGE: {
@@ -90,9 +90,7 @@ const Article: FC<Partial<Props>> = ({
           {title && <SC.Title>{getTranslateText(title)}</SC.Title>}
 
           {abstract && (
-            <SC.Abstract>
-              <Markdown allowHtml>{abstract}</Markdown>
-            </SC.Abstract>
+            <SC.Abstract>{parse(sanitizeHtml(abstract))}</SC.Abstract>
           )}
           {field_modules?.map((fieldModule: any) =>
             renderFieldModule(fieldModule)
