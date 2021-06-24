@@ -25,7 +25,9 @@ exports[`SearchHit component should render with properties 1`] = `
     lineHeight={20}
     visibleLines={4}
   >
-    Test datasett beskrivelse
+    <Markdown>
+      Test datasett beskrivelse
+    </Markdown>
   </TruncatedText>
 </styled.article>
 `;

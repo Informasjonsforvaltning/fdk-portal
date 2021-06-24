@@ -2,15 +2,13 @@ import React, { memo, FC, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import parse from 'html-react-parser';
-import sanitise from 'sanitize-html';
+
 import Link from '@fellesdatakatalog/link';
 
 import { getConfig } from '../../config';
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
-import { convertToSanitizedHtml } from '../../lib/markdown-converter';
 
 import {
   PATHNAME_DATASETS,
@@ -50,6 +48,7 @@ import SC from './styled';
 
 import { Entity } from '../../types/enums';
 import { AccessService, Distribution } from '../../types';
+import Markdown from '../markdown';
 
 interface RouteParams {
   datasetId?: string;
@@ -196,7 +195,9 @@ const DatasetDetailsPage: FC<Props> = ({
   const isNonPublicData = dataset?.accessRights?.code === 'NON_PUBLIC';
 
   const title = dataset?.title ?? {};
-  const description = parse(sanitise(translate(dataset?.descriptionFormatted)));
+  const description = translate(
+    dataset?.descriptionFormatted ?? dataset?.description
+  );
 
   const lastPublished = formatDate(
     dateStringToDate(dataset?.harvest?.firstHarvested)
@@ -298,7 +299,7 @@ const DatasetDetailsPage: FC<Props> = ({
             entityTheme={Entity.DATASET}
             truncate
           >
-            {parse(convertToSanitizedHtml(description))}
+            <Markdown>{description}</Markdown>
           </ContentSection>
         )}
         {objective && (
@@ -306,7 +307,7 @@ const DatasetDetailsPage: FC<Props> = ({
             id='objective'
             title={translations.detailsPage.sectionTitles.dataset.objective}
           >
-            {parse(convertToSanitizedHtml(objective))}
+            <Markdown>{objective}</Markdown>
           </ContentSection>
         )}
         {distributions.length > 0 && (
