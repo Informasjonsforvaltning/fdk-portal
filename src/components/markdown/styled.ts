@@ -22,6 +22,10 @@ const ReactMarkdown = styled(ReactMarkdownBase)`
     list-style: none;
     margin-left: 0;
   }
+
+  table td {
+    padding-right: 10px;
+  }
 `;
 
 export default {
