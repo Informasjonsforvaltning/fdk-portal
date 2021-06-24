@@ -32,7 +32,9 @@ export const renderFieldModule = (fieldModule: any) => {
     case PARAGRAPH__BODY:
       return (
         <SC.Body key={fieldModule.id}>
-          <Markdown>{getParagraphBodyProcessed(fieldModule)}</Markdown>
+          <Markdown allowHtml>
+            {getParagraphBodyProcessed(fieldModule)}
+          </Markdown>
         </SC.Body>
       );
     case PARAGRAPH__IMAGE: {
@@ -89,7 +91,7 @@ const Article: FC<Partial<Props>> = ({
 
           {abstract && (
             <SC.Abstract>
-              <Markdown>{abstract}</Markdown>
+              <Markdown allowHtml>{abstract}</Markdown>
             </SC.Abstract>
           )}
           {field_modules?.map((fieldModule: any) =>
