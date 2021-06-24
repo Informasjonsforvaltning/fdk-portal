@@ -1,10 +1,21 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC } from 'react';
 
-import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
-const Markdown: FC<PropsWithChildren<any>> = ({ children }) => (
-  <ReactMarkdown remarkPlugins={[gfm]}>{children}</ReactMarkdown>
-);
+import SC from './styled';
 
+interface Props {
+  allowHtml?: boolean;
+  children: string;
+}
+
+const Markdown: FC<Props> = ({ allowHtml, children }) =>
+  allowHtml ? (
+    <SC.ReactMarkdown remarkPlugins={[gfm]} rehypePlugins={[rehypeRaw]}>
+      {children}
+    </SC.ReactMarkdown>
+  ) : (
+    <SC.ReactMarkdown remarkPlugins={[gfm]}>{children}</SC.ReactMarkdown>
+  );
 export default Markdown;
