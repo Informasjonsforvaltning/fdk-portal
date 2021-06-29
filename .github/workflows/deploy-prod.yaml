@@ -3,7 +3,7 @@ name: Deploy to production
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_DIGDIR_FDK_GCR_KEY }}
 
       - name: Configure docker to use the gcloud command-line tool as a credential helper
-        run: gcloud auth configure-docker
+        run: gcloud auth configure-docker eu.gcr.io
 
       - name: Build Docker image
         run: docker build . -t eu.gcr.io/digdir-fdk-infra/fdk-portal:$GITHUB_SHA -t eu.gcr.io/digdir-fdk-infra/fdk-portal:latest --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
