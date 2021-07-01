@@ -8,3 +8,6 @@ coverage
 .DS_Store
 .idea
 .project
+
+# Environment files
+.env
