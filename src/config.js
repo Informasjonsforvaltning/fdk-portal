@@ -5,20 +5,6 @@ const env = window.env || {
   USE_DEMO_LOGO: true
 };
 
-// override all env variables to staging (inspired by https://www.staging.fellesdatakatalog.digdir.no/config.js)
-// env.SEARCH_API_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
-// env.SEARCH_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
-// env.SEARCH_FULLTEXT_HOST = 'https://search.staging.fellesdatakatalog.digdir.no';
-// env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
-// env.ORGANIZATION_HOST =
-//   'https://organization-bff.staging.fellesdatakatalog.digdir.no';
-// env.ORGANIZATION_CATALOGUE_HOST =
-//   'https://organization-catalogue.staging.fellesdatakatalog.digdir.no';
-// env.REPORT_API_HOST = 'https://reports-bff.staging.fellesdatakatalog.digdir.no';
-// env.METADATA_QUALITY_ASSESSMENT_API_HOST =
-//   'https://metadata-quality.staging.fellesdatakatalog.digdir.no';
-// env.USE_DEMO_LOGO = true;
-
 const searchApi = {
   host: env.SEARCH_API_HOST || '',
   // in ut1 and st1, search api requires basic authentication
