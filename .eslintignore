@@ -11,3 +11,5 @@ resources
 .lintstagedrc
 
 package-lock.json
+
+src/api/generated
