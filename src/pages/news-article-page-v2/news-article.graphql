@@ -1,0 +1,12 @@
+query GetArticle($id: ID!) {
+  article(id: $id) {
+    title
+    featureImage {
+      url
+    }
+    content
+    locale
+    published_at
+    updated_at
+  }
+}

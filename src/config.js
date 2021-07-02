@@ -30,6 +30,7 @@ const config = {
   useDemoLogo: env.USE_DEMO_LOGO,
   searchFullTextApi: { host: env.SEARCH_FULLTEXT_HOST },
   cmsApi: { host: env.CMS_API_HOST },
+  cmsV2Api: { host: env.FDK_CMS_BASE_URI },
   organizationsApi: { host: env.ORGANIZATION_HOST },
   organizationsCatalogApi: { host: env.ORGANIZATION_CATALOGUE_HOST },
   reportApi: { host: env.REPORT_API_HOST },
