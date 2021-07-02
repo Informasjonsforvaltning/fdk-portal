@@ -1,0 +1,16 @@
+overwrite: true
+hooks:
+  afterOneFileWrite:
+    - prettier --write
+generates:
+  ./src/api/generated/cms/graphql.ts:
+    schema: https://cms.fellesdatakatalog.digdir.no/graphql
+    documents: src/**/*.graphql
+    config:
+      withHooks: true
+      withComponent: false
+      withHOC: false
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
