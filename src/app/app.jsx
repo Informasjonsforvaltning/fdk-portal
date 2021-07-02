@@ -31,6 +31,7 @@ import {
   PATHNAME_ABOUT_REGISTRATION,
   PATHNAME_MAIN_PAGE,
   PATHNAME_NEWS_ARTICLE,
+  PATHNAME_NEWS_ARTICLE_V2,
   PATHNAME_NEWS_ARCHIVE,
   PATHNAME_GUIDANCE,
   PATHNAME_GUIDANCE_METADATA,
@@ -46,6 +47,7 @@ import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import { parseSearchParams } from '../lib/location-history-helper';
+import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-page';
 
 export function App({ language, onChangeLanguage }) {
   useEffect(() => {
@@ -128,6 +130,11 @@ export function App({ language, onChangeLanguage }) {
               exact
               path={`${PATHNAME_NEWS_ARTICLE}/:id`}
               component={NewsArticle}
+            />
+            <Route
+              exact
+              path={`${PATHNAME_NEWS_ARTICLE_V2}/:id`}
+              component={NewsArticlePageV2}
             />
             <Route exact path={PATHNAME_REPORTS} component={ReportPage} />
             <Route exact path={PATHNAME_ABOUT} component={CmsArticlePage} />

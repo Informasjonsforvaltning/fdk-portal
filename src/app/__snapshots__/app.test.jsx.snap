@@ -204,6 +204,11 @@ exports[`should render App correctly 1`] = `
           path="/news/:id"
         />
         <Route
+          component={[Function]}
+          exact={true}
+          path="/news-v2/:id"
+        />
+        <Route
           component={
             Object {
               "$$typeof": Symbol(react.memo),
