@@ -3,7 +3,7 @@ hooks:
   afterOneFileWrite:
     - prettier --write
 generates:
-  ./src/api/generated/graphql.ts:
+  ./src/api/generated/cms/graphql.ts:
     schema: https://cms.fellesdatakatalog.digdir.no/graphql
     documents: src/**/*.graphql
     config:

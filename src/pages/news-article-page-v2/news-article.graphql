@@ -7,5 +7,6 @@ query GetArticle($id: ID!) {
     content
     locale
     published_at
+    updated_at
   }
 }
