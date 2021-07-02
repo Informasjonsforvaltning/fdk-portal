@@ -19,7 +19,7 @@ import GlobalStyles from '../../app/styles';
 import Analytics from '../../components/analytics';
 
 const client = new ApolloClient({
-  uri: `${getConfig().cmsV2Api}/graphql`,
+  uri: `${getConfig().cmsV2Api.host}/graphql`,
   cache: new InMemoryCache()
 });
 

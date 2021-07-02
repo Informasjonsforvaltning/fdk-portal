@@ -2,6 +2,7 @@ import { isNapProfile } from './lib/nap-profile';
 
 const env = window.env || {
   SEARCH_API_HOST: 'http://localhost:8080',
+  FDK_CMS_BASE_URI: 'https://cms.fellesdatakatalog.digdir.no',
   USE_DEMO_LOGO: true
 };
 
