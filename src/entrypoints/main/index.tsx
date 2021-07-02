@@ -19,7 +19,7 @@ import GlobalStyles from '../../app/styles';
 import Analytics from '../../components/analytics';
 
 const client = new ApolloClient({
-  uri: 'https://cms.fellesdatakatalog.digdir.no/graphql',
+  uri: `${getConfig().cmsV2Api}/graphql`,
   cache: new InMemoryCache()
 });
 
