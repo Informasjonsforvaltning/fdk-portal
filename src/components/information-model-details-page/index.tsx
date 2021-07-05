@@ -231,6 +231,9 @@ const InformationModelDetailsPage: FC<Props> = ({
     };
   }, [informationModel?.id]);
 
+  const uriIsSkolemized = (uri: string) =>
+    new RegExp('.well-known/skolem').test(uri);
+
   return renderPage ? (
     <ThemeProvider theme={theme}>
       <DetailsPage
@@ -408,9 +411,13 @@ const InformationModelDetailsPage: FC<Props> = ({
                   value={hasFormats.map(
                     ({ uri, title: formatTitle, format }) => (
                       <SC.Format key={uri}>
-                        <SC.Link href={uri} external>
-                          {translate(formatTitle) ?? uri}
-                        </SC.Link>
+                        {uri && !uriIsSkolemized(uri) ? (
+                          <SC.Link href={uri} external>
+                            {translate(formatTitle) ?? uri}
+                          </SC.Link>
+                        ) : (
+                          translate(formatTitle) ?? uri
+                        )}
                         {format && (
                           <SC.FormatTag>
                             {translations.format}:{' '}
@@ -436,13 +443,19 @@ const InformationModelDetailsPage: FC<Props> = ({
                       versionInfo
                     }) => (
                       <SC.ValueListColumn key={uri}>
-                        <SC.Link href={uri} external>
-                          {translate(isProfileOfTitle) ?? uri}
-                        </SC.Link>
-                        <div>
-                          <span>{translations.infoMod.version}: </span>
-                          <span>{versionInfo}</span>
-                        </div>
+                        {uri && !uriIsSkolemized(uri) ? (
+                          <SC.Link href={uri} external>
+                            {translate(isProfileOfTitle) ?? uri}
+                          </SC.Link>
+                        ) : (
+                          translate(isProfileOfTitle) ?? uri
+                        )}
+                        {versionInfo && (
+                          <div>
+                            <span>{translations.infoMod.version}: </span>
+                            <span>{versionInfo}</span>
+                          </div>
+                        )}
                         {isProfileOfSeeAlso &&
                           isProfileOfSeeAlso.length > 0 && (
                             <div>{translations.infoMod.seeAlso}:</div>
@@ -468,13 +481,19 @@ const InformationModelDetailsPage: FC<Props> = ({
                       versionInfo
                     }) => (
                       <SC.ValueListColumn key={uri}>
-                        <SC.Link href={uri} external>
-                          {translate(conformsToTitle) ?? uri}
-                        </SC.Link>
-                        <div>
-                          <span>{translations.infoMod.version}: </span>
-                          <span>{versionInfo}</span>
-                        </div>
+                        {uri && !uriIsSkolemized(uri) ? (
+                          <SC.Link href={uri} external>
+                            {translate(conformsToTitle) ?? uri}
+                          </SC.Link>
+                        ) : (
+                          translate(conformsToTitle) ?? uri
+                        )}
+                        {versionInfo && (
+                          <div>
+                            <span>{translations.infoMod.version}: </span>
+                            <span>{versionInfo}</span>
+                          </div>
+                        )}
                         {conformsToSeeAlso && conformsToSeeAlso.length > 0 && (
                           <div>{translations.infoMod.seeAlso}:</div>
                         )}
