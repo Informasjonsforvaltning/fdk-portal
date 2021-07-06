@@ -16,6 +16,7 @@ export function getTranslateText(textObj, language) {
     textObj.no ||
     textObj.nn ||
     textObj.en ||
+    textObj[''] ||
     null
   );
 }
