@@ -67,7 +67,7 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
 });
 
 export const extractPublicServicesAndEvents = (searchResponse: any) =>
-  searchResponse.hits ?? [];
+  searchResponse?.hits ?? [];
 
 export const extractPublicServicesAndEventsAggregations = (
   searchResponse: any

@@ -1,5 +1,6 @@
 import { searchFullTextApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
+import { Event } from '../../types';
 
 const mapSorting = ({ sortfield }: any) =>
   sortfield === 'harvest.firstHarvested'
@@ -41,7 +42,8 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   filters: mapFilters(params)
 });
 
-export const extractEvents = (searchResponse: any) => searchResponse.hits ?? [];
+export const extractEvents = (searchResponse: any) =>
+  searchResponse?.hits ?? [];
 
 export const extractEventsAggregations = (searchResponse: any) =>
   normalizeAggregations(searchResponse).aggregations ?? {};
@@ -49,4 +51,5 @@ export const extractEventsAggregations = (searchResponse: any) =>
 export const extractEventsPage = (searchResponse: any) =>
   searchResponse.page ?? {};
 
-export const extractFirstEvent = ({ hits = [] }: any) => hits[0];
+export const extractFirstEvent = (searchResponse: any): Event | undefined =>
+  searchResponse?.hits?.[0];

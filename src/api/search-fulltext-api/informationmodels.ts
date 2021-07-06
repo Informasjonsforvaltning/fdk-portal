@@ -1,5 +1,6 @@
 import { searchFullTextApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
+import { InformationModel } from '../../types';
 
 export const searchInformationModels = (body: any) =>
   searchFullTextApiPost('/informationmodels', body);
@@ -88,10 +89,11 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => {
 };
 
 export const extractInformationModels = (searchResponse: any) =>
-  searchResponse.hits ?? [];
+  searchResponse?.hits ?? [];
 
 export const extractInformationModelsAggregations = (searchResponse: any) =>
   normalizeAggregations(searchResponse).aggregations ?? [];
 
-export const extractFirstInformationModel = ({ hits: [hit = {}] = [] }: any) =>
-  hit;
+export const extractFirstInformationModel = (
+  searchResponse: any
+): InformationModel | undefined => searchResponse?.hits?.[0];

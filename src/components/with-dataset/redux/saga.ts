@@ -2,7 +2,6 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { GET_DATASET_REQUESTED } from './action-types';
 import * as actions from './actions';
-import { Dataset } from '../../../types';
 import {
   searchDatasets,
   paramsToSearchBody,
@@ -17,7 +16,7 @@ function* getDatasetRequested({
   try {
     const params = paramsToSearchBody({ id });
     const data: Record<string, any> = yield call(searchDatasets, params);
-    const dataset = extractFirstDataset(data) as Dataset;
+    const dataset = extractFirstDataset(data);
 
     if (dataset) {
       yield put(actions.getDatasetSucceeded(dataset));
