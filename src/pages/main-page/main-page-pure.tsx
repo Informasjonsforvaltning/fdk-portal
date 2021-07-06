@@ -60,14 +60,15 @@ const MainPage: FC<Props> = ({
       <main id='content' className='container'>
         <SC.Content className='row'>
           <section className='col-12 col-lg-8'>
-            <HeaderSC.Header>
-              <span>{localization.sort.modified}</span>
-            </HeaderSC.Header>
+            <HeaderSC.Header>{localization.sort.modified}</HeaderSC.Header>
             <SearchEntities entities={entities} mediatypes={mediaTypes} />
           </section>
           <section className='col-12 col-lg-4'>
             <HeaderSC.Header>
-              <span>{localization.community.title}</span>
+              {localization.community.seeLatest}
+              <SC.Link href={`${FDK_COMMUNITY_BASE_URI}`} external>
+                {localization.community.title}
+              </SC.Link>
             </HeaderSC.Header>
             {posts.length > 0 ? (
               <SC.CommunityPosts>
@@ -79,9 +80,7 @@ const MainPage: FC<Props> = ({
                 </SC.Link>
               </SC.CommunityPosts>
             ) : null}
-            <HeaderSC.Header>
-              <span>{localization.news}</span>
-            </HeaderSC.Header>
+            <HeaderSC.Header>{localization.news}</HeaderSC.Header>
 
             <NewsList news={news} />
 
