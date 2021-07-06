@@ -11,8 +11,6 @@ import {
 
 import LoggingService, { Severity } from '../../../services/logging';
 
-import { PublicService } from '../../../types';
-
 function* getPublicServiceRequested({
   payload: { id }
 }: ReturnType<typeof actions.getPublicServiceRequested>) {
@@ -21,7 +19,7 @@ function* getPublicServiceRequested({
       searchPublicServices,
       paramsToSearchBody({ id })
     );
-    const publicService = extractFirstPublicService(data) as PublicService;
+    const publicService = extractFirstPublicService(data);
 
     if (publicService) {
       yield put(actions.getPublicServiceSucceeded(publicService));

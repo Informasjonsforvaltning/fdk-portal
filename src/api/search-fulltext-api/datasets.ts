@@ -1,6 +1,7 @@
 import { searchFullTextApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { getConfig } from '../../config';
+import { Dataset } from '../../types';
 
 export const searchDatasets = (body: any) =>
   searchFullTextApiPost('/datasets', body);
@@ -152,7 +153,8 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   filters: mapFilters(params)
 });
 
-export const extractDatasets = ({ hits = [] }: any) => hits;
+export const extractDatasets = (searchResponse: any) =>
+  searchResponse?.hits ?? [];
 
 export const extractDatasetAggregations = (searchResponse: any) =>
   normalizeAggregations(searchResponse).aggregations ?? [];
@@ -160,4 +162,5 @@ export const extractDatasetAggregations = (searchResponse: any) =>
 export const extractDatasetsTotal = (searchResponse: any) =>
   searchResponse?.page?.totalElements ?? 0;
 
-export const extractFirstDataset = ({ hits = [] }: any) => hits[0];
+export const extractFirstDataset = (searchResponse: any): Dataset | undefined =>
+  searchResponse?.hits?.[0];

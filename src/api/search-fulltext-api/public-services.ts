@@ -1,5 +1,6 @@
 import { searchFullTextApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
+import { PublicService } from '../../types';
 
 const mapSorting = ({ sortfield }: any) =>
   sortfield === 'harvest.firstHarvested'
@@ -106,7 +107,7 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
 });
 
 export const extractPublicServices = (searchResponse: any) =>
-  searchResponse.hits ?? [];
+  searchResponse?.hits ?? [];
 
 export const extractPublicServicesAggregations = (searchResponse: any) =>
   normalizeAggregations(searchResponse).aggregations ?? {};
@@ -114,4 +115,6 @@ export const extractPublicServicesAggregations = (searchResponse: any) =>
 export const extractPublicServicesPage = (searchResponse: any) =>
   searchResponse.page ?? {};
 
-export const extractFirstPublicService = ({ hits = [] }: any) => hits[0];
+export const extractFirstPublicService = (
+  searchResponse: any
+): PublicService | undefined => searchResponse?.hits?.[0];
