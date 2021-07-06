@@ -11,8 +11,6 @@ import {
   extractFirstDataService
 } from '../../../api/search-fulltext-api/dataservices';
 
-import type { DataService } from '../../../types';
-
 function* getDataServiceRequested({
   payload: { id }
 }: ReturnType<typeof actions.getDataServiceRequested>) {
@@ -21,7 +19,7 @@ function* getDataServiceRequested({
       searchDataServices,
       paramsToSearchBody({ id })
     );
-    const dataService = extractFirstDataService(data) as DataService;
+    const dataService = extractFirstDataService(data);
 
     if (dataService) {
       yield put(actions.getDataServiceSucceeded(dataService));

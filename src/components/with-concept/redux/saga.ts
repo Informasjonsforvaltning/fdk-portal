@@ -11,8 +11,6 @@ import {
   extractFirstConcept
 } from '../../../api/search-fulltext-api/concepts';
 
-import type { Concept } from '../../../types';
-
 function* getConceptRequested({
   payload: { id }
 }: ReturnType<typeof actions.getConceptRequested>) {
@@ -21,7 +19,7 @@ function* getConceptRequested({
       searchConcepts,
       paramsToSearchBody({ id })
     );
-    const concept = extractFirstConcept(data) as Concept;
+    const concept = extractFirstConcept(data);
 
     if (concept) {
       yield put(actions.getConceptSucceeded(concept));

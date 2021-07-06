@@ -11,8 +11,6 @@ import {
 
 import LoggingService, { Severity } from '../../../services/logging';
 
-import type { Event } from '../../../types';
-
 function* getEventRequested({
   payload: { id }
 }: ReturnType<typeof actions.getEventRequested>) {
@@ -21,7 +19,7 @@ function* getEventRequested({
       searchEvents,
       paramsToSearchBody({ id })
     );
-    const event = extractFirstEvent(data) as Event;
+    const event = extractFirstEvent(data);
 
     if (event) {
       yield put(actions.getEventSucceeded(event));

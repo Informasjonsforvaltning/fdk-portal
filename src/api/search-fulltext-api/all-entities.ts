@@ -6,4 +6,4 @@ export const searchAllEntities = (body: any) =>
 export const getRecentEntities = () => searchFullTextApiGet('/recent');
 
 export const extractEntities = (searchResponse: any) =>
-  searchResponse.hits ?? [];
+  searchResponse?.hits ?? [];
