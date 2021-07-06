@@ -875,6 +875,7 @@
   "sampleData": "Example data",
   "community": {
     "title": "Data Community",
+    "seeLatest": "Latests posts from the ",
     "seeMore": "See more recent posts",
     "subtitle": {
       "link": "our data community.",
