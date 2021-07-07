@@ -14,7 +14,12 @@ test('should render HitsStats correctly with hits ', () => {
 });
 
 test('should render HitsStats correctly when no hits', () => {
-  const defaultProps = {};
+  const defaultProps = {
+    countDatasets: 0,
+    countApis: 0,
+    countTerms: 0,
+    countInformationModels: 0
+  };
   const wrapper = shallow(<HitsStats {...defaultProps} />);
   expect(wrapper).toMatchSnapshot();
 });

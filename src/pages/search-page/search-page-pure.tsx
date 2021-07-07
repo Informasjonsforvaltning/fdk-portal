@@ -157,10 +157,10 @@ const SearchPage: FC<Props> = ({
         <SearchBox>
           <SearchBoxHeader>
             <HitsStats
-              countDatasets={datasetTotal}
-              countApis={dataServiceTotal}
-              countTerms={conceptTotal}
-              countInformationModels={informationModelTotal}
+              countDatasets={datasetTotal ?? 0}
+              countApis={dataServiceTotal ?? 0}
+              countTerms={conceptTotal ?? 0}
+              countInformationModels={informationModelTotal ?? 0}
             />
           </SearchBoxHeader>
           <Tabs
