@@ -26,7 +26,7 @@ const CommunityTopics: FC<Props> = ({ entityType, topics }) =>
         {topics.length === 1
           ? translations.community.subtitle.mention
           : translations.community.subtitle.mentionPlural}
-        <FdkLink href={FDK_COMMUNITY_BASE_URI}>
+        <FdkLink href={FDK_COMMUNITY_BASE_URI} external>
           {translations.community.subtitle.link}
         </FdkLink>
       </span>
@@ -37,9 +37,9 @@ const CommunityTopics: FC<Props> = ({ entityType, topics }) =>
   ) : (
     <span>
       {translations.community.subtitle.empty[entityType]}
-      <a href={FDK_COMMUNITY_BASE_URI}>
+      <FdkLink href={FDK_COMMUNITY_BASE_URI} external>
         {translations.community.subtitle.link}
-      </a>
+      </FdkLink>
     </span>
   );
 

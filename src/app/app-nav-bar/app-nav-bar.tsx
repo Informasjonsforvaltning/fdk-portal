@@ -51,7 +51,7 @@ const transportItems = () => (
       </SC.Link>
     </li>
     <li key={localization.menu.community}>
-      <SC.Link href={FDK_COMMUNITY_BASE_URI}>
+      <SC.Link href={FDK_COMMUNITY_BASE_URI} external>
         {localization.menu.community}
       </SC.Link>
     </li>
@@ -91,7 +91,7 @@ const fdkItems = () => (
       </PortalDropdownMenu>
     </li>
     <li key={localization.menu.community}>
-      <SC.Link href={FDK_COMMUNITY_BASE_URI}>
+      <SC.Link href={FDK_COMMUNITY_BASE_URI} external>
         {localization.menu.community}
       </SC.Link>
     </li>

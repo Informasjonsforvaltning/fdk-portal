@@ -75,7 +75,7 @@ const MainPage: FC<Props> = ({
                 {posts.slice(0, 3).map(post => (
                   <Post post={post} />
                 ))}
-                <SC.Link href={`${FDK_COMMUNITY_BASE_URI}/recent`}>
+                <SC.Link href={`${FDK_COMMUNITY_BASE_URI}/recent`} external>
                   {localization.community.seeMore}
                 </SC.Link>
               </SC.CommunityPosts>
