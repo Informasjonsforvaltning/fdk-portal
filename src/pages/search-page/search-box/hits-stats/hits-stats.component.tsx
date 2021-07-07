@@ -3,10 +3,10 @@ import React, { FC } from 'react';
 import localization from '../../../../lib/localization';
 
 interface Props {
-  countDatasets?: number;
-  countTerms?: number;
-  countApis?: number;
-  countInformationModels?: number;
+  countDatasets: number;
+  countTerms: number;
+  countApis: number;
+  countInformationModels: number;
 }
 
 export const HitsStats: FC<Props> = ({
