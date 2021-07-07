@@ -22,8 +22,8 @@
   "filter": "Filter",
   "openFilter": "Opne søkefilter",
   "public": "Offentleg",
-  "restricted": "Begrensa offentlegheit",
-  "non_public": "Unntatt offentlegheit",
+  "restricted": "Avgrensa offentlegheit",
+  "non_public": "Unnteken offentlegheit",
   "open_data": "Opne data",
   "unknown": "Ukjend",
   "newsFromDatakatalogenOnTwitter": "Nytt fra Datakatalogen på Twitter",
@@ -334,10 +334,10 @@
       "authorityCode": {
         "public": "Offentleg",
         "restricted": "Avgrensa offentlegheit",
-        "nonPublic": "Unntatt offentlegheit",
+        "nonPublic": "Unnteken offentlegheit",
         "publicDetailsLabel": "Datasettet kan deles offentleg",
         "restrictedDetailsLabel": "Datasettet har avgrensa offentlegheit",
-        "nonPublicDetailsLabel": "Datasettet er unntatt offentlegheit"
+        "nonPublicDetailsLabel": "Datasettet er unnteken offentlegheit"
       }
     },
     "sample": "Eksempeldata",
@@ -386,7 +386,7 @@
     "aggregation": {
       "public": "Datasett som er offentleg",
       "restricted": "Datasett med avgrensa offentlegheit",
-      "nonPublic": "Datasett som er unntatt offentlegheit",
+      "nonPublic": "Datasett som er unnteken offentlegheit",
       "accessRightsUnknown": "Datasett med ukjend tilgangsnivå",
       "openDataset": "datasett er opne",
       "openDatasetDescription": "Opne datasett er datasett som er offentleg tilgjengeleg og har distribusjonar med open lisens.",
@@ -571,7 +571,6 @@
       "collection": "Samling",
       "composition": "Komposisjon",
       "relation": "Relasjonseigenskap"
-
     },
     "restriction": {
       "valueLength": "Lengde",
@@ -610,8 +609,8 @@
     "responsible": "Ansvarleg: {publisher}",
     "openData": "Opne data",
     "publicData": "Kan deles offentleg",
-    "restrictedData": "Begrensa offentlegheit",
-    "nonPublicData": "Unntatt offentlegheit",
+    "restrictedData": "Avgrensa offentlegheit",
+    "nonPublicData": "Unnteken offentlegheit",
     "menu": {
       "title": "Gå til"
     },
@@ -710,12 +709,12 @@
         "event": "Andre som relaterer til denne hendinga"
       },
       "subtitle": {
-        "dataset":"Datasett",
-        "dataservice":"Datateneste",
-        "concept":"Omgrep",
-        "informationmodel":"Informasjonsmodell",
-        "public_service":"Teneste",
-        "event":"Hending"
+        "dataset": "Datasett",
+        "dataservice": "Datateneste",
+        "concept": "Omgrep",
+        "informationmodel": "Informasjonsmodell",
+        "public_service": "Teneste",
+        "event": "Hending"
       },
       "referenceType": "relasjonstype"
     }
@@ -854,13 +853,13 @@
     "rss": "RSS",
     "atom": "Atom"
   },
-  "errorPage":{
-    "serverError":{
+  "errorPage": {
+    "serverError": {
       "title": "Dette er flautt...",
       "content1": "Det har visst skjedd noko teknisk krøll i enden vår.",
       "content2": "Vi jobbar med å retta opp feilen. Prøv igjen om ei lita stund."
     },
-    "clientError":{
+    "clientError": {
       "title": "Vi beklagar!",
       "content1": "Vi finn ikkje sidan du leitar etter.",
       "content2": "Gå tilbake til ",
@@ -888,7 +887,7 @@
         "public_service": "Denne tenesta er ikkje omtalt i ",
         "event": "Denne hendinga er ikkje omtalt i "
       },
-      "content" : {
+      "content": {
         "dataset": "Dette datasettet er omtalt i ",
         "dataservice": "Denne datatenesta er omtalt i ",
         "concept": "Dette omgrepet er omtalt i ",
@@ -898,7 +897,7 @@
       }
     },
     "timeago": {
-      "postPrefix" : "skrev for ",
+      "postPrefix": "skrev for ",
       "singular": {
         "seconds": "Nokre få sekund sidan",
         "minutes": "Eitt minutt sidan",
