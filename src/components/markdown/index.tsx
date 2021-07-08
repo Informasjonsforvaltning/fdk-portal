@@ -1,9 +1,15 @@
 import React, { FC } from 'react';
+import { compose } from 'redux';
 
 import gfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
+import parse from 'html-react-parser';
+import sanitizeHtml from 'sanitize-html';
+
 import SC from './styled';
+
+import withErrorBoundary from '../with-error-boundary';
 
 interface Props {
   allowHtml?: boolean;
@@ -16,6 +22,12 @@ const Markdown: FC<Props> = ({ allowHtml, children }) =>
       {children}
     </SC.ReactMarkdown>
   ) : (
-    <SC.ReactMarkdown remarkPlugins={[gfm]}>{children}</SC.ReactMarkdown>
+    <SC.ReactMarkdown remarkPlugins={[gfm]} skipHtml>
+      {children}
+    </SC.ReactMarkdown>
   );
-export default Markdown;
+
+const Fallback: FC<Props> = ({ allowHtml, children }) =>
+  allowHtml ? <>{parse(sanitizeHtml(children))}</> : <>{children}</>;
+
+export default compose<FC>(withErrorBoundary(Fallback))(Markdown);
