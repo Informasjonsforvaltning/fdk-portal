@@ -8,6 +8,7 @@ import {
 
 interface Props extends LoggingProps {
   fallback?: ComponentType<any>;
+  logError?: boolean;
 }
 
 interface State {
@@ -23,13 +24,15 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    const { loggingService } = this.props;
-    loggingService.postLogEntry({
-      name: error.name,
-      message: error.message,
-      severity: Severity.ERROR,
-      trace: errorInfo.componentStack
-    });
+    const { logError, loggingService } = this.props;
+    if (logError !== false) {
+      loggingService.postLogEntry({
+        name: error.name,
+        message: error.message,
+        severity: Severity.ERROR,
+        trace: errorInfo.componentStack
+      });
+    }
 
     this.setState({ hasError: true, errorCode: error.message });
   }
