@@ -7,7 +7,10 @@ import Link from '@fellesdatakatalog/link';
 
 import { getConfig } from '../../config';
 import translations from '../../lib/localization';
-import { getTranslateText as translate } from '../../lib/translateText';
+import {
+  getTranslateText as translate,
+  getTranslateTextWithLanguageCode
+} from '../../lib/translateText';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 
 import {
@@ -242,7 +245,12 @@ const DatasetDetailsPage: FC<Props> = ({
   const referencedConcepts = concepts;
   const referencedDatasets = datasets;
   const datasetReferenceTypes = dataset?.references ?? [];
-  const keywords = dataset?.keyword?.map(translate)?.filter(Boolean) ?? [];
+  const keywords =
+    dataset?.keyword
+      ?.map(keyword =>
+        getTranslateTextWithLanguageCode(keyword, translations.getLanguage())
+      )
+      ?.filter(Boolean) ?? [];
   const qualifiedAttributions = dataset?.qualifiedAttributions ?? [];
   const temporalRestrictions = dataset?.temporal ?? [];
   const contactPoints = dataset?.contactPoint ?? [];
