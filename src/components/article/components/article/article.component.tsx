@@ -34,7 +34,11 @@ export const renderFieldModule = (fieldModule: any) => {
     case PARAGRAPH__BODY:
       return (
         <SC.Body key={fieldModule.id}>
-          {parse(sanitizeHtml(getParagraphBodyProcessed(fieldModule)))}
+          {parse(
+            sanitizeHtml(getParagraphBodyProcessed(fieldModule), {
+              allowedTags: ['img']
+            })
+          )}
         </SC.Body>
       );
     case PARAGRAPH__IMAGE: {
@@ -90,7 +94,13 @@ const Article: FC<Partial<Props>> = ({
           {title && <SC.Title>{getTranslateText(title)}</SC.Title>}
 
           {abstract && (
-            <SC.Abstract>{parse(sanitizeHtml(abstract))}</SC.Abstract>
+            <SC.Abstract>
+              {parse(
+                sanitizeHtml(abstract, {
+                  allowedTags: ['img']
+                })
+              )}
+            </SC.Abstract>
           )}
           {field_modules?.map((fieldModule: any) =>
             renderFieldModule(fieldModule)

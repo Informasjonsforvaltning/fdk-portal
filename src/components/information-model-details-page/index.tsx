@@ -9,7 +9,10 @@ import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 
-import { PATHNAME_INFORMATIONMODELS } from '../../constants/constants';
+import {
+  PATHNAME_CONCEPTS,
+  PATHNAME_INFORMATIONMODELS
+} from '../../constants/constants';
 
 import { themeFDK } from '../../app/theme';
 
@@ -614,6 +617,35 @@ const InformationModelDetailsPage: FC<Props> = ({
                 )}
               </KeyValueList>
             )}
+          </ContentSection>
+        )}
+        {concepts.length > 0 && (
+          <ContentSection
+            id='concept-references'
+            title={
+              translations.detailsPage.sectionTitles.informationModel
+                .conceptReferences
+            }
+          >
+            <KeyValueList>
+              {concepts.map(
+                ({ id, prefLabel, definition: { text: definition } }, index) =>
+                  id && (
+                    <KeyValueListItem
+                      key={`${id}-${index}`}
+                      property={
+                        <SC.Link
+                          to={`${PATHNAME_CONCEPTS}/${id}`}
+                          as={RouteLink}
+                        >
+                          {translate(prefLabel)}
+                        </SC.Link>
+                      }
+                      value={translate(definition)}
+                    />
+                  )
+              )}
+            </KeyValueList>
           </ContentSection>
         )}
         {keywords.length > 0 && (

@@ -22,17 +22,12 @@ const SortButtons = styled.div`
 
 const Pagination = styled.div`
   display: flex;
-  justify-content: center;
-  position: relative;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const FeedLinks = styled.span`
   display: flex;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
 `;
 
 const FeedLink = styled(Link)`
