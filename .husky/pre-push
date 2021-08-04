@@ -1,4 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm audit --production --audit-level=moderate
+if [ `npm list -g | grep -c npm-audit-resolver` -eq 0 ]; then
+    echo "npm-audit-resolver is not installed. Run npm install -g npm-audit-resolver."
+else
+    check-audit --production --audit-level=moderate
+fi
