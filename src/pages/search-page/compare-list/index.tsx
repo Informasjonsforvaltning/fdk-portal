@@ -21,23 +21,26 @@ const CompareList: FC<Props> = ({
   conceptsCompareList = [],
   removeConcept
 }) => {
-  const conceptIdsArray: any = [];
+  const conceptIdsArray: string[] = [];
   const renderCompareConceptItems = (items: Partial<Concept>[]) =>
     Object.keys(items).map((el: any) => {
       const { id, uri, prefLabel, publisher }: Partial<Concept> = items[el];
-      conceptIdsArray.push(id);
-      return (
-        <CompareTerms
-          key={uri}
-          uri={id}
-          prefLabel={prefLabel}
-          creator={
-            getTranslateText(publisher?.prefLabel) ??
-            capitalize(publisher?.name)
-          }
-          onDeleteTerm={removeConcept}
-        />
-      );
+      if (id && uri) {
+        conceptIdsArray.push(id);
+        return (
+          <CompareTerms
+            key={uri}
+            uri={id}
+            prefLabel={prefLabel}
+            creator={
+              getTranslateText(publisher?.prefLabel) ??
+              capitalize(publisher?.name)
+            }
+            onDeleteTerm={removeConcept}
+          />
+        );
+      }
+      return null;
     });
 
   if (conceptsCompareList && Object.keys(conceptsCompareList).length > 0) {
@@ -46,7 +49,7 @@ const CompareList: FC<Props> = ({
         <SC.BoxHeader>{localization.terms.compareTerms}</SC.BoxHeader>
         {renderCompareConceptItems(conceptsCompareList)}
         <SC.CompareLink
-          to={`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}?compare=${conceptsCompareList}`}
+          to={`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}?compare=${conceptIdsArray}`}
         >
           {localization.compare.openCompare}
         </SC.CompareLink>
