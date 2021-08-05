@@ -153,6 +153,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                   <SC.FeedLinks>
                     {[FeedType.RSS, FeedType.ATOM].map(type => (
                       <SC.FeedLink
+                        key={type}
                         href={`${SEARCH_API_HOST}/datasets.${type}${location.search}`}
                       >
                         {localization.feedType[type]}
