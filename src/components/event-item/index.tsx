@@ -1,16 +1,24 @@
 import React, { FC } from 'react';
 
-import { SearchHit } from '../search-hit/search-hit';
+import { SearchHit, SearchHitEvents } from '../search-hit/search-hit';
+import { RoundedTag } from '../rounded-tag/rounded-tag.component';
+import translations from '../../lib/localization';
 
 import type { Event } from '../../types';
-import { SearchTypes } from '../../types/enums';
+import { SearchTypes, SpecializedEventType } from '../../types/enums';
 
 interface Props {
   event: Partial<Event>;
 }
 
 const EventItem: FC<Props> = ({
-  event: { id = '', title = {}, description = {}, hasCompetentAuthority = [] }
+  event: {
+    id = '',
+    title = {},
+    description = {},
+    hasCompetentAuthority = [],
+    specialized_type: specializedType
+  }
 }) => (
   <SearchHit
     id={id}
@@ -19,7 +27,26 @@ const EventItem: FC<Props> = ({
     publisher={hasCompetentAuthority?.[0]}
     description={description}
     beta
-  />
+  >
+    <SearchHitEvents>
+      {specializedType && (
+        <RoundedTag>
+          <span>
+            {(() => {
+              switch (specializedType) {
+                case SpecializedEventType.LIFEEVENT:
+                  return translations.lifeEvent;
+                case SpecializedEventType.BUSINESSEVENT:
+                  return translations.businessEvent;
+                default:
+                  return '';
+              }
+            })()}
+          </span>
+        </RoundedTag>
+      )}
+    </SearchHitEvents>
+  </SearchHit>
 );
 
 export default EventItem;

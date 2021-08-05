@@ -106,7 +106,7 @@ const Event = styled.div`
   margin-bottom: 1em;
   flex-wrap: wrap;
 
-  ${RoundedTagSC.RoundedTagWithLink} {
+  ${RoundedTagSC.RoundedTagWithLink}, ${RoundedTagSC.RoundedTag} {
     background-color: ${({ theme: t }) => t.dark};
     color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
     margin-right: 0.5em;
