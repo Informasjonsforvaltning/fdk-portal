@@ -646,6 +646,7 @@
       },
       "concept": {
         "description": "Beskrivelse",
+        "definition": "Definisjon",
         "validity": "Gyldighet",
         "remark": "Merknad",
         "terms": "Tillatt og frarådet term",
