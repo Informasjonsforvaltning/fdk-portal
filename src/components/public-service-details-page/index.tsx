@@ -329,20 +329,52 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       translations.detailsPage.sectionTitles.publicService.cost
                     }
                     value={hasCost
+                      .sort(
+                        (
+                          { ifAccessedThrough: { uri: aUri } },
+                          { ifAccessedThrough: { uri: bUri } }
+                        ) => (aUri > bUri ? 1 : -1)
+                      )
                       .map(
-                        ({
-                          uri,
-                          currency = '',
-                          description: costDescription,
-                          value = ''
-                        }) => (
-                          <SC.ListItemValue key={uri}>
-                            {translate(costDescription)}
-                            {translate(costDescription) && value && ': '}
-                            {value}{' '}
-                            {currency.substring(currency.lastIndexOf('/') + 1)}
-                          </SC.ListItemValue>
-                        )
+                        (
+                          {
+                            uri,
+                            currency = '',
+                            description: costDescription,
+                            ifAccessedThrough,
+                            value = ''
+                          },
+                          index: number
+                        ) => {
+                          let costChannelLabel = '';
+                          const previousCostChannelUri =
+                            hasCost[index - 1]?.ifAccessedThrough.uri;
+                          const currentCostChannelUri = ifAccessedThrough?.uri;
+                          if (
+                            index === 0 ||
+                            (index > 0 &&
+                              previousCostChannelUri &&
+                              currentCostChannelUri &&
+                              previousCostChannelUri !== currentCostChannelUri)
+                          ) {
+                            costChannelLabel = translate(
+                              ifAccessedThrough?.type?.prefLabel
+                            );
+                          }
+                          return (
+                            <SC.ListItemValue key={uri}>
+                              <SC.ListItemValueHeader>
+                                {costChannelLabel}
+                              </SC.ListItemValueHeader>
+                              {translate(costDescription)}
+                              {translate(costDescription) && value && ': '}
+                              {value}{' '}
+                              {currency.substring(
+                                currency.lastIndexOf('/') + 1
+                              )}
+                            </SC.ListItemValue>
+                          );
+                        }
                       )
                       .filter(Boolean)}
                   />

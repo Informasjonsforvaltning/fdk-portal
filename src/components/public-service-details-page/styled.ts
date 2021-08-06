@@ -21,8 +21,14 @@ const LightWeightLabel = styled.span`
   font-weight: ${theme.fontWeight('FW400')};
 `;
 
+const ListItemValueHeader = styled.div`
+  font-weight: ${theme.fontWeight('FW500')};
+  margin-bottom: ${theme.spacing('S10')};
+`;
+
 export default {
   BetaRibbon,
   ListItemValue,
-  LightWeightLabel
+  LightWeightLabel,
+  ListItemValueHeader
 };
