@@ -337,10 +337,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           value = ''
                         }) => (
                           <SC.ListItemValue key={uri}>
+                            {translate(costDescription)}
+                            {translate(costDescription) && value && ': '}
                             {value}{' '}
                             {currency.substring(currency.lastIndexOf('/') + 1)}
-                            {value || currency ? '. ' : ' '}
-                            {translate(costDescription)}
                           </SC.ListItemValue>
                         )
                       )
