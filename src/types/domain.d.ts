@@ -20,6 +20,7 @@ export interface InformationModel {
   name?: Partial<TextLanguage>;
   schema?: string;
   containsSubjects?: string[];
+  subjects?: string[];
   modelElements?: Record<string, Partial<InformationModelElement>>;
   modelProperties?: Record<string, Partial<InformationModelProperty>>;
   isPartOf?: string;

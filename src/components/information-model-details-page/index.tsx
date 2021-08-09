@@ -171,7 +171,7 @@ const InformationModelDetailsPage: FC<Props> = ({
     dateStringToDate(informationModel?.harvest?.firstHarvested)
   );
   const informationModelCategory = informationModel?.category;
-  const conceptIdentifiers = informationModel?.containsSubjects ?? [];
+  const conceptIdentifiers = informationModel?.subjects ?? [];
   const modelElements = informationModel?.modelElements ?? {};
   const modelProperties = informationModel?.modelProperties ?? {};
   const isPartOf = informationModel?.isPartOf;
