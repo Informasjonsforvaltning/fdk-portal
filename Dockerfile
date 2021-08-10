@@ -12,6 +12,7 @@ COPY test ./test
 COPY src ./src
 COPY resources ./resources
 RUN npm test
+ARG NAMESPACE
 RUN npm run build:prod
 
 FROM nginx:alpine
