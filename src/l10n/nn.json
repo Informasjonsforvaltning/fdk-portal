@@ -557,7 +557,7 @@
       "objectType": "Objekttype",
       "codeList": "Kodeliste",
       "dataType": "Datatype",
-      "simpleType": "Enkelttype",
+      "simpleType": "Enkeltype",
       "attribute": "Attributt",
       "association": "Assosiasjon",
       "role": "Rolle",
