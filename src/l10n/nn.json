@@ -646,6 +646,7 @@
       },
       "concept": {
         "description": "Beskrivelse",
+        "definition": "Definisjon",
         "validity": "Gyldighet",
         "remark": "Merknad",
         "terms": "Tillaten og frårådd term",
@@ -868,7 +869,8 @@
     }
   },
   "breadcrumb": {
-    "notFound": "Ingen tittel"
+    "notFound": "Ingen tittel",
+    "sparql": "Sparql verktøy"
   },
   "sampleData": "Eksempeldata",
   "community": {

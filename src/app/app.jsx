@@ -15,6 +15,7 @@ import EventDetailsPage from '../components/event-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
 import { ReportPage } from '../pages/report-page/report-page';
 import ErrorPage from '../components/error-page';
+import SparqlPage from '../components/sparql-page';
 import Header from '../components/header';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import Footer from '../components/footer';
@@ -37,7 +38,8 @@ import {
   PATHNAME_GUIDANCE_METADATA,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES,
-  PATHNAME_EVENTS
+  PATHNAME_EVENTS,
+  PATHNAME_SPARQL
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
@@ -148,6 +150,11 @@ export function App({ language, onChangeLanguage }) {
               exact
               path={PATHNAME_GUIDANCE_METADATA}
               component={CmsArticlePage}
+            />
+            <Route
+              exact
+              path={PATHNAME_SPARQL}
+              render={() => <SparqlPage language={language} />}
             />
             <Route render={() => <ErrorPage errorCode='404' />} />
           </Switch>

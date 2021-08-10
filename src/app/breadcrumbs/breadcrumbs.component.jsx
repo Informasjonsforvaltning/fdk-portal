@@ -15,7 +15,8 @@ import {
   PATHNAME_NEWS_ARTICLE,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES,
-  PATHNAME_EVENTS
+  PATHNAME_EVENTS,
+  PATHNAME_SPARQL
 } from '../../constants/constants';
 import AssessmentBreadcrumb from './assessment-breadcrumb';
 import DatasetBreadcrumb from './dataset-breadcrumb';
@@ -28,6 +29,7 @@ import NewsBreadcrumb from './news-breadcrumb';
 import OrganizationBreadcrumb from './organization-breadcrumb';
 import PublicServiceBreadcrumb from './public-service-breadcrumb';
 import EventBreadcrumb from './event-breadcrumb';
+import SparqlPageBreadcrumb from './sparql-page-breadcrumb';
 import { getConfig } from '../../config';
 
 // define some custom breadcrumbs for certain routes (optional)
@@ -102,6 +104,10 @@ const routes = [
   {
     path: `${PATHNAME_EVENTS}/:eventId`,
     breadcrumb: () => <EventBreadcrumb />
+  },
+  {
+    path: PATHNAME_SPARQL,
+    breadcrumb: () => <SparqlPageBreadcrumb pathName='sparql' />
   }
 ];
 

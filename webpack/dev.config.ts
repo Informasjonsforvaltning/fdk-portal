@@ -8,8 +8,12 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import type { Configuration } from 'webpack';
+import ModuleFederationPlugin from 'webpack/lib/container/ModuleFederationPlugin';
 
 import baseConfig from './base.config';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const deps = require('../package.json').dependencies;
 
 const configuration: Configuration = mergeWithCustomize({
   customizeArray: customizeArray({
@@ -121,6 +125,18 @@ const configuration: Configuration = mergeWithCustomize({
     new ReactRefreshWebpackPlugin(),
     new ForkTsCheckerWebpackPlugin({
       eslint: { files: './src/**/*.{tsx,ts,jsx,js,json,html}' }
+    }),
+    new ModuleFederationPlugin({
+      name: 'portal',
+      remotes: {
+        sparql_gui:
+          'sparql_gui@https://sparql.staging.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
+      },
+      shared: {
+        ...deps,
+        react: { singleton: true },
+        'react-dom': { singleton: true }
+      }
     })
   ]
 });
