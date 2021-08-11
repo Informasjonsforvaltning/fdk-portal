@@ -9,7 +9,7 @@ import InfomodIconBase from '../../../../images/icon-catalog-infomod-lg.svg';
 import PublicServiceIconBase from '../../../../images/icon-catalog-service-lg.svg';
 import { Entity } from '../../../../types/enums';
 
-const SearchLink = styled(Link)<{ type?: Entity; smallWidth?: boolean }>`
+const SearchLink = styled(Link)<{ type?: Entity; $smallWidth?: boolean }>`
   align-items: center;
   background-color: ${({ type, theme: t }) =>
     type ? t.extendedColors[type]?.light : '#FFF'};
@@ -44,8 +44,8 @@ const SearchLink = styled(Link)<{ type?: Entity; smallWidth?: boolean }>`
     flex-flow: column;
     font-size: 1.6rem;
 
-    ${({ smallWidth }) => {
-      if (smallWidth) {
+    ${({ $smallWidth }) => {
+      if ($smallWidth) {
         return css`
           width: 19%;
         `;

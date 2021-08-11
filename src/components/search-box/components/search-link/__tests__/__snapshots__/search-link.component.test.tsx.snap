@@ -2,7 +2,7 @@
 
 exports[`SearchLink component must render correct structure 1`] = `
 <Styled(Link)
-  smallWidth={true}
+  $smallWidth={true}
   to="/datasets"
   type="dataset"
 >

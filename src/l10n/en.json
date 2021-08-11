@@ -646,6 +646,7 @@
       },
       "concept": {
         "description": "Description",
+        "definition": "Definition",
         "validity": "Validity",
         "remark": "Remark",
         "terms": "Alternative and hidden terms",
@@ -870,7 +871,8 @@
     }
   },
   "breadcrumb": {
-    "notFound": "No title"
+    "notFound": "No title",
+    "sparql": "Sparql tool"
   },
   "sampleData": "Example data",
   "community": {
