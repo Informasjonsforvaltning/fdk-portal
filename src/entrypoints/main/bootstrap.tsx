@@ -8,15 +8,15 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import ThemeProvider from '@fellesdatakatalog/theme';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
-import LoggingProvider from './providers/logging';
+import LoggingProvider from '../../providers/logging';
 
-import { configureStore } from './redux/configureStore';
-import { ConnectedApp } from './app/connected-app';
-import { getConfig } from './config';
-import { themeFDK, themeNAP } from './app/theme';
-import GlobalStyles from './app/styles';
+import { configureStore } from '../../redux/configureStore';
+import { ConnectedApp } from '../../app/connected-app';
+import { getConfig } from '../../config';
+import { themeFDK, themeNAP } from '../../app/theme';
+import GlobalStyles from '../../app/styles';
 
-import Analytics from './components/analytics';
+import Analytics from '../../components/analytics';
 
 const client = new ApolloClient({
   uri: `${getConfig().cmsV2Api.host}/graphql`,
