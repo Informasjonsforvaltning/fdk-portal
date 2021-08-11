@@ -9,4 +9,5 @@ export interface EnvironmentVariables {
   INFORMATIONMODEL_HARVESTER_HOST: string;
   FDK_LOGGING_FUNCTION_URI: string;
   FDK_COMMUNITY_BASE_URI: string;
+  FDK_SPARQL_API_BASE_URI: string;
 }
