@@ -9,6 +9,7 @@ import SC from './styled';
 interface ExternalProps {
   title: string;
   length?: number | null;
+  minLength?: number | null;
   maxLength?: number | null;
   minInclusive?: number | null;
   maxInclusive?: number | null;
@@ -21,6 +22,7 @@ interface Props extends ExternalProps {}
 const ValueRestrictions: FC<Props> = ({
   title,
   length,
+  minLength,
   maxLength,
   minInclusive,
   maxInclusive,
@@ -34,6 +36,10 @@ const ValueRestrictions: FC<Props> = ({
     {
       name: translations.infoMod.restriction.valueLength,
       value: length
+    },
+    {
+      name: translations.infoMod.restriction.minLength,
+      value: minLength
     },
     {
       name: translations.infoMod.restriction.maxLength,

@@ -574,6 +574,7 @@
     },
     "restriction": {
       "valueLength": "Lengde",
+      "minLength": "Minimum lengde",
       "maxLength": "Maksimum lengde",
       "minInclusive": "Minimum verdi ",
       "maxInclusive": "Maksimum verdi ",

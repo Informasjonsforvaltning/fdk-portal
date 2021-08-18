@@ -574,6 +574,7 @@
     },
     "restriction": {
       "valueLength": "Length",
+      "minLength": "Minimum length",
       "maxLength": "Max length",
       "minInclusive": "Min value",
       "maxInclusive": "Max value",
