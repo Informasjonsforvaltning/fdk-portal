@@ -923,5 +923,9 @@
     "votes": "Votes",
     "replies": "Replies",
     "views": "Views"
+  },
+  "serviceMessagesPage": {
+    "title": "Service messages",
+    "active": "active"
   }
 }
