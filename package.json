@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.20",
+    "@fellesdatakatalog/alert": "^0.1.6",
     "@fellesdatakatalog/button": "^0.2.3",
     "@fellesdatakatalog/expansion-panel": "^0.2.0",
     "@fellesdatakatalog/external-footer": "^0.1.17",

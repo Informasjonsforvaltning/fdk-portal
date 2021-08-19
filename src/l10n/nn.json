@@ -921,5 +921,9 @@
     "votes": "Stemmer",
     "replies": "Svar",
     "views": "Visningar"
+  },
+  "serviceMessagesPage": {
+    "title": "Driftsmeldingar",
+    "active": "aktive"
   }
 }
