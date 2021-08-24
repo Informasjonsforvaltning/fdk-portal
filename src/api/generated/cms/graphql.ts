@@ -203,6 +203,19 @@ export enum Enum_Componentbasicimage_Style {
   Right = 'right'
 }
 
+export enum Enum_Servicemessage_Channel {
+  Generell = 'Generell',
+  Publiseringsportal = 'Publiseringsportal',
+  Registreringsportal = 'Registreringsportal',
+  Adminportal = 'Adminportal'
+}
+
+export enum Enum_Servicemessage_Message_Type {
+  Info = 'INFO',
+  Warning = 'WARNING',
+  Error = 'ERROR'
+}
+
 export type FancyArticle = {
   __typename?: 'FancyArticle';
   id: Scalars['ID'];
@@ -376,6 +389,25 @@ export type Morph =
   | CreateFancyArticlePayload
   | UpdateFancyArticlePayload
   | DeleteFancyArticlePayload
+  | ServiceMessage
+  | ServiceMessageConnection
+  | ServiceMessageAggregator
+  | ServiceMessageGroupBy
+  | ServiceMessageConnectionId
+  | ServiceMessageConnectionCreated_At
+  | ServiceMessageConnectionUpdated_At
+  | ServiceMessageConnectionTitle
+  | ServiceMessageConnectionValid_From
+  | ServiceMessageConnectionValid_To
+  | ServiceMessageConnectionMessage_Type
+  | ServiceMessageConnectionChannel
+  | ServiceMessageConnectionShort_Description
+  | ServiceMessageConnectionDescription
+  | ServiceMessageConnectionLocale
+  | ServiceMessageConnectionPublished_At
+  | CreateServiceMessagePayload
+  | UpdateServiceMessagePayload
+  | DeleteServiceMessagePayload
   | I18NLocale
   | UploadFile
   | UploadFileConnection
@@ -443,6 +475,9 @@ export type Mutation = {
   createFancyArticle?: Maybe<CreateFancyArticlePayload>;
   updateFancyArticle?: Maybe<UpdateFancyArticlePayload>;
   deleteFancyArticle?: Maybe<DeleteFancyArticlePayload>;
+  createServiceMessage?: Maybe<CreateServiceMessagePayload>;
+  updateServiceMessage?: Maybe<UpdateServiceMessagePayload>;
+  deleteServiceMessage?: Maybe<DeleteServiceMessagePayload>;
   /** Delete one file */
   deleteFile?: Maybe<DeleteFilePayload>;
   /** Create a new role */
@@ -459,6 +494,7 @@ export type Mutation = {
   deleteUser?: Maybe<DeleteUserPayload>;
   createArticleLocalization: Article;
   createFancyArticleLocalization: FancyArticle;
+  createServiceMessageLocalization: ServiceMessage;
   upload: UploadFile;
   multipleUpload: Array<Maybe<UploadFile>>;
   updateFileInfo: UploadFile;
@@ -491,6 +527,18 @@ export type MutationUpdateFancyArticleArgs = {
 
 export type MutationDeleteFancyArticleArgs = {
   input?: Maybe<DeleteFancyArticleInput>;
+};
+
+export type MutationCreateServiceMessageArgs = {
+  input?: Maybe<CreateServiceMessageInput>;
+};
+
+export type MutationUpdateServiceMessageArgs = {
+  input?: Maybe<UpdateServiceMessageInput>;
+};
+
+export type MutationDeleteServiceMessageArgs = {
+  input?: Maybe<DeleteServiceMessageInput>;
 };
 
 export type MutationDeleteFileArgs = {
@@ -527,6 +575,10 @@ export type MutationCreateArticleLocalizationArgs = {
 
 export type MutationCreateFancyArticleLocalizationArgs = {
   input: UpdateFancyArticleInput;
+};
+
+export type MutationCreateServiceMessageLocalizationArgs = {
+  input: UpdateServiceMessageInput;
 };
 
 export type MutationUploadArgs = {
@@ -586,6 +638,9 @@ export type Query = {
   fancyArticle?: Maybe<FancyArticle>;
   fancyArticles?: Maybe<Array<Maybe<FancyArticle>>>;
   fancyArticlesConnection?: Maybe<FancyArticleConnection>;
+  serviceMessage?: Maybe<ServiceMessage>;
+  serviceMessages?: Maybe<Array<Maybe<ServiceMessage>>>;
+  serviceMessagesConnection?: Maybe<ServiceMessageConnection>;
   files?: Maybe<Array<Maybe<UploadFile>>>;
   filesConnection?: Maybe<UploadFileConnection>;
   role?: Maybe<UsersPermissionsRole>;
@@ -635,6 +690,28 @@ export type QueryFancyArticlesArgs = {
 };
 
 export type QueryFancyArticlesConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryServiceMessageArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+export type QueryServiceMessagesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type QueryServiceMessagesConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -703,6 +780,148 @@ export type RoleInput = {
   type?: Maybe<Scalars['String']>;
   permissions?: Maybe<Array<Maybe<Scalars['ID']>>>;
   users?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type ServiceMessage = {
+  __typename?: 'ServiceMessage';
+  id: Scalars['ID'];
+  created_at: Scalars['DateTime'];
+  updated_at: Scalars['DateTime'];
+  title: Scalars['String'];
+  valid_from: Scalars['DateTime'];
+  valid_to?: Maybe<Scalars['DateTime']>;
+  message_type: Enum_Servicemessage_Message_Type;
+  channel: Enum_Servicemessage_Channel;
+  short_description: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  localizations?: Maybe<Array<Maybe<ServiceMessage>>>;
+};
+
+export type ServiceMessageLocalizationsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ServiceMessageAggregator = {
+  __typename?: 'ServiceMessageAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type ServiceMessageConnection = {
+  __typename?: 'ServiceMessageConnection';
+  values?: Maybe<Array<Maybe<ServiceMessage>>>;
+  groupBy?: Maybe<ServiceMessageGroupBy>;
+  aggregate?: Maybe<ServiceMessageAggregator>;
+};
+
+export type ServiceMessageConnectionChannel = {
+  __typename?: 'ServiceMessageConnectionChannel';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionCreated_At = {
+  __typename?: 'ServiceMessageConnectionCreated_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionDescription = {
+  __typename?: 'ServiceMessageConnectionDescription';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionId = {
+  __typename?: 'ServiceMessageConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionLocale = {
+  __typename?: 'ServiceMessageConnectionLocale';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionMessage_Type = {
+  __typename?: 'ServiceMessageConnectionMessage_type';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionPublished_At = {
+  __typename?: 'ServiceMessageConnectionPublished_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionShort_Description = {
+  __typename?: 'ServiceMessageConnectionShort_description';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionTitle = {
+  __typename?: 'ServiceMessageConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionUpdated_At = {
+  __typename?: 'ServiceMessageConnectionUpdated_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionValid_From = {
+  __typename?: 'ServiceMessageConnectionValid_from';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageConnectionValid_To = {
+  __typename?: 'ServiceMessageConnectionValid_to';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ServiceMessageConnection>;
+};
+
+export type ServiceMessageGroupBy = {
+  __typename?: 'ServiceMessageGroupBy';
+  id?: Maybe<Array<Maybe<ServiceMessageConnectionId>>>;
+  created_at?: Maybe<Array<Maybe<ServiceMessageConnectionCreated_At>>>;
+  updated_at?: Maybe<Array<Maybe<ServiceMessageConnectionUpdated_At>>>;
+  title?: Maybe<Array<Maybe<ServiceMessageConnectionTitle>>>;
+  valid_from?: Maybe<Array<Maybe<ServiceMessageConnectionValid_From>>>;
+  valid_to?: Maybe<Array<Maybe<ServiceMessageConnectionValid_To>>>;
+  message_type?: Maybe<Array<Maybe<ServiceMessageConnectionMessage_Type>>>;
+  channel?: Maybe<Array<Maybe<ServiceMessageConnectionChannel>>>;
+  short_description?: Maybe<
+    Array<Maybe<ServiceMessageConnectionShort_Description>>
+  >;
+  description?: Maybe<Array<Maybe<ServiceMessageConnectionDescription>>>;
+  locale?: Maybe<Array<Maybe<ServiceMessageConnectionLocale>>>;
+  published_at?: Maybe<Array<Maybe<ServiceMessageConnectionPublished_At>>>;
+};
+
+export type ServiceMessageInput = {
+  title: Scalars['String'];
+  valid_from: Scalars['DateTime'];
+  valid_to?: Maybe<Scalars['DateTime']>;
+  message_type: Enum_Servicemessage_Message_Type;
+  channel: Enum_Servicemessage_Channel;
+  short_description: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -1161,6 +1380,15 @@ export type CreateRolePayload = {
   role?: Maybe<UsersPermissionsRole>;
 };
 
+export type CreateServiceMessageInput = {
+  data?: Maybe<ServiceMessageInput>;
+};
+
+export type CreateServiceMessagePayload = {
+  __typename?: 'createServiceMessagePayload';
+  serviceMessage?: Maybe<ServiceMessage>;
+};
+
 export type CreateUserInput = {
   data?: Maybe<UserInput>;
 };
@@ -1204,6 +1432,15 @@ export type DeleteRoleInput = {
 export type DeleteRolePayload = {
   __typename?: 'deleteRolePayload';
   role?: Maybe<UsersPermissionsRole>;
+};
+
+export type DeleteServiceMessageInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteServiceMessagePayload = {
+  __typename?: 'deleteServiceMessagePayload';
+  serviceMessage?: Maybe<ServiceMessage>;
 };
 
 export type DeleteUserInput = {
@@ -1292,6 +1529,21 @@ export type EditRoleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditServiceMessageInput = {
+  title?: Maybe<Scalars['String']>;
+  valid_from?: Maybe<Scalars['DateTime']>;
+  valid_to?: Maybe<Scalars['DateTime']>;
+  message_type?: Maybe<Enum_Servicemessage_Message_Type>;
+  channel?: Maybe<Enum_Servicemessage_Channel>;
+  short_description?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  locale?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditUserInput = {
   username?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
@@ -1336,6 +1588,16 @@ export type UpdateRolePayload = {
   role?: Maybe<UsersPermissionsRole>;
 };
 
+export type UpdateServiceMessageInput = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditServiceMessageInput>;
+};
+
+export type UpdateServiceMessagePayload = {
+  __typename?: 'updateServiceMessagePayload';
+  serviceMessage?: Maybe<ServiceMessage>;
+};
+
 export type UpdateUserInput = {
   where?: Maybe<InputId>;
   data?: Maybe<EditUserInput>;
@@ -1360,6 +1622,51 @@ export type GetArticleQuery = { __typename?: 'Query' } & {
           { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
         >;
       }
+  >;
+};
+
+export type GetServiceMessagesQueryVariables = Exact<{
+  channel?: Maybe<Scalars['String']>;
+  today?: Maybe<Scalars['DateTime']>;
+}>;
+
+export type GetServiceMessagesQuery = { __typename?: 'Query' } & {
+  serviceMessages?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'ServiceMessage' } & Pick<
+          ServiceMessage,
+          | 'id'
+          | 'title'
+          | 'valid_from'
+          | 'valid_to'
+          | 'message_type'
+          | 'channel'
+          | 'short_description'
+          | 'description'
+        >
+      >
+    >
+  >;
+};
+
+export type GetServiceMessageQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+export type GetServiceMessageQuery = { __typename?: 'Query' } & {
+  serviceMessage?: Maybe<
+    { __typename?: 'ServiceMessage' } & Pick<
+      ServiceMessage,
+      | 'id'
+      | 'title'
+      | 'valid_from'
+      | 'valid_to'
+      | 'message_type'
+      | 'channel'
+      | 'short_description'
+      | 'description'
+    >
   >;
 };
 
@@ -1425,4 +1732,137 @@ export type GetArticleLazyQueryHookResult = ReturnType<
 export type GetArticleQueryResult = Apollo.QueryResult<
   GetArticleQuery,
   GetArticleQueryVariables
+>;
+export const GetServiceMessagesDocument = gql`
+  query GetServiceMessages($channel: String, $today: DateTime) {
+    serviceMessages(
+      where: { channel: $channel, valid_from_lte: $today, valid_to_gte: $today }
+    ) {
+      id
+      title
+      valid_from
+      valid_to
+      message_type
+      channel
+      short_description
+      description
+    }
+  }
+`;
+
+/**
+ * __useGetServiceMessagesQuery__
+ *
+ * To run a query within a React component, call `useGetServiceMessagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetServiceMessagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetServiceMessagesQuery({
+ *   variables: {
+ *      channel: // value for 'channel'
+ *      today: // value for 'today'
+ *   },
+ * });
+ */
+export function useGetServiceMessagesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetServiceMessagesQuery,
+    GetServiceMessagesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetServiceMessagesQuery,
+    GetServiceMessagesQueryVariables
+  >(GetServiceMessagesDocument, options);
+}
+export function useGetServiceMessagesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetServiceMessagesQuery,
+    GetServiceMessagesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetServiceMessagesQuery,
+    GetServiceMessagesQueryVariables
+  >(GetServiceMessagesDocument, options);
+}
+export type GetServiceMessagesQueryHookResult = ReturnType<
+  typeof useGetServiceMessagesQuery
+>;
+export type GetServiceMessagesLazyQueryHookResult = ReturnType<
+  typeof useGetServiceMessagesLazyQuery
+>;
+export type GetServiceMessagesQueryResult = Apollo.QueryResult<
+  GetServiceMessagesQuery,
+  GetServiceMessagesQueryVariables
+>;
+export const GetServiceMessageDocument = gql`
+  query GetServiceMessage($id: ID!) {
+    serviceMessage(id: $id) {
+      id
+      title
+      valid_from
+      valid_to
+      message_type
+      channel
+      short_description
+      description
+    }
+  }
+`;
+
+/**
+ * __useGetServiceMessageQuery__
+ *
+ * To run a query within a React component, call `useGetServiceMessageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetServiceMessageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetServiceMessageQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetServiceMessageQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetServiceMessageQuery,
+    GetServiceMessageQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetServiceMessageQuery,
+    GetServiceMessageQueryVariables
+  >(GetServiceMessageDocument, options);
+}
+export function useGetServiceMessageLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetServiceMessageQuery,
+    GetServiceMessageQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetServiceMessageQuery,
+    GetServiceMessageQueryVariables
+  >(GetServiceMessageDocument, options);
+}
+export type GetServiceMessageQueryHookResult = ReturnType<
+  typeof useGetServiceMessageQuery
+>;
+export type GetServiceMessageLazyQueryHookResult = ReturnType<
+  typeof useGetServiceMessageLazyQuery
+>;
+export type GetServiceMessageQueryResult = Apollo.QueryResult<
+  GetServiceMessageQuery,
+  GetServiceMessageQueryVariables
 >;
