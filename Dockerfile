@@ -10,7 +10,6 @@ COPY babel.config.js tsconfig.json tsconfig.test.json tsconfig.webpack.json jest
 COPY webpack ./webpack
 COPY test ./test
 COPY src ./src
-COPY resources ./resources
 RUN npm test
 ARG NAMESPACE
 RUN npm run build:prod
