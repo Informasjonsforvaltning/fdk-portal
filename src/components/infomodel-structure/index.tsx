@@ -560,6 +560,7 @@ const InfoModelStructure: FC<Props> = ({
               belongsToModule,
               typeDefinitionReference,
               length,
+              minLength,
               maxLength,
               minInclusive,
               maxInclusive,
@@ -615,6 +616,7 @@ const InfoModelStructure: FC<Props> = ({
                   <ValueRestrictions
                     title={translations.infoMod.structure.restrictions}
                     length={length}
+                    minLength={minLength}
                     maxLength={maxLength}
                     minInclusive={minInclusive}
                     maxInclusive={maxInclusive}

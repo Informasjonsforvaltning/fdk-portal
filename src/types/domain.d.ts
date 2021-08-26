@@ -91,6 +91,7 @@ export interface InformationModelElement {
   codes: Partial<ModelCodeElement>[] | null;
   typeDefinitionReference: string | null;
   length: number | null;
+  minLength: number | null;
   maxLength: number | null;
   minInclusive: number | null;
   maxInclusive: number | null;

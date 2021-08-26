@@ -145,10 +145,7 @@ const configuration: Configuration = {
       filename: '[name].styles.css'
     }),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: './src/img/*', to: './img' },
-        { from: './resources', to: '.' }
-      ]
+      patterns: [{ from: './src/img/*', to: './img' }]
     }),
     new ProvidePlugin({
       process: 'process'
