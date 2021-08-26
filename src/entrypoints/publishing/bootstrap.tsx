@@ -7,11 +7,15 @@ import { AppContainer } from 'react-hot-loader';
 
 import App from './app';
 
+import LoggingProvider from '../../providers/logging';
+
 function run(): void {
   render(
-    <AppContainer>
-      <App />
-    </AppContainer>,
+    <LoggingProvider>
+      <AppContainer>
+        <App />
+      </AppContainer>
+    </LoggingProvider>,
     document.getElementById('root')
   );
 }
