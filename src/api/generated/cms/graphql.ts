@@ -47,6 +47,7 @@ export type Article = {
   updated_at: Scalars['DateTime'];
   title: Scalars['String'];
   featureImage?: Maybe<UploadFile>;
+  excerpt: Scalars['String'];
   content: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -82,6 +83,12 @@ export type ArticleConnectionContent = {
 export type ArticleConnectionCreated_At = {
   __typename?: 'ArticleConnectionCreated_at';
   key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ArticleConnection>;
+};
+
+export type ArticleConnectionExcerpt = {
+  __typename?: 'ArticleConnectionExcerpt';
+  key?: Maybe<Scalars['String']>;
   connection?: Maybe<ArticleConnection>;
 };
 
@@ -128,6 +135,7 @@ export type ArticleGroupBy = {
   updated_at?: Maybe<Array<Maybe<ArticleConnectionUpdated_At>>>;
   title?: Maybe<Array<Maybe<ArticleConnectionTitle>>>;
   featureImage?: Maybe<Array<Maybe<ArticleConnectionFeatureImage>>>;
+  excerpt?: Maybe<Array<Maybe<ArticleConnectionExcerpt>>>;
   content?: Maybe<Array<Maybe<ArticleConnectionContent>>>;
   locale?: Maybe<Array<Maybe<ArticleConnectionLocale>>>;
   published_at?: Maybe<Array<Maybe<ArticleConnectionPublished_At>>>;
@@ -136,6 +144,7 @@ export type ArticleGroupBy = {
 export type ArticleInput = {
   title: Scalars['String'];
   featureImage?: Maybe<Scalars['ID']>;
+  excerpt: Scalars['String'];
   content: Scalars['String'];
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
@@ -347,6 +356,7 @@ export type Morph =
   | ArticleConnectionUpdated_At
   | ArticleConnectionTitle
   | ArticleConnectionFeatureImage
+  | ArticleConnectionExcerpt
   | ArticleConnectionContent
   | ArticleConnectionLocale
   | ArticleConnectionPublished_At
@@ -1208,6 +1218,7 @@ export type DeleteUserPayload = {
 export type EditArticleInput = {
   title?: Maybe<Scalars['String']>;
   featureImage?: Maybe<Scalars['ID']>;
+  excerpt?: Maybe<Scalars['String']>;
   content?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
