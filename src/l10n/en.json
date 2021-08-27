@@ -926,6 +926,7 @@
   },
   "serviceMessagesPage": {
     "title": "Service messages",
-    "active": "active"
+    "active": "active",
+    "goToDetailsPage": "See details for more information."
   }
 }
