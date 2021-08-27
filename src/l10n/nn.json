@@ -924,6 +924,7 @@
   },
   "serviceMessagesPage": {
     "title": "Driftsmeldingar",
-    "active": "aktive"
+    "active": "aktive",
+    "goToDetailsPage": "Se detaljert driftsmelding for meir informasjon."
   }
 }
