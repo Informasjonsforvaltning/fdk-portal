@@ -14,7 +14,7 @@ import { DataService } from '../../../types';
 interface GetDataServicesParams {
   dataseturi?: string;
   size?: number;
-  endpointDescription?: string;
+  endpointDescription?: string[];
   servesDataset?: string;
   uris?: string[];
 }

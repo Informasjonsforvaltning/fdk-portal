@@ -63,7 +63,12 @@ const mapFilters = ({
     filters.push({ last_x_days });
   }
   if (endpointDescription) {
-    filters.push({ 'endpointDescription.keyword': endpointDescription });
+    filters.push({
+      collection: {
+        field: 'endpointDescription.keyword',
+        values: endpointDescription
+      }
+    });
   }
 
   if (/^\d{9}$/.test(organizationNumber ?? '')) {
