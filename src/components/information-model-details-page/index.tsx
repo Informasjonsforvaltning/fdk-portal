@@ -214,7 +214,14 @@ const InformationModelDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (informationModel?.uri) {
-      getDataServicesRelations({ endpointDescription: informationModel.uri });
+      getDataServicesRelations({
+        endpointDescription:
+          informationModel?.hasFormat?.reduce(
+            (accumulator, { uri }) =>
+              uri ? [...accumulator, uri] : accumulator,
+            [] as string[]
+          ) ?? []
+      });
       getInformationmodelsRelations({ relations: informationModel.uri });
     }
     return () => {
