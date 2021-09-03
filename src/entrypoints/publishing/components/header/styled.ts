@@ -6,6 +6,7 @@ import DropdownMenuBase from '../dropdown-menu';
 
 import LogoSVG from '../../../../images/fdk-publishing-logo-negative.svg';
 import DemoLogoSVG from '../../../../images/fdk-publishing-logo-negative-demo.svg';
+import { getConfig } from '../../../../config';
 
 const Header = styled.header`
   display: flex;
@@ -40,7 +41,7 @@ const Row = styled.div`
   }
 `;
 
-const Logo = styled(LogoSVG)`
+const ProdLogo = styled(LogoSVG)`
   height: 55px;
 
   & > path {
@@ -67,6 +68,8 @@ const DemoLogo = styled(DemoLogoSVG)`
     }
   }
 `;
+
+const Logo = !getConfig().useDemoLogo ? ProdLogo : DemoLogo;
 
 const Link = styled(LinkBase)`
   & > div {
@@ -147,7 +150,6 @@ export default {
   Header,
   Row,
   Logo,
-  DemoLogo,
   NavigationLinks,
   Link,
   DropdownMenu,
