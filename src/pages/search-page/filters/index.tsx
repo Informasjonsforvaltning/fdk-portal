@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FC, memo, useState } from 'react';
-import keyBy from 'lodash/keyBy';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import {
@@ -210,11 +209,12 @@ const FiltersPure: FC<Props> = ({
             <FilterBox
               htmlKey={3}
               title={localization.facet.format}
-              filter={aggregations.mediaType}
+              filter={aggregations.format}
+              searchable
+              groupByPrefix={['FILE_TYPE', 'MEDIA_TYPE', 'UNKNOWN']}
               onClick={handleFilterFormat}
               activeFilter={formatParam}
               capitalizeOption={false}
-              referenceDataItems={keyBy(mediaTypes, 'code')}
             />
             <FilterBox
               htmlKey={4}
@@ -246,10 +246,11 @@ const FiltersPure: FC<Props> = ({
               htmlKey={2}
               title={localization.facet.format}
               capitalizeOption={false}
-              filter={aggregations.formats}
+              filter={aggregations.format}
+              searchable
+              groupByPrefix={['FILE_TYPE', 'MEDIA_TYPE', 'UNKNOWN']}
               onClick={handleFilterFormat}
               activeFilter={formatParam}
-              referenceDataItems={keyBy(mediaTypes, 'code')}
             />
           </>
         );

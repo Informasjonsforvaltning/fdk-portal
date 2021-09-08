@@ -51,7 +51,7 @@ const mapFilters = ({
   if (format) {
     filters.push({
       collection: {
-        field: 'mediaType.code.keyword',
+        field: 'fdkFormatPrefixed.keyword',
         values: format.split(',')
       }
     });
