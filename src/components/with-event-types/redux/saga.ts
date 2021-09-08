@@ -16,7 +16,7 @@ function* getEventTypesRequested() {
     } else {
       yield put(actions.getEventTypesFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getEventTypesFailed(e.message));
   }
 }

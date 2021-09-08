@@ -18,7 +18,7 @@ const initialState = fromJS({
 });
 
 export default function reducer(
-  state = initialState,
+  state: any = initialState,
   action: Actions<typeof actions>
 ) {
   switch (action.type) {

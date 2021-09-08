@@ -23,7 +23,6 @@ import { Report } from '../../../../types';
 interface Props extends RouteComponentProps {
   informationModelsReport?: Partial<Report>;
   informationModelsTimeSeries: any;
-  publishers?: any;
 }
 
 const InformationModelReport: FC<Props> = ({

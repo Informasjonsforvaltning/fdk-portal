@@ -6,7 +6,6 @@ import { Entity } from '../../../../types/enums';
 interface Props {
   formats: any;
   theme: any;
-  history: any;
   entityType?: Entity;
 }
 

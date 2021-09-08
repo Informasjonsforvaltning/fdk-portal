@@ -28,7 +28,6 @@ interface AllReferencedConceptIdentifiers {
 interface Props extends RouteComponentProps {
   conceptsReport?: Partial<ConceptsReport> & AllReferencedConceptIdentifiers;
   conceptsTimeSeries: any;
-  publishers?: any;
 }
 
 const ConceptReport: FC<Props> = ({

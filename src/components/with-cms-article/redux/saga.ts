@@ -23,7 +23,7 @@ function* getCmsArticleRequested({
     } else {
       yield put(actions.getCmsArticleFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getCmsArticleFailed(e.message));
   }
 }

@@ -18,7 +18,7 @@ function* getOrganizationsFromCatalogRequested() {
     } else {
       yield put(actions.getOrganizationsCatalogFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getOrganizationsCatalogFailed(e.message));
   }
 }
