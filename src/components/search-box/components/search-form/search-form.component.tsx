@@ -4,6 +4,7 @@ import React, {
   HTMLAttributes,
   memo,
   PropsWithChildren,
+  useCallback,
   useState
 } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -23,10 +24,13 @@ const SearchForm: FC<PropsWithChildren<Props>> = ({ history, location }) => {
     locationSearch.q?.toString() || ''
   );
 
-  function onSearch(e: FormEvent) {
-    e.preventDefault();
-    setSearchText(history, location, searchQuery);
-  }
+  const onSearch = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+      setSearchText(history, location, searchQuery);
+    },
+    [searchQuery]
+  );
 
   function onClear(e: FormEvent) {
     e.preventDefault();
