@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import qs from 'qs';
 import capitalize from 'lodash/capitalize';
@@ -53,7 +53,7 @@ export const ReportPagePure: FC<Props> = ({
 
   const [activeTab, setActiveTab] = useState(Variant.DATASET);
 
-  function selectPublisher(publisher: any) {
+  const selectPublisher = useCallback((publisher: any) => {
     const orgPath = publisher?.orgPath;
     const currentSearch = qs.parse(search, {
       ignoreQueryPrefix: true
@@ -68,11 +68,11 @@ export const ReportPagePure: FC<Props> = ({
     // This is react-router browserHistory object
     // https://github.com/ReactTraining/history
     history.push({ search: newSearchStr });
-  }
+  }, []);
 
-  function clearSearch() {
+  const clearSearch = useCallback(() => {
     selectPublisher(null);
-  }
+  }, []);
 
   fetchPublishersIfNeeded();
 
