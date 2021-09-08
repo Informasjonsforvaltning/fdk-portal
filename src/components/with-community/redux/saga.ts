@@ -33,7 +33,7 @@ function* searchTopicsRequested({
     } else {
       yield put(actions.searchTopicsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.searchTopicsFailed(e.message));
   }
 }
@@ -49,7 +49,7 @@ function* recentPostsRequested({
     } else {
       yield put(actions.getRecentPostsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getRecentPostsFailed(e.message));
   }
 }

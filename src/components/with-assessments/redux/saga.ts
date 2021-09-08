@@ -35,7 +35,7 @@ function* getPagedAssessmentsRequested({
     } else {
       yield put(actions.getPagedAssessmentsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getPagedAssessmentsFailed(e.message));
   }
 }
@@ -64,7 +64,7 @@ function* loadMoreAssessmentsRequested({
     } else {
       yield put(actions.loadMoreAssessmentsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.loadMoreAssessmentsFailed(e.message));
   }
 }

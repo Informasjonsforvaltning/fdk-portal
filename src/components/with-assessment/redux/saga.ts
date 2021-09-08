@@ -27,7 +27,7 @@ function* getAssessmentRequested({
     } else {
       yield put(actions.getAssessmentFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getAssessmentFailed(e.message));
   }
 }
@@ -53,7 +53,7 @@ function* getCatalogRatingRequested({
     } else {
       yield put(actions.getCatalogRatingFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getCatalogRatingFailed(e.message));
   }
 }

@@ -36,7 +36,7 @@ function* getDataServicesRequested({
     } else {
       yield put(actions.getDataServicesFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getDataServicesFailed(e.message));
   }
 }
@@ -66,7 +66,7 @@ function* getDataServicesRelationsRequested({
     } else {
       yield put(actions.getDataServicesRelationsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getDataServicesRelationsFailed(e.message));
   }
 }

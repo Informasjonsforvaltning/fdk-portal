@@ -53,7 +53,7 @@ function* getPublicServicesAndEventsRequested({
     } else {
       yield put(actions.getPublicServicesAndEventsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getPublicServicesAndEventsFailed(e.message));
   }
 }
