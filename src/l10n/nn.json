@@ -201,7 +201,14 @@
     "provenance": "Opphav",
     "format": "Format",
     "lifeEvents": "Livshendelser",
-    "events": "Hendingar"
+    "events": "Hendingar",
+    "search": "Søk",
+    "searchFor": "Søk på",
+    "filterGroup": {
+      "MEDIA_TYPE": "Mediatype",
+      "FILE_TYPE": "Filtype",
+      "UNKNOWN": "Ukjent"
+    }
   },
   "result": {
     "dataset": "Datasett",
