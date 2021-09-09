@@ -201,7 +201,14 @@
     "provenance": "Opphav",
     "format": "Format",
     "lifeEvents": "Livshendelser",
-    "events": "Hendingar"
+    "events": "Hendingar",
+    "search": "Søk",
+    "searchFor": "Søk på",
+    "filterGroup": {
+      "MEDIA_TYPE": "Mediatype",
+      "FILE_TYPE": "Filtype",
+      "UNKNOWN": "Ukjent"
+    }
   },
   "result": {
     "dataset": "Datasett",
@@ -557,7 +564,7 @@
       "objectType": "Objekttype",
       "codeList": "Kodeliste",
       "dataType": "Datatype",
-      "simpleType": "Enkelttype",
+      "simpleType": "Enkeltype",
       "attribute": "Attributt",
       "association": "Assosiasjon",
       "role": "Rolle",
@@ -574,6 +581,7 @@
     },
     "restriction": {
       "valueLength": "Lengde",
+      "minLength": "Minimum lengde",
       "maxLength": "Maksimum lengde",
       "minInclusive": "Minimum verdi ",
       "maxInclusive": "Maksimum verdi ",
@@ -920,5 +928,10 @@
     "votes": "Stemmer",
     "replies": "Svar",
     "views": "Visningar"
+  },
+  "serviceMessagesPage": {
+    "title": "Driftsmeldingar",
+    "active": "aktive",
+    "goToDetailsPage": "Se detaljert driftsmelding for meir informasjon."
   }
 }

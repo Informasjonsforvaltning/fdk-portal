@@ -41,13 +41,14 @@
     -ms-user-select: none;
     user-select: none;
     &:after {
-      content: "\F106";
+      content: '\F106';
     }
   }
   .checkbox {
-   width: 100%;
+    width: 100%;
     .checkbox_label {
       max-width: 90%;
+      word-break: break-all;
     }
   }
   /* rotate the triangle to close it */

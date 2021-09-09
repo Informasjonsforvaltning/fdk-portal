@@ -14,7 +14,7 @@ const TruncateContainer = styled.div`
 
 const TextContainer = styled.div<textContentProps>`
   max-height: ${({ lineHeight, visibleLines, truncate }) =>
-    truncate ? lineHeight * visibleLines : 1000}px;
+    truncate ? `${lineHeight * visibleLines}px` : 'inherit'};
   overflow: hidden;
 `;
 

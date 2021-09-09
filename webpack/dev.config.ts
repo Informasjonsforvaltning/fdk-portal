@@ -134,8 +134,8 @@ const configuration: Configuration = mergeWithCustomize({
       },
       shared: {
         ...deps,
-        react: { singleton: true },
-        'react-dom': { singleton: true }
+        react: { singleton: true, requiredVersion: deps.react },
+        'react-dom': { singleton: true, requiredVersion: deps.react }
       }
     })
   ]

@@ -20,6 +20,7 @@ export interface InformationModel {
   name?: Partial<TextLanguage>;
   schema?: string;
   containsSubjects?: string[];
+  subjects?: string[];
   modelElements?: Record<string, Partial<InformationModelElement>>;
   modelProperties?: Record<string, Partial<InformationModelProperty>>;
   isPartOf?: string;
@@ -90,6 +91,7 @@ export interface InformationModelElement {
   codes: Partial<ModelCodeElement>[] | null;
   typeDefinitionReference: string | null;
   length: number | null;
+  minLength: number | null;
   maxLength: number | null;
   minInclusive: number | null;
   maxInclusive: number | null;

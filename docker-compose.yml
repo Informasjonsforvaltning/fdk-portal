@@ -19,3 +19,4 @@ services:
       - ADMIN_GUI_BASE_URI=https://admin.staging.fellesdatakatalog.digdir.no
       - INFORMATIONMODEL_HARVESTER_HOST=https://informationmodels.staging.fellesdatakatalog.digdir.no
       - FDK_COMMUNITY_BASE_URI=https://community.staging.fellesdatakatalog.digdir.no/
+      - FDK_SPARQL_API_BASE_URI=https://sparql.staging.fellesdatakatalog.digdir.no

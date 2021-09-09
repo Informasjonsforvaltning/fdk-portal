@@ -36,7 +36,7 @@ export const renderFieldModule = (fieldModule: any) => {
         <SC.Body key={fieldModule.id}>
           {parse(
             sanitizeHtml(getParagraphBodyProcessed(fieldModule), {
-              allowedTags: ['img']
+              allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
             })
           )}
         </SC.Body>
@@ -97,7 +97,7 @@ const Article: FC<Partial<Props>> = ({
             <SC.Abstract>
               {parse(
                 sanitizeHtml(abstract, {
-                  allowedTags: ['img']
+                  allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
                 })
               )}
             </SC.Abstract>

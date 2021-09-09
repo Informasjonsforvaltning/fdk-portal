@@ -76,11 +76,9 @@ const getFilterLabel = (
         filterValue
       );
     case Filter.FORMAT:
-      return (
-        referenceDataItems.find(
-          ({ code }: { code: string }) => code === filterValue
-        )?.name ?? filterValue
-      );
+      return `${localization.facet.filterGroup[filterValue.split(' ')[0]]} ${
+        filterValue.split(' ')[1] ?? ''
+      }`;
     case Filter.OPENDATA:
       return localization.open_data;
     case Filter.LASTXDAYS:

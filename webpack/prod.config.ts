@@ -49,12 +49,14 @@ const configuration: Configuration = merge(baseConfig, {
       name: 'portal',
       remotes: {
         sparql_gui:
-          'sparql_gui@https://sparql.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
+          process.env.NAMESPACE === 'production'
+            ? 'sparql_gui@https://sparql.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
+            : 'sparql_gui@https://sparql.staging.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
       },
       shared: {
         ...deps,
-        react: { singleton: true },
-        'react-dom': { singleton: true }
+        react: { singleton: true, requiredVersion: deps.react },
+        'react-dom': { singleton: true, requiredVersion: deps.react }
       }
     })
   ]

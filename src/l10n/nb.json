@@ -201,7 +201,14 @@
     "provenance": "Opphav",
     "format": "Format",
     "lifeEvents": "Livshendelser",
-    "events": "Hendelser"
+    "events": "Hendelser",
+    "search": "Søk",
+    "searchFor": "Søk på",
+    "filterGroup": {
+      "MEDIA_TYPE": "Mediatype",
+      "FILE_TYPE": "Filtype",
+      "UNKNOWN": "Ukjent"
+    }
   },
   "result": {
     "dataset": "Datasett",
@@ -557,7 +564,7 @@
       "objectType": "Objekttype",
       "codeList": "Kodeliste",
       "dataType": "Datatype",
-      "simpleType": "Enkelttype",
+      "simpleType": "Enkeltype",
       "attribute": "Attributt",
       "association": "Assosiasjon",
       "role": "Rolle",
@@ -574,6 +581,7 @@
     },
     "restriction": {
       "valueLength": "Lengde",
+      "minLength": "Minimum lengde",
       "maxLength": "Maksimum lengde",
       "minInclusive": "Minimum verdi",
       "maxInclusive": "Maksimum verdi",
@@ -710,12 +718,12 @@
         "event": "Andre som relaterer til denne hendelsen"
       },
       "subtitle": {
-        "dataset":"Datasett",
-        "dataservice":"Datatjeneste",
-        "concept":"Begrep",
-        "informationmodel":"Informasjonsmodell",
-        "public_service":"Tjeneste",
-        "event":"Hendelse"
+        "dataset": "Datasett",
+        "dataservice": "Datatjeneste",
+        "concept": "Begrep",
+        "informationmodel": "Informasjonsmodell",
+        "public_service": "Tjeneste",
+        "event": "Hendelse"
       },
       "referenceType": "relasjonstype"
     }
@@ -854,13 +862,13 @@
     "rss": "RSS",
     "atom": "Atom"
   },
-  "errorPage":{
-    "serverError":{
+  "errorPage": {
+    "serverError": {
       "title": "Dette er flaut...",
       "content1": "Det har visst skjedd noe teknisk krøll i vår ende.",
       "content2": "Vi jobber med å rette opp feilen. Prøv igjen om en liten stund."
     },
-    "clientError":{
+    "clientError": {
       "title": "Vi beklager!",
       "content1": "Vi finner ikke siden du leter etter.",
       "content2": "Gå tilbake til ",
@@ -889,7 +897,7 @@
         "public_service": "Denne tjenesten er ikke omtalt i ",
         "event": "Denne hendelsen er ikke omtalt i "
       },
-      "content" : {
+      "content": {
         "dataset": "Dette datasettet er omtalt i ",
         "dataservice": "Denne datatjenesten er omtalt i ",
         "concept": "Dette begrepet er omtalt i ",
@@ -899,7 +907,7 @@
       }
     },
     "timeago": {
-      "postPrefix" : "skrev for ",
+      "postPrefix": "skrev for ",
       "singular": {
         "seconds": "Noen få sekunder siden",
         "minutes": "Ett minutt siden",
@@ -920,5 +928,10 @@
     "votes": "Stemmer",
     "replies": "Svar",
     "views": "Visninger"
+  },
+  "serviceMessagesPage": {
+    "title": "Driftsmeldinger",
+    "active": "aktive",
+    "goToDetailsPage": "Se detaljert driftsmelding for mer informasjon."
   }
 }

@@ -171,7 +171,8 @@ const InformationModelDetailsPage: FC<Props> = ({
     dateStringToDate(informationModel?.harvest?.firstHarvested)
   );
   const informationModelCategory = informationModel?.category;
-  const conceptIdentifiers = informationModel?.containsSubjects ?? [];
+  const informationModelSubjects = informationModel?.subjects ?? [];
+  const containedSubjects = informationModel?.containsSubjects ?? [];
   const modelElements = informationModel?.modelElements ?? {};
   const modelProperties = informationModel?.modelProperties ?? {};
   const isPartOf = informationModel?.isPartOf;
@@ -198,14 +199,16 @@ const InformationModelDetailsPage: FC<Props> = ({
   );
 
   useEffect(() => {
-    if (conceptIdentifiers.length > 0) {
+    if (containedSubjects.length + informationModelSubjects.length > 0) {
       getConcepts({
-        identifiers: conceptIdentifiers as string[],
+        identifiers: [
+          ...containedSubjects,
+          ...informationModelSubjects
+        ] as string[],
         size: 1000
       });
     }
-  }, [conceptIdentifiers.join()]);
-
+  }, [[...containedSubjects, ...informationModelSubjects].join()]);
   useEffect(() => {
     if (informationModelIdentifiers.length > 0) {
       getInformationModels({ informationModelIdentifiers, size: 4 });
@@ -214,7 +217,14 @@ const InformationModelDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (informationModel?.uri) {
-      getDataServicesRelations({ endpointDescription: informationModel.uri });
+      getDataServicesRelations({
+        endpointDescription:
+          informationModel?.hasFormat?.reduce(
+            (accumulator, { uri }) =>
+              uri ? [...accumulator, uri] : accumulator,
+            [] as string[]
+          ) ?? []
+      });
       getInformationmodelsRelations({ relations: informationModel.uri });
     }
     return () => {
@@ -628,23 +638,30 @@ const InformationModelDetailsPage: FC<Props> = ({
             }
           >
             <KeyValueList>
-              {concepts.map(
-                ({ id, prefLabel, definition: { text: definition } }, index) =>
-                  id && (
-                    <KeyValueListItem
-                      key={`${id}-${index}`}
-                      property={
-                        <SC.Link
-                          to={`${PATHNAME_CONCEPTS}/${id}`}
-                          as={RouteLink}
-                        >
-                          {translate(prefLabel)}
-                        </SC.Link>
-                      }
-                      value={translate(definition)}
-                    />
-                  )
-              )}
+              {concepts
+                .filter(({ identifier: subjectIdentifier }) =>
+                  informationModelSubjects.includes(subjectIdentifier)
+                )
+                .map(
+                  (
+                    { id, prefLabel, definition: { text: definition } },
+                    index
+                  ) =>
+                    id && (
+                      <KeyValueListItem
+                        key={`${id}-${index}`}
+                        property={
+                          <SC.Link
+                            to={`${PATHNAME_CONCEPTS}/${id}`}
+                            as={RouteLink}
+                          >
+                            {translate(prefLabel)}
+                          </SC.Link>
+                        }
+                        value={translate(definition)}
+                      />
+                    )
+                )}
             </KeyValueList>
           </ContentSection>
         )}
