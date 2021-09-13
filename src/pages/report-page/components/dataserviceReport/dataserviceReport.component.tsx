@@ -155,7 +155,6 @@ const DataserviceReport: FC<Props> = ({
                 <FormatPie
                   formats={topMostUsedFormats.splice(0, 4)}
                   theme={theme}
-                  history={history}
                   entityType={Entity.DATA_SERVICE}
                 />
               </BoxRegular>

@@ -18,7 +18,7 @@ function* getDatasetsReportRequested({
     } else {
       yield put(actions.getDatasetsReportFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getDatasetsReportFailed(e.message));
   }
 }

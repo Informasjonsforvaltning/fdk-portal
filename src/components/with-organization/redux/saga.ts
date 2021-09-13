@@ -28,7 +28,7 @@ function* getOrganizationRequested({
     } else {
       yield put(actions.getOrganizationFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getOrganizationFailed(e.message));
   }
 }
@@ -48,7 +48,7 @@ function* getEnhetsregisteretOrganizationRequested({
     } else {
       yield put(actions.getEnhetsregisteretOrganizationFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getEnhetsregisteretOrganizationFailed(e.message));
   }
 }
@@ -72,7 +72,7 @@ function* getOrganizationRatingRequested({
     } else {
       yield put(actions.getOrganizationRatingFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getOrganizationRatingFailed(e.message));
   }
 }

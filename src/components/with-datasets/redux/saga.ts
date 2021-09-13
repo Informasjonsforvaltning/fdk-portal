@@ -52,7 +52,7 @@ function* getDatasetsRequested({
     } else {
       yield put(actions.getDatasetsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getDatasetsFailed(e.message));
   }
 }
@@ -97,7 +97,7 @@ function* getDatasetsRelationsRequested({
     } else {
       yield put(actions.getDatasetsRelationsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getDatasetsRelationsFailed(e.message));
   }
 }

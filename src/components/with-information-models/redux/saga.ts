@@ -44,7 +44,7 @@ function* getInformationModelsRequested({
     } else {
       yield put(actions.getInformationModelsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getInformationModelsFailed(e.message));
   }
 }
@@ -79,7 +79,7 @@ function* getInformationModelsRelationsRequested({
     } else {
       yield put(actions.getInformationModelsRelationsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getInformationModelsRelationsFailed(e.message));
   }
 }

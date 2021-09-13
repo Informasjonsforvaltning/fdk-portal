@@ -14,8 +14,9 @@ interface Props {
 }
 
 const ServiceMessages: FC<Props> = ({ serviceMessages = [] }) => {
-  const [extendedServiceMessages, setExtendedServiceMessages] =
-    useState<ServiceMessage[] | null>();
+  const [extendedServiceMessages, setExtendedServiceMessages] = useState<
+    ServiceMessage[] | null
+  >();
 
   useEffect(() => {
     setExtendedServiceMessages(

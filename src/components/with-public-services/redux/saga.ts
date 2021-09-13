@@ -64,7 +64,7 @@ function* getPublicServicesRequested({
     } else {
       yield put(actions.getPublicServicesFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getPublicServicesFailed(e.message));
   }
 }
@@ -92,7 +92,7 @@ function* getPublicServicesRequiredByRequested({
     } else {
       yield put(actions.getPublicServicesRequiredByFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getPublicServicesRequiredByFailed(e.message));
   }
 }
@@ -120,7 +120,7 @@ function* getPublicServicesRelatedByRequested({
     } else {
       yield put(actions.getPublicServicesRelatedByFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getPublicServicesRelatedByFailed(e.message));
   }
 }
@@ -173,7 +173,7 @@ function* getPublicServicesRelationsRequested({
     } else {
       yield put(actions.getPublicServicesRelationsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getPublicServicesRelationsFailed(e.message));
   }
 }

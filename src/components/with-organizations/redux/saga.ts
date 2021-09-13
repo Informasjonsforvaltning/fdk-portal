@@ -20,7 +20,7 @@ function* getOrganizationsRequested({
     } else {
       yield put(actions.getOrganizationsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getOrganizationsFailed(e.message));
   }
 }
