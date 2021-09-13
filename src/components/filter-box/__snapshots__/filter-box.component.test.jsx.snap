@@ -41,10 +41,6 @@ exports[`should render FilterBox correctly 1`] = `
         className="fdk-items-list"
       >
         <div
-          className="fdk-items-title"
-          key="group-title-0"
-        />
-        <div
           key="group-items-0"
         >
           <FilterOption
@@ -302,10 +298,6 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
       <div
         className="fdk-items-list"
       >
-        <div
-          className="fdk-items-title"
-          key="group-title-0"
-        />
         <div
           key="group-items-0"
         >

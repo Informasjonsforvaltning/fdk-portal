@@ -94,7 +94,8 @@ export class FilterBox extends React.Component<Props, State> {
 
       return data.reduce((results: Record<string, BucketItem[]>, item) => {
         const group = getGroup(item, groupByPrefix);
-        item.label = item.key.replace(new RegExp(`${group}\\s?`), '');
+        const label = item.key.replace(new RegExp(`${group}\\s?`), '');
+        item.label = label || localization.facet.formatType.UNKNOWN;
         results[group] = results[group] || [];
         results[group].push(item);
         return results;
@@ -135,37 +136,55 @@ export class FilterBox extends React.Component<Props, State> {
             key.toLowerCase().includes(filterSearch.toLowerCase())
           )
         )
-      ).map(([group, items], groupIndex) => (
-        <>
-          <div key={`group-title-${groupIndex}`} className='fdk-items-title'>
-            {localization.facet.filterGroup[group]}
-          </div>
-          <div key={`group-items-${groupIndex}`}>
-            {options(items.slice(0, 5), groupIndex)}
-            {items.length > 5 && (
-              <div>
-                <Collapse isOpen={open}>
-                  <div>{options(items.slice(5), groupIndex)}</div>
-                </Collapse>
-                <button
-                  type='button'
-                  className='fdk-toggleList'
-                  onClick={this.toggleList}
-                >
-                  <img
-                    src={open ? CollapseTextIcon : ExpandTextIcon}
-                    alt=''
-                    className='mr-2'
-                  />
-                  {open
-                    ? localization.facet.showfewer
-                    : localization.facet.showmore}
-                </button>
+      )
+        .sort(([groupA], [groupB]) => {
+          if (groupA === defaultGroup) {
+            return 1;
+          }
+          if (groupB === defaultGroup) {
+            return -1;
+          }
+
+          return 0;
+        })
+        .map(([group, items], groupIndex, groups) => (
+          <>
+            {groups.length > 1 && (
+              <div
+                key={`group-title-${groupIndex}`}
+                className='fdk-items-title'
+              >
+                {group === defaultGroup
+                  ? localization.facet.other
+                  : localization.facet.formatType[group]}
               </div>
             )}
-          </div>
-        </>
-      ));
+            <div key={`group-items-${groupIndex}`}>
+              {options(items.slice(0, 5), groupIndex)}
+              {items.length > 5 && (
+                <div>
+                  <Collapse isOpen={open}>
+                    <div>{options(items.slice(5), groupIndex)}</div>
+                  </Collapse>
+                  <button
+                    type='button'
+                    className='fdk-toggleList'
+                    onClick={this.toggleList}
+                  >
+                    <img
+                      src={open ? CollapseTextIcon : ExpandTextIcon}
+                      alt=''
+                      className='mr-2'
+                    />
+                    {open
+                      ? localization.facet.showfewer
+                      : localization.facet.showmore}
+                  </button>
+                </div>
+              )}
+            </div>
+          </>
+        ));
     }
     return null;
   }

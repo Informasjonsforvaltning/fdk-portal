@@ -129,7 +129,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 compareConceptList={compareConceptList}
                 addConcept={addConcept}
                 removeConcept={removeConcept}
-                mediatypes={mediatypes}
               />
               <SC.Pagination>
                 <span className='uu-invisible' aria-hidden='false'>
