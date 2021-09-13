@@ -70,7 +70,7 @@ interface Props
 const DatasetDetailsPage: FC<Props> = ({
   dataset,
   isLoadingDataset,
-  referenceData: { referencetypes: referenceTypes, mediatypes: mediaTypes },
+  referenceData: { referencetypes: referenceTypes },
   concepts,
   datasets,
   administrativeUnits,
@@ -117,10 +117,6 @@ const DatasetDetailsPage: FC<Props> = ({
 
     if (!referenceTypes) {
       getReferenceData('referencetypes');
-    }
-
-    if (!mediaTypes) {
-      getReferenceData('mediatypes');
     }
 
     return () => {
