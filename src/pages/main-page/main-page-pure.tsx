@@ -29,15 +29,9 @@ const MainPage: FC<Props> = ({
   entities,
   posts,
   entitiesActions: { getEntitiesRequested: getEntities },
-  referenceData: { mediatypes: mediaTypes },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData },
   communityActions: { getRecentPostsRequested: getRecentPosts, resetPosts }
 }) => {
   useEffect(() => {
-    if (!mediaTypes) {
-      getReferenceData('mediatypes');
-    }
-
     getRecentPosts(CommunityTerm.ALL);
     getEntities();
     return () => {

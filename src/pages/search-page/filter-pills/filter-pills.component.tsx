@@ -15,12 +15,7 @@ import {
 } from '../search-location-helper';
 
 import SC from './styled';
-import type {
-  EuTheme,
-  LosTheme,
-  EventType,
-  MediaTypeOrExtent
-} from '../../../types';
+import type { EuTheme, LosTheme, EventType } from '../../../types';
 import { Filter } from '../../../types/enums';
 
 interface Props extends RouteComponentProps {
@@ -28,7 +23,6 @@ interface Props extends RouteComponentProps {
   losItems: Record<string, Partial<LosTheme>>;
   publishers: any;
   eventTypes?: Record<string, EventType>;
-  mediaTypes?: Record<string, Partial<MediaTypeOrExtent>>;
 }
 
 interface ReferenceDataItems {
@@ -124,8 +118,7 @@ const FilterPillsPure: FC<Props> = ({
   themesItems,
   publishers,
   losItems,
-  eventTypes,
-  mediaTypes = {}
+  eventTypes
 }) => {
   if (!isFilterNotEmpty(location)) {
     return null;
@@ -138,8 +131,7 @@ const FilterPillsPure: FC<Props> = ({
     [Filter.LOS]: losItems,
     [Filter.ORGPATH]: publishers,
     [Filter.ORGANIZATION_NUMBER]: publishers,
-    [Filter.EVENT_TYPE]: eventTypes,
-    [Filter.FORMAT]: mediaTypes
+    [Filter.EVENT_TYPE]: eventTypes
   };
 
   return (

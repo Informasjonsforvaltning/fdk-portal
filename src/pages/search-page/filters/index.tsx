@@ -29,7 +29,6 @@ interface Props extends RouteComponentProps {
   themesItems?: any;
   publishers?: any;
   losItems?: any;
-  mediaTypes: any;
   aggregations: any;
   eventTypes?: Record<string, EventType>;
 }
@@ -38,7 +37,6 @@ const FiltersPure: FC<Props> = ({
   themesItems = [],
   publishers = [],
   losItems = [],
-  mediaTypes = [],
   aggregations = {},
   history,
   location: { pathname } = {},
@@ -329,7 +327,6 @@ const FiltersPure: FC<Props> = ({
         publishers={publishers}
         losItems={losItems}
         eventTypes={eventTypes}
-        mediaTypes={mediaTypes}
       />
       <SC.Filters>{getFilters()}</SC.Filters>
     </>

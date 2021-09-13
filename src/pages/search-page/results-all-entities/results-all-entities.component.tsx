@@ -62,7 +62,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   location,
   organizations = [],
   organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
-  referenceData: { los = [], themes = [], mediatypes = [] },
+  referenceData: { los = [], themes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   eventTypes,
   eventTypesActions: { getEventTypesRequested: getEventTypes }
@@ -73,9 +73,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     }
     if (themes.length === 0) {
       getReferenceData('themes');
-    }
-    if (mediatypes.length === 0) {
-      getReferenceData('mediatypes');
     }
     if (organizations.length === 0) {
       getOrganizations();
@@ -115,7 +112,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 themesItems={keyBy(themes, 'code')}
                 publishers={keyBy(organizations, 'orgPath')}
                 losItems={getLosByKeys(los)}
-                mediaTypes={mediatypes}
                 eventTypes={eventTypesMap}
               />
               <CompareList
