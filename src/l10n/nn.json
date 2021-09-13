@@ -204,7 +204,8 @@
     "events": "Hendingar",
     "search": "Søk",
     "searchFor": "Søk på",
-    "filterGroup": {
+    "other": "Øvrige",
+    "formatType": {
       "MEDIA_TYPE": "Mediatype",
       "FILE_TYPE": "Filtype",
       "UNKNOWN": "Ukjent"

@@ -14,12 +14,11 @@ import EventItem from '../event-item';
 import withErrorBoundary from '../with-error-boundary';
 import ErrorPage from '../error-page';
 
-import type { Entity as EntityType, Concept, MediaType } from '../../types';
+import type { Entity as EntityType, Concept } from '../../types';
 import { Entity } from '../../types/enums';
 
 interface ExternalProps {
   entities: Partial<EntityType>[];
-  mediatypes?: MediaType[];
   compareConceptList?: Concept[];
   addConcept?: (concept: Partial<Concept>) => void;
   removeConcept?: (id?: string) => void;
@@ -30,14 +29,10 @@ interface Props extends ExternalProps {}
 const renderEntity = (
   entity: Partial<EntityType>,
   {
-    mediatypes,
     compareConceptList,
     addConcept,
     removeConcept
-  }: Pick<
-    Props,
-    'mediatypes' | 'compareConceptList' | 'addConcept' | 'removeConcept'
-  >
+  }: Pick<Props, 'compareConceptList' | 'addConcept' | 'removeConcept'>
 ) => {
   switch (entity.type) {
     case Entity.DATASET:
@@ -50,7 +45,7 @@ const renderEntity = (
             ]
           }
         >
-          <DatasetItem dataset={entity} mediatypes={mediatypes} />
+          <DatasetItem dataset={entity} />
         </ThemeProvider>
       );
     case Entity.DATA_SERVICE:
@@ -130,7 +125,6 @@ const renderEntity = (
 
 const SearchEntities: FC<Props> = ({
   entities,
-  mediatypes,
   compareConceptList,
   addConcept,
   removeConcept
@@ -139,7 +133,6 @@ const SearchEntities: FC<Props> = ({
     <div>
       {entities.map(entity =>
         renderEntity(entity, {
-          mediatypes,
           compareConceptList,
           addConcept,
           removeConcept

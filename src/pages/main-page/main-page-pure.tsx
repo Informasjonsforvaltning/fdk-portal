@@ -61,7 +61,7 @@ const MainPage: FC<Props> = ({
         <SC.Content className='row'>
           <section className='col-12 col-lg-8'>
             <HeaderSC.Header>{localization.sort.modified}</HeaderSC.Header>
-            <SearchEntities entities={entities} mediatypes={mediaTypes} />
+            <SearchEntities entities={entities} />
           </section>
           <section className='col-12 col-lg-4'>
             <HeaderSC.Header>

@@ -204,7 +204,8 @@
     "events": "Events",
     "search": "Search",
     "searchFor": "Search for",
-    "filterGroup": {
+    "other": "Other",
+    "formatType": {
       "MEDIA_TYPE": "Mediatype",
       "FILE_TYPE": "Filetype",
       "UNKNOWN": "Unknown"

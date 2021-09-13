@@ -332,7 +332,6 @@ const DatasetDetailsPage: FC<Props> = ({
               <DatasetDistribution
                 key={`${distribution.uri || 'distribution'}-${index}`}
                 distribution={distribution}
-                mediaTypes={mediaTypes}
                 accessServices={mapAccessServices(distribution)}
               />
             ))}

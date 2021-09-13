@@ -15,7 +15,12 @@ import {
 } from '../search-location-helper';
 
 import SC from './styled';
-import type { EuTheme, LosTheme, EventType, MediaType } from '../../../types';
+import type {
+  EuTheme,
+  LosTheme,
+  EventType,
+  MediaTypeOrExtent
+} from '../../../types';
 import { Filter } from '../../../types/enums';
 
 interface Props extends RouteComponentProps {
@@ -23,7 +28,7 @@ interface Props extends RouteComponentProps {
   losItems: Record<string, Partial<LosTheme>>;
   publishers: any;
   eventTypes?: Record<string, EventType>;
-  mediaTypes?: Record<string, Partial<MediaType>>;
+  mediaTypes?: Record<string, Partial<MediaTypeOrExtent>>;
 }
 
 interface ReferenceDataItems {
@@ -76,7 +81,7 @@ const getFilterLabel = (
         filterValue
       );
     case Filter.FORMAT:
-      return `${localization.facet.filterGroup[filterValue.split(' ')[0]]} ${
+      return `${localization.facet.formatType[filterValue.split(' ')[0]]} ${
         filterValue.split(' ')[1] ?? ''
       }`;
     case Filter.OPENDATA:
