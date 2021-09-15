@@ -227,7 +227,7 @@ export class FilterBox extends React.Component<Props, State> {
                   />
                 </div>
               )}
-              <div className='fdk-items-list'>
+              <div key='fdk-items-list' className='fdk-items-list'>
                 {this._renderOptions(
                   filter,
                   onClick,
