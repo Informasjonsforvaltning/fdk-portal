@@ -52,6 +52,12 @@ export enum DataFormat {
   UNKNOWN = 'unknown'
 }
 
+export enum MediaTypeOrExtentType {
+  MEDIA_TYPE = 'MEDIA_TYPE',
+  FILE_TYPE = 'FILE_TYPE',
+  UNKNOWN = 'UNKNOWN'
+}
+
 export enum SortOrder {
   ASC,
   DSC

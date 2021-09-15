@@ -180,7 +180,7 @@ const DataserviceDetailsPage: FC<Props> = ({
             id='formats'
             title={translations.detailsPage.sectionTitles.dataService.formats}
           >
-            {formats.map(format => format.name).join(', ')}
+            {formats.map(format => format.name || format.code).join(', ')}
           </ContentSection>
         )}
         {(endpointUrls.length > 0 ||

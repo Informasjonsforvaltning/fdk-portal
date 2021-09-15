@@ -54,7 +54,7 @@ const DatasetDistribution: FC<Props> = ({
           accessURL?.toLowerCase() ||
           translate(accessServices[0]?.description)
         }
-        formats={formats.map(format => format.name)}
+        formats={formats}
         data-testid={testIds.summary}
       />
     </ExpansionPanelHead>
@@ -63,7 +63,7 @@ const DatasetDistribution: FC<Props> = ({
         <Detail
           property={translations.dataset.distribution.format}
           value={formats
-            .map(format => format.name)
+            .map(format => format.name || format.code)
             .sort()
             .join(', ')}
           data-testid={testIds.detail}
