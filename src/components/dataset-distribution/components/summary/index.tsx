@@ -5,10 +5,11 @@ import SC from './styled';
 import testIds from './test-ids';
 
 import formatIcons from './format-icons';
+import { MediaTypeOrExtent } from '../../../../types';
 
 interface Props {
   title: string;
-  formats: string[];
+  formats: MediaTypeOrExtent[];
 }
 
 const Summary: FC<Props> = ({ title, formats, ...props }) => (
@@ -16,9 +17,9 @@ const Summary: FC<Props> = ({ title, formats, ...props }) => (
     <SC.Title data-testid={testIds.title}>{title}</SC.Title>
     <SC.Formats data-testid={testIds.formats}>
       {formats.map(format => {
-        const Icon = formatIcons(format);
+        const Icon = formatIcons(format.code);
         return (
-          <SC.Format key={format} data-testid={testIds.format}>
+          <SC.Format key={format.code} data-testid={testIds.format}>
             <Icon />
           </SC.Format>
         );

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { DataService } from '../../types';
-import { SearchTypes } from '../../types/enums';
+import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';
 import {
   SearchHit,
   SearchHitFormats,
@@ -50,7 +50,13 @@ export const DataServiceItem: FC<Props> = ({
     )}
     {fdkFormat && (
       <SearchHitFormats>
-        {[...new Set(fdkFormat.map(format => format.name))]
+        {[
+          ...new Set(
+            fdkFormat
+              .filter(format => format.type !== MediaTypeOrExtentType.UNKNOWN)
+              .map(format => format.name)
+          )
+        ]
           .sort()
           .map((format, index) => (
             <span key={`format-${format}-${index}`}>{`${format}`}</span>

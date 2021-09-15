@@ -20,7 +20,7 @@ import ReactTooltipSC from '../tooltip/styled';
 import PublicIconBase from '../../images/icon-access-open-md.svg';
 
 import type { Dataset, MediaTypeOrExtent } from '../../types';
-import { SearchTypes } from '../../types/enums';
+import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';
 
 interface Props {
   dataset: Partial<Dataset>;
@@ -122,7 +122,13 @@ export const DatasetItem: FC<Props> = ({
       </SearchHitThemes>
 
       <SearchHitFormats>
-        {[...new Set(formats.map(format => format.name))]
+        {[
+          ...new Set(
+            formats
+              .filter(format => format.type !== MediaTypeOrExtentType.UNKNOWN)
+              .map(format => format.name)
+          )
+        ]
           .sort()
           .map((format, index) => (
             <span key={`format-${format}-${index}`}>{`${format}`}</span>

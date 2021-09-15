@@ -16,53 +16,52 @@ import SiriIcon from '../../../../images/icon-format-siri-lg.svg';
 import UnknownIcon from '../../../../images/icon-format-unknown-lg.svg';
 
 const getFormatIcon = (str: string) => {
-  if (str.toLowerCase().includes('csv')) {
+  const containsFormat = (format: string) =>
+    str?.toLowerCase().includes(format);
+
+  if (containsFormat('csv')) {
     return CsvIcon;
   }
-  if (str.toLowerCase().includes('yaml')) {
+  if (containsFormat('yaml')) {
     return YamlIcon;
   }
-  if (str.toLowerCase().includes('geo+json')) {
+  if (containsFormat('geo+json')) {
     return GeoJsonIcon;
   }
-  if (str.toLowerCase().includes('html')) {
+  if (containsFormat('html')) {
     return HtmlIcon;
   }
-  if (str.toLowerCase().includes('sosi')) {
+  if (containsFormat('sosi')) {
     return SosiIcon;
   }
-  if (
-    str
-      .toLowerCase()
-      .includes('openxmlformats-officedocument.spreadsheetml.sheet')
-  ) {
+  if (containsFormat('openxmlformats-officedocument.spreadsheetml.sheet')) {
     return XlsxIcon;
   }
-  if (str.toLowerCase().includes('sealed-xls')) {
+  if (containsFormat('sealed-xls')) {
     return XlsIcon;
   }
-  if (str.toLowerCase().includes('rss')) {
+  if (containsFormat('rss')) {
     return RssIcon;
   }
-  if (str.toLowerCase().includes('rdf+xml')) {
+  if (containsFormat('rdf+xml')) {
     return RdfXmlIcon;
   }
-  if (str.toLowerCase().includes('turtle')) {
+  if (containsFormat('turtle')) {
     return TurtleIcon;
   }
-  if (str.toLowerCase().includes('json+ld')) {
+  if (containsFormat('json+ld')) {
     return JsonLdIcon;
   }
-  if (str.toLowerCase().includes('txt')) {
+  if (containsFormat('txt')) {
     return TxtIcon;
   }
-  if (str.toLowerCase().includes('siri')) {
+  if (containsFormat('siri')) {
     return SiriIcon;
   }
-  if (str.toLowerCase().includes('xml')) {
+  if (containsFormat('xml')) {
     return XmlIcon;
   }
-  if (str.toLowerCase().includes('json')) {
+  if (containsFormat('json')) {
     return JsonIcon;
   }
 
