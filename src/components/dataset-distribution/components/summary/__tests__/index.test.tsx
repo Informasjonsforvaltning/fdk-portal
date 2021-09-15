@@ -8,19 +8,37 @@ import { Expectation, renderWithTheme } from '../../../../../../test/utils';
 import Summary from '..';
 
 import testIds from '../test-ids';
-
-import { DataFormat } from '../../../../../types/enums';
+import { MediaTypeOrExtent } from '../../../../../types';
+import { MediaTypeOrExtentType } from '../../../../../types/enums';
 
 afterEach(cleanup);
 
 describe('Summary component', () => {
   it(Expectation.STRUCTURE, () => {
     const title = 'title';
-    const formats: DataFormat[] = [
-      DataFormat.JSON,
-      DataFormat.XML,
-      DataFormat.CSV,
-      DataFormat.UNKNOWN
+    const formats: MediaTypeOrExtent[] = [
+      {
+        uri: 'https://www.iana.org/assignments/media-types/application/json',
+        code: 'application/json',
+        name: 'json',
+        type: MediaTypeOrExtentType.MEDIA_TYPE
+      },
+      {
+        uri: 'https://www.iana.org/assignments/media-types/text/xml',
+        code: 'text/xml',
+        name: 'xml',
+        type: MediaTypeOrExtentType.MEDIA_TYPE
+      },
+      {
+        uri: 'https://www.iana.org/assignments/media-types/text/xml',
+        code: 'text/csv',
+        name: 'csv',
+        type: MediaTypeOrExtentType.MEDIA_TYPE
+      },
+      {
+        code: 'unknown',
+        type: MediaTypeOrExtentType.UNKNOWN
+      }
     ];
 
     const { getByTestId, getAllByTestId, queryAllByTestId, rerender } =

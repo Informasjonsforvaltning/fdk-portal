@@ -559,8 +559,8 @@ export interface Distribution {
 }
 
 export interface MediaTypeOrExtent {
-  uri: string;
-  name: string;
+  uri?: string;
+  name?: string;
   code: string;
   type: MediaTypeOrExtentType;
 }
