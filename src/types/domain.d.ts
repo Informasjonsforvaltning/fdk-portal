@@ -436,6 +436,16 @@ interface ReferenceType {
   prefLabel: Partial<TextLanguage>;
 }
 
+interface ApiSpecifications {
+  apiSpecifications: ApiSpecification[];
+}
+interface ApiSpecification {
+  uri: string;
+  code: string;
+  source: string;
+  label: Partial<TextLanguage>;
+}
+
 interface DatasetReference {
   referenceType: ReferenceType;
   source: { uri: string };
@@ -577,7 +587,7 @@ export interface ReferenceData {
   referencetypes?: ReferenceType[];
   mediatypes?: MediaType[];
   linguisticsystem?: ReferenceType[];
-  apiservicetype?: ReferenceType[];
+  apispecifications?: ApiSpecifications;
 }
 
 export interface Link {

@@ -649,7 +649,7 @@
         "formats": "Formater",
         "contactInformation": "Kontaktinformasjon",
         "usage": "Ta i bruk datatjenesten",
-        "serviceType": "Tjenestetype",
+        "conformsTo": "Er i samsvar med",
         "datasetReferences": "Tilknyttede datasettbeskrivelser",
         "informationModelReferences": "Informasjonsmodellar"
       },
