@@ -26,16 +26,20 @@ const PublishingRouter: FC<RouteComponentProps> = ({ match: { url } }) => (
         component={pages.aboutHarvesting}
       />
       <Route exact path={`${url}/terms-of-use`} component={pages.termsOfUse} />
-      <Route
-        exact
-        path={`${url}/service-messages`}
-        component={pages.serviceMessages}
-      />
-      <Route
-        exact
-        path={`${url}/service-messages/:id`}
-        component={pages.serviceMessage}
-      />
+      {false && (
+        <Route
+          exact
+          path={`${url}/service-messages`}
+          component={pages.serviceMessages}
+        />
+      )}
+      {false && (
+        <Route
+          exact
+          path={`${url}/service-messages/:id`}
+          component={pages.serviceMessage}
+        />
+      )}
       <Redirect to={url} />
     </Switch>
   </Suspense>
