@@ -29,15 +29,9 @@ const MainPage: FC<Props> = ({
   entities,
   posts,
   entitiesActions: { getEntitiesRequested: getEntities },
-  referenceData: { mediatypes: mediaTypes },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData },
   communityActions: { getRecentPostsRequested: getRecentPosts, resetPosts }
 }) => {
   useEffect(() => {
-    if (!mediaTypes) {
-      getReferenceData('mediatypes');
-    }
-
     getRecentPosts(CommunityTerm.ALL);
     getEntities();
     return () => {
@@ -61,7 +55,7 @@ const MainPage: FC<Props> = ({
         <SC.Content className='row'>
           <section className='col-12 col-lg-8'>
             <HeaderSC.Header>{localization.sort.modified}</HeaderSC.Header>
-            <SearchEntities entities={entities} mediatypes={mediaTypes} />
+            <SearchEntities entities={entities} />
           </section>
           <section className='col-12 col-lg-4'>
             <HeaderSC.Header>

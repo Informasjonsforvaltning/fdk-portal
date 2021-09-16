@@ -86,7 +86,7 @@ function* getInformationModelRdfRepresentationsRequested({
     } else {
       yield put(actions.getInformationModelRdfRepresentationsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getInformationModelRdfRepresentationsFailed(e.message));
   }
 }

@@ -15,23 +15,57 @@ import TxtIcon from '../../../../images/icon-format-txt-lg.svg';
 import SiriIcon from '../../../../images/icon-format-siri-lg.svg';
 import UnknownIcon from '../../../../images/icon-format-unknown-lg.svg';
 
-import { DataFormat } from '../../../../types/enums';
+const getFormatIcon = (str: string) => {
+  const containsFormat = (format: string) =>
+    str?.toLowerCase().includes(format);
 
-export default {
-  [DataFormat.JSON]: JsonIcon,
-  [DataFormat.CSV]: CsvIcon,
-  [DataFormat.XML]: XmlIcon,
-  [DataFormat.YAML]: YamlIcon,
-  [DataFormat.GEOJSON]: GeoJsonIcon,
-  [DataFormat.HTML]: HtmlIcon,
-  [DataFormat.SOSI]: SosiIcon,
-  [DataFormat.XLSX]: XlsxIcon,
-  [DataFormat.XLS]: XlsIcon,
-  [DataFormat.RSS]: RssIcon,
-  [DataFormat.RDF_XML]: RdfXmlIcon,
-  [DataFormat.TURTLE]: TurtleIcon,
-  [DataFormat.JSONLD]: JsonLdIcon,
-  [DataFormat.TXT]: TxtIcon,
-  [DataFormat.SIRI]: SiriIcon,
-  [DataFormat.UNKNOWN]: UnknownIcon
-} as Record<string, any>;
+  if (containsFormat('csv')) {
+    return CsvIcon;
+  }
+  if (containsFormat('yaml')) {
+    return YamlIcon;
+  }
+  if (containsFormat('geo+json')) {
+    return GeoJsonIcon;
+  }
+  if (containsFormat('html')) {
+    return HtmlIcon;
+  }
+  if (containsFormat('sosi')) {
+    return SosiIcon;
+  }
+  if (containsFormat('openxmlformats-officedocument.spreadsheetml.sheet')) {
+    return XlsxIcon;
+  }
+  if (containsFormat('sealed-xls')) {
+    return XlsIcon;
+  }
+  if (containsFormat('rss')) {
+    return RssIcon;
+  }
+  if (containsFormat('rdf+xml')) {
+    return RdfXmlIcon;
+  }
+  if (containsFormat('turtle')) {
+    return TurtleIcon;
+  }
+  if (containsFormat('json+ld')) {
+    return JsonLdIcon;
+  }
+  if (containsFormat('txt')) {
+    return TxtIcon;
+  }
+  if (containsFormat('siri')) {
+    return SiriIcon;
+  }
+  if (containsFormat('xml')) {
+    return XmlIcon;
+  }
+  if (containsFormat('json')) {
+    return JsonIcon;
+  }
+
+  return UnknownIcon;
+};
+
+export default getFormatIcon;

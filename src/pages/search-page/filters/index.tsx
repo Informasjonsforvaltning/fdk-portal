@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FC, memo, useState } from 'react';
-import keyBy from 'lodash/keyBy';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import {
@@ -30,7 +29,6 @@ interface Props extends RouteComponentProps {
   themesItems?: any;
   publishers?: any;
   losItems?: any;
-  mediaTypes: any;
   aggregations: any;
   eventTypes?: Record<string, EventType>;
 }
@@ -39,7 +37,6 @@ const FiltersPure: FC<Props> = ({
   themesItems = [],
   publishers = [],
   losItems = [],
-  mediaTypes = [],
   aggregations = {},
   history,
   location: { pathname } = {},
@@ -210,11 +207,12 @@ const FiltersPure: FC<Props> = ({
             <FilterBox
               htmlKey={3}
               title={localization.facet.format}
-              filter={aggregations.mediaType}
+              filter={aggregations.format}
+              searchable
+              groupByPrefix={['FILE_TYPE', 'MEDIA_TYPE']}
               onClick={handleFilterFormat}
               activeFilter={formatParam}
               capitalizeOption={false}
-              referenceDataItems={keyBy(mediaTypes, 'code')}
             />
             <FilterBox
               htmlKey={4}
@@ -246,10 +244,11 @@ const FiltersPure: FC<Props> = ({
               htmlKey={2}
               title={localization.facet.format}
               capitalizeOption={false}
-              filter={aggregations.formats}
+              filter={aggregations.format}
+              searchable
+              groupByPrefix={['FILE_TYPE', 'MEDIA_TYPE', 'UNKNOWN']}
               onClick={handleFilterFormat}
               activeFilter={formatParam}
-              referenceDataItems={keyBy(mediaTypes, 'code')}
             />
           </>
         );
@@ -328,7 +327,6 @@ const FiltersPure: FC<Props> = ({
         publishers={publishers}
         losItems={losItems}
         eventTypes={eventTypes}
-        mediaTypes={mediaTypes}
       />
       <SC.Filters>{getFilters()}</SC.Filters>
     </>

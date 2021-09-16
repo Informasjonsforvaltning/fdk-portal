@@ -128,10 +128,8 @@ const DataserviceDetailsPage: FC<Props> = ({
   const description = translate(
     dataService?.descriptionFormatted ?? dataService?.description
   );
-  const formats =
-    dataService?.mediaType
-      ?.map(({ prefLabel }) => translate(prefLabel))
-      .filter(Boolean) ?? [];
+
+  const formats = dataService?.fdkFormat ?? [];
   const endpointUrls = dataService?.endpointURL ?? [];
   const endpointDescriptions = dataService?.endpointDescription ?? [];
   const landingPage = dataService?.landingPage?.[0];
@@ -182,7 +180,7 @@ const DataserviceDetailsPage: FC<Props> = ({
             id='formats'
             title={translations.detailsPage.sectionTitles.dataService.formats}
           >
-            {formats.join(', ')}
+            {formats.map(format => format.name || format.code).join(', ')}
           </ContentSection>
         )}
         {(endpointUrls.length > 0 ||

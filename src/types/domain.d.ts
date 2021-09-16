@@ -514,7 +514,7 @@ export interface DataService {
   isOpenLicense: boolean;
   isFree: boolean;
   harvest?: Partial<Harvest>;
-  mediaType?: Partial<MediaType>[];
+  fdkFormat?: Partial<MediaTypeOrExtent>[];
   endpointURL?: string[];
   endpointDescription?: string[];
   landingPage: string[];
@@ -548,7 +548,7 @@ export interface Distribution {
   type: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  format: string[];
+  fdkFormat: MediaTypeOrExtent[];
   license: License[];
   openLicense: boolean;
   accessURL: string[];
@@ -558,11 +558,17 @@ export interface Distribution {
   accessService?: AccessService[];
 }
 
+export interface MediaTypeOrExtent {
+  uri?: string;
+  name?: string;
+  code: string;
+  type: MediaTypeOrExtentType;
+}
+
 export interface MediaType {
   uri: string;
-  code: string;
   name: string;
-  prefLabel?: Partial<TextLanguage>;
+  code: string;
 }
 
 export interface ReferenceData {

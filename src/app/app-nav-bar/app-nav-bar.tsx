@@ -128,7 +128,7 @@ const languageButtons = ({
 );
 const Logo = getConfig().useDemoLogo ? <SC.DemoLogo /> : <SC.Logo />;
 
-export const AppNavBar: FC<Props> = onChangeLanguage => (
+export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => (
   <ThemeProvider theme={isTransportportal ? themeNAP : themeFDK}>
     <SC.Header>
       <SC.Container>
@@ -151,7 +151,7 @@ export const AppNavBar: FC<Props> = onChangeLanguage => (
             caret
             title={localization.lang.chosenLanguage}
           >
-            {languageButtons(onChangeLanguage)}
+            {languageButtons({ onChangeLanguage })}
           </PortalDropdownMenu>
         </SC.ContentWrapper>
         <PortalDropdownMenu
@@ -161,7 +161,7 @@ export const AppNavBar: FC<Props> = onChangeLanguage => (
           title={localization.app.menu}
         >
           {isTransportportal ? transportItems() : fdkItems()}
-          {languageButtons(onChangeLanguage)}
+          {languageButtons({ onChangeLanguage })}
         </PortalDropdownMenu>
       </SC.Container>
     </SC.Header>

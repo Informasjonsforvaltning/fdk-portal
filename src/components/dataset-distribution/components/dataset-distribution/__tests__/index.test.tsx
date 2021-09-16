@@ -6,11 +6,9 @@ import { Expectation, renderWithTheme } from '../../../../../../test/utils';
 
 import DatasetDistribution from '..';
 
-import { formatSorter } from '../../../../../utils/mediatype';
-
 import testIds from '../test-ids';
 
-import { DataFormat } from '../../../../../types/enums';
+import { MediaTypeOrExtent } from '../../../../../types';
 
 describe('DatasetDistribution component', () => {
   xit(Expectation.STRUCTURE, () => {
@@ -24,10 +22,25 @@ describe('DatasetDistribution component', () => {
       nn: 'description-nn',
       en: 'description-en'
     };
-    const format: DataFormat[] = [
-      DataFormat.JSON,
-      DataFormat.XML,
-      DataFormat.CSV
+    const fdkFormat: MediaTypeOrExtent[] = [
+      {
+        uri: 'https://www.iana.org/assignments/media-types/application/json',
+        name: 'json',
+        code: 'application/json',
+        type: 'MEDIA_TYPE'
+      },
+      {
+        uri: 'https://www.iana.org/assignments/media-types/text/xml',
+        name: 'xml',
+        code: 'text/xml',
+        type: 'MEDIA_TYPE'
+      },
+      {
+        uri: 'https://www.iana.org/assignments/media-types/text/csv',
+        name: 'csv',
+        code: 'text/csv',
+        type: 'MEDIA_TYPE'
+      }
     ];
     const licenseWithLabel = {
       uri: 'licence-uri',
@@ -148,7 +161,7 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
     rerender(
-      <DatasetDistribution distribution={{ title, description, format }} />
+      <DatasetDistribution distribution={{ title, description, fdkFormat }} />
     );
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -161,7 +174,10 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(2);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.sort(formatSorter).join(', ')
+      fdkFormat
+        .map(format => format.name)
+        .sort()
+        .join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
       description.en
@@ -186,7 +202,7 @@ describe('DatasetDistribution component', () => {
         distribution={{
           title,
           description,
-          format,
+          fdkFormat,
           license: [licenseWithLabel]
         }}
       />
@@ -215,7 +231,10 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(3);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.join(', ')
+      fdkFormat
+        .map(format => format.name)
+        .sort()
+        .join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
       licenseWithLabel.prefLabel.en
@@ -235,7 +254,7 @@ describe('DatasetDistribution component', () => {
         distribution={{
           title,
           description,
-          format,
+          fdkFormat,
           license: [licenseWithoutLabel]
         }}
       />
@@ -251,7 +270,10 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(3);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.join(', ')
+      fdkFormat
+        .map(format => format.name)
+        .sort()
+        .join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
       licenseWithoutLabel.uri
@@ -284,7 +306,7 @@ describe('DatasetDistribution component', () => {
         distribution={{
           title,
           description,
-          format,
+          fdkFormat,
           license: [licenseWithLabel],
           downloadURL
         }}
@@ -314,7 +336,10 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(3);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.join(', ')
+      fdkFormat
+        .map(format => format.name)
+        .sort()
+        .join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
       licenseWithLabel.prefLabel.en
@@ -334,7 +359,7 @@ describe('DatasetDistribution component', () => {
         distribution={{
           title,
           description,
-          format,
+          fdkFormat,
           license: [licenseWithLabel],
           downloadURL,
           accessURL
@@ -352,7 +377,10 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(4);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.join(', ')
+      fdkFormat
+        .map(format => format.name)
+        .sort()
+        .join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
       accessURL[0]
@@ -394,7 +422,7 @@ describe('DatasetDistribution component', () => {
         distribution={{
           title,
           description,
-          format,
+          fdkFormat,
           license: [licenseWithLabel],
           downloadURL,
           accessURL,
@@ -426,7 +454,10 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(5);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.join(', ')
+      fdkFormat
+        .map(format => format.name)
+        .sort()
+        .join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
       accessURL[0]
@@ -465,7 +496,7 @@ describe('DatasetDistribution component', () => {
         distribution={{
           title,
           description,
-          format,
+          fdkFormat,
           license: [licenseWithLabel],
           downloadURL,
           accessURL,
@@ -484,7 +515,10 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(5);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.join(', ')
+      fdkFormat
+        .map(format => format.name)
+        .sort()
+        .join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
       accessURL[0]
@@ -536,7 +570,7 @@ describe('DatasetDistribution component', () => {
         distribution={{
           title,
           description,
-          format,
+          fdkFormat,
           license: [licenseWithLabel],
           downloadURL,
           accessURL,
@@ -569,7 +603,10 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionSummaryElement).toHaveTextContent(title.en);
     expect(datasetDistributionDetailElements).toHaveLength(5);
     expect(datasetDistributionDetailElements[0]).toHaveTextContent(
-      format.join(', ')
+      fdkFormat
+        .map(format => format.name)
+        .sort()
+        .join(', ')
     );
     expect(datasetDistributionDetailElements[1]).toHaveTextContent(
       accessURL[0]

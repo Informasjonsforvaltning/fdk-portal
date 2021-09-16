@@ -21,23 +21,11 @@ import SC from './styled';
 
 import testIds from './test-ids';
 
-import {
-  toFormat,
-  formatSorter,
-  toMediaType
-} from '../../../../utils/mediatype';
-
-import {
-  AccessService,
-  Distribution,
-  License,
-  MediaType
-} from '../../../../types';
+import { AccessService, Distribution, License } from '../../../../types';
 
 interface ExternalProps {
   accessServices?: AccessService[];
   distribution: Partial<Distribution>;
-  mediaTypes?: MediaType[];
 }
 
 interface Props extends ExternalProps {}
@@ -47,7 +35,7 @@ const DatasetDistribution: FC<Props> = ({
     title,
     description,
     license: licenses = [],
-    format: formats = [],
+    fdkFormat: formats = [],
     downloadURL: [downloadURL] = [],
     accessURL: [accessURL] = [],
     conformsTo: [
@@ -55,7 +43,6 @@ const DatasetDistribution: FC<Props> = ({
     ] = [],
     page: [{ uri: pageUri = null } = {}] = []
   },
-  mediaTypes = [],
   accessServices = []
 }) => (
   <SC.DatasetDistribution data-testid={testIds.root}>
@@ -67,7 +54,7 @@ const DatasetDistribution: FC<Props> = ({
           accessURL?.toLowerCase() ||
           translate(accessServices[0]?.description)
         }
-        formats={formats.map(toFormat).sort(formatSorter)}
+        formats={formats}
         data-testid={testIds.summary}
       />
     </ExpansionPanelHead>
@@ -76,9 +63,8 @@ const DatasetDistribution: FC<Props> = ({
         <Detail
           property={translations.dataset.distribution.format}
           value={formats
-            .map(toFormat)
-            .sort(formatSorter)
-            .map(toMediaType(mediaTypes))
+            .map(format => format.name || format.code)
+            .sort()
             .join(', ')}
           data-testid={testIds.detail}
         />

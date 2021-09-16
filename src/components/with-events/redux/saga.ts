@@ -30,7 +30,7 @@ function* getEventsRequested({
     } else {
       yield put(actions.getEventsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getEventsFailed(e.message));
   }
 }
@@ -53,7 +53,7 @@ function* getEventsRelationsRequested({
     } else {
       yield put(actions.getEventsRelationsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getEventsRelationsFailed(e.message));
   }
 }

@@ -32,7 +32,7 @@ function* getConceptsRequested({
     } else {
       yield put(actions.getConceptsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getConceptsFailed(e.message));
   }
 }
@@ -57,7 +57,7 @@ function* getConceptsRelationsRequested({
     } else {
       yield put(actions.getConceptsRelationsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getConceptsRelationsFailed(e.message));
   }
 }

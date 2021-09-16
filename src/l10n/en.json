@@ -201,7 +201,15 @@
     "provenance": "Provenance",
     "format": "Format",
     "lifeEvents": "Life events",
-    "events": "Events"
+    "events": "Events",
+    "search": "Search",
+    "searchFor": "Search for",
+    "other": "Other",
+    "formatType": {
+      "MEDIA_TYPE": "Mediatype",
+      "FILE_TYPE": "Filetype",
+      "UNKNOWN": "Unknown"
+    }
   },
   "result": {
     "dataset": "Dataset",
@@ -673,7 +681,6 @@
         "contactInformation": "Contact information",
         "datasetRelations": "Related to dataset",
         "dataServiceRelations": "Related to data service (API)"
-
       },
       "publicService": {
         "description": "Description",
@@ -700,7 +707,6 @@
         "description": "Description",
         "relatedServices": "Services included in the event",
         "usage": "Event usage"
-
       }
     },
     "relationList": {
@@ -713,12 +719,12 @@
         "event": "Others relating to this event"
       },
       "subtitle": {
-        "dataset":"Dataset",
-        "dataservice":"Data service",
-        "concept":"Concept",
-        "informationmodel":"Information model",
-        "public_service":"Public service",
-        "event":"Event"
+        "dataset": "Dataset",
+        "dataservice": "Data service",
+        "concept": "Concept",
+        "informationmodel": "Information model",
+        "public_service": "Public service",
+        "event": "Event"
       },
       "referenceType": "relation type"
     }
@@ -857,13 +863,13 @@
     "rss": "RSS",
     "atom": "Atom"
   },
-  "errorPage":{
-    "serverError":{
+  "errorPage": {
+    "serverError": {
       "title": "This is embarrasing...",
       "content1": "There are some technical hiccups on our end.",
       "content2": "We are working on correcting the error. Try again in a little while."
     },
-    "clientError":{
+    "clientError": {
       "title": "We're sorry!",
       "content1": "We can't find the page you're looking for.",
       "content2": "Go back to the ",
@@ -892,7 +898,7 @@
         "public_service": "This public service has no mentions in ",
         "event": "This event has no mentions in "
       },
-      "content" : {
+      "content": {
         "dataset": "This dataset is mentioned in ",
         "dataservice": "This data service is mentioned in ",
         "concept": "This concept is mentioned in ",
@@ -902,7 +908,7 @@
       }
     },
     "timeago": {
-      "postPrefix" : "wrote ",
+      "postPrefix": "wrote ",
       "singular": {
         "seconds": "A few seconds ago",
         "minutes": "A minute ago",
@@ -923,5 +929,10 @@
     "votes": "Votes",
     "replies": "Replies",
     "views": "Views"
+  },
+  "serviceMessagesPage": {
+    "title": "Service messages",
+    "active": "active",
+    "goToDetailsPage": "See details for more information."
   }
 }

@@ -18,7 +18,7 @@ function* getEntitiesRequested() {
     } else {
       yield put(actions.getEntitiesFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getEntitiesFailed(e.message));
   }
 }

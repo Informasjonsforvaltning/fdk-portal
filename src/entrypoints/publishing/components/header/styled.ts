@@ -5,6 +5,8 @@ import LinkBase from '@fellesdatakatalog/link';
 import DropdownMenuBase from '../dropdown-menu';
 
 import LogoSVG from '../../../../images/fdk-publishing-logo-negative.svg';
+import DemoLogoSVG from '../../../../images/fdk-publishing-logo-negative-demo.svg';
+import { getConfig } from '../../../../config';
 
 const Header = styled.header`
   display: flex;
@@ -39,7 +41,7 @@ const Row = styled.div`
   }
 `;
 
-const Logo = styled(LogoSVG)`
+const ProdLogo = styled(LogoSVG)`
   height: 55px;
 
   & > path {
@@ -52,6 +54,22 @@ const Logo = styled(LogoSVG)`
     }
   }
 `;
+
+const DemoLogo = styled(DemoLogoSVG)`
+  height: 55px;
+
+  & > path {
+    fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  }
+
+  @media (max-width: 900px) {
+    & {
+      height: calc(35px + (55 - 35) * ((100vw - 320px) / (900 - 320)));
+    }
+  }
+`;
+
+const Logo = !getConfig().useDemoLogo ? ProdLogo : DemoLogo;
 
 const Link = styled(LinkBase)`
   & > div {

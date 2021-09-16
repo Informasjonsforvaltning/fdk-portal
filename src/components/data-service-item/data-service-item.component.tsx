@@ -1,8 +1,12 @@
 import React, { FC } from 'react';
 
 import { DataService } from '../../types';
-import { SearchTypes } from '../../types/enums';
-import { SearchHit, SearchHitOpenData } from '../search-hit/search-hit';
+import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';
+import {
+  SearchHit,
+  SearchHitFormats,
+  SearchHitOpenData
+} from '../search-hit/search-hit';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 import PublicIconBase from '../../images/icon-access-open-md.svg';
 import localization from '../../lib/localization';
@@ -17,6 +21,7 @@ export const DataServiceItem: FC<Props> = ({
     id,
     title,
     description,
+    fdkFormat,
     publisher,
     nationalComponent,
     isOpenAccess,
@@ -42,6 +47,21 @@ export const DataServiceItem: FC<Props> = ({
         </div>
         <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
       </SearchHitOpenData>
+    )}
+    {fdkFormat && (
+      <SearchHitFormats>
+        {[
+          ...new Set(
+            fdkFormat
+              .filter(format => format.type !== MediaTypeOrExtentType.UNKNOWN)
+              .map(format => format.name)
+          )
+        ]
+          .sort()
+          .map((format, index) => (
+            <span key={`format-${format}-${index}`}>{`${format}`}</span>
+          ))}
+      </SearchHitFormats>
     )}
   </SearchHit>
 );

@@ -39,8 +39,11 @@ exports[`should render FilterBox correctly 1`] = `
     >
       <div
         className="fdk-items-list"
+        key="fdk-items-list"
       >
-        <div>
+        <div
+          key="group-items-0"
+        >
           <FilterOption
             active={false}
             capitalize={true}
@@ -295,8 +298,11 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
     >
       <div
         className="fdk-items-list"
+        key="fdk-items-list"
       >
-        <div>
+        <div
+          key="group-items-0"
+        >
           <FilterOption
             active={true}
             capitalize={true}

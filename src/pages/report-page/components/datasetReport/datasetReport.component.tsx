@@ -55,7 +55,6 @@ const DatasetReport: FC<Props> = ({
   referenceData: { los },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   location: { search: searchParams } = {},
-  history,
   datasetsReport: {
     totalObjects = 0,
     newLastWeek = 0,
@@ -474,11 +473,7 @@ const DatasetReport: FC<Props> = ({
                 <div className='row'>
                   <div className='col-12'>
                     <BoxRegular header={localization.report.usedFormats}>
-                      <FormatPie
-                        formats={topMostUsedFormats}
-                        theme={theme}
-                        history={history}
-                      />
+                      <FormatPie formats={topMostUsedFormats} theme={theme} />
                     </BoxRegular>
                   </div>
                 </div>

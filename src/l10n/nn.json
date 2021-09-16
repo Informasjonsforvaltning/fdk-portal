@@ -201,7 +201,15 @@
     "provenance": "Opphav",
     "format": "Format",
     "lifeEvents": "Livshendelser",
-    "events": "Hendingar"
+    "events": "Hendingar",
+    "search": "Søk",
+    "searchFor": "Søk på",
+    "other": "Øvrige",
+    "formatType": {
+      "MEDIA_TYPE": "Mediatype",
+      "FILE_TYPE": "Filtype",
+      "UNKNOWN": "Ukjent"
+    }
   },
   "result": {
     "dataset": "Datasett",
@@ -921,5 +929,10 @@
     "votes": "Stemmer",
     "replies": "Svar",
     "views": "Visningar"
+  },
+  "serviceMessagesPage": {
+    "title": "Driftsmeldingar",
+    "active": "aktive",
+    "goToDetailsPage": "Se detaljert driftsmelding for meir informasjon."
   }
 }

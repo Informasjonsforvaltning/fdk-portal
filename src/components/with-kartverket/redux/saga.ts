@@ -28,7 +28,7 @@ function* listAdministrativeUnitsRequested({
         )
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     yield put(actions.listAdministrativeUnitsFailed(error));
   }
 }

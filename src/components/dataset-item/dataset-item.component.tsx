@@ -15,18 +15,15 @@ import {
 
 import { isLosTheme, isEuTheme } from '../../utils/common';
 
-import { toFormat, formatSorter, toMediaType } from '../../utils/mediatype';
-
 import ReactTooltipSC from '../tooltip/styled';
 
 import PublicIconBase from '../../images/icon-access-open-md.svg';
 
-import type { Dataset, MediaType } from '../../types';
-import { SearchTypes } from '../../types/enums';
+import type { Dataset, MediaTypeOrExtent } from '../../types';
+import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';
 
 interface Props {
   dataset: Partial<Dataset>;
-  mediatypes?: MediaType[];
 }
 
 function isDatasetOpen(accessRights: any, distribution: any): boolean {
@@ -61,17 +58,12 @@ export const DatasetItem: FC<Props> = ({
     distribution = [],
     accessRights = {},
     provenance = {}
-  },
-  mediatypes = []
+  }
 }) => {
-  const formats = distribution
-    ?.reduce(
-      (previous, { format = [] }) => [...previous, ...format],
-      [] as string[]
-    )
-    .map(toFormat)
-    .sort(formatSorter)
-    .map(toMediaType(mediatypes));
+  const formats = distribution?.reduce(
+    (previous, { fdkFormat = [] }) => [...previous, ...fdkFormat],
+    [] as MediaTypeOrExtent[]
+  );
 
   const themes = [...(losThemes ?? []), ...(euThemes ?? [])];
 
@@ -130,9 +122,17 @@ export const DatasetItem: FC<Props> = ({
       </SearchHitThemes>
 
       <SearchHitFormats>
-        {[...new Set(formats)].map((format, index) => (
-          <span key={`format-${format}-${index}`}>{format}</span>
-        ))}
+        {[
+          ...new Set(
+            formats
+              .filter(format => format.type !== MediaTypeOrExtentType.UNKNOWN)
+              .map(format => format.name)
+          )
+        ]
+          .sort()
+          .map((format, index) => (
+            <span key={`format-${format}-${index}`}>{`${format}`}</span>
+          ))}
       </SearchHitFormats>
     </SearchHit>
   );

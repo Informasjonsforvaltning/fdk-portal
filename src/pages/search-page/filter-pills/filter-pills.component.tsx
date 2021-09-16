@@ -15,7 +15,7 @@ import {
 } from '../search-location-helper';
 
 import SC from './styled';
-import type { EuTheme, LosTheme, EventType, MediaType } from '../../../types';
+import type { EuTheme, LosTheme, EventType } from '../../../types';
 import { Filter } from '../../../types/enums';
 
 interface Props extends RouteComponentProps {
@@ -23,7 +23,6 @@ interface Props extends RouteComponentProps {
   losItems: Record<string, Partial<LosTheme>>;
   publishers: any;
   eventTypes?: Record<string, EventType>;
-  mediaTypes?: Record<string, Partial<MediaType>>;
 }
 
 interface ReferenceDataItems {
@@ -76,11 +75,9 @@ const getFilterLabel = (
         filterValue
       );
     case Filter.FORMAT:
-      return (
-        referenceDataItems.find(
-          ({ code }: { code: string }) => code === filterValue
-        )?.name ?? filterValue
-      );
+      return `${localization.facet.formatType[filterValue.split(' ')[0]]} ${
+        filterValue.split(' ')[1] ?? ''
+      }`;
     case Filter.OPENDATA:
       return localization.open_data;
     case Filter.LASTXDAYS:
@@ -121,8 +118,7 @@ const FilterPillsPure: FC<Props> = ({
   themesItems,
   publishers,
   losItems,
-  eventTypes,
-  mediaTypes = {}
+  eventTypes
 }) => {
   if (!isFilterNotEmpty(location)) {
     return null;
@@ -135,8 +131,7 @@ const FilterPillsPure: FC<Props> = ({
     [Filter.LOS]: losItems,
     [Filter.ORGPATH]: publishers,
     [Filter.ORGANIZATION_NUMBER]: publishers,
-    [Filter.EVENT_TYPE]: eventTypes,
-    [Filter.FORMAT]: mediaTypes
+    [Filter.EVENT_TYPE]: eventTypes
   };
 
   return (
