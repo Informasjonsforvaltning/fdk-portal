@@ -39,7 +39,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
   const serviceMessages = data?.serviceMessages as ServiceMessage[];
   return (
     <SC.PublishingPage>
-      {false && serviceMessages?.length > 0 && (
+      {serviceMessages?.length > 0 && (
         <ServiceMessages serviceMessages={serviceMessages} />
       )}
       <SC.Title>
