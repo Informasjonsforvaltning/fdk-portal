@@ -12,6 +12,10 @@ const Alert = styled(AlertBase)`
   align-items: flex-start;
   margin-bottom: ${theme.spacing('S10')};
   padding: ${theme.spacing('S24')};
+
+  & > svg {
+    flex: 0 0 20px;
+  }
 `;
 
 const Content = styled.div`
@@ -28,11 +32,16 @@ const Title = styled.div`
 const Description = styled.div`
   align-items: baseline;
   display: flex;
+  flex-wrap: wrap;
+`;
+
+const Text = styled.span`
+  margin-bottom: 0.2em;
+  margin-right: 0.2em;
 `;
 
 const Link = styled(LinkBase)`
   display: flex;
-  margin-left: 0.2em;
 `;
 
 export default {
@@ -41,5 +50,6 @@ export default {
   Content,
   Title,
   Description,
+  Text,
   Link
 };

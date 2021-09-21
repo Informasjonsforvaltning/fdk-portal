@@ -41,6 +41,7 @@ import SC from './styled';
 import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
 import Markdown from '../markdown';
+import LinkExternal from '../link-external';
 
 interface RouteParams {
   dataServiceId: string;
@@ -56,7 +57,7 @@ interface Props
 const DataserviceDetailsPage: FC<Props> = ({
   dataService,
   isLoadingDataService,
-  referenceData: { apiservicetype },
+  referenceData: { apispecifications },
   datasets,
   informationModels,
   datasetsRelations,
@@ -86,7 +87,7 @@ const DataserviceDetailsPage: FC<Props> = ({
       getDataService(dataServiceId);
     }
 
-    getReferenceData('apiservicetype');
+    getReferenceData('apispecifications');
 
     setIsMounted(true);
 
@@ -133,14 +134,12 @@ const DataserviceDetailsPage: FC<Props> = ({
   const endpointUrls = dataService?.endpointURL ?? [];
   const endpointDescriptions = dataService?.endpointDescription ?? [];
   const landingPage = dataService?.landingPage?.[0];
+
   const conformsTo =
     dataService?.conformsTo
       ?.map(({ uri }) =>
-        translate(
-          apiservicetype?.find(
-            ({ code }) =>
-              code?.toLowerCase() === uri.split('/').pop()?.toLowerCase()
-          )?.prefLabel
+        apispecifications?.apiSpecifications?.find(
+          ({ source }) => source === uri
         )
       )
       .filter(Boolean) ?? [];
@@ -224,12 +223,24 @@ const DataserviceDetailsPage: FC<Props> = ({
         )}
         {conformsTo.length > 0 && (
           <ContentSection
-            id='service-type'
+            id='conforms-to'
             title={
-              translations.detailsPage.sectionTitles.dataService.serviceType
+              translations.detailsPage.sectionTitles.dataService.conformsTo
             }
           >
-            {conformsTo.join(', ')}
+            {conformsTo.map(
+              (spec, index) =>
+                spec && (
+                  <>
+                    {index > 0 && <br />}
+                    <LinkExternal
+                      uri={spec.source}
+                      prefLabel={translate(spec.label)}
+                      openInNewTab
+                    />
+                  </>
+                )
+            )}
           </ContentSection>
         )}
         {datasets.length > 0 && (
