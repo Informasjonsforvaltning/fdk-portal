@@ -34,7 +34,7 @@ const ServiceMessages: FC<Props> = ({ serviceMessages = [] }) => {
             <SC.Content>
               <SC.Title>{title}</SC.Title>
               <SC.Description>
-                {short_description}
+                <SC.Text>{short_description}</SC.Text>
                 <SC.Link
                   to={`/publishing/service-messages/${id}`}
                   forwardedAs={RouterLink}
