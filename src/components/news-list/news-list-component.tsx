@@ -1,4 +1,5 @@
 import React, { FC, memo } from 'react';
+import { Link as RouteLink } from 'react-router-dom';
 
 import SC from './styled';
 import localization from '../../lib/localization';
@@ -35,7 +36,9 @@ const NewsList: FC<Props> = ({ news }) => {
     return (
       <SC.NewsList>
         {renderNewsItems(news)}
-        <SC.Link to={PATHNAME_NEWS_ARCHIVE}>{localization.newsArchive}</SC.Link>
+        <SC.Link as={RouteLink} to={PATHNAME_NEWS_ARCHIVE}>
+          {localization.newsArchive}
+        </SC.Link>
       </SC.NewsList>
     );
   }
