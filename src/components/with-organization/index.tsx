@@ -13,6 +13,7 @@ import type {
 export interface Props {
   organization: Publisher | null;
   isLoadingOrganization: boolean;
+  isLoadingRating: boolean;
   enhetsregisteretOrganization: EnhetsregisteretOrganization | null;
   rating: OrganizationCountsAndRating | null;
   organizationActions: typeof actions;
@@ -29,7 +30,8 @@ const withOrganization = (Component: ComponentType<any>) => {
     enhetsregisteretOrganization:
       state.OrganizationReducer.get('enhetsregisteretOrganization')?.toJS() ??
       null,
-    rating: state.OrganizationReducer.get('rating')?.toJS() ?? null
+    rating: state.OrganizationReducer.get('rating')?.toJS() ?? null,
+    isLoadingRating: state.OrganizationReducer.get('isLoadingRating')
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

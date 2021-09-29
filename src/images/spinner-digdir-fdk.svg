@@ -1,0 +1,9 @@
+<svg id="euYKo3GEVzC1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 128 128" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+    <g id="euYKo3GEVzC2_tr" transform="translate(64,64) rotate(135)">
+        <path id="euYKo3GEVzC2"
+              d="M64,0L2.8,0C2.057394,0,1.345203,0.294999,0.820101,0.820101C0.294999,1.345203,0,2.057394,0,2.8L0,125.2C0,126.746397,1.253603,128,2.8,128L64,128C99.346224,128,128,99.346224,128,64L128,64C128,28.653776,99.346224,0,64,0ZM64.12,109.5C38.991044,109.5,18.62,89.128956,18.62,64C18.62,38.871044,38.991044,18.5,64.12,18.5C89.248956,18.5,109.62,38.871044,109.62,64C109.62,89.128956,89.248956,109.5,64.12,109.5Z"
+              transform="scale(0.670153,0.670152) translate(-64,-64)" fill="rgb(30,43,60)" stroke="none"
+              stroke-width="1"/>
+    </g>
+</svg>
