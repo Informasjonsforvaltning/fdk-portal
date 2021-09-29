@@ -36,8 +36,8 @@ import { Line } from '../../../../components/charts';
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../components/with-reference-data';
-import FormatPie from '../formatPie/formatPie.component';
 import { sortKeyWithCount } from '../../sort-helper';
+import { translatePrefixedFormat } from '../../../../utils/common';
 
 interface ExternalProps {
   datasetsReport: Partial<DatasetsReport>;
@@ -95,13 +95,13 @@ const DatasetReport: FC<Props> = ({
 
   const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
     .filter(({ key }: KeyWithCountObject) => key !== 'MISSING')
-    .splice(0, 4);
+    .slice(0, 10);
 
   const topMostUsedThemes: KeyWithCountObject[] = sortKeyWithCount(
     themesAndTopicsCount.filter(
       ({ key }: KeyWithCountObject) => key !== 'MISSING'
     )
-  ).splice(0, 10);
+  ).slice(0, 10);
 
   const theme = getConfig().themeNap ? themeNAP : themeFDK;
 
@@ -473,7 +473,18 @@ const DatasetReport: FC<Props> = ({
                 <div className='row'>
                   <div className='col-12'>
                     <BoxRegular header={localization.report.usedFormats}>
-                      <FormatPie formats={topMostUsedFormats} theme={theme} />
+                      <List
+                        headerText1={localization.report.format}
+                        headerText2={localization.report.countDataset}
+                        listItems={topMostUsedFormats?.map(
+                          ({ key, count }: KeyWithCountObject, index: any) => ({
+                            id: index,
+                            path: `${PATHNAME_DATASETS}?${Filter.FORMAT}=${key}`,
+                            text1: translatePrefixedFormat(key),
+                            text2: `${count}`
+                          })
+                        )}
+                      />
                     </BoxRegular>
                   </div>
                 </div>

@@ -445,6 +445,7 @@
     "usedFormats": "Mest brukte formater",
     "usedThemes": "Mest brukte tema og emner",
     "themeAndTopic": "Tema/emne",
+    "format": "Format",
     "countDataset": "Antall datasett",
     "countDataservice": "Antall API-er",
     "countConcept": "Antall omgrep",

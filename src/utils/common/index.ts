@@ -1,4 +1,5 @@
 import type { EnvironmentVariables, EuTheme, LosTheme } from '../../types';
+import localization from '../../lib/localization';
 
 function assertIsDefined<T>(
   key: string,
@@ -24,4 +25,13 @@ export const isEuTheme = (theme: EuTheme | LosTheme): theme is EuTheme => {
 export const isLosTheme = (theme: EuTheme | LosTheme): theme is LosTheme => {
   const { uri, name, losPaths } = theme as LosTheme;
   return !!uri && !!name && !!losPaths;
+};
+
+export const translatePrefixedFormat = (format: string) => {
+  const match = format.match(/(MEDIA_TYPE|FILE_TYPE|UNKNOWN)\s?(.*)/);
+  return match
+    ? `${localization.facet.formatType[match[1]]}${
+        match[2] ? ` ${match[2]}` : ''
+      }`
+    : format;
 };

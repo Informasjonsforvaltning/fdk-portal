@@ -19,17 +19,14 @@ import NewIcon from '../../../../images/icon-new-md.svg';
 import { PATHNAME_DATA_SERVICES } from '../../../../constants/constants';
 import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import localization from '../../../../lib/localization';
-import {
-  DataServiceReport,
-  KeyWithCountObject,
-  MediaType
-} from '../../../../types';
+import { DataServiceReport, KeyWithCountObject } from '../../../../types';
 import { Line } from '../../../../components/charts';
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../components/with-reference-data';
-import FormatPie from '../formatPie/formatPie.component';
+import { List } from '../../../../components/list/list';
 import { sortKeyWithCount } from '../../sort-helper';
+import { translatePrefixedFormat } from '../../../../utils/common';
 
 interface ExternalProps {
   dataServicesReport?: Partial<DataServiceReport>;
@@ -64,18 +61,7 @@ const DataserviceReport: FC<Props> = ({
 
   const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
     .filter(({ key }: KeyWithCountObject) => key !== 'MISSING')
-    .map((item: KeyWithCountObject) => ({
-      ...item,
-      key:
-        mediatypes?.find((mediatype: MediaType) =>
-          mediatype.code.includes(
-            item.key.substr(
-              item.key.lastIndexOf('application/'),
-              item.key.length
-            )
-          )
-        )?.name || item.key.substr(item.key.length - 5)
-    }));
+    .slice(0, 10);
 
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.DATA_SERVICE]}>
@@ -152,10 +138,17 @@ const DataserviceReport: FC<Props> = ({
           <div className='row'>
             <div className='col-12'>
               <BoxRegular header={localization.report.usedFormats}>
-                <FormatPie
-                  formats={topMostUsedFormats.splice(0, 4)}
-                  theme={theme}
-                  entityType={Entity.DATA_SERVICE}
+                <List
+                  headerText1={localization.report.format}
+                  headerText2={localization.report.countDataset}
+                  listItems={topMostUsedFormats?.map(
+                    ({ key, count }: KeyWithCountObject, index: any) => ({
+                      id: index,
+                      path: `${PATHNAME_DATA_SERVICES}?${Filter.FORMAT}=${key}`,
+                      text1: translatePrefixedFormat(key),
+                      text2: `${count}`
+                    })
+                  )}
                 />
               </BoxRegular>
             </div>
