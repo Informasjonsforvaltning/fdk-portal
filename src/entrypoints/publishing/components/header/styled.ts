@@ -58,6 +58,99 @@ const ProdLogo = styled(LogoSVG)`
 const DemoLogo = styled(DemoLogoSVG)`
   height: 55px;
 
+  .st0 {
+    fill: #ffffff;
+  }
+
+  .st1 {
+    fill: #afc2db;
+  }
+
+  .st2 {
+    display: none;
+  }
+
+  .st3 {
+    display: inline;
+    fill: none;
+    stroke: #c2132c;
+    stroke-width: 4.8e-2;
+    stroke-miterlimit: 10;
+  }
+
+  .st4 {
+    display: inline;
+    fill: none;
+    stroke: #c2132c;
+    stroke-width: 5e-2;
+    stroke-miterlimit: 10;
+  }
+
+  .st5 {
+    display: inline;
+    fill: none;
+    stroke: #1eacf5;
+    stroke-width: 5e-2;
+    stroke-miterlimit: 10;
+  }
+
+  .st6 {
+    display: inline;
+    fill: none;
+    stroke: #c2132c;
+    stroke-width: 5.2e-2;
+    stroke-miterlimit: 10;
+  }
+
+  .st7 {
+    display: inline;
+    fill: #c2132c;
+  }
+
+  .st8 {
+    font-family: 'NBInternationalPro-Reg';
+  }
+
+  .st9 {
+    font-size: 4px;
+  }
+
+  .st10 {
+    font-size: 3px;
+  }
+
+  .st11 {
+    display: inline;
+  }
+
+  .st12 {
+    fill: none;
+    stroke: #c2132c;
+    stroke-width: 4.8e-2;
+    stroke-miterlimit: 10;
+  }
+
+  .st13 {
+    fill: none;
+    stroke: #c2132c;
+    stroke-width: 5e-2;
+    stroke-miterlimit: 10;
+  }
+
+  .st14 {
+    fill: none;
+    stroke: #c2132c;
+    stroke-width: 5.2e-2;
+    stroke-miterlimit: 10;
+  }
+
+  .st15 {
+    fill: none;
+    stroke: #1eacf5;
+    stroke-width: 5e-2;
+    stroke-miterlimit: 10;
+  }
+
   & > path {
     fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
   }
