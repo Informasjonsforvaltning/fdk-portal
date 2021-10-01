@@ -19,6 +19,7 @@ import type { Actions } from '../../../types';
 const initialState = fromJS({
   organization: null,
   isLoadingOrganization: false,
+  isLoadingRating: false,
   enhetsregisteretOrganization: null,
   datasets: [],
   dataset: null,
@@ -52,9 +53,14 @@ export default function reducer(
     case GET_ENHETSREGISTERET_ORGANIZATION_FAILED:
       return state;
     case GET_ORGANIZATION_RATING_REQUESTED:
-      return state.set('datasets', fromJS([])).set('rating', null);
+      return state
+        .set('datasets', fromJS([]))
+        .set('rating', null)
+        .set('isLoadingRating', true);
     case GET_ORGANIZATION_RATING_SUCCEEDED:
-      return state.set('rating', fromJS(action.payload.rating));
+      return state
+        .set('rating', fromJS(action.payload.rating))
+        .set('isLoadingRating', false);
     case GET_ORGANIZATION_RATING_FAILED:
       return state;
     case RESET_ORGANIZATION:
