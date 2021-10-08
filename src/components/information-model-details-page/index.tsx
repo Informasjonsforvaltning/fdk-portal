@@ -216,15 +216,15 @@ const InformationModelDetailsPage: FC<Props> = ({
   }, [informationModelIdentifiers.join()]);
 
   useEffect(() => {
+    const formats =
+      informationModel?.hasFormat?.reduce(
+        (accumulator, { uri }) => (uri ? [...accumulator, uri] : accumulator),
+        [] as string[]
+      ) ?? [];
+    if (formats.length > 0) {
+      getDataServicesRelations({ endpointDescription: formats });
+    }
     if (informationModel?.uri) {
-      getDataServicesRelations({
-        endpointDescription:
-          informationModel?.hasFormat?.reduce(
-            (accumulator, { uri }) =>
-              uri ? [...accumulator, uri] : accumulator,
-            [] as string[]
-          ) ?? []
-      });
       getInformationmodelsRelations({ relations: informationModel.uri });
     }
     return () => {
