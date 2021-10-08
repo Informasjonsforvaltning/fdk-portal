@@ -4,6 +4,21 @@
       "decision": "ignore",
       "madeAt": 1628081309814,
       "expiresAt": 1638267933000
+    },
+    "1002531|rdflib>xmldom": {
+      "decision": "ignore",
+      "madeAt": 1633673382488,
+      "expiresAt": 1634278110831
+    },
+    "1002901|@fellesdatakatalog/internal-footer>@fellesdatakatalog/skatteetaten-frontend-components>react-i18next>html-parse-stringify2": {
+      "decision": "ignore",
+      "madeAt": 1633673392906,
+      "expiresAt": 1634278110831
+    },
+    "1002477|@fellesdatakatalog/internal-footer>@fellesdatakatalog/skatteetaten-frontend-components>axios": {
+      "decision": "ignore",
+      "madeAt": 1633673434796,
+      "expiresAt": 1634278210807
     }
   },
   "rules": {},
