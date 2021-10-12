@@ -16,7 +16,7 @@ import {
 } from '../../../../components/statistics-regular/statistics-regular';
 import { getConfig } from '../../../../config';
 import { themeFDK, themeNAP } from '../../../../app/theme';
-import { Entity, Filter } from '../../../../types/enums';
+import { Entity, Filter, MediaTypeOrExtentType } from '../../../../types/enums';
 import { DatasetsReport, KeyWithCountObject } from '../../../../types';
 
 import DatasetIcon from '../../../../images/icon-catalog-dataset-md.svg';
@@ -94,7 +94,10 @@ const DatasetReport: FC<Props> = ({
     accessRightsNonPublic;
 
   const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
-    .filter(({ key }: KeyWithCountObject) => key !== 'MISSING')
+    .filter(
+      ({ key }: KeyWithCountObject) =>
+        key !== 'MISSING' && key !== MediaTypeOrExtentType.UNKNOWN
+    )
     .slice(0, 10);
 
   const topMostUsedThemes: KeyWithCountObject[] = sortKeyWithCount(
