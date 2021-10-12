@@ -105,7 +105,7 @@ const DataserviceDetailsPage: FC<Props> = ({
   useEffect(() => {
     if (dataService?.endpointDescription) {
       getInformationModels({
-        informationModelIdentifiers: dataService.endpointDescription
+        hasFormat: dataService.endpointDescription
       });
     }
   }, [dataService?.endpointDescription?.join()]);
