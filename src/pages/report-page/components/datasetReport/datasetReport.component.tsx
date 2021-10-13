@@ -482,7 +482,9 @@ const DatasetReport: FC<Props> = ({
                         listItems={topMostUsedFormats?.map(
                           ({ key, count }: KeyWithCountObject, index: any) => ({
                             id: index,
-                            path: `${PATHNAME_DATASETS}?${Filter.FORMAT}=${key}`,
+                            path: `${PATHNAME_DATASETS}?${
+                              Filter.FORMAT
+                            }=${encodeURIComponent(key)}`,
                             text1: translatePrefixedFormat(key),
                             text2: `${count}`
                           })
@@ -506,7 +508,9 @@ const DatasetReport: FC<Props> = ({
                       listItems={topMostUsedThemes?.map(
                         ({ key, count }: KeyWithCountObject, index: any) => ({
                           id: index,
-                          path: `${PATHNAME_DATASETS}?${Filter.LOS}=${key}`,
+                          path: `${PATHNAME_DATASETS}?${
+                            Filter.LOS
+                          }=${encodeURIComponent(key)}`,
                           text1: translate(
                             los?.find((losTheme: any) =>
                               losTheme.losPaths.includes(key)
@@ -533,7 +537,7 @@ const DatasetReport: FC<Props> = ({
                           id: index,
                           path: `${PATHNAME_DATASETS}?${
                             Filter.CATALOGNAME
-                          }=${encodeURI(key)}`,
+                          }=${encodeURIComponent(key)}`,
                           text1:
                             translate(publishers[key]?.prefLabel) ??
                             publishers[key]?.name ??

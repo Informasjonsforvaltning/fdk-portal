@@ -147,7 +147,9 @@ const DataserviceReport: FC<Props> = ({
                   listItems={topMostUsedFormats?.map(
                     ({ key, count }: KeyWithCountObject, index: any) => ({
                       id: index,
-                      path: `${PATHNAME_DATA_SERVICES}?${Filter.FORMAT}=${key}`,
+                      path: `${PATHNAME_DATA_SERVICES}?${
+                        Filter.FORMAT
+                      }=${encodeURIComponent(key)}`,
                       text1: translatePrefixedFormat(key),
                       text2: `${count}`
                     })
