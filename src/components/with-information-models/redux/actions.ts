@@ -14,6 +14,7 @@ import type { InformationModel } from '../../../types';
 interface GetInformationModelsParams {
   conceptIdentifiers?: string[];
   informationModelIdentifiers?: string[];
+  hasFormat?: string[];
   size?: number;
   relations?: string;
 }

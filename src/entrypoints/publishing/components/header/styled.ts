@@ -58,6 +58,14 @@ const ProdLogo = styled(LogoSVG)`
 const DemoLogo = styled(DemoLogoSVG)`
   height: 55px;
 
+  .st0 {
+    fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  }
+
+  .st1 {
+    fill: ${theme.colour(Colour.CYAN, 'C30')};
+  }
+
   & > path {
     fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
   }

@@ -16,6 +16,7 @@ const mapFilters = ({
   orgPath,
   conceptIdentifiers,
   informationModelIdentifiers,
+  hasFormat,
   last_x_days,
   keywords,
   relations,
@@ -56,6 +57,15 @@ const mapFilters = ({
       collection: {
         field: 'uri',
         values: informationModelIdentifiers
+      }
+    });
+  }
+
+  if (Array.isArray(hasFormat) && hasFormat.length > 0) {
+    filters.push({
+      collection: {
+        field: 'hasFormat.uri.keyword',
+        values: hasFormat
       }
     });
   }

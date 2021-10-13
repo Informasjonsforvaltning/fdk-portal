@@ -19,6 +19,7 @@ function* getInformationModelsRequested({
     params: {
       conceptIdentifiers,
       informationModelIdentifiers,
+      hasFormat,
       size,
       relations
     } = {}
@@ -30,6 +31,7 @@ function* getInformationModelsRequested({
       paramsToSearchBody({
         conceptIdentifiers,
         informationModelIdentifiers,
+        hasFormat,
         size,
         relations
       })

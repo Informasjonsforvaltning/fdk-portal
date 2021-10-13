@@ -445,6 +445,7 @@
     "usedFormats": "Most used formats",
     "usedThemes": "Most used themes and topics",
     "themeAndTopic": "Theme/topic",
+    "format": "Format",
     "countDataset": "Number of datasets",
     "countDataservice": "Number of dataservices",
     "countConcept": "Number of concepts",
