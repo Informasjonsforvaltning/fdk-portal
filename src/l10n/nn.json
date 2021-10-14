@@ -139,7 +139,7 @@
     "publishing": "Publisere"
   },
   "query": {
-    "intro": "Søk etter innhald",
+    "intro": "Eksempel: offentlig transport",
     "reset": "Nullstill",
     "do": "Søk",
     "clear": "Nullstill alle filter"
