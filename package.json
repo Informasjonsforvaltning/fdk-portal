@@ -128,7 +128,7 @@
     "@graphql-codegen/typescript": "^1.23.0",
     "@graphql-codegen/typescript-operations": "^1.18.4",
     "@graphql-codegen/typescript-react-apollo": "^2.3.1",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@types/enzyme": "^3.10.9",
@@ -147,7 +147,7 @@
     "@types/sanitize-html": "^2.3.2",
     "@types/styled-components": "^5.1.14",
     "@types/webpack": "^5.28.0",
-    "@types/webpack-dev-server": "^3.11.6",
+    "@types/webpack-dev-server": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "babel-loader": "^8.2.2",
@@ -196,7 +196,7 @@
     "webpack": "^5.52.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^3.11.2",
+    "webpack-dev-server": "^4.3.1",
     "webpack-merge": "^5.8.0"
   },
   "optionalDependencies": {
