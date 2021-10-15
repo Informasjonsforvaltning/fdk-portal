@@ -139,7 +139,7 @@
     "publishing": "Publish"
   },
   "query": {
-    "intro": "Search for contents",
+    "intro": "Example: public transport",
     "reset": "Clear",
     "do": "Search",
     "clear": "Clear all filters"
