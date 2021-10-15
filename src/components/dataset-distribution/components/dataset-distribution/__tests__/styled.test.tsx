@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { cleanup } from '@testing-library/react';
 
 import { SC as ExpansionPanelSC } from '@fellesdatakatalog/expansion-panel';

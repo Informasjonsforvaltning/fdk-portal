@@ -148,7 +148,7 @@ export class FilterBox extends React.Component<Props, State> {
           return 0;
         })
         .map(([group, items], groupIndex, groups) => (
-          <>
+          <div key={`group-${groupIndex}`}>
             {groups.length > 1 && (
               <div
                 key={`group-title-${groupIndex}`}
@@ -183,7 +183,7 @@ export class FilterBox extends React.Component<Props, State> {
                 </div>
               )}
             </div>
-          </>
+          </div>
         ));
     }
     return null;
@@ -227,7 +227,7 @@ export class FilterBox extends React.Component<Props, State> {
                   />
                 </div>
               )}
-              <div key='fdk-items-list' className='fdk-items-list'>
+              <div className='fdk-items-list'>
                 {this._renderOptions(
                   filter,
                   onClick,
