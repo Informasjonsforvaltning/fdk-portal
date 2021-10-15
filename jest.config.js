@@ -2,7 +2,7 @@ module.exports = {
   preset: 'ts-jest/presets/js-with-babel',
   setupFilesAfterEnv: ['<rootDir>/test/setup.js'],
   transform: {
-    '^.+\\.svg$': 'jest-svg-transformer'
+    '^.+\\.svg$': 'jest-transformer-svg'
   },
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleNameMapper: {

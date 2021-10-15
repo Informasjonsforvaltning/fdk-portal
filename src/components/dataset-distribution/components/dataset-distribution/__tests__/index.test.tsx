@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react';
 
 import { themeFDK as theme } from '../../../../../app/theme';
