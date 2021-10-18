@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { cleanup } from '@testing-library/react';
 
 import { themeFDK as theme } from '../../../../../app/theme';
