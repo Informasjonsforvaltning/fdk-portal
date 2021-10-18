@@ -137,16 +137,9 @@ export class FilterBox extends React.Component<Props, State> {
           )
         )
       )
-        .sort(([groupA], [groupB]) => {
-          if (groupA === defaultGroup) {
-            return 1;
-          }
-          if (groupB === defaultGroup) {
-            return -1;
-          }
-
-          return 0;
-        })
+        .filter(
+          ([group]) => groupByPrefix.length === 0 || group !== defaultGroup
+        )
         .map(([group, items], groupIndex, groups) => (
           <div key={`group-${groupIndex}`}>
             {groups.length > 1 && (
@@ -154,9 +147,7 @@ export class FilterBox extends React.Component<Props, State> {
                 key={`group-title-${groupIndex}`}
                 className='fdk-items-title'
               >
-                {group === defaultGroup
-                  ? localization.facet.other
-                  : localization.facet.formatType[group]}
+                {localization.facet.formatType[group]}
               </div>
             )}
             <div key={`group-items-${groupIndex}`}>
