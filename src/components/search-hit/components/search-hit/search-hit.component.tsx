@@ -54,7 +54,7 @@ export const SearchHit: FC<Props> = ({
   beta = false,
   children
 }) => {
-  const { prefLabel, name } = publisher || {};
+  const { prefLabel, name, id: publisherId } = publisher || {};
 
   const renderSearchHitOpenData = () =>
     Children.map(children, child =>
@@ -111,11 +111,11 @@ export const SearchHit: FC<Props> = ({
         title={title}
         isAuthoritative={isAuthoritative}
       />
-      {(prefLabel || name) && (
-        <SC.Publisher>
+      {publisherId && (prefLabel || name) && (
+        <SC.PublisherLink href={`/organizations/${publisherId}`}>
           <span>{getPublisherLabel(type)}&nbsp;</span>
           <span>{getTranslateText(prefLabel) || name}</span>
-        </SC.Publisher>
+        </SC.PublisherLink>
       )}
       {renderSearchHitOpenData()}
       {renderSearchHitAccessRights()}

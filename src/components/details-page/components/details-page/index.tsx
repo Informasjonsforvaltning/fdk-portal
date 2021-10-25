@@ -178,21 +178,27 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         languages={languages}
       />
       <SC.SubBanner>
-        <SC.Publisher>
-          {translations.formatString(publisherLabel[entity], {
-            publisher: publisherName
-          })}
-        </SC.Publisher>
-        {assessment && publisher && (
-          <FdkLink href={`/organizations/${publisher.id}/datasets/${entityId}`}>
-            <SC.MetadataQuality>
-              <p>{translations.metadataQualityPage.metadataQuality}: </p>
-              <SC.RatingIcon>
-                {determineRatingIcon(assessment.rating)}
-              </SC.RatingIcon>
-              <p>{calculateRatingPercentage(assessment.rating)} %</p>
-            </SC.MetadataQuality>
-          </FdkLink>
+        {publisher?.id && (
+          <>
+            <SC.PublisherLink href={`/organizations/${publisher.id}`}>
+              {translations.formatString(publisherLabel[entity], {
+                publisher: publisherName
+              })}
+            </SC.PublisherLink>
+            {assessment && (
+              <FdkLink
+                href={`/organizations/${publisher.id}/datasets/${entityId}`}
+              >
+                <SC.MetadataQuality>
+                  <p>{translations.metadataQualityPage.metadataQuality}: </p>
+                  <SC.RatingIcon>
+                    {determineRatingIcon(assessment.rating)}
+                  </SC.RatingIcon>
+                  <p>{calculateRatingPercentage(assessment.rating)} %</p>
+                </SC.MetadataQuality>
+              </FdkLink>
+            )}
+          </>
         )}
       </SC.SubBanner>
       <SC.Themes>
