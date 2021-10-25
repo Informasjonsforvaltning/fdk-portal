@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Colour, theme } from '@fellesdatakatalog/theme';
 
+import Link from '@fellesdatakatalog/link';
 import RoundedTagSC from '../../../rounded-tag/styled';
 import type { InvertedColorProps } from '../../../../types';
 
@@ -22,7 +23,7 @@ const SearchHit = styled.article`
   }
 `;
 
-const Publisher = styled.div`
+const PublisherLink = styled(Link)`
   margin-bottom: 0.5em;
 `;
 
@@ -158,7 +159,7 @@ const BetaRibbon = styled.span<InvertedColorProps>`
 
 export default {
   SearchHit,
-  Publisher,
+  PublisherLink,
   Description,
   OpenData,
   AccessRight,

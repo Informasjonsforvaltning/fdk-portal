@@ -12,7 +12,9 @@ exports[`SearchHit component should render with properties 1`] = `
     }
     type={0}
   />
-  <styled.div>
+  <Styled(s)
+    href="/organizations/9999"
+  >
     <span>
       Owner: 
        
@@ -20,7 +22,7 @@ exports[`SearchHit component should render with properties 1`] = `
     <span>
       Test direktorat
     </span>
-  </styled.div>
+  </Styled(s)>
   <TruncatedText
     lineHeight={20}
     visibleLines={4}
