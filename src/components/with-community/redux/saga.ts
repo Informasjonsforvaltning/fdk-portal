@@ -10,6 +10,7 @@ import {
   extractTopicsFromSearch,
   getRecentPosts,
   getTopicById,
+  pruneNodebbTemplateTags,
   searchCommunity
 } from '../../../api/community-api/search';
 
@@ -45,7 +46,11 @@ function* recentPostsRequested({
     const posts: CommunityPost[] = yield call(getRecentPosts, term);
 
     if (posts.length > 0) {
-      yield put(actions.getRecentPostsSucceeded(posts));
+      const processedPosts = posts.map(post => ({
+        ...post,
+        content: pruneNodebbTemplateTags(post.content)
+      }));
+      yield put(actions.getRecentPostsSucceeded(processedPosts));
     } else {
       yield put(actions.getRecentPostsFailed(''));
     }
