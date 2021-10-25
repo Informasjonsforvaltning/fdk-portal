@@ -3,6 +3,7 @@ import type { CommunityPost, CommunityTopic } from '../../types';
 
 import env from '../../env';
 import { CommunityTerm } from '../../types/enums';
+import translations from '../../lib/localization';
 
 const { FDK_COMMUNITY_BASE_URI } = env;
 
@@ -36,3 +37,14 @@ export const extractTopicsFromSearch = (
 
   return uniqueTopics;
 };
+
+export const pruneNodebbTemplateTags = (raw_text: string) =>
+  raw_text.replace(
+    /(?:\|\s)(?:\[{2})(.*?)(?:\]{2}:)(.*?)(?:\s\|)/g,
+    (_substring, tagCapture, valueCapture) => {
+      if (tagCapture === 'calendar:event_title') {
+        return `${translations.community.meetingTitle}${valueCapture}`;
+      }
+      return valueCapture;
+    }
+  );
