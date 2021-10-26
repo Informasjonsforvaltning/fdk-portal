@@ -204,7 +204,6 @@
     "events": "Events",
     "search": "Search",
     "searchFor": "Search for",
-    "other": "Other",
     "formatType": {
       "MEDIA_TYPE": "Mediatype",
       "FILE_TYPE": "Filetype",
@@ -887,6 +886,7 @@
     "title": "Data Community",
     "seeLatest": "Latests posts from the ",
     "seeMore": "See more recent posts",
+    "meetingTitle": "Meeting title: ",
     "subtitle": {
       "link": "our data community",
       "mention": " thread in our ",

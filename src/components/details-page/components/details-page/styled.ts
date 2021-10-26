@@ -1,3 +1,4 @@
+import Link from '@fellesdatakatalog/link';
 import styled from 'styled-components';
 
 import SideMenuBase from '../side-menu';
@@ -12,7 +13,7 @@ const DetailsPage = styled.article`
   }
 `;
 
-const Publisher = styled.p`
+const PublisherLink = styled(Link)`
   margin: 0;
   font-size: 20px;
   ${onMobileView} {
@@ -231,7 +232,7 @@ const Content = styled.main`
 export default {
   DetailsPage,
   SubBanner,
-  Publisher,
+  PublisherLink,
   MetadataQuality,
   Themes,
   Page,

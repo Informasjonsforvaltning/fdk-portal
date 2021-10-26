@@ -204,7 +204,6 @@
     "events": "Hendelser",
     "search": "Søk",
     "searchFor": "Søk på",
-    "other": "Øvrige",
     "formatType": {
       "MEDIA_TYPE": "Mediatype",
       "FILE_TYPE": "Filtype",
@@ -887,6 +886,7 @@
     "title": "Datalandsbyen",
     "seeLatest": "Siste saker fra",
     "seeMore": "Se flere nylige innlegg",
+    "meetingTitle": "Møtetittel: ",
     "subtitle": {
       "link": "datalandsbyen",
       "mention": " innlegg i ",
