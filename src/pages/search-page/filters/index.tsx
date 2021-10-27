@@ -151,14 +151,6 @@ const FiltersPure: FC<Props> = ({
               activeFilter={themeParam}
               referenceDataItems={themesItems}
             />
-            <FilterBox
-              htmlKey={2}
-              title={localization.datasetAccessRights}
-              filter={aggregations.accessRights}
-              onClick={handleDatasetFilterAccessRights}
-              activeFilter={accessrightsParam}
-              filters={searchParams}
-            />
           </>
         );
       case PATHNAME_DATASETS:
