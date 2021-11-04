@@ -212,7 +212,7 @@ export interface Concept {
   prefLabel: Partial<TextLanguage>;
   altLabel?: Partial<TextLanguage>[];
   hiddenLabel?: Partial<TextLanguage>[];
-  definition: ConceptDefinition;
+  definition?: ConceptDefinition;
   publisher: Partial<Publisher>;
   example: Partial<TextLanguage>;
   subject?: Partial<TextLanguage>;

@@ -643,10 +643,7 @@ const InformationModelDetailsPage: FC<Props> = ({
                   informationModelSubjects.includes(subjectIdentifier)
                 )
                 .map(
-                  (
-                    { id, prefLabel, definition: { text: definition } },
-                    index
-                  ) =>
+                  ({ id, prefLabel, definition }, index) =>
                     id && (
                       <KeyValueListItem
                         key={`${id}-${index}`}
@@ -658,7 +655,7 @@ const InformationModelDetailsPage: FC<Props> = ({
                             {translate(prefLabel)}
                           </SC.Link>
                         }
-                        value={translate(definition)}
+                        value={translate(definition?.text)}
                       />
                     )
                 )}
