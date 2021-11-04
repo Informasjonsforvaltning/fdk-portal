@@ -597,8 +597,7 @@ const DatasetDetailsPage: FC<Props> = ({
             </KeyValueList>
           </ContentSection>
         )}
-        {(referencedDatasets.length > 0 ||
-          referencedResourcesUnResolved.length > 0) && (
+        {referencedDatasets.length > 0 && (
           <ContentSection
             id='dataset-references'
             title={
@@ -606,7 +605,7 @@ const DatasetDetailsPage: FC<Props> = ({
             }
           >
             <KeyValueList>
-              {referencedDatasets?.map(
+              {referencedDatasets.map(
                 ({ id, uri, title: datasetTitle }, index) => (
                   <KeyValueListItem
                     key={`${id}-${index}`}
@@ -630,29 +629,27 @@ const DatasetDetailsPage: FC<Props> = ({
                   />
                 )
               )}
-              {referencedResourcesUnResolved?.map(
-                (
-                  { source, referenceType: { uri: referenceTypeUri } = {} },
-                  index
-                ) =>
-                  source?.uri && (
-                    <KeyValueListItem
-                      key={`${source.uri}-${index}`}
-                      property={translate(
-                        referenceTypes?.find(
-                          ({ uri: referenceTypesUri }) =>
-                            referenceTypesUri === referenceTypeUri
-                        )?.prefLabel
-                      )}
-                      value={
-                        <Link href={source.uri} rel='noopener noreferrer'>
-                          {source.uri}
-                        </Link>
-                      }
-                    />
-                  )
-              )}
             </KeyValueList>
+          </ContentSection>
+        )}
+        {referencedResourcesUnResolved.length > 0 && (
+          <ContentSection
+            id='dataset-references'
+            title={
+              translations.detailsPage.sectionTitles.dataset.resourceReferences
+            }
+          >
+            <InlineList column>
+              {referencedResourcesUnResolved.map(({ source }, index) => (
+                <Link
+                  href={source?.uri}
+                  rel='noopener noreferrer'
+                  key={`unresolved-ref-${index}`}
+                >
+                  {translate(source?.prefLabel ?? source?.uri)}
+                </Link>
+              ))}
+            </InlineList>
           </ContentSection>
         )}
         {keywords.length > 0 && (
