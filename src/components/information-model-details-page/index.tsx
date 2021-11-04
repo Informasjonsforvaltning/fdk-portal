@@ -636,6 +636,8 @@ const InformationModelDetailsPage: FC<Props> = ({
               translations.detailsPage.sectionTitles.informationModel
                 .conceptReferences
             }
+            entityIcon={Entity.CONCEPT}
+            boxStyle
           >
             <KeyValueList>
               {concepts

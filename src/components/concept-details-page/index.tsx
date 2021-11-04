@@ -449,6 +449,8 @@ const ConceptDetailsPage: FC<Props> = ({
                 { concept: translate(concept?.prefLabel) }
               ) as string
             }
+            entityIcon={Entity.CONCEPT}
+            boxStyle
           >
             <KeyValueList>
               {seeAlsoConceptReferences.map(({ id, prefLabel }) => {

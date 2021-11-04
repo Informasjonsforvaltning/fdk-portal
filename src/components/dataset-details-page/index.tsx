@@ -578,6 +578,8 @@ const DatasetDetailsPage: FC<Props> = ({
             title={
               translations.detailsPage.sectionTitles.dataset.conceptReferences
             }
+            entityIcon={Entity.CONCEPT}
+            boxStyle
           >
             <KeyValueList>
               {referencedConcepts.map(
@@ -603,6 +605,8 @@ const DatasetDetailsPage: FC<Props> = ({
             title={
               translations.detailsPage.sectionTitles.dataset.datasetReferences
             }
+            entityIcon={Entity.DATASET}
+            boxStyle
           >
             <KeyValueList>
               {referencedDatasets.map(
@@ -638,6 +642,8 @@ const DatasetDetailsPage: FC<Props> = ({
             title={
               translations.detailsPage.sectionTitles.dataset.resourceReferences
             }
+            entityIcon={Entity.DATASET}
+            boxStyle
           >
             <InlineList column>
               {referencedResourcesUnResolved.map(({ source }, index) => (
