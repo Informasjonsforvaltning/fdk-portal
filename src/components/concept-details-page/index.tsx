@@ -195,17 +195,17 @@ const ConceptDetailsPage: FC<Props> = ({
   const identifier = concept?.identifier;
   const publisher = concept?.publisher;
   const title = concept?.prefLabel ?? {};
-  const description = concept?.definition.text;
-  const sourceRelationship = concept?.definition.sourceRelationship;
-  const sources = concept?.definition.sources ?? [];
-  const remark = concept?.definition.remark;
+  const description = concept?.definition?.text;
+  const sourceRelationship = concept?.definition?.sourceRelationship;
+  const sources = concept?.definition?.sources ?? [];
+  const remark = concept?.definition?.remark;
   const altLabels = concept?.altLabel ?? [];
   const hiddenLabels = concept?.hiddenLabel ?? [];
   const example = concept?.example;
   const subject = concept?.subject;
   const applications = concept?.application ?? [];
-  const range = translate(concept?.definition.range?.text);
-  const rangeUri = concept?.definition.range?.uri;
+  const range = translate(concept?.definition?.range?.text);
+  const rangeUri = concept?.definition?.range?.uri;
   const lastPublished = formatDate(
     dateStringToDate(concept?.harvest?.firstHarvested)
   );

@@ -578,7 +578,7 @@ const DatasetDetailsPage: FC<Props> = ({
           >
             <KeyValueList>
               {referencedConcepts.map(
-                ({ id, prefLabel, definition: { text: definition } }, index) =>
+                ({ id, prefLabel, definition }, index) =>
                   id && (
                     <KeyValueListItem
                       key={`${id}-${index}`}
@@ -587,7 +587,7 @@ const DatasetDetailsPage: FC<Props> = ({
                           {translate(prefLabel)}
                         </Link>
                       }
-                      value={translate(definition)}
+                      value={translate(definition?.text)}
                     />
                   )
               )}

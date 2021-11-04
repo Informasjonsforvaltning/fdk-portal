@@ -2,7 +2,7 @@ import React, { FC, Fragment } from 'react';
 import some from 'lodash/some';
 
 import SC from './styled';
-import { Concept, TextLanguage } from '../../types';
+import { Concept, ConceptDefinition, TextLanguage } from '../../types';
 import { SearchTypes } from '../../types/enums';
 import { SearchHit, SearchHitData } from '../search-hit/search-hit';
 import { LinkExternal } from '../link-external/link-external.component';
@@ -28,7 +28,10 @@ function getSourceRelationshipLabel(sourceRelationship: string) {
       return '';
   }
 }
-const renderSource = ({ sourceRelationship = '', sources = [] }: any) => {
+const renderSource = ({
+  sourceRelationship = '',
+  sources = []
+}: ConceptDefinition) => {
   if (sourceRelationship === 'egendefinert') {
     return (
       <div>
@@ -130,7 +133,7 @@ export const ConceptItem: FC<Props> = ({
       description={definition?.text}
     >
       <SearchHitData>
-        {renderSource(definition)}
+        {definition && renderSource(definition)}
         {renderExample(example)}
         {concepts &&
           onAddConcept &&
