@@ -309,7 +309,11 @@ const ConceptDetailsPage: FC<Props> = ({
             id='remark'
             title={translations.detailsPage.sectionTitles.concept.remark}
           >
-            <MultiLingualField languages={selectedLanguages} text={remark} />
+            <MultiLingualField
+              languages={selectedLanguages}
+              text={remark}
+              convertToMarkUp
+            />
           </ContentSection>
         )}
         {(hasFieldSelectedLanguage(altLabels) ||
