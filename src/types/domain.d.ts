@@ -448,7 +448,7 @@ interface ApiSpecification {
 
 interface DatasetReference {
   referenceType: ReferenceType;
-  source: { uri: string };
+  source?: { uri?: string };
 }
 
 interface Annotation {
