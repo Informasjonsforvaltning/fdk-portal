@@ -24,9 +24,11 @@ const Error400: FC = () => {
         <SC.Link onClick={history.goBack}>
           {translate(translations.errorPage.clientError.backLink)}
         </SC.Link>
-        {parse(
-          sanitizeHtml(translate(translations.errorPage.clientError.content3))
-        )}
+        <p>
+          {parse(
+            sanitizeHtml(translate(translations.errorPage.clientError.content3))
+          )}
+        </p>
       </span>
     </SC.Error400>
   );
