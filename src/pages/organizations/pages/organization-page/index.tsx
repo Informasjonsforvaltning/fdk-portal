@@ -1,4 +1,4 @@
-import React, { FC, memo, useState, useLayoutEffect, useEffect } from 'react';
+import React, { FC, memo, useState, useLayoutEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -60,6 +60,9 @@ interface Props
     ReportProps,
     RouteComponentProps<RouteParams> {}
 
+const renderPlaceholder = (isLoading: boolean) =>
+  isLoading ? <Spinner /> : <ErrorPage errorCode='404' />;
+
 const OrganizationPage: FC<Props> = ({
   organization,
   rating,
@@ -76,7 +79,6 @@ const OrganizationPage: FC<Props> = ({
   }
 }) => {
   const [showOrganizationLogo, setShowOrganizationLogo] = useState(true);
-  const [showSpinner, setShowSpinner] = useState(false);
 
   const isTransportportal = getConfig().themeNap;
   const theme = isTransportportal ? themeNAP : themeFDK;
@@ -97,15 +99,6 @@ const OrganizationPage: FC<Props> = ({
       resetDatasetsReport();
     };
   }, []);
-
-  useEffect(() => {
-    setShowSpinner(
-      organization == null ||
-        rating == null ||
-        isLoadingOrganization ||
-        isLoadingRating
-    );
-  }, [organization, rating, isLoadingOrganization, isLoadingRating]);
 
   const determineRatingIcon = () => {
     switch (rating?.datasets?.quality?.category) {
@@ -135,138 +128,228 @@ const OrganizationPage: FC<Props> = ({
     }
   };
 
-  return (
+  return organization && rating ? (
     <SC.OrganizationPage className='container'>
-      {showSpinner ? (
-        <Spinner />
-      ) : (
-        <>
-          <SC.BetaRibbon>BETA</SC.BetaRibbon>
-          <SC.Title>
-            {translations.formatString(
-              translations.metadataQualityPage.organizationPageTitle,
-              {
-                organizationName:
-                  translate(organization?.prefLabel) || organization?.name
-              }
+      <SC.BetaRibbon>BETA</SC.BetaRibbon>
+      <SC.Title>
+        {translations.formatString(
+          translations.metadataQualityPage.organizationPageTitle,
+          {
+            organizationName:
+              translate(organization?.prefLabel) || organization?.name
+          }
+        )}
+      </SC.Title>
+      <SC.Section>
+        {organization && rating?.organization && (
+          <SC.OrganizationInformation>
+            {showOrganizationLogo && organization.organizationId && (
+              <img
+                src={`https://orglogo.difi.no/api/logo/org/${organization.organizationId}`}
+                alt={`${organization.name} logo`}
+                onError={() => setShowOrganizationLogo(false)}
+              />
             )}
-          </SC.Title>
-          <SC.Section>
-            {organization && rating?.organization && (
-              <SC.OrganizationInformation>
-                {showOrganizationLogo && organization.organizationId && (
-                  <img
-                    src={`https://orglogo.difi.no/api/logo/org/${organization.organizationId}`}
-                    alt={`${organization.name} logo`}
-                    onError={() => setShowOrganizationLogo(false)}
+            <ul>
+              <li>
+                <span>{translations.metadataQualityPage.organisationName}</span>
+                <span>{organization.name}</span>
+              </li>
+              <li>
+                <span>
+                  {translations.metadataQualityPage.organisationNumber}
+                </span>
+                <span>
+                  {organization.organizationId.replace(
+                    /\B(?=(\d{3})+(?!\d))/g,
+                    ' '
+                  )}
+                </span>
+              </li>
+              <li>
+                <span>{translations.metadataQualityPage.organisationForm}</span>
+                <span>{rating.organization.orgType}</span>
+              </li>
+              {rating.organization.industryCode && (
+                <li>
+                  <span>
+                    {translations.metadataQualityPage.organisationBusinessCodes}
+                  </span>
+                  <span>{`${rating.organization.industryCode}`}</span>
+                </li>
+              )}
+              {rating.organization.sectorCode && (
+                <li>
+                  <span>
+                    {
+                      translations.metadataQualityPage
+                        .organisationInstitutionalSectorCode
+                    }
+                  </span>
+                  <span>{`${rating.organization.sectorCode}`}</span>
+                </li>
+              )}
+              {rating.organization.homepage && (
+                <li>
+                  <span>
+                    {translations.metadataQualityPage.organisationHomePage}
+                  </span>
+                  <span>
+                    <Link
+                      href={`//${rating.organization.homepage.replace(
+                        /\/$/,
+                        ''
+                      )}`}
+                      external
+                    >
+                      {rating.organization.homepage.replace(/\/$/, '')}
+                    </Link>
+                  </span>
+                </li>
+              )}
+              <li>
+                <span>
+                  {translations.metadataQualityPage.organisationMoreInfo}
+                </span>
+                <span>
+                  <Link
+                    href={`https://data.brreg.no/enhetsregisteret/oppslag/enheter/${organization.organizationId}`}
+                    external
+                  >
+                    {translations.formatString(
+                      translations.metadataQualityPage
+                        .organisationInEnhetsregisteret,
+                      {
+                        organizationName: organization.name ?? ''
+                      }
+                    )}
+                  </Link>
+                </span>
+              </li>
+            </ul>
+          </SC.OrganizationInformation>
+        )}
+      </SC.Section>
+      <SC.Section />
+      <SC.Section>
+        <ThemeProvider theme={theme.extendedColors[Entity.DATASET]}>
+          <SC.DatasetCataloguesStatistics>
+            <h2>
+              <DatasetIcon />
+              {translations.metadataQualityPage.datasetCatalogStatistics}
+            </h2>
+            <div>
+              <SC.Box>
+                <StatisticsRegular
+                  to={`${PATHNAME_DATASETS}${patchSearchQuery(
+                    Filter.ORGANIZATION_NUMBER,
+                    organization?.organizationId
+                  )}`}
+                >
+                  <IllustrationWithCount
+                    icon={<DatasetIcon />}
+                    count={rating?.datasets?.totalCount ?? 0}
                   />
-                )}
-                <ul>
-                  <li>
-                    <span>
-                      {translations.metadataQualityPage.organisationName}
-                    </span>
-                    <span>{organization.name}</span>
-                  </li>
-                  <li>
-                    <span>
-                      {translations.metadataQualityPage.organisationNumber}
-                    </span>
-                    <span>
-                      {organization.organizationId.replace(
-                        /\B(?=(\d{3})+(?!\d))/g,
-                        ' '
-                      )}
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      {translations.metadataQualityPage.organisationForm}
-                    </span>
-                    <span>{rating.organization.orgType}</span>
-                  </li>
-                  {rating.organization.industryCode && (
-                    <li>
-                      <span>
-                        {
-                          translations.metadataQualityPage
-                            .organisationBusinessCodes
-                        }
-                      </span>
-                      <span>{`${rating.organization.industryCode}`}</span>
-                    </li>
-                  )}
-                  {rating.organization.sectorCode && (
-                    <li>
-                      <span>
-                        {
-                          translations.metadataQualityPage
-                            .organisationInstitutionalSectorCode
-                        }
-                      </span>
-                      <span>{`${rating.organization.sectorCode}`}</span>
-                    </li>
-                  )}
-                  {rating.organization.homepage && (
-                    <li>
-                      <span>
-                        {translations.metadataQualityPage.organisationHomePage}
-                      </span>
-                      <span>
-                        <Link
-                          href={`//${rating.organization.homepage.replace(
-                            /\/$/,
-                            ''
-                          )}`}
-                          external
-                        >
-                          {rating.organization.homepage.replace(/\/$/, '')}
-                        </Link>
-                      </span>
-                    </li>
-                  )}
-                  <li>
-                    <span>
-                      {translations.metadataQualityPage.organisationMoreInfo}
-                    </span>
-                    <span>
-                      <Link
-                        href={`https://data.brreg.no/enhetsregisteret/oppslag/enheter/${organization.organizationId}`}
-                        external
-                      >
-                        {translations.formatString(
-                          translations.metadataQualityPage
-                            .organisationInEnhetsregisteret,
-                          {
-                            organizationName: organization.name ?? ''
-                          }
-                        )}
-                      </Link>
-                    </span>
-                  </li>
-                </ul>
-              </SC.OrganizationInformation>
-            )}
-          </SC.Section>
-          <SC.Section />
-          <SC.Section>
-            <ThemeProvider theme={theme.extendedColors[Entity.DATASET]}>
-              <SC.DatasetCataloguesStatistics>
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {translations.metadataQualityPage.descriptionsTotal}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+              <SC.Box>
+                <StatisticsRegular
+                  to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                    [Filter.ORGPATH]: organization?.orgPath,
+                    [Filter.LASTXDAYS]: '7'
+                  })}`}
+                >
+                  <IllustrationWithCount
+                    icon={<NewIcon />}
+                    count={rating?.datasets?.newCount ?? 0}
+                  />
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {translations.formatString(
+                      translations.metadataQualityPage.newDescriptions,
+                      translations.metadataQualityPage.lastWeek
+                    )}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+              <SC.Box>
+                <StatisticsRegular
+                  to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                    [Filter.ORGPATH]: organization?.orgPath,
+                    [Filter.PROVENANCE]: 'NASJONAL'
+                  })}`}
+                >
+                  <IllustrationWithCount
+                    icon={<AuthoritativeIcon />}
+                    count={rating?.datasets?.authoritativeCount ?? 0}
+                  />
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {translations.formatString(
+                      translations.metadataQualityPage.datasetIs,
+                      translations.metadataQualityPage.authoritativeSources
+                    )}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+              <SC.Box>
+                <StatisticsRegular
+                  to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                    [Filter.ORGPATH]: organization?.orgPath,
+                    [Filter.OPENDATA]: 'true'
+                  })}`}
+                >
+                  <IllustrationWithCount
+                    icon={<AccessOpenIcon />}
+                    count={rating?.datasets?.openCount ?? 0}
+                  />
+                  <StatisticsRegularSC.StatisticsRegular.Label>
+                    {translations.formatString(
+                      translations.metadataQualityPage.datasetIs,
+                      translations.metadataQualityPage.open
+                    )}
+                  </StatisticsRegularSC.StatisticsRegular.Label>
+                </StatisticsRegular>
+              </SC.Box>
+              {rating && (
+                <SC.Box>
+                  <StatisticsRegular to={`${url}/datasets`}>
+                    <StatisticsRegularSC.StatisticsRegular.Label>
+                      <IllustrationWithCount
+                        icon={determineRatingIcon()}
+                        percentage={rating?.datasets?.quality?.percentage || 0}
+                      />
+                      {determineRatingTranslation()}
+                    </StatisticsRegularSC.StatisticsRegular.Label>
+                  </StatisticsRegular>
+                </SC.Box>
+              )}
+            </div>
+          </SC.DatasetCataloguesStatistics>
+        </ThemeProvider>
+        {!isTransportportal && (
+          <>
+            <ThemeProvider theme={theme.extendedColors[Entity.DATA_SERVICE]}>
+              <SC.DataserviceCataloguesStatistics>
                 <h2>
-                  <DatasetIcon />
-                  {translations.metadataQualityPage.datasetCatalogStatistics}
+                  <DataServiceIcon />
+                  {
+                    translations.metadataQualityPage
+                      .dataserviceCatalogStatistics
+                  }
                 </h2>
                 <div>
                   <SC.Box>
                     <StatisticsRegular
-                      to={`${PATHNAME_DATASETS}${patchSearchQuery(
+                      to={`${PATHNAME_DATA_SERVICES}${patchSearchQuery(
                         Filter.ORGANIZATION_NUMBER,
                         organization?.organizationId
                       )}`}
                     >
                       <IllustrationWithCount
-                        icon={<DatasetIcon />}
-                        count={rating?.datasets?.totalCount ?? 0}
+                        icon={<DataServiceIcon />}
+                        count={rating?.dataservices?.totalCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
                         {translations.metadataQualityPage.descriptionsTotal}
@@ -275,14 +358,14 @@ const OrganizationPage: FC<Props> = ({
                   </SC.Box>
                   <SC.Box>
                     <StatisticsRegular
-                      to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                      to={`${PATHNAME_DATA_SERVICES}${patchListOfSearchQuery({
                         [Filter.ORGPATH]: organization?.orgPath,
                         [Filter.LASTXDAYS]: '7'
                       })}`}
                     >
                       <IllustrationWithCount
                         icon={<NewIcon />}
-                        count={rating?.datasets?.newCount ?? 0}
+                        count={rating?.dataservices?.newCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
                         {translations.formatString(
@@ -292,246 +375,130 @@ const OrganizationPage: FC<Props> = ({
                       </StatisticsRegularSC.StatisticsRegular.Label>
                     </StatisticsRegular>
                   </SC.Box>
-                  <SC.Box>
-                    <StatisticsRegular
-                      to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
-                        [Filter.ORGPATH]: organization?.orgPath,
-                        [Filter.PROVENANCE]: 'NASJONAL'
-                      })}`}
-                    >
-                      <IllustrationWithCount
-                        icon={<AuthoritativeIcon />}
-                        count={rating?.datasets?.authoritativeCount ?? 0}
-                      />
-                      <StatisticsRegularSC.StatisticsRegular.Label>
-                        {translations.formatString(
-                          translations.metadataQualityPage.datasetIs,
-                          translations.metadataQualityPage.authoritativeSources
-                        )}
-                      </StatisticsRegularSC.StatisticsRegular.Label>
-                    </StatisticsRegular>
-                  </SC.Box>
-                  <SC.Box>
-                    <StatisticsRegular
-                      to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
-                        [Filter.ORGPATH]: organization?.orgPath,
-                        [Filter.OPENDATA]: 'true'
-                      })}`}
-                    >
-                      <IllustrationWithCount
-                        icon={<AccessOpenIcon />}
-                        count={rating?.datasets?.openCount ?? 0}
-                      />
-                      <StatisticsRegularSC.StatisticsRegular.Label>
-                        {translations.formatString(
-                          translations.metadataQualityPage.datasetIs,
-                          translations.metadataQualityPage.open
-                        )}
-                      </StatisticsRegularSC.StatisticsRegular.Label>
-                    </StatisticsRegular>
-                  </SC.Box>
-                  {rating && (
-                    <SC.Box>
-                      <StatisticsRegular to={`${url}/datasets`}>
-                        <StatisticsRegularSC.StatisticsRegular.Label>
-                          <IllustrationWithCount
-                            icon={determineRatingIcon()}
-                            percentage={
-                              rating?.datasets?.quality?.percentage || 0
-                            }
-                          />
-                          {determineRatingTranslation()}
-                        </StatisticsRegularSC.StatisticsRegular.Label>
-                      </StatisticsRegular>
-                    </SC.Box>
-                  )}
                 </div>
-              </SC.DatasetCataloguesStatistics>
+              </SC.DataserviceCataloguesStatistics>
             </ThemeProvider>
-            {!isTransportportal && (
-              <>
-                <ThemeProvider
-                  theme={theme.extendedColors[Entity.DATA_SERVICE]}
-                >
-                  <SC.DataserviceCataloguesStatistics>
-                    <h2>
-                      <DataServiceIcon />
-                      {
-                        translations.metadataQualityPage
-                          .dataserviceCatalogStatistics
-                      }
-                    </h2>
-                    <div>
-                      <SC.Box>
-                        <StatisticsRegular
-                          to={`${PATHNAME_DATA_SERVICES}${patchSearchQuery(
-                            Filter.ORGANIZATION_NUMBER,
-                            organization?.organizationId
-                          )}`}
-                        >
-                          <IllustrationWithCount
-                            icon={<DataServiceIcon />}
-                            count={rating?.dataservices?.totalCount ?? 0}
-                          />
-                          <StatisticsRegularSC.StatisticsRegular.Label>
-                            {translations.metadataQualityPage.descriptionsTotal}
-                          </StatisticsRegularSC.StatisticsRegular.Label>
-                        </StatisticsRegular>
-                      </SC.Box>
-                      <SC.Box>
-                        <StatisticsRegular
-                          to={`${PATHNAME_DATA_SERVICES}${patchListOfSearchQuery(
-                            {
-                              [Filter.ORGPATH]: organization?.orgPath,
-                              [Filter.LASTXDAYS]: '7'
-                            }
-                          )}`}
-                        >
-                          <IllustrationWithCount
-                            icon={<NewIcon />}
-                            count={rating?.dataservices?.newCount ?? 0}
-                          />
-                          <StatisticsRegularSC.StatisticsRegular.Label>
-                            {translations.formatString(
-                              translations.metadataQualityPage.newDescriptions,
-                              translations.metadataQualityPage.lastWeek
-                            )}
-                          </StatisticsRegularSC.StatisticsRegular.Label>
-                        </StatisticsRegular>
-                      </SC.Box>
-                    </div>
-                  </SC.DataserviceCataloguesStatistics>
-                </ThemeProvider>
-                <ThemeProvider theme={theme.extendedColors[Entity.CONCEPT]}>
-                  <SC.ConceptCataloguesStatistics>
-                    <h2>
-                      <ConceptIcon />
-                      {
-                        translations.metadataQualityPage
-                          .conceptCatalogStatistics
-                      }
-                    </h2>
-                    <div>
-                      <SC.Box>
-                        <StatisticsRegular
-                          to={`${PATHNAME_CONCEPTS}${patchSearchQuery(
-                            Filter.ORGANIZATION_NUMBER,
-                            organization?.organizationId
-                          )}`}
-                        >
-                          <IllustrationWithCount
-                            icon={<ConceptIcon />}
-                            count={rating?.concepts?.totalCount ?? 0}
-                          />
-                          <StatisticsRegularSC.StatisticsRegular.Label>
-                            {translations.metadataQualityPage.descriptionsTotal}
-                          </StatisticsRegularSC.StatisticsRegular.Label>
-                        </StatisticsRegular>
-                      </SC.Box>
-                      <SC.Box>
-                        <StatisticsRegular
-                          to={`${PATHNAME_CONCEPTS}${patchListOfSearchQuery({
-                            [Filter.ORGPATH]: organization?.orgPath,
-                            [Filter.LASTXDAYS]: '7'
-                          })}`}
-                        >
-                          <IllustrationWithCount
-                            icon={<NewIcon />}
-                            count={rating?.concepts?.newCount ?? 0}
-                          />
-                          <StatisticsRegularSC.StatisticsRegular.Label>
-                            {translations.formatString(
-                              translations.metadataQualityPage.newDescriptions,
-                              translations.metadataQualityPage.lastWeek
-                            )}
-                          </StatisticsRegularSC.StatisticsRegular.Label>
-                        </StatisticsRegular>
-                      </SC.Box>
-                    </div>
-                  </SC.ConceptCataloguesStatistics>
-                </ThemeProvider>
-                <ThemeProvider
-                  theme={theme.extendedColors[Entity.INFORMATION_MODEL]}
-                >
-                  <SC.InformationModelCataloguesStatistics>
-                    <h2>
-                      <InformationModelIcon />
-                      {
-                        translations.metadataQualityPage
-                          .informationModelCatalogStatistics
-                      }
-                    </h2>
-                    <div>
-                      <SC.Box>
-                        <StatisticsRegular
-                          to={`${PATHNAME_INFORMATIONMODELS}${patchSearchQuery(
-                            Filter.ORGANIZATION_NUMBER,
-                            organization?.organizationId
-                          )}`}
-                        >
-                          <IllustrationWithCount
-                            icon={<InformationModelIcon />}
-                            count={rating?.informationmodels?.totalCount ?? 0}
-                          />
-                          <StatisticsRegularSC.StatisticsRegular.Label>
-                            {translations.metadataQualityPage.descriptionsTotal}
-                          </StatisticsRegularSC.StatisticsRegular.Label>
-                        </StatisticsRegular>
-                      </SC.Box>
-                      <SC.Box>
-                        <StatisticsRegular
-                          to={`${PATHNAME_INFORMATIONMODELS}${patchListOfSearchQuery(
-                            {
-                              [Filter.ORGPATH]: organization?.orgPath,
-                              [Filter.LASTXDAYS]: '7'
-                            }
-                          )}`}
-                        >
-                          <IllustrationWithCount
-                            icon={<NewIcon />}
-                            count={rating?.informationmodels?.newCount ?? 0}
-                          />
-                          <StatisticsRegularSC.StatisticsRegular.Label>
-                            {translations.formatString(
-                              translations.metadataQualityPage.newDescriptions,
-                              translations.metadataQualityPage.lastWeek
-                            )}
-                          </StatisticsRegularSC.StatisticsRegular.Label>
-                        </StatisticsRegular>
-                      </SC.Box>
-                    </div>
-                  </SC.InformationModelCataloguesStatistics>
-                </ThemeProvider>
-              </>
-            )}
-          </SC.Section>
-          <SC.Section>
-            <SC.FrequentlyAskedQuestions>
-              <SC.Question>
-                <h3>
+            <ThemeProvider theme={theme.extendedColors[Entity.CONCEPT]}>
+              <SC.ConceptCataloguesStatistics>
+                <h2>
+                  <ConceptIcon />
+                  {translations.metadataQualityPage.conceptCatalogStatistics}
+                </h2>
+                <div>
+                  <SC.Box>
+                    <StatisticsRegular
+                      to={`${PATHNAME_CONCEPTS}${patchSearchQuery(
+                        Filter.ORGANIZATION_NUMBER,
+                        organization?.organizationId
+                      )}`}
+                    >
+                      <IllustrationWithCount
+                        icon={<ConceptIcon />}
+                        count={rating?.concepts?.totalCount ?? 0}
+                      />
+                      <StatisticsRegularSC.StatisticsRegular.Label>
+                        {translations.metadataQualityPage.descriptionsTotal}
+                      </StatisticsRegularSC.StatisticsRegular.Label>
+                    </StatisticsRegular>
+                  </SC.Box>
+                  <SC.Box>
+                    <StatisticsRegular
+                      to={`${PATHNAME_CONCEPTS}${patchListOfSearchQuery({
+                        [Filter.ORGPATH]: organization?.orgPath,
+                        [Filter.LASTXDAYS]: '7'
+                      })}`}
+                    >
+                      <IllustrationWithCount
+                        icon={<NewIcon />}
+                        count={rating?.concepts?.newCount ?? 0}
+                      />
+                      <StatisticsRegularSC.StatisticsRegular.Label>
+                        {translations.formatString(
+                          translations.metadataQualityPage.newDescriptions,
+                          translations.metadataQualityPage.lastWeek
+                        )}
+                      </StatisticsRegularSC.StatisticsRegular.Label>
+                    </StatisticsRegular>
+                  </SC.Box>
+                </div>
+              </SC.ConceptCataloguesStatistics>
+            </ThemeProvider>
+            <ThemeProvider
+              theme={theme.extendedColors[Entity.INFORMATION_MODEL]}
+            >
+              <SC.InformationModelCataloguesStatistics>
+                <h2>
+                  <InformationModelIcon />
                   {
                     translations.metadataQualityPage
-                      .whatIsMetadataQualityFaqTitle
+                      .informationModelCatalogStatistics
                   }
-                </h3>
-                <p>
-                  {
-                    translations.metadataQualityPage
-                      .whatIsMetadataQualityFaqDescription
-                  }
-                </p>
-                <Link href={PATHNAME_GUIDANCE_METADATA}>
-                  {
-                    translations.metadataQualityPage
-                      .whatIsMetadataQualityFaqLink
-                  }
-                </Link>
-              </SC.Question>
-            </SC.FrequentlyAskedQuestions>
-          </SC.Section>
-        </>
-      )}
+                </h2>
+                <div>
+                  <SC.Box>
+                    <StatisticsRegular
+                      to={`${PATHNAME_INFORMATIONMODELS}${patchSearchQuery(
+                        Filter.ORGANIZATION_NUMBER,
+                        organization?.organizationId
+                      )}`}
+                    >
+                      <IllustrationWithCount
+                        icon={<InformationModelIcon />}
+                        count={rating?.informationmodels?.totalCount ?? 0}
+                      />
+                      <StatisticsRegularSC.StatisticsRegular.Label>
+                        {translations.metadataQualityPage.descriptionsTotal}
+                      </StatisticsRegularSC.StatisticsRegular.Label>
+                    </StatisticsRegular>
+                  </SC.Box>
+                  <SC.Box>
+                    <StatisticsRegular
+                      to={`${PATHNAME_INFORMATIONMODELS}${patchListOfSearchQuery(
+                        {
+                          [Filter.ORGPATH]: organization?.orgPath,
+                          [Filter.LASTXDAYS]: '7'
+                        }
+                      )}`}
+                    >
+                      <IllustrationWithCount
+                        icon={<NewIcon />}
+                        count={rating?.informationmodels?.newCount ?? 0}
+                      />
+                      <StatisticsRegularSC.StatisticsRegular.Label>
+                        {translations.formatString(
+                          translations.metadataQualityPage.newDescriptions,
+                          translations.metadataQualityPage.lastWeek
+                        )}
+                      </StatisticsRegularSC.StatisticsRegular.Label>
+                    </StatisticsRegular>
+                  </SC.Box>
+                </div>
+              </SC.InformationModelCataloguesStatistics>
+            </ThemeProvider>
+          </>
+        )}
+      </SC.Section>
+      <SC.Section>
+        <SC.FrequentlyAskedQuestions>
+          <SC.Question>
+            <h3>
+              {translations.metadataQualityPage.whatIsMetadataQualityFaqTitle}
+            </h3>
+            <p>
+              {
+                translations.metadataQualityPage
+                  .whatIsMetadataQualityFaqDescription
+              }
+            </p>
+            <Link href={PATHNAME_GUIDANCE_METADATA}>
+              {translations.metadataQualityPage.whatIsMetadataQualityFaqLink}
+            </Link>
+          </SC.Question>
+        </SC.FrequentlyAskedQuestions>
+      </SC.Section>
     </SC.OrganizationPage>
+  ) : (
+    renderPlaceholder(isLoadingOrganization || isLoadingRating)
   );
 };
 
