@@ -62,7 +62,7 @@ export default function reducer(
         .set('rating', fromJS(action.payload.rating))
         .set('isLoadingRating', false);
     case GET_ORGANIZATION_RATING_FAILED:
-      return state;
+      return state.set('isLoadingRating', false);
     case RESET_ORGANIZATION:
       return state.set('organization', null);
     default:
