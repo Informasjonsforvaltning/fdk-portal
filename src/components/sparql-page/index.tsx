@@ -2,10 +2,11 @@ import React, { memo, FC, Suspense } from 'react';
 import { compose } from 'redux';
 
 import env from '../../env';
+import lazyWithRetry from '../../lib/lazyWithRetry';
 import SC from './styled';
 
 // eslint-disable-next-line import/no-unresolved
-const SparqlGui = React.lazy(() => import('sparql_gui/SparqlGui'));
+const SparqlGui = lazyWithRetry(() => import('sparql_gui/SparqlGui'));
 const { FDK_SPARQL_API_BASE_URI } = env;
 
 interface Props {
