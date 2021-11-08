@@ -260,7 +260,8 @@ const DatasetDetailsPage: FC<Props> = ({
         !referencedDatasets.some(
           ({ uri: referencedDatasetsUri }) =>
             referencedDatasetsUri === source?.uri
-        )
+        ) &&
+        (source?.uri || source?.prefLabel)
     ) ?? [];
 
   const mapAccessServices = (distribution: Distribution) => {
