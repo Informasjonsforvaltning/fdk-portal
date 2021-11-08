@@ -1,14 +1,17 @@
-import React, { memo, FC, Suspense, lazy } from 'react';
+import React, { memo, FC, Suspense } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, Switch, Route, Redirect } from 'react-router-dom';
+import lazyWithRetry from '../../../../lib/lazyWithRetry';
 
 const pages = {
-  publishing: lazy(() => import('./pages/publishing-page')),
-  aboutRegistration: lazy(() => import('./pages/about-registration-page')),
-  aboutHarvesting: lazy(() => import('./pages/about-harvesting-page')),
-  termsOfUse: lazy(() => import('./pages/terms-of-use-page')),
-  serviceMessages: lazy(() => import('./pages/service-messages-page')),
-  serviceMessage: lazy(() => import('./pages/service-message-page'))
+  publishing: lazyWithRetry(() => import('./pages/publishing-page')),
+  aboutRegistration: lazyWithRetry(
+    () => import('./pages/about-registration-page')
+  ),
+  aboutHarvesting: lazyWithRetry(() => import('./pages/about-harvesting-page')),
+  termsOfUse: lazyWithRetry(() => import('./pages/terms-of-use-page')),
+  serviceMessages: lazyWithRetry(() => import('./pages/service-messages-page')),
+  serviceMessage: lazyWithRetry(() => import('./pages/service-message-page'))
 };
 
 const PublishingRouter: FC<RouteComponentProps> = ({ match: { url } }) => (
