@@ -250,6 +250,8 @@ const DataserviceDetailsPage: FC<Props> = ({
               translations.detailsPage.sectionTitles.dataService
                 .datasetReferences
             }
+            entityIcon={Entity.DATASET}
+            boxStyle
           >
             <InlineList>
               {datasets.map(dataset => (
@@ -268,6 +270,8 @@ const DataserviceDetailsPage: FC<Props> = ({
           <ContentSection
             id='relationList'
             title={translations.detailsPage.relationList.title.dataservice}
+            entityIcon={Entity.DATASET}
+            boxStyle
           >
             <RelationList
               parentIdentifier={dataService?.uri}
@@ -334,6 +338,8 @@ const DataserviceDetailsPage: FC<Props> = ({
               translations.detailsPage.sectionTitles.dataService
                 .informationModelReferences
             }
+            entityIcon={Entity.INFORMATION_MODEL}
+            boxStyle
           >
             <InlineList column>
               {informationModels.map(

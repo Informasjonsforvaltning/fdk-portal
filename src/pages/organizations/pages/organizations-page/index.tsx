@@ -10,6 +10,7 @@ import { getTranslateText as translate } from '../../../../lib/translateText';
 import withOrganizations, {
   Props as OrganizationsProps
 } from '../../../../components/with-organizations';
+import Spinner from '../../../../components/spinner';
 import withErrorBoundary from '../../../../components/with-error-boundary';
 
 import ErrorPage from '../../../../components/error-page';
@@ -86,7 +87,7 @@ const OrganizationsPage: FC<Props> = ({
     getOrganizations(isTransportportal ? 'transportportal' : undefined);
   }, []);
 
-  return (
+  return organizations.length > 0 ? (
     <main className='container'>
       <div className='row mb-5'>
         <div className='col-12'>
@@ -236,6 +237,8 @@ const OrganizationsPage: FC<Props> = ({
         )}
       </div>
     </main>
+  ) : (
+    <Spinner />
   );
 };
 

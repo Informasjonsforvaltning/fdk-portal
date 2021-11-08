@@ -309,7 +309,11 @@ const ConceptDetailsPage: FC<Props> = ({
             id='remark'
             title={translations.detailsPage.sectionTitles.concept.remark}
           >
-            <MultiLingualField languages={selectedLanguages} text={remark} />
+            <MultiLingualField
+              languages={selectedLanguages}
+              text={remark}
+              convertToMarkUp
+            />
           </ContentSection>
         )}
         {(hasFieldSelectedLanguage(altLabels) ||
@@ -445,6 +449,8 @@ const ConceptDetailsPage: FC<Props> = ({
                 { concept: translate(concept?.prefLabel) }
               ) as string
             }
+            entityIcon={Entity.CONCEPT}
+            boxStyle
           >
             <KeyValueList>
               {seeAlsoConceptReferences.map(({ id, prefLabel }) => {
