@@ -4,8 +4,8 @@ import { getConfig } from '../config';
 export const getDatasetPreview = (url, rows) =>
   axios
     .post(
-      `${getConfig().datasetPreviewApi.host}/preview`,
+      `${getConfig().searchHost.host}/dataset/preview`,
       { url, rows },
-      getConfig().datasetPreviewApi.config
+      getConfig().searchHost.config
     )
     .then(r => r.data);

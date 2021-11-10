@@ -284,7 +284,7 @@
       "description": "Description",
       "noDescription": "No description",
       "downloadUrl": "Download link",
-      "download": "Download distribution",
+      "download": "Download",
       "format": "Format",
       "accessUrl": "AccessURL",
       "license": "License",
@@ -295,7 +295,9 @@
       "referenceDefaultCode": "Other relations",
       "referenceDefault": "Relation",
       "type": "Type",
-      "dataService": "Data service"
+      "dataService": "Data service",
+      "preview": "Se forhåndsvisning",
+      "previewFailure": "Sorry, it looks like the distribution does not exist or contains invalid data."
     },
     "issued": "Issue date",
     "quality": "Quality",
