@@ -41,9 +41,33 @@ const Section = styled.div`
 `;
 
 const DownloadLink = styled(Link)`
+  margin-right: ${theme.spacing('S16')};
+  background-color: ${theme.colour(Colour.BLUE, 'B30')};
+  padding: ${theme.spacing('S16')};
+  border-radius: 5px;
+
+  & > div {
+    border-bottom: 0;
+  }
+
   & > i > svg > path {
     fill: ${theme.colour(Colour.BLUE, 'B50')};
   }
 `;
 
-export default { DatasetDistribution, Section, DownloadLink };
+const PreviewLink = styled(Link)`
+  margin-right: ${theme.spacing('S16')};
+  background-color: ${theme.colour(Colour.BLUE, 'B30')};
+  padding: ${theme.spacing('S16')};
+  border-radius: 5px;
+
+  & > div {
+    border-bottom: 0;
+  }
+
+  & > i > svg > path {
+    fill: none;
+  }
+`;
+
+export default { DatasetDistribution, Section, DownloadLink, PreviewLink };
