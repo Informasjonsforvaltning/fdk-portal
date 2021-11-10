@@ -32,6 +32,7 @@ import EventsReducer from '../components/with-events/redux/reducer';
 import KartverketReducer from '../components/with-kartverket/redux/reducer';
 import EventTypesReducer from '../components/with-event-types/redux/reducer';
 import CommunityReducer from '../components/with-community/redux/reducer';
+import DatasetPreviewReducer from '../components/with-dataset-preview/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -66,5 +67,6 @@ export const rootReducer = combineReducers({
   EventsReducer,
   KartverketReducer,
   EventTypesReducer,
-  CommunityReducer
+  CommunityReducer,
+  DatasetPreviewReducer
 });
