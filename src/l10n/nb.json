@@ -177,7 +177,10 @@
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket ga {0} treff i datasett",
     "nohits": "Søket ga dessverre ingen treff",
-    "nohitsDescription": "Kontroller at du har skrevet riktig, eller prøv med andre søkeord."
+    "nohitsDescription": "Kontroller at du har skrevet riktig, eller prøv med andre søkeord.",
+    "nohitsCommunityText": "Du kan også",
+    "nohitsCommunityLink": "etterspørre data i Datalandsbyen"
+
   },
   "facet": {
     "organisation": "Eier",
