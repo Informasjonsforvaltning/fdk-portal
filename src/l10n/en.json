@@ -177,7 +177,9 @@
     "nosearchNap": "Search among {0} datasets",
     "searchNap": "Search gave {0} hit(s) among datasets",
     "nohits": "Sorry, no hits",
-    "nohitsDescription": "Please check the spelling, or use different keywords."
+    "nohitsDescription": "Please check the spelling, or use different keywords.",
+    "nohitsCommunityText": "You may also",
+    "nohitsCommunityLink": "request data in our Data Community"
   },
   "facet": {
     "organisation": "Owner",
