@@ -177,7 +177,9 @@
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket gav {0} treff i datasett",
     "nohits": "Søket ga dessverre ingen treff",
-    "nohitsDescription": "Kontroller at du har skrive riktig, eller prøv med andre søkjeord."
+    "nohitsDescription": "Kontroller at du har skrive riktig, eller prøv med andre søkjeord.",
+    "nohitsCommunityText": "Du kan òg",
+    "nohitsCommunityLink": "etterspørja data i Datalandsbyen"
   },
   "facet": {
     "organisation": "Eigar",
