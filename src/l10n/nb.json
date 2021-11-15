@@ -285,7 +285,7 @@
       "description": "Beskrivelse",
       "noDescription": "Ingen beskrivelse",
       "downloadUrl": "Nedlastingslenke",
-      "download": "Last ned distribusjon",
+      "download": "Last ned",
       "format": "Format",
       "accessUrl": "TilgangsURL",
       "license": "Forutsetning for bruk av datasettet",
@@ -296,7 +296,9 @@
       "referenceDefaultCode": "Andre relasjoner",
       "referenceDefault": "Relasjon",
       "type": "Type",
-      "dataService": "Datatjeneste"
+      "dataService": "Datatjeneste",
+      "preview": "Se forhåndsvisning",
+      "previewFailure": "Beklager, det ser ut at distribusjonen ikke finnes eller inneholder ugyldig data."
     },
     "issued": "Utgitt",
     "quality": "Kvalitet på innhold",

@@ -929,3 +929,17 @@ export interface DctStandard {
   seeAlso: string[];
   versionInfo: string;
 }
+
+export interface DatasetPreview {
+  table: PreviewTable;
+  plain: string;
+}
+
+export interface PreviewTable {
+  header: PreviewTableRow;
+  rows: PreviewTableRow[];
+}
+
+export interface PreviewTableRow {
+  columns: string[];
+}
