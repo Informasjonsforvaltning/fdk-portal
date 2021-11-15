@@ -6,13 +6,15 @@ interface Props {
   path: string;
   method: any;
   data?: any;
+  params?: URLSearchParams;
 }
 
-export const searchFullTextApi = ({ path, method, data }: Props) =>
+export const searchFullTextApi = ({ path, method, data, params }: Props) =>
   axios({
     url: `${getConfig().searchFullTextApi.host}${path}`,
     method,
-    data
+    data,
+    params
   })
     .then(response => cleanDeep(response.data))
     .catch(() => null);
@@ -20,5 +22,5 @@ export const searchFullTextApi = ({ path, method, data }: Props) =>
 export const searchFullTextApiPost = (path: string, body: any) =>
   searchFullTextApi({ path, method: 'POST', data: body });
 
-export const searchFullTextApiGet = (path: string) =>
-  searchFullTextApi({ path, method: 'GET' });
+export const searchFullTextApiGet = (path: string, params?: URLSearchParams) =>
+  searchFullTextApi({ path, method: 'GET', params });

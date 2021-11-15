@@ -943,3 +943,10 @@ export interface PreviewTable {
 export interface PreviewTableRow {
   columns: string[];
 }
+
+export interface SearchSuggestion {
+  index: EntityEnum;
+  prefLabel?: Partial<TextLanguage>;
+  title?: Partial<TextLanguage>;
+  id: string;
+}
