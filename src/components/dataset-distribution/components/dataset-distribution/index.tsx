@@ -23,16 +23,23 @@ import SC from './styled';
 
 import testIds from './test-ids';
 
-import { AccessService, Distribution, License } from '../../../../types';
+import {
+  AccessService,
+  Distribution,
+  License,
+  TextLanguage
+} from '../../../../types';
 
 interface ExternalProps {
   accessServices?: AccessService[];
+  datasetTitle: Partial<TextLanguage>;
   distribution: Partial<Distribution>;
 }
 
 interface Props extends ExternalProps {}
 
 const DatasetDistribution: FC<Props> = ({
+  datasetTitle,
   distribution: {
     title,
     description,
@@ -170,6 +177,13 @@ const DatasetDistribution: FC<Props> = ({
         )}
         {downloadURL && showPreview && (
           <Preview
+            title={translate(datasetTitle)}
+            subtitle={
+              translate(title) ||
+              translate(description) ||
+              accessURL?.toLowerCase() ||
+              translate(accessServices[0]?.description)
+            }
             downloadURL={downloadURL}
             rowCount={100}
             isOpen={showPreview}
