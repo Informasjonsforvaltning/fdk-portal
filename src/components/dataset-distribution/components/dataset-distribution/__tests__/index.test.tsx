@@ -81,7 +81,10 @@ describe('DatasetDistribution component', () => {
       queryByTestId,
       queryAllByTestId,
       rerender
-    } = renderWithTheme(<DatasetDistribution distribution={{}} />, { theme });
+    } = renderWithTheme(
+      <DatasetDistribution datasetTitle={{}} distribution={{}} />,
+      { theme }
+    );
 
     let datasetDistributionRootElement = getByTestId(testIds.root);
     let datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -105,7 +108,12 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionDetailElements).toHaveLength(1);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
-    rerender(<DatasetDistribution distribution={{ description }} />);
+    rerender(
+      <DatasetDistribution
+        datasetTitle={title}
+        distribution={{ description }}
+      />
+    );
 
     datasetDistributionRootElement = getByTestId(testIds.root);
     datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -134,7 +142,12 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionDetailElements).toHaveLength(0);
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
-    rerender(<DatasetDistribution distribution={{ title, description }} />);
+    rerender(
+      <DatasetDistribution
+        datasetTitle={title}
+        distribution={{ title, description }}
+      />
+    );
 
     datasetDistributionRootElement = getByTestId(testIds.root);
     datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -164,7 +177,10 @@ describe('DatasetDistribution component', () => {
     expect(datasetDistributionMoreInfoElement).not.toBeInTheDocument();
 
     rerender(
-      <DatasetDistribution distribution={{ title, description, fdkFormat }} />
+      <DatasetDistribution
+        datasetTitle={title}
+        distribution={{ title, description, fdkFormat }}
+      />
     );
 
     datasetDistributionRootElement = getByTestId(testIds.root);
@@ -202,6 +218,7 @@ describe('DatasetDistribution component', () => {
 
     rerender(
       <DatasetDistribution
+        datasetTitle={title}
         distribution={{
           title,
           description,
@@ -254,6 +271,7 @@ describe('DatasetDistribution component', () => {
     );
     rerender(
       <DatasetDistribution
+        datasetTitle={title}
         distribution={{
           title,
           description,
@@ -306,6 +324,7 @@ describe('DatasetDistribution component', () => {
 
     rerender(
       <DatasetDistribution
+        datasetTitle={title}
         distribution={{
           title,
           description,
@@ -359,6 +378,7 @@ describe('DatasetDistribution component', () => {
     );
     rerender(
       <DatasetDistribution
+        datasetTitle={title}
         distribution={{
           title,
           description,
@@ -422,6 +442,7 @@ describe('DatasetDistribution component', () => {
 
     rerender(
       <DatasetDistribution
+        datasetTitle={title}
         distribution={{
           title,
           description,
@@ -496,6 +517,7 @@ describe('DatasetDistribution component', () => {
 
     rerender(
       <DatasetDistribution
+        datasetTitle={title}
         distribution={{
           title,
           description,
@@ -570,6 +592,7 @@ describe('DatasetDistribution component', () => {
 
     rerender(
       <DatasetDistribution
+        datasetTitle={title}
         distribution={{
           title,
           description,
@@ -656,7 +679,10 @@ describe('DatasetDistribution component', () => {
 
   it('must not be expanded by default', () => {
     const { container, getByTestId, queryByTestId, queryAllByTestId } =
-      renderWithTheme(<DatasetDistribution distribution={{}} />, { theme });
+      renderWithTheme(
+        <DatasetDistribution datasetTitle={{}} distribution={{}} />,
+        { theme }
+      );
 
     const datasetDistributionRootElement = getByTestId(testIds.root);
     const datasetDistributionSummaryElement = getByTestId(testIds.summary);
@@ -677,7 +703,10 @@ describe('DatasetDistribution component', () => {
       getAllByTestId,
       queryByTestId,
       queryAllByTestId
-    } = renderWithTheme(<DatasetDistribution distribution={{}} />, { theme });
+    } = renderWithTheme(
+      <DatasetDistribution datasetTitle={{}} distribution={{}} />,
+      { theme }
+    );
 
     let datasetDistributionRootElement = getByTestId(testIds.root);
     let datasetDistributionSummaryElement = getByTestId(testIds.summary);

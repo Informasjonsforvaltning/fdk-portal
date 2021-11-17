@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
+import { theme, Colour } from '@fellesdatakatalog/theme';
+
 import ClearIconBase from '../../../../images/icon-clear.svg';
+
+const onMobileView = '@media (max-width: 900px)';
 
 const Modal = styled.div<{ show?: boolean }>`
   z-index: 9999999;
-  display: ${({ show }) => (show ? 'block' : 'none')};
+  display: ${({ show }) => (show ? 'flex' : 'none')};
   position: fixed;
   top: 0;
   left: 0;
@@ -29,31 +33,69 @@ const Container = styled.div`
   & > div:last-child {
     flex-grow: 1;
   }
+
+  ${onMobileView} {
+    padding: 1rem;
+  }
 `;
 
 const Header = styled.div`
   display: flex;
-  justify-content: flex-end;
-  padding-bottom: 2rem;
+  margin-bottom: ${theme.spacing('S4')};
+  ${onMobileView} {
+    flex-direction: column;
+  }
+`;
+
+const TitleHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+`;
+
+const Title = styled.h2`
+  flex-grow: 1;
+  margin-bottom: ${theme.spacing('S4')};
+  font-size: ${theme.fontSize('FS20')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS14')};
+  }
+`;
+
+const Subtitle = styled.h3`
+  font-size: ${theme.fontSize('FS16')};
+  margin-bottom: ${theme.spacing('S4')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS12')};
+  }
 `;
 
 const ClearIcon = styled(ClearIconBase)`
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
+  margin-right: ${theme.spacing('S4')};
 
   & > path {
-    fill: ${({ theme: t }) => t.extendedColors.neutralLightest};
+    fill: ${theme.colour(Colour.NEUTRAL, 'N70')};
+  }
+`;
+
+const ButtonContainer = styled.div`
+  ${onMobileView} {
+    order: -1;
   }
 `;
 
 const CloseButton = styled.button`
-  background-color: ${({ theme }) => theme.extendedColors.buttonPrimary2};
-  color: ${({ theme }) => theme.extendedColors.neutralLightest};
+  display: flex;
+  align-items: center;
+  background-color: ${theme.colour(Colour.BLUE, 'B20')};
+  color: ${theme.colour(Colour.NEUTRAL, 'N70')};
   border: none;
-  border-radius: 5px;
-  padding: 0.5em;
-  min-width: 100px;
+  padding: ${theme.spacing('S10')};
   cursor: pointer;
+  white-space: nowrap;
 `;
 
 const Center = styled.div`
@@ -67,11 +109,21 @@ const Center = styled.div`
   }
 `;
 
+const Plain = styled.pre`
+  height: 100%;
+  overflow: scroll;
+`;
+
 export default {
   Modal,
   Container,
+  ButtonContainer,
   Header,
+  Title,
+  TitleHeader,
+  Subtitle,
   ClearIcon,
   CloseButton,
-  Center
+  Center,
+  Plain
 };
