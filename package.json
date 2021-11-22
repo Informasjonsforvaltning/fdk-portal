@@ -117,7 +117,8 @@
     "rehype-raw": "^5.1.0",
     "remark-gfm": "^1.0.0",
     "sanitize-html": "^2.4.0",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.3.1",
+    "xml-formatter": "^2.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
