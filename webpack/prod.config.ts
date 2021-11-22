@@ -49,7 +49,7 @@ const configuration: Configuration = merge(baseConfig, {
       name: 'portal',
       remotes: {
         sparql_gui:
-          process.env.NAMESPACE === 'production'
+          process.env.NAMESPACE === 'prod'
             ? 'sparql_gui@https://sparql.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
             : 'sparql_gui@https://sparql.staging.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
       },
