@@ -950,7 +950,7 @@ export interface PreviewTableRow {
 }
 
 export interface SearchSuggestion {
-  index: EntityEnum;
+  index: SearchIndex;
   prefLabel?: Partial<TextLanguage>;
   title?: Partial<TextLanguage>;
   id: string;

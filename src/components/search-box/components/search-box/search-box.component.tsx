@@ -1,12 +1,9 @@
 import React, {
-  ChangeEvent,
   Children,
   FC,
   isValidElement,
   memo,
-  PropsWithChildren,
-  useEffect,
-  useState
+  PropsWithChildren
 } from 'react';
 
 import { compose } from 'redux';
@@ -15,23 +12,20 @@ import SearchForm from '../search-form/search-form.component';
 import SearchLink from '../search-link/search-link.component';
 import SearchBoxHeader from '../search-box-header/search-box-header.component';
 import { Tabs } from '../../../../pages/search-page/tabs/tabs';
-import withSearchSuggestions, {
-  Props as SearchSuggestionProps
-} from '../../../with-suggestions';
-import { getConfig } from '../../../../config';
+import Autosuggest from '../autosuggest';
 
-const SearchBox: FC<PropsWithChildren<SearchSuggestionProps>> = ({
-  children,
-  cachedSuggestions,
-  searchSuggestionsActions: {
-    getSearchSuggestionsRequested: getSearchSuggestions,
-    resetSearchSuggestions
-  }
+interface ExternalProps {
+  placeholder: string;
+  autosuggest?: boolean;
+}
+
+interface Props extends ExternalProps {}
+
+const SearchBox: FC<PropsWithChildren<Props>> = ({
+  placeholder,
+  autosuggest,
+  children
 }) => {
-  const isNap = getConfig().filterTransportDatasets;
-
-  const [searchString, setSearchString] = useState('');
-
   const renderSearchBoxHeader = () =>
     Children.map(children, child =>
       isValidElement(child) && child.type === SearchBoxHeader ? child : null
@@ -47,28 +41,16 @@ const SearchBox: FC<PropsWithChildren<SearchSuggestionProps>> = ({
       isValidElement(child) && child.type === Tabs ? child : null
     )?.shift();
 
-  const searchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchString(e.target.value);
-    if (!cachedSuggestions[e.target.value] && e.target.value.length > 1) {
-      getSearchSuggestions(e.target.value, isNap);
-    }
-  };
-
-  useEffect(
-    () => () => {
-      resetSearchSuggestions();
-    },
-    []
-  );
-
   return (
     <SC.SearchBox>
       <SC.Content>
         {renderSearchBoxHeader()}
-        <SearchForm
-          suggestions={cachedSuggestions[searchString]}
-          onChangeHandler={searchChange}
-        />
+        {autosuggest ? (
+          <Autosuggest placeholder={placeholder} />
+        ) : (
+          <SearchForm placeholder={placeholder} />
+        )}
+
         {Children.count(renderSearchLinks()) > 0 && (
           <SC.SearchLinks>{renderSearchLinks()}</SC.SearchLinks>
         )}
@@ -78,4 +60,4 @@ const SearchBox: FC<PropsWithChildren<SearchSuggestionProps>> = ({
   );
 };
 
-export default compose<FC<any>>(withSearchSuggestions, memo)(SearchBox);
+export default compose<FC<ExternalProps>>(memo)(SearchBox);
