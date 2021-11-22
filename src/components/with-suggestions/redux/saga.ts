@@ -11,13 +11,14 @@ import {
 import type { SearchSuggestion } from '../../../types';
 
 function* getSearchSuggestionsRequested({
-  payload: { query, isNap }
+  payload: { query, isNap, searchEntity }
 }: ReturnType<typeof actions.getSearchSuggestionsRequested>) {
   try {
     const data: SearchSuggestion[] = yield call(
       getSearchSuggestions,
       query,
-      isNap
+      isNap,
+      searchEntity
     );
 
     if (data) {

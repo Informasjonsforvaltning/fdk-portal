@@ -41,7 +41,7 @@ const MainPage: FC<Props> = ({
 
   return (
     <div>
-      <SearchBox>
+      <SearchBox placeholder='Eksempel: offentlig transport' autosuggest>
         <SearchBoxHeader as='h1' large>
           {localization.searchBoxHeader}
         </SearchBoxHeader>

@@ -146,3 +146,10 @@ export enum CommunityTerm {
   MONTH = 'month',
   ALL = ''
 }
+
+export enum SuggestionIndexEnum {
+  '/datasets',
+  '/dataservices',
+  '/concepts',
+  '/informationmodels'
+}

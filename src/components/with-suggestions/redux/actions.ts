@@ -7,12 +7,17 @@ import {
 
 import type { SearchSuggestion } from '../../../types';
 
-export function getSearchSuggestionsRequested(query: string, isNap: boolean) {
+export function getSearchSuggestionsRequested(
+  query: string,
+  isNap: boolean,
+  searchEntity?: string
+) {
   return {
     type: GET_SEARCH_SUGGESTIONS_REQUESTED,
     payload: {
       query,
-      isNap
+      isNap,
+      searchEntity
     }
   };
 }

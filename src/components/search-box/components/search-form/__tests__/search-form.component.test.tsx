@@ -12,7 +12,7 @@ afterEach(cleanup);
 
 describe('SearchFormPure component', () => {
   it(Expectation.STRUCTURE, () => {
-    const container = shallow(<SearchForm />);
+    const container = shallow(<SearchForm placeholder='test' />);
     expect(container).toMatchSnapshot();
   });
 });
