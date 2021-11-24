@@ -59,7 +59,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
           build-args:  |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-            NAMESPACE=prod
+            NAMESPACE=production
 
       - name: Apply Helm template
         run: |
