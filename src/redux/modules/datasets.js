@@ -17,7 +17,8 @@ export const DATASETS_FAILURE = 'DATASETS_FAILURE';
 const generateQueryKey = query => qs.stringify(query, { skipNulls: true });
 
 function shouldFetch(metaState, queryKey) {
-  const threshold = 60 * 100; // seconds
+  const threshold = 60 * 1000; // seconds
+
   return (
     !metaState ||
     (!metaState.isFetching &&
