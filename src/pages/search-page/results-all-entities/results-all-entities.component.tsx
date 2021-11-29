@@ -33,6 +33,7 @@ import SC from './styled';
 import type { Entity as EntityType, Concept, EventType } from '../../../types';
 import { FeedType } from '../../../types/enums';
 import { PATHNAME_DATASETS } from '../../../constants/constants';
+import Spinner from '../../../components/spinner';
 
 const { SEARCH_API_HOST } = env;
 
@@ -43,6 +44,7 @@ interface ExternalProps {
   compareConceptList?: Concept[];
   addConcept?: (concept: Partial<Concept>) => void;
   removeConcept?: (id?: string) => void;
+  isLoading: boolean;
 }
 interface Props
   extends ExternalProps,
@@ -65,7 +67,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   referenceData: { los = [], themes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   eventTypes,
-  eventTypesActions: { getEventTypesRequested: getEventTypes }
+  eventTypesActions: { getEventTypesRequested: getEventTypes },
+  isLoading
 }) => {
   useEffect(() => {
     if (los.length === 0) {
@@ -120,12 +123,17 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
               />
             </SC.Filters>
             <section className='col-12 col-lg-8'>
-              <SearchEntities
-                entities={entities}
-                compareConceptList={compareConceptList}
-                addConcept={addConcept}
-                removeConcept={removeConcept}
-              />
+              {isLoading ? (
+                <Spinner />
+              ) : (
+                <SearchEntities
+                  entities={entities}
+                  compareConceptList={compareConceptList}
+                  addConcept={addConcept}
+                  removeConcept={removeConcept}
+                />
+              )}
+
               <SC.Pagination>
                 <span className='uu-invisible' aria-hidden='false'>
                   Sidepaginering.
