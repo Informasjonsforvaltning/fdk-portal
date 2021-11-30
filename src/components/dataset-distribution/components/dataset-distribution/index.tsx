@@ -67,7 +67,7 @@ const DatasetDistribution: FC<Props> = ({
           title={
             translate(title) ||
             translate(description) ||
-            accessURL?.toLowerCase() ||
+            accessURL ||
             translate(accessServices[0]?.description)
           }
           formats={formats}
@@ -91,7 +91,7 @@ const DatasetDistribution: FC<Props> = ({
             value={
               <ExternalLink
                 uri={accessURL}
-                prefLabel={accessURL.toLowerCase()}
+                prefLabel={accessURL}
                 openInNewTab
               />
             }
@@ -181,7 +181,7 @@ const DatasetDistribution: FC<Props> = ({
             subtitle={
               translate(title) ||
               translate(description) ||
-              accessURL?.toLowerCase() ||
+              accessURL ||
               translate(accessServices[0]?.description)
             }
             downloadURL={downloadURL}
