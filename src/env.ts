@@ -5,6 +5,9 @@ import { Namespace } from './types/enums';
 export default validateEnv(
   (window as any).env ?? {
     NAMESPACE: Namespace.DEVELOPMENT,
+    OIDC_ISSUER:
+      'https://sso.staging.fellesdatakatalog.digdir.no/auth/realms/fdk',
+    OIDC_CLIENT_SECRET: '',
     CONTAINER_IMAGE: 'eu.gcr.io/digdir-fdk-infra/fdk-portal:development',
     SEARCH_API_HOST: 'https://www.staging.fellesdatakatalog.digdir.no',
     FDK_REGISTRATION_BASE_URI:
