@@ -9,6 +9,7 @@ import ThemeProvider from '@fellesdatakatalog/theme';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 import LoggingProvider from '../../providers/logging';
+import AuthProvider from '../../providers/auth';
 
 import { configureStore } from '../../redux/configureStore';
 import { ConnectedApp } from '../../app/connected-app';
@@ -29,16 +30,18 @@ const theme = getConfig().themeNap ? themeNAP : themeFDK;
 render(
   <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <LoggingProvider>
-      <Analytics />
-      <ApolloProvider client={client}>
-        <Provider store={store}>
-          <BrowserRouter>
-            <Route component={ConnectedApp} />
-          </BrowserRouter>
-        </Provider>
-      </ApolloProvider>
-    </LoggingProvider>
+    <AuthProvider>
+      <LoggingProvider>
+        <Analytics />
+        <ApolloProvider client={client}>
+          <Provider store={store}>
+            <BrowserRouter>
+              <Route component={ConnectedApp} />
+            </BrowserRouter>
+          </Provider>
+        </ApolloProvider>
+      </LoggingProvider>
+    </AuthProvider>
   </ThemeProvider>,
   document.getElementById('root')
 );
