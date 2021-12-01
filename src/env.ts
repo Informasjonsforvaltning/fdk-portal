@@ -21,6 +21,7 @@ export default validateEnv(
       'https://community.staging.fellesdatakatalog.digdir.no',
     FDK_CMS_BASE_URI: 'https://cms.fellesdatakatalog.digdir.no',
     FDK_SPARQL_API_BASE_URI:
-      'https://sparql.staging.fellesdatakatalog.digdir.no'
+      'https://sparql.staging.fellesdatakatalog.digdir.no',
+    FDK_DATASET_PREVIEW_API_KEY: ''
   }
 );
