@@ -5,6 +5,7 @@ import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
 import ConceptIconBase from '../../../../images/icon-catalog-concept-lg.svg';
 import InfomodelIconBase from '../../../../images/icon-catalog-infomod-lg.svg';
 import PublicServiceIconBase from '../../../../images/icon-catalog-service-lg.svg';
+import { Entity } from '../../../../types/enums';
 
 const SuggestionsContainer = styled.ul`
   display: flex;
@@ -80,23 +81,27 @@ const iconStyle = (entity: string) => css`
 `;
 
 const DatasetIcon = styled(DatasetIconBase)`
-  ${iconStyle('dataset')}
+  ${iconStyle(Entity.DATASET)}
 `;
 
 const DataServiceIcon = styled(ApiIconBase)`
-  ${iconStyle('dataservice')};
+  ${iconStyle(Entity.DATA_SERVICE)};
 `;
 
 const ConceptIcon = styled(ConceptIconBase)`
-  ${iconStyle('concept')};
+  ${iconStyle(Entity.CONCEPT)};
 `;
 
 const InfomodelIcon = styled(InfomodelIconBase)`
-  ${iconStyle('informationmodel')};
+  ${iconStyle(Entity.INFORMATION_MODEL)};
 `;
 
 const PublicServiceIcon = styled(PublicServiceIconBase)`
-  ${iconStyle('publicservice')};
+  ${iconStyle(Entity.PUBLIC_SERVICE)};
+`;
+
+const EventIcon = styled(PublicServiceIconBase)`
+  ${iconStyle(Entity.EVENT)};
 `;
 
 export default {
@@ -108,5 +113,6 @@ export default {
   PublicServiceIcon,
   ConceptIcon,
   InfomodelIcon,
-  DataServiceIcon
+  DataServiceIcon,
+  EventIcon
 };

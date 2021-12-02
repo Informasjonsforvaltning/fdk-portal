@@ -8,7 +8,9 @@ export const getSearchSuggestions = (
 ) => {
   const searchPath =
     searchEntity != null && searchEntity in SuggestionIndexEnum
-      ? `/suggestion${searchEntity}`
+      ? `/suggestion${
+          SuggestionIndexEnum[searchEntity as keyof typeof SuggestionIndexEnum]
+        }`
       : '/suggestion';
   return searchFullTextApiGet(
     searchPath,

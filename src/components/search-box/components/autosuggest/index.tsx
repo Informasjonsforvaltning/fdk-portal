@@ -49,6 +49,10 @@ const renderIcon = (index: string) => {
       return <SC.InfomodelIcon />;
     case 'concepts':
       return <SC.ConceptIcon />;
+    case 'events':
+      return <SC.EventIcon />;
+    case 'public_services':
+      return <SC.PublicServiceIcon />;
     case 'datasets':
     default:
       return <SC.DatasetIcon />;
