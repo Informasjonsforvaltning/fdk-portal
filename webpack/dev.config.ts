@@ -32,6 +32,7 @@ const configuration: Configuration = mergeWithCustomize({
       rewrites: [
         { from: /^\/publishing/, to: '/publishing.html' },
         { from: /^\/maintenance/, to: '/maintenance.html' },
+        { from: /^\/auth/, to: '/auth.html' },
         { from: /./, to: '/index.html' }
       ]
     }

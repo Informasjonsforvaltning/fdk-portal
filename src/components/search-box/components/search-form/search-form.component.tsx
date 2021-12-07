@@ -1,28 +1,51 @@
 import React, {
+  ChangeEvent,
+  ChangeEventHandler,
   FC,
   FormEvent,
-  HTMLAttributes,
+  KeyboardEventHandler,
   memo,
+  MouseEventHandler,
   PropsWithChildren,
   useCallback,
+  useEffect,
   useState
 } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
+import { compose } from 'redux';
 import SC from './styled';
 import localization from '../../../../lib/localization';
 import { parseSearchParams } from '../../../../lib/location-history-helper';
-import { setSearchText } from '../../../../pages/search-page/search-location-helper';
 import { PATHNAME_MAIN_PAGE } from '../../../../constants/constants';
 import SearchIcon from '../../../../img/icon-search-lg.svg';
+import { setSearchText } from '../../../../pages/search-page/search-location-helper';
 
-interface Props extends HTMLAttributes<HTMLElement>, RouteComponentProps {}
+interface ExternalProps {
+  placeholder: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  onClick?: MouseEventHandler<HTMLInputElement>;
+}
+interface Props extends RouteComponentProps, ExternalProps {}
 
-const SearchForm: FC<PropsWithChildren<Props>> = ({ history, location }) => {
+const SearchForm: FC<PropsWithChildren<Props>> = ({
+  history,
+  location,
+  onChange: change,
+  onKeyDown,
+  onClick
+}) => {
   const locationSearch = parseSearchParams(location);
   const [searchQuery, setSearchQuery] = useState(
-    locationSearch.q?.toString() || ''
+    locationSearch.q?.toString() ?? ''
   );
+
+  useEffect(() => {
+    if (locationSearch.q?.toString()) {
+      setSearchQuery(locationSearch.q?.toString());
+    }
+  }, [locationSearch.q?.toString()]);
 
   const onSearch = useCallback(
     (e: FormEvent) => {
@@ -32,19 +55,27 @@ const SearchForm: FC<PropsWithChildren<Props>> = ({ history, location }) => {
     [searchQuery]
   );
 
-  function onClear(e: FormEvent) {
+  const onClear = (e: FormEvent) => {
     e.preventDefault();
     setSearchQuery('');
     if (location.pathname !== PATHNAME_MAIN_PAGE) {
       setSearchText(history, location, '');
     }
-  }
+  };
+
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+    if (change) {
+      change(event);
+    }
+  };
 
   return (
     <SC.SearchForm onSubmit={onSearch}>
       <label className='uu-invisible' htmlFor='searchBox'>
         {localization.query.intro}
       </label>
+
       <input
         aria-label={localization.query.intro}
         autoComplete='off'
@@ -52,7 +83,9 @@ const SearchForm: FC<PropsWithChildren<Props>> = ({ history, location }) => {
         placeholder={localization.query.intro}
         type='search'
         value={searchQuery}
-        onChange={e => setSearchQuery(e.target.value)}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        onClick={onClick}
       />
       <button
         aria-label={localization.query.reset}
@@ -70,4 +103,4 @@ const SearchForm: FC<PropsWithChildren<Props>> = ({ history, location }) => {
   );
 };
 
-export default withRouter(memo(SearchForm));
+export default compose<FC<ExternalProps>>(memo, withRouter)(SearchForm);

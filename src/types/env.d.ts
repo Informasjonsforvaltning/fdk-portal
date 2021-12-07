@@ -2,6 +2,8 @@ import { Namespace } from './enums';
 
 export interface EnvironmentVariables {
   NAMESPACE: Namespace;
+  OIDC_ISSUER: string;
+  OIDC_CLIENT_SECRET: string;
   CONTAINER_IMAGE: string;
   SEARCH_API_HOST: string;
   FDK_REGISTRATION_BASE_URI: string;
@@ -10,4 +12,5 @@ export interface EnvironmentVariables {
   FDK_LOGGING_FUNCTION_URI: string;
   FDK_COMMUNITY_BASE_URI: string;
   FDK_SPARQL_API_BASE_URI: string;
+  FDK_DATASET_PREVIEW_API_KEY: string;
 }

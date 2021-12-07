@@ -47,7 +47,7 @@ exports[`should render App correctly 1`] = `
     <Route
       component={[Function]}
       exact={true}
-      path="/public-services"
+      path="/public-services-and-events"
     />
     <Route
       component={[Function]}
@@ -176,7 +176,7 @@ exports[`should render App correctly 1`] = `
             }
           }
           exact={true}
-          path="/public-services/:publicServiceId"
+          path="/public-services-and-events/:publicServiceId"
         />
         <Route
           component={

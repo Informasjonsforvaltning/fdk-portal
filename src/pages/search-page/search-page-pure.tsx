@@ -70,6 +70,10 @@ interface Props extends PublicServicesAndEventsProps, RouteComponentProps {
   addConcept: (concept: Partial<Concept>) => void;
   removeConcept: (id?: string | undefined) => void;
   searchAllEntities: AllEntities;
+  isFetchingDatasets: boolean;
+  isFetchingDataservices: boolean;
+  isFetchingConcepts: boolean;
+  isFetchingInformationModels: boolean;
 }
 
 const SearchPage: FC<Props> = ({
@@ -99,7 +103,11 @@ const SearchPage: FC<Props> = ({
   publicServicesAndEventsPage,
   publicServicesAndEventsActions: {
     getPublicServicesAndEventsRequested: getPublicServicesAndEvents
-  }
+  },
+  isFetchingDatasets,
+  isFetchingDataservices,
+  isFetchingConcepts,
+  isFetchingInformationModels
 }) => {
   const [searchQuery, setSearchQuery] = useState('#');
   const {
@@ -132,6 +140,12 @@ const SearchPage: FC<Props> = ({
       ? locationSearch
       : locationSearchParamQ;
 
+  const isLoading =
+    isFetchingDatasets ||
+    isFetchingDataservices ||
+    isFetchingConcepts ||
+    isFetchingInformationModels;
+
   useEffect(() => {
     fetchDatasetsIfNeeded(datasetSearchParams);
     fetchDataServicesIfNeeded(dataServiceSearchParams);
@@ -154,7 +168,7 @@ const SearchPage: FC<Props> = ({
   return (
     <div>
       {!getConfig().themeNap && (
-        <SearchBox>
+        <SearchBox placeholder='Eksempel: offentlig transport' autosuggest>
           <SearchBoxHeader>
             <HitsStats
               countDatasets={datasetTotal ?? 0}
@@ -176,7 +190,7 @@ const SearchPage: FC<Props> = ({
         </SearchBox>
       )}
       {getConfig().themeNap && (
-        <SearchBox>
+        <SearchBox placeholder='Eksempel: offentlig transport' autosuggest>
           <SearchBoxHeader>
             <SC.SearchBox.SearchHeaderLogosTitle>
               {translations.collaborationBetween}
@@ -189,6 +203,7 @@ const SearchPage: FC<Props> = ({
         <Switch>
           <Route exact path={PATHNAME_SEARCH}>
             <ResultsPage
+              isLoading={isLoading}
               entities={searchAllEntitiesHits}
               aggregations={allResultsEntititesAggregations}
               page={searchAllEntitiesPage}
@@ -196,6 +211,7 @@ const SearchPage: FC<Props> = ({
           </Route>
           <Route exact path={PATHNAME_DATASETS}>
             <ResultsPage
+              isLoading={isLoading}
               entities={datasetItems}
               aggregations={datasetAggregations}
               page={{
@@ -205,6 +221,7 @@ const SearchPage: FC<Props> = ({
           </Route>
           <Route exact path={PATHNAME_DATA_SERVICES}>
             <ResultsPage
+              isLoading={isLoading}
               entities={dataServiceItems}
               aggregations={dataServiceAggregations}
               page={{
@@ -214,6 +231,7 @@ const SearchPage: FC<Props> = ({
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
             <ResultsPage
+              isLoading={isLoading}
               entities={conceptItems}
               aggregations={conceptAggregations}
               page={{
@@ -226,6 +244,7 @@ const SearchPage: FC<Props> = ({
           </Route>
           <Route exact path={PATHNAME_INFORMATIONMODELS}>
             <ResultsPage
+              isLoading={isLoading}
               entities={informationModelItems}
               aggregations={informationModelAggregations}
               page={{
@@ -237,6 +256,7 @@ const SearchPage: FC<Props> = ({
           </Route>
           <Route exact path={PATHNAME_PUBLIC_SERVICES}>
             <ResultsPage
+              isLoading={isLoading}
               entities={publicServicesAndEvents}
               aggregations={publicServicesAndEventsAggregations ?? {}}
               page={publicServicesAndEventsPage ?? {}}

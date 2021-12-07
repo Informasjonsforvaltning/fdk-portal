@@ -7,6 +7,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 const configuration: Configuration = {
   entry: {
     main: './src/entrypoints/main/index.tsx',
+    auth: './src/entrypoints/auth/index.ts',
     publishing: './src/entrypoints/publishing/index.tsx',
     maintenance: './src/entrypoints/maintenance/index.tsx'
   },
@@ -130,6 +131,13 @@ const configuration: Configuration = {
       favicon: './src/img/favicon.ico',
       base: '/',
       chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/entrypoints/auth/index.html',
+      filename: 'auth.html',
+      favicon: './src/img/favicon.ico',
+      base: '/',
+      chunks: ['auth']
     }),
     new HtmlWebpackPlugin({
       template: './src/entrypoints/publishing/index.html',

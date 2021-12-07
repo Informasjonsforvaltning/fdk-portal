@@ -78,4 +78,7 @@ const ClearIcon = styled(ClearIconBase)`
   }
 `;
 
-export default { SearchForm, ClearIcon };
+export default {
+  SearchForm,
+  ClearIcon
+};

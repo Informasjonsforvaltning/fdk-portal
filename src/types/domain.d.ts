@@ -948,3 +948,10 @@ export interface PreviewTable {
 export interface PreviewTableRow {
   columns: string[];
 }
+
+export interface SearchSuggestion {
+  index: SearchIndex;
+  prefLabel?: Partial<TextLanguage>;
+  title?: Partial<TextLanguage>;
+  id: string;
+}
