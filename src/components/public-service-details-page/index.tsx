@@ -393,7 +393,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           url
                         }) => (
                           <Link key={uri} href={url} external>
-                            {translate(legalResourceDescription)}
+                            {translate(legalResourceDescription) ?? url}
                           </Link>
                         )
                       )
