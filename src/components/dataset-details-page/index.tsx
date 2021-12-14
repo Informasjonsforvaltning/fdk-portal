@@ -356,7 +356,7 @@ const DatasetDetailsPage: FC<Props> = ({
                           uri &&
                           prefLabel && (
                             <Link key={`${uri}-${index}`} href={uri} external>
-                              {translate(prefLabel)}
+                              {translate(prefLabel) ?? uri}
                             </Link>
                           )
                       )}
@@ -374,7 +374,7 @@ const DatasetDetailsPage: FC<Props> = ({
                           uri &&
                           prefLabel && (
                             <Link key={`${uri}-${index}`} href={uri} external>
-                              {translate(prefLabel)}
+                              {translate(prefLabel) ?? uri}
                             </Link>
                           )
                       )}
@@ -392,7 +392,7 @@ const DatasetDetailsPage: FC<Props> = ({
                           uri &&
                           prefLabel && (
                             <Link key={`${uri}-${index}`} href={uri} external>
-                              {translate(prefLabel)}
+                              {translate(prefLabel) ?? uri}
                             </Link>
                           )
                       )}
@@ -416,7 +416,7 @@ const DatasetDetailsPage: FC<Props> = ({
                           uri &&
                           prefLabel && (
                             <Link key={`${uri}-${index}`} href={uri} external>
-                              {translate(prefLabel)}
+                              {translate(prefLabel) ?? uri}
                             </Link>
                           )
                       )}
