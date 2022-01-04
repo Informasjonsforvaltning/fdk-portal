@@ -38,7 +38,8 @@
     "bundle:analyse": "run-s build:webpack:stats",
     "commit": "git-cz",
     "prepare": "husky install",
-    "generate:types": "graphql-codegen"
+    "generate:types": "graphql-codegen",
+    "sitemap": "NODE_PATH=./src npx -s sh ts-node --project tsconfig.sitemap.json ./sitemap-builder.ts"
   },
   "config": {
     "commitizen": {

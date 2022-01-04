@@ -14,7 +14,6 @@ export const PATHNAME_ABOUT_REGISTRATION = '/about-registration';
 export const PATHNAME_NEWS_ARTICLE = '/news';
 export const PATHNAME_NEWS_ARTICLE_V2 = '/news-v2';
 export const PATHNAME_NEWS_ARCHIVE = '/news-archive';
-export const HITS_PER_PAGE = 10;
 export const PATHNAME_HOME_NAP =
   'https://transportportal.atlas.vegvesen.no/no/';
 export const PATHNAME_ABOUT_NAP =
@@ -28,3 +27,5 @@ export const PATHNAME_SPARQL = '/sparql';
 export const PARAGRAPH__BODY = 'paragraph--body';
 export const PARAGRAPH__IMAGE = 'paragraph--image';
 export const PARAGRAPH__VIDEO = 'paragraph--video';
+
+export const HITS_PER_PAGE = 10;
