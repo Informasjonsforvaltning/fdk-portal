@@ -10,6 +10,7 @@ import {
 } from '../../../../../../api/generated/cms/graphql';
 
 import SC from './styled';
+import { PATHNAME_PUBLISHING } from '../../../../../../constants/constants';
 
 interface Props {}
 
@@ -38,7 +39,7 @@ const ServiceMessagesPage: FC<Props> = () => {
           >
             <SC.Content>
               <SC.ServiceMessageTitle
-                to={`/publishing/service-messages/${id}`}
+                to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
                 forwardedAs={RouteLink}
               >
                 {title} ({channel})

@@ -14,11 +14,10 @@ exports[`should render App correctly 1`] = `
       to=""
     />
     <Route
+      component={[Function]}
       exact={true}
       path="/"
-    >
-      <NewsResolver />
-    </Route>
+    />
     <Route
       component={[Function]}
       exact={true}
@@ -62,6 +61,7 @@ exports[`should render App correctly 1`] = `
           "type": [Function],
         }
       }
+      exact={false}
       path="/organizations"
     />
     <withRouter(ScrollToTop)>
@@ -241,9 +241,15 @@ exports[`should render App correctly 1`] = `
           path="/guidance/metadata"
         />
         <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "compare": null,
+              "type": [Function],
+            }
+          }
           exact={true}
           path="/sparql"
-          render={[Function]}
         />
         <Route
           render={[Function]}
