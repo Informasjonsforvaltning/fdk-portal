@@ -2,8 +2,8 @@
   "decisions": {
     "1005067|rdflib>xmldom": {
       "decision": "ignore",
-      "madeAt": 1637571640128,
-      "expiresAt": 1640163608254
+      "madeAt": 1641307065373,
+      "expiresAt": 1643899051158
     },
     "1005417|@fellesdatakatalog/internal-footer>@fellesdatakatalog/skatteetaten-frontend-components>react-i18next>html-parse-stringify2": {
       "decision": "ignore",

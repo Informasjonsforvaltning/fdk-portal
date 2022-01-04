@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-
 import localization from '../lib/localization';
 import { MainPage } from '../pages/main-page/main-page';
 import { SearchPage } from '../pages/search-page/search-page';
@@ -20,25 +19,25 @@ import Header from '../components/header';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import Footer from '../components/footer';
 import {
+  PATHNAME_MAIN_PAGE,
   PATHNAME_SEARCH,
   PATHNAME_DATASETS,
-  PATHNAME_DATASET_DETAILS,
   PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
-  PATHNAME_CONCEPTS_COMPARE,
   PATHNAME_INFORMATIONMODELS,
+  PATHNAME_PUBLIC_SERVICES,
+  PATHNAME_NEWS_ARCHIVE,
+  PATHNAME_ORGANIZATIONS,
+  PATHNAME_CONCEPTS_COMPARE,
+  PATHNAME_DATASET_DETAILS,
+  PATHNAME_EVENTS,
+  PATHNAME_NEWS_ARTICLE,
+  PATHNAME_NEWS_ARTICLE_V2,
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
-  PATHNAME_MAIN_PAGE,
-  PATHNAME_NEWS_ARTICLE,
-  PATHNAME_NEWS_ARTICLE_V2,
-  PATHNAME_NEWS_ARCHIVE,
   PATHNAME_GUIDANCE,
   PATHNAME_GUIDANCE_METADATA,
-  PATHNAME_ORGANIZATIONS,
-  PATHNAME_PUBLIC_SERVICES,
-  PATHNAME_EVENTS,
   PATHNAME_SPARQL
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
@@ -46,10 +45,12 @@ import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
 import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
+import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-page';
 import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import { parseSearchParams } from '../lib/location-history-helper';
-import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-page';
+import routes from '../routes';
+// import lazyWithRetry from '../lib/lazyWithRetry';
 
 export function App({ language, onChangeLanguage }) {
   useEffect(() => {
@@ -69,6 +70,35 @@ export function App({ language, onChangeLanguage }) {
     'theme-fdk': !getConfig().themeNap
   });
 
+  const components = {
+    [PATHNAME_MAIN_PAGE]: MainPage,
+    [PATHNAME_SEARCH]: SearchPage,
+    [PATHNAME_DATASETS]: SearchPage,
+    [PATHNAME_DATA_SERVICES]: SearchPage,
+    [PATHNAME_CONCEPTS]: SearchPage,
+    [PATHNAME_INFORMATIONMODELS]: SearchPage,
+    [PATHNAME_PUBLIC_SERVICES]: SearchPage,
+    [PATHNAME_NEWS_ARCHIVE]: NewsArchivePage,
+    [`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`]:
+      ConnectedConceptComparePage,
+    [`${PATHNAME_DATASET_DETAILS}/:datasetId`]: DatasetDetailsPage,
+    [`${PATHNAME_CONCEPTS}/:conceptId`]: ConceptDetailsPage,
+    [`${PATHNAME_INFORMATIONMODELS}/:informationModelId`]:
+      InformationModelDetailsPage,
+    [`${PATHNAME_DATA_SERVICES}/:dataServiceId`]: DataServiceDetailsPage,
+    [`${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`]: PublicServiceDetailsPage,
+    [`${PATHNAME_EVENTS}/:eventId`]: EventDetailsPage,
+    [`${PATHNAME_NEWS_ARTICLE}/:id`]: NewsArticle,
+    [`${PATHNAME_NEWS_ARTICLE_V2}/:id`]: NewsArticlePageV2,
+    [PATHNAME_REPORTS]: ReportPage,
+    [PATHNAME_ABOUT]: CmsArticlePage,
+    [PATHNAME_ABOUT_REGISTRATION]: CmsArticlePage,
+    [PATHNAME_GUIDANCE]: CmsArticlePage,
+    [PATHNAME_GUIDANCE_METADATA]: CmsArticlePage,
+    [PATHNAME_SPARQL]: SparqlPage,
+    [PATHNAME_ORGANIZATIONS]: OrganizationsRouter
+  };
+
   return (
     <div className={themeClass}>
       <Header onChangeLanguage={onChangeLanguage} />
@@ -76,86 +106,55 @@ export function App({ language, onChangeLanguage }) {
 
       <Switch>
         <Redirect from='/:url*(/+)' to={location.pathname.slice(0, -1)} />
-        <Route exact path={PATHNAME_MAIN_PAGE}>
-          {getConfig().themeNap ? (
-            <Redirect to={PATHNAME_DATASETS} />
-          ) : (
-            <MainPage />
-          )}
-        </Route>
-        <Route exact path={PATHNAME_SEARCH} component={SearchPage} />
-        <Route exact path={PATHNAME_DATASETS} component={SearchPage} />
-        <Route exact path={PATHNAME_DATA_SERVICES} component={SearchPage} />
-        <Route exact path={PATHNAME_CONCEPTS} component={SearchPage} />
-        <Route exact path={PATHNAME_INFORMATIONMODELS} component={SearchPage} />
-        <Route exact path={PATHNAME_PUBLIC_SERVICES} component={SearchPage} />
-        <Route exact path={PATHNAME_NEWS_ARCHIVE} component={NewsArchivePage} />
-        <Route path={PATHNAME_ORGANIZATIONS} component={OrganizationsRouter} />
+
+        {routes.main
+          .filter(path =>
+            [
+              PATHNAME_MAIN_PAGE,
+              PATHNAME_SEARCH,
+              PATHNAME_DATASETS,
+              PATHNAME_DATA_SERVICES,
+              PATHNAME_CONCEPTS,
+              PATHNAME_INFORMATIONMODELS,
+              PATHNAME_PUBLIC_SERVICES,
+              PATHNAME_NEWS_ARCHIVE,
+              PATHNAME_ORGANIZATIONS
+            ].includes(path)
+          )
+          .map(path => {
+            if (getConfig().themeNap && path === PATHNAME_MAIN_PAGE) {
+              return <Redirect to={PATHNAME_DATASETS} />;
+            }
+            return (
+              <Route
+                exact={path !== PATHNAME_ORGANIZATIONS}
+                path={path}
+                component={components[path]}
+              />
+            );
+          })}
+
         <ScrollToTop>
           <Switch>
-            <Route
-              exact
-              path={`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`}
-              component={ConnectedConceptComparePage}
-            />
-            <Route
-              exact
-              path={`${PATHNAME_DATASET_DETAILS}/:datasetId`}
-              component={DatasetDetailsPage}
-            />
-            <Route
-              exact
-              path={`${PATHNAME_CONCEPTS}/:conceptId`}
-              component={ConceptDetailsPage}
-            />
-            <Route
-              exact
-              path={`${PATHNAME_INFORMATIONMODELS}/:informationModelId`}
-              component={InformationModelDetailsPage}
-            />
-            <Route
-              exact
-              path={`${PATHNAME_DATA_SERVICES}/:dataServiceId`}
-              component={DataServiceDetailsPage}
-            />
-            <Route
-              exact
-              path={`${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`}
-              component={PublicServiceDetailsPage}
-            />
-            <Route
-              exact
-              path={`${PATHNAME_EVENTS}/:eventId`}
-              component={EventDetailsPage}
-            />
-            <Route
-              exact
-              path={`${PATHNAME_NEWS_ARTICLE}/:id`}
-              component={NewsArticle}
-            />
-            <Route
-              exact
-              path={`${PATHNAME_NEWS_ARTICLE_V2}/:id`}
-              component={NewsArticlePageV2}
-            />
-            <Route exact path={PATHNAME_REPORTS} component={ReportPage} />
-            <Route exact path={PATHNAME_ABOUT} component={CmsArticlePage} />
-            <Route
-              exact
-              path={PATHNAME_ABOUT_REGISTRATION}
-              component={CmsArticlePage}
-            />
-            <Route exact path={PATHNAME_GUIDANCE} component={CmsArticlePage} />
-            <Route
-              exact
-              path={PATHNAME_GUIDANCE_METADATA}
-              component={CmsArticlePage}
-            />
-            <Route
-              exact
-              path={PATHNAME_SPARQL}
-              render={() => <SparqlPage language={language} />}
-            />
+            {routes.main
+              .filter(
+                path =>
+                  ![
+                    PATHNAME_MAIN_PAGE,
+                    PATHNAME_SEARCH,
+                    PATHNAME_DATASETS,
+                    PATHNAME_DATA_SERVICES,
+                    PATHNAME_CONCEPTS,
+                    PATHNAME_INFORMATIONMODELS,
+                    PATHNAME_PUBLIC_SERVICES,
+                    PATHNAME_NEWS_ARCHIVE,
+                    PATHNAME_ORGANIZATIONS
+                  ].includes(path)
+              )
+              .map(path => (
+                <Route exact path={path} component={components[path]} />
+              ))}
+
             <Route render={() => <ErrorPage errorCode='404' />} />
           </Switch>
         </ScrollToTop>
