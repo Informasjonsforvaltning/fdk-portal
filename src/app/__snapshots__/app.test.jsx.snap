@@ -14,54 +14,129 @@ exports[`should render App correctly 1`] = `
       to=""
     />
     <Route
-      exact={true}
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={false}
       path="/"
-    >
-      <NewsResolver />
-    </Route>
+    />
     <Route
-      component={[Function]}
-      exact={true}
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={false}
       path="/search-all"
     />
     <Route
-      component={[Function]}
-      exact={true}
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={false}
       path="/datasets"
     />
     <Route
-      component={[Function]}
-      exact={true}
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={false}
       path="/dataservices"
     />
     <Route
-      component={[Function]}
-      exact={true}
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={false}
       path="/concepts"
     />
     <Route
-      component={[Function]}
-      exact={true}
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={false}
       path="/informationmodels"
     />
     <Route
-      component={[Function]}
-      exact={true}
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={false}
       path="/public-services-and-events"
     />
     <Route
-      component={[Function]}
-      exact={true}
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={false}
       path="/news-archive"
     />
     <Route
       component={
         Object {
-          "$$typeof": Symbol(react.memo),
-          "compare": null,
-          "type": [Function],
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
         }
       }
+      exact={false}
       path="/organizations"
     />
     <withRouter(ScrollToTop)>
@@ -69,181 +144,212 @@ exports[`should render App correctly 1`] = `
         <Route
           component={
             Object {
-              "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [Function],
-              "compare": null,
-              "type": [Function],
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
+              },
             }
           }
-          exact={true}
+          exact={false}
           path="/concepts/compare"
         />
         <Route
           component={
             Object {
-              "$$typeof": Symbol(react.memo),
-              "compare": null,
-              "type": Object {
-                "$$typeof": Symbol(react.memo),
-                "WrappedComponent": Object {
-                  "$$typeof": Symbol(react.memo),
-                  "compare": null,
-                  "type": [Function],
-                },
-                "compare": null,
-                "type": [Function],
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
               },
             }
           }
-          exact={true}
+          exact={false}
           path="/datasets/:datasetId"
         />
         <Route
           component={
             Object {
-              "$$typeof": Symbol(react.memo),
-              "compare": null,
-              "type": Object {
-                "$$typeof": Symbol(react.memo),
-                "compare": null,
-                "type": Object {
-                  "$$typeof": Symbol(react.memo),
-                  "WrappedComponent": [Function],
-                  "compare": null,
-                  "type": [Function],
-                },
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
               },
             }
           }
-          exact={true}
+          exact={false}
           path="/concepts/:conceptId"
         />
         <Route
           component={
             Object {
-              "$$typeof": Symbol(react.memo),
-              "compare": null,
-              "type": Object {
-                "$$typeof": Symbol(react.memo),
-                "compare": null,
-                "type": Object {
-                  "$$typeof": Symbol(react.memo),
-                  "WrappedComponent": [Function],
-                  "compare": null,
-                  "type": [Function],
-                },
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
               },
             }
           }
-          exact={true}
+          exact={false}
           path="/informationmodels/:informationModelId"
         />
         <Route
           component={
             Object {
-              "$$typeof": Symbol(react.memo),
-              "compare": null,
-              "type": Object {
-                "$$typeof": Symbol(react.memo),
-                "compare": null,
-                "type": Object {
-                  "$$typeof": Symbol(react.memo),
-                  "WrappedComponent": [Function],
-                  "compare": null,
-                  "type": [Function],
-                },
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
               },
             }
           }
-          exact={true}
+          exact={false}
           path="/dataservices/:dataServiceId"
         />
         <Route
           component={
             Object {
-              "$$typeof": Symbol(react.memo),
-              "compare": null,
-              "type": Object {
-                "$$typeof": Symbol(react.memo),
-                "WrappedComponent": Object {
-                  "$$typeof": Symbol(react.memo),
-                  "compare": null,
-                  "type": [Function],
-                },
-                "compare": null,
-                "type": [Function],
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
               },
             }
           }
-          exact={true}
+          exact={false}
           path="/public-services-and-events/:publicServiceId"
         />
         <Route
           component={
             Object {
-              "$$typeof": Symbol(react.memo),
-              "compare": null,
-              "type": Object {
-                "$$typeof": Symbol(react.memo),
-                "compare": null,
-                "type": Object {
-                  "$$typeof": Symbol(react.memo),
-                  "WrappedComponent": [Function],
-                  "compare": null,
-                  "type": [Function],
-                },
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
               },
             }
           }
-          exact={true}
+          exact={false}
           path="/events/:eventId"
         />
         <Route
-          component={[Function]}
-          exact={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
+              },
+            }
+          }
+          exact={false}
           path="/news/:id"
         />
         <Route
-          component={[Function]}
-          exact={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
+              },
+            }
+          }
+          exact={false}
           path="/news-v2/:id"
         />
         <Route
           component={
             Object {
-              "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [Function],
-              "compare": null,
-              "type": [Function],
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
+              },
             }
           }
-          exact={true}
+          exact={false}
           path="/reports"
         />
         <Route
-          component={[Function]}
-          exact={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
+              },
+            }
+          }
+          exact={false}
           path="/about"
         />
         <Route
-          component={[Function]}
-          exact={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
+              },
+            }
+          }
+          exact={false}
           path="/about-registration"
         />
         <Route
-          component={[Function]}
-          exact={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
+              },
+            }
+          }
+          exact={false}
           path="/guidance"
         />
         <Route
-          component={[Function]}
-          exact={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
+              },
+            }
+          }
+          exact={false}
           path="/guidance/metadata"
         />
         <Route
-          exact={true}
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_init": [Function],
+              "_payload": Object {
+                "_result": [Function],
+                "_status": -1,
+              },
+            }
+          }
+          exact={false}
           path="/sparql"
-          render={[Function]}
         />
         <Route
           render={[Function]}
