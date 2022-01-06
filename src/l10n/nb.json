@@ -717,12 +717,12 @@
     },
     "relationList": {
       "title": {
-        "dataset": "Andre som relaterer til dette datasettet",
-        "dataservice": "Andre som relaterer til denne datatjenesten",
-        "concept": "Andre som relaterer til dette begrepet",
-        "informationmodel": "Andre som relaterer til denne informasjonsmodellen",
-        "public_service": "Andre som relaterer til denne tjenesten",
-        "event": "Andre som relaterer til denne hendelsen"
+        "dataset": "Andre ressurser med relasjoner til dette datasettet",
+        "dataservice": "Andre ressurser med relasjoner til denne datatjenesten",
+        "concept": "Andre ressurser med relasjoner til dette begrepet",
+        "informationmodel": "Andre ressurser med relasjoner til denne informasjonsmodellen",
+        "public_service": "Andre ressurser med relasjoner til denne tjenesten",
+        "event": "Andre ressurser med relasjoner til denne hendelsen"
       },
       "subtitle": {
         "dataset": "Datasett",

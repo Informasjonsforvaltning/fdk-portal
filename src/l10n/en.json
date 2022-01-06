@@ -716,12 +716,12 @@
     },
     "relationList": {
       "title": {
-        "dataset": "Others relating to this dataset",
-        "dataservice": "Others relating to this data service",
-        "concept": "Others relating to this concept",
-        "informationmodel": "Others relating to this information model",
-        "public_service": "Others relating to this public service",
-        "event": "Others relating to this event"
+        "dataset": "Other resources with relations to this dataset",
+        "dataservice": "Other resources with relations to this data service",
+        "concept": "Other resources with relations to this concept",
+        "informationmodel": "Other resources with relations to this information model",
+        "public_service": "Other resources with relations to this public service",
+        "event": "Other resources with relations to this event"
       },
       "subtitle": {
         "dataset": "Dataset",
