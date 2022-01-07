@@ -50,7 +50,6 @@ import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import { parseSearchParams } from '../lib/location-history-helper';
 import routes from '../routes';
-// import lazyWithRetry from '../lib/lazyWithRetry';
 
 export function App({ language, onChangeLanguage }) {
   useEffect(() => {
