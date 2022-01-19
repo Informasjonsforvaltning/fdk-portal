@@ -863,15 +863,15 @@ export interface CommunityTopic {
 }
 
 export interface CommunityUser {
-  uid: number;
+  uid: string;
   username: string;
   displayname: string;
   fullname: string;
   userslug: string;
   reputation: number;
   postcount: number;
-  picture: string;
-  signature: string;
+  picture?: string;
+  signature?: string;
   banned: number;
   status: string;
   'icon:text': string;
@@ -880,10 +880,11 @@ export interface CommunityUser {
 }
 
 export interface CommunityPost {
-  pid: number;
-  tid: number;
+  pid: string;
+  tid: string;
+  toPid?: string;
   content: string;
-  uid: number;
+  uid: string;
   timestamp: number;
   deleted: boolean;
   upvotes: number;
@@ -954,4 +955,20 @@ export interface SearchSuggestion {
   prefLabel?: Partial<TextLanguage>;
   title?: Partial<TextLanguage>;
   id: string;
+}
+
+export interface Comment {
+  commentId: string;
+  userId: string;
+  content: string;
+  timestamp: string;
+  toCommentId: string;
+}
+
+export interface CommentThread {
+  threadId: string;
+  title: string;
+  comments?: Partial<Comment[]>;
+  timestamp: string;
+  content: string;
 }

@@ -934,7 +934,91 @@
     },
     "votes": "Stemmer",
     "replies": "Svar",
-    "views": "Visningar"
+    "views": "Visningar",
+    "comments": {
+      "sectionTitle": "Har du spørsmål eller kommentarar til {entityType}?",
+      "entityTypes": {
+        "dataset": "datasettet",
+        "dataservice": "datatenesta",
+        "concept": "omgrepet",
+        "informationmodel": "informasjonsmodellen",
+        "public_service": "den offentlege tenesta",
+        "event": "hendinga"
+      },
+      "ingress": "Kommentaren blir synleg for andre brukarar og blir svart på her.",
+      "noCommunityUser": "Lag ein konto på Datalandsbyen for å kommentere",
+      "buttons": {
+        "feedback": "Still spørsmål",
+        "logInFeedback": "Logg inn for å stilla spørsmål",
+        "reply": "Skriv eit svar",
+        "edit": "Rediger",
+        "delete": "Slett",
+        "expandComments": "Vis alle {count} tilbakemeldingar",
+        "collapseComments": "Skjul tilbakemeldingar",
+        "expandReplies": "Vis alle {count} svar",
+        "collapseReplies": "Skjul svar"
+      }
+    },
+    "composer": {
+      "commenter": "Kommenterar som ",
+      "placeholder": "Tekst",
+      "send": "Send",
+      "cancel": "Avbryt",
+      "tools": {
+        "modificationAlt" : {
+          "bold": "Sterk",
+          "italic": "Kursiv",
+          "ul": "Punktliste",
+          "image": "Bilde",
+          "tag": "Tagg brukar",
+          "strikethrough": "Gjennomstreking",
+          "code": "Kode",
+          "link": "lenke"
+        },
+        "modification": {
+          "bold": {
+            "value":"**sterk tekst her**",
+            "left":"**",
+            "right":"**"
+          },
+          "italic": {
+            "value":"*krusiv tekst her",
+            "left":"*",
+            "right":"*"
+          },
+          "ul": {
+            "value":"\n* punkt",
+            "left":"\n* ",
+            "right":""
+          },
+          "image": {
+            "value":"![bildetekst](url til bilde)",
+            "left":"![",
+            "right":"](url til bilde)"
+          },
+          "tag": {
+            "value":"@brukarnamn",
+            "left":"@",
+            "right":""
+          },
+          "strikethrough": {
+            "value":"~~gjennomstreking~~",
+            "left":"~~",
+            "right":"~~"
+          },
+          "code": {
+            "value":"```\nkode\n```",
+            "left":"```\n",
+            "right":"\n```"
+          },
+          "link": {
+            "value":"[lenketekst](lenkeurl)",
+            "left":"[",
+            "right":"](lenkeurl)"
+          }
+        }
+      }
+    }
   },
   "serviceMessagesPage": {
     "title": "Driftsmeldingar",

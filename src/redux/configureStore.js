@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import persistState from 'redux-localstorage';
 import { apiMiddleware } from 'redux-api-middleware';
+import { commentsApi } from '../api/user-feedback-api/comments';
 
 import { rootReducer } from './rootReducer';
 import RootSaga from './saga';
@@ -16,7 +17,12 @@ const sagaMiddleware = createSagaMiddleware({
 });
 
 export function configureStore(storeConfig) {
-  const middlewares = [thunk, apiMiddleware, sagaMiddleware];
+  const middlewares = [
+    thunk,
+    apiMiddleware,
+    sagaMiddleware,
+    commentsApi.middleware
+  ];
   if (storeConfig.reduxLog) {
     middlewares.push(createLogger());
   }
