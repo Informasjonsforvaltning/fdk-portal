@@ -33,6 +33,7 @@ import withAssessment, {
 import Banner from '../banner';
 import ContentSection from '../content-section';
 import CommunityTopics from '../community-topics';
+import EntityComments from '../../../community/comments';
 
 import { isEuTheme, isLosTheme } from '../../../../utils/common';
 
@@ -141,7 +142,26 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     </ContentSection>
   );
 
-  const contentSections = Children.toArray(children).concat([communitySection]);
+  const commentSection = (
+    <ContentSection
+      id='comment-section'
+      title={
+        translations.formatString(
+          translations.community.comments.sectionTitle,
+          {
+            entityType: translations.community.comments.entityTypes[entity]
+          }
+        ) as string
+      }
+    >
+      <EntityComments entityId={entityId ?? ''} />
+    </ContentSection>
+  );
+
+  const contentSections = Children.toArray(children).concat([
+    communitySection,
+    commentSection
+  ]);
 
   const renderContentSections = () =>
     contentSections

@@ -66,6 +66,7 @@
     "@fellesdatakatalog/link": "^0.2.6",
     "@fellesdatakatalog/tabs": "^1.0.2",
     "@fellesdatakatalog/theme": "^0.4.3",
+    "@reduxjs/toolkit": "^1.7.1",
     "@types/react-document-meta": "^3.0.1",
     "apexcharts": "^3.28.1",
     "axios": "^0.25.0",
@@ -124,6 +125,7 @@
     "remark-gfm": "^1.0.0",
     "sanitize-html": "^2.4.0",
     "styled-components": "^5.3.1",
+    "turndown": "^7.1.1",
     "xml-formatter": "^2.5.1"
   },
   "devDependencies": {
@@ -157,6 +159,7 @@
     "@types/react-treeview": "^0.4.3",
     "@types/sanitize-html": "^2.3.2",
     "@types/styled-components": "^5.1.14",
+    "@types/turndown": "^5.0.1",
     "@types/webpack": "^5.28.0",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
