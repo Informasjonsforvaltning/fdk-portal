@@ -26,8 +26,16 @@ const configuration: Configuration = mergeWithCustomize({
     host: '0.0.0.0',
     port: 3001,
     hot: true,
-    onBeforeSetupMiddleware: devServer =>
-      devServer.app.get('/config.js', (_, res) => res.status(204).send()),
+    setupMiddlewares: (middlewares, devServer) => {
+      if (!devServer) {
+        throw new Error('webpack-dev-server is not defined');
+      }
+
+      // onBeforeSetupMiddleware
+      devServer.app.get('/config.js', (_, res) => res.status(204).send());
+
+      return middlewares;
+    },
     historyApiFallback: {
       rewrites: [
         { from: /^\/publishing/, to: '/publishing.html' },
