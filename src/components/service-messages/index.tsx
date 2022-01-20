@@ -8,6 +8,7 @@ import Translation from '../translation';
 import { ServiceMessage } from '../../api/generated/cms/graphql';
 
 import SC from './styled';
+import { PATHNAME_PUBLISHING } from '../../constants/constants';
 
 interface Props {
   serviceMessages: ServiceMessage[] | null;
@@ -36,7 +37,7 @@ const ServiceMessages: FC<Props> = ({ serviceMessages = [] }) => {
               <SC.Description>
                 <SC.Text>{short_description}</SC.Text>
                 <SC.Link
-                  to={`/publishing/service-messages/${id}`}
+                  to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
                   forwardedAs={RouterLink}
                 >
                   <Translation id='serviceMessagesPage.goToDetailsPage' />

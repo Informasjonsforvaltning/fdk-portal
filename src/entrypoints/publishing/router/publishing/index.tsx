@@ -2,43 +2,34 @@ import React, { memo, FC, Suspense } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, Switch, Route, Redirect } from 'react-router-dom';
 import lazyWithRetry from '../../../../lib/lazyWithRetry';
+import routes from '../../../../routes';
+import { PATHNAME_PUBLISHING } from '../../../../constants/constants';
 
-const pages = {
-  publishing: lazyWithRetry(() => import('./pages/publishing-page')),
-  aboutRegistration: lazyWithRetry(
-    () => import('./pages/about-registration-page')
+const components: any = {
+  [PATHNAME_PUBLISHING]: lazyWithRetry(() => import(`./pages/publishing-page`)),
+  [`${PATHNAME_PUBLISHING}/about-registration`]: lazyWithRetry(
+    () => import(`./pages/about-registration-page`)
   ),
-  aboutHarvesting: lazyWithRetry(() => import('./pages/about-harvesting-page')),
-  termsOfUse: lazyWithRetry(() => import('./pages/terms-of-use-page')),
-  serviceMessages: lazyWithRetry(() => import('./pages/service-messages-page')),
-  serviceMessage: lazyWithRetry(() => import('./pages/service-message-page'))
+  [`${PATHNAME_PUBLISHING}/about-harvesting`]: lazyWithRetry(
+    () => import(`./pages/about-harvesting-page`)
+  ),
+  [`${PATHNAME_PUBLISHING}/terms-of-use`]: lazyWithRetry(
+    () => import(`./pages/terms-of-use-page`)
+  ),
+  [`${PATHNAME_PUBLISHING}/service-messages`]: lazyWithRetry(
+    () => import(`./pages/service-messages-page`)
+  ),
+  [`${PATHNAME_PUBLISHING}/service-messages/:id`]: lazyWithRetry(
+    () => import(`./pages/service-messages-page`)
+  )
 };
 
 const PublishingRouter: FC<RouteComponentProps> = ({ match: { url } }) => (
   <Suspense fallback={null}>
     <Switch>
-      <Route exact path={url} component={pages.publishing} />
-      <Route
-        exact
-        path={`${url}/about-registration`}
-        component={pages.aboutRegistration}
-      />
-      <Route
-        exact
-        path={`${url}/about-harvesting`}
-        component={pages.aboutHarvesting}
-      />
-      <Route exact path={`${url}/terms-of-use`} component={pages.termsOfUse} />
-      <Route
-        exact
-        path={`${url}/service-messages`}
-        component={pages.serviceMessages}
-      />
-      <Route
-        exact
-        path={`${url}/service-messages/:id`}
-        component={pages.serviceMessage}
-      />
+      {routes.publishing.map((path: string) => (
+        <Route exact path={path} component={components[path]} />
+      ))}
       <Redirect to={url} />
     </Switch>
   </Suspense>
