@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { Link as RouteLink } from 'react-router-dom';
+import { Link as RouteLink, useHistory, useLocation } from 'react-router-dom';
 import Moment from 'react-moment';
 import { Severity } from '@fellesdatakatalog/alert';
 
@@ -15,14 +15,41 @@ import { PATHNAME_PUBLISHING } from '../../../../../../constants/constants';
 interface Props {}
 
 const ServiceMessagesPage: FC<Props> = () => {
-  const { data } = useGetServiceMessagesQuery();
+  const history = useHistory();
+  const location = useLocation();
+
+  const handleShowActive = () => {
+    history.push(`${PATHNAME_PUBLISHING}/service-messages`);
+  };
+
+  const handleShowAll = () => {
+    history.push(`${PATHNAME_PUBLISHING}/service-messages?all`);
+  };
+
+  const showAll = location.search.includes('all');
+  const { data } = useGetServiceMessagesQuery({
+    variables: showAll ? {} : { today: new Date() },
+    skip: false
+  });
+
   const serviceMessages = data?.serviceMessages as ServiceMessage[];
+
   return (
     <SC.ServiceMessagesPage>
       <SC.Title>
         <Translation id='serviceMessagesPage.title' /> (
-        <Translation id='serviceMessagesPage.active' />)
+        {showAll ? (
+          <Translation id='serviceMessagesPage.all' />
+        ) : (
+          <Translation id='serviceMessagesPage.active' />
+        )}
+        )
       </SC.Title>
+      {(!serviceMessages || serviceMessages.length === 0) && (
+        <SC.NoMessages>
+          <Translation id='serviceMessagesPage.noActiveMessages' />
+        </SC.NoMessages>
+      )}
       {serviceMessages?.map(
         ({
           id,
@@ -52,6 +79,29 @@ const ServiceMessagesPage: FC<Props> = () => {
             </SC.Content>
           </SC.ServiceMessage>
         )
+      )}
+      {showAll ? (
+        <SC.Button
+          type='button'
+          className='fdk-button-small show-all'
+          onClick={handleShowActive}
+        >
+          <span>
+            <Translation id='serviceMessagesPage.showActive' />
+            &nbsp;&gt;&gt;
+          </span>
+        </SC.Button>
+      ) : (
+        <SC.Button
+          type='button'
+          className='fdk-button-small show-all'
+          onClick={handleShowAll}
+        >
+          <span>
+            <Translation id='serviceMessagesPage.showAll' />
+            &nbsp;&gt;&gt;
+          </span>
+        </SC.Button>
       )}
     </SC.ServiceMessagesPage>
   );

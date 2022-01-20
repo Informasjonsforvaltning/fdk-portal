@@ -34,11 +34,24 @@ const Date = styled.div`
   margin-bottom: ${theme.spacing('S12')};
 `;
 
+const Button = styled.button`
+  border: 0;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const NoMessages = styled.div`
+  margin-bottom: ${theme.spacing('S24')};
+`;
+
 export default {
+  Button,
   ServiceMessagesPage,
   Content,
   Title,
   Date,
   ServiceMessage,
-  ServiceMessageTitle
+  ServiceMessageTitle,
+  NoMessages
 };

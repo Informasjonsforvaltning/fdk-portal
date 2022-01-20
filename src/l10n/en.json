@@ -939,6 +939,10 @@
   "serviceMessagesPage": {
     "title": "Service messages",
     "active": "active",
+    "all": "all",
+    "showActive": "Show active",
+    "showAll": "Show all",
+    "noActiveMessages": "There are currently no active service messages.",
     "goToDetailsPage": "See details for more information."
   }
 }
