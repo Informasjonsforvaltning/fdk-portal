@@ -122,7 +122,11 @@ export function App({ language, onChangeLanguage }) {
           )
           .map(path => {
             if (getConfig().themeNap && path === PATHNAME_MAIN_PAGE) {
-              return <Redirect to={PATHNAME_DATASETS} />;
+              return (
+                <Route exact path={PATHNAME_MAIN_PAGE}>
+                  <Redirect to={PATHNAME_DATASETS} />;
+                </Route>
+              );
             }
             return (
               <Route
