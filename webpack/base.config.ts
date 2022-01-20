@@ -27,38 +27,6 @@ const configuration: Configuration = {
       buffer: require.resolve('buffer')
     }
   },
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      hidePathInfo: true,
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      maxAsyncRequests: Infinity,
-      minSize: 0,
-      automaticNameDelimiter: '.',
-      cacheGroups: {
-        default: false,
-        mainVendors: {
-          test: ({ resource = '' }: any) => resource.includes('node_modules'),
-          name: 'main.vendors',
-          filename: '[name].bundle.js',
-          chunks: ({ name }) => name === 'main'
-        },
-        publishingVendors: {
-          test: ({ resource = '' }: any) => resource.includes('node_modules'),
-          name: 'publishing.vendors',
-          filename: '[name].bundle.js',
-          chunks: ({ name }) => name === 'publishing'
-        },
-        maintenanceVendors: {
-          test: ({ resource = '' }: any) => resource.includes('node_modules'),
-          name: 'maintenance.vendors',
-          filename: '[name].bundle.js',
-          chunks: ({ name }) => name === 'maintenance'
-        }
-      }
-    }
-  },
   module: {
     rules: [
       {
