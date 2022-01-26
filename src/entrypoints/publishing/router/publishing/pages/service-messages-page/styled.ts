@@ -17,6 +17,9 @@ const ServiceMessage = styled(AlertBase)`
   align-items: flex-start;
   margin-top: ${theme.spacing('S12')};
   margin-bottom: ${theme.spacing('S12')};
+  & > svg {
+    min-width: 24px;
+  }
 `;
 
 const Content = styled.div`
