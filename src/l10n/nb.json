@@ -942,7 +942,7 @@
     "all": "alle",
     "showActive": "Vis aktive",
     "showAll": "Vis alle",
-    "noActiveMessages": "Det finnes ikke noe aktive driftsmeldinger.",
+    "noActiveMessages": "Det finnes ingen aktive driftsmeldinger.",
     "goToDetailsPage": "Se detaljert driftsmelding for mer informasjon."
   }
 }
