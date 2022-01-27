@@ -3,6 +3,7 @@ import { Link as RouteLink, useHistory, useLocation } from 'react-router-dom';
 import Moment from 'react-moment';
 import { Severity } from '@fellesdatakatalog/alert';
 
+import moment from 'moment';
 import Translation from '../../../../../../components/translation';
 import {
   ServiceMessage,
@@ -28,7 +29,7 @@ const ServiceMessagesPage: FC<Props> = () => {
 
   const showAll = location.search.includes('all');
   const { data } = useGetServiceMessagesQuery({
-    variables: showAll ? {} : { today: new Date() },
+    variables: showAll ? {} : { today: moment(Date.now()).format() },
     skip: false
   });
 
@@ -72,8 +73,8 @@ const ServiceMessagesPage: FC<Props> = () => {
                 {title} ({channel})
               </SC.ServiceMessageTitle>
               <SC.Date>
-                <Moment format='DD.MM.YYYY'>{valid_from}</Moment> -{' '}
-                <Moment format='DD.MM.YYYY'>{valid_to}</Moment>
+                <Moment format='DD.MM.YYYY HH:mm'>{valid_from}</Moment> -{' '}
+                <Moment format='DD.MM.YYYY HH:mm'>{valid_to}</Moment>
               </SC.Date>
               <div>{short_description}</div>
             </SC.Content>
