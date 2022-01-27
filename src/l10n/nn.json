@@ -939,6 +939,10 @@
   "serviceMessagesPage": {
     "title": "Driftsmeldingar",
     "active": "aktive",
+    "all": "alle",
+    "showActive": "Vis aktive",
+    "showAll": "Vis alle",
+    "noActiveMessages": "Det finnast inga aktive driftsmeldingar.",
     "goToDetailsPage": "Se detaljert driftsmelding for meir informasjon."
   }
 }

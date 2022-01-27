@@ -180,7 +180,6 @@
     "nohitsDescription": "Kontroller at du har skrevet riktig, eller prøv med andre søkeord.",
     "nohitsCommunityText": "Du kan også",
     "nohitsCommunityLink": "etterspørre data i Datalandsbyen"
-
   },
   "facet": {
     "organisation": "Eier",
@@ -940,6 +939,10 @@
   "serviceMessagesPage": {
     "title": "Driftsmeldinger",
     "active": "aktive",
+    "all": "alle",
+    "showActive": "Vis aktive",
+    "showAll": "Vis alle",
+    "noActiveMessages": "Det finnes ingen aktive driftsmeldinger.",
     "goToDetailsPage": "Se detaljert driftsmelding for mer informasjon."
   }
 }

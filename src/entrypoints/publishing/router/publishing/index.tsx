@@ -19,8 +19,11 @@ const components: any = {
   [`${PATHNAME_PUBLISHING}/service-messages`]: lazyWithRetry(
     () => import(`./pages/service-messages-page`)
   ),
-  [`${PATHNAME_PUBLISHING}/service-messages/:id`]: lazyWithRetry(
+  [`${PATHNAME_PUBLISHING}/service-messages/all`]: lazyWithRetry(
     () => import(`./pages/service-messages-page`)
+  ),
+  [`${PATHNAME_PUBLISHING}/service-messages/:id`]: lazyWithRetry(
+    () => import(`./pages/service-message-page`)
   )
 };
 
