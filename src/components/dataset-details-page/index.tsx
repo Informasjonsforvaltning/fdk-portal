@@ -245,11 +245,11 @@ const DatasetDetailsPage: FC<Props> = ({
   const referencedDatasets = datasets;
   const datasetReferenceTypes = dataset?.references ?? [];
   const keywords =
-    dataset?.keyword
+    (dataset?.keyword
       ?.map(keyword =>
         getTranslateTextWithLanguageCode(keyword, translations.getLanguage())
       )
-      ?.filter(Boolean) ?? [];
+      ?.filter(Boolean) as string[]) ?? [];
   const qualifiedAttributions = dataset?.qualifiedAttributions ?? [];
   const temporalRestrictions = dataset?.temporal ?? [];
   const contactPoints = dataset?.contactPoint ?? [];

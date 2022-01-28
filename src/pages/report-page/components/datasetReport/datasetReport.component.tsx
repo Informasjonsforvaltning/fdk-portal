@@ -154,11 +154,12 @@ const DatasetReport: FC<Props> = ({
                   {localization.formatString(
                     localization.report.countCatalogsLabel,
                     {
-                      catalog: translate(
-                        getConfig().themeNap
-                          ? localization.nap
-                          : localization.nationalDataCatalog
-                      )
+                      catalog:
+                        translate(
+                          getConfig().themeNap
+                            ? localization.nap
+                            : localization.nationalDataCatalog
+                        ) ?? ''
                     }
                   )}
                 </SC.StatisticsRegular.Label>

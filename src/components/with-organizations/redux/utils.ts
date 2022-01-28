@@ -13,7 +13,7 @@ export const sortOrganizations =
       (a?: any, b?: any) =>
         (isNaN(a) && isNaN(b)
           ? translate(Map.isMap(a) ? a.toJS() : a)?.localeCompare(
-              translate(Map.isMap(b) ? b.toJS() : b),
+              translate(Map.isMap(b) ? b.toJS() : b) ?? '',
               'nb'
             ) ?? 0
           : a - b) * (order === SortOrder.ASC ? 1 : -1)

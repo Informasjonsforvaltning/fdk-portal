@@ -23,9 +23,7 @@ const SearchHit = styled.article`
   }
 `;
 
-const PublisherLink = styled(Link)`
-  margin-bottom: 0.5em;
-`;
+const PublisherLink = styled(Link)``;
 
 const Description = styled.p`
   font-size: 2rem;
@@ -157,6 +155,12 @@ const BetaRibbon = styled.span<InvertedColorProps>`
       : theme.colour(Colour.RED, 'R60')};
 `;
 
+const SearchHitMetaData = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+`;
+
 export default {
   SearchHit,
   PublisherLink,
@@ -167,5 +171,6 @@ export default {
   Event,
   Format,
   Data,
-  BetaRibbon
+  BetaRibbon,
+  SearchHitMetaData
 };

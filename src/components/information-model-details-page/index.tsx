@@ -164,7 +164,7 @@ const InformationModelDetailsPage: FC<Props> = ({
   const keywords =
     informationModel?.keyword
       ?.filter(keyword => translations.getLanguage() in keyword)
-      .map(translate)
+      .map(kw => translate(kw))
       .filter(Boolean) ?? [];
   const spatialRestrictions = informationModel?.spatial ?? [];
   const lastPublished = formatDate(
@@ -675,7 +675,7 @@ const InformationModelDetailsPage: FC<Props> = ({
               {keywords.map((keyword, index) => (
                 <SC.Link
                   to={`${PATHNAME_INFORMATIONMODELS}?keywords=${encodeURIComponent(
-                    keyword
+                    keyword ?? ''
                   )}`}
                   key={`${keyword}-${index}`}
                   forwardedAs={RouteLink}

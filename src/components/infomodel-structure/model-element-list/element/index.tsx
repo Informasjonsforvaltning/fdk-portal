@@ -57,7 +57,6 @@ const Element: FC<Props> = ({
   const identifier =
     property.identifier || code.identifier || property.uri || code.uri;
   const title = translate(property.title || code.prefLabel);
-  const description = translate(property.description);
   const { minOccurs, maxOccurs, belongsToModule } = property;
   const typeUri =
     property.hasDataType ??
@@ -187,12 +186,12 @@ const Element: FC<Props> = ({
       </ExpansionPanelHead>
       <ExpansionPanelBody>
         {(identifier ||
-          description ||
+          property.description ||
           belongsToModule ||
           (subject && concepts[subject])) && (
           <Description
             identifier={identifier}
-            description={description}
+            description={property.description}
             concept={subject ? concepts[subject] : undefined}
             belongsToModule={belongsToModule}
           />

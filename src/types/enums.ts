@@ -154,3 +154,11 @@ export enum SuggestionIndexEnum {
   '/informationmodels' = '/informationmodels',
   '/public-services-and-events' = '/public_services_and_events'
 }
+
+export enum LanguageCodes {
+  nb = 'nb',
+  nn = 'nn',
+  en = 'en',
+  no = 'no',
+  none = ''
+}

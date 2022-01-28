@@ -12,6 +12,15 @@ interface Props {
   onDeleteTerm: (id: string) => void;
 }
 
+const capitalCase = (label?: string) => {
+  if (!label) {
+    return '';
+  }
+  return (
+    label.charAt(0).toLocaleUpperCase() + label.substring(1).toLocaleLowerCase()
+  );
+};
+
 export const CompareTerms: FC<Props> = ({
   uri,
   prefLabel,
@@ -20,10 +29,7 @@ export const CompareTerms: FC<Props> = ({
 }) => (
   <div className='fdk-container p-4 fdk-container-compare-terms'>
     <div className='d-flex align-items-baseline justify-content-between'>
-      <h3 className=''>
-        {getTranslateText(prefLabel)?.charAt(0).toUpperCase() +
-          getTranslateText(prefLabel)?.substring(1).toLowerCase()}
-      </h3>
+      <h3 className=''>{capitalCase(getTranslateText(prefLabel))}</h3>
       <button
         type='button'
         className='btn fdk-text-size-15 fdk-color-link bg-transparent'

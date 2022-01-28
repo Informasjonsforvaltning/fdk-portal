@@ -49,7 +49,7 @@ const renderTextField = ({
       <SC.LanguageField key={index}>
         <SC.LanguageIndicator>{Object.keys(item)}</SC.LanguageIndicator>
         {convertToMarkUp ? (
-          <Markdown>{getTranslateText(item)}</Markdown>
+          <Markdown>{getTranslateText(item) ?? ''}</Markdown>
         ) : (
           getTranslateText(item)
         )}

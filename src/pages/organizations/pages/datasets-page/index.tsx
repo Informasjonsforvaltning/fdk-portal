@@ -127,7 +127,7 @@ const DatasetsPage: FC<Props> = ({
           translations.metadataQualityPage.organizationDatasetCatalogPageTitle,
           {
             organizationName:
-              translate(organization?.prefLabel) || organization?.name
+              translate(organization?.prefLabel) || organization?.name || ''
           }
         )}
       </SC.Title>
