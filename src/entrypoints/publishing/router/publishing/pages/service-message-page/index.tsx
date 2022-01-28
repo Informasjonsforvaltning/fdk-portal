@@ -20,7 +20,7 @@ const ServiceMessagePage: FC<Props> = () => {
       <SC.Title>{serviceMessage.title}</SC.Title>
       <SC.Description>{serviceMessage.short_description}</SC.Description>
       <SC.Body>
-        <Markdown>{serviceMessage.description}</Markdown>
+        <Markdown>{serviceMessage.description ?? ''}</Markdown>
       </SC.Body>
     </SC.ServiceMessagePage>
   ) : null;

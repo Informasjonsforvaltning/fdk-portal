@@ -13,7 +13,7 @@ import withErrorBoundary from '../with-error-boundary';
 
 interface Props {
   allowHtml?: boolean;
-  children: any;
+  children: string;
 }
 
 const Markdown: FC<Props> = ({ allowHtml, children }) =>
