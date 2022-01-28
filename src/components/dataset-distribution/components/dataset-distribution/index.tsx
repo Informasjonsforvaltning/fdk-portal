@@ -68,7 +68,8 @@ const DatasetDistribution: FC<Props> = ({
             translate(title) ||
             translate(description) ||
             accessURL ||
-            translate(accessServices[0]?.description)
+            translate(accessServices[0]?.description) ||
+            ''
           }
           formats={formats}
           data-testid={testIds.summary}
@@ -177,12 +178,13 @@ const DatasetDistribution: FC<Props> = ({
         )}
         {downloadURL && showPreview && (
           <Preview
-            title={translate(datasetTitle)}
+            title={translate(datasetTitle) ?? ''}
             subtitle={
               translate(title) ||
               translate(description) ||
               accessURL ||
-              translate(accessServices[0]?.description)
+              translate(accessServices[0]?.description) ||
+              ''
             }
             downloadURL={downloadURL}
             rowCount={100}

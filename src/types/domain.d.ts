@@ -5,7 +5,8 @@ import {
   DimensionType,
   IndicatorType,
   AdministrativeUnitType,
-  SpecializedEventType
+  SpecializedEventType,
+  LanguageCodes
 } from './enums';
 
 export interface InformationModel {
@@ -154,10 +155,11 @@ export interface Node {
 }
 
 export interface TextLanguage {
-  nb: string;
-  nn: string;
-  en: string;
-  no: string;
+  [LanguageCodes.nb]: string;
+  [LanguageCodes.nn]: string;
+  [LanguageCodes.en]: string;
+  [LanguageCodes.no]: string;
+  [LanguageCodes.none]: string;
 }
 
 export interface Publisher {

@@ -12,9 +12,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
     >
-      <h>
-        Adresse
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -3542,9 +3540,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
     >
-      <h>
-        GeografiskAdresse
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -7108,9 +7104,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
     >
-      <h>
-        Matrikkeladresse
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -10805,9 +10799,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
     >
-      <h>
-        OffisiellAdresse
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -14438,9 +14430,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
     >
-      <h>
-        Postboksadresse
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -18103,9 +18093,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
     >
-      <h>
-        Vegadresse
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -21901,9 +21889,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
     >
-      <h>
-        Kommunenummer
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -21947,9 +21933,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
     >
-      <h>
-        Adressenummer
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -22822,9 +22806,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
     >
-      <h>
-        Matrikkelnummer
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -23793,9 +23775,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
     >
-      <h>
-        Punkt
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -24668,9 +24648,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
     >
-      <h>
-        Poststed
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -25548,9 +25526,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
     >
-      <h>
-        Tekst
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={
@@ -25599,9 +25575,7 @@ exports[`InfoModelStructure component should render with props 1`] = `
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
     >
-      <h>
-        Heltall
-      </h>
+      <h />
       <x>
         <Styled(E)
           expansionIndicator={

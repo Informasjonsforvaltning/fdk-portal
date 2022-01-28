@@ -7,7 +7,6 @@ exports[`Description component should render with all props 1`] = `
       Description
       :
     </strong>
-    test description
   </styled.div>
 </styled.div>
 `;
