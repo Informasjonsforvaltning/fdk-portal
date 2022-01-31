@@ -8,7 +8,8 @@ import env from '../../../../../../env';
 import Translation from '../../../../../../components/translation';
 import {
   useGetServiceMessagesQuery,
-  ServiceMessage
+  ServiceMessage,
+  Enum_Servicemessage_Environment
 } from '../../../../../../api/generated/cms/graphql';
 
 import ServiceMessages from '../../../../../../components/service-messages';
@@ -34,8 +35,8 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
       today: new Date(now_utc),
       channelPubliseringPortal: true,
       env: window.location.hostname.match('localhost|staging')
-        ? 'staging'
-        : 'production'
+        ? Enum_Servicemessage_Environment.Staging
+        : Enum_Servicemessage_Environment.Production
     }
   });
   const serviceMessages = data?.serviceMessages as ServiceMessage[];
