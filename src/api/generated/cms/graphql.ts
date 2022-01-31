@@ -211,6 +211,11 @@ export enum Enum_Servicemessage_Channel {
   Registreringsportal = 'Registreringsportal'
 }
 
+export enum Enum_Servicemessage_Environment {
+  Production = 'production',
+  Staging = 'staging'
+}
+
 export enum Enum_Servicemessage_Message_Type {
   Error = 'ERROR',
   Info = 'INFO',
@@ -388,8 +393,12 @@ export type Morph =
   | ServiceMessageAggregator
   | ServiceMessageConnection
   | ServiceMessageConnectionChannel
+  | ServiceMessageConnectionChannel_Adminportal
+  | ServiceMessageConnectionChannel_Publiseringportal
+  | ServiceMessageConnectionChannel_Registreringportal
   | ServiceMessageConnectionCreated_At
   | ServiceMessageConnectionDescription
+  | ServiceMessageConnectionEnvironment
   | ServiceMessageConnectionId
   | ServiceMessageConnectionLocale
   | ServiceMessageConnectionMessage_Type
@@ -788,8 +797,12 @@ export type RoleInput = {
 export type ServiceMessage = {
   __typename?: 'ServiceMessage';
   channel: Enum_Servicemessage_Channel;
+  channel_adminportal?: Maybe<Scalars['Boolean']>;
+  channel_publiseringportal?: Maybe<Scalars['Boolean']>;
+  channel_registreringportal?: Maybe<Scalars['Boolean']>;
   created_at: Scalars['DateTime'];
   description?: Maybe<Scalars['String']>;
+  environment: Enum_Servicemessage_Environment;
   id: Scalars['ID'];
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<ServiceMessage>>>;
@@ -828,6 +841,24 @@ export type ServiceMessageConnectionChannel = {
   key?: Maybe<Scalars['String']>;
 };
 
+export type ServiceMessageConnectionChannel_Adminportal = {
+  __typename?: 'ServiceMessageConnectionChannel_adminportal';
+  connection?: Maybe<ServiceMessageConnection>;
+  key?: Maybe<Scalars['Boolean']>;
+};
+
+export type ServiceMessageConnectionChannel_Publiseringportal = {
+  __typename?: 'ServiceMessageConnectionChannel_publiseringportal';
+  connection?: Maybe<ServiceMessageConnection>;
+  key?: Maybe<Scalars['Boolean']>;
+};
+
+export type ServiceMessageConnectionChannel_Registreringportal = {
+  __typename?: 'ServiceMessageConnectionChannel_registreringportal';
+  connection?: Maybe<ServiceMessageConnection>;
+  key?: Maybe<Scalars['Boolean']>;
+};
+
 export type ServiceMessageConnectionCreated_At = {
   __typename?: 'ServiceMessageConnectionCreated_at';
   connection?: Maybe<ServiceMessageConnection>;
@@ -836,6 +867,12 @@ export type ServiceMessageConnectionCreated_At = {
 
 export type ServiceMessageConnectionDescription = {
   __typename?: 'ServiceMessageConnectionDescription';
+  connection?: Maybe<ServiceMessageConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ServiceMessageConnectionEnvironment = {
+  __typename?: 'ServiceMessageConnectionEnvironment';
   connection?: Maybe<ServiceMessageConnection>;
   key?: Maybe<Scalars['String']>;
 };
@@ -897,8 +934,18 @@ export type ServiceMessageConnectionValid_To = {
 export type ServiceMessageGroupBy = {
   __typename?: 'ServiceMessageGroupBy';
   channel?: Maybe<Array<Maybe<ServiceMessageConnectionChannel>>>;
+  channel_adminportal?: Maybe<
+    Array<Maybe<ServiceMessageConnectionChannel_Adminportal>>
+  >;
+  channel_publiseringportal?: Maybe<
+    Array<Maybe<ServiceMessageConnectionChannel_Publiseringportal>>
+  >;
+  channel_registreringportal?: Maybe<
+    Array<Maybe<ServiceMessageConnectionChannel_Registreringportal>>
+  >;
   created_at?: Maybe<Array<Maybe<ServiceMessageConnectionCreated_At>>>;
   description?: Maybe<Array<Maybe<ServiceMessageConnectionDescription>>>;
+  environment?: Maybe<Array<Maybe<ServiceMessageConnectionEnvironment>>>;
   id?: Maybe<Array<Maybe<ServiceMessageConnectionId>>>;
   locale?: Maybe<Array<Maybe<ServiceMessageConnectionLocale>>>;
   message_type?: Maybe<Array<Maybe<ServiceMessageConnectionMessage_Type>>>;
@@ -914,8 +961,12 @@ export type ServiceMessageGroupBy = {
 
 export type ServiceMessageInput = {
   channel: Enum_Servicemessage_Channel;
+  channel_adminportal?: InputMaybe<Scalars['Boolean']>;
+  channel_publiseringportal?: InputMaybe<Scalars['Boolean']>;
+  channel_registreringportal?: InputMaybe<Scalars['Boolean']>;
   created_by?: InputMaybe<Scalars['ID']>;
   description?: InputMaybe<Scalars['String']>;
+  environment?: InputMaybe<Enum_Servicemessage_Environment>;
   locale?: InputMaybe<Scalars['String']>;
   localizations?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   message_type: Enum_Servicemessage_Message_Type;
@@ -1532,8 +1583,12 @@ export type EditRoleInput = {
 
 export type EditServiceMessageInput = {
   channel?: InputMaybe<Enum_Servicemessage_Channel>;
+  channel_adminportal?: InputMaybe<Scalars['Boolean']>;
+  channel_publiseringportal?: InputMaybe<Scalars['Boolean']>;
+  channel_registreringportal?: InputMaybe<Scalars['Boolean']>;
   created_by?: InputMaybe<Scalars['ID']>;
   description?: InputMaybe<Scalars['String']>;
+  environment?: InputMaybe<Enum_Servicemessage_Environment>;
   locale?: InputMaybe<Scalars['String']>;
   localizations?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   message_type?: InputMaybe<Enum_Servicemessage_Message_Type>;
@@ -1633,8 +1688,9 @@ export type GetArticleQuery = {
 };
 
 export type GetServiceMessagesQueryVariables = Exact<{
-  channel?: InputMaybe<Scalars['String']>;
   today?: InputMaybe<Scalars['DateTime']>;
+  channelPubliseringPortal?: InputMaybe<Scalars['Boolean']>;
+  env?: InputMaybe<Scalars['String']>;
 }>;
 
 export type GetServiceMessagesQuery = {
@@ -1648,9 +1704,10 @@ export type GetServiceMessagesQuery = {
             valid_from: any;
             valid_to?: any | null | undefined;
             message_type: Enum_Servicemessage_Message_Type;
-            channel: Enum_Servicemessage_Channel;
             short_description: string;
             description?: string | null | undefined;
+            environment: Enum_Servicemessage_Environment;
+            channel_publiseringportal?: boolean | null | undefined;
           }
         | null
         | undefined
@@ -1673,7 +1730,6 @@ export type GetServiceMessageQuery = {
         valid_from: any;
         valid_to?: any | null | undefined;
         message_type: Enum_Servicemessage_Message_Type;
-        channel: Enum_Servicemessage_Channel;
         short_description: string;
         description?: string | null | undefined;
       }
@@ -1745,9 +1801,18 @@ export type GetArticleQueryResult = Apollo.QueryResult<
   GetArticleQueryVariables
 >;
 export const GetServiceMessagesDocument = gql`
-  query GetServiceMessages($channel: String, $today: DateTime) {
+  query GetServiceMessages(
+    $today: DateTime
+    $channelPubliseringPortal: Boolean
+    $env: String
+  ) {
     serviceMessages(
-      where: { channel: $channel, valid_from_lte: $today, valid_to_gte: $today }
+      where: {
+        valid_from_lte: $today
+        valid_to_gte: $today
+        channel_publiseringportal: $channelPubliseringPortal
+        environment: $env
+      }
       sort: "valid_from:desc"
     ) {
       id
@@ -1755,9 +1820,10 @@ export const GetServiceMessagesDocument = gql`
       valid_from
       valid_to
       message_type
-      channel
       short_description
       description
+      environment
+      channel_publiseringportal
     }
   }
 `;
@@ -1774,8 +1840,9 @@ export const GetServiceMessagesDocument = gql`
  * @example
  * const { data, loading, error } = useGetServiceMessagesQuery({
  *   variables: {
- *      channel: // value for 'channel'
  *      today: // value for 'today'
+ *      channelPubliseringPortal: // value for 'channelPubliseringPortal'
+ *      env: // value for 'env'
  *   },
  * });
  */
@@ -1821,7 +1888,6 @@ export const GetServiceMessageDocument = gql`
       valid_from
       valid_to
       message_type
-      channel
       short_description
       description
     }
