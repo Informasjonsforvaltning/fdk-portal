@@ -6,6 +6,7 @@ import { Severity } from '@fellesdatakatalog/alert';
 import moment from 'moment';
 import Translation from '../../../../../../components/translation';
 import {
+  Enum_Servicemessage_Environment,
   ServiceMessage,
   useGetServiceMessagesQuery
 } from '../../../../../../api/generated/cms/graphql';
@@ -27,15 +28,17 @@ const ServiceMessagesPage: FC<Props> = () => {
     history.push(`${PATHNAME_PUBLISHING}/service-messages?all`);
   };
   const showAll = location.search.includes('all');
-  const isStaging = window.location.hostname.match('localhost|staging');
+  const serviceMessageEnv = window.location.hostname.match('localhost|staging')
+    ? Enum_Servicemessage_Environment.Staging
+    : Enum_Servicemessage_Environment.Production;
   const { data } = useGetServiceMessagesQuery({
     variables: showAll
       ? {
-          env: isStaging ? 'staging' : 'production'
+          env: serviceMessageEnv
         }
       : {
           today: moment(Date.now()).format(),
-          env: isStaging ? 'staging' : 'production'
+          env: serviceMessageEnv
         },
     skip: false
   });
