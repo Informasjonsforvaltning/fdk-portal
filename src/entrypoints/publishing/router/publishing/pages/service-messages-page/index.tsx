@@ -26,10 +26,17 @@ const ServiceMessagesPage: FC<Props> = () => {
   const handleShowAll = () => {
     history.push(`${PATHNAME_PUBLISHING}/service-messages?all`);
   };
-
   const showAll = location.search.includes('all');
+  const isStaging = window.location.hostname.match('localhost|staging');
   const { data } = useGetServiceMessagesQuery({
-    variables: showAll ? {} : { today: moment(Date.now()).format() },
+    variables: showAll
+      ? {
+          env: isStaging ? 'staging' : 'production'
+        }
+      : {
+          today: moment(Date.now()).format(),
+          env: isStaging ? 'staging' : 'production'
+        },
     skip: false
   });
 
