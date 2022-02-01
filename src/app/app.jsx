@@ -94,7 +94,6 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_REGISTRATION]: CmsArticlePage,
     [PATHNAME_GUIDANCE]: CmsArticlePage,
     [PATHNAME_GUIDANCE_METADATA]: CmsArticlePage,
-    [PATHNAME_SPARQL]: SparqlPage,
     [PATHNAME_ORGANIZATIONS]: OrganizationsRouter
   };
 
@@ -103,7 +102,7 @@ export function App({ language, onChangeLanguage }) {
       <Header onChangeLanguage={onChangeLanguage} />
       <Breadcrumbs />
 
-      <Switch>
+      <Switch key='route-switch-1'>
         <Redirect from='/:url*(/+)' to={location.pathname.slice(0, -1)} />
 
         {routes.main
@@ -138,7 +137,7 @@ export function App({ language, onChangeLanguage }) {
           })}
 
         <ScrollToTop>
-          <Switch>
+          <Switch key='route-switch-2'>
             {routes.main
               .filter(
                 path =>
@@ -154,9 +153,17 @@ export function App({ language, onChangeLanguage }) {
                     PATHNAME_ORGANIZATIONS
                   ].includes(path)
               )
-              .map(path => (
-                <Route exact path={path} component={components[path]} />
-              ))}
+              .map(path =>
+                path === PATHNAME_SPARQL ? (
+                  <Route
+                    exact
+                    path={PATHNAME_SPARQL}
+                    render={() => <SparqlPage language={language} />}
+                  />
+                ) : (
+                  <Route exact path={path} component={components[path]} />
+                )
+              )}
 
             <Route render={() => <ErrorPage errorCode='404' />} />
           </Switch>

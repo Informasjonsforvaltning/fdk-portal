@@ -8,7 +8,9 @@ exports[`should render App correctly 1`] = `
     onChangeLanguage={[Function]}
   />
   <Component />
-  <Switch>
+  <Switch
+    key="route-switch-1"
+  >
     <Redirect
       from="/:url*(/+)"
       to=""
@@ -65,7 +67,9 @@ exports[`should render App correctly 1`] = `
       path="/organizations"
     />
     <withRouter(ScrollToTop)>
-      <Switch>
+      <Switch
+        key="route-switch-2"
+      >
         <Route
           component={
             Object {
@@ -241,15 +245,9 @@ exports[`should render App correctly 1`] = `
           path="/guidance/metadata"
         />
         <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.memo),
-              "compare": null,
-              "type": [Function],
-            }
-          }
           exact={true}
           path="/sparql"
+          render={[Function]}
         />
         <Route
           render={[Function]}
