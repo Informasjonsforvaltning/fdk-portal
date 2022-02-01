@@ -9,7 +9,7 @@ import Translation from '../../../../../../components/translation';
 import {
   useGetServiceMessagesQuery,
   ServiceMessage,
-  Enum_Servicemessage_Channel
+  Enum_Servicemessage_Environment
 } from '../../../../../../api/generated/cms/graphql';
 
 import ServiceMessages from '../../../../../../components/service-messages';
@@ -32,8 +32,11 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
   );
   const { data } = useGetServiceMessagesQuery({
     variables: {
-      channel: Enum_Servicemessage_Channel.Publiseringsportal,
-      today: new Date(now_utc)
+      today: new Date(now_utc),
+      channelPubliseringPortal: true,
+      env: window.location.hostname.match('localhost|staging')
+        ? Enum_Servicemessage_Environment.Staging
+        : Enum_Servicemessage_Environment.Production
     }
   });
   const serviceMessages = data?.serviceMessages as ServiceMessage[];

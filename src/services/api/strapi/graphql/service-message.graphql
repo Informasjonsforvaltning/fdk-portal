@@ -1,6 +1,15 @@
-query GetServiceMessages($channel: String, $today: DateTime) {
+query GetServiceMessages(
+  $today: DateTime
+  $channelPubliseringPortal: Boolean
+  $env: String
+) {
   serviceMessages(
-    where: { channel: $channel, valid_from_lte: $today, valid_to_gte: $today }
+    where: {
+      valid_from_lte: $today
+      valid_to_gte: $today
+      channel_publiseringportal: $channelPubliseringPortal
+      environment: $env
+    }
     sort: "valid_from:desc"
   ) {
     id
@@ -8,9 +17,10 @@ query GetServiceMessages($channel: String, $today: DateTime) {
     valid_from
     valid_to
     message_type
-    channel
     short_description
     description
+    environment
+    channel_publiseringportal
   }
 }
 
@@ -21,7 +31,6 @@ query GetServiceMessage($id: ID!) {
     valid_from
     valid_to
     message_type
-    channel
     short_description
     description
   }
