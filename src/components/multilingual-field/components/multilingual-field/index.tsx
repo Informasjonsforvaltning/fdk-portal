@@ -7,6 +7,7 @@ import {
   getTranslateTextWithLanguageCode
 } from '../../../../lib/translateText';
 import Markdown from '../../../markdown';
+import LanguageIndicator from '../../../language-indicator';
 
 export interface Props {
   languages: Language[];
@@ -47,7 +48,7 @@ const renderTextField = ({
     textArray.length > 0 &&
     textArray.map((item: any, index: number) => (
       <SC.LanguageField key={index}>
-        <SC.LanguageIndicator>{Object.keys(item)}</SC.LanguageIndicator>
+        <LanguageIndicator textLanguage={item} whiteBackground />
         {convertToMarkUp ? (
           <Markdown>{getTranslateText(item) ?? ''}</Markdown>
         ) : (

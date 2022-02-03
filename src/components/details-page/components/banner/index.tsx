@@ -16,6 +16,7 @@ import ReactTooltipSC from '../../../tooltip/styled';
 import { Language, TextLanguage } from '../../../../types';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import MultiLingualField from '../../../multilingual-field/components/multilingual-field';
+import LanguageIndicator from '../../../language-indicator';
 
 interface Props {
   entity: Entity;
@@ -71,9 +72,7 @@ const Banner: FC<Props> = ({
       <SC.Content>
         <SC.TitleWrapper>
           {entity === Entity.CONCEPT && (
-            <SC.LanguageIndicator>
-              {translations.getLanguage()}
-            </SC.LanguageIndicator>
+            <LanguageIndicator textLanguage={title} whiteBackground />
           )}
           <SC.Title>
             {translate(

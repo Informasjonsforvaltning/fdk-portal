@@ -161,11 +161,10 @@ const InformationModelDetailsPage: FC<Props> = ({
   const licenses = informationModel?.license ?? [];
   const languages = informationModel?.language ?? [];
   const seeAlso = informationModel?.homepage;
-  const keywords =
-    informationModel?.keyword
-      ?.filter(keyword => translations.getLanguage() in keyword)
-      .map(kw => translate(kw))
-      .filter(Boolean) ?? [];
+  const keywords = (informationModel?.keyword
+    ?.filter(keyword => translations.getLanguage() in keyword)
+    .map(kw => translate(kw))
+    .filter(Boolean) ?? []) as string[];
   const spatialRestrictions = informationModel?.spatial ?? [];
   const lastPublished = formatDate(
     dateStringToDate(informationModel?.harvest?.firstHarvested)
@@ -675,7 +674,7 @@ const InformationModelDetailsPage: FC<Props> = ({
               {keywords.map((keyword, index) => (
                 <SC.Link
                   to={`${PATHNAME_INFORMATIONMODELS}?keywords=${encodeURIComponent(
-                    keyword ?? ''
+                    keyword
                   )}`}
                   key={`${keyword}-${index}`}
                   forwardedAs={RouteLink}

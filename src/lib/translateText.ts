@@ -8,27 +8,34 @@ export function isTextLanguageKey(
   return language in LanguageCodes;
 }
 
-export function getTranslateText(
-  textObj?: Partial<TextLanguage> | string | null,
-  language?: string
-) {
+export function isTextLanguage(o: unknown): o is TextLanguage {
+  if (typeof o === 'object' && o != null) {
+    const keys = Object.keys(o);
+    return keys.filter(key => key in LanguageCodes).length > 0;
+  }
+  return false;
+}
+
+export function getTranslateText(textObj?: unknown, language?: string) {
   const selectedLanguage = language || localization.getLanguage();
+
   if (typeof textObj === 'string') {
     return textObj;
   }
 
-  if (textObj === null || typeof textObj !== 'object') {
+  if (!isTextLanguage(textObj)) {
     return undefined;
   }
 
-  return isTextLanguageKey(selectedLanguage)
-    ? textObj[selectedLanguage]
-    : textObj.nb ||
-        textObj.no ||
-        textObj.nn ||
-        textObj.en ||
-        textObj[''] ||
-        undefined;
+  return (
+    (isTextLanguageKey(selectedLanguage) && textObj[selectedLanguage]) ||
+    textObj.nb ||
+    textObj.no ||
+    textObj.nn ||
+    textObj.en ||
+    textObj[''] ||
+    undefined
+  );
 }
 
 export function getTranslateTextWithLanguageCode(
@@ -40,7 +47,7 @@ export function getTranslateTextWithLanguageCode(
     return textObj;
   }
 
-  if (textObj === null || typeof textObj !== 'object') {
+  if (!isTextLanguage(textObj)) {
     return undefined;
   }
 
