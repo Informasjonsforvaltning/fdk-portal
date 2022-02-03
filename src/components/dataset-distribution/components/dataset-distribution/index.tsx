@@ -65,11 +65,10 @@ const DatasetDistribution: FC<Props> = ({
       <ExpansionPanelHead>
         <Summary
           title={
-            translate(title) ||
-            translate(description) ||
-            accessURL ||
-            translate(accessServices[0]?.description) ||
-            ''
+            translate(title) ??
+            translate(description) ??
+            translate(accessServices[0]?.description) ??
+            accessURL
           }
           formats={formats}
           data-testid={testIds.summary}
@@ -180,11 +179,10 @@ const DatasetDistribution: FC<Props> = ({
           <Preview
             title={translate(datasetTitle) ?? ''}
             subtitle={
-              translate(title) ||
-              translate(description) ||
-              accessURL ||
-              translate(accessServices[0]?.description) ||
-              ''
+              translate(title) ??
+              translate(description) ??
+              translate(accessServices[0]?.description) ??
+              accessURL
             }
             downloadURL={downloadURL}
             rowCount={100}

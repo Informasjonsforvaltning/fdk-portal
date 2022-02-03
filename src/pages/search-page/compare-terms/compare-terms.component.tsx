@@ -12,14 +12,11 @@ interface Props {
   onDeleteTerm: (id: string) => void;
 }
 
-const capitalCase = (label?: string) => {
-  if (!label) {
-    return '';
-  }
-  return (
-    label.charAt(0).toLocaleUpperCase() + label.substring(1).toLocaleLowerCase()
-  );
-};
+const capitalCase = (label?: string) =>
+  label
+    ?.trim()
+    ?.toLowerCase()
+    ?.replace(/^\w/, c => c.toUpperCase()) ?? '';
 
 export const CompareTerms: FC<Props> = ({
   uri,

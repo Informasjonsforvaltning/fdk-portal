@@ -14,6 +14,7 @@ import SearchHitData from '../search-hit-data/search-hit-data.component';
 import SearchHitEvents from '../search-hit-events';
 import TruncatedText from '../../../truncated-text';
 import Markdown from '../../../markdown';
+import LanguageIndicator from '../../../language-indicator';
 
 interface Props {
   id?: string;
@@ -98,6 +99,8 @@ export const SearchHit: FC<Props> = ({
       ) : null
     )?.shift();
 
+  const translatedDescription = getTranslateText(description);
+
   return (
     <SC.SearchHit>
       {beta && (
@@ -111,17 +114,20 @@ export const SearchHit: FC<Props> = ({
         title={title}
         isAuthoritative={isAuthoritative}
       />
-      {publisherId && (prefLabel || name) && (
-        <SC.PublisherLink href={`/organizations/${publisherId}`}>
-          <span>{getPublisherLabel(type)}&nbsp;</span>
-          <span>{getTranslateText(prefLabel) || name}</span>
-        </SC.PublisherLink>
-      )}
+      <SC.SearchHitMetaData>
+        {publisherId && (prefLabel || name) && (
+          <SC.PublisherLink href={`/organizations/${publisherId}`}>
+            <span>{getPublisherLabel(type)}&nbsp;</span>
+            <span>{getTranslateText(prefLabel) || name}</span>
+          </SC.PublisherLink>
+        )}
+        {title && <LanguageIndicator textLanguage={title} />}
+      </SC.SearchHitMetaData>
       {renderSearchHitOpenData()}
       {renderSearchHitAccessRights()}
-      {description && (
+      {translatedDescription && (
         <TruncatedText visibleLines={4} lineHeight={20}>
-          <Markdown>{getTranslateText(description)}</Markdown>
+          <Markdown>{translatedDescription}</Markdown>
         </TruncatedText>
       )}
       {renderSearchHitData()}

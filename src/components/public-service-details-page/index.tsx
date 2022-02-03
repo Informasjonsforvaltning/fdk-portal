@@ -346,7 +346,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           },
                           index: number
                         ) => {
-                          let costChannelLabel = '';
+                          let costChannelLabel;
                           const previousCostChannelUri =
                             hasCost[index - 1]?.ifAccessedThrough.uri;
                           const currentCostChannelUri = ifAccessedThrough?.uri;
@@ -357,9 +357,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
                               currentCostChannelUri &&
                               previousCostChannelUri !== currentCostChannelUri)
                           ) {
-                            costChannelLabel =
-                              translate(ifAccessedThrough?.type?.prefLabel) ??
-                              '';
+                            costChannelLabel = translate(
+                              ifAccessedThrough?.type?.prefLabel
+                            );
                           }
                           return (
                             <SC.ListItemValue key={uri}>
