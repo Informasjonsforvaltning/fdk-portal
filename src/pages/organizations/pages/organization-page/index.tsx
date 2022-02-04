@@ -130,7 +130,6 @@ const OrganizationPage: FC<Props> = ({
 
   return organization && rating ? (
     <SC.OrganizationPage className='container'>
-      <SC.BetaRibbon>BETA</SC.BetaRibbon>
       <SC.Title>
         {translations.formatString(
           translations.metadataQualityPage.organizationPageTitle,
