@@ -14,8 +14,8 @@ const CommentCard = styled.li<{ $isReply: boolean }>`
 
   & img {
     display: inline;
-    max-width: 230px;
-    max-height: 95px;
+    max-width: 100%;
+    max-height: 100%;
     width: auto;
     height: auto;
   }

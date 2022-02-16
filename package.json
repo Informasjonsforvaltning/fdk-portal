@@ -62,7 +62,7 @@
     "@fellesdatakatalog/button": "^0.2.3",
     "@fellesdatakatalog/expansion-panel": "^0.2.0",
     "@fellesdatakatalog/external-footer": "^0.1.17",
-    "@fellesdatakatalog/internal-footer": "^0.3.7",
+    "@fellesdatakatalog/internal-footer": "^0.3.11",
     "@fellesdatakatalog/link": "^0.2.6",
     "@fellesdatakatalog/tabs": "^1.0.2",
     "@fellesdatakatalog/theme": "^0.4.3",

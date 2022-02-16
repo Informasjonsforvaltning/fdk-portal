@@ -957,6 +957,10 @@
         "collapseComments": "Hide posts",
         "expandReplies": "Show all {count} answers",
         "collapseReplies": "Hide answers"
+      },
+      "gif": {
+        "play": "Click to play GIF",
+        "pause": "Click to pause GIF"
       }
     },
     "composer": {

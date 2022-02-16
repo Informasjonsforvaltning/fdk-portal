@@ -1,5 +1,5 @@
 import React, { FC, memo, useState } from 'react';
-import parse from 'html-react-parser';
+import parse, { HTMLReactParserOptions } from 'html-react-parser';
 import { compose } from 'redux';
 import { Variant } from '@fellesdatakatalog/button';
 
@@ -11,6 +11,8 @@ import User from '../../../user';
 import Composer from '../composer';
 import Buttons from '../buttons/styled';
 
+import GifWrapper from '../../../../gif-wrapper';
+
 import SC from './styled';
 
 import {
@@ -18,6 +20,22 @@ import {
   useDeleteCommentMutation,
   usePostCommentMutation
 } from '../../../../../api/user-feedback-api/comments';
+
+const parserOptions: HTMLReactParserOptions = {
+  replace: (domNode: any) => {
+    if (domNode?.name === 'img' && domNode?.attribs?.src?.includes('.gif')) {
+      return (
+        <GifWrapper
+          src={domNode.attribs.src}
+          alt={domNode.attribs?.alt}
+          height={domNode.attribs?.height}
+          width={domNode.attribs?.width}
+        />
+      );
+    }
+    return domNode;
+  }
+};
 
 enum Mode {
   UPDATE,
@@ -71,7 +89,7 @@ const CommentCard: FC<Props> = ({
         <User user={comment.user} />
         <TimeAgo startTime={comment.timestamp} cutOff={oneDayMillis} />
       </SC.CommentInfo>
-      {parse(comment?.content)}
+      {parse(comment?.content, parserOptions)}
       {((hasReplies && currentMode === Mode.UPDATE) ||
         (!hasReplies && currentMode !== Mode.NONE)) && (
         <Composer
