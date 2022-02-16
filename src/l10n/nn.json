@@ -957,6 +957,10 @@
         "collapseComments": "Skjul tilbakemeldingar",
         "expandReplies": "Vis alle {count} svar",
         "collapseReplies": "Skjul svar"
+      },
+      "gif": {
+        "play": "Trykk for å spela av GIF",
+        "pause": "Trykk for å pause GIF"
       }
     },
     "composer": {

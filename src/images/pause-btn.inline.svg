@@ -1,0 +1,26 @@
+
+<svg id="eWlESyGdaLN1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+<style>
+<![CDATA[
+#eWlESyGdaLN1{pointer-events: all}
+#eWlESyGdaLN1 * {animation-play-state: paused}
+#eWlESyGdaLN1:hover * {animation-play-state: running}
+
+
+]]>
+</style>
+<g>
+<g id="top">
+<g transform="translate(-8,-6.75)">
+<path d="M2.5,10v-5c0-.828427.671573-1.5,1.5-1.5v0c.828427,0,1.5.671573,1.5,1.5v5" fill="none" stroke="#2d3340" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.5,10v-5c0-.828427.671573-1.5,1.5-1.5v0c.828427,0,1.5.671573,1.5,1.5v5" fill="none" stroke="#2d3340" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<g id="bottom">
+<g transform="translate(-8,-9.25)">
+<path d="M13.5,6v5c0,.828427-.671573,1.5-1.5,1.5v0c-.828427,0-1.5-.671573-1.5-1.5v-5" fill="none" stroke="#2d3340" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M5.5,6v5c0,.828427-.671573,1.5-1.5,1.5v0c-.828427,0-1.5-.671573-1.5-1.5v-5" fill="none" stroke="#2d3340" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</svg>
