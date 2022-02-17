@@ -421,11 +421,16 @@ const InformationModelDetailsPage: FC<Props> = ({
                 <KeyValueListItem
                   property={translations.infoMod.hasFormats}
                   value={hasFormats.map(
-                    ({ uri, title: formatTitle, format }) => (
+                    ({
+                      uri,
+                      title: formatTitle,
+                      format,
+                      seeAlso: formatSeeAlso
+                    }) => (
                       <SC.Format key={uri}>
-                        {uri && !uriIsSkolemized(uri) ? (
-                          <SC.Link href={uri} external>
-                            {translate(formatTitle) ?? uri}
+                        {formatSeeAlso && !uriIsSkolemized(formatSeeAlso) ? (
+                          <SC.Link href={formatSeeAlso} external>
+                            {translate(formatTitle) ?? formatSeeAlso}
                           </SC.Link>
                         ) : (
                           translate(formatTitle) ?? uri
