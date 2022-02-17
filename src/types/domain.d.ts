@@ -924,6 +924,7 @@ export interface InformationModelFormat {
   title: Partial<TextLanguage>;
   format: string;
   language: string;
+  seeAlso?: string;
 }
 
 export interface DctStandard {
