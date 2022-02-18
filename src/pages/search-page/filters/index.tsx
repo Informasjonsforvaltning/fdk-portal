@@ -6,7 +6,7 @@ import {
   PATHNAME_DATA_SERVICES,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_PUBLIC_SERVICES,
+  PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
   PATHNAME_SEARCH
 } from '../../../constants/constants';
 import SC from './styled';
@@ -279,7 +279,7 @@ const FiltersPure: FC<Props> = ({
             />
           </>
         );
-      case PATHNAME_PUBLIC_SERVICES:
+      case PATHNAME_PUBLIC_SERVICES_AND_EVENTS:
         return (
           <>
             <FilterTree

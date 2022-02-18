@@ -26,6 +26,7 @@ import {
   PATHNAME_CONCEPTS,
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_PUBLIC_SERVICES,
+  PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
   PATHNAME_NEWS_ARCHIVE,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_CONCEPTS_COMPARE,
@@ -76,7 +77,7 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_DATA_SERVICES]: SearchPage,
     [PATHNAME_CONCEPTS]: SearchPage,
     [PATHNAME_INFORMATIONMODELS]: SearchPage,
-    [PATHNAME_PUBLIC_SERVICES]: SearchPage,
+    [PATHNAME_PUBLIC_SERVICES_AND_EVENTS]: SearchPage,
     [PATHNAME_NEWS_ARCHIVE]: NewsArchivePage,
     [`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`]:
       ConnectedConceptComparePage,
@@ -114,7 +115,7 @@ export function App({ language, onChangeLanguage }) {
               PATHNAME_DATA_SERVICES,
               PATHNAME_CONCEPTS,
               PATHNAME_INFORMATIONMODELS,
-              PATHNAME_PUBLIC_SERVICES,
+              PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
               PATHNAME_NEWS_ARCHIVE,
               PATHNAME_ORGANIZATIONS
             ].includes(path)
@@ -148,7 +149,7 @@ export function App({ language, onChangeLanguage }) {
                     PATHNAME_DATA_SERVICES,
                     PATHNAME_CONCEPTS,
                     PATHNAME_INFORMATIONMODELS,
-                    PATHNAME_PUBLIC_SERVICES,
+                    PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
                     PATHNAME_NEWS_ARCHIVE,
                     PATHNAME_ORGANIZATIONS
                   ].includes(path)

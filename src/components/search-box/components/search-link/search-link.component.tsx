@@ -6,7 +6,7 @@ import {
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_PUBLIC_SERVICES
+  PATHNAME_PUBLIC_SERVICES_AND_EVENTS
 } from '../../../../constants/constants';
 import localization from '../../../../lib/localization';
 import { Entity } from '../../../../types/enums';
@@ -44,7 +44,7 @@ const SearchLink: FC<Props> = ({ entity, beta = false }) => {
       translation: localization.informationModelLabel
     },
     [Entity.PUBLIC_SERVICE]: {
-      path: PATHNAME_PUBLIC_SERVICES,
+      path: PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
       icon: SC.PublicServiceIcon,
       translation: localization.serviceLabel
     }

@@ -180,7 +180,7 @@ exports[`should render App correctly 1`] = `
             }
           }
           exact={true}
-          path="/public-services-and-events/:publicServiceId"
+          path="/public-services/:publicServiceId"
         />
         <Route
           component={

@@ -40,7 +40,8 @@ import {
   PATHNAME_DATASETS,
   PATHNAME_EVENTS,
   PATHNAME_ORGANIZATIONS,
-  PATHNAME_PUBLIC_SERVICES
+  PATHNAME_PUBLIC_SERVICES,
+  PATHNAME_PUBLIC_SERVICES_AND_EVENTS
 } from '../../constants/constants';
 import SC from './styled';
 import Markdown from '../markdown';
@@ -576,7 +577,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 {keywords.map((keyword, index) => (
                   <Link
                     as={RouterLink}
-                    to={`${PATHNAME_PUBLIC_SERVICES}?keywords=${encodeURIComponent(
+                    to={`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}?keywords=${encodeURIComponent(
                       keyword ?? ''
                     )}`}
                     key={`${keyword}-${index}`}
