@@ -20,7 +20,7 @@ import {
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_SEARCH,
   HITS_PER_PAGE,
-  PATHNAME_PUBLIC_SERVICES
+  PATHNAME_PUBLIC_SERVICES_AND_EVENTS
 } from '../../constants/constants';
 import translations from '../../lib/localization';
 import { parseSearchParams } from '../../lib/location-history-helper';
@@ -136,7 +136,7 @@ const SearchPage: FC<Props> = ({
       ? locationSearch
       : locationSearchParamQ;
   const publicServiceSearchParams =
-    location.pathname === PATHNAME_PUBLIC_SERVICES
+    location.pathname === PATHNAME_PUBLIC_SERVICES_AND_EVENTS
       ? locationSearch
       : locationSearchParamQ;
 
@@ -254,7 +254,7 @@ const SearchPage: FC<Props> = ({
               }}
             />
           </Route>
-          <Route exact path={PATHNAME_PUBLIC_SERVICES}>
+          <Route exact path={PATHNAME_PUBLIC_SERVICES_AND_EVENTS}>
             <ResultsPage
               isLoading={isLoading}
               entities={publicServicesAndEvents}
