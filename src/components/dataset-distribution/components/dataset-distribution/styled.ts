@@ -70,4 +70,15 @@ const PreviewLink = styled(Link)`
   }
 `;
 
-export default { DatasetDistribution, Section, DownloadLink, PreviewLink };
+const ColumnData = styled.ul``;
+
+const ColumnRow = styled.li``;
+
+export default {
+  DatasetDistribution,
+  Section,
+  DownloadLink,
+  PreviewLink,
+  ColumnData,
+  ColumnRow
+};

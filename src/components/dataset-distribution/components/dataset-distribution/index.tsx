@@ -34,6 +34,7 @@ interface ExternalProps {
   accessServices?: AccessService[];
   datasetTitle: Partial<TextLanguage>;
   distribution: Partial<Distribution>;
+  endpointDescriptions?: string[];
 }
 
 interface Props extends ExternalProps {}
@@ -52,7 +53,8 @@ const DatasetDistribution: FC<Props> = ({
     ] = [],
     page: [{ uri: pageUri = null } = {}] = []
   },
-  accessServices = []
+  accessServices = [],
+  endpointDescriptions = []
 }) => {
   const [showPreview, setShowPreview] = useState(false);
 
@@ -72,6 +74,7 @@ const DatasetDistribution: FC<Props> = ({
           }
           formats={formats}
           data-testid={testIds.summary}
+          hasDataservice={!!accessServices?.length}
         />
       </ExpansionPanelHead>
       <ExpansionPanelBody>
@@ -135,22 +138,47 @@ const DatasetDistribution: FC<Props> = ({
             data-testid={testIds.detail}
           />
         )}
-        {accessServices?.map(
-          ({
-            description: accessServiceDescription,
-            uri: accessServiceUri
-          }) => (
-            <Detail
-              key={accessServiceUri}
-              property={translations.dataset.distribution.dataService}
-              value={
-                <Link to={accessServiceUri}>
-                  {translate(accessServiceDescription)}
-                </Link>
-              }
-              data-testid={testIds.detail}
-            />
-          )
+        {accessServices.length > 0 && (
+          <Detail
+            property={translations.dataset.distribution.dataService}
+            value={
+              <SC.ColumnData>
+                {accessServices?.map(
+                  ({
+                    description: accessServiceDescription,
+                    uri: accessServiceUri
+                  }) => (
+                    <SC.ColumnRow>
+                      <Link to={accessServiceUri} key={accessServiceUri}>
+                        {translate(accessServiceDescription)}
+                      </Link>
+                    </SC.ColumnRow>
+                  )
+                )}
+              </SC.ColumnData>
+            }
+            data-testid={testIds.detail}
+          />
+        )}
+        {endpointDescriptions.length > 0 && (
+          <Detail
+            property={translations.dataset.distribution.endpointDescription}
+            value={
+              <SC.ColumnData>
+                {endpointDescriptions?.map(endpointDescription => (
+                  <SC.ColumnRow>
+                    <ExternalLink
+                      uri={endpointDescription}
+                      key={endpointDescription}
+                      prefLabel={endpointDescription}
+                      openInNewTab
+                    />
+                  </SC.ColumnRow>
+                ))}
+              </SC.ColumnData>
+            }
+            data-testid={testIds.detail}
+          />
         )}
         {pageUri && (
           <SC.Section>
