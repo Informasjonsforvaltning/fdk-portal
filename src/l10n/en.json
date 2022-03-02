@@ -296,6 +296,7 @@
       "referenceDefault": "Relation",
       "type": "Type",
       "dataService": "Data service",
+      "endpointDescription": "Endpoint description",
       "preview": "Se forhåndsvisning",
       "previewFailure": "Sorry, it looks like the distribution does not exist or contains invalid data."
     },

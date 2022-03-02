@@ -296,6 +296,7 @@
       "referenceDefault": "Relasjon",
       "type": "Type",
       "dataService": "Datatjeneste",
+    "endpointDescription": "Endepunktsbeskrivelse",
       "preview": "Se førehandsvising",
       "previewFailure": "Beklager, det ser ut at distribusjonen ikkje finnes eller innehalder ugyldig data."
     },
