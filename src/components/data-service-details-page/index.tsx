@@ -66,6 +66,7 @@ const DataserviceDetailsPage: FC<Props> = ({
   datasetsActions: {
     getDatasetsRequested: getDatasets,
     getDatasetsRelationsRequested: getDatasetsRelations,
+    resetDatasets,
     resetDatasetsRelations
   },
   informationModelsActions: {
@@ -100,6 +101,10 @@ const DataserviceDetailsPage: FC<Props> = ({
     if (dataService?.servesDataset && dataService?.servesDataset.length > 0) {
       getDatasets({ uris: dataService.servesDataset, size: 1000 });
     }
+
+    return () => {
+      resetDatasets();
+    };
   }, [dataService?.id]);
 
   useEffect(() => {
