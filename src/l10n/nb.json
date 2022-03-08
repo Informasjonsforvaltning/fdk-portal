@@ -938,6 +938,7 @@
     "views": "Visninger",
     "comments": {
       "sectionTitle": "Har du spørsmål eller kommentarer til {entityType}?",
+      "session": "Du er innlogget som ",
       "entityTypes": {
         "dataset": "datasettet",
         "dataservice": "datatjenesten",
@@ -951,6 +952,7 @@
       "buttons": {
         "feedback": "Still spørsmål",
         "logInFeedback": "Logg inn for å stille spørsmål",
+        "logOutFeedback": "Logg ut",
         "reply": "Skriv et svar",
         "edit": "Rediger",
         "delete": "Slett",

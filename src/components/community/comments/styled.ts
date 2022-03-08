@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 
 import CommentIconBase from '../../../images/comment-icon.svg';
 
+const onMobileView = '@media (max-width: 992px)';
+
 const Ingress = styled.p`
   margin-bottom: ${theme.spacing('S24')};
 `;
@@ -25,6 +27,14 @@ const PostCommentContainer = styled.div`
 
 const PostCommentButtons = styled.div`
   display: flex;
+  gap: ${theme.spacing('S24')};
+  align-items: center;
+
+  ${onMobileView} {
+    gap: ${theme.spacing('S8')};
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
 `;
 
 const Comments = styled.ul`

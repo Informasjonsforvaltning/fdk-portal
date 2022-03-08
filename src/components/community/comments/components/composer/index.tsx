@@ -6,7 +6,7 @@ import { Variant } from '@fellesdatakatalog/button';
 import SC from './styled';
 import Buttons from '../buttons/styled';
 import translations from '../../../../../lib/localization';
-import { useGetUserQuery } from '../../../../../api/user-feedback-api/comments';
+import LogOut from '../logOut';
 
 const htmlToMarkdown = new TurndownService();
 
@@ -99,15 +99,16 @@ interface ExternalProps {
   onSubmit: (content: string) => void;
   openToggle: () => void;
   initialValue?: string;
+  showLogout?: boolean;
 }
 
 const CommentComposer: FC<ExternalProps> = ({
   onSubmit,
   openToggle,
-  initialValue
+  initialValue,
+  showLogout
 }) => {
   const commentContentFieldRef = useRef<HTMLTextAreaElement>(null);
-  const { data: currentUser } = useGetUserQuery();
 
   const applyTextModification = (
     selectionStart: number,
@@ -131,31 +132,28 @@ const CommentComposer: FC<ExternalProps> = ({
 
   return (
     <SC.PostCommentContainer>
-      {currentUser && (
-        <SC.SmallText>
-          {translations.community.composer.commenter}
-          {currentUser.username}
-        </SC.SmallText>
-      )}
-      <SC.ToolsContainer>
-        {tools.map(tool => (
-          <SC.ToolButton
-            value={tool.hint}
-            key={`composer-tool-${tool.hint}`}
-            onClick={() =>
-              applyTextModification(
-                commentContentFieldRef?.current?.selectionStart ?? 0,
-                commentContentFieldRef?.current?.selectionEnd ?? 0,
-                tool.value,
-                tool.left,
-                tool.right
-              )
-            }
-          >
-            {tool.icon}
-          </SC.ToolButton>
-        ))}
-      </SC.ToolsContainer>
+      <SC.ComposerHeader>
+        <SC.ToolsContainer>
+          {tools.map(tool => (
+            <SC.ToolButton
+              value={tool.hint}
+              key={`composer-tool-${tool.hint}`}
+              onClick={() =>
+                applyTextModification(
+                  commentContentFieldRef?.current?.selectionStart ?? 0,
+                  commentContentFieldRef?.current?.selectionEnd ?? 0,
+                  tool.value,
+                  tool.left,
+                  tool.right
+                )
+              }
+            >
+              {tool.icon}
+            </SC.ToolButton>
+          ))}
+        </SC.ToolsContainer>
+        {!!showLogout && <LogOut />}
+      </SC.ComposerHeader>
       <textarea
         ref={commentContentFieldRef}
         placeholder={translations.community.composer.placeholder}

@@ -15,6 +15,7 @@ import CommentCard from './components/comment-card';
 import { CommunityPost } from '../../../types';
 import translations from '../../../lib/localization';
 import env from '../../../env';
+import LogOut from './components/logOut';
 
 const { FDK_COMMUNITY_BASE_URI } = env;
 
@@ -63,17 +64,21 @@ const EntityComments: FC<Props> = ({ entityId, authService }) => {
               postComment({ id: entityId, post: { content } })
             }
             openToggle={() => setNewCommentOpen(false)}
+            showLogout
           />
         )}
 
         {isLoggedIn && !newCommentOpen && (
-          <Buttons.BigButton
-            variant={Variant.PRIMARY}
-            onClick={() => setNewCommentOpen(true)}
-          >
-            {translations.community.comments.buttons.feedback}
-            <SC.CommentIcon />
-          </Buttons.BigButton>
+          <SC.PostCommentButtons>
+            <Buttons.BigButton
+              variant={Variant.PRIMARY}
+              onClick={() => setNewCommentOpen(true)}
+            >
+              {translations.community.comments.buttons.feedback}
+              <SC.CommentIcon />
+            </Buttons.BigButton>
+            <LogOut />
+          </SC.PostCommentButtons>
         )}
 
         {!authenticated && (

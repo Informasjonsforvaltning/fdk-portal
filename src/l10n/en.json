@@ -938,6 +938,7 @@
     "views": "Views",
     "comments": {
       "sectionTitle": "Do you have questions or comments regarding the {entityType}?",
+      "session": "You are logged in as ",
       "entityTypes": {
         "dataset": "dataset",
         "dataservice": "api",
@@ -951,6 +952,7 @@
       "buttons": {
         "feedback": "Post a question",
         "logInFeedback": "Log in to post a question",
+        "logOutFeedback": "Log out",
         "reply": "Post a reply",
         "edit": "Edit",
         "delete": "Delete",
