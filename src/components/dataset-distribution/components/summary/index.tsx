@@ -1,6 +1,7 @@
 import React, { memo, FC } from 'react';
 
 import ApiIcon from '../../../../images/icon-format-api-lg.svg';
+import DownloadIcon from '../../../../images/icon-download-lg.svg';
 import SC from './styled';
 
 import testIds from './test-ids';
@@ -12,12 +13,24 @@ interface Props {
   title: string;
   formats: MediaTypeOrExtent[];
   hasDataservice?: boolean;
+  hasDownloadUrl?: boolean;
 }
 
-const Summary: FC<Props> = ({ title, formats, hasDataservice, ...props }) => (
+const Summary: FC<Props> = ({
+  title,
+  formats,
+  hasDataservice,
+  hasDownloadUrl,
+  ...props
+}) => (
   <SC.Summary data-testid={testIds.root} {...props}>
     <SC.Title data-testid={testIds.title}>{title}</SC.Title>
     <SC.Formats data-testid={testIds.formats}>
+      {hasDownloadUrl && (
+        <SC.Format key='hasDownloadUrl'>
+          <DownloadIcon />
+        </SC.Format>
+      )}
       {hasDataservice && (
         <SC.Format key='api'>
           <ApiIcon />

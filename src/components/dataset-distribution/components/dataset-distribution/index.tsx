@@ -75,6 +75,7 @@ const DatasetDistribution: FC<Props> = ({
           formats={formats}
           data-testid={testIds.summary}
           hasDataservice={!!accessServices?.length}
+          hasDownloadUrl={!!downloadURL}
         />
       </ExpansionPanelHead>
       <ExpansionPanelBody>
