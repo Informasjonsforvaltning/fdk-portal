@@ -637,6 +637,7 @@
         "description": "Beskrivelse",
         "objective": "Formål",
         "distributions": "Distribusjoner ({count})",
+        "dataservices": "og datatjenester ({count})",
         "usage": "Bruk av datasettet",
         "sample": "Eksempeldata",
         "provenance": "Opphav og oppdatering",

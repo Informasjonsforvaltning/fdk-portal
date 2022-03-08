@@ -321,12 +321,21 @@ const DatasetDetailsPage: FC<Props> = ({
         {distributions.length > 0 && (
           <ContentSection
             id='distributions'
-            title={
+            title={`${
               translations.formatString(
                 translations.detailsPage.sectionTitles.dataset.distributions,
                 { count: distributions.length }
               ) as string
             }
+                ${
+                  dataServicesRelations.length > 0
+                    ? (translations.formatString(
+                        translations.detailsPage.sectionTitles.dataset
+                          .dataservices,
+                        { count: dataServicesRelations.length }
+                      ) as string)
+                    : ''
+                }`}
           >
             {dataServicesRelations.map(
               (
