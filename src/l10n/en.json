@@ -637,6 +637,7 @@
         "description": "Description",
         "objective": "Objective",
         "distributions": "Distributions ({count})",
+        "dataservices": "and data services ({count})",
         "usage": "Dataset usage",
         "sample": "Sample data",
         "provenance": "Provenance",
