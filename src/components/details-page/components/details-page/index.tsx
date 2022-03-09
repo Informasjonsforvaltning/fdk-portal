@@ -54,6 +54,7 @@ import {
 import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
+import env from '../../../../env';
 
 interface ExternalProps {
   entity: Entity;
@@ -142,7 +143,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     </ContentSection>
   );
 
-  const commentSection = (
+  const commentSection = env.USER_FEEDBACK_TOGGLE ? (
     <ContentSection
       id='comment-section'
       title={
@@ -156,7 +157,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     >
       <EntityComments entityId={entityId ?? ''} />
     </ContentSection>
-  );
+  ) : null;
 
   const contentSections = Children.toArray(children).concat([
     communitySection,
