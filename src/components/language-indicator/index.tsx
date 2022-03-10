@@ -6,17 +6,24 @@ import { TextLanguage } from '../../types';
 
 interface Props {
   textLanguage?: Partial<TextLanguage>;
+  selectedLanguage?: string;
   whiteBackground?: boolean;
 }
 
-const LanguageIndicator: FC<Props> = ({ textLanguage, whiteBackground }) =>
+const LanguageIndicator: FC<Props> = ({
+  textLanguage,
+  selectedLanguage,
+  whiteBackground
+}) =>
   textLanguage ? (
     <SC.TextLanguageCodesContainer $whiteBackground={!!whiteBackground}>
-      {Object.keys(textLanguage).map(language => (
-        <SC.TextLanguageLabel $whiteBackground={!!whiteBackground}>
-          {language}
-        </SC.TextLanguageLabel>
-      ))}
+      {Object.keys(textLanguage)
+        .filter(language => !selectedLanguage || language === selectedLanguage)
+        .map(language => (
+          <SC.TextLanguageLabel $whiteBackground={!!whiteBackground}>
+            {language}
+          </SC.TextLanguageLabel>
+        ))}
     </SC.TextLanguageCodesContainer>
   ) : null;
 
