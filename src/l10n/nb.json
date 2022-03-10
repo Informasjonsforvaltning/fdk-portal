@@ -296,6 +296,7 @@
       "referenceDefault": "Relasjon",
       "type": "Type",
       "dataService": "Datatjeneste",
+      "endpointDescription": "Endepunktsbeskrivelse",
       "preview": "Se forhåndsvisning",
       "previewFailure": "Beklager, det ser ut at distribusjonen ikke finnes eller inneholder ugyldig data."
     },
@@ -636,6 +637,7 @@
         "description": "Beskrivelse",
         "objective": "Formål",
         "distributions": "Distribusjoner ({count})",
+        "dataservices": "og datatjenester ({count})",
         "usage": "Bruk av datasettet",
         "sample": "Eksempeldata",
         "provenance": "Opphav og oppdatering",
@@ -934,7 +936,97 @@
     },
     "votes": "Stemmer",
     "replies": "Svar",
-    "views": "Visninger"
+    "views": "Visninger",
+    "comments": {
+      "sectionTitle": "Har du spørsmål eller kommentarer til {entityType}?",
+      "session": "Du er innlogget som ",
+      "entityTypes": {
+        "dataset": "datasettet",
+        "dataservice": "datatjenesten",
+        "concept": "begrepet",
+        "informationmodel": "informasjonsmodellen",
+        "public_service": "den offentlige tjenesten",
+        "event": "hendelsen"
+      },
+      "ingress": "Kommentaren blir synlig for andre brukere og besvares her.",
+      "noCommunityUser": "Lag en konto på Datalandsbyen for å kommentere",
+      "buttons": {
+        "feedback": "Still spørsmål",
+        "logInFeedback": "Logg inn for å stille spørsmål",
+        "logOutFeedback": "Logg ut",
+        "reply": "Skriv et svar",
+        "edit": "Rediger",
+        "delete": "Slett",
+        "expandComments": "Vis alle {count} tilbakemeldinger",
+        "collapseComments": "Skjul tilbakemeldinger",
+        "expandReplies": "Vis alle {count} svar",
+        "collapseReplies": "Skjul svar"
+      },
+      "gif": {
+        "play": "Trykk for å spille av GIF",
+        "pause": "Trykk for å pause GIF"
+      }
+    },
+    "composer": {
+      "commenter": "Kommenterer som ",
+      "placeholder": "Tekst",
+      "send": "Send",
+      "cancel": "Avbryt",
+      "tools": {
+        "modificationAlt" : {
+          "bold": "Sterk",
+          "italic": "Kursiv",
+          "ul": "Punktliste",
+          "image": "Bilde",
+          "tag": "Tagg bruker",
+          "strikethrough": "Gjennomstreking",
+          "code": "Kode",
+          "link": "lenke"
+        },
+        "modification": {
+          "bold": {
+            "value":"**sterk tekst her**",
+            "left":"**",
+            "right":"**"
+          },
+          "italic": {
+            "value":"*krusiv tekst her*",
+            "left":"*",
+            "right":"*"
+          },
+          "ul": {
+            "value":"\n* punkt",
+            "left":"\n* ",
+            "right":""
+          },
+          "image": {
+            "value":"![bildetekst](url til bilde)",
+            "left":"![",
+            "right":"](url til bilde)"
+          },
+          "tag": {
+            "value":"@brukernavn",
+            "left":"@",
+            "right":""
+          },
+          "strikethrough": {
+            "value":"~~gjennomstreking~~",
+            "left":"~~",
+            "right":"~~"
+          },
+          "code": {
+            "value":"```\nkode\n```",
+            "left":"```\n",
+            "right":"\n```"
+          },
+          "link": {
+            "value":"[lenketekst](lenkeurl)",
+            "left":"[",
+            "right":"](lenkeurl)"
+          }
+        }
+      }
+    }
   },
   "serviceMessagesPage": {
     "title": "Driftsmeldinger",

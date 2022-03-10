@@ -446,7 +446,7 @@ const ConceptDetailsPage: FC<Props> = ({
               translations.formatString(
                 translations.detailsPage.sectionTitles.concept
                   .conceptReferences,
-                { concept: translate(concept?.prefLabel) }
+                { concept: translate(concept?.prefLabel) ?? '' }
               ) as string
             }
             entityIcon={Entity.CONCEPT}

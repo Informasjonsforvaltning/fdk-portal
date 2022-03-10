@@ -15,17 +15,6 @@ const OrganizationPage = styled.article`
   overflow: hidden;
 `;
 
-const BetaRibbon = styled.span`
-  position: absolute;
-  top: 8px;
-  right: -33px;
-  transform: rotate(45deg);
-  padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
-  font-weight: ${theme.fontWeight('FW700')};
-  color: ${theme.colour(Colour.BLUE, 'B50')};
-  background: ${theme.colour(Colour.YELLOW, 'Y30')};
-`;
-
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48')};
   font-weight: ${theme.fontWeight('FW700')};
@@ -240,7 +229,6 @@ const Question = styled.div`
 
 export default {
   OrganizationPage,
-  BetaRibbon,
   Title,
   Section,
   Box,

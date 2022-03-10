@@ -33,6 +33,7 @@ import withAssessment, {
 import Banner from '../banner';
 import ContentSection from '../content-section';
 import CommunityTopics from '../community-topics';
+import EntityComments from '../../../community/comments';
 
 import { isEuTheme, isLosTheme } from '../../../../utils/common';
 
@@ -53,6 +54,7 @@ import {
 import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
+import env from '../../../../env';
 
 interface ExternalProps {
   entity: Entity;
@@ -141,7 +143,26 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     </ContentSection>
   );
 
-  const contentSections = Children.toArray(children).concat([communitySection]);
+  const commentSection = env.USER_FEEDBACK_TOGGLE ? (
+    <ContentSection
+      id='comment-section'
+      title={
+        translations.formatString(
+          translations.community.comments.sectionTitle,
+          {
+            entityType: translations.community.comments.entityTypes[entity]
+          }
+        ) as string
+      }
+    >
+      <EntityComments entityId={entityId ?? ''} />
+    </ContentSection>
+  ) : null;
+
+  const contentSections = Children.toArray(children).concat([
+    communitySection,
+    commentSection
+  ]);
 
   const renderContentSections = () =>
     contentSections
@@ -151,10 +172,16 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       ?.filter(Boolean);
 
   const menuItems = contentSections
-    .filter(child => isValidElement(child) && child.type === ContentSection)
+    .filter(
+      child =>
+        isValidElement(child) &&
+        child.type === ContentSection &&
+        child.props.id &&
+        child.props.title
+    )
     .map((child: any) => ({
       id: child.props.id,
-      title: translate(child.props.title)
+      title: translate(child.props.title) ?? child.props.title
     }));
 
   const publisherLabel = {
@@ -182,7 +209,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           <>
             <SC.PublisherLink href={`/organizations/${publisher.id}`}>
               {translations.formatString(publisherLabel[entity], {
-                publisher: publisherName
+                publisher: publisherName ?? publisher.id
               })}
             </SC.PublisherLink>
             {assessment && (

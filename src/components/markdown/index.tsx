@@ -30,4 +30,4 @@ const Markdown: FC<Props> = ({ allowHtml, children }) =>
 const Fallback: FC<Props> = ({ allowHtml, children }) =>
   allowHtml ? <>{parse(sanitizeHtml(children))}</> : <>{children}</>;
 
-export default compose<FC>(withErrorBoundary(Fallback, false))(Markdown);
+export default compose<FC<Props>>(withErrorBoundary(Fallback, false))(Markdown);

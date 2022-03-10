@@ -296,6 +296,7 @@
       "referenceDefault": "Relation",
       "type": "Type",
       "dataService": "Data service",
+      "endpointDescription": "Endpoint description",
       "preview": "Se forhåndsvisning",
       "previewFailure": "Sorry, it looks like the distribution does not exist or contains invalid data."
     },
@@ -636,6 +637,7 @@
         "description": "Description",
         "objective": "Objective",
         "distributions": "Distributions ({count})",
+        "dataservices": "and data services ({count})",
         "usage": "Dataset usage",
         "sample": "Sample data",
         "provenance": "Provenance",
@@ -934,7 +936,97 @@
     },
     "votes": "Votes",
     "replies": "Replies",
-    "views": "Views"
+    "views": "Views",
+    "comments": {
+      "sectionTitle": "Do you have questions or comments regarding the {entityType}?",
+      "session": "You are logged in as ",
+      "entityTypes": {
+        "dataset": "dataset",
+        "dataservice": "api",
+        "concept": "concept",
+        "informationmodel": "information model",
+        "public_service": "public service",
+        "event": "event"
+      },
+      "ingress": "The comment will be visible for others and may be answered here.",
+      "noCommunityUser": "Create an account on Datalandsbyen to comment",
+      "buttons": {
+        "feedback": "Post a question",
+        "logInFeedback": "Log in to post a question",
+        "logOutFeedback": "Log out",
+        "reply": "Post a reply",
+        "edit": "Edit",
+        "delete": "Delete",
+        "expandComments": "Show all {count} posts",
+        "collapseComments": "Hide posts",
+        "expandReplies": "Show all {count} answers",
+        "collapseReplies": "Hide answers"
+      },
+      "gif": {
+        "play": "Click to play GIF",
+        "pause": "Click to pause GIF"
+      }
+    },
+    "composer": {
+      "commenter": "Commenting as ",
+      "placeholder": "Text",
+      "send": "Send",
+      "cancel": "Cancel",
+      "tools": {
+        "modificationAlt" : {
+          "bold": "Bold",
+          "italic": "Italic",
+          "ul": "List",
+          "image": "Image",
+          "tag": "Tag user",
+          "strikethrough": "Strikethrough",
+          "code": "Code",
+          "link": "Link"
+        },
+        "modification": {
+          "bold": {
+            "value":"**bold text here**",
+            "left":"**",
+            "right":"**"
+          },
+          "italic": {
+            "value":"*italic text here*",
+            "left":"*",
+            "right":"*"
+          },
+          "ul": {
+            "value":"\n* bullet item",
+            "left":"\n* ",
+            "right":""
+          },
+          "image": {
+            "value":"![image text](image url)",
+            "left":"![",
+            "right":"](image url)"
+          },
+          "tag": {
+            "value":"@username",
+            "left":"@",
+            "right":""
+          },
+          "strikethrough": {
+            "value":"~~strikethrough~~",
+            "left":"~~",
+            "right":"~~"
+          },
+          "code": {
+            "value":"```\ncode\n```",
+            "left":"```\n",
+            "right":"\n```"
+          },
+          "link": {
+            "value":"[link text](link url)",
+            "left":"[",
+            "right":"](link url)"
+          }
+        }
+      }
+    }
   },
   "serviceMessagesPage": {
     "title": "Service messages",

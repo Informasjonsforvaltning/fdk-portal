@@ -20,7 +20,9 @@ const Header: FC = () => {
   return (
     <SC.Header>
       <SC.Row>
-        <SC.Logo />
+        <a href={PATHNAME_PUBLISHING}>
+          <SC.Logo />
+        </a>
         <SC.NavigationLinks>
           <li>
             <SC.Link href={FDK_REGISTRATION_BASE_URI}>

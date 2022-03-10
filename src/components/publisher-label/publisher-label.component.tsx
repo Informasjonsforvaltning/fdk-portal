@@ -21,19 +21,15 @@ export const PublisherLabel: FC<Props> = ({
     getTranslateText(publisherItem?.prefLabel) ||
     capitalize(publisherItem?.name ?? '');
 
-  const catalogTitle =
-    publisherItem?.id !== catalog?.publisher?.id
-      ? ` (${localization.dataset.registeredIn} ${getTranslateText(
-          catalog?.title
-        )})`
-      : null;
+  const catalogTitle = getTranslateText(catalog?.title);
 
   return publisherItem ? (
     <span className='mr-3'>
       {label}&nbsp;
       <Tag>
         {publisherPrefLabel}
-        {catalogTitle}
+        {catalogTitle &&
+          ` (${localization.dataset.registeredIn} ${catalogTitle}})`}
       </Tag>
     </span>
   ) : null;

@@ -11,20 +11,19 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import LoggingProvider from '../../providers/logging';
 import AuthProvider from '../../providers/auth';
 
-import { configureStore } from '../../redux/configureStore';
 import { ConnectedApp } from '../../app/connected-app';
 import { getConfig } from '../../config';
 import { themeFDK, themeNAP } from '../../app/theme';
 import GlobalStyles from '../../app/styles';
 
 import Analytics from '../../components/analytics';
+import { store } from '../../redux/store';
 
 const client = new ApolloClient({
   uri: `${getConfig().cmsV2Api.host}/graphql`,
   cache: new InMemoryCache()
 });
 
-const store = configureStore(getConfig().store);
 const theme = getConfig().themeNap ? themeNAP : themeFDK;
 
 render(

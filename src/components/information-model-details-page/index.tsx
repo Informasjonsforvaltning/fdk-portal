@@ -161,11 +161,10 @@ const InformationModelDetailsPage: FC<Props> = ({
   const licenses = informationModel?.license ?? [];
   const languages = informationModel?.language ?? [];
   const seeAlso = informationModel?.homepage;
-  const keywords =
-    informationModel?.keyword
-      ?.filter(keyword => translations.getLanguage() in keyword)
-      .map(translate)
-      .filter(Boolean) ?? [];
+  const keywords = (informationModel?.keyword
+    ?.filter(keyword => translations.getLanguage() in keyword)
+    .map(kw => translate(kw))
+    .filter(Boolean) ?? []) as string[];
   const spatialRestrictions = informationModel?.spatial ?? [];
   const lastPublished = formatDate(
     dateStringToDate(informationModel?.harvest?.firstHarvested)
@@ -422,11 +421,16 @@ const InformationModelDetailsPage: FC<Props> = ({
                 <KeyValueListItem
                   property={translations.infoMod.hasFormats}
                   value={hasFormats.map(
-                    ({ uri, title: formatTitle, format }) => (
+                    ({
+                      uri,
+                      title: formatTitle,
+                      format,
+                      seeAlso: formatSeeAlso
+                    }) => (
                       <SC.Format key={uri}>
-                        {uri && !uriIsSkolemized(uri) ? (
-                          <SC.Link href={uri} external>
-                            {translate(formatTitle) ?? uri}
+                        {formatSeeAlso && !uriIsSkolemized(formatSeeAlso) ? (
+                          <SC.Link href={formatSeeAlso} external>
+                            {translate(formatTitle) ?? formatSeeAlso}
                           </SC.Link>
                         ) : (
                           translate(formatTitle) ?? uri

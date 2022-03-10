@@ -136,7 +136,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const languages = publicService?.language ?? [];
   const sectors = publicService?.sector ?? [];
   const keywords =
-    publicService?.keyword?.map(translate)?.filter(Boolean) ?? [];
+    publicService?.keyword?.map(kw => translate(kw))?.filter(Boolean) ?? [];
   const requiredServices = publicService?.requires || [];
   const isClassifiedBy = publicService?.isClassifiedBy || [];
   const isGroupedBy = publicService?.isGroupedBy || [];
@@ -346,7 +346,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           },
                           index: number
                         ) => {
-                          let costChannelLabel = '';
+                          let costChannelLabel;
                           const previousCostChannelUri =
                             hasCost[index - 1]?.ifAccessedThrough.uri;
                           const currentCostChannelUri = ifAccessedThrough?.uri;
@@ -577,7 +577,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   <Link
                     as={RouterLink}
                     to={`${PATHNAME_PUBLIC_SERVICES}?keywords=${encodeURIComponent(
-                      keyword
+                      keyword ?? ''
                     )}`}
                     key={`${keyword}-${index}`}
                   >

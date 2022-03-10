@@ -9,14 +9,13 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { configureStore } from '../../redux/configureStore';
-import { getConfig } from '../../config';
+import { store } from '../../redux/store';
 
 import MaintenancePage from '../../pages/maintenance-page';
 
 async function run() {
   render(
-    <Provider store={configureStore(getConfig().store) as any}>
+    <Provider store={store}>
       <BrowserRouter>
         <MaintenancePage />
       </BrowserRouter>

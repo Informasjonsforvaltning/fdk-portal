@@ -12,17 +12,26 @@ exports[`SearchHit component should render with properties 1`] = `
     }
     type={0}
   />
-  <Styled(s)
-    href="/organizations/9999"
-  >
-    <span>
-      Owner: 
-       
-    </span>
-    <span>
-      Test direktorat
-    </span>
-  </Styled(s)>
+  <styled.div>
+    <Styled(s)
+      href="/organizations/9999"
+    >
+      <span>
+        Owner: 
+         
+      </span>
+      <span>
+        Test direktorat
+      </span>
+    </Styled(s)>
+    <Memo(LanguageIndicator)
+      textLanguage={
+        Object {
+          "nb": "Test datasett",
+        }
+      }
+    />
+  </styled.div>
   <TruncatedText
     lineHeight={20}
     visibleLines={4}

@@ -44,14 +44,6 @@ const Content = styled.div`
   & > ${SC.MultiLingualField.MultiLingualField} {
     font-size: ${theme.fontSize('FS20', Unit.EM)};
     font-weight: ${theme.fontWeight('FW700')};
-
-    & > ${SC.MultiLingualField.LanguageField} {
-      margin-bottom: 0;
-      & > ${SC.MultiLingualField.LanguageIndicator} {
-        background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-        font-size: 0.5em;
-      }
-    }
   }
 `;
 
@@ -116,17 +108,11 @@ const BetaRibbon = styled.span<InvertedColorProps>`
       : theme.colour(Colour.RED, 'R60')};
 `;
 
-const LanguageIndicator = styled(SC.MultiLingualField.LanguageIndicator)`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  font-size: 1em;
-`;
-
 export default {
   Banner,
   Content,
   TitleWrapper,
   Title,
   LastPublishedInfo,
-  BetaRibbon,
-  LanguageIndicator
+  BetaRibbon
 };

@@ -22,6 +22,9 @@ export default validateEnv(
     FDK_CMS_BASE_URI: 'https://cms.fellesdatakatalog.digdir.no',
     FDK_SPARQL_API_BASE_URI:
       'https://sparql.staging.fellesdatakatalog.digdir.no',
-    FDK_DATASET_PREVIEW_API_KEY: ''
+    FDK_DATASET_PREVIEW_API_KEY: '',
+    FDK_USER_FEEDBACK_SERVICE_BASE_URI:
+      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/user-feedback-service-staging',
+    USER_FEEDBACK_TOGGLE: localStorage.getItem('USER_FEEDBACK_TOGGLE') ?? false
   }
 );

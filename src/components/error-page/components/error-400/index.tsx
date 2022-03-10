@@ -26,7 +26,9 @@ const Error400: FC = () => {
         </SC.Link>
         <p>
           {parse(
-            sanitizeHtml(translate(translations.errorPage.clientError.content3))
+            sanitizeHtml(
+              translate(translations.errorPage.clientError.content3) ?? ''
+            )
           )}
         </p>
       </span>

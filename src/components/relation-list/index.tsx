@@ -39,7 +39,7 @@ import type {
 
 export interface ItemWithRelationType {
   relation: Partial<Event> | Partial<PublicService>;
-  relationType: string;
+  relationType?: string;
 }
 
 interface RelationProps {
@@ -62,7 +62,7 @@ const renderReferenceString = (
     const referenceTypes = references?.reduce(
       (previous, { source = {}, referenceType = {} }) =>
         source?.uri === parentIdentifier && referenceType?.prefLabel
-          ? [...previous, translate(referenceType.prefLabel).toLowerCase()]
+          ? [...previous, translate(referenceType.prefLabel)?.toLowerCase()]
           : previous,
       [] as string[]
     );

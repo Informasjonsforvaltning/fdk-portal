@@ -50,7 +50,7 @@ import RelationList, { ItemWithRelationType } from '../relation-list';
 import SC from './styled';
 
 import { Entity } from '../../types/enums';
-import { AccessService, Distribution } from '../../types';
+import { AccessService, Distribution, MediaTypeOrExtent } from '../../types';
 import Markdown from '../markdown';
 
 interface RouteParams {
@@ -245,11 +245,11 @@ const DatasetDetailsPage: FC<Props> = ({
   const referencedDatasets = datasets;
   const datasetReferenceTypes = dataset?.references ?? [];
   const keywords =
-    dataset?.keyword
+    (dataset?.keyword
       ?.map(keyword =>
         getTranslateTextWithLanguageCode(keyword, translations.getLanguage())
       )
-      ?.filter(Boolean) ?? [];
+      ?.filter(Boolean) as string[]) ?? [];
   const qualifiedAttributions = dataset?.qualifiedAttributions ?? [];
   const temporalRestrictions = dataset?.temporal ?? [];
   const contactPoints = dataset?.contactPoint ?? [];
@@ -321,13 +321,63 @@ const DatasetDetailsPage: FC<Props> = ({
         {distributions.length > 0 && (
           <ContentSection
             id='distributions'
-            title={
+            title={`${
               translations.formatString(
                 translations.detailsPage.sectionTitles.dataset.distributions,
                 { count: distributions.length }
               ) as string
             }
+                ${
+                  dataServicesRelations.length > 0
+                    ? (translations.formatString(
+                        translations.detailsPage.sectionTitles.dataset
+                          .dataservices,
+                        { count: dataServicesRelations.length }
+                      ) as string)
+                    : ''
+                }`}
           >
+            {dataServicesRelations.map(
+              (
+                {
+                  id,
+                  title: dataserviceTitle,
+                  uri,
+                  type,
+                  description: dataserviceDescription,
+                  isOpenLicense,
+                  fdkFormat,
+                  endpointURL,
+                  endpointDescription,
+                  conformsTo
+                },
+                index
+              ) => (
+                <DatasetDistribution
+                  key={`${uri || 'distribution-data-service'}-${index}`}
+                  datasetTitle={title}
+                  distribution={{
+                    title: dataserviceTitle,
+                    type,
+                    conformsTo,
+                    fdkFormat:
+                      (fdkFormat?.filter(
+                        format => format?.code
+                      ) as MediaTypeOrExtent[]) ?? [],
+                    description: dataserviceDescription,
+                    openLicense: isOpenLicense,
+                    accessURL: endpointURL
+                  }}
+                  accessServices={[
+                    {
+                      uri: `${PATHNAME_DATA_SERVICES}/${id}`,
+                      description: dataserviceTitle
+                    }
+                  ]}
+                  endpointDescriptions={endpointDescription}
+                />
+              )
+            )}
             {distributions.map((distribution, index) => (
               <DatasetDistribution
                 key={`${distribution.uri || 'distribution'}-${index}`}
@@ -735,8 +785,7 @@ const DatasetDetailsPage: FC<Props> = ({
           </ContentSection>
         )}
         {(datasetsRelations.length > 0 ||
-          publicServicesRelations.length > 0 ||
-          dataServicesRelations.length > 0) && (
+          publicServicesRelations.length > 0) && (
           <ContentSection
             id='relationList'
             title={translations.detailsPage.relationList.title.dataset}
@@ -745,7 +794,6 @@ const DatasetDetailsPage: FC<Props> = ({
               parentIdentifier={dataset?.uri}
               datasets={datasetsRelations}
               publicServices={publicServicesRelatedByWithRelationType}
-              dataServices={dataServicesRelations}
             />
           </ContentSection>
         )}
