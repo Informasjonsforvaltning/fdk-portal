@@ -57,7 +57,7 @@ interface Props
 
 const ConceptDetailsPage: FC<Props> = ({
   concept,
-  concepts: seeAlsoConceptReferences,
+  concepts: conceptReferences,
   isLoadingConcept,
   datasetsRelations,
   publicServicesRelations,
@@ -190,6 +190,11 @@ const ConceptDetailsPage: FC<Props> = ({
     }
   }, [concept, translations.getLanguage()]);
 
+  const conceptReferencesMap = conceptReferences?.reduce(
+    (previous, current) => ({ ...previous, [current.identifier]: current }),
+    {} as Record<string, any>
+  );
+
   const entityId = concept?.id;
   const entityUri = concept?.uri;
   const identifier = concept?.identifier;
@@ -216,6 +221,7 @@ const ConceptDetailsPage: FC<Props> = ({
     dateStringToDate(concept?.validToIncluding)
   );
   const contactPoint = concept?.contactPoint;
+  const seeAlso = concept?.seeAlso ?? [];
   const themes: Theme[] = [];
 
   const renderSources = () => {
@@ -439,7 +445,7 @@ const ConceptDetailsPage: FC<Props> = ({
             />
           </ContentSection>
         )}
-        {seeAlsoConceptReferences.length > 0 && (
+        {seeAlso.length > 0 && (
           <ContentSection
             id='concept-references'
             title={
@@ -453,7 +459,7 @@ const ConceptDetailsPage: FC<Props> = ({
             boxStyle
           >
             <KeyValueList>
-              {seeAlsoConceptReferences.map(({ id, prefLabel }) => {
+              {seeAlso.map(uri => {
                 const isExpired = isDateBeforeToday(
                   dateStringToDate(validToIncluding)
                 );
@@ -461,13 +467,16 @@ const ConceptDetailsPage: FC<Props> = ({
                   dateStringToDate(validFromIncluding)
                 );
 
-                return (
+                return conceptReferencesMap?.[uri] ? (
                   <KeyValueListItem
-                    key={id}
+                    key={conceptReferencesMap[uri].id}
                     property={translations.conceptReferences.seeAlso}
                     value={
-                      <Link to={`${PATHNAME_CONCEPTS}/${id}`} as={RouteLink}>
-                        {translate(prefLabel)}
+                      <Link
+                        to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
+                        as={RouteLink}
+                      >
+                        {translate(conceptReferencesMap[uri].prefLabel)}
                         {isExpired && (
                           <>&nbsp;({translations.validity.expired})</>
                         )}
@@ -476,6 +485,12 @@ const ConceptDetailsPage: FC<Props> = ({
                         )}
                       </Link>
                     }
+                  />
+                ) : (
+                  <KeyValueListItem
+                    key={uri}
+                    property={translations.conceptReferences.seeAlso}
+                    value={uri}
                   />
                 );
               })}
