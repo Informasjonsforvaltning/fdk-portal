@@ -15,6 +15,7 @@ export interface Props {
   convertToMarkUp?: boolean;
   useFallback?: boolean;
   skippedLanguages?: string[];
+  iconAlignCenter?: boolean;
 }
 
 const renderTextField = ({
@@ -22,7 +23,8 @@ const renderTextField = ({
   text,
   convertToMarkUp,
   useFallback,
-  skippedLanguages
+  skippedLanguages,
+  iconAlignCenter
 }: Props) => {
   const selectedLanguages = languages.filter(
     ({ code, selected }) => selected && !skippedLanguages?.includes(code)
@@ -47,7 +49,7 @@ const renderTextField = ({
   return (
     textArray.length > 0 &&
     textArray.map((item: any, index: number) => (
-      <SC.LanguageField key={index}>
+      <SC.LanguageField key={index} $alignCenter={iconAlignCenter}>
         <LanguageIndicator textLanguage={item} whiteBackground />
         {convertToMarkUp ? (
           <Markdown>{getTranslateText(item) ?? ''}</Markdown>
@@ -64,7 +66,8 @@ const MultiLingualField: FC<Props> = ({
   text = {},
   convertToMarkUp = false,
   useFallback = true,
-  skippedLanguages = []
+  skippedLanguages = [],
+  iconAlignCenter = false
 }) => (
   <SC.MultiLingualField>
     {renderTextField({
@@ -72,7 +75,8 @@ const MultiLingualField: FC<Props> = ({
       text,
       convertToMarkUp,
       useFallback,
-      skippedLanguages
+      skippedLanguages,
+      iconAlignCenter
     })}
   </SC.MultiLingualField>
 );

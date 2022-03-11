@@ -72,7 +72,11 @@ const Banner: FC<Props> = ({
       <SC.Content>
         <SC.TitleWrapper>
           {entity === Entity.CONCEPT && (
-            <LanguageIndicator textLanguage={title} whiteBackground />
+            <LanguageIndicator
+              textLanguage={title}
+              selectedLanguage={translations.getLanguage()}
+              whiteBackground
+            />
           )}
           <SC.Title>
             {translate(
@@ -95,6 +99,7 @@ const Banner: FC<Props> = ({
               languages={languages}
               text={title}
               skippedLanguages={[translations.getLanguage()]}
+              iconAlignCenter
             />
           )}
         <SC.LastPublishedInfo>
