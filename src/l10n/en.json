@@ -89,7 +89,7 @@
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
-    "seeAlso": "See also"
+    "seeAlso": "See also this concept."
   },
   "validity": {
     "validFromIncluding": "Valid from and including",
@@ -672,7 +672,7 @@
         "identifier": "Identifier",
         "datasetReferences": "References to datasets",
         "informationModelReferences": "References to information models",
-        "conceptReferences": "References to concepts",
+        "conceptReferences": "Related concepts ({conceptCount})",
         "contactInformation": "Contact information"
       },
       "informationModel": {

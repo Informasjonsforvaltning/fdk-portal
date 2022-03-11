@@ -428,23 +428,6 @@ const ConceptDetailsPage: FC<Props> = ({
             {identifier}
           </ContentSection>
         )}
-        {(conceptsRelations.length > 0 ||
-          datasetsRelations.length > 0 ||
-          publicServicesRelations.length > 0 ||
-          informationModelsRelations.length > 0) && (
-          <ContentSection
-            id='relationList'
-            title={translations.detailsPage.relationList.title.concept}
-          >
-            <RelationList
-              parentIdentifier={concept?.identifier}
-              concepts={conceptsRelations}
-              datasets={datasetsRelations}
-              publicServices={publicServicesRelationsWithRelationType}
-              informationModels={informationModelsRelations}
-            />
-          </ContentSection>
-        )}
         {seeAlso.length > 0 && (
           <ContentSection
             id='concept-references'
@@ -452,7 +435,7 @@ const ConceptDetailsPage: FC<Props> = ({
               translations.formatString(
                 translations.detailsPage.sectionTitles.concept
                   .conceptReferences,
-                { concept: translate(concept?.prefLabel) ?? '' }
+                { conceptCount: conceptReferences.length }
               ) as string
             }
             entityIcon={Entity.CONCEPT}
@@ -470,8 +453,7 @@ const ConceptDetailsPage: FC<Props> = ({
                 return conceptReferencesMap?.[uri] ? (
                   <KeyValueListItem
                     key={conceptReferencesMap[uri].id}
-                    property={translations.conceptReferences.seeAlso}
-                    value={
+                    property={
                       <Link
                         to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
                         as={RouteLink}
@@ -485,6 +467,7 @@ const ConceptDetailsPage: FC<Props> = ({
                         )}
                       </Link>
                     }
+                    value={translations.conceptReferences.seeAlso}
                   />
                 ) : (
                   <KeyValueListItem
@@ -495,6 +478,23 @@ const ConceptDetailsPage: FC<Props> = ({
                 );
               })}
             </KeyValueList>
+          </ContentSection>
+        )}
+        {(conceptsRelations.length > 0 ||
+          datasetsRelations.length > 0 ||
+          publicServicesRelations.length > 0 ||
+          informationModelsRelations.length > 0) && (
+          <ContentSection
+            id='relationList'
+            title={translations.detailsPage.relationList.title.concept}
+          >
+            <RelationList
+              parentIdentifier={concept?.identifier}
+              concepts={conceptsRelations}
+              datasets={datasetsRelations}
+              publicServices={publicServicesRelationsWithRelationType}
+              informationModels={informationModelsRelations}
+            />
           </ContentSection>
         )}
         {(contactPoint?.email || contactPoint?.telephone) && (
