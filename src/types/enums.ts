@@ -162,3 +162,16 @@ export enum LanguageCodes {
   no = 'no',
   none = ''
 }
+
+export enum Relation {
+  ASSOSIATIV = 'assosiativ',
+  GENERISK = 'generisk',
+  PARTITIV = 'partitiv'
+}
+
+export enum RelationType {
+  OVERORDNET = 'overordnet',
+  UNDERORDNET = 'underordnet',
+  ER_DEL_AV = 'erDelAv',
+  OMFATTER = 'omfatter'
+}

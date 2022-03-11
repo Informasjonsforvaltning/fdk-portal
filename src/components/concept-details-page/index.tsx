@@ -41,7 +41,30 @@ import RelationList, { ItemWithRelationType } from '../relation-list';
 import SC from './styled';
 
 import type { Theme, Language, TextLanguage } from '../../types';
-import { Entity } from '../../types/enums';
+import { Entity, Relation, RelationType } from '../../types/enums';
+
+const relationOptions: { [key in Relation]: string } = {
+  [Relation.PARTITIV]: translations.partitive,
+  [Relation.GENERISK]: translations.generic,
+  [Relation.ASSOSIATIV]: translations.associative
+};
+
+const relationTypeOptions: { [key in RelationType]: string } = {
+  [RelationType.OVERORDNET]: translations.overall,
+  [RelationType.UNDERORDNET]: translations.subordinate,
+  [RelationType.OMFATTER]: translations.includes,
+  [RelationType.ER_DEL_AV]: translations.partOf
+};
+
+interface BegrepsRelasjon {
+  relasjon: string;
+  relasjonsType: string;
+  beskrivelse: string;
+  inndelingskriterium: {
+    nb: string;
+  };
+  relatertBegrep: string;
+}
 
 interface RouteParams {
   conceptId: string;
@@ -117,10 +140,52 @@ const ConceptDetailsPage: FC<Props> = ({
     };
   }, [conceptId]);
 
+  const begrepsRelasjoner: BegrepsRelasjon[] = [
+    {
+      relasjon: 'partitiv',
+      relasjonsType: 'omfatter',
+      beskrivelse: 'test',
+      inndelingskriterium: {
+        nb: 'test inndelingskriterium'
+      },
+      relatertBegrep:
+        'http://begrepskatalogen/begrep/1e3330c6-6837-11e6-a7ce-fac03dffe1d7'
+    },
+    {
+      relasjon: 'partitiv',
+      relasjonsType: 'omfatter',
+      beskrivelse: 'test2',
+      inndelingskriterium: {
+        nb: 'test inndelingskriterium 2'
+      },
+      relatertBegrep:
+        'http://begrepskatalogen/begrep/7c73727a-fed5-11e8-b79b-0050568204d6'
+    }
+  ];
+  const begrepsRelasjonerUris: string[] = begrepsRelasjoner.map(
+    ({ relatertBegrep }) => relatertBegrep
+  );
+
+  const erstattesAv: string[] = [
+    'http://begrepskatalogen/begrep/1e3330c6-6837-11e6-a7ce-fac03dffe1d7'
+  ];
+
   useEffect(() => {
     if (concept?.identifier) {
-      if (Array.isArray(concept?.seeAlso) && concept?.seeAlso.length > 0) {
-        getConcepts({ identifiers: concept.seeAlso, size: 1000 });
+      if (
+        (Array.isArray(concept?.seeAlso) && concept?.seeAlso.length > 0) ||
+        (Array.isArray(begrepsRelasjonerUris) &&
+          begrepsRelasjonerUris.length > 0) ||
+        (Array.isArray(erstattesAv) && erstattesAv.length > 0)
+      ) {
+        getConcepts({
+          identifiers: [
+            ...(concept?.seeAlso ?? []),
+            ...begrepsRelasjonerUris,
+            ...erstattesAv
+          ],
+          size: 1000
+        });
       }
 
       getConceptsRelations({ seeAlso: concept.identifier });
@@ -428,7 +493,9 @@ const ConceptDetailsPage: FC<Props> = ({
             {identifier}
           </ContentSection>
         )}
-        {seeAlso.length > 0 && (
+        {(begrepsRelasjoner.length > 0 ||
+          erstattesAv.length > 0 ||
+          seeAlso.length > 0) && (
           <ContentSection
             id='concept-references'
             title={
@@ -442,6 +509,68 @@ const ConceptDetailsPage: FC<Props> = ({
             boxStyle
           >
             <KeyValueList>
+              {begrepsRelasjoner.map(
+                ({
+                  relatertBegrep,
+                  relasjon,
+                  relasjonsType,
+                  inndelingskriterium
+                }) => {
+                  const isExpired = isDateBeforeToday(
+                    dateStringToDate(validToIncluding)
+                  );
+                  const isWillBeValid = isDateAfterToday(
+                    dateStringToDate(validFromIncluding)
+                  );
+                  return conceptReferencesMap?.[relatertBegrep] ? (
+                    <KeyValueListItem
+                      key={conceptReferencesMap[relatertBegrep].id}
+                      property={
+                        <Link
+                          to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[relatertBegrep].id}`}
+                          as={RouteLink}
+                        >
+                          {translate(
+                            conceptReferencesMap[relatertBegrep].prefLabel
+                          )}
+                          {isExpired && (
+                            <>&nbsp;({translations.validity.expired})</>
+                          )}
+                          {!isExpired && isWillBeValid && (
+                            <>&nbsp;({translations.validity.willBeValid})</>
+                          )}
+                        </Link>
+                      }
+                      value={
+                        <div>
+                          <div>
+                            <span>
+                              {relationOptions[relasjon as Relation]}.&nbsp;
+                            </span>
+                            <span>
+                              {
+                                relationTypeOptions[
+                                  relasjonsType as RelationType
+                                ]
+                              }
+                              .
+                            </span>
+                          </div>
+                          <div>
+                            <span>{translate(inndelingskriterium)}</span>
+                          </div>
+                        </div>
+                      }
+                    />
+                  ) : (
+                    <KeyValueListItem
+                      key={relatertBegrep}
+                      property={translations.conceptReferences.seeAlso}
+                      value={relatertBegrep}
+                    />
+                  );
+                }
+              )}
               {seeAlso.map(uri => {
                 const isExpired = isDateBeforeToday(
                   dateStringToDate(validToIncluding)
@@ -468,6 +597,41 @@ const ConceptDetailsPage: FC<Props> = ({
                       </Link>
                     }
                     value={translations.conceptReferences.seeAlso}
+                  />
+                ) : (
+                  <KeyValueListItem
+                    key={uri}
+                    property={translations.conceptReferences.seeAlso}
+                    value={uri}
+                  />
+                );
+              })}
+              {erstattesAv.map(uri => {
+                const isExpired = isDateBeforeToday(
+                  dateStringToDate(validToIncluding)
+                );
+                const isWillBeValid = isDateAfterToday(
+                  dateStringToDate(validFromIncluding)
+                );
+
+                return conceptReferencesMap?.[uri] ? (
+                  <KeyValueListItem
+                    key={conceptReferencesMap[uri].id}
+                    property={
+                      <Link
+                        to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
+                        as={RouteLink}
+                      >
+                        {translate(conceptReferencesMap[uri].prefLabel)}
+                        {isExpired && (
+                          <>&nbsp;({translations.validity.expired})</>
+                        )}
+                        {!isExpired && isWillBeValid && (
+                          <>&nbsp;({translations.validity.willBeValid})</>
+                        )}
+                      </Link>
+                    }
+                    value='TODO Erstattes av'
                   />
                 ) : (
                   <KeyValueListItem
