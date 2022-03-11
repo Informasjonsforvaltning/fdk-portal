@@ -89,7 +89,7 @@
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
-    "seeAlso": "Sjå også"
+    "seeAlso": "Sjå også dette omgrepet."
   },
   "validity": {
     "validFromIncluding": "Gyldig fra og med",
@@ -672,7 +672,7 @@
         "identifier": "Identifikator",
         "datasetReferences": "Brukt i datasett",
         "informationModelReferences": "Brukt i informasjonsmodell",
-        "conceptReferences": "Omgrep relatert til {concept}",
+        "conceptReferences": "Relaterte omgrep ({conceptCount})",
         "contactInformation": "Kontaktinformasjon"
       },
       "informationModel": {
