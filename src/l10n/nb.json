@@ -89,7 +89,14 @@
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
-    "seeAlso": "Se også dette begrepet."
+    "seeAlso": "Se også dette begrepet.",
+    "generic": "Generisk relasjon",
+    "partitive": "Partitiv relasjon",
+    "associative": "Assosiativ relasjon",
+    "generalizes": "Overordnet",
+    "specializes": "Underordnet",
+    "isPartOf": "Er en del av",
+    "hasPart": "Omfatter"
   },
   "validity": {
     "validFromIncluding": "Gyldig fra og med",
