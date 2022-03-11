@@ -89,7 +89,14 @@
   "conceptReferences": {
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
-    "seeAlso": "Sjå også dette omgrepet."
+    "seeAlso": "Sjå også dette omgrepet.",
+    "generic": "Generisk relasjon",
+    "partitive": "Partitiv relasjon",
+    "associative": "Assosiativ relasjon",
+    "generalizes": "Overordna",
+    "specializes": "Underordna",
+    "isPartOf": "Er ein del av",
+    "hasPart": "Omfattar"
   },
   "validity": {
     "validFromIncluding": "Gyldig fra og med",

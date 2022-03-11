@@ -89,7 +89,14 @@
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
-    "seeAlso": "See also this concept."
+    "seeAlso": "See also this concept.",
+    "generic": "Generic relation",
+    "partitive": "Partitive relation",
+    "associative": "Associative relation",
+    "generalizes": "Overall",
+    "specializes": "Subordinate",
+    "isPartOf": "Part of",
+    "hasPart": "Includes"
   },
   "validity": {
     "validFromIncluding": "Valid from and including",
