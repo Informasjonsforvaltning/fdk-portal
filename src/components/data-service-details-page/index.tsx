@@ -300,14 +300,14 @@ const DataserviceDetailsPage: FC<Props> = ({
                 ({ organizationName, hasURL, email, hasTelephone }) =>
                   (organizationName || hasURL || email || hasTelephone) && (
                     <KeyValueList
-                      key={`${organizationName}-${hasURL}-${email}`}
+                      key={`${translate(organizationName)}-${hasURL}-${email}`}
                     >
                       {(organizationName || hasURL) && (
                         <KeyValueListItem
                           property={translations.contactPoint}
                           value={
                             <Link href={hasURL} external>
-                              {organizationName ?? hasURL}
+                              {translate(organizationName) ?? hasURL}
                             </Link>
                           }
                         />
