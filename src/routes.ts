@@ -39,6 +39,7 @@ const routes: any = {
     `${PATHNAME_CONCEPTS}/:conceptId`,
     `${PATHNAME_INFORMATIONMODELS}/:informationModelId`,
     `${PATHNAME_DATA_SERVICES}/:dataServiceId`,
+    `${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}/:publicServiceId`,
     `${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`,
     `${PATHNAME_EVENTS}/:eventId`,
     `${PATHNAME_NEWS_ARTICLE}/:id`,
