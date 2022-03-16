@@ -10,7 +10,7 @@ import {
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_PUBLIC_SERVICES
+  PATHNAME_PUBLIC_SERVICES_AND_EVENTS
 } from '../../../../../constants/constants';
 import { getLinkForTab } from '../../../search-location-helper';
 import { Entity } from '../../../../../types/enums';
@@ -99,8 +99,8 @@ const Tabs: FC<Props & RouteComponentProps> = ({
       </SC.Label>
     </Tab>
     <Tab
-      active={location.pathname === PATHNAME_PUBLIC_SERVICES}
-      tabLink={getLinkForTab(location, PATHNAME_PUBLIC_SERVICES)}
+      active={location.pathname === PATHNAME_PUBLIC_SERVICES_AND_EVENTS}
+      tabLink={getLinkForTab(location, PATHNAME_PUBLIC_SERVICES_AND_EVENTS)}
       label={localization.informationModelLabel}
     >
       <SC.BetaRibbon>BETA</SC.BetaRibbon>
