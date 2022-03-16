@@ -100,6 +100,7 @@ const Banner: FC<Props> = ({
               text={title}
               skippedLanguages={[translations.getLanguage()]}
               iconAlignCenter
+              useFallback={false}
             />
           )}
         <SC.LastPublishedInfo>
