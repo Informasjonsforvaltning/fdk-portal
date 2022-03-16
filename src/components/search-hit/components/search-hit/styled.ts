@@ -34,7 +34,7 @@ const OpenData = styled.div`
   display: flex;
   margin-bottom: 1em;
   svg {
-    width: 2.4rem;
+    width: 20px;
     margin-right: 0.5em;
     path {
       fill: #fff;

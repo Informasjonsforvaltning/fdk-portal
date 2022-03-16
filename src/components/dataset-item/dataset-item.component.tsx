@@ -17,7 +17,7 @@ import { isLosTheme, isEuTheme } from '../../utils/common';
 
 import ReactTooltipSC from '../tooltip/styled';
 
-import PublicIconBase from '../../images/icon-access-open-md.svg';
+import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
 
 import type { Dataset, MediaTypeOrExtent } from '../../types';
 import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';

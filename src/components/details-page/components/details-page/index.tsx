@@ -37,10 +37,9 @@ import EntityComments from '../../../community/comments';
 
 import { isEuTheme, isLosTheme } from '../../../../utils/common';
 
-import OpenAccessIcon from '../../../../images/icon-access-open-md.svg';
-import PublicAccessIcon from '../../../../images/icon-access-public-md.svg';
-import RestrictedAccessIcon from '../../../../images/icon-access-restricted-md.svg';
-import NonPublicAccessIcon from '../../../../images/icon-access-non-public-md.svg';
+import OpenAccessIcon from '../../../../images/icon-access-open-md-v2.svg';
+import RestrictedAccessIcon from '../../../../images/icon-access-restricted-md-v2.svg';
+import NotOpenAccessIcon from '../../../../images/icon-access-not-open-md-v2.svg';
 
 import SC from './styled';
 
@@ -240,7 +239,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
             to={`${rootPaths[entity]}?accessrights=PUBLIC`}
             className='public-data'
           >
-            <PublicAccessIcon />
+            <OpenAccessIcon />
             {translations.detailsPage.publicData}
           </Link>
         )}
@@ -258,7 +257,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
             to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
             className='non-public-data'
           >
-            <NonPublicAccessIcon />
+            <NotOpenAccessIcon />
             {translations.detailsPage.nonPublicData}
           </Link>
         )}
