@@ -8,7 +8,7 @@ import {
   SearchHitOpenData
 } from '../search-hit/search-hit';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
-import PublicIconBase from '../../images/icon-access-open-md.svg';
+import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
 import localization from '../../lib/localization';
 import ReactTooltipSC from '../tooltip/styled';
 
