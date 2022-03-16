@@ -87,6 +87,8 @@ export function App({ language, onChangeLanguage }) {
       InformationModelDetailsPage,
     [`${PATHNAME_DATA_SERVICES}/:dataServiceId`]: DataServiceDetailsPage,
     [`${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`]: PublicServiceDetailsPage,
+    [`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}/:publicServiceId`]:
+      PublicServiceDetailsPage,
     [`${PATHNAME_EVENTS}/:eventId`]: EventDetailsPage,
     [`${PATHNAME_NEWS_ARTICLE}/:id`]: NewsArticle,
     [`${PATHNAME_NEWS_ARTICLE_V2}/:id`]: NewsArticlePageV2,
