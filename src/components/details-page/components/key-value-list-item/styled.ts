@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme as fdkTheme } from '@fellesdatakatalog/theme';
 
 const ListItem = styled.li`
   display: flex;
@@ -12,8 +13,8 @@ const ListItem = styled.li`
 
 const Property = styled.div`
   flex-basis: 40%;
-  font-weight: bold;
   color: ${({ theme }) => theme.extendedColors.textDefault};
+  margin-right: ${fdkTheme.spacing('S10')};
 `;
 
 const Value = styled.div`

@@ -89,7 +89,7 @@
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
-    "seeAlso": "Se også"
+    "seeAlso": "Se også dette begrepet."
   },
   "validity": {
     "validFromIncluding": "Gyldig fra og med",
@@ -672,7 +672,7 @@
         "identifier": "Identifikator",
         "datasetReferences": "Brukt i datasett",
         "informationModelReferences": "Brukt i informasjonsmodell",
-        "conceptReferences": "Begreper relatert til {concept}",
+        "conceptReferences": "Relaterte begreper ({conceptCount})",
         "contactInformation": "Kontaktinformasjon"
       },
       "informationModel": {

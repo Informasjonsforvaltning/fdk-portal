@@ -807,14 +807,16 @@ const DatasetDetailsPage: FC<Props> = ({
             {contactPoints.map(
               ({ organizationUnit, email, hasURL, hasTelephone }, index) => (
                 <KeyValueList
-                  key={`${organizationUnit}-${email}-${hasURL}-${hasTelephone}-${index}`}
+                  key={`${translate(
+                    organizationUnit
+                  )}-${email}-${hasURL}-${hasTelephone}-${index}`}
                 >
                   {hasURL && (
                     <KeyValueListItem
                       property={translations.contactPoint}
                       value={
                         <Link href={hasURL} external>
-                          {organizationUnit ?? hasURL}
+                          {translate(organizationUnit) ?? hasURL}
                         </Link>
                       }
                     />

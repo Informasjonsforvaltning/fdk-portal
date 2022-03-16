@@ -6,7 +6,9 @@ export const PATHNAME_DATA_SERVICES = '/dataservices';
 export const PATHNAME_CONCEPTS = '/concepts';
 export const PATHNAME_CONCEPTS_COMPARE = '/compare';
 export const PATHNAME_INFORMATIONMODELS = '/informationmodels';
-export const PATHNAME_PUBLIC_SERVICES = '/public-services-and-events';
+export const PATHNAME_PUBLIC_SERVICES_AND_EVENTS =
+  '/public-services-and-events';
+export const PATHNAME_PUBLIC_SERVICES = '/public-services';
 export const PATHNAME_EVENTS = '/events';
 export const PATHNAME_REPORTS = '/reports';
 export const PATHNAME_ABOUT = '/about';
