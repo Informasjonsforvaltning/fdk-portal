@@ -11,7 +11,7 @@ import { withAuth, Props as AuthProps } from '../../../providers/auth';
 import SC from './styled';
 import Buttons from './components/buttons/styled';
 import Composer from './components/composer';
-import CommentCard from './components/comment-card';
+import CommentPage from './components/comment-page';
 import { CommunityPost } from '../../../types';
 import translations from '../../../lib/localization';
 import env from '../../../env';
@@ -25,34 +25,41 @@ interface ExternalProps {
 
 interface Props extends AuthProps, ExternalProps {}
 
-const EntityComments: FC<Props> = ({ entityId, authService }) => {
-  const [postComment] = usePostCommentMutation();
+const CommentSection: FC<Props> = ({ entityId, authService }) => {
+  const [page, setPage] = useState(1);
+  const [repliesByPage, setRepliesByPage] = useState<
+    Record<string, CommunityPost[]>
+  >({});
   const [newCommentOpen, setNewCommentOpen] = useState(false);
-  const [showAllComments, setShowAllComments] = useState(false);
-
+  const [postComment] = usePostCommentMutation();
   const { data: currentUser } = useGetUserQuery();
-  const { postsWithoutFirst } = useGetThreadByIdQuery(entityId, {
-    selectFromResult: ({ data }) => ({
-      postsWithoutFirst: data?.posts.slice(1) ?? []
-    })
-  });
-
-  const rootComments = postsWithoutFirst.filter(post => post.toPid == null);
-  const replies = postsWithoutFirst.reduce((prev, post) => {
-    if (post.toPid != null) {
-      return post.toPid in prev
-        ? { ...prev, [post.toPid]: [...prev[post.toPid], post] }
-        : { ...prev, [post.toPid]: [post] };
+  const { currentPage = 1, pageCount = 1 } = useGetThreadByIdQuery(
+    { id: entityId, page: 1 },
+    {
+      selectFromResult: ({ data }) => ({
+        ...data?.pagination
+      })
     }
-    return prev;
-  }, {} as Record<string, CommunityPost[]>);
-  const maxVisibleComments = 3;
-  const croppedComments = showAllComments
-    ? rootComments
-    : rootComments.slice(0, maxVisibleComments);
+  );
+
   const authenticated =
     authService.isAuthenticated() && !authService.isTokenExpired();
-  const isLoggedIn = authenticated && currentUser != null;
+  const isLoggedIn = authenticated && currentUser;
+  const hasMoreComments = pageCount > 1 && currentPage !== pageCount;
+  const flatReplies = Object.values(repliesByPage)
+    .flat()
+    .sort((a, b) => a.timestamp - b.timestamp);
+  const repliesByToPid = flatReplies.reduce((prev, reply) => {
+    const key = reply.toPid ?? '0';
+    const prevReplies = prev[key];
+    return prevReplies
+      ? { ...prev, [key]: [...prevReplies, reply] }
+      : { ...prev, [key]: [reply] };
+  }, {} as Record<string, CommunityPost[]>);
+
+  const updateReplies = (newReplies: CommunityPost[], pageNumber: number) => {
+    setRepliesByPage({ ...repliesByPage, [pageNumber]: newReplies });
+  };
 
   return (
     <>
@@ -61,7 +68,10 @@ const EntityComments: FC<Props> = ({ entityId, authService }) => {
         {isLoggedIn && newCommentOpen && (
           <Composer
             onSubmit={(content: string) =>
-              postComment({ id: entityId, post: { content } })
+              postComment({
+                id: entityId,
+                post: { content }
+              })
             }
             openToggle={() => setNewCommentOpen(false)}
             showLogout
@@ -94,38 +104,45 @@ const EntityComments: FC<Props> = ({ entityId, authService }) => {
         )}
 
         {authenticated && !currentUser && (
-          <FdkLink href={`${FDK_COMMUNITY_BASE_URI}/login`} external>
-            {translations.community.comments.noCommunityUser}
-          </FdkLink>
+          <SC.PostCommentButtons>
+            <FdkLink href={`${FDK_COMMUNITY_BASE_URI}/login`} external>
+              {translations.community.comments.noCommunityUser}
+            </FdkLink>
+            <LogOut />
+          </SC.PostCommentButtons>
         )}
       </SC.CommentsInterfaceContainer>
       <SC.Comments>
-        {croppedComments?.map((comment, index) => (
-          <CommentCard
-            comment={comment}
-            currentUser={currentUser}
+        {[...Array(page).keys()].map((pageIndex: number) => (
+          <CommentPage
             entityId={entityId}
-            isReply={false}
-            replies={replies[comment.pid]}
-            key={`comment-card-${index}-id-${comment.pid}`}
+            page={pageIndex + 1}
+            replies={repliesByToPid}
+            updateReplies={updateReplies}
+            key={`comment-page-p${pageIndex}`}
           />
         ))}
-        {rootComments.length > maxVisibleComments && (
-          <Buttons.UnderlineButton
-            variant={Variant.TERTIARY}
-            onClick={() => setShowAllComments(!showAllComments)}
-          >
-            {showAllComments
-              ? translations.community.comments.buttons.collapseComments
-              : translations.formatString(
-                  translations.community.comments.buttons.expandComments,
-                  { count: rootComments.length }
-                )}
-          </Buttons.UnderlineButton>
-        )}
+        <SC.ButtonContainer>
+          {hasMoreComments && page !== pageCount && (
+            <Buttons.UnderlineButton
+              variant={Variant.TERTIARY}
+              onClick={() => setPage(page + 1)}
+            >
+              {translations.community.comments.buttons.expandComments}
+            </Buttons.UnderlineButton>
+          )}
+          {page > 1 && (
+            <Buttons.UnderlineButton
+              variant={Variant.TERTIARY}
+              onClick={() => setPage(1)}
+            >
+              {translations.community.comments.buttons.collapseComments}
+            </Buttons.UnderlineButton>
+          )}
+        </SC.ButtonContainer>
       </SC.Comments>
     </>
   );
 };
 
-export default compose<FC<ExternalProps>>(memo, withAuth)(EntityComments);
+export default compose<FC<ExternalProps>>(memo, withAuth)(CommentSection);

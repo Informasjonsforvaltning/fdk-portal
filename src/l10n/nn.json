@@ -957,9 +957,9 @@
         "reply": "Skriv eit svar",
         "edit": "Rediger",
         "delete": "Slett",
-        "expandComments": "Vis alle {count} tilbakemeldingar",
+        "expandComments": "Last inn fleire tilbakemeldingar",
         "collapseComments": "Skjul tilbakemeldingar",
-        "expandReplies": "Vis alle {count} svar",
+        "expandReplies": "Vis fleire svar",
         "collapseReplies": "Skjul svar"
       },
       "gif": {

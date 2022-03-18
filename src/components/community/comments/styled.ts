@@ -51,11 +51,20 @@ const CommentIcon = styled(CommentIconBase)`
   margin-left: ${theme.spacing('S4')};
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Pagination = styled.div``;
+
 export default {
   Ingress,
   CommentsInterfaceContainer,
   PostCommentContainer,
   PostCommentButtons,
   Comments,
-  CommentIcon
+  CommentIcon,
+  ButtonContainer,
+  Pagination
 };

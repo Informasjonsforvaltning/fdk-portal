@@ -157,9 +157,8 @@ const CommentComposer: FC<ExternalProps> = ({
       <textarea
         ref={commentContentFieldRef}
         placeholder={translations.community.composer.placeholder}
-      >
-        {htmlToMarkdown.turndown(initialValue ?? '')}
-      </textarea>
+        defaultValue={htmlToMarkdown.turndown(initialValue ?? '')}
+      />
       <SC.PostCommentButtons>
         <Buttons.BigButton
           variant={Variant.PRIMARY}

@@ -8,15 +8,15 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <h3>
       Object type
     </h3>
-    <Styled(E)
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
     >
-      <h>
+      <b>
         Adresse
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -28,14 +28,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule="Adresse"
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -3536,17 +3536,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Relational property"
           type="bidir_out"
         />
-      </x>
-    </Styled(E)>
-    <Styled(E)
+      </g>
+    </Styled(O)>
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
     >
-      <h>
+      <b>
         GeografiskAdresse
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -3558,14 +3558,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule="Adresse"
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -7102,17 +7102,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Relational property"
           type="bidir_out"
         />
-      </x>
-    </Styled(E)>
-    <Styled(E)
+      </g>
+    </Styled(O)>
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
     >
-      <h>
+      <b>
         Matrikkeladresse
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -7124,14 +7124,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule="Adresse"
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -10799,17 +10799,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Relational property"
           type="bidir_out"
         />
-      </x>
-    </Styled(E)>
-    <Styled(E)
+      </g>
+    </Styled(O)>
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
     >
-      <h>
+      <b>
         OffisiellAdresse
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -10821,14 +10821,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule="Adresse"
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -14432,17 +14432,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Relational property"
           type="bidir_out"
         />
-      </x>
-    </Styled(E)>
-    <Styled(E)
+      </g>
+    </Styled(O)>
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
     >
-      <h>
+      <b>
         Postboksadresse
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -14454,14 +14454,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule="Adresse"
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -18097,17 +18097,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Relational property"
           type="bidir_out"
         />
-      </x>
-    </Styled(E)>
-    <Styled(E)
+      </g>
+    </Styled(O)>
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
     >
-      <h>
+      <b>
         Vegadresse
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -18119,14 +18119,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule="Adresse"
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -21890,22 +21890,22 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Relational property"
           type="bidir_out"
         />
-      </x>
-    </Styled(E)>
+      </g>
+    </Styled(O)>
   </styled.section>
   <styled.section>
     <h3>
       Codelist
     </h3>
-    <Styled(E)
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
     >
-      <h>
+      <b>
         Kommunenummer
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -21917,14 +21917,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <styled.h6>
           External codelist
         </styled.h6>
@@ -21936,22 +21936,22 @@ exports[`InfoModelStructure component should render with props 1`] = `
             https://www.ssb.no/klass/klassifikasjoner/131
           </Styled(s)>
         </styled.div>
-      </x>
-    </Styled(E)>
+      </g>
+    </Styled(O)>
   </styled.section>
   <styled.section>
     <h3>
       Data type
     </h3>
-    <Styled(E)
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
     >
-      <h>
+      <b>
         Adressenummer
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -21963,14 +21963,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -22816,17 +22816,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Specializes"
           type="specialization"
         />
-      </x>
-    </Styled(E)>
-    <Styled(E)
+      </g>
+    </Styled(O)>
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
     >
-      <h>
+      <b>
         Matrikkelnummer
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -22838,14 +22838,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -23787,17 +23787,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Specializes"
           type="specialization"
         />
-      </x>
-    </Styled(E)>
-    <Styled(E)
+      </g>
+    </Styled(O)>
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
     >
-      <h>
+      <b>
         Punkt
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -23809,14 +23809,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -24662,17 +24662,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Specializes"
           type="specialization"
         />
-      </x>
-    </Styled(E)>
-    <Styled(E)
+      </g>
+    </Styled(O)>
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
     >
-      <h>
+      <b>
         Poststed
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -24684,14 +24684,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <Memo(ModelElementList)
           concepts={Object {}}
           modelElements={
@@ -25537,22 +25537,22 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Specializes"
           type="specialization"
         />
-      </x>
-    </Styled(E)>
+      </g>
+    </Styled(O)>
   </styled.section>
   <styled.section>
     <h3>
       Simple type
     </h3>
-    <Styled(E)
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
     >
-      <h>
+      <b>
         Tekst
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -25564,14 +25564,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <styled.h6>
           Definition reference
         </styled.h6>
@@ -25593,17 +25593,17 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Value restrictions"
           totalDigits={null}
         />
-      </x>
-    </Styled(E)>
-    <Styled(E)
+      </g>
+    </Styled(O)>
+    <Styled(O)
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
     >
-      <h>
+      <b>
         Heltall
-      </h>
-      <x>
-        <Styled(E)
+      </b>
+      <g>
+        <Styled(O)
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
@@ -25615,14 +25615,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
-          <x>
+          <g>
             <Memo(Description)
               belongsToModule={null}
               description={null}
               identifier="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
             />
-          </x>
-        </Styled(E)>
+          </g>
+        </Styled(O)>
         <styled.h6>
           Definition reference
         </styled.h6>
@@ -25644,8 +25644,8 @@ exports[`InfoModelStructure component should render with props 1`] = `
           title="Value restrictions"
           totalDigits={null}
         />
-      </x>
-    </Styled(E)>
+      </g>
+    </Styled(O)>
   </styled.section>
 </Fragment>
 `;
