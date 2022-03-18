@@ -1,5 +1,5 @@
 import { Colour, theme } from '@fellesdatakatalog/theme';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import CommentIconBase from '../../../../../images/comment-icon.svg';
 
@@ -9,8 +9,8 @@ const CommentCard = styled.li<{ $isReply: boolean }>`
   border-radius: 5px;
   background-color: ${({ $isReply, theme: t }) =>
     $isReply ? t.entityColours.lighter : theme.colour(Colour.NEUTRAL, 'N0')};
-  padding: ${theme.spacing('S48')};
-  margin: ${theme.spacing('S10')} 0;
+  padding: ${theme.spacing('S16')};
+  margin: ${theme.spacing('S8')} 0;
 
   & img {
     display: inline;
@@ -24,11 +24,11 @@ const CommentCard = styled.li<{ $isReply: boolean }>`
     height: 20px;
     width: 20px;
     display: inline;
-    vertical-align: text-top;
+    vertical-align: middle;
   }
 
   ${onMobileView} {
-    padding: ${theme.spacing('S16')};
+    padding: ${theme.spacing('S8')};
     margin: ${theme.spacing('S6')} 0;
   }
 `;
@@ -46,19 +46,22 @@ const CommentInfo = styled.div`
 const CommentActions = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: ${theme.spacing('S24')};
+  margin-top: ${theme.spacing('S16')};
   ${onMobileView} {
-    margin-top: ${theme.spacing('S16')};
+    margin-top: ${theme.spacing('S8')};
+
     flex-wrap: wrap;
   }
 `;
 
 const ButtonContainer = styled.span`
   display: flex;
+  justify-content: flex-end;
+  gap: ${theme.spacing('S16')};
   ${onMobileView} {
-    flex-basis: 40%;
     & > button {
       margin-top: ${theme.spacing('S16')};
+      magin-left: ${theme.spacing('S4')};
     }
   }
 `;
@@ -75,8 +78,29 @@ const CommentIcon = styled(CommentIconBase)`
     stroke: ${theme.colour(Colour.NEUTRAL, 'N70')};
   }
 `;
-const Spacing16 = styled.div`
-  margin: ${theme.spacing('S16')};
+
+const MovingGradient = keyframes`
+  0%{
+      background-position: -1000px 0
+  }
+  100%{
+      background-position: 1000px 0
+  }
+`;
+
+const PlaceholderCard = styled.li`
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: ${MovingGradient};
+  animation-timing-function: linear;
+  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  background: linear-gradient(to right, #ffffff 10%, #dddddd 18%, #ffffff 33%);
+  position: relative;
+  height: 200px;
+  width: 100%;
+  border-radius: 5px;
+  margin: ${theme.spacing('S8')} 0;
 `;
 
 export default {
@@ -85,5 +109,5 @@ export default {
   CommentActions,
   ButtonContainer,
   CommentIcon,
-  Spacing16
+  PlaceholderCard
 };

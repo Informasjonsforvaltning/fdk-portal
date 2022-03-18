@@ -957,9 +957,9 @@
         "reply": "Post a reply",
         "edit": "Edit",
         "delete": "Delete",
-        "expandComments": "Show all {count} posts",
+        "expandComments": "Load more posts",
         "collapseComments": "Hide posts",
-        "expandReplies": "Show all {count} answers",
+        "expandReplies": "Show more replies",
         "collapseReplies": "Hide answers"
       },
       "gif": {
