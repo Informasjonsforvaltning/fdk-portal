@@ -68,18 +68,25 @@ const CommentCard: FC<Props> = ({
   const hasReplies = (replies?.length ?? 0) > 0;
   const maxVisibleReplies = 3;
   const croppedReplies = showAllReplies
-    ? replies?.reverse()
-    : replies?.slice(0, maxVisibleReplies)?.reverse();
+    ? replies
+    : replies?.slice(-maxVisibleReplies);
 
   const sendPost = (content: string, mode: Mode) => {
     switch (mode) {
       case Mode.UPDATE:
-        updateComment({ id: entityId, post: { ...comment, content } });
+        updateComment({
+          id: entityId,
+          post: { ...comment, content },
+          page: comment.page ?? 1
+        });
         break;
 
       case Mode.REPLY:
       default:
-        postComment({ id: entityId, post: { content, toPid: comment.pid } });
+        postComment({
+          id: entityId,
+          post: { content, toPid: comment.pid }
+        });
         break;
     }
   };
@@ -107,21 +114,19 @@ const CommentCard: FC<Props> = ({
             >
               {showAllReplies
                 ? translations.community.comments.buttons.collapseReplies
-                : translations.formatString(
-                    translations.community.comments.buttons.expandReplies,
-                    { count: replies?.length ?? 0 }
-                  )}
+                : translations.community.comments.buttons.expandReplies}
             </Buttons.UnderlineButton>
           )}
 
-          {currentUser != null && !replies && !isReply && (
+          {currentUser && !replies && !isReply && currentMode === Mode.NONE && (
             <Buttons.UnderlineButton
               variant={Variant.TERTIARY}
               onClick={() => {
                 setCurrentMode(Mode.REPLY);
               }}
             >
-              {translations.community.comments.buttons.reply} <SC.CommentIcon />
+              {translations.community.comments.buttons.reply}
+              <SC.CommentIcon />
             </Buttons.UnderlineButton>
           )}
         </SC.ButtonContainer>
@@ -137,13 +142,16 @@ const CommentCard: FC<Props> = ({
               >
                 {translations.community.comments.buttons.edit}
               </Buttons.UnderlineButton>
-              <SC.Spacing16 />
               <Buttons.UnderlineButton
                 variant={Variant.TERTIARY}
                 onClick={() =>
                   deleteComment({
                     id: entityId,
-                    postId: comment.pid.toString()
+                    post: comment,
+                    invalidatedPages: Array.from(
+                      { length: comment.page ?? 1 },
+                      (_, i) => i + 1
+                    )
                   })
                 }
               >
@@ -167,21 +175,23 @@ const CommentCard: FC<Props> = ({
         </ul>
       )}
 
-      {currentUser != null && hasReplies && !isReply && (
+      {currentUser && hasReplies && !isReply && (
         <SC.CommentActions>
-          {currentMode === Mode.REPLY ? (
+          {currentMode === Mode.REPLY && (
             <Composer
               openToggle={() => setCurrentMode(Mode.NONE)}
               onSubmit={(content: string) => sendPost(content, currentMode)}
             />
-          ) : (
+          )}
+          {currentMode === Mode.NONE && (
             <Buttons.UnderlineButton
               variant={Variant.TERTIARY}
               onClick={() => {
                 setCurrentMode(Mode.REPLY);
               }}
             >
-              {translations.community.comments.buttons.reply} <SC.CommentIcon />
+              {translations.community.comments.buttons.reply}
+              <SC.CommentIcon />
             </Buttons.UnderlineButton>
           )}
         </SC.CommentActions>

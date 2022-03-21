@@ -822,6 +822,12 @@ export interface CommunityCategory {
   disabled: number;
 }
 
+export interface UserFeedbackPagination {
+  currentPage: number;
+  pageCount: number;
+  totalPosts: number;
+}
+
 export interface CommunityTopic {
   tid: number;
   uid: number;
@@ -862,6 +868,7 @@ export interface CommunityTopic {
   icons: string[];
   thumb: string;
   index: number;
+  pagination: UserFeedbackPagination;
 }
 
 export interface CommunityUser {
@@ -898,6 +905,8 @@ export interface CommunityPost {
   category: CommunityCategory;
   isMainPost: boolean;
   replies: number;
+  index: number;
+  page?: number;
 }
 
 export interface CommunityTeaser {
