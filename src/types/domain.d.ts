@@ -465,6 +465,7 @@ interface Sample {
   description?: Partial<TextLanguage>;
   format: DataFormat[];
   accessURL: string[];
+  downloadURL: string[];
 }
 
 interface LegalBasis {
