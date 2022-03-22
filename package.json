@@ -54,7 +54,8 @@
     "trim-newlines": "^3.0.1",
     "follow-redirects": "^1.14.7",
     "node-fetch": "^2.6.7",
-    "nanoid": "^3.2.0"
+    "nanoid": "^3.2.0",
+    "minimist": "^1.2.6"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",

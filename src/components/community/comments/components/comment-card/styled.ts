@@ -12,7 +12,7 @@ const CommentCard = styled.li<{ $isReply: boolean }>`
   padding: ${theme.spacing('S16')};
   margin: ${theme.spacing('S8')} 0;
 
-  & img {
+  & p > img {
     display: inline;
     max-width: 100%;
     max-height: 100%;
