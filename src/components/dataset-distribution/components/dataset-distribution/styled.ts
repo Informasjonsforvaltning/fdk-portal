@@ -37,7 +37,7 @@ const DatasetDistribution = styled(ExpansionPanel)`
 
 const Section = styled.div`
   padding: 10px 0;
-  border-top: 1px solid #dfe1e2;
+  border-top: 1px solid ${theme.colour(Colour.NEUTRAL, 'N20')};
 `;
 
 const DownloadLink = styled(Link)`
