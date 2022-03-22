@@ -156,6 +156,18 @@
       "decision": "ignore",
       "madeAt": 1647936707245,
       "expiresAt": 1650528632511
+    },
+    "1067278|webpack-dev-server>selfsigned>node-forge": {
+      "decision": "fix",
+      "madeAt": 1648023176809
+    },
+    "1067279|webpack-dev-server>selfsigned>node-forge": {
+      "decision": "fix",
+      "madeAt": 1648023178432
+    },
+    "1067280|webpack-dev-server>selfsigned>node-forge": {
+      "decision": "fix",
+      "madeAt": 1648023179487
     }
   },
   "rules": {},
