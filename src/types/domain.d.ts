@@ -894,7 +894,7 @@ export interface CommunityPost {
   tid: string;
   toPid?: string;
   content: string;
-  uid: string;
+  uid: string | number;
   timestamp: number;
   deleted: boolean;
   upvotes: number;
