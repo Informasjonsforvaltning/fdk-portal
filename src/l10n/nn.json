@@ -296,7 +296,7 @@
       "referenceDefault": "Relasjon",
       "type": "Type",
       "dataService": "Datatjeneste",
-    "endpointDescription": "Endepunktsbeskrivelse",
+      "endpointDescription": "Endepunktsbeskrivelse",
       "preview": "Se førehandsvising",
       "previewFailure": "Beklager, det ser ut at distribusjonen ikkje finnes eller innehalder ugyldig data."
     },
@@ -352,7 +352,11 @@
         "nonPublicDetailsLabel": "Datasettet har ikkje-allmenn tilgang"
       }
     },
-    "sample": "Eksempeldata",
+    "sample": {
+      "sampleData": "Eksempeldata",
+      "preview": "Se eksempeldata",
+      "download": "Last ned eksempeldata"
+    },
     "landingPage": "Meir informasjon om datasettet"
   },
   "terms": {
@@ -973,7 +977,7 @@
       "send": "Send",
       "cancel": "Avbryt",
       "tools": {
-        "modificationAlt" : {
+        "modificationAlt": {
           "bold": "Sterk",
           "italic": "Kursiv",
           "ul": "Punktliste",
@@ -985,44 +989,44 @@
         },
         "modification": {
           "bold": {
-            "value":"**sterk tekst her**",
-            "left":"**",
-            "right":"**"
+            "value": "**sterk tekst her**",
+            "left": "**",
+            "right": "**"
           },
           "italic": {
-            "value":"*krusiv tekst her",
-            "left":"*",
-            "right":"*"
+            "value": "*krusiv tekst her",
+            "left": "*",
+            "right": "*"
           },
           "ul": {
-            "value":"\n* punkt",
-            "left":"\n* ",
-            "right":""
+            "value": "\n* punkt",
+            "left": "\n* ",
+            "right": ""
           },
           "image": {
-            "value":"![bildetekst](url til bilde)",
-            "left":"![",
-            "right":"](url til bilde)"
+            "value": "![bildetekst](url til bilde)",
+            "left": "![",
+            "right": "](url til bilde)"
           },
           "tag": {
-            "value":"@brukarnamn",
-            "left":"@",
-            "right":""
+            "value": "@brukarnamn",
+            "left": "@",
+            "right": ""
           },
           "strikethrough": {
-            "value":"~~gjennomstreking~~",
-            "left":"~~",
-            "right":"~~"
+            "value": "~~gjennomstreking~~",
+            "left": "~~",
+            "right": "~~"
           },
           "code": {
-            "value":"```\nkode\n```",
-            "left":"```\n",
-            "right":"\n```"
+            "value": "```\nkode\n```",
+            "left": "```\n",
+            "right": "\n```"
           },
           "link": {
-            "value":"[lenketekst](lenkeurl)",
-            "left":"[",
-            "right":"](lenkeurl)"
+            "value": "[lenketekst](lenkeurl)",
+            "left": "[",
+            "right": "](lenkeurl)"
           }
         }
       }

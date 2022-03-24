@@ -569,13 +569,13 @@ const DatasetDetailsPage: FC<Props> = ({
                         href={downloadURLs?.[0]}
                         icon={<DownloadIcon />}
                       >
-                        {translations.dataset.distribution.download}
+                        {translations.dataset.sample.download}
                       </SC.DownloadLink>
                       <SC.PreviewLink
                         onClick={() => handleShowSamplePreview(true)}
                         icon={<EyeIcon />}
                       >
-                        {translations.dataset.distribution.preview}
+                        {translations.dataset.sample.preview}
                       </SC.PreviewLink>
                     </SC.Section>
                   )}
