@@ -14,6 +14,7 @@ import withDatasetPreview, {
 import translations from '../../../../lib/localization';
 
 import Spinner from '../../../spinner';
+import { PreviewPlain } from '../../../../types';
 
 interface ExternalProps {
   title: string;
@@ -26,8 +27,12 @@ interface ExternalProps {
 
 interface Props extends ExternalProps, DatasetPreviewProps {}
 
-const isXML = (contentType: string) => contentType.includes('xml');
-const isJSON = (contentType: string) => contentType.includes('json');
+const isXML = ({ contentType, value }: PreviewPlain) =>
+  contentType.includes('xml') || value.startsWith('<');
+const isJSON = ({ contentType, value }: PreviewPlain) =>
+  contentType.includes('json') ||
+  value.startsWith('{') ||
+  value.startsWith('[');
 
 const beautifyJSON = (jsonString: string) => {
   const jsonObject = JSON.parse(jsonString);
@@ -126,14 +131,23 @@ const Preview: FC<Props> = ({
         {datasetPreview?.plain &&
           !datasetPreview?.table &&
           !isLoadingDatasetPreview &&
-          isXML(datasetPreview.plain.contentType) && (
+          isXML(datasetPreview.plain) && (
             <SC.Plain> {xmlFormat(datasetPreview.plain.value)}</SC.Plain>
           )}
         {datasetPreview?.plain &&
           !datasetPreview?.table &&
           !isLoadingDatasetPreview &&
-          isJSON(datasetPreview.plain.contentType) && (
+          isJSON(datasetPreview.plain) && (
             <SC.Plain>{beautifyJSON(datasetPreview.plain.value)} </SC.Plain>
+          )}
+        {datasetPreview?.plain &&
+          !datasetPreview?.table &&
+          !isLoadingDatasetPreview &&
+          !isXML(datasetPreview.plain) &&
+          !isJSON(datasetPreview.plain) && (
+            <SC.Center>
+              <span>{translations.dataset.distribution.previewFailure}</span>
+            </SC.Center>
           )}
         {!(datasetPreview || isLoadingDatasetPreview) && (
           <SC.Center>
