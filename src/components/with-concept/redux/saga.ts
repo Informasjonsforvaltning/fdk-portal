@@ -5,21 +5,14 @@ import * as actions from './actions';
 
 import LoggingService, { Severity } from '../../../services/logging';
 
-import {
-  searchConcepts,
-  paramsToSearchBody,
-  extractFirstConcept
-} from '../../../api/search-fulltext-api/concepts';
+import { getConcept } from '../../../services/api/harvester-bff';
+import { Concept } from '../../../types';
 
 function* getConceptRequested({
   payload: { id }
 }: ReturnType<typeof actions.getConceptRequested>) {
   try {
-    const data: Record<string, any> = yield call(
-      searchConcepts,
-      paramsToSearchBody({ id })
-    );
-    const concept = extractFirstConcept(data);
+    const concept: Concept = yield call(getConcept, id);
 
     if (concept) {
       yield put(actions.getConceptSucceeded(concept));
