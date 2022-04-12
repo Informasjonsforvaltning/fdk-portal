@@ -90,6 +90,7 @@
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
     "seeAlso": "See also this concept.",
+    "isReplacedBy": "Replaces",
     "generic": "Generic relation",
     "partitive": "Partitive relation",
     "associative": "Associative relation",
