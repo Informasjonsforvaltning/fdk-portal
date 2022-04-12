@@ -241,6 +241,8 @@ export interface Concept {
   validFromIncluding?: string;
   validToIncluding?: string;
   seeAlso?: string[];
+  isReplacedBy?: string[];
+  replaces?: string[];
   associativeRelation?: Partial<AssociativeRelation>[];
   partitiveRelation?: Partial<PartitiveRelation>[];
   genericRelation?: Partial<GenericRelation>[];

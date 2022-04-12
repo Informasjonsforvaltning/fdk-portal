@@ -133,6 +133,8 @@ const ConceptDetailsPage: FC<Props> = ({
     ({ generalizes = '', specializes = '' }) => generalizes ?? specializes
   );
 
+  const isReplacedBy = concept?.isReplacedBy ?? [];
+
   useEffect(() => {
     if (concept?.identifier) {
       if (
@@ -141,14 +143,17 @@ const ConceptDetailsPage: FC<Props> = ({
           associativeRelationsUris.length > 0) ||
         (Array.isArray(partitiveRelationsUris) &&
           partitiveRelationsUris.length > 0) ||
-        (Array.isArray(genericRelationsUris) && genericRelationsUris.length > 0)
+        (Array.isArray(genericRelationsUris) &&
+          genericRelationsUris.length > 0) ||
+        (Array.isArray(isReplacedBy) && isReplacedBy.length > 0)
       ) {
         getConcepts({
           identifiers: [
             ...(concept?.seeAlso ?? []),
             ...associativeRelationsUris,
             ...partitiveRelationsUris,
-            ...genericRelationsUris
+            ...genericRelationsUris,
+            ...isReplacedBy
           ],
           size: 1000
         });
@@ -629,6 +634,30 @@ const ConceptDetailsPage: FC<Props> = ({
                   />
                 );
               })}
+              {isReplacedBy.map(uri =>
+                conceptReferencesMap?.[uri] ? (
+                  <KeyValueListItem
+                    key={conceptReferencesMap[uri].id}
+                    property={
+                      <Link
+                        to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
+                        as={RouteLink}
+                      >
+                        {translate(conceptReferencesMap[uri].prefLabel)}
+                      </Link>
+                    }
+                    value={`${
+                      translations.conceptReferences.isReplacedBy
+                    } ${translate(title)}`}
+                  />
+                ) : (
+                  <KeyValueListItem
+                    key={uri}
+                    property={translations.conceptReferences.seeAlso}
+                    value={uri}
+                  />
+                )
+              )}
             </KeyValueList>
           </ContentSection>
         )}

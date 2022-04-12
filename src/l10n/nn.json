@@ -90,6 +90,7 @@
     "title": "Omgrep relatert til",
     "sideMenuTitle": "Relaterte omgrep",
     "seeAlso": "Sjå også dette omgrepet.",
+    "isReplacedBy": "Erstattar",
     "generic": "Generisk relasjon",
     "partitive": "Partitiv relasjon",
     "associative": "Assosiativ relasjon",
