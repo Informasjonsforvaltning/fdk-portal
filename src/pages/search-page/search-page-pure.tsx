@@ -168,7 +168,7 @@ const SearchPage: FC<Props> = ({
   return (
     <div>
       {!getConfig().themeNap && (
-        <SearchBox placeholder='Eksempel: offentlig transport' autosuggest>
+        <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
           <SearchBoxHeader>
             <HitsStats
               countDatasets={datasetTotal ?? 0}
@@ -190,7 +190,7 @@ const SearchPage: FC<Props> = ({
         </SearchBox>
       )}
       {getConfig().themeNap && (
-        <SearchBox placeholder='Eksempel: offentlig transport' autosuggest>
+        <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
           <SearchBoxHeader>
             <SC.SearchBox.SearchHeaderLogosTitle>
               {translations.collaborationBetween}
