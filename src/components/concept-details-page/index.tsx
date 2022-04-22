@@ -479,7 +479,8 @@ const ConceptDetailsPage: FC<Props> = ({
                     ...associativeRelations,
                     ...partitiveRelations,
                     ...genericRelations,
-                    ...seeAlso
+                    ...seeAlso,
+                    ...isReplacedBy
                   ].length
                 }
               ) as string
