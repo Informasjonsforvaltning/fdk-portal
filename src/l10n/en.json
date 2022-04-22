@@ -94,8 +94,8 @@
     "generic": "Generic relation",
     "partitive": "Partitive relation",
     "associative": "Associative relation",
-    "generalizes": "Overall",
-    "specializes": "Subordinate",
+    "generalizes": "Subordinate",
+    "specializes": "Overall",
     "isPartOf": "Part of",
     "hasPart": "Includes"
   },

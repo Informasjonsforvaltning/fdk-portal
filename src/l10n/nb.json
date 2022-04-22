@@ -94,8 +94,8 @@
     "generic": "Generisk relasjon",
     "partitive": "Partitiv relasjon",
     "associative": "Assosiativ relasjon",
-    "generalizes": "Overordnet",
-    "specializes": "Underordnet",
+    "generalizes": "Underordnet",
+    "specializes": "Overordnet",
     "isPartOf": "Er en del av",
     "hasPart": "Omfatter"
   },
