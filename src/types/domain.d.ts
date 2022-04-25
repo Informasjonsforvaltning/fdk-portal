@@ -206,6 +206,23 @@ export interface Property {
   concept?: Partial<Concept>;
 }
 
+export interface AssociativeRelation {
+  description: Partial<TextLanguage>;
+  related: string;
+}
+
+export interface PartitiveRelation {
+  description: Partial<TextLanguage>;
+  hasPart: string;
+  isPartOf: string;
+}
+
+export interface GenericRelation {
+  divisioncriterion: Partial<TextLanguage>;
+  generalizes: string;
+  specializes: string;
+}
+
 export interface Concept {
   id: string;
   type: EntityEnum.CONCEPT;
@@ -224,6 +241,11 @@ export interface Concept {
   validFromIncluding?: string;
   validToIncluding?: string;
   seeAlso?: string[];
+  isReplacedBy?: string[];
+  replaces?: string[];
+  associativeRelation?: Partial<AssociativeRelation>[];
+  partitiveRelation?: Partial<PartitiveRelation>[];
+  genericRelation?: Partial<GenericRelation>[];
 }
 
 export interface ConceptDefinition {
@@ -465,6 +487,7 @@ interface Sample {
   description?: Partial<TextLanguage>;
   format: DataFormat[];
   accessURL: string[];
+  downloadURL: string[];
 }
 
 interface LegalBasis {
@@ -893,7 +916,7 @@ export interface CommunityPost {
   tid: string;
   toPid?: string;
   content: string;
-  uid: string;
+  uid: string | number;
   timestamp: number;
   deleted: boolean;
   upvotes: number;

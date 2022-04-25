@@ -14,11 +14,11 @@ import SearchEntities from '../../components/search-entities/search-entities.com
 import { Props as EntitiesProps } from '../../components/with-entities';
 import { Props as ReferenceDataProps } from '../../components/with-reference-data';
 import { Props as CommunityProps } from '../../components/with-community';
-import { CommunityTerm, Entity } from '../../types/enums';
+import { CommunityTerm, Entity, Namespace } from '../../types/enums';
 import { getConfig } from '../../config';
 import Post from '../../components/community/post';
 
-const { FDK_COMMUNITY_BASE_URI } = env;
+const { FDK_COMMUNITY_BASE_URI, NAMESPACE } = env;
 
 interface Props extends EntitiesProps, ReferenceDataProps, CommunityProps {
   news?: any;
@@ -31,6 +31,9 @@ const MainPage: FC<Props> = ({
   entitiesActions: { getEntitiesRequested: getEntities },
   communityActions: { getRecentPostsRequested: getRecentPosts, resetPosts }
 }) => {
+  const commentBotId = NAMESPACE === Namespace.DEVELOPMENT ? '1' : '373';
+  const prunedPosts = posts.filter(post => `${post.uid}` !== commentBotId);
+
   useEffect(() => {
     getRecentPosts(CommunityTerm.ALL);
     getEntities();
@@ -41,7 +44,7 @@ const MainPage: FC<Props> = ({
 
   return (
     <div>
-      <SearchBox placeholder='Eksempel: offentlig transport' autosuggest>
+      <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
         <SearchBoxHeader as='h1' large>
           {localization.searchBoxHeader}
         </SearchBoxHeader>
@@ -64,9 +67,9 @@ const MainPage: FC<Props> = ({
                 {localization.community.title}
               </SC.Link>
             </HeaderSC.Header>
-            {posts.length > 0 ? (
+            {prunedPosts.length > 0 ? (
               <SC.CommunityPosts>
-                {posts.slice(0, 3).map(post => (
+                {prunedPosts.slice(0, 3).map(post => (
                   <Post key={post.pid ?? post.uid} post={post} />
                 ))}
                 <SC.Link href={`${FDK_COMMUNITY_BASE_URI}/recent`} external>

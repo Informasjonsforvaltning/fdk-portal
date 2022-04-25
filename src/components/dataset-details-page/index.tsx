@@ -47,6 +47,11 @@ import ErrorPage from '../error-page';
 import DatasetDistribution from '../dataset-distribution';
 import RelationList, { ItemWithRelationType } from '../relation-list';
 
+import DownloadIcon from '../../images/icon-download-sm.svg';
+import EyeIcon from '../../images/icon-eye.svg';
+
+import Preview from '../dataset-distribution/components/preview';
+
 import SC from './styled';
 
 import { Entity } from '../../types/enums';
@@ -221,11 +226,13 @@ const DatasetDetailsPage: FC<Props> = ({
       ({
         description: sampleDescription,
         format: formats,
-        accessURL: accessURLs
+        accessURL: accessURLs,
+        downloadURL: downloadURLs
       }) =>
         translate(sampleDescription) ||
         Array.isArray(formats) ||
-        Array.isArray(accessURLs)
+        Array.isArray(accessURLs) ||
+        Array.isArray(downloadURLs)
     ) ?? [];
   const provenance = {
     provenance: translate(dataset?.provenance?.prefLabel),
@@ -280,6 +287,12 @@ const DatasetDetailsPage: FC<Props> = ({
     });
 
     return accessServices;
+  };
+
+  const [showSamplePreview, setShowSamplePreview] = useState(false);
+
+  const handleShowSamplePreview = (show: boolean) => {
+    setShowSamplePreview(show);
   };
 
   const themes = [...(dataset?.losTheme ?? []), ...(dataset?.theme ?? [])];
@@ -524,30 +537,62 @@ const DatasetDetailsPage: FC<Props> = ({
                 {
                   description: sampleDescription,
                   format: formats,
-                  accessURL: accessURLs
+                  accessURL: accessURLs,
+                  downloadURL: downloadURLs
                 },
                 index
               ) => (
-                <KeyValueList key={`sample-${index}`}>
-                  <KeyValueListItem
-                    property={translations.dataset.distribution.description}
-                    value={translate(sampleDescription)}
-                  />
-                  <KeyValueListItem
-                    property={translations.dataset.distribution.format}
-                    value={formats?.join(', ')}
-                  />
-                  {Array.isArray(accessURLs) && (
+                <>
+                  <KeyValueList key={`sample-${index}`}>
                     <KeyValueListItem
-                      property={translations.dataset.distribution.accessUrl}
-                      value={
-                        <Link href={accessURLs?.[0]} external>
-                          {translate(accessURLs?.[0])}
-                        </Link>
+                      property={translations.dataset.distribution.description}
+                      value={translate(sampleDescription)}
+                    />
+                    <KeyValueListItem
+                      property={translations.dataset.distribution.format}
+                      value={formats?.join(', ')}
+                    />
+                    {Array.isArray(accessURLs) && (
+                      <KeyValueListItem
+                        property={translations.dataset.distribution.accessUrl}
+                        value={
+                          <Link href={accessURLs?.[0]} external>
+                            {translate(accessURLs?.[0])}
+                          </Link>
+                        }
+                      />
+                    )}
+                  </KeyValueList>
+                  {Array.isArray(downloadURLs) && (
+                    <SC.Section>
+                      <SC.DownloadLink
+                        href={downloadURLs?.[0]}
+                        icon={<DownloadIcon />}
+                      >
+                        {translations.dataset.sample.download}
+                      </SC.DownloadLink>
+                      <SC.PreviewLink
+                        onClick={() => handleShowSamplePreview(true)}
+                        icon={<EyeIcon />}
+                      >
+                        {translations.dataset.sample.preview}
+                      </SC.PreviewLink>
+                    </SC.Section>
+                  )}
+                  {Array.isArray(downloadURLs) && showSamplePreview && (
+                    <Preview
+                      title={
+                        translations.detailsPage.sectionTitles.dataset.sample ??
+                        ''
                       }
+                      subtitle={translate(description) ?? accessURLs?.[0]}
+                      downloadURL={downloadURLs?.[0]}
+                      rowCount={100}
+                      isOpen={showSamplePreview}
+                      onClose={() => handleShowSamplePreview(false)}
                     />
                   )}
-                </KeyValueList>
+                </>
               )
             )}
           </ContentSection>

@@ -89,7 +89,15 @@
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
-    "seeAlso": "Se også dette begrepet."
+    "seeAlso": "Se også dette begrepet.",
+    "isReplacedBy": "Erstatter",
+    "generic": "Generisk relasjon",
+    "partitive": "Partitiv relasjon",
+    "associative": "Assosiativ relasjon",
+    "generalizes": "Underordnet",
+    "specializes": "Overordnet",
+    "isPartOf": "Er en del av",
+    "hasPart": "Omfatter"
   },
   "validity": {
     "validFromIncluding": "Gyldig fra og med",
@@ -139,7 +147,7 @@
     "publishing": "Publisere"
   },
   "query": {
-    "intro": "Eksempel: offentlig transport",
+    "intro": "Eksempel: kollektivtransport",
     "reset": "Nullstill",
     "do": "Søk",
     "clear": "Nullstill alle filter"
@@ -352,7 +360,11 @@
         "nonPublicDetailsLabel": "Datasettet har ikke-allmenn tilgang"
       }
     },
-    "sample": "Eksempeldata",
+    "sample": {
+      "sampleData": "Eksempeldata",
+      "preview": "Se eksempeldata",
+      "download": "Last ned eksempeldata"
+    },
     "landingPage": "Mer informasjon om datasettet"
   },
   "terms": {
@@ -973,7 +985,7 @@
       "send": "Send",
       "cancel": "Avbryt",
       "tools": {
-        "modificationAlt" : {
+        "modificationAlt": {
           "bold": "Sterk",
           "italic": "Kursiv",
           "ul": "Punktliste",
@@ -985,44 +997,44 @@
         },
         "modification": {
           "bold": {
-            "value":"**sterk tekst her**",
-            "left":"**",
-            "right":"**"
+            "value": "**sterk tekst her**",
+            "left": "**",
+            "right": "**"
           },
           "italic": {
-            "value":"*krusiv tekst her*",
-            "left":"*",
-            "right":"*"
+            "value": "*krusiv tekst her*",
+            "left": "*",
+            "right": "*"
           },
           "ul": {
-            "value":"\n* punkt",
-            "left":"\n* ",
-            "right":""
+            "value": "\n* punkt",
+            "left": "\n* ",
+            "right": ""
           },
           "image": {
-            "value":"![bildetekst](url til bilde)",
-            "left":"![",
-            "right":"](url til bilde)"
+            "value": "![bildetekst](url til bilde)",
+            "left": "![",
+            "right": "](url til bilde)"
           },
           "tag": {
-            "value":"@brukernavn",
-            "left":"@",
-            "right":""
+            "value": "@brukernavn",
+            "left": "@",
+            "right": ""
           },
           "strikethrough": {
-            "value":"~~gjennomstreking~~",
-            "left":"~~",
-            "right":"~~"
+            "value": "~~gjennomstreking~~",
+            "left": "~~",
+            "right": "~~"
           },
           "code": {
-            "value":"```\nkode\n```",
-            "left":"```\n",
-            "right":"\n```"
+            "value": "```\nkode\n```",
+            "left": "```\n",
+            "right": "\n```"
           },
           "link": {
-            "value":"[lenketekst](lenkeurl)",
-            "left":"[",
-            "right":"](lenkeurl)"
+            "value": "[lenketekst](lenkeurl)",
+            "left": "[",
+            "right": "](lenkeurl)"
           }
         }
       }

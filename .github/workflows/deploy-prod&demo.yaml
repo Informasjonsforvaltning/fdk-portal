@@ -17,6 +17,8 @@ jobs:
       actor: ${{ github.actor }}
       environment: prod
       cluster: digdir-fdk-prod
+      build_env_name: NAMESPACE
+      build_env_value: production
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GCP_SA_DIGDIR_FDK_GCR_KEY: ${{ secrets.GCP_SA_DIGDIR_FDK_GCR_KEY }}

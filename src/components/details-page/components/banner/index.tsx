@@ -66,7 +66,9 @@ const Banner: FC<Props> = ({
     <SC.Banner inverted={entity === Entity.EVENT}>
       {entity === Entity.PUBLIC_SERVICE ||
         (entity === Entity.EVENT && (
-          <SC.BetaRibbon inverted>{translations.dataset.sample}</SC.BetaRibbon>
+          <SC.BetaRibbon inverted>
+            {translations.dataset.sample.sampleData}
+          </SC.BetaRibbon>
         ))}
       <Icon />
       <SC.Content>
@@ -100,6 +102,7 @@ const Banner: FC<Props> = ({
               text={title}
               skippedLanguages={[translations.getLanguage()]}
               iconAlignCenter
+              useFallback={false}
             />
           )}
         <SC.LastPublishedInfo>

@@ -89,7 +89,15 @@
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",
-    "seeAlso": "See also this concept."
+    "seeAlso": "See also this concept.",
+    "isReplacedBy": "Replaces",
+    "generic": "Generic relation",
+    "partitive": "Partitive relation",
+    "associative": "Associative relation",
+    "generalizes": "Subordinate",
+    "specializes": "Overall",
+    "isPartOf": "Part of",
+    "hasPart": "Includes"
   },
   "validity": {
     "validFromIncluding": "Valid from and including",
@@ -352,7 +360,11 @@
         "nonPublicDetailsLabel": "Dataset is non public"
       }
     },
-    "sample": "Sample data",
+    "sample": {
+      "sampleData": "Sample data",
+      "preview": "Preview sample data",
+      "download": "Download sample data"
+    },
     "landingPage": "More information about this dataset"
   },
   "terms": {
@@ -973,7 +985,7 @@
       "send": "Send",
       "cancel": "Cancel",
       "tools": {
-        "modificationAlt" : {
+        "modificationAlt": {
           "bold": "Bold",
           "italic": "Italic",
           "ul": "List",
@@ -985,44 +997,44 @@
         },
         "modification": {
           "bold": {
-            "value":"**bold text here**",
-            "left":"**",
-            "right":"**"
+            "value": "**bold text here**",
+            "left": "**",
+            "right": "**"
           },
           "italic": {
-            "value":"*italic text here*",
-            "left":"*",
-            "right":"*"
+            "value": "*italic text here*",
+            "left": "*",
+            "right": "*"
           },
           "ul": {
-            "value":"\n* bullet item",
-            "left":"\n* ",
-            "right":""
+            "value": "\n* bullet item",
+            "left": "\n* ",
+            "right": ""
           },
           "image": {
-            "value":"![image text](image url)",
-            "left":"![",
-            "right":"](image url)"
+            "value": "![image text](image url)",
+            "left": "![",
+            "right": "](image url)"
           },
           "tag": {
-            "value":"@username",
-            "left":"@",
-            "right":""
+            "value": "@username",
+            "left": "@",
+            "right": ""
           },
           "strikethrough": {
-            "value":"~~strikethrough~~",
-            "left":"~~",
-            "right":"~~"
+            "value": "~~strikethrough~~",
+            "left": "~~",
+            "right": "~~"
           },
           "code": {
-            "value":"```\ncode\n```",
-            "left":"```\n",
-            "right":"\n```"
+            "value": "```\ncode\n```",
+            "left": "```\n",
+            "right": "\n```"
           },
           "link": {
-            "value":"[link text](link url)",
-            "left":"[",
-            "right":"](link url)"
+            "value": "[link text](link url)",
+            "left": "[",
+            "right": "](link url)"
           }
         }
       }

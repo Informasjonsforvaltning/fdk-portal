@@ -54,7 +54,8 @@
     "trim-newlines": "^3.0.1",
     "follow-redirects": "^1.14.7",
     "node-fetch": "^2.6.7",
-    "nanoid": "^3.2.0"
+    "nanoid": "^3.2.0",
+    "minimist": "^1.2.6"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
@@ -83,7 +84,7 @@
     "immutable": "^4.0.0",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "oidc-client": "^1.11.5",
     "path-browserify": "^1.0.1",
     "prop-types": "^15.8.1",
