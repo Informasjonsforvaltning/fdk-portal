@@ -17,6 +17,7 @@ jobs:
       actor: ${{ github.actor }}
       environment: prod
       cluster: digdir-fdk-prod
+      build_env: True
       build_env_name: NAMESPACE
       build_env_value: production
     secrets:
