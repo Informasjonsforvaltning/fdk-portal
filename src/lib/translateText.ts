@@ -17,6 +17,10 @@ export function isTextLanguage(o: unknown): o is TextLanguage {
 }
 
 export function getTranslateText(textObj?: unknown, language?: string) {
+  if (!textObj) {
+    return null;
+  }
+
   const selectedLanguage = language || localization.getLanguage();
 
   if (typeof textObj === 'string') {
@@ -42,6 +46,10 @@ export function getTranslateTextWithLanguageCode(
   textObj?: Partial<TextLanguage> | string | null,
   language?: string
 ) {
+  if (!textObj) {
+    return null;
+  }
+
   const selectedLanguage = language || localization.getLanguage();
   if (typeof textObj === 'string') {
     return textObj;
