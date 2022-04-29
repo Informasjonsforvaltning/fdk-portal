@@ -24,7 +24,7 @@ export function getTranslateText(textObj?: unknown, language?: string) {
   }
 
   if (!isTextLanguage(textObj)) {
-    return undefined;
+    return null;
   }
 
   return (
@@ -34,7 +34,7 @@ export function getTranslateText(textObj?: unknown, language?: string) {
     textObj.nn ||
     textObj.en ||
     textObj[''] ||
-    undefined
+    null
   );
 }
 
@@ -48,10 +48,8 @@ export function getTranslateTextWithLanguageCode(
   }
 
   if (!isTextLanguage(textObj)) {
-    return undefined;
+    return null;
   }
 
-  return isTextLanguageKey(selectedLanguage)
-    ? textObj[selectedLanguage]
-    : undefined;
+  return isTextLanguageKey(selectedLanguage) ? textObj[selectedLanguage] : null;
 }
