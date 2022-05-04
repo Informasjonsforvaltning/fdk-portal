@@ -214,7 +214,7 @@ const InfoModelStructure: FC<Props> = ({
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
-                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelHead>{translate(title) ?? ''}</ExpansionPanelHead>
                 <ExpansionPanelBody>
                   {(identifier ||
                     description ||
@@ -299,7 +299,7 @@ const InfoModelStructure: FC<Props> = ({
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
-                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelHead>{translate(title) ?? ''}</ExpansionPanelHead>
                 <ExpansionPanelBody>
                   {(identifier ||
                     description ||
@@ -421,7 +421,7 @@ const InfoModelStructure: FC<Props> = ({
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
-                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelHead>{translate(title) ?? ''}</ExpansionPanelHead>
                 <ExpansionPanelBody>
                   {(identifier ||
                     description ||
@@ -494,7 +494,7 @@ const InfoModelStructure: FC<Props> = ({
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
-                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelHead>{translate(title) ?? ''}</ExpansionPanelHead>
                 <ExpansionPanelBody>
                   {(identifier ||
                     description ||
@@ -573,7 +573,7 @@ const InfoModelStructure: FC<Props> = ({
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
               >
-                <ExpansionPanelHead>{translate(title)}</ExpansionPanelHead>
+                <ExpansionPanelHead>{translate(title) ?? ''}</ExpansionPanelHead>
                 <ExpansionPanelBody>
                   {(identifier ||
                     description ||
