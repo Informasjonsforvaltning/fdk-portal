@@ -19,3 +19,6 @@ export const harvesterBffApi = ({ path, method }: Props) =>
 
 export const getConcept = (id: string) =>
   harvesterBffApi({ path: `/concepts/${id}`, method: 'GET' });
+
+export const getDataset = (id: string) =>
+  harvesterBffApi({ path: `/datasets/${id}`, method: 'GET' });

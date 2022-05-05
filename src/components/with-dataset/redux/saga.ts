@@ -2,21 +2,17 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { GET_DATASET_REQUESTED } from './action-types';
 import * as actions from './actions';
-import {
-  searchDatasets,
-  paramsToSearchBody,
-  extractFirstDataset
-} from '../../../api/search-fulltext-api/datasets';
 
 import LoggingService, { Severity } from '../../../services/logging';
+
+import { getDataset } from '../../../services/api/harvester-bff';
+import { Dataset } from '../../../types';
 
 function* getDatasetRequested({
   payload: { id }
 }: ReturnType<typeof actions.getDatasetRequested>) {
   try {
-    const params = paramsToSearchBody({ id });
-    const data: Record<string, any> = yield call(searchDatasets, params);
-    const dataset = extractFirstDataset(data);
+    const dataset: Dataset = yield call(getDataset, id);
 
     if (dataset) {
       yield put(actions.getDatasetSucceeded(dataset));
