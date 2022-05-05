@@ -5,21 +5,14 @@ import * as actions from './actions';
 
 import LoggingService, { Severity } from '../../../services/logging';
 
-import {
-  searchDataServices,
-  paramsToSearchBody,
-  extractFirstDataService
-} from '../../../api/search-fulltext-api/dataservices';
+import { getDataService } from '../../../services/api/harvester-bff';
+import { DataService } from '../../../types';
 
 function* getDataServiceRequested({
   payload: { id }
 }: ReturnType<typeof actions.getDataServiceRequested>) {
   try {
-    const data: Record<string, any> = yield call(
-      searchDataServices,
-      paramsToSearchBody({ id })
-    );
-    const dataService = extractFirstDataService(data);
+    const dataService: DataService = yield call(getDataService, id);
 
     if (dataService) {
       yield put(actions.getDataServiceSucceeded(dataService));
