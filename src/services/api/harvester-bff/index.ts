@@ -25,3 +25,6 @@ export const getDataset = (id: string) =>
 
 export const getDataService = (id: string) =>
   harvesterBffApi({ path: `/dataservices/${id}`, method: 'GET' });
+
+export const getPublicService = (id: string) =>
+  harvesterBffApi({ path: `/public-services/${id}`, method: 'GET' });
