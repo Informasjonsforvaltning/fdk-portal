@@ -1,4 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
+import cleanDeep from 'clean-deep';
 
 import env from '../../../env';
 
@@ -14,7 +15,7 @@ export const harvesterBffApi = ({ path, method }: Props) =>
     url: `${SEARCH_API_HOST}${path}`,
     method
   })
-    .then(({ data }): AxiosResponse => data)
+    .then(({ data }) => cleanDeep(data))
     .catch(() => null);
 
 export const getConcept = (id: string) =>
