@@ -147,21 +147,19 @@ const EventDetailsPage: FC<Props> = ({
                       .join(', ')}
                   />
                 )}
-                {specializedType && (
-                  <KeyValueListItem
-                    property={translations.eventType}
-                    value={(() => {
-                      switch (specializedType) {
-                        case SpecializedEventType.LIFEEVENT:
-                          return translations.lifeEvent;
-                        case SpecializedEventType.BUSINESSEVENT:
-                          return translations.businessEvent;
-                        default:
-                          return '';
-                      }
-                    })()}
-                  />
-                )}
+                <KeyValueListItem
+                  property={translations.eventType}
+                  value={(() => {
+                    switch (specializedType) {
+                      case SpecializedEventType.LIFEEVENT:
+                        return translations.lifeEvent;
+                      case SpecializedEventType.BUSINESSEVENT:
+                        return translations.businessEvent;
+                      default:
+                        return '';
+                    }
+                  })()}
+                />
               </KeyValueList>
             </ContentSection>
           )}
