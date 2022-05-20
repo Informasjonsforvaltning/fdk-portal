@@ -29,22 +29,20 @@ const EventItem: FC<Props> = ({
     beta
   >
     <SearchHitEvents>
-      {specializedType && (
-        <RoundedTag>
-          <span>
-            {(() => {
-              switch (specializedType) {
-                case SpecializedEventType.LIFEEVENT:
-                  return translations.lifeEvent;
-                case SpecializedEventType.BUSINESSEVENT:
-                  return translations.businessEvent;
-                default:
-                  return '';
-              }
-            })()}
-          </span>
-        </RoundedTag>
-      )}
+      <RoundedTag>
+        <span>
+          {(() => {
+            switch (specializedType) {
+              case SpecializedEventType.LIFEEVENT:
+                return translations.lifeEvent;
+              case SpecializedEventType.BUSINESSEVENT:
+                return translations.businessEvent;
+              default:
+                return '';
+            }
+          })()}
+        </span>
+      </RoundedTag>
     </SearchHitEvents>
   </SearchHit>
 );
