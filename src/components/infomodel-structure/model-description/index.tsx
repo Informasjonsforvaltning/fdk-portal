@@ -3,6 +3,8 @@ import { compose } from 'redux';
 import { Link as RouteLink } from 'react-router-dom';
 import Scroll from 'react-scroll';
 import Link from '@fellesdatakatalog/link';
+import parse from 'html-react-parser';
+import sanitizeHtml from 'sanitize-html';
 
 import { getTranslateText as translate } from '../../../lib/translateText';
 import localization from '../../../lib/localization';
@@ -48,7 +50,13 @@ const Description: FC<Props> = ({
     {description && (
       <SC.DescriptionField>
         <strong>{localization.description}:</strong>
-        {translate(description)}
+        <p>
+          {parse(
+            sanitizeHtml(translate(description) ?? '', {
+              allowedTags: sanitizeHtml.defaults.allowedTags.concat(['a'])
+            })
+          )}
+        </p>
       </SC.DescriptionField>
     )}
 
