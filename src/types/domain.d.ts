@@ -553,6 +553,7 @@ export interface DataService {
   endpointURL?: string[];
   endpointDescription?: string[];
   landingPage: string[];
+  page: string[];
   conformsTo?: ConformsTo[];
   servesDataset?: string[];
   contactPoint?: Partial<ContactPoint>[];

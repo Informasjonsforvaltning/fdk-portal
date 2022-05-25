@@ -513,7 +513,9 @@
     "endpointUrl": "EndepunktsURL",
     "endpointDescription": "Endepunktsbeskrivelse",
     "goToSpecification": "Gå til spesifikasjon",
-    "landingPage": "Mer informasjon om datatjenesten"
+    "landingPage": "Mer informasjon om datatjenesten",
+    "documentation": "Dokumentasjon",
+    "goToDocumentation": "Gå til dokumentasjon"
   },
   "concept": {
     "remarkHeader": "Merknad",
