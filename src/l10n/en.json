@@ -513,7 +513,9 @@
     "endpointUrl": "Endpoint URL",
     "endpointDescription": "Endpoint description",
     "goToSpecification": "Go to specification",
-    "landingPage": "More information about this data service"
+    "landingPage": "More information about this data service",
+    "documentation": "Documentation",
+    "goToDocumentation": "Go to documentation"
   },
   "concept": {
     "remarkHeader": "Remark",

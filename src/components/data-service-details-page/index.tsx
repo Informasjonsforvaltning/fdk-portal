@@ -138,6 +138,7 @@ const DataserviceDetailsPage: FC<Props> = ({
   const formats = dataService?.fdkFormat ?? [];
   const endpointUrls = dataService?.endpointURL ?? [];
   const endpointDescriptions = dataService?.endpointDescription ?? [];
+  const page = dataService?.page ?? [];
   const landingPage = dataService?.landingPage?.[0];
 
   const conformsTo =
@@ -213,6 +214,20 @@ const DataserviceDetailsPage: FC<Props> = ({
                   }
                 />
               ))}
+              {page.length > 0 && (
+                <KeyValueListItem
+                  property={translations.api.documentation}
+                  value={
+                    <SC.ExternalLinkList>
+                      {page.map(pageItem => (
+                        <Link href={pageItem} external>
+                          {translations.api.goToDocumentation}
+                        </Link>
+                      ))}
+                    </SC.ExternalLinkList>
+                  }
+                />
+              )}
               {landingPage && (
                 <KeyValueListItem
                   property=''
