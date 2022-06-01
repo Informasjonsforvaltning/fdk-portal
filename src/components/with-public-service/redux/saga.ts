@@ -3,23 +3,16 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { GET_PUBLIC_SERVICE_REQUESTED } from './action-types';
 import * as actions from './actions';
 
-import {
-  extractFirstPublicService,
-  searchPublicServices,
-  paramsToSearchBody
-} from '../../../api/search-fulltext-api/public-services';
-
 import LoggingService, { Severity } from '../../../services/logging';
+
+import { getPublicService } from '../../../services/api/harvester-bff';
+import { PublicService } from '../../../types';
 
 function* getPublicServiceRequested({
   payload: { id }
 }: ReturnType<typeof actions.getPublicServiceRequested>) {
   try {
-    const data: Record<string, any> = yield call(
-      searchPublicServices,
-      paramsToSearchBody({ id })
-    );
-    const publicService = extractFirstPublicService(data);
+    const publicService: PublicService = yield call(getPublicService, id);
 
     if (publicService) {
       yield put(actions.getPublicServiceSucceeded(publicService));
