@@ -534,6 +534,7 @@ export interface Dataset {
   landingPage: string[];
   qualifiedAttributions: QualifiedAttribution[];
   assessment?: Assessment;
+  dctType?: string;
 }
 
 export interface DataService {

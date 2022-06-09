@@ -215,7 +215,7 @@ const DatasetDetailsPage: FC<Props> = ({
     legalBasisForRestriction: dataset?.legalBasisForRestriction ?? [],
     legalBasisForProcessing: dataset?.legalBasisForProcessing ?? [],
     legalBasisForAccess: dataset?.legalBasisForAccess ?? [],
-    type: dataset?.type,
+    type: dataset?.dctType,
     standards: dataset?.conformsTo ?? [],
     informationModelReferences: dataset?.informationModel ?? [],
     languages: dataset?.language ?? [],
