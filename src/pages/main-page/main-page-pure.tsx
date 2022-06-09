@@ -15,7 +15,6 @@ import { Props as EntitiesProps } from '../../components/with-entities';
 import { Props as ReferenceDataProps } from '../../components/with-reference-data';
 import { Props as CommunityProps } from '../../components/with-community';
 import { CommunityTerm, Entity, Namespace } from '../../types/enums';
-import { getConfig } from '../../config';
 import Post from '../../components/community/post';
 
 const { FDK_COMMUNITY_BASE_URI, NAMESPACE } = env;
@@ -77,23 +76,9 @@ const MainPage: FC<Props> = ({
                 </SC.Link>
               </SC.CommunityPosts>
             ) : null}
+
             <HeaderSC.Header>{localization.news}</HeaderSC.Header>
-
             <NewsList news={news} />
-
-            {!getConfig().themeNap && (
-              <SC.Twitter>
-                <h2>{localization.newsFromDatakatalogenOnTwitter}</h2>
-                <a
-                  className='twitter-timeline'
-                  data-width='600'
-                  data-height='500'
-                  href='https://twitter.com/datakatalogen?ref_src=twsrc%5Etfw'
-                >
-                  Tweets by datakatalogen
-                </a>
-              </SC.Twitter>
-            )}
           </section>
         </SC.Content>
       </main>

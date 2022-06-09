@@ -30,7 +30,6 @@
   "responsible": "Ansvarlig",
   "name": "Navn",
   "type": "Type",
-  "newsFromDatakatalogenOnTwitter": "Nytt fra Datakatalogen på Twitter",
   "provider": "Tilbyder",
   "statusRemoved": "Denne versjonen av API-et er avviklet.",
   "statusDeprecated": "Denne versjonen av API-et er foreldet og vil fases ut {0} {1}. ",
