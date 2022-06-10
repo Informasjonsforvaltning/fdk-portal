@@ -36,7 +36,7 @@ const icon = (entity?: Entity) => {
 const ContentSection: FC<PropsWithChildren<Props>> = ({
   id,
   title,
-  boxStyle = false,
+  boxStyle = true,
   entityIcon,
   entityTheme,
   truncate,
