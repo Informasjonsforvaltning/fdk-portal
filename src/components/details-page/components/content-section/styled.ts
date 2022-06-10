@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { Colour, theme, Unit } from '@fellesdatakatalog/theme';
 
 import DatasetIconBase from '../../../../images/icon-catalog-dataset-lg.svg';
 import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
@@ -38,47 +38,35 @@ const IconPlaceholder = styled.div`
   border-radius: 50%;
   background-color: ${({ theme: t }) => t.entityColours.light};
   margin-right: ${theme.spacing('S16')};
-  padding: ${theme.spacing('S6')}; ;
+  padding: ${theme.spacing('S10', Unit.PX)}; ;
+`;
+
+const iconStyle = css`
+  height: 20px;
+
+  & > path {
+    fill: ${({ theme: t }) => t.entityColours.dark};
+  }
 `;
 
 const DatasetIcon = styled(DatasetIconBase)`
-  height: 2em;
-
-  & > path {
-    fill: ${({ theme: t }) => t.entityColours.dark};
-  }
+  ${iconStyle}
 `;
 
 const ApiIcon = styled(ApiIconBase)`
-  height: 2em;
-
-  & > path {
-    fill: ${({ theme: t }) => t.entityColours.dark};
-  }
+  ${iconStyle}
 `;
 
 const ConceptIcon = styled(ConceptIconBase)`
-  height: 2em;
-
-  & > path {
-    fill: ${({ theme: t }) => t.entityColours.dark};
-  }
+  ${iconStyle}
 `;
 
 const InfomodIcon = styled(InfomodIconBase)`
-  height: 2em;
-
-  & > path {
-    fill: ${({ theme: t }) => t.entityColours.dark};
-  }
+  ${iconStyle}
 `;
 
 const ServiceIcon = styled(ServiceIconBase)`
-  height: 2em;
-
-  & > path {
-    fill: ${({ theme: t }) => t.entityColours.dark};
-  }
+  ${iconStyle}
 `;
 
 export default {
