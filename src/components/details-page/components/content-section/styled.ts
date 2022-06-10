@@ -12,10 +12,6 @@ interface Props {
 }
 
 const ContentSection = styled.section<Props>`
-  &:nth-of-type(n + 2) {
-    margin-top: 50px;
-  }
-
   ${({ boxStyle }) =>
     boxStyle &&
     css`
