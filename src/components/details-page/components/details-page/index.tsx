@@ -152,6 +152,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           }
         ) as string
       }
+      boxStyle={false}
     >
       <EntityComments entityId={entityId ?? ''} />
     </ContentSection>

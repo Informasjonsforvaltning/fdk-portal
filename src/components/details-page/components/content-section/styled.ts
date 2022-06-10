@@ -23,7 +23,6 @@ const ContentSection = styled.section<Props>`
 
 const Title = styled.h2`
   flex-grow: 1;
-  font-size: 32px;
   font-weight: 600;
 `;
 
@@ -32,7 +31,7 @@ const Header = styled.div`
   border-bottom: 1px solid ${({ theme: t }) => t.entityColours.light};
   display: flex;
   margin-bottom: ${theme.spacing('S10')};
-  padding: ${theme.spacing('S10')} 0;
+  padding-bottom: ${theme.spacing('S10')};
 `;
 
 const IconPlaceholder = styled.div`
