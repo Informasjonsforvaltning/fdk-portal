@@ -1,3 +1,4 @@
+import { theme as t } from '@fellesdatakatalog/theme';
 import Link from '@fellesdatakatalog/link';
 import styled from 'styled-components';
 
@@ -150,6 +151,7 @@ const Themes = styled.div`
 
 const Page = styled.div`
   display: flex;
+  gap: ${t.spacing('S12')};
   margin-top: 40px;
   ${onMobileView} {
     flex-direction: column;
@@ -190,8 +192,7 @@ const MenuToggle = styled.button`
 `;
 
 const SideMenu = styled(SideMenuBase)`
-  width: 200px;
-  margin-right: 50px;
+  flex: 0 0 15%;
   ${onMobileView} {
     display: none;
     width: auto;
@@ -222,7 +223,10 @@ const SideMenuSmall = styled(SideMenuBase)`
 `;
 
 const Content = styled.main`
-  width: calc(100% - 250px);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: ${t.spacing('S12')};
   ${onMobileView} {
     width: auto;
     margin-top: 40px;
