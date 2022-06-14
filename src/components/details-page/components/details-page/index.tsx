@@ -53,6 +53,7 @@ import {
 import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
+import Aside from '../aside';
 
 interface ExternalProps {
   entity: Entity;
@@ -167,6 +168,13 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     contentSections
       .map(child =>
         isValidElement(child) && child.type === ContentSection ? child : null
+      )
+      ?.filter(Boolean);
+
+  const renderAside = () =>
+    contentSections
+      .map(child =>
+        isValidElement(child) && child.type === Aside ? child : null
       )
       ?.filter(Boolean);
 
@@ -292,6 +300,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
 
         <SC.Content>{renderContentSections()}</SC.Content>
+        {renderAside()}
       </SC.Page>
     </SC.DetailsPage>
   );
