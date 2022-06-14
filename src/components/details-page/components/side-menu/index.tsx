@@ -12,13 +12,11 @@ interface MenuItem {
 
 interface Props {
   menuItems?: MenuItem[];
-  title: string;
 }
 
-const SideMenu: FC<Props> = ({ menuItems = [], title = '', ...props }) => (
+const SideMenu: FC<Props> = ({ menuItems = [], ...props }) => (
   <SC.SideMenu data-testid={testIds.root} {...props}>
     <SC.Menu>
-      {title && <SC.Title>{title}</SC.Title>}
       <ul>
         {menuItems.map(({ id, title: menuItemTitle }) => (
           <SC.MenuItem key={id}>

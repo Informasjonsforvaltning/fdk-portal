@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+import { theme as t } from '@fellesdatakatalog/theme';
+
+const onMobileView = '@media (max-width: 900px)';
+
 const SideMenu = styled.aside``;
 
 const Title = styled.h3`
@@ -9,32 +13,23 @@ const Title = styled.h3`
 `;
 
 const Menu = styled.nav`
+  font-size: ${t.fontSize('FS14')};
   & > ul {
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: ${t.spacing('S10')};
   }
 
-  & > ul > li {
-    border-top: 1px solid ${({ theme }) => theme.entityColours.light};
-
-    &:last-of-type {
-      border-bottom: 1px solid ${({ theme }) => theme.entityColours.light};
-    }
-
-    & > a {
-      color: ${({ theme }) => theme.entityColours.dark} !important;
-    }
+  & > ul > li > a {
+    color: ${({ theme }) => theme.entityColours.dark} !important;
   }
 `;
 
 const MenuItem = styled.li`
-  margin: 0;
-  padding: 12px 0;
   list-style: none;
-  border-top: 1px solid red;
-  font-weight: bold;
-
-  &:last-of-type {
-    border-bottom: 1px solid red;
+  ${onMobileView} {
+    margin: 0;
+    padding: 12px 0;
   }
 
   & > a {
