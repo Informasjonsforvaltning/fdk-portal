@@ -287,12 +287,9 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
           {translations.detailsPage.navMenuButton[navOpen ? 'open' : 'closed']}
         </SC.MenuToggle>
-        <SC.SideMenu
-          title={translations.detailsPage.menu.title}
-          menuItems={menuItems}
-        />
+        <SC.SideMenu menuItems={menuItems} />
 
-        {navOpen && <SC.SideMenuSmall title='' menuItems={menuItems} />}
+        {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
 
         <SC.Content>{renderContentSections()}</SC.Content>
       </SC.Page>
