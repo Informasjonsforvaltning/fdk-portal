@@ -8,7 +8,7 @@ const TextLanguageLabel = styled.span<{ $whiteBackground: boolean }>`
   font-weight: ${fdkTheme.fontWeight('FW700')};
   background: ${({ $whiteBackground, theme }) =>
     $whiteBackground
-      ? fdkTheme.colour(Colour.NEUTRAL, 'N0')
+      ? fdkTheme.colour(Colour.NEUTRAL, 'N15')
       : theme?.entityColours?.light ?? theme.light};
 
   color: ${({ theme }) => theme?.entityColours?.dark ?? theme.dark};
