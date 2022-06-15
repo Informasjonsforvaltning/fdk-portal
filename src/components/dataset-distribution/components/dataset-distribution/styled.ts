@@ -3,9 +3,10 @@ import { Colour, theme } from '@fellesdatakatalog/theme';
 import Link from '@fellesdatakatalog/link';
 
 import ExpansionPanel, { SC } from '@fellesdatakatalog/expansion-panel';
+import { Entity } from '../../../../types/enums';
 
 const DatasetDistribution = styled(ExpansionPanel)`
-  background: white;
+  background: ${({ theme: t }) => t.extendedColors[Entity.DATASET].lighter};
   border-radius: 5px;
   overflow: hidden;
 
