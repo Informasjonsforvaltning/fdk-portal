@@ -30,7 +30,6 @@ describe('Styled components for DatasetDistribution component', () => {
       expectStyleRules(
         SC.DatasetDistribution,
         [
-          { property: 'background', value: 'white' },
           { property: 'border-radius', value: '5px' },
           { property: 'overflow', value: 'hidden' },
           {
