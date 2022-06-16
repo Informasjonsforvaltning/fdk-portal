@@ -153,6 +153,7 @@ const Page = styled.div`
   display: flex;
   gap: ${t.spacing('S12')};
   margin-top: 40px;
+  word-break: break-word;
   ${onMobileView} {
     flex-direction: column;
   }
