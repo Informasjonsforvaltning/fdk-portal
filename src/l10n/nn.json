@@ -707,8 +707,8 @@
         "usage": "Bruk av tenesten",
         "keywords": "Emneord",
         "relatedServices": "Relaterte tenester",
-        "relatedEvents": "Tenesta som inngår i hendingane",
-        "conceptReferences": "Omgrep brukt i tenesten",
+        "relatedEvents": "Relaterte hendingar",
+        "conceptReferences": "Omgrep brukt i denne tenesten",
         "criterion": "Vilkår",
         "produces": "Tenesteresultat",
         "contactPoint": "Kontaktinformasjon",
@@ -720,8 +720,9 @@
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
-        "isDescribedAt": "Tilknyttede datasettbeskrivelser",
-        "spatial": "Geografisk avgrensning"
+        "isDescribedAt": "Skildrande datasett",
+        "spatial": "Geografisk avgrensning",
+        "offeredBy": "Tilbys av"
       },
       "event": {
         "description": "Beskrivelse",

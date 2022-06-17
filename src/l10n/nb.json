@@ -705,10 +705,10 @@
       "publicService": {
         "description": "Beskrivelse",
         "usage": "Bruk av tjenesten",
-        "keywords": "Søkeord",
+        "keywords": "Nøkkelord",
         "relatedServices": "Relaterte tjenester",
-        "relatedEvents": "Tjenesten inngår i hendelsene",
-        "conceptReferences": "Begreper brukt i tjenesten",
+        "relatedEvents": "Relaterte hendelser",
+        "conceptReferences": "Begreper brukt i denne tjenesten",
         "criterion": "Vilkår",
         "produces": "Tjenesteresultat",
         "contactPoint": "Kontaktinformasjon",
@@ -720,8 +720,9 @@
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
-        "isDescribedAt": "Tilknyttede datasettbeskrivelser",
-        "spatial": "Geografisk avgrensning"
+        "isDescribedAt": "Beskrivende datasett",
+        "spatial": "Geografisk avgrensning",
+        "offeredBy": "Tilbys av"
       },
       "event": {
         "description": "Beskrivelse",

@@ -707,8 +707,8 @@
         "usage": "Public service usage",
         "keywords": "Keywords",
         "relatedServices": "Related services",
-        "relatedEvents": "The service is included in these events",
-        "conceptReferences": "Concepts used in the service",
+        "relatedEvents": "Related events",
+        "conceptReferences": "Concepts used in this service",
         "criterion": "Criterion",
         "produces": "Service output",
         "contactPoint": "Contact information",
@@ -720,8 +720,9 @@
         "cost": "Cost",
         "processingTime": "Processing time",
         "relation": "Related to",
-        "isDescribedAt": "Associated datasets",
-        "spatial": "Spatial restrictions"
+        "isDescribedAt": "Descriptive datasets",
+        "spatial": "Spatial restrictions",
+        "offeredBy": "Offered by"
       },
       "event": {
         "description": "Description",
