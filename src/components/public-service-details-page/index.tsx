@@ -24,8 +24,10 @@ import withKartverket, { Props as KartverketProps } from '../with-kartverket';
 import withErrorBoundary from '../with-error-boundary';
 
 import DetailsPage, {
+  CatalogTypeBox,
   ContentSection,
   InlineList,
+  List,
   KeyValueList,
   KeyValueListItem
 } from '../details-page';
@@ -596,36 +598,31 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 translations.detailsPage.sectionTitles.publicService
                   .conceptReferences
               }
-              boxStyle
-              entityIcon={Entity.CONCEPT}
             >
-              <KeyValueList>
+              <List>
                 {isClassifiedBy?.map(
                   ({ uri, prefLabel }) =>
                     uri && (
-                      <KeyValueListItem
-                        key={uri}
-                        property={
-                          conceptsMap[uri] ? (
-                            <Link
-                              as={RouterLink}
-                              to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
-                            >
-                              {translate(conceptsMap[uri].prefLabel)}
-                            </Link>
-                          ) : (
-                            translate(prefLabel)
-                          )
-                        }
-                        value={
-                          conceptsMap[uri]
+                      <CatalogTypeBox entity={Entity.CONCEPT}>
+                        {conceptsMap[uri] ? (
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
+                          >
+                            {translate(conceptsMap[uri].prefLabel)}
+                          </Link>
+                        ) : (
+                          translate(prefLabel)
+                        )}
+                        <div>
+                          {conceptsMap[uri]
                             ? translate(conceptsMap[uri].definition?.text)
-                            : ''
-                        }
-                      />
+                            : uri}
+                        </div>
+                      </CatalogTypeBox>
                     )
                 )}
-              </KeyValueList>
+              </List>
             </ContentSection>
           )}
 
@@ -636,31 +633,25 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 translations.detailsPage.sectionTitles.publicService
                   .relatedEvents
               }
-              boxStyle
-              entityIcon={Entity.EVENT}
             >
-              <KeyValueList>
+              <List>
                 {isGroupedBy?.map(uri =>
                   eventsMap[uri] ? (
-                    <KeyValueListItem
-                      key={uri}
-                      property={
-                        eventsMap[uri].id ? (
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_EVENTS}/${eventsMap[uri].id}`}
-                          >
-                            {translate(eventsMap[uri].title ?? uri)}
-                          </Link>
-                        ) : (
-                          uri
-                        )
-                      }
-                      value={translate(eventsMap[uri].description)}
-                    />
+                    <CatalogTypeBox key={uri} entity={Entity.EVENT}>
+                      {eventsMap[uri].id ? (
+                        <Link
+                          as={RouterLink}
+                          to={`${PATHNAME_EVENTS}/${eventsMap[uri].id}`}
+                        >
+                          {translate(eventsMap[uri].title ?? uri)}
+                        </Link>
+                      ) : (
+                        uri
+                      )}
+                    </CatalogTypeBox>
                   ) : null
                 )}
-              </KeyValueList>
+              </List>
             </ContentSection>
           )}
 
@@ -671,55 +662,46 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 translations.detailsPage.sectionTitles.publicService
                   .relatedServices
               }
-              boxStyle
-              entityIcon={Entity.PUBLIC_SERVICE}
             >
-              <KeyValueList>
-                {requiredServices.length > 0 && (
-                  <KeyValueListItem
-                    property={translations.requires}
-                    value={requiredServices.map(
-                      ({ uri, title: requiredServiceTitle }, index) =>
-                        publicServicesMap?.[uri] ? (
-                          <SC.ListItemValue key={`${uri}-${index}`}>
-                            <Link
-                              as={RouterLink}
-                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
-                              key={`${uri}-${index}`}
-                            >
-                              {translate(requiredServiceTitle)}
-                            </Link>
-                          </SC.ListItemValue>
+              <List>
+                {requiredServices?.map(
+                  ({ uri, title: requiredServiceTitle }, index) => (
+                    <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
+                      <span>
+                        {translations.requires}&nbsp;
+                        {publicServicesMap?.[uri] ? (
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
+                            key={`${uri}-${index}`}
+                          >
+                            {translate(requiredServiceTitle) ?? uri}
+                          </Link>
                         ) : (
-                          translate(requiredServiceTitle)
-                        )
-                    )}
-                  />
+                          translate(requiredServiceTitle) ?? uri
+                        )}
+                      </span>
+                    </CatalogTypeBox>
+                  )
                 )}
-                {relation.length > 0 && (
-                  <KeyValueListItem
-                    property={
-                      translations.detailsPage.sectionTitles.publicService
-                        .relation
-                    }
-                    value={relation.map(
-                      ({ uri, title: relationTitle }, index) =>
-                        publicServicesMap?.[uri] ? (
-                          <SC.ListItemValue key={`${uri}-${index}`}>
-                            <Link
-                              as={RouterLink}
-                              to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
-                            >
-                              {translate(relationTitle)}
-                            </Link>
-                          </SC.ListItemValue>
-                        ) : (
-                          translate(relationTitle)
-                        )
-                    )}
-                  />
-                )}
-              </KeyValueList>
+                {relation?.map(({ uri, title: relationTitle }, index) => (
+                  <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
+                    <span>
+                      {publicServicesMap?.[uri] ? (
+                        <Link
+                          as={RouterLink}
+                          to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
+                          key={`${uri}-${index}`}
+                        >
+                          {translate(relationTitle) ?? uri}
+                        </Link>
+                      ) : (
+                        translate(relationTitle) ?? uri
+                      )}
+                    </span>
+                  </CatalogTypeBox>
+                ))}
+              </List>
             </ContentSection>
           )}
 
@@ -730,36 +712,26 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 translations.detailsPage.sectionTitles.publicService
                   .isDescribedAt
               }
-              boxStyle
-              entityIcon={Entity.DATASET}
             >
-              <KeyValueList>
+              <List>
                 {datasetsUris?.map(
                   uri =>
                     uri && (
-                      <KeyValueListItem
-                        key={uri}
-                        property={
-                          datasetsMap[uri] ? (
-                            <Link
-                              as={RouterLink}
-                              to={`${PATHNAME_DATASETS}/${datasetsMap[uri].id}`}
-                            >
-                              {translate(datasetsMap[uri].title)}
-                            </Link>
-                          ) : (
-                            translate(uri)
-                          )
-                        }
-                        value={
-                          datasetsMap[uri]
-                            ? translate(datasetsMap[uri].description)
-                            : ''
-                        }
-                      />
+                      <CatalogTypeBox entity={Entity.DATASET}>
+                        {datasetsMap[uri] ? (
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_DATASETS}/${datasetsMap[uri].id}`}
+                          >
+                            {translate(datasetsMap[uri].title)}
+                          </Link>
+                        ) : (
+                          translate(uri)
+                        )}
+                      </CatalogTypeBox>
                     )
                 )}
-              </KeyValueList>
+              </List>
             </ContentSection>
           )}
           {(eventsRelations.length > 0 ||
