@@ -26,9 +26,9 @@ import {
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../with-reference-data';
-import withAssessment, {
-  Props as AssessmentProps
-} from '../../../with-assessment';
+import withDatasetScores, {
+  Props as DatasetScoresProps
+} from '../../../with-dataset-scores';
 
 import Banner from '../banner';
 import ContentSection from '../content-section';
@@ -49,7 +49,7 @@ import { Entity } from '../../../../types/enums';
 import {
   calculateRatingPercentage,
   determineRatingIcon
-} from '../../../../pages/organizations/pages/dataset-page/index';
+} from '../../../../pages/organizations/pages/datasets-page/index';
 import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
@@ -73,7 +73,7 @@ interface ExternalProps {
 
 interface Props
   extends ReferenceDataProps,
-    AssessmentProps,
+    DatasetScoresProps,
     ExternalProps,
     CommunityProps {}
 
@@ -90,8 +90,9 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   entity,
   title,
   publisher,
-  assessment,
+  datasetScores,
   entityId,
+  entityUri,
   lastPublished,
   isAuthoritative,
   isOpenData,
@@ -103,7 +104,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   topics,
   referenceData: { los: losThemes, themes: euThemes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  assessmentActions: { getAssessmentRequested: getAssessment },
+  datasetScoresActions: { getDatasetScoresRequested: getDatasetScores },
   communityActions: { searchTopicsRequested: searchTopics, resetTopics },
   children
 }) => {
@@ -148,8 +149,16 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   useEffect(() => {
     if (entityId) {
       searchTopics(entityId);
-      if (entityId !== assessment?.id) {
-        getAssessment(entityId);
+
+      const datasetScore = datasetScores
+        ? Object.values(datasetScores.scores)[0]
+        : null;
+      if (
+        entity === Entity.DATASET &&
+        entityUri &&
+        entityId !== datasetScore?.dataset.id
+      ) {
+        getDatasetScores({ datasets: [entityUri] });
       }
     }
     return () => {
@@ -224,6 +233,9 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   };
 
   const publisherName = translate(publisher?.prefLabel || publisher?.name);
+  const datasetScore = datasetScores
+    ? Object.values(datasetScores.scores)[0]
+    : null;
 
   return (
     <SC.DetailsPage className='container'>
@@ -242,16 +254,16 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
                 publisher: publisherName ?? publisher.id
               })}
             </SC.PublisherLink>
-            {assessment && (
+            {datasetScore && (
               <FdkLink
                 href={`/organizations/${publisher.id}/datasets/${entityId}`}
               >
                 <SC.MetadataQuality>
                   <p>{translations.metadataQualityPage.metadataQuality}: </p>
                   <SC.RatingIcon>
-                    {determineRatingIcon(assessment.rating)}
+                    {determineRatingIcon(datasetScore.dataset)}
                   </SC.RatingIcon>
-                  <p>{calculateRatingPercentage(assessment.rating)} %</p>
+                  <p>{calculateRatingPercentage(datasetScore.dataset)} %</p>
                 </SC.MetadataQuality>
               </FdkLink>
             )}
@@ -330,7 +342,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
 export default compose<FC<ExternalProps>>(
   memo,
-  withAssessment,
+  withDatasetScores,
   withReferenceData,
   withCommunity
 )(DetailsPage);

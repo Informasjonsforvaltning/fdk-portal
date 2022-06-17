@@ -11,8 +11,7 @@ import entitiesSaga from '../components/with-entities/redux/saga';
 import organizationsSaga from '../components/with-organizations/redux/saga';
 import organizationSaga from '../components/with-organization/redux/saga';
 import reportSaga from '../components/with-report/redux/saga';
-import assessmentSaga from '../components/with-assessment/redux/saga';
-import assessmentsSaga from '../components/with-assessments/redux/saga';
+import datasetScoresSaga from '../components/with-dataset-scores/redux/saga';
 import informationModelSaga from '../components/with-information-model/redux/saga';
 import informationModelsSaga from '../components/with-information-models/redux/saga';
 import organizationsCatalogSaga from '../components/with-organizations-catalog/redux/saga';
@@ -40,8 +39,7 @@ export default function* saga() {
     organizationsSaga(),
     organizationSaga(),
     reportSaga(),
-    assessmentSaga(),
-    assessmentsSaga(),
+    datasetScoresSaga(),
     informationModelSaga(),
     informationModelsSaga(),
     organizationsCatalogSaga(),

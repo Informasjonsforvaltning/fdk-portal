@@ -81,33 +81,48 @@ export enum Filter {
   EVENT_TYPE = 'eventType'
 }
 
-export enum RatingCategory {
+export enum MetadataQualityRatingCategory {
   EXCELLENT = 'excellent',
   GOOD = 'good',
   SUFFICIENT = 'sufficient',
   POOR = 'poor'
 }
 
-export enum DimensionType {
-  ACCESSIBILITY = 'accessibility',
-  FINDABILITY = 'findability',
-  INTEROPERABILITY = 'interoperability',
-  READABILITY = 'readability',
-  REUSABILITY = 'reusability'
+export enum MetadataQualityDimension {
+  ACCESSIBILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#accessibility',
+  FINDABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#findability',
+  INTEROPERABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#interoperability',
+  CONTEXTUALITY = 'https://data.norge.no/vocabulary/dcatno-mqa#contextuality',
+  REUSABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#reusability'
 }
 
-export enum IndicatorType {
-  DISTRIBUTABLE_DATA = 'distributableData',
-  KEYWORD_USAGE = 'keywordUsage',
-  SUBJECT_USAGE = 'subjectUsage',
-  GEO_SEARCH = 'geoSearch',
-  CONTROLLED_VOCABULARY_USAGE = 'controlledVocabularyUsage',
-  LICENSE_INFORMATION = 'licenseInformation',
-  CONTACT_POINT = 'contactPoint',
-  TITLE = 'title',
-  TITLE_NO_ORG_NAME = 'titleNoOrgName',
-  DESCRIPTION = 'description',
-  DESCRIPTION_WITHOUT_TITLE = 'descriptionWithoutTitle'
+export enum MetadataQualityMetric {
+  ACCESS_RIGHTS_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#accessRightsAvailability',
+  ACCESS_RIGHTS_VOCABULARY_ALIGNMENT = 'https://data.norge.no/vocabulary/dcatno-mqa#accessRightsVocabularyAlignment',
+  ACCESS_URL_STATUS_CODE = 'https://data.norge.no/vocabulary/dcatno-mqa#accessUrlStatusCode',
+  BYTE_SIZE_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#byteSizeAvailability',
+  CATEGORY_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#categoryAvailability',
+  CONTACT_POINT_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#contactPointAvailability',
+  DATE_ISSUED_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#dateIssuedAvailability',
+  DATE_MODIFIED_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#dateModifiedAvailability',
+  DCAT_AP_COMPLIANCE = 'https://data.norge.no/vocabulary/dcatno-mqa#dcatApCompliance',
+  DOWNLOAD_URL_AVAILABLITY = 'https://data.norge.no/vocabulary/dcatno-mqa#downloadUrlAvailability',
+  DOWNLOAD_URL_STATUS_CODE = 'https://data.norge.no/vocabulary/dcatno-mqa#downloadUrlStatusCode',
+  FORMAT_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#formatAvailability',
+  FORMAT_MATCH = 'https://data.norge.no/vocabulary/dcatno-mqa#formatMatch',
+  FORMAT_MEDIA_TYPE_MACHINE_INTERPRETABLE = 'https://data.norge.no/vocabulary/dcatno-mqa#formatMediaTypeMachineInterpretable',
+  FORMAT_MEDIA_TYPE_NON_PROPRIETARY = 'https://data.norge.no/vocabulary/dcatno-mqa#formatMediaTypeNonProprietary',
+  FORMAT_MEDIA_TYPE_VOCABULARY_ALIGNMENT = 'https://data.norge.no/vocabulary/dcatno-mqa#formatMediaTypeVocabularyAlignment',
+  KEYWORD_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#keywordAvailability',
+  KNOWN_LICENCE = 'https://data.norge.no/vocabulary/dcatno-mqa#knownLicence',
+  LICENCE_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#licenceAvailability',
+  MEDIA_TYPE_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#mediaTypeAvailability',
+  OPEN_LICENCE = 'https://data.norge.no/vocabulary/dcatno-mqa#openLicence',
+  PUBLISHER_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#publisherAvailability',
+  RIGHTS_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#rightsAvailability',
+  SPATIAL_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#spatialAvailability',
+  SYNTAX_VALID = 'https://data.norge.no/vocabulary/dcatno-mqa#syntaxValid',
+  TEMPORAL_AVAILABILITY = 'https://data.norge.no/vocabulary/dcatno-mqa#temporalAvailability'
 }
 
 export enum ModelElementType {

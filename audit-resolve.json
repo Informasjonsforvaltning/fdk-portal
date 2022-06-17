@@ -188,6 +188,60 @@
       "decision": "ignore",
       "madeAt": 1651221922110,
       "expiresAt": 1653813890417
+    },
+    "1070273|@graphql-codegen/cli>listr-update-renderer>log-update>wrap-ansi>strip-ansi>ansi-regex": {
+      "decision": "fix",
+      "madeAt": 1657191614776
+    },
+    "1070273|@graphql-codegen/cli>listr-update-renderer>log-update>wrap-ansi>string-width>strip-ansi>ansi-regex": {
+      "decision": "fix",
+      "madeAt": 1657191614776
+    },
+    "1070273|@graphql-codegen/cli>listr>listr-update-renderer>log-update>wrap-ansi>string-width>strip-ansi>ansi-regex": {
+      "decision": "fix",
+      "madeAt": 1657191614776
+    },
+    "1070905|@graphql-codegen/cli>@graphql-tools/github-loader>cross-undici-fetch>undici": {
+      "decision": "fix",
+      "madeAt": 1657191156817
+    },
+    "1070905|@graphql-codegen/cli>graphql-config>@graphql-tools/url-loader>cross-undici-fetch>undici": {
+      "decision": "fix",
+      "madeAt": 1657191176554
+    },
+    "1070905|@graphql-codegen/cli>@graphql-tools/url-loader>cross-undici-fetch>undici": {
+      "decision": "fix",
+      "madeAt": 1657191316450
+    },
+    "1080966|node-sass>sass-graph>scss-tokenizer": {
+      "decision": "ignore",
+      "madeAt": 1657192597445,
+      "expiresAt": 1659784589066
+    },
+    "1080920|@graphql-codegen/cli>latest-version>package-json>got": {
+      "decision": "fix",
+      "madeAt": 1659337204789
+    },
+    "1081677|@graphql-codegen/cli>@graphql-tools/url-loader>cross-undici-fetch>undici": {
+      "decision": "fix",
+      "madeAt": 1659337211257
+    },
+    "1081677|@graphql-codegen/cli>graphql-config>@graphql-tools/url-loader>cross-undici-fetch>undici": {
+      "decision": "fix",
+      "madeAt": 1659337211257
+    },
+    "1081697|@graphql-codegen/cli>@graphql-tools/url-loader>cross-undici-fetch>undici": {
+      "decision": "fix",
+      "madeAt": 1659337211257
+    },
+    "1081697|@graphql-codegen/cli>graphql-config>@graphql-tools/url-loader>cross-undici-fetch>undici": {
+      "decision": "fix",
+      "madeAt": 1659337211257
+    },
+    "1081480|node-sass>sass-graph>scss-tokenizer": {
+      "decision": "ignore",
+      "madeAt": 1659337225803,
+      "expiresAt": 1661929157866
     }
   },
   "rules": {},

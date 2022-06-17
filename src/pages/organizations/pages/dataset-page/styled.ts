@@ -463,6 +463,10 @@ const DatasetLink = styled.div`
   }
 `;
 
+const MetricDescription = styled.p`
+  white-space: normal;
+`;
+
 export default {
   DatasetPage,
   BetaRibbon,
@@ -485,5 +489,6 @@ export default {
   Question,
   QuestionIcon,
   DimensionContainer,
-  DatasetLink
+  DatasetLink,
+  MetricDescription
 };

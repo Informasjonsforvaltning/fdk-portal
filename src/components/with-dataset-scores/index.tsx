@@ -4,23 +4,22 @@ import { connect } from 'react-redux';
 
 import * as actions from './redux/actions';
 
-import type { Assessment, Rating } from '../../types';
+import type { DatasetScores } from '../../types';
 
 export interface Props {
-  assessment: Assessment | null;
-  catalogRating: Rating | null;
-  assessmentActions: typeof actions;
+  datasetScores: DatasetScores | null;
+  datasetScoresActions: typeof actions;
 }
-const withAssessment = (Component: ComponentType<any>) => {
+const withDatasetScores = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    assessment: state.AssessmentReducer.get('assessment')?.toJS() ?? null,
-    catalogRating: state.AssessmentReducer.get('catalogRating')?.toJS() ?? null
+    datasetScores:
+      state.DatasetScoresReducer.get('datasetScores')?.toJS() ?? null
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
-    assessmentActions: bindActionCreators(actions, dispatch)
+    datasetScoresActions: bindActionCreators(actions, dispatch)
   });
 
   return compose<FC>(
@@ -29,4 +28,4 @@ const withAssessment = (Component: ComponentType<any>) => {
   )(WrappedComponent);
 };
 
-export default withAssessment;
+export default withDatasetScores;

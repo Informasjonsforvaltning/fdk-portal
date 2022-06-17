@@ -1,4 +1,4 @@
-import React, { memo, FC, useLayoutEffect, Fragment } from 'react';
+import React, { memo, FC, useLayoutEffect, Fragment, useEffect } from 'react';
 import { compose } from 'redux';
 import { Link as RouteLink } from 'react-router-dom';
 
@@ -17,9 +17,12 @@ import {
   PATHNAME_DATASET_DETAILS
 } from '../../../../constants/constants';
 
-import withAssessment, {
-  Props as AssessmentProps
-} from '../../../../components/with-assessment';
+import withDataset, {
+  Props as DatasetProps
+} from '../../../../components/with-dataset';
+import withDatasetScores, {
+  Props as DatasetScoresProps
+} from '../../../../components/with-dataset-scores';
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
@@ -29,12 +32,14 @@ import ErrorPage from '../../../../components/error-page';
 import SC from './styled';
 import ReactTooltipSC from '../../../../components/tooltip/styled';
 
-import type { Rating } from '../../../../types';
 import {
-  DimensionType,
-  IndicatorType,
-  RatingCategory
+  MetadataQualityDimension,
+  MetadataQualityMetric
 } from '../../../../types/enums';
+import {
+  calculateRatingPercentage,
+  determineRatingIcon
+} from '../datasets-page';
 
 interface RouteParams {
   organizationId: string;
@@ -42,38 +47,18 @@ interface RouteParams {
 }
 
 interface Props
-  extends AssessmentProps,
+  extends DatasetProps,
+    DatasetScoresProps,
     OrganizationProps,
     RouteComponentProps<RouteParams> {}
 
-export const determineRatingIcon = (r: Rating | null | undefined) => {
-  switch (r?.category) {
-    case RatingCategory.EXCELLENT:
-      return <SC.ExcellentQualityIcon />;
-    case RatingCategory.GOOD:
-      return <SC.GoodQualityIcon />;
-    case RatingCategory.SUFFICIENT:
-      return <SC.SufficientQualityIcon />;
-    case RatingCategory.POOR:
-    default:
-      return <SC.PoorQualityIcon />;
-  }
-};
-
-export const calculateRatingPercentage = (
-  r: Pick<Rating, 'score' | 'maxScore'> | null | undefined
-) => {
-  const score = r?.score ?? 0;
-  const maxScore = r?.maxScore ?? 0;
-
-  return maxScore === 0 ? 0 : Math.round((score / maxScore) * 100);
-};
-
 const DatasetPage: FC<Props> = ({
+  dataset,
+  datasetActions: { getDatasetRequested: getDataset },
   organization,
-  assessment,
-  assessmentActions: { getAssessmentRequested: getAssessment },
   organizationActions: { getOrganizationRequested: getOrganization },
+  datasetScores,
+  datasetScoresActions: { getDatasetScoresRequested: getDatasetScores },
   match: {
     params: { organizationId, datasetId }
   }
@@ -83,98 +68,205 @@ const DatasetPage: FC<Props> = ({
       getOrganization(organizationId);
     }
 
-    if (assessment?.id !== datasetId) {
-      getAssessment(datasetId);
+    if (dataset?.id !== datasetId) {
+      getDataset(datasetId);
     }
   }, []);
 
-  const determineDimensionTranslation = (dimensionType: DimensionType) => {
-    switch (dimensionType) {
-      case DimensionType.ACCESSIBILITY:
-        return translations.metadataQualityPage.criteria.accessibility;
-      case DimensionType.FINDABILITY:
-        return translations.metadataQualityPage.criteria.findability;
-      case DimensionType.INTEROPERABILITY:
-        return translations.metadataQualityPage.criteria.interoperability;
-      case DimensionType.READABILITY:
-        return translations.metadataQualityPage.criteria.readability;
-      case DimensionType.REUSABILITY:
-        return translations.metadataQualityPage.criteria.reusability;
+  useEffect(() => {
+    const datasetScore = datasetScores
+      ? Object.values(datasetScores.scores)[0]
+      : null;
+    if (datasetScore?.dataset?.id !== dataset?.id && dataset?.uri) {
+      getDatasetScores({ datasets: [dataset.uri] });
+    }
+  }, [dataset?.id]);
+
+  const determineDimensionTranslation = (dimensionId: string) => {
+    switch (dimensionId) {
+      case MetadataQualityDimension.ACCESSIBILITY:
+        return translations.metadataQualityPage.dimension.accessibility;
+      case MetadataQualityDimension.FINDABILITY:
+        return translations.metadataQualityPage.dimension.findability;
+      case MetadataQualityDimension.INTEROPERABILITY:
+        return translations.metadataQualityPage.dimension.interoperability;
+      case MetadataQualityDimension.CONTEXTUALITY:
+        return translations.metadataQualityPage.dimension.contextuality;
+      case MetadataQualityDimension.REUSABILITY:
+        return translations.metadataQualityPage.dimension.reusability;
       default:
         return null;
     }
   };
 
-  const determineIndicatorTranslation = (indicatorType: IndicatorType) => {
-    switch (indicatorType) {
-      case IndicatorType.DISTRIBUTABLE_DATA:
-        return translations.metadataQualityPage.indicator.distributableData;
-      case IndicatorType.KEYWORD_USAGE:
-        return translations.metadataQualityPage.indicator.keywordUsage;
-      case IndicatorType.SUBJECT_USAGE:
-        return translations.metadataQualityPage.indicator.subjectUsage;
-      case IndicatorType.GEO_SEARCH:
-        return translations.metadataQualityPage.indicator.geoSearch;
-      case IndicatorType.CONTROLLED_VOCABULARY_USAGE:
-        return translations.metadataQualityPage.indicator
-          .controlledVocabularyUsage;
-      case IndicatorType.LICENSE_INFORMATION:
-        return translations.metadataQualityPage.indicator.licenseInformation;
-      case IndicatorType.CONTACT_POINT:
-        return translations.metadataQualityPage.indicator.contactPoint;
-      case IndicatorType.TITLE:
-        return translations.metadataQualityPage.indicator.title;
-      case IndicatorType.TITLE_NO_ORG_NAME:
-        return translations.metadataQualityPage.indicator.titleNoOrgName;
-      case IndicatorType.DESCRIPTION:
-        return translations.metadataQualityPage.indicator.description;
-      case IndicatorType.DESCRIPTION_WITHOUT_TITLE:
-        return translations.metadataQualityPage.indicator
-          .descriptionWithoutTitle;
+  const determineDimensionDescriptionTranslation = (dimensionId: string) => {
+    switch (dimensionId) {
+      case MetadataQualityDimension.ACCESSIBILITY:
+        return translations.metadataQualityPage.dimensionDescription
+          .accessibility;
+      case MetadataQualityDimension.FINDABILITY:
+        return translations.metadataQualityPage.dimensionDescription
+          .findability;
+      case MetadataQualityDimension.INTEROPERABILITY:
+        return translations.metadataQualityPage.dimensionDescription
+          .interoperability;
+      case MetadataQualityDimension.CONTEXTUALITY:
+        return translations.metadataQualityPage.dimensionDescription
+          .contextuality;
+      case MetadataQualityDimension.REUSABILITY:
+        return translations.metadataQualityPage.dimensionDescription
+          .reusability;
       default:
         return null;
     }
   };
 
-  const determineIndicatorDescriptionTranslation = (
-    indicatorType: IndicatorType
-  ) => {
-    switch (indicatorType) {
-      case IndicatorType.DISTRIBUTABLE_DATA:
-        return translations.metadataQualityPage.indicatorDescription
-          .distributableData;
-      case IndicatorType.KEYWORD_USAGE:
-        return translations.metadataQualityPage.indicatorDescription
-          .keywordUsage;
-      case IndicatorType.SUBJECT_USAGE:
-        return translations.metadataQualityPage.indicatorDescription
-          .subjectUsage;
-      case IndicatorType.GEO_SEARCH:
-        return translations.metadataQualityPage.indicatorDescription.geoSearch;
-      case IndicatorType.CONTROLLED_VOCABULARY_USAGE:
-        return translations.metadataQualityPage.indicatorDescription
-          .controlledVocabularyUsage;
-      case IndicatorType.LICENSE_INFORMATION:
-        return translations.metadataQualityPage.indicatorDescription
-          .licenseInformation;
-      case IndicatorType.CONTACT_POINT:
-        return translations.metadataQualityPage.indicatorDescription
-          .contactPoint;
-      case IndicatorType.TITLE:
-        return translations.metadataQualityPage.indicatorDescription.title;
-      case IndicatorType.TITLE_NO_ORG_NAME:
-        return translations.metadataQualityPage.indicatorDescription
-          .titleNoOrgName;
-      case IndicatorType.DESCRIPTION:
-        return translations.metadataQualityPage.indicatorDescription
-          .description;
-      case IndicatorType.DESCRIPTION_WITHOUT_TITLE:
-        return translations.metadataQualityPage.indicatorDescription
-          .descriptionWithoutTitle;
+  const determineMetricTranslation = (metric: string) => {
+    switch (metric) {
+      case MetadataQualityMetric.ACCESS_RIGHTS_AVAILABILITY:
+        return translations.metadataQualityPage.metric.accessRightsAvailability;
+      case MetadataQualityMetric.ACCESS_RIGHTS_VOCABULARY_ALIGNMENT:
+        return translations.metadataQualityPage.metric
+          .accessRightsVocabularyAlignment;
+      case MetadataQualityMetric.ACCESS_URL_STATUS_CODE:
+        return translations.metadataQualityPage.metric.accessUrlStatusCode;
+      case MetadataQualityMetric.BYTE_SIZE_AVAILABILITY:
+        return translations.metadataQualityPage.metric.byteSizeAvailability;
+      case MetadataQualityMetric.CATEGORY_AVAILABILITY:
+        return translations.metadataQualityPage.metric.categoryAvailability;
+      case MetadataQualityMetric.CONTACT_POINT_AVAILABILITY:
+        return translations.metadataQualityPage.metric.contactPointAvailability;
+      case MetadataQualityMetric.DATE_ISSUED_AVAILABILITY:
+        return translations.metadataQualityPage.metric.dateIssuedAvailability;
+      case MetadataQualityMetric.DATE_MODIFIED_AVAILABILITY:
+        return translations.metadataQualityPage.metric.dateModifiedAvailability;
+      case MetadataQualityMetric.DCAT_AP_COMPLIANCE:
+        return translations.metadataQualityPage.metric.dcatApCompliance;
+      case MetadataQualityMetric.DOWNLOAD_URL_AVAILABLITY:
+        return translations.metadataQualityPage.metric.downloadUrlAvailability;
+      case MetadataQualityMetric.DOWNLOAD_URL_STATUS_CODE:
+        return translations.metadataQualityPage.metric.downloadUrlStatusCode;
+      case MetadataQualityMetric.FORMAT_AVAILABILITY:
+        return translations.metadataQualityPage.metric.formatAvailability;
+      case MetadataQualityMetric.FORMAT_MATCH:
+        return translations.metadataQualityPage.metric.formatMatch;
+      case MetadataQualityMetric.FORMAT_MEDIA_TYPE_MACHINE_INTERPRETABLE:
+        return translations.metadataQualityPage.metric
+          .formatMediaTypeMachineInterpretable;
+      case MetadataQualityMetric.FORMAT_MEDIA_TYPE_NON_PROPRIETARY:
+        return translations.metadataQualityPage.metric
+          .formatMediaTypeNonProprietary;
+      case MetadataQualityMetric.FORMAT_MEDIA_TYPE_VOCABULARY_ALIGNMENT:
+        return translations.metadataQualityPage.metric
+          .formatMediaTypeVocabularyAlignment;
+      case MetadataQualityMetric.KEYWORD_AVAILABILITY:
+        return translations.metadataQualityPage.metric.keywordAvailability;
+      case MetadataQualityMetric.KNOWN_LICENCE:
+        return translations.metadataQualityPage.metric.knownLicence;
+      case MetadataQualityMetric.LICENCE_AVAILABILITY:
+        return translations.metadataQualityPage.metric.licenceAvailability;
+      case MetadataQualityMetric.MEDIA_TYPE_AVAILABILITY:
+        return translations.metadataQualityPage.metric.mediaTypeAvailability;
+      case MetadataQualityMetric.OPEN_LICENCE:
+        return translations.metadataQualityPage.metric.openLicence;
+      case MetadataQualityMetric.PUBLISHER_AVAILABILITY:
+        return translations.metadataQualityPage.metric.publisherAvailability;
+      case MetadataQualityMetric.RIGHTS_AVAILABILITY:
+        return translations.metadataQualityPage.metric.rightsAvailability;
+      case MetadataQualityMetric.SPATIAL_AVAILABILITY:
+        return translations.metadataQualityPage.metric.spatialAvailability;
+      case MetadataQualityMetric.SYNTAX_VALID:
+        return translations.metadataQualityPage.metric.syntaxValid;
+      case MetadataQualityMetric.TEMPORAL_AVAILABILITY:
+        return translations.metadataQualityPage.metric.temporalAvailability;
+
       default:
         return null;
     }
   };
+
+  const determineMetricDescriptionTranslation = (metric: string) => {
+    switch (metric) {
+      case MetadataQualityMetric.ACCESS_RIGHTS_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .accessRightsAvailability;
+      case MetadataQualityMetric.ACCESS_RIGHTS_VOCABULARY_ALIGNMENT:
+        return translations.metadataQualityPage.metricDescription
+          .accessRightsVocabularyAlignment;
+      case MetadataQualityMetric.ACCESS_URL_STATUS_CODE:
+        return translations.metadataQualityPage.metricDescription
+          .accessUrlStatusCode;
+      case MetadataQualityMetric.BYTE_SIZE_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .byteSizeAvailability;
+      case MetadataQualityMetric.CATEGORY_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .categoryAvailability;
+      case MetadataQualityMetric.CONTACT_POINT_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .contactPointAvailability;
+      case MetadataQualityMetric.DATE_ISSUED_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .dateIssuedAvailability;
+      case MetadataQualityMetric.DATE_MODIFIED_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .dateModifiedAvailability;
+      case MetadataQualityMetric.DOWNLOAD_URL_AVAILABLITY:
+        return translations.metadataQualityPage.metricDescription
+          .downloadUrlAvailability;
+      case MetadataQualityMetric.DOWNLOAD_URL_STATUS_CODE:
+        return translations.metadataQualityPage.metricDescription
+          .downloadUrlStatusCode;
+      case MetadataQualityMetric.FORMAT_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .formatAvailability;
+      case MetadataQualityMetric.FORMAT_MATCH:
+        return translations.metadataQualityPage.metricDescription.formatMatch;
+      case MetadataQualityMetric.FORMAT_MEDIA_TYPE_MACHINE_INTERPRETABLE:
+        return translations.metadataQualityPage.metricDescription
+          .formatMediaTypeMachineInterpretable;
+      case MetadataQualityMetric.FORMAT_MEDIA_TYPE_NON_PROPRIETARY:
+        return translations.metadataQualityPage.metricDescription
+          .formatMediaTypeNonProprietary;
+      case MetadataQualityMetric.FORMAT_MEDIA_TYPE_VOCABULARY_ALIGNMENT:
+        return translations.metadataQualityPage.metricDescription
+          .formatMediaTypeVocabularyAlignment;
+      case MetadataQualityMetric.KEYWORD_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .keywordAvailability;
+      case MetadataQualityMetric.KNOWN_LICENCE:
+        return translations.metadataQualityPage.metricDescription.knownLicence;
+      case MetadataQualityMetric.LICENCE_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .licenceAvailability;
+      case MetadataQualityMetric.MEDIA_TYPE_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .mediaTypeAvailability;
+      case MetadataQualityMetric.OPEN_LICENCE:
+        return translations.metadataQualityPage.metricDescription.openLicence;
+      case MetadataQualityMetric.PUBLISHER_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .publisherAvailability;
+      case MetadataQualityMetric.RIGHTS_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .rightsAvailability;
+      case MetadataQualityMetric.SPATIAL_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .spatialAvailability;
+      case MetadataQualityMetric.SYNTAX_VALID:
+        return translations.metadataQualityPage.metricDescription.syntaxValid;
+      case MetadataQualityMetric.TEMPORAL_AVAILABILITY:
+        return translations.metadataQualityPage.metricDescription
+          .temporalAvailability;
+
+      default:
+        return null;
+    }
+  };
+
+  const datasetScore = datasetScores
+    ? Object.values(datasetScores.scores)[0]
+    : null;
 
   return (
     <SC.DatasetPage className='container'>
@@ -185,10 +277,10 @@ const DatasetPage: FC<Props> = ({
         </h1>
         <div>
           <SC.DatasetIcon />
-          <SC.Title>{translate(assessment?.entity?.title)}</SC.Title>
+          <SC.Title>{translate(dataset?.title)}</SC.Title>
           <SC.BannerRating>
-            {determineRatingIcon(assessment?.rating)}
-            <p>{calculateRatingPercentage(assessment?.rating)}%</p>
+            {determineRatingIcon(datasetScore?.dataset)}
+            <p>{calculateRatingPercentage(datasetScore?.dataset)}%</p>
           </SC.BannerRating>
         </div>
       </SC.Banner>
@@ -208,60 +300,73 @@ const DatasetPage: FC<Props> = ({
             </tr>
           </SC.TableHead>
           <SC.TableBody>
-            {assessment?.dimensions?.map(({ type, rating, indicators }) => (
-              <Fragment key={type}>
+            {datasetScore?.dataset.dimensions?.map(dimensionScore => (
+              <Fragment key={dimensionScore.id}>
                 <tr className='section-row'>
                   <td>
                     <div>
                       <SC.DimensionContainer>
-                        <p>{determineDimensionTranslation(type)}</p>
+                        <p>
+                          {determineDimensionTranslation(dimensionScore.id)}
+                        </p>
                         <div
-                          data-tip={
-                            translations.metadataQualityPage.tooltipText?.[type]
-                          }
-                          data-for={`${type}_tooltip`}
+                          data-tip={determineDimensionDescriptionTranslation(
+                            dimensionScore.id
+                          )}
+                          data-for={`${dimensionScore.id}_tooltip`}
                         >
                           <SC.QuestionIcon />
                         </div>
                         <ReactTooltipSC.ReactTooltipStyled
-                          id={`${type}_tooltip`}
+                          id={`${dimensionScore.id}_tooltip`}
                           effect='solid'
                           place='top'
                           multiline
                         />
                       </SC.DimensionContainer>
                       <div>
-                        {determineRatingIcon(rating)}
-                        <span>{calculateRatingPercentage(rating)}%</span>
+                        <span>
+                          {calculateRatingPercentage(dimensionScore)}%
+                        </span>
                       </div>
                     </div>
                   </td>
                 </tr>
-                {indicators.map(({ type: indicatorType, conforms, weight }) => (
-                  <tr key={indicatorType}>
-                    <ExpansionPanel as='td'>
-                      <ExpansionPanelHead>
-                        <span>
-                          {conforms ? <SC.CheckIcon /> : <SC.CrossIcon />}
-                        </span>
-                        <p>{determineIndicatorTranslation(indicatorType)}</p>
-                      </ExpansionPanelHead>
-                      <ExpansionPanelBody>
-                        <p>
-                          {determineIndicatorDescriptionTranslation(
-                            indicatorType
-                          )}
-                        </p>
-                        <span>
-                          {translations.formatString(
-                            translations.metadataQualityPage.indicatorWeight,
-                            { weight }
-                          )}
-                        </span>
-                      </ExpansionPanelBody>
-                    </ExpansionPanel>
-                  </tr>
-                ))}
+                {dimensionScore.metrics.map(
+                  ({
+                    id: metricId,
+                    score: metricScore,
+                    max_score: metricMaxScore
+                  }) => (
+                    <tr key={metricId}>
+                      <ExpansionPanel as='td'>
+                        <ExpansionPanelHead>
+                          <span>
+                            {metricScore > 0 ? (
+                              <SC.CheckIcon />
+                            ) : (
+                              <SC.CrossIcon />
+                            )}
+                          </span>
+                          <p>
+                            {determineMetricTranslation(metricId) ?? metricId}
+                          </p>
+                        </ExpansionPanelHead>
+                        <ExpansionPanelBody>
+                          <SC.MetricDescription>
+                            {determineMetricDescriptionTranslation(metricId)}
+                          </SC.MetricDescription>
+                          <span>
+                            {translations.formatString(
+                              translations.metadataQualityPage.metricMaxScore,
+                              { metricMaxScore }
+                            )}
+                          </span>
+                        </ExpansionPanelBody>
+                      </ExpansionPanel>
+                    </tr>
+                  )
+                )}
               </Fragment>
             ))}
           </SC.TableBody>
@@ -291,7 +396,8 @@ const DatasetPage: FC<Props> = ({
 
 export default compose<FC>(
   memo,
-  withAssessment,
+  withDataset,
+  withDatasetScores,
   withOrganization,
   withErrorBoundary(ErrorPage)
 )(DatasetPage);
