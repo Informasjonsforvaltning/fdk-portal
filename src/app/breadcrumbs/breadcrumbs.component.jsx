@@ -22,7 +22,6 @@ import {
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS
 } from '../../constants/constants';
-import AssessmentBreadcrumb from './assessment-breadcrumb';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import DataServiceBreadcrumb from './data-service-breadcrumb';
 import ConceptBreadcrumb from './concept-breadcrumb';
@@ -99,7 +98,7 @@ const routes = [
   },
   {
     path: `${PATHNAME_ORGANIZATIONS}/:organizationId/datasets/:id`,
-    breadcrumb: AssessmentBreadcrumb
+    breadcrumb: DatasetBreadcrumb
   },
   {
     path: `${PATHNAME_PUBLIC_SERVICES}/:publicServiceId`,

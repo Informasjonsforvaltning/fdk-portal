@@ -21,6 +21,7 @@ interface GetDatasetsParams {
   accessService?: string;
   conformsTo?: string;
   relatedToInfoModel?: string;
+  nap?: boolean;
 }
 
 export function getDatasetsRequested(params?: GetDatasetsParams) {

@@ -1,9 +1,6 @@
 import {
   DataFormat,
-  RatingCategory,
   Entity as EntityEnum,
-  DimensionType,
-  IndicatorType,
   AdministrativeUnitType,
   SpecializedEventType,
   LanguageCodes
@@ -688,13 +685,45 @@ export interface KeyWithCountObject {
   count: number;
 }
 
-export interface Rating {
+export interface DatasetScoresRequest {
+  datasets: string[];
+}
+
+export interface DatasetScores {
+  scores: Record<string, DatasetScore>;
+  aggregations: MetadataQualityAggregationScore[];
+}
+
+export interface DatasetScore {
+  dataset: MetadataQualityScore;
+  distributions: MetadataQualityScore[];
+}
+
+export interface MetadataQualityMetricScore {
+  id: string;
   score: number;
-  maxScore: number;
-  satisfiedCriteria: number;
-  totalCriteria: number;
-  category: RatingCategory;
-  dimensionsRating: Record<DimensionType, Pick<Rating, 'score' | 'maxScore'>>;
+  max_score: number;
+  is_scored: boolean;
+}
+
+export interface MetadataQualityDimensionScore {
+  id: string;
+  metrics: MetadataQualityMetricScore[];
+  score: number;
+  max_score: number;
+}
+
+export interface MetadataQualityScore {
+  id: string;
+  dimensions: MetadataQualityDimensionScore[];
+  score: number;
+  max_score: number;
+}
+
+export interface MetadataQualityAggregationScore {
+  id: string;
+  score: number;
+  max_score: number;
 }
 
 export interface OrganizationCountsAndRating {
@@ -711,7 +740,7 @@ export interface OrganizationCountsAndRating {
     authoritativeCount: number;
     openCount: number;
     quality: {
-      category: RatingCategory;
+      score: number;
       percentage: number;
     };
   };
@@ -727,46 +756,6 @@ export interface OrganizationCountsAndRating {
     totalCount: number;
     newCount: number;
   };
-}
-
-export interface Catalog {
-  id: string;
-  uri?: string;
-}
-
-export interface AssessmentEntity {
-  uri: string;
-  title: Partial<TextLanguage>;
-  type: EntityEnum;
-  catalog: Catalog;
-}
-
-export interface Indicator {
-  type: IndicatorType;
-  weight: number;
-  conforms: boolean;
-}
-
-export interface Dimension {
-  type: DimensionType;
-  rating: Rating;
-  indicators: Indicator[];
-}
-
-export interface Assessment {
-  id: string;
-  entity: AssessmentEntity;
-  rating: Rating;
-  dimensions: Dimension[];
-  updated: string;
-}
-
-export interface Paged<T> {
-  content: T[];
-  totalPages: number;
-  totalElements: number;
-  size: number;
-  number: number;
 }
 
 interface EnhetsregisteretAdresse {

@@ -1,16 +1,15 @@
-import React, { memo, FC, useState, useLayoutEffect } from 'react';
+import React, { memo, FC, useLayoutEffect } from 'react';
 import { compose } from 'redux';
 import Link from '@fellesdatakatalog/link';
 import type { RouteComponentProps } from 'react-router-dom';
 
-import { getConfig } from '../../../../config';
-
-import withAssessment, {
-  Props as AssessmentProps
-} from '../../../../components/with-assessment';
-import withAssessments, {
-  Props as AssessmentsProps
-} from '../../../../components/with-assessments';
+// import { getConfig } from '../../../../config';
+import withDatasets, {
+  Props as DatasetsProps
+} from '../../../../components/with-datasets';
+import withDatasetScores, {
+  Props as DatasetScoresProps
+} from '../../../../components/with-dataset-scores';
 import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
@@ -22,54 +21,105 @@ import translations from '../../../../lib/localization';
 
 import { PATHNAME_GUIDANCE_METADATA } from '../../../../constants/constants';
 
-import ExpandIcon from '../../../../images/icon-expand-text-sm.svg';
-
 import SC from './styled';
+import {
+  Dataset,
+  DatasetScore,
+  MetadataQualityAggregationScore,
+  MetadataQualityDimensionScore,
+  MetadataQualityScore
+} from '../../../../types';
 
-import type { Rating } from '../../../../types';
-import { RatingCategory, DimensionType } from '../../../../types/enums';
+import {
+  MetadataQualityDimension,
+  MetadataQualityRatingCategory
+} from '../../../../types/enums';
+import { mapScoreToRatingCategory } from '../../../../utils/metadata-quality';
 
 interface RouteParams {
   organizationId: string;
 }
 
 interface Props
-  extends AssessmentProps,
-    AssessmentsProps,
-    OrganizationProps,
+  extends OrganizationProps,
+    DatasetsProps,
+    DatasetScoresProps,
     RouteComponentProps<RouteParams> {}
+
+const determineAggregationRatingIcon = (
+  score: MetadataQualityAggregationScore[] | null | undefined
+) => {
+  const calcScore: number =
+    score?.reduce((prev, curr) => prev + curr.score, 0) ?? 0;
+
+  switch (mapScoreToRatingCategory(calcScore)) {
+    case MetadataQualityRatingCategory.EXCELLENT:
+      return <SC.ExcellentQualityIcon />;
+    case MetadataQualityRatingCategory.GOOD:
+      return <SC.GoodQualityIcon />;
+    case MetadataQualityRatingCategory.SUFFICIENT:
+      return <SC.SufficientQualityIcon />;
+    case MetadataQualityRatingCategory.POOR:
+    default:
+      return <SC.PoorQualityIcon />;
+  }
+};
+
+export const determineRatingIcon = (
+  score: MetadataQualityScore | null | undefined
+) => {
+  const calcScore: number = score?.score ?? 0;
+  if (calcScore >= 351) {
+    return <SC.ExcellentQualityIcon />;
+  }
+  if (calcScore >= 221) {
+    return <SC.GoodQualityIcon />;
+  }
+  if (calcScore >= 121) {
+    return <SC.SufficientQualityIcon />;
+  }
+  return <SC.PoorQualityIcon />;
+};
+
+const calculateAggregationRatingPercentage = (
+  score: MetadataQualityAggregationScore[] | undefined
+) => {
+  const totals = score?.reduce(
+    (prev, curr) => [prev[0] + curr.score, prev[1] + curr.max_score],
+    [0, 0]
+  ) ?? [0, 0];
+  const [calcScore, calcMaxScore] = totals;
+
+  return calcMaxScore === 0 ? 0 : Math.round((calcScore / calcMaxScore) * 100);
+};
+
+export const calculateRatingPercentage = (
+  score:
+    | MetadataQualityScore
+    | MetadataQualityDimensionScore
+    | MetadataQualityAggregationScore
+    | undefined
+) => {
+  const calcScore = score?.score ?? 0;
+  const calcMaxScore = score?.max_score ?? 0;
+
+  return calcMaxScore === 0 ? 0 : Math.round((calcScore / calcMaxScore) * 100);
+};
 
 const DatasetsPage: FC<Props> = ({
   organization,
-  assessments,
-  catalogRating,
-  totalAssessments,
-  assessmentsPage,
-  assessmentPageSize,
-  hasMoreAssessments,
-  assessmentActions: { getCatalogRatingRequested: getCatalogRating },
-  assessmentsActions: {
-    getPagedAssessmentsRequested: getAssessments,
-    loadMoreAssessmentsRequested: loadMoreAssessments
-  },
   organizationActions: { getOrganizationRequested: getOrganization },
-  history: { push },
+  datasets,
+  datasetsActions: { getDatasetsRequested: getDatasets },
+  datasetScores,
+  datasetScoresActions: { getDatasetScoresRequested: getDatasetScores },
   match: {
     url,
     params: { organizationId }
-  }
+  },
+  history: { push }
 }) => {
-  const [assessmentsRequested, setAssessmentsRequested] = useState(false);
-
-  const isTransportportal = getConfig().themeNap;
-
-  const loadMoreDatasets = () =>
-    loadMoreAssessments(
-      organizationId,
-      'dataset',
-      isTransportportal ? 'NAP' : 'FDK',
-      assessmentsPage + 1
-    );
+  // const isTransportportal = getConfig().themeNap;
 
   useLayoutEffect(() => {
     if (organization?.organizationId !== organizationId) {
@@ -78,46 +128,34 @@ const DatasetsPage: FC<Props> = ({
   }, []);
 
   useLayoutEffect(() => {
-    if (!assessmentsRequested) {
-      getAssessments(
-        organizationId,
-        'dataset',
-        isTransportportal ? 'NAP' : 'FDK',
-        0
-      );
-
-      getCatalogRating(
-        organizationId,
-        'dataset',
-        isTransportportal ? 'NAP' : 'FDK'
-      );
-
-      setAssessmentsRequested(true);
+    if (
+      organization &&
+      organization.organizationId !== datasets?.[0]?.publisher.organizationId
+    ) {
+      getDatasets({ orgPath: organization.orgPath });
     }
-  });
+  }, [organization?.organizationId]);
 
-  const calculateRatingPercentage = (
-    r: Pick<Rating, 'score' | 'maxScore'> | null | undefined
-  ) => {
-    const score = r?.score ?? 0;
-    const maxScore = r?.maxScore ?? 0;
-
-    return maxScore === 0 ? 0 : Math.round((score / maxScore) * 100);
-  };
-
-  const determineRatingIcon = (r: Rating | null | undefined) => {
-    switch (r?.category) {
-      case RatingCategory.EXCELLENT:
-        return <SC.ExcellentQualityIcon />;
-      case RatingCategory.GOOD:
-        return <SC.GoodQualityIcon />;
-      case RatingCategory.SUFFICIENT:
-        return <SC.SufficientQualityIcon />;
-      case RatingCategory.POOR:
-      default:
-        return <SC.PoorQualityIcon />;
+  useLayoutEffect(() => {
+    if (
+      datasets &&
+      datasets.length > 0 &&
+      datasets[0].uri !== datasetScores?.scores[0]?.dataset.id
+    ) {
+      getDatasetScores({ datasets: datasets.map(dataset => dataset.uri) });
     }
-  };
+  }, [datasets?.[0]?.id]);
+
+  const scores: Map<Dataset, DatasetScore> = new Map(
+    Object.values(datasetScores?.scores ?? [])
+      .filter(score =>
+        datasets.find(dataset => dataset.uri === score.dataset.id)
+      )
+      .map(score => [
+        datasets.find(dataset => dataset.uri === score.dataset.id)!,
+        score
+      ])
+  );
 
   return (
     <SC.DatasetsPage className='container'>
@@ -143,67 +181,67 @@ const DatasetsPage: FC<Props> = ({
             <tr>
               <th>{translations.metadataQualityPage.datasetTitle}</th>
               <th>{translations.metadataQualityPage.metadataQuality}</th>
-              <th>{translations.metadataQualityPage.criteria.accessibility}</th>
-              <th>{translations.metadataQualityPage.criteria.findability}</th>
               <th>
-                {translations.metadataQualityPage.criteria.interoperability}
+                {translations.metadataQualityPage.dimension.accessibility}
               </th>
-              <th>{translations.metadataQualityPage.criteria.readability}</th>
-              <th>{translations.metadataQualityPage.criteria.reusability}</th>
+              <th>{translations.metadataQualityPage.dimension.findability}</th>
+              <th>
+                {translations.metadataQualityPage.dimension.interoperability}
+              </th>
+              <th>
+                {translations.metadataQualityPage.dimension.contextuality}
+              </th>
+              <th>{translations.metadataQualityPage.dimension.reusability}</th>
             </tr>
           </SC.TableHead>
           <SC.TableBody>
-            {assessments.map(assessment => (
-              <tr
-                key={assessment.id}
-                onClick={() => push(`${url}/${assessment.id}`)}
-              >
-                <td>{translate(assessment.entity?.title)}</td>
+            {Array.from(scores.entries()).map(([dataset, score]) => (
+              <tr key={dataset.id} onClick={() => push(`${url}/${dataset.id}`)}>
+                <td>{translate(dataset.title)}</td>
                 <td>
                   <SC.MetadataCellContents>
-                    {determineRatingIcon(assessment?.rating)}
-                    <span>
-                      {calculateRatingPercentage(assessment?.rating)}%
-                    </span>
+                    {determineRatingIcon(score.dataset)}
+                    <span>{calculateRatingPercentage(score.dataset)}%</span>
                   </SC.MetadataCellContents>
                 </td>
                 <td>
                   {calculateRatingPercentage(
-                    assessment?.dimensions?.find(
-                      ({ type }) => type === DimensionType.ACCESSIBILITY
-                    )?.rating
+                    score.dataset?.dimensions?.find(
+                      ({ id }) => id === MetadataQualityDimension.ACCESSIBILITY
+                    )
                   )}
                   %
                 </td>
                 <td>
                   {calculateRatingPercentage(
-                    assessment?.dimensions?.find(
-                      ({ type }) => type === DimensionType.FINDABILITY
-                    )?.rating
+                    score.dataset?.dimensions?.find(
+                      ({ id }) => id === MetadataQualityDimension.FINDABILITY
+                    )
                   )}
                   %
                 </td>
                 <td>
                   {calculateRatingPercentage(
-                    assessment?.dimensions?.find(
-                      ({ type }) => type === DimensionType.INTEROPERABILITY
-                    )?.rating
+                    score.dataset?.dimensions?.find(
+                      ({ id }) =>
+                        id === MetadataQualityDimension.INTEROPERABILITY
+                    )
                   )}
                   %
                 </td>
                 <td>
                   {calculateRatingPercentage(
-                    assessment?.dimensions?.find(
-                      ({ type }) => type === DimensionType.READABILITY
-                    )?.rating
+                    score.dataset?.dimensions?.find(
+                      ({ id }) => id === MetadataQualityDimension.CONTEXTUALITY
+                    )
                   )}
                   %
                 </td>
                 <td>
                   {calculateRatingPercentage(
-                    assessment?.dimensions?.find(
-                      ({ type }) => type === DimensionType.REUSABILITY
-                    )?.rating
+                    score.dataset?.dimensions?.find(
+                      ({ id }) => id === MetadataQualityDimension.REUSABILITY
+                    )
                   )}
                   %
                 </td>
@@ -211,43 +249,35 @@ const DatasetsPage: FC<Props> = ({
             ))}
           </SC.TableBody>
         </SC.Table>
-        {hasMoreAssessments && (
-          <SC.LoadMoreButton onClick={loadMoreDatasets}>
-            <ExpandIcon />
-            <span>
-              {translations.formatString(
-                translations.metadataQualityPage.loadMoreDatasets,
-                {
-                  count:
-                    totalAssessments -
-                    (assessmentsPage + 1) * assessmentPageSize
-                }
-              )}
-            </span>
-          </SC.LoadMoreButton>
-        )}
-        <SC.RatingSummary>
-          <div>
-            {translations.metadataQualityPage.averageRatingForOrganization}
-          </div>
-          <SC.MetadataCellContents>
-            {determineRatingIcon(catalogRating)}
-            <span>{calculateRatingPercentage(catalogRating)}%</span>
-          </SC.MetadataCellContents>
-          {[
-            DimensionType.ACCESSIBILITY,
-            DimensionType.FINDABILITY,
-            DimensionType.INTEROPERABILITY,
-            DimensionType.READABILITY,
-            DimensionType.REUSABILITY
-          ].map(dimension => (
-            <div key={dimension}>
-              {`${calculateRatingPercentage(
-                catalogRating?.dimensionsRating?.[dimension]
-              )}%`}
+        {datasetScores?.aggregations && (
+          <SC.RatingSummary>
+            <div>
+              {translations.metadataQualityPage.averageRatingForOrganization}
             </div>
-          ))}
-        </SC.RatingSummary>
+            <SC.MetadataCellContents>
+              {determineAggregationRatingIcon(datasetScores?.aggregations)}
+              <span>
+                {calculateAggregationRatingPercentage(
+                  datasetScores?.aggregations
+                )}
+                %
+              </span>
+            </SC.MetadataCellContents>
+            {[
+              MetadataQualityDimension.ACCESSIBILITY,
+              MetadataQualityDimension.FINDABILITY,
+              MetadataQualityDimension.INTEROPERABILITY,
+              MetadataQualityDimension.CONTEXTUALITY,
+              MetadataQualityDimension.REUSABILITY
+            ].map(dimension => (
+              <div key={dimension}>
+                {`${calculateRatingPercentage(
+                  datasetScores?.aggregations.find(({ id }) => id === dimension)
+                )}%`}
+              </div>
+            ))}
+          </SC.RatingSummary>
+        )}
       </SC.Section>
       <SC.Section>
         <SC.FrequentlyAskedQuestions>
@@ -273,8 +303,8 @@ const DatasetsPage: FC<Props> = ({
 
 export default compose<FC>(
   memo,
-  withAssessment,
-  withAssessments,
   withOrganization,
+  withDatasets,
+  withDatasetScores,
   withErrorBoundary(ErrorPage)
 )(DatasetsPage);
