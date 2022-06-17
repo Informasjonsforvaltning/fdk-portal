@@ -4,7 +4,7 @@ import { theme as themeFDK, Colour } from '@fellesdatakatalog/theme';
 const Topic = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: ${themeFDK.colour(Colour.NEUTRAL, 'N0')};
+  background-color: ${themeFDK.colour(Colour.NEUTRAL, 'N10')};
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
