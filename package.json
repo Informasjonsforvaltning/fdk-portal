@@ -105,7 +105,7 @@
     "react-moment": "^1.1.1",
     "react-motion": "^0.5.2",
     "react-paginate": "^7.1.5",
-    "react-redux": "^7.2.6",
+    "react-redux": "^8.0.2",
     "react-resolver": "^3.1.2",
     "react-router-breadcrumbs-hoc": "^3.4.0",
     "react-router-dom": "^5.3.0",
