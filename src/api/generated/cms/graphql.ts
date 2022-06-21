@@ -1657,6 +1657,34 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type GetFancyArticleQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+export type GetFancyArticleQuery = {
+  __typename?: 'Query';
+  fancyArticle?: {
+    __typename?: 'FancyArticle';
+    title?: string | null;
+    subtitle?: string | null;
+    Content?: Array<
+      | {
+          __typename: 'ComponentBasicImage';
+          style?: Enum_Componentbasicimage_Style | null;
+          media?: Array<{
+            __typename?: 'UploadFile';
+            alternativeText?: string | null;
+            url: string;
+            caption?: string | null;
+          } | null> | null;
+        }
+      | { __typename: 'ComponentBasicParagraph'; Content?: string | null }
+      | { __typename?: 'ComponentBasicQuote' }
+      | null
+    > | null;
+  } | null;
+};
+
 export type GetArticleQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -1714,6 +1742,80 @@ export type GetServiceMessageQuery = {
   } | null;
 };
 
+export const GetFancyArticleDocument = gql`
+  query GetFancyArticle($id: ID!) {
+    fancyArticle(id: $id) {
+      title
+      subtitle
+      Content {
+        ... on ComponentBasicParagraph {
+          __typename
+          Content
+        }
+        ... on ComponentBasicImage {
+          __typename
+          media {
+            alternativeText
+            url
+            caption
+          }
+          style
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetFancyArticleQuery__
+ *
+ * To run a query within a React component, call `useGetFancyArticleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFancyArticleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetFancyArticleQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetFancyArticleQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetFancyArticleQuery,
+    GetFancyArticleQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetFancyArticleQuery, GetFancyArticleQueryVariables>(
+    GetFancyArticleDocument,
+    options
+  );
+}
+export function useGetFancyArticleLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetFancyArticleQuery,
+    GetFancyArticleQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetFancyArticleQuery,
+    GetFancyArticleQueryVariables
+  >(GetFancyArticleDocument, options);
+}
+export type GetFancyArticleQueryHookResult = ReturnType<
+  typeof useGetFancyArticleQuery
+>;
+export type GetFancyArticleLazyQueryHookResult = ReturnType<
+  typeof useGetFancyArticleLazyQuery
+>;
+export type GetFancyArticleQueryResult = Apollo.QueryResult<
+  GetFancyArticleQuery,
+  GetFancyArticleQueryVariables
+>;
 export const GetArticleDocument = gql`
   query GetArticle($id: ID!) {
     article(id: $id) {
