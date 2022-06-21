@@ -2,6 +2,20 @@ query GetFancyArticle($id: ID!) {
   fancyArticle(id: $id) {
     title
     subtitle
-    content
+    Content {
+      ... on ComponentBasicParagraph {
+        __typename
+        Content
+      }
+      ... on ComponentBasicImage {
+        __typename
+        media {
+          alternativeText
+          url
+          caption
+        }
+        style
+      }
+    }
   }
 }
