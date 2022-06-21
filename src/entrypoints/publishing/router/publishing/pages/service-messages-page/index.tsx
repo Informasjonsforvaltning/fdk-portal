@@ -65,7 +65,6 @@ const ServiceMessagesPage: FC<Props> = () => {
         ({
           id,
           title,
-          channel,
           message_type,
           valid_from,
           valid_to,
@@ -80,7 +79,7 @@ const ServiceMessagesPage: FC<Props> = () => {
                 to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
                 forwardedAs={RouteLink}
               >
-                {title} ({channel})
+                {title}
               </SC.ServiceMessageTitle>
               <SC.Date>
                 <Moment format='DD.MM.YYYY HH:mm'>{valid_from}</Moment> -{' '}
