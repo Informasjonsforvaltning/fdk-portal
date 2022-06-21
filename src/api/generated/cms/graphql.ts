@@ -204,13 +204,6 @@ export enum Enum_Componentbasicimage_Style {
   Right = 'right'
 }
 
-export enum Enum_Servicemessage_Channel {
-  Adminportal = 'Adminportal',
-  Generell = 'Generell',
-  Publiseringsportal = 'Publiseringsportal',
-  Registreringsportal = 'Registreringsportal'
-}
-
 export enum Enum_Servicemessage_Environment {
   Production = 'production',
   Staging = 'staging'
@@ -230,6 +223,7 @@ export type FancyArticle = {
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<FancyArticle>>>;
   published_at?: Maybe<Scalars['DateTime']>;
+  subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_at: Scalars['DateTime'];
 };
@@ -278,6 +272,12 @@ export type FancyArticleConnectionPublished_At = {
   key?: Maybe<Scalars['DateTime']>;
 };
 
+export type FancyArticleConnectionSubtitle = {
+  __typename?: 'FancyArticleConnectionSubtitle';
+  connection?: Maybe<FancyArticleConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
 export type FancyArticleConnectionTitle = {
   __typename?: 'FancyArticleConnectionTitle';
   connection?: Maybe<FancyArticleConnection>;
@@ -301,6 +301,7 @@ export type FancyArticleGroupBy = {
   id?: Maybe<Array<Maybe<FancyArticleConnectionId>>>;
   locale?: Maybe<Array<Maybe<FancyArticleConnectionLocale>>>;
   published_at?: Maybe<Array<Maybe<FancyArticleConnectionPublished_At>>>;
+  subtitle?: Maybe<Array<Maybe<FancyArticleConnectionSubtitle>>>;
   title?: Maybe<Array<Maybe<FancyArticleConnectionTitle>>>;
   updated_at?: Maybe<Array<Maybe<FancyArticleConnectionUpdated_At>>>;
 };
@@ -311,6 +312,7 @@ export type FancyArticleInput = {
   locale?: InputMaybe<Scalars['String']>;
   localizations?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   published_at?: InputMaybe<Scalars['DateTime']>;
+  subtitle?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
   updated_by?: InputMaybe<Scalars['ID']>;
 };
@@ -385,6 +387,7 @@ export type Morph =
   | FancyArticleConnectionId
   | FancyArticleConnectionLocale
   | FancyArticleConnectionPublished_At
+  | FancyArticleConnectionSubtitle
   | FancyArticleConnectionTitle
   | FancyArticleConnectionUpdated_At
   | FancyArticleGroupBy
@@ -392,7 +395,6 @@ export type Morph =
   | ServiceMessage
   | ServiceMessageAggregator
   | ServiceMessageConnection
-  | ServiceMessageConnectionChannel
   | ServiceMessageConnectionChannel_Adminportal
   | ServiceMessageConnectionChannel_Publiseringportal
   | ServiceMessageConnectionChannel_Registreringportal
@@ -796,7 +798,6 @@ export type RoleInput = {
 
 export type ServiceMessage = {
   __typename?: 'ServiceMessage';
-  channel: Enum_Servicemessage_Channel;
   channel_adminportal?: Maybe<Scalars['Boolean']>;
   channel_publiseringportal?: Maybe<Scalars['Boolean']>;
   channel_registreringportal?: Maybe<Scalars['Boolean']>;
@@ -833,12 +834,6 @@ export type ServiceMessageConnection = {
   aggregate?: Maybe<ServiceMessageAggregator>;
   groupBy?: Maybe<ServiceMessageGroupBy>;
   values?: Maybe<Array<Maybe<ServiceMessage>>>;
-};
-
-export type ServiceMessageConnectionChannel = {
-  __typename?: 'ServiceMessageConnectionChannel';
-  connection?: Maybe<ServiceMessageConnection>;
-  key?: Maybe<Scalars['String']>;
 };
 
 export type ServiceMessageConnectionChannel_Adminportal = {
@@ -933,7 +928,6 @@ export type ServiceMessageConnectionValid_To = {
 
 export type ServiceMessageGroupBy = {
   __typename?: 'ServiceMessageGroupBy';
-  channel?: Maybe<Array<Maybe<ServiceMessageConnectionChannel>>>;
   channel_adminportal?: Maybe<
     Array<Maybe<ServiceMessageConnectionChannel_Adminportal>>
   >;
@@ -960,7 +954,6 @@ export type ServiceMessageGroupBy = {
 };
 
 export type ServiceMessageInput = {
-  channel: Enum_Servicemessage_Channel;
   channel_adminportal?: InputMaybe<Scalars['Boolean']>;
   channel_publiseringportal?: InputMaybe<Scalars['Boolean']>;
   channel_registreringportal?: InputMaybe<Scalars['Boolean']>;
@@ -1540,6 +1533,7 @@ export type EditFancyArticleInput = {
   locale?: InputMaybe<Scalars['String']>;
   localizations?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   published_at?: InputMaybe<Scalars['DateTime']>;
+  subtitle?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
   updated_by?: InputMaybe<Scalars['ID']>;
 };
@@ -1582,7 +1576,6 @@ export type EditRoleInput = {
 };
 
 export type EditServiceMessageInput = {
-  channel?: InputMaybe<Enum_Servicemessage_Channel>;
   channel_adminportal?: InputMaybe<Scalars['Boolean']>;
   channel_publiseringportal?: InputMaybe<Scalars['Boolean']>;
   channel_registreringportal?: InputMaybe<Scalars['Boolean']>;
@@ -1670,21 +1663,15 @@ export type GetArticleQueryVariables = Exact<{
 
 export type GetArticleQuery = {
   __typename?: 'Query';
-  article?:
-    | {
-        __typename?: 'Article';
-        title: string;
-        content: string;
-        locale?: string | null | undefined;
-        published_at?: any | null | undefined;
-        updated_at: any;
-        featureImage?:
-          | { __typename?: 'UploadFile'; url: string }
-          | null
-          | undefined;
-      }
-    | null
-    | undefined;
+  article?: {
+    __typename?: 'Article';
+    title: string;
+    content: string;
+    locale?: string | null;
+    published_at?: any | null;
+    updated_at: any;
+    featureImage?: { __typename?: 'UploadFile'; url: string } | null;
+  } | null;
 };
 
 export type GetServiceMessagesQueryVariables = Exact<{
@@ -1695,25 +1682,18 @@ export type GetServiceMessagesQueryVariables = Exact<{
 
 export type GetServiceMessagesQuery = {
   __typename?: 'Query';
-  serviceMessages?:
-    | Array<
-        | {
-            __typename?: 'ServiceMessage';
-            id: string;
-            title: string;
-            valid_from: any;
-            valid_to?: any | null | undefined;
-            message_type: Enum_Servicemessage_Message_Type;
-            short_description: string;
-            description?: string | null | undefined;
-            environment: Enum_Servicemessage_Environment;
-            channel_publiseringportal?: boolean | null | undefined;
-          }
-        | null
-        | undefined
-      >
-    | null
-    | undefined;
+  serviceMessages?: Array<{
+    __typename?: 'ServiceMessage';
+    id: string;
+    title: string;
+    valid_from: any;
+    valid_to?: any | null;
+    message_type: Enum_Servicemessage_Message_Type;
+    short_description: string;
+    description?: string | null;
+    environment: Enum_Servicemessage_Environment;
+    channel_publiseringportal?: boolean | null;
+  } | null> | null;
 };
 
 export type GetServiceMessageQueryVariables = Exact<{
@@ -1722,19 +1702,16 @@ export type GetServiceMessageQueryVariables = Exact<{
 
 export type GetServiceMessageQuery = {
   __typename?: 'Query';
-  serviceMessage?:
-    | {
-        __typename?: 'ServiceMessage';
-        id: string;
-        title: string;
-        valid_from: any;
-        valid_to?: any | null | undefined;
-        message_type: Enum_Servicemessage_Message_Type;
-        short_description: string;
-        description?: string | null | undefined;
-      }
-    | null
-    | undefined;
+  serviceMessage?: {
+    __typename?: 'ServiceMessage';
+    id: string;
+    title: string;
+    valid_from: any;
+    valid_to?: any | null;
+    message_type: Enum_Servicemessage_Message_Type;
+    short_description: string;
+    description?: string | null;
+  } | null;
 };
 
 export const GetArticleDocument = gql`
