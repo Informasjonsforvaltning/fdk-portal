@@ -39,7 +39,11 @@ import {
   PATHNAME_ABOUT_REGISTRATION,
   PATHNAME_GUIDANCE,
   PATHNAME_GUIDANCE_METADATA,
-  PATHNAME_SPARQL
+  PATHNAME_SPARQL,
+  PATHNAME_ABOUT_DATASETS,
+  PATHNAME_ABOUT_DATA_SERVICES,
+  PATHNAME_ABOUT_CONCEPTS,
+  PATHNAME_ABOUT_INFORMATIONMODELS
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
 import { getConfig } from '../config';
@@ -49,6 +53,7 @@ import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-page';
 import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
+import InformationPage from '../pages/cms-information-page';
 import { parseSearchParams } from '../lib/location-history-helper';
 import routes from '../routes';
 
@@ -97,7 +102,11 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_REGISTRATION]: CmsArticlePage,
     [PATHNAME_GUIDANCE]: CmsArticlePage,
     [PATHNAME_GUIDANCE_METADATA]: CmsArticlePage,
-    [PATHNAME_ORGANIZATIONS]: OrganizationsRouter
+    [PATHNAME_ORGANIZATIONS]: OrganizationsRouter,
+    [PATHNAME_ABOUT_DATASETS]: InformationPage,
+    [PATHNAME_ABOUT_DATA_SERVICES]: InformationPage,
+    [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
+    [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage
   };
 
   return (

@@ -19,3 +19,9 @@ query GetFancyArticle($id: ID!) {
     }
   }
 }
+
+query GetFancyArticleTitle($id: ID!) {
+  fancyArticle(id: $id) {
+    title
+  }
+}

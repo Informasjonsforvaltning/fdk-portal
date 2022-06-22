@@ -1052,5 +1052,12 @@
     "showAll": "Show all",
     "noActiveMessages": "There are currently no active service messages.",
     "goToDetailsPage": "See details for more information."
+  },
+  "informationPage": {
+    "aboutDatasets": "About dataset catalog",
+    "aboutDataServices": "About data service catalog",
+    "aboutConcepts": "About concept catalog",
+    "aboutInformationModels": "About information model catalog",
+    "imageText": "Image text: "
   }
 }

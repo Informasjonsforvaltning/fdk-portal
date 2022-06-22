@@ -1052,5 +1052,12 @@
     "showAll": "Vis alle",
     "noActiveMessages": "Det finnast inga aktive driftsmeldingar.",
     "goToDetailsPage": "Se detaljert driftsmelding for meir informasjon."
+  },
+  "informationPage": {
+    "aboutDatasets": "Om datasettkatalogen",
+    "aboutDataServices": "Om API-katalogen",
+    "aboutConcepts": "Om omgrepskatalogen",
+    "aboutInformationModels": "Om informasjonsmodellkatalogen",
+    "imageText": "Bildetekst: "
   }
 }
