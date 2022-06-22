@@ -16,7 +16,11 @@ import {
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_EVENTS,
-  PATHNAME_SPARQL
+  PATHNAME_SPARQL,
+  PATHNAME_ABOUT_DATASETS,
+  PATHNAME_ABOUT_DATA_SERVICES,
+  PATHNAME_ABOUT_CONCEPTS,
+  PATHNAME_ABOUT_INFORMATIONMODELS
 } from '../../constants/constants';
 import AssessmentBreadcrumb from './assessment-breadcrumb';
 import DatasetBreadcrumb from './dataset-breadcrumb';
@@ -108,6 +112,22 @@ const routes = [
   {
     path: PATHNAME_SPARQL,
     breadcrumb: () => <SparqlPageBreadcrumb pathName='sparql' />
+  },
+  {
+    path: PATHNAME_ABOUT_DATASETS,
+    breadcrumb: 'Om datasettkatalogen'
+  },
+  {
+    path: PATHNAME_ABOUT_DATA_SERVICES,
+    breadcrumb: 'Om API-katalogen'
+  },
+  {
+    path: PATHNAME_ABOUT_CONCEPTS,
+    breadcrumb: 'Om begrepskatalogen'
+  },
+  {
+    path: PATHNAME_ABOUT_INFORMATIONMODELS,
+    breadcrumb: 'Om informasjonsmodellkatalogen'
   }
 ];
 
