@@ -16,6 +16,10 @@ import { Props as ReferenceDataProps } from '../../components/with-reference-dat
 import { Props as CommunityProps } from '../../components/with-community';
 import { CommunityTerm, Entity, Namespace } from '../../types/enums';
 import Post from '../../components/community/post';
+import CommunityContainer from '../../components/community/community-container';
+import ContainerHeader from '../../components/community/container-header';
+import ContainerFooter from '../../components/community/container-footer';
+import Divider from '../../components/divider';
 
 const { FDK_COMMUNITY_BASE_URI, NAMESPACE } = env;
 
@@ -60,22 +64,24 @@ const MainPage: FC<Props> = ({
             <SearchEntities entities={entities} />
           </section>
           <section className='col-12 col-lg-4'>
-            <HeaderSC.Header>
-              {localization.community.seeLatest}
-              <SC.Link href={`${FDK_COMMUNITY_BASE_URI}`} external>
-                {localization.community.title}
-              </SC.Link>
-            </HeaderSC.Header>
-            {prunedPosts.length > 0 ? (
-              <SC.CommunityPosts>
-                {prunedPosts.slice(0, 3).map(post => (
-                  <Post key={post.pid ?? post.uid} post={post} />
-                ))}
-                <SC.Link href={`${FDK_COMMUNITY_BASE_URI}/recent`} external>
-                  {localization.community.seeMore}
-                </SC.Link>
-              </SC.CommunityPosts>
-            ) : null}
+            <CommunityContainer>
+              <ContainerHeader>
+                {`${localization.community.seeLatest} ${localization.community.title}`}
+              </ContainerHeader>
+              {prunedPosts.length > 0 ? (
+                <SC.CommunityPosts>
+                  {prunedPosts.slice(0, 3).map(post => (
+                    <>
+                      <Post key={post.pid ?? post.uid} post={post} />
+                      <Divider />
+                    </>
+                  ))}
+                  <ContainerFooter href={`${FDK_COMMUNITY_BASE_URI}/recent`}>
+                    {localization.community.seeMore}
+                  </ContainerFooter>
+                </SC.CommunityPosts>
+              ) : null}
+            </CommunityContainer>
 
             <HeaderSC.Header>{localization.news}</HeaderSC.Header>
             <NewsList news={news} />

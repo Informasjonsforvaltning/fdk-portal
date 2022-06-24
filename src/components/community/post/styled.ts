@@ -2,15 +2,17 @@ import styled from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 
 const PostLink = styled.a`
-  padding: 20px 15px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  background-color: transparent;
+  padding: ${theme.spacing('S10')} ${theme.spacing('S10')} 0;
+  font-size: ${theme.fontSize('FS16')};
 
-  & > h3 {
-    font-size: 16px;
+  & > h5 {
     font-weight: ${theme.fontWeight('FW700')};
-    margin-bottom: 10px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: ${theme.colour(Colour.NEUTRAL, 'N60')};
+    margin-bottom: ${theme.spacing('S10')};
   }
 
   && {
@@ -20,7 +22,12 @@ const PostLink = styled.a`
   &&:hover {
     color: ${theme.colour(Colour.NEUTRAL, 'N60')};
     box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.15);
+    background-color: ${theme.colour(Colour.NEUTRAL, 'N15')};
     text-decoration: none;
+
+    h5 {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -28,18 +35,9 @@ const UserInfo = styled.span`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 10px;
+  text-align: right;
+  margin-bottom: ${theme.spacing('S10')};
   color: ${theme.colour(Colour.NEUTRAL, 'N50')};
 `;
 
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-
-  & > p {
-    overflow-wrap: anywhere;
-  }
-`;
-
-export default { PostLink, UserInfo, Content };
+export default { PostLink, UserInfo };
