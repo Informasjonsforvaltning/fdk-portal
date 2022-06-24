@@ -905,7 +905,7 @@
   "sampleData": "Eksempeldata",
   "community": {
     "title": "Datalandsbyen",
-    "seeLatest": "Siste saker frå",
+    "seeLatest": "Siste saker i",
     "seeMore": "Sjå fleire nylege innlegg",
     "meetingTitle": "Møtetittel: ",
     "subtitle": {
@@ -1040,7 +1040,9 @@
           }
         }
       }
-    }
+    },
+    "clock": "kl",
+    "today": "I dag"
   },
   "serviceMessagesPage": {
     "title": "Driftsmeldingar",
