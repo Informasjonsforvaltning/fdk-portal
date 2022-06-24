@@ -1040,7 +1040,9 @@
           }
         }
       }
-    }
+    },
+    "clock": "at",
+    "today": "Today"
   },
   "serviceMessagesPage": {
     "title": "Service messages",
