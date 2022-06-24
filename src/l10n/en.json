@@ -143,7 +143,9 @@
     "harvestData": "Harvest data",
     "termsOfUse": "Terms of use",
     "searchInFdk": "Search in Felles datakatalog",
-    "publishing": "Publish"
+    "publishing": "Publish",
+    "aboutCatalogs": "About catalogs",
+    "guidance": "Guidance"
   },
   "query": {
     "intro": "Example: public transport",
