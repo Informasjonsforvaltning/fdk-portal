@@ -143,7 +143,10 @@
     "harvestData": "Høste data",
     "termsOfUse": "Bruksvilkår",
     "searchInFdk": "Søk i Felles datakatalog",
-    "publishing": "Publisere"
+    "publishing": "Publisere",
+    "aboutCatalogs": "Om katalogene",
+    "guidance": "Veilledning"
+
   },
   "query": {
     "intro": "Eksempel: kollektivtransport",
