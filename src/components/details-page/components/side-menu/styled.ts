@@ -1,8 +1,12 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { theme as t } from '@fellesdatakatalog/theme';
 
 const onMobileView = '@media (max-width: 900px)';
+
+interface Props {
+  $isSticky?: boolean;
+}
 
 const SideMenu = styled.aside``;
 
@@ -12,7 +16,18 @@ const Title = styled.h3`
   font-weight: 600;
 `;
 
-const Menu = styled.nav`
+export const slideDown = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(100);
+  }
+`;
+
+const Menu = styled.nav<Props>`
   font-size: ${t.fontSize('FS14')};
   & > ul {
     display: flex;
@@ -23,6 +38,17 @@ const Menu = styled.nav`
   & > ul > li > a {
     color: ${({ theme }) => theme.entityColours.dark} !important;
   }
+  ${({ $isSticky }) =>
+    $isSticky &&
+    css`
+      animation-duration: 500ms;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+      animation-name: ${slideDown};
+      position: fixed;
+      top: ${t.spacing('S16')};
+      width: 20%;
+    `}
 `;
 
 const MenuItem = styled.li`
