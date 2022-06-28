@@ -1,10 +1,10 @@
+import styled from 'styled-components';
 import { theme as t } from '@fellesdatakatalog/theme';
 import Link from '@fellesdatakatalog/link';
-import styled from 'styled-components';
 
 import SideMenuBase from '../side-menu';
 
-const onMobileView = '@media (max-width: 768px)';
+const onMobileView = '@media (max-width: 900px)';
 
 const DetailsPage = styled.article`
   flex: 1 0 auto;
@@ -193,7 +193,7 @@ const MenuToggle = styled.button`
 `;
 
 const SideMenu = styled(SideMenuBase)`
-  flex: 0 0 15%;
+  flex: 0 0 25%;
   ${onMobileView} {
     display: none;
     width: auto;
@@ -228,6 +228,7 @@ const Content = styled.main`
   flex: 1;
   flex-direction: column;
   gap: ${t.spacing('S12')};
+  z-index: 10;
   ${onMobileView} {
     width: auto;
     margin-top: 40px;

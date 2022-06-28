@@ -107,6 +107,29 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   communityActions: { searchTopicsRequested: searchTopics, resetTopics },
   children
 }) => {
+  const [isSticky, setSticky] = useState(false);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    currentScrollPos > 500 ? setSticky(true) : setSticky(false);
+  };
+
+  function debounce(fn: any, delay: any) {
+    return function deb() {
+      clearTimeout(fn._tId);
+      fn._tId = setTimeout(() => {
+        fn();
+      }, delay);
+    };
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', debounce(handleScroll, 50));
+    return () => {
+      window.removeEventListener('scroll', () => handleScroll);
+    };
+  }, [debounce, handleScroll]);
+
   useEffect(() => {
     const appRoot = document.querySelector('#root > div');
     appRoot?.classList.add(entity);
@@ -295,8 +318,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
           {translations.detailsPage.navMenuButton[navOpen ? 'open' : 'closed']}
         </SC.MenuToggle>
-        <SC.SideMenu menuItems={menuItems} />
-
+        <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
         {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
 
         <SC.Content>{renderContentSections()}</SC.Content>
