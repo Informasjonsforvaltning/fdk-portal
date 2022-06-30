@@ -21,7 +21,7 @@ const PostLink: FC<Props> = ({ post }) => (
     <SC.UserInfo>
       <User user={post.user} />
     </SC.UserInfo>
-    <TruncatedText visibleLines={4} lineHeight={24} onlyTruncate>
+    <TruncatedText visibleLines={4} lineHeight={24} onlyTruncate isTruncated>
       {parse(post.content)}
     </TruncatedText>
     <TimeStamp time={post.timestamp} />

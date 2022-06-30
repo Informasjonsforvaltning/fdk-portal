@@ -66,6 +66,28 @@ const MainPage: FC<Props> = ({
           <section className='col-12 col-lg-4'>
             <CommunityContainer>
               <ContainerHeader>
+                {`${localization.community.seeLatestComments} ${localization.community.title}`}
+              </ContainerHeader>
+              {prunedPosts.length > 0 ? (
+                <SC.CommunityPosts>
+                  {prunedPosts
+                    .filter(({ isMainPost }) => !isMainPost)
+                    .slice(0, 3)
+                    .map(post => (
+                      <>
+                        <Post key={post.pid ?? post.uid} post={post} />
+                        <Divider />
+                      </>
+                    ))}
+                  <ContainerFooter href={`${FDK_COMMUNITY_BASE_URI}/recent`}>
+                    {localization.community.seeMore}
+                  </ContainerFooter>
+                </SC.CommunityPosts>
+              ) : null}
+            </CommunityContainer>
+
+            <CommunityContainer>
+              <ContainerHeader>
                 {`${localization.community.seeLatest} ${localization.community.title}`}
               </ContainerHeader>
               {prunedPosts.length > 0 ? (

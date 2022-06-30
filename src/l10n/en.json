@@ -59,7 +59,7 @@
   "openApiTooltip": "API that are published under an open license<br> so anyone can access, use and share. This also include<br> solutions that require user registration and/or<br> API-keys as long as everyone can get access.",
   "showOnly": "Show only",
   "publisher": "Publisher",
-  "news": "News",
+  "news": "Latest news from the blog",
   "datasetAccessRights": "Dataset access",
   "apiAvailability": "API availability",
   "isFree": "Is free",
@@ -908,6 +908,7 @@
   "community": {
     "title": "Data Community",
     "seeLatest": "Latests posts from the ",
+    "seeLatestComments": "Latest comments in",
     "seeMore": "See more recent posts",
     "meetingTitle": "Meeting title: ",
     "subtitle": {
