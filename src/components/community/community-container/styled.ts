@@ -8,6 +8,7 @@ const CommunityContainer = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
+  margin-bottom: ${theme.spacing('S10')};
 `;
 
 export default { CommunityContainer };
