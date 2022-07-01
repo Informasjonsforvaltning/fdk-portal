@@ -37,6 +37,19 @@ const Menu = styled.nav<Props>`
 
   & > ul > li > a {
     color: ${({ theme }) => theme.entityColours.dark} !important;
+    padding: ${t.spacing('S10')};
+    &.active {
+      background-color: ${({ theme }) => theme.entityColours.dark} !important;
+      border-radius: 5px;
+      color: white !important;
+      flex: 1;
+      transition: background-color 200ms ease-in;
+    }
+    &:hover {
+      background-color: ${({ theme }) => theme.entityColours.light};
+      border-radius: 5px;
+      flex: 1;
+    }
   }
   ${({ $isSticky }) =>
     $isSticky &&
@@ -47,11 +60,13 @@ const Menu = styled.nav<Props>`
       animation-name: ${slideDown};
       position: fixed;
       top: ${t.spacing('S16')};
-      width: 20%;
+      width: 10%;
     `}
 `;
 
 const MenuItem = styled.li`
+  align-items: center;
+  display: flex;
   list-style: none;
   ${onMobileView} {
     margin: 0;
