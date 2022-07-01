@@ -735,7 +735,7 @@ const DatasetDetailsPage: FC<Props> = ({
         )}
         {referencedResourcesUnResolved.length > 0 && (
           <ContentSection
-            id='dataset-references'
+            id='dataset-references-other'
             title={
               translations.detailsPage.sectionTitles.dataset.resourceReferences
             }
