@@ -30,6 +30,7 @@ const Article = styled.main`
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing('S10')};
+  z-index: 10;
 `;
 
 const Title = styled.h1`
