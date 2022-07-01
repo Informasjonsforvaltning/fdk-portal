@@ -52,8 +52,30 @@ const getEntityFromPath = (pathname: string) => {
 
 const InformationPage: FC<Props> = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const [isSticky, setSticky] = useState(false);
 
   const entity = getEntityFromPath(location.pathname);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    currentScrollPos > 300 ? setSticky(true) : setSticky(false);
+  };
+
+  function debounce(fn: any, delay: any) {
+    return function deb() {
+      clearTimeout(fn._tId);
+      fn._tId = setTimeout(() => {
+        fn();
+      }, delay);
+    };
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', debounce(handleScroll, 50));
+    return () => {
+      window.removeEventListener('scroll', () => handleScroll);
+    };
+  }, [debounce, handleScroll]);
 
   useEffect(() => {
     const appRoot = document.querySelector('#root > div');
@@ -102,7 +124,7 @@ const InformationPage: FC<Props> = () => {
               ]
             }
           </SC.MenuToggle>
-          <SC.SideMenu menuItems={menuItems} />
+          <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
           {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
         </SC.Aside>
         <SC.Article>

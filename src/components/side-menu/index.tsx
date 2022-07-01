@@ -10,10 +10,11 @@ interface MenuItem {
 
 interface Props {
   menuItems?: MenuItem[];
+  isSticky?: boolean;
 }
 
-const SideMenu: FC<Props> = ({ menuItems = [], ...props }) => (
-  <SC.Menu {...props}>
+const SideMenu: FC<Props> = ({ menuItems = [], isSticky, ...props }) => (
+  <SC.Menu $isSticky={isSticky} {...props}>
     <ul>
       {menuItems.map(({ id, title: menuItemTitle }) => (
         <SC.MenuItem key={id}>
