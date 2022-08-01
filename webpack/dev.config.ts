@@ -78,11 +78,15 @@ const configuration: Configuration = mergeWithCustomize({
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
-        include: [resolve(__dirname, '..', 'src', 'images')],
-        options: {
-          typescript: true
-        }
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              typescript: true
+            }
+          }
+        ],
+        include: [resolve(__dirname, '..', 'src', 'images')]
       },
       {
         test: /\.(png|jpg|gif)$/,
