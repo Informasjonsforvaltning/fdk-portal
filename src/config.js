@@ -16,7 +16,7 @@ const env = window.env || {
 // env.ORGANIZATION_CATALOGUE_HOST =
 //   'https://organization-catalogue.staging.fellesdatakatalog.digdir.no';
 // env.REPORT_API_HOST = 'https://reports-bff.staging.fellesdatakatalog.digdir.no';
-// env.METADATA_QUALITY_ASSESSMENT_API_HOST =
+// env.FDK_MQA_API_BASE_URI =
 //   'https://metadata-quality.staging.fellesdatakatalog.digdir.no';
 // env.USE_DEMO_LOGO = true;
 
@@ -50,7 +50,7 @@ const config = {
   organizationsCatalogApi: { host: env.ORGANIZATION_CATALOGUE_HOST },
   reportApi: { host: env.REPORT_API_HOST },
   metadataQualityAssessmentApi: {
-    host: env.METADATA_QUALITY_ASSESSMENT_API_HOST
+    host: env.FDK_MQA_API_BASE_URI
   }
 };
 
