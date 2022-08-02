@@ -20,6 +20,7 @@ interface Props {
   entityTheme?: Entity;
   onlyTruncate?: boolean;
   isTruncated?: boolean;
+  customColor?: string;
 }
 
 const TruncatedText: FC<PropsWithChildren<Props>> = ({
@@ -28,6 +29,7 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
   onlyTruncate,
   entityTheme,
   children,
+  customColor,
   isTruncated = false
 }) => {
   const [expanded, setExpanded] = useState(false);
@@ -53,6 +55,7 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
           truncate={isTruncated || (truncate && !expanded)}
           visibleLines={visibleLines}
           entity={entityTheme}
+          customColor={customColor}
         >
           {children}
         </SC.TextContent>
