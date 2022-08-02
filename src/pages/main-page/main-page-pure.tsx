@@ -9,7 +9,6 @@ import {
   SearchLink
 } from '../../components/search-box/search-box';
 import HeaderSC from './components/header/styled';
-import NewsList from '../../components/news-list/news-list-component';
 import SearchEntities from '../../components/search-entities/search-entities.component';
 import { Props as EntitiesProps } from '../../components/with-entities';
 import { Props as ReferenceDataProps } from '../../components/with-reference-data';
@@ -20,6 +19,11 @@ import CommunityContainer from '../../components/community/community-container';
 import ContainerHeader from '../../components/community/container-header';
 import ContainerFooter from '../../components/community/container-footer';
 import Divider from '../../components/divider';
+import NewsItem from '../../components/community/news-item';
+import {
+  PATHNAME_COMMUNITY_COMMENTS,
+  PATHNAME_NEWS_ARCHIVE
+} from '../../constants/constants';
 
 const { FDK_COMMUNITY_BASE_URI, NAMESPACE } = env;
 
@@ -63,7 +67,7 @@ const MainPage: FC<Props> = ({
             <HeaderSC.Header>{localization.sort.modified}</HeaderSC.Header>
             <SearchEntities entities={entities} />
           </section>
-          <section className='col-12 col-lg-4'>
+          <SC.Sidebar className='col-12 col-lg-4'>
             <CommunityContainer>
               <ContainerHeader>
                 {`${localization.community.seeLatestComments} ${localization.community.title}`}
@@ -79,8 +83,10 @@ const MainPage: FC<Props> = ({
                         <Divider />
                       </>
                     ))}
-                  <ContainerFooter href={`${FDK_COMMUNITY_BASE_URI}/recent`}>
-                    {localization.community.seeMore}
+                  <ContainerFooter
+                    href={`${FDK_COMMUNITY_BASE_URI}${PATHNAME_COMMUNITY_COMMENTS}`}
+                  >
+                    {localization.community.seeAllComments}
                   </ContainerFooter>
                 </SC.CommunityPosts>
               ) : null}
@@ -99,15 +105,29 @@ const MainPage: FC<Props> = ({
                     </>
                   ))}
                   <ContainerFooter href={`${FDK_COMMUNITY_BASE_URI}/recent`}>
-                    {localization.community.seeMore}
+                    {localization.community.seeAllPosts}
                   </ContainerFooter>
                 </SC.CommunityPosts>
               ) : null}
             </CommunityContainer>
 
-            <HeaderSC.Header>{localization.news}</HeaderSC.Header>
-            <NewsList news={news} />
-          </section>
+            <CommunityContainer>
+              <ContainerHeader>{localization.news}</ContainerHeader>
+              {news.length > 0 ? (
+                <SC.CommunityPosts>
+                  {news.slice(0, 3).map((newsItem: any) => (
+                    <>
+                      <NewsItem {...newsItem} />
+                      <Divider />
+                    </>
+                  ))}
+                  <ContainerFooter href={PATHNAME_NEWS_ARCHIVE}>
+                    {localization.community.seeAllBlogArticles}
+                  </ContainerFooter>
+                </SC.CommunityPosts>
+              ) : null}
+            </CommunityContainer>
+          </SC.Sidebar>
         </SC.Content>
       </main>
     </div>
