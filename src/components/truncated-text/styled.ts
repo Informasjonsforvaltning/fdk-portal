@@ -6,6 +6,7 @@ type textContentProps = {
   truncate: boolean;
   visibleLines: number;
   entity?: Entity;
+  customColor?: string;
 };
 
 const TruncateContainer = styled.div`
@@ -28,7 +29,7 @@ const TextContent = styled.div<textContentProps>`
   -webkit-box-orient: vertical;
   line-height: ${({ lineHeight }) => lineHeight || 20}px;
 
-  ${({ truncate, lineHeight, visibleLines, entity }) =>
+  ${({ truncate, lineHeight, visibleLines, entity, customColor }) =>
     truncate &&
     css`
       &:before {
@@ -41,7 +42,9 @@ const TextContent = styled.div<textContentProps>`
         background: linear-gradient(
           transparent ${lineHeight * 3}px,
           ${({ theme }) =>
-            entity ? theme.extendedColors[entity].lighter : '#FFF'}
+            entity
+              ? theme.extendedColors[entity].lighter
+              : customColor || '#FFF'}
         );
       }
     `}

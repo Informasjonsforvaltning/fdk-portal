@@ -1,23 +1,24 @@
 import React, { FC, useState } from 'react';
-import parse from 'html-react-parser';
-import { Colour, theme } from '@fellesdatakatalog/theme';
-import env from '../../../env';
-import User from '../user';
+import { theme, Colour } from '@fellesdatakatalog/theme';
 import SC from './styled';
-import type { CommunityPost } from '../../../types';
 import TimeStamp from '../time-stamp';
 import TruncatedText from '../../truncated-text';
-
-const { FDK_COMMUNITY_BASE_URI } = env;
+import { PATHNAME_NEWS_ARTICLE } from '../../../constants/constants';
 
 interface Props {
-  post: CommunityPost;
+  created: string;
+  field_ingress: string;
+  title: string;
+  id?: string;
   customColor?: string;
   customHoverColor?: string;
 }
 
 const PostLink: FC<Props> = ({
-  post,
+  created,
+  field_ingress,
+  title,
+  id,
   customColor = (() =>
     theme.colour(Colour.NEUTRAL, 'N10')) as unknown as string,
   customHoverColor = (() =>
@@ -27,14 +28,11 @@ const PostLink: FC<Props> = ({
 
   return (
     <SC.PostLink
-      href={`${FDK_COMMUNITY_BASE_URI}/topic/${post.topic.slug}/${post.pid}`}
+      href={`${PATHNAME_NEWS_ARTICLE}/${id}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <h5>{post.topic.titleRaw}</h5>
-      <SC.UserInfo>
-        <User user={post.user} />
-      </SC.UserInfo>
+      <h5>{title}</h5>
       <TruncatedText
         visibleLines={4}
         lineHeight={24}
@@ -42,9 +40,9 @@ const PostLink: FC<Props> = ({
         onlyTruncate
         isTruncated
       >
-        {parse(post.content)}
+        {field_ingress}
       </TruncatedText>
-      <TimeStamp time={post.timestamp} />
+      <TimeStamp time={Date.parse(created)} />
     </SC.PostLink>
   );
 };
