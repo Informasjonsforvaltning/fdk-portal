@@ -59,7 +59,7 @@
   "searchBoxHeader": "Alt du trenger for å oppdage, vurdere og ta i bruk data",
   "showOnly": "Vis kun",
   "publisher": "Utgiver",
-  "news": "Aktuelt",
+  "news": "Siste saker fra bloggen",
   "datasetAccessRights": "Tilgangsnivå for datasett",
   "apiAvailability": "Tilgjengelighet for API",
   "isFree": "Gratis",
@@ -939,7 +939,9 @@
   "community": {
     "title": "Datalandsbyen",
     "seeLatest": "Siste saker i",
-    "seeMore": "Se flere nylige innlegg",
+    "seeAllComments": "Se alle kommentarar",
+    "seeAllPosts": "Se alle saker",
+    "seeAllBlogArticles": "Se alle bloggartikler",
     "meetingTitle": "Møtetittel: ",
     "seeLatestComments": "Siste kommentarer i",
     "subtitle": {

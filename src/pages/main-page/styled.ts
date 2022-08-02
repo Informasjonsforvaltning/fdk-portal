@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import LinkBase from '@fellesdatakatalog/link';
 import { theme } from '@fellesdatakatalog/theme';
 
+const Sidebar = styled.section`
+  margin-top: 7.5rem;
+`;
+
 const Content = styled.div`
   display: flex;
   margin-top: 2em;
@@ -22,4 +26,4 @@ const Link = styled(LinkBase)`
   margin-top: ${theme.spacing('S8')};
 `;
 
-export default { Content, CommunityPosts, Link };
+export default { Sidebar, Content, CommunityPosts, Link };
