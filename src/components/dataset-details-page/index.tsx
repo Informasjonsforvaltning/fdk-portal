@@ -75,7 +75,7 @@ interface Props
 const DatasetDetailsPage: FC<Props> = ({
   dataset,
   isLoadingDataset,
-  referenceData: { referencetypes: referenceTypes },
+  referenceData: { referencetypes: referenceTypesContainer },
   concepts,
   datasets,
   administrativeUnits,
@@ -120,7 +120,7 @@ const DatasetDetailsPage: FC<Props> = ({
       setIsMounted(true);
     }
 
-    if (!referenceTypes) {
+    if (!referenceTypesContainer) {
       getReferenceData('referencetypes');
     }
 
@@ -711,7 +711,7 @@ const DatasetDetailsPage: FC<Props> = ({
                   <KeyValueListItem
                     key={`${id}-${index}`}
                     property={translate(
-                      referenceTypes?.referenceTypes?.find(
+                      referenceTypesContainer?.referenceTypes?.find(
                         ({ uri: referenceUri }) =>
                           referenceUri ===
                           datasetReferenceTypes.find(
