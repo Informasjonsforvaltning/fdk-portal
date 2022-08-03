@@ -711,13 +711,13 @@ const DatasetDetailsPage: FC<Props> = ({
                   <KeyValueListItem
                     key={`${id}-${index}`}
                     property={translate(
-                      referenceTypes?.find(
+                      referenceTypes?.referenceTypes?.find(
                         ({ uri: referenceUri }) =>
                           referenceUri ===
                           datasetReferenceTypes.find(
                             ({ source }) => source?.uri === uri
                           )?.referenceType?.uri
-                      )?.prefLabel
+                      )?.label
                     )}
                     value={
                       <Link

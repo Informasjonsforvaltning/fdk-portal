@@ -451,7 +451,19 @@ interface TemporalRestriction {
   endDate: string;
 }
 
+interface ReferenceTypes {
+  referenceTypes: ReferenceType[];
+}
+interface LinguisticSystems {
+  linguisticSystems: ReferenceType[];
+}
 interface ReferenceType {
+  uri: string;
+  code: string;
+  label: Partial<TextLanguage>;
+}
+
+interface PrefLabelType {
   uri: string;
   code: string;
   prefLabel: Partial<TextLanguage>;
@@ -468,7 +480,7 @@ interface ApiSpecification {
 }
 
 interface DatasetReference {
-  referenceType: ReferenceType;
+  referenceType: PrefLabelType;
   source?: { uri?: string; prefLabel: Partial<TextLanguage> };
 }
 
@@ -526,8 +538,8 @@ export interface Dataset {
   legalBasisForProcessing?: LegalBasis[];
   legalBasisForAccess?: LegalBasis[];
   conformsTo: ConformsTo[];
-  informationModel?: Partial<ReferenceType>[];
-  language?: Partial<ReferenceType>[];
+  informationModel?: Partial<PrefLabelType>[];
+  language?: Partial<PrefLabelType>[];
   landingPage: string[];
   qualifiedAttributions: QualifiedAttribution[];
   assessment?: Assessment;
@@ -599,18 +611,22 @@ export interface MediaTypeOrExtent {
   type: MediaTypeOrExtentType;
 }
 
+interface MediaTypes {
+  mediaTypes: MediaType[];
+}
 export interface MediaType {
   uri: string;
   name: string;
-  code: string;
+  type: string;
+  subType: string;
 }
 
 export interface ReferenceData {
   los?: LosTheme[];
   themes?: EuTheme[];
-  referencetypes?: ReferenceType[];
+  referencetypes?: ReferenceTypes;
   mediatypes?: MediaType[];
-  linguisticsystem?: ReferenceType[];
+  linguisticsystem?: LinguisticSystems;
   apispecifications?: ApiSpecifications;
 }
 
