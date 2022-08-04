@@ -7,20 +7,14 @@ import { getNewReferenceData } from '../../../api/referenceData';
 import { ReferenceData } from '../../../types';
 
 const endpoint = (category: keyof ReferenceData) => {
-  if (category === 'apispecifications') {
-    return 'api-specifications';
+  switch (category) {
+    case 'apispecifications':
+      return 'api-specifications';
+    case 'referencetypes':
+      return 'reference-types';
+    default:
+      throw Error('Category not implemented');
   }
-  if (category === 'referencetypes') {
-    return 'reference-types';
-  }
-  if (category === 'mediatypes') {
-    return 'iana/media-types';
-  }
-  if (category === 'linguisticsystem') {
-    return 'linguistic-systems';
-  }
-
-  throw Error('Category not implemented');
 };
 
 function* getReferenceDataRequested({

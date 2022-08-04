@@ -454,9 +454,6 @@ interface TemporalRestriction {
 interface ReferenceTypes {
   referenceTypes: ReferenceType[];
 }
-interface LinguisticSystems {
-  linguisticSystems: ReferenceType[];
-}
 interface ReferenceType {
   uri: string;
   code: string;
@@ -611,22 +608,10 @@ export interface MediaTypeOrExtent {
   type: MediaTypeOrExtentType;
 }
 
-interface MediaTypes {
-  mediaTypes: MediaType[];
-}
-export interface MediaType {
-  uri: string;
-  name: string;
-  type: string;
-  subType: string;
-}
-
 export interface ReferenceData {
   los?: LosTheme[];
   themes?: EuTheme[];
   referencetypes?: ReferenceTypes;
-  mediatypes?: MediaType[];
-  linguisticsystem?: LinguisticSystems;
   apispecifications?: ApiSpecifications;
 }
 
