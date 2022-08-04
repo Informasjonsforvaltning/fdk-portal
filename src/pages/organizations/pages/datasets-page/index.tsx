@@ -132,7 +132,7 @@ const DatasetsPage: FC<Props> = ({
       organization &&
       organization.organizationId !== datasets?.[0]?.publisher.organizationId
     ) {
-      getDatasets({ orgPath: organization.orgPath });
+      getDatasets({ orgPath: organization.orgPath, size: 10000 });
     }
   }, [organization?.organizationId]);
 
