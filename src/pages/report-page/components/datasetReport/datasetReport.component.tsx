@@ -513,7 +513,7 @@ const DatasetReport: FC<Props> = ({
                             Filter.LOS
                           }=${encodeURIComponent(key)}`,
                           text1: translate(
-                            los?.find((losTheme: any) =>
+                            los?.losNodes?.find((losTheme: any) =>
                               losTheme.losPaths.includes(key)
                             )?.name
                           ),

@@ -36,7 +36,7 @@ export const FilterOption: FC<Props> = ({
   if (referenceDataItems) {
     if (referenceDataItems[`${label}`]) {
       textLabel =
-        getTranslateText(referenceDataItems[`${label}`].title) ||
+        getTranslateText(referenceDataItems[`${label}`].label) ||
         getTranslateText(referenceDataItems[`${label}`].name);
     } else {
       textLabel = localization.unknown;

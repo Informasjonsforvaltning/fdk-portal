@@ -173,14 +173,21 @@ export interface Harvest {
   lastHarvested: string;
 }
 
+export interface LosNodes {
+  losNodes: LosTheme[];
+}
 export interface LosTheme {
   uri: string;
   name: Partial<TextLanguage>;
   losPaths?: string[];
 }
 
+export interface EuThemes {
+  dataThemes: EuTheme[];
+}
 export interface EuTheme {
   id: string;
+  label: Partial<TextLanguage>;
   title: Partial<TextLanguage>;
   code?: string;
 }
@@ -451,7 +458,16 @@ interface TemporalRestriction {
   endDate: string;
 }
 
+interface ReferenceTypes {
+  referenceTypes: ReferenceType[];
+}
 interface ReferenceType {
+  uri: string;
+  code: string;
+  label: Partial<TextLanguage>;
+}
+
+interface PrefLabelType {
   uri: string;
   code: string;
   prefLabel: Partial<TextLanguage>;
@@ -468,7 +484,7 @@ interface ApiSpecification {
 }
 
 interface DatasetReference {
-  referenceType: ReferenceType;
+  referenceType: PrefLabelType;
   source?: { uri?: string; prefLabel: Partial<TextLanguage> };
 }
 
@@ -526,8 +542,8 @@ export interface Dataset {
   legalBasisForProcessing?: LegalBasis[];
   legalBasisForAccess?: LegalBasis[];
   conformsTo: ConformsTo[];
-  informationModel?: Partial<ReferenceType>[];
-  language?: Partial<ReferenceType>[];
+  informationModel?: Partial<PrefLabelType>[];
+  language?: Partial<PrefLabelType>[];
   landingPage: string[];
   qualifiedAttributions: QualifiedAttribution[];
   assessment?: Assessment;
@@ -599,18 +615,10 @@ export interface MediaTypeOrExtent {
   type: MediaTypeOrExtentType;
 }
 
-export interface MediaType {
-  uri: string;
-  name: string;
-  code: string;
-}
-
 export interface ReferenceData {
-  los?: LosTheme[];
-  themes?: EuTheme[];
-  referencetypes?: ReferenceType[];
-  mediatypes?: MediaType[];
-  linguisticsystem?: ReferenceType[];
+  los?: LosNodes;
+  themes?: EuThemes;
+  referencetypes?: ReferenceTypes;
   apispecifications?: ApiSpecifications;
 }
 

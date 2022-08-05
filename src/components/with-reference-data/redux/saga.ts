@@ -3,36 +3,32 @@ import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { GET_REFERENCE_DATA_REQUESTED } from './action-types';
 import * as actions from './actions';
 
-import {
-  getNewReferenceData,
-  getReferenceData
-} from '../../../api/referenceData';
+import { getNewReferenceData } from '../../../api/referenceData';
 import { ReferenceData } from '../../../types';
 
 const endpoint = (category: keyof ReferenceData) => {
-  if (category === 'apispecifications') {
-    return 'api-specifications';
+  switch (category) {
+    case 'apispecifications':
+      return 'api-specifications';
+    case 'referencetypes':
+      return 'reference-types';
+    case 'los':
+      return 'los/themes-and-words';
+    case 'themes':
+      return 'eu/data-themes';
+    default:
+      throw Error('Category not implemented');
   }
-
-  throw Error('Category not implemented');
 };
 
 function* getReferenceDataRequested({
   payload: { category }
 }: ReturnType<typeof actions.getReferenceDataRequested>) {
   try {
-    const newCategories = ['apispecifications'];
-    const codes = ['referencetypes', 'mediatypes', 'linguisticsystem'];
-
-    let data: any[] = [];
-    if (newCategories.includes(category)) {
-      data = yield call(getNewReferenceData, `${endpoint(category)}`);
-    } else {
-      data = yield call(
-        getReferenceData,
-        codes.includes(category) ? `codes/${category}` : category
-      );
-    }
+    const data: any[] = yield call(
+      getNewReferenceData,
+      `${endpoint(category)}`
+    );
 
     if (data) {
       yield put(actions.getReferenceDataSucceeded(category, data));

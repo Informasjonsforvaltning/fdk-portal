@@ -2,7 +2,7 @@ import _ from 'lodash';
 import get from 'lodash/get';
 import keyBy from 'lodash/keyBy';
 import mapValues from 'lodash/mapValues';
-import { getReferenceData } from '../../api/referenceData';
+import { getNewReferenceData } from '../../api/referenceData';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
 
 export const REFERENCEEDATA_REQUEST = 'REFERENCEEDATA_REQUEST';
@@ -30,7 +30,7 @@ export function fetchReferenceDataIfNeededAction(path) {
   return (dispatch, getState) => {
     if (shouldFetch(_.get(getState(), ['referenceData', 'meta', path]))) {
       dispatch(
-        reduxFsaThunk(() => getReferenceData(path), {
+        reduxFsaThunk(() => getNewReferenceData(path), {
           onBeforeStart: { type: REFERENCEEDATA_REQUEST, meta: { path } },
           onSuccess: { type: REFERENCEEDATA_SUCCESS, meta: { path } },
           onError: { type: REFERENCEEDATA_FAILURE, meta: { path } }
