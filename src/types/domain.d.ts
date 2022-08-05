@@ -173,14 +173,21 @@ export interface Harvest {
   lastHarvested: string;
 }
 
+export interface LosNodes {
+  losNodes: LosTheme[];
+}
 export interface LosTheme {
   uri: string;
   name: Partial<TextLanguage>;
   losPaths?: string[];
 }
 
+export interface EuThemes {
+  dataThemes: EuTheme[];
+}
 export interface EuTheme {
   id: string;
+  label: Partial<TextLanguage>;
   title: Partial<TextLanguage>;
   code?: string;
 }
@@ -609,8 +616,8 @@ export interface MediaTypeOrExtent {
 }
 
 export interface ReferenceData {
-  los?: LosTheme[];
-  themes?: EuTheme[];
+  los?: LosNodes;
+  themes?: EuThemes;
   referencetypes?: ReferenceTypes;
   apispecifications?: ApiSpecifications;
 }

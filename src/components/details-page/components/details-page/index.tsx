@@ -315,10 +315,10 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           }
 
           if (isEuTheme(theme)) {
-            const { id, title: themeTitle, code } = theme;
+            const { id, title: themeTitle, label: themeLabel, code } = theme;
             return (
               <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
-                {translate(themeTitle)}
+                {themeTitle ? translate(themeTitle) : translate(themeLabel)}
               </Link>
             );
           }

@@ -12,6 +12,10 @@ const endpoint = (category: keyof ReferenceData) => {
       return 'api-specifications';
     case 'referencetypes':
       return 'reference-types';
+    case 'los':
+      return 'los/themes-and-words';
+    case 'themes':
+      return 'eu/data-themes';
     default:
       throw Error('Category not implemented');
   }
