@@ -48,8 +48,13 @@ import {
 
 import { themeFDK, themeNAP } from '../../../../app/theme';
 
-import { Entity, Filter, RatingCategory } from '../../../../types/enums';
+import {
+  Entity,
+  Filter,
+  MetadataQualityRatingCategory
+} from '../../../../types/enums';
 import Spinner from '../../../../components/spinner';
+import { mapScoreToRatingCategory } from '../../../../utils/metadata-quality';
 
 interface RouteParams {
   organizationId: string;
@@ -101,28 +106,28 @@ const OrganizationPage: FC<Props> = ({
   }, []);
 
   const determineRatingIcon = () => {
-    switch (rating?.datasets?.quality?.category) {
-      case RatingCategory.EXCELLENT:
+    switch (mapScoreToRatingCategory(rating?.datasets?.quality?.score ?? 0)) {
+      case MetadataQualityRatingCategory.EXCELLENT:
         return <SC.ExcellentQualityIcon />;
-      case RatingCategory.GOOD:
+      case MetadataQualityRatingCategory.GOOD:
         return <SC.GoodQualityIcon />;
-      case RatingCategory.SUFFICIENT:
+      case MetadataQualityRatingCategory.SUFFICIENT:
         return <SC.SufficientQualityIcon />;
-      case RatingCategory.POOR:
+      case MetadataQualityRatingCategory.POOR:
       default:
         return <SC.PoorQualityIcon />;
     }
   };
 
   const determineRatingTranslation = () => {
-    switch (rating?.datasets?.quality?.category) {
-      case RatingCategory.EXCELLENT:
+    switch (mapScoreToRatingCategory(rating?.datasets?.quality?.score ?? 0)) {
+      case MetadataQualityRatingCategory.EXCELLENT:
         return translations.metadataQualityPage.metadataQualityIsExcellent;
-      case RatingCategory.GOOD:
+      case MetadataQualityRatingCategory.GOOD:
         return translations.metadataQualityPage.metadataQualityIsGood;
-      case RatingCategory.SUFFICIENT:
+      case MetadataQualityRatingCategory.SUFFICIENT:
         return translations.metadataQualityPage.metadataQualityIsSufficient;
-      case RatingCategory.POOR:
+      case MetadataQualityRatingCategory.POOR:
       default:
         return translations.metadataQualityPage.metadataQualityIsPoor;
     }

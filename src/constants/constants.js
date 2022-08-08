@@ -25,6 +25,11 @@ export const PATHNAME_GUIDANCE_METADATA = '/guidance/metadata';
 export const PATHNAME_ORGANIZATIONS = '/organizations';
 export const PATHNAME_PUBLISHING = '/publishing';
 export const PATHNAME_SPARQL = '/sparql';
+export const PATHNAME_ABOUT_DATASETS = '/om-datasettkatalogen';
+export const PATHNAME_ABOUT_CONCEPTS = '/om-begrepskatalogen';
+export const PATHNAME_ABOUT_DATA_SERVICES = '/om-api-katalogen';
+export const PATHNAME_ABOUT_INFORMATIONMODELS = '/om-informasjonskatalogen';
+export const PATHNAME_COMMUNITY_COMMENTS = '/category/12/kommentartråder';
 
 export const PARAGRAPH__BODY = 'paragraph--body';
 export const PARAGRAPH__IMAGE = 'paragraph--image';

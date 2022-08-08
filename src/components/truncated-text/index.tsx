@@ -19,6 +19,8 @@ interface Props {
   lineHeight: number;
   entityTheme?: Entity;
   onlyTruncate?: boolean;
+  isTruncated?: boolean;
+  customColor?: string;
 }
 
 const TruncatedText: FC<PropsWithChildren<Props>> = ({
@@ -26,10 +28,12 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
   lineHeight,
   onlyTruncate,
   entityTheme,
-  children
+  children,
+  customColor,
+  isTruncated = false
 }) => {
   const [expanded, setExpanded] = useState(false);
-  const [truncate, setTruncated] = useState(false);
+  const [truncate, setTruncated] = useState(isTruncated);
 
   const ref = useRef<HTMLDivElement>(null);
   const { height } = useResize(ref);
@@ -43,14 +47,15 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
       <SC.TextContainer
         lineHeight={lineHeight}
         visibleLines={visibleLines}
-        truncate={truncate && !expanded}
+        truncate={isTruncated || (truncate && !expanded)}
       >
         <SC.TextContent
           ref={ref}
           lineHeight={lineHeight}
-          truncate={truncate && !expanded}
+          truncate={isTruncated || (truncate && !expanded)}
           visibleLines={visibleLines}
           entity={entityTheme}
+          customColor={customColor}
         >
           {children}
         </SC.TextContent>

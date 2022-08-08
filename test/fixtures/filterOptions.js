@@ -10,7 +10,7 @@ export default [
         id: 'http://publications.europa.eu/resource/authority/data-theme/AGRI',
         code: 'AGRI',
         startUse: '2015-10-01',
-        title: {
+        label: {
           cs: 'Zemědělství, rybolov, lesnictví a výživa',
           fr: 'Agriculture, pêche, sylviculture et alimentation',
           lt: 'Žemės ūkis, žuvininkystė, miškininkystė ir maistas',
@@ -51,7 +51,7 @@ export default [
         id: 'http://publications.europa.eu/resource/authority/data-theme/AGRI',
         code: 'AGRI',
         startUse: '2015-10-01',
-        title: {
+        label: {
           cs: 'Zemědělství, rybolov, lesnictví a výživa',
           fr: 'Agriculture, pêche, sylviculture et alimentation',
           lt: 'Žemės ūkis, žuvininkystė, miškininkystė ir maistas',

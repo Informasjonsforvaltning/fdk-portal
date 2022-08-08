@@ -59,7 +59,7 @@
   "searchBoxHeader": "Alt du trenger for å oppdage, vurdere og ta i bruk data",
   "showOnly": "Vis kun",
   "publisher": "Utgiver",
-  "news": "Aktuelt",
+  "news": "Siste saker fra bloggen",
   "datasetAccessRights": "Tilgangsnivå for datasett",
   "apiAvailability": "Tilgjengelighet for API",
   "isFree": "Gratis",
@@ -143,7 +143,10 @@
     "harvestData": "Høste data",
     "termsOfUse": "Bruksvilkår",
     "searchInFdk": "Søk i Felles datakatalog",
-    "publishing": "Publisere"
+    "publishing": "Publisere",
+    "aboutCatalogs": "Om katalogene",
+    "guidance": "Veilledning"
+
   },
   "query": {
     "intro": "Eksempel: kollektivtransport",
@@ -156,7 +159,7 @@
     "title": "Om Felles datakatalog",
     "titleSub": "\n",
     "ingress": "Felles datakatalog – data.norge.no er det offentlige nettstedet som gir oversikt over beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet blir levert av ulike virksomheter, offentlige og private. Det er Digitaliseringsdirektoratet som er ansvarlig for drift og utvikling av nettstedet.",
-    "maintext": "Felles datakatalog – data.norge.no er delt i to hoveddeler:<br><br><ul><li>Portal, der du kan finne beskrivelser av datasett, begrep, api-er og informasjonsmodeller fra ulike virksomheter.</li><li>Kataloger for å legge til innhold, der du kan registrere beskrivelser for din virksomhet.</li></ul><br><br><b>Portal</b><br>Her kan du søke og finne beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet er levert av offentlige og private virksomheter. Ønsker du lese mer om portalen, se <a href='http://informasjonsforvaltning.github.io'>http://informasjonsforvaltning.github.io</a>.<br><br><b>Kataloger for å legge til innhold</b><br>Det er to måter du kan legge til innhold for din virksomhet:<br><br><ul><li>Du kan oppgi et høsteendepunkt for din virksomhets katalog. Har din virksomhet en katalog som kan eksponeres og deles? Ta kontakt! Les mer om høsting <a href='https://informasjonsforvaltning.github.io/felles-datakatalog/datasett-katalog'>her</a>.</li><li>Du kan benytte våre kataloger til å registrere og få oversikt over din virksomhet sine beskrivelser om datasett, begrep, api-er og behandlingsaktiviteter. De publiserte beskrivelsene vil automatisk dukke opp i vår portal. Hvordan du får tilgang, kan du lese mer om <a href='https://data.norge.no/about-registration'>her</a>. Private virksomheter som ønsker å benytte våre kataloger, må ta kontakt på <a href='mailto:fellesdatakatalog@digdir.no'>fellesdatakatalog@digdir.no</a> for å få tilgang.</li></ul><br><br><b>Formål</b><br>Felles datakatalog – data.norge.no er laget for å synliggjøre hvilke data virksomheter har som de kan dele med andre. Katalogen adresserer behovet for å oppdage, evaluere og få tilgang til data.",
+    "maintext": "Felles datakatalog – data.norge.no er delt i to hoveddeler:<ul><li>Portal, der du kan finne beskrivelser av datasett, begrep, api-er og informasjonsmodeller fra ulike virksomheter.</li><li>Kataloger for å legge til innhold, der du kan registrere beskrivelser for din virksomhet.</li></ul><b>Portal</b><br>Her kan du søke og finne beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet er levert av offentlige og private virksomheter. Ønsker du lese mer om portalen, se <a href='http://informasjonsforvaltning.github.io'>http://informasjonsforvaltning.github.io</a>.<b>Kataloger for å legge til innhold</b><br>Det er to måter du kan legge til innhold for din virksomhet:<ul><li>Du kan oppgi et høsteendepunkt for din virksomhets katalog. Har din virksomhet en katalog som kan eksponeres og deles? Ta kontakt! Les mer om høsting <a href='https://informasjonsforvaltning.github.io/felles-datakatalog/datasett-katalog'>her</a>.</li><li>Du kan benytte våre kataloger til å registrere og få oversikt over din virksomhet sine beskrivelser om datasett, begrep, api-er og behandlingsaktiviteter. De publiserte beskrivelsene vil automatisk dukke opp i vår portal. Hvordan du får tilgang, kan du lese mer om <a href='https://data.norge.no/about-registration'>her</a>. Private virksomheter som ønsker å benytte våre kataloger, må ta kontakt på <a href='mailto:fellesdatakatalog@digdir.no'>fellesdatakatalog@digdir.no</a> for å få tilgang.</li></ul><b>Formål</b><br>Felles datakatalog – data.norge.no er laget for å synliggjøre hvilke data virksomheter har som de kan dele med andre. Katalogen adresserer behovet for å oppdage, evaluere og få tilgang til data.",
     "register": "Registrere datasett",
     "helpToRegister": "Hjelp til å komme i gang med å registrere datasett",
     "help": "Hjelp",
@@ -705,10 +708,10 @@
       "publicService": {
         "description": "Beskrivelse",
         "usage": "Bruk av tjenesten",
-        "keywords": "Søkeord",
+        "keywords": "Nøkkelord",
         "relatedServices": "Relaterte tjenester",
-        "relatedEvents": "Tjenesten inngår i hendelsene",
-        "conceptReferences": "Begreper brukt i tjenesten",
+        "relatedEvents": "Relaterte hendelser",
+        "conceptReferences": "Begreper brukt i denne tjenesten",
         "criterion": "Vilkår",
         "produces": "Tjenesteresultat",
         "contactPoint": "Kontaktinformasjon",
@@ -720,8 +723,9 @@
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
-        "isDescribedAt": "Tilknyttede datasettbeskrivelser",
-        "spatial": "Geografisk avgrensning"
+        "isDescribedAt": "Beskrivende datasett",
+        "spatial": "Geografisk avgrensning",
+        "offeredBy": "Tilbys av"
       },
       "event": {
         "description": "Beskrivelse",
@@ -752,47 +756,77 @@
   "metadataQualityPage": {
     "criterion": "Kriterium",
     "metadataQuality": "Metadatakvalitet",
-    "criteria": {
+    "dimension": {
       "accessibility": "Tilgjengelighet",
       "findability": "Søkbarhet",
       "interoperability": "Interoperabilitet",
-      "readability": "Lesbarhet",
+      "contextuality": "Kontekst",
       "reusability": "Gjenbrukbarhet"
     },
-    "tooltipText": {
+    "dimensionDescription": {
       "accessibility": "Metadata og data kan deles og utveksles maskinelt via åpne, veldefinerte grensesnitt og formater.",
       "findability": "Første steg for å benytte data er å finne den. Metadata og data skal være enkelt å finne både for mennesker og maskiner.",
       "interoperability": "Metadata og data kan deles og utveksles maskinelt via åpne, veldefinerte grensesnitt og formater.",
-      "readability": "Metadata og data er representert på en brukervennlig og forståelig måte.",
+      "contextuality": "Informasjon som gir mer kontekst til brukeren.",
       "reusability": "Metadata og data kan deles og utveksles maskinelt via åpne, veldefinerte grensesnitt og formater."
     },
-    "indicator": {
-      "distributableData": "Tilgangslenke er oppgitt",
-      "keywordUsage": "Søkeord er oppgitt",
-      "subjectUsage": "Begrep er oppgitt",
-      "geoSearch": "Datasettet er geografisk avgrenset",
-      "controlledVocabularyUsage": "Distribusjon har mediatype",
-      "licenseInformation": "Distribusjonslisensen er oppgitt",
-      "contactPoint": "Kontaktinformasjon er oppgitt",
-      "title": "Tittel er konsis",
-      "titleNoOrgName": "Organisasjonens navn er ikke med i tittel",
-      "description": "Beskrivelsen er konsis",
-      "descriptionWithoutTitle": "Tittelen er ikke en del av beskrivelsen"
+    "metric": {
+      "accessRightsAvailability": "Access restrictions",
+      "accessRightsVocabularyAlignment": "Access restrictions vocabulary",
+      "accessUrlStatusCode": "Access URL status code",
+      "byteSizeAvailability": "File size",
+      "categoryAvailability": "Categories",
+      "contactPointAvailability": "Contact point",
+      "dateIssuedAvailability": "Date of issue",
+      "dateModifiedAvailability": "Modification date",
+      "dcatApCompliance": "DCAT-AP compliance",
+      "downloadUrlAvailability": "Download URL",
+      "downloadUrlStatusCode": "Download URL status code",
+      "formatAvailability": "Format",
+      "formatMatch": "Format match",
+      "formatMediaTypeMachineInterpretable": "Format/Media type machine interpretable",
+      "formatMediaTypeNonProprietary": "Format/Media type non proprietary",
+      "formatMediaTypeVocabularyAlignment": "Format/Media type vocabulary",
+      "keywordAvailability": "Keyword usage",
+      "knownLicence": "Known license",
+      "licenceAvailability": "License information",
+      "mediaTypeAvailability": "Media type",
+      "openLicence": "Open license",
+      "publisherAvailability": "Publisher",
+      "rightsAvailability": "Rights",
+      "spatialAvailability": "Geo search",
+      "syntaxValid": "Content syntax valid",
+      "temporalAvailability": "Time based search"
     },
-    "indicatorDescription": {
-      "distributableData": "Det finnes en tilgangsURL til datasett på distribusjon eller endpointURL på en tilknyttet datatjeneste.",
-      "keywordUsage": "Det finnes et eller flere søkeord tilknyttet datasettbeskrivelsen.",
-      "subjectUsage": "Det finnes et eller flere begreper tilknyttet datasettbeskrivelsen.",
-      "geoSearch": "Datasettet er geografisk avgrenset.",
-      "controlledVocabularyUsage": "Det finnes et eller flere format på distribusjonen til datasettbeskrivelsen som finnes i IANAs liste over mediatyper.",
-      "licenseInformation": "Det finnes en lisens for å gjenbruke datasettet på distribusjonsklassen til datasettet.",
-      "contactPoint": "Det finnes kontaktinformasjon for hvem konsument kan henvende seg til.",
-      "title": "Tittel er mindre enn 100 tegn.",
-      "titleNoOrgName": "Organisasjonens navn er ikke med i tittel.",
-      "description": "Beskrivelsen er mindre enn 400 tegn, ikke regnet med mellomrom.",
-      "descriptionWithoutTitle": "Tittelen er ikke en del av beskrivelsen."
+    "metricDescription": {
+      "accessRightsAvailability": "This field indicates whether the access to the data is public or restricted. It is checked whether the property is set or not.",
+      "accessRightsVocabularyAlignment": "The use of a controlled vocabulary increases reusability. It is check whether the controlled vocabulary for access rights is used.",
+      "accessUrlStatusCode": "The AccessURL is not necessarily a direct link to the data, but also may refers to a URL that gives access to the dataset or where more information about the dataset is available. The specified URL is checked for accessibility via a HTTP HEAD request. If the responded status code is in the 200 or 300 range, the accessibility of the resource is evaluated positively.",
+      "byteSizeAvailability": "Specifies the size of the file in bytes. It is checked whether the property is set or not.",
+      "categoryAvailability": "Categories help users to explore datasets thematically. It is checked whether one or more categories are assigned to the dataset. The number of assigned categories has no impact to the score.",
+      "contactPointAvailability": "The contact point contains information whom to address in case of questions regarding the data. It is checked whether the property is set or not.",
+      "dateIssuedAvailability": "The date on which the dataset or distribution was released. It is checked whether the property is set or not.",
+      "dateModifiedAvailability": "The date on which the dataset or distribution was last changed. It is checked whether the property is set or not.",
+      "dcatApCompliance": "DCAT-AP compliance is calculated across all sources and datasets available on a catalogue. This check is only performed if the metadata is originally harvested as DCAT-AP or as a valid derivate. DCAT-AP is a specification for describing linked public data in Europe.",
+      "downloadUrlAvailability": "The downloadURL is a direct link to the referenced data. It is checked whether the property is set or not.",
+      "downloadUrlStatusCode": "If a downloadURL exists, the accessibility is checked. The specified URL is checked for e resource accessibility via HTTP HEAD request. If the responded status code is in the 200 or 300 range, the accessibility of the resource is evaluated positively.",
+      "formatAvailability": "This field specifies the file format of the distribution. It is checked whether the property is set or not.",
+      "formatMatch": "It is checked whether a distributions's dct:format property resembles the actual format of the linked file.",
+      "formatMediaTypeMachineInterpretable": "Checks if at least one of a distribution's dct:format and dcat:mediaType is machine-interpretable. If neither is set it is assumed the distribution uses a non-machine-interpretable format/media type.",
+      "formatMediaTypeNonProprietary": "Checks if at least one of a distribution&apos;s dct:format and dcat:mediaType is non-proprietary. If neither is set it is assumed the distribution uses a proprietary format/media type.",
+      "formatMediaTypeVocabularyAlignment": "Checks whether format and media type belong to a controlled vocabulary. The format vocabulary can be found in the data.europa.eu GitLab repository. The media type is check against the IANA list.",
+      "keywordAvailability": "Keywords directly support the search and thus increase the findability of the data dataset. The system checks whether keywords are defined. The number of keywords has no impact to the score.",
+      "knownLicence": "It is checked if a distribution's license is part of a predefined collection",
+      "licenceAvailability": "A license is valuable information for the reuse of data. It is checked whether the property is set or not.",
+      "mediaTypeAvailability": "This field specifies the media type of the distribution. It is checked whether the property is set or not.",
+      "openLicence": "",
+      "publisherAvailability": "The publisher is a person or organisation that has published the data. It is checked whether the property is set or not.",
+      "rightsAvailability": "In some cases, a specific license cannot be applied to a dataset. The 'Rights' field can be used to specify a reference to a resource that will inform a user about the rights he has when using the dataset. It is checked whether the property is set or not.",
+      "spatialAvailability": "Usage of spatial information would enable users in order to find the dataset with a geo facetted search. It is checked whether the property is set or not.",
+      "syntaxValid": "It is checker whether a file's content is syntactically valid against the format's specification",
+      "temporalAvailability": "Usage of temporal information would enable users for a timely based facetted search. It is checked whether the property is set or not."
     },
-    "indicatorWeight": "Vekt: {weight}",
+    "metricMaxScore": "Maks score: {metricMaxScore}",
     "descriptionsTotal": "beskrivelser totalt",
     "newDescriptions": "nye beskrivelser {0}",
     "lastYear": "siste år",
@@ -904,9 +938,12 @@
   "sampleData": "Eksempeldata",
   "community": {
     "title": "Datalandsbyen",
-    "seeLatest": "Siste saker fra",
-    "seeMore": "Se flere nylige innlegg",
+    "seeLatest": "Siste saker i",
+    "seeAllComments": "Se alle kommentarar",
+    "seeAllPosts": "Se alle saker",
+    "seeAllBlogArticles": "Se alle bloggartikler",
     "meetingTitle": "Møtetittel: ",
+    "seeLatestComments": "Siste kommentarer i",
     "subtitle": {
       "link": "datalandsbyen",
       "mention": " innlegg i ",
@@ -1039,7 +1076,9 @@
           }
         }
       }
-    }
+    },
+    "clock": "kl",
+    "today": "I dag"
   },
   "serviceMessagesPage": {
     "title": "Driftsmeldinger",
@@ -1049,5 +1088,12 @@
     "showAll": "Vis alle",
     "noActiveMessages": "Det finnes ingen aktive driftsmeldinger.",
     "goToDetailsPage": "Se detaljert driftsmelding for mer informasjon."
+  },
+  "informationPage": {
+    "aboutDatasets": "Om datasettkatalogen",
+    "aboutDataServices": "Om API-katalogen",
+    "aboutConcepts": "Om begrepskatalogen",
+    "aboutInformationModels": "Om informasjonsmodell-katalogen",
+    "imageText": "Bildetekst: "
   }
 }

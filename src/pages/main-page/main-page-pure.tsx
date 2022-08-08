@@ -9,13 +9,21 @@ import {
   SearchLink
 } from '../../components/search-box/search-box';
 import HeaderSC from './components/header/styled';
-import NewsList from '../../components/news-list/news-list-component';
 import SearchEntities from '../../components/search-entities/search-entities.component';
 import { Props as EntitiesProps } from '../../components/with-entities';
 import { Props as ReferenceDataProps } from '../../components/with-reference-data';
 import { Props as CommunityProps } from '../../components/with-community';
 import { CommunityTerm, Entity, Namespace } from '../../types/enums';
 import Post from '../../components/community/post';
+import CommunityContainer from '../../components/community/community-container';
+import ContainerHeader from '../../components/community/container-header';
+import ContainerFooter from '../../components/community/container-footer';
+import Divider from '../../components/divider';
+import NewsItem from '../../components/community/news-item';
+import {
+  PATHNAME_COMMUNITY_COMMENTS,
+  PATHNAME_NEWS_ARCHIVE
+} from '../../constants/constants';
 
 const { FDK_COMMUNITY_BASE_URI, NAMESPACE } = env;
 
@@ -59,27 +67,67 @@ const MainPage: FC<Props> = ({
             <HeaderSC.Header>{localization.sort.modified}</HeaderSC.Header>
             <SearchEntities entities={entities} />
           </section>
-          <section className='col-12 col-lg-4'>
-            <HeaderSC.Header>
-              {localization.community.seeLatest}
-              <SC.Link href={`${FDK_COMMUNITY_BASE_URI}`} external>
-                {localization.community.title}
-              </SC.Link>
-            </HeaderSC.Header>
-            {prunedPosts.length > 0 ? (
-              <SC.CommunityPosts>
-                {prunedPosts.slice(0, 3).map(post => (
-                  <Post key={post.pid ?? post.uid} post={post} />
-                ))}
-                <SC.Link href={`${FDK_COMMUNITY_BASE_URI}/recent`} external>
-                  {localization.community.seeMore}
-                </SC.Link>
-              </SC.CommunityPosts>
-            ) : null}
+          <SC.Sidebar className='col-12 col-lg-4'>
+            <CommunityContainer>
+              <ContainerHeader>
+                {`${localization.community.seeLatestComments} ${localization.community.title}`}
+              </ContainerHeader>
+              {prunedPosts.length > 0 ? (
+                <SC.CommunityPosts>
+                  {prunedPosts
+                    .filter(({ isMainPost }) => !isMainPost)
+                    .slice(0, 3)
+                    .map(post => (
+                      <>
+                        <Post key={post.pid ?? post.uid} post={post} />
+                        <Divider />
+                      </>
+                    ))}
+                  <ContainerFooter
+                    href={`${FDK_COMMUNITY_BASE_URI}${PATHNAME_COMMUNITY_COMMENTS}`}
+                  >
+                    {localization.community.seeAllComments}
+                  </ContainerFooter>
+                </SC.CommunityPosts>
+              ) : null}
+            </CommunityContainer>
 
-            <HeaderSC.Header>{localization.news}</HeaderSC.Header>
-            <NewsList news={news} />
-          </section>
+            <CommunityContainer>
+              <ContainerHeader>
+                {`${localization.community.seeLatest} ${localization.community.title}`}
+              </ContainerHeader>
+              {prunedPosts.length > 0 ? (
+                <SC.CommunityPosts>
+                  {prunedPosts.slice(0, 3).map(post => (
+                    <>
+                      <Post key={post.pid ?? post.uid} post={post} />
+                      <Divider />
+                    </>
+                  ))}
+                  <ContainerFooter href={`${FDK_COMMUNITY_BASE_URI}/recent`}>
+                    {localization.community.seeAllPosts}
+                  </ContainerFooter>
+                </SC.CommunityPosts>
+              ) : null}
+            </CommunityContainer>
+
+            <CommunityContainer>
+              <ContainerHeader>{localization.news}</ContainerHeader>
+              {news.length > 0 ? (
+                <SC.CommunityPosts>
+                  {news.slice(0, 3).map((newsItem: any) => (
+                    <>
+                      <NewsItem {...newsItem} />
+                      <Divider />
+                    </>
+                  ))}
+                  <ContainerFooter href={PATHNAME_NEWS_ARCHIVE}>
+                    {localization.community.seeAllBlogArticles}
+                  </ContainerFooter>
+                </SC.CommunityPosts>
+              ) : null}
+            </CommunityContainer>
+          </SC.Sidebar>
         </SC.Content>
       </main>
     </div>

@@ -62,11 +62,10 @@ const configuration: Configuration = {
       {
         test: /\.svg$/,
         use: [
-          'babel-loader',
           {
-            loader: 'react-svg-loader',
+            loader: '@svgr/webpack',
             options: {
-              jsx: true
+              typescript: true
             }
           }
         ],

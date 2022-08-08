@@ -64,17 +64,17 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   location,
   organizations = [],
   organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
-  referenceData: { los = [], themes = [] },
+  referenceData: { los, themes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   eventTypes,
   eventTypesActions: { getEventTypesRequested: getEventTypes },
   isLoading
 }) => {
   useEffect(() => {
-    if (los.length === 0) {
+    if (!los) {
       getReferenceData('los');
     }
-    if (themes.length === 0) {
+    if (!themes) {
       getReferenceData('themes');
     }
     if (organizations.length === 0) {
@@ -112,9 +112,9 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
               </span>
               <Filters
                 aggregations={aggregations}
-                themesItems={keyBy(themes, 'code')}
+                themesItems={keyBy(themes?.dataThemes, 'code')}
                 publishers={keyBy(organizations, 'orgPath')}
-                losItems={getLosByKeys(los)}
+                losItems={getLosByKeys(los?.losNodes)}
                 eventTypes={eventTypesMap}
               />
               <CompareList

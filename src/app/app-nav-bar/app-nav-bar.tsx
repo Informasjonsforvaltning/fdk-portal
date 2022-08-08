@@ -15,7 +15,10 @@ import {
   PATHNAME_HOME_NAP,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLISHING,
-  PATHNAME_SPARQL
+  PATHNAME_SPARQL,
+  PATHNAME_ABOUT_DATASETS,
+  PATHNAME_GUIDANCE,
+  PATHNAME_NEWS_ARCHIVE
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
@@ -61,9 +64,34 @@ const transportItems = () => (
 const fdkItems = () => (
   <>
     <li key={localization.menu.about}>
-      <SC.Link as={RouteLink} to={PATHNAME_ABOUT}>
-        {localization.menu.about}
-      </SC.Link>
+      <PortalDropdownMenu
+        desktopView
+        openOnHover
+        caret={false}
+        mobileView={false}
+        title={localization.menu.about}
+      >
+        <li key={localization.menu.about}>
+          <SC.Link as={RouteLink} to={PATHNAME_ABOUT}>
+            {localization.menu.about}
+          </SC.Link>
+        </li>
+        <li key={localization.menu.aboutCatalogs}>
+          <SC.Link as={RouteLink} to={PATHNAME_ABOUT_DATASETS}>
+            {localization.menu.aboutCatalogs}
+          </SC.Link>
+        </li>
+        <li key={localization.menu.guidance}>
+          <SC.Link as={RouteLink} to={PATHNAME_GUIDANCE}>
+            {localization.menu.guidance}
+          </SC.Link>
+        </li>
+        <li key={localization.menu.newsArchive}>
+          <SC.Link as={RouteLink} to={PATHNAME_NEWS_ARCHIVE}>
+            {localization.menu.newsArchive}
+          </SC.Link>
+        </li>
+      </PortalDropdownMenu>
     </li>
     <li key={localization.menu.organizations}>
       <SC.Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>

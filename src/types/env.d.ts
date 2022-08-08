@@ -14,4 +14,5 @@ export interface EnvironmentVariables {
   FDK_SPARQL_API_BASE_URI: string;
   FDK_DATASET_PREVIEW_API_KEY: string;
   FDK_USER_FEEDBACK_SERVICE_BASE_URI: string;
+  FDK_CMS_BASE_URI: string;
 }

@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect } from 'react';
+import React, { FC, memo } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import ThemeProvider from '@fellesdatakatalog/theme';
@@ -21,9 +21,6 @@ import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import localization from '../../../../lib/localization';
 import { DataServiceReport, KeyWithCountObject } from '../../../../types';
 import { Line } from '../../../../components/charts';
-import withReferenceData, {
-  Props as ReferenceDataProps
-} from '../../../../components/with-reference-data';
 import { List } from '../../../../components/list/list';
 import { sortKeyWithCount } from '../../sort-helper';
 import { translatePrefixedFormat } from '../../../../utils/common';
@@ -33,15 +30,10 @@ interface ExternalProps {
   dataServicesTimeSeries?: any;
 }
 
-interface Props
-  extends ExternalProps,
-    RouteComponentProps,
-    ReferenceDataProps {}
+interface Props extends ExternalProps, RouteComponentProps {}
 
 const DataserviceReport: FC<Props> = ({
   location,
-  referenceData: { mediatypes },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData },
   dataServicesReport: {
     totalObjects = 0,
     newLastWeek = 0,
@@ -52,12 +44,6 @@ const DataserviceReport: FC<Props> = ({
 }) => {
   const { search: searchParams } = location;
   timeSeriesData.push([Date.now(), totalObjects]);
-
-  useEffect(() => {
-    if (!mediatypes) {
-      getReferenceData('mediatypes');
-    }
-  }, []);
 
   const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
     .filter(
@@ -164,8 +150,4 @@ const DataserviceReport: FC<Props> = ({
   );
 };
 
-export default compose<FC<ExternalProps>>(
-  memo,
-  withReferenceData,
-  withRouter
-)(DataserviceReport);
+export default compose<FC<ExternalProps>>(memo, withRouter)(DataserviceReport);

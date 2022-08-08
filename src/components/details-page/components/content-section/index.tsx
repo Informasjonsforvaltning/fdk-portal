@@ -7,7 +7,7 @@ import SC from './styled';
 
 interface Props {
   id: string;
-  title: string;
+  title?: string;
   boxStyle?: boolean;
   entityIcon?: Entity;
   entityTheme?: Entity;
@@ -36,19 +36,21 @@ const icon = (entity?: Entity) => {
 const ContentSection: FC<PropsWithChildren<Props>> = ({
   id,
   title,
-  boxStyle = false,
+  boxStyle = true,
   entityIcon,
   entityTheme,
   truncate,
   children
 }) => (
   <SC.ContentSection id={id} boxStyle={boxStyle}>
-    <SC.Header>
-      {entityIcon && (
-        <SC.IconPlaceholder>{icon(entityIcon)}</SC.IconPlaceholder>
-      )}
-      <SC.Title>{title}</SC.Title>
-    </SC.Header>
+    {(title || entityIcon) && (
+      <SC.Header>
+        {entityIcon && (
+          <SC.IconPlaceholder>{icon(entityIcon)}</SC.IconPlaceholder>
+        )}
+        <SC.Title>{title}</SC.Title>
+      </SC.Header>
+    )}
 
     {truncate ? (
       <TruncatedText

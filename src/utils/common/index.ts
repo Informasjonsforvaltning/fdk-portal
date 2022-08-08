@@ -18,8 +18,8 @@ export const validateEnv = (
 };
 
 export const isEuTheme = (theme: EuTheme | LosTheme): theme is EuTheme => {
-  const { id, title, code } = theme as EuTheme;
-  return !!id && !!title && !!code;
+  const { id, label, title, code } = theme as EuTheme;
+  return !!id && !!code && (!!label || !!title);
 };
 
 export const isLosTheme = (theme: EuTheme | LosTheme): theme is LosTheme => {

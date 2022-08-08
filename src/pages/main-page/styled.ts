@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import LinkBase from '@fellesdatakatalog/link';
 import { theme } from '@fellesdatakatalog/theme';
 
+const Sidebar = styled.section`
+  margin-top: 7.5rem;
+`;
+
 const Content = styled.div`
   display: flex;
   margin-top: 2em;
@@ -13,13 +17,13 @@ const Content = styled.div`
 const CommunityPosts = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 2em;
 `;
 
 const Link = styled(LinkBase)`
+  padding-left: ${theme.spacing('S10')};
   font-size: ${theme.fontSize('FS16')};
   font-weight: ${theme.fontWeight('FW700')};
   margin-top: ${theme.spacing('S8')};
 `;
 
-export default { Content, CommunityPosts, Link };
+export default { Sidebar, Content, CommunityPosts, Link };

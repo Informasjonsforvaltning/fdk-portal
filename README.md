@@ -33,3 +33,7 @@ fdk-portal's external dependencies will in this setting be realized by our stagi
 
 
 Open your browser and point it to http://localhost:8080
+
+
+## Optional: Fetch sample data from the staging environment
+Uncomment lines 10 to 21 in the `src/config.js` file

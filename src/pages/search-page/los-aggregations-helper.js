@@ -5,6 +5,6 @@ export const filterLosThemesFromAggregation = (list, losItems) => {
     return [];
   }
   return list.filter(item =>
-    _.get(losItems, [item.key, 'isTema']) ? item : null
+    _.get(losItems, [item.key, 'isTheme']) ? item : null
   );
 };
