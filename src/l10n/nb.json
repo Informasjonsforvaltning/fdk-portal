@@ -813,7 +813,7 @@
       "formatAvailability": "This field specifies the file format of the distribution. It is checked whether the property is set or not.",
       "formatMatch": "It is checked whether a distributions's dct:format property resembles the actual format of the linked file.",
       "formatMediaTypeMachineInterpretable": "Checks if at least one of a distribution's dct:format and dcat:mediaType is machine-interpretable. If neither is set it is assumed the distribution uses a non-machine-interpretable format/media type.",
-      "formatMediaTypeNonProprietary": "Checks if at least one of a distribution&apos;s dct:format and dcat:mediaType is non-proprietary. If neither is set it is assumed the distribution uses a proprietary format/media type.",
+      "formatMediaTypeNonProprietary": "Checks if at least one of a distribution's dct:format and dcat:mediaType is non-proprietary. If neither is set it is assumed the distribution uses a proprietary format/media type.",
       "formatMediaTypeVocabularyAlignment": "Checks whether format and media type belong to a controlled vocabulary. The format vocabulary can be found in the data.europa.eu GitLab repository. The media type is check against the IANA list.",
       "keywordAvailability": "Keywords directly support the search and thus increase the findability of the data dataset. The system checks whether keywords are defined. The number of keywords has no impact to the score.",
       "knownLicence": "It is checked if a distribution's license is part of a predefined collection",
