@@ -668,7 +668,7 @@ interface Report {
   totalObjects: number;
   newLastWeek: number;
   organizationCount: number;
-  catalogs: KeyWithCountObject[];
+  catalogs: CatalogWithCountObject[];
 }
 
 export interface DatasetsReport extends Report {
@@ -690,6 +690,11 @@ export interface DataServiceReport extends Report {
 
 export interface KeyWithCountObject {
   key: string;
+  count: number;
+}
+
+export interface CatalogWithCountObject {
+  title: TextLanguage;
   count: number;
 }
 
