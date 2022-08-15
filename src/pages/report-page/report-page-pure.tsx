@@ -160,7 +160,6 @@ export const ReportPagePure: FC<Props> = ({
                   <DatasetReport
                     datasetsReport={datasetsReport}
                     datasetsTimeSeries={datasetsTimeSeries}
-                    publishers={publishers}
                   />
                 ) : (
                   <Tabs>
@@ -200,7 +199,6 @@ export const ReportPagePure: FC<Props> = ({
                       <DatasetReport
                         datasetsReport={datasetsReport}
                         datasetsTimeSeries={datasetsTimeSeries}
-                        publishers={publishers}
                       />
                     </Pane>
                     <Pane id='pane-2'>

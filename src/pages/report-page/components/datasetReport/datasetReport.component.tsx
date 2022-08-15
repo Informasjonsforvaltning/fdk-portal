@@ -17,7 +17,11 @@ import {
 import { getConfig } from '../../../../config';
 import { themeFDK, themeNAP } from '../../../../app/theme';
 import { Entity, Filter, MediaTypeOrExtentType } from '../../../../types/enums';
-import { DatasetsReport, KeyWithCountObject } from '../../../../types';
+import {
+  CatalogWithCountObject,
+  DatasetsReport,
+  KeyWithCountObject
+} from '../../../../types';
 
 import DatasetIcon from '../../../../images/icon-catalog-dataset-md.svg';
 import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
@@ -42,7 +46,6 @@ import { translatePrefixedFormat } from '../../../../utils/common';
 interface ExternalProps {
   datasetsReport: Partial<DatasetsReport>;
   datasetsTimeSeries: any;
-  publishers?: any;
 }
 
 interface Props
@@ -51,7 +54,6 @@ interface Props
     ReferenceDataProps {}
 
 const DatasetReport: FC<Props> = ({
-  publishers = {},
   referenceData: { los },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   location: { search: searchParams } = {},
@@ -534,15 +536,15 @@ const DatasetReport: FC<Props> = ({
                       headerText1={localization.report.catalogName}
                       headerText2={localization.report.countDataset}
                       listItems={catalogs.map(
-                        ({ key, count }: KeyWithCountObject, index: any) => ({
+                        (
+                          { title, count }: CatalogWithCountObject,
+                          index: any
+                        ) => ({
                           id: index,
                           path: `${PATHNAME_DATASETS}?${
                             Filter.CATALOGNAME
-                          }=${encodeURIComponent(key)}`,
-                          text1:
-                            translate(publishers[key]?.prefLabel) ??
-                            publishers[key]?.name ??
-                            key.substr(key.lastIndexOf('/') + 1, key.length),
+                          }=${encodeURIComponent(translate(title) ?? '')}`,
+                          text1: translate(title),
                           text2: `${count}`
                         })
                       )}
