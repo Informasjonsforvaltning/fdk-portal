@@ -83,16 +83,56 @@ const InformationPage: FC<Props> = () => {
     return () => appRoot?.classList.remove(entity);
   });
 
-  const { data } = useGetFancyArticleQuery({
+  Object.entries(articleIds).map((id, i) =>
+    i !== 0
+      ? useGetFancyArticleQuery({
+          variables: { id: articleIds[id[0]] }
+        })
+      : ''
+  );
+
+  const { data, loading } = useGetFancyArticleQuery({
     variables: { id: articleIds[location.pathname] }
   });
 
-  if (!data || !data.fancyArticle) {
-    return <ErrorPage errorCode='404' />;
-  }
+  const getPage = () => {
+    if (!data || !data.fancyArticle) {
+      return <ErrorPage errorCode='404' />;
+    }
 
-  const { fancyArticle } = data;
-  const { title, subtitle, Content } = fancyArticle;
+    const { fancyArticle } = data;
+    const { title, subtitle, Content } = fancyArticle;
+
+    const page = (
+      <SC.Article>
+        <SC.Title>{title}</SC.Title>
+        <SC.Description>{subtitle}</SC.Description>
+        {Content?.map(
+          component =>
+            (isBasicParagraph(component) && (
+              <SC.Content>
+                <Markdown allowHtml>{component?.Content ?? ''}</Markdown>
+              </SC.Content>
+            )) ||
+            (isBasicImage(component) && (
+              <SC.ImageWrapper key={component?.id}>
+                <SC.Image
+                  alt={`${component?.media?.[0]?.alternativeText}`}
+                  src={`${FDK_CMS_BASE_URI}${component?.media?.[0]?.url}`}
+                />
+                {component?.media?.[0]?.caption && (
+                  <SC.ImageText>
+                    {localization.informationPage.imageText}
+                    {component?.media?.[0]?.caption}
+                  </SC.ImageText>
+                )}
+              </SC.ImageWrapper>
+            ))
+        )}
+      </SC.Article>
+    );
+    return page;
+  };
 
   const menuItems = [
     {
@@ -127,32 +167,7 @@ const InformationPage: FC<Props> = () => {
           <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
           {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
         </SC.Aside>
-        <SC.Article>
-          <SC.Title>{title}</SC.Title>
-          <SC.Description>{subtitle}</SC.Description>
-          {Content?.map(
-            component =>
-              (isBasicParagraph(component) && (
-                <SC.Content>
-                  <Markdown allowHtml>{component?.Content ?? ''}</Markdown>
-                </SC.Content>
-              )) ||
-              (isBasicImage(component) && (
-                <SC.ImageWrapper key={component?.id}>
-                  <SC.Image
-                    alt={`${component?.media?.[0]?.alternativeText}`}
-                    src={`${FDK_CMS_BASE_URI}${component?.media?.[0]?.url}`}
-                  />
-                  {component?.media?.[0]?.caption && (
-                    <SC.ImageText>
-                      {localization.informationPage.imageText}
-                      {component?.media?.[0]?.caption}
-                    </SC.ImageText>
-                  )}
-                </SC.ImageWrapper>
-              ))
-          )}
-        </SC.Article>
+        {!loading && getPage()}
       </SC.InformationPage>
     </ThemeProvider>
   );
