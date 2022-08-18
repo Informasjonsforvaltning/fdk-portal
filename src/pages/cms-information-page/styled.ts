@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import { theme, Unit } from '@fellesdatakatalog/theme';
+import { Colour, theme, Unit } from '@fellesdatakatalog/theme';
+import { Backdrop as MuiBackdrop } from '@mui/material';
 import SideMenuBase from '../../components/side-menu';
 
 const onMobileView = '@media (max-width: 900px)';
@@ -144,6 +145,11 @@ const MenuToggle = styled.button`
   }
 `;
 
+const Backdrop = styled(MuiBackdrop)`
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  z-index: ${theme.colour(Colour.NEUTRAL, 'N0')} + 1;
+`;
+
 export default {
   InformationPage,
   Aside,
@@ -156,5 +162,6 @@ export default {
   ImageText,
   SideMenu,
   SideMenuSmall,
-  MenuToggle
+  MenuToggle,
+  Backdrop
 };

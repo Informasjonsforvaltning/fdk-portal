@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import { CircularProgress } from '@mui/material';
 import env from '../../env';
 import localization from '../../lib/localization';
 
@@ -91,19 +92,27 @@ const InformationPage: FC<Props> = () => {
       : ''
   );
 
-  const { data, loading } = useGetFancyArticleQuery({
+  const { data, loading, error } = useGetFancyArticleQuery({
     variables: { id: articleIds[location.pathname] }
   });
 
-  const getPage = () => {
-    if (!data || !data.fancyArticle) {
+  const page = () => {
+    if (loading) {
+      return (
+        <SC.Backdrop open>
+          <CircularProgress color='inherit' />
+        </SC.Backdrop>
+      );
+    }
+
+    if (error?.name !== undefined || !data || !data.fancyArticle) {
       return <ErrorPage errorCode='404' />;
     }
 
     const { fancyArticle } = data;
     const { title, subtitle, Content } = fancyArticle;
 
-    const page = (
+    return (
       <SC.Article>
         <SC.Title>{title}</SC.Title>
         <SC.Description>{subtitle}</SC.Description>
@@ -131,7 +140,6 @@ const InformationPage: FC<Props> = () => {
         )}
       </SC.Article>
     );
-    return page;
   };
 
   const menuItems = [
@@ -167,7 +175,7 @@ const InformationPage: FC<Props> = () => {
           <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
           {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
         </SC.Aside>
-        {!loading && getPage()}
+        {page()}
       </SC.InformationPage>
     </ThemeProvider>
   );
