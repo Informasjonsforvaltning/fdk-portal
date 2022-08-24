@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import { CircularProgress } from '@mui/material';
 import env from '../../env';
 import localization from '../../lib/localization';
 
@@ -83,16 +84,63 @@ const InformationPage: FC<Props> = () => {
     return () => appRoot?.classList.remove(entity);
   });
 
-  const { data } = useGetFancyArticleQuery({
+  Object.entries(articleIds).map((id, i) =>
+    i !== 0
+      ? useGetFancyArticleQuery({
+          variables: { id: articleIds[id[0]] }
+        })
+      : ''
+  );
+
+  const { data, loading, error } = useGetFancyArticleQuery({
     variables: { id: articleIds[location.pathname] }
   });
 
-  if (!data || !data.fancyArticle) {
-    return <ErrorPage errorCode='404' />;
-  }
+  const page = () => {
+    if (loading) {
+      return (
+        <SC.Backdrop open>
+          <CircularProgress color='inherit' />
+        </SC.Backdrop>
+      );
+    }
 
-  const { fancyArticle } = data;
-  const { title, subtitle, Content } = fancyArticle;
+    if (error?.name !== undefined || !data || !data.fancyArticle) {
+      return <ErrorPage errorCode='404' />;
+    }
+
+    const { fancyArticle } = data;
+    const { title, subtitle, Content } = fancyArticle;
+
+    return (
+      <SC.Article>
+        <SC.Title>{title}</SC.Title>
+        <SC.Description>{subtitle}</SC.Description>
+        {Content?.map(
+          component =>
+            (isBasicParagraph(component) && (
+              <SC.Content>
+                <Markdown allowHtml>{component?.Content ?? ''}</Markdown>
+              </SC.Content>
+            )) ||
+            (isBasicImage(component) && (
+              <SC.ImageWrapper key={component?.id}>
+                <SC.Image
+                  alt={`${component?.media?.[0]?.alternativeText}`}
+                  src={`${FDK_CMS_BASE_URI}${component?.media?.[0]?.url}`}
+                />
+                {component?.media?.[0]?.caption && (
+                  <SC.ImageText>
+                    {localization.informationPage.imageText}
+                    {component?.media?.[0]?.caption}
+                  </SC.ImageText>
+                )}
+              </SC.ImageWrapper>
+            ))
+        )}
+      </SC.Article>
+    );
+  };
 
   const menuItems = [
     {
@@ -127,32 +175,7 @@ const InformationPage: FC<Props> = () => {
           <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
           {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
         </SC.Aside>
-        <SC.Article>
-          <SC.Title>{title}</SC.Title>
-          <SC.Description>{subtitle}</SC.Description>
-          {Content?.map(
-            component =>
-              (isBasicParagraph(component) && (
-                <SC.Content>
-                  <Markdown allowHtml>{component?.Content ?? ''}</Markdown>
-                </SC.Content>
-              )) ||
-              (isBasicImage(component) && (
-                <SC.ImageWrapper key={component?.id}>
-                  <SC.Image
-                    alt={`${component?.media?.[0]?.alternativeText}`}
-                    src={`${FDK_CMS_BASE_URI}${component?.media?.[0]?.url}`}
-                  />
-                  {component?.media?.[0]?.caption && (
-                    <SC.ImageText>
-                      {localization.informationPage.imageText}
-                      {component?.media?.[0]?.caption}
-                    </SC.ImageText>
-                  )}
-                </SC.ImageWrapper>
-              ))
-          )}
-        </SC.Article>
+        {page()}
       </SC.InformationPage>
     </ThemeProvider>
   );

@@ -1,15 +1,23 @@
 import styled from 'styled-components';
 
-import { theme, Unit } from '@fellesdatakatalog/theme';
+import { Colour, theme, Unit } from '@fellesdatakatalog/theme';
+import { Backdrop as MuiBackdrop } from '@mui/material';
 import SideMenuBase from '../../components/side-menu';
 
 const onMobileView = '@media (max-width: 900px)';
+const customBreakingPoint = '@media (max-width: 992px)';
 
 const InformationPage = styled.article`
   background-color: ${({ theme: t }) => t.lighter};
   display: flex;
   gap: ${theme.spacing('S16', Unit.EM)};
   word-break: break-word;
+
+  ${customBreakingPoint} {
+    && {
+      max-width: fit-content;
+    }
+  }
 
   ${onMobileView} {
     flex-direction: column;
@@ -30,12 +38,13 @@ const Article = styled.main`
   display: flex;
   flex-direction: column;
   gap: ${theme.spacing('S10')};
-  z-index: 10;
+  z-index: 5;
 `;
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48')};
   font-weight: ${theme.fontWeight('FW700')};
+  padding-left: 0;
 `;
 
 const Description = styled.p`
@@ -49,7 +58,9 @@ const Content = styled.p`
       font-size: ${theme.fontSize('FS32')};
       font-weight: ${theme.fontWeight('FW700')};
       padding: ${theme.spacing('S6')};
+      padding-left: 0;
       margin-bottom: ${theme.spacing('S10', Unit.EM)};
+      margin-top: ${theme.spacing('S48')};
     }
   }
 `;
@@ -67,6 +78,7 @@ const ImageText = styled.span`
 `;
 
 const SideMenu = styled(SideMenuBase)`
+  min-width: 180px;
   ${onMobileView} {
     display: none;
     width: auto;
@@ -133,6 +145,11 @@ const MenuToggle = styled.button`
   }
 `;
 
+const Backdrop = styled(MuiBackdrop)`
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  z-index: ${theme.colour(Colour.NEUTRAL, 'N0')} + 1;
+`;
+
 export default {
   InformationPage,
   Aside,
@@ -145,5 +162,6 @@ export default {
   ImageText,
   SideMenu,
   SideMenuSmall,
-  MenuToggle
+  MenuToggle,
+  Backdrop
 };
