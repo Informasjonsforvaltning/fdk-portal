@@ -161,14 +161,14 @@ const DatasetPage: FC<Props> = ({
           .formatMediaTypeVocabularyAlignment;
       case MetadataQualityMetric.KEYWORD_AVAILABILITY:
         return translations.metadataQualityPage.metric.keywordAvailability;
-      case MetadataQualityMetric.KNOWN_LICENCE:
-        return translations.metadataQualityPage.metric.knownLicence;
-      case MetadataQualityMetric.LICENCE_AVAILABILITY:
-        return translations.metadataQualityPage.metric.licenceAvailability;
+      case MetadataQualityMetric.KNOWN_LICENSE:
+        return translations.metadataQualityPage.metric.knownLicense;
+      case MetadataQualityMetric.LICENSE_AVAILABILITY:
+        return translations.metadataQualityPage.metric.licenseAvailability;
       case MetadataQualityMetric.MEDIA_TYPE_AVAILABILITY:
         return translations.metadataQualityPage.metric.mediaTypeAvailability;
-      case MetadataQualityMetric.OPEN_LICENCE:
-        return translations.metadataQualityPage.metric.openLicence;
+      case MetadataQualityMetric.OPEN_LICENSE:
+        return translations.metadataQualityPage.metric.openLicense;
       case MetadataQualityMetric.PUBLISHER_AVAILABILITY:
         return translations.metadataQualityPage.metric.publisherAvailability;
       case MetadataQualityMetric.RIGHTS_AVAILABILITY:
@@ -234,16 +234,16 @@ const DatasetPage: FC<Props> = ({
       case MetadataQualityMetric.KEYWORD_AVAILABILITY:
         return translations.metadataQualityPage.metricDescription
           .keywordAvailability;
-      case MetadataQualityMetric.KNOWN_LICENCE:
-        return translations.metadataQualityPage.metricDescription.knownLicence;
-      case MetadataQualityMetric.LICENCE_AVAILABILITY:
+      case MetadataQualityMetric.KNOWN_LICENSE:
+        return translations.metadataQualityPage.metricDescription.knownLicense;
+      case MetadataQualityMetric.LICENSE_AVAILABILITY:
         return translations.metadataQualityPage.metricDescription
-          .licenceAvailability;
+          .licenseAvailability;
       case MetadataQualityMetric.MEDIA_TYPE_AVAILABILITY:
         return translations.metadataQualityPage.metricDescription
           .mediaTypeAvailability;
-      case MetadataQualityMetric.OPEN_LICENCE:
-        return translations.metadataQualityPage.metricDescription.openLicence;
+      case MetadataQualityMetric.OPEN_LICENSE:
+        return translations.metadataQualityPage.metricDescription.openLicense;
       case MetadataQualityMetric.PUBLISHER_AVAILABILITY:
         return translations.metadataQualityPage.metricDescription
           .publisherAvailability;
