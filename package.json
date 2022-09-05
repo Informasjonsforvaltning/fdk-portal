@@ -63,7 +63,7 @@
     "@apollo/client": "^3.5.10",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
-    "@fellesdatakatalog/alert": "^0.1.9",
+    "@fellesdatakatalog/alert": "^0.1.10",
     "@fellesdatakatalog/button": "^0.2.6",
     "@fellesdatakatalog/expansion-panel": "^0.2.3",
     "@fellesdatakatalog/external-footer": "^0.1.20",
