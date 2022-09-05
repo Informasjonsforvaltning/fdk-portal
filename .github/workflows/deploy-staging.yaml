@@ -12,7 +12,7 @@ jobs:
     if: github.event.pull_request.draft == false
     uses: Informasjonsforvaltning/workflows/.github/workflows/build-deploy.yaml@main
     with:
-      app_name: fdk-portal|
+      app_name: fdk-portal
       environment: staging
       cluster: digdir-fdk-dev
     secrets:
