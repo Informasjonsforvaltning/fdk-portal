@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Collapse } from 'reactstrap';
 import _ from 'lodash';
 
@@ -9,6 +9,7 @@ import './filter-box.scss';
 
 import CollapseTextIcon from '../../img/icon-collapse-text-sm.svg';
 import ExpandTextIcon from '../../img/icon-expand-text-sm.svg';
+import { FilterSearchOption } from '../../types';
 
 interface Props {
   htmlKey?: number;
@@ -16,17 +17,21 @@ interface Props {
   filter: Record<string, any>;
   groupByPrefix?: string[];
   searchable?: boolean;
-  onClick: (...args: any[]) => void;
+  onClick: (change: FilterChange) => void;
   activeFilter?: any;
   referenceDataItems?: Record<string, any>;
   filters?: Record<string, any>;
   capitalizeOption?: boolean;
 }
 
+export interface FilterChange {
+  value: string;
+  checked: boolean;
+}
+
 interface State {
   openFilter: boolean;
   open: boolean;
-  filterSearch: string;
 }
 
 type BucketItem = {
@@ -35,17 +40,17 @@ type BucketItem = {
   count: number;
 };
 
+const DEFAULT_GROUP = 'default';
+
 export class FilterBox extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       openFilter: true,
-      open: false,
-      filterSearch: ''
+      open: false
     };
     this.toggleFilter = this.toggleFilter.bind(this);
     this.toggleList = this.toggleList.bind(this);
-    this.search = this.search.bind(this);
   }
 
   toggleFilter() {
@@ -58,8 +63,13 @@ export class FilterBox extends React.Component<Props, State> {
     this.setState({ open: !open });
   }
 
-  search(value: string) {
-    this.setState({ filterSearch: value });
+  _getGroup(item: BucketItem, prefixes: string[]): string {
+    if (prefixes.length > 0) {
+      return item.key.startsWith(prefixes[0])
+        ? prefixes[0]
+        : this._getGroup(item, prefixes.slice(1));
+    }
+    return DEFAULT_GROUP;
   }
 
   _renderOptions(
@@ -67,7 +77,6 @@ export class FilterBox extends React.Component<Props, State> {
     onClick: any,
     activeFilter: any,
     allFilters: any,
-    filterSearch: string,
     groupByPrefix: string[],
     capitalizeOption: any
   ) {
@@ -81,26 +90,15 @@ export class FilterBox extends React.Component<Props, State> {
       filters.push('OPEN_DATA');
     }
 
-    const defaultGroup = 'default';
-    const groupByPrefixes = (data: BucketItem[]) => {
-      const getGroup = (item: BucketItem, prefixes: string[]): string => {
-        if (prefixes.length > 0) {
-          return item.key.startsWith(prefixes[0])
-            ? prefixes[0]
-            : getGroup(item, prefixes.slice(1));
-        }
-        return defaultGroup;
-      };
-
-      return data.reduce((results: Record<string, BucketItem[]>, item) => {
-        const group = getGroup(item, groupByPrefix);
+    const groupByPrefixes = (data: BucketItem[]) =>
+      data.reduce((results: Record<string, BucketItem[]>, item) => {
+        const group = this._getGroup(item, groupByPrefix);
         const label = item.key.replace(new RegExp(`${group}\\s?`), '');
         item.label = label || localization.facet.formatType.UNKNOWN;
         results[group] = results[group] || [];
         results[group].push(item);
         return results;
       }, {});
-    };
 
     const options = (items: BucketItem[], groupIndex: number) =>
       items.map((item, index) => {
@@ -130,15 +128,9 @@ export class FilterBox extends React.Component<Props, State> {
       });
 
     if (buckets) {
-      return Object.entries(
-        groupByPrefixes(
-          buckets.filter(({ key }: any) =>
-            key.toLowerCase().includes(filterSearch.toLowerCase())
-          )
-        )
-      )
+      return Object.entries(groupByPrefixes(buckets))
         .filter(
-          ([group]) => groupByPrefix.length === 0 || group !== defaultGroup
+          ([group]) => groupByPrefix.length === 0 || group !== DEFAULT_GROUP
         )
         .map(([group, items], groupIndex, groups) => (
           <div key={`group-${groupIndex}`}>
@@ -181,7 +173,7 @@ export class FilterBox extends React.Component<Props, State> {
   }
 
   render() {
-    const { openFilter, filterSearch } = this.state;
+    const { openFilter } = this.state;
     const {
       title,
       filter,
@@ -192,6 +184,27 @@ export class FilterBox extends React.Component<Props, State> {
       groupByPrefix = [],
       capitalizeOption = true
     } = this.props;
+
+    const filterSearchOptions = filter?.buckets
+      ?.map((item: BucketItem) => {
+        const group = this._getGroup(item, groupByPrefix);
+        const label = item.key.replace(new RegExp(`${group}\\s?`), '');
+        return {
+          value: item.key,
+          label: label || localization.facet.formatType.UNKNOWN
+        };
+      })
+      .sort((a: FilterSearchOption, b: FilterSearchOption) =>
+        a.label.localeCompare(b.label)
+      );
+
+    const handleOnClick = ({
+      target: { value, checked }
+    }: ChangeEvent<HTMLInputElement>) => {
+      if (onClick) {
+        onClick({ value, checked });
+      }
+    };
 
     if (_.get(filter, 'buckets', []).length > 0) {
       return (
@@ -210,8 +223,8 @@ export class FilterBox extends React.Component<Props, State> {
               {searchable && (
                 <div className='fdk-filter-search'>
                   <FilterSearchField
-                    value={filterSearch}
-                    onClick={this.search}
+                    filterSearchOptions={filterSearchOptions}
+                    onSelect={value => onClick({ value, checked: true })}
                     placeholder={`${
                       localization.facet.searchFor
                     } ${title?.toLowerCase()}`}
@@ -221,10 +234,9 @@ export class FilterBox extends React.Component<Props, State> {
               <div className='fdk-items-list'>
                 {this._renderOptions(
                   filter,
-                  onClick,
+                  handleOnClick,
                   activeFilter,
                   filters,
-                  filterSearch,
                   groupByPrefix,
                   capitalizeOption
                 )}
