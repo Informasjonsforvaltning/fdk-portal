@@ -12,7 +12,7 @@ services:
       - CMS_API_HOST=https://cms-fellesdatakatalog.digdir.no
       - FDK_CMS_BASE_URI=https://cms.fellesdatakatalog.digdir.no
       - ORGANIZATION_HOST=https://organization-bff.staging.fellesdatakatalog.digdir.no
-      - ORGANIZATION_CATALOGUE_HOST=https://organization-catalogue.staging.fellesdatakatalog.digdir.no
+      - ORGANIZATION_CATALOG_URI=https://organization-catalog.staging.fellesdatakatalog.digdir.no
       - REPORT_API_HOST=https://reports-bff.staging.fellesdatakatalog.digdir.no
       - FDK_MQA_API_BASE_URI=https://metadata-quality.staging.fellesdatakatalog.digdir.no
       - FDK_REGISTRATION_BASE_URI=https://registrering.staging.fellesdatakatalog.digdir.no
