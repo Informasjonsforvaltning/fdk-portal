@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, memo, useState } from 'react';
+import React, { FC, memo, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import {
@@ -19,7 +19,10 @@ import {
   setMultiselectFilterValue
 } from '../search-location-helper';
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
-import { FilterBox } from '../../../components/filter-box/filter-box.component';
+import {
+  FilterBox,
+  FilterChange
+} from '../../../components/filter-box/filter-box.component';
 import { getConfig } from '../../../config';
 import type { EventType } from '../../../types';
 import { keyPrefixForest } from '../../../lib/key-prefix-forest';
@@ -56,15 +59,14 @@ const FiltersPure: FC<Props> = ({
     eventType: eventTypeParam
   } = searchParams;
 
-  const handleFilterThemes = ({
-    target: { value, checked }
-  }: ChangeEvent<HTMLInputElement>) => {
+  const handleFilterThemes = ({ value, checked }: FilterChange) => {
     setMultiselectFilterValue(history, location, 'theme', value, checked);
   };
 
   const handleDatasetFilterAccessRights = ({
-    target: { value, checked }
-  }: ChangeEvent<HTMLInputElement>) => {
+    value,
+    checked
+  }: FilterChange) => {
     if (value === 'OPEN_DATA') {
       setMultiselectFilterValue(history, location, 'opendata', 'true', checked);
     } else {
@@ -78,9 +80,7 @@ const FiltersPure: FC<Props> = ({
     }
   };
 
-  const handleFilterPublisherHierarchy = ({
-    target: { value, checked }
-  }: ChangeEvent<HTMLInputElement>) => {
+  const handleFilterPublisherHierarchy = ({ value, checked }: FilterChange) => {
     if (checked) {
       setFilter(history, location, { orgPath: value });
     } else {
@@ -88,33 +88,29 @@ const FiltersPure: FC<Props> = ({
     }
   };
 
-  const handleDatasetFilterProvenance = ({
-    target: { value, checked }
-  }: ChangeEvent<HTMLInputElement>) => {
+  const handleDatasetFilterProvenance = ({ value, checked }: FilterChange) => {
     setMultiselectFilterValue(history, location, 'provenance', value, checked);
   };
 
-  const handleDatasetFilterSpatial = ({
-    target: { value, checked }
-  }: ChangeEvent<HTMLInputElement>) => {
+  const handleDatasetFilterSpatial = ({ value, checked }: FilterChange) => {
     setMultiselectFilterValue(history, location, 'spatial', value, checked);
   };
 
-  const handleFilterFormat = ({
-    target: { value, checked }
-  }: ChangeEvent<HTMLInputElement>) => {
+  const handleFilterFormat = ({ value, checked }: FilterChange) => {
     setMultiselectFilterValue(history, location, 'format', value, checked);
   };
 
-  const handleFilterLos = ({
-    target: { value, checked }
-  }: ChangeEvent<HTMLInputElement>) => {
+  const handleFilterLos = ({ value, checked }: FilterChange) => {
     setMultiselectFilterValue(history, location, 'losTheme', value, checked);
   };
 
   const handleFilterEventType = ({
-    target: { value, checked }
-  }: ChangeEvent<HTMLInputElement>) => {
+    value,
+    checked
+  }: {
+    value: string;
+    checked: boolean;
+  }) => {
     setMultiselectFilterValue(history, location, 'eventType', value, checked);
   };
 
@@ -129,6 +125,7 @@ const FiltersPure: FC<Props> = ({
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}
+              searchable
             />
             <FilterTree
               title={localization.facet.theme}
@@ -195,6 +192,7 @@ const FiltersPure: FC<Props> = ({
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}
+              searchable
             />
             <FilterBox
               htmlKey={3}
@@ -231,6 +229,7 @@ const FiltersPure: FC<Props> = ({
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}
+              searchable
             />
             <FilterBox
               htmlKey={2}
@@ -252,6 +251,7 @@ const FiltersPure: FC<Props> = ({
             handleFiltering={handleFilterPublisherHierarchy}
             activeFilter={orgPathFilterParam?.toString()}
             referenceDataItems={publishers}
+            searchable
           />
         );
       case PATHNAME_INFORMATIONMODELS:
@@ -276,6 +276,7 @@ const FiltersPure: FC<Props> = ({
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}
+              searchable
             />
           </>
         );
@@ -300,6 +301,7 @@ const FiltersPure: FC<Props> = ({
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}
+              searchable
             />
           </>
         );

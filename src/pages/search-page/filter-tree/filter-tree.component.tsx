@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import TreeView from 'react-treeview';
 import { Collapse } from 'reactstrap';
 import _ from 'lodash';
@@ -10,15 +10,54 @@ import './filter-tree.scss';
 
 import CollapseTextIcon from '../../../img/icon-collapse-text-sm.svg';
 import ExpandTextIcon from '../../../img/icon-expand-text-sm.svg';
+import FilterSearchField from '../../../components/filter-search-field';
+import { FilterSearchOption } from '../../../types';
+import { FilterChange } from '../../../components/filter-box/filter-box.component';
 
 interface Props {
   title?: string;
   aggregationsForest?: any[];
-  handleFiltering?: (...args: any[]) => void;
+  handleFiltering?: (change: FilterChange) => void;
   activeFilter?: string;
   referenceDataItems?: Record<string, any>;
   collapseItems?: boolean;
+  searchable?: boolean;
 }
+
+const getNameFromNode = (node: any, referenceDataItems: any) => {
+  let name = node.key;
+  if (referenceDataItems) {
+    const { key } = node || {};
+    // const currentPublisher = referenceDataItems[key];
+    if (
+      key &&
+      (key === '/STAT' ||
+        key === '/FYLKE' ||
+        key === '/KOMMUNE' ||
+        key === '/PRIVAT' ||
+        key === '/ANNET')
+    ) {
+      name = _.capitalize(key.replace(/^\/|\/$/g, ''));
+    } else if (referenceDataItems[key]) {
+      name =
+        getTranslateText(_.get(referenceDataItems, [node.key, 'prefLabel'])) ||
+        _.capitalize(_.get(referenceDataItems, [node.key, 'name'], node.key));
+    }
+  }
+
+  if (name?.toUpperCase() === 'UKJENT' || name?.toUpperCase() === 'MISSING') {
+    name = localization.unknown;
+  } else if (name?.toUpperCase()?.startsWith('/ANNET')) {
+    name = _.capitalize(name.substr(name.lastIndexOf('/') + 1, name.length));
+  } else {
+    name = (name && localization[name]) || name;
+  }
+  if (name && name === name.toUpperCase()) {
+    name = localization[name.toLowerCase()] || name;
+  }
+
+  return name;
+};
 
 const isItemCollapsed = (
   itemOrgPath: any,
@@ -51,7 +90,7 @@ const subTree = ({
   aggregations,
   activeFilter,
   referenceDataItems,
-  handleFiltering,
+  onClickFilter,
   onClickArrow,
   openArrows
 }: any) =>
@@ -67,7 +106,7 @@ const subTree = ({
         value={node.key}
         labelRaw={name}
         count={node.count}
-        onClick={handleFiltering}
+        onClick={onClickFilter}
         active={isActiveFilter(activeFilter, node.key)}
         displayClass={hasSomeChildren(node) ? 'inline-block' : ''}
       />
@@ -86,7 +125,7 @@ const subTree = ({
             aggregations: node.children,
             activeFilter,
             referenceDataItems,
-            handleFiltering
+            onClickFilter
           })}
         </TreeView>
       );
@@ -98,7 +137,7 @@ const subTree = ({
         value={node.key}
         labelRaw={name}
         count={node.count}
-        onClick={handleFiltering}
+        onClick={onClickFilter}
         active={isActiveFilter(activeFilter, node.key)}
         displayClass={hasSomeSiblingChildren(aggregations) ? 'indent' : ''}
       />
@@ -109,32 +148,14 @@ const mainTree = ({
   aggregationsForest,
   activeFilter,
   referenceDataItems,
-  handleFiltering,
+  onClickFilter,
   onClickArrow,
   openArrows
 }: any) =>
   Array.isArray(aggregationsForest) &&
   aggregationsForest.map((node, i) => {
     const collapsed = isItemCollapsed(node.key, activeFilter, openArrows);
-
-    let name = node.key;
-    if (referenceDataItems) {
-      const { key } = node || {};
-      const currentPublisher = referenceDataItems[key];
-      if (
-        key &&
-        (key === '/STAT' ||
-          key === '/FYLKE' ||
-          key === '/KOMMUNE' ||
-          key === '/PRIVAT' ||
-          key === '/ANNET')
-      ) {
-        name = _.capitalize(key.replace(/^\/|\/$/g, ''));
-      } else if (currentPublisher) {
-        name = getTranslateText(_.get(currentPublisher, 'prefLabel', node.key));
-      }
-    }
-
+    let name = getNameFromNode(node, referenceDataItems);
     const label = (
       <FilterOption
         key={`${node.key}|${i}`}
@@ -142,7 +163,7 @@ const mainTree = ({
         value={node.key}
         label={name}
         count={node.count}
-        onClick={handleFiltering}
+        onClick={onClickFilter}
         active={isActiveFilter(activeFilter, node.key)}
         displayClass={hasSomeChildren(node) ? 'inline-block' : ''}
       />
@@ -166,7 +187,7 @@ const mainTree = ({
               aggregations: node.children,
               activeFilter,
               referenceDataItems,
-              handleFiltering
+              onClickFilter
             })}
           </TreeView>
         </div>
@@ -180,7 +201,7 @@ const mainTree = ({
         value={node.key}
         label={name}
         count={node.count}
-        onClick={handleFiltering}
+        onClick={onClickFilter}
         active={isActiveFilter(activeFilter, node.key)}
       />
     );
@@ -192,7 +213,8 @@ export const FilterTree: FC<Props> = ({
   handleFiltering,
   activeFilter,
   referenceDataItems,
-  collapseItems
+  collapseItems,
+  searchable
 }) => {
   const [openFilter, setOpenFilter] = useState(true);
   const [openList, setOpenList] = useState(false);
@@ -204,6 +226,12 @@ export const FilterTree: FC<Props> = ({
 
   const handleToggleOpenList = () => {
     setOpenList(!openList);
+  };
+
+  const handleOnSelectSearch = (value: string) => {
+    if (handleFiltering) {
+      handleFiltering({ value, checked: true });
+    }
   };
 
   const onClickArrow = (e: any) => {
@@ -222,6 +250,29 @@ export const FilterTree: FC<Props> = ({
     }
   };
 
+  const onClickFilter = ({
+    target: { value, checked }
+  }: ChangeEvent<HTMLInputElement>) => {
+    if (handleFiltering) {
+      handleFiltering({ value, checked });
+    }
+  };
+
+  const getFilterSearchOption = (node: any) => ({
+    value: `${node.key}`,
+    label: `${getNameFromNode(node, referenceDataItems)}`
+  });
+
+  const mapNodeToFilterSearchOptions = (node: any): FilterSearchOption[] =>
+    node.children
+      ? [
+          getFilterSearchOption(node),
+          ...(node.children.flatMap(
+            mapNodeToFilterSearchOptions
+          ) as FilterSearchOption[])
+        ]
+      : [getFilterSearchOption(node)];
+
   return Array.isArray(aggregationsForest) && aggregationsForest.length > 0 ? (
     <div className='fdk-filter-tree'>
       <div className='fdk-panel__header'>
@@ -235,6 +286,19 @@ export const FilterTree: FC<Props> = ({
       </div>
       <Collapse isOpen={openFilter}>
         <div className='fdk-panel__content'>
+          {searchable && (
+            <div className='fdk-filter-search'>
+              <FilterSearchField
+                onSelect={handleOnSelectSearch}
+                filterSearchOptions={aggregationsForest
+                  .flatMap(node => mapNodeToFilterSearchOptions(node))
+                  .sort((a, b) => a.label.localeCompare(b.label))}
+                placeholder={`${
+                  localization.facet.searchFor
+                } ${title?.toLowerCase()}`}
+              />
+            </div>
+          )}
           <div className='fdk-items-list'>
             {mainTree({
               aggregationsForest: collapseItems
@@ -242,7 +306,7 @@ export const FilterTree: FC<Props> = ({
                 : aggregationsForest,
               activeFilter,
               referenceDataItems,
-              handleFiltering,
+              onClickFilter,
               onClickArrow,
               openArrows
             })}
@@ -254,7 +318,7 @@ export const FilterTree: FC<Props> = ({
                       aggregationsForest: aggregationsForest.slice(5),
                       activeFilter,
                       referenceDataItems,
-                      handleFiltering,
+                      onClickFilter,
                       onClickArrow,
                       openArrows
                     })}
