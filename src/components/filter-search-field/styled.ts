@@ -80,18 +80,22 @@ const Options = styled.ul`
   border-radius: 0px 0px 5px 5px;
   border-top: 0;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
-`;
 
-const Option = styled.li`
-  color: ${({ theme: t }) => t.extendedColors.neutralDarker};
-  font-size: ${theme.fontSize('FS16')};
-  padding: ${theme.spacing('S8')};
-  cursor: pointer;
-
-  &:hover,
-  :focus {
-    background-color: ${theme.colour(Colour.NEUTRAL, 'N15')};
+  & > li {
+    display: flex;
+    & > button {
+      flex-grow: 1;
+      padding: ${theme.spacing('S8')};
+      font-size: ${theme.fontSize('FS16')};
+      background: transparent;
+      text-align: left;
+      border: none;
+      color: ${({ theme: t }) => t.extendedColors.neutralDarker};
+      &:hover,
+      :focus {
+        background-color: ${theme.colour(Colour.NEUTRAL, 'N15')};
+      }
+    }
   }
 `;
-
-export default { TextField, Input, ClearButton, SearchButton, Options, Option };
+export default { TextField, Input, ClearButton, SearchButton, Options };

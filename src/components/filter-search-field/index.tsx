@@ -1,10 +1,4 @@
-import React, {
-  memo,
-  FC,
-  useState,
-  ChangeEventHandler,
-  KeyboardEventHandler
-} from 'react';
+import React, { memo, FC, useState, ChangeEventHandler } from 'react';
 import { compose } from 'redux';
 import ClearIcon from '../../images/clear-icon.svg';
 import { FilterSearchOption } from '../../types';
@@ -50,12 +44,6 @@ const FilterSearchField: FC<Props> = ({
 }) => {
   const [inputValue, setInputValue] = useState(value ?? '');
 
-  const handleKeyPress: KeyboardEventHandler<HTMLInputElement> = e => {
-    if (e.key === 'Enter') {
-      // TODO
-    }
-  };
-
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     setInputValue(e.target.value);
   };
@@ -78,22 +66,30 @@ const FilterSearchField: FC<Props> = ({
         type='text'
         value={inputValue}
         onChange={handleChange}
-        onKeyPress={handleKeyPress}
         placeholder={placeholder}
       />
 
       {visibleOptions && visibleOptions.length > 0 && (
         <SC.Options>
           {visibleOptions.map(({ value: optionValue, label }) => (
-            <SC.Option
-              tabIndex={0}
-              onClick={() => {
-                setInputValue('');
-                onSelect(optionValue);
-              }}
-            >
-              {highlightSearchString(inputValue, label)}
-            </SC.Option>
+            <li>
+              <button
+                type='button'
+                tabIndex={0}
+                onClick={() => {
+                  setInputValue('');
+                  onSelect(optionValue);
+                }}
+                onKeyPress={e => {
+                  if (e.key === 'Enter') {
+                    setInputValue('');
+                    onSelect(optionValue);
+                  }
+                }}
+              >
+                {highlightSearchString(inputValue, label)}
+              </button>
+            </li>
           ))}
         </SC.Options>
       )}
