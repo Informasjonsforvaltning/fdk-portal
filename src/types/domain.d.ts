@@ -1011,3 +1011,7 @@ export interface CommentThread {
   timestamp: string;
   content: string;
 }
+export interface FilterSearchOption {
+  value: string;
+  label: string;
+}

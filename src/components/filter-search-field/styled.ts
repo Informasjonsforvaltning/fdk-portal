@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 
 const TextField = styled('div')`
+  position: relative;
   display: flex;
 `;
 
@@ -38,9 +39,10 @@ const SearchButton = styled('button')`
 
 const Input = styled('input')`
   flex: 1 0 auto;
-  padding: ${theme.spacing('S8')};
+  padding: ${theme.spacing('S8')} ${theme.spacing('S24')} ${theme.spacing('S8')}
+    ${theme.spacing('S8')};
   border: 1px solid;
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px;
 
   &:focus {
     outline: none;
@@ -53,11 +55,47 @@ const Input = styled('input')`
 `;
 
 const ClearButton = styled('button')`
-  position: relative;
-  right: 70px;
+  position: absolute;
+  top: ${theme.spacing('S8')};
+  right: ${theme.spacing('S8')};
   cursor: pointer;
   background: inherit;
   border: none;
 `;
 
-export default { TextField, Input, ClearButton, SearchButton };
+const Options = styled.ul`
+  display: flex;
+  flex-direction: column;
+
+  width: calc(100% - 2px);
+  box-sizing: content-box;
+
+  position: absolute;
+  z-index: 999;
+  top: 2.5em;
+  margin: auto;
+  overflow: hidden;
+
+  border: 1px solid ${({ theme: t }) => t.extendedColors.neutralDarker};
+  border-radius: 0px 0px 5px 5px;
+  border-top: 0;
+  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+
+  & > li {
+    display: flex;
+    & > button {
+      flex-grow: 1;
+      padding: ${theme.spacing('S8')};
+      font-size: ${theme.fontSize('FS16')};
+      background: transparent;
+      text-align: left;
+      border: none;
+      color: ${({ theme: t }) => t.extendedColors.neutralDarker};
+      &:hover,
+      :focus {
+        background-color: ${theme.colour(Colour.NEUTRAL, 'N15')};
+      }
+    }
+  }
+`;
+export default { TextField, Input, ClearButton, SearchButton, Options };

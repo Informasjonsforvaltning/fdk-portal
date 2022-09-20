@@ -53,7 +53,7 @@ exports[`should render FilterBox correctly 1`] = `
               itemKey={0}
               key="0"
               label="GOVE"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -82,7 +82,7 @@ exports[`should render FilterBox correctly 1`] = `
               itemKey={0}
               key="0"
               label="EDUC"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -111,7 +111,7 @@ exports[`should render FilterBox correctly 1`] = `
               itemKey={0}
               key="0"
               label="HEAL"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -140,7 +140,7 @@ exports[`should render FilterBox correctly 1`] = `
               itemKey={0}
               key="0"
               label="Ukjent"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -169,7 +169,7 @@ exports[`should render FilterBox correctly 1`] = `
               itemKey={0}
               key="0"
               label="AGRI"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -217,7 +217,7 @@ exports[`should render FilterBox correctly 1`] = `
                     itemKey={0}
                     key="0"
                     label="TEST"
-                    onClick={[MockFunction]}
+                    onClick={[Function]}
                     referenceDataItems={
                       Object {
                         "AGRI": Object {
@@ -315,7 +315,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
               itemKey={0}
               key="0"
               label="GOVE"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -344,7 +344,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
               itemKey={0}
               key="0"
               label="EDUC"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -373,7 +373,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
               itemKey={0}
               key="0"
               label="HEAL"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -402,7 +402,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
               itemKey={0}
               key="0"
               label="Ukjent"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -431,7 +431,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
               itemKey={0}
               key="0"
               label="AGRI"
-              onClick={[MockFunction]}
+              onClick={[Function]}
               referenceDataItems={
                 Object {
                   "AGRI": Object {
@@ -479,7 +479,7 @@ exports[`should render FilterBox correctly with activeFilter 1`] = `
                     itemKey={0}
                     key="0"
                     label="TEST"
-                    onClick={[MockFunction]}
+                    onClick={[Function]}
                     referenceDataItems={
                       Object {
                         "AGRI": Object {

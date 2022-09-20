@@ -22,6 +22,7 @@ import { FilterTree } from '../search-page/filter-tree/filter-tree.component';
 import { setFilter } from '../search-page/search-location-helper';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { keyPrefixForest } from '../../lib/key-prefix-forest';
+import { FilterChange } from '../../components/filter-box/filter-box.component';
 
 interface Props {
   fetchPublishersIfNeeded: () => void;
@@ -79,11 +80,9 @@ export const ReportPagePure: FC<Props> = ({
   const orgPath = (getParamFromLocation(location, 'orgPath') ?? '') as string;
   const selectedPublisher = publishers && publishers[orgPath];
 
-  const handleFilterPublisherHierarchy = (event: any) => {
-    const selectedValue = event.target.value;
-
-    if (event.target.checked) {
-      setFilter(history, location, { orgPath: selectedValue });
+  const handleFilterPublisherHierarchy = ({ value, checked }: FilterChange) => {
+    if (checked) {
+      setFilter(history, location, { orgPath: value });
     } else {
       setFilter(history, location, { orgPath: null });
     }

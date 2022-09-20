@@ -78,6 +78,7 @@
     "axios": "^0.25.0",
     "bootstrap": "^4.6.1",
     "buffer": "^6.0.3",
+    "caniuse-lite": "^1.0.30001400",
     "classnames": "^2.3.1",
     "clean-deep": "^3.3.0",
     "core-js": "^3.21.1",
