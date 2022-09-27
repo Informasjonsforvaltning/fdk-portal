@@ -18,7 +18,7 @@
 		<meta property="og:image:secure_url" content="https://cms.fellesdatakatalog.digdir.no/uploads/Screenshot_2022_02_01_at_16_18_53_Felles_datakatalog_71862d9223.png" />
 		<meta property="og:image:type" content="image/png" />
 		<meta property="og:image:alt" content="Felles datakatalog forhåndsvisning" />
-		
+		<script src="https://web2.questback.com/Scripts/questback.popup-1.0.1.min.js"></script>
 		<script>
 			if (
 			  location.hostname.indexOf('nap.') >= 0 ||
@@ -31,6 +31,9 @@
 			  document.write(
 			    '<link rel="icon" type="image/x-icon" href="/img/favicon.ico">'
 			  );
+			  document.write(
+    '\x3Cscript type="text/javascript">questback.popup.create("https://response.questback.com/difi/kirzcfibc7", {title: "Har du 2 minutter?",text: "Vi ønsker tilbakemelding på arbeidet vi gjør for å formidle åpne data fra det offentlige, og hjelp til å forbedre innsatsen. Vil du delta på en kort brukerundersøkelse?", buttons: [{type: "participate",text: "Ja"},{type: "decline",text: "Nei"}]});\x3C/script>'
+  );
 			}
 		</script>
 		<link rel="alternate" type="application/rss+xml" title="RSS"
