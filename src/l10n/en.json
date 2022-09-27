@@ -469,7 +469,7 @@
     "countInformationModel": "Number of information models",
     "organizationsDataset": "organizations with dataset descriptions ",
     "organizationsDataservice": "organizations with dataservice descriptions",
-    "organizationsConcept": "organizations with concept descriptions begrepsbeskrivelser",
+    "organizationsConcept": "organizations with concept descriptions",
     "organizationsInformationModel": "organizations with information model descriptions",
     "catalogName": "Catalog name",
     "access": "Access",
