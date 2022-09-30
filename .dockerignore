@@ -7,10 +7,8 @@ npm-debug.log
 .DS_Store
 .dockerignore
 .gitignore
-.eslintignore
 .huskyrc
 .lintstagedrc
-.eslintrc.json
 
 Dockerfile
 docker-compose.yml
