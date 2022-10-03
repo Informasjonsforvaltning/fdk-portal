@@ -203,7 +203,7 @@ const FiltersPure: FC<Props> = ({
               title={localization.facet.format}
               filter={aggregations.format}
               searchable
-              groupByPrefix={['FILE_TYPE', 'MEDIA_TYPE']}
+              groupByPrefix={['FILE_TYPE', 'MEDIA_TYPE', 'UNKNOWN']}
               onClick={handleFilterFormat}
               activeFilter={formatParam}
               capitalizeOption={false}

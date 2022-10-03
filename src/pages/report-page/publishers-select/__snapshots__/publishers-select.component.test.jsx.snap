@@ -10,6 +10,7 @@ exports[`should render PublishersSelect correctly with props 1`] = `
     Choose publisher
   </div>
   <StateManager
+    aria-label="Search publisher..."
     backspaceRemoves={true}
     defaultInputValue=""
     defaultMenuIsOpen={false}
@@ -19,6 +20,7 @@ exports[`should render PublishersSelect correctly with props 1`] = `
     options={Array []}
     placeholder="Search publisher..."
     searchPromptText="Type to search"
+    theme={[Function]}
     value={
       Object {
         "orgPath": "STAT",

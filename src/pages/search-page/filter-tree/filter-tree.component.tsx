@@ -3,6 +3,7 @@ import TreeView from 'react-treeview';
 import { Collapse } from 'reactstrap';
 import _ from 'lodash';
 
+import Select from 'react-select';
 import { FilterOption } from '../../../components/filter-option/filter-option.component';
 import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
@@ -10,7 +11,6 @@ import './filter-tree.scss';
 
 import CollapseTextIcon from '../../../img/icon-collapse-text-sm.svg';
 import ExpandTextIcon from '../../../img/icon-expand-text-sm.svg';
-import FilterSearchField from '../../../components/filter-search-field';
 import { FilterSearchOption } from '../../../types';
 import { FilterChange } from '../../../components/filter-box/filter-box.component';
 
@@ -219,6 +219,7 @@ export const FilterTree: FC<Props> = ({
   const [openFilter, setOpenFilter] = useState(true);
   const [openList, setOpenList] = useState(false);
   const [openArrows, setOpenArrows] = useState<any[]>([]);
+  const [filterSearchValue, setfilterSearchValue] = useState<any>(null);
 
   const handleToggleOpenFilter = () => {
     setOpenFilter(!openFilter);
@@ -228,9 +229,10 @@ export const FilterTree: FC<Props> = ({
     setOpenList(!openList);
   };
 
-  const handleOnSelectSearch = (value: string) => {
+  const handleOnSelectSearch = ({ value }: any) => {
     if (handleFiltering) {
       handleFiltering({ value, checked: true });
+      setfilterSearchValue(null);
     }
   };
 
@@ -255,6 +257,7 @@ export const FilterTree: FC<Props> = ({
   }: ChangeEvent<HTMLInputElement>) => {
     if (handleFiltering) {
       handleFiltering({ value, checked });
+      setfilterSearchValue(null);
     }
   };
 
@@ -288,14 +291,27 @@ export const FilterTree: FC<Props> = ({
         <div className='fdk-panel__content'>
           {searchable && (
             <div className='fdk-filter-search'>
-              <FilterSearchField
-                onSelect={handleOnSelectSearch}
-                filterSearchOptions={aggregationsForest
+              <Select
+                aria-label={`${
+                  localization.facet.searchFor
+                } ${title?.toLowerCase()}`}
+                options={aggregationsForest
                   .flatMap(node => mapNodeToFilterSearchOptions(node))
                   .sort((a, b) => a.label.localeCompare(b.label))}
+                value={filterSearchValue}
+                onChange={handleOnSelectSearch}
                 placeholder={`${
                   localization.facet.searchFor
                 } ${title?.toLowerCase()}`}
+                searchPromptText={localization.report.typeToSearch}
+                backspaceRemoves
+                theme={theme => ({
+                  ...theme,
+                  colors: {
+                    ...theme.colors,
+                    neutral50: '#666'
+                  }
+                })}
               />
             </div>
           )}

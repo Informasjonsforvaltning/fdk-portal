@@ -21,6 +21,7 @@ export const PublishersSelect: FC<Props> = ({
       {localization.report.searchPublisher}
     </div>
     <Select
+      aria-label={localization.report.searchPublisherPlaceholder}
       options={_.chain(publishers).values().sortBy('name').value()}
       value={value}
       getOptionLabel={({ name }) => name}
@@ -29,6 +30,13 @@ export const PublishersSelect: FC<Props> = ({
       placeholder={localization.report.searchPublisherPlaceholder}
       searchPromptText={localization.report.typeToSearch}
       backspaceRemoves
+      theme={theme => ({
+        ...theme,
+        colors: {
+          ...theme.colors,
+          neutral50: '#666'
+        }
+      })}
     />
   </div>
 );
