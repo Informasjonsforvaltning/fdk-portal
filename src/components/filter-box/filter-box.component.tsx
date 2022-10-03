@@ -73,7 +73,7 @@ export class FilterBox extends React.Component<Props, State> {
   }
 
   _renderOptions(
-    { buckets }: any,
+    filter: any,
     onClick: any,
     activeFilter: any,
     allFilters: any,
@@ -127,8 +127,8 @@ export class FilterBox extends React.Component<Props, State> {
         );
       });
 
-    if (buckets) {
-      return Object.entries(groupByPrefixes(buckets))
+    if (filter?.buckets) {
+      return Object.entries(groupByPrefixes(filter.buckets))
         .filter(
           ([group]) => groupByPrefix.length === 0 || group !== DEFAULT_GROUP
         )
