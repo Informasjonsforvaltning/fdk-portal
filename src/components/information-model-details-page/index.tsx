@@ -836,7 +836,6 @@ const InformationModelDetailsPage: FC<Props> = ({
                       property={translations.email}
                       value={
                         <SC.Link
-                          title={email}
                           href={`mailto:${email}`}
                           rel='noopener noreferrer'
                         >

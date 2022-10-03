@@ -871,7 +871,6 @@ const DatasetDetailsPage: FC<Props> = ({
                       property={translations.email}
                       value={
                         <Link
-                          title={email}
                           href={`mailto:${email}`}
                           rel='noopener noreferrer'
                         >
