@@ -792,11 +792,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       <KeyValueListItem
                         property={translations.email}
                         value={
-                          <a
-                            title={email}
-                            href={`mailto:${email}`}
-                            rel='noopener noreferrer'
-                          >
+                          <a href={`mailto:${email}`} rel='noopener noreferrer'>
                             {email}
                           </a>
                         }

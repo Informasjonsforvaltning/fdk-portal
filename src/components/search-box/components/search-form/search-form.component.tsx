@@ -96,7 +96,7 @@ const SearchForm: FC<PropsWithChildren<Props>> = ({
         <SC.ClearIcon />
       </button>
       <button className='search-button' type='button' onClick={onSearch}>
-        <img src={SearchIcon} alt={localization.query.do} />
+        <img src={SearchIcon} alt='' />
         {localization.query.do}
       </button>
     </SC.SearchForm>
