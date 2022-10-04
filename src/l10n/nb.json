@@ -921,8 +921,7 @@
   "errorPage": {
     "serverError": {
       "title": "Dette er flaut...",
-      "content1": "Det har visst skjedd noe teknisk krøll i vår ende.",
-      "content2": "Vi jobber med å rette opp feilen. Prøv igjen om en liten stund."
+      "content": "Det har visst skjedd noe teknisk krøll i vår ende. Vi jobber med å rette opp feilen. Prøv igjen om en liten stund."
     },
     "clientError": {
       "title": "Vi beklager!",
