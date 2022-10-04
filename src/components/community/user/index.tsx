@@ -20,9 +20,7 @@ const User: FC<Props> = ({ user }) => (
       <SC.Icon colour={user['icon:bgColor']}>{user['icon:text']}</SC.Icon>
     )}
 
-    <SC.Name colour={user['icon:bgColor']}>
-      {user.displayname ?? user.username}
-    </SC.Name>
+    <SC.Name>{user.displayname ?? user.username}</SC.Name>
   </SC.User>
 );
 

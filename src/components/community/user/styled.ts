@@ -37,14 +37,14 @@ const Picture = styled.img`
   margin-right: 5px;
 `;
 
-const Name = styled.span<{ colour: string }>`
-  color: ${({ colour }) => colour};
+const Name = styled.span`
+  color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   font-weight: ${theme.fontWeight('FW700')};
   margin-right: 5px;
 
   &:hover {
     text-decoration: underline;
-    text-decoration-color: ${({ colour }) => colour};
+    text-decoration-color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
 `;
 
