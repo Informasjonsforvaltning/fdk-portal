@@ -919,8 +919,7 @@
   "errorPage": {
     "serverError": {
       "title": "This is embarrasing...",
-      "content1": "There are some technical hiccups on our end.",
-      "content2": "We are working on correcting the error. Try again in a little while."
+      "content": "There are some technical hiccups on our end. We are working on correcting the error. Try again in a little while."
     },
     "clientError": {
       "title": "We're sorry!",
