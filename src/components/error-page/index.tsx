@@ -43,7 +43,6 @@ const ErrorPage: FC<Props> = ({ errorCode, language, onChangeLanguage }) => {
       <SC.ErrorPage>
         {errorMessage(errorCode)}
         <SC.UpperRightBackground />
-        <SC.LowerLeftBackground />
       </SC.ErrorPage>
       <Footer />
     </div>
@@ -51,7 +50,6 @@ const ErrorPage: FC<Props> = ({ errorCode, language, onChangeLanguage }) => {
     <SC.ErrorPage>
       {errorMessage(errorCode)}
       <SC.UpperRightBackground />
-      <SC.LowerLeftBackground />
     </SC.ErrorPage>
   );
 };
