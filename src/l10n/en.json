@@ -86,6 +86,10 @@
   "requiredBy": "Required by",
   "relatedBy": "Related by",
   "collaborationBetween": "A collaboration between:",
+  "head": {
+    "title": "National Data Catalog",
+    "description": "The National Data Catalog – data.norge.no is the public website providing an overview of descriptions of datasets, concepts, APIs and information models. The content is supplied by various establishments, both public and private. The Digitalization Agency is responsible for the operation and development of the website."
+  },
   "conceptReferences": {
     "title": "Concept relations",
     "sideMenuTitle": "Related concepts",

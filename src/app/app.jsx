@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import localization from '../lib/localization';
@@ -111,6 +112,17 @@ export function App({ language, onChangeLanguage }) {
 
   return (
     <div className={themeClass}>
+      <Helmet>
+        <html lang={language} />
+        <title>{localization.head.title}</title>
+
+        <meta name='description' content={localization.head.description} />
+        <meta property='og:title' content={localization.head.title} />
+        <meta
+          property='og:description'
+          content={localization.head.description}
+        />
+      </Helmet>
       <Header onChangeLanguage={onChangeLanguage} />
       <Breadcrumbs />
 
