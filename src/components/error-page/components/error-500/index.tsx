@@ -11,8 +11,7 @@ const Error500: FC = () => (
   <SC.Error500>
     <Error500Icon />
     <h1>{translate(translations.errorPage.serverError.title)}</h1>
-    <p>{translate(translations.errorPage.serverError.content1)}</p>
-    <p>{translate(translations.errorPage.serverError.content2)}</p>
+    <p>{translate(translations.errorPage.serverError.content)}</p>
   </SC.Error500>
 );
 
