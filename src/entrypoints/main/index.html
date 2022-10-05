@@ -1,48 +1,65 @@
 <!DOCTYPE html>
-<html lang="nb">
-	<head>
-		<title>Felles datakatalog</title>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
-		<meta http-equiv="Pragma" content="no-cache">
-		<meta http-equiv="expires" content="0">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Felles Datakatalog er en oversikt over hvilke data de ulike offentlige virksomhetene har, hvordan de henger sammen og hva de betyr. Datakatalogen gjør det mulig for deg å søke i opplysningene hos offentlige virksomheter og bruke de til for eksempel analyseformål.">
-		<meta name="author" content="Digitaliseringsdirektoratet" />
-		<meta property="og:url" content="https://data.norge.no" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Felles datakatalog" />
-		<meta property="og:description" content="Felles Datakatalog er en oversikt over hvilke data de ulike offentlige virksomhetene har, hvordan de henger sammen og hva de betyr. Datakatalogen gjør det mulig for deg å søke i opplysningene hos offentlige virksomheter og bruke de til for eksempel analyseformål." />
-		<meta property="og:image" content="https://cms.fellesdatakatalog.digdir.no/uploads/Screenshot_2022_02_01_at_16_18_53_Felles_datakatalog_71862d9223.png" />
-		<meta property="og:image:secure_url" content="https://cms.fellesdatakatalog.digdir.no/uploads/Screenshot_2022_02_01_at_16_18_53_Felles_datakatalog_71862d9223.png" />
-		<meta property="og:image:type" content="image/png" />
-		<meta property="og:image:alt" content="Felles datakatalog forhåndsvisning" />
-		<script src="https://web2.questback.com/Scripts/questback.popup-1.0.1.min.js"></script>
-		<script>
-			if (
-			  location.hostname.indexOf('nap.') >= 0 ||
-			  location.hostname.indexOf('transportportal.') >= 0
-			) {
-			  document.write(
-			    '<link rel="icon" type="image/x-icon" href="/img/favicon-nap.ico">'
-			  );
-			} else {
-			  document.write(
-			    '<link rel="icon" type="image/x-icon" href="/img/favicon.ico">'
-			  );
-			  document.write(
-    '\x3Cscript type="text/javascript">questback.popup.create("https://response.questback.com/difi/kirzcfibc7", {title: "Har du 45 sekunder?",text: "Svar på tre 3 enkle spørsmål som kan bidra til å forbedre nettstedet.", buttons: [{type: "participate",text: "Ja"},{type: "decline",text: "Nei"}]});\x3C/script>'
-  );
-			}
-		</script>
-		<link rel="alternate" type="application/rss+xml" title="RSS"
-			href="https://data.norge.no/datasets.rss">
-		<link rel="alternate" type="application/atom+xml" title="Atom"
-			href="https://data.norge.no/datasets.atom">
-		<script src="<%= webpackConfig.output.publicPath %>config.js"></script>
-	</head>
-	<body>
-		<div id="root"></div>
-	</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      http-equiv="Cache-control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Digitaliseringsdirektoratet" />
+    <meta property="og:url" content="https://data.norge.no" />
+    <meta property="og:type" content="website" />
+    
+    <meta
+      property="og:image"
+      content="https://cms.fellesdatakatalog.digdir.no/uploads/Screenshot_2022_02_01_at_16_18_53_Felles_datakatalog_71862d9223.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://cms.fellesdatakatalog.digdir.no/uploads/Screenshot_2022_02_01_at_16_18_53_Felles_datakatalog_71862d9223.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta
+      property="og:image:alt"
+      content="Felles datakatalog forhåndsvisning"
+    />
+    <script src="https://web2.questback.com/Scripts/questback.popup-1.0.1.min.js"></script>
+    <script>
+      if (
+        location.hostname.indexOf('nap.') >= 0 ||
+        location.hostname.indexOf('transportportal.') >= 0
+      ) {
+        document.write(
+          '<link rel="icon" type="image/x-icon" href="/img/favicon-nap.ico">'
+        );
+      } else {
+        document.write(
+          '<link rel="icon" type="image/x-icon" href="/img/favicon.ico">'
+        );
+        document.write(
+          '\x3Cscript type="text/javascript">questback.popup.create("https://response.questback.com/difi/kirzcfibc7", {title: "Har du 45 sekunder?",text: "Svar på tre 3 enkle spørsmål som kan bidra til å forbedre nettstedet.", buttons: [{type: "participate",text: "Ja"},{type: "decline",text: "Nei"}]});\x3C/script>'
+        );
+      }
+    </script>
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS"
+      href="https://data.norge.no/datasets.rss"
+    />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="Atom"
+      href="https://data.norge.no/datasets.atom"
+    />
+    <script src="<%= webpackConfig.output.publicPath %>config.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
