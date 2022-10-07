@@ -19,8 +19,7 @@ const mapFilters = ({
   hasFormat,
   last_x_days,
   keywords,
-  relations,
-  organizationNumber
+  relations
 }: any) => {
   const filters = [];
 
@@ -76,12 +75,6 @@ const mapFilters = ({
 
   if (relations) {
     filters.push({ informationmodel_relation: relations });
-  }
-
-  if (/^\d{9}$/.test(organizationNumber ?? '')) {
-    filters.push({
-      'publisher.id.keyword': organizationNumber
-    });
   }
 
   return filters.length > 0 ? filters : undefined;

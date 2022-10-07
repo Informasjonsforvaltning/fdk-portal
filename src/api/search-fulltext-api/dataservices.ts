@@ -20,7 +20,6 @@ const mapFilters = ({
   dataseturi,
   last_x_days,
   endpointDescription,
-  organizationNumber,
   uris
 }: any) => {
   const filters = [];
@@ -68,12 +67,6 @@ const mapFilters = ({
         field: 'endpointDescription.keyword',
         values: endpointDescription
       }
-    });
-  }
-
-  if (/^\d{9}$/.test(organizationNumber ?? '')) {
-    filters.push({
-      'publisher.id.keyword': organizationNumber
     });
   }
 

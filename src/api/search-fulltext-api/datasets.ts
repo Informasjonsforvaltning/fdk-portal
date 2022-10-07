@@ -31,8 +31,7 @@ const mapFilters = ({
   info_model,
   referencesSource,
   conformsTo,
-  relatedToInfoModel,
-  organizationNumber
+  relatedToInfoModel
 }: any) => {
   const filters = [];
   if (id) {
@@ -134,12 +133,6 @@ const mapFilters = ({
         themeprofile: 'transport'
       }
     );
-  }
-
-  if (/^\d{9}$/.test(organizationNumber ?? '')) {
-    filters.push({
-      'publisher.id.keyword': organizationNumber
-    });
   }
 
   return filters.length > 0 ? filters : undefined;

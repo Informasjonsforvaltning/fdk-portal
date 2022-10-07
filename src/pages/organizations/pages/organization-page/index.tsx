@@ -246,8 +246,8 @@ const OrganizationPage: FC<Props> = ({
               <SC.Box>
                 <StatisticsRegular
                   to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                    Filter.ORGANIZATION_NUMBER,
-                    organization?.organizationId
+                    Filter.ORGPATH,
+                    organization?.orgPath
                   )}`}
                 >
                   <IllustrationWithCount
@@ -347,8 +347,8 @@ const OrganizationPage: FC<Props> = ({
                   <SC.Box>
                     <StatisticsRegular
                       to={`${PATHNAME_DATA_SERVICES}${patchSearchQuery(
-                        Filter.ORGANIZATION_NUMBER,
-                        organization?.organizationId
+                        Filter.ORGPATH,
+                        organization?.orgPath
                       )}`}
                     >
                       <IllustrationWithCount
@@ -392,8 +392,8 @@ const OrganizationPage: FC<Props> = ({
                   <SC.Box>
                     <StatisticsRegular
                       to={`${PATHNAME_CONCEPTS}${patchSearchQuery(
-                        Filter.ORGANIZATION_NUMBER,
-                        organization?.organizationId
+                        Filter.ORGPATH,
+                        organization?.orgPath
                       )}`}
                     >
                       <IllustrationWithCount
@@ -442,8 +442,8 @@ const OrganizationPage: FC<Props> = ({
                   <SC.Box>
                     <StatisticsRegular
                       to={`${PATHNAME_INFORMATIONMODELS}${patchSearchQuery(
-                        Filter.ORGANIZATION_NUMBER,
-                        organization?.organizationId
+                        Filter.ORGPATH,
+                        organization?.orgPath
                       )}`}
                     >
                       <IllustrationWithCount
