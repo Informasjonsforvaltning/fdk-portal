@@ -1,5 +1,5 @@
 {
-  "goToMainContent": "Go to main content", 
+  "goToMainContent": "Go to main content",
   "apiLabel": "API",
   "description": "Description",
   "showFullDescription": "Show the full description",
@@ -311,7 +311,7 @@
       "type": "Type",
       "dataService": "Data service",
       "endpointDescription": "Endpoint description",
-      "preview": "Se forhåndsvisning",
+      "preview": "Preview",
       "previewFailure": "Sorry, it looks like the distribution does not exist or contains invalid data."
     },
     "issued": "Issue date",
