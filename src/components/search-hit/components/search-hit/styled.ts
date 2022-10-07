@@ -37,7 +37,7 @@ const OpenData = styled.div`
     width: 20px;
     margin-right: 0.5em;
     path {
-      fill: #fff;
+      fill: #fff !important;
     }
   }
 
