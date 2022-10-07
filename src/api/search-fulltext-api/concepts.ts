@@ -13,8 +13,7 @@ const mapFilters = ({
   uri,
   orgPath,
   last_x_days,
-  seeAlso,
-  organizationNumber
+  seeAlso
 }: any) => {
   const filters = [];
   if (id) {
@@ -45,12 +44,6 @@ const mapFilters = ({
   if (seeAlso) {
     filters.push({
       'seeAlso.keyword': seeAlso
-    });
-  }
-
-  if (/^\d{9}$/.test(organizationNumber ?? '')) {
-    filters.push({
-      'publisher.id.keyword': organizationNumber
     });
   }
 

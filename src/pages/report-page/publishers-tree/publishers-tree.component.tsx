@@ -22,7 +22,7 @@ const loadPublisherHierarchy = () =>
 const memoizedLoadPublisherHierarhy = _.memoize(loadPublisherHierarchy);
 
 function isItemCollapsed(itemOrgPath: any, chosenOrgPath: any) {
-  if (chosenOrgPath) {
+  if (chosenOrgPath && itemOrgPath) {
     const parentOrgPath = chosenOrgPath.substr(
       0,
       chosenOrgPath.lastIndexOf('/')
