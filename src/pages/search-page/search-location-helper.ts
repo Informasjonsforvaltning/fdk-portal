@@ -21,8 +21,9 @@ import {
   renderSearchParams
 } from '../../lib/location-history-helper';
 import { addValue, removeValue } from '../../lib/stringUtils';
+import { Filter } from '../../types/enums';
 
-export const getLinkForTab = (location, pathname) => {
+export const getLinkForTab = (location: any, pathname: string) => {
   const oldSearchParams = parseSearchParams(location);
   // keep q
   // reset page, size, sortfield and filters
@@ -32,7 +33,11 @@ export const getLinkForTab = (location, pathname) => {
   return { pathname, search };
 };
 
-export const setSearchText = (history, location, searchText) => {
+export const setSearchText = (
+  history: any,
+  location: any,
+  searchText: string
+) => {
   const oldSearchParams = parseSearchParams(location);
 
   // set q
@@ -48,7 +53,7 @@ export const setSearchText = (history, location, searchText) => {
   historyPushSearchParams(history, searchParams);
 };
 
-export const clearFilters = (history, location) => {
+export const clearFilters = (history: any, location: any) => {
   const oldSearchParams = parseSearchParams(location);
 
   // reset page and filters
@@ -58,12 +63,19 @@ export const clearFilters = (history, location) => {
   historyPushSearchParams(history, searchParams);
 };
 
-export const isFilterNotEmpty = location =>
+export const isFilterNotEmpty = (location: any) =>
   _.some(
-    _.values(_.omit(parseSearchParams(location), ['q', 'page', 'sortfield']))
+    _.values(
+      _.omit(
+        _.pickBy(parseSearchParams(location), (_v, k) =>
+          Object.values(Filter).includes(k as Filter)
+        ),
+        ['q', 'page', 'sortfield']
+      )
+    )
   );
 
-export const setFilter = (history, location, filter) => {
+export const setFilter = (history: any, location: any, filter: any) => {
   const oldSearchParams = parseSearchParams(location);
 
   // shallow merge filters
@@ -75,11 +87,11 @@ export const setFilter = (history, location, filter) => {
 };
 
 export const setMultiselectFilterValue = (
-  history,
-  location,
-  filterName,
-  value,
-  add
+  history: any,
+  location: any,
+  filterName: string,
+  value: string,
+  add: boolean
 ) => {
   const oldSearchParams = parseSearchParams(location);
   const oldFilterValue = oldSearchParams[filterName];
@@ -89,9 +101,14 @@ export const setMultiselectFilterValue = (
   setFilter(history, location, { [filterName]: newFilterValue });
 };
 
-export const getSortfield = location => parseSearchParams(location).sortfield;
+export const getSortfield = (location: any) =>
+  parseSearchParams(location).sortfield;
 
-export const setSortfield = (history, location, sortfield) => {
+export const setSortfield = (
+  history: any,
+  location: any,
+  sortfield: string
+) => {
   const oldSearchParams = parseSearchParams(location);
 
   // update sortfield
@@ -103,7 +120,7 @@ export const setSortfield = (history, location, sortfield) => {
   historyPushSearchParams(history, searchParams);
 };
 
-export const setPage = (history, location, page) => {
+export const setPage = (history: any, location: any, page: number) => {
   const oldSearchParams = parseSearchParams(location);
 
   // set page

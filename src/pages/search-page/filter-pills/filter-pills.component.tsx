@@ -53,16 +53,6 @@ const getFilterLabel = (
         capitalize(referencedItem?.name)
       );
     }
-    case Filter.ORGANIZATION_NUMBER: {
-      const referencedItem: any = Object.values(referenceDataItems).find(
-        ({ id }: any) => id === filterValue
-      );
-
-      return (
-        getTranslateText(referencedItem?.prefLabel) ||
-        capitalize(referencedItem?.name)
-      );
-    }
     case Filter.THEME:
       return (
         getTranslateText(get(referenceDataItems, [filterValue, 'title'])) ||
@@ -130,7 +120,6 @@ const FilterPillsPure: FC<Props> = ({
     [Filter.THEME]: themesItems,
     [Filter.LOS]: losItems,
     [Filter.ORGPATH]: publishers,
-    [Filter.ORGANIZATION_NUMBER]: publishers,
     [Filter.EVENT_TYPE]: eventTypes
   };
 
@@ -140,15 +129,19 @@ const FilterPillsPure: FC<Props> = ({
       <SC.Pills>
         {Object.keys(
           omit(locationSearch, [Filter.Q, Filter.PAGE, Filter.SORTFIELD])
-        ).map((filterName: string) =>
-          renderFilterValuesPills(
-            filterName,
-            locationSearch[filterName]?.split(','),
-            history,
-            location,
-            referenceDataItems[filterName]
+        )
+          .filter((filterName: string) =>
+            Object.values(Filter).includes(filterName as Filter)
           )
-        )}
+          .map((filterName: string) =>
+            renderFilterValuesPills(
+              filterName,
+              locationSearch[filterName]?.split(','),
+              history,
+              location,
+              referenceDataItems[filterName]
+            )
+          )}
       </SC.Pills>
       <SC.ClearButton
         onClick={() => clearFilters(history, location)}

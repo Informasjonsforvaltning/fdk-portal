@@ -1,4 +1,5 @@
 {
+  "goToMainContent": "Hopp til hovedinnhold", 
   "apiLabel": "API",
   "description": "Beskrivelse",
   "showFullDescription": "Vis hele beskrivelsen",
@@ -85,6 +86,10 @@
   "requiredBy": "Krevd av",
   "relatedBy": "Relatert av",
   "collaborationBetween": "Et samarbeid mellom:",
+  "head": {
+    "title": "Felles datakatalog",
+    "description": "Felles datakatalog – data.norge.no er det offentlige nettstedet som gir oversikt over beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet blir levert av ulike virksomheter, offentlige og private. Det er Digitaliseringsdirektoratet som er ansvarlig for drift og utvikling av nettstedet."
+  },
   "conceptReferences": {
     "title": "Begreper relatert til",
     "sideMenuTitle": "Relaterte begreper",
@@ -920,8 +925,7 @@
   "errorPage": {
     "serverError": {
       "title": "Dette er flaut...",
-      "content1": "Det har visst skjedd noe teknisk krøll i vår ende.",
-      "content2": "Vi jobber med å rette opp feilen. Prøv igjen om en liten stund."
+      "content": "Det har visst skjedd noe teknisk krøll i vår ende. Vi jobber med å rette opp feilen. Prøv igjen om en liten stund."
     },
     "clientError": {
       "title": "Vi beklager!",

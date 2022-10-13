@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import UpperRightIllustration from '../../images/illustration-grey-upper-right.svg';
-import LowerLeftIllustration from '../../images/illustration-grey-lower-left.svg';
 
 const ErrorPage = styled.div`
   position: relative;
@@ -22,11 +21,4 @@ const UpperRightBackground = styled(UpperRightIllustration)`
   height: 300px;
 `;
 
-const LowerLeftBackground = styled(LowerLeftIllustration)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 300px;
-`;
-
-export default { ErrorPage, UpperRightBackground, LowerLeftBackground };
+export default { ErrorPage, UpperRightBackground };

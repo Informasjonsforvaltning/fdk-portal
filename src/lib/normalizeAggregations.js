@@ -50,7 +50,7 @@ export const normalizeAggregations = data => {
       normalisedAggregations?.accessRights?.buckets &&
       normalisedAggregations?.opendata
     ) {
-      normalisedAggregations.accessRights.buckets.unshift({
+      normalisedAggregations?.accessRights?.buckets.unshift({
         key: 'OPEN_DATA',
         count: normalisedAggregations.opendata.count
       });
@@ -58,7 +58,7 @@ export const normalizeAggregations = data => {
     if (normalisedAggregations?.orgPath) {
       normalisedAggregations.orgPath = {
         ...normalisedAggregations.orgPath,
-        buckets: normalisedAggregations.orgPath.buckets?.map(
+        buckets: normalisedAggregations.orgPath?.buckets?.map(
           ({ key, ...rest }) => ({
             key:
               !key.includes('MISSING') && !key.startsWith('/')

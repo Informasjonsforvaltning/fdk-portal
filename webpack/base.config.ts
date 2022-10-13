@@ -8,8 +8,7 @@ const configuration: Configuration = {
   entry: {
     main: './src/entrypoints/main/index.tsx',
     auth: './src/entrypoints/auth/index.ts',
-    publishing: './src/entrypoints/publishing/index.tsx',
-    maintenance: './src/entrypoints/maintenance/index.tsx'
+    publishing: './src/entrypoints/publishing/index.tsx'
   },
   output: {
     path: resolve(__dirname, '..', 'dist'),
@@ -112,13 +111,6 @@ const configuration: Configuration = {
       favicon: './src/img/favicon.ico',
       base: '/',
       chunks: ['publishing']
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/entrypoints/maintenance/index.html',
-      filename: 'maintenance.html',
-      favicon: './src/img/favicon.ico',
-      base: '/',
-      chunks: ['maintenance']
     }),
     new MiniCssExtractPlugin({
       filename: '[name].styles.css'

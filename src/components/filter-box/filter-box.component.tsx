@@ -1,9 +1,9 @@
 import React, { ChangeEvent } from 'react';
 import { Collapse } from 'reactstrap';
 import _ from 'lodash';
+import Select from 'react-select';
 
 import localization from '../../lib/localization';
-import FilterSearchField from '../filter-search-field';
 import { FilterOption } from '../filter-option/filter-option.component';
 import './filter-box.scss';
 
@@ -32,6 +32,7 @@ export interface FilterChange {
 interface State {
   openFilter: boolean;
   open: boolean;
+  filterSearchValue: any;
 }
 
 type BucketItem = {
@@ -47,7 +48,8 @@ export class FilterBox extends React.Component<Props, State> {
     super(props);
     this.state = {
       openFilter: true,
-      open: false
+      open: false,
+      filterSearchValue: null
     };
     this.toggleFilter = this.toggleFilter.bind(this);
     this.toggleList = this.toggleList.bind(this);
@@ -73,7 +75,7 @@ export class FilterBox extends React.Component<Props, State> {
   }
 
   _renderOptions(
-    { buckets }: any,
+    filter: any,
     onClick: any,
     activeFilter: any,
     allFilters: any,
@@ -127,8 +129,8 @@ export class FilterBox extends React.Component<Props, State> {
         );
       });
 
-    if (buckets) {
-      return Object.entries(groupByPrefixes(buckets))
+    if (filter?.buckets) {
+      return Object.entries(groupByPrefixes(filter.buckets))
         .filter(
           ([group]) => groupByPrefix.length === 0 || group !== DEFAULT_GROUP
         )
@@ -173,7 +175,7 @@ export class FilterBox extends React.Component<Props, State> {
   }
 
   render() {
-    const { openFilter } = this.state;
+    const { openFilter, filterSearchValue } = this.state;
     const {
       title,
       filter,
@@ -203,6 +205,7 @@ export class FilterBox extends React.Component<Props, State> {
     }: ChangeEvent<HTMLInputElement>) => {
       if (onClick) {
         onClick({ value, checked });
+        this.setState({ filterSearchValue: null });
       }
     };
 
@@ -222,12 +225,28 @@ export class FilterBox extends React.Component<Props, State> {
             <div className='fdk-panel__content'>
               {searchable && (
                 <div className='fdk-filter-search'>
-                  <FilterSearchField
-                    filterSearchOptions={filterSearchOptions}
-                    onSelect={value => onClick({ value, checked: true })}
+                  <Select
+                    aria-label={`${
+                      localization.facet.searchFor
+                    } ${title?.toLowerCase()}`}
+                    options={filterSearchOptions}
+                    value={filterSearchValue}
+                    onChange={({ value }: any) => {
+                      onClick({ value, checked: true });
+                      this.setState({ filterSearchValue: null });
+                    }}
                     placeholder={`${
                       localization.facet.searchFor
                     } ${title?.toLowerCase()}`}
+                    searchPromptText={localization.report.typeToSearch}
+                    backspaceRemoves
+                    theme={theme => ({
+                      ...theme,
+                      colors: {
+                        ...theme.colors,
+                        neutral50: '#666'
+                      }
+                    })}
                   />
                 </div>
               )}
