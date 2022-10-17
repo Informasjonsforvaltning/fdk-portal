@@ -27,7 +27,6 @@
       property="og:image:alt"
       content="Felles datakatalog forhåndsvisning"
     />
-    <script src="https://web2.questback.com/Scripts/questback.popup-1.0.1.min.js"></script>
     <script>
       if (
         location.hostname.indexOf('nap.') >= 0 ||
@@ -39,9 +38,6 @@
       } else {
         document.write(
           '<link rel="icon" type="image/x-icon" href="/img/favicon.ico">'
-        );
-        document.write(
-          '\x3Cscript type="text/javascript">questback.popup.create("https://response.questback.com/difi/kirzcfibc7", {title: "Har du 45 sekunder?",text: "Svar på tre 3 enkle spørsmål som kan bidra til å forbedre nettstedet.", buttons: [{type: "participate",text: "Ja"},{type: "decline",text: "Nei"}]});\x3C/script>'
         );
       }
     </script>
