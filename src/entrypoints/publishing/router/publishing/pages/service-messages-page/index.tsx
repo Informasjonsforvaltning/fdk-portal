@@ -7,7 +7,7 @@ import moment from 'moment';
 import Translation from '../../../../../../components/translation';
 import {
   Enum_Servicemessage_Environment,
-  ServiceMessage,
+  ServiceMessageEntity,
   useGetServiceMessagesQuery
 } from '../../../../../../api/generated/cms/graphql';
 
@@ -43,7 +43,7 @@ const ServiceMessagesPage: FC<Props> = () => {
     skip: false
   });
 
-  const serviceMessages = data?.serviceMessages as ServiceMessage[];
+  const serviceMessages = data?.serviceMessages?.data as ServiceMessageEntity[];
 
   return (
     <SC.ServiceMessagesPage>
@@ -62,33 +62,34 @@ const ServiceMessagesPage: FC<Props> = () => {
         </SC.NoMessages>
       )}
       {serviceMessages?.map(
-        ({
-          id,
-          title,
-          message_type,
-          valid_from,
-          valid_to,
-          short_description
-        }) => (
-          <SC.ServiceMessage
-            key={id}
-            severity={Severity[message_type as keyof typeof Severity]}
-          >
-            <SC.Content>
-              <SC.ServiceMessageTitle
-                to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
-                forwardedAs={RouteLink}
-              >
-                {title}
-              </SC.ServiceMessageTitle>
-              <SC.Date>
-                <Moment format='DD.MM.YYYY HH:mm'>{valid_from}</Moment> -{' '}
-                <Moment format='DD.MM.YYYY HH:mm'>{valid_to}</Moment>
-              </SC.Date>
-              <div>{short_description}</div>
-            </SC.Content>
-          </SC.ServiceMessage>
-        )
+        ({ id, attributes }) =>
+          attributes && (
+            <SC.ServiceMessage
+              key={id}
+              severity={
+                Severity[attributes.message_type as keyof typeof Severity]
+              }
+            >
+              <SC.Content>
+                <SC.ServiceMessageTitle
+                  to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
+                  forwardedAs={RouteLink}
+                >
+                  {attributes.title}
+                </SC.ServiceMessageTitle>
+                <SC.Date>
+                  <Moment format='DD.MM.YYYY HH:mm'>
+                    {attributes.valid_from}
+                  </Moment>{' '}
+                  -{' '}
+                  <Moment format='DD.MM.YYYY HH:mm'>
+                    {attributes.valid_to}
+                  </Moment>
+                </SC.Date>
+                <div>{attributes.short_description}</div>
+              </SC.Content>
+            </SC.ServiceMessage>
+          )
       )}
       {showAll ? (
         <SC.Button

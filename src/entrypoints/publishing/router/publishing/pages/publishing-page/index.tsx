@@ -8,7 +8,7 @@ import env from '../../../../../../env';
 import Translation from '../../../../../../components/translation';
 import {
   useGetServiceMessagesQuery,
-  ServiceMessage,
+  ServiceMessageEntity,
   Enum_Servicemessage_Environment
 } from '../../../../../../api/generated/cms/graphql';
 
@@ -39,7 +39,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
         : Enum_Servicemessage_Environment.Production
     }
   });
-  const serviceMessages = data?.serviceMessages as ServiceMessage[];
+  const serviceMessages = data?.serviceMessages?.data as ServiceMessageEntity[];
   return (
     <SC.PublishingPage>
       {serviceMessages?.length > 0 && (

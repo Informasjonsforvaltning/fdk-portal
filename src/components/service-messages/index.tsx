@@ -5,18 +5,18 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import Translation from '../translation';
 
-import { ServiceMessage } from '../../api/generated/cms/graphql';
+import { ServiceMessageEntity } from '../../api/generated/cms/graphql';
 
 import SC from './styled';
 import { PATHNAME_PUBLISHING } from '../../constants/constants';
 
 interface Props {
-  serviceMessages: ServiceMessage[] | null;
+  serviceMessages: ServiceMessageEntity[] | null;
 }
 
 const ServiceMessages: FC<Props> = ({ serviceMessages = [] }) => {
   const [extendedServiceMessages, setExtendedServiceMessages] = useState<
-    ServiceMessage[] | null
+    ServiceMessageEntity[] | null
   >();
 
   useEffect(() => {
@@ -27,25 +27,28 @@ const ServiceMessages: FC<Props> = ({ serviceMessages = [] }) => {
   return (
     <SC.ServiceMessages>
       {extendedServiceMessages?.map(
-        ({ id, message_type, title, short_description }) => (
-          <SC.Alert
-            key={id}
-            severity={Severity[message_type as keyof typeof Severity]}
-          >
-            <SC.Content>
-              <SC.Title>{title}</SC.Title>
-              <SC.Description>
-                <SC.Text>{short_description}</SC.Text>
-                <SC.Link
-                  to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
-                  forwardedAs={RouterLink}
-                >
-                  <Translation id='serviceMessagesPage.goToDetailsPage' />
-                </SC.Link>
-              </SC.Description>
-            </SC.Content>
-          </SC.Alert>
-        )
+        ({ id, attributes }) =>
+          attributes && (
+            <SC.Alert
+              key={id}
+              severity={
+                Severity[attributes.message_type as keyof typeof Severity]
+              }
+            >
+              <SC.Content>
+                <SC.Title>{attributes.title}</SC.Title>
+                <SC.Description>
+                  <SC.Text>{attributes.short_description}</SC.Text>
+                  <SC.Link
+                    to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
+                    forwardedAs={RouterLink}
+                  >
+                    <Translation id='serviceMessagesPage.goToDetailsPage' />
+                  </SC.Link>
+                </SC.Description>
+              </SC.Content>
+            </SC.Alert>
+          )
       )}
     </SC.ServiceMessages>
   );
