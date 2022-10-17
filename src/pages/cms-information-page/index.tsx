@@ -93,7 +93,9 @@ const InformationPage: FC<Props> = () => {
   );
 
   const { data, loading, error } = useGetFancyArticleQuery({
-    variables: { id: articleIds[location.pathname] }
+    variables: {
+      id: articleIds[location.pathname]
+    }
   });
 
   const page = () => {
@@ -109,36 +111,41 @@ const InformationPage: FC<Props> = () => {
       return <ErrorPage errorCode='404' />;
     }
 
-    const { fancyArticle } = data;
-    const { title, subtitle, Content } = fancyArticle;
+    const {
+      fancyArticle: { data: fancyArticleEntity }
+    } = data;
+
+    const fancyArticle = fancyArticleEntity?.attributes;
 
     return (
-      <SC.Article>
-        <SC.Title>{title}</SC.Title>
-        <SC.Description>{subtitle}</SC.Description>
-        {Content?.map(
-          component =>
-            (isBasicParagraph(component) && (
-              <SC.Content>
-                <Markdown allowHtml>{component?.Content ?? ''}</Markdown>
-              </SC.Content>
-            )) ||
-            (isBasicImage(component) && (
-              <SC.ImageWrapper key={component?.id}>
-                <SC.Image
-                  alt={`${component?.media?.[0]?.alternativeText}`}
-                  src={`${FDK_CMS_BASE_URI}${component?.media?.[0]?.url}`}
-                />
-                {component?.media?.[0]?.caption && (
-                  <SC.ImageText>
-                    {localization.informationPage.imageText}
-                    {component?.media?.[0]?.caption}
-                  </SC.ImageText>
-                )}
-              </SC.ImageWrapper>
-            ))
-        )}
-      </SC.Article>
+      fancyArticle && (
+        <SC.Article>
+          <SC.Title>{fancyArticle.title}</SC.Title>
+          <SC.Description>{fancyArticle.subtitle}</SC.Description>
+          {fancyArticle.Content?.map(
+            component =>
+              (isBasicParagraph(component) && (
+                <SC.Content>
+                  <Markdown allowHtml>{component?.Content ?? ''}</Markdown>
+                </SC.Content>
+              )) ||
+              (isBasicImage(component) && (
+                <SC.ImageWrapper key={component?.id}>
+                  <SC.Image
+                    alt={`${component?.media?.data?.attributes?.alternativeText}`}
+                    src={`${FDK_CMS_BASE_URI}${component?.media?.data?.attributes?.url}`}
+                  />
+                  {component?.media?.data?.attributes?.caption && (
+                    <SC.ImageText>
+                      {localization.informationPage.imageText}
+                      {component?.media?.data?.attributes?.caption}
+                    </SC.ImageText>
+                  )}
+                </SC.ImageWrapper>
+              ))
+          )}
+        </SC.Article>
+      )
     );
   };
 
