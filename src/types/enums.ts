@@ -189,3 +189,7 @@ export enum RelationType {
   ER_DEL_AV = 'erDelAv',
   OMFATTER = 'omfatter'
 }
+
+export enum MomentFormat {
+  DD_MM_YYYY_HH_mm = 'DD.MM.YYYY HH:mm'
+}
