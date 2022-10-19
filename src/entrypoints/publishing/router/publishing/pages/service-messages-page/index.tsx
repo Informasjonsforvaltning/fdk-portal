@@ -13,8 +13,48 @@ import {
 
 import SC from './styled';
 import { PATHNAME_PUBLISHING } from '../../../../../../constants/constants';
+import { MomentFormat } from '../../../../../../types/enums';
 
 interface Props {}
+
+const renderServiceMessage = (entity: ServiceMessageEntity | undefined) => {
+  const { id, attributes } = entity || {};
+  if (attributes) {
+    const { message_type, title, short_description, valid_from, valid_to } =
+      attributes;
+
+    const from = (
+      <Moment format={MomentFormat.DD_MM_YYYY_HH_mm}>{valid_from}</Moment>
+    );
+    const to = (
+      <Moment format={MomentFormat.DD_MM_YYYY_HH_mm}>{valid_to}</Moment>
+    );
+
+    return (
+      <SC.ServiceMessage
+        key={id}
+        severity={Severity[message_type as keyof typeof Severity]}
+      >
+        <SC.Content>
+          <SC.ServiceMessageTitle
+            to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
+            forwardedAs={RouteLink}
+          >
+            {title}
+          </SC.ServiceMessageTitle>
+          <SC.Date>
+            {from}
+            {' - '}
+            {to}
+          </SC.Date>
+          <div>{short_description}</div>
+        </SC.Content>
+      </SC.ServiceMessage>
+    );
+  }
+
+  return null;
+};
 
 const ServiceMessagesPage: FC<Props> = () => {
   const history = useHistory();
@@ -61,36 +101,7 @@ const ServiceMessagesPage: FC<Props> = () => {
           <Translation id='serviceMessagesPage.noActiveMessages' />
         </SC.NoMessages>
       )}
-      {serviceMessages?.map(
-        ({ id, attributes }) =>
-          attributes && (
-            <SC.ServiceMessage
-              key={id}
-              severity={
-                Severity[attributes.message_type as keyof typeof Severity]
-              }
-            >
-              <SC.Content>
-                <SC.ServiceMessageTitle
-                  to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
-                  forwardedAs={RouteLink}
-                >
-                  {attributes.title}
-                </SC.ServiceMessageTitle>
-                <SC.Date>
-                  <Moment format='DD.MM.YYYY HH:mm'>
-                    {attributes.valid_from}
-                  </Moment>{' '}
-                  -{' '}
-                  <Moment format='DD.MM.YYYY HH:mm'>
-                    {attributes.valid_to}
-                  </Moment>
-                </SC.Date>
-                <div>{attributes.short_description}</div>
-              </SC.Content>
-            </SC.ServiceMessage>
-          )
-      )}
+      {serviceMessages?.map(entity => renderServiceMessage(entity))}
       {showAll ? (
         <SC.Button
           type='button'
