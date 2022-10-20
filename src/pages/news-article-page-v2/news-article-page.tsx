@@ -25,37 +25,41 @@ const NewsArticlePage: FC = () => {
     return <div>404</div>;
   }
 
-  const { article } = data;
+  const {
+    article: { data: entity }
+  } = data;
+
+  const article = entity ? entity.attributes : null;
 
   return (
     <main id='content' className='container'>
       <SC.Article>
         <div className='row'>
           <div className='col-12'>
-            {article.published_at && (
+            {article?.publishedAt && (
               <SC.Date>
                 <span>{localization.published} </span>
-                <Moment format='DD.MM.YYYY'>{article.published_at}</Moment>
-                {article.updated_at && (
+                <Moment format='DD.MM.YYYY'>{article?.publishedAt}</Moment>
+                {article?.updatedAt && (
                   <>
                     <span>
                       &nbsp;{' / '}
                       {localization.lastChanged}{' '}
                     </span>
-                    <Moment format='DD.MM.YYYY'>{article.updated_at}</Moment>
+                    <Moment format='DD.MM.YYYY'>{article?.updatedAt}</Moment>
                   </>
                 )}
               </SC.Date>
             )}
 
-            {article.title && <SC.Title>{article.title}</SC.Title>}
+            {article?.title && <SC.Title>{article?.title}</SC.Title>}
 
             {/* {abstract && (
               <SC.Abstract>{parse(sanitizeHtml(abstract))}</SC.Abstract>
             )} */}
 
             <SC.Body>
-              <Markdown>{article.content}</Markdown>
+              <Markdown>{article?.content ?? ''}</Markdown>
             </SC.Body>
           </div>
         </div>

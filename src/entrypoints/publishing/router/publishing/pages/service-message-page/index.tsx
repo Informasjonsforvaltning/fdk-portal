@@ -2,7 +2,7 @@ import React, { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import {
-  ServiceMessage,
+  ServiceMessageEntity,
   useGetServiceMessageQuery
 } from '../../../../../../api/generated/cms/graphql';
 
@@ -11,19 +11,30 @@ import Markdown from '../../../../../../components/markdown';
 
 interface Props {}
 
+const renderServiceMessage = (entity: ServiceMessageEntity | undefined) => {
+  const { attributes } = entity || {};
+  if (attributes) {
+    const { title, short_description, description } = attributes;
+    return (
+      <SC.ServiceMessagePage>
+        <SC.Title>{title}</SC.Title>
+        <SC.Description>{short_description}</SC.Description>
+        <SC.Body>
+          <Markdown>{description ?? ''}</Markdown>
+        </SC.Body>
+      </SC.ServiceMessagePage>
+    );
+  }
+
+  return null;
+};
+
 const ServiceMessagePage: FC<Props> = () => {
   const { id } = useParams<{ id: string }>();
   const { data } = useGetServiceMessageQuery({ variables: { id } });
-  const serviceMessage = data?.serviceMessage as ServiceMessage;
-  return serviceMessage ? (
-    <SC.ServiceMessagePage>
-      <SC.Title>{serviceMessage.title}</SC.Title>
-      <SC.Description>{serviceMessage.short_description}</SC.Description>
-      <SC.Body>
-        <Markdown>{serviceMessage.description ?? ''}</Markdown>
-      </SC.Body>
-    </SC.ServiceMessagePage>
-  ) : null;
+  return renderServiceMessage(
+    data?.serviceMessage?.data as ServiceMessageEntity | undefined
+  );
 };
 
 export default memo(ServiceMessagePage);

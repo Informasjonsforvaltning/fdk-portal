@@ -1,20 +1,56 @@
 query GetFancyArticle($id: ID!) {
   fancyArticle(id: $id) {
-    title
-    subtitle
-    Content {
-      ... on ComponentBasicParagraph {
-        __typename
-        Content
-      }
-      ... on ComponentBasicImage {
-        __typename
-        media {
-          alternativeText
-          url
-          caption
+    data {
+      attributes {
+        title
+        subtitle
+        locale
+        localizations {
+          data {
+            attributes {
+              title
+              subtitle
+              Content {
+                ... on ComponentBasicParagraph {
+                  __typename
+                  Content
+                }
+                ... on ComponentBasicImage {
+                  __typename
+                  media {
+                    data {
+                      attributes {
+                        alternativeText
+                        url
+                        caption
+                      }
+                    }
+                  }
+                  style
+                }
+              }
+            }
+          }
         }
-        style
+        Content {
+          ... on ComponentBasicParagraph {
+            __typename
+            Content
+          }
+          ... on ComponentBasicImage {
+            __typename
+            media {
+              data {
+                attributes {
+                  alternativeText
+                  url
+                  caption
+                }
+              }
+            }
+            style
+          }
+        }
       }
     }
   }
@@ -22,6 +58,18 @@ query GetFancyArticle($id: ID!) {
 
 query GetFancyArticleTitle($id: ID!) {
   fancyArticle(id: $id) {
-    title
+    data {
+      attributes {
+        title
+        localizations {
+          data {
+            id
+            attributes {
+              title
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -1,12 +1,28 @@
 query GetArticle($id: ID!) {
   article(id: $id) {
-    title
-    featureImage {
-      url
+    data {
+      attributes {
+        title
+        featureImage {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        content        
+        publishedAt
+        updatedAt
+        locale
+        localizations {
+          data {
+            attributes {
+              title
+              content
+            }
+          }
+        }
+      }
     }
-    content
-    locale
-    published_at
-    updated_at
   }
 }
