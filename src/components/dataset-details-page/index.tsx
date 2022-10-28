@@ -866,6 +866,12 @@ const DatasetDetailsPage: FC<Props> = ({
                       }
                     />
                   )}
+                  {!hasURL && organizationUnit && (
+                    <KeyValueListItem
+                      property={translations.contactPoint}
+                      value={translate(organizationUnit)}
+                    />
+                  )}
                   {email && (
                     <KeyValueListItem
                       property={translations.email}
