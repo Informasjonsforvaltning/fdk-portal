@@ -252,6 +252,61 @@
       "decision": "ignore",
       "madeAt": 1660811901612,
       "expiresAt": 1663403878080
+    },
+    "1084765|eslint>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|node-sass>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|node-sass>node-gyp>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|jest>@jest/core>rimraf>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|@graphql-codegen/typescript>@graphql-codegen/visitor-plugin-common>@graphql-tools/relay-operation-optimizer>@ardatan/relay-compiler>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|@graphql-codegen/typescript-operations>@graphql-codegen/typescript>@graphql-codegen/visitor-plugin-common>@graphql-tools/relay-operation-optimizer>@ardatan/relay-compiler>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|node-sass>node-gyp>make-fetch-happen>cacache>@npmcli/move-file>rimraf>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|jest>jest-cli>@jest/core>@jest/reporters>@jest/transform>babel-plugin-istanbul>test-exclude>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|jest>@jest/core>jest-config>@jest/test-sequencer>jest-runtime>@jest/transform>babel-plugin-istanbul>test-exclude>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|jest>jest-cli>@jest/core>jest-config>@jest/test-sequencer>jest-runtime>@jest/transform>babel-plugin-istanbul>test-exclude>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
+    },
+    "1084765|jest>jest-cli>@jest/core>jest-config>@jest/test-sequencer>jest-runtime>jest-snapshot>@jest/transform>babel-plugin-istanbul>test-exclude>glob>minimatch": {
+      "decision": "ignore",
+      "madeAt": 1667227833052,
+      "expiresAt": 1669819795083
     }
   },
   "rules": {},
