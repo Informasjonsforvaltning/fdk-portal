@@ -38,20 +38,11 @@
     padding: 0.5em 1.5em;
 
     .fdk-items-list {
-      button {
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-      }
       .fdk-toggleList {
-        @include themify($themes) {
-          color: themed('color-text-link');
-        }
-
-        img {
+        svg {
           height: 16px;
           width: 16px;
+          margin-right: 0.3em;
         }
       }
 
