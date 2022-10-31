@@ -45,8 +45,3 @@ test('should handle toggleFilter', () => {
   wrapper.find('button.fdk-toggleFilter').simulate('click');
   expect(wrapper.state('openFilter')).toBe(false);
 });
-
-test('should handle toggleList', () => {
-  wrapper.find('button.fdk-toggleList').simulate('click');
-  expect(wrapper.state('open')).toBe(true);
-});
