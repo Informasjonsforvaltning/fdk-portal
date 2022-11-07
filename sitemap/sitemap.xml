@@ -2,66 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
         <loc>https://data.norge.no/</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/search-all</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/datasets</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/dataservices</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/concepts</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/informationmodels</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/public-services-and-events</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/news-archive</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/organizations</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/concepts/compare</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/reports</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/about</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/about-registration</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/guidance</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/guidance/metadata</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/sparql</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
+        <loc>https://data.norge.no/om-datasettkatalogen</loc>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
+        <loc>https://data.norge.no/om-api-katalogen</loc>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
+        <loc>https://data.norge.no/om-begrepskatalogen</loc>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
+        <loc>https://data.norge.no/om-informasjonskatalogen</loc>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/publishing</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/publishing/about-registration</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/publishing/about-harvesting</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/publishing/terms-of-use</loc>
-        <lastmod>2022-1-7</lastmod>
-    </url>,<url>
+        <lastmod>2022-11-7</lastmod>
+    </url><url>
         <loc>https://data.norge.no/publishing/service-messages</loc>
-        <lastmod>2022-1-7</lastmod>
+        <lastmod>2022-11-7</lastmod>
     </url>
 </urlset>

@@ -18,7 +18,8 @@ ${[...new Set(Object.keys(routes).flatMap(k => routes[k]))]
         <loc>${PUBLIC_URL}${path}</loc>
         <lastmod>${lastMod}</lastmod>
     </url>`
-  )}
+  )
+  .join('')}
 </urlset>
 `;
 
