@@ -3,12 +3,13 @@ import { Collapse } from 'reactstrap';
 import _ from 'lodash';
 import Select from 'react-select';
 
+import Button, { Variant } from '@fellesdatakatalog/button';
+import SvgIcon from '@fellesdatakatalog/icons';
+
 import localization from '../../lib/localization';
 import { FilterOption } from '../filter-option/filter-option.component';
 import './filter-box.scss';
 
-import CollapseTextIcon from '../../img/icon-collapse-text-sm.svg';
-import ExpandTextIcon from '../../img/icon-expand-text-sm.svg';
 import { FilterSearchOption } from '../../types';
 
 interface Props {
@@ -151,20 +152,20 @@ export class FilterBox extends React.Component<Props, State> {
                   <Collapse isOpen={open}>
                     <div>{options(items.slice(5), groupIndex)}</div>
                   </Collapse>
-                  <button
-                    type='button'
+                  <Button
+                    variant={Variant.TERTIARY}
                     className='fdk-toggleList'
                     onClick={this.toggleList}
                   >
-                    <img
-                      src={open ? CollapseTextIcon : ExpandTextIcon}
-                      alt=''
-                      className='mr-2'
-                    />
+                    {open ? (
+                      <SvgIcon name='chevronDoubleUpStroke' />
+                    ) : (
+                      <SvgIcon name='chevronDoubleDownStroke' />
+                    )}
                     {open
                       ? localization.facet.showfewer
                       : localization.facet.showmore}
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>

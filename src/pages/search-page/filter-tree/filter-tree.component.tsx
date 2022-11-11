@@ -4,13 +4,13 @@ import { Collapse } from 'reactstrap';
 import _ from 'lodash';
 
 import Select from 'react-select';
+import Button, { Variant } from '@fellesdatakatalog/button';
+import SvgIcon from '@fellesdatakatalog/icons';
 import { FilterOption } from '../../../components/filter-option/filter-option.component';
 import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
 import './filter-tree.scss';
 
-import CollapseTextIcon from '../../../img/icon-collapse-text-sm.svg';
-import ExpandTextIcon from '../../../img/icon-expand-text-sm.svg';
 import { FilterSearchOption } from '../../../types';
 import { FilterChange } from '../../../components/filter-box/filter-box.component';
 
@@ -340,20 +340,20 @@ export const FilterTree: FC<Props> = ({
                     })}
                   </div>
                 </Collapse>
-                <button
-                  type='button'
+                <Button
+                  variant={Variant.TERTIARY}
                   className='fdk-toggleList'
                   onClick={handleToggleOpenList}
                 >
-                  <img
-                    src={openList ? CollapseTextIcon : ExpandTextIcon}
-                    alt=''
-                    className='mr-2'
-                  />
+                  {openList ? (
+                    <SvgIcon name='chevronDoubleUpStroke' />
+                  ) : (
+                    <SvgIcon name='chevronDoubleDownStroke' />
+                  )}
                   {openList
                     ? localization.facet.showfewer
                     : localization.facet.showmore}
-                </button>
+                </Button>
               </div>
             )}
           </div>
