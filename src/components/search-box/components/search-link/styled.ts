@@ -9,7 +9,11 @@ import InfomodIconBase from '../../../../images/icon-catalog-infomod-lg.svg';
 import PublicServiceIconBase from '../../../../images/icon-catalog-service-lg.svg';
 import { Entity } from '../../../../types/enums';
 
-const SearchLink = styled(Link)<{ type?: Entity; $smallWidth?: boolean }>`
+const SearchLink = styled(Link)<{
+  type?: Entity;
+  $smallWidth?: boolean;
+  title: string;
+}>`
   align-items: center;
   background-color: ${({ type, theme: t }) =>
     type ? t.extendedColors[type]?.light : '#FFF'};

@@ -51,9 +51,16 @@ const SearchLink: FC<Props> = ({ entity, beta = false }) => {
   };
 
   const { path, icon: Icon, translation } = categoriesLink[entity];
+  const capitalizedTranlation =
+    translation.charAt(0).toUpperCase() + translation.slice(1);
 
   return (
-    <SC.SearchLink to={path} type={entity} $smallWidth>
+    <SC.SearchLink
+      to={path}
+      type={entity}
+      title={capitalizedTranlation}
+      $smallWidth
+    >
       {beta && <SC.BetaRibbon>BETA</SC.BetaRibbon>}
       <Icon />
       <span>{localization.showOnly}</span>
