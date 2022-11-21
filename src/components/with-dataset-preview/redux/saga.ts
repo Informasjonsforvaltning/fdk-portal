@@ -5,12 +5,14 @@ import * as actions from './actions';
 
 import type { DatasetPreview } from '../../../types';
 
-import { getDatasetPreview } from '../../../api/datasetPreview';
+import { getDatasetPreview, setCsrf } from '../../../api/datasetPreview';
 
 function* getDatasetPreviewRequested({
   payload: { url, rows }
 }: ReturnType<typeof actions.getDatasetPreviewRequested>) {
   try {
+    yield call(setCsrf);
+
     const datasetPreview: DatasetPreview = yield call(
       getDatasetPreview,
       url,
