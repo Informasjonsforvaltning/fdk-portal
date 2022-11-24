@@ -35,3 +35,9 @@ export const translatePrefixedFormat = (format: string) => {
       }`
     : format;
 };
+
+export const cookieValue = (name: string) =>
+  document.cookie
+    .split('; ')
+    .filter(row => row.startsWith(`${name}=`))
+    .map(c => c.split('=')[1])[0];

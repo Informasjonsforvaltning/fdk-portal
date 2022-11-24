@@ -9,7 +9,7 @@ export default validateEnv(
       'https://sso.staging.fellesdatakatalog.digdir.no/auth/realms/fdk',
     OIDC_CLIENT_SECRET: '',
     CONTAINER_IMAGE: 'eu.gcr.io/digdir-fdk-infra/fdk-portal:development',
-    SEARCH_API_HOST: 'https://www.staging.fellesdatakatalog.digdir.no',
+    SEARCH_API_HOST: 'https://staging.fellesdatakatalog.digdir.no',
     FDK_REGISTRATION_BASE_URI:
       'https://registrering.staging.fellesdatakatalog.digdir.no',
     ADMIN_GUI_BASE_URI: 'https://admin.staging.fellesdatakatalog.digdir.no',

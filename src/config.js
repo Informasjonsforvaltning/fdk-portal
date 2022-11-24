@@ -7,8 +7,8 @@ const env = window.env || {
 };
 
 // override all env variables to staging (inspired by https://www.staging.fellesdatakatalog.digdir.no/config.js)
-// env.SEARCH_API_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
-// env.SEARCH_HOST = 'https://www.staging.fellesdatakatalog.digdir.no';
+// env.SEARCH_API_HOST = 'https://staging.fellesdatakatalog.digdir.no';
+// env.SEARCH_HOST = 'https://staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_FULLTEXT_HOST = 'https://search.staging.fellesdatakatalog.digdir.no';
 // env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
 // env.ORGANIZATION_HOST =
