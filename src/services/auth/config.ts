@@ -12,7 +12,7 @@ const userManagerSettings: UserManagerSettings = {
   post_logout_redirect_uri: location.href,
   response_type: 'code',
   scope: 'openid authorities profile email',
-  revokeAccessTokenOnSignout: true
+  revokeAccessTokenOnSignout: false
 };
 
 export default userManagerSettings;
