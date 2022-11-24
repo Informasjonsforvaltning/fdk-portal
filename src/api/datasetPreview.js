@@ -7,7 +7,7 @@ const { FDK_DATASET_PREVIEW_API_KEY } = env;
 
 export const setCsrf = () =>
   axios
-    .get(`${getConfig().searchHost.host}/dataset/preview`, {
+    .get('/dataset/preview', {
       ...getConfig().searchHost.config,
       withCredentials: true,
       headers: {
@@ -19,7 +19,7 @@ export const setCsrf = () =>
 export const getDatasetPreview = (url, rows) =>
   axios
     .post(
-      `${getConfig().searchHost.host}/dataset/preview`,
+      '/dataset/preview',
       { url, rows },
       {
         ...getConfig().searchHost.config,
