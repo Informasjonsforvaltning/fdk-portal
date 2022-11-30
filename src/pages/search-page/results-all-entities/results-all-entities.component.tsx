@@ -102,7 +102,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
 
   return (
     <main id='content'>
-      {entities && entities.length > 0 ? (
+      {(entities && entities.length > 0) || isLoading ? (
         <>
           <SortButtons />
           <SC.Content className='row'>
