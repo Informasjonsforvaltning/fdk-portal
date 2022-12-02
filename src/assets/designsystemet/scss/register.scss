@@ -1,0 +1,64 @@
+@import './colors.scss';
+
+.theme-fdk {
+  background-color: $color-neutral-lightest;
+  color: $color-neutral-darkest;
+}
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.breakword {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -hp-pre-wrap;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.breakword-word {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -hp-pre-wrap;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.visibilityHidden {
+  visibility: hidden;
+}
+
+/*
+SITE
+ */
+.site {
+  min-height: 100vh;
+  .site-content {
+    flex-grow: 1;
+  }
+}
+
+/*
+FDK-BADGE
+ */
+.fdk-badge {
+  font-weight: 400;
+}
