@@ -81,6 +81,7 @@
   "lifeEvent": "Innbygger",
   "dctType": "Type",
   "industryCode": "Næringskode",
+  "isGroupedBy": "Inngår i",
   "requires": "Krever",
   "days": "dager",
   "requiredBy": "Krevd av",

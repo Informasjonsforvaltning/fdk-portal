@@ -81,6 +81,7 @@
   "lifeEvent": "Life event",
   "dctType": "Type",
   "industryCode": "Industry code",
+  "isGroupedBy": "Is grouped by",
   "requires": "Requires",
   "days": "days",
   "requiredBy": "Required by",

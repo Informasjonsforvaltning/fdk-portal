@@ -367,16 +367,19 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 {isGroupedBy?.map(uri =>
                   eventsMap[uri] ? (
                     <CatalogTypeBox key={uri} entity={Entity.EVENT}>
-                      {eventsMap[uri].id ? (
-                        <Link
-                          as={RouterLink}
-                          to={`${PATHNAME_EVENTS}/${eventsMap[uri].id}`}
-                        >
-                          {translate(eventsMap[uri].title ?? uri)}
-                        </Link>
-                      ) : (
-                        uri
-                      )}
+                      <span>
+                        {translations.isGroupedBy}&nbsp;
+                        {eventsMap[uri].id ? (
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_EVENTS}/${eventsMap[uri].id}`}
+                          >
+                            {translate(eventsMap[uri].title ?? uri)}
+                          </Link>
+                        ) : (
+                          uri
+                        )}
+                      </span>
                     </CatalogTypeBox>
                   ) : null
                 )}
