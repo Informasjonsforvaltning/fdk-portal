@@ -82,6 +82,7 @@
   "dctType": "Type",
   "industryCode": "Industry code",
   "requires": "Requires",
+  "isRelatedTo": "Is related to",
   "days": "days",
   "requiredBy": "Required by",
   "relatedBy": "Related by",

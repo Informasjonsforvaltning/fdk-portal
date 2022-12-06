@@ -82,6 +82,7 @@
   "dctType": "Type",
   "industryCode": "Næringskode",
   "requires": "Krever",
+  "isRelatedTo": "Er relatert til",
   "days": "dager",
   "requiredBy": "Krevd av",
   "relatedBy": "Relatert av",

@@ -337,6 +337,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 {relation?.map(({ uri, title: relationTitle }, index) => (
                   <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
                     <span>
+                      {translations.isRelatedTo}&nbsp;
                       {publicServicesMap?.[uri] ? (
                         <Link
                           as={RouterLink}
