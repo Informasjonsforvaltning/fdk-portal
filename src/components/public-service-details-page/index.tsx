@@ -314,40 +314,38 @@ const PublicServiceDetailsPage: FC<Props> = ({
               }
             >
               <List>
-                {requiredServices?.map(
-                  ({ uri, title: requiredServiceTitle }, index) => (
-                    <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
-                      <span>
-                        {translations.requires}&nbsp;
-                        {publicServicesMap?.[uri] ? (
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
-                            key={`${uri}-${index}`}
-                          >
-                            {translate(requiredServiceTitle) ?? uri}
-                          </Link>
-                        ) : (
-                          translate(requiredServiceTitle) ?? uri
-                        )}
-                      </span>
-                    </CatalogTypeBox>
-                  )
-                )}
-                {relation?.map(({ uri, title: relationTitle }, index) => (
+                {requiredServices?.map(({ uri }, index) => (
+                  <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
+                    <span>
+                      {translations.requires}&nbsp;
+                      {publicServicesMap?.[uri] ? (
+                        <Link
+                          as={RouterLink}
+                          to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
+                          key={`${uri}-${index}`}
+                        >
+                          {translate(publicServicesMap[uri].title) ?? uri}
+                        </Link>
+                      ) : (
+                        uri
+                      )}
+                    </span>
+                  </CatalogTypeBox>
+                ))}
+                {relation?.map(({ uri }, index) => (
                   <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
                     <span>
                       {translations.isRelatedTo}&nbsp;
                       {publicServicesMap?.[uri] ? (
                         <Link
                           as={RouterLink}
-                          to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri]?.id}`}
+                          to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
                           key={`${uri}-${index}`}
                         >
-                          {translate(relationTitle) ?? uri}
+                          {translate(publicServicesMap[uri].title) ?? uri}
                         </Link>
                       ) : (
-                        translate(relationTitle) ?? uri
+                        uri
                       )}
                     </span>
                   </CatalogTypeBox>
