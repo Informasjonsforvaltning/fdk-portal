@@ -1,0 +1,214 @@
+@import 'colors';
+
+/*  D I V I D E R S   &   B O X E S  */
+
+.designsystemDivider {
+    border-color: $color-neutral-lighter;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.designsystemDividerSection {
+    width: 100%;
+    border-top: 2px solid $color-neutral-lighter;
+    margin: 80px 0px 80px 0px;
+}
+
+.designsystemInfobox {
+    width: 100%;
+    padding: 10px;
+    margin: 0px;
+    background-color: $color-neutral-lightest;
+    border: 1px dashed $color-neutral-darkest;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.designsystemIconbox {
+    width: 160px;
+    height: auto;
+    vertical-align: middle;
+    margin: 0px 10px 20px 0px;
+    padding: 0px;
+    float: left;
+}
+
+.designsystemSpaceAbove {
+    margin: 20px 0px 0px 0px;
+}
+
+.designsystemSpaceBelow {
+    margin: 0px 0px 20px 0px;
+}
+
+.fdk-footer {
+    border-top: 1px solid $color-neutral-lighter;
+    padding: 20px 0px;
+    margin: 60px 0px 0px 0px;
+}
+
+.fdkCheckbox {
+    width: 21px;
+    height: 21px;
+    margin: 0px 6px 0px 0px;
+    background-color: $white;
+    border: 1px solid $color-neutral-darkest;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+
+/*  H E A D I N G S  */
+
+.designsystemNumber {
+    font-family: "heebo";
+    font-weight: 600;
+    padding: 10px 5px 9px 5px;
+    margin-right: 10px;
+    background-color: $color-primary;
+    color: $color-neutral-darkest;
+    width: 40px;
+    height: auto;
+    border-radius: 2px;
+    text-align: center;
+    float: left;
+}
+
+.designsystemH1 {
+    font-family: "heebo";
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $color-neutral-darkest;
+    padding: 10px 3px 9px 3px;
+    margin: 0px 0px 50px 0px;
+    height: auto;
+}
+
+
+
+/*  C O L O R   P A L E T T E  */
+
+.designsystemColorPalette {
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    padding: 35px 5px 5px 5px;
+    text-align: center;
+    float: left;
+    border-radius: 60px;
+    border: 1px solid $color-neutral-light;
+}
+
+.designsystemColor1 {
+    background-color: $color-neutral-darkest;
+    color: #fff;
+    font-weight: 300;
+}
+
+.designsystemColor2 {
+    background-color: $color-neutral-darkest;
+    color: #fff;
+    font-weight: 300;
+}
+
+.designsystemColor3 {
+    background-color: $color-neutral-dark;
+    color: $white;
+    font-weight: 300;
+}
+
+.designsystemColor4 {
+    background-color: $color-neutral-light;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColor5 {
+    background-color: $color-neutral-lighter;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColor6 {
+    background-color: $color-neutral-lightest;
+    color: $color-neutral-darkest;
+    border: 1px solid $color-neutral-light;
+}
+
+.designsystemColor7 {
+    background-color: $color7;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorCta {
+    background-color: $color-primary;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorCta2 {
+    background-color: $color-primary;
+    color: $white;
+    font-weight: 300;
+}
+
+.designsystemColorCta3 {
+    background-color: $color-primary03;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorCta4 {
+    background-color: $color-primary;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorGreen {
+    background-color: $color-success;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorGreen2 {
+    background-color: $color-success2;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorYellow {
+    background-color: $color-warning;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorYellow2 {
+    background-color: $color-warning;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorRed {
+    background-color: $color-danger;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorRed2 {
+    background-color: $color-danger2;
+    color: $color-neutral-darkest;
+}
+
+.designsystemColorRed3 {
+    background-color: $color-danger3;
+    color: $white;
+    font-weight: 300;
+}
+
+.designsystemColorWhite {
+    background-color: #ffffff;
+    color: $color-neutral-darkest;
+}
+
+
+
+/* F O N T S */
+
+.designsystemLinks {
+    color: $white;
+}
+
+.designsystemLinks:hover {
+    color: $color-primary;
+}
