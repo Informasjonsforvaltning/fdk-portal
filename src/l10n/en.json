@@ -83,6 +83,7 @@
   "industryCode": "Industry code",
   "isGroupedBy": "Is grouped by",
   "requires": "Requires",
+  "isRelatedTo": "Is related to",
   "days": "days",
   "requiredBy": "Required by",
   "relatedBy": "Related by",

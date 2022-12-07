@@ -83,6 +83,7 @@
   "industryCode": "Næringskode",
   "isGroupedBy": "Inngår i",
   "requires": "Krev",
+  "isRelatedTo": "Er relatert til",
   "days": "dagar",
   "requiredBy": "Påkrevd av",
   "relatedBy": "Relatert av",
