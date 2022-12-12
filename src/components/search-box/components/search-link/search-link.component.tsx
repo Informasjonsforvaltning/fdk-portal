@@ -63,8 +63,8 @@ const SearchLink: FC<Props> = ({ entity, beta = false }) => {
     >
       {beta && <SC.BetaRibbon>BETA</SC.BetaRibbon>}
       <Icon />
-      <span>{localization.showOnly}</span>
-      <span>{translation.toLowerCase()}</span>
+      <span>{localization.showOnly}&nbsp;</span>
+      <span>{translation.toLowerCase()}&nbsp;</span>
     </SC.SearchLink>
   );
 };
