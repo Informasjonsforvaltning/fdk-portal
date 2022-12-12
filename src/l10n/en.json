@@ -926,7 +926,10 @@
   "errorPage": {
     "serverError": {
       "title": "This is embarrasing...",
-      "content": "There are some technical hiccups on our end. We are working on correcting the error. Try again in a little while."
+      "content": "There are some technical hiccups on our end. We are working on correcting the error. Try again in a little while. ",
+      "content2": "You can also",
+      "backLink": " go back to the page you came from ",
+      "content3": "or go to the <a href=\"\">start page</a>."
     },
     "clientError": {
       "title": "We're sorry!",

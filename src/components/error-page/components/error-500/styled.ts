@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
+import LinkBase from '@fellesdatakatalog/link';
 
 const Error500 = styled.div`
   display: flex;
@@ -21,9 +22,34 @@ const Error500 = styled.div`
     color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
 
-  & > p {
+  & p {
     font-size: ${theme.fontSize('FS20')};
+    display: inline;
+  }
+
+  & span {
+    max-width: 1140px;
+
+  & a {
+    text-decoration: underline;
+    color: ${theme.colour(Colour.NEUTRAL, 'N60')};
+    font-size: ${theme.fontSize('FS20')};
+    margin-left: ${theme.spacing('S4')};
+    margin-right: ${theme.spacing('S4')};
   }
 `;
 
-export default { Error500 };
+const Link = styled(LinkBase)`
+  & > div {
+    border: none;
+    display: block;
+    padding: 0;
+    text-decoration: underline;
+
+    & > svg {
+      margin-left: 0.3rem;
+    }
+  }
+`;
+
+export default { Error500, Link };
