@@ -926,7 +926,10 @@
   "errorPage": {
     "serverError": {
       "title": "Dette er flaut...",
-      "content": "Det har visst skjedd noko teknisk krøll i vår ende. Vi jobbar med å rette opp feilen. Prøv igjen om ei lita stund."
+      "content": "Det har visst skjedd noko teknisk krøll i vår ende. Vi jobbar med å rette opp feilen. Prøv igjen om ei lita stund. ",
+      "content2": "Du kan også",
+      "backLink": " gå tilbake til sida du kom frå ",
+      "content3": "eller gå til <a href=\"\">startsida</a>."
     },
     "clientError": {
       "title": "Vi ber om orsaking!",

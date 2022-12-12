@@ -24,10 +24,11 @@ const Error400 = styled.div`
 
   & p {
     font-size: ${theme.fontSize('FS20')};
+    display: inline;
   }
 
   & span {
-    display: flex;
+    max-width: 1140px;
   }
   & a {
     text-decoration: underline;
