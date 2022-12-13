@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Colour, theme, Unit } from '@fellesdatakatalog/theme';
+import Link from '@fellesdatakatalog/link';
 
 import { SC } from '../../../multilingual-field';
 import type { InvertedColorProps } from '../../../../types';
@@ -90,6 +91,14 @@ const LastPublishedInfo = styled.p`
   }
 `;
 
+const PublisherLink = styled(Link)`
+  margin: 0;
+  font-size: 20px;
+  ${onMobileView} {
+    font-size: 16px;
+  }
+`;
+
 const BetaRibbon = styled.span<InvertedColorProps>`
   position: absolute;
   top: 25px;
@@ -114,5 +123,6 @@ export default {
   TitleWrapper,
   Title,
   LastPublishedInfo,
+  PublisherLink,
   BetaRibbon
 };

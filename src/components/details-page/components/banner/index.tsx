@@ -13,7 +13,7 @@ import SC from './styled';
 
 import { Entity } from '../../../../types/enums';
 import ReactTooltipSC from '../../../tooltip/styled';
-import { Language, TextLanguage } from '../../../../types';
+import { Language, Publisher, TextLanguage } from '../../../../types';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import MultiLingualField from '../../../multilingual-field/components/multilingual-field';
 import LanguageIndicator from '../../../language-indicator';
@@ -24,12 +24,14 @@ interface Props {
   lastPublished: string;
   isAuthoritative: boolean;
   languages?: Language[];
+  publisher?: Partial<Publisher>;
 }
 
 const Banner: FC<Props> = ({
   entity,
   title,
   lastPublished,
+  publisher,
   isAuthoritative,
   languages = []
 }) => {
@@ -60,6 +62,16 @@ const Banner: FC<Props> = ({
     }
   };
 
+  const publisherLabel = {
+    [Entity.DATASET]: translations.detailsPage.owner,
+    [Entity.DATA_SERVICE]: translations.detailsPage.provider,
+    [Entity.CONCEPT]: translations.detailsPage.responsible,
+    [Entity.INFORMATION_MODEL]: translations.detailsPage.responsible,
+    [Entity.PUBLIC_SERVICE]: translations.detailsPage.provider,
+    [Entity.EVENT]: translations.detailsPage.provider
+  };
+
+  const publisherName = translate(publisher?.prefLabel || publisher?.name);
   const { icon: Icon, translation } = entityDetails[entity];
 
   return (
@@ -114,6 +126,13 @@ const Banner: FC<Props> = ({
             }
           )}
         </SC.LastPublishedInfo>
+        {publisher?.id && (
+          <SC.PublisherLink href={`/organizations/${publisher.id}`}>
+            {translations.formatString(publisherLabel[entity], {
+              publisher: publisherName ?? publisher.id
+            })}
+          </SC.PublisherLink>
+        )}
       </SC.Content>
     </SC.Banner>
   );
