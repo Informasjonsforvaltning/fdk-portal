@@ -223,16 +223,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       title: translate(child.props.title) ?? child.props.title
     }));
 
-  const publisherLabel = {
-    [Entity.DATASET]: translations.detailsPage.owner,
-    [Entity.DATA_SERVICE]: translations.detailsPage.provider,
-    [Entity.CONCEPT]: translations.detailsPage.responsible,
-    [Entity.INFORMATION_MODEL]: translations.detailsPage.responsible,
-    [Entity.PUBLIC_SERVICE]: translations.detailsPage.provider,
-    [Entity.EVENT]: translations.detailsPage.provider
-  };
-
-  const publisherName = translate(publisher?.prefLabel || publisher?.name);
   const datasetScore = datasetScores
     ? Object.values(datasetScores.scores)[0]
     : null;
@@ -245,15 +235,11 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         lastPublished={lastPublished}
         isAuthoritative={isAuthoritative}
         languages={languages}
+        publisher={publisher}
       />
       <SC.SubBanner>
         {publisher?.id && (
           <>
-            <SC.PublisherLink href={`/organizations/${publisher.id}`}>
-              {translations.formatString(publisherLabel[entity], {
-                publisher: publisherName ?? publisher.id
-              })}
-            </SC.PublisherLink>
             {datasetScore && (
               <FdkLink
                 href={`/organizations/${publisher.id}/datasets/${entityId}`}

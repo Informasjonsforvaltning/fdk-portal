@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme as t } from '@fellesdatakatalog/theme';
-import Link from '@fellesdatakatalog/link';
 
 import SideMenuBase from '../side-menu';
 
@@ -11,14 +10,6 @@ const DetailsPage = styled.article`
 
   a {
     color: ${({ theme }) => theme.entityColours.dark} !important;
-  }
-`;
-
-const PublisherLink = styled(Link)`
-  margin: 0;
-  font-size: 20px;
-  ${onMobileView} {
-    font-size: 16px;
   }
 `;
 
@@ -238,7 +229,6 @@ const Content = styled.main`
 export default {
   DetailsPage,
   SubBanner,
-  PublisherLink,
   MetadataQuality,
   Themes,
   Page,
