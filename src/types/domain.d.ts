@@ -364,6 +364,7 @@ export interface PublicService {
   keyword?: Partial<TextLanguage>[];
   sector?: Partial<Concept>[];
   isClassifiedBy?: Partial<Concept>[];
+  homepage?: string[];
   language?: PublicServiceLanguage[];
   requires?: PublicService[];
   produces?: PublicServiceOutput[];
