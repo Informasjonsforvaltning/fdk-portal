@@ -729,6 +729,7 @@
         "cost": "Gebyr",
         "processingTime": "Handsamingstid",
         "relation": "Relatert til",
+        "serviceHomepage": "Nettstad for tenesta",
         "isDescribedAt": "Skildrande datasett",
         "spatial": "Geografisk avgrensning",
         "offeredBy": "Tilbydd av"

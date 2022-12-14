@@ -729,6 +729,7 @@
         "cost": "Cost",
         "processingTime": "Processing time",
         "relation": "Related to",
+        "serviceHomepage": "Website for the service",
         "isDescribedAt": "Descriptive datasets",
         "spatial": "Spatial restrictions",
         "offeredBy": "Offered by"

@@ -730,6 +730,7 @@
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
+        "serviceHomepage": "Nettside for tjenesten",
         "isDescribedAt": "Beskrivende datasett",
         "spatial": "Geografisk avgrensning",
         "offeredBy": "Tilbys av"

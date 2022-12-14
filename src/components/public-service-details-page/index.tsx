@@ -142,6 +142,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
     publicService?.keyword?.map(kw => translate(kw))?.filter(Boolean) ?? [];
   const requiredServices = publicService?.requires || [];
   const isClassifiedBy = publicService?.isClassifiedBy || [];
+  const serviceHomepages = publicService?.homepage || [];
   const isGroupedBy = publicService?.isGroupedBy || [];
   const produces = publicService?.produces ?? [];
   const hasCriterion = publicService?.hasCriterion ?? [];
@@ -681,6 +682,24 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   />
                 )}
               </KeyValueList>
+            </ContentSection>
+          )}
+
+          {serviceHomepages.length > 0 && (
+            <ContentSection
+              id='serviceHomepages'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .serviceHomepage
+              }
+            >
+              {serviceHomepages.map(uri => (
+                <ul>
+                  <Link key={uri} href={uri}>
+                    {uri}
+                  </Link>
+                </ul>
+              ))}
             </ContentSection>
           )}
 
