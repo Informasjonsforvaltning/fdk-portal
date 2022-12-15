@@ -277,6 +277,7 @@ export interface PublicServiceOutput {
   name: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   type: Partial<Concept>[];
+  language: PublicServiceLanguage[];
 }
 
 export interface PublicServiceCriterionRequirement {

@@ -292,17 +292,42 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 translations.detailsPage.sectionTitles.publicService.produces
               }
             >
-              <KeyValueList>
-                {produces.map(
-                  ({ name, description: producesDescription }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(name)}-${index}`}
-                      property={translate(name)}
-                      value={translate(producesDescription)}
-                    />
-                  )
-                )}
-              </KeyValueList>
+              {produces.map(
+                (
+                  {
+                    name,
+                    language: availableLanguages,
+                    description: producesDescription
+                  },
+                  index
+                ) => (
+                  <>
+                    <SC.KeyValueListHeader>
+                      {translate(name)}
+                    </SC.KeyValueListHeader>
+                    <KeyValueList>
+                      <KeyValueListItem
+                        key={`${translate(name)}-${index}`}
+                        property={
+                          translations.detailsPage.sectionTitles.publicService
+                            .description
+                        }
+                        value={translate(producesDescription)}
+                      />
+                      <KeyValueListItem
+                        key={`${translate(name)}-${index}`}
+                        property={
+                          translations.detailsPage.sectionTitles.publicService
+                            .availableLanguages
+                        }
+                        value={availableLanguages
+                          .map(({ prefLabel }) => translate(prefLabel))
+                          .join(', ')}
+                      />
+                    </KeyValueList>
+                  </>
+                )
+              )}
             </ContentSection>
           )}
 

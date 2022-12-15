@@ -26,9 +26,17 @@ const ListItemValueHeader = styled.div`
   margin-bottom: ${theme.spacing('S10')};
 `;
 
+const KeyValueListHeader = styled.h3`
+  font-size: ${theme.fontSize('FS20')};
+  font-weight: ${theme.fontWeight('FW500')};
+  margin-bottom: ${theme.spacing('S10')};
+  padding-top: ${theme.spacing('S16')};
+`;
+
 export default {
   BetaRibbon,
   ListItemValue,
   LightWeightLabel,
-  ListItemValueHeader
+  ListItemValueHeader,
+  KeyValueListHeader
 };

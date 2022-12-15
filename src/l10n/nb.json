@@ -1,5 +1,5 @@
 {
-  "goToMainContent": "Hopp til hovedinnhold", 
+  "goToMainContent": "Hopp til hovedinnhold",
   "apiLabel": "API",
   "description": "Beskrivelse",
   "showFullDescription": "Vis hele beskrivelsen",
@@ -153,7 +153,6 @@
     "publishing": "Publisere",
     "aboutCatalogs": "Om katalogene",
     "guidance": "Veiledning"
-
   },
   "query": {
     "intro": "Eksempel: kollektivtransport",
@@ -733,7 +732,8 @@
         "serviceHomepage": "Nettside for tjenesten",
         "isDescribedAt": "Beskrivende datasett",
         "spatial": "Geografisk avgrensning",
-        "offeredBy": "Tilbys av"
+        "offeredBy": "Tilbys av",
+        "availableLanguages": "Tilgjengelige språk"
       },
       "event": {
         "description": "Beskrivelse",

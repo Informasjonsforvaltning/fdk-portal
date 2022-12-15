@@ -732,7 +732,8 @@
         "serviceHomepage": "Nettstad for tenesta",
         "isDescribedAt": "Skildrande datasett",
         "spatial": "Geografisk avgrensning",
-        "offeredBy": "Tilbydd av"
+        "offeredBy": "Tilbydd av",
+        "availableLanguages": "Tilgjengelege språk"
       },
       "event": {
         "description": "Beskriving",
