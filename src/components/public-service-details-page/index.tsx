@@ -306,14 +306,17 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       {translate(name)}
                     </SC.KeyValueListHeader>
                     <KeyValueList>
-                      <KeyValueListItem
-                        key={`${name}-${index}`}
-                        property={
-                          translations.detailsPage.sectionTitles.publicService
-                            .description
-                        }
-                        value={translate(producesDescription)}
-                      />
+                      {producesDescription && (
+                        <KeyValueListItem
+                          key={`${name}-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .description
+                          }
+                          value={translate(producesDescription)}
+                        />
+                      )}
+
                       {availableLanguages && (
                         <KeyValueListItem
                           key={`${name}-${index}`}
@@ -528,20 +531,87 @@ const PublicServiceDetailsPage: FC<Props> = ({
             <ContentSection
               id='hasInput'
               title={
-                translations.detailsPage.sectionTitles.publicService.attachment
+                translations.detailsPage.sectionTitles.publicService
+                  .documentation
               }
             >
-              <KeyValueList>
-                {hasInput.map(
-                  ({ name, description: hasInputDescription }, index) => (
-                    <KeyValueListItem
-                      key={`${translate(name)}-${index}`}
-                      property={translate(name)}
-                      value={translate(hasInputDescription)}
-                    />
+              {hasInput.map(
+                (
+                  {
+                    name,
+                    description: hasInputDescription,
+                    dctType,
+                    language: acceptedLanguages,
+                    page,
+                    rdfType
+                  },
+                  index
+                ) =>
+                  rdfType === 'http://www.w3.org/ns/dcat#Dataset' ? (
+                    (name || hasInputDescription) && (
+                      <CatalogTypeBox entity={Entity.DATASET}>
+                        <h3>{translate(name)}</h3>
+                        <p>{translate(hasInputDescription)}</p>
+                      </CatalogTypeBox>
+                    )
+                  ) : (
+                    <>
+                      {name && (
+                        <SC.KeyValueListHeader>
+                          {translate(name)}
+                        </SC.KeyValueListHeader>
+                      )}
+
+                      {dctType && (
+                        <SC.KeyValueListSubHeader>
+                          {dctType
+                            .map(({ prefLabel }) => translate(prefLabel))
+                            .join(', ')}
+                        </SC.KeyValueListSubHeader>
+                      )}
+
+                      <KeyValueList>
+                        {hasInputDescription && (
+                          <KeyValueListItem
+                            key={`${name}-${index}`}
+                            property={
+                              translations.detailsPage.sectionTitles
+                                .publicService.description
+                            }
+                            value={translate(hasInputDescription)}
+                          />
+                        )}
+
+                        {acceptedLanguages && (
+                          <KeyValueListItem
+                            key={`${name}-${index}`}
+                            property={
+                              translations.detailsPage.sectionTitles
+                                .publicService.acceptedLanguages
+                            }
+                            value={acceptedLanguages
+                              .map(({ prefLabel }) => translate(prefLabel))
+                              .join(', ')}
+                          />
+                        )}
+                        {page && (
+                          <KeyValueListItem
+                            key={`${name}-${index}`}
+                            property={
+                              translations.detailsPage.sectionTitles
+                                .publicService.relatedInformation
+                            }
+                            value={page?.map(uri => (
+                              <Link key={uri} href={uri} external>
+                                {uri}
+                              </Link>
+                            ))}
+                          />
+                        )}
+                      </KeyValueList>
+                    </>
                   )
-                )}
-              </KeyValueList>
+              )}
             </ContentSection>
           )}
 

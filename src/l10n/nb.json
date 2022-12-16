@@ -723,7 +723,7 @@
         "contactPoint": "Kontaktinformasjon",
         "follows": "Saksbehandlingsregler",
         "legalResources": "Hjemler",
-        "attachment": "Vedleggskrav",
+        "documentation": "Dokumentasjonskrav",
         "participation": "Deltagende",
         "channel": "Tjenestekanal",
         "cost": "Gebyr",
@@ -733,7 +733,9 @@
         "isDescribedAt": "Beskrivende datasett",
         "spatial": "Geografisk avgrensning",
         "offeredBy": "Tilbys av",
-        "availableLanguages": "Tilgjengelige språk"
+        "availableLanguages": "Tilgjengelige språk",
+        "acceptedLanguages": "Aksepterte språk",
+        "relatedInformation": "Relatert informasjon"
       },
       "event": {
         "description": "Beskrivelse",
