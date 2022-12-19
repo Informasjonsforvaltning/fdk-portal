@@ -306,7 +306,11 @@ export interface PublicServiceInput {
   uri: string;
   identifier: string;
   name: Partial<TextLanguage>;
-  description: Partial<TextLanguage>;
+  description?: Partial<TextLanguage>;
+  dctType: PublicServiceLanguage[];
+  rdfType: string;
+  language: PublicServiceLanguage[];
+  page: string[];
 }
 
 export interface PublicServiceAgent {

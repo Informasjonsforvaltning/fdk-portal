@@ -723,7 +723,7 @@
         "contactPoint": "Contact information",
         "follows": "Processing rules",
         "legalResources": "Legal basis",
-        "attachment": "Attachment requirements",
+        "documentation": "Documentation requirements",
         "participation": "Participation",
         "channel": "Channel",
         "cost": "Cost",
@@ -733,7 +733,9 @@
         "isDescribedAt": "Descriptive datasets",
         "spatial": "Spatial restrictions",
         "offeredBy": "Offered by",
-        "availableLanguages": "Available languages"
+        "availableLanguages": "Available languages",
+        "acceptedLanguages": "Accepted languages",
+        "relatedInformation": "Related information"
       },
       "event": {
         "description": "Description",

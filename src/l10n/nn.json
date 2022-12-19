@@ -723,7 +723,7 @@
         "contactPoint": "Kontaktinformasjon",
         "follows": "Sakshandsamingsreglar",
         "legalResources": "Heimlar",
-        "attachment": "Vedleggskrav",
+        "documentation": "Dokumentasjonskrav",
         "participation": "Deltagande",
         "channel": "Tenestekanal",
         "cost": "Gebyr",
@@ -733,7 +733,9 @@
         "isDescribedAt": "Skildrande datasett",
         "spatial": "Geografisk avgrensning",
         "offeredBy": "Tilbydd av",
-        "availableLanguages": "Tilgjengelege språk"
+        "availableLanguages": "Tilgjengelege språk",
+        "acceptedLanguages": "Aksepterte språk",
+        "relatedInformation": "Relatert informasjon"
       },
       "event": {
         "description": "Beskriving",
