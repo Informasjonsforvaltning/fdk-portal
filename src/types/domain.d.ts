@@ -349,12 +349,11 @@ export interface PublicServiceCost {
 
 interface PublicServiceContactPoint {
   uri: string;
-  contactType: Partial<TextLanguage>;
-  description: Partial<TextLanguage>;
-  email: string;
-  name: Partial<TextLanguage>;
-  telephone: string;
-  url: string;
+  contactPage: string;
+  email: string[];
+  language: PublicServiceLanguage[];
+  openingHours: Partial<TextLanguage>;
+  telephone: string[];
 }
 
 export interface PublicService {
@@ -384,7 +383,7 @@ export interface PublicService {
   processingTime?: string;
   hasCost?: PublicServiceCost[];
   relation?: PublicService[];
-  hasContactPoint?: PublicServiceContactPoint[];
+  contactPoint?: PublicServiceContactPoint[];
   associatedBroaderTypesByEvents?: string[];
   spatial: string[];
 }

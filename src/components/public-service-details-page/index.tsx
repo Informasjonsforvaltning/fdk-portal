@@ -155,7 +155,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const hasCost = publicService?.hasCost ?? [];
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
-  const contactPoints = publicService?.hasContactPoint || [];
+  const contactPoints = publicService?.contactPoint || [];
   const datasetsUris =
     (publicService?.isDescribedAt
       ?.map(({ uri }) => uri)
@@ -998,7 +998,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 ]}
               />
             </ContentSection>
-          )}
+          )}{' '}
           {contactPoints.length > 0 && (
             <ContentSection
               id='hasContactPoint'
@@ -1010,38 +1010,19 @@ const PublicServiceDetailsPage: FC<Props> = ({
               {contactPoints.map(
                 ({
                   uri,
-                  contactType,
-                  description: contactPointDescription,
+                  contactPage,
+                  language,
                   email,
-                  name,
-                  telephone,
-                  url
+                  openingHours,
+                  telephone
                 }) => (
                   <KeyValueList key={uri}>
-                    {contactType && (
-                      <KeyValueListItem
-                        property=''
-                        value={translate(contactType)}
-                      />
-                    )}
-                    {contactPointDescription && (
-                      <KeyValueListItem
-                        property={translations.description}
-                        value={translate(contactPointDescription)}
-                      />
-                    )}
-                    {name && (
-                      <KeyValueListItem
-                        property={translations.name}
-                        value={translate(name)}
-                      />
-                    )}
                     {email && (
                       <KeyValueListItem
                         property={translations.email}
                         value={
                           <a href={`mailto:${email}`} rel='noopener noreferrer'>
-                            {email}
+                            {email.join(', ')}
                           </a>
                         }
                       />
@@ -1049,17 +1030,41 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     {telephone && (
                       <KeyValueListItem
                         property={translations.phone}
-                        value={telephone}
+                        value={telephone.join(', ')}
                       />
                     )}
-                    {url && (
+
+                    {contactPage && (
                       <KeyValueListItem
-                        property={translations.contactPoint}
+                        property={
+                          translations.detailsPage.sectionTitles.publicService
+                            .contactPage
+                        }
                         value={
-                          <Link href={url} external>
-                            {url}
+                          <Link href={contactPage} external>
+                            {contactPage}
                           </Link>
                         }
+                      />
+                    )}
+                    {openingHours && (
+                      <KeyValueListItem
+                        property={
+                          translations.detailsPage.sectionTitles.publicService
+                            .openingHours
+                        }
+                        value={translate(openingHours)}
+                      />
+                    )}
+                    {language && (
+                      <KeyValueListItem
+                        property={
+                          translations.detailsPage.sectionTitles.publicService
+                            .acceptedLanguages
+                        }
+                        value={language
+                          .map(({ prefLabel }) => translate(prefLabel))
+                          .join(', ')}
                       />
                     )}
                   </KeyValueList>

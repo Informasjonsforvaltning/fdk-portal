@@ -740,7 +740,9 @@
         "references": "References",
         "relatedResources": "Related resources",
         "rule": "Rule",
-        "hasBackgroundIn": "Has background in"
+        "hasBackgroundIn": "Has background in",
+        "openingHours": "Opening hours",
+        "contactPage": "Contact page"
       },
       "event": {
         "description": "Description",
