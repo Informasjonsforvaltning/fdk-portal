@@ -10,9 +10,11 @@ exports[`SearchLink component must render correct structure 1`] = `
   <Styled(SvgIconCatalogDatasetLg) />
   <span>
     Show only
+     
   </span>
   <span>
     dataset
+     
   </span>
 </Styled(Link)>
 `;
