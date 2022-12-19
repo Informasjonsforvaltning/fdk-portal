@@ -307,7 +307,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     </SC.KeyValueListHeader>
                     <KeyValueList>
                       <KeyValueListItem
-                        key={`${translate(name)}-${index}`}
+                        key={`${name}-${index}`}
                         property={
                           translations.detailsPage.sectionTitles.publicService
                             .description
@@ -316,7 +316,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       />
                       {availableLanguages && (
                         <KeyValueListItem
-                          key={`${translate(name)}-${index}`}
+                          key={`${name}-${index}`}
                           property={
                             translations.detailsPage.sectionTitles.publicService
                               .availableLanguages
