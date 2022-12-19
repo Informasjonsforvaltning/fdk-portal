@@ -12,7 +12,7 @@
     "node": ">= 14.17.0"
   },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
+    "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions",
     "start": "run-s start:webpack",
     "start:webpack": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack serve --config webpack/dev.config.ts",
     "build:dev": "run-s build:webpack:dev",
@@ -72,7 +72,7 @@
     "@fellesdatakatalog/button": "^0.2.8",
     "@fellesdatakatalog/expansion-panel": "^0.2.5",
     "@fellesdatakatalog/external-footer": "^0.1.22",
-    "@fellesdatakatalog/icons": "^0.6.0",
+    "@fellesdatakatalog/icons": "^0.6.3",
     "@fellesdatakatalog/internal-footer": "^0.3.14",
     "@fellesdatakatalog/link": "^0.2.11",
     "@fellesdatakatalog/tabs": "^1.0.7",

@@ -13,11 +13,9 @@ const Icon = styled.figure`
   justify-content: center;
 
   & > svg {
-    fill: ${({ theme }) => theme.dark};
     width: 65%;
-
-    & > path {
-      fill: ${({ theme }) => theme.dark};
+    & > * {
+      stroke: ${({ theme }) => theme.dark};
     }
   }
 `;
@@ -29,7 +27,9 @@ const Chart = styled.figure`
   width: 110px;
 
   & > svg {
-    fill: ${({ theme }) => theme.dark};
+    & > * {
+      stroke: ${({ theme }) => theme.dark};
+    }
   }
 `;
 

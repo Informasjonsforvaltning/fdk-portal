@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
+import SvgIcon from '@fellesdatakatalog/icons';
 
 import { getConfig } from '../../../../config';
 
@@ -29,14 +30,6 @@ import {
 } from '../../../../components/statistics-regular/statistics-regular';
 
 import SC from './styled';
-
-import DatasetIcon from '../../../../images/icon-catalog-dataset-lg.svg';
-import DataServiceIcon from '../../../../images/icon-catalog-api-lg.svg';
-import ConceptIcon from '../../../../images/icon-catalog-concept-lg.svg';
-import InformationModelIcon from '../../../../images/icon-catalog-infomod-lg.svg';
-import AccessOpenIcon from '../../../../images/icon-access-open-md-v2.svg';
-import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
-import NewIcon from '../../../../images/icon-new-md.svg';
 
 import {
   PATHNAME_DATASETS,
@@ -108,14 +101,14 @@ const OrganizationPage: FC<Props> = ({
   const determineRatingIcon = () => {
     switch (mapScoreToRatingCategory(rating?.datasets?.quality?.score ?? 0)) {
       case MetadataQualityRatingCategory.EXCELLENT:
-        return <SC.ExcellentQualityIcon />;
+        return <SvgIcon name='smileyExcitedStroke' />;
       case MetadataQualityRatingCategory.GOOD:
-        return <SC.GoodQualityIcon />;
+        return <SvgIcon name='smileyHappyStroke' />;
       case MetadataQualityRatingCategory.SUFFICIENT:
-        return <SC.SufficientQualityIcon />;
+        return <SvgIcon name='smileyNeutralStroke' />;
       case MetadataQualityRatingCategory.POOR:
       default:
-        return <SC.PoorQualityIcon />;
+        return <SvgIcon name='smileySadStroke' />;
     }
   };
 
@@ -239,7 +232,7 @@ const OrganizationPage: FC<Props> = ({
         <ThemeProvider theme={theme.extendedColors[Entity.DATASET]}>
           <SC.DatasetCataloguesStatistics>
             <h2>
-              <DatasetIcon />
+              <SvgIcon name='squareThreeStroke' />
               {translations.metadataQualityPage.datasetCatalogStatistics}
             </h2>
             <div>
@@ -251,7 +244,7 @@ const OrganizationPage: FC<Props> = ({
                   )}`}
                 >
                   <IllustrationWithCount
-                    icon={<DatasetIcon />}
+                    icon={<SvgIcon name='squareThreeStroke' />}
                     count={rating?.datasets?.totalCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
@@ -267,7 +260,7 @@ const OrganizationPage: FC<Props> = ({
                   })}`}
                 >
                   <IllustrationWithCount
-                    icon={<NewIcon />}
+                    icon={<SvgIcon name='plusStroke' />}
                     count={rating?.datasets?.newCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
@@ -286,7 +279,7 @@ const OrganizationPage: FC<Props> = ({
                   })}`}
                 >
                   <IllustrationWithCount
-                    icon={<AuthoritativeIcon />}
+                    icon={<SvgIcon name='starStroke' />}
                     count={rating?.datasets?.authoritativeCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
@@ -305,7 +298,7 @@ const OrganizationPage: FC<Props> = ({
                   })}`}
                 >
                   <IllustrationWithCount
-                    icon={<AccessOpenIcon />}
+                    icon={<SvgIcon name='lockOpenStroke' />}
                     count={rating?.datasets?.openCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
@@ -337,7 +330,7 @@ const OrganizationPage: FC<Props> = ({
             <ThemeProvider theme={theme.extendedColors[Entity.DATA_SERVICE]}>
               <SC.DataserviceCataloguesStatistics>
                 <h2>
-                  <DataServiceIcon />
+                  <SvgIcon name='gearStroke' />
                   {
                     translations.metadataQualityPage
                       .dataserviceCatalogStatistics
@@ -352,7 +345,7 @@ const OrganizationPage: FC<Props> = ({
                       )}`}
                     >
                       <IllustrationWithCount
-                        icon={<DataServiceIcon />}
+                        icon={<SvgIcon name='gearStroke' />}
                         count={rating?.dataservices?.totalCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
@@ -368,7 +361,7 @@ const OrganizationPage: FC<Props> = ({
                       })}`}
                     >
                       <IllustrationWithCount
-                        icon={<NewIcon />}
+                        icon={<SvgIcon name='plusStroke' />}
                         count={rating?.dataservices?.newCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
@@ -385,7 +378,7 @@ const OrganizationPage: FC<Props> = ({
             <ThemeProvider theme={theme.extendedColors[Entity.CONCEPT]}>
               <SC.ConceptCataloguesStatistics>
                 <h2>
-                  <ConceptIcon />
+                  <SvgIcon name='bookBookmarkStroke' />
                   {translations.metadataQualityPage.conceptCatalogStatistics}
                 </h2>
                 <div>
@@ -397,7 +390,7 @@ const OrganizationPage: FC<Props> = ({
                       )}`}
                     >
                       <IllustrationWithCount
-                        icon={<ConceptIcon />}
+                        icon={<SvgIcon name='bookBookmarkStroke' />}
                         count={rating?.concepts?.totalCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
@@ -413,7 +406,7 @@ const OrganizationPage: FC<Props> = ({
                       })}`}
                     >
                       <IllustrationWithCount
-                        icon={<NewIcon />}
+                        icon={<SvgIcon name='plusStroke' />}
                         count={rating?.concepts?.newCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
@@ -432,7 +425,7 @@ const OrganizationPage: FC<Props> = ({
             >
               <SC.InformationModelCataloguesStatistics>
                 <h2>
-                  <InformationModelIcon />
+                  <SvgIcon name='infoModelStroke' />
                   {
                     translations.metadataQualityPage
                       .informationModelCatalogStatistics
@@ -447,7 +440,7 @@ const OrganizationPage: FC<Props> = ({
                       )}`}
                     >
                       <IllustrationWithCount
-                        icon={<InformationModelIcon />}
+                        icon={<SvgIcon name='infoModelStroke' />}
                         count={rating?.informationmodels?.totalCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
@@ -465,7 +458,7 @@ const OrganizationPage: FC<Props> = ({
                       )}`}
                     >
                       <IllustrationWithCount
-                        icon={<NewIcon />}
+                        icon={<SvgIcon name='plusStroke' />}
                         count={rating?.informationmodels?.newCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
