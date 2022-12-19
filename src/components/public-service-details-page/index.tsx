@@ -314,16 +314,18 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         }
                         value={translate(producesDescription)}
                       />
-                      <KeyValueListItem
-                        key={`${translate(name)}-${index}`}
-                        property={
-                          translations.detailsPage.sectionTitles.publicService
-                            .availableLanguages
-                        }
-                        value={availableLanguages
-                          .map(({ prefLabel }) => translate(prefLabel))
-                          .join(', ')}
-                      />
+                      {availableLanguages && (
+                        <KeyValueListItem
+                          key={`${translate(name)}-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .availableLanguages
+                          }
+                          value={availableLanguages
+                            .map(({ prefLabel }) => translate(prefLabel))
+                            .join(', ')}
+                        />
+                      )}
                     </KeyValueList>
                   </>
                 )
