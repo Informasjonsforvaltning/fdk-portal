@@ -35,7 +35,7 @@ import ErrorPage from '../error-page';
 import RelationList, { ItemWithRelationType } from '../relation-list';
 
 import type { Theme } from '../../types';
-import { Entity } from '../../types/enums';
+import { Entity, Vocabulary } from '../../types/enums';
 
 import {
   PATHNAME_CONCEPTS,
@@ -308,7 +308,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     <KeyValueList>
                       {producesDescription && (
                         <KeyValueListItem
-                          key={`${name}-${index}`}
+                          key={`producesDescription-${index}`}
                           property={
                             translations.detailsPage.sectionTitles.publicService
                               .description
@@ -319,7 +319,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
                       {availableLanguages && (
                         <KeyValueListItem
-                          key={`${name}-${index}`}
+                          key={`producesDescriptionLanguage-${index}`}
                           property={
                             translations.detailsPage.sectionTitles.publicService
                               .availableLanguages
@@ -547,7 +547,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   },
                   index
                 ) =>
-                  rdfType === 'http://www.w3.org/ns/dcat#Dataset' ? (
+                  rdfType === Vocabulary.DATASET ? (
                     (name || hasInputDescription) && (
                       <CatalogTypeBox entity={Entity.DATASET}>
                         <h3>{translate(name)}</h3>
@@ -573,7 +573,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       <KeyValueList>
                         {hasInputDescription && (
                           <KeyValueListItem
-                            key={`${name}-${index}`}
+                            key={`description-${index}`}
                             property={
                               translations.detailsPage.sectionTitles
                                 .publicService.description
@@ -584,7 +584,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
                         {acceptedLanguages && (
                           <KeyValueListItem
-                            key={`${name}-${index}`}
+                            key={`acceptedLanguages-${index}`}
                             property={
                               translations.detailsPage.sectionTitles
                                 .publicService.acceptedLanguages
@@ -596,7 +596,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         )}
                         {page && (
                           <KeyValueListItem
-                            key={`${name}-${index}`}
+                            key={`relatedInformation-${index}`}
                             property={
                               translations.detailsPage.sectionTitles
                                 .publicService.relatedInformation
