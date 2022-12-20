@@ -4,6 +4,7 @@ import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
 import moment from 'moment';
+import { Link as ScrollLink } from 'react-scroll';
 
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -505,6 +506,99 @@ const PublicServiceDetailsPage: FC<Props> = ({
             </ContentSection>
           )}
 
+          {hasLegalResource.length > 0 && (
+            <ContentSection
+              id='hasLegalResource'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .relatedLegalResources
+              }
+            >
+              {hasLegalResource.map(
+                (
+                  {
+                    description: legalResourceDescription,
+                    dctTitle,
+                    seeAlso,
+                    relation: legalResourceRelations
+                  },
+                  index
+                ) => (
+                  <div id={`legalResource-${index}`}>
+                    {dctTitle && (
+                      <SC.KeyValueListHeader>
+                        {translate(dctTitle)}
+                      </SC.KeyValueListHeader>
+                    )}
+
+                    <KeyValueList>
+                      {legalResourceDescription && (
+                        <KeyValueListItem
+                          key={`legalResourceDescription-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .description
+                          }
+                          value={translate(legalResourceDescription)}
+                        />
+                      )}
+
+                      {seeAlso && (
+                        <KeyValueListItem
+                          key={`legalResourceReference-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .references
+                          }
+                          value={seeAlso.map(url => (
+                            <Link key={url} href={url} external>
+                              {url}
+                            </Link>
+                          ))}
+                        />
+                      )}
+                      {legalResourceRelations && (
+                        <KeyValueListItem
+                          key={`legalResourceRelatedResources-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .relatedResources
+                          }
+                          value={legalResourceRelations.map(relationUri =>
+                            hasLegalResource.map(resourceUri =>
+                              relationUri === resourceUri.uri ? (
+                                <ScrollLink
+                                  to={`legalResource-${legalResourceRelations.indexOf(
+                                    relationUri
+                                  )}`}
+                                  smooth
+                                  isDynamic
+                                  spy
+                                >
+                                  {resourceUri.dctTitle
+                                    ? translate(resourceUri.dctTitle)
+                                    : ''}
+                                </ScrollLink>
+                              ) : (
+                                <Link
+                                  key={relationUri}
+                                  href={relationUri}
+                                  external
+                                >
+                                  {relationUri}
+                                </Link>
+                              )
+                            )
+                          )}
+                        />
+                      )}
+                    </KeyValueList>
+                  </div>
+                )
+              )}
+            </ContentSection>
+          )}
+
           {hasCriterion.length > 0 && (
             <ContentSection
               id='hasCriterion'
@@ -617,7 +711,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
           {(languages.length > 0 ||
             sectors.length > 0 ||
-            hasLegalResource.length > 0 ||
             hasChannel.length > 0 ||
             processingTime) && (
             <ContentSection
@@ -713,27 +806,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       .filter(Boolean)}
                   />
                 )}
-                {hasLegalResource.length > 0 && (
-                  <KeyValueListItem
-                    property={
-                      translations.detailsPage.sectionTitles.publicService
-                        .legalResources
-                    }
-                    value={hasLegalResource
-                      .map(
-                        ({
-                          description: legalResourceDescription,
-                          uri,
-                          url
-                        }) => (
-                          <Link key={uri} href={url} external>
-                            {translate(legalResourceDescription) ?? url}
-                          </Link>
-                        )
-                      )
-                      .filter(Boolean)}
-                  />
-                )}
                 {follows.length > 0 && (
                   <KeyValueListItem
                     property={
@@ -792,7 +864,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               {serviceHomepages.map(uri => (
                 <ul>
-                  <Link key={uri} href={uri}>
+                  <Link key={uri} href={uri} external>
                     {uri}
                   </Link>
                 </ul>

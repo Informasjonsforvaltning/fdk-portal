@@ -735,7 +735,10 @@
         "offeredBy": "Tilbydd av",
         "availableLanguages": "Tilgjengelege språk",
         "acceptedLanguages": "Aksepterte språk",
-        "relatedInformation": "Relatert informasjon"
+        "relatedInformation": "Relatert informasjon",
+        "relatedLegalResources": "Relatert regelverk",
+        "references": "Referansar",
+        "relatedResources": "Relaterte ressursar"
       },
       "event": {
         "description": "Beskriving",

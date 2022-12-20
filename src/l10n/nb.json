@@ -735,7 +735,10 @@
         "offeredBy": "Tilbys av",
         "availableLanguages": "Tilgjengelige språk",
         "acceptedLanguages": "Aksepterte språk",
-        "relatedInformation": "Relatert informasjon"
+        "relatedInformation": "Relatert informasjon",
+        "relatedLegalResources": "Relatert regelverk",
+        "references": "Referanser",
+        "relatedResources": "Relaterte ressurser"
       },
       "event": {
         "description": "Beskrivelse",
