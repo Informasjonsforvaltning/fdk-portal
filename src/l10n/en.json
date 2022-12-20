@@ -735,7 +735,10 @@
         "offeredBy": "Offered by",
         "availableLanguages": "Available languages",
         "acceptedLanguages": "Accepted languages",
-        "relatedInformation": "Related information"
+        "relatedInformation": "Related information",
+        "relatedLegalResources": "Related legal resources",
+        "references": "References",
+        "relatedResources": "Related resources"
       },
       "event": {
         "description": "Description",

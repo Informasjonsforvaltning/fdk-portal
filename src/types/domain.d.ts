@@ -297,9 +297,11 @@ export interface PublicServiceRule {
 }
 
 export interface PublicServiceLegalResource {
-  uri: string;
+  dctTitle: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  url: string;
+  relation: string[];
+  seeAlso: string[];
+  uri: string;
 }
 
 export interface PublicServiceInput {
