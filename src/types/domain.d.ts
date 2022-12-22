@@ -349,6 +349,7 @@ export interface PublicServiceCost {
 
 interface PublicServiceContactPoint {
   uri: string;
+  contactType: Partial<TextLanguage>;
   contactPage: string;
   email: string[];
   language: PublicServiceLanguage[];
