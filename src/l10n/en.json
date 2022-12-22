@@ -1,6 +1,6 @@
 {
   "externalLink": "External link",
-  "opensInNewWindow" :"Opens in new window",
+  "opensInNewWindow": "Opens in new window",
   "goToMainContent": "Go to main content",
   "apiLabel": "API",
   "description": "Description",
@@ -743,6 +743,8 @@
         "relatedResources": "Related resources",
         "rule": "Rule",
         "hasBackgroundIn": "Has background in",
+        "requirement": "Requirement",
+        "satisfiesRule": "Satisfies rule",
         "openingHours": "Opening hours",
         "contactPage": "Contact page"
       },

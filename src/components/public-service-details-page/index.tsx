@@ -35,11 +35,7 @@ import DetailsPage, {
 import ErrorPage from '../error-page';
 import RelationList, { ItemWithRelationType } from '../relation-list';
 
-import type {
-  PublicServiceLegalResource,
-  PublicServiceRule,
-  Theme
-} from '../../types';
+import type { TextLanguage, Theme } from '../../types';
 import { Entity, Vocabulary } from '../../types/enums';
 
 import {
@@ -259,36 +255,28 @@ const PublicServiceDetailsPage: FC<Props> = ({
       relationType: translations.relatedBy
     }));
 
-  const getLegalResourceLink = (
+  const getLink = (
     uri: string,
-    resources: PublicServiceLegalResource[]
+    resources: {
+      uri: string;
+      dctTitle?: Partial<TextLanguage>;
+      name?: Partial<TextLanguage>;
+    }[]
   ) => {
-    const match = resources.find(resource => resource.uri === uri);
-
-    if (match) {
-      const index = resources.indexOf(match);
-      return (
-        <ScrollLink to={`${match.dctTitle}-${index}`} smooth isDynamic spy>
-          {translate(match.dctTitle)}
-        </ScrollLink>
-      );
-    }
-
-    return (
-      <Link key={uri} href={uri} external>
-        {uri}
-      </Link>
+    const match = resources.find(
+      (resource: { uri: string }) => resource.uri === uri
     );
-  };
-
-  const getRuleLink = (uri: string, resources: PublicServiceRule[]) => {
-    const match = resources.find(resource => resource.uri === uri);
 
     if (match) {
       const index = resources.indexOf(match);
       return (
-        <ScrollLink to={`${match.name}-${index}`} smooth isDynamic spy>
-          {translate(match.name)}
+        <ScrollLink
+          to={`${translate(match.dctTitle) ?? translate(match.name)}-${index}`}
+          smooth
+          isDynamic
+          spy
+        >
+          {translate(match.dctTitle ?? match.name)}
         </ScrollLink>
       );
     }
@@ -551,7 +539,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
           {holdsRequirement.length > 0 && (
             <ContentSection
-              id='follows'
+              id='holdsRequirement'
               title={
                 translations.detailsPage.sectionTitles.publicService.requirement
               }
@@ -582,10 +570,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         key={`requirementFulfils-${index}`}
                         property={
                           translations.detailsPage.sectionTitles.publicService
-                            .description
+                            .satisfiesRule
                         }
                         value={fulfils.map(fulfilsUri =>
-                          getRuleLink(fulfilsUri, follows)
+                          getLink(fulfilsUri, follows)
                         )}
                       />
                     </KeyValueList>
@@ -610,7 +598,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   },
                   index
                 ) => (
-                  <div>
+                  <div id={`${name}-${index}`}>
                     {title && (
                       <SC.KeyValueListHeader>
                         {translate(name)}
@@ -651,10 +639,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                               .hasBackgroundIn
                           }
                           value={followsImplements.map(implementsUri =>
-                            getLegalResourceLink(
-                              implementsUri,
-                              hasLegalResource
-                            )
+                            getLink(implementsUri, hasLegalResource)
                           )}
                         />
                       )}
@@ -723,10 +708,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                               .relatedResources
                           }
                           value={legalResourceRelations.map(legalResourceUri =>
-                            getLegalResourceLink(
-                              legalResourceUri,
-                              hasLegalResource
-                            )
+                            getLink(legalResourceUri, hasLegalResource)
                           )}
                         />
                       )}
