@@ -738,7 +738,9 @@
         "relatedInformation": "Related information",
         "relatedLegalResources": "Related legal resources",
         "references": "References",
-        "relatedResources": "Related resources"
+        "relatedResources": "Related resources",
+        "rule": "Rule",
+        "hasBackgroundIn": "Has background in"
       },
       "event": {
         "description": "Description",

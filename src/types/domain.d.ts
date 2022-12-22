@@ -293,7 +293,7 @@ export interface PublicServiceRule {
   name: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   language: PublicServiceLanguage[];
-  implements: PublicService[];
+  implements: string[];
 }
 
 export interface PublicServiceLegalResource {

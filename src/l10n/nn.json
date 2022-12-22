@@ -738,7 +738,9 @@
         "relatedInformation": "Relatert informasjon",
         "relatedLegalResources": "Relatert regelverk",
         "references": "Referansar",
-        "relatedResources": "Relaterte ressursar"
+        "relatedResources": "Relaterte ressursar",
+        "rule": "Regel",
+        "hasBackgroundIn": "Har bakgrunn i"
       },
       "event": {
         "description": "Beskriving",

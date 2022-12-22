@@ -35,7 +35,7 @@ import DetailsPage, {
 import ErrorPage from '../error-page';
 import RelationList, { ItemWithRelationType } from '../relation-list';
 
-import type { Theme } from '../../types';
+import type { PublicServiceLegalResource, Theme } from '../../types';
 import { Entity, Vocabulary } from '../../types/enums';
 
 import {
@@ -253,6 +253,20 @@ const PublicServiceDetailsPage: FC<Props> = ({
       relationType: translations.relatedBy
     }));
 
+  function getLegalResourceUriMatch(
+    uri: string
+  ): PublicServiceLegalResource | undefined {
+    const hasMatch = hasLegalResource.find(
+      legalResource => legalResource.uri === uri
+    );
+    return hasMatch;
+  }
+
+  function getLegalResourceUriMatchIndex(uri: string): number {
+    const hasMatch = getLegalResourceUriMatch(uri);
+    return hasMatch ? hasLegalResource.indexOf(hasMatch) : 0;
+  }
+
   const themes: Theme[] = [];
 
   return renderPage ? (
@@ -285,7 +299,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               <Markdown>{description}</Markdown>
             </ContentSection>
           )}
-
           {produces.length > 0 && (
             <ContentSection
               id='produces'
@@ -336,7 +349,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-
           {(requiredServices.length > 0 || relation.length > 0) && (
             <ContentSection
               id='relatedServices'
@@ -385,7 +397,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </List>
             </ContentSection>
           )}
-
           {isGroupedBy.length > 0 && (
             <ContentSection
               id='related-events'
@@ -417,7 +428,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </List>
             </ContentSection>
           )}
-
           {isClassifiedBy.length > 0 && (
             <ContentSection
               id='concept-references'
@@ -452,7 +462,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </List>
             </ContentSection>
           )}
-
           {hasParticipation.length > 0 && (
             <ContentSection
               id='hasParticipation'
@@ -505,7 +514,96 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
+          {follows.length > 0 && (
+            <ContentSection
+              id='follows'
+              title={translations.detailsPage.sectionTitles.publicService.rule}
+            >
+              {follows.map(
+                (
+                  {
+                    name,
+                    description: followsDescription,
+                    language: availableLanguages,
+                    implements: followsImplements
+                  },
+                  index
+                ) => (
+                  <div>
+                    {title && (
+                      <SC.KeyValueListHeader>
+                        {translate(name)}
+                      </SC.KeyValueListHeader>
+                    )}
+                    <KeyValueList>
+                      {description && (
+                        <KeyValueListItem
+                          key={`followsDescription-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .description
+                          }
+                          value={translate(followsDescription)}
+                        />
+                      )}
 
+                      {availableLanguages && (
+                        <KeyValueListItem
+                          key={`followsLanguages-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .availableLanguages
+                          }
+                          value={availableLanguages
+                            .map(({ prefLabel, uri }) =>
+                              prefLabel ? translate(prefLabel) : uri
+                            )
+                            .filter(Boolean)
+                            .join(', ')}
+                        />
+                      )}
+                      {followsImplements && (
+                        <KeyValueListItem
+                          key={`followsImplements-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .hasBackgroundIn
+                          }
+                          value={followsImplements.map(implementsUri =>
+                            hasLegalResource.find(
+                              resource => resource.uri === implementsUri
+                            ) ? (
+                              <ScrollLink
+                                to={`legalResource-${getLegalResourceUriMatchIndex(
+                                  implementsUri
+                                )}`}
+                                smooth
+                                isDynamic
+                                spy
+                              >
+                                {getLegalResourceUriMatch(implementsUri)
+                                  ? getLegalResourceUriMatch(implementsUri)
+                                      ?.dctTitle
+                                  : ''}
+                              </ScrollLink>
+                            ) : (
+                              <Link
+                                key={implementsUri}
+                                href={implementsUri}
+                                external
+                              >
+                                {implementsUri}
+                              </Link>
+                            )
+                          )}
+                        />
+                      )}
+                    </KeyValueList>
+                  </div>
+                )
+              )}
+            </ContentSection>
+          )}
           {hasLegalResource.length > 0 && (
             <ContentSection
               id='hasLegalResource'
@@ -598,7 +696,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-
           {hasCriterion.length > 0 && (
             <ContentSection
               id='hasCriterion'
@@ -612,7 +709,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     key={`${translate(name)}-${index}`}
                     property={translate(name)}
                     value={type
-                      .map(({ prefLabel }) => translate(prefLabel))
+                      .map(({ prefLabel, uri }) =>
+                        prefLabel ? translate(prefLabel) : uri
+                      )
                       .filter(Boolean)
                       .join(', ')}
                   />
@@ -620,7 +719,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
-
           {hasInput.length > 0 && (
             <ContentSection
               id='hasInput'
@@ -659,7 +757,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       {dctType && (
                         <SC.KeyValueListSubHeader>
                           {dctType
-                            .map(({ prefLabel }) => translate(prefLabel))
+                            .map(({ prefLabel, uri }) =>
+                              prefLabel ? translate(prefLabel) : uri
+                            )
+                            .filter(Boolean)
                             .join(', ')}
                         </SC.KeyValueListSubHeader>
                       )}
@@ -684,7 +785,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
                                 .publicService.acceptedLanguages
                             }
                             value={acceptedLanguages
-                              .map(({ prefLabel }) => translate(prefLabel))
+                              .map(({ prefLabel, uri }) =>
+                                prefLabel ? translate(prefLabel) : uri
+                              )
+                              .filter(Boolean)
                               .join(', ')}
                           />
                         )}
@@ -708,7 +812,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-
           {(languages.length > 0 ||
             sectors.length > 0 ||
             hasChannel.length > 0 ||
@@ -853,7 +956,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
-
           {serviceHomepages.length > 0 && (
             <ContentSection
               id='serviceHomepages'
@@ -871,7 +973,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               ))}
             </ContentSection>
           )}
-
           {keywords.length > 0 && (
             <ContentSection
               id='keywords'
@@ -894,7 +995,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </InlineList>
             </ContentSection>
           )}
-
           {datasetsUris.length > 0 && (
             <ContentSection
               id='isDescribedAt'
