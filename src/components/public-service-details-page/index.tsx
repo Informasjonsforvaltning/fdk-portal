@@ -253,19 +253,24 @@ const PublicServiceDetailsPage: FC<Props> = ({
       relationType: translations.relatedBy
     }));
 
-  function getLegalResourceUriMatch(
-    uri: string
-  ): PublicServiceLegalResource | undefined {
-    const hasMatch = hasLegalResource.find(
-      legalResource => legalResource.uri === uri
-    );
-    return hasMatch;
-  }
+  const getLink = (uri: string, resources: PublicServiceLegalResource[]) => {
+    const match = resources.find(resource => resource.uri === uri);
 
-  function getLegalResourceUriMatchIndex(uri: string): number {
-    const hasMatch = getLegalResourceUriMatch(uri);
-    return hasMatch ? hasLegalResource.indexOf(hasMatch) : 0;
-  }
+    if (match) {
+      const index = resources.indexOf(match);
+      return (
+        <ScrollLink to={`${match.dctTitle}-${index}`} smooth isDynamic spy>
+          {translate(match.dctTitle)}
+        </ScrollLink>
+      );
+    }
+
+    return (
+      <Link key={uri} href={uri} external>
+        {uri}
+      </Link>
+    );
+  };
 
   const themes: Theme[] = [];
 
@@ -570,31 +575,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                               .hasBackgroundIn
                           }
                           value={followsImplements.map(implementsUri =>
-                            hasLegalResource.find(
-                              resource => resource.uri === implementsUri
-                            ) ? (
-                              <ScrollLink
-                                to={`legalResource-${getLegalResourceUriMatchIndex(
-                                  implementsUri
-                                )}`}
-                                smooth
-                                isDynamic
-                                spy
-                              >
-                                {getLegalResourceUriMatch(implementsUri)
-                                  ? getLegalResourceUriMatch(implementsUri)
-                                      ?.dctTitle
-                                  : ''}
-                              </ScrollLink>
-                            ) : (
-                              <Link
-                                key={implementsUri}
-                                href={implementsUri}
-                                external
-                              >
-                                {implementsUri}
-                              </Link>
-                            )
+                            getLink(implementsUri, hasLegalResource)
                           )}
                         />
                       )}
@@ -622,7 +603,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   },
                   index
                 ) => (
-                  <div id={`legalResource-${index}`}>
+                  <div id={`${translate(dctTitle)}-${index}`}>
                     {dctTitle && (
                       <SC.KeyValueListHeader>
                         {translate(dctTitle)}
@@ -662,31 +643,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
                             translations.detailsPage.sectionTitles.publicService
                               .relatedResources
                           }
-                          value={legalResourceRelations.map(relationUri =>
-                            hasLegalResource.map(resourceUri =>
-                              relationUri === resourceUri.uri ? (
-                                <ScrollLink
-                                  to={`legalResource-${legalResourceRelations.indexOf(
-                                    relationUri
-                                  )}`}
-                                  smooth
-                                  isDynamic
-                                  spy
-                                >
-                                  {resourceUri.dctTitle
-                                    ? translate(resourceUri.dctTitle)
-                                    : ''}
-                                </ScrollLink>
-                              ) : (
-                                <Link
-                                  key={relationUri}
-                                  href={relationUri}
-                                  external
-                                >
-                                  {relationUri}
-                                </Link>
-                              )
-                            )
+                          value={legalResourceRelations.map(legalResourceUri =>
+                            getLink(legalResourceUri, hasLegalResource)
                           )}
                         />
                       )}
