@@ -270,13 +270,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
     if (match) {
       const index = resources.indexOf(match);
       return (
-        <ScrollLink
-          to={`${translate(match.dctTitle) ?? translate(match.name)}-${index}`}
-          smooth
-          isDynamic
-          spy
-        >
-          {translate(match.dctTitle ?? match.name)}
+        <ScrollLink to={`${uri}-${index}`} smooth isDynamic spy>
+          {match.dctTitle || match.name
+            ? translate(match.dctTitle ?? match.name)
+            : uri}
         </ScrollLink>
       );
     }
@@ -594,11 +591,12 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     name,
                     description: followsDescription,
                     language: availableLanguages,
-                    implements: followsImplements
+                    implements: followsImplements,
+                    uri: followsUri
                   },
                   index
                 ) => (
-                  <div id={`${name}-${index}`}>
+                  <div id={`${followsUri}-${index}`}>
                     {title && (
                       <SC.KeyValueListHeader>
                         {translate(name)}
@@ -663,11 +661,12 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     description: legalResourceDescription,
                     dctTitle,
                     seeAlso,
-                    relation: legalResourceRelations
+                    relation: legalResourceRelations,
+                    uri
                   },
                   index
                 ) => (
-                  <div id={`${translate(dctTitle)}-${index}`}>
+                  <div id={`${uri}-${index}`}>
                     {dctTitle && (
                       <SC.KeyValueListHeader>
                         {translate(dctTitle)}
