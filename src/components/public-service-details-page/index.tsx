@@ -998,7 +998,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 ]}
               />
             </ContentSection>
-          )}{' '}
+          )}
           {contactPoints.length > 0 && (
             <ContentSection
               id='hasContactPoint'
