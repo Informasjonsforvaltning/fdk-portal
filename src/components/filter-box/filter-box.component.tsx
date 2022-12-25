@@ -239,8 +239,6 @@ export class FilterBox extends React.Component<Props, State> {
                     placeholder={`${
                       localization.facet.searchFor
                     } ${title?.toLowerCase()}`}
-                    searchPromptText={localization.report.typeToSearch}
-                    backspaceRemoves
                     theme={theme => ({
                       ...theme,
                       colors: {
