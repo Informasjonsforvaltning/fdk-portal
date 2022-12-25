@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import _ from 'lodash';
 import qs from 'qs';
-import DocumentMeta from 'react-document-meta';
+import { Helmet } from 'react-helmet';
 
 import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
@@ -165,7 +165,13 @@ export const ConceptComparePage: FC<Props> = ({
       <article>
         <div className='row'>
           <div className='col-12'>
-            <DocumentMeta title={localization.menu.conceptsCompare} />
+            <Helmet>
+              <title>{localization.menu.conceptsCompare}</title>
+              <meta
+                property='og:title'
+                content={localization.menu.conceptsCompare}
+              />
+            </Helmet>
             {conceptsCompare && (
               <>
                 <h1 className='title'>

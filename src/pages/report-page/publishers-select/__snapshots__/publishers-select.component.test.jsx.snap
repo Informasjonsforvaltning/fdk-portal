@@ -9,17 +9,12 @@ exports[`should render PublishersSelect correctly with props 1`] = `
   >
     Choose publisher
   </div>
-  <StateManager
+  <ForwardRef
     aria-label="Search publisher..."
-    backspaceRemoves={true}
-    defaultInputValue=""
-    defaultMenuIsOpen={false}
-    defaultValue={null}
     getOptionLabel={[Function]}
     getOptionValue={[Function]}
     options={Array []}
     placeholder="Search publisher..."
-    searchPromptText="Type to search"
     theme={[Function]}
     value={
       Object {

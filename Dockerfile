@@ -1,10 +1,10 @@
-FROM node:12.22.5 AS build
+FROM node:18.12.1-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json audit-resolve.json ./
-RUN npm install -g npm-audit-resolver
+RUN npm install -g npm-audit-resolver@next
 RUN npm set progress=false && \
   npm config set depth 0 && \
-  npm ci
+  npm ci --legacy-peer-deps
 RUN check-audit --production --audit-level=moderate
 COPY babel.config.js tsconfig.json tsconfig.test.json tsconfig.webpack.json jest.config.js ./
 COPY webpack ./webpack

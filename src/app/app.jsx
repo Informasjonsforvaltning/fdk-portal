@@ -114,10 +114,13 @@ export function App({ language, onChangeLanguage }) {
     <div className={themeClass}>
       <Helmet>
         <html lang={language} />
-        <title>{localization.head.title}</title>
+        <title>{getConfig().themeNap ? 'NAP' : localization.head.title}</title>
 
         <meta name='description' content={localization.head.description} />
-        <meta property='og:title' content={localization.head.title} />
+        <meta
+          property='og:title'
+          content={getConfig().themeNap ? 'NAP' : localization.head.title}
+        />
         <meta
           property='og:description'
           content={localization.head.description}

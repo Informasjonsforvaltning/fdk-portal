@@ -303,8 +303,6 @@ export const FilterTree: FC<Props> = ({
                 placeholder={`${
                   localization.facet.searchFor
                 } ${title?.toLowerCase()}`}
-                searchPromptText={localization.report.typeToSearch}
-                backspaceRemoves
                 theme={theme => ({
                   ...theme,
                   colors: {

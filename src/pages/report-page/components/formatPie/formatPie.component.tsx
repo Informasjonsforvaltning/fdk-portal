@@ -43,7 +43,7 @@ const FormatPie: FC<Props> = ({
       data={data}
       startAngle={0}
       animate
-      label={({ dataEntry }) => `${dataEntry.value} ${dataEntry.label}`}
+      label={({ dataEntry }) => `${dataEntry.value} ${dataEntry.title}`}
       labelStyle={(index: any) => ({
         fill:
           hovered === index
