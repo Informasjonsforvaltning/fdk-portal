@@ -21929,12 +21929,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
           External codelist
         </styled.h6>
         <styled.div>
-          <Styled(s)
+          <Styled(p)
             external={true}
             href="https://www.ssb.no/klass/klassifikasjoner/131"
           >
             https://www.ssb.no/klass/klassifikasjoner/131
-          </Styled(s)>
+          </Styled(p)>
         </styled.div>
       </g>
     </Styled(O)>
@@ -25576,12 +25576,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
           Definition reference
         </styled.h6>
         <styled.div>
-          <Styled(s)
+          <Styled(p)
             external={true}
             href="http://www.w3.org/2001/XMLSchema#string"
           >
             http://www.w3.org/2001/XMLSchema#string
-          </Styled(s)>
+          </Styled(p)>
         </styled.div>
         <Memo(ValueRestrictions)
           length={null}
@@ -25627,12 +25627,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
           Definition reference
         </styled.h6>
         <styled.div>
-          <Styled(s)
+          <Styled(p)
             external={true}
             href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
           >
             http://www.w3.org/2001/XMLSchema#nonNegativeInteger
-          </Styled(s)>
+          </Styled(p)>
         </styled.div>
         <Memo(ValueRestrictions)
           length={null}

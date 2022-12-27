@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const Title = styled.h3`
+const Title = styled.h2`
   font-size: 1.5em;
   font-weight: 600;
   margin: 0.2em 0;
@@ -24,7 +24,7 @@ const ArticleItem = styled.article`
 `;
 
 const Date = styled.span`
-  color: ${({ theme }) => theme.extendedColors.neutralDark};
+  color: ${({ theme }) => theme.extendedColors.neutralDarker};
 `;
 
 const Abstract = styled.p`

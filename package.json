@@ -56,7 +56,7 @@
     "@fellesdatakatalog/external-footer": "^0.1.22",
     "@fellesdatakatalog/icons": "^0.6.3",
     "@fellesdatakatalog/internal-footer": "^0.3.14",
-    "@fellesdatakatalog/link": "^0.2.11",
+    "@fellesdatakatalog/link": "^0.2.12",
     "@fellesdatakatalog/tabs": "^1.0.7",
     "@fellesdatakatalog/theme": "0.5.2",
     "@inovua/reactdatagrid-community": "^5.8.0",
