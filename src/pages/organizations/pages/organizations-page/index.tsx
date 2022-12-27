@@ -97,9 +97,6 @@ const OrganizationsPage: FC<Props> = ({
       <div className='row mb-5'>
         <SC.SearchBox className='col-12'>
           <SC.Filter>
-            <label className='uu-invisible' htmlFor='searchBox'>
-              {localization.searchOrganization}
-            </label>
             <input
               aria-label={localization.searchOrganization}
               autoComplete='off'
