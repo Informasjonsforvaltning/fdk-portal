@@ -19,16 +19,14 @@ const Tabs = styled.ul`
   padding-left: 0;
   @media (max-width: 768px) {
     justify-content: space-around;
+    flex-direction: column;
+    align-items: stretch;
   }
 `;
 
 const Label = styled.span`
   margin-left: 0.5em;
   white-space: nowrap;
-  @media (max-width: 768px) {
-    display: none;
-    margin-left: 0;
-  }
 `;
 
 const IconPlaceholder = styled.div<{ type?: Entity }>`

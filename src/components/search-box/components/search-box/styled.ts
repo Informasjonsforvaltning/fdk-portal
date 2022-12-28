@@ -29,7 +29,7 @@ const SearchBox = styled.section`
 
   @media (max-width: 900px) {
     background-size: 40%;
-    font-size: 1.1rem;
+    align-items: stretch;
   }
 `;
 

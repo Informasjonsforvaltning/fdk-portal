@@ -134,6 +134,7 @@ const Dropdown = styled.ul<dropdownProps>`
     height: calc(100vh - ${bannerHeight});
     top: ${bannerHeight};
     right: 0px;
+    overflow: auto;
 
     > .hideOnMobileView {
       display: none;

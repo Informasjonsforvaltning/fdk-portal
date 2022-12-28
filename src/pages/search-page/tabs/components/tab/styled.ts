@@ -41,6 +41,10 @@ const Tab = styled.li<{ active?: boolean }>`
         color: ${({ theme }) => theme.extendedColors.neutralDarker};
       `}
   }
+
+  @media (max-width: 768px) {
+    border-radius: 0;
+  }
 `;
 
 export default {
