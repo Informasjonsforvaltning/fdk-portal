@@ -46,6 +46,10 @@
   }
   .checkbox {
     width: 100%;
+    //padding: 3px;
+    :focus {
+      outline-offset: -1px;
+    }
     .checkbox_label {
       max-width: 90%;
       word-break: break-all;

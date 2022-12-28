@@ -19,6 +19,7 @@
 		@include themify($themes) {
 			color: themed('text-link');
 		}
+		
 		&:focus, &:active, &:hover {
 			@include themify($themes) {
 				color: themed('text-link') !important;

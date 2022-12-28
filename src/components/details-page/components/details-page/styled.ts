@@ -105,7 +105,7 @@ const Themes = styled.div`
       background: ${({ theme }) => theme.entityColours.light};
 
       & > svg > path {
-        fill: ${({ theme }) => theme.entityColours.dark};
+        fill: ${({ theme }) => theme.entityColours.dark} !important;
       }
     }
 
@@ -114,7 +114,7 @@ const Themes = styled.div`
       background: white;
 
       & > svg > path {
-        fill: ${({ theme }) => theme.entityColours.dark};
+        fill: ${({ theme }) => theme.entityColours.dark} !important;
       }
     }
 
@@ -123,7 +123,7 @@ const Themes = styled.div`
       background: ${({ theme }) => theme.extendedColors.textDefault} !important;
 
       & > svg > path {
-        fill: white;
+        fill: white !important;
       }
     }
 
@@ -134,7 +134,7 @@ const Themes = styled.div`
       margin-right: 5px;
 
       & > path {
-        fill: white;
+        fill: white !important;
       }
     }
   }

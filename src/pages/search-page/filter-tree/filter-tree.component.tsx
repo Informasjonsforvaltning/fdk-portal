@@ -303,6 +303,12 @@ export const FilterTree: FC<Props> = ({
                 placeholder={`${
                   localization.facet.searchFor
                 } ${title?.toLowerCase()}`}
+                classNames={{
+                  control: (state: { isFocused: boolean }) =>
+                    state.isFocused
+                      ? 'fdk-filter-search-select-focused'
+                      : 'fdk-filter-search-select'
+                }}
                 theme={theme => ({
                   ...theme,
                   colors: {

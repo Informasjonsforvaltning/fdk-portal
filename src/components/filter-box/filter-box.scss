@@ -65,5 +65,11 @@
     .fdk-filter-search {
       margin-bottom: 2rem;
     }
+
+    .fdk-filter-search-select-focused {
+      border-color: #000;
+      border-style: dashed;
+      box-shadow: none;
+    }
   }
 }
