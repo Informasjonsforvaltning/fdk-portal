@@ -10,6 +10,13 @@ const BigButton = styled(Button)`
       stroke: ${({ theme: t }) => t.entityColours.dark};
     }
   }
+
+  &:focus {
+    background-color: ${({ theme: t }) => t.entityColours.dark};
+    outline-width: 1px;
+    outline-color: ${({ theme: t }) => t.entityColours.dark};
+    outline-style: dashed;
+  }
 `;
 
 const UnderlineButton = styled(Button)`

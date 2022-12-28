@@ -60,7 +60,7 @@ const AccessRight = styled.div`
     width: 20px;
     margin-right: 0.5em;
     path {
-      fill: ${({ theme: t }) => t.dark};
+      fill: ${({ theme: t }) => t.dark} !important;
     }
   }
 
@@ -74,7 +74,7 @@ const AccessRight = styled.div`
       text-decoration: none;
       svg {
         path {
-          fill: #fff;
+          fill: #fff !important;
         }
       }
     }
