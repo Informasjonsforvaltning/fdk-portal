@@ -46,7 +46,7 @@ import {
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS
 } from '../constants/constants';
-import ScrollToTop from '../components/scroll-to-top/scrollToTop.component';
+import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
 import { NewsArticle } from '../pages/news-article-page/news-article-page';
@@ -163,37 +163,35 @@ export function App({ language, onChangeLanguage }) {
             );
           })}
 
-        <ScrollToTop>
-          <Switch key='route-switch-2'>
-            {routes.main
-              .filter(
-                path =>
-                  ![
-                    PATHNAME_MAIN_PAGE,
-                    PATHNAME_SEARCH,
-                    PATHNAME_DATASETS,
-                    PATHNAME_DATA_SERVICES,
-                    PATHNAME_CONCEPTS,
-                    PATHNAME_INFORMATIONMODELS,
-                    PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
-                    PATHNAME_NEWS_ARCHIVE,
-                    PATHNAME_ORGANIZATIONS
-                  ].includes(path)
+        <ScrollToTop key='route-switch-2'>
+          {routes.main
+            .filter(
+              path =>
+                ![
+                  PATHNAME_MAIN_PAGE,
+                  PATHNAME_SEARCH,
+                  PATHNAME_DATASETS,
+                  PATHNAME_DATA_SERVICES,
+                  PATHNAME_CONCEPTS,
+                  PATHNAME_INFORMATIONMODELS,
+                  PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
+                  PATHNAME_NEWS_ARCHIVE,
+                  PATHNAME_ORGANIZATIONS
+                ].includes(path)
+            )
+            .map(path =>
+              path === PATHNAME_SPARQL ? (
+                <Route
+                  exact
+                  path={PATHNAME_SPARQL}
+                  render={() => <SparqlPage language={language} />}
+                />
+              ) : (
+                <Route exact path={path} component={components[path]} />
               )
-              .map(path =>
-                path === PATHNAME_SPARQL ? (
-                  <Route
-                    exact
-                    path={PATHNAME_SPARQL}
-                    render={() => <SparqlPage language={language} />}
-                  />
-                ) : (
-                  <Route exact path={path} component={components[path]} />
-                )
-              )}
+            )}
 
-            <Route render={() => <ErrorPage errorCode='404' />} />
-          </Switch>
+          <Route render={() => <ErrorPage errorCode='404' />} />
         </ScrollToTop>
       </Switch>
 

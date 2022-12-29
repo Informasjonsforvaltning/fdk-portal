@@ -46,7 +46,9 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "resolutions": {},
+  "resolutions": {
+    "json5": "^2.2.2"
+  },
   "dependencies": {
     "@apollo/client": "^3.7.3",
     "@emotion/styled": "^11.10.5",
@@ -105,7 +107,6 @@
     "react-scroll": "^1.8.8",
     "react-select": "^5.7.0",
     "react-tooltip": "^4.5.1",
-    "react-treeview": "^0.4.7",
     "reactstrap": "^9.1.5",
     "redux": "^4.2.0",
     "redux-api-middleware": "^3.2.1",
@@ -114,8 +115,8 @@
     "redux-saga": "^1.2.2",
     "redux-thunk": "^2.4.2",
     "regenerator-runtime": "^0.13.9",
-    "rehype-raw": "^5.1.0",
-    "remark-gfm": "^1.0.0",
+    "rehype-raw": "^6.1.1",
+    "remark-gfm": "^3.0.1",
     "sanitize-html": "^2.7.0",
     "sass": "^1.56.1",
     "styled-components": "^5.3.3",

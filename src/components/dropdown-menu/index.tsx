@@ -4,7 +4,8 @@ import React, {
   useState,
   useRef,
   useEffect,
-  PropsWithChildren
+  PropsWithChildren,
+  useCallback
 } from 'react';
 
 import SC from './styled';
@@ -15,6 +16,7 @@ interface Props {
   desktopView: boolean;
   mobileView: boolean;
   openOnHover?: boolean;
+  hideOnBlur?: boolean;
 }
 
 const DropdownMenu: FC<PropsWithChildren<Props>> = ({
@@ -29,7 +31,7 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
   const ref = useRef<HTMLElement>(null);
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' || event.key === 'Enter') {
       setOpen(false);
     }
   };
@@ -47,6 +49,18 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     setOpen(!open);
   };
+
+  const handleBlur = useCallback(e => {
+    const { currentTarget } = e;
+
+    // Give browser time to focus the next element
+    requestAnimationFrame(() => {
+      // Check if the new focused element is a child of the original container
+      if (!currentTarget.contains(document.activeElement)) {
+        setOpen(false);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -67,6 +81,7 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
         onMouseOver={openOnHover ? handleMouseEvent : () => {}}
         onMouseOut={openOnHover ? handleMouseEvent : () => {}}
         onFocus={() => setOpen(true)}
+        onBlur={handleBlur}
         desktopView={desktopView}
         mobileView={mobileView}
       >
