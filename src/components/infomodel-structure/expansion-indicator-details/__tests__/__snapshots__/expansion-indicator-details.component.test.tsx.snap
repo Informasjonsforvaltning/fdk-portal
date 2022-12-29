@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ExpansionIndicatorDetails component should with isExpanded like false 1`] = `
-<styled.span>
+<styled.button>
   <Styled(SvgIconExpandTextSm) />
   <styled.span>
     Show details
   </styled.span>
-</styled.span>
+</styled.button>
 `;
 
 exports[`ExpansionIndicatorDetails component should with isExpanded like true 1`] = `
-<styled.span>
+<styled.button>
   <Styled(SvgIconCollapseTextSm) />
   <styled.span>
     Close details
   </styled.span>
-</styled.span>
+</styled.button>
 `;

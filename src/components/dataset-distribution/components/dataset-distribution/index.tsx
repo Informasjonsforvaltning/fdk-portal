@@ -6,6 +6,7 @@ import {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '@fellesdatakatalog/expansion-panel';
+import ExpansionPanelIndicator from '../../../expansion-panel-indicator';
 
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
@@ -63,7 +64,10 @@ const DatasetDistribution: FC<Props> = ({
   };
 
   return (
-    <SC.DatasetDistribution data-testid={testIds.root}>
+    <SC.DatasetDistribution
+      data-testid={testIds.root}
+      expansionIndicator={ExpansionPanelIndicator}
+    >
       <ExpansionPanelHead>
         <Summary
           title={

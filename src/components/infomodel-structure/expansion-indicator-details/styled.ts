@@ -28,7 +28,9 @@ const IndicatorText = styled.span`
   color: ${theme.colour(Colour.VIOLET, 'V50')};
 `;
 
-const IndicatorContainer = styled.span`
+const IndicatorContainer = styled.button`
+  border: none;
+  background: transparent;
   display: flex;
   align-self: flex-start;
   align-items: center;

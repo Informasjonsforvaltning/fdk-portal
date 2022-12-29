@@ -9,6 +9,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       Object type
     </h3>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
     >
@@ -3539,6 +3557,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
     >
@@ -7105,6 +7141,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
     >
@@ -10802,6 +10856,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
     >
@@ -14435,6 +14507,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
     >
@@ -18100,6 +18190,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
     >
@@ -21898,6 +22006,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       Codelist
     </h3>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
     >
@@ -21944,6 +22070,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       Data type
     </h3>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
     >
@@ -22819,6 +22963,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
     >
@@ -23790,6 +23952,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
     >
@@ -24665,6 +24845,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
     >
@@ -25545,6 +25743,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       Simple type
     </h3>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
     >
@@ -25596,6 +25812,24 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronUpStroke"
+            />
+          </styled.button>,
+          "expand": <styled.button
+            type="button"
+          >
+            <l
+              name="chevronDownStroke"
+            />
+          </styled.button>,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
     >
