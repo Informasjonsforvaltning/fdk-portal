@@ -40,6 +40,7 @@ import {
   calculateRatingPercentage,
   determineRatingIcon
 } from '../datasets-page';
+import ExpansionPanelIndicator from '../../../../components/expansion-panel-indicator';
 
 interface RouteParams {
   organizationId: string;
@@ -339,7 +340,10 @@ const DatasetPage: FC<Props> = ({
                     max_score: metricMaxScore
                   }) => (
                     <tr key={metricId}>
-                      <ExpansionPanel as='td'>
+                      <ExpansionPanel
+                        as='td'
+                        expansionIndicator={ExpansionPanelIndicator}
+                      >
                         <ExpansionPanelHead>
                           <span>
                             {metricScore > 0 ? (

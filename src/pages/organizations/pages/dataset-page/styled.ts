@@ -267,13 +267,13 @@ const Table = styled.table`
       ${() =>
         isTransportportal
           ? css`
-              & > svg > path {
-                fill: ${theme.colour(Colour.GREEN, 'G50')};
+              & > svg > * {
+                stroke: ${theme.colour(Colour.GREEN, 'G50')};
               }
             `
           : css`
-              & > svg > path {
-                fill: ${theme.colour(Colour.BLUE, 'B50')};
+              & > svg > * {
+                stroke: ${theme.colour(Colour.BLUE, 'B50')};
               }
             `}
     }

@@ -5,6 +5,7 @@ import {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '@fellesdatakatalog/expansion-panel';
+import ExpansionPanelIndicator from '../expansion-panel-indicator';
 
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -213,6 +214,7 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
+                expansionIndicator={ExpansionPanelIndicator}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
@@ -300,6 +302,7 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
+                expansionIndicator={ExpansionPanelIndicator}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
@@ -424,6 +427,7 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
+                expansionIndicator={ExpansionPanelIndicator}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
@@ -499,6 +503,7 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
+                expansionIndicator={ExpansionPanelIndicator}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
@@ -580,6 +585,7 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
+                expansionIndicator={ExpansionPanelIndicator}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
