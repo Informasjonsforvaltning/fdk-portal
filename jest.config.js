@@ -16,6 +16,6 @@ module.exports = {
     '!coverage'
   ],
   transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\](?!(react-markdown|vfile|vfile-message|markdown-table|unist-.*|unified|bail|is-plain-obj|trough|remark-.*|mdast-util-.*|escape-string-regexp|micromark.*|decode-named-character-reference|character-entities|property-information|hast-util-whitespace|space-separated-tokens|comma-separated-tokens|pretty-bytes|ccount|trim-lines)).+\\.(js|jsx|mjs|cjs|ts|tsx)$'
+    '[/\\\\]node_modules[/\\\\](?!(react-markdown|vfile|vfile-message|markdown-table|unist-.*|unified|bail|is-plain-obj|trough|remark-.*|mdast-util-.*|escape-string-regexp|micromark.*|decode-named-character-reference|character-entities|property-information|hast-util-whitespace|space-separated-tokens|comma-separated-tokens|pretty-bytes|ccount|trim-lines|rehype-raw|hast-.*|hastscript|web-namespaces|zwitch|html-void-elements)).+\\.(js|jsx|mjs|cjs|ts|tsx)$'
   ]
 };

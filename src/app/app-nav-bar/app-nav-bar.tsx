@@ -67,6 +67,7 @@ const fdkItems = () => (
       <PortalDropdownMenu
         desktopView
         openOnHover
+        hideOnBlur
         caret={false}
         mobileView={false}
         title={localization.menu.about}
@@ -102,6 +103,7 @@ const fdkItems = () => (
       <PortalDropdownMenu
         desktopView
         openOnHover
+        hideOnBlur
         caret={false}
         mobileView={false}
         title={localization.menu.tools.tools}
@@ -175,6 +177,7 @@ export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => (
 
           <PortalDropdownMenu
             desktopView
+            hideOnBlur
             mobileView={false}
             caret
             title={localization.lang.chosenLanguage}

@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import _ from 'lodash';
-import TreeView from 'react-treeview';
+
 import cx from 'classnames';
 import { resolve } from 'react-resolver';
 
 import localization from '../../../lib/localization';
 import './publishers-tree.scss';
 import { getPublisherHierarchy } from '../../../api/publishers';
+import TreeView from '../../../components/treeview';
 
 interface Props {
   onChange?: (...args: any[]) => void;

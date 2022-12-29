@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, useState } from 'react';
-import TreeView from 'react-treeview';
+
 import { Collapse } from 'reactstrap';
 import _ from 'lodash';
 
@@ -13,6 +13,7 @@ import './filter-tree.scss';
 
 import { FilterSearchOption } from '../../../types';
 import { FilterChange } from '../../../components/filter-box/filter-box.component';
+import TreeView from '../../../components/treeview';
 
 interface Props {
   title?: string;
