@@ -69,7 +69,7 @@ const SearchLink = styled(Link)<{
     color: #fff !important;
     svg {
       path {
-        fill: #fff;
+        fill: #fff !important;
       }
     }
   }
