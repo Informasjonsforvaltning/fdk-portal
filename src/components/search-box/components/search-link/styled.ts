@@ -30,6 +30,10 @@ const SearchLink = styled(Link)<{
   white-space: nowrap;
   overflow: hidden;
 
+  &:focus {
+    outline-color: #fff;
+  }
+
   svg {
     path {
       fill: ${({ type, theme: t }) =>
