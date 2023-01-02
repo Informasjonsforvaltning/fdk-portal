@@ -87,7 +87,6 @@ describe('Styled components for Summary component', () => {
         [
           { property: 'font-size', value: '16px' },
           { property: 'color', value: theme.extendedColors.textDefault },
-          { property: 'white-space', value: 'nowrap' },
           { property: 'text-overflow', value: 'ellipsis' },
           { property: 'overflow', value: 'hidden' }
         ],

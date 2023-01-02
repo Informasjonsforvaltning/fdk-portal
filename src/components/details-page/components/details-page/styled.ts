@@ -220,6 +220,7 @@ const Content = styled.main`
   flex-direction: column;
   gap: ${t.spacing('S12')};
   z-index: 10;
+
   ${onMobileView} {
     width: auto;
     margin-top: 40px;
