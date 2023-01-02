@@ -12,7 +12,6 @@
     "node": ">= 18.12.1"
   },
   "scripts": {
-    "preinstall": "([ ! -f package-lock.json ] && npm install --package-lock-only --ignore-scripts --no-audit); npx npm-force-resolutions",
     "start": "run-s start:webpack",
     "start:webpack": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack serve --config webpack/dev.config.ts",
     "build:dev": "run-s build:webpack:dev",
@@ -46,7 +45,7 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "resolutions": {
+  "overrides": {
     "json5": "2.2.2"
   },
   "dependencies": {
