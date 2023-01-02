@@ -47,7 +47,7 @@
     }
   },
   "resolutions": {
-    "json5": "^2.2.2"
+    "json5": "2.2.2"
   },
   "dependencies": {
     "@apollo/client": "^3.7.3",
