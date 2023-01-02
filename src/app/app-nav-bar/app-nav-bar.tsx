@@ -142,19 +142,19 @@ const languageButtons = ({
 }) => (
   <>
     <li>
-      <button type='button' onClick={() => onChangeLanguage('nb')}>
+      <SC.Button type='button' onClick={() => onChangeLanguage('nb')} lang='nb'>
         {localization.lang['norwegian-nb']}
-      </button>
+      </SC.Button>
     </li>
     <li>
-      <button type='button' onClick={() => onChangeLanguage('nn')}>
+      <SC.Button type='button' onClick={() => onChangeLanguage('nn')} lang='nn'>
         {localization.lang['norwegian-nn']}
-      </button>
+      </SC.Button>
     </li>
     <li>
-      <button type='button' onClick={() => onChangeLanguage('en')}>
+      <SC.Button type='button' onClick={() => onChangeLanguage('en')} lang='en'>
         {localization.lang['english-en']}
-      </button>
+      </SC.Button>
     </li>
   </>
 );
@@ -163,7 +163,7 @@ const Logo = getConfig().useDemoLogo ? <SC.DemoLogo /> : <SC.Logo />;
 export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => (
   <ThemeProvider theme={isTransportportal ? themeNAP : themeFDK}>
     <SC.Header>
-      <SC.Container>
+      <SC.Container role='navigation'>
         <Link
           title={
             isTransportportal ? localization.linkToNap : localization.linkToFdk
@@ -178,16 +178,19 @@ export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => (
           </SC.NavigationLinks>
 
           <PortalDropdownMenu
+            ariaLabel='language navigation'
             desktopView
             hideOnBlur
             mobileView={false}
             caret
             title={localization.lang.chosenLanguage}
+            titleLang={localization.getLanguage() === 'en' ? 'no' : 'en'}
           >
             {languageButtons({ onChangeLanguage })}
           </PortalDropdownMenu>
         </SC.ContentWrapper>
         <PortalDropdownMenu
+          ariaLabel='mobile navigation'
           desktopView={false}
           mobileView
           caret
