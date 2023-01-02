@@ -71,7 +71,7 @@ const SearchForm: FC<PropsWithChildren<Props>> = ({
   };
 
   return (
-    <SC.SearchForm onSubmit={onSearch}>
+    <SC.SearchForm onSubmit={onSearch} role='search'>
       <label className='uu-invisible' htmlFor='searchBox'>
         {localization.query.intro}
       </label>

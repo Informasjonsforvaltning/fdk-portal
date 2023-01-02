@@ -26,7 +26,7 @@ const Header = styled.header`
         `}
 `;
 
-const Container = styled.div`
+const Container = styled.nav`
   align-items: center;
   display: flex;
   justify-content: space-between;
