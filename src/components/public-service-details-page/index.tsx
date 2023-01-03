@@ -142,6 +142,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const keywords =
     publicService?.keyword?.map(kw => translate(kw))?.filter(Boolean) ?? [];
   const requiredServices = publicService?.requires || [];
+  const admsStatus = publicService?.admsStatus;
   const isClassifiedBy = publicService?.isClassifiedBy || [];
   const serviceHomepages = publicService?.homepage || [];
   const isGroupedBy = publicService?.isGroupedBy || [];
@@ -291,6 +292,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
           isRestrictedData={false}
           isNonPublicData={false}
           themes={themes}
+          admsStatus={admsStatus}
         >
           {description && (
             <ContentSection

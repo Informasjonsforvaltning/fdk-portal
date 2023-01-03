@@ -13,7 +13,12 @@ import SC from './styled';
 
 import { Entity } from '../../../../types/enums';
 import ReactTooltipSC from '../../../tooltip/styled';
-import { Language, Publisher, TextLanguage } from '../../../../types';
+import {
+  Language,
+  PublicServiceLanguage,
+  Publisher,
+  TextLanguage
+} from '../../../../types';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import MultiLingualField from '../../../multilingual-field/components/multilingual-field';
 import LanguageIndicator from '../../../language-indicator';
@@ -25,6 +30,7 @@ interface Props {
   isAuthoritative: boolean;
   languages?: Language[];
   publisher?: Partial<Publisher>;
+  admsStatus?: PublicServiceLanguage;
 }
 
 const Banner: FC<Props> = ({
@@ -32,6 +38,7 @@ const Banner: FC<Props> = ({
   title,
   lastPublished,
   publisher,
+  admsStatus,
   isAuthoritative,
   languages = []
 }) => {
@@ -117,15 +124,25 @@ const Banner: FC<Props> = ({
               useFallback={false}
             />
           )}
-        <SC.LastPublishedInfo>
-          {translations.formatString(
-            translations.detailsPage.banner.lastPublishedInfo,
-            {
-              entity: translation,
-              lastPublished
-            }
+
+        <SC.BannerInfo>
+          <SC.LastPublishedInfo>
+            {translations.formatString(
+              translations.detailsPage.banner.lastPublishedInfo,
+              {
+                entity: translation,
+                lastPublished
+              }
+            )}
+          </SC.LastPublishedInfo>
+          {admsStatus && (
+            <>
+              <SC.Dot>•</SC.Dot>
+              <SC.Status>{translate(admsStatus.prefLabel)}</SC.Status>
+            </>
           )}
-        </SC.LastPublishedInfo>
+        </SC.BannerInfo>
+
         {publisher?.id && (
           <SC.PublisherLink href={`/organizations/${publisher.id}`}>
             {translations.formatString(publisherLabel[entity], {

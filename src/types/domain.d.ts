@@ -367,6 +367,7 @@ export interface PublicService {
   isDescribedAt?: Partial<PublicService>[];
   isGroupedBy?: string[];
   hasCompetentAuthority?: Partial<Publisher>[];
+  admsStatus?: PublicServiceLanguage;
   harvest?: Partial<Harvest>;
   keyword?: Partial<TextLanguage>[];
   sector?: Partial<Concept>[];

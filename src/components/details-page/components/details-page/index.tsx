@@ -43,7 +43,13 @@ import NotOpenAccessIcon from '../../../../images/icon-access-not-open-md-v2.svg
 
 import SC from './styled';
 
-import { Language, Publisher, TextLanguage, Theme } from '../../../../types';
+import {
+  Language,
+  PublicServiceLanguage,
+  Publisher,
+  TextLanguage,
+  Theme
+} from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
 import {
@@ -59,6 +65,7 @@ interface ExternalProps {
   entity: Entity;
   title: Partial<TextLanguage>;
   publisher?: Partial<Publisher>;
+  admsStatus?: PublicServiceLanguage;
   entityId?: string;
   entityUri?: string;
   lastPublished: string;
@@ -90,6 +97,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   entity,
   title,
   publisher,
+  admsStatus,
   datasetScores,
   entityId,
   entityUri,
@@ -236,6 +244,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         isAuthoritative={isAuthoritative}
         languages={languages}
         publisher={publisher}
+        admsStatus={admsStatus}
       />
       <SC.SubBanner>
         {publisher?.id && (
