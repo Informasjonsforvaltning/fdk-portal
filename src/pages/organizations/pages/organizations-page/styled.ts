@@ -210,10 +210,6 @@ const SortButton = styled.button`
   &:hover > svg > path {
     fill: #fff;
   }
-
-  &:focus {
-    outline-color: #fff;
-  }
 `;
 
 const TitleSortButton = styled(SortButton)`

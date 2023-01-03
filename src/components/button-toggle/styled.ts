@@ -8,6 +8,12 @@ const ButtonToggle = styled.button<{
   background-color: ${({ theme }) => theme.extendedColors.neutralLight};
   border: none;
   padding: 0.5em;
+
+  &:focus {
+    outline-offset: 3px;
+    outline: 2px solid orange;
+  }
+
   ${({ borderLeft }) =>
     borderLeft &&
     css`
