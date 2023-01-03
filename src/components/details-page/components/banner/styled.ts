@@ -99,6 +99,22 @@ const PublisherLink = styled(Link)`
   }
 `;
 
+const BannerInfo = styled.div`
+  display: flex;
+`;
+
+const Status = styled.p`
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 20px;
+`;
+
+const Dot = styled.p`
+  margin: 8px ${theme.spacing('S6')} 0px ${theme.spacing('S6')};
+  font-weight: bold;
+  font-size: 20px;
+`;
+
 const BetaRibbon = styled.span<InvertedColorProps>`
   position: absolute;
   top: 25px;
@@ -124,5 +140,8 @@ export default {
   Title,
   LastPublishedInfo,
   PublisherLink,
-  BetaRibbon
+  BetaRibbon,
+  Status,
+  BannerInfo,
+  Dot
 };
