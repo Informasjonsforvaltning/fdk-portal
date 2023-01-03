@@ -105,6 +105,13 @@ const NavigationLinks = styled.ul`
   }
 `;
 
+const Button = styled.button`
+  &:focus {
+    outline-offset: 3px;
+    outline: 2px solid orange;
+  }
+`;
+
 export default {
   Header,
   Container,
@@ -113,5 +120,6 @@ export default {
   NapLogo,
   ContentWrapper,
   NavigationLinks,
-  ListItem
+  ListItem,
+  Button
 };

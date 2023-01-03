@@ -11,7 +11,9 @@ import React, {
 import SC from './styled';
 
 interface Props {
+  ariaLabel?: string;
   title: string;
+  titleLang?: string;
   caret: boolean;
   desktopView: boolean;
   mobileView: boolean;
@@ -20,7 +22,9 @@ interface Props {
 }
 
 const DropdownMenu: FC<PropsWithChildren<Props>> = ({
+  ariaLabel,
   title,
+  titleLang,
   caret,
   desktopView,
   mobileView,
@@ -75,7 +79,7 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
     <>
       <SC.GlobalStyle dropdownOpen={open} />
       <SC.DropdownMenu
-        role='navigation'
+        aria-label={ariaLabel}
         ref={ref}
         onClick={openOnHover ? () => {} : handleMouseEvent}
         onMouseOver={openOnHover ? handleMouseEvent : () => {}}
@@ -85,7 +89,14 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
         desktopView={desktopView}
         mobileView={mobileView}
       >
-        <SC.Title caret={caret}>{title}</SC.Title>
+        <SC.ToggleButton
+          caret={caret}
+          aria-expanded={open}
+          aria-controls={ref.current?.id}
+          lang={titleLang}
+        >
+          {title}
+        </SC.ToggleButton>
         <SC.Dropdown open={open}>{children}</SC.Dropdown>
       </SC.DropdownMenu>
     </>

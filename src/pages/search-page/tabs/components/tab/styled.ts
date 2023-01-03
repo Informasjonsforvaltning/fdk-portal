@@ -15,9 +15,10 @@ const TabLink = styled(Link)`
     padding: 0.5em 1em;
   }
 
-  &:focus {
-    outline-offset: -2px;
-    outline-color: #fff;
+  :focus {
+    outline-offset: -3px;
+    outline-color: orange;
+    outline-style: solid;
   }
 `;
 
@@ -45,7 +46,9 @@ const Tab = styled.li<{ active?: boolean }>`
       css`
         color: ${({ theme }) => theme.extendedColors.neutralDarker};
         &:focus {
-          outline-color: ${({ theme }) => theme.extendedColors.neutralDarker};
+          outline-offset: -3px;
+          outline-color: orange;
+          outline-style: solid;
         }
       `}
   }

@@ -12,10 +12,8 @@ const BigButton = styled(Button)`
   }
 
   &:focus {
-    background-color: ${({ theme: t }) => t.entityColours.dark};
-    outline-width: 1px;
-    outline-color: ${({ theme: t }) => t.entityColours.dark};
-    outline-style: dashed;
+    outline-offset: 3px;
+    outline: 2px solid orange;
   }
 `;
 
@@ -29,6 +27,11 @@ const UnderlineButton = styled(Button)`
 
   &:hover {
     border-bottom: 2px solid transparent;
+  }
+
+  &:focus {
+    outline-offset: 3px;
+    outline: 2px solid orange;
   }
 `;
 

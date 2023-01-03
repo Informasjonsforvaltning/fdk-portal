@@ -7,7 +7,7 @@ import { getConfig } from '../../../../config';
 
 const isTransportPortal = getConfig().themeNap;
 
-const SearchBox = styled.form`
+const SearchBox = styled.section`
   align-items: center;
   background-repeat: no-repeat;
   background-position: top right;
