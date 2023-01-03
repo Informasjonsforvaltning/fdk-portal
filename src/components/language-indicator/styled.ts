@@ -15,7 +15,7 @@ const TextLanguageLabel = styled.span<{ $whiteBackground: boolean }>`
 `;
 
 const TextLanguageCodesContainer = styled.div<{ $whiteBackground: boolean }>`
-  display: inline-flex;
+  min-width: ${fdkTheme.spacing('S32')};
   margin-right: ${fdkTheme.spacing('S4')};
   & > ${TextLanguageLabel} {
     margin-left: ${fdkTheme.spacing('S4')};
