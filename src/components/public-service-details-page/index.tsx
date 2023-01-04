@@ -143,7 +143,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
     publicService?.keyword?.map(kw => translate(kw))?.filter(Boolean) ?? [];
   const requiredServices = publicService?.requires || [];
   const admsStatus = publicService?.admsStatus;
-  const isClassifiedBy = publicService?.isClassifiedBy || [];
+  const subject = publicService?.subject || [];
   const serviceHomepages = publicService?.homepage || [];
   const isGroupedBy = publicService?.isGroupedBy || [];
   const produces = publicService?.produces ?? [];
@@ -174,7 +174,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   );
 
   const conceptsIdentifiers = (
-    isClassifiedBy.map(({ uri }) => uri) as string[]
+    subject.map(({ uri }) => uri) as string[]
   ).filter(Boolean);
 
   const conceptsMap = concepts?.reduce(
@@ -447,7 +447,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </List>
             </ContentSection>
           )}
-          {isClassifiedBy.length > 0 && (
+          {subject.length > 0 && (
             <ContentSection
               id='concept-references'
               title={
@@ -456,7 +456,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
               }
             >
               <List>
-                {isClassifiedBy?.map(
+                {subject?.map(
                   ({ uri, prefLabel }) =>
                     uri && (
                       <CatalogTypeBox entity={Entity.CONCEPT}>
