@@ -371,7 +371,7 @@ export interface PublicService {
   harvest?: Partial<Harvest>;
   keyword?: Partial<TextLanguage>[];
   sector?: Partial<Concept>[];
-  isClassifiedBy?: Partial<Concept>[];
+  subject?: Partial<Concept>[];
   homepage?: string[];
   language?: PublicServiceLanguage[];
   requires?: PublicService[];
