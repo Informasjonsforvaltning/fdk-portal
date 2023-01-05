@@ -10,7 +10,7 @@ const BoxRegular = styled.div`
   font-size: 16px;
   justify-content: center;
   margin: 0.3em 0;
-  padding: 3em;
+  padding: 2em;
 `;
 
 const BoxHeader = styled.h3`

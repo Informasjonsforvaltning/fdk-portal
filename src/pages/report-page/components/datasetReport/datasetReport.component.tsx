@@ -1,3 +1,8 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+/* eslint-disable eslint-comments/no-duplicate-disable */
+/* eslint-disable react/no-unstable-nested-components */
 import React, { FC, memo, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -42,6 +47,7 @@ import withReferenceData, {
 } from '../../../../components/with-reference-data';
 import { sortKeyWithCount } from '../../sort-helper';
 import { translatePrefixedFormat } from '../../../../utils/common';
+import { ContainerPaneContent, ContainerBoxRegular } from '../../styled';
 
 interface ExternalProps {
   datasetsReport: Partial<DatasetsReport>;
@@ -53,6 +59,7 @@ interface Props
     RouteComponentProps,
     ReferenceDataProps {}
 
+// eslint-disable-next-line react/function-component-definition
 const DatasetReport: FC<Props> = ({
   referenceData: { los },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
@@ -113,8 +120,8 @@ const DatasetReport: FC<Props> = ({
   return (
     <ThemeProvider theme={theme}>
       <main id='content'>
-        <div className='row'>
-          <div className='col-12 col-md-6'>
+        <ContainerPaneContent>
+          <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular to={`${PATHNAME_DATASETS}${searchParams}`}>
                 <IllustrationWithCount
@@ -126,8 +133,8 @@ const DatasetReport: FC<Props> = ({
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
-          </div>
-          <div className='col-12 col-md-6'>
+          </ContainerBoxRegular>
+          <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_DATASETS}${patchSearchQuery(
@@ -141,8 +148,8 @@ const DatasetReport: FC<Props> = ({
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
-          </div>
-        </div>
+          </ContainerBoxRegular>
+        </ContainerPaneContent>
 
         <div className='row'>
           <div className='col-12'>
@@ -498,35 +505,36 @@ const DatasetReport: FC<Props> = ({
                 </div>
               )}
 
-            {Array.isArray(topMostUsedThemes) && topMostUsedThemes?.length > 0 && (
-              <div className='row'>
-                <div className='col-12'>
-                  <BoxRegular
-                    variant={BoxFlowVariant.COLUMN}
-                    header={localization.report.usedThemes}
-                  >
-                    <List
-                      headerText1={localization.report.themeAndTopic}
-                      headerText2={localization.report.countDataset}
-                      listItems={topMostUsedThemes?.map(
-                        ({ key, count }: KeyWithCountObject, index: any) => ({
-                          id: index,
-                          path: `${PATHNAME_DATASETS}?${
-                            Filter.LOS
-                          }=${encodeURIComponent(key)}`,
-                          text1: translate(
-                            los?.losNodes?.find((losTheme: any) =>
-                              losTheme.losPaths.includes(key)
-                            )?.name
-                          ),
-                          text2: `${count}`
-                        })
-                      )}
-                    />
-                  </BoxRegular>
+            {Array.isArray(topMostUsedThemes) &&
+              topMostUsedThemes?.length > 0 && (
+                <div className='row'>
+                  <div className='col-12'>
+                    <BoxRegular
+                      variant={BoxFlowVariant.COLUMN}
+                      header={localization.report.usedThemes}
+                    >
+                      <List
+                        headerText1={localization.report.themeAndTopic}
+                        headerText2={localization.report.countDataset}
+                        listItems={topMostUsedThemes?.map(
+                          ({ key, count }: KeyWithCountObject, index: any) => ({
+                            id: index,
+                            path: `${PATHNAME_DATASETS}?${
+                              Filter.LOS
+                            }=${encodeURIComponent(key)}`,
+                            text1: translate(
+                              los?.losNodes?.find((losTheme: any) =>
+                                losTheme.losPaths.includes(key)
+                              )?.name
+                            ),
+                            text2: `${count}`
+                          })
+                        )}
+                      />
+                    </BoxRegular>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
             <div className='row'>
               <div className='col-12'>
