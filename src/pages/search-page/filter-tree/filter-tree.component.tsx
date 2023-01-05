@@ -1,4 +1,5 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { useState } from 'react';
+import type { ChangeEvent, FC } from 'react';
 
 import { Collapse } from 'reactstrap';
 import _ from 'lodash';
@@ -11,8 +12,8 @@ import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
 import './filter-tree.scss';
 
-import { FilterSearchOption } from '../../../types';
-import { FilterChange } from '../../../components/filter-box/filter-box.component';
+import type { FilterSearchOption } from '../../../types';
+import type { FilterChange } from '../../../components/filter-box/filter-box.component';
 import TreeView from '../../../components/treeview';
 
 interface Props {
@@ -222,6 +223,9 @@ export const FilterTree: FC<Props> = ({
   const [openArrows, setOpenArrows] = useState<any[]>([]);
   const [filterSearchValue, setfilterSearchValue] = useState<any>(null);
 
+  const filterId = _.uniqueId('filter-tree-filter');
+  const listId = _.uniqueId('filter-tree-list');
+
   const handleToggleOpenFilter = () => {
     setOpenFilter(!openFilter);
   };
@@ -284,11 +288,13 @@ export const FilterTree: FC<Props> = ({
           type='button'
           className='fdk-publisher-toggle p-0 d-flex justify-content-between align-items-center w-100'
           onClick={handleToggleOpenFilter}
+          aria-expanded={openFilter}
+          aria-controls={filterId}
         >
           <span>{title}</span>
         </button>
       </div>
-      <Collapse isOpen={openFilter}>
+      <Collapse isOpen={openFilter} id={filterId}>
         <div className='fdk-panel__content'>
           {searchable && (
             <div className='fdk-filter-search'>
@@ -333,7 +339,7 @@ export const FilterTree: FC<Props> = ({
             })}
             {collapseItems && aggregationsForest.length > 5 && (
               <div>
-                <Collapse isOpen={openList}>
+                <Collapse isOpen={openList} id={listId}>
                   <div>
                     {mainTree({
                       aggregationsForest: aggregationsForest.slice(5),
@@ -349,6 +355,8 @@ export const FilterTree: FC<Props> = ({
                   variant={Variant.TERTIARY}
                   className='fdk-toggleList'
                   onClick={handleToggleOpenList}
+                  aria-expanded={openList}
+                  aria-controls={listId}
                 >
                   {openList ? (
                     <SvgIcon name='chevronDoubleUpStroke' />
