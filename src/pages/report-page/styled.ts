@@ -22,4 +22,20 @@ const ClearButton = styled.button`
   padding: 0.8em 0.9em;
 `;
 
-export default { Title, SubTitle, ClearButton };
+const ContainerBoxRegular = styled.div`
+  flex: 1 1 0;
+`;
+
+const ContainerPaneContent = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+`;
+
+export default {
+  Title,
+  SubTitle,
+  ClearButton
+};
+
+export { ContainerBoxRegular, ContainerPaneContent };

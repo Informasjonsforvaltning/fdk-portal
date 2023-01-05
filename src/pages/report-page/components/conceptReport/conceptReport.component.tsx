@@ -1,3 +1,8 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable eslint-comments/no-duplicate-disable */
+/* eslint-disable react/function-component-definition */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import React, { FC, memo } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import ThemeProvider from '@fellesdatakatalog/theme';
@@ -21,6 +26,7 @@ import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import localization from '../../../../lib/localization';
 import { Line } from '../../../../components/charts';
 import { getTranslateText } from '../../../../lib/translateText';
+import { ContainerBoxRegular, ContainerPaneContent } from '../../styled';
 
 interface AllReferencedConceptIdentifiers {
   allReferencedConcepts: any;
@@ -44,8 +50,8 @@ const ConceptReport: FC<Props> = ({
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.CONCEPT]}>
       <main id='content'>
-        <div className='row'>
-          <div className='col-12 col-md-6'>
+        <ContainerPaneContent>
+          <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular to={`${PATHNAME_CONCEPTS}${searchParams}`}>
                 <IllustrationWithCount
@@ -57,8 +63,8 @@ const ConceptReport: FC<Props> = ({
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
-          </div>
-          <div className='col-12 col-md-6'>
+          </ContainerBoxRegular>
+          <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_CONCEPTS}${patchSearchQuery(
@@ -72,8 +78,8 @@ const ConceptReport: FC<Props> = ({
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
-          </div>
-        </div>
+          </ContainerBoxRegular>
+        </ContainerPaneContent>
 
         <div className='row'>
           <div className='col-12'>

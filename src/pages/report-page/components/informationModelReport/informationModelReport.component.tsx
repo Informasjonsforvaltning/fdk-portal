@@ -1,3 +1,8 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable eslint-comments/no-duplicate-disable */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+/* eslint-disable react/function-component-definition */
 import React, { FC, memo } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import ThemeProvider from '@fellesdatakatalog/theme';
@@ -19,6 +24,7 @@ import { PATHNAME_INFORMATIONMODELS } from '../../../../constants/constants';
 import localization from '../../../../lib/localization';
 import { Line } from '../../../../components/charts';
 import { Report } from '../../../../types';
+import { ContainerBoxRegular, ContainerPaneContent } from '../../styled';
 
 interface Props extends RouteComponentProps {
   informationModelsReport?: Partial<Report>;
@@ -38,8 +44,8 @@ const InformationModelReport: FC<Props> = ({
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.INFORMATION_MODEL]}>
       <main id='content'>
-        <div className='row'>
-          <div className='col-12 col-md-6'>
+        <ContainerPaneContent>
+          <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_INFORMATIONMODELS}${searchParams}`}
@@ -53,8 +59,8 @@ const InformationModelReport: FC<Props> = ({
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
-          </div>
-          <div className='col-12 col-md-6'>
+          </ContainerBoxRegular>
+          <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_INFORMATIONMODELS}${patchSearchQuery(
@@ -68,8 +74,8 @@ const InformationModelReport: FC<Props> = ({
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
-          </div>
-        </div>
+          </ContainerBoxRegular>
+        </ContainerPaneContent>
 
         <div className='row'>
           <div className='col-12'>
