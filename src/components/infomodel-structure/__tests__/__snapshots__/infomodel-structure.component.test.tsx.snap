@@ -11,20 +11,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
@@ -38,11 +30,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -3559,20 +3554,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
@@ -3586,11 +3573,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -7143,20 +7133,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
@@ -7170,11 +7152,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -10858,20 +10843,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
@@ -10885,11 +10862,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -14509,20 +14489,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
@@ -14536,11 +14508,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -18192,20 +18167,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
@@ -18219,11 +18186,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -22008,20 +21978,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
@@ -22035,11 +21997,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -22072,20 +22037,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
@@ -22099,11 +22056,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -22965,20 +22925,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
@@ -22992,11 +22944,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -23954,20 +23909,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
@@ -23981,11 +23928,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -24847,20 +24797,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
@@ -24874,11 +24816,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -25745,20 +25690,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
@@ -25772,11 +25709,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -25814,20 +25754,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
     <Styled(O)
       expansionIndicator={
         Object {
-          "collapse": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronUpStroke"
-            />
-          </styled.button>,
-          "expand": <styled.button
-            type="button"
-          >
-            <l
-              name="chevronDownStroke"
-            />
-          </styled.button>,
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
         }
       }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
@@ -25841,11 +25773,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >

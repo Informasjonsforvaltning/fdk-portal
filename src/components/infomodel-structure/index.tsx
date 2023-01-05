@@ -1,11 +1,11 @@
-import React, { memo, FC } from 'react';
+import type { FC } from 'react';
+import React, { memo } from 'react';
 import { compose } from 'redux';
 
 import {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '@fellesdatakatalog/expansion-panel';
-import ExpansionPanelIndicator from '../expansion-panel-indicator';
 
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -27,6 +27,7 @@ import type {
   ModelCodeElement
 } from '../../types';
 import { ModelElementType } from '../../types/enums';
+import ExpansionIndicatorDefault from '../expansion-indicator-default';
 
 interface ExternalProps {
   modelElements: Record<string, Partial<InformationModelElement>>;
@@ -214,7 +215,16 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
-                expansionIndicator={ExpansionPanelIndicator}
+                expansionIndicator={{
+                  expand: <ExpansionIndicatorDefault />,
+                  collapse: (
+                    <ExpansionIndicatorDefault
+                      isExpanded
+                      aria-expanded='true'
+                      aria-controls={uri ?? identifier ?? ''}
+                    />
+                  )
+                }}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
@@ -227,11 +237,18 @@ const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
+                      id={`details-${uri ?? identifier ?? ''}`}
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
                         expand: <ExpansionIndicatorDetails />,
-                        collapse: <ExpansionIndicatorDetails isExpanded />
+                        collapse: (
+                          <ExpansionIndicatorDetails
+                            isExpanded
+                            aria-expanded='true'
+                            aria-controls={`details-${uri ?? identifier ?? ''}`}
+                          />
+                        )
                       }}
                     >
                       <ExpansionPanelBody>
@@ -302,7 +319,16 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
-                expansionIndicator={ExpansionPanelIndicator}
+                expansionIndicator={{
+                  expand: <ExpansionIndicatorDefault />,
+                  collapse: (
+                    <ExpansionIndicatorDefault
+                      isExpanded
+                      aria-expanded='true'
+                      aria-controls={uri ?? identifier ?? ''}
+                    />
+                  )
+                }}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
@@ -315,11 +341,18 @@ const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
+                      id={`details-${uri ?? identifier ?? ''}`}
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
                         expand: <ExpansionIndicatorDetails />,
-                        collapse: <ExpansionIndicatorDetails isExpanded />
+                        collapse: (
+                          <ExpansionIndicatorDetails
+                            isExpanded
+                            aria-expanded='true'
+                            aria-controls={uri ?? identifier ?? ''}
+                          />
+                        )
                       }}
                     >
                       <ExpansionPanelBody>
@@ -427,7 +460,16 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
-                expansionIndicator={ExpansionPanelIndicator}
+                expansionIndicator={{
+                  expand: <ExpansionIndicatorDefault />,
+                  collapse: (
+                    <ExpansionIndicatorDefault
+                      isExpanded
+                      aria-expanded='true'
+                      aria-controls={uri ?? identifier ?? ''}
+                    />
+                  )
+                }}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
@@ -440,11 +482,18 @@ const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
+                      id={`details-${uri ?? identifier ?? ''}`}
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
                         expand: <ExpansionIndicatorDetails />,
-                        collapse: <ExpansionIndicatorDetails isExpanded />
+                        collapse: (
+                          <ExpansionIndicatorDetails
+                            isExpanded
+                            aria-expanded='true'
+                            aria-controls={`details-${uri ?? identifier ?? ''}`}
+                          />
+                        )
                       }}
                     >
                       <ExpansionPanelBody>
@@ -503,7 +552,16 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
-                expansionIndicator={ExpansionPanelIndicator}
+                expansionIndicator={{
+                  expand: <ExpansionIndicatorDefault />,
+                  collapse: (
+                    <ExpansionIndicatorDefault
+                      isExpanded
+                      aria-expanded='true'
+                      aria-controls={uri ?? identifier ?? ''}
+                    />
+                  )
+                }}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
@@ -516,11 +574,18 @@ const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
+                      id={`details-${uri ?? identifier ?? ''}`}
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
                         expand: <ExpansionIndicatorDetails />,
-                        collapse: <ExpansionIndicatorDetails isExpanded />
+                        collapse: (
+                          <ExpansionIndicatorDetails
+                            isExpanded
+                            aria-expanded='true'
+                            aria-controls={`details-${uri ?? identifier ?? ''}`}
+                          />
+                        )
                       }}
                     >
                       <ExpansionPanelBody>
@@ -585,7 +650,16 @@ const InfoModelStructure: FC<Props> = ({
               <SC.ExpansionPanel
                 key={`${identifier}-${uri}`}
                 id={uri ?? identifier ?? ''}
-                expansionIndicator={ExpansionPanelIndicator}
+                expansionIndicator={{
+                  expand: <ExpansionIndicatorDefault />,
+                  collapse: (
+                    <ExpansionIndicatorDefault
+                      isExpanded
+                      aria-expanded='true'
+                      aria-controls={uri ?? identifier ?? ''}
+                    />
+                  )
+                }}
               >
                 <ExpansionPanelHead>
                   {translate(title) ?? ''}
@@ -598,11 +672,18 @@ const InfoModelStructure: FC<Props> = ({
                     unwrapAbstraction(hasProperty) ||
                     unwrapRealization(hasProperty)) && (
                     <SC.ExpansionPanel
+                      id={`details-${uri ?? identifier ?? ''}`}
                       showWithoutHeadAndPadding
                       shouldExpandOnHeadClick={false}
                       expansionIndicator={{
                         expand: <ExpansionIndicatorDetails />,
-                        collapse: <ExpansionIndicatorDetails isExpanded />
+                        collapse: (
+                          <ExpansionIndicatorDetails
+                            isExpanded
+                            aria-expanded='true'
+                            aria-controls={`details-${uri ?? identifier ?? ''}`}
+                          />
+                        )
                       }}
                     >
                       <ExpansionPanelBody>

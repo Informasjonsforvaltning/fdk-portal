@@ -1,4 +1,6 @@
-import React, { FC, PropsWithChildren, useState } from 'react';
+import React, { useState } from 'react';
+import type { FC, PropsWithChildren } from 'react';
+import _ from 'lodash';
 import SC from './styled';
 
 interface Props {
@@ -23,6 +25,7 @@ const TreeView: FC<PropsWithChildren<Props>> = ({
   ...rest
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
+  const collapsedId = _.uniqueId('treeview-collapsed');
 
   const handleClick = (...args: any[]) => {
     setIsCollapsed(!isCollapsed);
@@ -44,6 +47,8 @@ const TreeView: FC<PropsWithChildren<Props>> = ({
       type='button'
       className={`${className} ${arrowClassName}`}
       onClick={handleClick}
+      aria-expanded={!isCollapsed}
+      aria-controls={collapsedId}
     />
   );
 
@@ -53,7 +58,10 @@ const TreeView: FC<PropsWithChildren<Props>> = ({
         {arrow}
         {nodeLabel}
       </div>
-      <div className={`${containerClassName} ${childrenClassName}`}>
+      <div
+        className={`${containerClassName} ${childrenClassName}`}
+        id={collapsedId}
+      >
         {isCollapsed ? null : children}
       </div>
     </div>

@@ -2,11 +2,8 @@ import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 import Scroll from 'react-scroll';
 
-import ExpansionPanelBase, {
-  SC,
-  Props
-} from '@fellesdatakatalog/expansion-panel';
-
+import ExpansionPanelBase, { SC } from '@fellesdatakatalog/expansion-panel';
+import type { Props } from '@fellesdatakatalog/expansion-panel';
 import { ModelElementType } from '../../../../types/enums';
 
 interface ExpansionPanelProps extends Props {

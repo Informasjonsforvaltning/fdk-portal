@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC } from 'react';
 import { AppNavBar } from '../../app/app-nav-bar/app-nav-bar';
 import localization from '../../lib/localization';
 

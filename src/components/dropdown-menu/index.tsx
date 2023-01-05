@@ -1,12 +1,6 @@
-import React, {
-  memo,
-  FC,
-  useState,
-  useRef,
-  useEffect,
-  PropsWithChildren,
-  useCallback
-} from 'react';
+import _ from 'lodash';
+import React, { memo, useState, useRef, useEffect, useCallback } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 import SC from './styled';
 
@@ -18,7 +12,6 @@ interface Props {
   desktopView: boolean;
   mobileView: boolean;
   openOnHover?: boolean;
-  hideOnBlur?: boolean;
 }
 
 const DropdownMenu: FC<PropsWithChildren<Props>> = ({
@@ -80,6 +73,7 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
       <SC.GlobalStyle dropdownOpen={open} />
       <SC.DropdownMenu
         aria-label={ariaLabel}
+        id={_.uniqueId('dropdown-menu')}
         ref={ref}
         onClick={openOnHover ? () => {} : handleMouseEvent}
         onMouseOver={openOnHover ? handleMouseEvent : () => {}}

@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import { Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
@@ -68,7 +69,6 @@ const fdkItems = () => (
       <PortalDropdownMenu
         desktopView
         openOnHover
-        hideOnBlur
         caret={false}
         mobileView={false}
         title={localization.menu.about}
@@ -107,7 +107,6 @@ const fdkItems = () => (
       <PortalDropdownMenu
         desktopView
         openOnHover
-        hideOnBlur
         caret={false}
         mobileView={false}
         title={localization.menu.tools.tools}
@@ -180,7 +179,6 @@ export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => (
           <PortalDropdownMenu
             ariaLabel='language navigation'
             desktopView
-            hideOnBlur
             mobileView={false}
             caret
             title={localization.lang.chosenLanguage}

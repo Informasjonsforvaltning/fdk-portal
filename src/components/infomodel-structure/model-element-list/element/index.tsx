@@ -1,11 +1,13 @@
-import React, { memo, FC, ComponentProps } from 'react';
+import React, { memo } from 'react';
+import type { FC, ComponentProps } from 'react';
 import { compose } from 'redux';
-import Scroll from 'react-scroll';
+import type Scroll from 'react-scroll';
 import Link from '@fellesdatakatalog/link';
 import {
   ExpansionPanelBody,
   ExpansionPanelHead
 } from '@fellesdatakatalog/expansion-panel';
+import _ from 'lodash';
 
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
@@ -54,6 +56,8 @@ const Element: FC<Props> = ({
   concepts,
   type
 }) => {
+  const id = _.uniqueId('model-element-list');
+
   const identifier =
     property.identifier || code.identifier || property.uri || code.uri;
   const title = translate(property.title || code.prefLabel);
@@ -127,10 +131,17 @@ const Element: FC<Props> = ({
 
   return (
     <SC.ExpansionPanel
+      id={id}
       shouldExpandOnHeadClick={false}
       expansionIndicator={{
         expand: <ExpansionIndicatorDetails />,
-        collapse: <ExpansionIndicatorDetails isExpanded />
+        collapse: (
+          <ExpansionIndicatorDetails
+            isExpanded
+            aria-expanded='true'
+            aria-controls={id}
+          />
+        )
       }}
       type={type}
     >

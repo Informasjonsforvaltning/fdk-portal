@@ -1,4 +1,5 @@
-import React, { FC, ChangeEventHandler } from 'react';
+import React from 'react';
+import type { FC, ChangeEventHandler } from 'react';
 import _capitalize from 'lodash/capitalize';
 
 import localization from '../../lib/localization';
@@ -61,27 +62,16 @@ export const FilterOption: FC<Props> = ({
 
   const id = encodeURIComponent(itemKey + (value ?? ''));
 
-  let inputRef: any;
-
   return (
     <div className={`checkbox ${displayClass}`}>
       <label
         className='checkbox_label'
-        onKeyPress={() => {
-          inputRef.click();
-        }}
-        tabIndex={0}
         // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-        role='button'
         htmlFor={id}
       >
         <input
-          ref={input => {
-            inputRef = input;
-          }}
           type='checkbox'
           id={id}
-          tabIndex={-1}
           checked={active}
           onChange={onClick}
           className='list-group-item fdk-label fdk-label-default'

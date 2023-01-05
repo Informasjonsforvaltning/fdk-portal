@@ -8,6 +8,8 @@ exports[`should handle toggleFilter 1`] = `
     className="fdk-panel__header"
   >
     <button
+      aria-controls="filter-tree-filter17"
+      aria-expanded={false}
       className="fdk-publisher-toggle p-0 d-flex justify-content-between align-items-center w-100"
       onClick={[Function]}
       type="button"
@@ -22,6 +24,7 @@ exports[`should handle toggleFilter 1`] = `
     enter={true}
     exit={true}
     horizontal={false}
+    id="filter-tree-filter17"
     in={false}
     isOpen={false}
     mountOnEnter={false}
@@ -1288,6 +1291,8 @@ exports[`should render FilterTree correctly with active filter 1`] = `
     className="fdk-panel__header"
   >
     <button
+      aria-controls="filter-tree-filter9"
+      aria-expanded={true}
       className="fdk-publisher-toggle p-0 d-flex justify-content-between align-items-center w-100"
       onClick={[Function]}
       type="button"
@@ -1302,6 +1307,7 @@ exports[`should render FilterTree correctly with active filter 1`] = `
     enter={true}
     exit={true}
     horizontal={false}
+    id="filter-tree-filter9"
     in={false}
     isOpen={true}
     mountOnEnter={false}
@@ -2684,6 +2690,8 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
     className="fdk-panel__header"
   >
     <button
+      aria-controls="filter-tree-filter13"
+      aria-expanded={true}
       className="fdk-publisher-toggle p-0 d-flex justify-content-between align-items-center w-100"
       onClick={[Function]}
       type="button"
@@ -2698,6 +2706,7 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
     enter={true}
     exit={true}
     horizontal={false}
+    id="filter-tree-filter13"
     in={false}
     isOpen={true}
     mountOnEnter={false}
@@ -4082,6 +4091,8 @@ exports[`should render FilterTree correctly with props 1`] = `
     className="fdk-panel__header"
   >
     <button
+      aria-controls="filter-tree-filter5"
+      aria-expanded={true}
       className="fdk-publisher-toggle p-0 d-flex justify-content-between align-items-center w-100"
       onClick={[Function]}
       type="button"
@@ -4096,6 +4107,7 @@ exports[`should render FilterTree correctly with props 1`] = `
     enter={true}
     exit={true}
     horizontal={false}
+    id="filter-tree-filter5"
     in={false}
     isOpen={true}
     mountOnEnter={false}

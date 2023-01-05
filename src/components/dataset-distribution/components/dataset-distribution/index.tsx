@@ -1,12 +1,14 @@
-import React, { memo, FC, useState } from 'react';
+import React, { memo, useState } from 'react';
+import type { FC } from 'react';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
 
 import {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '@fellesdatakatalog/expansion-panel';
-import ExpansionPanelIndicator from '../../../expansion-panel-indicator';
+import ExpansionIndicatorDefault from '../../../expansion-indicator-default';
 
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
@@ -24,7 +26,7 @@ import SC from './styled';
 
 import testIds from './test-ids';
 
-import {
+import type {
   AccessService,
   Distribution,
   License,
@@ -59,14 +61,26 @@ const DatasetDistribution: FC<Props> = ({
 }) => {
   const [showPreview, setShowPreview] = useState(false);
 
+  const id = _.uniqueId('dataset-distribution');
+
   const handleShowPreview = (show: boolean) => {
     setShowPreview(show);
   };
 
   return (
     <SC.DatasetDistribution
+      id={id}
       data-testid={testIds.root}
-      expansionIndicator={ExpansionPanelIndicator}
+      expansionIndicator={{
+        expand: <ExpansionIndicatorDefault />,
+        collapse: (
+          <ExpansionIndicatorDefault
+            isExpanded
+            aria-expanded='true'
+            aria-controls={id}
+          />
+        )
+      }}
     >
       <ExpansionPanelHead>
         <Summary
