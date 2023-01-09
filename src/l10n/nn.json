@@ -744,7 +744,9 @@
         "rule": "Regel",
         "hasBackgroundIn": "Har bakgrunn i",
         "openingHours": "Opningstider",
-        "contactPage": "Kontaktsie"
+        "contactPage": "Kontaktsie",
+        "requirement": "Krav",
+        "satisfiesRule": "Tilfredsstiller regel"
       },
       "event": {
         "description": "Beskriving",

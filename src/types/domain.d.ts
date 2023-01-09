@@ -296,6 +296,14 @@ export interface PublicServiceRule {
   implements: string[];
 }
 
+export interface PublicServiceRequirement {
+  dctTitle: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  fulfils: string[];
+  identifier: string;
+  uri: string;
+}
+
 export interface PublicServiceLegalResource {
   dctTitle: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
@@ -377,6 +385,7 @@ export interface PublicService {
   requires?: PublicService[];
   produces?: PublicServiceOutput[];
   hasCriterion?: PublicServiceCriterionRequirement[];
+  holdsRequirement?: PublicServiceRequirement[];
   follows?: PublicServiceRule[];
   hasLegalResource?: PublicServiceLegalResource[];
   hasInput?: PublicServiceInput[];

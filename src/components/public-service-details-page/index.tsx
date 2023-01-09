@@ -35,7 +35,7 @@ import DetailsPage, {
 import ErrorPage from '../error-page';
 import RelationList, { ItemWithRelationType } from '../relation-list';
 
-import type { PublicServiceLegalResource, Theme } from '../../types';
+import type { TextLanguage, Theme } from '../../types';
 import { Entity, Vocabulary } from '../../types/enums';
 
 import {
@@ -148,6 +148,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const isGroupedBy = publicService?.isGroupedBy || [];
   const produces = publicService?.produces ?? [];
   const hasCriterion = publicService?.hasCriterion ?? [];
+  const holdsRequirement = publicService?.holdsRequirement ?? [];
   const follows = publicService?.follows ?? [];
   const hasLegalResource = publicService?.hasLegalResource ?? [];
   const hasParticipation = publicService?.hasParticipation ?? [];
@@ -254,14 +255,25 @@ const PublicServiceDetailsPage: FC<Props> = ({
       relationType: translations.relatedBy
     }));
 
-  const getLink = (uri: string, resources: PublicServiceLegalResource[]) => {
-    const match = resources.find(resource => resource.uri === uri);
+  const getLink = (
+    uri: string,
+    resources: {
+      uri: string;
+      dctTitle?: Partial<TextLanguage>;
+      name?: Partial<TextLanguage>;
+    }[]
+  ) => {
+    const match = resources.find(
+      (resource: { uri: string }) => resource.uri === uri
+    );
 
     if (match) {
       const index = resources.indexOf(match);
       return (
-        <ScrollLink to={`${match.dctTitle}-${index}`} smooth isDynamic spy>
-          {translate(match.dctTitle)}
+        <ScrollLink to={`${uri}-${index}`} smooth isDynamic spy>
+          {match.dctTitle || match.name
+            ? translate(match.dctTitle ?? match.name)
+            : uri}
         </ScrollLink>
       );
     }
@@ -521,6 +533,53 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
+
+          {holdsRequirement.length > 0 && (
+            <ContentSection
+              id='holdsRequirement'
+              title={
+                translations.detailsPage.sectionTitles.publicService.requirement
+              }
+            >
+              {holdsRequirement.map(
+                (
+                  { dctTitle, description: requirementDescription, fulfils },
+                  index
+                ) => (
+                  <div>
+                    {dctTitle && (
+                      <SC.KeyValueListHeader>
+                        {translate(dctTitle)}
+                      </SC.KeyValueListHeader>
+                    )}
+                    <KeyValueList>
+                      {requirementDescription && (
+                        <KeyValueListItem
+                          key={`requirementDescription-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .description
+                          }
+                          value={translate(requirementDescription)}
+                        />
+                      )}
+                      <KeyValueListItem
+                        key={`requirementFulfils-${index}`}
+                        property={
+                          translations.detailsPage.sectionTitles.publicService
+                            .satisfiesRule
+                        }
+                        value={fulfils.map(fulfilsUri =>
+                          getLink(fulfilsUri, follows)
+                        )}
+                      />
+                    </KeyValueList>
+                  </div>
+                )
+              )}
+            </ContentSection>
+          )}
+
           {follows.length > 0 && (
             <ContentSection
               id='follows'
@@ -532,11 +591,12 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     name,
                     description: followsDescription,
                     language: availableLanguages,
-                    implements: followsImplements
+                    implements: followsImplements,
+                    uri: followsUri
                   },
                   index
                 ) => (
-                  <div>
+                  <div id={`${followsUri}-${index}`}>
                     {title && (
                       <SC.KeyValueListHeader>
                         {translate(name)}
@@ -601,11 +661,12 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     description: legalResourceDescription,
                     dctTitle,
                     seeAlso,
-                    relation: legalResourceRelations
+                    relation: legalResourceRelations,
+                    uri
                   },
                   index
                 ) => (
-                  <div id={`${translate(dctTitle)}-${index}`}>
+                  <div id={`${uri}-${index}`}>
                     {dctTitle && (
                       <SC.KeyValueListHeader>
                         {translate(dctTitle)}

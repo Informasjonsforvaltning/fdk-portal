@@ -1,6 +1,6 @@
 {
   "externalLink": "Ekstern lenke",
-  "opensInNewWindow" :"Åpnes i nytt vindu",
+  "opensInNewWindow": "Åpnes i nytt vindu",
   "goToMainContent": "Hopp til hovedinnhold",
   "apiLabel": "API",
   "description": "Beskrivelse",
@@ -743,6 +743,8 @@
         "relatedResources": "Relaterte ressurser",
         "rule": "Regel",
         "hasBackgroundIn": "Har bakgrunn i",
+        "requirement": "Krav",
+        "satisfiesRule": "Tilfredsstiller regel",
         "openingHours": "Åpningstider",
         "contactPage": "Kontaktside"
       },
