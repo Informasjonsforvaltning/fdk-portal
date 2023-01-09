@@ -156,7 +156,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const hasCost = publicService?.hasCost ?? [];
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
-  const contactPoints = publicService?.hasContactPoint || [];
+  const contactPoints = publicService?.contactPoint || [];
   const datasetsUris =
     (publicService?.isDescribedAt
       ?.map(({ uri }) => uri)
@@ -1011,60 +1011,77 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               {contactPoints.map(
                 ({
-                  uri,
                   contactType,
-                  description: contactPointDescription,
+                  uri,
+                  contactPage,
+                  language,
                   email,
-                  name,
-                  telephone,
-                  url
+                  openingHours,
+                  telephone
                 }) => (
-                  <KeyValueList key={uri}>
+                  <>
                     {contactType && (
-                      <KeyValueListItem
-                        property=''
-                        value={translate(contactType)}
-                      />
+                      <SC.KeyValueListHeader>
+                        {translate(contactType)}
+                      </SC.KeyValueListHeader>
                     )}
-                    {contactPointDescription && (
-                      <KeyValueListItem
-                        property={translations.description}
-                        value={translate(contactPointDescription)}
-                      />
-                    )}
-                    {name && (
-                      <KeyValueListItem
-                        property={translations.name}
-                        value={translate(name)}
-                      />
-                    )}
-                    {email && (
-                      <KeyValueListItem
-                        property={translations.email}
-                        value={
-                          <a href={`mailto:${email}`} rel='noopener noreferrer'>
-                            {email}
-                          </a>
-                        }
-                      />
-                    )}
-                    {telephone && (
-                      <KeyValueListItem
-                        property={translations.phone}
-                        value={telephone}
-                      />
-                    )}
-                    {url && (
-                      <KeyValueListItem
-                        property={translations.contactPoint}
-                        value={
-                          <Link href={url} external>
-                            {url}
-                          </Link>
-                        }
-                      />
-                    )}
-                  </KeyValueList>
+
+                    <KeyValueList key={uri}>
+                      {email && (
+                        <KeyValueListItem
+                          property={translations.email}
+                          value={
+                            <a
+                              href={`mailto:${email}`}
+                              rel='noopener noreferrer'
+                            >
+                              {email.join(', ')}
+                            </a>
+                          }
+                        />
+                      )}
+                      {telephone && (
+                        <KeyValueListItem
+                          property={translations.phone}
+                          value={telephone.join(', ')}
+                        />
+                      )}
+
+                      {contactPage && (
+                        <KeyValueListItem
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .contactPage
+                          }
+                          value={
+                            <Link href={contactPage} external>
+                              {contactPage}
+                            </Link>
+                          }
+                        />
+                      )}
+                      {openingHours && (
+                        <KeyValueListItem
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .openingHours
+                          }
+                          value={translate(openingHours)}
+                        />
+                      )}
+                      {language && (
+                        <KeyValueListItem
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .acceptedLanguages
+                          }
+                          value={language
+                            .map(({ prefLabel }) => translate(prefLabel))
+                            .join(', ')}
+                        />
+                      )}
+                    </KeyValueList>
+                  </>
                 )
               )}
             </ContentSection>

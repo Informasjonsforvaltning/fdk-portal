@@ -742,7 +742,9 @@
         "references": "Referanser",
         "relatedResources": "Relaterte ressurser",
         "rule": "Regel",
-        "hasBackgroundIn": "Har bakgrunn i"
+        "hasBackgroundIn": "Har bakgrunn i",
+        "openingHours": "Åpningstider",
+        "contactPage": "Kontaktside"
       },
       "event": {
         "description": "Beskrivelse",
