@@ -746,7 +746,10 @@
         "openingHours": "Opningstider",
         "contactPage": "Kontaktsie",
         "requirement": "Krav",
-        "satisfiesRule": "Tilfredsstiller regel"
+        "satisfiesRule": "Tilfredsstiller regel",
+        "serviceChannel": "Tenestekanal",
+        "address": "Adresse",
+        "webAddress": "Nettaddresse"
       },
       "event": {
         "description": "Beskriving",

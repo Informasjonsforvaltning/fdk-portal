@@ -746,7 +746,10 @@
         "requirement": "Krav",
         "satisfiesRule": "Tilfredsstiller regel",
         "openingHours": "Åpningstider",
-        "contactPage": "Kontaktside"
+        "contactPage": "Kontaktside",
+        "serviceChannel": "Tjenestekanal",
+        "address": "Adresse",
+        "webAddress": "Nettaddresse"
       },
       "event": {
         "description": "Beskrivelse",
