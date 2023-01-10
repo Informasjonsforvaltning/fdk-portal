@@ -978,6 +978,23 @@ const PublicServiceDetailsPage: FC<Props> = ({
               title={translations.detailsPage.sectionTitles.publicService.usage}
             >
               <KeyValueList>
+                {hasCompetentAuthority &&
+                  hasCompetentAuthority.map(authority => (
+                    <KeyValueListItem
+                      property={
+                        translations.detailsPage.sectionTitles.publicService
+                          .competentAuthority
+                      }
+                      value={
+                        <div>
+                          <Link href={authority.uri}>
+                            {translate(authority.prefLabel)}
+                          </Link>
+                        </div>
+                      }
+                    />
+                  ))}
+
                 {hasChannel.length > 0 && (
                   <KeyValueListItem
                     property={
