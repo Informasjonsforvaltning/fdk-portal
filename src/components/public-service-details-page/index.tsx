@@ -139,6 +139,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   );
   const languages = publicService?.language ?? [];
   const sectors = publicService?.sector ?? [];
+  const hasCompetentAuthority = publicService?.hasCompetentAuthority ?? [];
   const keywords =
     publicService?.keyword?.map(kw => translate(kw))?.filter(Boolean) ?? [];
   const requiredServices = publicService?.requires || [];
