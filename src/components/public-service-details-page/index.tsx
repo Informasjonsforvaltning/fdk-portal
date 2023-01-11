@@ -154,6 +154,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const hasParticipation = publicService?.hasParticipation ?? [];
   const hasInput = publicService?.hasInput ?? [];
   const hasChannel = publicService?.hasChannel ?? [];
+  const keyword = publicService?.keyword ?? [];
   const hasCost = publicService?.hasCost ?? [];
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
@@ -236,6 +237,30 @@ const PublicServiceDetailsPage: FC<Props> = ({
     (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, any>
   );
+
+  const losThemes = [
+    {
+      title: {
+        nn: 'Forvaltning og offentleg sektor',
+        no: 'Forvaltning og offentlig sektor',
+        nb: 'Forvaltning og offentlig sektor',
+        en: 'Government and public sector'
+      }
+    },
+    {
+      title: {
+        nn: 'Forvaltning og offentleg sektor',
+        no: 'Forvaltning og offentlig sektor',
+        nb: 'Forvaltning og offentlig sektor',
+        en: 'Government and public sector'
+      }
+    }
+  ];
+
+  const euDataThemes = [
+    { name: { nn: 'Næring', nb: 'Næring', en: 'Business' } },
+    { name: { nn: 'Næring', nb: 'Næring', en: 'Business' } }
+  ];
 
   const eventsRelationsWithRelationType: ItemWithRelationType[] =
     eventsRelations.map(eventRelation => ({
@@ -977,6 +1002,47 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </KeyValueList>
             </ContentSection>
           )}
+          {
+            <ContentSection
+              id='theme-and-searchwords'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .themesAndSearchWords
+              }
+            >
+              <KeyValueList>
+                <KeyValueListItem
+                  key={`losThemes-${1}`}
+                  property={
+                    translations.detailsPage.sectionTitles.publicService.themes
+                  }
+                  value={losThemes
+                    .map(theme => translate(theme.title))
+                    .filter(Boolean)
+                    .join(' • ')}
+                />
+                <KeyValueListItem
+                  key={`euDataThemes-${1}`}
+                  property={
+                    translations.detailsPage.sectionTitles.publicService
+                      .euDataThemes
+                  }
+                  value={euDataThemes
+                    .map(theme => translate(theme.name))
+                    .filter(Boolean)
+                    .join(', ')}
+                />
+                <KeyValueListItem
+                  key={`keywords-${1}`}
+                  property={
+                    translations.detailsPage.sectionTitles.publicService
+                      .keywords
+                  }
+                  value={keyword.map(word => translate(word)).join(' ')}
+                />
+              </KeyValueList>
+            </ContentSection>
+          }
           {serviceHomepages.length > 0 && (
             <ContentSection
               id='serviceHomepages'
@@ -1062,6 +1128,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
               />
             </ContentSection>
           )}
+
           {contactPoints.length > 0 && (
             <ContentSection
               id='hasContactPoint'

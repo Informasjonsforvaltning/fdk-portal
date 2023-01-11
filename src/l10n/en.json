@@ -746,7 +746,10 @@
         "requirement": "Requirement",
         "satisfiesRule": "Satisfies rule",
         "openingHours": "Opening hours",
-        "contactPage": "Contact page"
+        "contactPage": "Contact page",
+        "themesAndSearchWords": "Themes and search words",
+        "themes": "Themes",
+        "euDataThemes": "Eu themes"
       },
       "event": {
         "description": "Description",

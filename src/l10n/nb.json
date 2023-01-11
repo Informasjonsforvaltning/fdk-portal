@@ -746,7 +746,10 @@
         "requirement": "Krav",
         "satisfiesRule": "Tilfredsstiller regel",
         "openingHours": "Åpningstider",
-        "contactPage": "Kontaktside"
+        "contactPage": "Kontaktside",
+        "themesAndSearchWords": "Tema og søkeord",
+        "themes": "Tema",
+        "euDataThemes": "Eu-tema"
       },
       "event": {
         "description": "Beskrivelse",
