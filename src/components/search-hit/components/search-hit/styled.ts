@@ -44,12 +44,6 @@ const OpenData = styled.div`
   ${RoundedTagSC.RoundedTag} {
     background-color: ${({ theme: t }) => t.dark};
     color: #fff !important;
-    &:hover {
-      color: #fff;
-      background-color: #121619;
-      cursor: default;
-      text-decoration: none;
-    }
   }
 `;
 
@@ -60,24 +54,13 @@ const AccessRight = styled.div`
     width: 20px;
     margin-right: 0.5em;
     path {
-      fill: ${({ theme: t }) => t.dark};
+      fill: ${({ theme: t }) => t.dark} !important;
     }
   }
 
   ${RoundedTagSC.RoundedTag} {
     background-color: ${({ theme: t }) => t.light};
     color: ${({ theme: t }) => t.dark};
-    &:hover {
-      color: #fff !important;
-      cursor: default;
-      background-color: #121619 !important;
-      text-decoration: none;
-      svg {
-        path {
-          fill: #fff;
-        }
-      }
-    }
   }
 `;
 
@@ -92,11 +75,6 @@ const Theme = styled.div`
     margin-right: 0.5em;
     margin-bottom: 0.5em;
     padding: 0 0.6em;
-    &:hover {
-      color: #fff !important;
-      background-color: #121619 !important;
-      text-decoration: none;
-    }
   }
 `;
 
@@ -111,10 +89,6 @@ const Event = styled.div`
     margin-right: 0.5em;
     margin-bottom: 0.5em;
     padding: 0 0.6em;
-    &:hover {
-      background-color: ${theme.colour(Colour.NEUTRAL, 'N70')} !important;
-      text-decoration: none;
-    }
   }
 `;
 

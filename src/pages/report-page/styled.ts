@@ -5,7 +5,7 @@ const Title = styled.h1`
   font-weight: 600;
 `;
 
-const SubTitle = styled.h1`
+const SubTitle = styled.h2`
   font-size: 2em;
   font-weight: 600;
   margin-bottom: 1.5em;
@@ -22,4 +22,20 @@ const ClearButton = styled.button`
   padding: 0.8em 0.9em;
 `;
 
-export default { Title, SubTitle, ClearButton };
+const ContainerBoxRegular = styled.div`
+  flex: 1 1 0;
+`;
+
+const ContainerPaneContent = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+`;
+
+export default {
+  Title,
+  SubTitle,
+  ClearButton
+};
+
+export { ContainerBoxRegular, ContainerPaneContent };

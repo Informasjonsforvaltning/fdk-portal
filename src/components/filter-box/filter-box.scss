@@ -1,4 +1,4 @@
-@import '../../../node_modules/designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
+@import '../../assets/designsystemet/scss/colors.scss';
 
 .fdk-panel--filter,
 .fdk-filter-tree {
@@ -20,6 +20,12 @@
       cursor: pointer;
       font-size: 1.875rem;
       font-weight: 500;
+
+      &:focus {
+        outline-offset: 3px;
+        outline: 2px solid orange;
+      }
+
       i {
         @include themify($themes) {
           color: themed('color-text-link');
@@ -39,6 +45,11 @@
 
     .fdk-items-list {
       .fdk-toggleList {
+        &:focus {
+          outline-offset: 3px;
+          outline: 2px solid orange;
+        }
+
         svg {
           height: 16px;
           width: 16px;
@@ -64,6 +75,13 @@
 
     .fdk-filter-search {
       margin-bottom: 2rem;
+    }
+
+    .fdk-filter-search-select-focused {
+      border-color: orange;
+      border-width: 2px;
+      border-style: solid;
+      box-shadow: none;
     }
   }
 }

@@ -3,11 +3,6 @@ import { Colour, theme } from '@fellesdatakatalog/theme';
 
 import { getConfig } from '../../../../config';
 
-import MetadataQualityExcellentSVG from '../../../../images/icon-quality-excellent-md.svg';
-import MetadataQualityGoodSVG from '../../../../images/icon-quality-good-md.svg';
-import MetadataQualitySufficientSVG from '../../../../images/icon-quality-sufficient-md.svg';
-import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg';
-
 const isTransportportal = getConfig().themeNap;
 
 const OrganizationPage = styled.article`
@@ -134,28 +129,44 @@ const CataloguesStatistics = styled.div`
 `;
 
 const DatasetCataloguesStatistics = styled(CataloguesStatistics)`
-  & > h2 {
-    ${() =>
-      isTransportportal
-        ? css`
+  ${() =>
+    isTransportportal
+      ? css`
+          & > h2 {
             background: ${theme.colour(Colour.GREEN, 'G20')};
-            color: ${theme.colour(Colour.GREEN, 'G50')};
+            color: ${theme.colour(Colour.GREEN, 'G60')};
+          }
 
-            & > svg > path {
-              fill: ${theme.colour(Colour.GREEN, 'G50')};
+          & svg {
+            * {
+              stroke: ${theme.colour(Colour.GREEN, 'G60')};
             }
-          `
-        : css`
+          }
+        `
+      : css`
+          & > h2 {
             background: ${theme.colour(Colour.BLUE, 'B30')};
-            color: ${theme.colour(Colour.BLUE, 'B50')};
-          `}
-  }
+            color: ${theme.colour(Colour.BLUE, 'B60')};
+          }
+
+          & svg {
+            * {
+              stroke: ${theme.colour(Colour.BLUE, 'B60')};
+            }
+          }
+        `}
 `;
 
 const DataserviceCataloguesStatistics = styled(CataloguesStatistics)`
   & > h2 {
     background: ${theme.colour(Colour.BROWN, 'B30')};
-    color: ${theme.colour(Colour.BROWN, 'B50')};
+    color: ${theme.colour(Colour.BROWN, 'B60')};
+  }
+
+  & svg {
+    * {
+      stroke: ${theme.colour(Colour.BROWN, 'B60')};
+    }
   }
 `;
 
@@ -164,40 +175,24 @@ const ConceptCataloguesStatistics = styled(CataloguesStatistics)`
     background: ${theme.colour(Colour.CYAN, 'C30')};
     color: ${theme.colour(Colour.CYAN, 'C50')};
   }
+
+  & svg {
+    * {
+      stroke: ${theme.colour(Colour.CYAN, 'C50')};
+    }
+  }
 `;
 
 const InformationModelCataloguesStatistics = styled(CataloguesStatistics)`
   & > h2 {
     background: ${theme.colour(Colour.VIOLET, 'V30')};
-    color: ${theme.colour(Colour.VIOLET, 'V50')};
-  }
-`;
-
-const PoorQualityIcon = styled(MetadataQualityPoorSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
-`;
-
-const SufficientQualityIcon = styled(MetadataQualitySufficientSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
+    color: ${theme.colour(Colour.VIOLET, 'V60')};
   }
 
-  & > circle:first-of-type {
-    fill: ${theme.colour(Colour.BLUE, 'B30')};
-  }
-`;
-
-const GoodQualityIcon = styled(MetadataQualityGoodSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50', 85)};
-  }
-`;
-
-const ExcellentQualityIcon = styled(MetadataQualityExcellentSVG)`
-  & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
+  & svg {
+    * {
+      stroke: ${theme.colour(Colour.VIOLET, 'V60')};
+    }
   }
 `;
 
@@ -237,10 +232,6 @@ export default {
   DataserviceCataloguesStatistics,
   ConceptCataloguesStatistics,
   InformationModelCataloguesStatistics,
-  PoorQualityIcon,
-  SufficientQualityIcon,
-  GoodQualityIcon,
-  ExcellentQualityIcon,
   FrequentlyAskedQuestions,
   Question
 };

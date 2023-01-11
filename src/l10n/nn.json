@@ -1,4 +1,6 @@
 {
+  "externalLink": "Ekstern lenke",
+  "opensInNewWindow": "Blir opna i nytt vindauge",
   "goToMainContent": "Hopp til hovudinnhald",
   "apiLabel": "API ",
   "description": "Skildring",
@@ -81,7 +83,9 @@
   "lifeEvent": "Innbyggar",
   "dctType": "Type",
   "industryCode": "Næringskode",
+  "isGroupedBy": "Inngår i",
   "requires": "Krev",
+  "isRelatedTo": "Er relatert til",
   "days": "dagar",
   "requiredBy": "Påkrevd av",
   "relatedBy": "Relatert av",
@@ -125,7 +129,7 @@
     "chosenLanguage": "Language",
     "norwegian-nb": "Norsk (bokmål)",
     "norwegian-nn": "Norsk (nynorsk)",
-    "english-en": "Engelsk"
+    "english-en": "English"
   },
   "menu": {
     "home": "Søk i Felles datakatalog",
@@ -721,15 +725,28 @@
         "contactPoint": "Kontaktinformasjon",
         "follows": "Sakshandsamingsreglar",
         "legalResources": "Heimlar",
-        "attachment": "Vedleggskrav",
+        "documentation": "Dokumentasjonskrav",
         "participation": "Deltagande",
         "channel": "Tenestekanal",
         "cost": "Gebyr",
         "processingTime": "Handsamingstid",
         "relation": "Relatert til",
+        "serviceHomepage": "Nettstad for tenesta",
         "isDescribedAt": "Skildrande datasett",
         "spatial": "Geografisk avgrensning",
-        "offeredBy": "Tilbydd av"
+        "offeredBy": "Tilbydd av",
+        "availableLanguages": "Tilgjengelege språk",
+        "acceptedLanguages": "Aksepterte språk",
+        "relatedInformation": "Relatert informasjon",
+        "relatedLegalResources": "Relatert regelverk",
+        "references": "Referansar",
+        "relatedResources": "Relaterte ressursar",
+        "rule": "Regel",
+        "hasBackgroundIn": "Har bakgrunn i",
+        "openingHours": "Opningstider",
+        "contactPage": "Kontaktsie",
+        "requirement": "Krav",
+        "satisfiesRule": "Tilfredsstiller regel"
       },
       "event": {
         "description": "Beskriving",
@@ -924,7 +941,10 @@
   "errorPage": {
     "serverError": {
       "title": "Dette er flaut...",
-      "content": "Det har visst skjedd noko teknisk krøll i vår ende. Vi jobbar med å rette opp feilen. Prøv igjen om ei lita stund."
+      "content": "Det har visst skjedd noko teknisk krøll i vår ende. Vi jobbar med å rette opp feilen. Prøv igjen om ei lita stund. ",
+      "content2": "Du kan også",
+      "backLink": " gå tilbake til sida du kom frå ",
+      "content3": "eller gå til <a href=\"\">startsida</a>."
     },
     "clientError": {
       "title": "Vi ber om orsaking!",

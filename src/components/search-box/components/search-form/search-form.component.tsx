@@ -71,7 +71,7 @@ const SearchForm: FC<PropsWithChildren<Props>> = ({
   };
 
   return (
-    <SC.SearchForm onSubmit={onSearch}>
+    <SC.SearchForm onSubmit={onSearch} role='search'>
       <label className='uu-invisible' htmlFor='searchBox'>
         {localization.query.intro}
       </label>
@@ -89,6 +89,8 @@ const SearchForm: FC<PropsWithChildren<Props>> = ({
       />
       <button
         aria-label={localization.query.reset}
+        title={localization.query.reset}
+        name='reset'
         className='search-clear'
         type='button'
         onClick={onClear}

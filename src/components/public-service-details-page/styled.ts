@@ -26,9 +26,24 @@ const ListItemValueHeader = styled.div`
   margin-bottom: ${theme.spacing('S10')};
 `;
 
+const KeyValueListHeader = styled.h3`
+  font-size: ${theme.fontSize('FS20')};
+  font-weight: ${theme.fontWeight('FW500')};
+  margin-bottom: ${theme.spacing('S10')};
+  padding-top: ${theme.spacing('S16')};
+`;
+
+const KeyValueListSubHeader = styled.p`
+  margin-top: -${theme.spacing('S10')};
+  margin-bottom: ${theme.spacing('S10')};
+  text-transform: capitalize;
+`;
+
 export default {
   BetaRibbon,
   ListItemValue,
   LightWeightLabel,
-  ListItemValueHeader
+  ListItemValueHeader,
+  KeyValueListHeader,
+  KeyValueListSubHeader
 };

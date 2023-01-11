@@ -37,7 +37,7 @@ const Suggestion = styled.li<{ $highlighted: boolean }>`
   cursor: pointer;
 
   &:hover,
-  :focus {
+  &:focus {
     ${highlightStyle}
   }
 

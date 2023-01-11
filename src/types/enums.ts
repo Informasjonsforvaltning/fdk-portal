@@ -193,3 +193,7 @@ export enum RelationType {
 export enum MomentFormat {
   DD_MM_YYYY_HH_mm = 'DD.MM.YYYY HH:mm'
 }
+
+export enum Vocabulary {
+  DATASET = 'http://www.w3.org/ns/dcat#Dataset'
+}

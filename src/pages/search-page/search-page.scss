@@ -1,4 +1,4 @@
-@import '../../../node_modules/designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
+@import '../../assets/designsystemet/scss/colors.scss';
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
@@ -31,19 +31,20 @@
   }
   border-color: black;
   box-shadow: none;
-  min-width:120px;
+  min-width: 120px;
 }
 .fdk-button.fdk-button-black-toggle:first-child {
-  border-right:none;
-  border-top-right-radius:0;
-  border-bottom-right-radius:0;
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .fdk-button.fdk-button-black-toggle:nth-child(2) {
-  border-left:none;
-  border-top-left-radius:0;
-  border-bottom-left-radius:0;
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
-.fdk-button.fdk-button-black-toggle:hover, .fdk-button.fdk-button-black-toggle:not(.disabled):not(.disabled):active {
+.fdk-button.fdk-button-black-toggle:hover,
+.fdk-button.fdk-button-black-toggle:not(.disabled):not(.disabled):active {
   background: transparent;
 }
 .fdk-button.fdk-button-black-toggle:focus {
@@ -65,11 +66,12 @@
       }
     }
     cursor: pointer;
-    a, span {
+    a,
+    span {
       background-color: transparent !important;
       border: none !important;
       font-size: 1.2rem;
-      padding: .5em !important;
+      padding: 0.5em !important;
       @include themify($themes) {
         color: themed('color-text-link') !important;
       }
@@ -86,42 +88,42 @@
       color: $color-white !important;
       @include themify($themes) {
         background-color: themed('color-neutral-darkest') !important;
-        color: themed('')
+        color: themed('');
       }
     }
   }
   li.previous {
     a {
       &:before {
-        content: "\F060";
+        content: '\F060';
         display: inline-block;
         font: normal normal normal 14px/1 FontAwesome;
         font-size: inherit;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        margin-right: .5em;
+        margin-right: 0.5em;
       }
     }
   }
   li.next {
     a {
       &:after {
-        content: "\F061";
+        content: '\F061';
         display: inline-block;
         font: normal normal normal 14px/1 FontAwesome;
         font-size: inherit;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        margin-left: .5em;
+        margin-left: 0.5em;
       }
     }
   }
 }
 
 /* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {
+@media only screen and (min-width: 992px) {
   .pagination {
     li {
       &.break-me {
@@ -130,14 +132,15 @@
           background-color: transparent;
         }
       }
-      a, span {
+      a,
+      span {
         background-color: transparent !important;
         border: none !important;
         @include themify($themes) {
           color: themed('color-text-link') !important;
         }
         font-size: 1.5rem !important;
-        padding: .5em 1em !important;
+        padding: 0.5em 1em !important;
         &:hover {
           @include themify($themes) {
             background-color: themed('color-neutral-lighter') !important;
@@ -156,48 +159,46 @@
     li.previous {
       a {
         &:before {
-          content: "\F060";
+          content: '\F060';
           display: inline-block;
           font: normal normal normal 14px/1 FontAwesome;
           font-size: inherit;
           text-rendering: auto;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          margin-right: .5em;
+          margin-right: 0.5em;
         }
       }
     }
     li.next {
       a {
         &:after {
-          content: "\F061";
+          content: '\F061';
           display: inline-block;
           font: normal normal normal 14px/1 FontAwesome;
           font-size: inherit;
           text-rendering: auto;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          margin-left: .5em;
+          margin-left: 0.5em;
         }
       }
     }
   }
 }
-.disabled.previous, .disabled.next {
+.disabled.previous,
+.disabled.next {
   display: none;
 }
 
 /*==========  Media Queries  ==========*/
 /* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {
-
-}/* end min-width : 320px */
-
+@media only screen and (min-width: 320px) {
+} /* end min-width : 320px */
 
 /* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px) {
-
-}/* end min-width : 480px */
+@media only screen and (min-width: 480px) {
+} /* end min-width : 480px */
 
 /* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
@@ -218,10 +219,9 @@
 }
 
 /* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {
+@media only screen and (min-width: 992px) {
 }
 
 /* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-
+@media only screen and (min-width: 1200px) {
 }

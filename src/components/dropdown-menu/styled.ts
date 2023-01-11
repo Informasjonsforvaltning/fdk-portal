@@ -53,10 +53,16 @@ interface titleProps {
   caret: boolean;
 }
 
-const Title = styled.button<titleProps>`
+const ToggleButton = styled.button<titleProps>`
   padding: 10px;
   font-size: ${theme.fontSize('FS16')};
   border: none;
+
+  &:focus {
+    outline-offset: 3px;
+    outline: 2px solid orange;
+  }
+
   ${({ theme: extendedTheme }) =>
     isTransportportal
       ? css`
@@ -134,6 +140,7 @@ const Dropdown = styled.ul<dropdownProps>`
     height: calc(100vh - ${bannerHeight});
     top: ${bannerHeight};
     right: 0px;
+    overflow: auto;
 
     > .hideOnMobileView {
       display: none;
@@ -152,4 +159,4 @@ const Dropdown = styled.ul<dropdownProps>`
   }
 `;
 
-export default { GlobalStyle, DropdownMenu, Title, Dropdown };
+export default { GlobalStyle, DropdownMenu, ToggleButton, Dropdown };

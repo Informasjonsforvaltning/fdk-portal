@@ -64,9 +64,14 @@
     "@typescript-eslint/no-empty-function": [
       "error",
       {
-        "allow": [
-          "arrowFunctions"
-        ]
+        "allow": ["arrowFunctions"]
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports",
+        "disallowTypeAnnotations": false
       }
     ],
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -82,13 +87,9 @@
         "ignoreRestSiblings": true
       }
     ],
-    "@typescript-eslint/no-use-before-define": [
-      "error"
-    ],
+    "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-shadow": [
-      "error"
-    ],
+    "@typescript-eslint/no-shadow": ["error"],
     "react/jsx-one-expression-per-line": "off",
     "react/prefer-stateless-function": "off",
     "react/jsx-props-no-spreading": "off",
@@ -121,53 +122,32 @@
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [
-          ".jsx",
-          ".tsx"
-        ]
+        "extensions": [".jsx", ".tsx"]
       }
     ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
-        "components": [
-          "Link"
-        ],
-        "specialLink": [
-          "hrefLeft",
-          "hrefRight",
-          "to"
-        ],
-        "aspects": [
-          "noHref",
-          "invalidHref",
-          "preferButton"
-        ]
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight", "to"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
       }
     ]
   },
   "overrides": [
     {
-      "files": [
-        "**/*.ts?(x)"
-      ],
+      "files": ["**/*.ts?(x)"],
       "rules": {
         "no-unused-expressions": "off"
       }
     },
     {
-      "files": [
-        "./test/**/*",
-        "**/__tests__/**/*.[jt]s?(x)"
-      ],
+      "files": ["./test/**/*", "**/__tests__/**/*.[jt]s?(x)"],
       "rules": {
         "no-console": [
           "error",
           {
-            "allow": [
-              "warn",
-              "error"
-            ]
+            "allow": ["warn", "error"]
           }
         ],
         "@typescript-eslint/no-non-null-assertion": "off"

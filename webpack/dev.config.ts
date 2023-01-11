@@ -131,9 +131,7 @@ const configuration: Configuration = mergeWithCustomize({
   },
   plugins: [
     new ReactRefreshWebpackPlugin(),
-    new ForkTsCheckerWebpackPlugin({
-      eslint: { files: './src/**/*.{tsx,ts,jsx,js,json,html}' }
-    }),
+    new ForkTsCheckerWebpackPlugin(),
     new ModuleFederationPlugin({
       name: 'portal',
       remotes: {

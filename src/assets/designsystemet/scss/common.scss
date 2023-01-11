@@ -1,0 +1,407 @@
+@import './colors.scss';
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'heebo', 'helvetica', sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.6em;
+  @include themify($themes) {
+    color: themed('color-neutral-darkest');
+    background-color: themed('color-neutral-lightest');
+  }
+}
+
+/*  C O N T A I N E R   &   H E A D E R   &   F O O T E R   */
+
+.fdk-container {
+  background-color: $color-white;
+  border-radius: 4px;
+  margin: 0px 0px 10px 0px;
+  &:hover {
+    box-shadow: 0px 3px 12px $color-shadow;
+  }
+}
+
+.fdk-header {
+  background-color: $color-white;
+  @include themify($themes) {
+    border-bottom: 1px solid themed('color-neutral-lighter');
+  }
+  padding: 1em 1.2em;
+  margin: 0;
+}
+
+.fdk-logo {
+  height: 6rem;
+}
+
+/* * * * *   B U T T O N S   * * * * */
+
+*:focus {
+  outline-offset: 3px;
+  outline: 2px solid orange;  
+}
+
+.fdk-button {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  box-shadow: 0 2px 4px rgba(45, 55, 65, 0.2);
+  padding: 0.8em 0.9em;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+.fdk-button-small {
+  line-height: 1.6rem;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0.3em 0 0 0;
+  margin: 0;
+  display: inline-block;
+  background-image: none;
+  background: none;
+  text-shadow: none;
+  text-align: center;
+  color: var(--color-neutral-darkest);
+  border: none;
+  border-bottom: 1px solid var(--color-neutral-darkest);
+  &:hover {
+    border-bottom: none;
+    padding-bottom: 1px;
+  }
+  &:active {
+    border-bottom: none;
+    padding-bottom: 0;
+    border-bottom: 1px solid var(--color-neutral-darkest);
+  }
+}
+
+.fdk-button-default,
+.fdk-button-default-no-hover {
+  @include themify($themes) {
+    background-color: themed('button-primary');
+    color: themed('button-text-primary');
+  }
+}
+
+.fdk-button-default:hover
+  .fdk-button-default:focus
+  .fdk-button-default:active
+  .open
+  > .fdk-button-default {
+  border-radius: 3px;
+  @include themify($themes) {
+    border: 3px solid themed('button-primary');
+  }
+  margin: 0px -1px 2px 0px;
+  box-shadow: 0 4px 8px rgba(45, 55, 65, 0.2);
+}
+
+.fdk-button-default-no-hover:hover,
+.fdk-button-default-no-hover:focus,
+.fdk-button-default-no-hover:active {
+  border-radius: 3px;
+  border: 0 !important;
+  margin: 3px 2px 5px 3px;
+  box-shadow: 0 4px 8px rgba(45, 55, 65, 0.2);
+}
+
+.fdk-button-cta {
+  background-color: $color-neutral-darkest;
+  color: $color-white;
+  box-shadow: 0 2px 4px rgba(45, 55, 65, 0.3);
+}
+
+.fdk-button:disabled {
+  @include themify($themes) {
+    border: 1px dashed themed('color-neutral-dark');
+  }
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.fdk-button-small:disabled {
+  @include themify($themes) {
+    color: themed('button-text-primary');
+  }
+  border: none;
+  padding-bottom: 3px;
+}
+
+.fdk-button-clear {
+  background-color: transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  padding: 0.25em 0.4em;
+}
+
+/* fonts */
+
+a > .fdk-button {
+  text-decoration: none;
+  font-weight: 400;
+  @include themify($themes) {
+    color: themed('button-text-primary');
+  }
+}
+
+a > .fdk-button-cta {
+  text-decoration: none;
+  font-weight: 400;
+  color: $color-white;
+}
+
+.fdk-button-small:disabled > .fa {
+  @include themify($themes) {
+    color: themed('button-text-primary');
+  }
+}
+
+/* * * * *   L A B E L S   * * * * */
+
+.fdk-label {
+  @include themify($themes) {
+    background-color: themed('color-neutral-lighter');
+    color: themed('color-neutral-darkest');
+  }
+  font-size: 1.4rem;
+  border-radius: 2px;
+  padding: 0.3em 0.5em;
+  display: inline-block;
+}
+
+/* fonts */
+
+a > .fdk-label {
+  @include themify($themes) {
+    color: themed('color-neutral-darkest');
+  }
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+/*  G E N E R A L   C S S  */
+
+.fdk-fullwidth {
+  width: 100%;
+}
+
+/*  O V E R R I D E S  */
+
+.btn-default {
+  text-shadow: none;
+}
+
+.btn-group {
+  .fdk-button-language {
+    background-color: transparent !important;
+    border-color: transparent;
+    text-shadow: none;
+    box-shadow: none;
+    background-image: none;
+    text-decoration: underline;
+    margin-right: 0.5em;
+    &:focus,
+    &:active,
+    &:hover {
+      @include themify($themes) {
+        color: themed('color-neutral-darkest') !important;
+      }
+      background-color: transparent !important;
+      border-color: transparent !important;
+    }
+  }
+}
+
+.fdk-button-menu {
+  &:before {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    content: '\f0c9';
+    margin-right: 0.2em;
+  }
+}
+
+.fdk-button-language:focus {
+  outline: auto !important;
+}
+
+/*
+  GENERAL MARGINS AND PADDINGS
+*/
+
+.uu-invisible {
+  background: 0 0;
+  color: transparent;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute !important;
+}
+
+#skip-link-wrap {
+  a {
+    @include themify($themes) {
+      color: themed('text-link');
+    }
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    &:focus,
+    &:active {
+      background-color: lime;
+      position: static;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+    }
+  }
+}
+
+/*
+ TOP-HEADER
+ */
+
+.fdk-dropdownmenu {
+  font-size: 1.4rem;
+  margin-top: 0.5em;
+}
+
+/*
+ FOOTER
+ */
+.fdk-footer {
+  @include themify($themes) {
+    border-top: 1px solid themed('color-neutral-lighter');
+  }
+  margin: 60px 0px 0px 0px;
+  padding: 1.2em 0;
+}
+
+/*
+SEARCHPAGE SORTING DROPDOWN
+*/
+
+.btn-group {
+  .fdk-button-default {
+    &:focus,
+    &:active,
+    &:hover {
+      background-color: $color-primary;
+      @include themify($themes) {
+        background-color: themed('button-primary-2');
+      }
+      border-color: transparent;
+      box-shadow: 0 4px 8px rgba(45, 55, 65, 0.2);
+    }
+  }
+  .fdk-button-dropdown {
+    &:focus,
+    &:active,
+    &:hover {
+      background-color: $color-white;
+      border-color: transparent;
+      box-shadow: 0 4px 8px rgba(45, 55, 65, 0.2);
+    }
+  }
+}
+
+.open.btn-group {
+  .fdk-button-default {
+    @include themify($themes) {
+      background-color: themed('button-primary-1');
+    }
+    border-color: transparent;
+    box-shadow: none;
+  }
+  .fdk-button-dropdown {
+    &:focus,
+    &:active,
+    &:hover {
+      background-color: $color-white;
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+}
+
+/*
+CUSTOM CHECKBOX
+*/
+
+.checkbox label {
+  cursor: pointer;
+  padding-left: 0;
+  white-space: normal;
+}
+.checkbox-replacement {
+  height: 16px;
+  width: 16px;
+  border: 1px solid #2d3741;
+  border-radius: 3px;
+  margin-right: 4px;
+  vertical-align: middle;
+  background: #fff;
+  display: inline-block;
+  position: relative;
+  &:after {
+    top: 2px;
+    left: 2px;
+  }
+}
+
+input:checked ~ .checkbox-replacement::after {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #2d3741;
+  left: 2px;
+  top: 2px;
+  border-radius: 3px;
+  content: '';
+}
+.checkbox label input[type='checkbox'] {
+  position: absolute;
+  left: -9999px;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  .row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  .fdk-footer {
+    margin: 60px 0px 0px 0px;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+}

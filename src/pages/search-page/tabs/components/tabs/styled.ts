@@ -19,16 +19,14 @@ const Tabs = styled.ul`
   padding-left: 0;
   @media (max-width: 768px) {
     justify-content: space-around;
+    flex-direction: column;
+    align-items: stretch;
   }
 `;
 
 const Label = styled.span`
   margin-left: 0.5em;
   white-space: nowrap;
-  @media (max-width: 768px) {
-    display: none;
-    margin-left: 0;
-  }
 `;
 
 const IconPlaceholder = styled.div<{ type?: Entity }>`
@@ -102,7 +100,7 @@ const BetaRibbon = styled.span`
   right: -40px;
   transform: rotate(45deg);
   padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
-  font-size: 1rem;
+  font-size: ${theme.fontSize('FS14')};
   font-weight: ${theme.fontWeight('FW700')};
   color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   background: ${theme.colour(Colour.YELLOW, 'Y30')};

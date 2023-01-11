@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
+const onMobileView = '@media (max-width: 991px)';
+
 const Summary = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 40px;
+  ${onMobileView} {
+    flex-direction: column;
+  }
 `;
 
 const Title = styled.h4`
@@ -14,7 +19,6 @@ const Title = styled.h4`
   font-size: 16px;
   font-weight: 600;
   color: ${({ theme }) => theme.extendedColors.textDefault};
-  white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 `;
@@ -22,6 +26,10 @@ const Title = styled.h4`
 const Formats = styled.div`
   display: flex;
   margin-left: 12px;
+
+  ${onMobileView} {
+    margin: 12px 0 0 0;
+  }
 `;
 
 const Format = styled.div`

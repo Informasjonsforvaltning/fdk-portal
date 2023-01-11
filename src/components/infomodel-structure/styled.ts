@@ -48,9 +48,9 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
       `}
   }
 
-  ${SC.ExpansionPanel.ExpandIcon}, ${SC.ExpansionPanel.CollapseIcon} {
-    & > path {
-      fill: ${theme.colour(Colour.VIOLET, 'V50')};
+  ${SC.ExpansionPanel.HeadExpansionIndicator} {
+    & > button > svg > * {
+      stroke: ${theme.colour(Colour.VIOLET, 'V50')};
     }
   }
 

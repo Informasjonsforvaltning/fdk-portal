@@ -1,0 +1,632 @@
+// https://projects.invisionapp.com/share/B3T9BKV7KW6#/screens/376872270
+@import './mixins';
+
+$themes: (
+        nap: (
+                color-header: #FFFFFF,
+                color-header-bg: #2E3539,
+                color-primary: #ED9300,
+                color-primary-light: #FADFB2,
+                color-primary-lighter: #FDF4E5,
+                color-link-darker: #8E5800,
+                color-link-dark: #D58400,
+                color-link: #ED9300,
+                color-link-light: #F9D499,
+                color-link-lighter: #FAE4BF,
+
+                color-neutral-darkest: #2E3539,
+                color-neutral-darker: #444F55,
+                color-neutral-dark: #60696E,
+                color-neutral: #A1A7AA,
+                color-neutral-light: #DADADA,
+                color-neutral-lighter: #E5E5E5,
+                color-neutral-lightest: #F2F2F2,
+                color-success: #3E7B1F,
+                color-success-lighter: #ABD795,
+                color-success-lightest: #EBF6E6,
+                color-warning-darker: #8E5800,
+                color-warning: #ED9300,
+                color-warning-lighter: #FFE5B1,
+                color-warning-lightest: #FFF2D8,
+                color-danger: #C83214,
+                color-danger-lighter: #ECB7AD,
+                color-danger-lightest: #F7E0DC,
+
+                color-button-primary-1: #008ec2,
+                color-button-primary-2: #F1A933,
+                color-button-secondary-1: #F8D499,
+                color-button-secondary-2: #FAE4BF,
+                color-button-shadow: #8E5800,
+                color-button-text-primary: #FFFFFF,
+                color-button-text-secondary: #2E3539,
+                color-icon-stroke: #2E3539,
+                color-icon-fill: #ED9300,
+                color-icon-link: #444F55,
+                color-text-default: #444F55,
+                color-text-light: #60696E,
+                color-text-link: #444F55
+        ),
+        fdk: (
+                color-header: #000000,
+                color-header-bg: #FFFFFF,
+                color-primary: #00C3FF,
+                color-primary-light: #B3EDFF,
+                color-primary-lighter: #E5F9FF,
+                color-link-darker: #004A73,
+                color-link-dark: #005484,
+                color-link: #0069A5,
+                color-link-light: #BFD9E8,
+                color-link-lighter: #CCE1ED,
+
+                color-neutral-darkest: #2D3741,
+                color-neutral-darker: #2D3741,
+                color-neutral-dark: #6C737A,
+                color-neutral: #969BA0,
+                color-neutral-light: #D5D7D9,
+                color-neutral-lighter: #DFE1E2,
+                color-neutral-lightest: #EEEFF0,
+                color-success: #007D69,
+                color-success-lighter: #A6D1CA,
+                color-success-lightest: #D9EBE8,
+                color-warning-darker: #885B00,
+                color-warning: #FFBE3C,
+                color-warning-lighter: #FFE5B1,
+                color-warning-lightest: #FFF2D8,
+                color-danger: #D70A5A,
+                color-danger-lighter: #F9DAE6,
+                color-danger-lightest: #F9DAE6,
+
+                color-button-primary-1: #0069A5,
+                color-button-primary-2: #005484,
+                color-button-secondary-1: #CCE1ED,
+                color-button-secondary-2: #BFD9E8,
+                color-button-shadow: #004A73,
+                color-button-text-primary: #FFFFFF,
+                color-button-text-secondary: #005484,
+                color-icon-stroke: #0069A5,
+                color-icon-fill: #CCE1ED,
+                color-icon-link: #0069A5,
+                color-text-default: #2D3741,
+                color-text-light: #6C737A,
+                color-text-link: #0069A5
+        ),
+);
+
+$color-primary: #00C3FF;
+$color-primary-light: #B3EDFF;
+$color-primary-lighter: #E5F9FF;
+
+$color-link-darker: #004A73;
+$color-link-dark: #005484;
+$color-link: #0069A5;
+$color-link-light: #BFD9E8;
+$color-link-lighter: #CCE1ED;
+
+$color-neutral-darkest: #2D3741;
+$color-neutral-dark: #6C737A;
+$color-neutral: #969BA0;
+$color-neutral-light: #D5D7D9;
+$color-neutral-lighter: #DFE1E2;
+$color-neutral-lightest: #EEEFF0;
+
+$color-success: #007D69;
+$color-success-lighter: #D9EBE8;
+$color-success-lightest: #D9EBE8;
+
+$color-warning-darker: #885B00;
+$color-warning: #FFBE3C;
+$color-warning-lighter: #FFE5B1;
+$color-warning-lightest: #FFF2D8;
+
+$color-danger: #D70A5A;
+$color-danger-lighter: #F9DAE6;
+$color-danger-lightest: #F9DAE6;
+
+// White
+$color-white: #FFFFFF;
+
+// CSS Box Shadow
+$color-shadow: rgba(35, 55, 65, 0.55);
+
+
+// Primary
+.fdk-color-primary {
+  @include themify($themes) {
+    color: themed('color-primary');
+  }
+}
+
+.fdk-bg-color-primary {
+  @include themify($themes) {
+    background-color: themed('color-primary');
+  }
+}
+
+
+.fdk-color-primary-light {
+  @include themify($themes) {
+    color: themed('color-primary-light');
+  }
+}
+
+.fdk-bg-color-primary-light {
+  @include themify($themes) {
+    background-color: themed('color-primary-light');
+  }
+}
+
+
+.fdk-color-primary-lighter {
+  @include themify($themes) {
+    color: themed('color-primary-lighter');
+  }
+}
+
+.fdk-bg-color-primary-lighter {
+  @include themify($themes) {
+    background-color: themed('color-primary-lighter');
+  }
+}
+
+
+// Link
+.fdk-color-link-darker {
+  @include themify($themes) {
+    color: themed('color-link-darker');
+  }
+}
+
+.fdk-bg-color-link-darker {
+  @include themify($themes) {
+    background-color: themed('color-link-darker');
+  }
+}
+
+
+.fdk-color-link-dark {
+  @include themify($themes) {
+    color: themed('color-link-dark');
+  }
+}
+
+.fdk-bg-color-link-dark {
+  @include themify($themes) {
+    background-color: themed('color-link-dark');
+  }
+}
+
+
+.fdk-color-link {
+  @include themify($themes) {
+    color: themed('color-link');
+  }
+}
+
+.fdk-bg-color-link {
+  @include themify($themes) {
+    background-color: themed('color-link');
+  }
+}
+
+
+.fdk-color-link-light {
+  @include themify($themes) {
+    color: themed('color-link');
+  }
+}
+
+.fdk-bg-color-link-light {
+  @include themify($themes) {
+    background-color: themed('color-link');
+  }
+}
+
+
+.fdk-color-link-lighter {
+  @include themify($themes) {
+    color: themed('color-link-lighter');
+  }
+}
+
+.fdk-bg-color-link-lighter {
+  @include themify($themes) {
+    background-color: themed('color-link-lighter');
+  }
+}
+
+
+// Neutral
+.fdk-color-neutral-darkest {
+  @include themify($themes) {
+    color: themed('color-neutral-darkest');
+  }
+}
+
+.fdk-bg-color-neutral-darkest {
+  @include themify($themes) {
+    background-color: themed('color-neutral-darkest');
+  }
+}
+
+
+.fdk-color-neutral-dark {
+  @include themify($themes) {
+    color: themed('color-neutral-dark');
+  }
+}
+
+.fdk-bg-color-neutral-dark {
+  @include themify($themes) {
+    background-color: themed('color-neutral-dark');
+  }
+}
+
+
+.fdk-color-neutral {
+  @include themify($themes) {
+    color: themed('color-neutral');
+  }
+}
+
+.fdk-bg-color-neutral {
+  @include themify($themes) {
+    background-color: themed('color-neutral');
+  }
+}
+
+
+.fdk-color-neutral-light {
+  @include themify($themes) {
+    color: themed('color-neutral-light');
+  }
+}
+
+.fdk-bg-color-neutral-light {
+  @include themify($themes) {
+    background-color: themed('color-neutral-light');
+  }
+}
+
+
+.fdk-color-neutral-lighter {
+  @include themify($themes) {
+    color: themed('color-neutral-lighter');
+  }
+}
+
+.fdk-bg-color-neutral-lighter {
+  @include themify($themes) {
+    background-color: themed('color-neutral-lighter');
+  }
+}
+
+
+.fdk-color-neutral-lightest {
+  @include themify($themes) {
+    color: themed('color-neutral-lightest');
+  }
+}
+
+.fdk-bg-color-neutral-lightest {
+  @include themify($themes) {
+    background-color: themed('color-neutral-lightest');
+  }
+}
+
+
+// Success
+.fdk-color-success {
+  @include themify($themes) {
+    color: themed('color-success');
+  }
+}
+
+.fdk-bg-color-success {
+  @include themify($themes) {
+    background-color: themed('color-success');
+  }
+}
+
+
+.fdk-color-success-lighter {
+  @include themify($themes) {
+    color: themed('color-success-lighter');
+  }
+}
+
+.fdk-bg-color-success-lighter {
+  @include themify($themes) {
+    background-color: themed('color-success-lighter');
+  }
+}
+
+
+.fdk-color-success-lightest {
+  @include themify($themes) {
+    color: themed('color-success-lightest');
+  }
+}
+
+.fdk-bg-color-success-lightest {
+  @include themify($themes) {
+    background-color: themed('color-success-lightest');
+  }
+}
+
+// Warning
+.fdk-color-warning-darker {
+  @include themify($themes) {
+    color: themed('color-warning-darker');
+  }
+}
+
+.fdk-bg-color-warning-darker {
+  @include themify($themes) {
+    background-color: themed('color-warning-darker');
+  }
+}
+
+.fdk-color-warning {
+  @include themify($themes) {
+    color: themed('color-warning');
+  }
+}
+
+.fdk-bg-color-warning {
+  @include themify($themes) {
+    background-color: themed('color-warning');
+  }
+}
+
+
+.fdk-color-warning-lighter {
+  @include themify($themes) {
+    color: themed('color-warning-lighter');
+  }
+}
+
+.fdk-bg-color-warning-lighter {
+  @include themify($themes) {
+    background-color: themed('color-warning-lighter');
+  }
+}
+
+
+.fdk-color-warning-lightest {
+  @include themify($themes) {
+    color: themed('color-warning-lightest');
+  }
+}
+
+.fdk-bg-color-warning-lightest {
+  @include themify($themes) {
+    background-color: themed('color-warning-lightest');
+  }
+}
+
+
+// Danger
+.fdk-color-danger {
+  @include themify($themes) {
+    color: themed('color-danger');
+  }
+}
+
+.fdk-bg-color-danger {
+  @include themify($themes) {
+    background-color: themed('color-danger');
+  }
+}
+
+
+.fdk-color-danger-lighter {
+  @include themify($themes) {
+    color: themed('color-danger-lighter');
+  }
+}
+
+.fdk-bg-color-danger-lighter {
+  @include themify($themes) {
+    background-color: themed('color-danger-lighter');
+  }
+}
+
+
+.fdk-color-danger-lightest {
+  @include themify($themes) {
+    color: themed('color-danger-lightest');
+  }
+}
+
+.fdk-bg-color-danger-lightest {
+  @include themify($themes) {
+    background-color: themed('color-danger-lightest');
+  }
+}
+
+.fdk-color-button-primary {
+  @include themify($themes) {
+    color: themed('color-button-primary-1');
+  }
+}
+
+.fdk-bg-color-button-primary {
+  @include themify($themes) {
+    background-color: themed('color-button-primary-1');
+  }
+}
+
+.fdk-color-button-primary-2 {
+  @include themify($themes) {
+    color: themed('color-button-primary-2');
+  }
+}
+
+.fdk-bg-color-button-primary-2 {
+  @include themify($themes) {
+    background-color: themed('color-button-primary-2');
+  }
+}
+
+.fdk-color-button-secondary-1 {
+  @include themify($themes) {
+    color: themed('color-button-secondary-1');
+  }
+}
+
+.fdk-bg-color-button-secondary-1 {
+  @include themify($themes) {
+    background-color: themed('color-button-secondary-1');
+  }
+}
+
+.fdk-color-button-secondary-2 {
+  @include themify($themes) {
+    color: themed('color-button-secondary-2');
+  }
+}
+
+.fdk-bg-color-button-secondary-2 {
+  @include themify($themes) {
+    background-color: themed('color-button-secondary-2');
+  }
+}
+
+.fdk-color-button-shadow {
+  @include themify($themes) {
+    color: themed('color-button-shadow');
+  }
+}
+
+.fdk-bg-color-button-shadow {
+  @include themify($themes) {
+    background-color: themed('color-button-shadow');
+  }
+}
+
+.fdk-color-button-text-primary {
+  @include themify($themes) {
+    color: themed('color-button-text-primary');
+  }
+}
+
+.fdk-bg-color-button-text-primary {
+  @include themify($themes) {
+    background-color: themed('color-button-text-primary');
+  }
+}
+
+.fdk-color-button-text-secondary {
+  @include themify($themes) {
+    color: themed('color-button-text-secondary');
+  }
+}
+
+.fdk-bg-color-button-text-secondary {
+  @include themify($themes) {
+    background-color: themed('color-button-text-secondary');
+  }
+}
+
+.fdk-color-icon-stroke {
+  @include themify($themes) {
+    color: themed('color-icon-stroke');
+  }
+}
+
+.fdk-bg-color-icon-stroke {
+  @include themify($themes) {
+    background-color: themed('color-icon-stroke');
+  }
+}
+
+.fdk-color-icon-fill {
+  @include themify($themes) {
+    color: themed('color-icon-fill');
+  }
+}
+
+.fdk-bg-color-icon-fill {
+  @include themify($themes) {
+    background-color: themed('color-icon-fill');
+  }
+}
+
+.fdk-color-icon-link {
+  @include themify($themes) {
+    color: themed('color-icon-link');
+  }
+}
+
+.fdk-bg-color-icon-link {
+  @include themify($themes) {
+    background-color: themed('color-icon-link');
+  }
+}
+
+.fdk-color-text-default {
+  @include themify($themes) {
+    color: themed('color-text-default');
+  }
+}
+
+.fdk-bg-color-text-default {
+  @include themify($themes) {
+    background-color: themed('color-text-default');
+  }
+}
+
+.fdk-color-text-light {
+  @include themify($themes) {
+    color: themed('color-text-light');
+  }
+}
+
+.fdk-bg-color-text-light {
+  @include themify($themes) {
+    background-color: themed('color-text-light');
+  }
+}
+
+.fdk-color-text-link {
+  @include themify($themes) {
+    color: themed('color-text-link');
+  }
+}
+
+.fdk-bg-color-text-link {
+  @include themify($themes) {
+    background-color: themed('color-text-link');
+  }
+}
+
+// Div
+.fdk-color-white {
+  color: $color-white;
+}
+
+.fdk-bg-color-white {
+  background-color: $color-white;
+}
+
+.fdk-white {
+  color: $color-white;
+}
+
+.fdk-color-offentlig {
+  @include themify($themes) {
+    color: themed('color-success');
+  }
+}
+
+.fdk-color-begrenset {
+  @include themify($themes) {
+    color: themed('color-warning');
+  }
+}
+
+.fdk-color-unntatt {
+  @include themify($themes) {
+    color: themed('color-danger');
+  }
+}

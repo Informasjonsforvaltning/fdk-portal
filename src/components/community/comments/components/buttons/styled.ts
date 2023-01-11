@@ -10,6 +10,11 @@ const BigButton = styled(Button)`
       stroke: ${({ theme: t }) => t.entityColours.dark};
     }
   }
+
+  &:focus {
+    outline-offset: 3px;
+    outline: 2px solid orange;
+  }
 `;
 
 const UnderlineButton = styled(Button)`
@@ -22,6 +27,11 @@ const UnderlineButton = styled(Button)`
 
   &:hover {
     border-bottom: 2px solid transparent;
+  }
+
+  &:focus {
+    outline-offset: 3px;
+    outline: 2px solid orange;
   }
 `;
 

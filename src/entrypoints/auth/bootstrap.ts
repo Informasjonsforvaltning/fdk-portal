@@ -1,4 +1,4 @@
-import 'core-js/stable';
+import 'core-js-pure/stable';
 import 'regenerator-runtime/runtime';
 
 import { UserManager, Log } from 'oidc-client';

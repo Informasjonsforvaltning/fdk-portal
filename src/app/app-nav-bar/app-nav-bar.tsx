@@ -1,6 +1,8 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import { Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import Link from '@fellesdatakatalog/link';
 
 import PortalDropdownMenu from '../../components/dropdown-menu';
 
@@ -35,35 +37,35 @@ interface Props {
 
 const transportItems = () => (
   <>
-    <li key={localization.menu.aboutNap}>
-      <SC.Link href={PATHNAME_ABOUT_NAP}>{localization.menu.aboutNap}</SC.Link>
-    </li>
-    <li key={localization.menu.aboutRegistration}>
-      <SC.Link as={RouteLink} to={PATHNAME_ABOUT_REGISTRATION}>
+    <SC.ListItem key={localization.menu.aboutNap}>
+      <Link href={PATHNAME_ABOUT_NAP}>{localization.menu.aboutNap}</Link>
+    </SC.ListItem>
+    <SC.ListItem key={localization.menu.aboutRegistration}>
+      <Link as={RouteLink} to={PATHNAME_ABOUT_REGISTRATION}>
         {localization.menu.aboutRegistration}
-      </SC.Link>
-    </li>
-    <li key={localization.menu.organizations}>
-      <SC.Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
+      </Link>
+    </SC.ListItem>
+    <SC.ListItem key={localization.menu.organizations}>
+      <Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
         {localization.menu.organizations}
-      </SC.Link>
-    </li>
-    <li key={localization.menu.tools.reports}>
-      <SC.Link as={RouteLink} to={PATHNAME_REPORTS}>
+      </Link>
+    </SC.ListItem>
+    <SC.ListItem key={localization.menu.tools.reports}>
+      <Link as={RouteLink} to={PATHNAME_REPORTS}>
         {localization.menu.tools.reports}
-      </SC.Link>
-    </li>
-    <li key={localization.menu.community}>
-      <SC.Link href={FDK_COMMUNITY_BASE_URI} external>
+      </Link>
+    </SC.ListItem>
+    <SC.ListItem key={localization.menu.community}>
+      <Link href={FDK_COMMUNITY_BASE_URI} external>
         {localization.menu.community}
-      </SC.Link>
-    </li>
+      </Link>
+    </SC.ListItem>
   </>
 );
 
 const fdkItems = () => (
   <>
-    <li key={localization.menu.about}>
+    <SC.ListItem key={localization.menu.about}>
       <PortalDropdownMenu
         desktopView
         openOnHover
@@ -71,34 +73,37 @@ const fdkItems = () => (
         mobileView={false}
         title={localization.menu.about}
       >
-        <li key={localization.menu.about}>
-          <SC.Link as={RouteLink} to={PATHNAME_ABOUT}>
+        <SC.ListItem key={localization.menu.about}>
+          <Link as={RouteLink} to={PATHNAME_ABOUT}>
             {localization.menu.about}
-          </SC.Link>
-        </li>
-        <li key={localization.menu.aboutCatalogs}>
-          <SC.Link as={RouteLink} to={PATHNAME_ABOUT_DATASETS}>
+          </Link>
+        </SC.ListItem>
+        <SC.ListItem key={localization.menu.aboutCatalogs}>
+          <Link as={RouteLink} to={PATHNAME_ABOUT_DATASETS}>
             {localization.menu.aboutCatalogs}
-          </SC.Link>
-        </li>
-        <li key={localization.menu.guidance}>
-          <SC.Link as={RouteLink} to={PATHNAME_GUIDANCE}>
+          </Link>
+        </SC.ListItem>
+        <SC.ListItem key={localization.menu.guidance}>
+          <Link as={RouteLink} to={PATHNAME_GUIDANCE}>
             {localization.menu.guidance}
-          </SC.Link>
-        </li>
-        <li key={localization.menu.newsArchive}>
-          <SC.Link as={RouteLink} to={PATHNAME_NEWS_ARCHIVE}>
+          </Link>
+        </SC.ListItem>
+        <SC.ListItem key={localization.menu.newsArchive}>
+          <Link as={RouteLink} to={PATHNAME_NEWS_ARCHIVE}>
             {localization.menu.newsArchive}
-          </SC.Link>
-        </li>
+          </Link>
+        </SC.ListItem>
       </PortalDropdownMenu>
-    </li>
-    <li key={localization.menu.organizations}>
-      <SC.Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
+    </SC.ListItem>
+    <SC.ListItem key={localization.menu.organizations}>
+      <Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
         {localization.menu.organizations}
-      </SC.Link>
-    </li>
-    <li key={localization.menu.tools.tools} className='hideOnMobileView'>
+      </Link>
+    </SC.ListItem>
+    <SC.ListItem
+      key={localization.menu.tools.tools}
+      className='hideOnMobileView'
+    >
       <PortalDropdownMenu
         desktopView
         openOnHover
@@ -106,28 +111,26 @@ const fdkItems = () => (
         mobileView={false}
         title={localization.menu.tools.tools}
       >
-        <li key={localization.menu.tools.reports}>
-          <SC.Link as={RouteLink} to={PATHNAME_REPORTS}>
+        <SC.ListItem key={localization.menu.tools.reports}>
+          <Link as={RouteLink} to={PATHNAME_REPORTS}>
             {localization.menu.tools.reports}
-          </SC.Link>
-        </li>
-        <li key={localization.menu.tools.sparql}>
-          <SC.Link href={PATHNAME_SPARQL}>
-            {localization.menu.tools.sparql}
-          </SC.Link>
-        </li>
+          </Link>
+        </SC.ListItem>
+        <SC.ListItem key={localization.menu.tools.sparql}>
+          <Link href={PATHNAME_SPARQL}>{localization.menu.tools.sparql}</Link>
+        </SC.ListItem>
       </PortalDropdownMenu>
-    </li>
-    <li key={localization.menu.community}>
-      <SC.Link href={FDK_COMMUNITY_BASE_URI} external>
+    </SC.ListItem>
+    <SC.ListItem key={localization.menu.community}>
+      <Link href={FDK_COMMUNITY_BASE_URI} external>
         {localization.menu.community}
-      </SC.Link>
-    </li>
-    <li key={localization.menu.publishing}>
-      <SC.Link href={PATHNAME_PUBLISHING} external>
+      </Link>
+    </SC.ListItem>
+    <SC.ListItem key={localization.menu.publishing}>
+      <Link href={PATHNAME_PUBLISHING} external>
         {localization.menu.publishing}
-      </SC.Link>
-    </li>
+      </Link>
+    </SC.ListItem>
   </>
 );
 
@@ -138,19 +141,19 @@ const languageButtons = ({
 }) => (
   <>
     <li>
-      <button type='button' onClick={() => onChangeLanguage('nb')}>
+      <SC.Button type='button' onClick={() => onChangeLanguage('nb')} lang='nb'>
         {localization.lang['norwegian-nb']}
-      </button>
+      </SC.Button>
     </li>
     <li>
-      <button type='button' onClick={() => onChangeLanguage('nn')}>
+      <SC.Button type='button' onClick={() => onChangeLanguage('nn')} lang='nn'>
         {localization.lang['norwegian-nn']}
-      </button>
+      </SC.Button>
     </li>
     <li>
-      <button type='button' onClick={() => onChangeLanguage('en')}>
+      <SC.Button type='button' onClick={() => onChangeLanguage('en')} lang='en'>
         {localization.lang['english-en']}
-      </button>
+      </SC.Button>
     </li>
   </>
 );
@@ -159,30 +162,33 @@ const Logo = getConfig().useDemoLogo ? <SC.DemoLogo /> : <SC.Logo />;
 export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => (
   <ThemeProvider theme={isTransportportal ? themeNAP : themeFDK}>
     <SC.Header>
-      <SC.Container>
-        <SC.Link
+      <SC.Container role='navigation'>
+        <Link
           title={
             isTransportportal ? localization.linkToNap : localization.linkToFdk
           }
           href={isTransportportal ? PATHNAME_HOME_NAP : '/'}
         >
           {isTransportportal ? <SC.NapLogo /> : Logo}
-        </SC.Link>
+        </Link>
         <SC.ContentWrapper>
           <SC.NavigationLinks>
             {isTransportportal ? transportItems() : fdkItems()}
           </SC.NavigationLinks>
 
           <PortalDropdownMenu
+            ariaLabel='language navigation'
             desktopView
             mobileView={false}
             caret
             title={localization.lang.chosenLanguage}
+            titleLang={localization.getLanguage() === 'en' ? 'no' : 'en'}
           >
             {languageButtons({ onChangeLanguage })}
           </PortalDropdownMenu>
         </SC.ContentWrapper>
         <PortalDropdownMenu
+          ariaLabel='mobile navigation'
           desktopView={false}
           mobileView
           caret

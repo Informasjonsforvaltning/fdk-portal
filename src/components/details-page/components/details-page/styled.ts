@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme as t } from '@fellesdatakatalog/theme';
-import Link from '@fellesdatakatalog/link';
 
 import SideMenuBase from '../side-menu';
 
@@ -11,14 +10,6 @@ const DetailsPage = styled.article`
 
   a {
     color: ${({ theme }) => theme.entityColours.dark} !important;
-  }
-`;
-
-const PublisherLink = styled(Link)`
-  margin: 0;
-  font-size: 20px;
-  ${onMobileView} {
-    font-size: 16px;
   }
 `;
 
@@ -114,7 +105,7 @@ const Themes = styled.div`
       background: ${({ theme }) => theme.entityColours.light};
 
       & > svg > path {
-        fill: ${({ theme }) => theme.entityColours.dark};
+        fill: ${({ theme }) => theme.entityColours.dark} !important;
       }
     }
 
@@ -123,7 +114,7 @@ const Themes = styled.div`
       background: white;
 
       & > svg > path {
-        fill: ${({ theme }) => theme.entityColours.dark};
+        fill: ${({ theme }) => theme.entityColours.dark} !important;
       }
     }
 
@@ -132,7 +123,7 @@ const Themes = styled.div`
       background: ${({ theme }) => theme.extendedColors.textDefault} !important;
 
       & > svg > path {
-        fill: white;
+        fill: white !important;
       }
     }
 
@@ -143,7 +134,7 @@ const Themes = styled.div`
       margin-right: 5px;
 
       & > path {
-        fill: white;
+        fill: white !important;
       }
     }
   }
@@ -229,6 +220,7 @@ const Content = styled.main`
   flex-direction: column;
   gap: ${t.spacing('S12')};
   z-index: 10;
+
   ${onMobileView} {
     width: auto;
     margin-top: 40px;
@@ -238,7 +230,6 @@ const Content = styled.main`
 export default {
   DetailsPage,
   SubBanner,
-  PublisherLink,
   MetadataQuality,
   Themes,
   Page,

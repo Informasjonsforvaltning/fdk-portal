@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Colour, theme, Unit } from '@fellesdatakatalog/theme';
+import Link from '@fellesdatakatalog/link';
 
 import { SC } from '../../../multilingual-field';
 import type { InvertedColorProps } from '../../../../types';
@@ -90,6 +91,30 @@ const LastPublishedInfo = styled.p`
   }
 `;
 
+const PublisherLink = styled(Link)`
+  margin: 0;
+  font-size: 20px;
+  ${onMobileView} {
+    font-size: 16px;
+  }
+`;
+
+const BannerInfo = styled.div`
+  display: flex;
+`;
+
+const Status = styled.p`
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 20px;
+`;
+
+const Dot = styled.p`
+  margin: 8px ${theme.spacing('S6')} 0px ${theme.spacing('S6')};
+  font-weight: bold;
+  font-size: 20px;
+`;
+
 const BetaRibbon = styled.span<InvertedColorProps>`
   position: absolute;
   top: 25px;
@@ -114,5 +139,9 @@ export default {
   TitleWrapper,
   Title,
   LastPublishedInfo,
-  BetaRibbon
+  PublisherLink,
+  BetaRibbon,
+  Status,
+  BannerInfo,
+  Dot
 };

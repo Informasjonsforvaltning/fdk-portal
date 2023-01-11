@@ -1,11 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import 'designsystemet/fdk-designsystem-bootstrap4/scss/helper.scss';
-import 'designsystemet/fdk-designsystem-bootstrap4/scss/portal.scss';
-import 'designsystemet/fdk-designsystem-bootstrap4/scss/typo.scss';
-import 'designsystemet/fdk-designsystem-bootstrap4/scss/common.scss';
-import 'designsystemet/fdk-designsystem-bootstrap4/scss/animations.scss';
-import 'designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
-/* eslint-enable import/no-extraneous-dependencies */
+import '../../assets/designsystemet/scss/helper.scss';
+import '../../assets/designsystemet/scss/portal.scss';
+import '../../assets/designsystemet/scss/typo.scss';
+import '../../assets/designsystemet/scss/common.scss';
+import '../../assets/designsystemet/scss/animations.scss';
+import '../../assets/designsystemet/scss/colors.scss';
 import 'font-awesome/scss/font-awesome.scss';
 import '../../assets/fonts/icomoon.css';
 

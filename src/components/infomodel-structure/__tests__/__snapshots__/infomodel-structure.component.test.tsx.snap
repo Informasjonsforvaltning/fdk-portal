@@ -9,6 +9,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       Object type
     </h3>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
     >
@@ -20,11 +30,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -3539,6 +3552,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
     >
@@ -3550,11 +3573,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#GeografiskAdresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -7105,6 +7131,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
     >
@@ -7116,11 +7152,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkeladresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -10802,6 +10841,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
     >
@@ -10813,11 +10862,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#OffisiellAdresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -14435,6 +14487,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
     >
@@ -14446,11 +14508,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Postboksadresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -18100,6 +18165,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
     >
@@ -18111,11 +18186,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Vegadresse"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -21898,6 +21976,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       Codelist
     </h3>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
     >
@@ -21909,11 +21997,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Kommunenummer"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -21929,12 +22020,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
           External codelist
         </styled.h6>
         <styled.div>
-          <Styled(s)
+          <Styled(p)
             external={true}
             href="https://www.ssb.no/klass/klassifikasjoner/131"
           >
             https://www.ssb.no/klass/klassifikasjoner/131
-          </Styled(s)>
+          </Styled(p)>
         </styled.div>
       </g>
     </Styled(O)>
@@ -21944,6 +22035,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       Data type
     </h3>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
     >
@@ -21955,11 +22056,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Adressenummer"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -22819,6 +22923,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
     >
@@ -22830,11 +22944,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Matrikkelnummer"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -23790,6 +23907,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
     >
@@ -23801,11 +23928,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Punkt"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -24665,6 +24795,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
     >
@@ -24676,11 +24816,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Poststed"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -25545,6 +25688,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       Simple type
     </h3>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
     >
@@ -25556,11 +25709,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Tekst"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -25576,12 +25732,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
           Definition reference
         </styled.h6>
         <styled.div>
-          <Styled(s)
+          <Styled(p)
             external={true}
             href="http://www.w3.org/2001/XMLSchema#string"
           >
             http://www.w3.org/2001/XMLSchema#string
-          </Styled(s)>
+          </Styled(p)>
         </styled.div>
         <Memo(ValueRestrictions)
           length={null}
@@ -25596,6 +25752,16 @@ exports[`InfoModelStructure component should render with props 1`] = `
       </g>
     </Styled(O)>
     <Styled(O)
+      expansionIndicator={
+        Object {
+          "collapse": <Memo(ExpansionIndicatorDefault)
+            aria-controls="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
+            aria-expanded="true"
+            isExpanded={true}
+          />,
+          "expand": <Memo(ExpansionIndicatorDefault) />,
+        }
+      }
       id="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
       key="https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
     >
@@ -25607,11 +25773,14 @@ exports[`InfoModelStructure component should render with props 1`] = `
           expansionIndicator={
             Object {
               "collapse": <Memo(ExpansionIndicatorDetails)
+                aria-controls="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
+                aria-expanded="true"
                 isExpanded={true}
               />,
               "expand": <Memo(ExpansionIndicatorDetails) />,
             }
           }
+          id="details-https://raw.githubusercontent.com/Informasjonsforvaltning/model-publisher/master/src/model/model-catalog.ttl#Heltall"
           shouldExpandOnHeadClick={false}
           showWithoutHeadAndPadding={true}
         >
@@ -25627,12 +25796,12 @@ exports[`InfoModelStructure component should render with props 1`] = `
           Definition reference
         </styled.h6>
         <styled.div>
-          <Styled(s)
+          <Styled(p)
             external={true}
             href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
           >
             http://www.w3.org/2001/XMLSchema#nonNegativeInteger
-          </Styled(s)>
+          </Styled(p)>
         </styled.div>
         <Memo(ValueRestrictions)
           length={null}

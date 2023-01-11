@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
-import LinkBase from '@fellesdatakatalog/link';
-
 import LogoSVG from '../../images/fdk-logo.svg';
 import DemoLogoSVG from '../../images/fdk-logo-demo.svg';
 import NapLogoSVG from '../../images/logo-transport.svg';
@@ -28,7 +26,7 @@ const Header = styled.header`
         `}
 `;
 
-const Container = styled.div`
+const Container = styled.nav`
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -51,14 +49,14 @@ const DemoLogo = styled(DemoLogoSVG)`
 
 const NapLogo = styled(NapLogoSVG)``;
 
-const Link = styled(LinkBase)`
-  & > div {
-    border: none;
+const ListItem = styled.li`
+  & > a {
     display: block;
     padding: 0;
+    text-decoration: none !important;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: underline !important;
     }
 
     & > svg {
@@ -107,6 +105,13 @@ const NavigationLinks = styled.ul`
   }
 `;
 
+const Button = styled.button`
+  &:focus {
+    outline-offset: 3px;
+    outline: 2px solid orange;
+  }
+`;
+
 export default {
   Header,
   Container,
@@ -115,5 +120,6 @@ export default {
   NapLogo,
   ContentWrapper,
   NavigationLinks,
-  Link
+  ListItem,
+  Button
 };

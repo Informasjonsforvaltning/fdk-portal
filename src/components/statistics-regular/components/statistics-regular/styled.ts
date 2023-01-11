@@ -50,10 +50,8 @@ const StatisticsRegular = styled(Link)<{ as?: string }>`
           background-color: ${({ theme }) =>
             theme.extendedColors.neutralDarkest};
           & > svg {
-            fill: white;
-
-            & > path {
-              fill: white;
+            & > * {
+              stroke: white;
             }
           }
         }

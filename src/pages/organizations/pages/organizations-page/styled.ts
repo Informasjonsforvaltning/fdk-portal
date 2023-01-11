@@ -55,7 +55,6 @@ const Filter = styled.div`
     background-color: transparent;
     border: none;
     margin-right: 0.3em;
-    outline: none;
     padding: 0;
   }
 `;
@@ -210,10 +209,6 @@ const SortButton = styled.button`
 
   &:hover > svg > path {
     fill: #fff;
-  }
-
-  &:focus {
-    outline: none;
   }
 `;
 

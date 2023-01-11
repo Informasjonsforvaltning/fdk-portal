@@ -1,4 +1,4 @@
-@import '../../../../node_modules/designsystemet/fdk-designsystem-bootstrap4/scss/colors.scss';
+@import '../../../assets/designsystemet/scss/colors.scss';
 
 .fdk-filter-tree {
   .fdk-panel__header {
@@ -11,7 +11,6 @@
   }
 
   .tree-view {
-    overflow-x: hidden;
     .tree-view_item {
       border-top: none;
       @include themify($themes) {

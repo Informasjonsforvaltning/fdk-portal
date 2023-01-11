@@ -18,7 +18,7 @@ afterEach(cleanup);
 describe('Styled components for SearchBoxTitle component', () => {
   describe('SC.SearchBoxHeader component', () => {
     it(Expectation.ROOT_ELEMENT, () => {
-      expectCorrectRootElement(SC.SearchBoxHeader, 'div');
+      expectCorrectRootElement(SC.SearchBoxHeader, 'h1');
     });
 
     it(Expectation.NO_CHILDREN, () => {

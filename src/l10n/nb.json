@@ -1,5 +1,7 @@
 {
-  "goToMainContent": "Hopp til hovedinnhold", 
+  "externalLink": "Ekstern lenke",
+  "opensInNewWindow": "Åpnes i nytt vindu",
+  "goToMainContent": "Hopp til hovedinnhold",
   "apiLabel": "API",
   "description": "Beskrivelse",
   "showFullDescription": "Vis hele beskrivelsen",
@@ -81,7 +83,9 @@
   "lifeEvent": "Innbygger",
   "dctType": "Type",
   "industryCode": "Næringskode",
+  "isGroupedBy": "Inngår i",
   "requires": "Krever",
+  "isRelatedTo": "Er relatert til",
   "days": "dager",
   "requiredBy": "Krevd av",
   "relatedBy": "Relatert av",
@@ -125,7 +129,7 @@
     "chosenLanguage": "Language",
     "norwegian-nb": "Norsk (bokmål)",
     "norwegian-nn": "Norsk (nynorsk)",
-    "english-en": "Engelsk"
+    "english-en": "English"
   },
   "menu": {
     "home": "Søk i Felles datakatalog",
@@ -151,7 +155,6 @@
     "publishing": "Publisere",
     "aboutCatalogs": "Om katalogene",
     "guidance": "Veiledning"
-
   },
   "query": {
     "intro": "Eksempel: kollektivtransport",
@@ -722,15 +725,28 @@
         "contactPoint": "Kontaktinformasjon",
         "follows": "Saksbehandlingsregler",
         "legalResources": "Hjemler",
-        "attachment": "Vedleggskrav",
+        "documentation": "Dokumentasjonskrav",
         "participation": "Deltagende",
         "channel": "Tjenestekanal",
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
         "relation": "Relatert til",
+        "serviceHomepage": "Nettside for tjenesten",
         "isDescribedAt": "Beskrivende datasett",
         "spatial": "Geografisk avgrensning",
-        "offeredBy": "Tilbys av"
+        "offeredBy": "Tilbys av",
+        "availableLanguages": "Tilgjengelige språk",
+        "acceptedLanguages": "Aksepterte språk",
+        "relatedInformation": "Relatert informasjon",
+        "relatedLegalResources": "Relatert regelverk",
+        "references": "Referanser",
+        "relatedResources": "Relaterte ressurser",
+        "rule": "Regel",
+        "hasBackgroundIn": "Har bakgrunn i",
+        "requirement": "Krav",
+        "satisfiesRule": "Tilfredsstiller regel",
+        "openingHours": "Åpningstider",
+        "contactPage": "Kontaktside"
       },
       "event": {
         "description": "Beskrivelse",
@@ -925,7 +941,10 @@
   "errorPage": {
     "serverError": {
       "title": "Dette er flaut...",
-      "content": "Det har visst skjedd noe teknisk krøll i vår ende. Vi jobber med å rette opp feilen. Prøv igjen om en liten stund."
+      "content": "Det har visst skjedd noe teknisk krøll i vår ende. Vi jobber med å rette opp feilen. Prøv igjen om en liten stund. ",
+      "content2": "Du kan også",
+      "backLink": " gå tilbake til siden du kom fra ",
+      "content3": "eller gå til <a href=\"\">startsiden</a>."
     },
     "clientError": {
       "title": "Vi beklager!",

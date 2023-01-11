@@ -1,4 +1,6 @@
 {
+  "externalLink": "External link",
+  "opensInNewWindow": "Opens in new window",
   "goToMainContent": "Go to main content",
   "apiLabel": "API",
   "description": "Description",
@@ -81,7 +83,9 @@
   "lifeEvent": "Life event",
   "dctType": "Type",
   "industryCode": "Industry code",
+  "isGroupedBy": "Is grouped by",
   "requires": "Requires",
+  "isRelatedTo": "Is related to",
   "days": "days",
   "requiredBy": "Required by",
   "relatedBy": "Related by",
@@ -721,15 +725,28 @@
         "contactPoint": "Contact information",
         "follows": "Processing rules",
         "legalResources": "Legal basis",
-        "attachment": "Attachment requirements",
+        "documentation": "Documentation requirements",
         "participation": "Participation",
         "channel": "Channel",
         "cost": "Cost",
         "processingTime": "Processing time",
         "relation": "Related to",
+        "serviceHomepage": "Website for the service",
         "isDescribedAt": "Descriptive datasets",
         "spatial": "Spatial restrictions",
-        "offeredBy": "Offered by"
+        "offeredBy": "Offered by",
+        "availableLanguages": "Available languages",
+        "acceptedLanguages": "Accepted languages",
+        "relatedInformation": "Related information",
+        "relatedLegalResources": "Related legal resources",
+        "references": "References",
+        "relatedResources": "Related resources",
+        "rule": "Rule",
+        "hasBackgroundIn": "Has background in",
+        "requirement": "Requirement",
+        "satisfiesRule": "Satisfies rule",
+        "openingHours": "Opening hours",
+        "contactPage": "Contact page"
       },
       "event": {
         "description": "Description",
@@ -924,7 +941,10 @@
   "errorPage": {
     "serverError": {
       "title": "This is embarrasing...",
-      "content": "There are some technical hiccups on our end. We are working on correcting the error. Try again in a little while."
+      "content": "There are some technical hiccups on our end. We are working on correcting the error. Try again in a little while. ",
+      "content2": "You can also",
+      "backLink": " go back to the page you came from ",
+      "content3": "or go to the <a href=\"\">start page</a>."
     },
     "clientError": {
       "title": "We're sorry!",

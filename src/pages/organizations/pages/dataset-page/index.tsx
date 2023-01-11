@@ -1,4 +1,5 @@
-import React, { memo, FC, useLayoutEffect, Fragment, useEffect } from 'react';
+import React, { memo, useLayoutEffect, Fragment, useEffect } from 'react';
+import type { FC } from 'react';
 import { compose } from 'redux';
 import { Link as RouteLink } from 'react-router-dom';
 
@@ -17,15 +18,12 @@ import {
   PATHNAME_DATASET_DETAILS
 } from '../../../../constants/constants';
 
-import withDataset, {
-  Props as DatasetProps
-} from '../../../../components/with-dataset';
-import withDatasetScores, {
-  Props as DatasetScoresProps
-} from '../../../../components/with-dataset-scores';
-import withOrganization, {
-  Props as OrganizationProps
-} from '../../../../components/with-organization';
+import withDataset from '../../../../components/with-dataset';
+import type { Props as DatasetProps } from '../../../../components/with-dataset';
+import withDatasetScores from '../../../../components/with-dataset-scores';
+import type { Props as DatasetScoresProps } from '../../../../components/with-dataset-scores';
+import withOrganization from '../../../../components/with-organization';
+import type { Props as OrganizationProps } from '../../../../components/with-organization';
 import withErrorBoundary from '../../../../components/with-error-boundary';
 import ErrorPage from '../../../../components/error-page';
 
@@ -40,6 +38,7 @@ import {
   calculateRatingPercentage,
   determineRatingIcon
 } from '../datasets-page';
+import ExpansionIndicatorDefault from '../../../../components/expansion-indicator-default';
 
 interface RouteParams {
   organizationId: string;
@@ -339,7 +338,20 @@ const DatasetPage: FC<Props> = ({
                     max_score: metricMaxScore
                   }) => (
                     <tr key={metricId}>
-                      <ExpansionPanel as='td'>
+                      <ExpansionPanel
+                        as='td'
+                        id={`expansion-metric-${metricId}`}
+                        expansionIndicator={{
+                          expand: <ExpansionIndicatorDefault />,
+                          collapse: (
+                            <ExpansionIndicatorDefault
+                              isExpanded
+                              aria-expanded='true'
+                              aria-controls={`expansion-metric-${metricId}`}
+                            />
+                          )
+                        }}
+                      >
                         <ExpansionPanelHead>
                           <span>
                             {metricScore > 0 ? (

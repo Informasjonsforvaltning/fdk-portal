@@ -27,7 +27,7 @@ const Date = styled.div`
 
   &,
   & * {
-    color: ${theme.colour(Colour.NEUTRAL, 'N50')};
+    color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
 `;
 

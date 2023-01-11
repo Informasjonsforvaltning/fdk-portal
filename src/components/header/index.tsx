@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
-import DocumentMeta from 'react-document-meta';
+import React from 'react';
+import type { FC } from 'react';
 import { AppNavBar } from '../../app/app-nav-bar/app-nav-bar';
-import { getConfig } from '../../config';
 import localization from '../../lib/localization';
 
 interface Props {
@@ -10,7 +9,6 @@ interface Props {
 
 const Header: FC<Props> = ({ onChangeLanguage }) => (
   <div>
-    {getConfig().themeNap && <DocumentMeta {...{ title: 'NAP' }} />}
     <div>
       <a
         id='focus-element'

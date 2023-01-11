@@ -28,8 +28,6 @@ export const PublishersSelect: FC<Props> = ({
       getOptionValue={({ orgPath }) => orgPath}
       onChange={onChange}
       placeholder={localization.report.searchPublisherPlaceholder}
-      searchPromptText={localization.report.typeToSearch}
-      backspaceRemoves
       theme={theme => ({
         ...theme,
         colors: {

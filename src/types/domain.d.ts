@@ -277,6 +277,7 @@ export interface PublicServiceOutput {
   name: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   type: Partial<Concept>[];
+  language: PublicServiceLanguage[];
 }
 
 export interface PublicServiceCriterionRequirement {
@@ -292,20 +293,34 @@ export interface PublicServiceRule {
   name: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   language: PublicServiceLanguage[];
-  implements: PublicService[];
+  implements: string[];
+}
+
+export interface PublicServiceRequirement {
+  dctTitle: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  fulfils: string[];
+  identifier: string;
+  uri: string;
 }
 
 export interface PublicServiceLegalResource {
-  uri: string;
+  dctTitle: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  url: string;
+  relation: string[];
+  seeAlso: string[];
+  uri: string;
 }
 
 export interface PublicServiceInput {
   uri: string;
   identifier: string;
   name: Partial<TextLanguage>;
-  description: Partial<TextLanguage>;
+  description?: Partial<TextLanguage>;
+  dctType: PublicServiceLanguage[];
+  rdfType: string;
+  language: PublicServiceLanguage[];
+  page: string[];
 }
 
 export interface PublicServiceAgent {
@@ -343,11 +358,11 @@ export interface PublicServiceCost {
 interface PublicServiceContactPoint {
   uri: string;
   contactType: Partial<TextLanguage>;
-  description: Partial<TextLanguage>;
-  email: string;
-  name: Partial<TextLanguage>;
-  telephone: string;
-  url: string;
+  contactPage: string;
+  email: string[];
+  language: PublicServiceLanguage[];
+  openingHours: Partial<TextLanguage>;
+  telephone: string[];
 }
 
 export interface PublicService {
@@ -360,14 +375,17 @@ export interface PublicService {
   isDescribedAt?: Partial<PublicService>[];
   isGroupedBy?: string[];
   hasCompetentAuthority?: Partial<Publisher>[];
+  admsStatus?: PublicServiceLanguage;
   harvest?: Partial<Harvest>;
   keyword?: Partial<TextLanguage>[];
   sector?: Partial<Concept>[];
-  isClassifiedBy?: Partial<Concept>[];
+  subject?: Partial<Concept>[];
+  homepage?: string[];
   language?: PublicServiceLanguage[];
   requires?: PublicService[];
   produces?: PublicServiceOutput[];
   hasCriterion?: PublicServiceCriterionRequirement[];
+  holdsRequirement?: PublicServiceRequirement[];
   follows?: PublicServiceRule[];
   hasLegalResource?: PublicServiceLegalResource[];
   hasInput?: PublicServiceInput[];
@@ -376,7 +394,7 @@ export interface PublicService {
   processingTime?: string;
   hasCost?: PublicServiceCost[];
   relation?: PublicService[];
-  hasContactPoint?: PublicServiceContactPoint[];
+  contactPoint?: PublicServiceContactPoint[];
   associatedBroaderTypesByEvents?: string[];
   spatial: string[];
 }

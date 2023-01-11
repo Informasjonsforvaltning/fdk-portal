@@ -78,7 +78,10 @@ export const DatasetItem: FC<Props> = ({
     >
       {isDatasetOpen(accessRights, distribution) && (
         <SearchHitOpenData>
-          <div data-tip={localization.openDataTooltip}>
+          <div
+            data-tip={localization.openDataTooltip}
+            title={localization.openDataTooltip}
+          >
             <RoundedTag>
               <PublicIconBase />
               <span>{localization.openData}</span>

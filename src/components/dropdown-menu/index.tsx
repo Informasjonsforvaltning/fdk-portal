@@ -1,16 +1,13 @@
-import React, {
-  memo,
-  FC,
-  useState,
-  useRef,
-  useEffect,
-  PropsWithChildren
-} from 'react';
+import _ from 'lodash';
+import React, { memo, useState, useRef, useEffect, useCallback } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 import SC from './styled';
 
 interface Props {
+  ariaLabel?: string;
   title: string;
+  titleLang?: string;
   caret: boolean;
   desktopView: boolean;
   mobileView: boolean;
@@ -18,7 +15,9 @@ interface Props {
 }
 
 const DropdownMenu: FC<PropsWithChildren<Props>> = ({
+  ariaLabel,
   title,
+  titleLang,
   caret,
   desktopView,
   mobileView,
@@ -29,7 +28,7 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
   const ref = useRef<HTMLElement>(null);
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' || event.key === 'Enter') {
       setOpen(false);
     }
   };
@@ -48,6 +47,18 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
     setOpen(!open);
   };
 
+  const handleBlur = useCallback(e => {
+    const { currentTarget } = e;
+
+    // Give browser time to focus the next element
+    requestAnimationFrame(() => {
+      // Check if the new focused element is a child of the original container
+      if (!currentTarget.contains(document.activeElement)) {
+        setOpen(false);
+      }
+    });
+  }, []);
+
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('mousedown', handleClickOutside);
@@ -61,16 +72,25 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
     <>
       <SC.GlobalStyle dropdownOpen={open} />
       <SC.DropdownMenu
-        role='navigation'
+        aria-label={ariaLabel}
+        id={_.uniqueId('dropdown-menu')}
         ref={ref}
         onClick={openOnHover ? () => {} : handleMouseEvent}
         onMouseOver={openOnHover ? handleMouseEvent : () => {}}
         onMouseOut={openOnHover ? handleMouseEvent : () => {}}
         onFocus={() => setOpen(true)}
+        onBlur={handleBlur}
         desktopView={desktopView}
         mobileView={mobileView}
       >
-        <SC.Title caret={caret}>{title}</SC.Title>
+        <SC.ToggleButton
+          caret={caret}
+          aria-expanded={open}
+          aria-controls={ref.current?.id}
+          lang={titleLang}
+        >
+          {title}
+        </SC.ToggleButton>
         <SC.Dropdown open={open}>{children}</SC.Dropdown>
       </SC.DropdownMenu>
     </>

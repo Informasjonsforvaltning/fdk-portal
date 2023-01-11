@@ -37,8 +37,12 @@ const SearchForm = styled.form`
     background-color: transparent;
     border: none;
     margin-right: 0.3em;
-    outline: none;
     padding: 0;
+
+    &:focus {
+      outline-offset: 3px;
+      outline: 2px solid orange;
+    }
   }
 
   .search-button {
@@ -55,6 +59,11 @@ const SearchForm = styled.form`
 
     &:hover {
       background-color: ${({ theme: t }) => t.extendedColors.neutralDarkest};
+    }
+
+    &:focus {
+      outline-offset: 3px;
+      outline: 2px solid orange;
     }
 
     & > img {
