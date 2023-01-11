@@ -760,7 +760,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     dctType,
                     language: acceptedLanguages,
                     page,
-                    rdfType
+                    rdfType,
+                    uri
                   },
                   index
                 ) =>
@@ -772,7 +773,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       </CatalogTypeBox>
                     )
                   ) : (
-                    <>
+                    <div id={`${uri}-${index}`}>
                       {name && (
                         <SC.KeyValueListHeader>
                           {translate(name)}
@@ -832,8 +833,129 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           />
                         )}
                       </KeyValueList>
-                    </>
+                    </div>
                   )
+              )}
+            </ContentSection>
+          )}
+
+          {hasChannel.length > 0 && (
+            <ContentSection
+              id='channels'
+              title={
+                translations.detailsPage.sectionTitles.publicService
+                  .serviceChannel
+              }
+            >
+              {hasChannel.map(
+                (
+                  {
+                    channelType,
+                    description,
+                    address,
+                    processingTime,
+                    hasInput: documentation,
+                    email,
+                    url
+                  },
+                  index
+                ) => (
+                  <div>
+                    {channelType && (
+                      <SC.KeyValueListHeader>
+                        {translate(channelType.prefLabel)}
+                      </SC.KeyValueListHeader>
+                    )}
+                    <KeyValueList>
+                      {description && (
+                        <KeyValueListItem
+                          key={`channelDescription-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .description
+                          }
+                          value={translate(description)}
+                        />
+                      )}
+
+                      {address && (
+                        <KeyValueListItem
+                          key={`channelAddress-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .address
+                          }
+                          value={address
+                            .map(
+                              value =>
+                                value.streetAddress +
+                                ', ' +
+                                value.postalCode +
+                                ' ' +
+                                value.locality
+                            )
+                            .filter(Boolean)
+                            .join(', ')}
+                        />
+                      )}
+                      {email && (
+                        <KeyValueListItem
+                          key={`channelEmail-${index}`}
+                          property={translations.email}
+                          value={email.map(value => (
+                            <a
+                              href={`mailto:${value.split('mailto:')}`}
+                              rel='noopener noreferrer'
+                            >
+                              {value
+                                .split('mailto:')
+                                .filter(Boolean)
+                                .join(', ')}
+                            </a>
+                          ))}
+                        />
+                      )}
+                      {url && (
+                        <KeyValueListItem
+                          key={`channelUrl-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .webAddress
+                          }
+                          value={url.map(url => (
+                            <Link key={url} href={url} external>
+                              {url}
+                            </Link>
+                          ))}
+                        />
+                      )}
+                      {processingTime && (
+                        <KeyValueListItem
+                          key={`channelprocessingTime-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .processingTime
+                          }
+                          value={`${moment.duration(processingTime).asDays()} ${
+                            translations.days
+                          }`}
+                        />
+                      )}
+                      {documentation && (
+                        <KeyValueListItem
+                          key={`channelHasInput-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .documentation
+                          }
+                          value={documentation.map(uri =>
+                            getLink(uri, hasInput)
+                          )}
+                        />
+                      )}
+                    </KeyValueList>
+                  </div>
+                )
               )}
             </ContentSection>
           )}
@@ -853,7 +975,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         .channel
                     }
                     value={hasChannel
-                      .map(({ type }) => translate(type?.prefLabel))
+                      .map(({ channelType }) =>
+                        translate(channelType?.prefLabel)
+                      )
                       .filter(Boolean)
                       .join(', ')}
                   />
@@ -913,7 +1037,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                               previousCostChannelUri !== currentCostChannelUri)
                           ) {
                             costChannelLabel = translate(
-                              ifAccessedThrough?.type?.prefLabel
+                              ifAccessedThrough?.channelType?.prefLabel
                             );
                           }
                           return (
