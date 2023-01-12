@@ -11,7 +11,7 @@ export interface InformationModel {
   type: EntityEnum.INFORMATION_MODEL;
   uri: string;
   identifier?: string;
-  publisher?: Partial<Publisher>;
+  publisher?: Partial<Organization>;
   harvestSourceUri?: string;
   harvest?: Partial<Harvest>;
   title?: Partial<TextLanguage>;
@@ -159,11 +159,16 @@ export interface TextLanguage {
   [LanguageCodes.none]: string;
 }
 
-export interface Publisher {
+export interface Organization {
   uri: string;
+  homepage?: string;
+  identifier?: string;
+  name?: Partial<TextLanguage>;
+  orgPath?: string;
+  orgType?: string;
+  spatial?: string;
+  title?: Partial<TextLanguage>;
   id: string;
-  name: string;
-  orgPath: string;
   organizationId: string;
   prefLabel: Partial<TextLanguage>;
 }
@@ -236,7 +241,7 @@ export interface Concept {
   altLabel?: Partial<TextLanguage>[];
   hiddenLabel?: Partial<TextLanguage>[];
   definition?: ConceptDefinition;
-  publisher: Partial<Publisher>;
+  publisher: Partial<Organization>;
   example: Partial<TextLanguage>;
   subject?: Partial<TextLanguage>;
   application?: Partial<TextLanguage>[];
@@ -358,7 +363,7 @@ export interface PublicServiceCost {
   description: Partial<TextLanguage>;
   currency: string;
   ifAccessedThrough: PublicServiceChannel;
-  isDefinedBy: Partial<Publisher>[];
+  isDefinedBy: Partial<Organization>[];
   value: string;
 }
 
@@ -381,7 +386,7 @@ export interface PublicService {
   description: Partial<TextLanguage>;
   isDescribedAt?: Partial<PublicService>[];
   isGroupedBy?: string[];
-  hasCompetentAuthority?: Partial<Publisher>[];
+  hasCompetentAuthority?: Partial<Organization>[];
   admsStatus?: PublicServiceLanguage;
   harvest?: Partial<Harvest>;
   keyword?: Partial<TextLanguage>[];
@@ -421,7 +426,7 @@ export interface Event {
   description: Partial<TextLanguage>;
   type: EntityEnum.EVENT;
   dctType?: SkosConcept[];
-  hasCompetentAuthority?: Partial<Publisher>[];
+  hasCompetentAuthority?: Partial<Organization>[];
   harvest?: Partial<Harvest>;
   relation?: string[];
   specialized_type?: SpecializedEventType;
@@ -545,7 +550,7 @@ export interface Dataset {
   id: string;
   type: EntityEnum.DATASET;
   uri: string;
-  publisher: Partial<Publisher>;
+  publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   descriptionFormatted: Partial<TextLanguage>;
@@ -587,7 +592,7 @@ export interface DataService {
   id: string;
   type: EntityEnum.DATA_SERVICE;
   uri: string;
-  publisher: Partial<Publisher>;
+  publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
   description?: Partial<TextLanguage>;
   descriptionFormatted?: Partial<TextLanguage>;
@@ -688,7 +693,7 @@ export interface OrganizationSummary {
 }
 
 interface QualifiedAttribution {
-  agent: Partial<Publisher>;
+  agent: Partial<Organization>;
   role: string;
 }
 

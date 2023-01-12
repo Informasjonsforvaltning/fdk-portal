@@ -46,7 +46,7 @@ import SC from './styled';
 import {
   Language,
   PublicServiceLanguage,
-  Publisher,
+  Organization,
   TextLanguage,
   Theme
 } from '../../../../types';
@@ -64,7 +64,7 @@ import Aside from '../aside';
 interface ExternalProps {
   entity: Entity;
   title: Partial<TextLanguage>;
-  publisher?: Partial<Publisher>;
+  publisher?: Partial<Organization>;
   admsStatus?: PublicServiceLanguage;
   entityId?: string;
   entityUri?: string;
