@@ -40,7 +40,7 @@ interface dropdownMenuProps {
 }
 
 const DropdownMenu = styled.nav<dropdownMenuProps>`
-  color: ${({ theme: t }) => t.extendedColors.neutralDarkest};
+  color: currentColor;
   display: ${({ desktopView }) => (desktopView ? 'inherit' : 'none')};
   position: relative;
 
@@ -57,6 +57,7 @@ const ToggleButton = styled.button<titleProps>`
   padding: 10px;
   font-size: ${theme.fontSize('FS16')};
   border: none;
+  color: currentColor !important;
 
   &:focus {
     outline-offset: 3px;
@@ -112,11 +113,11 @@ const Dropdown = styled.ul<dropdownProps>`
     }
 
     > a {
-      color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+      color: currentColor;
     }
 
     > button {
-      color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+      color: currentColor;
       border: none;
       background-color: transparent;
       width: 100%;
