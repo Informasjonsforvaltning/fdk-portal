@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { Colour, theme as t } from '@fellesdatakatalog/theme';
+import { Colour, Unit, theme as t } from '@fellesdatakatalog/theme';
 
 const onMobileView = '@media (max-width: 900px)';
 
@@ -19,7 +19,7 @@ export const slideDown = keyframes`
 `;
 
 const Menu = styled.nav<Props>`
-  font-size: ${t.fontSize('FS14')};
+  font-size: ${t.fontSize('FS14', Unit.REM)};
   & > ul {
     display: flex;
     flex-direction: column;

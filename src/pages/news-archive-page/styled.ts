@@ -1,7 +1,8 @@
+import { Unit, theme } from '@fellesdatakatalog/theme';
 import styled from 'styled-components';
 
 const Header = styled.h1`
-  font-size: 4rem;
+  font-size: ${theme.fontSize('FS40', Unit.REM)};
   text-align: center;
 `;
 

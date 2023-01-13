@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import Link from '@fellesdatakatalog/link';
 import AlertBase from '@fellesdatakatalog/alert';
 
-import { theme } from '@fellesdatakatalog/theme';
+import { Unit, theme } from '@fellesdatakatalog/theme';
 
 const ServiceMessagesPage = styled.article`
   margin-top: ${theme.spacing('S24')};
 `;
 
 const Title = styled.h1`
-  font-size: ${theme.fontSize('FS32')};
+  font-size: ${theme.fontSize('FS32', Unit.REM)};
   margin-bottom: ${theme.spacing('S24')};
 `;
 
@@ -29,7 +29,7 @@ const Content = styled.div`
 `;
 
 const ServiceMessageTitle = styled(Link)`
-  font-size: ${theme.fontSize('FS16')};
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   margin-bottom: ${theme.spacing('S12')};
 `;
 

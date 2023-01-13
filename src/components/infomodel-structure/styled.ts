@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
 import ExpansionPanelBase, { SC } from '@fellesdatakatalog/expansion-panel';
 
@@ -12,7 +12,7 @@ const Section = styled.section`
 
   & > h3 {
     margin-bottom: ${theme.spacing('S12')};
-    font-size: ${theme.fontSize('FS20')};
+    font-size: ${theme.fontSize('FS20', Unit.REM)};
     font-weight: ${theme.fontWeight('FW400')};
     overflow: hidden;
     text-overflow: ellipsis;
@@ -37,7 +37,7 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
     `}
 
   ${SC.ExpansionPanel.HeadContent} {
-    font-size: ${theme.fontSize('FS20')};
+    font-size: ${theme.fontSize('FS20', Unit.REM)};
     font-weight: ${theme.fontWeight('FW700')};
     color: ${theme.colour(Colour.VIOLET, 'V50')};
 

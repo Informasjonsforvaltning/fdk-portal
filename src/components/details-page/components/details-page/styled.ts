@@ -28,7 +28,7 @@ const SubBanner = styled.div`
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 15px;
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 `;
 
@@ -39,7 +39,7 @@ const MetadataQuality = styled.div`
   align-items: center;
 
   & > p {
-    font-size: 20px;
+    font-size: 2rem;
     line-height: 1;
   }
 
@@ -47,7 +47,7 @@ const MetadataQuality = styled.div`
     margin-top: 10px;
     margin-bottom: 0;
     & > p {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
   }
 `;
@@ -160,7 +160,7 @@ const MenuToggle = styled.button`
     align-items: center;
     padding: 13px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 1.6rem;
     border: none;
     background-color: ${({ theme }) => theme.extendedColors.neutralLight};
   }

@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
-import { theme as t } from '@fellesdatakatalog/theme';
+import { Unit, theme as t } from '@fellesdatakatalog/theme';
 
 const onMobileView = '@media (max-width: 900px)';
 
@@ -12,7 +12,7 @@ const SideMenu = styled.aside``;
 
 const Title = styled.h3`
   margin: 15px 0;
-  font-size: 24px;
+  font-size: ${t.fontSize('FS24', Unit.REM)};
   font-weight: 600;
 `;
 
@@ -28,7 +28,7 @@ export const slideDown = keyframes`
 `;
 
 const Menu = styled.nav<Props>`
-  font-size: ${t.fontSize('FS14')};
+  font-size: ${t.fontSize('FS14', Unit.REM)};
   & > ul {
     display: flex;
     flex-direction: column;

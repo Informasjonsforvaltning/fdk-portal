@@ -1,3 +1,4 @@
+import { theme as themeFDK, Unit } from '@fellesdatakatalog/theme';
 import styled from 'styled-components';
 
 const Pill = styled.div`
@@ -7,7 +8,7 @@ const Pill = styled.div`
   border-radius 2.5px;
   color: ${({ theme }) => theme.extendedColors.neutralLightest};
   display: flex;
-  font-size: 1.5rem;
+  font-size: ${themeFDK.fontSize('FS16', Unit.REM)};
   font-weight: 400;
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;

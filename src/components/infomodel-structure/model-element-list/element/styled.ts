@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 import Scroll from 'react-scroll';
 
 import ExpansionPanelBase, { SC } from '@fellesdatakatalog/expansion-panel';
@@ -66,7 +66,7 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
     }
 
     & > * {
-      font-size: ${theme.fontSize('FS16')};
+      font-size: ${theme.fontSize('FS16', Unit.REM)};
       font-weight: ${theme.fontWeight('FW400')};
       color: ${theme.colour(Colour.NEUTRAL, 'N60')};
     }

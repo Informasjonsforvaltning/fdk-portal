@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colour, theme } from '@fellesdatakatalog/theme';
+import { Colour, Unit, theme } from '@fellesdatakatalog/theme';
 
 const IconValueItem = styled.div`
   align-items: start;
@@ -26,7 +26,7 @@ const Content = styled.div`
 
 const Title = styled.span`
   color: ${theme.colour(Colour.NEUTRAL, 'N50')};
-  font-size: ${theme.fontSize('FS14')};
+  font-size: ${theme.fontSize('FS14', Unit.REM)};
 `;
 
 const Value = styled.span``;

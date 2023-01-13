@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '@fellesdatakatalog/theme';
+import { Unit, theme } from '@fellesdatakatalog/theme';
 
 const Relation = styled.div`
   border-bottom: 1px solid ${({ theme: t }) => t.entityColours.light};
@@ -33,7 +33,7 @@ const Banner = styled.div`
 
   & > h3 {
     margin-left: 10px;
-    font-size: ${theme.fontSize('FS16')};
+    font-size: ${theme.fontSize('FS16', Unit.REM)};
     font-weight: ${theme.fontWeight('FW500')};
   }
 `;

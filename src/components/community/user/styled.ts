@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 const User = styled.a`
   display: inline-flex;
@@ -17,7 +17,7 @@ const Icon = styled.div<{ colour: string }>`
   justify-content: center;
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   background-color: ${({ colour }) => colour};
-  font-size: ${theme.fontSize('FS16')};
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
   width: 23px;
   height: 23px;
