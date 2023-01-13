@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 import ArticleItemSC from '../../../article-item/styled';
 
 const Article = styled.article`
@@ -38,12 +38,13 @@ const Title = styled.h1`
 
 const Abstract = styled.p`
   font-size: 2em;
-  line-height: 1.6em;
+  line-height: ${theme.spacing('S16', Unit.REM)};
   font-weight: 400;
 `;
 
 const Body = styled.p`
   font-size: 1.6em;
+  line-height: ;
 `;
 
 const FullWidthImage = styled.img`

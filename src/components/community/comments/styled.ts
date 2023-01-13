@@ -1,4 +1,4 @@
-import { theme } from '@fellesdatakatalog/theme';
+import { Unit, theme } from '@fellesdatakatalog/theme';
 import styled, { css } from 'styled-components';
 
 import CommentIconBase from '../../../images/comment-icon.svg';
@@ -7,6 +7,7 @@ const onMobileView = '@media (max-width: 992px)';
 
 const Ingress = styled.p`
   margin-bottom: ${theme.spacing('S24')};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const CommentsInterfaceContainer = styled.div`

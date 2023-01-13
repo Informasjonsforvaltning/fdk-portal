@@ -57,6 +57,7 @@ const ToolButton = styled.button`
 const SmallText = styled.p`
   font-size: ${theme.fontSize('FS14', Unit.REM)};
   margin-bottom: ${theme.spacing('S8')};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const IconStyle = css`

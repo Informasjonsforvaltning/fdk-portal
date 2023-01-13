@@ -85,6 +85,7 @@ const LastPublishedInfo = styled.p`
   margin: 0;
   margin-top: 8px;
   font-size: ${theme.fontSize('FS20', Unit.REM)};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 
   ${onMobileView} {
     font-size: ${theme.fontSize('FS16', Unit.REM)};
@@ -107,12 +108,14 @@ const Status = styled.p`
   font-weight: bold;
   margin-top: 8px;
   font-size: ${theme.fontSize('FS20', Unit.REM)};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const Dot = styled.p`
   margin: 8px ${theme.spacing('S6')} 0px ${theme.spacing('S6')};
   font-weight: bold;
   font-size: ${theme.fontSize('FS20', Unit.REM)};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const BetaRibbon = styled.span<InvertedColorProps>`

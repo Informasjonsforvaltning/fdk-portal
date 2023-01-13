@@ -37,6 +37,7 @@ const KeyValueListSubHeader = styled.p`
   margin-top: -${theme.spacing('S10')};
   margin-bottom: ${theme.spacing('S10')};
   text-transform: capitalize;
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 export default {
