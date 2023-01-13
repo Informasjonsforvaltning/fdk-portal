@@ -597,13 +597,17 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   index
                 ) => (
                   <div id={`${followsUri}-${index}`}>
-                    {title && (
+                    {name ? (
                       <SC.KeyValueListHeader>
                         {translate(name)}
                       </SC.KeyValueListHeader>
+                    ) : (
+                      <Link href={followsUri} external>
+                        {followsUri}
+                      </Link>
                     )}
                     <KeyValueList>
-                      {description && (
+                      {followsDescription && (
                         <KeyValueListItem
                           key={`followsDescription-${index}`}
                           property={
