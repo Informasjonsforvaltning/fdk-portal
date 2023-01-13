@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 interface containerProps {
   height: number;
@@ -19,7 +19,7 @@ const GifContainer = styled.div<containerProps>`
   max-width: 100%;
   max-height: 100%;
 
-  font-size: ${theme.fontSize('FS12')};
+  font-size: ${theme.fontSize('FS12', Unit.REM)};
   font-weight: ${theme.fontWeight('FW400')};
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
 

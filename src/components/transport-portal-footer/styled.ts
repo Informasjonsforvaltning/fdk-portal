@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 import FooterIllustration from '../../img/illustration-footer-portal.svg';
 
@@ -11,7 +11,7 @@ const TransportPortalFooter = styled.footer`
   position: relative;
   min-height: 350px;
   padding: ${theme.spacing('S48')} 0;
-  font-size: ${theme.fontSize('FS16')};
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   background-color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   background-repeat: no-repeat;
   background-position: bottom left;

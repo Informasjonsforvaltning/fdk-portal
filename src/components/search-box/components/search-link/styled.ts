@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 import DatasetIconBase from '../../../../images/icon-catalog-dataset-lg.svg';
 import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
@@ -20,7 +20,7 @@ const SearchLink = styled(Link)<{
   border-radius: 5px;
   color: ${({ theme: t }) => t.extendedColors.neutralDarker} !important;
   display: flex;
-  font-size: 1.8rem;
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   margin-bottom: 1em;
   padding: 1em;
   position: relative;
@@ -46,7 +46,7 @@ const SearchLink = styled(Link)<{
   @media (min-width: 992px) {
     justify-content: center;
     flex-flow: column;
-    font-size: 1.6rem;
+    font-size: ${theme.fontSize('FS16', Unit.REM)};
 
     ${({ $smallWidth }) => {
       if ($smallWidth) {
@@ -60,7 +60,7 @@ const SearchLink = styled(Link)<{
       `;
     }}
     span:last-child {
-      font-size: 1.8rem;
+      font-size: ${theme.fontSize('FS16', Unit.REM)};
     }
   }
 
@@ -136,7 +136,7 @@ const BetaRibbon = styled.span`
   right: -33px;
   transform: rotate(45deg);
   padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
-  font-size: ${theme.fontSize('FS20')};
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
   color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   background: ${theme.colour(Colour.YELLOW, 'Y30')};

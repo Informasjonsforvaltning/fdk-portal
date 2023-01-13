@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 const PostLink = styled.a`
   background-color: transparent;
   padding: ${theme.spacing('S10')} ${theme.spacing('S10')} 0;
-  font-size: ${theme.fontSize('FS16')};
-
-  & > h5 {
+  font-size: ${theme.fontSize('FS16', Unit.REM)} & > h5 {
     font-weight: ${theme.fontWeight('FW700')};
     line-height: 18px;
     display: flex;

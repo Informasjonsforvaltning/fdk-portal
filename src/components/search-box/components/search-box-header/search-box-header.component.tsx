@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable react/function-component-definition */
 import React, { ComponentType, memo, FC, PropsWithChildren } from 'react';
 
 import SC from './styled';

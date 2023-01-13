@@ -1,4 +1,4 @@
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 import styled, { css } from 'styled-components';
 import DatasetIconBase from '../../../../images/icon-catalog-dataset-lg.svg';
 import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
@@ -32,7 +32,7 @@ const highlightStyle = css`
 
 const Suggestion = styled.li<{ $highlighted: boolean }>`
   color: ${({ theme: t }) => t.extendedColors.neutralDarker};
-  font-size: ${theme.fontSize('FS16')};
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   padding: ${theme.spacing('S8')};
   cursor: pointer;
 

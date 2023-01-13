@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Colour, theme } from '@fellesdatakatalog/theme';
+import { Colour, Unit, theme } from '@fellesdatakatalog/theme';
 
 import { getConfig } from '../../../../config';
 
@@ -11,12 +11,12 @@ const OrganizationPage = styled.article`
 `;
 
 const Title = styled.h1`
-  font-size: ${theme.fontSize('FS48')};
+  font-size: ${theme.fontSize('FS48', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
 
   @media (max-width: 900px) {
     & {
-      font-size: ${theme.fontSize('FS32')};
+      font-size: ${theme.fontSize('FS32', Unit.REM)};
       word-break: break-word;
     }
   }
@@ -97,7 +97,7 @@ const CataloguesStatistics = styled.div`
     align-items: center;
     padding: ${theme.spacing('S12')};
     border-radius: 4px;
-    font-size: ${theme.fontSize('FS24')};
+    font-size: ${theme.fontSize('FS24', Unit.REM)};
     font-weight: ${theme.fontWeight('FW700')};
 
     & > svg {
@@ -209,7 +209,7 @@ const Question = styled.div`
   }
 
   & > h3 {
-    font-size: ${theme.fontSize('FS24')};
+    font-size: ${theme.fontSize('FS24', Unit.REM)};
     font-weight: ${theme.fontWeight('FW700')};
   }
 

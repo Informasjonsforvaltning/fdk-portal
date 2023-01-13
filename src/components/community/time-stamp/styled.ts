@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 const TimeStamp = styled.div`
   font-family: ${theme.fontFamily()};
   font-style: normal;
   font-weight: ${theme.fontWeight('FW400')};
-  font-size: ${theme.fontSize('FS16')};
+  font-size: ${theme.fontSize('FS16', Unit.REM)}
   color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   line-height: 24px;
   align-items: center;

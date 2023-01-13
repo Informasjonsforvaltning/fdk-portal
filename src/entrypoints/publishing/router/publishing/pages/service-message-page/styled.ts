@@ -4,7 +4,7 @@ import { theme, Unit } from '@fellesdatakatalog/theme';
 const ServiceMessagePage = styled.article`
   display: flex;
   flex-flow: column;
-  font-size: 1rem;
+  font-size: ${theme.fontSize('FS12', Unit.REM)};
   margin-top: ${theme.spacing('S32')};
   word-wrap: break-word;
   & p {
@@ -33,7 +33,7 @@ const Description = styled.div`
 `;
 
 const Body = styled.div`
-  font-size: 1.6em;
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
 `;
 
 export default { ServiceMessagePage, ServiceMessage, Title, Description, Body };

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
 
 import DropdownMenuBase from '../dropdown-menu';
@@ -129,7 +129,7 @@ const MenuButton = styled.button`
 
   &:after {
     content: '\\25BC';
-    font-size: 10px;
+    font-size: ${theme.fontSize('FS12', Unit.REM)};
     margin-top: 1px;
     margin-left: ${theme.spacing('S6')};
   }

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 import { SC as ExpansionPanelSC } from '@fellesdatakatalog/expansion-panel';
 
@@ -29,7 +29,7 @@ const Banner = styled.header`
   overflow: hidden;
 
   & > h1 {
-    font-size: ${theme.fontSize('FS24')};
+    font-size: ${theme.fontSize('FS24', Unit.REM)};
     font-weight: ${theme.fontWeight('FW700')};
   }
 
@@ -83,7 +83,7 @@ const DatasetIcon = styled(DatasetSVG)`
 
 const Title = styled.h2`
   display: flex inline;
-  font-size: ${theme.fontSize('FS40')};
+  font-size: ${theme.fontSize('FS40', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
   margin-left: ${theme.spacing('S12')};
 
@@ -94,7 +94,7 @@ const Title = styled.h2`
 
 const BannerRating = styled.div`
   display: flex;
-  font-size: ${theme.fontSize('FS20')};
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
   margin-left: auto;
   align-items: center;
@@ -443,7 +443,7 @@ const Question = styled.div`
   }
 
   & > h3 {
-    font-size: ${theme.fontSize('FS24')};
+    font-size: ${theme.fontSize('FS24', Unit.REM)};
     font-weight: ${theme.fontWeight('FW700')};
   }
 

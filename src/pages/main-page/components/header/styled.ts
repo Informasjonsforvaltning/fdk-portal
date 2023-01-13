@@ -1,7 +1,8 @@
+import { Unit, theme } from '@fellesdatakatalog/theme';
 import styled from 'styled-components';
 
 const Header = styled.h2`
-  font-size: 3rem;
+  font-size: ${theme.fontSize('FS28', Unit.REM)};
   font-weight: 600;
   margin-top: 1em;
   margin-bottom: 0.25em;

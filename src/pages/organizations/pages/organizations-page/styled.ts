@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
 import ClearIconBase from '../../../../images/icon-clear.svg';
 import DatasetIconBase from '../../../../images/icon-catalog-dataset-lg.svg';
 import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
@@ -13,7 +14,7 @@ import CaretBothBase from '../../../../images/icon-caret-both-sm.svg';
 import { Entity } from '../../../../types/enums';
 
 const Header = styled.h1`
-  font-size: 4rem;
+  font-size: ${themeFDK.fontSize('FS40', Unit.REM)};
   font-weight: 600;
   text-align: center;
 `;
@@ -29,7 +30,7 @@ const Filter = styled.div`
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid;
-  font-size: 3rem;
+  font-size: ${themeFDK.fontSize('FS28', Unit.REM)};
   display: flex;
   height: 2.5em;
   padding: 0 0.5em;
@@ -38,7 +39,7 @@ const Filter = styled.div`
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: ${themeFDK.fontSize('FS20', Unit.REM)};
     width: 100%;
   }
 
@@ -92,7 +93,7 @@ const Box = styled(Link)`
 `;
 
 const SortLabel = styled.span`
-  font-size: 1.3em;
+  font-size: ${themeFDK.fontSize('FS12', Unit.EM)};
   font-weight: 500;
   width: 1.5em;
 `;

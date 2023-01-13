@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Unit, theme } from '@fellesdatakatalog/theme';
 import { Variant } from '../statistics-regular/components/illustration-with-count/enums';
 
 const BoxRegular = styled.div`
@@ -7,7 +8,7 @@ const BoxRegular = styled.div`
   border-radius: 5px;
   display: flex;
   flex-flow: column;
-  font-size: 16px;
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   justify-content: center;
   margin: 0.3em 0;
   padding: 2em;

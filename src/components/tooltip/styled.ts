@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
+import { Unit, theme } from '@fellesdatakatalog/theme';
 
 const ReactTooltipStyled = styled(ReactTooltip)`
-  font-size: 16px;
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
   font-weight: 400;
   line-height: 1.5em;
   padding: 1.5em;

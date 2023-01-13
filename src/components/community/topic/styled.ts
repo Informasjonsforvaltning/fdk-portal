@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { theme as themeFDK, Colour } from '@fellesdatakatalog/theme';
+import {
+  theme as themeFDK,
+  Colour,
+  Unit,
+  theme
+} from '@fellesdatakatalog/theme';
 
 const Topic = styled.div`
   display: flex;
@@ -52,7 +57,7 @@ const Statistics = styled.ul`
 
 const BigNumber = styled.span`
   font-weight: ${themeFDK.fontWeight('FW700')};
-  font-size: ${themeFDK.fontSize('FS16')};
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
 `;
 
 export default { Topic, Info, TopicTitle, Statistics, BigNumber };

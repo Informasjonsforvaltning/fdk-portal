@@ -1,5 +1,5 @@
 import styled, { css, createGlobalStyle } from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 import { getConfig } from '../../config';
 
@@ -55,7 +55,7 @@ interface titleProps {
 
 const ToggleButton = styled.button<titleProps>`
   padding: 10px;
-  font-size: ${theme.fontSize('FS16')};
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   border: none;
   color: currentColor !important;
 
@@ -104,7 +104,7 @@ const Dropdown = styled.ul<dropdownProps>`
   border-radius: 5px;
 
   > li {
-    font-size: ${theme.fontSize('FS16')};
+    font-size: ${theme.fontSize('FS16', Unit.REM)};
     padding: ${theme.spacing('S8')};
     white-space: nowrap;
 
@@ -148,7 +148,7 @@ const Dropdown = styled.ul<dropdownProps>`
     }
 
     > li {
-      font-size: ${theme.fontSize('FS20')};
+      font-size: ${theme.fontSize('FS20', Unit.REM)};
       margin-left: 20px;
       margin-top: 20px;
 
