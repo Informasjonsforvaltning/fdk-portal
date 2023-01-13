@@ -49,9 +49,12 @@ const Title = styled.h1`
 
 const Description = styled.p`
   font-size: ${theme.fontSize('FS20')};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const Content = styled.p`
+  line-height: ${theme.spacing('S16', Unit.REM)};
+
   & > div {
     & > h2 {
       border-bottom: 1px solid ${({ theme: t }) => t.light};

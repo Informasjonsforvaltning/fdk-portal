@@ -23,7 +23,7 @@ const Title = styled.h1`
 const Description = styled.p`
   margin-top: ${theme.spacing('S24')};
   font-size: ${theme.fontSize('FS24', Unit.REM)};
-  line-height: 1.5;
+  line-height: ${theme.spacing('S16', Unit.REM)};
 
   @media (max-width: 1020px) {
     & {
