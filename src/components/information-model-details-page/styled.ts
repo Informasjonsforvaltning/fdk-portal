@@ -23,7 +23,7 @@ const Tab = styled.span`
   }
 
   &:not(.active) {
-    color: ${theme.colour(Colour.VIOLET, 'V50')};
+    color: ${theme.colour(Colour.VIOLET, 'V60')};
   }
 `;
 
