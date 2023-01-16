@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { DataService } from '../../types';
+import type { DataService } from '../../types';
 import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';
 import {
   SearchHit,
@@ -10,7 +10,6 @@ import {
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
 import localization from '../../lib/localization';
-import ReactTooltipSC from '../tooltip/styled';
 
 interface Props {
   dataService: Partial<DataService>;
@@ -39,13 +38,12 @@ export const DataServiceItem: FC<Props> = ({
   >
     {isOpenAccess && isOpenLicense && isFree && (
       <SearchHitOpenData>
-        <div data-tip={localization.openApiTooltip}>
+        <div title={String(localization.openDataTooltip)}>
           <RoundedTag>
             <PublicIconBase />
             <span>{localization.openApi}</span>
           </RoundedTag>
         </div>
-        <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
       </SearchHitOpenData>
     )}
     {fdkFormat && (

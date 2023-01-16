@@ -105,7 +105,6 @@
     "react-router-dom": "^5.3.4",
     "react-scroll": "^1.8.9",
     "react-select": "^5.7.0",
-    "react-tooltip": "^4.5.1",
     "reactstrap": "^9.1.5",
     "redux": "^4.2.0",
     "redux-api-middleware": "^3.2.1",

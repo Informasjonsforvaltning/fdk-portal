@@ -15,7 +15,7 @@ import withcachedSuggestions, {
 import { getConfig } from '../../../../config';
 import { getTranslateText } from '../../../../lib/translateText';
 import SearchForm from '../search-form/search-form.component';
-import { SearchSuggestion } from '../../../../types';
+import type { SearchSuggestion } from '../../../../types';
 import { setSearchText } from '../../../../pages/search-page/search-location-helper';
 
 const highlightSearchString = (
@@ -144,8 +144,15 @@ const AutosuggestSearchBar: FC<Props> = ({
       return (
         <SC.Suggestion
           $highlighted={index === focusedSuggestionIndex}
-          onMouseOver={() => setFocusedSuggestionIndex(index)}
           tabIndex={0}
+          onMouseOver={() => setFocusedSuggestionIndex(index)}
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
+              setSearchString(labelString);
+              setOpenSuggestions(false);
+              setSearchText(history, location, labelString);
+            }
+          }}
           onClick={() => {
             setSearchString(labelString);
             setOpenSuggestions(false);

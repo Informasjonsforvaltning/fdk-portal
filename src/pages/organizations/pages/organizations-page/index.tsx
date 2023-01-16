@@ -16,7 +16,6 @@ import withErrorBoundary from '../../../../components/with-error-boundary';
 import ErrorPage from '../../../../components/error-page';
 
 import SC from './styled';
-import ReactTooltipSC from '../../../../components/tooltip/styled';
 
 import type { OrganizationSummary } from '../../../../types';
 import { Entity, SortOrder } from '../../../../types/enums';
@@ -131,44 +130,38 @@ const OrganizationsPage: FC<Props> = ({
             <SC.SortButton
               type='button'
               onClick={applySort(['datasetCount'])}
-              data-tip={localization.organizationsPage.datasetsDescription}
+              title={localization.organizationsPage.datasetsDescription}
             >
               <SC.DatasetIcon />
               {renderCaret(['datasetCount'])}
-              <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
             </SC.SortButton>
             {!isTransportportal && (
               <>
                 <SC.SortButton
                   type='button'
                   onClick={applySort(['dataserviceCount'])}
-                  data-tip={
-                    localization.organizationsPage.dataserviceDescription
-                  }
+                  title={localization.organizationsPage.dataserviceDescription}
                 >
                   <SC.ApiIcon />
                   {renderCaret(['dataserviceCount'])}
-                  <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
                 </SC.SortButton>
                 <SC.SortButton
                   type='button'
                   onClick={applySort(['conceptCount'])}
-                  data-tip={localization.organizationsPage.conceptsDescription}
+                  title={localization.organizationsPage.conceptsDescription}
                 >
                   <SC.ConceptIcon />
                   {renderCaret(['conceptCount'])}
-                  <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
                 </SC.SortButton>
                 <SC.SortButton
                   type='button'
                   onClick={applySort(['informationmodelCount'])}
-                  data-tip={
+                  title={
                     localization.organizationsPage.informationModelsDescription
                   }
                 >
                   <SC.InfomodelIcon />
                   {renderCaret(['informationmodelCount'])}
-                  <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
                 </SC.SortButton>
               </>
             )}

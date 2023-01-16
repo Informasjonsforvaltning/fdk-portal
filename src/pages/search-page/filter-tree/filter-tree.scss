@@ -49,11 +49,6 @@
     .checkbox_label {
       max-width: 90%;
       word-break: break-all;
-
-      input[type='checkbox']:focus + span {
-        outline-offset: 3px;
-        outline: 2px solid orange;
-      }
     }
   }
   /* rotate the triangle to close it */
