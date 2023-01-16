@@ -1,7 +1,7 @@
 import React, { Children, FC, isValidElement } from 'react';
 
 import SC from './styled';
-import { Publisher, TextLanguage } from '../../../../types';
+import type { Publisher, TextLanguage } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
 import { SearchHitHead } from '../search-hit-head/search-hit-head.component';
 import { getTranslateText } from '../../../../lib/translateText';

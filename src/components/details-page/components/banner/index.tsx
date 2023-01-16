@@ -12,8 +12,7 @@ import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
 import SC from './styled';
 
 import { Entity } from '../../../../types/enums';
-import ReactTooltipSC from '../../../tooltip/styled';
-import {
+import type {
   Language,
   PublicServiceLanguage,
   Publisher,
@@ -107,9 +106,8 @@ const Banner: FC<Props> = ({
                 : undefined
             )}
             {isAuthoritative && (
-              <div data-tip={translations.authoritativeDatasetTooltip}>
+              <div title={translations.authoritativeDatasetTooltip}>
                 <AuthoritativeIcon />
-                <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
               </div>
             )}
           </SC.Title>

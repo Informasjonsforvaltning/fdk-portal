@@ -42,7 +42,7 @@ body {
 
 *:focus {
   outline-offset: 3px;
-  outline: 2px solid orange;  
+  outline: 2px solid orange;
 }
 
 .fdk-button {
@@ -380,6 +380,12 @@ input:checked ~ .checkbox-replacement::after {
   border-radius: 3px;
   content: '';
 }
+
+input:focus ~ .checkbox-replacement {
+  outline-offset: 3px;
+  outline: 2px solid orange;
+}
+
 .checkbox label input[type='checkbox'] {
   position: absolute;
   left: -9999px;
