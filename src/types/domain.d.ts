@@ -343,6 +343,7 @@ export interface PublicServiceChannel {
   address: PublicServiceAddress[];
   channelType: PublicServiceLanguage;
   description: string;
+  telephone: string[];
   email: string[];
   hasInput: string[];
   identifier: string;

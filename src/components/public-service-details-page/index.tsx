@@ -852,6 +852,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   {
                     channelType,
                     description,
+                    telephone,
                     address,
                     processingTime,
                     hasInput: documentation,
@@ -875,6 +876,15 @@ const PublicServiceDetailsPage: FC<Props> = ({
                               .description
                           }
                           value={translate(description)}
+                        />
+                      )}
+
+                      {telephone && (
+                        <KeyValueListItem
+                          property={translations.phone}
+                          value={telephone
+                            .map(numb => numb.split('tel:').filter(Boolean))
+                            .join(', ')}
                         />
                       )}
 
@@ -1232,7 +1242,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       {telephone && (
                         <KeyValueListItem
                           property={translations.phone}
-                          value={telephone.join(', ')}
+                          value={telephone
+                            .map(number => number.split('tel:').filter(Boolean))
+                            .join(', ')}
                         />
                       )}
 
