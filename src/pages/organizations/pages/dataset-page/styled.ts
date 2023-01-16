@@ -46,7 +46,7 @@ const Banner = styled.header`
         `
       : css`
           background: ${theme.colour(Colour.BLUE, 'B30')};
-          color: ${theme.colour(Colour.BLUE, 'B50')};
+          color: ${theme.colour(Colour.BLUE, 'B60')};
         `}
 `;
 
@@ -57,7 +57,7 @@ const BetaRibbon = styled.span`
   transform: rotate(45deg);
   padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
   font-weight: ${theme.fontWeight('FW700')};
-  color: ${theme.colour(Colour.BLUE, 'B50')};
+  color: ${theme.colour(Colour.BLUE, 'B60')};
   background: ${theme.colour(Colour.YELLOW, 'Y30')};
 `;
 

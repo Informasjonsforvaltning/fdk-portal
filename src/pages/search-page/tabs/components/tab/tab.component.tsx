@@ -8,6 +8,21 @@ interface Props {
   label: string;
 }
 
+const unfocus = (e: React.MouseEvent) => {
+  let target: HTMLElement | null | undefined = e.target as HTMLElement;
+  if (target.tagName !== 'A') {
+    for (let i = 0; i < 5; i++) {
+      const parent: HTMLElement | null | undefined = target?.parentElement;
+      if (parent?.tagName === 'A') {
+        parent.blur();
+      }
+      target = parent;
+    }
+  } else {
+    target?.blur();
+  }
+};
+
 const Tab: FC<PropsWithChildren<Props>> = ({
   active,
   tabLink,
@@ -15,7 +30,7 @@ const Tab: FC<PropsWithChildren<Props>> = ({
   children
 }) => (
   <SC.Tab active={active}>
-    <SC.TabLink to={tabLink} aria-label={label}>
+    <SC.TabLink to={tabLink} aria-label={label} onMouseLeave={unfocus}>
       {children}
     </SC.TabLink>
   </SC.Tab>

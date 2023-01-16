@@ -243,8 +243,7 @@ const InformationModelDetailsPage: FC<Props> = ({
     };
   }, [informationModel?.id]);
 
-  const uriIsSkolemized = (uri: string) =>
-    new RegExp('.well-known/skolem').test(uri);
+  const uriIsSkolemized = (uri: string) => /.well-known\/skolem/.test(uri);
 
   return renderPage ? (
     <ThemeProvider theme={theme}>
