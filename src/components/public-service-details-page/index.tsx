@@ -761,7 +761,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                     language: acceptedLanguages,
                     page,
                     rdfType,
-                    uri
+                    uri: hasInputUri
                   },
                   index
                 ) =>
@@ -773,7 +773,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       </CatalogTypeBox>
                     )
                   ) : (
-                    <div id={`${uri}-${index}`}>
+                    <div id={`${hasInputUri}-${index}`}>
                       {name && (
                         <SC.KeyValueListHeader>
                           {translate(name)}
@@ -811,8 +811,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
                                 .publicService.acceptedLanguages
                             }
                             value={acceptedLanguages
-                              .map(({ prefLabel, uri }) =>
-                                prefLabel ? translate(prefLabel) : uri
+                              .map(({ prefLabel, uri: languageUri }) =>
+                                prefLabel ? translate(prefLabel) : languageUri
                               )
                               .filter(Boolean)
                               .join(', ')}
@@ -825,9 +825,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
                               translations.detailsPage.sectionTitles
                                 .publicService.relatedInformation
                             }
-                            value={page?.map(uri => (
-                              <Link key={uri} href={uri} external>
-                                {uri}
+                            value={page?.map(pageUri => (
+                              <Link key={pageUri} href={pageUri} external>
+                                {pageUri}
                               </Link>
                             ))}
                           />
@@ -851,13 +851,13 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 (
                   {
                     channelType,
-                    description,
+                    description: hasChannelDescription,
                     telephone,
                     address,
-                    processingTime,
+                    processingTime: hasChannelProcessingTime,
                     hasInput: documentation,
                     email,
-                    url
+                    url: hasChannelUrl
                   },
                   index
                 ) => (
@@ -868,14 +868,32 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       </SC.KeyValueListHeader>
                     )}
                     <KeyValueList>
-                      {description && (
+                      {hasChannelDescription && (
                         <KeyValueListItem
                           key={`channelDescription-${index}`}
                           property={
                             translations.detailsPage.sectionTitles.publicService
                               .description
                           }
-                          value={translate(description)}
+                          value={translate(hasChannelDescription)}
+                        />
+                      )}
+
+                      {telephone && (
+                        <KeyValueListItem
+                          property={translations.phone}
+                          value={telephone
+                            .map(numb => numb.split('tel:').filter(Boolean))
+                            .join(', ')}
+                        />
+                      )}
+
+                      {telephone && (
+                        <KeyValueListItem
+                          property={translations.phone}
+                          value={telephone
+                            .map(numb => numb.split('tel:').filter(Boolean))
+                            .join(', ')}
                         />
                       )}
 
@@ -898,11 +916,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           value={address
                             .map(
                               value =>
-                                value.streetAddress +
-                                ', ' +
-                                value.postalCode +
-                                ' ' +
-                                value.locality
+                                `${value.streetAddress}, ${value.postalCode} ${value.locality}`
                             )
                             .filter(Boolean)
                             .join(', ')}
@@ -925,30 +939,30 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           ))}
                         />
                       )}
-                      {url && (
+                      {hasChannelUrl && (
                         <KeyValueListItem
                           key={`channelUrl-${index}`}
                           property={
                             translations.detailsPage.sectionTitles.publicService
                               .webAddress
                           }
-                          value={url.map(url => (
+                          value={hasChannelUrl.map(url => (
                             <Link key={url} href={url} external>
                               {url}
                             </Link>
                           ))}
                         />
                       )}
-                      {processingTime && (
+                      {hasChannelProcessingTime && (
                         <KeyValueListItem
                           key={`channelprocessingTime-${index}`}
                           property={
                             translations.detailsPage.sectionTitles.publicService
                               .processingTime
                           }
-                          value={`${moment.duration(processingTime).asDays()} ${
-                            translations.days
-                          }`}
+                          value={`${moment
+                            .duration(hasChannelProcessingTime)
+                            .asDays()} ${translations.days}`}
                         />
                       )}
                       {documentation && (
@@ -1242,6 +1256,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       {telephone && (
                         <KeyValueListItem
                           property={translations.phone}
+                          value={telephone
+                            .map(number => number.split('tel:').filter(Boolean))
+                            .join(', ')}
                           value={telephone
                             .map(number => number.split('tel:').filter(Boolean))
                             .join(', ')}
