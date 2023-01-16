@@ -888,24 +888,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         />
                       )}
 
-                      {telephone && (
-                        <KeyValueListItem
-                          property={translations.phone}
-                          value={telephone
-                            .map(numb => numb.split('tel:').filter(Boolean))
-                            .join(', ')}
-                        />
-                      )}
-
-                      {telephone && (
-                        <KeyValueListItem
-                          property={translations.phone}
-                          value={telephone
-                            .map(numb => numb.split('tel:').filter(Boolean))
-                            .join(', ')}
-                        />
-                      )}
-
                       {address && (
                         <KeyValueListItem
                           key={`channelAddress-${index}`}
@@ -1256,9 +1238,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       {telephone && (
                         <KeyValueListItem
                           property={translations.phone}
-                          value={telephone
-                            .map(number => number.split('tel:').filter(Boolean))
-                            .join(', ')}
                           value={telephone
                             .map(number => number.split('tel:').filter(Boolean))
                             .join(', ')}
