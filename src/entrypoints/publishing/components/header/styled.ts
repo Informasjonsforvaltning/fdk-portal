@@ -91,7 +91,7 @@ const NavigationLinks = styled.ul`
   margin-left: auto;
 
   & > li * {
-    color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+    color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
   }
 
   & > li:nth-of-type(n + 2) {
@@ -124,7 +124,7 @@ const MenuButton = styled.button`
   background: none;
   border: none;
   outline: none;
-  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
   cursor: pointer;
 
   &:after {

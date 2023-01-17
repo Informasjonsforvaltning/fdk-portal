@@ -88,6 +88,11 @@ const MethodContainer = styled.div`
     box-shadow: 0 2px 4px ${theme.colour(Colour.NEUTRAL, 'N60', 25)};
     text-decoration: none;
 
+    &:focus {
+      outline-offset: 3px;
+      outline: 2px solid orange;
+    }
+
     @media (max-width: 900px) {
       & {
         margin-bottom: ${theme.spacing('S12')};

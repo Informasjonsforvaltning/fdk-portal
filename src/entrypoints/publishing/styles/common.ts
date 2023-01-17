@@ -22,6 +22,11 @@ export default css`
     color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
 
+  *:focus {
+    outline-offset: 3px;
+    outline: 2px solid orange;
+  }
+
   footer {
     margin-top: ${theme.spacing('S56')};
 
