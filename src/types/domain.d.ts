@@ -340,9 +340,16 @@ export interface PublicServiceParticipation {
 }
 
 export interface PublicServiceChannel {
-  uri: string;
+  address: PublicServiceAddress[];
+  channelType: PublicServiceLanguage;
+  description: string;
+  telephone: string[];
+  email: string[];
+  hasInput: string[];
   identifier: string;
-  type: PublicServiceType;
+  processingTime: string;
+  uri: string;
+  url: string[];
 }
 
 export interface PublicServiceCost {
@@ -398,6 +405,14 @@ export interface PublicService {
   associatedBroaderTypesByEvents?: string[];
   spatial: string[];
 }
+
+export interface PublicServiceAddress {
+  streetAddress: string;
+  locality: string;
+  postalCode: string;
+  countryName: Partial<TextLanguage>;
+}
+
 export interface Event {
   id: string;
   uri: string;

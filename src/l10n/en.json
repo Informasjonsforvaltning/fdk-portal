@@ -746,7 +746,10 @@
         "requirement": "Requirement",
         "satisfiesRule": "Satisfies rule",
         "openingHours": "Opening hours",
-        "contactPage": "Contact page"
+        "contactPage": "Contact page",
+        "serviceChannel": "Service channel",
+        "address": "Address",
+        "webAddress": "Web address"
       },
       "event": {
         "description": "Description",
