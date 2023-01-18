@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Colour, theme } from '@fellesdatakatalog/theme';
+import { Colour, Unit, theme } from '@fellesdatakatalog/theme';
 
 import SearchBoxHeaderSC from '../search-box-header/styled';
 import SearchBoxBackground from '../../../../img/illustration-search-dark.svg';
@@ -15,7 +15,7 @@ const SearchBox = styled.section`
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
   flex-flow: column;
-  font-size: 1.6rem;
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   margin-bottom: 1em;
 
   ${({ theme: extendedTheme }) =>
@@ -77,7 +77,7 @@ const SearchLinks = styled.div`
 `;
 
 const SearchHeaderLogosTitle = styled.div`
-  font-size: 1.8rem;
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   font-weight: 400;
 `;
 

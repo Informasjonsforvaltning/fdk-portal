@@ -2,11 +2,10 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import SC from './styled';
-import { TextLanguage } from '../../../../types';
+import type { TextLanguage } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
 import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
-import ReactTooltipSC from '../../../tooltip/styled';
 import {
   PATHNAME_CONCEPTS,
   PATHNAME_DATA_SERVICES,
@@ -57,9 +56,8 @@ export const SearchHitHead: FC<Props> = ({
           </SC.Title>
         )}
         {isAuthoritative && (
-          <div data-tip={localization.authoritativeDatasetTooltip}>
+          <div title={localization.authoritativeDatasetTooltip}>
             <SC.AuthoritativeIcon />
-            <ReactTooltipSC.ReactTooltipStyled effect='solid' multiline />
           </div>
         )}
       </SC.Header>

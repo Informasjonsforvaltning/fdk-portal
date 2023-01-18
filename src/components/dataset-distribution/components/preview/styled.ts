@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 import ClearIconBase from '../../../../images/icon-clear.svg';
 
@@ -57,17 +57,17 @@ const TitleHeader = styled.div`
 const Title = styled.h2`
   flex-grow: 1;
   margin-bottom: ${theme.spacing('S4')};
-  font-size: ${theme.fontSize('FS20')};
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
   ${onMobileView} {
-    font-size: ${theme.fontSize('FS14')};
+    font-size: ${theme.fontSize('FS14', Unit.REM)};
   }
 `;
 
 const Subtitle = styled.h3`
-  font-size: ${theme.fontSize('FS16')};
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
   margin-bottom: ${theme.spacing('S4')};
   ${onMobileView} {
-    font-size: ${theme.fontSize('FS12')};
+    font-size: ${theme.fontSize('FS12', Unit.REM)};
   }
 `;
 

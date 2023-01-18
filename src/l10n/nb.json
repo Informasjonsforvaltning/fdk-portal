@@ -55,10 +55,10 @@
   "openData": "Åpne data",
   "openApi": "Åpent API",
   "showHitsFor": "Viser {0} treff for {1}",
-  "authoritativeDatasetTooltip": "Dette datasettet er en autoritativ<br> kilde. Dette betyr at det stammer<br> fra en troverdig, overordnet kilde.",
-  "openDataTooltip": "Datasett som er publisert under en åpen<br> lisens slik at alle kan få tilgang, bruke<br> og dele. Dette omfatter også løsninger som<br> krever brukeregistrering/API-nøkler,<br> så lenge alle kan få tilgang.",
-  "publicDatasetTooltip": "Datasett som kan gjøres tilgjengelig<br> for alle, men som ikke er publisert<br> som åpne data.",
-  "openApiTooltip": "API som er publisert under en åpen lisens<br> slik at alle kan få tilgang, bruke og dele.<br> Dette omfatter også løsninger som krever<br> brukerregistrering, så lenge alle kan få tilgang.",
+  "authoritativeDatasetTooltip": "Dette datasettet er en autoritativ\nkilde. Dette betyr at det stammer\nfra en troverdig, overordnet kilde.",
+  "openDataTooltip": "Datasett som er publisert under en åpen\nlisens slik at alle kan få tilgang, bruke\nog dele. Dette omfatter også løsninger som\nkrever brukeregistrering/API-nøkler,\nså lenge alle kan få tilgang.",
+  "publicDatasetTooltip": "Datasett som kan gjøres tilgjengelig\nfor alle, men som ikke er publisert\nsom åpne data.",
+  "openApiTooltip": "API som er publisert under en åpen lisens\nslik at alle kan få tilgang, bruke og dele.\nDette omfatter også løsninger som krever\nbrukerregistrering, så lenge alle kan få tilgang.",
   "searchBoxHeader": "Alt du trenger for å oppdage, vurdere og ta i bruk data",
   "showOnly": "Vis kun",
   "publisher": "Utgiver",
@@ -746,7 +746,10 @@
         "requirement": "Krav",
         "satisfiesRule": "Tilfredsstiller regel",
         "openingHours": "Åpningstider",
-        "contactPage": "Kontaktside"
+        "contactPage": "Kontaktside",
+        "serviceChannel": "Tjenestekanal",
+        "address": "Adresse",
+        "webAddress": "Nettaddresse"
       },
       "event": {
         "description": "Beskrivelse",

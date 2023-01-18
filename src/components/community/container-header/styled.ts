@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 const ContainerHeader = styled.h4`
   width: -webkit-fill-available;
@@ -9,7 +9,7 @@ const ContainerHeader = styled.h4`
 
   background-color: ${theme.colour(Colour.NEUTRAL, 'N15')};
   font-weight: ${theme.fontWeight('FW700')};
-  font-size: ${theme.fontSize('FS20')};
+  font-size: ${theme.fontSize('FS20', Unit.REM)}
   line-height: ${theme.spacing('S24')};
   font-family: ${theme.fontFamily()};
 `;

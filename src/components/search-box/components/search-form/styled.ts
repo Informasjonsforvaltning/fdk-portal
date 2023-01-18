@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '@fellesdatakatalog/theme';
+import { Unit, theme } from '@fellesdatakatalog/theme';
 
 import ClearIconBase from '../../../../images/icon-clear.svg';
 
@@ -7,7 +7,7 @@ const SearchForm = styled.form`
   align-items: center;
   background-color: #fff;
   border-radius: 5px;
-  font-size: 3rem;
+  font-size: ${theme.fontSize('FS28', Unit.REM)};
   display: flex;
   height: 2.5em;
   padding: 0 0.5em;
@@ -16,7 +16,7 @@ const SearchForm = styled.form`
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: ${theme.fontSize('FS20', Unit.REM)};
     width: 100%;
   }
 

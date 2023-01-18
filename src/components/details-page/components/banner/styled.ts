@@ -57,7 +57,7 @@ const Title = styled.h1`
   display: flex inline;
   margin: 0;
   line-height: 42px;
-  font-size: 42px;
+  font-size: ${theme.fontSize('FS40', Unit.REM)};
   font-weight: bold;
 
   svg {
@@ -75,7 +75,7 @@ const Title = styled.h1`
 
   ${onMobileView} {
     line-height: 24px;
-    font-size: 24px;
+    font-size: ${theme.fontSize('FS24', Unit.REM)};
     white-space: normal;
     word-wrap: break-word;
   }
@@ -84,18 +84,19 @@ const Title = styled.h1`
 const LastPublishedInfo = styled.p`
   margin: 0;
   margin-top: 8px;
-  font-size: 20px;
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 
   ${onMobileView} {
-    font-size: 16px;
+    font-size: ${theme.fontSize('FS16', Unit.REM)};
   }
 `;
 
 const PublisherLink = styled(Link)`
   margin: 0;
-  font-size: 20px;
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
   ${onMobileView} {
-    font-size: 16px;
+    font-size: ${theme.fontSize('FS16', Unit.REM)};
   }
 `;
 
@@ -106,13 +107,15 @@ const BannerInfo = styled.div`
 const Status = styled.p`
   font-weight: bold;
   margin-top: 8px;
-  font-size: 20px;
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const Dot = styled.p`
   margin: 8px ${theme.spacing('S6')} 0px ${theme.spacing('S6')};
   font-weight: bold;
-  font-size: 20px;
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const BetaRibbon = styled.span<InvertedColorProps>`

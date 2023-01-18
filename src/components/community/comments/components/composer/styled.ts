@@ -1,4 +1,4 @@
-import { Colour, theme } from '@fellesdatakatalog/theme';
+import { Colour, Unit, theme } from '@fellesdatakatalog/theme';
 import styled, { css } from 'styled-components';
 
 import BoldIconBase from '../../../../../images/compose-bold.svg';
@@ -55,8 +55,9 @@ const ToolButton = styled.button`
 `;
 
 const SmallText = styled.p`
-  font-size: ${theme.fontSize('FS14')};
+  font-size: ${theme.fontSize('FS14', Unit.REM)};
   margin-bottom: ${theme.spacing('S8')};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const IconStyle = css`
@@ -106,7 +107,7 @@ const ComposerHeader = styled.div`
   }
 
   & > ${LogOutSC.LogOutContainer} {
-    font-size: ${theme.fontSize('FS14')};
+    font-size: ${theme.fontSize('FS14', Unit.REM)};
   }
 `;
 

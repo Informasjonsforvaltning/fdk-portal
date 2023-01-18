@@ -55,11 +55,11 @@
   "openData": "Open data",
   "openApi": "Open API",
   "showHitsFor": "Shows {0} hits for {1}",
-  "authoritativeDatasetTooltip": "This dataset is an authoritative<br> source. This means that it comes<br> from a credible, superior source.",
-  "openDataTooltip": "Datasets that are published under an open<br> license such that everyone can get access,<br> use and share them. This also include solutions<br> that require user registration and/or API-keys as<br> long as everyone can get access.",
-  "publicDatasetTooltip": "Datasets that can be accessed<br> by everyone, but not published<br> as 'Open Data'.",
+  "authoritativeDatasetTooltip": "This dataset is an authoritative\nsource. This means that it comes\nfrom a credible, superior source.",
+  "openDataTooltip": "Datasets that are published under an open\nlicense such that everyone can get access,\nuse and share them. This also include solutions\nthat require user registration and/or API-keys as\nlong as everyone can get access.",
+  "publicDatasetTooltip": "Datasets that can be accessed\nby everyone, but not published\n as 'Open Data'.",
   "searchBoxHeader": "Everything you need to discover, evaluate and utilize data",
-  "openApiTooltip": "API that are published under an open license<br> so anyone can access, use and share. This also include<br> solutions that require user registration and/or<br> API-keys as long as everyone can get access.",
+  "openApiTooltip": "API that are published under an open license\nso anyone can access, use and share. This also include\nsolutions that require user registration and/or\nAPI-keys as long as everyone can get access.",
   "showOnly": "Show only",
   "publisher": "Publisher",
   "news": "Latest news from the blog",
@@ -746,7 +746,10 @@
         "requirement": "Requirement",
         "satisfiesRule": "Satisfies rule",
         "openingHours": "Opening hours",
-        "contactPage": "Contact page"
+        "contactPage": "Contact page",
+        "serviceChannel": "Service channel",
+        "address": "Address",
+        "webAddress": "Web address"
       },
       "event": {
         "description": "Description",

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colour, theme } from '@fellesdatakatalog/theme';
+import { Colour, Unit, theme } from '@fellesdatakatalog/theme';
 
 import Link from '@fellesdatakatalog/link';
 import RoundedTagSC from '../../../rounded-tag/styled';
@@ -26,8 +26,9 @@ const SearchHit = styled.article`
 const PublisherLink = styled(Link)``;
 
 const Description = styled.p`
-  font-size: 2rem;
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
   margin-bottom: 2.3rem;
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const OpenData = styled.div`
@@ -100,7 +101,7 @@ const Format = styled.div`
     border: 1px solid;
     border-color: ${({ theme: t }) => t.dark};
     border-radius: 5px;
-    font-size: 1.3rem;
+    font-size: ${theme.fontSize('FS12', Unit.REM)};
     padding: 0.3em 0.8em;
     margin-bottom: 0.5em;
     margin-right: 0.5em;
@@ -117,7 +118,7 @@ const BetaRibbon = styled.span<InvertedColorProps>`
   right: -35px;
   transform: rotate(45deg);
   padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
-  font-size: 1rem;
+  font-size: ${theme.fontSize('FS12', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
   color: ${({ inverted }) =>
     inverted

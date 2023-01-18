@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 import { getConfig } from '../../../../config';
 
@@ -22,24 +22,24 @@ const BetaRibbon = styled.span`
   transform: rotate(45deg);
   padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
   font-weight: ${theme.fontWeight('FW700')};
-  color: ${theme.colour(Colour.BLUE, 'B50')};
+  color: ${theme.colour(Colour.BLUE, 'B60')};
   background: ${theme.colour(Colour.YELLOW, 'Y30')};
 `;
 
 const Title = styled.h1`
-  font-size: ${theme.fontSize('FS48')};
+  font-size: ${theme.fontSize('FS48', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
 
   @media (max-width: 900px) {
     & {
-      font-size: ${theme.fontSize('FS32')};
+      font-size: ${theme.fontSize('FS32', Unit.REM)};
       word-break: break-word;
     }
   }
 `;
 
 const Subtitle = styled.h2`
-  font-size: ${theme.fontSize('FS24')};
+  font-size: ${theme.fontSize('FS24', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
 `;
 
@@ -270,7 +270,7 @@ const RatingSummary = styled.div`
   text-align: center;
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
   border-radius: 4px;
-  font-size: ${theme.fontSize('FS20')};
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
 
   & > div {
@@ -309,7 +309,7 @@ const Question = styled.div`
   }
 
   & > h3 {
-    font-size: ${theme.fontSize('FS24')};
+    font-size: ${theme.fontSize('FS24', Unit.REM)};
     font-weight: ${theme.fontWeight('FW700')};
   }
 

@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
 import { Variant } from './enums';
 
 const Icon = styled.figure`
@@ -35,7 +36,7 @@ const Chart = styled.figure`
 
 const Count = styled.span`
   color: ${({ theme }) => theme.dark ?? theme.extendedColors.neutralDarker};
-  font-size: 2em;
+  font-size: ${themeFDK.fontSize('FS20', Unit.REM)};
   font-weight: 600;
   margin-left: 0.2em;
 `;

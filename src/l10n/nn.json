@@ -55,11 +55,11 @@
   "openData": "Opne data",
   "openApi": "Ope API ",
   "showHitsFor": "Viser {0} treff for {1}",
-  "authoritativeDatasetTooltip": "Dette datasettet er ei autoritativ<br> kjelde. Det betyr at det kjem<br> frå ein truverdig, overordna kjelde.",
-  "openDataTooltip": "Datasett som er publisert under ein open <br> lisens slik at alle kan få tilgang, bruke<br> og dele. Dette omfattar også løysingar som<br> krev brukaregistrering/API-nøklar,<br> så lenge alle kan få tilgang.",
-  "publicDatasetTooltip": "Datasett som kan gjerast tilgjengeleg<br> for alle, men som ikkje er publisert<br> som opne data.",
+  "authoritativeDatasetTooltip": "Dette datasettet er ei autoritativ\nkjelde. Det betyr at det kjem\nfrå ein truverdig, overordna kjelde.",
+  "openDataTooltip": "Datasett som er publisert under ein open \nlisens slik at alle kan få tilgang, bruke\nog dele. Dette omfattar også løysingar som\nkrev brukaregistrering/API-nøklar,\nså lenge alle kan få tilgang.",
+  "publicDatasetTooltip": "Datasett som kan gjerast tilgjengeleg\nfor alle, men som ikkje er publisert\nsom opne data.",
   "searchBoxHeader": "Alt du treng for å oppdage, vurdere og ta i bruk data",
-  "openApiTooltip": "API som er publisert under ein open lisens<br> slik at alle kan få tilgang, bruke og dele.<br> Dette omfattar også løysingar som krev<br> brukarregistrering/API-nøklar, så lenge alle kan<br> få tilgang.",
+  "openApiTooltip": "API som er publisert under ein open lisens\nslik at alle kan få tilgang, bruke og dele.\nDette omfattar også løysingar som krev\nbrukarregistrering/API-nøklar, så lenge alle kan\nfå tilgang.",
   "showOnly": "Vis kun",
   "publisher": "Utgivar",
   "news": "Siste saker fra bloggen",
@@ -746,7 +746,10 @@
         "openingHours": "Opningstider",
         "contactPage": "Kontaktsie",
         "requirement": "Krav",
-        "satisfiesRule": "Tilfredsstiller regel"
+        "satisfiesRule": "Tilfredsstiller regel",
+        "serviceChannel": "Tenestekanal",
+        "address": "Adresse",
+        "webAddress": "Nettaddresse"
       },
       "event": {
         "description": "Beskriving",

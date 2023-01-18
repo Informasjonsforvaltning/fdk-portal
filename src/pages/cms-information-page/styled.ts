@@ -42,20 +42,23 @@ const Article = styled.main`
 `;
 
 const Title = styled.h1`
-  font-size: ${theme.fontSize('FS48')};
+  font-size: ${theme.fontSize('FS48', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
   padding-left: 0;
 `;
 
 const Description = styled.p`
   font-size: ${theme.fontSize('FS20')};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const Content = styled.p`
+  line-height: ${theme.spacing('S16', Unit.REM)};
+
   & > div {
     & > h2 {
       border-bottom: 1px solid ${({ theme: t }) => t.light};
-      font-size: ${theme.fontSize('FS32')};
+      font-size: ${theme.fontSize('FS32', Unit.REM)};
       font-weight: ${theme.fontWeight('FW700')};
       padding: ${theme.spacing('S6')};
       padding-left: 0;
@@ -74,7 +77,7 @@ const Image = styled.img`
 `;
 
 const ImageText = styled.span`
-  font-size: ${theme.fontSize('FS14')};
+  font-size: ${theme.fontSize('FS14', Unit.REM)};
 `;
 
 const SideMenu = styled(SideMenuBase)`
@@ -122,7 +125,7 @@ const MenuToggle = styled.button`
     align-items: center;
     padding: 13px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: ${theme.fontSize('FS16', Unit.REM)};
     border: none;
     background-color: ${({ theme: t }) => t.light};
   }

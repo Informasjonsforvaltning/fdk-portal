@@ -28,7 +28,6 @@ import withErrorBoundary from '../../../../components/with-error-boundary';
 import ErrorPage from '../../../../components/error-page';
 
 import SC from './styled';
-import ReactTooltipSC from '../../../../components/tooltip/styled';
 
 import {
   MetadataQualityDimension,
@@ -309,19 +308,13 @@ const DatasetPage: FC<Props> = ({
                           {determineDimensionTranslation(dimensionScore.id)}
                         </p>
                         <div
-                          data-tip={determineDimensionDescriptionTranslation(
+                          title={determineDimensionDescriptionTranslation(
                             dimensionScore.id
                           )}
                           data-for={`${dimensionScore.id}_tooltip`}
                         >
                           <SC.QuestionIcon />
                         </div>
-                        <ReactTooltipSC.ReactTooltipStyled
-                          id={`${dimensionScore.id}_tooltip`}
-                          effect='solid'
-                          place='top'
-                          multiline
-                        />
                       </SC.DimensionContainer>
                       <div>
                         <span>

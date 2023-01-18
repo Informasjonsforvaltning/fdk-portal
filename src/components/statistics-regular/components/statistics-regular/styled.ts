@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
 import IllustrationSC from '../illustration-with-count/styled';
 
 import { Variant } from './enums';
@@ -13,16 +14,16 @@ const Label = styled.span<{ variant?: Variant }>`
     switch (variant) {
       case Variant.LARGE:
         return css`
-          font-size: 1.4em;
+          font-size: ${themeFDK.fontSize('FS14', Unit.EM)};
         `;
       case Variant.XLARGESTRONG:
         return css`
-          font-size: 2em;
+          font-size: ${themeFDK.fontSize('FS20', Unit.EM)};
           font-weight: 600;
         `;
       default:
         return css`
-          font-size: 1em;
+          font-size: ${themeFDK.fontSize('FS12', Unit.EM)};
         `;
     }
   }}
@@ -33,7 +34,7 @@ const StatisticsRegular = styled(Link)<{ as?: string }>`
   color: ${({ theme }) => theme.dark};
   display: flex;
   flex-flow: column;
-  font-size: 1.6rem;
+  font-size: ${themeFDK.fontSize('FS16', Unit.REM)};
   margin: 0.5em;
   text-decoration: none;
 

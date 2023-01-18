@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
 import DatasetIconBase from '../../../../images/icon-catalog-dataset-lg.svg';
 import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
 import ConceptIconBase from '../../../../images/icon-catalog-concept-lg.svg';
@@ -41,13 +42,13 @@ const Header = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2.4rem;
+  font-size: ${themeFDK.fontSize('FS24', Unit.REM)};
   font-weight: 600;
   margin-bottom: 0;
 `;
 
 const Type = styled.div`
-  font-size: 1.6rem;
+  font-size: ${themeFDK.fontSize('FS16', Unit.REM)};
 `;
 
 const DatasetIcon = styled(DatasetIconBase)`

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 import LogoSVG from '../../images/fdk-logo.svg';
 import DemoLogoSVG from '../../images/fdk-logo-demo.svg';
 import NapLogoSVG from '../../images/logo-transport.svg';
@@ -79,7 +79,7 @@ const NavigationLinks = styled.ul`
   align-items: center;
   margin-bottom: 0px;
   margin-right: 1em;
-  font-size: ${theme.fontSize('FS16')};
+  font-size: ${theme.fontSize('FS16', Unit.REM)};
 
   & li {
     ${() =>

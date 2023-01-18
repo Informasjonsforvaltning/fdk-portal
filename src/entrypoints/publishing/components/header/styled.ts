@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
 
 import DropdownMenuBase from '../dropdown-menu';
@@ -91,7 +91,7 @@ const NavigationLinks = styled.ul`
   margin-left: auto;
 
   & > li * {
-    color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+    color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
   }
 
   & > li:nth-of-type(n + 2) {
@@ -124,12 +124,12 @@ const MenuButton = styled.button`
   background: none;
   border: none;
   outline: none;
-  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
   cursor: pointer;
 
   &:after {
     content: '\\25BC';
-    font-size: 10px;
+    font-size: ${theme.fontSize('FS12', Unit.REM)};
     margin-top: 1px;
     margin-left: ${theme.spacing('S6')};
   }

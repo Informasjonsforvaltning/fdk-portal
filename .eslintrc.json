@@ -35,7 +35,8 @@
     "prettier",
     "jsx-a11y",
     "eslint-comments",
-    "react-hooks"
+    "react-hooks",
+    "import"
   ],
   "rules": {
     "prettier/prettier": [
@@ -127,13 +128,15 @@
         "specialLink": ["hrefLeft", "hrefRight", "to"],
         "aspects": ["noHref", "invalidHref", "preferButton"]
       }
-    ]
+    ],
+    "import/no-unresolved": "error"
   },
   "overrides": [
     {
       "files": ["**/*.ts?(x)"],
       "rules": {
-        "no-unused-expressions": "off"
+        "no-unused-expressions": "off",
+        "react/function-component-definition": "off"
       }
     },
     {
@@ -148,5 +151,16 @@
         "@typescript-eslint/no-non-null-assertion": "off"
       }
     }
-  ]
+  ],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "tsconfig.json"
+      }
+    }
+  }
 }

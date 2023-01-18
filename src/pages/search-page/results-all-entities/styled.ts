@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '@fellesdatakatalog/theme';
+import { Unit, theme } from '@fellesdatakatalog/theme';
 import Link from '@fellesdatakatalog/link';
 
 import FeedSVG from '../../../images/icon-feed-sm.svg';
@@ -31,7 +31,7 @@ const FeedLinks = styled.span`
 `;
 
 const FeedLink = styled(Link)`
-  font-size: ${theme.fontSize('FS14')};
+  font-size: ${theme.fontSize('FS14', Unit.REM)};
   color: #0069a5 !important;
 
   &:nth-of-type(n + 2) {

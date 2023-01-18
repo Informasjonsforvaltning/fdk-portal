@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 
 import RegisterIllustrationSVG from '../../../../../../images/illustration-register.svg';
 import HarvestIllustrationSVG from '../../../../../../images/illustration-harvest.svg';
@@ -16,25 +16,18 @@ const PublishingPage = styled.article`
 `;
 
 const Title = styled.h1`
-  font-size: ${theme.fontSize('FS48')};
+  font-size: ${theme.fontSize('FS48', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
-
-  @media (max-width: 1020px) {
-    & {
-      font-size: calc(24px + (48 - 24) * ((100vw - 320px) / (1020 - 320)));
-    }
-  }
 `;
 
 const Description = styled.p`
   margin-top: ${theme.spacing('S24')};
-  font-size: ${theme.fontSize('FS24')};
-  line-height: 1.5;
+  font-size: ${theme.fontSize('FS24', Unit.REM)};
+  line-height: ${theme.spacing('S16', Unit.REM)};
 
   @media (max-width: 1020px) {
     & {
       margin-top: calc(16px + (24 - 16) * ((100vw - 320px) / (1020 - 320)));
-      font-size: calc(16px + (24 - 16) * ((100vw - 320px) / (1020 - 320)));
     }
   }
 `;
@@ -67,7 +60,7 @@ const MethodContainer = styled.div`
   padding: ${theme.spacing('S40')} ${theme.spacing('S32')};
 
   & > h2 {
-    font-size: ${theme.fontSize('FS28')};
+    font-size: ${theme.fontSize('FS28', Unit.REM)};
     font-weight: ${theme.fontWeight('FW700')};
   }
 
@@ -76,7 +69,7 @@ const MethodContainer = styled.div`
 
     @media (max-width: 400px) {
       & {
-        font-size: ${theme.fontSize('FS14')};
+        font-size: ${theme.fontSize('FS14', Unit.REM)};
       }
     }
   }
@@ -95,6 +88,11 @@ const MethodContainer = styled.div`
     box-shadow: 0 2px 4px ${theme.colour(Colour.NEUTRAL, 'N60', 25)};
     text-decoration: none;
 
+    &:focus {
+      outline-offset: 3px;
+      outline: 2px solid orange;
+    }
+
     @media (max-width: 900px) {
       & {
         margin-bottom: ${theme.spacing('S12')};
@@ -104,7 +102,7 @@ const MethodContainer = styled.div`
     @media (max-width: 400px) {
       & {
         padding: ${theme.spacing('S8')} ${theme.spacing('S16')};
-        font-size: ${theme.fontSize('FS14')};
+        font-size: ${theme.fontSize('FS14', Unit.REM)};
       }
     }
   }
@@ -115,7 +113,7 @@ const MethodContainer = styled.div`
 
     @media (max-width: 400px) {
       & {
-        font-size: ${theme.fontSize('FS14')};
+        font-size: ${theme.fontSize('FS14', Unit.REM)};
       }
     }
   }
@@ -248,7 +246,7 @@ const InformationBox = styled.div`
   }
 
   & > h3 {
-    font-size: ${theme.fontSize('FS20')};
+    font-size: ${theme.fontSize('FS20', Unit.REM)};
     font-weight: ${theme.fontWeight('FW700')};
     border-bottom: 2px solid ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
@@ -284,7 +282,7 @@ const InformationBox = styled.div`
 
     @media (max-width: 400px) {
       & {
-        font-size: ${theme.fontSize('FS14')};
+        font-size: ${theme.fontSize('FS14', Unit.REM)};
       }
     }
   }

@@ -1,7 +1,8 @@
+import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
 import styled from 'styled-components';
 
 const Heading = styled.h3`
-  font-size: 2rem;
+  font-size: ${themeFDK.fontSize('FS20', Unit.REM)};
   font-weight: 600;
 `;
 
@@ -17,7 +18,7 @@ const ClearButton = styled.button`
   border: 1px solid ${({ theme }) => theme.extendedColors.neutralDarker};
   border-radius: 2px;
   padding: 0.25em 0.4em;
-  font-size: 1.5rem;
+  font-size: ${themeFDK.fontSize('FS14', Unit.REM)};
   line-height: 1.6em;
   margin: 0.5em 0 1.5em 0;
 `;

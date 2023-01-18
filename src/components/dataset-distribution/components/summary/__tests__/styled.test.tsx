@@ -85,7 +85,7 @@ describe('Styled components for Summary component', () => {
       expectStyleRules(
         SC.Title,
         [
-          { property: 'font-size', value: '16px' },
+          { property: 'font-size', value: '1.6rem' },
           { property: 'color', value: theme.extendedColors.textDefault },
           { property: 'text-overflow', value: 'ellipsis' },
           { property: 'overflow', value: 'hidden' }

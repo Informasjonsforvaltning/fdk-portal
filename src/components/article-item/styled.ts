@@ -1,3 +1,4 @@
+import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
 import styled, { css } from 'styled-components';
 
 const Title = styled.h2`
@@ -29,6 +30,7 @@ const Date = styled.span`
 
 const Abstract = styled.p`
   margin: 0;
+  line-height: ${themeFDK.spacing('S16', Unit.REM)};
 `;
 
 const Image = styled.div<{ imageUrl?: string }>`

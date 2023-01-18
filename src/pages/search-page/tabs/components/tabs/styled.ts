@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Colour, theme } from '@fellesdatakatalog/theme';
+import { Colour, Unit, theme } from '@fellesdatakatalog/theme';
 import AllIconBase from '../../../../../images/icon-catalog-all-md.svg';
 import DatasetIconBase from '../../../../../images/icon-catalog-dataset-md.svg';
 import ApiIconBase from '../../../../../images/icon-catalog-api-md.svg';
@@ -100,7 +100,7 @@ const BetaRibbon = styled.span`
   right: -40px;
   transform: rotate(45deg);
   padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
-  font-size: ${theme.fontSize('FS14')};
+  font-size: ${theme.fontSize('FS14', Unit.REM)};
   font-weight: ${theme.fontWeight('FW700')};
   color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   background: ${theme.colour(Colour.YELLOW, 'Y30')};

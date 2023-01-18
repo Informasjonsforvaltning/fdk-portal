@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
 
 const Error500 = styled.div`
@@ -17,13 +17,13 @@ const Error500 = styled.div`
 
   & > h1 {
     margin: ${theme.spacing('S16')};
-    font-size: ${theme.fontSize('FS40')};
+    font-size: ${theme.fontSize('FS40', Unit.REM)};
     font-weight: ${theme.fontWeight('FW800')};
     color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
 
   & p {
-    font-size: ${theme.fontSize('FS20')};
+    font-size: ${theme.fontSize('FS20', Unit.REM)};
     display: inline;
   }
 
@@ -33,7 +33,7 @@ const Error500 = styled.div`
   & a {
     text-decoration: underline;
     color: ${theme.colour(Colour.NEUTRAL, 'N60')};
-    font-size: ${theme.fontSize('FS20')};
+    font-size: ${theme.fontSize('FS20', Unit.REM)};
     margin-left: ${theme.spacing('S4')};
     margin-right: ${theme.spacing('S4')};
   }

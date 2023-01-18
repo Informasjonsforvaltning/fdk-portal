@@ -24,7 +24,7 @@ const Summary: FC<Props> = ({
   ...props
 }) => (
   <SC.Summary data-testid={testIds.root} {...props}>
-    <SC.Title data-testid={testIds.title}>{title}</SC.Title>
+    {title && <SC.Title data-testid={testIds.title}>{title}</SC.Title>}
     <SC.Formats data-testid={testIds.formats}>
       {hasDownloadUrl && (
         <SC.Format key='hasDownloadUrl'>
