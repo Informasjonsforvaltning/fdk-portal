@@ -498,37 +498,40 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       agents = []
                     },
                     index
-                  ) => (
-                    <KeyValueListItem
-                      key={`${translate(hasParticipationDescription)}-${index}`}
-                      property={
-                        <>
-                          {agents.map(
-                            (
-                              { uri, identifier, name, title: agentTitle },
-                              agentIndex
-                            ) => (
-                              <SC.ListItemValue key={`${uri}-${agentIndex}`}>
-                                <Link
-                                  as={RouterLink}
-                                  to={`${PATHNAME_ORGANIZATIONS}/${identifier}`}
-                                >
-                                  {translate(agentTitle) ?? name}
-                                </Link>
-                              </SC.ListItemValue>
-                            )
-                          )}
-                          <SC.LightWeightLabel>
-                            {translate(hasParticipationDescription)}
-                          </SC.LightWeightLabel>
-                        </>
-                      }
-                      value={role
-                        .map(({ prefLabel }) => translate(prefLabel))
-                        .filter(Boolean)
-                        .join(', ')}
-                    />
-                  )
+                  ) =>
+                    hasParticipationDescription && (
+                      <KeyValueListItem
+                        key={`${translate(
+                          hasParticipationDescription
+                        )}-${index}`}
+                        property={
+                          <>
+                            {agents.map(
+                              (
+                                { uri, identifier, name, title: agentTitle },
+                                agentIndex
+                              ) => (
+                                <SC.ListItemValue key={`${uri}-${agentIndex}`}>
+                                  <Link
+                                    as={RouterLink}
+                                    to={`${PATHNAME_ORGANIZATIONS}/${identifier}`}
+                                  >
+                                    {translate(agentTitle) ?? name}
+                                  </Link>
+                                </SC.ListItemValue>
+                              )
+                            )}
+                            <SC.LightWeightLabel>
+                              {translate(hasParticipationDescription)}
+                            </SC.LightWeightLabel>
+                          </>
+                        }
+                        value={role
+                          .map(({ prefLabel }) => translate(prefLabel))
+                          .filter(Boolean)
+                          .join(', ')}
+                      />
+                    )
                 )}
               </KeyValueList>
             </ContentSection>
