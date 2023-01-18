@@ -19,9 +19,11 @@ const renderServiceMessage = (entity: ServiceMessageEntity | undefined) => {
       <SC.ServiceMessagePage>
         <SC.Title>{title}</SC.Title>
         <SC.Description>{short_description}</SC.Description>
-        <SC.Body>
-          <Markdown>{description ?? ''}</Markdown>
-        </SC.Body>
+        {description && (
+          <SC.Body>
+            <Markdown>{description}</Markdown>
+          </SC.Body>
+        )}
       </SC.ServiceMessagePage>
     );
   }
