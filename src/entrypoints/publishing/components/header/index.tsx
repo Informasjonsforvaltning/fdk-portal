@@ -8,6 +8,7 @@ import { Trigger, Menu } from '../dropdown-menu';
 
 import SC from './styled';
 import { PATHNAME_PUBLISHING } from '../../../../constants/constants';
+import localization from '../../../../lib/localization';
 
 const { FDK_REGISTRATION_BASE_URI, ADMIN_GUI_BASE_URI } = env;
 
@@ -22,6 +23,7 @@ const Header: FC = () => {
       <SC.Row>
         <a href={PATHNAME_PUBLISHING}>
           <SC.Logo />
+          {localization.publishing}
         </a>
         <SC.NavigationLinks>
           <li>
