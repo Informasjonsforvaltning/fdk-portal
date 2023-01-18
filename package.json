@@ -74,6 +74,7 @@
     "clean-deep": "^3.4.0",
     "core-js-pure": "^3.27.1",
     "deserialize-json-api": "^1.4.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
     "font-awesome": "^4.7.0",
     "graphql": "^16.6.0",
     "html-react-parser": "^3.0.6",
