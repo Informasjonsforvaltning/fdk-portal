@@ -750,7 +750,8 @@
         "serviceChannel": "Tjenestekanal",
         "address": "Adresse",
         "webAddress": "Nettaddresse",
-        "competentAuthority": "Kompetent organ"
+        "competentAuthority": "Kompetent organ",
+        "searchWords": "Søkeord"
       },
       "event": {
         "description": "Beskrivelse",

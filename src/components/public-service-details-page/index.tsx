@@ -1169,7 +1169,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
             <ContentSection
               id='keywords'
               title={
-                translations.detailsPage.sectionTitles.publicService.keywords
+                translations.detailsPage.sectionTitles.publicService.searchWords
               }
             >
               <InlineList>

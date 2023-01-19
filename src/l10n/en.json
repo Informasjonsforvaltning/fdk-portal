@@ -750,7 +750,8 @@
         "serviceChannel": "Service channel",
         "address": "Address",
         "webAddress": "Web address",
-        "competentAuthority": "Competent authority"
+        "competentAuthority": "Competent authority",
+        "searchWords": "Search words"
       },
       "event": {
         "description": "Description",
