@@ -972,16 +972,19 @@ const PublicServiceDetailsPage: FC<Props> = ({
           {(languages.length > 0 ||
             sectors.length > 0 ||
             hasChannel.length > 0 ||
-            processingTime) && (
+            processingTime ||
+            hasCompetentAuthority.length > 0) && (
             <ContentSection
               id='usage'
               title={translations.detailsPage.sectionTitles.publicService.usage}
             >
               <KeyValueList>
-                {hasCompetentAuthority &&
+                {hasCompetentAuthority.length > 0 &&
                   hasCompetentAuthority.map(
-                    organization =>
-                      organization.title && (
+                    ({ uri: authorityUri, title: authorityTitle, orgType }) =>
+                      (authorityTitle ||
+                        authorityUri ||
+                        orgType?.prefLabel) && (
                         <KeyValueListItem
                           property={
                             translations.detailsPage.sectionTitles.publicService
@@ -989,9 +992,19 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           }
                           value={
                             <div>
-                              <Link href={organization.uri}>
-                                {translate(organization.title)}
-                              </Link>
+                              {authorityUri ? (
+                                <Link href={authorityUri}>
+                                  {authorityTitle
+                                    ? translate(authorityTitle)
+                                    : authorityUri}
+                                </Link>
+                              ) : (
+                                translate(authorityTitle)
+                              )}
+                              {orgType?.prefLabel &&
+                              (authorityTitle || authorityUri)
+                                ? `, ${translate(orgType.prefLabel)}`
+                                : translate(orgType?.prefLabel)}
                             </div>
                           }
                         />

@@ -165,7 +165,7 @@ export interface Organization {
   identifier?: string;
   name?: Partial<TextLanguage>;
   orgPath?: string;
-  orgType?: string;
+  orgType?: PublicServiceLanguage;
   spatial?: string;
   title?: Partial<TextLanguage>;
   id: string;
@@ -659,6 +659,8 @@ export interface ReferenceData {
   referencetypes?: ReferenceTypes;
   apispecifications?: ApiSpecifications;
 }
+
+export interface ReferenceDataCode {}
 
 export interface Link {
   href: string;
