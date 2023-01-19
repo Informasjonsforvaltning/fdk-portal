@@ -5,13 +5,13 @@ import { bindActionCreators, Dispatch } from 'redux';
 import * as actions from './redux/actions';
 
 import type {
-  Publisher,
+  Organization,
   OrganizationCountsAndRating,
   EnhetsregisteretOrganization
 } from '../../types';
 
 export interface Props {
-  organization: Publisher | null;
+  organization: Organization | null;
   isLoadingOrganization: boolean;
   isLoadingRating: boolean;
   enhetsregisteretOrganization: EnhetsregisteretOrganization | null;

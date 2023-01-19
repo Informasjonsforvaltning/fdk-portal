@@ -749,7 +749,8 @@
         "satisfiesRule": "Tilfredsstiller regel",
         "serviceChannel": "Tenestekanal",
         "address": "Adresse",
-        "webAddress": "Nettaddresse"
+        "webAddress": "Nettaddresse",
+        "competentAuthority": "Kompetent organ"
       },
       "event": {
         "description": "Beskriving",

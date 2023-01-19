@@ -1,7 +1,7 @@
 import React, { Children, FC, isValidElement } from 'react';
 
 import SC from './styled';
-import type { Publisher, TextLanguage } from '../../../../types';
+import type { Organization, TextLanguage } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
 import { SearchHitHead } from '../search-hit-head/search-hit-head.component';
 import { getTranslateText } from '../../../../lib/translateText';
@@ -21,7 +21,7 @@ interface Props {
   type: SearchTypes;
   title?: Partial<TextLanguage>;
   description?: Partial<TextLanguage> | null;
-  publisher?: Partial<Publisher>;
+  publisher?: Partial<Organization>;
   isAuthoritative?: boolean;
   beta?: boolean;
 }
@@ -55,7 +55,14 @@ export const SearchHit: FC<Props> = ({
   beta = false,
   children
 }) => {
-  const { prefLabel, name, id: publisherId } = publisher || {};
+  const {
+    title: publisherTitle,
+    name,
+    identifier: pubIdentifier,
+    id: pubId
+  } = publisher || {};
+
+  const pubisherId = pubId || pubIdentifier;
 
   const renderSearchHitOpenData = () =>
     Children.map(children, child =>
@@ -115,10 +122,10 @@ export const SearchHit: FC<Props> = ({
         isAuthoritative={isAuthoritative}
       />
       <SC.SearchHitMetaData>
-        {publisherId && (prefLabel || name) && (
-          <SC.PublisherLink href={`/organizations/${publisherId}`}>
+        {pubisherId && (publisherTitle || name) && (
+          <SC.PublisherLink href={`/organizations/${pubisherId}`}>
             <span>{getPublisherLabel(type)}&nbsp;</span>
-            <span>{getTranslateText(prefLabel) || name}</span>
+            <span>{getTranslateText(publisherTitle) || name}</span>
           </SC.PublisherLink>
         )}
         {title && <LanguageIndicator textLanguage={title} />}

@@ -21,7 +21,7 @@ exports[`SearchHit component should render with properties 1`] = `
          
       </span>
       <span>
-        Test direktorat
+        <Component />
       </span>
     </Styled(p)>
     <Memo(LanguageIndicator)

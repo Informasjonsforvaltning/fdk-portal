@@ -11,6 +11,7 @@ import {
 import { CompareTerms } from '../compare-terms/compare-terms.component';
 import { getTranslateText } from '../../../lib/translateText';
 import localization from '../../../lib/localization';
+import { getTranslateText as translate } from '../../../lib/translateText';
 
 interface Props {
   conceptsCompareList: Partial<Concept>[];
@@ -34,7 +35,7 @@ const CompareList: FC<Props> = ({
             prefLabel={prefLabel}
             creator={
               getTranslateText(publisher?.prefLabel) ??
-              capitalize(publisher?.name)
+              capitalize(translate(publisher?.name))
             }
             onDeleteTerm={removeConcept}
           />

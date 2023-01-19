@@ -749,7 +749,8 @@
         "contactPage": "Kontaktside",
         "serviceChannel": "Tjenestekanal",
         "address": "Adresse",
-        "webAddress": "Nettaddresse"
+        "webAddress": "Nettaddresse",
+        "competentAuthority": "Kompetent organ"
       },
       "event": {
         "description": "Beskrivelse",

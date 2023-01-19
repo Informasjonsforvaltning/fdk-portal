@@ -12,7 +12,7 @@ import { getOrganization as getOrganizationData } from '../../../api/organizatio
 import { getEnhetsregisteretOrganization } from './operations';
 
 import type {
-  Publisher,
+  Organization,
   OrganizationCountsAndRating,
   EnhetsregisteretOrganization
 } from '../../../types';
@@ -21,10 +21,13 @@ function* getOrganizationRequested({
   payload: { id }
 }: ReturnType<typeof actions.getOrganizationRequested>) {
   try {
-    const organization: Publisher = yield call(getOrganizationFromCatalog, id);
+    const organization: Organization = yield call(
+      getOrganizationFromCatalog,
+      id
+    );
 
     if (organization && typeof organization === 'object') {
-      yield put(actions.getOrganizationSucceeded(organization as Publisher));
+      yield put(actions.getOrganizationSucceeded(organization as Organization));
     } else {
       yield put(actions.getOrganizationFailed(''));
     }
