@@ -8,6 +8,10 @@ export default css`
     height: 100%;
   }
 
+  p {
+    line-height: 1.5;
+  }
+
   body,
   #root,
   #root > div {

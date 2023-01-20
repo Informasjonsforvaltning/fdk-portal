@@ -28,7 +28,6 @@ const PublisherLink = styled(Link)``;
 const Description = styled.p`
   font-size: ${theme.fontSize('FS20', Unit.REM)};
   margin-bottom: 2.3rem;
-  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 const OpenData = styled.div`
