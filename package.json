@@ -60,7 +60,7 @@
     "@fellesdatakatalog/link": "^0.2.15",
     "@fellesdatakatalog/tabs": "^1.0.9",
     "@fellesdatakatalog/theme": "0.5.4",
-    "@inovua/reactdatagrid-community": "^5.8.0",
+    "@inovua/reactdatagrid-community": "^5.8.1",
     "@mui/material": "^5.10.1",
     "@redux-devtools/extension": "^3.2.3",
     "@reduxjs/toolkit": "^1.9.1",
