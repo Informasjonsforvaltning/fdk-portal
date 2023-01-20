@@ -465,7 +465,6 @@ const DatasetLink = styled.div`
 
 const MetricDescription = styled.p`
   white-space: normal;
-  line-height: ${theme.spacing('S16', Unit.REM)};
 `;
 
 export default {
