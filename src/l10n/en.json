@@ -749,7 +749,8 @@
         "contactPage": "Contact page",
         "serviceChannel": "Service channel",
         "address": "Address",
-        "webAddress": "Web address"
+        "webAddress": "Web address",
+        "competentAuthority": "Competent authority"
       },
       "event": {
         "description": "Description",

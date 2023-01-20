@@ -54,13 +54,11 @@ const NewsArticlePage: FC = () => {
 
             {article?.title && <SC.Title>{article?.title}</SC.Title>}
 
-            {/* {abstract && (
-              <SC.Abstract>{parse(sanitizeHtml(abstract))}</SC.Abstract>
-            )} */}
-
-            <SC.Body>
-              <Markdown>{article?.content ?? ''}</Markdown>
-            </SC.Body>
+            {article?.content && (
+              <SC.Body>
+                <Markdown>{article.content}</Markdown>
+              </SC.Body>
+            )}
           </div>
         </div>
       </SC.Article>

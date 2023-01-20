@@ -12,7 +12,7 @@ import {
 } from './action-types';
 
 import type {
-  Publisher,
+  Organization,
   OrganizationCountsAndRating,
   EnhetsregisteretOrganization
 } from '../../../types';
@@ -26,7 +26,7 @@ export function getOrganizationRequested(id: string) {
   };
 }
 
-export function getOrganizationSucceeded(organization: Publisher) {
+export function getOrganizationSucceeded(organization: Organization) {
   return {
     type: GET_ORGANIZATION_SUCCEEDED,
     payload: {

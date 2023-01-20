@@ -133,7 +133,9 @@ const OrganizationPage: FC<Props> = ({
           translations.metadataQualityPage.organizationPageTitle,
           {
             organizationName:
-              translate(organization?.prefLabel) || organization?.name
+              (translate(organization?.prefLabel) ||
+                translate(organization?.name)) ??
+              ''
           }
         )}
       </SC.Title>
@@ -217,7 +219,7 @@ const OrganizationPage: FC<Props> = ({
                       translations.metadataQualityPage
                         .organisationInEnhetsregisteret,
                       {
-                        organizationName: organization.name ?? ''
+                        organizationName: translate(organization?.name) ?? ''
                       }
                     )}
                   </Link>

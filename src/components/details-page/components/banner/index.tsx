@@ -15,7 +15,7 @@ import { Entity } from '../../../../types/enums';
 import type {
   Language,
   PublicServiceLanguage,
-  Publisher,
+  Organization,
   TextLanguage
 } from '../../../../types';
 import { getTranslateText as translate } from '../../../../lib/translateText';
@@ -28,7 +28,7 @@ interface Props {
   lastPublished: string;
   isAuthoritative: boolean;
   languages?: Language[];
-  publisher?: Partial<Publisher>;
+  publisher?: Partial<Organization>;
   admsStatus?: PublicServiceLanguage;
 }
 
@@ -78,6 +78,7 @@ const Banner: FC<Props> = ({
   };
 
   const publisherName = translate(publisher?.prefLabel || publisher?.name);
+  const pubisherId = publisher?.identifier || publisher?.id;
   const { icon: Icon, translation } = entityDetails[entity];
 
   return (
@@ -141,10 +142,10 @@ const Banner: FC<Props> = ({
           )}
         </SC.BannerInfo>
 
-        {publisher?.id && (
-          <SC.PublisherLink href={`/organizations/${publisher.id}`}>
+        {pubisherId && (
+          <SC.PublisherLink href={`/organizations/${pubisherId}`}>
             {translations.formatString(publisherLabel[entity], {
-              publisher: publisherName ?? publisher.id
+              publisher: publisherName ?? pubisherId
             })}
           </SC.PublisherLink>
         )}

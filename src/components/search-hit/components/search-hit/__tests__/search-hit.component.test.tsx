@@ -18,7 +18,7 @@ describe('SearchHit component', () => {
         type={SearchTypes.dataset}
         title={{ nb: 'Test datasett' }}
         description={{ nb: 'Test datasett beskrivelse' }}
-        publisher={{ uri: '111', id: '9999', name: 'Test direktorat' }}
+        publisher={{ uri: '111', id: '9999', name: { nb: 'Test direktorat' } }}
       />
     );
     expect(container).toMatchSnapshot();
