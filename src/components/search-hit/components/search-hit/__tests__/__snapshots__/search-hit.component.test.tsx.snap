@@ -13,7 +13,7 @@ exports[`SearchHit component should render with properties 1`] = `
     type={0}
   />
   <styled.div>
-    <Styled(p)
+    <Styled(f)
       href="/organizations/9999"
     >
       <span>
@@ -23,7 +23,7 @@ exports[`SearchHit component should render with properties 1`] = `
       <span>
         <Component />
       </span>
-    </Styled(p)>
+    </Styled(f)>
     <Memo(LanguageIndicator)
       textLanguage={
         Object {
