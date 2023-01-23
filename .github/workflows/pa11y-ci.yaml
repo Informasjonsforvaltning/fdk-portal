@@ -1,0 +1,20 @@
+name: Accessibility tests with Pa11y
+on:
+  push:
+      branches:
+        - develop
+
+jobs: 
+  build:
+ 
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Install pa11y-ci dependencies.
+      run: npm install
+    - name: Start server.
+      run: npm start
+    - name: Run pa11y-ci.
+      run: npm run pa11y-ci
