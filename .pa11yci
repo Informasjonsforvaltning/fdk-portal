@@ -1,0 +1,13 @@
+{
+    "#": "Automated accessibility testing ~ https://github.com/pa11y/pa11y-ci",
+  
+    "defaults": {
+      "standard": "WCAG2A",
+      "timeout": 10000,
+      "wait": 5000,
+      "ignore": [ "notice", "warning" ]
+    },
+    "urls": [
+      "http://localhost:3001/organizations"
+    ]
+  }

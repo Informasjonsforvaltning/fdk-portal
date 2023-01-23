@@ -21,3 +21,7 @@ jobs:
       DIGDIR_FDK_AUTODEPLOY: ${{ secrets.DIGDIR_FDK_DEV_AUTODEPLOY }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       DEPENDABOT_SLACK_WEBHOOK_URL: ${{ secrets.DEPENDABOT_SLACK_WEBHOOK_URL }}
+    run-accessibility-testing:
+      name: Run pa11ly-ci to test accessibility
+      run: npm install
+      run: npm run pa11y-ci
