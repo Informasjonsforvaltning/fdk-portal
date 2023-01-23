@@ -16,5 +16,5 @@ jobs:
       - name: Install dependencies.
         run: npm install 
       - name: Start server and run pa11y-ci. 
-        run: npm start & sleep 120s && npm run pa11y-ci
+        run: npm start & sleep 180s && npm run pa11y-ci
 
