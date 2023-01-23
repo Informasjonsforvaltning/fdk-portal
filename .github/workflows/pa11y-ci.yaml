@@ -6,7 +6,6 @@ on:
 
 jobs: 
   build:
- 
     steps:
       - name: Setup Node
         uses: actions/setup-node@v3
