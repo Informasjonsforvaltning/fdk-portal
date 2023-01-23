@@ -13,8 +13,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install pa11y-ci dependencies.
+      - name: Install dependencies.
         run: npm install 
       - name: Start server and run pa11y-ci. 
-        run: npm start & sleep 5 && npm run pa11y-ci
-        
+        run: npm start & sleep 120s && npm run pa11y-ci
+
