@@ -15,7 +15,6 @@ jobs:
           node-version: 16
       - name: Install pa11y-ci dependencies.
         run: npm install 
-      - name: Start server.
-        run: npm start
-      - name: Run pa11y-ci.
-        run: npm run pa11y-ci
+      - name: Start server and run pa11y-ci. 
+        run: npm start & sleep 5 && npm run pa11y-ci
+        
