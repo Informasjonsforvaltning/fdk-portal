@@ -32,3 +32,8 @@ COPY --chown=app:app /sitemap/sitemap.xml ./
 RUN dos2unix entrypoint.sh && chmod +x entrypoint.sh
 ENTRYPOINT [ "./entrypoint.sh" ]
 EXPOSE 8080
+
+FROM buildkite/puppeteer:v1.15.0
+RUN npm install --global --unsafe-perm pa11y-ci
+ADD config.json /usr/config.json
+ENTRYPOINT ["pa11y-ci", "-c", "/usr/config.json"]

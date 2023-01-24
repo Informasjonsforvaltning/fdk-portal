@@ -15,7 +15,6 @@ jobs:
           node-version: 18
       - name: Install dependencies.
         run: npm install
-      - name: Docker
-        run: docker-compose up --build 
-      - name: Run pa11y-ci. 
+      - name: Docker and pa11y
         run: npm run pa11y-ci
+
