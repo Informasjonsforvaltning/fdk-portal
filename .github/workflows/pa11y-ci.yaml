@@ -5,10 +5,15 @@ on:
         - feat/ha/implement-pa11y-ci
 
 jobs: 
-  pa11y-ci:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm install 
-      - run: npm run pa11y-ci https://www.nature.com/
-
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies.
+        run: npm install 
+      - name: Run pa11y-ci. 
+        run: npm run pa11y-ci
