@@ -2,7 +2,7 @@ name: Accessibility tests with Pa11y
 on:
   push:
       branches:
-        - feat/ha/implement-pa11y-ci
+        - main
 
 jobs: 
   build:
