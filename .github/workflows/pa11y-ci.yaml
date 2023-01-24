@@ -5,16 +5,10 @@ on:
         - feat/ha/implement-pa11y-ci
 
 jobs: 
-  build:
+  pa11y-ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Install dependencies.
-        run: npm install 
-      - name: Start server and run pa11y-ci. 
-        run: npm start & sleep 180s && npm run pa11y-ci
+      - uses: actions/checkout@v3
+      - run: npm install 
+      - run: npm run pa11y-ci
 
