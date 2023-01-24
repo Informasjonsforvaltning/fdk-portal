@@ -196,60 +196,67 @@ const DatasetsPage: FC<Props> = ({
               <th>{translations.metadataQualityPage.dimension.reusability}</th>
             </tr>
           </SC.TableHead>
-          <SC.TableBody>
-            {Array.from(scores.entries()).map(([dataset, score]) => (
-              <tr key={dataset.id} onClick={() => push(`${url}/${dataset.id}`)}>
-                <td>{translate(dataset.title)}</td>
-                <td>
-                  <SC.MetadataCellContents>
-                    {determineRatingIcon(score.dataset)}
-                    <span>{calculateRatingPercentage(score.dataset)}%</span>
-                  </SC.MetadataCellContents>
-                </td>
-                <td>
-                  {calculateRatingPercentage(
-                    score.dataset?.dimensions?.find(
-                      ({ id }) => id === MetadataQualityDimension.ACCESSIBILITY
-                    )
-                  )}
-                  %
-                </td>
-                <td>
-                  {calculateRatingPercentage(
-                    score.dataset?.dimensions?.find(
-                      ({ id }) => id === MetadataQualityDimension.FINDABILITY
-                    )
-                  )}
-                  %
-                </td>
-                <td>
-                  {calculateRatingPercentage(
-                    score.dataset?.dimensions?.find(
-                      ({ id }) =>
-                        id === MetadataQualityDimension.INTEROPERABILITY
-                    )
-                  )}
-                  %
-                </td>
-                <td>
-                  {calculateRatingPercentage(
-                    score.dataset?.dimensions?.find(
-                      ({ id }) => id === MetadataQualityDimension.CONTEXTUALITY
-                    )
-                  )}
-                  %
-                </td>
-                <td>
-                  {calculateRatingPercentage(
-                    score.dataset?.dimensions?.find(
-                      ({ id }) => id === MetadataQualityDimension.REUSABILITY
-                    )
-                  )}
-                  %
-                </td>
-              </tr>
-            ))}
-          </SC.TableBody>
+          {datasetScores && (
+            <SC.TableBody>
+              {Array.from(scores.entries()).map(([dataset, score]) => (
+                <tr
+                  key={dataset.id}
+                  onClick={() => push(`${url}/${dataset.id}`)}
+                >
+                  <td>{translate(dataset.title)}</td>
+                  <td>
+                    <SC.MetadataCellContents>
+                      {determineRatingIcon(score.dataset)}
+                      <span>{calculateRatingPercentage(score.dataset)}%</span>
+                    </SC.MetadataCellContents>
+                  </td>
+                  <td>
+                    {calculateRatingPercentage(
+                      score.dataset?.dimensions?.find(
+                        ({ id }) =>
+                          id === MetadataQualityDimension.ACCESSIBILITY
+                      )
+                    )}
+                    %
+                  </td>
+                  <td>
+                    {calculateRatingPercentage(
+                      score.dataset?.dimensions?.find(
+                        ({ id }) => id === MetadataQualityDimension.FINDABILITY
+                      )
+                    )}
+                    %
+                  </td>
+                  <td>
+                    {calculateRatingPercentage(
+                      score.dataset?.dimensions?.find(
+                        ({ id }) =>
+                          id === MetadataQualityDimension.INTEROPERABILITY
+                      )
+                    )}
+                    %
+                  </td>
+                  <td>
+                    {calculateRatingPercentage(
+                      score.dataset?.dimensions?.find(
+                        ({ id }) =>
+                          id === MetadataQualityDimension.CONTEXTUALITY
+                      )
+                    )}
+                    %
+                  </td>
+                  <td>
+                    {calculateRatingPercentage(
+                      score.dataset?.dimensions?.find(
+                        ({ id }) => id === MetadataQualityDimension.REUSABILITY
+                      )
+                    )}
+                    %
+                  </td>
+                </tr>
+              ))}
+            </SC.TableBody>
+          )}
         </SC.Table>
         {datasetScores?.aggregations && (
           <SC.RatingSummary>

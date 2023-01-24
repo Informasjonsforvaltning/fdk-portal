@@ -297,84 +297,86 @@ const DatasetPage: FC<Props> = ({
               </th>
             </tr>
           </SC.TableHead>
-          <SC.TableBody>
-            {datasetScore?.dataset.dimensions?.map(dimensionScore => (
-              <Fragment key={dimensionScore.id}>
-                <tr className='section-row'>
-                  <td>
-                    <div>
-                      <SC.DimensionContainer>
-                        <p>
-                          {determineDimensionTranslation(dimensionScore.id)}
-                        </p>
-                        <div
-                          title={determineDimensionDescriptionTranslation(
-                            dimensionScore.id
-                          )}
-                          data-for={`${dimensionScore.id}_tooltip`}
-                        >
-                          <SC.QuestionIcon />
-                        </div>
-                      </SC.DimensionContainer>
+          {datasetScore && (
+            <SC.TableBody>
+              {datasetScore.dataset.dimensions?.map(dimensionScore => (
+                <Fragment key={dimensionScore.id}>
+                  <tr className='section-row'>
+                    <td>
                       <div>
-                        <span>
-                          {calculateRatingPercentage(dimensionScore)}%
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                {dimensionScore.metrics.map(
-                  ({
-                    id: metricId,
-                    score: metricScore,
-                    max_score: metricMaxScore
-                  }) => (
-                    <tr key={metricId}>
-                      <ExpansionPanel
-                        as='td'
-                        id={`expansion-metric-${metricId}`}
-                        expansionIndicator={{
-                          expand: <ExpansionIndicatorDefault />,
-                          collapse: (
-                            <ExpansionIndicatorDefault
-                              isExpanded
-                              aria-expanded='true'
-                              aria-controls={`expansion-metric-${metricId}`}
-                            />
-                          )
-                        }}
-                      >
-                        <ExpansionPanelHead>
-                          <span>
-                            {metricScore > 0 ? (
-                              <SC.CheckIcon />
-                            ) : (
-                              <SC.CrossIcon />
-                            )}
-                          </span>
+                        <SC.DimensionContainer>
                           <p>
-                            {determineMetricTranslation(metricId) ?? metricId}
+                            {determineDimensionTranslation(dimensionScore.id)}
                           </p>
-                        </ExpansionPanelHead>
-                        <ExpansionPanelBody>
-                          <SC.MetricDescription>
-                            {determineMetricDescriptionTranslation(metricId)}
-                          </SC.MetricDescription>
-                          <span>
-                            {translations.formatString(
-                              translations.metadataQualityPage.metricMaxScore,
-                              { metricMaxScore }
+                          <div
+                            title={determineDimensionDescriptionTranslation(
+                              dimensionScore.id
                             )}
+                            data-for={`${dimensionScore.id}_tooltip`}
+                          >
+                            <SC.QuestionIcon />
+                          </div>
+                        </SC.DimensionContainer>
+                        <div>
+                          <span>
+                            {calculateRatingPercentage(dimensionScore)}%
                           </span>
-                        </ExpansionPanelBody>
-                      </ExpansionPanel>
-                    </tr>
-                  )
-                )}
-              </Fragment>
-            ))}
-          </SC.TableBody>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  {dimensionScore.metrics.map(
+                    ({
+                      id: metricId,
+                      score: metricScore,
+                      max_score: metricMaxScore
+                    }) => (
+                      <tr key={metricId}>
+                        <ExpansionPanel
+                          as='td'
+                          id={`expansion-metric-${metricId}`}
+                          expansionIndicator={{
+                            expand: <ExpansionIndicatorDefault />,
+                            collapse: (
+                              <ExpansionIndicatorDefault
+                                isExpanded
+                                aria-expanded='true'
+                                aria-controls={`expansion-metric-${metricId}`}
+                              />
+                            )
+                          }}
+                        >
+                          <ExpansionPanelHead>
+                            <span>
+                              {metricScore > 0 ? (
+                                <SC.CheckIcon />
+                              ) : (
+                                <SC.CrossIcon />
+                              )}
+                            </span>
+                            <p>
+                              {determineMetricTranslation(metricId) ?? metricId}
+                            </p>
+                          </ExpansionPanelHead>
+                          <ExpansionPanelBody>
+                            <SC.MetricDescription>
+                              {determineMetricDescriptionTranslation(metricId)}
+                            </SC.MetricDescription>
+                            <span>
+                              {translations.formatString(
+                                translations.metadataQualityPage.metricMaxScore,
+                                { metricMaxScore }
+                              )}
+                            </span>
+                          </ExpansionPanelBody>
+                        </ExpansionPanel>
+                      </tr>
+                    )
+                  )}
+                </Fragment>
+              ))}
+            </SC.TableBody>
+          )}
         </SC.Table>
       </SC.Section>
       <SC.Section>
