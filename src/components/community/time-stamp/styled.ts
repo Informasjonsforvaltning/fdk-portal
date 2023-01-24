@@ -7,7 +7,7 @@ const TimeStamp = styled.div`
   font-weight: ${theme.fontWeight('FW400')};
   font-size: ${theme.fontSize('FS16', Unit.REM)}
   color: ${theme.colour(Colour.NEUTRAL, 'N60')};
-  line-height: 24px;
+  line-height: 2.4;
   align-items: center;
   text-align: right;
   margin-top: ${theme.spacing('S10')};

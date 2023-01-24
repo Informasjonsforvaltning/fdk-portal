@@ -3,12 +3,12 @@
 .fdk-report-search-publishers {
   background-color: $color-neutral-lighter;
   padding: 1.2em;
-  margin: .5em auto;
+  margin: 0.5em auto;
   border-radius: 5px;
   .fdk-report-search-publishers__header {
     color: $color-neutral-darkest;
     font-size: 1.875rem;
-    line-height: 2.25rem;
+    line-height: 2.25;
     font-weight: 500;
     margin: 0;
   }
@@ -19,5 +19,5 @@
 }
 
 .Select-clear-zone {
-  padding-right: .5rem;
+  padding-right: 0.5rem;
 }

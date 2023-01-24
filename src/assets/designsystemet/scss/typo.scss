@@ -3,219 +3,216 @@
 
 /*  T Y P O G R A P H Y  */
 
-
 h1 {
-    font-size: 2.8rem;
-    font-weight: 600;
-    &.title {
-        margin-bottom:1em
-    }
+  font-size: 2.8rem;
+  font-weight: 600;
+  &.title {
+    margin-bottom: 1em;
+  }
 }
 
 h2 {
-    font-size: 2.4rem;
-    font-weight: 600;
-  }
+  font-size: 2.4rem;
+  font-weight: 600;
+}
 
 h3 {
-    font-size: 2rem;
-    font-weight: 600;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 h4 {
-    font-size: 1.6rem;
-    font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 h5 {
-    @include themify($themes) {
-        color: themed('text-default');
-    }
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: .4rem;
+  @include themify($themes) {
+    color: themed('text-default');
+  }
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
 }
 
 /* React warns against placing div inside a paragraph, so let's create paragraph-like div instead*/
 p {
-    margin: 0 0 2.3rem 0;
+  margin: 0 0 2.3rem 0;
 }
 
 .fdk-ingress {
-    @include font-size(2);
-    font-weight: 400;
-    margin: 0 0 2.8rem 0;
-    word-wrap: break-word;
+  @include font-size(2);
+  font-weight: 400;
+  margin: 0 0 2.8rem 0;
+  word-wrap: break-word;
 }
 
 a {
-    @include themify($themes) {
-        color: themed('text-link');
-    }
-    text-decoration: underline;
+  @include themify($themes) {
+    color: themed('text-link');
+  }
+  text-decoration: underline;
 }
 
 a:hover {
-    text-decoration: none;
-    color: var(--color-neutral-dark);
+  text-decoration: none;
+  color: var(--color-neutral-dark);
 }
 
 .fdk-p-footer {
-    @include font-size(1.5);
-    font-weight: 400;
-    @include themify($themes) {
-        color: themed('text-light');
-    }
-    padding: 0;
-    margin: 0;
+  @include font-size(1.5);
+  font-weight: 400;
+  @include themify($themes) {
+    color: themed('text-light');
+  }
+  padding: 0;
+  margin: 0;
 }
 
 .fdk-p-footer > a {
-    @include themify($themes) {
-        color: themed('text-link');
-    }
+  @include themify($themes) {
+    color: themed('text-link');
+  }
 }
 
 .fdk-external-link {
-    &:after {
-        content: " ";
-        display: inline-block;
-        background-image: url('../img/icon-external-link-sm.svg');
-        background-size: 1em 1em;
-        height: 1em;
-        width: 1em;
-    }
-    
+  &:after {
+    content: ' ';
+    display: inline-block;
+    background-image: url('../img/icon-external-link-sm.svg');
+    background-size: 1em 1em;
+    height: 1em;
+    width: 1em;
+  }
 }
 
 .fdk-title-header {
-    @include font-size(2.0);
-    font-weight: 400;
-    @include themify($themes) {
-        color: themed('text-light');
-    }
-    padding: 0;
-    margin: 0;
+  @include font-size(2);
+  font-weight: 400;
+  @include themify($themes) {
+    color: themed('text-light');
+  }
+  padding: 0;
+  margin: 0;
 }
 
-
 .fdk-external-link2 {
-    &:after {
-        content: " ";
-        display: inline-block;
-        background-image: url('../img/icon-external-link-sm.svg');
-        background-size: 1em 1em;
-        height: 1em;
-        width: 1em;
-    }
-    
+  &:after {
+    content: ' ';
+    display: inline-block;
+    background-image: url('../img/icon-external-link-sm.svg');
+    background-size: 1em 1em;
+    height: 1em;
+    width: 1em;
+  }
 }
 
 .fdk-user {
-    text-align: center !important;
-    align-items: center !important;
-    &:before {
-        content: " ";
-        display: inline-block;
-        background-repeat: repeat-y;
-        background-image: url('../img/icon-user-md.svg');
-        background-size: 2em 2em;
-        height: 2em;
-        width: 2em;
-        top: 10px;
-        right: 10px;
-        position: relative;
-    }
-    
+  text-align: center !important;
+  align-items: center !important;
+  &:before {
+    content: ' ';
+    display: inline-block;
+    background-repeat: repeat-y;
+    background-image: url('../img/icon-user-md.svg');
+    background-size: 2em 2em;
+    height: 2em;
+    width: 2em;
+    top: 10px;
+    right: 10px;
+    position: relative;
+  }
 }
 
 .fdk-user-button {
-position: relative;
-top: -7px;
+  position: relative;
+  top: -7px;
 }
 
 .fdk-textregular {
-	font-weight: 400;
+  font-weight: 400;
 }
 
 .fdk-strong-virksomhet {
-    font-weight: 600;
-    letter-spacing: 0.03rem;
-    margin-right: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+  margin-right: 10px;
 }
 
 .fdk-national {
-    letter-spacing: 0.03rem;
+  letter-spacing: 0.03rem;
 }
 
 .fdk-p-path {
+  @include themify($themes) {
+    color: themed('text-light');
+  }
+  font-weight: 300;
+  margin-bottom: 0.5em;
+  padding: 0.5em 0;
+  @include themify($themes) {
+    border-bottom: 1px solid themed('color-neutral-light');
+  }
+  a {
     @include themify($themes) {
-        color: themed('text-light');
+      color: themed('text-link');
     }
-    font-weight: 300;
-    margin-bottom: .5em;
-    padding: .5em 0;
-    @include themify($themes) {
-        border-bottom: 1px solid themed('color-neutral-light');
+    &:hover {
+      text-decoration: underline;
     }
-    a {
-        @include themify($themes) {
-            color: themed('text-link');
-        }
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+  }
 }
 
 .fdk-detail-date {
-    @include themify($themes) {
-        color: themed('text-light');
-    }
-    font-size: 1.4rem;
+  @include themify($themes) {
+    color: themed('text-light');
+  }
+  font-size: 1.4rem;
 }
 
 /* TEXT SIZES */
 .fdk-text-size-15 {
-    @include font-size(1.5);
+  @include font-size(1.5);
 }
 
 .fdk-text-size-small {
-    @include font-size(1.4);
+  @include font-size(1.4);
 }
 
 .fdk-text-strong {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .fdk-text-extra-strong {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .fdk-text-size-medium {
-    @include font-size(2);
+  @include font-size(2);
 }
 
 .fdk-text-line-medium {
-    line-height: 2em;
+  line-height: 2;
 }
 
 /*  F O N T   A W E S O M E  */
 
 .fdk-fa-right {
-	margin-left: .5em;
+  margin-left: 0.5em;
 }
 
 .fdk-fa-left {
-	margin-right: .5em;
+  margin-right: 0.5em;
 }
 
-.fdk-label-default:hover > .fdk-fa-button { /* Hovering for labels with font awesome icons */
-    @include themify($themes) {
-        color: themed('button-text-secondary');
-    }
+.fdk-label-default:hover > .fdk-fa-button {
+  /* Hovering for labels with font awesome icons */
+  @include themify($themes) {
+    color: themed('button-text-secondary');
+  }
 }
 
-.fdk-label-default:active > .fdk-fa-button { /* Hovering for labels with font awesome icons */
-	color: #fff;
+.fdk-label-default:active > .fdk-fa-button {
+  /* Hovering for labels with font awesome icons */
+  color: #fff;
 }

@@ -1,13 +1,13 @@
 @mixin fdk-shadow--regular {
-  box-shadow: 0 3px 12px rgba(0,0,0, 0.15);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
 @mixin fdk-grow--regular {
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -ms-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   &:hover {
     transform: scale(1.05);
   }
@@ -15,23 +15,26 @@
 
 @mixin font-size($sizeValue: 1.6) {
   font-size: $sizeValue + rem;
-  line-height: 1.6em;
+  line-height: 1.6;
 }
 
 @mixin themify($themes: $themes) {
   @each $theme, $map in $themes {
-
     .theme-#{$theme} & {
       $theme-map: () !global;
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), '#{$key}');
-        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
       }
 
       @content;
       $theme-map: null !global;
     }
-
   }
 }
 

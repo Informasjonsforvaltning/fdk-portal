@@ -7,7 +7,6 @@ body {
   font-family: 'heebo', 'helvetica', sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
-  line-height: 1.6em;
   @include themify($themes) {
     color: themed('color-neutral-darkest');
     background-color: themed('color-neutral-lightest');
@@ -47,7 +46,6 @@ body {
 
 .fdk-button {
   font-size: 1.5rem;
-  line-height: 1.5rem;
   box-shadow: 0 2px 4px rgba(45, 55, 65, 0.2);
   padding: 0.8em 0.9em;
   &:active,
@@ -57,7 +55,7 @@ body {
 }
 
 .fdk-button-small {
-  line-height: 1.6rem;
+  line-height: 1.6;
   border-radius: 0;
   box-shadow: none;
   padding: 0.3em 0 0 0;

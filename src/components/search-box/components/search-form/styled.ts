@@ -55,7 +55,6 @@ const SearchForm = styled.form`
     font-size: 0.7em;
     font-weight: 300;
     padding: 0.6em 1em;
-    line-height: 1.2;
 
     &:hover {
       background-color: ${({ theme: t }) => t.extendedColors.neutralDarkest};
