@@ -10,5 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm install 
-      - run: npm pa11y-ci https://www.nature.com/
+      - run: npm run pa11y-ci https://www.nature.com/
 
