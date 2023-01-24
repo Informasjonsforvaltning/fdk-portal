@@ -1,13 +1,8 @@
 {
+    "#": "Automated accessibility testing ~ https://github.com/pa11y/pa11y-ci",
+  
     "defaults": {
-        "chromeLaunchConfig": {
-            "args": [
-                "--no-sandbox"
-            ]
-        }
-    },
-    "urls": [
-        "https://pa11y.org/",
-        "https://pa11y.org/contributing"
-    ]
+        "standard": "WCAG2A",
+        "ignore": [ "notice", "warning" ]
+    }
 }
