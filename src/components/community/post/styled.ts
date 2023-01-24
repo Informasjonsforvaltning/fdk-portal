@@ -8,7 +8,7 @@ const PostLink = styled.a`
 
   & > h5 {
     font-weight: ${theme.fontWeight('FW700')};
-    line-height: 18px;
+    line-height: 1.8;
     display: flex;
     align-items: center;
     color: ${theme.colour(Colour.NEUTRAL, 'N60')};

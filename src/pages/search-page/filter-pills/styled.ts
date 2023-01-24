@@ -19,7 +19,7 @@ const ClearButton = styled.button`
   border-radius: 2px;
   padding: 0.25em 0.4em;
   font-size: ${themeFDK.fontSize('FS14', Unit.REM)};
-  line-height: 1.6em;
+  line-height: 1.6;
   margin: 0.5em 0 1.5em 0;
 `;
 

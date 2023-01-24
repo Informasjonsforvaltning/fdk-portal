@@ -40,7 +40,6 @@ const MetadataQuality = styled.div`
 
   & > p {
     font-size: 2rem;
-    line-height: 1;
   }
 
   ${onMobileView} {

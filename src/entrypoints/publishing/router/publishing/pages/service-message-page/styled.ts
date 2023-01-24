@@ -28,7 +28,7 @@ const Title = styled.h1`
 
 const Description = styled.div`
   font-size: ${theme.fontSize('FS20', Unit.EM)};
-  line-height: ${theme.spacing('S16', Unit.EM)};
+  line-height: 1.6;
   margin-bottom: ${theme.spacing('S24')};
 `;
 

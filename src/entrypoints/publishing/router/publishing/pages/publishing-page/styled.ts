@@ -252,7 +252,6 @@ const InformationBox = styled.div`
 
   & > p {
     margin-top: ${theme.spacing('S12')};
-    line-height: 1.5;
   }
 
   & > ul {

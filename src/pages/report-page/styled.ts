@@ -18,7 +18,6 @@ const ClearButton = styled.button`
   background-color: ${({ theme }) => theme.extendedColors.neutralLighter};
   border: none;
   font-size: ${themeFDK.fontSize('FS14', Unit.REM)};
-  line-height: 1.5rem;
   box-shadow: 0 2px 4px rgba(45, 55, 65, 0.2);
   padding: 0.8em 0.9em;
 `;
