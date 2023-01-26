@@ -42,7 +42,6 @@ import {
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
   PATHNAME_EVENTS,
-  PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_PUBLIC_SERVICES_AND_EVENTS
 } from '../../constants/constants';
@@ -152,7 +151,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const holdsRequirement = publicService?.holdsRequirement ?? [];
   const follows = publicService?.follows ?? [];
   const hasLegalResource = publicService?.hasLegalResource ?? [];
-  const hasParticipation = publicService?.hasParticipation ?? [];
   const hasInput = publicService?.hasInput ?? [];
   const hasChannel = publicService?.hasChannel ?? [];
   const hasCost = publicService?.hasCost ?? [];
@@ -168,6 +166,115 @@ const PublicServiceDetailsPage: FC<Props> = ({
     ...relation.map(({ uri }) => uri).filter(Boolean)
   ];
   const spatial = publicService?.spatial ?? [];
+
+  const participatinAgentTest = [
+    {
+      title: {
+        en: 'Participating org. name.',
+        nb: 'Participating org. navn.',
+        nn: 'Participating org. namn.'
+      },
+      orgType: {
+        uri: 'https://raw.githubusercontent.com/Informasjonsforvaltning/cpsv-ap-no/develop/examples/exDeltagelseDatatilbyder.ttl',
+        code: '1234',
+        prefLabel: {
+          en: 'General public services'
+        }
+      },
+      spatial: ['liste', 'med', 'strings'],
+      homepage: ['google.com', 'voss.kommune.no'],
+      playsRole: [
+        {
+          uri: 'google.com',
+          description: {
+            en: 'Participating agent name.',
+            nb: 'Participating agent navn.',
+            nn: 'Participating agent namn.'
+          },
+          role: {
+            uri: 'test',
+            prefLabel: {
+              en: 'General public services'
+            }
+          }
+        },
+        {
+          uri: 'google.com',
+          description: {
+            en: 'Participating agent name.',
+            nb: 'Participating agent navn.',
+            nn: 'Participating yolo namn.'
+          },
+          role: {
+            uri: 'test',
+            prefLabel: {
+              en: 'General yeye services'
+            }
+          }
+        }
+      ],
+      name: {
+        en: 'Participating agent name.',
+        nb: 'Participating agent navn.',
+        nn: 'Participating agent namn.'
+      }
+    },
+    {
+      title: {
+        en: 'Participating org. name.',
+        nb: 'Participating org. navn.',
+        nn: 'Participating org. namn.'
+      },
+      orgType: {
+        uri: 'https://raw.githubusercontent.com/Informasjonsforvaltning/cpsv-ap-no/develop/examples/exDeltagelseDatatilbyder.ttl',
+        code: '1234',
+        prefLabel: {
+          en: 'General public services'
+        }
+      },
+      spatial: [
+        'http://publications.europa.eu/resource/authority/country/NOR',
+        'https://data.geonorge.no/administrativeEnheter/kommune/id/172833',
+        'https://data.geonorge.no/administrativeEnheter/kommune/id/172833'
+      ],
+      homepage: ['google.com', 'voss.kommune.no'],
+      playsRole: [
+        {
+          uri: 'google.com',
+          description: {
+            en: 'Participating agent name.',
+            nb: 'Participating agent navn.',
+            nn: 'Participating agent namn.'
+          },
+          role: {
+            uri: 'test',
+            prefLabel: {
+              en: 'General public services'
+            }
+          }
+        },
+        {
+          uri: 'google.com',
+          description: {
+            en: 'Participating agent name.',
+            nb: 'Participating agent navn.',
+            nn: 'Participating agent namn.'
+          },
+          role: {
+            uri: 'test',
+            prefLabel: {
+              en: 'General public services'
+            }
+          }
+        }
+      ],
+      name: {
+        en: 'Participating agent name.',
+        nb: 'Participating agent navn.',
+        nn: 'Participating agent namn.'
+      }
+    }
+  ];
 
   const publicServicesMap = publicServices?.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
@@ -482,59 +589,94 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </List>
             </ContentSection>
           )}
-          {hasParticipation.length > 0 && (
+          {participatinAgentTest.length > 0 && (
             <ContentSection
-              id='hasParticipation'
+              id='participatingAgents'
               title={
                 translations.detailsPage.sectionTitles.publicService
                   .participation
               }
             >
-              <KeyValueList>
-                {hasParticipation.map(
-                  (
-                    {
-                      description: hasParticipationDescription,
-                      role,
-                      agents = []
-                    },
-                    index
-                  ) =>
-                    hasParticipationDescription && (
-                      <KeyValueListItem
-                        key={`${translate(
-                          hasParticipationDescription
-                        )}-${index}`}
-                        property={
-                          <>
-                            {agents.map(
-                              (
-                                { uri, identifier, name, title: agentTitle },
-                                agentIndex
-                              ) => (
-                                <SC.ListItemValue key={`${uri}-${agentIndex}`}>
-                                  <Link
-                                    as={RouterLink}
-                                    to={`${PATHNAME_ORGANIZATIONS}/${identifier}`}
-                                  >
-                                    {translate(agentTitle) ?? name}
-                                  </Link>
-                                </SC.ListItemValue>
-                              )
-                            )}
-                            <SC.LightWeightLabel>
-                              {translate(hasParticipationDescription)}
-                            </SC.LightWeightLabel>
-                          </>
-                        }
-                        value={role
-                          .map(({ prefLabel }) => translate(prefLabel))
-                          .filter(Boolean)
-                          .join(', ')}
-                      />
-                    )
-                )}
-              </KeyValueList>
+              {participatinAgentTest.map(
+                (
+                  {
+                    title: agentTitle,
+                    orgType,
+                    spatial: agentSpatial,
+                    homepage: agentHomepage,
+                    playsRole,
+                    name: orgName
+                  },
+                  index
+                ) => (
+                  <div>
+                    {agentTitle && (
+                      <SC.KeyValueListHeader>
+                        {translate(agentTitle)}
+                      </SC.KeyValueListHeader>
+                    )}
+
+                    {orgType?.prefLabel && (
+                      <SC.KeyValueListSubHeader>
+                        {translate(orgType.prefLabel)}
+                      </SC.KeyValueListSubHeader>
+                    )}
+
+                    <KeyValueList>
+                      {orgName && (
+                        <KeyValueListItem
+                          property={translations.name}
+                          value={translate(orgName)}
+                        />
+                      )}
+                      {agentSpatial && (
+                        <KeyValueListItem
+                          key={`agentSpatial-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .spatialCoverage
+                          }
+                          value={agentSpatial.map(uri =>
+                            administrativeUnitsMap[uri] ? (
+                              <Link key={uri} href={uri} external>
+                                {translate(administrativeUnitsMap[uri]?.name) ||
+                                  uri}
+                              </Link>
+                            ) : (
+                              `${uri} `
+                            )
+                          )}
+                        />
+                      )}
+
+                      {agentHomepage && (
+                        <KeyValueListItem
+                          key={`agentHomepage-${index}`}
+                          property={
+                            translations.detailsPage.sectionTitles.publicService
+                              .homepage
+                          }
+                          value={agentHomepage
+                            .map(uri => (
+                              <Link key={uri} href={uri} external>
+                                {uri}
+                              </Link>
+                            ))
+                            .filter(Boolean)}
+                        />
+                      )}
+
+                      {playsRole &&
+                        playsRole.map(value => (
+                          <KeyValueListItem
+                            property={translate(value.role.prefLabel)}
+                            value={translate(value.description)}
+                          />
+                        ))}
+                    </KeyValueList>
+                  </div>
+                )
+              )}
             </ContentSection>
           )}
 
