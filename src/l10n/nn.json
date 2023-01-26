@@ -750,8 +750,7 @@
         "serviceChannel": "Tenestekanal",
         "address": "Adresse",
         "webAddress": "Nettaddresse",
-        "competentAuthority": "Kompetent organ",
-        "searchWords": "Søkeord"
+        "competentAuthority": "Kompetent organ"
       },
       "event": {
         "description": "Beskriving",

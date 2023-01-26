@@ -716,7 +716,7 @@
       "publicService": {
         "description": "Beskrivelse",
         "usage": "Bruk av tjenesten",
-        "keywords": "Nøkkelord",
+        "keywords": "Søkeord",
         "relatedServices": "Relaterte tjenester",
         "relatedEvents": "Relaterte hendelser",
         "conceptReferences": "Begreper brukt i denne tjenesten",
@@ -750,8 +750,7 @@
         "serviceChannel": "Tjenestekanal",
         "address": "Adresse",
         "webAddress": "Nettaddresse",
-        "competentAuthority": "Kompetent organ",
-        "searchWords": "Søkeord"
+        "competentAuthority": "Kompetent organ"
       },
       "event": {
         "description": "Beskrivelse",
