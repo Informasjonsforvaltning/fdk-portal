@@ -38,6 +38,7 @@ import {
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
+  PATHNAME_ACCESSIBILITY,
   PATHNAME_GUIDANCE,
   PATHNAME_GUIDANCE_METADATA,
   PATHNAME_SPARQL,
@@ -55,6 +56,7 @@ import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-pa
 import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import InformationPage from '../pages/cms-information-page';
+import FancyInformationPage from '../pages/strapi-fancy-article-page';
 import { parseSearchParams } from '../lib/location-history-helper';
 import routes from '../routes';
 
@@ -107,7 +109,8 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_DATASETS]: InformationPage,
     [PATHNAME_ABOUT_DATA_SERVICES]: InformationPage,
     [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
-    [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage
+    [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage,
+    [PATHNAME_ACCESSIBILITY]: FancyInformationPage
   };
 
   return (

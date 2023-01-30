@@ -20,7 +20,8 @@ import {
   PATHNAME_ABOUT_DATASETS,
   PATHNAME_ABOUT_DATA_SERVICES,
   PATHNAME_ABOUT_CONCEPTS,
-  PATHNAME_ABOUT_INFORMATIONMODELS
+  PATHNAME_ABOUT_INFORMATIONMODELS,
+  PATHNAME_ACCESSIBILITY
 } from '../../constants/constants';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import DataServiceBreadcrumb from './data-service-breadcrumb';
@@ -127,6 +128,10 @@ const routes = [
   {
     path: PATHNAME_ABOUT_INFORMATIONMODELS,
     breadcrumb: 'Om informasjonsmodellkatalogen'
+  },
+  {
+    path: PATHNAME_ACCESSIBILITY,
+    breadcrumb: 'Tilgjengelighet'
   }
 ];
 
@@ -137,7 +142,7 @@ const options = {
 
 // map & render your breadcrumb components however you want.
 // each `breadcrumb` has the props `key`, `location`, and `match` included!
-const PureBreadcrumbs = ({ breadcrumbs }) => {
+function PureBreadcrumbs({ breadcrumbs }) {
   if (breadcrumbs && breadcrumbs.length > 1) {
     return (
       <div className='fdk-p-path'>
@@ -160,6 +165,6 @@ const PureBreadcrumbs = ({ breadcrumbs }) => {
     );
   }
   return null;
-};
+}
 
 export const Breadcrumbs = withBreadcrumbs(routes, options)(PureBreadcrumbs);
