@@ -10,7 +10,7 @@ const ContainerHeader = styled.h4`
   background-color: ${theme.colour(Colour.NEUTRAL, 'N15')};
   font-weight: ${theme.fontWeight('FW700')};
   font-size: ${theme.fontSize('FS20', Unit.REM)}
-  line-height: ${theme.spacing('S24')};
+  line-height: 2.4;
   font-family: ${theme.fontFamily()};
 `;
 

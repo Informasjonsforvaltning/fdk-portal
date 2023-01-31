@@ -56,7 +56,6 @@ const TitleWrapper = styled.div`
 const Title = styled.h1`
   display: flex inline;
   margin: 0;
-  line-height: 42px;
   font-size: ${theme.fontSize('FS40', Unit.REM)};
   font-weight: bold;
 
@@ -74,7 +73,6 @@ const Title = styled.h1`
   }
 
   ${onMobileView} {
-    line-height: 24px;
     font-size: ${theme.fontSize('FS24', Unit.REM)};
     white-space: normal;
     word-wrap: break-word;

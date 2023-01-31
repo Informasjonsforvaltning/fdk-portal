@@ -8,7 +8,7 @@ export default css`
     height: 100%;
   }
 
-  p {
+  body * {
     line-height: 1.5;
   }
 

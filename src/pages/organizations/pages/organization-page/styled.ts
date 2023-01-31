@@ -59,7 +59,7 @@ const OrganizationInformation = styled.div`
 
     display: flex;
     padding: ${theme.spacing('S10')} 0;
-    line-height: 26px;
+    line-height: 2.6;
 
     &:first-of-type {
       padding-top: 0;
@@ -81,7 +81,6 @@ const OrganizationInformation = styled.div`
 
       & a > div {
         align-items: center;
-        line-height: 1.2;
       }
     }
   }

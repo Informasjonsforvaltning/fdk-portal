@@ -15,7 +15,6 @@ const Summary = styled.div`
 const Title = styled.h4`
   flex: 1;
   margin: 0;
-  line-height: 1.5;
   font-size: 1.6rem;
   font-weight: 600;
   color: ${({ theme }) => theme.extendedColors.textDefault};

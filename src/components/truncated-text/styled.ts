@@ -27,7 +27,6 @@ const TextContent = styled.div<textContentProps>`
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  line-height: ${({ lineHeight }) => lineHeight || 20}px;
 
   ${({ truncate, lineHeight, visibleLines, entity, customColor }) =>
     truncate &&
