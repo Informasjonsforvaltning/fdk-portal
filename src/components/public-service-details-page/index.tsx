@@ -157,6 +157,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
   const contactPoints = publicService?.contactPoint || [];
+  const participatingAgents = publicService?.participatingAgents || [];
   const datasetsUris =
     (publicService?.isDescribedAt
       ?.map(({ uri }) => uri)
@@ -166,115 +167,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
     ...relation.map(({ uri }) => uri).filter(Boolean)
   ];
   const spatial = publicService?.spatial ?? [];
-
-  const participatinAgentTest = [
-    {
-      title: {
-        en: 'Participating org. name.',
-        nb: 'Participating org. navn.',
-        nn: 'Participating org. namn.'
-      },
-      orgType: {
-        uri: 'https://raw.githubusercontent.com/Informasjonsforvaltning/cpsv-ap-no/develop/examples/exDeltagelseDatatilbyder.ttl',
-        code: '1234',
-        prefLabel: {
-          en: 'General public services'
-        }
-      },
-      spatial: ['liste', 'med', 'strings'],
-      homepage: ['google.com', 'voss.kommune.no'],
-      playsRole: [
-        {
-          uri: 'google.com',
-          description: {
-            en: 'Participating agent name.',
-            nb: 'Participating agent navn.',
-            nn: 'Participating agent namn.'
-          },
-          role: {
-            uri: 'test',
-            prefLabel: {
-              en: 'General public services'
-            }
-          }
-        },
-        {
-          uri: 'google.com',
-          description: {
-            en: 'Participating agent name.',
-            nb: 'Participating agent navn.',
-            nn: 'Participating yolo namn.'
-          },
-          role: {
-            uri: 'test',
-            prefLabel: {
-              en: 'General yeye services'
-            }
-          }
-        }
-      ],
-      name: {
-        en: 'Participating agent name.',
-        nb: 'Participating agent navn.',
-        nn: 'Participating agent namn.'
-      }
-    },
-    {
-      title: {
-        en: 'Participating org. name.',
-        nb: 'Participating org. navn.',
-        nn: 'Participating org. namn.'
-      },
-      orgType: {
-        uri: 'https://raw.githubusercontent.com/Informasjonsforvaltning/cpsv-ap-no/develop/examples/exDeltagelseDatatilbyder.ttl',
-        code: '1234',
-        prefLabel: {
-          en: 'General public services'
-        }
-      },
-      spatial: [
-        'http://publications.europa.eu/resource/authority/country/NOR',
-        'https://data.geonorge.no/administrativeEnheter/kommune/id/172833',
-        'https://data.geonorge.no/administrativeEnheter/kommune/id/172833'
-      ],
-      homepage: ['google.com', 'voss.kommune.no'],
-      playsRole: [
-        {
-          uri: 'google.com',
-          description: {
-            en: 'Participating agent name.',
-            nb: 'Participating agent navn.',
-            nn: 'Participating agent namn.'
-          },
-          role: {
-            uri: 'test',
-            prefLabel: {
-              en: 'General public services'
-            }
-          }
-        },
-        {
-          uri: 'google.com',
-          description: {
-            en: 'Participating agent name.',
-            nb: 'Participating agent navn.',
-            nn: 'Participating agent namn.'
-          },
-          role: {
-            uri: 'test',
-            prefLabel: {
-              en: 'General public services'
-            }
-          }
-        }
-      ],
-      name: {
-        en: 'Participating agent name.',
-        nb: 'Participating agent navn.',
-        nn: 'Participating agent namn.'
-      }
-    }
-  ];
 
   const publicServicesMap = publicServices?.reduce(
     (previous, current) => ({ ...previous, [current.uri]: current }),
@@ -589,7 +481,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </List>
             </ContentSection>
           )}
-          {participatinAgentTest.length > 0 && (
+          {participatingAgents.length > 0 && (
             <ContentSection
               id='participatingAgents'
               title={
@@ -597,7 +489,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                   .participation
               }
             >
-              {participatinAgentTest.map(
+              {participatingAgents.map(
                 (
                   {
                     title: agentTitle,
