@@ -39,7 +39,7 @@
     "prepare": "husky install",
     "generate:types": "graphql-codegen",
     "generate:sitemap": "NODE_PATH=./src npx -s sh ts-node --project tsconfig.sitemap.json ./sitemap-builder.ts",
-    "pa11y-ci":  "pa11y-ci --sitemap http://data.norge.no/sitemap.xml --sitemap-find https://data.norge.no --sitemap-replace https://staging.fellesdatakatalog.digdir.no"
+    "pa11y-ci": "pa11y-ci --sitemap http://data.norge.no/sitemap.xml --sitemap-find https://data.norge.no --sitemap-replace https://staging.fellesdatakatalog.digdir.no"
   },
   "config": {
     "commitizen": {
@@ -55,7 +55,7 @@
     "@fellesdatakatalog/alert": "^0.3.6",
     "@fellesdatakatalog/button": "^0.2.10",
     "@fellesdatakatalog/expansion-panel": "^0.2.7",
-    "@fellesdatakatalog/external-footer": "^0.2.1",
+    "@fellesdatakatalog/external-footer": "^0.3.0",
     "@fellesdatakatalog/icons": "^0.8.2",
     "@fellesdatakatalog/internal-footer": "^0.3.18",
     "@fellesdatakatalog/link": "^0.2.15",
