@@ -262,7 +262,8 @@
     "twitter": "Felles datakatalog på Twitter",
     "footerText": "Digitaliseringsdirektoratet forvaltar Felles Datakatalog.",
     "contactTitle": "Kontakt",
-    "privacyStatement": "Personvernerklæring"
+    "privacyStatement": "Personvernerklæring",
+    "accessibility": "Tilgjengeligheitserklæring"
   },
   "sort": {
     "by": "Sorter på",
