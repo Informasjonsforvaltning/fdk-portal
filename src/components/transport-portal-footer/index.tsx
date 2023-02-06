@@ -45,6 +45,9 @@ const TransportPortalFooter: FC<Props> = () => (
           <Link href='https://www.digdir.no/om-oss/informasjonskapsler/707'>
             {translations.footer.informationCookies}
           </Link>
+          <Link href='https://uustatus.no/nb/erklaringer/publisert/8020b962-b706-4cdf-ab8b-cdb5f480a696'>
+            {translations.footer.accessibility}
+          </Link>
         </SC.Column>
       </SC.Content>
     </SC.Wrapper>
