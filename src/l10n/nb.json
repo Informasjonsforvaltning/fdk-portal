@@ -262,7 +262,8 @@
     "twitter": "Felles datakatalog på Twitter",
     "footerText": "Digitaliseringsdirektoratet forvalter Felles Datakatalog.",
     "contactTitle": "Kontakt",
-    "privacyStatement": "Personvernerklæring"
+    "privacyStatement": "Personvernerklæring",
+    "accessibility": "Tilgjengelighetserklæring"
   },
   "sort": {
     "by": "Sorter på",
@@ -726,7 +727,7 @@
         "follows": "Saksbehandlingsregler",
         "legalResources": "Hjemler",
         "documentation": "Dokumentasjonskrav",
-        "participation": "Deltagende",
+        "participation": "Deltakende",
         "channel": "Tjenestekanal",
         "cost": "Gebyr",
         "processingTime": "Behandlingstid",
@@ -750,7 +751,9 @@
         "serviceChannel": "Tjenestekanal",
         "address": "Adresse",
         "webAddress": "Nettaddresse",
-        "competentAuthority": "Kompetent organ"
+        "competentAuthority": "Kompetent organ",
+        "homepage": "Hjemmeside",
+        "spatialCoverage": "Dekningsområde"
       },
       "event": {
         "description": "Beskrivelse",

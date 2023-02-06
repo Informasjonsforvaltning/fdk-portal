@@ -173,6 +173,26 @@ export interface Organization {
   prefLabel: Partial<TextLanguage>;
 }
 
+export interface Agent {
+  homepage?: string[];
+  identifier?: string;
+  name?: Partial<TextLanguage>;
+  orgPath?: string;
+  orgType?: PublicServiceLanguage;
+  playsRole: PlaysRole[];
+  spatial: string[];
+  title?: Partial<TextLanguage>;
+  uri: string;
+}
+
+export interface PlaysRole {
+  agent: string;
+  description?: Partial<TextLanguage>;
+  identifier: string;
+  role: PublicServiceType;
+  uri: string;
+}
+
 export interface Harvest {
   firstHarvested: string;
   lastHarvested: string;
@@ -409,8 +429,8 @@ export interface PublicService {
   contactPoint?: PublicServiceContactPoint[];
   associatedBroaderTypesByEvents?: string[];
   spatial: string[];
+  participatingAgents: Partial<Agent>[];
 }
-
 export interface PublicServiceAddress {
   streetAddress: string;
   locality: string;
