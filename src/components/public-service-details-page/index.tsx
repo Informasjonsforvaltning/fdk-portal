@@ -156,7 +156,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const hasCost = publicService?.hasCost ?? [];
   const processingTime = publicService?.processingTime;
   const relation = publicService?.relation || [];
-  const contactPoints = publicService?.contactPoint || [];
+  const contactPoints = publicService?.contactPoint ?? [];
   const participatingAgents = publicService?.participatingAgents || [];
   const datasetsUris =
     (publicService?.isDescribedAt
