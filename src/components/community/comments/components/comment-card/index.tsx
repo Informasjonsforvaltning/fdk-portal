@@ -132,33 +132,34 @@ const CommentCard: FC<Props> = ({
         </SC.ButtonContainer>
 
         <SC.ButtonContainer>
-          {currentUser?.uid === comment.user.uid && currentMode === Mode.NONE && (
-            <>
-              <Buttons.UnderlineButton
-                variant={Variant.TERTIARY}
-                onClick={() => {
-                  setCurrentMode(Mode.UPDATE);
-                }}
-              >
-                {translations.community.comments.buttons.edit}
-              </Buttons.UnderlineButton>
-              <Buttons.UnderlineButton
-                variant={Variant.TERTIARY}
-                onClick={() =>
-                  deleteComment({
-                    id: entityId,
-                    post: comment,
-                    invalidatedPages: Array.from(
-                      { length: comment.page ?? 1 },
-                      (_, i) => i + 1
-                    )
-                  })
-                }
-              >
-                {translations.community.comments.buttons.delete}
-              </Buttons.UnderlineButton>
-            </>
-          )}
+          {currentUser?.uid === comment.user.uid &&
+            currentMode === Mode.NONE && (
+              <>
+                <Buttons.UnderlineButton
+                  variant={Variant.TERTIARY}
+                  onClick={() => {
+                    setCurrentMode(Mode.UPDATE);
+                  }}
+                >
+                  {translations.community.comments.buttons.edit}
+                </Buttons.UnderlineButton>
+                <Buttons.UnderlineButton
+                  variant={Variant.TERTIARY}
+                  onClick={() =>
+                    deleteComment({
+                      id: entityId,
+                      post: comment,
+                      invalidatedPages: Array.from(
+                        { length: comment.page ?? 1 },
+                        (_, i) => i + 1
+                      )
+                    })
+                  }
+                >
+                  {translations.community.comments.buttons.delete}
+                </Buttons.UnderlineButton>
+              </>
+            )}
         </SC.ButtonContainer>
       </SC.CommentActions>
       {croppedReplies && (
