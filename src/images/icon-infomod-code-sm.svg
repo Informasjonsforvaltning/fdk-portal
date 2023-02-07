@@ -1,1 +1,6 @@
-<svg id="outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><defs><style>.cls-1{fill:#2d3741;}</style></defs><rect class="cls-1" x="3" y="3" width="10" height="10" rx="1"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <defs>
+        <style>.cls-1{fill:#2d3741;}</style>
+    </defs>
+    <rect class="cls-1" x="3" y="3" width="10" height="10" rx="1"/>
+</svg>
