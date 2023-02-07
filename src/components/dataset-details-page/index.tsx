@@ -139,8 +139,9 @@ const DatasetDetailsPage: FC<Props> = ({
   useEffect(() => {
     if (isMounted) {
       const conceptIdentifiers =
-        dataset?.subject?.map(({ identifier }) => identifier).filter(Boolean) ??
-        [];
+        dataset?.subject
+          ?.map(({ identifier, uri }) => identifier || uri)
+          .filter(Boolean) ?? [];
 
       if (conceptIdentifiers.length > 0) {
         getConcepts({
