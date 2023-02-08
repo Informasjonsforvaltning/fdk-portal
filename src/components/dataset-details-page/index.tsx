@@ -290,6 +290,24 @@ const DatasetDetailsPage: FC<Props> = ({
     return accessServices;
   };
 
+  const uriNotInRefConcepts = (uri: string | undefined) => {
+    if (!uri) {
+      return true;
+    }
+    return !referencedConcepts.find(
+      concept => concept.uri === uri || concept.identifier === uri
+    );
+  };
+
+  const subjectsNotInRefConcepts =
+    dataset?.subject
+      ?.filter(Boolean)
+      ?.filter(
+        subject =>
+          uriNotInRefConcepts(subject.uri) ||
+          uriNotInRefConcepts(subject.identifier)
+      ) ?? [];
+
   const [showSamplePreview, setShowSamplePreview] = useState(false);
 
   const handleShowSamplePreview = (show: boolean) => {
@@ -691,6 +709,21 @@ const DatasetDetailsPage: FC<Props> = ({
                         </Link>
                       }
                       value={translate(definition?.text)}
+                    />
+                  )
+              )}
+
+              {subjectsNotInRefConcepts.map(
+                ({ uri, prefLabel, definition }, index) =>
+                  uri && (
+                    <KeyValueListItem
+                      key={`concept-${index}`}
+                      property={
+                        <Link href={uri} external>
+                          {prefLabel ? translate(prefLabel) : uri}
+                        </Link>
+                      }
+                      value={definition ? translate(definition) : ''}
                     />
                   )
               )}
