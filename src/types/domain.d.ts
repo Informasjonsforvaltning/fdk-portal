@@ -1075,3 +1075,24 @@ export interface FilterSearchOption {
   value: string;
   label: string;
 }
+
+export interface AiProject {
+  id: number;
+  prosjekteier: string;
+  prosjekttitel: string;
+  departement?: string;
+  eiertype?: string;
+  kontaktperson?: string;
+  beskrivelseAvProsjekt?: string;
+  formaalMedProsjekt?: string;
+  prosjektstart?: number;
+  prosjektslutt?: number;
+  tilknyttedeOrganisasjoner?: string;
+  brukAvInnleide?: string;
+  lenkeTilProsjekt?: string;
+  status?: string;
+  typeData?: string;
+  datakilde?: string;
+  modellutvikling?: string;
+  klassifisering?: string;
+}

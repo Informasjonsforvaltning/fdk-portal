@@ -20,7 +20,8 @@ import {
   PATHNAME_ABOUT_DATASETS,
   PATHNAME_ABOUT_DATA_SERVICES,
   PATHNAME_ABOUT_CONCEPTS,
-  PATHNAME_ABOUT_INFORMATIONMODELS
+  PATHNAME_ABOUT_INFORMATIONMODELS,
+  PATHNAME_AI
 } from '../../constants/constants';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import DataServiceBreadcrumb from './data-service-breadcrumb';
@@ -114,19 +115,23 @@ const routes = [
   },
   {
     path: PATHNAME_ABOUT_DATASETS,
-    breadcrumb: 'Om datasettkatalogen'
+    breadcrumb: () => <PathNameBreadcrumb pathName='aboutDatasets' />
   },
   {
     path: PATHNAME_ABOUT_DATA_SERVICES,
-    breadcrumb: 'Om API-katalogen'
+    breadcrumb: () => <PathNameBreadcrumb pathName='aboutDataServices' />
   },
   {
     path: PATHNAME_ABOUT_CONCEPTS,
-    breadcrumb: 'Om begrepskatalogen'
+    breadcrumb: () => <PathNameBreadcrumb pathName='aboutConcepts' />
   },
   {
     path: PATHNAME_ABOUT_INFORMATIONMODELS,
-    breadcrumb: 'Om informasjonsmodellkatalogen'
+    breadcrumb: () => <PathNameBreadcrumb pathName='aboutInformationModels' />
+  },
+  {
+    path: PATHNAME_AI,
+    breadcrumb: () => <PathNameBreadcrumb pathName='ai' />
   }
 ];
 
