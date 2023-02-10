@@ -304,7 +304,7 @@ const DatasetDetailsPage: FC<Props> = ({
       ?.filter(Boolean)
       ?.filter(
         subject =>
-          uriNotInRefConcepts(subject.uri) ||
+          uriNotInRefConcepts(subject.uri) &&
           uriNotInRefConcepts(subject.identifier)
       ) ?? [];
 
