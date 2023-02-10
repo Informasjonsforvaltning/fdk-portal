@@ -154,7 +154,12 @@
     "searchInFdk": "Search in Felles datakatalog",
     "publishing": "Publish",
     "aboutCatalogs": "About catalogs",
-    "guidance": "Guidance"
+    "guidance": "Guidance",
+    "aboutDatasets": "About dataset catalog",
+    "aboutDataServices": "About data service catalog",
+    "aboutConcepts": "About concept catalog",
+    "aboutInformationModels": "About information model catalog",
+    "ai": "Artificial intelligence"
   },
   "query": {
     "intro": "Example: public transport",
@@ -1120,10 +1125,28 @@
     "goToDetailsPage": "See details for more information."
   },
   "informationPage": {
-    "aboutDatasets": "About dataset catalog",
-    "aboutDataServices": "About data service catalog",
-    "aboutConcepts": "About concept catalog",
-    "aboutInformationModels": "About information model catalog",
     "imageText": "Image text: "
+  },
+  "aiPage": {
+    "artificialIntelligence": "Artificial intelligence - initiative",
+    "searchProject": "Search project",
+    "showAllFields": "Show all fields",
+    "hideAllFields": "Hide all fields",
+    "projectOwner": "Project owner",
+    "projectTitle": "Project title",
+    "ministry": "Ministry",
+    "ownerType": "Owner type",
+    "contact": "Contact",
+    "descriptionOfProject": "Description of project",
+    "purposeOfProject": "Purpose of project",
+    "projectStartEnd": "Project start and end",
+    "connectedOrganizations": "Connected organizations",
+    "useOfHired": "Use of hired",
+    "linkToProject": "Link to project",
+    "status": "Status",
+    "typeOfData": "Type of data",
+    "datasource": "Datasource",
+    "modelDevelopment": "Model developement",
+    "classification": "Classification"
   }
 }

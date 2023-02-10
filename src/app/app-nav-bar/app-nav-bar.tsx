@@ -14,6 +14,7 @@ import {
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
   PATHNAME_ABOUT_NAP,
+  PATHNAME_AI,
   PATHNAME_HOME_NAP,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLISHING,
@@ -111,6 +112,11 @@ const fdkItems = () => (
         mobileView={false}
         title={localization.menu.tools.tools}
       >
+        <SC.ListItem key={localization.menu.ai}>
+          <Link as={RouteLink} to={PATHNAME_AI}>
+            {localization.menu.ai}
+          </Link>
+        </SC.ListItem>
         <SC.ListItem key={localization.menu.tools.reports}>
           <Link as={RouteLink} to={PATHNAME_REPORTS}>
             {localization.menu.tools.reports}
