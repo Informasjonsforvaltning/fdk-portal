@@ -1,5 +1,14 @@
 import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import SquareThreeStrokeIconBase from '@fellesdatakatalog/icons/assets/svg/square-three-stroke.svg';
+import PlusStrokeIconBase from '@fellesdatakatalog/icons/assets/svg/plus-stroke.svg';
+import LockOpenStrokeIconBase from '@fellesdatakatalog/icons/assets/svg/lock-open-stroke.svg';
+import LockSemiOpenStrokeIconBase from '@fellesdatakatalog/icons/assets/svg/lock-semi-open-stroke.svg';
+import LockLockedStrokeIconBase from '@fellesdatakatalog/icons/assets/svg/lock-locked-stroke.svg';
+import StarStrokeIconBase from '@fellesdatakatalog/icons/assets/svg/star-stroke.svg';
+import BookBookmarkStrokeIconBase from '@fellesdatakatalog/icons/assets/svg/book-bookmark-stroke.svg';
+import { Entity } from '../../types/enums';
 
 const Title = styled.h1`
   font-size: ${themeFDK.fontSize('FS28', Unit.EM)};
@@ -32,10 +41,48 @@ const ContainerPaneContent = styled.div`
   gap: 1rem;
 `;
 
+const NapStrokeStyle = css`
+  & * {
+    stroke: ${({ theme }) => theme.extendedColors[Entity.DATASET].graph.dark};
+  }
+`;
+
+const NapSquareThreeStrokeIcon = styled(SquareThreeStrokeIconBase)`
+  ${NapStrokeStyle}
+`;
+const NapPlusStrokeIcon = styled(PlusStrokeIconBase)`
+  ${NapStrokeStyle}
+`;
+const NapLockOpenStrokeIcon = styled(LockOpenStrokeIconBase)`
+  ${NapStrokeStyle}
+`;
+const NapLockSemiOpenStrokeIcon = styled(LockSemiOpenStrokeIconBase)`
+  ${NapStrokeStyle}
+`;
+const NapLockLockedStrokeIcon = styled(LockLockedStrokeIconBase)`
+  ${NapStrokeStyle}
+`;
+const NapStarStrokeIcon = styled(StarStrokeIconBase)`
+  ${NapStrokeStyle}
+`;
+const NapBookBookmarkStrokeIcon = styled(BookBookmarkStrokeIconBase)`
+  ${NapStrokeStyle}
+`;
+
 export default {
   Title,
   SubTitle,
   ClearButton
 };
 
-export { ContainerBoxRegular, ContainerPaneContent };
+export {
+  ContainerBoxRegular,
+  ContainerPaneContent,
+  NapSquareThreeStrokeIcon,
+  NapPlusStrokeIcon,
+  NapLockOpenStrokeIcon,
+  NapLockSemiOpenStrokeIcon,
+  NapLockLockedStrokeIcon,
+  NapStarStrokeIcon,
+  NapBookBookmarkStrokeIcon
+};

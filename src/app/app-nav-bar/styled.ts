@@ -88,14 +88,14 @@ const NavigationLinks = styled.ul`
             & > a,
             & > a > div,
             & > button {
-              color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+              color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
             }
           `
         : css`
             & > a,
             & > a > div,
             & > button {
-              color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+              color: ${theme.colour(Colour.NEUTRAL, 'N70')} !important;
             }
           `}
   }

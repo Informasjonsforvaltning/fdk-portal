@@ -5,6 +5,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const configuration: Configuration = {
+  stats: {
+    errorDetails: false
+  },
   entry: {
     main: './src/entrypoints/main/index.tsx',
     auth: './src/entrypoints/auth/index.ts',
@@ -59,7 +62,7 @@ const configuration: Configuration = {
         ]
       },
       {
-        test: /\.svg$/,
+        test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [
           {
             loader: '@svgr/webpack',
@@ -67,8 +70,7 @@ const configuration: Configuration = {
               typescript: true
             }
           }
-        ],
-        include: [resolve(__dirname, '..', 'src', 'images')]
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -84,7 +86,7 @@ const configuration: Configuration = {
         ]
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
         exclude: [resolve(__dirname, '..', 'src', 'images')]
       }
