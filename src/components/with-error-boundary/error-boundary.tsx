@@ -25,6 +25,8 @@ class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     const { logError, loggingService } = this.props;
+    // eslint-disable-next-line no-console
+    console.log('Error', error);
     if (logError !== false) {
       loggingService.postLogEntry({
         name: error.name,

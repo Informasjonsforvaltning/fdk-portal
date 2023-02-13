@@ -76,7 +76,7 @@ const configuration: Configuration = mergeWithCustomize({
         ]
       },
       {
-        test: /\.svg$/,
+        test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [
           {
             loader: '@svgr/webpack',
@@ -84,8 +84,7 @@ const configuration: Configuration = mergeWithCustomize({
               typescript: true
             }
           }
-        ],
-        include: [resolve(__dirname, '..', 'src', 'images')]
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -123,7 +122,7 @@ const configuration: Configuration = mergeWithCustomize({
         exclude: /node_modules/
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
         exclude: [resolve(__dirname, '..', 'src', 'images')]
       }
