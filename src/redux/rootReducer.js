@@ -33,6 +33,7 @@ import EventTypesReducer from '../components/with-event-types/redux/reducer';
 import CommunityReducer from '../components/with-community/redux/reducer';
 import DatasetPreviewReducer from '../components/with-dataset-preview/redux/reducer';
 import SuggestionsReducer from '../components/with-suggestions/redux/reducer';
+import AiProjectsReducer from '../components/with-ai-projects/redux/reducer';
 import { commentsApi } from '../api/user-feedback-api/comments';
 
 export const rootReducer = combineReducers({
@@ -70,5 +71,6 @@ export const rootReducer = combineReducers({
   CommunityReducer,
   DatasetPreviewReducer,
   SuggestionsReducer,
+  AiProjectsReducer,
   [commentsApi.reducerPath]: commentsApi.reducer
 });
