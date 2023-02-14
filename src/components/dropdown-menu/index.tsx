@@ -8,8 +8,7 @@ interface Props {
   ariaLabel?: string;
   title: string;
   titleLang?: string;
-  caret: boolean;
-  desktopView: boolean;
+  chevron: boolean;
   mobileView: boolean;
   openOnHover?: boolean;
 }
@@ -18,8 +17,7 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
   ariaLabel,
   title,
   titleLang,
-  caret,
-  desktopView,
+  chevron,
   mobileView,
   openOnHover = false,
   children
@@ -34,10 +32,12 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
   };
 
   const handleClickOutside = (event: Event) => {
-    if (ref.current && !ref.current.contains(event.target as Node)) {
-      setOpen(false);
-    } else {
-      event.preventDefault();
+    if (!mobileView) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false);
+      } else {
+        event.preventDefault();
+      }
     }
   };
 
@@ -48,15 +48,16 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
   };
 
   const handleBlur = useCallback(e => {
-    const { currentTarget } = e;
-
-    // Give browser time to focus the next element
-    requestAnimationFrame(() => {
-      // Check if the new focused element is a child of the original container
-      if (!currentTarget.contains(document.activeElement)) {
-        setOpen(false);
-      }
-    });
+    if (!mobileView) {
+      const { currentTarget } = e;
+      // Give browser time to focus the next element
+      requestAnimationFrame(() => {
+        // Check if the new focused element is a child of the original container
+        if (!currentTarget.contains(document.activeElement)) {
+          setOpen(false);
+        }
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -75,21 +76,21 @@ const DropdownMenu: FC<PropsWithChildren<Props>> = ({
         aria-label={ariaLabel}
         id={_.uniqueId('dropdown-menu')}
         ref={ref}
+        mobileView={mobileView}
         onClick={openOnHover ? () => {} : handleMouseEvent}
         onMouseOver={openOnHover ? handleMouseEvent : () => {}}
         onMouseOut={openOnHover ? handleMouseEvent : () => {}}
-        onFocus={() => setOpen(true)}
+        onFocus={mobileView ? () => {} : () => setOpen(true)}
         onBlur={handleBlur}
-        desktopView={desktopView}
-        mobileView={mobileView}
       >
         <SC.ToggleButton
-          caret={caret}
           aria-expanded={open}
           aria-controls={ref.current?.id}
           lang={titleLang}
         >
           {title}
+          {mobileView && <SC.HamburgerMenuIcon />}
+          {!mobileView && chevron && <SC.ChevronDownIcon />}
         </SC.ToggleButton>
         <SC.Dropdown open={open}>{children}</SC.Dropdown>
       </SC.DropdownMenu>

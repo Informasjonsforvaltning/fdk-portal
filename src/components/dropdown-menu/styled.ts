@@ -1,5 +1,8 @@
 import styled, { css, createGlobalStyle } from 'styled-components';
 import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
+import ChevronDownIconBase from '@fellesdatakatalog/icons/assets/svg/chevron-down-stroke.svg';
+
+import HamburgerMenuIconBase from '../../images/hamburger-menu-stroke.svg';
 
 import { getConfig } from '../../config';
 
@@ -34,14 +37,13 @@ const GlobalStyle = createGlobalStyle<globalProps>`
   }
 `;
 
-interface dropdownMenuProps {
-  desktopView: boolean;
+interface DropdownMenuProps {
   mobileView: boolean;
 }
 
-const DropdownMenu = styled.nav<dropdownMenuProps>`
+const DropdownMenu = styled.nav<DropdownMenuProps>`
   color: currentColor;
-  display: ${({ desktopView }) => (desktopView ? 'inherit' : 'none')};
+  display: ${({ mobileView }) => (mobileView ? 'none' : 'inherit')};
   position: relative;
 
   ${onMobileView} {
@@ -49,11 +51,7 @@ const DropdownMenu = styled.nav<dropdownMenuProps>`
   }
 `;
 
-interface titleProps {
-  caret: boolean;
-}
-
-const ToggleButton = styled.button<titleProps>`
+const ToggleButton = styled.button`
   padding: 10px;
   font-size: ${theme.fontSize('FS16', Unit.REM)};
   border: none;
@@ -73,18 +71,31 @@ const ToggleButton = styled.button<titleProps>`
       : css`
           background-color: ${extendedTheme.extendedColors.headerBg};
         `}
+`;
 
-  ${({ caret }) =>
-    caret &&
-    css`
-      &:after {
-        content: '\\f0d7';
-        font-family: FontAwesome;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        margin-left: 0.5em;
-      }
-    `}
+const ChevronDownIcon = styled(ChevronDownIconBase)`
+  width: 16px;
+  height: 16px;
+  margin-left: 0.3em;
+`;
+
+const HamburgerMenuIcon = styled(HamburgerMenuIconBase)`
+  width: 50px;
+  height: 50px;
+  margin-left: 0.3em;
+
+  ${() =>
+    isTransportportal
+      ? css`
+          & * {
+            stroke: ${theme.colour(Colour.NEUTRAL, 'N0')};
+          }
+        `
+      : css`
+          & * {
+            stroke: ${theme.colour(Colour.NEUTRAL, 'N60')};
+          }
+        `}
 `;
 
 interface dropdownProps {
@@ -143,21 +154,37 @@ const Dropdown = styled.ul<dropdownProps>`
     right: 0px;
     overflow: auto;
 
-    > .hideOnMobileView {
-      display: none;
+    ul {
+      margin-left: ${theme.spacing('S12')};
     }
 
-    > li {
+    li {
       font-size: ${theme.fontSize('FS20', Unit.REM)};
-      margin-left: 20px;
-      margin-top: 20px;
+      margin: 0px;
+      padding: ${theme.spacing('S16')} 0 ${theme.spacing('S10')}
+        ${theme.spacing('S24')};
 
       > button {
         border: none;
         background-color: transparent;
       }
+
+      :hover {
+        background: none;
+      }
+    }
+
+    > li:not(:last-child) {
+      border-bottom: 1px solid ${theme.colour(Colour.NEUTRAL, 'N30')};
     }
   }
 `;
 
-export default { GlobalStyle, DropdownMenu, ToggleButton, Dropdown };
+export default {
+  GlobalStyle,
+  DropdownMenu,
+  ToggleButton,
+  ChevronDownIcon,
+  HamburgerMenuIcon,
+  Dropdown
+};
