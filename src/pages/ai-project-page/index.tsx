@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import SvgIcon from '@fellesdatakatalog/icons';
 import Button, { Variant } from '@fellesdatakatalog/button';
@@ -8,57 +8,26 @@ import Project from './components/project';
 import localization from '../../lib/localization';
 
 import SC from './styled';
-import { AiProject } from '../../types';
+import withAiProjects, {
+  Props as AiProjectProps
+} from '../../components/with-ai-projects';
 
-const projects: AiProject[] = [
-  {
-    id: 1,
-    prosjekteier: 'Agder Energi',
-    prosjekttitel: 'Ytelses- og helseovervåking for vannkraftverk (PHM Hydro)',
-    departement: 'Nærings- og fiskeridepartementet',
-    eiertype: 'Annet',
-    kontaktperson: 'Kjell G. Robbersmyr',
-    beskrivelseAvProsjekt:
-      'Kontinuerlig overvåking av tilstanden til kritisk utstyr som turbiner og generatorer, samt effektiviteten til utstyret, sikrer at vannkraftverkene drives lønnsomt og uten uønskede driftsstans. PHMHydro har som mål å bygge grunnlaget for en slik ytelses- og tilstandsovervåkingsarkitektur for vannkraftverk som er skalerbar til flere tekniske komponenter og til flere kraftverk. Dette inkluderer evaluering av ny metodikk, utvikling av nye algoritmer ved bruk av fysikk og kunstig intelligens (AI), og en arkitektur for å håndtere algoritmene i sky/tåke-distribusjon',
-    formaalMedProsjekt: '',
-    prosjektstart: 2022,
-    prosjektslutt: 2025,
-    tilknyttedeOrganisasjoner: 'Statkraft',
-    brukAvInnleide: '',
-    lenkeTilProsjekt: 'https://aidirectory.no/view-project.php?id=1402',
-    status: '',
-    typeData: '',
-    datakilde: '',
-    modellutvikling: 'Ja',
-    klassifisering: ''
-  },
-  {
-    id: 2,
-    prosjekteier: 'Avinor',
-    prosjekttitel: 'Robotisert bagasjehåndtering på flyplasser',
-    departement: 'Samferdselsdepartementet',
-    eiertype: 'Annet',
-    kontaktperson: 'Wilhelm Otnes',
-    beskrivelseAvProsjekt:
-      'I RoBa-prosjektet skal det forskes på nye og robuste metoder for robotpakking av bagasje i traller og tilstøtende automatiserte transportsystemer og mellomlagring av traller. Resultatene skal implementeres i et pilotanlegg på Gardermoen og bli et viktig grunnlag for videre utvikling både her og på andre flyplasser.',
-    formaalMedProsjekt: '',
-    prosjektstart: 2020,
-    prosjektslutt: 2021,
-    tilknyttedeOrganisasjoner: 'Oslo Lufthavn Gardermoen (OSL)',
-    brukAvInnleide: '',
-    lenkeTilProsjekt: '',
-    status: '',
-    typeData: '',
-    datakilde: '',
-    modellutvikling: 'Nei',
-    klassifisering: ''
-  }
-];
+interface Props extends AiProjectProps {}
 
-const Page: FC = () => {
+const Page: FC<Props> = ({
+  aiProjects,
+  aiProjectActions: { getAiProjectsRequested: getAiProjects }
+}) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [openAllProjects, setOpenAllProjects] = useState(false);
+
+  useEffect(() => {
+    getAiProjects();
+  }, []);
+
+  // eslint-disable-next-line no-console
+  console.log({ aiProjects });
 
   return (
     <main id='content' className='container'>
@@ -111,24 +80,29 @@ const Page: FC = () => {
       </div>
       <div className='row mb-5'>
         <div className='col-12'>
-          <SC.ButtonRow>
-            <Button
-              variant={Variant.TERTIARY}
-              onClick={() => setOpenAllProjects(!openAllProjects)}
-            >
-              <SC.ButtonIconWrapper>
-                {openAllProjects ? (
-                  <SvgIcon name='chevronDoubleUpStroke' />
-                ) : (
-                  <SvgIcon name='chevronDoubleDownStroke' />
-                )}
-              </SC.ButtonIconWrapper>
-              {openAllProjects
-                ? localization.aiPage.hideAllFields
-                : localization.aiPage.showAllFields}
-            </Button>
-          </SC.ButtonRow>
-          {projects
+          {aiProjects?.length > 0 && (
+            <SC.ButtonRow>
+              <Button
+                variant={Variant.TERTIARY}
+                onClick={() => setOpenAllProjects(!openAllProjects)}
+              >
+                <SC.ButtonIconWrapper>
+                  {openAllProjects ? (
+                    <SvgIcon name='chevronDoubleUpStroke' />
+                  ) : (
+                    <SvgIcon name='chevronDoubleDownStroke' />
+                  )}
+                </SC.ButtonIconWrapper>
+                {openAllProjects
+                  ? localization.aiPage.hideAllFields
+                  : localization.aiPage.showAllFields}
+              </Button>
+            </SC.ButtonRow>
+          )}
+          {aiProjects?.length === 0 && (
+            <div className='text-center'>Ingen prosjekter</div>
+          )}
+          {aiProjects
             ?.filter(
               project =>
                 searchQuery.length === 0 ||
@@ -164,5 +138,5 @@ const Page: FC = () => {
   );
 };
 
-const enhance = compose(withErrorBoundary(ErrorPage));
+const enhance = compose(withAiProjects, withErrorBoundary(ErrorPage));
 export const AiProjectPage = enhance(memo(Page));

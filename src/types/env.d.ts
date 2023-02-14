@@ -15,4 +15,5 @@ export interface EnvironmentVariables {
   FDK_DATASET_PREVIEW_API_KEY: string;
   FDK_USER_FEEDBACK_SERVICE_BASE_URI: string;
   FDK_CMS_BASE_URI: string;
+  AI_PROJECT_SERVICE_BASE_URI: string;
 }
