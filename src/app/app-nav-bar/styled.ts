@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
+
 import LogoSVG from '../../images/fdk-logo.svg';
 import DemoLogoSVG from '../../images/fdk-logo-demo.svg';
 import NapLogoSVG from '../../images/logo-transport.svg';
@@ -50,6 +51,7 @@ const DemoLogo = styled(DemoLogoSVG)`
 const NapLogo = styled(NapLogoSVG)``;
 
 const ListItem = styled.li`
+  color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   & > a {
     display: block;
     padding: 0;
@@ -95,7 +97,7 @@ const NavigationLinks = styled.ul`
             & > a,
             & > a > div,
             & > button {
-              color: ${theme.colour(Colour.NEUTRAL, 'N70')} !important;
+              color: ${theme.colour(Colour.NEUTRAL, 'N60')} !important;
             }
           `}
   }
@@ -106,6 +108,7 @@ const NavigationLinks = styled.ul`
 `;
 
 const Button = styled.button`
+  color: ${theme.colour(Colour.NEUTRAL, 'N60')} !important;
   &:focus {
     outline-offset: 3px;
     outline: 2px solid orange;
