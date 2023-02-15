@@ -10,22 +10,27 @@ import {
 import { Actions } from '../../../types';
 
 const initialState = fromJS({
-  aiProjects: []
+  aiProjects: [],
+  aiProjectsIsLoading: true
 });
 
 export default function reducer(state: any, action: Actions<typeof actions>) {
-  if (!state) {
-    state = initialState;
-  }
+  state = state ?? initialState;
   switch (action.type) {
     case GET_AI_PROJECTS_REQUESTED:
-      return state.setIn(['aiProjects'], undefined);
+      return state
+        .set('aiProjects', undefined)
+        .set('aiProjectsIsLoading', true);
     case GET_AI_PROJECTS_SUCCEEDED: {
       const { data } = action.payload;
-      return state.setIn(['aiProjects'], fromJS(data));
+      return state
+        .set('aiProjects', fromJS(data))
+        .set('aiProjectsIsLoading', false);
     }
     case GET_AI_PROJECTS_FAILED:
-      return state.setIn(['aiProjects'], undefined);
+      return state
+        .set('aiProjects', undefined)
+        .set('aiProjectsIsLoading', false);
     default:
       return state;
   }

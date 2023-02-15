@@ -2,6 +2,7 @@ import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import SvgIcon from '@fellesdatakatalog/icons';
 import Button, { Variant } from '@fellesdatakatalog/button';
+import Spinner from '../../components/spinner';
 import ErrorPage from '../../components/error-page';
 import withErrorBoundary from '../../components/with-error-boundary';
 import Project from './components/project';
@@ -16,6 +17,7 @@ interface Props extends AiProjectProps {}
 
 const Page: FC<Props> = ({
   aiProjects,
+  aiProjectsIsLoading,
   aiProjectActions: { getAiProjectsRequested: getAiProjects }
 }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -25,9 +27,6 @@ const Page: FC<Props> = ({
   useEffect(() => {
     getAiProjects();
   }, []);
-
-  // eslint-disable-next-line no-console
-  console.log({ aiProjects });
 
   return (
     <main id='content' className='container'>
@@ -99,39 +98,45 @@ const Page: FC<Props> = ({
               </Button>
             </SC.ButtonRow>
           )}
-          {aiProjects?.length === 0 && (
+          {aiProjectsIsLoading && (
+            <div className='text-center'>
+              <Spinner />
+            </div>
+          )}
+          {!aiProjectsIsLoading && aiProjects?.length === 0 && (
             <div className='text-center'>Ingen prosjekter</div>
           )}
-          {aiProjects
-            ?.filter(
-              project =>
-                searchQuery.length === 0 ||
-                project.prosjekteier
-                  ?.toLowerCase()
-                  .includes(searchQuery.toLowerCase()) ||
-                project.prosjekttittel
-                  ?.toLowerCase()
-                  .includes(searchQuery.toLowerCase()) ||
-                project.departement
-                  ?.toLowerCase()
-                  .includes(searchQuery.toLowerCase()) ||
-                project.prosjektBeskrivelse
-                  ?.toLowerCase()
-                  .includes(searchQuery.toLowerCase()) ||
-                project.tilknyttedeOrganisasjoner
-                  ?.toLowerCase()
-                  .includes(searchQuery.toLowerCase()) ||
-                project.kontaktperson
-                  ?.toLowerCase()
-                  .includes(searchQuery.toLowerCase())
-            )
-            .map((project, index) => (
-              <Project
-                key={`ai-project-${index}`}
-                project={project}
-                isExpanded={openAllProjects}
-              />
-            ))}
+          {!aiProjectsIsLoading &&
+            aiProjects
+              ?.filter(
+                project =>
+                  searchQuery.length === 0 ||
+                  project.prosjekteier
+                    ?.toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
+                  project.prosjekttittel
+                    ?.toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
+                  project.departement
+                    ?.toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
+                  project.prosjektBeskrivelse
+                    ?.toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
+                  project.tilknyttedeOrganisasjoner
+                    ?.toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
+                  project.kontaktperson
+                    ?.toLowerCase()
+                    .includes(searchQuery.toLowerCase())
+              )
+              .map((project, index) => (
+                <Project
+                  key={`ai-project-${index}`}
+                  project={project}
+                  isExpanded={openAllProjects}
+                />
+              ))}
         </div>
       </div>
     </main>

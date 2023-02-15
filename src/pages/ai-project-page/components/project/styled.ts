@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Colour, theme } from '@fellesdatakatalog/theme';
-import Link from '@fellesdatakatalog/link';
+import LinkBase from '@fellesdatakatalog/link';
 
 import ExpansionPanel, { SC } from '@fellesdatakatalog/expansion-panel';
 
@@ -41,19 +41,8 @@ const Section = styled.div`
   border-top: 1px solid ${theme.colour(Colour.NEUTRAL, 'N20')};
 `;
 
-const DownloadLink = styled(Link)`
-  margin-right: ${theme.spacing('S16')};
-  background-color: ${theme.colour(Colour.BLUE, 'B30')};
-  padding: ${theme.spacing('S16')};
-  border-radius: 5px;
-
-  & > div {
-    border-bottom: 0;
-  }
-
-  & > i > svg > path {
-    fill: ${theme.colour(Colour.BLUE, 'B50')};
-  }
+const Link = styled(LinkBase)`
+  align-items: flex-start;
 `;
 
 const ColumnData = styled.ul``;
@@ -69,7 +58,7 @@ const Summary = styled.div`
 export default {
   AiProject,
   Section,
-  DownloadLink,
+  Link,
   ColumnData,
   ColumnRow,
   Summary
