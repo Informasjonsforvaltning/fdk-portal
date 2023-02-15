@@ -115,7 +115,7 @@ const Page: FC<Props> = ({
                 project.departement
                   ?.toLowerCase()
                   .includes(searchQuery.toLowerCase()) ||
-                project.beskrivelseAvProsjekt
+                project.prosjektBeskrivelse
                   ?.toLowerCase()
                   .includes(searchQuery.toLowerCase()) ||
                 project.tilknyttedeOrganisasjoner

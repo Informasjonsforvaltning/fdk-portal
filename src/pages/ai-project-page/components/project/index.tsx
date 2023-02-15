@@ -35,12 +35,12 @@ const Project: FC<Props> = ({ project, isExpanded }) => {
     departement,
     eiertype,
     kontaktperson,
-    beskrivelseAvProsjekt,
-    formaalMedProsjekt,
+    prosjektBeskrivelse,
+    prosjektFormaal,
     prosjektstart,
     prosjektslutt,
     tilknyttedeOrganisasjoner,
-    brukAvInnleide,
+    innleideKonsulenter,
     lenkeTilProsjekt,
     status,
     typeData,
@@ -95,16 +95,16 @@ const Project: FC<Props> = ({ project, isExpanded }) => {
             value={kontaktperson}
           />
         )}
-        {beskrivelseAvProsjekt && (
+        {prosjektBeskrivelse && (
           <Detail
             property={localization.aiPage.descriptionOfProject}
-            value={beskrivelseAvProsjekt}
+            value={prosjektBeskrivelse}
           />
         )}
-        {formaalMedProsjekt && (
+        {prosjektFormaal && (
           <Detail
             property={localization.aiPage.purposeOfProject}
-            value={formaalMedProsjekt}
+            value={prosjektFormaal}
           />
         )}
         {prosjektstart && (
@@ -121,10 +121,10 @@ const Project: FC<Props> = ({ project, isExpanded }) => {
             value={tilknyttedeOrganisasjoner}
           />
         )}
-        {brukAvInnleide && (
+        {innleideKonsulenter && (
           <Detail
             property={localization.aiPage.useOfHired}
-            value={brukAvInnleide}
+            value={innleideKonsulenter}
           />
         )}
         {lenkeTilProsjekt && (
