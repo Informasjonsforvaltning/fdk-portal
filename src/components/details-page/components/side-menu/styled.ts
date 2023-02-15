@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { Unit, theme as t } from '@fellesdatakatalog/theme';
 
@@ -29,9 +29,6 @@ export const slideDown = keyframes`
 
 const Menu = styled.nav<Props>`
   font-size: ${t.fontSize('FS14', Unit.REM)};
-  position: fixed;
-  top: ${t.spacing('S16')};
-  width: 10%;
 
   & > ul {
     display: flex;
@@ -55,6 +52,17 @@ const Menu = styled.nav<Props>`
       flex: 1;
     }
   }
+  ${({ $isSticky }) =>
+    $isSticky &&
+    css`
+      animation-duration: 500ms;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+      animation-name: ${slideDown};
+      position: fixed;
+      top: ${t.spacing('S16')};
+      width: 10%;
+    `}
 `;
 
 const MenuItem = styled.li`
