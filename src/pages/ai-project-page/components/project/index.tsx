@@ -7,7 +7,6 @@ import {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '@fellesdatakatalog/expansion-panel';
-import Link from '@fellesdatakatalog/link';
 
 import ExpansionIndicatorDefault from '../../../../components/expansion-indicator-default';
 
@@ -129,11 +128,11 @@ const Project: FC<Props> = ({ project, isExpanded }) => {
         )}
         {lenkeTilProsjekt && (
           <Detail
-            property={localization.aiPage.useOfHired}
+            property={localization.aiPage.linkToProject}
             value={
-              <Link href={lenkeTilProsjekt} external>
+              <SC.Link href={lenkeTilProsjekt} external>
                 {lenkeTilProsjekt}
-              </Link>
+              </SC.Link>
             }
           />
         )}
