@@ -1083,12 +1083,12 @@ export interface AiProject {
   departement?: string;
   eiertype?: string;
   kontaktperson?: string;
-  beskrivelseAvProsjekt?: string;
-  formaalMedProsjekt?: string;
+  prosjektBeskrivelse?: string;
+  prosjektFormaal?: string;
   prosjektstart?: number;
   prosjektslutt?: number;
   tilknyttedeOrganisasjoner?: string;
-  brukAvInnleide?: string;
+  innleideKonsulenter?: string;
   lenkeTilProsjekt?: string;
   status?: string;
   typeData?: string;
