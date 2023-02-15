@@ -1079,7 +1079,7 @@ export interface FilterSearchOption {
 export interface AiProject {
   id: number;
   prosjekteier: string;
-  prosjekttitel: string;
+  prosjekttittel: string;
   departement?: string;
   eiertype?: string;
   kontaktperson?: string;

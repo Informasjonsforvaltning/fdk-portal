@@ -30,7 +30,7 @@ const Project: FC<Props> = ({ project, isExpanded }) => {
   const id = _.uniqueId('ai-project');
 
   const {
-    prosjekttitel,
+    prosjekttittel,
     prosjekteier,
     departement,
     eiertype,
@@ -67,7 +67,7 @@ const Project: FC<Props> = ({ project, isExpanded }) => {
       <ExpansionPanelHead>
         <SC.Summary>
           <h2>{prosjekteier}</h2>
-          {prosjekttitel}
+          {prosjekttittel}
         </SC.Summary>
       </ExpansionPanelHead>
       <ExpansionPanelBody>
@@ -77,10 +77,10 @@ const Project: FC<Props> = ({ project, isExpanded }) => {
             value={prosjekteier}
           />
         )}
-        {prosjekttitel && (
+        {prosjekttittel && (
           <Detail
             property={localization.aiPage.projectTitle}
-            value={prosjekttitel}
+            value={prosjekttittel}
           />
         )}
         {departement && (

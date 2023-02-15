@@ -109,7 +109,7 @@ const Page: FC<Props> = ({
                 project.prosjekteier
                   ?.toLowerCase()
                   .includes(searchQuery.toLowerCase()) ||
-                project.prosjekttitel
+                project.prosjekttittel
                   ?.toLowerCase()
                   .includes(searchQuery.toLowerCase()) ||
                 project.departement
