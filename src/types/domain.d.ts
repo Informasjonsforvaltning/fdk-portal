@@ -189,7 +189,7 @@ export interface PlaysRole {
   agent: string;
   description?: Partial<TextLanguage>;
   identifier: string;
-  role: PublicServiceType;
+  role: PublicServiceType[];
   uri: string;
 }
 
