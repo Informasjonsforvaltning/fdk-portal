@@ -33,15 +33,10 @@
     @include themify($themes) {
       color: themed('color-neutral-darker');
     }
-    font-size: 2rem;
-    font-family: FontAwesome;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    &:after {
-      content: '\F106';
-    }
   }
   .checkbox {
     width: 100%;

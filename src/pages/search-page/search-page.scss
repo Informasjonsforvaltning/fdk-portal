@@ -48,7 +48,7 @@
   background: transparent;
 }
 .fdk-button.fdk-button-black-toggle:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 .fdk-button.fdk-button-black-toggle.selected {
   color: $color-white !important;
@@ -92,34 +92,6 @@
       }
     }
   }
-  li.previous {
-    a {
-      &:before {
-        content: '\F060';
-        display: inline-block;
-        font: normal normal normal 14px/1 FontAwesome;
-        font-size: inherit;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        margin-right: 0.5em;
-      }
-    }
-  }
-  li.next {
-    a {
-      &:after {
-        content: '\F061';
-        display: inline-block;
-        font: normal normal normal 14px/1 FontAwesome;
-        font-size: inherit;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        margin-left: 0.5em;
-      }
-    }
-  }
 }
 
 /* Medium Devices, Desktops */
@@ -153,34 +125,6 @@
         color: $color-white !important;
         @include themify($themes) {
           background-color: themed('color-neutral-darkest') !important;
-        }
-      }
-    }
-    li.previous {
-      a {
-        &:before {
-          content: '\F060';
-          display: inline-block;
-          font: normal normal normal 14px/1 FontAwesome;
-          font-size: inherit;
-          text-rendering: auto;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          margin-right: 0.5em;
-        }
-      }
-    }
-    li.next {
-      a {
-        &:after {
-          content: '\F061';
-          display: inline-block;
-          font: normal normal normal 14px/1 FontAwesome;
-          font-size: inherit;
-          text-rendering: auto;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          margin-left: 0.5em;
         }
       }
     }

@@ -4,9 +4,11 @@ import _ from 'lodash';
 import qs from 'qs';
 import { Helmet } from 'react-helmet';
 
+import LinkExternal from '@fellesdatakatalog/link';
+
 import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
-import { LinkExternal } from '../../components/link-external/link-external.component';
+
 import './concept-compare.scss';
 
 interface Props {
@@ -95,13 +97,9 @@ const renderRowUrl = (label: any, items: any, fieldPath: any) =>
         .map((fieldValue, index) => (
           <td key={`row-${fieldPath}-${index}`}>
             {_.get(fieldValue, 'uri') ? (
-              <LinkExternal
-                uri={_.get(fieldValue, 'uri')}
-                prefLabel={
-                  _.get(fieldValue, 'prefLabel') || _.get(fieldValue, 'uri')
-                }
-                openInNewTab={false}
-              />
+              <LinkExternal href={_.get(fieldValue, 'uri')} external>
+                {_.get(fieldValue, 'prefLabel') || _.get(fieldValue, 'uri')}
+              </LinkExternal>
             ) : (
               getTranslateText(_.get(fieldValue, 'prefLabel'))
             )}

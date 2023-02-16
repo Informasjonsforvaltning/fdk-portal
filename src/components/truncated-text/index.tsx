@@ -6,6 +6,7 @@ import React, {
   useEffect
 } from 'react';
 
+import { Variant } from '@fellesdatakatalog/button';
 import useResize from './hooks';
 
 import translations from '../../lib/localization';
@@ -62,10 +63,11 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
       </SC.TextContainer>
       {truncate && !onlyTruncate && (
         <SC.ExpandButton
+          variant={Variant.TERTIARY}
           onClick={() => setExpanded(!expanded)}
-          open={expanded}
           entity={entityTheme}
         >
+          {expanded ? <SC.ChevronDoubleUpIcon /> : <SC.ChevronDoubleDownIcon />}
           {translations.truncatedText[expanded ? 'expanded' : 'collapsed']}
         </SC.ExpandButton>
       )}

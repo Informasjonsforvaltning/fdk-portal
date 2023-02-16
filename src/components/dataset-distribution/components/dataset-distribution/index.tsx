@@ -8,12 +8,12 @@ import {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '@fellesdatakatalog/expansion-panel';
+import LinkExternal from '@fellesdatakatalog/link';
+
 import ExpansionIndicatorDefault from '../../../expansion-indicator-default';
 
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
-
-import ExternalLink from '../../../link-external';
 
 import Summary from '../summary';
 import Detail from '../detail';
@@ -111,11 +111,9 @@ const DatasetDistribution: FC<Props> = ({
           <Detail
             property={translations.dataset.distribution.accessUrl}
             value={
-              <ExternalLink
-                uri={accessURL}
-                prefLabel={accessURL}
-                openInNewTab
-              />
+              <LinkExternal href={accessURL} external>
+                {accessURL}
+              </LinkExternal>
             }
             data-testid={testIds.detail}
           />
@@ -126,11 +124,9 @@ const DatasetDistribution: FC<Props> = ({
               key={licenseUri}
               property={translations.dataset.distribution.licenseLinkDefault}
               value={
-                <ExternalLink
-                  uri={licenseUri}
-                  prefLabel={translate(licensePrefLabel) || licenseUri}
-                  openInNewTab
-                />
+                <LinkExternal href={licenseUri} external>
+                  {translate(licensePrefLabel) || licenseUri}
+                </LinkExternal>
               }
               data-testid={testIds.detail}
             />
@@ -148,11 +144,9 @@ const DatasetDistribution: FC<Props> = ({
           <Detail
             property={translations.dataset.distribution.conformsTo}
             value={
-              <ExternalLink
-                uri={conformsToUri}
-                prefLabel={translate(conformsToPrefLabel) || conformsToUri}
-                openInNewTab
-              />
+              <LinkExternal href={conformsToUri} external>
+                {translate(conformsToPrefLabel) || conformsToUri}
+              </LinkExternal>
             }
             data-testid={testIds.detail}
           />
@@ -186,12 +180,13 @@ const DatasetDistribution: FC<Props> = ({
               <SC.ColumnData>
                 {endpointDescriptions?.map(endpointDescription => (
                   <SC.ColumnRow>
-                    <ExternalLink
-                      uri={endpointDescription}
+                    <LinkExternal
+                      href={endpointDescription}
                       key={endpointDescription}
-                      prefLabel={endpointDescription}
-                      openInNewTab
-                    />
+                      external
+                    >
+                      {endpointDescription}
+                    </LinkExternal>
                   </SC.ColumnRow>
                 ))}
               </SC.ColumnData>
@@ -201,12 +196,13 @@ const DatasetDistribution: FC<Props> = ({
         )}
         {pageUri && (
           <SC.Section>
-            <ExternalLink
-              uri={pageUri}
-              prefLabel={translations.dataset.distribution.page}
-              openInNewTab
+            <LinkExternal
+              href={pageUri}
+              external
               data-testid={testIds.moreInfo}
-            />
+            >
+              {translations.dataset.distribution.page}
+            </LinkExternal>
           </SC.Section>
         )}
         {downloadURL && (
