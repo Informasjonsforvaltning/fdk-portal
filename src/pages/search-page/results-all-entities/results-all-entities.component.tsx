@@ -142,8 +142,18 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                   pageCount={parseInt(totalPages || 0, 10)}
                   pageRangeDisplayed={2}
                   marginPagesDisplayed={1}
-                  previousLabel={localization.page.prev}
-                  nextLabel={localization.page.next}
+                  previousLabel={
+                    <>
+                      <SC.ArrowLeftIcon />
+                      {localization.page.prev}
+                    </>
+                  }
+                  nextLabel={
+                    <>
+                      {localization.page.next}
+                      <SC.ArrowRightIcon />
+                    </>
+                  }
                   breakLabel='...'
                   breakClassName='break-me'
                   containerClassName='pagination'

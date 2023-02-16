@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ChevronUpIconBase from '@fellesdatakatalog/icons/assets/svg/chevron-up-stroke.svg';
 
 const CollapseButton = styled.button`
   border: none;
@@ -10,4 +11,9 @@ const CollapseButton = styled.button`
   }
 `;
 
-export default { CollapseButton };
+const ChevronUpIcon = styled(ChevronUpIconBase)`
+  width: 16px;
+  height: 16px;
+`;
+
+export default { CollapseButton, ChevronUpIcon };
