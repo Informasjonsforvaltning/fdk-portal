@@ -206,13 +206,13 @@ a:hover {
 }
 
 .fdk-label-default:hover > .fdk-fa-button {
-  /* Hovering for labels with font awesome icons */
+  /* Hovering for labels */
   @include themify($themes) {
     color: themed('button-text-secondary');
   }
 }
 
 .fdk-label-default:active > .fdk-fa-button {
-  /* Hovering for labels with font awesome icons */
+  /* Hovering for labels */
   color: #fff;
 }

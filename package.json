@@ -76,7 +76,6 @@
     "core-js-pure": "^3.27.1",
     "deserialize-json-api": "^1.4.0",
     "eslint-import-resolver-typescript": "^3.5.3",
-    "font-awesome": "^4.7.0",
     "graphql": "^16.6.0",
     "html-react-parser": "^3.0.6",
     "immutable": "^4.2.1",

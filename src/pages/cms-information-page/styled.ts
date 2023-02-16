@@ -4,6 +4,8 @@ import { Colour, theme, Unit } from '@fellesdatakatalog/theme';
 import { Backdrop as MuiBackdrop } from '@mui/material';
 import SideMenuBase from '../../components/side-menu';
 
+import HamburgerIconBase from '../../images/hamburger-menu-stroke.svg';
+
 const onMobileView = '@media (max-width: 900px)';
 const customBreakingPoint = '@media (max-width: 992px)';
 
@@ -135,19 +137,17 @@ const MenuToggle = styled.button`
     background: black;
     color: ${({ theme: t }) => t.lighter};
   }
-
-  &:before {
-    content: '\\f0c9';
-    font-family: FontAwesome;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin-right: 0.5em;
-  }
 `;
 
 const Backdrop = styled(MuiBackdrop)`
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   z-index: ${theme.colour(Colour.NEUTRAL, 'N0')} + 1;
+`;
+
+const HamburgerIcon = styled(HamburgerIconBase)`
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5em;
 `;
 
 export default {
@@ -163,5 +163,6 @@ export default {
   SideMenu,
   SideMenuSmall,
   MenuToggle,
-  Backdrop
+  Backdrop,
+  HamburgerIcon
 };

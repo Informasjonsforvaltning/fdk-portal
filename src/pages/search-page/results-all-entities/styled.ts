@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Unit, theme } from '@fellesdatakatalog/theme';
 import Link from '@fellesdatakatalog/link';
-
+import ArrowRightIconBase from '@fellesdatakatalog/icons/assets/svg/arrow-right-stroke.svg';
+import ArrowLeftIconBase from '@fellesdatakatalog/icons/assets/svg/arrow-left-stroke.svg';
 import FeedSVG from '../../../images/icon-feed-sm.svg';
 
 const Content = styled.div`
@@ -47,6 +48,24 @@ const FeedIcon = styled(FeedSVG)`
   margin-left: ${theme.spacing('S4')};
 `;
 
+const ArrowRightIcon = styled(ArrowRightIconBase)`
+  width: 16px;
+  height: 16px;
+  margin-left: 0.25em;
+  & * {
+    stroke: #0069a5;
+  }
+`;
+
+const ArrowLeftIcon = styled(ArrowLeftIconBase)`
+  width: 16px;
+  height: 16px;
+  margin-right: 0.25em;
+  & * {
+    stroke: #0069a5;
+  }
+`;
+
 export default {
   Content,
   Filters,
@@ -54,5 +73,7 @@ export default {
   Pagination,
   FeedLinks,
   FeedLink,
-  FeedIcon
+  FeedIcon,
+  ArrowRightIcon,
+  ArrowLeftIcon
 };

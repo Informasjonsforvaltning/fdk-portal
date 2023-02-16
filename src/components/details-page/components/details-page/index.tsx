@@ -317,6 +317,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       </SC.Themes>
       <SC.Page>
         <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
+          <SC.HamburgerIcon />
           {translations.detailsPage.navMenuButton[navOpen ? 'open' : 'closed']}
         </SC.MenuToggle>
         <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
