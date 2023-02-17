@@ -3,6 +3,7 @@ import React, { memo, FC, useEffect } from 'react';
 import { compose } from 'redux';
 
 import DataGrid from '@inovua/reactdatagrid-community';
+import '@inovua/reactdatagrid-community/index.css';
 
 import xmlFormat from 'xml-formatter';
 
