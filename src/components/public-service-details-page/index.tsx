@@ -561,7 +561,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       {playsRole &&
                         playsRole.map(value => (
                           <KeyValueListItem
-                            property={translate(value.role.prefLabel)}
+                            property={value.role
+                              .map(role => translate(role.prefLabel))
+                              .filter(Boolean)
+                              .join(', ')}
                             value={translate(value.description)}
                           />
                         ))}
