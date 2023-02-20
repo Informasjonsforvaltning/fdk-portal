@@ -122,7 +122,7 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.publisher}
               aggregationsForest={keyPrefixForest(
-                aggregations.orgPath?.buckets
+                aggregations?.orgPath?.buckets
               )}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
@@ -133,7 +133,7 @@ const FiltersPure: FC<Props> = ({
               title={localization.facet.theme}
               aggregationsForest={keyPrefixForest(
                 filterLosThemesFromAggregation(
-                  aggregations.los?.buckets,
+                  aggregations?.los?.buckets,
                   losItems
                 )
               )}
@@ -145,7 +145,7 @@ const FiltersPure: FC<Props> = ({
             <FilterBox
               htmlKey={1}
               title={localization.facet.themeEU}
-              filter={aggregations.theme}
+              filter={aggregations?.theme}
               onClick={handleFilterThemes}
               activeFilter={themeParam}
               referenceDataItems={themesItems}
@@ -159,7 +159,7 @@ const FiltersPure: FC<Props> = ({
               title={localization.facet.theme}
               aggregationsForest={keyPrefixForest(
                 filterLosThemesFromAggregation(
-                  aggregations.los?.buckets,
+                  aggregations?.los?.buckets,
                   losItems
                 )
               )}
@@ -172,7 +172,7 @@ const FiltersPure: FC<Props> = ({
               <FilterBox
                 htmlKey={1}
                 title={localization.facet.themeEU}
-                filter={aggregations.theme}
+                filter={aggregations?.theme}
                 onClick={handleFilterThemes}
                 activeFilter={themeParam}
                 referenceDataItems={themesItems}
@@ -182,7 +182,7 @@ const FiltersPure: FC<Props> = ({
               <FilterBox
                 htmlKey={2}
                 title={localization.facet.accessRight}
-                filter={aggregations.accessRights}
+                filter={aggregations?.accessRights}
                 onClick={handleDatasetFilterAccessRights}
                 activeFilter={accessrightsParam}
                 filters={searchParams}
@@ -191,7 +191,7 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.facet.organisation}
               aggregationsForest={keyPrefixForest(
-                aggregations.orgPath?.buckets
+                aggregations?.orgPath?.buckets
               )}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
@@ -201,7 +201,7 @@ const FiltersPure: FC<Props> = ({
             <FilterBox
               htmlKey={3}
               title={localization.facet.format}
-              filter={aggregations.format}
+              filter={aggregations?.format}
               searchable
               groupByPrefix={['FILE_TYPE', 'MEDIA_TYPE', 'UNKNOWN']}
               onClick={handleFilterFormat}
@@ -211,14 +211,14 @@ const FiltersPure: FC<Props> = ({
             <FilterBox
               htmlKey={4}
               title={localization.facet.spatial}
-              filter={aggregations.spatial}
+              filter={aggregations?.spatial}
               onClick={handleDatasetFilterSpatial}
               activeFilter={spatialParam}
             />
             <FilterBox
               htmlKey={5}
               title={localization.facet.provenance}
-              filter={aggregations.provenance}
+              filter={aggregations?.provenance}
               onClick={handleDatasetFilterProvenance}
               activeFilter={provenanceParam}
             />
@@ -230,7 +230,7 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.provider}
               aggregationsForest={keyPrefixForest(
-                aggregations.orgPath?.buckets
+                aggregations?.orgPath?.buckets
               )}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
@@ -241,7 +241,7 @@ const FiltersPure: FC<Props> = ({
               htmlKey={2}
               title={localization.facet.format}
               capitalizeOption={false}
-              filter={aggregations.format}
+              filter={aggregations?.format}
               searchable
               groupByPrefix={['FILE_TYPE', 'MEDIA_TYPE', 'UNKNOWN']}
               onClick={handleFilterFormat}
@@ -253,7 +253,7 @@ const FiltersPure: FC<Props> = ({
         return (
           <FilterTree
             title={localization.responsible}
-            aggregationsForest={keyPrefixForest(aggregations.orgPath?.buckets)}
+            aggregationsForest={keyPrefixForest(aggregations?.orgPath?.buckets)}
             handleFiltering={handleFilterPublisherHierarchy}
             activeFilter={orgPathFilterParam?.toString()}
             referenceDataItems={publishers}
@@ -267,7 +267,7 @@ const FiltersPure: FC<Props> = ({
               title={localization.facet.theme}
               aggregationsForest={keyPrefixForest(
                 filterLosThemesFromAggregation(
-                  aggregations.los?.buckets,
+                  aggregations?.los?.buckets,
                   losItems
                 )
               )}
@@ -279,7 +279,7 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.responsible}
               aggregationsForest={keyPrefixForest(
-                aggregations.orgPath?.buckets
+                aggregations?.orgPath?.buckets
               )}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
@@ -294,7 +294,7 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.facet.events}
               aggregationsForest={eventTypesKeyPrefixForest(
-                aggregations.associatedBroaderTypesByEvents?.buckets,
+                aggregations?.associatedBroaderTypesByEvents?.buckets,
                 eventTypes
               )}
               handleFiltering={handleFilterEventType}
@@ -304,7 +304,7 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.provider}
               aggregationsForest={keyPrefixForest(
-                aggregations.hasCompetentAuthority?.buckets
+                aggregations?.hasCompetentAuthority?.buckets
               )}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
