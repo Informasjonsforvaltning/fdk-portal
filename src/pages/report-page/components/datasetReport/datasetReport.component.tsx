@@ -28,14 +28,7 @@ import {
   KeyWithCountObject
 } from '../../../../types';
 
-import DatasetIcon from '../../../../images/icon-catalog-dataset-md.svg';
-import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
-import NewIcon from '../../../../images/icon-new-md.svg';
-import AccessNotOpenIcon from '../../../../images/icon-access-not-open-md-v2.svg';
-import AccessOpenIcon from '../../../../images/icon-access-open-md-v2.svg';
-import AccessRestrictedIcon from '../../../../images/icon-access-restricted-md-v2.svg';
 import AccessUnknownIcon from '../../../../images/icon-access-unknown-md-v2.svg';
-import ConceptIcon from '../../../../images/icon-catalog-concept-md.svg';
 import { List } from '../../../../components/list/list';
 import { PATHNAME_DATASETS } from '../../../../constants/constants';
 import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
@@ -47,7 +40,17 @@ import withReferenceData, {
 } from '../../../../components/with-reference-data';
 import { sortKeyWithCount } from '../../sort-helper';
 import { translatePrefixedFormat } from '../../../../utils/common';
-import { ContainerPaneContent, ContainerBoxRegular } from '../../styled';
+import {
+  ContainerPaneContent as ContainerPaneContentSC,
+  ContainerBoxRegular as ContainerBoxRegularSC,
+  NapBookBookmarkStrokeIcon as NapBookBookmarkStrokeIconSC,
+  NapLockLockedStrokeIcon as NapLockLockedStrokeIconSC,
+  NapLockOpenStrokeIcon as NapLockOpenStrokeIconSC,
+  NapLockSemiOpenStrokeIcon as NapLockSemiOpenStrokeIconSC,
+  NapPlusStrokeIcon as NapPlusStrokeIconSC,
+  NapSquareThreeStrokeIcon as NapSquareThreeStrokeIconSC,
+  NapStarStrokeIcon as NapStarStrokeIconSC
+} from '../../styled';
 
 interface ExternalProps {
   datasetsReport: Partial<DatasetsReport>;
@@ -120,12 +123,12 @@ const DatasetReport: FC<Props> = ({
   return (
     <ThemeProvider theme={theme}>
       <main id='content'>
-        <ContainerPaneContent>
-          <ContainerBoxRegular>
+        <ContainerPaneContentSC>
+          <ContainerBoxRegularSC>
             <BoxRegular>
               <StatisticsRegular to={`${PATHNAME_DATASETS}${searchParams}`}>
                 <IllustrationWithCount
-                  icon={<DatasetIcon />}
+                  icon={<NapSquareThreeStrokeIconSC />}
                   count={totalObjects}
                 />
                 <SC.StatisticsRegular.Label>
@@ -133,8 +136,8 @@ const DatasetReport: FC<Props> = ({
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
-          </ContainerBoxRegular>
-          <ContainerBoxRegular>
+          </ContainerBoxRegularSC>
+          <ContainerBoxRegularSC>
             <BoxRegular>
               <StatisticsRegular
                 to={`${PATHNAME_DATASETS}${patchSearchQuery(
@@ -142,21 +145,24 @@ const DatasetReport: FC<Props> = ({
                   '7'
                 )}`}
               >
-                <IllustrationWithCount icon={<NewIcon />} count={newLastWeek} />
+                <IllustrationWithCount
+                  icon={<NapPlusStrokeIconSC />}
+                  count={newLastWeek}
+                />
                 <SC.StatisticsRegular.Label>
                   {localization.report.newPastWeek}
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
             </BoxRegular>
-          </ContainerBoxRegular>
-        </ContainerPaneContent>
+          </ContainerBoxRegularSC>
+        </ContainerPaneContentSC>
 
         <div className='row'>
           <div className='col-12'>
             <BoxRegular>
               <StatisticsRegular to='' as='div'>
                 <IllustrationWithCount
-                  icon={<DatasetIcon />}
+                  icon={<NapSquareThreeStrokeIconSC />}
                   count={organizationCount}
                 />
                 <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
@@ -223,14 +229,11 @@ const DatasetReport: FC<Props> = ({
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
-                            <AccessOpenIcon
+                            <NapLockOpenStrokeIconSC
                               key={dataIndex}
-                              x={40}
-                              y={35}
-                              fill={
-                                theme.extendedColors[Entity.DATASET].graph.dark
-                              }
-                              viewBox='0 0 70 70'
+                              x={30}
+                              y={30}
+                              viewBox='0 0 40 40'
                             />
                           )}
                         />
@@ -268,11 +271,11 @@ const DatasetReport: FC<Props> = ({
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
-                            <AccessOpenIcon
+                            <NapLockOpenStrokeIconSC
                               key={dataIndex}
-                              x={40}
-                              y={35}
-                              viewBox='0 0 70 70'
+                              x={30}
+                              y={30}
+                              viewBox='0 0 40 40'
                             />
                           )}
                         />
@@ -310,11 +313,11 @@ const DatasetReport: FC<Props> = ({
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
-                            <AccessRestrictedIcon
+                            <NapLockSemiOpenStrokeIconSC
                               key={dataIndex}
-                              x={37}
-                              y={35}
-                              viewBox='0 0 70 70'
+                              x={30}
+                              y={30}
+                              viewBox='0 0 40 40'
                             />
                           )}
                         />
@@ -352,11 +355,11 @@ const DatasetReport: FC<Props> = ({
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
-                            <AccessNotOpenIcon
+                            <NapLockLockedStrokeIconSC
                               key={dataIndex}
-                              x={35}
-                              y={35}
-                              viewBox='0 0 70 70'
+                              x={30}
+                              y={30}
+                              viewBox='0 0 40 40'
                             />
                           )}
                         />
@@ -421,7 +424,7 @@ const DatasetReport: FC<Props> = ({
                     )}`}
                   >
                     <IllustrationWithCount
-                      icon={<AuthoritativeIcon />}
+                      icon={<NapStarStrokeIconSC />}
                       count={nationalComponent}
                     />
                     <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
@@ -459,14 +462,11 @@ const DatasetReport: FC<Props> = ({
                           lineWidth={40}
                           animate
                           label={({ dataIndex }) => (
-                            <ConceptIcon
+                            <NapBookBookmarkStrokeIconSC
                               key={dataIndex}
-                              x={37}
-                              y={38}
-                              viewBox='0 0 90 90'
-                              fill={
-                                theme.extendedColors[Entity.DATASET].graph.dark
-                              }
+                              x={30}
+                              y={30}
+                              viewBox='0 0 40 40'
                             />
                           )}
                         />

@@ -246,25 +246,19 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         publisher={publisher}
         admsStatus={admsStatus}
       />
-      <SC.SubBanner>
-        {publisher?.id && (
-          <>
-            {datasetScore && (
-              <FdkLink
-                href={`/organizations/${publisher.id}/datasets/${entityId}`}
-              >
-                <SC.MetadataQuality>
-                  <p>{translations.metadataQualityPage.metadataQuality}: </p>
-                  <SC.RatingIcon>
-                    {determineRatingIcon(datasetScore.dataset)}
-                  </SC.RatingIcon>
-                  <p>{calculateRatingPercentage(datasetScore.dataset)} %</p>
-                </SC.MetadataQuality>
-              </FdkLink>
-            )}
-          </>
-        )}
-      </SC.SubBanner>
+      {publisher?.id && datasetScore && (
+        <SC.SubBanner>
+          <FdkLink href={`/organizations/${publisher.id}/datasets/${entityId}`}>
+            <SC.MetadataQuality>
+              <p>{translations.metadataQualityPage.metadataQuality}: </p>
+              <SC.RatingIcon>
+                {determineRatingIcon(datasetScore.dataset)}
+              </SC.RatingIcon>
+              <p>{calculateRatingPercentage(datasetScore.dataset)} %</p>
+            </SC.MetadataQuality>
+          </FdkLink>
+        </SC.SubBanner>
+      )}
       <SC.Themes>
         {isOpenData && (
           <Link to={`${rootPaths[entity]}?opendata=true`} className='open-data'>
@@ -323,6 +317,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       </SC.Themes>
       <SC.Page>
         <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
+          <SC.HamburgerIcon />
           {translations.detailsPage.navMenuButton[navOpen ? 'open' : 'closed']}
         </SC.MenuToggle>
         <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />

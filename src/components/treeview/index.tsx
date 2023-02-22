@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { FC, PropsWithChildren } from 'react';
 import _ from 'lodash';
+
 import SC from './styled';
 
 interface Props {
@@ -49,7 +50,9 @@ const TreeView: FC<PropsWithChildren<Props>> = ({
       onClick={handleClick}
       aria-expanded={!isCollapsed}
       aria-controls={collapsedId}
-    />
+    >
+      <SC.ChevronUpIcon />
+    </SC.CollapseButton>
   );
 
   return (

@@ -189,7 +189,7 @@ export interface PlaysRole {
   agent: string;
   description?: Partial<TextLanguage>;
   identifier: string;
-  role: PublicServiceType;
+  role: PublicServiceType[];
   uri: string;
 }
 
@@ -1074,4 +1074,25 @@ export interface CommentThread {
 export interface FilterSearchOption {
   value: string;
   label: string;
+}
+
+export interface AiProject {
+  id: number;
+  prosjekteier: string;
+  prosjekttittel: string;
+  departement?: string;
+  eiertype?: string;
+  kontaktperson?: string;
+  prosjektBeskrivelse?: string;
+  prosjektFormaal?: string;
+  prosjektstart?: number;
+  prosjektslutt?: number;
+  tilknyttedeOrganisasjoner?: string;
+  innleideKonsulenter?: string;
+  lenkeTilProsjekt?: string;
+  status?: string;
+  typeData?: string;
+  datakilde?: string;
+  modellutvikling?: string;
+  klassifisering?: string;
 }

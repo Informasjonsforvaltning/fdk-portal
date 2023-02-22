@@ -152,19 +152,19 @@ const InformationPage: FC<Props> = () => {
   const menuItems = [
     {
       id: PATHNAME_ABOUT_DATASETS,
-      title: localization.informationPage.aboutDatasets
+      title: localization.menu.aboutDatasets
     },
     {
       id: PATHNAME_ABOUT_DATA_SERVICES,
-      title: localization.informationPage.aboutDataServices
+      title: localization.menu.aboutDataServices
     },
     {
       id: PATHNAME_ABOUT_CONCEPTS,
-      title: localization.informationPage.aboutConcepts
+      title: localization.menu.aboutConcepts
     },
     {
       id: PATHNAME_ABOUT_INFORMATIONMODELS,
-      title: localization.informationPage.aboutInformationModels
+      title: localization.menu.aboutInformationModels
     }
   ];
 
@@ -173,6 +173,7 @@ const InformationPage: FC<Props> = () => {
       <SC.InformationPage id='content' className='container'>
         <SC.Aside>
           <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
+            <SC.HamburgerIcon />
             {
               localization.detailsPage.navMenuButton[
                 navOpen ? 'open' : 'closed'

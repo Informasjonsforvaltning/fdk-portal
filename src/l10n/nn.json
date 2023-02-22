@@ -154,7 +154,12 @@
     "searchInFdk": "Søk i Felles datakatalog",
     "publishing": "Publisere",
     "aboutCatalogs": "Om katalogane",
-    "guidance": "Rettleiing"
+    "guidance": "Rettleiing",
+    "aboutDatasets": "Om datasettkatalogen",
+    "aboutDataServices": "Om API-katalogen",
+    "aboutConcepts": "Om omgrepskatalogen",
+    "aboutInformationModels": "Om informasjonsmodellkatalogen",
+    "ai": "Kunstig intelligens"
   },
   "query": {
     "intro": "Eksempel: offentleg transport",
@@ -1120,10 +1125,28 @@
     "goToDetailsPage": "Sjå detaljert driftsmelding for meir informasjon."
   },
   "informationPage": {
-    "aboutDatasets": "Om datasettkatalogen",
-    "aboutDataServices": "Om API-katalogen",
-    "aboutConcepts": "Om omgrepskatalogen",
-    "aboutInformationModels": "Om informasjonsmodellkatalogen",
     "imageText": "Bildetekst: "
+  },
+  "aiPage": {
+    "artificialIntelligence": "Kunstig intelligens - initiativ",
+    "searchProject": "Søk på prosjekt",
+    "showAllFields": "Vis alle felt",
+    "hideAllFields": "Skjul alle felt",
+    "projectOwner": "Prosjekteigar",
+    "projectTitle": "Prosjekttittel",
+    "ministry": "Departement",
+    "ownerType": "Eiertype",
+    "contact": "Kontaktperson",
+    "descriptionOfProject": "Beskrivelse av prosjekt",
+    "purposeOfProject": "Formål av prosjekt",
+    "projectStartEnd": "Prosjekt start og slutt",
+    "connectedOrganizations": "Tilknytta organisasjonar",
+    "useOfHired": "Bruk av innleigde",
+    "linkToProject": "Lenkje til prosjekt",
+    "status": "Status",
+    "typeOfData": "Type data",
+    "datasource": "Datakjelde",
+    "modelDevelopment": "Modellutvikling",
+    "classification": "Klassifisering"
   }
 }

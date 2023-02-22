@@ -3,9 +3,11 @@ import React, { memo, FC, useEffect } from 'react';
 import { compose } from 'redux';
 
 import DataGrid from '@inovua/reactdatagrid-community';
+import '@inovua/reactdatagrid-community/index.css';
 
 import xmlFormat from 'xml-formatter';
 
+import { useHistory } from 'react-router-dom';
 import SC from './styled';
 import withDatasetPreview, {
   Props as DatasetPreviewProps
@@ -50,6 +52,8 @@ const Preview: FC<Props> = ({
   isLoadingDatasetPreview,
   datasetPreviewActions: { getDatasetPreviewRequested: getDatasetPreview }
 }) => {
+  const history = useHistory();
+
   const getColumns = (): any => {
     const {
       table: { header, rows }
@@ -94,6 +98,11 @@ const Preview: FC<Props> = ({
     updateScrolling();
     onClose();
   };
+
+  useEffect(() => {
+    isOpen = false;
+    updateScrolling();
+  }, [history]);
 
   useEffect(() => {
     updateScrolling();

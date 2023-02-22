@@ -154,7 +154,12 @@
     "searchInFdk": "Søk i Felles datakatalog",
     "publishing": "Publisere",
     "aboutCatalogs": "Om katalogene",
-    "guidance": "Veiledning"
+    "guidance": "Veiledning",
+    "aboutDatasets": "Om datasettkatalogen",
+    "aboutDataServices": "Om API-katalogen",
+    "aboutConcepts": "Om begrepskatalogen",
+    "aboutInformationModels": "Om informasjonsmodell-katalogen",
+    "ai": "Kunstig intelligens"
   },
   "query": {
     "intro": "Eksempel: kollektivtransport",
@@ -969,7 +974,7 @@
   "community": {
     "title": "Datalandsbyen",
     "seeLatest": "Siste saker i",
-    "seeAllComments": "Se alle kommentarar",
+    "seeAllComments": "Se alle kommentarer",
     "seeAllPosts": "Se alle saker",
     "seeAllBlogArticles": "Se alle bloggartikler",
     "meetingTitle": "Møtetittel: ",
@@ -1120,10 +1125,28 @@
     "goToDetailsPage": "Se detaljert driftsmelding for mer informasjon."
   },
   "informationPage": {
-    "aboutDatasets": "Om datasettkatalogen",
-    "aboutDataServices": "Om API-katalogen",
-    "aboutConcepts": "Om begrepskatalogen",
-    "aboutInformationModels": "Om informasjonsmodell-katalogen",
     "imageText": "Bildetekst: "
+  },
+  "aiPage": {
+    "artificialIntelligence": "Kunstig intelligens - initiativ",
+    "searchProject": "Søk på prosjekt",
+    "showAllFields": "Vis alle felt",
+    "hideAllFields": "Skjul alle felt",
+    "projectOwner": "Prosjekteier",
+    "projectTitle": "Prosjekttittel",
+    "ministry": "Departement",
+    "ownerType": "Eiertype",
+    "contact": "Kontaktperson",
+    "descriptionOfProject": "Beskrivelse av prosjekt",
+    "purposeOfProject": "Formål av prosjekt",
+    "projectStartEnd": "Prosjekt start og slutt",
+    "connectedOrganizations": "Tilknyttede organisasjoner",
+    "useOfHired": "Bruk av innleide",
+    "linkToProject": "Lenke til prosjekt",
+    "status": "Status",
+    "typeOfData": "Type data",
+    "datasource": "Datakilde",
+    "modelDevelopment": "Modellutvikling",
+    "classification": "Klassifisering"
   }
 }

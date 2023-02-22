@@ -9,21 +9,20 @@ import ServiceIconBase from '../../../../images/icon-catalog-service-lg.svg';
 import type { InvertedColorProps } from '../../../../types';
 
 const Head = styled.div<InvertedColorProps>`
-    background-color:  ${({ theme, inverted }) =>
-      inverted ? theme.dark : theme.light};
-    border-radius: 5px;
-    color:  ${({ theme, inverted }) => (inverted ? theme.light : theme.dark)};
-    display: flex;
-    padding: .5em;
-    margin-bottom: 1em;
-    
-    a {
-      color:  ${({ theme, inverted }) =>
-        inverted ? theme.light : theme.dark} !important;
-    }
-    svg > path {
-      fill:  ${({ theme, inverted }) => (inverted ? theme.light : theme.dark)};
-    }
+  background-color: ${({ theme, inverted }) =>
+    inverted ? theme.dark : theme.light};
+  border-radius: 5px;
+  color: ${({ theme, inverted }) => (inverted ? theme.light : theme.dark)};
+  display: flex;
+  padding: 0.5em;
+  margin-bottom: 1em;
+
+  a {
+    color: ${({ theme, inverted }) =>
+      inverted ? theme.light : theme.dark} !important;
+  }
+  svg > path {
+    fill: ${({ theme, inverted }) => (inverted ? theme.light : theme.dark)};
   }
 `;
 

@@ -29,6 +29,7 @@ export const slideDown = keyframes`
 
 const Menu = styled.nav<Props>`
   font-size: ${t.fontSize('FS14', Unit.REM)};
+
   & > ul {
     display: flex;
     flex-direction: column;

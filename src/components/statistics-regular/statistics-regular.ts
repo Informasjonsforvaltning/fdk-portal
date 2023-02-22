@@ -1,5 +1,7 @@
 import StatisticsRegularSC from './components/statistics-regular/styled';
 
+import IllustrationWithCountSC from './components/illustration-with-count/styled';
+
 export {
   default as StatisticsRegular,
   Variant as FontVariant
@@ -11,5 +13,6 @@ export {
 } from './components/illustration-with-count/illustration-with-count.component';
 
 export const SC = {
-  StatisticsRegular: StatisticsRegularSC
+  StatisticsRegular: StatisticsRegularSC,
+  IllustrationWithCount: IllustrationWithCountSC
 };

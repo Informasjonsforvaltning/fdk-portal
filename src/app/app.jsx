@@ -44,7 +44,8 @@ import {
   PATHNAME_ABOUT_DATASETS,
   PATHNAME_ABOUT_DATA_SERVICES,
   PATHNAME_ABOUT_CONCEPTS,
-  PATHNAME_ABOUT_INFORMATIONMODELS
+  PATHNAME_ABOUT_INFORMATIONMODELS,
+  PATHNAME_AI
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
@@ -55,6 +56,7 @@ import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-pa
 import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import InformationPage from '../pages/cms-information-page';
+import { AiProjectPage } from '../pages/ai-project-page';
 import { parseSearchParams } from '../lib/location-history-helper';
 import routes from '../routes';
 
@@ -107,7 +109,8 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_DATASETS]: InformationPage,
     [PATHNAME_ABOUT_DATA_SERVICES]: InformationPage,
     [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
-    [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage
+    [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage,
+    [PATHNAME_AI]: localStorage.getItem('showKI') ? AiProjectPage : null
   };
 
   return (

@@ -150,7 +150,7 @@ export const themeNAP = {
 
     [Entity.DATASET]: {
       dark: '#3E7B1F',
-      light: '#DFF2D5',
+      light: '#EBF5E6',
       lighter: '#F4F7F2',
       graph: {
         darker: '#DFF2D5',

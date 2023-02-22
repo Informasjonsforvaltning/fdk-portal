@@ -24,6 +24,8 @@ export default validateEnv(
       'https://sparql.staging.fellesdatakatalog.digdir.no',
     FDK_DATASET_PREVIEW_API_KEY: '',
     FDK_USER_FEEDBACK_SERVICE_BASE_URI:
-      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/user-feedback-service-staging'
+      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/user-feedback-service-staging',
+    AI_PROJECT_SERVICE_BASE_URI:
+      'https://ai-project.staging.fellesdatakatalog.digdir.no'
   }
 );
