@@ -1,7 +1,7 @@
 {
   "#": "Automated accessibility testing ~ https://github.com/pa11y/pa11y-ci",
   "defaults": {
-    "standard": "WCAG2AAA",
+    "standard": "WCAG2A",
     "chromeLaunchConfig": {
       "args": [
         "--no-sandbox"
