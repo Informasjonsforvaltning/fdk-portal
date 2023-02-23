@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme as t } from '@fellesdatakatalog/theme';
-import HamburgerIconBase from '../../../../images/hamburger-menu-stroke.svg';
 
 import SideMenuBase from '../side-menu';
 
@@ -173,6 +172,14 @@ const MenuToggle = styled.button`
     background: black;
     color: ${({ theme }) => theme.extendedColors.neutralLighter};
   }
+
+  &:before {
+    content: '\\f0c9';
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 0.5em;
+  }
 `;
 
 const SideMenu = styled(SideMenuBase)`
@@ -219,12 +226,6 @@ const Content = styled.main`
   }
 `;
 
-const HamburgerIcon = styled(HamburgerIconBase)`
-  width: 20px;
-  height: 20px;
-  margin-right: 0.5em;
-`;
-
 export default {
   DetailsPage,
   SubBanner,
@@ -235,6 +236,5 @@ export default {
   SideMenu,
   SideMenuSmall,
   Content,
-  RatingIcon,
-  HamburgerIcon
+  RatingIcon
 };

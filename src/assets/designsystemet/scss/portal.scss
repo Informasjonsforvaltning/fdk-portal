@@ -76,6 +76,19 @@
   }
 }
 
+.btn-group .fdk-button-menu {
+  &:before {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    content: '\f0c9';
+    margin-right: 0.2em;
+  }
+}
+
 .modal-header {
   h5 {
     color: $color-white;
