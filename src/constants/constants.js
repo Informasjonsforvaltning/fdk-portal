@@ -31,6 +31,8 @@ export const PATHNAME_ABOUT_DATA_SERVICES = '/om-api-katalogen';
 export const PATHNAME_ABOUT_INFORMATIONMODELS = '/om-informasjonskatalogen';
 export const PATHNAME_COMMUNITY_COMMENTS = '/category/12/kommentartråder';
 export const PATHNAME_AI = '/kunstig-intelligens';
+export const EXTERNAL_AI_PAGE =
+  'https://www.digdir.no/kunstig-intelligens/kunstig-intelligens-i-offentlig-sektor/4276';
 
 export const PARAGRAPH__BODY = 'paragraph--body';
 export const PARAGRAPH__IMAGE = 'paragraph--image';

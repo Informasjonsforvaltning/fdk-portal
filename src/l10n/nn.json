@@ -1147,6 +1147,8 @@
     "typeOfData": "Type data",
     "datasource": "Datakjelde",
     "modelDevelopment": "Modellutvikling",
-    "classification": "Klassifisering"
+    "classification": "Klassifisering",
+    "aiPreamble": "For å bli meir koordinerte på bruk av kunstig intelligens (KI) i norsk offentleg sektor har NORA.ai og Digdir byrja på ei oversikt over KI-prosjekt i offentleg sektor. Oversikta er ikkje komplett og vi treng di hjelp til å holde den oppdatert. Datainnsamlinga er ikkje basert på rapportering, men direkte kontakt med pårekna relevante aktørar. Oversikta blir bygd ut fortløpande, og gir ikkje høvet til å trekkje nokre endelege konklusjonar. Du kan lese meir om oversikta på våre ",
+    "guidancePages": "rettleiingssider."
   }
 }
