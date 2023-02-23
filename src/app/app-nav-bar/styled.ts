@@ -14,7 +14,7 @@ const Header = styled.header`
   justify-content: center;
   height: 80px;
   position: relative;
-  z-index: 10;
+  z-index: 999;
 
   ${({ theme: extendedTheme }) =>
     isTransportportal
