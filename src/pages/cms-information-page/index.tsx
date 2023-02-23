@@ -173,7 +173,6 @@ const InformationPage: FC<Props> = () => {
       <SC.InformationPage id='content' className='container'>
         <SC.Aside>
           <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
-            <SC.HamburgerIcon />
             {
               localization.detailsPage.navMenuButton[
                 navOpen ? 'open' : 'closed'

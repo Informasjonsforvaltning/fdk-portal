@@ -41,6 +41,7 @@ import SC from './styled';
 import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
 import Markdown from '../markdown';
+import LinkExternal from '../link-external';
 
 interface RouteParams {
   dataServiceId: string;
@@ -252,9 +253,11 @@ const DataserviceDetailsPage: FC<Props> = ({
                 spec && (
                   <>
                     {index > 0 && <br />}
-                    <Link href={spec.source} external>
-                      {translate(spec.label)}
-                    </Link>
+                    <LinkExternal
+                      uri={spec.source}
+                      prefLabel={translate(spec.label)}
+                      openInNewTab
+                    />
                   </>
                 )
             )}
