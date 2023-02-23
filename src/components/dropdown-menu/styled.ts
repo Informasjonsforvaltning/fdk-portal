@@ -77,6 +77,19 @@ const ChevronDownIcon = styled(ChevronDownIconBase)`
   width: 16px;
   height: 16px;
   margin-left: 0.3em;
+
+  ${() =>
+    isTransportportal
+      ? css`
+          & * {
+            stroke: ${theme.colour(Colour.NEUTRAL, 'N0')};
+          }
+        `
+      : css`
+          & * {
+            stroke: ${theme.colour(Colour.NEUTRAL, 'N60')};
+          }
+        `}
 `;
 
 const HamburgerMenuIcon = styled(HamburgerMenuIconBase)`
