@@ -1,7 +1,4 @@
 import styled, { css } from 'styled-components';
-import ButtonBase from '@fellesdatakatalog/button';
-import ChevronDoubleDownIconBase from '@fellesdatakatalog/icons/assets/svg/chevron-double-down-stroke.svg';
-import ChevronDoubleUpIconBase from '@fellesdatakatalog/icons/assets/svg/chevron-double-up-stroke.svg';
 import { Entity } from '../../types/enums';
 
 type textContentProps = {
@@ -57,32 +54,37 @@ const TextContent = styled.div<textContentProps>`
 `;
 
 type expandButtonProps = {
+  open: boolean;
   entity?: Entity;
 };
 
-const ExpandButton = styled(ButtonBase)<expandButtonProps>`
+const ExpandButton = styled.button<expandButtonProps>`
+  border: none;
+  border-bottom-style: dotted;
+  border-bottom-color: ${({ theme }) =>
+    theme?.entityColours?.neutralDarker ?? theme.dark};
   color: ${({ theme }) => theme?.entityColours?.neutralDarker ?? theme.dark};
   background-color: ${({ theme, entity }) =>
     entity ? theme.extendedColors[entity].lighter : '#FFF'};
-`;
 
-const ChevronDoubleDownIcon = styled(ChevronDoubleDownIconBase)`
-  width: 16px;
-  height: 16px;
-  margin-right: 0.25em;
-`;
+  &:before {
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 0.25em;
+  }
 
-const ChevronDoubleUpIcon = styled(ChevronDoubleUpIconBase)`
-  width: 16px;
-  height: 16px;
-  margin-right: 0.25em;
+  ${props =>
+    props.open
+      ? css`
+          &:before {
+            content: '\\f102';
+          }
+        `
+      : css`
+          &:before {
+            content: '\\f103';
+          }
+        `}
 `;
-
-export default {
-  TruncateContainer,
-  TextContainer,
-  TextContent,
-  ExpandButton,
-  ChevronDoubleDownIcon,
-  ChevronDoubleUpIcon
-};
+export default { TruncateContainer, TextContainer, TextContent, ExpandButton };
