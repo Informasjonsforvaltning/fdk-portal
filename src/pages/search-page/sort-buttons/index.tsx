@@ -41,7 +41,6 @@ const SortButtons: FC<RouteComponentProps> = ({ history, location }) => {
         selected={sortField === undefined}
         borderLeft
       >
-        {sortField === undefined && <ButtonToggleSC.CheckIcon />}
         {localization.formatString(
           sortField === undefined
             ? localization.sort.sortedBy
@@ -56,7 +55,6 @@ const SortButtons: FC<RouteComponentProps> = ({ history, location }) => {
         selected={sortField === 'harvest.firstHarvested'}
         borderRight
       >
-        {sortField === 'harvest.firstHarvested' && <ButtonToggleSC.CheckIcon />}
         {localization.formatString(
           sortField === 'harvest.firstHarvested'
             ? localization.sort.sortedBy

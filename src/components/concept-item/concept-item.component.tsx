@@ -1,11 +1,11 @@
 import React, { FC, Fragment } from 'react';
 import some from 'lodash/some';
-import Link from '@fellesdatakatalog/link';
 
 import SC from './styled';
 import { Concept, ConceptDefinition, TextLanguage } from '../../types';
 import { SearchTypes } from '../../types/enums';
 import { SearchHit, SearchHitData } from '../search-hit/search-hit';
+import { LinkExternal } from '../link-external/link-external.component';
 import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
 
@@ -55,9 +55,7 @@ const renderSource = ({
             {index > 0 && ','}
             &nbsp;
             {uri ? (
-              <Link href={uri} external>
-                {text || uri}
-              </Link>
+              <LinkExternal uri={uri} prefLabel={text || uri} openInNewTab />
             ) : (
               getTranslateText(text)
             )}
