@@ -7,7 +7,6 @@ import '@inovua/reactdatagrid-community/index.css';
 
 import xmlFormat from 'xml-formatter';
 
-import { useHistory } from 'react-router-dom';
 import SC from './styled';
 import withDatasetPreview, {
   Props as DatasetPreviewProps
@@ -52,8 +51,6 @@ const Preview: FC<Props> = ({
   isLoadingDatasetPreview,
   datasetPreviewActions: { getDatasetPreviewRequested: getDatasetPreview }
 }) => {
-  const history = useHistory();
-
   const getColumns = (): any => {
     const {
       table: { header, rows }
@@ -100,16 +97,15 @@ const Preview: FC<Props> = ({
   };
 
   useEffect(() => {
-    isOpen = false;
-    updateScrolling();
-  }, [history]);
-
-  useEffect(() => {
     updateScrolling();
   }, [isOpen]);
 
   useEffect(() => {
     getDatasetPreview(downloadURL, rowCount);
+    return () => {
+      // Handle on close on unmount
+      handleOnClose();
+    };
   }, []);
 
   return (
