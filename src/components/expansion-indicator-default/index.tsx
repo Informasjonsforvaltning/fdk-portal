@@ -11,7 +11,7 @@ interface ExternalProps extends React.HTMLProps<HTMLButtonElement> {
 interface Props extends ExternalProps {}
 
 const ExpansionIndicatorDefault: FC<Props> = ({ isExpanded = false }) => (
-  <SC.Button aria-label='Toogle Expansion button'>
+  <SC.Button aria-label='Toggle Expansion button'>
     {isExpanded ? (
       <SvgIcon name='chevronUpStroke' />
     ) : (
