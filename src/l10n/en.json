@@ -1128,7 +1128,7 @@
     "imageText": "Image text: "
   },
   "aiPage": {
-    "artificialIntelligence": "Artificial intelligence - initiative",
+    "artificialIntelligence": "Artificial intelligence - overview of projects in the public sector",
     "searchProject": "Search project",
     "showAllFields": "Show all fields",
     "hideAllFields": "Hide all fields",
@@ -1147,6 +1147,8 @@
     "typeOfData": "Type of data",
     "datasource": "Datasource",
     "modelDevelopment": "Model developement",
-    "classification": "Classification"
+    "classification": "Classification",
+    "aiPreamble": "In order to become more coordinated on the use of artificial intelligence (AI) in the Norwegian public sector, NORA.ai and Digdir have started on an overview of AI projects in the public sector. The overview is not complete and we need your help to keep it up to date. The data collection is not based on reporting, but direct contact with presumed relevant actors. The overview is developed continuously, and does not provide the opportunity to draw any final conclusions. You can read more about the overview on our ",
+    "guidancePages": "guidance pages."
   }
 }
