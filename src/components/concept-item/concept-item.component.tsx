@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import some from 'lodash/some';
 import Link from '@fellesdatakatalog/link';
 
@@ -43,6 +43,8 @@ const renderSource = ({
   }
 
   if (sources && sources.length > 0) {
+    // eslint-disable-next-line no-console
+    console.log({ sources });
     return (
       <div>
         <span>
@@ -50,19 +52,19 @@ const renderSource = ({
             sourceRelationship
           )}`}
         </span>
-        {sources.map(({ text, uri }: any, index: number) => (
-          <Fragment key={`${text}-${uri}`}>
-            {index > 0 && ','}
-            &nbsp;
-            {uri ? (
-              <Link href={uri} external>
-                {text || uri}
-              </Link>
-            ) : (
-              getTranslateText(text)
-            )}
-          </Fragment>
-        ))}
+
+        {sources.map(
+          ({ text, uri }: any, index: number) =>
+            `${index > 0 ? ',' : ''} ${
+              uri ? (
+                <Link href={uri} external>
+                  {text || uri}
+                </Link>
+              ) : (
+                getTranslateText(text)
+              )
+            }`
+        )}
       </div>
     );
   }
