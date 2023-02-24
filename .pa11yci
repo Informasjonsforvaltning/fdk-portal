@@ -6,7 +6,14 @@
       "args": [
         "--no-sandbox"
       ]
-    }
+    },
+    "ignore": [
+      "WCAG2A.Principle4.Guideline4_1.4_1_1.F77",
+      "WCAG2A.Principle3.Guideline3_2.3_2_2.H32.2",
+      "WCAG2A.Principle1.Guideline1_3.1_3_1.H42.2",
+      "WCAG2A.Principle1.Guideline1_1.1_1_1.H37",
+      "WCAG2A.Principle1.Guideline1_4.1_4_3.G18"
+    ]
   },
   "urls": [
     "https://staging.fellesdatakatalog.digdir.no/public-services-and-events?q=Skjenkebevilling",

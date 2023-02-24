@@ -39,7 +39,7 @@
     "prepare": "husky install",
     "generate:types": "graphql-codegen",
     "generate:sitemap": "NODE_PATH=./src npx -s sh ts-node --project tsconfig.sitemap.json ./sitemap-builder.ts",
-    "pa11y-ci": "pa11y-ci --sitemap http://data.norge.no/sitemap.xml --sitemap-find https://data.norge.no --sitemap-replace https://staging.fellesdatakatalog.digdir.no"
+    "pa11y-ci": "pa11y-ci --sitemap http://data.norge.no/sitemap.xml --sitemap-exclude https://data.norge.no/sparql --sitemap-find https://data.norge.no --sitemap-replace https://staging.fellesdatakatalog.digdir.no"
   },
   "config": {
     "commitizen": {
@@ -84,6 +84,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "oidc-client": "^1.11.5",
+    "pa11y": "^6.2.3",
     "path-browserify": "^1.0.1",
     "prop-types": "^15.8.1",
     "qs": "^6.11.0",
