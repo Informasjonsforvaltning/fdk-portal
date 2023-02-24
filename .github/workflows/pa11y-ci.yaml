@@ -1,6 +1,6 @@
 name: Accessibility tests with Pa11y
 on:
-  push:
+  pull_request:
       branches:
         - main
 
