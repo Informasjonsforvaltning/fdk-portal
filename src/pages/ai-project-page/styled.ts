@@ -12,6 +12,12 @@ const SearchBox = styled.div`
   margin-bottom: 2em;
 `;
 
+const TextBox = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+`;
+
 const Filter = styled.div`
   align-items: center;
   background-color: #fff;
@@ -88,5 +94,6 @@ export default {
   SearchButton,
   IconWrapper,
   ButtonRow,
-  ButtonIconWrapper
+  ButtonIconWrapper,
+  TextBox
 };

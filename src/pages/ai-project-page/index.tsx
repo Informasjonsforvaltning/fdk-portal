@@ -2,6 +2,7 @@ import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import SvgIcon from '@fellesdatakatalog/icons';
 import Button, { Variant } from '@fellesdatakatalog/button';
+import Link from '@fellesdatakatalog/link';
 import Spinner from '../../components/spinner';
 import ErrorPage from '../../components/error-page';
 import withErrorBoundary from '../../components/with-error-boundary';
@@ -12,6 +13,7 @@ import SC from './styled';
 import withAiProjects, {
   Props as AiProjectProps
 } from '../../components/with-ai-projects';
+import { EXTERNAL_AI_PAGE } from '../../constants/constants';
 
 interface Props extends AiProjectProps {}
 
@@ -35,6 +37,15 @@ const Page: FC<Props> = ({
           <SC.Header>{localization.aiPage.artificialIntelligence}</SC.Header>
         </div>
       </div>
+      <SC.TextBox>
+        <p>
+          {localization.aiPage.aiPreamble}
+          <Link href={EXTERNAL_AI_PAGE} external>
+            {localization.aiPage.guidancePages}
+          </Link>
+        </p>
+      </SC.TextBox>
+
       <div className='row mb-5'>
         <SC.SearchBox className='col-12'>
           <SC.Filter>

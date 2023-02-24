@@ -49,6 +49,7 @@ const TreeView: FC<PropsWithChildren<Props>> = ({
       onClick={handleClick}
       aria-expanded={!isCollapsed}
       aria-controls={collapsedId}
+      aria-label='Toggle expansion button'
     />
   );
 
