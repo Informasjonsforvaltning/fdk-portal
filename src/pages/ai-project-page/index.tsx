@@ -40,7 +40,7 @@ const Page: FC<Props> = ({
       <SC.TextBox>
         <p>
           {localization.aiPage.aiPreamble}
-          <Link href={EXTERNAL_AI_PAGE}>
+          <Link href={EXTERNAL_AI_PAGE} external>
             {localization.aiPage.guidancePages}
           </Link>
         </p>
