@@ -1,5 +1,17 @@
 import styled, { css } from 'styled-components';
 
+import CheckIconBase from '@fellesdatakatalog/icons/assets/svg/check-stroke.svg';
+import { Colour, theme as themeFdk } from '@fellesdatakatalog/theme';
+
+const CheckIcon = styled(CheckIconBase)`
+  width: 16px;
+  height: 16px;
+  margin-right: 0.5em;
+  & * {
+    stroke: ${themeFdk.colour(Colour.NEUTRAL, 'N0')};
+  }
+`;
+
 const ButtonToggle = styled.button<{
   selected?: boolean;
   borderLeft?: boolean;
@@ -35,13 +47,6 @@ const ButtonToggle = styled.button<{
             theme.extendedColors.neutralDarker};
           box-shadow: 0 4px 8px rgba(45, 55, 65, 0.2);
           color: #fff;
-          &:before {
-            content: '\\F00C';
-            font: normal normal normal 12px/1 FontAwesome;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            margin-right: 0.5em;
-          }
         `
       : css`
           cursor: pointer;
@@ -53,5 +58,6 @@ const ButtonToggle = styled.button<{
 `;
 
 export default {
-  ButtonToggle
+  ButtonToggle,
+  CheckIcon
 };

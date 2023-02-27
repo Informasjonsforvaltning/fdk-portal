@@ -1,11 +1,11 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import some from 'lodash/some';
+import Link from '@fellesdatakatalog/link';
 
 import SC from './styled';
 import { Concept, ConceptDefinition, TextLanguage } from '../../types';
 import { SearchTypes } from '../../types/enums';
 import { SearchHit, SearchHitData } from '../search-hit/search-hit';
-import { LinkExternal } from '../link-external/link-external.component';
 import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
 
@@ -43,6 +43,8 @@ const renderSource = ({
   }
 
   if (sources && sources.length > 0) {
+    // eslint-disable-next-line no-console
+    console.log({ sources });
     return (
       <div>
         <span>
@@ -50,17 +52,19 @@ const renderSource = ({
             sourceRelationship
           )}`}
         </span>
-        {sources.map(({ text, uri }: any, index: number) => (
-          <Fragment key={`${text}-${uri}`}>
-            {index > 0 && ','}
-            &nbsp;
-            {uri ? (
-              <LinkExternal uri={uri} prefLabel={text || uri} openInNewTab />
-            ) : (
-              getTranslateText(text)
-            )}
-          </Fragment>
-        ))}
+
+        {sources.map(
+          ({ text, uri }: any, index: number) =>
+            `${index > 0 ? ',' : ''} ${
+              uri ? (
+                <Link href={uri} external>
+                  {text || uri}
+                </Link>
+              ) : (
+                getTranslateText(text)
+              )
+            }`
+        )}
       </div>
     );
   }
