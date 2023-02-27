@@ -104,13 +104,11 @@ const fdkItems = () => [
       mobileView={false}
       title={localization.menu.tools}
     >
-      {localStorage.getItem('showKI') && (
-        <SC.ListItem key={localization.menu.ai}>
-          <Link as={RouteLink} to={PATHNAME_AI}>
-            {localization.menu.ai}
-          </Link>
-        </SC.ListItem>
-      )}
+      <SC.ListItem key={localization.menu.ai}>
+        <Link as={RouteLink} to={PATHNAME_AI}>
+          {localization.menu.ai}
+        </Link>
+      </SC.ListItem>
       <SC.ListItem key={localization.menu.tools.reports}>
         <Link as={RouteLink} to={PATHNAME_REPORTS}>
           {localization.menu.reports}
@@ -167,13 +165,11 @@ const fdkItemsMobile = () => [
   <SC.ListItem key={localization.menu.tools}>
     {localization.menu.tools}
     <ul>
-      {localStorage.getItem('showKI') && (
-        <SC.ListItem key={localization.menu.ai}>
-          <Link as={RouteLink} to={PATHNAME_AI}>
-            {localization.menu.ai}
-          </Link>
-        </SC.ListItem>
-      )}
+      <SC.ListItem key={localization.menu.ai}>
+        <Link as={RouteLink} to={PATHNAME_AI}>
+          {localization.menu.ai}
+        </Link>
+      </SC.ListItem>
       <SC.ListItem key={localization.menu.tools.reports}>
         <Link as={RouteLink} to={PATHNAME_REPORTS}>
           {localization.menu.reports}
