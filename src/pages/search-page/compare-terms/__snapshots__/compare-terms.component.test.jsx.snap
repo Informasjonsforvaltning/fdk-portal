@@ -13,12 +13,12 @@ exports[`should render CompareTerms correctly 1`] = `
       Preflabel 1
     </h3>
     <button
-      className="btn fdk-text-size-15 fdk-color-link bg-transparent"
+      className="btn fdk-text-size-15 fdk-color-link bg-transparent nowrap"
       onClick={[Function]}
       type="button"
     >
-      <i
-        className="fa fa-minus-circle"
+      <SvgCircleMinusStroke
+        className="fdk-compare-icon"
       />
        
       Remove

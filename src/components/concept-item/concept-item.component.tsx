@@ -43,8 +43,6 @@ const renderSource = ({
   }
 
   if (sources && sources.length > 0) {
-    // eslint-disable-next-line no-console
-    console.log({ sources });
     return (
       <div>
         <span>
@@ -96,7 +94,7 @@ const renderAddRemoveCompareButton = (
         }}
         type='button'
       >
-        <i className='fa fa-plus-circle mr-2' />
+        <SC.CirclePlusIcon />
         {localization.compare.addCompare}
       </SC.ButtonCompare>
     );
@@ -108,7 +106,7 @@ const renderAddRemoveCompareButton = (
       }}
       type='button'
     >
-      <i className='fa fa-minus-circle mr-2' />
+      <SC.CircleMinusIcon />
       {localization.compare.removeCompare}
     </SC.ButtonCompare>
   );

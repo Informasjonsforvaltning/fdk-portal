@@ -136,11 +136,9 @@
     "homeNAP": "Søk i Transportportal.no",
     "about": "Om Felles datakatalog",
     "aboutRegistration": "Hjelp til å registrere",
-    "tools": {
-      "tools": "Verktøy",
-      "reports": "Rapportar",
-      "sparql": "SPARQL-spørjing"
-    },
+    "tools": "Verktøy",
+    "reports": "Rapportar",
+    "sparql": "SPARQL-spørjing",
     "community": "Datalandsbyen",
     "conceptsCompare": "Samanlikne omgrep",
     "aboutNap": "Om Transportportal.no",

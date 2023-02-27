@@ -133,7 +133,7 @@ export const ReportPagePure: FC<Props> = ({
           <div className='col-md-8'>
             <div className='row'>
               <div className='col-12'>
-                <SC.Title>{localization.menu.tools.reports}</SC.Title>
+                <SC.Title>{localization.menu.reports}</SC.Title>
               </div>
             </div>
             <div className='row'>
