@@ -1,6 +1,5 @@
 @import '../../assets/designsystemet/scss/colors.scss';
 
-
 .scrollable {
   overflow: auto;
 
@@ -21,7 +20,8 @@
     display: table;
   }
 
-  th, td {
+  th,
+  td {
     padding: 1em !important;
     min-width: 16em;
   }
@@ -29,21 +29,31 @@
   td:nth-child(1) {
     background-color: $color-neutral-lightest;
     position: sticky;
-    left     : 0;
-    z-index  : 10;
+    left: 0;
+    z-index: 10;
   }
 
   th:nth-child(1) {
     background-color: $color-neutral-lightest;
     position: sticky;
-    left     : 0;
-    top      : 0;
-    z-index  : 200 !important;
+    left: 0;
+    top: 0;
+    z-index: 200 !important;
   }
 
   thead tr:nth-child(1) th {
     position: sticky;
     top: 0;
     z-index: 10;
+  }
+}
+
+.fdk-compare-icon {
+  width: 16px;
+  height: 16px;
+  * {
+    @include themify($themes) {
+      stroke: themed('color-link');
+    }
   }
 }

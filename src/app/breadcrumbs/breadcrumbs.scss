@@ -1,20 +1,30 @@
 @import '../../assets/designsystemet/scss/colors.scss';
 
-
 .fdk-p-path {
   margin-bottom: 4rem !important;
-  i, span {
+  i,
+  span {
     @include themify($themes) {
       color: themed('color-neutral-darker') !important;
     }
   }
   a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
     @include themify($themes) {
-      color: themed('color-text-link') !important;
+      color: themed('color-neutral-darker') !important;
     }
   }
 }
-.fdk-fa-path {
-  margin: 0 .5em;
-  font-size: 1.4rem !important;
+.fdk-path-chevron {
+  margin: 0 0.5em;
+  width: 16px;
+  height: 16px;
+  transform: rotate(90deg);
+
+  * {
+    @include themify($themes) {
+      stroke: themed('color-neutral-darker');
+    }
+  }
 }

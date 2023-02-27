@@ -136,11 +136,9 @@
     "homeNAP": "Search in The National Access Point for Transport Data ",
     "about": "About",
     "aboutRegistration": "Register data",
-    "tools": {
-      "tools": "Tools",
-      "reports": "Reports",
-      "sparql": "SPARQL query"
-    },
+    "tools": "Tools",
+    "reports": "Reports",
+    "sparql": "SPARQL query",
     "community": "Data Community",
     "conceptsCompare": "Compare concepts",
     "aboutNap": "About",

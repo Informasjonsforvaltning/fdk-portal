@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+import CircleMinusIcon from '@fellesdatakatalog/icons/assets/svg/circle-minus-stroke.svg';
+
 import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
 
@@ -29,12 +31,12 @@ export const CompareTerms: FC<Props> = ({
       <h3 className=''>{capitalCase(getTranslateText(prefLabel))}</h3>
       <button
         type='button'
-        className='btn fdk-text-size-15 fdk-color-link bg-transparent'
+        className='btn fdk-text-size-15 fdk-color-link bg-transparent nowrap'
         onClick={() => {
           uri && onDeleteTerm(uri);
         }}
       >
-        <i className='fa fa-minus-circle' />
+        <CircleMinusIcon className='fdk-compare-icon' />
         &nbsp;
         {localization.terms.removeTerms}
       </button>

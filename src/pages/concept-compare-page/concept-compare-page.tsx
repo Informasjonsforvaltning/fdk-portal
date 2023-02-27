@@ -5,6 +5,7 @@ import qs from 'qs';
 import { Helmet } from 'react-helmet';
 
 import LinkExternal from '@fellesdatakatalog/link';
+import CircleMinusIcon from '@fellesdatakatalog/icons/assets/svg/circle-minus-stroke.svg';
 
 import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
@@ -120,7 +121,7 @@ const renderRemoveItem = (
       <td key={`row-button-${index}`}>
         <button
           type='button'
-          className='btn fdk-text-size-15 fdk-color-link bg-transparent'
+          className='btn fdk-text-size-15 fdk-color-link bg-transparent nowrap'
           onClick={() => {
             onDeleteConcept(
               _.get(items, [item, 'id']),
@@ -130,7 +131,7 @@ const renderRemoveItem = (
             );
           }}
         >
-          <i className='fa fa-minus-circle' />
+          <CircleMinusIcon className='fdk-compare-icon' />
           &nbsp;
           {localization.compare.removeCompare}
         </button>
