@@ -377,6 +377,10 @@ input:focus ~ .checkbox-replacement {
   left: -9999px;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 /* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
   .row-eq-height {

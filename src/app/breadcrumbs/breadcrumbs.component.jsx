@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import withBreadcrumbs from 'react-router-breadcrumbs-hoc';
 
+import ChevronUpIcon from '@fellesdatakatalog/icons/assets/svg/chevron-up-stroke.svg';
+
 import {
   PATHNAME_DATASETS,
   PATHNAME_DATA_SERVICES,
@@ -16,6 +18,7 @@ import {
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_EVENTS,
+  PATHNAME_REPORTS,
   PATHNAME_SPARQL,
   PATHNAME_ABOUT_DATASETS,
   PATHNAME_ABOUT_DATA_SERVICES,
@@ -66,7 +69,7 @@ const routes = [
     breadcrumb: () => <PathNameBreadcrumb pathName='aboutRegistration' />
   },
   {
-    path: '/reports',
+    path: PATHNAME_REPORTS,
     breadcrumb: () => <PathNameBreadcrumb pathName='reports' />
   },
   {
@@ -142,7 +145,7 @@ const options = {
 
 // map & render your breadcrumb components however you want.
 // each `breadcrumb` has the props `key`, `location`, and `match` included!
-const PureBreadcrumbs = ({ breadcrumbs }) => {
+function PureBreadcrumbs({ breadcrumbs }) {
   if (breadcrumbs && breadcrumbs.length > 1) {
     return (
       <div className='fdk-p-path'>
@@ -153,7 +156,7 @@ const PureBreadcrumbs = ({ breadcrumbs }) => {
                 {index < breadcrumbs.length - 1 && (
                   <>
                     <NavLink to={match.url}>{breadcrumb}</NavLink>
-                    <i className='fa fa-angle-right fdk-fa-path' />
+                    <ChevronUpIcon className='fdk-path-chevron' />
                   </>
                 )}
                 {index === breadcrumbs.length - 1 && breadcrumb}
@@ -165,6 +168,6 @@ const PureBreadcrumbs = ({ breadcrumbs }) => {
     );
   }
   return null;
-};
+}
 
 export const Breadcrumbs = withBreadcrumbs(routes, options)(PureBreadcrumbs);

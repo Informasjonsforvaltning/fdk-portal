@@ -50,9 +50,9 @@ const transportItems = () => [
       {localization.menu.organizations}
     </Link>
   </SC.ListItem>,
-  <SC.ListItem key={localization.menu.tools.reports}>
+  <SC.ListItem key={localization.menu.reports}>
     <Link as={RouteLink} to={PATHNAME_REPORTS}>
-      {localization.menu.tools.reports}
+      {localization.menu.reports}
     </Link>
   </SC.ListItem>,
   <SC.ListItem key={localization.menu.community}>
@@ -97,27 +97,25 @@ const fdkItems = () => [
       {localization.menu.organizations}
     </Link>
   </SC.ListItem>,
-  <SC.ListItem key={localization.menu.tools.tools}>
+  <SC.ListItem key={localization.menu.tools}>
     <DropdownMenu
       openOnHover
       chevron={false}
       mobileView={false}
-      title={localization.menu.tools.tools}
+      title={localization.menu.tools}
     >
-      {localStorage.getItem('showKI') && (
-        <SC.ListItem key={localization.menu.ai}>
-          <Link as={RouteLink} to={PATHNAME_AI}>
-            {localization.menu.ai}
-          </Link>
-        </SC.ListItem>
-      )}
-      <SC.ListItem key={localization.menu.tools.reports}>
-        <Link as={RouteLink} to={PATHNAME_REPORTS}>
-          {localization.menu.tools.reports}
+      <SC.ListItem key={localization.menu.ai}>
+        <Link as={RouteLink} to={PATHNAME_AI}>
+          {localization.menu.ai}
         </Link>
       </SC.ListItem>
-      <SC.ListItem key={localization.menu.tools.sparql}>
-        <Link href={PATHNAME_SPARQL}>{localization.menu.tools.sparql}</Link>
+      <SC.ListItem key={localization.menu.tools.reports}>
+        <Link as={RouteLink} to={PATHNAME_REPORTS}>
+          {localization.menu.reports}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.sparql}>
+        <Link href={PATHNAME_SPARQL}>{localization.menu.sparql}</Link>
       </SC.ListItem>
     </DropdownMenu>
   </SC.ListItem>,
@@ -164,23 +162,21 @@ const fdkItemsMobile = () => [
       {localization.menu.organizations}
     </Link>
   </SC.ListItem>,
-  <SC.ListItem key={localization.menu.tools.tools}>
-    {localization.menu.tools.tools}
+  <SC.ListItem key={localization.menu.tools}>
+    {localization.menu.tools}
     <ul>
-      {localStorage.getItem('showKI') && (
-        <SC.ListItem key={localization.menu.ai}>
-          <Link as={RouteLink} to={PATHNAME_AI}>
-            {localization.menu.ai}
-          </Link>
-        </SC.ListItem>
-      )}
-      <SC.ListItem key={localization.menu.tools.reports}>
-        <Link as={RouteLink} to={PATHNAME_REPORTS}>
-          {localization.menu.tools.reports}
+      <SC.ListItem key={localization.menu.ai}>
+        <Link as={RouteLink} to={PATHNAME_AI}>
+          {localization.menu.ai}
         </Link>
       </SC.ListItem>
-      <SC.ListItem key={localization.menu.tools.sparql}>
-        <Link href={PATHNAME_SPARQL}>{localization.menu.tools.sparql}</Link>
+      <SC.ListItem key={localization.menu.tools.reports}>
+        <Link as={RouteLink} to={PATHNAME_REPORTS}>
+          {localization.menu.reports}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.sparql}>
+        <Link href={PATHNAME_SPARQL}>{localization.menu.sparql}</Link>
       </SC.ListItem>
     </ul>
   </SC.ListItem>,

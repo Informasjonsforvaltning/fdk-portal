@@ -110,7 +110,7 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_DATA_SERVICES]: InformationPage,
     [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
     [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage,
-    [PATHNAME_AI]: localStorage.getItem('showKI') ? AiProjectPage : null
+    [PATHNAME_AI]: AiProjectPage
   };
 
   return (
