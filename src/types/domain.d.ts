@@ -566,6 +566,12 @@ interface LegalBasis {
   prefLabel: Partial<TextLanguage>;
 }
 
+interface InSeries {
+  uri: string;
+  id: string;
+  title: Partial<TextLanguage>;
+}
+
 export interface Dataset {
   id: string;
   type: EntityEnum.DATASET;
@@ -606,6 +612,9 @@ export interface Dataset {
   qualifiedAttributions: QualifiedAttribution[];
   assessment?: Assessment;
   dctType?: string;
+  specializedType?: SpecializedDatasetType;
+  datasetsInSeries?: string[];
+  inSeries?: InSeries;
 }
 
 export interface DataService {

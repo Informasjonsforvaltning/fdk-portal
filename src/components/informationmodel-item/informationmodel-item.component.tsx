@@ -10,6 +10,7 @@ import { isLosTheme, isEuTheme } from '../../utils/common';
 
 import type { InformationModel } from '../../types';
 import { SearchTypes } from '../../types/enums';
+import localization from '../../lib/localization';
 
 interface Props {
   informationModel: Partial<InformationModel>;
@@ -34,6 +35,7 @@ export const InformationModelItem: FC<Props> = ({
       title={title}
       publisher={publisher}
       description={description}
+      subtitle={localization.informationModelLabel}
     >
       {Array.isArray(losThemes) && (
         <SearchHitThemes>

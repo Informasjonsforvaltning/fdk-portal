@@ -20,6 +20,7 @@ interface Props {
   id?: string;
   type: SearchTypes;
   title?: Partial<TextLanguage>;
+  subtitle: React.ReactNode;
   description?: Partial<TextLanguage> | null;
   publisher?: Partial<Organization>;
   isAuthoritative?: boolean;
@@ -49,6 +50,7 @@ export const SearchHit: FC<Props> = ({
   id,
   type,
   title,
+  subtitle,
   description,
   publisher,
   isAuthoritative = false,
@@ -119,6 +121,7 @@ export const SearchHit: FC<Props> = ({
         id={id}
         type={type}
         title={title}
+        subtitle={subtitle}
         isAuthoritative={isAuthoritative}
       />
       <SC.SearchHitMetaData>
