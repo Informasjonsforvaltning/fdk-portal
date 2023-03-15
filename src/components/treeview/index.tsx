@@ -3,6 +3,7 @@ import type { FC, PropsWithChildren } from 'react';
 import _ from 'lodash';
 
 import SC from './styled';
+import localization from '../../lib/localization';
 
 interface Props {
   defaultCollapsed?: boolean;
@@ -50,7 +51,11 @@ const TreeView: FC<PropsWithChildren<Props>> = ({
       onClick={handleClick}
       aria-expanded={!isCollapsed}
       aria-controls={collapsedId}
-      aria-label='Toggle expansion button'
+      aria-label={
+        isCollapsed
+          ? `${localization.open} ${localization.filter}`
+          : `${localization.close} ${localization.filter}`
+      }
     >
       <SC.ChevronUpIcon />
     </SC.CollapseButton>
