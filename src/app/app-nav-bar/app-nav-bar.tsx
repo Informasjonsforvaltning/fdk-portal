@@ -56,7 +56,11 @@ const transportItems = () => [
     </Link>
   </SC.ListItem>,
   <SC.ListItem key={localization.menu.community}>
-    <Link href={FDK_COMMUNITY_BASE_URI} external>
+    <Link
+      href={FDK_COMMUNITY_BASE_URI}
+      external
+      aria-label={localization.externalLink}
+    >
       {localization.menu.community}
     </Link>
   </SC.ListItem>
