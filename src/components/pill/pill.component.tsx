@@ -15,7 +15,7 @@ const PillPure: FC<Props> = ({ label, ...props }) => {
     <SC.Pill>
       <SC.Label>{label}</SC.Label>
       <SC.ClearButton type='button' {...props}>
-        <i className='fa fa-times-circle' />
+        <SC.CrossIcon />
       </SC.ClearButton>
     </SC.Pill>
   );

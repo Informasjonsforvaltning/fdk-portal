@@ -1,4 +1,5 @@
 import { theme as themeFDK, Unit } from '@fellesdatakatalog/theme';
+import CrossIconBase from '@fellesdatakatalog/icons/assets/svg/cross-stroke.svg';
 import styled from 'styled-components';
 
 const Pill = styled.div`
@@ -13,6 +14,7 @@ const Pill = styled.div`
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
   padding: 0.25em 0 0.25em 0.4em;
+  overflow: hidden;
 `;
 
 const Label = styled.span`
@@ -25,11 +27,15 @@ const ClearButton = styled.button`
   border: none;
   display: flex;
   margin: 0 0.5rem;
+  background-color: ${({ theme }) => theme.extendedColors.neutralDarker};
+`;
 
-  & > i {
-    background-color: ${({ theme }) => theme.extendedColors.neutralDarker};
-    color: ${({ theme }) => theme.extendedColors.neutralLightest};
+const CrossIcon = styled(CrossIconBase)`
+  width: 16px;
+  height: 16px;
+  & * {
+    stroke: ${({ theme }) => theme.extendedColors.neutralLightest};
   }
 `;
 
-export default { Pill, Label, ClearButton };
+export default { Pill, Label, ClearButton, CrossIcon };
