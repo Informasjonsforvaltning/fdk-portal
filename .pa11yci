@@ -11,15 +11,15 @@
       "WCAG2A.Principle4.Guideline4_1.4_1_1.F77",
       "WCAG2A.Principle3.Guideline3_2.3_2_2.H32.2",
       "WCAG2A.Principle1.Guideline1_3.1_3_1.H42.2",
-      "WCAG2A.Principle1.Guideline1_1.1_1_1.H37",
-      "WCAG2A.Principle1.Guideline1_4.1_4_3.G18"
-    ]
+      "WCAG2A.Principle1.Guideline1_1.1_1_1.H37"
+    ],
+    "hideElements": "#content > div:nth-child(2) > section > div:nth-child(1)"
   },
   "urls": [
-    "https://staging.fellesdatakatalog.digdir.no/public-services-and-events?q=Skjenkebevilling",
-    "https://staging.fellesdatakatalog.digdir.no/informationmodels/7e6ef541-86bd-398d-8cd3-fad2838a1726",
-    "https://staging.fellesdatakatalog.digdir.no/concepts/5d358e0e-52f8-420c-b5af-23703e1ecd6c",
-    "https://staging.fellesdatakatalog.digdir.no/dataservices/a0350cbc-19c8-3c13-a196-2ae8f5aadf2e",
-    "https://staging.fellesdatakatalog.digdir.no/datasets/2d1d37c9-6388-3ba7-9a7d-1ae5627a79a8"
+    "http://localhost:3001/public-services-and-events?q=Skjenkebevilling",
+    "http://localhost:3001/informationmodels/7e6ef541-86bd-398d-8cd3-fad2838a1726",
+    "http://localhost:3001/concepts/5d358e0e-52f8-420c-b5af-23703e1ecd6c",
+    "http://localhost:3001/dataservices/a0350cbc-19c8-3c13-a196-2ae8f5aadf2e",
+    "http://localhost:3001/datasets/2d1d37c9-6388-3ba7-9a7d-1ae5627a79a8"
   ]
 }
