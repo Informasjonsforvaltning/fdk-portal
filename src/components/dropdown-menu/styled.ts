@@ -41,18 +41,7 @@ interface DropdownMenuProps {
   mobileView: boolean;
 }
 
-const DropdownMenu = styled.nav<DropdownMenuProps>`
-  color: currentColor;
-  display: ${({ mobileView }) => (mobileView ? 'none' : 'inherit')};
-  position: relative;
-
-  ${onMobileView} {
-    display: ${({ mobileView }) => (mobileView ? 'inherit' : 'none')};
-  }
-`;
-
 const ToggleButton = styled.button`
-  padding: 10px;
   font-size: ${theme.fontSize('FS16', Unit.REM)};
   border: none;
   color: currentColor !important;
@@ -71,6 +60,20 @@ const ToggleButton = styled.button`
       : css`
           background-color: ${extendedTheme.extendedColors.headerBg};
         `}
+`;
+
+const DropdownMenu = styled.nav<DropdownMenuProps>`
+  color: currentColor;
+  display: ${({ mobileView }) => (mobileView ? 'none' : 'inherit')};
+  position: relative;
+
+  ${onMobileView} {
+    display: ${({ mobileView }) => (mobileView ? 'inherit' : 'none')};
+  }
+
+  & > ${ToggleButton} {
+    padding: ${({ mobileView }) => (mobileView ? '0' : '10px')};
+  }
 `;
 
 const ChevronDownIcon = styled(ChevronDownIconBase)`
@@ -159,19 +162,22 @@ const Dropdown = styled.ul<dropdownProps>`
         `}
 
   ${onMobileView} {
+    overflow-y: scroll;
+    overflow-x: hidden;
     border-radius: 0px;
     position: fixed;
-    width: 100vw;
-    height: calc(100vh - ${bannerHeight});
+    width: 100%;
+    height: calc(100% - ${bannerHeight});
+    list-style: none;
     top: ${bannerHeight};
     right: 0px;
-    overflow: auto;
 
     ul {
       margin-left: ${theme.spacing('S12')};
     }
 
     li {
+      display: block;
       font-size: ${theme.fontSize('FS20', Unit.REM)};
       margin: 0px;
       padding: ${theme.spacing('S16')} 0 ${theme.spacing('S10')}
