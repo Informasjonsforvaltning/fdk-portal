@@ -22,6 +22,7 @@
   "email": "E-post",
   "phone": "Telefon",
   "close": "Lukk",
+  "open": "Åpne",
   "filter": "Filter",
   "openFilter": "Åpne søkefilter",
   "public": "Allmenn tilgang",
@@ -240,7 +241,6 @@
   "footer": {
     "organisation.number": "Organisasjonsnummer:",
     "information": "Informasjonskapsler",
-    "information_text": "Dette er et samarbeid mellom Digitaliseringsdirektoratet, Brønnøysundregistrene og øvrige SKATE-etater.",
     "information_textNap": "Dette er et samarbeid mellom Statens vegvesen, Jernbanedirektoratet, Entur og Digitaliseringsdirektoratet.",
     "mail": "fellesdatakatalog@digdir.no",
     "mailNap": "transportportal@vegvesen.no",

@@ -22,6 +22,7 @@
   "email": "Email",
   "phone": "Phone",
   "close": "Close",
+  "open": "Open",
   "filter": "Filter",
   "openFilter": "Open search filter",
   "public": "Public",
@@ -240,8 +241,7 @@
   "footer": {
     "organisation.number": "Organisation number:",
     "information": "Information capsules",
-    "information_text": "Dette er et samarbeid mellom Digitaliseringsdirektoratet, Brønnøysundregistrene og øvrige SKATE-etater.",
-    "information_textNap": "Dette er et samarbeid mellom Statens vegvesen, Jernbanedirektoratet, Entur og Digitaliseringsdirektoratet.",
+    "information_textNap": "This is a collaboration between the Norwegian Public Roads Administration, the Norwegian Railway Directorate, Entur and the Norwegian Digitalisation Agency.",
     "mail": "fellesdatakatalog@digdir.no",
     "mailNap": "transportportal@vegvesen.no",
     "privacy": " and privacy",

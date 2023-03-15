@@ -90,7 +90,7 @@ const renderFilterValuesPills = (
     <Pill
       key={`${filterValue}-${index}`}
       label={getFilterLabel(filterName, filterValue, referenceDataItems)}
-      onClick={() =>
+      onClear={() =>
         setMultiselectFilterValue(
           history,
           location,
