@@ -20,6 +20,7 @@ import {
   useDeleteCommentMutation,
   usePostCommentMutation
 } from '../../../../../api/user-feedback-api/comments';
+import env from '../../../../../env';
 
 const parserOptions: HTMLReactParserOptions = {
   replace: (domNode: any) => {
@@ -90,13 +91,28 @@ const CommentCard: FC<Props> = ({
         break;
     }
   };
+
+  const parsePost = (
+    content: string,
+    options: HTMLReactParserOptions
+  ): string | JSX.Element | JSX.Element[] => {
+    const { FDK_COMMUNITY_BASE_URI } = env;
+    return parse(
+      content.replaceAll(
+        'src="/assets/',
+        `crossorigin="" src="${FDK_COMMUNITY_BASE_URI}/assets/`
+      ),
+      options
+    );
+  };
+
   return (
     <SC.CommentCard $isReply={isReply}>
       <SC.CommentInfo>
         <User user={comment.user} />
         <TimeAgo startTime={comment.timestamp} cutOff={oneDayMillis} />
       </SC.CommentInfo>
-      {parse(comment?.content, parserOptions)}
+      {comment.content && parsePost(comment.content, parserOptions)}
       {((hasReplies && currentMode === Mode.UPDATE) ||
         (!hasReplies && currentMode !== Mode.NONE)) && (
         <Composer
