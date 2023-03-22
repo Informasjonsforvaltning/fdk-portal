@@ -7,25 +7,18 @@ on:
 jobs: 
   build:
     runs-on: ubuntu-latest
-    env:
-      SEARCH_API_HOST: 'https://staging.fellesdatakatalog.digdir.no'
-      SEARCH_HOST: 'https://staging.fellesdatakatalog.digdir.no'
-      SEARCH_FULLTEXT_HOST: 'https://search.staging.fellesdatakatalog.digdir.no'
-      CMS_API_HOST: 'https://cms-fellesdatakatalog.digdir.no'
-      ORGANIZATION_HOST: 'https://organization-bff.staging.fellesdatakatalog.digdir.no'
-      ORGANIZATION_CATALOG_URI: 'https://organization-catalog.staging.fellesdatakatalog.digdir.no'
-      REPORT_API_HOST: 'https://reports-bff.staging.fellesdatakatalog.digdir.no'
-      FDK_MQA_API_BASE_URI: 'https://metadata-quality.staging.fellesdatakatalog.digdir.no'
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
       - name: Install dependencies.
         run: npm install
-      - name: Set environment variables
-        run: env
+      - name: Create .env
+        run: |
+          echo "${{ secrets.STAGING_ENV_VARS }}" > .env
       - name: Start server
         run: npm start &
       - name: Wait for server to start
