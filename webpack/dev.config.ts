@@ -15,6 +15,8 @@ import baseConfig from './base.config';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const deps = require('../package.json').dependencies;
 
+delete deps['highlight.js'];
+
 const configuration: Configuration = mergeWithCustomize({
   customizeArray: customizeArray({
     'module.rules': CustomizeRule.Replace

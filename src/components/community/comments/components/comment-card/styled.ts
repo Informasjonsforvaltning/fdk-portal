@@ -27,6 +27,17 @@ const CommentCard = styled.li<{ $isReply: boolean }>`
     vertical-align: middle;
   }
 
+  & pre {
+    background: rgb(243, 243, 243);
+    max-height: 350px;
+    display: block;
+    overflow: auto;
+    padding: ${theme.spacing('S8')};
+    width: 0px;
+    min-width: 100%;
+    font-size: 0.8em;
+  }
+
   ${onMobileView} {
     padding: ${theme.spacing('S8')};
     margin: ${theme.spacing('S6')} 0;
