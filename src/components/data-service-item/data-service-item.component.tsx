@@ -35,6 +35,7 @@ export const DataServiceItem: FC<Props> = ({
     publisher={publisher}
     description={description || null}
     isAuthoritative={nationalComponent}
+    subtitle={localization.apiLabel}
   >
     {isOpenAccess && isOpenLicense && isFree && (
       <SearchHitOpenData>

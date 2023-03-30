@@ -133,6 +133,7 @@ export const ConceptItem: FC<Props> = ({
       title={prefLabel}
       publisher={publisher}
       description={definition?.text}
+      subtitle={localization.conceptLabel}
     >
       <SearchHitData>
         {definition && renderSource(definition)}

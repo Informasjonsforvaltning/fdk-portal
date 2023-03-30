@@ -17,9 +17,6 @@ exports[`SearchHitHead component should render with properties 1`] = `
         </Link>
       </styled.h2>
     </styled.div>
-    <styled.div>
-      Dataset
-    </styled.div>
   </styled.div>
 </styled.div>
 `;

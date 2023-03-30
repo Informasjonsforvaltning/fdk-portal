@@ -6,6 +6,7 @@ import translations from '../../lib/localization';
 
 import type { Event } from '../../types';
 import { SearchTypes, SpecializedEventType } from '../../types/enums';
+import localization from '../../lib/localization';
 
 interface Props {
   event: Partial<Event>;
@@ -26,6 +27,7 @@ const EventItem: FC<Props> = ({
     title={title}
     publisher={hasCompetentAuthority?.[0]}
     description={description}
+    subtitle={localization.event}
     beta
   >
     <SearchHitEvents>

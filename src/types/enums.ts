@@ -154,6 +154,10 @@ export enum SpecializedEventType {
   BUSINESSEVENT = 'business_event'
 }
 
+export enum SpecializedDatasetType {
+  DATASET_SERIES = 'datasetSeries'
+}
+
 export enum CommunityTerm {
   DAY = 'day',
   WEEK = 'week',

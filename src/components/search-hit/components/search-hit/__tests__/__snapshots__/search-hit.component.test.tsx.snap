@@ -5,6 +5,7 @@ exports[`SearchHit component should render with properties 1`] = `
   <SearchHitHead
     id="123"
     isAuthoritative={false}
+    subtitle="Test subtitle"
     title={
       Object {
         "nb": "Test datasett",

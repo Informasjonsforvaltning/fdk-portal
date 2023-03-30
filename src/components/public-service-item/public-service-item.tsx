@@ -8,6 +8,7 @@ import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 import { getTranslateText as translate } from '../../lib/translateText';
 import withEventTypes, { Props as EventTypesProps } from '../with-event-types';
+import localization from '../../lib/localization';
 
 interface ExternalProps {
   publicService: Partial<PublicService>;
@@ -48,6 +49,7 @@ const PublicServiceItemPure: FC<Props> = ({
       title={title}
       publisher={hasCompetentAuthority?.[0]}
       description={description}
+      subtitle={localization.service}
       beta
     >
       <SearchHitEvents>

@@ -19,6 +19,7 @@ interface Props {
   id?: string;
   type: SearchTypes;
   title?: Partial<TextLanguage>;
+  subtitle?: React.ReactNode;
   isAuthoritative?: boolean;
 }
 
@@ -35,6 +36,7 @@ export const SearchHitHead: FC<Props> = ({
   id,
   type,
   title,
+  subtitle,
   isAuthoritative = false
 }) => (
   <SC.Head inverted={type === SearchTypes.event}>
@@ -61,16 +63,7 @@ export const SearchHitHead: FC<Props> = ({
           </div>
         )}
       </SC.Header>
-
-      <SC.Type>
-        {type === SearchTypes.dataset && localization.datasetLabel}
-        {type === SearchTypes.dataservice && localization.apiLabel}
-        {type === SearchTypes.concept && localization.conceptLabel}
-        {type === SearchTypes.informationModel &&
-          localization.informationModelLabel}
-        {type === SearchTypes.publicService && localization.service}
-        {type === SearchTypes.event && localization.event}
-      </SC.Type>
+      {subtitle && <SC.Type>{subtitle}</SC.Type>}
     </SC.HeadInformation>
   </SC.Head>
 );

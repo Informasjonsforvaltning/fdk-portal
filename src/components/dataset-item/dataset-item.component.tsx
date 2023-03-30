@@ -18,7 +18,13 @@ import { isLosTheme, isEuTheme } from '../../utils/common';
 import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
 
 import type { Dataset, MediaTypeOrExtent } from '../../types';
-import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';
+import {
+  MediaTypeOrExtentType,
+  SearchTypes,
+  SpecializedDatasetType
+} from '../../types/enums';
+
+import SC from './dataset-item.styled';
 
 interface Props {
   dataset: Partial<Dataset>;
@@ -55,7 +61,10 @@ export const DatasetItem: FC<Props> = ({
     theme: euThemes,
     distribution = [],
     accessRights,
-    provenance
+    provenance,
+    specializedType,
+    datasetsInSeries,
+    inSeries
   }
 }) => {
   const formats = distribution?.reduce(
@@ -65,11 +74,48 @@ export const DatasetItem: FC<Props> = ({
 
   const themes = [...(losThemes ?? []), ...(euThemes ?? [])];
 
+  const subtitle = () => {
+    if (specializedType === SpecializedDatasetType.DATASET_SERIES) {
+      let containsText = localization.datasetsInSeriesEmpty;
+      const count = datasetsInSeries?.length ?? 0;
+      if (count > 0) {
+        containsText = localization.formatString(
+          count === 1
+            ? localization.datasetsInSeriesSingular
+            : localization.datasetsInSeries,
+          count
+        );
+      }
+      return (
+        <SC.Subtitle>
+          {localization.datasetSeriesLabel}
+          <SC.Dot>•</SC.Dot>
+          {containsText}
+        </SC.Subtitle>
+      );
+    }
+    if (inSeries?.title) {
+      const containedInText = localization.formatString(
+        localization.datasetIsInSeries,
+        inSeries.title
+      );
+      return (
+        <SC.Subtitle>
+          {localization.datasetLabel}
+          <SC.Dot>•</SC.Dot>
+          {containedInText}
+        </SC.Subtitle>
+      );
+    }
+    return localization.datasetLabel;
+  };
+
   return (
     <SearchHit
       id={id}
       type={SearchTypes.dataset}
       title={title}
+      subtitle={subtitle()}
       publisher={publisher}
       description={description}
       isAuthoritative={provenance?.code === 'NASJONAL'}
