@@ -1,6 +1,10 @@
 import React, { FC, memo, useState } from 'react';
 import parse, { HTMLReactParserOptions } from 'html-react-parser';
 import { compose } from 'redux';
+
+import highLight from 'highlight.js';
+import 'highlight.js/styles/default.css';
+
 import { Variant } from '@fellesdatakatalog/button';
 
 import translations from '../../../../../lib/localization';
@@ -34,6 +38,12 @@ const parserOptions: HTMLReactParserOptions = {
         />
       );
     }
+
+    if (domNode.name === 'code' && domNode.parent.name === 'pre') {
+      const code = domNode.children[0]?.data;
+      return <code>{parse(highLight.highlightAuto(code).value)}</code>;
+    }
+
     return domNode;
   }
 };
