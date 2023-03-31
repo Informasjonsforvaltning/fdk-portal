@@ -25,7 +25,9 @@ const Page: FC<Props> = ({
   const [searchValue, setSearchValue] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [openAllProjects, setOpenAllProjects] = useState(false);
-
+  const openExternalLink = (url: string) => {
+    window.open(url);
+  };
   useEffect(() => {
     getAiProjects();
   }, []);
@@ -150,6 +152,28 @@ const Page: FC<Props> = ({
               ))}
         </div>
       </div>
+      <SC.ContactInfoText>
+        <p>{localization.aiPage.emailFeedback}</p>
+        <SC.EmailWrapper>
+          <p>{localization.aiPage.email} &nbsp; </p>
+          <Link href='mailto:kunstigintelligens@digdir.no'>
+            kunstigintelligens@digdir.no
+          </Link>
+        </SC.EmailWrapper>
+      </SC.ContactInfoText>
+
+      <SC.RegisterNewProjectText>
+        {localization.aiPage.submitNewProject}
+      </SC.RegisterNewProjectText>
+      <Button
+        onClick={() =>
+          openExternalLink(
+            'https://forms.office.com/Pages/ResponsePage.aspx?id=D1aOAK8I7EygVrNUR1A5kTfTnRlLG3VLiLe44hDcwj9UQjJXMkVYRTVCNjNDTldGOFVRT0I5UjJSVSQlQCN0PWcu'
+          )
+        }
+      >
+        {localization.aiPage.submit}
+      </Button>
     </main>
   );
 };
