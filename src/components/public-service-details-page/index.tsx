@@ -7,7 +7,10 @@ import moment from 'moment';
 import { Link as ScrollLink } from 'react-scroll';
 
 import translations from '../../lib/localization';
-import { getTranslateText as translate } from '../../lib/translateText';
+import {
+  getTranslateTextWithLanguageCode,
+  getTranslateText as translate
+} from '../../lib/translateText';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 
 import { themeFDK } from '../../app/theme';
@@ -140,7 +143,11 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const sectors = publicService?.sector ?? [];
   const hasCompetentAuthority = publicService?.hasCompetentAuthority ?? [];
   const keywords =
-    publicService?.keyword?.map(kw => translate(kw))?.filter(Boolean) ?? [];
+    (publicService?.keyword
+      ?.map(keyword =>
+        getTranslateTextWithLanguageCode(keyword, translations.getLanguage())
+      )
+      ?.filter(Boolean) as string[]) ?? [];
   const requiredServices = publicService?.requires || [];
   const admsStatus = publicService?.admsStatus;
   const subject = publicService?.subject || [];
