@@ -50,7 +50,7 @@
     "json5": "2.2.2"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.3",
+    "@apollo/client": "^3.7.12",
     "@emotion/styled": "^11.10.5",
     "@fellesdatakatalog/alert": "^0.3.6",
     "@fellesdatakatalog/button": "^0.2.10",
