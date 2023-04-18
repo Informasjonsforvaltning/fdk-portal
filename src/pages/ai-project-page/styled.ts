@@ -87,6 +87,19 @@ const ButtonIconWrapper = styled.div`
   }
 `;
 
+const ContactInfoText = styled.div`
+  margin-top: 65px;
+  margin-bottom: 30px;
+`;
+
+const RegisterNewProjectText = styled.p`
+  margin-bottom: 10px;
+`;
+
+const EmailWrapper = styled.div`
+  display: flex;
+`;
+
 export default {
   Header,
   SearchBox,
@@ -95,5 +108,8 @@ export default {
   IconWrapper,
   ButtonRow,
   ButtonIconWrapper,
-  TextBox
+  TextBox,
+  ContactInfoText,
+  RegisterNewProjectText,
+  EmailWrapper
 };
