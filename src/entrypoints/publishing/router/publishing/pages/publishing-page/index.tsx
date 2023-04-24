@@ -128,7 +128,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
               </Link>
             </li>
             <li>
-              <Link href='https://doc.difi.no/data/veileder-apne-data'>
+              <Link href='https://data.norge.no/guide/veileder-apne-data'>
                 <Translation id='publishingPage.informationSections.usefulInfo.registrationGuidanceLink' />
               </Link>
             </li>
