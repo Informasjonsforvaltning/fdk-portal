@@ -123,12 +123,17 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
           </p>
           <ul>
             <li>
+              <Link href='https://data.norge.no/guide/veileder-beskrivelse-av-datasett/'>
+                <Translation id='publishingPage.informationSections.usefulInfo.datasetServiceCatalogGuidanceLink' />
+              </Link>
+            </li>
+            <li>
               <Link href='https://informasjonsforvaltning.github.io/dcat-ap-no'>
                 <Translation id='publishingPage.informationSections.usefulInfo.datasetsStandardLink' />
               </Link>
             </li>
             <li>
-              <Link href='https://doc.difi.no/data/veileder-apne-data'>
+              <Link href='https://data.norge.no/guide/veileder-apne-data'>
                 <Translation id='publishingPage.informationSections.usefulInfo.registrationGuidanceLink' />
               </Link>
             </li>
