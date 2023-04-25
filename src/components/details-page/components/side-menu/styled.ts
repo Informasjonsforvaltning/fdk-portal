@@ -61,7 +61,7 @@ const Menu = styled.nav<Props>`
       animation-name: ${slideDown};
       position: fixed;
       top: ${t.spacing('S16')};
-      width: 10%;
+      width: calc(25% - 8rem);
     `}
 `;
 
