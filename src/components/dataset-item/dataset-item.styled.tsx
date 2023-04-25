@@ -13,7 +13,13 @@ const Subtitle = styled.div`
   font-size: ${theme.fontSize('FS16', Unit.REM)};
 `;
 
+const FilterButton = styled.button`
+  border: 0;
+  background: none;
+`;
+
 export default {
   Dot,
-  Subtitle
+  Subtitle,
+  FilterButton
 };

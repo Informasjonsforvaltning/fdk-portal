@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import localization from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -25,33 +26,13 @@ import {
 } from '../../types/enums';
 
 import SC from './dataset-item.styled';
+import { setMultiselectFilterValue } from '../../pages/search-page/search-location-helper';
 
-interface Props {
+interface Props extends RouteComponentProps {
   dataset: Partial<Dataset>;
 }
 
-function isDatasetOpen(accessRights: any, distribution: any): boolean {
-  return (
-    accessRights?.code === 'PUBLIC' &&
-    (distribution || []).filter((item: any) => !!item.openLicense).length > 0
-  );
-}
-
-const renderAccessRights = (accessRight: any) => {
-  if (accessRight?.code === 'PUBLIC') {
-    return (
-      <RoundedTag>
-        <PublicIconBase />
-        <span>
-          {localization.dataset.accessRights.authorityCode.publicDetailsLabel}
-        </span>
-      </RoundedTag>
-    );
-  }
-  return null;
-};
-
-export const DatasetItem: FC<Props> = ({
+const DatasetItemComponent: FC<Props> = ({
   dataset: {
     id,
     title,
@@ -65,8 +46,53 @@ export const DatasetItem: FC<Props> = ({
     specializedType,
     datasetsInSeries,
     inSeries
-  }
+  },
+  history
 }) => {
+  const handleDatasetFilterAccessRights = (value: string) => {
+    if (value === 'OPEN_DATA') {
+      setMultiselectFilterValue(history, location, 'opendata', 'true', true);
+    } else {
+      setMultiselectFilterValue(history, location, 'accessrights', value, true);
+    }
+  };
+
+  const handleFilterFormat = (format: MediaTypeOrExtent) => {
+    setMultiselectFilterValue(
+      history,
+      location,
+      'format',
+      `${format.type} ${format.code}`,
+      true
+    );
+  };
+
+  const isDatasetOpen = (ar: any, dist: any): boolean =>
+    ar?.code === 'PUBLIC' &&
+    (dist || []).filter((item: any) => !!item.openLicense).length > 0;
+
+  const renderAccessRights = (accessRight: any) => {
+    if (accessRight?.code === 'PUBLIC') {
+      return (
+        <SC.FilterButton
+          type='button'
+          onClick={() => handleDatasetFilterAccessRights('PUBLIC')}
+        >
+          <RoundedTag>
+            <PublicIconBase />
+            <span>
+              {
+                localization.dataset.accessRights.authorityCode
+                  .publicDetailsLabel
+              }
+            </span>
+          </RoundedTag>
+        </SC.FilterButton>
+      );
+    }
+    return null;
+  };
+
   const formats = distribution?.reduce(
     (previous, { fdkFormat = [] }) => [...previous, ...fdkFormat],
     [] as MediaTypeOrExtent[]
@@ -123,10 +149,15 @@ export const DatasetItem: FC<Props> = ({
       {isDatasetOpen(accessRights, distribution) && (
         <SearchHitOpenData>
           <div title={localization.openDataTooltip}>
-            <RoundedTag>
-              <PublicIconBase />
-              <span>{localization.openData}</span>
-            </RoundedTag>
+            <SC.FilterButton
+              type='button'
+              onClick={() => handleDatasetFilterAccessRights('OPEN_DATA')}
+            >
+              <RoundedTag>
+                <PublicIconBase />
+                <span>{localization.openData}</span>
+              </RoundedTag>
+            </SC.FilterButton>
           </div>
         </SearchHitOpenData>
       )}
@@ -171,18 +202,27 @@ export const DatasetItem: FC<Props> = ({
       </SearchHitThemes>
 
       <SearchHitFormats>
-        {[
-          ...new Set(
-            formats
-              .filter(format => format.type !== MediaTypeOrExtentType.UNKNOWN)
-              .map(format => format.name)
+        {formats
+          .filter(
+            format =>
+              format.name && format.type !== MediaTypeOrExtentType.UNKNOWN
           )
-        ]
-          .sort()
+          .sort((a, b) => `${a.name}`.localeCompare(`${b.name}`))
           .map((format, index) => (
-            <span key={`format-${format}-${index}`}>{`${format}`}</span>
+            <SC.FilterButton
+              type='button'
+              onClick={() => handleFilterFormat(format)}
+              title={`${format.name} format`}
+            >
+              <span
+                key={`format-${format.name}-${index}`}
+              >{`${format.name}`}</span>
+            </SC.FilterButton>
           ))}
       </SearchHitFormats>
     </SearchHit>
   );
 };
+
+export const DatasetItem = memo(withRouter(DatasetItemComponent));
+export default DatasetItem;
