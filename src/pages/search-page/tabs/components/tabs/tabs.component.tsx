@@ -37,7 +37,7 @@ const Tabs: FC<Props & RouteComponentProps> = ({
     <Tab
       active={location.pathname === PATHNAME_SEARCH}
       tabLink={getLinkForTab(location, PATHNAME_SEARCH)}
-      label={localization.resultsLabel}
+      label={`${localization.page.resultsTab} (${countResults})`}
     >
       <SC.IconPlaceholder>
         <SC.AllIcon />
@@ -49,7 +49,7 @@ const Tabs: FC<Props & RouteComponentProps> = ({
     <Tab
       active={location.pathname === PATHNAME_DATASETS}
       tabLink={getLinkForTab(location, PATHNAME_DATASETS)}
-      label={localization.datasetLabel}
+      label={`${localization.page.datasetTab} (${countDatasets})`}
     >
       <SC.IconPlaceholder type={Entity.DATASET}>
         <SC.DatasetIcon />
@@ -62,7 +62,7 @@ const Tabs: FC<Props & RouteComponentProps> = ({
     <Tab
       active={location.pathname === PATHNAME_DATA_SERVICES}
       tabLink={getLinkForTab(location, PATHNAME_DATA_SERVICES)}
-      label={localization.apiLabel}
+      label={`${localization.page.apiTab} (${countApis})`}
     >
       <SC.IconPlaceholder type={Entity.DATA_SERVICE}>
         <SC.ApiIcon />
@@ -75,7 +75,7 @@ const Tabs: FC<Props & RouteComponentProps> = ({
     <Tab
       active={location.pathname === PATHNAME_CONCEPTS}
       tabLink={getLinkForTab(location, PATHNAME_CONCEPTS)}
-      label={localization.conceptLabel}
+      label={`${localization.page.termTab} (${countConcepts})`}
     >
       <SC.IconPlaceholder type={Entity.CONCEPT}>
         <SC.ConceptIcon />
@@ -88,7 +88,8 @@ const Tabs: FC<Props & RouteComponentProps> = ({
     <Tab
       active={location.pathname === PATHNAME_INFORMATIONMODELS}
       tabLink={getLinkForTab(location, PATHNAME_INFORMATIONMODELS)}
-      label={localization.informationModelLabel}
+      label={`${localization.page.informationModelTab} (
+        ${countInformationModels})`}
     >
       <SC.IconPlaceholder type={Entity.INFORMATION_MODEL}>
         <SC.InfomodIcon />
@@ -101,7 +102,7 @@ const Tabs: FC<Props & RouteComponentProps> = ({
     <Tab
       active={location.pathname === PATHNAME_PUBLIC_SERVICES_AND_EVENTS}
       tabLink={getLinkForTab(location, PATHNAME_PUBLIC_SERVICES_AND_EVENTS)}
-      label={localization.informationModelLabel}
+      label={`${localization.page.serviceTab} (${countPublicServices})`}
     >
       <SC.BetaRibbon>BETA</SC.BetaRibbon>
       <SC.IconPlaceholder type={Entity.PUBLIC_SERVICE}>
