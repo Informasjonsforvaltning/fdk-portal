@@ -127,7 +127,7 @@ const OrganizationPage: FC<Props> = ({
   };
 
   return organization && rating ? (
-    <SC.OrganizationPage className='container'>
+    <SC.OrganizationPage id='content' className='container'>
       <SC.Title>
         {translations.formatString(
           translations.metadataQualityPage.organizationPageTitle,

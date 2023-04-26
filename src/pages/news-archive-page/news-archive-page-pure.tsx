@@ -29,7 +29,7 @@ const renderNewsItems = (news: News[]) =>
   });
 
 const NewsArchivePage: FC<Props> = ({ news }) => (
-  <main className='container'>
+  <main id='content' className='container'>
     <div className='row'>
       <SC.Header className='col-12'>{localization.news}</SC.Header>
     </div>

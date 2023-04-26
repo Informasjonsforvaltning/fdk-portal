@@ -105,7 +105,7 @@ export const ReportPagePure: FC<Props> = ({
         ]
       }
     >
-      <section className='container'>
+      <main id='content' className='container'>
         <div className='row'>
           <div className='col-md-4'>
             {isFilterActive({ orgPath }) && (
@@ -226,7 +226,7 @@ export const ReportPagePure: FC<Props> = ({
             </div>
           </div>
         </div>
-      </section>
+      </main>
     </ThemeProvider>
   );
 };

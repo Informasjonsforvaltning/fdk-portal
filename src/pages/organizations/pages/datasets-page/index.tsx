@@ -158,7 +158,7 @@ const DatasetsPage: FC<Props> = ({
   );
 
   return (
-    <SC.DatasetsPage className='container'>
+    <SC.DatasetsPage id='content' className='container'>
       <SC.BetaRibbon>BETA</SC.BetaRibbon>
       <SC.Title>
         {translations.formatString(
