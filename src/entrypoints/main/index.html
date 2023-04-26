@@ -67,8 +67,35 @@
     
     <!-- SiteImprove -->
     <script async src=https://siteimproveanalytics.com/js/siteanalyze_6255470.js></script>
+
+    <style>
+      .screenreader-text {
+        position: absolute;
+        left: -999px;
+        width: 1px;
+        height: 1px;
+        top: auto;
+      }
+
+      .screenreader-text:focus {
+        display: inline-block;
+        height: auto;
+        width: auto;
+        position: static;
+        margin: 1em auto 1em auto;
+      }
+    </style>
   </head>
   <body>
+      <a
+        id='skip-to-content'
+        class='screenreader-text'
+        href='#content'
+        aria-hidden='false'
+        lang='en'
+      >
+        Skip to Content
+      </a>
     <div id="root"></div>
   </body>
 </html>

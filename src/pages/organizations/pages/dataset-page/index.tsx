@@ -267,7 +267,7 @@ const DatasetPage: FC<Props> = ({
     : null;
 
   return (
-    <SC.DatasetPage className='container'>
+    <SC.DatasetPage id='content' className='container'>
       <SC.Banner>
         <SC.BetaRibbon>BETA</SC.BetaRibbon>
         <h1>
