@@ -8,7 +8,9 @@ interface Props {
   $isSticky?: boolean;
 }
 
-const SideMenu = styled.aside``;
+const SideMenu = styled.aside`
+  width: 260px;
+`;
 
 const Title = styled.h3`
   margin: 15px 0;
@@ -61,7 +63,7 @@ const Menu = styled.nav<Props>`
       animation-name: ${slideDown};
       position: fixed;
       top: ${t.spacing('S16')};
-      width: calc(25% - 8rem);
+      width: inherit;
     `}
 `;
 

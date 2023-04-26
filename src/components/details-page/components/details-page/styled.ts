@@ -176,7 +176,6 @@ const MenuToggle = styled.button`
 `;
 
 const SideMenu = styled(SideMenuBase)`
-  flex: 0 0 25%;
   ${onMobileView} {
     display: none;
     width: auto;
