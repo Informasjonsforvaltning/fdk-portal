@@ -1,5 +1,5 @@
-import React, { FC, memo } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import React, { FC } from 'react';
+import { Link as RouteLink } from 'react-router-dom';
 
 import localization from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -26,13 +26,12 @@ import {
 } from '../../types/enums';
 
 import SC from './dataset-item.styled';
-import { setMultiselectFilterValue } from '../../pages/search-page/search-location-helper';
 
-interface Props extends RouteComponentProps {
+interface Props {
   dataset: Partial<Dataset>;
 }
 
-const DatasetItemComponent: FC<Props> = ({
+export const DatasetItem: FC<Props> = ({
   dataset: {
     id,
     title,
@@ -46,27 +45,8 @@ const DatasetItemComponent: FC<Props> = ({
     specializedType,
     datasetsInSeries,
     inSeries
-  },
-  history
+  }
 }) => {
-  const handleDatasetFilterAccessRights = (value: string) => {
-    if (value === 'OPEN_DATA') {
-      setMultiselectFilterValue(history, location, 'opendata', 'true', true);
-    } else {
-      setMultiselectFilterValue(history, location, 'accessrights', value, true);
-    }
-  };
-
-  const handleFilterFormat = (format: MediaTypeOrExtent) => {
-    setMultiselectFilterValue(
-      history,
-      location,
-      'format',
-      `${format.type} ${format.code}`,
-      true
-    );
-  };
-
   const isDatasetOpen = (ar: any, dist: any): boolean =>
     ar?.code === 'PUBLIC' &&
     (dist || []).filter((item: any) => !!item.openLicense).length > 0;
@@ -74,20 +54,12 @@ const DatasetItemComponent: FC<Props> = ({
   const renderAccessRights = (accessRight: any) => {
     if (accessRight?.code === 'PUBLIC') {
       return (
-        <SC.FilterButton
-          type='button'
-          onClick={() => handleDatasetFilterAccessRights('PUBLIC')}
-        >
-          <RoundedTag>
-            <PublicIconBase />
-            <span>
-              {
-                localization.dataset.accessRights.authorityCode
-                  .publicDetailsLabel
-              }
-            </span>
-          </RoundedTag>
-        </SC.FilterButton>
+        <RoundedTag to={patchSearchQuery('accessrights', 'PUBLIC')}>
+          <PublicIconBase />
+          <span>
+            {localization.dataset.accessRights.authorityCode.publicDetailsLabel}
+          </span>
+        </RoundedTag>
       );
     }
     return null;
@@ -149,15 +121,10 @@ const DatasetItemComponent: FC<Props> = ({
       {isDatasetOpen(accessRights, distribution) && (
         <SearchHitOpenData>
           <div title={localization.openDataTooltip}>
-            <SC.FilterButton
-              type='button'
-              onClick={() => handleDatasetFilterAccessRights('OPEN_DATA')}
-            >
-              <RoundedTag>
-                <PublicIconBase />
-                <span>{localization.openData}</span>
-              </RoundedTag>
-            </SC.FilterButton>
+            <RoundedTag to={patchSearchQuery('opendata', 'true')}>
+              <PublicIconBase />
+              <span>{localization.openData}</span>
+            </RoundedTag>
           </div>
         </SearchHitOpenData>
       )}
@@ -209,20 +176,16 @@ const DatasetItemComponent: FC<Props> = ({
           )
           .sort((a, b) => `${a.name}`.localeCompare(`${b.name}`))
           .map((format, index) => (
-            <SC.FilterButton
-              type='button'
-              onClick={() => handleFilterFormat(format)}
-              title={`${format.name} format`}
+            <RouteLink
+              key={`format-${format.name}-${index}`}
+              to={patchSearchQuery('format', `${format.type} ${format.code}`)}
             >
-              <span
-                key={`format-${format.name}-${index}`}
-              >{`${format.name}`}</span>
-            </SC.FilterButton>
+              <span>{`${format.name}`}</span>
+            </RouteLink>
           ))}
       </SearchHitFormats>
     </SearchHit>
   );
 };
 
-export const DatasetItem = memo(withRouter(DatasetItemComponent));
 export default DatasetItem;

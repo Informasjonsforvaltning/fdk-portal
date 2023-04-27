@@ -136,9 +136,11 @@ export const SearchHit: FC<Props> = ({
       {renderSearchHitOpenData()}
       {renderSearchHitAccessRights()}
       {translatedDescription && (
-        <TruncatedText visibleLines={4} lineHeight={20}>
-          <Markdown>{translatedDescription}</Markdown>
-        </TruncatedText>
+        <SC.Description>
+          <TruncatedText visibleLines={4} lineHeight={20}>
+            <Markdown>{translatedDescription}</Markdown>
+          </TruncatedText>
+        </SC.Description>
       )}
       {renderSearchHitData()}
       {renderSearchHitThemes()}

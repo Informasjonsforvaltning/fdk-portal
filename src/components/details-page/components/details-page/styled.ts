@@ -11,6 +11,7 @@ const DetailsPage = styled.article`
 
   a {
     color: ${({ theme }) => theme.entityColours.dark} !important;
+    text-decoration: underline;
   }
 `;
 
