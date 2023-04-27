@@ -12,8 +12,10 @@ const Article = styled.article`
     margin-bottom: 2.3rem;
   }
 
-  & a > p {
-    margin-bottom: 0;
+  & a {
+    & > p {
+      margin-bottom: 0;
+    }
   }
 
   & img {
@@ -43,6 +45,10 @@ const Abstract = styled.p`
 
 const Body = styled.p`
   font-size: 1.6em;
+
+  & a {
+    text-decoration: underline;
+  }
 `;
 
 const FullWidthImage = styled.img`

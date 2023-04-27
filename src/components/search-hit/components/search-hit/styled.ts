@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colour, Unit, theme } from '@fellesdatakatalog/theme';
+import { Colour, Unit, theme as fdkTheme } from '@fellesdatakatalog/theme';
 
 import Link from '@fellesdatakatalog/link';
 import RoundedTagSC from '../../../rounded-tag/styled';
@@ -12,22 +12,15 @@ const SearchHit = styled.article`
   margin-bottom: 1em;
   position: relative;
   overflow: hidden;
-
-  a {
-    text-decoration: none;
-    cursor: pointer;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 `;
 
 const PublisherLink = styled(Link)``;
 
-const Description = styled.p`
-  font-size: ${theme.fontSize('FS20', Unit.REM)};
-  margin-bottom: 2.3rem;
+const Description = styled.div`
+  & a {
+    color: ${({ theme: t }) => t.dark};
+    text-decoration: underline;
+  }
 `;
 
 const OpenData = styled.div`
@@ -41,7 +34,8 @@ const OpenData = styled.div`
     }
   }
 
-  ${RoundedTagSC.RoundedTag} {
+  ${RoundedTagSC.RoundedTagWithLink} {
+    text-decoration: none;
     background-color: ${({ theme: t }) => t.dark};
     color: #fff !important;
   }
@@ -58,7 +52,8 @@ const AccessRight = styled.div`
     }
   }
 
-  ${RoundedTagSC.RoundedTag} {
+  ${RoundedTagSC.RoundedTagWithLink} {
+    text-decoration: none;
     background-color: ${({ theme: t }) => t.light};
     color: ${({ theme: t }) => t.dark};
   }
@@ -70,6 +65,7 @@ const Theme = styled.div`
   flex-wrap: wrap;
 
   ${RoundedTagSC.RoundedTagWithLink} {
+    text-decoration: none;
     background-color: ${({ theme: t }) => t.lighter};
     color: ${({ theme: t }) => t.dark} !important;
     margin-right: 0.5em;
@@ -84,8 +80,9 @@ const Event = styled.div`
   flex-wrap: wrap;
 
   ${RoundedTagSC.RoundedTagWithLink}, ${RoundedTagSC.RoundedTag} {
+    text-decoration: none;
     background-color: ${({ theme: t }) => t.dark};
-    color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
+    color: ${fdkTheme.colour(Colour.NEUTRAL, 'N0')} !important;
     margin-right: 0.5em;
     margin-bottom: 0.5em;
     padding: 0 0.6em;
@@ -96,11 +93,15 @@ const Format = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1em;
-  span {
+
+  & > a {
+    text-decoration: none;
+    color: ${({ theme: t }) => t.dark} !important;
+
     border: 1px solid;
     border-color: ${({ theme: t }) => t.dark};
     border-radius: 5px;
-    font-size: ${theme.fontSize('FS12', Unit.REM)};
+    font-size: ${fdkTheme.fontSize('FS12', Unit.REM)};
     padding: 0.3em 0.8em;
     margin-bottom: 0.5em;
     margin-right: 0.5em;
@@ -116,17 +117,17 @@ const BetaRibbon = styled.span<InvertedColorProps>`
   top: 20px;
   right: -35px;
   transform: rotate(45deg);
-  padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
-  font-size: ${theme.fontSize('FS12', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  padding: ${fdkTheme.spacing('S4')} ${fdkTheme.spacing('S40')};
+  font-size: ${fdkTheme.fontSize('FS12', Unit.REM)};
+  font-weight: ${fdkTheme.fontWeight('FW700')};
   color: ${({ inverted }) =>
     inverted
-      ? theme.colour(Colour.RED, 'R60')
-      : theme.colour(Colour.RED, 'R30')};
+      ? fdkTheme.colour(Colour.RED, 'R60')
+      : fdkTheme.colour(Colour.RED, 'R30')};
   background: ${({ inverted }) =>
     inverted
-      ? theme.colour(Colour.RED, 'R30')
-      : theme.colour(Colour.RED, 'R60')};
+      ? fdkTheme.colour(Colour.RED, 'R30')
+      : fdkTheme.colour(Colour.RED, 'R60')};
 `;
 
 const SearchHitMetaData = styled.div`

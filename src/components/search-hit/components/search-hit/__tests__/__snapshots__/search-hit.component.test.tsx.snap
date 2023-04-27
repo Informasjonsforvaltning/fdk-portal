@@ -33,13 +33,15 @@ exports[`SearchHit component should render with properties 1`] = `
       }
     />
   </styled.div>
-  <TruncatedText
-    lineHeight={20}
-    visibleLines={4}
-  >
-    <Component>
-      Test datasett beskrivelse
-    </Component>
-  </TruncatedText>
+  <styled.div>
+    <TruncatedText
+      lineHeight={20}
+      visibleLines={4}
+    >
+      <Component>
+        Test datasett beskrivelse
+      </Component>
+    </TruncatedText>
+  </styled.div>
 </styled.article>
 `;

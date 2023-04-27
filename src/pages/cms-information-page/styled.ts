@@ -65,6 +65,10 @@ const Content = styled.p`
       margin-top: ${theme.spacing('S48')};
     }
   }
+
+  & a {
+    text-decoration: underline;
+  }
 `;
 
 const ImageWrapper = styled.div`

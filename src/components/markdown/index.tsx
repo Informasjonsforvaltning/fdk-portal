@@ -28,6 +28,7 @@ const Markdown: FC<Props> = ({ allowHtml, children }) =>
   );
 
 const Fallback: FC<Props> = ({ allowHtml, children }) =>
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   allowHtml ? <>{parse(sanitizeHtml(children))}</> : <>{children}</>;
 
 export default compose<FC<Props>>(withErrorBoundary(Fallback, false))(Markdown);
