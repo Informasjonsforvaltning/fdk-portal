@@ -39,6 +39,14 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
   const ref = useRef<HTMLDivElement>(null);
   const { height } = useResize(ref);
 
+  const expandIcon = expanded ? (
+    <SC.ChevronDoubleUpIcon />
+  ) : (
+    <SC.ChevronDoubleDownIcon />
+  );
+  const expandText =
+    translations.truncatedText[expanded ? 'expanded' : 'collapsed'];
+
   useEffect(() => {
     setTruncated(height / lineHeight > visibleLines + 3);
   }, [height]);
@@ -67,8 +75,8 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
           onClick={() => setExpanded(!expanded)}
           entity={entityTheme}
         >
-          {expanded ? <SC.ChevronDoubleUpIcon /> : <SC.ChevronDoubleDownIcon />}
-          {translations.truncatedText[expanded ? 'expanded' : 'collapsed']}
+          <span>{expandIcon}</span>
+          <span>{expandText}</span>
         </SC.ExpandButton>
       )}
     </SC.TruncateContainer>

@@ -126,7 +126,6 @@ const EventDetailsPage: FC<Props> = ({
             <ContentSection
               id='description'
               title={translations.detailsPage.sectionTitles.event.description}
-              entityTheme={entity}
               truncate
             >
               <Markdown>{description}</Markdown>
