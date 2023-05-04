@@ -336,7 +336,6 @@ const DatasetDetailsPage: FC<Props> = ({
           <ContentSection
             id='description'
             title={translations.detailsPage.sectionTitles.dataset.description}
-            entityTheme={Entity.DATASET}
             truncate
           >
             <Markdown>{description}</Markdown>
