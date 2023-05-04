@@ -16,6 +16,7 @@ import type { Actions } from '../../../types';
 
 const initialState = fromJS({
   topics: [],
+  multiplePages: false,
   posts: []
 });
 
@@ -27,7 +28,9 @@ export default function reducer(
     case SEARCH_TOPICS_REQUESTED:
       return state.set('topics', fromJS([]));
     case SEARCH_TOPICS_SUCCEEDED:
-      return state.set('topics', fromJS(action.payload.topics));
+      return state
+        .set('topics', fromJS(action.payload.topics))
+        .set('multiplePages', fromJS(action.payload.multiplePages));
     case GET_RECENT_POSTS_REQUESTED:
       return state.set('posts', fromJS([]));
     case GET_RECENT_POSTS_SUCCEEDED:

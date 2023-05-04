@@ -984,9 +984,11 @@
     "seeAllBlogArticles": "Sjå alle bloggartiklar",
     "meetingTitle": "Møtetittel: ",
     "subtitle": {
-      "link": "datalandsbyen",
+      "link": "Datalandsbyen",
       "mention": " innlegg i ",
       "mentionPlural": " innlegg i ",
+      "showAllMentions": "Vis alle omtaler i",
+      "many": "mange",
       "empty": {
         "dataset": "Dette datasettet er ikkje omtalt i ",
         "dataservice": "Denne datatenesta er ikkje omtalt i ",
