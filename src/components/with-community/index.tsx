@@ -8,6 +8,7 @@ import type { CommunityPost, CommunityTopic } from '../../types';
 
 export interface Props {
   topics: CommunityTopic[];
+  multiplePages: boolean;
   posts: CommunityPost[];
   communityActions: typeof actions;
 }
@@ -17,6 +18,7 @@ const withCommunity = (Component: ComponentType<any>) => {
 
   const mapStateToProps = (state: any) => ({
     topics: state.CommunityReducer.get('topics').toJS(),
+    multiplePages: state.CommunityReducer.get('multiplePages'),
     posts: state.CommunityReducer.get('posts').toJS()
   });
 

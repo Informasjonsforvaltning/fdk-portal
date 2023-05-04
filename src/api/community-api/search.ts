@@ -9,7 +9,9 @@ const { FDK_COMMUNITY_BASE_URI } = env;
 
 export const searchCommunity = (queryTerm: string) =>
   axios
-    .get(`${FDK_COMMUNITY_BASE_URI}/api/search?term=${queryTerm}`)
+    .get(
+      `${FDK_COMMUNITY_BASE_URI}/api/search?term=${queryTerm}&sortBy=topic.lastposttime&sortDirection=desc`
+    )
     .then(({ data }) => data);
 
 export const getTopicById = (tid: number) =>

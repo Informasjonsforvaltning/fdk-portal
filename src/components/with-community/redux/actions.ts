@@ -21,11 +21,15 @@ export function searchTopicsRequested(queryTerm: string) {
   };
 }
 
-export function searchTopicsSucceeded(topics: CommunityTopic[]) {
+export function searchTopicsSucceeded(
+  topics: CommunityTopic[],
+  multiplePages: boolean
+) {
   return {
     type: SEARCH_TOPICS_SUCCEEDED,
     payload: {
-      topics
+      topics,
+      multiplePages
     }
   };
 }
