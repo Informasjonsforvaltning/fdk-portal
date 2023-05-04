@@ -932,6 +932,7 @@
         "title": "Nyttig å vite om datasettbeskrivingar",
         "description": "Før du går i gang med å publisere data til Felles datakatalog kan det være lurt å ta en kik på lenkene under.",
         "datasetsStandardLink": "Standard for beskrivelse av datasett",
+        "datasetServiceCatalogGuidanceLink": "Veileder for beskrivelse av datasett, datatenester og datakataloger",
         "registrationGuidanceLink": "Veileder for tilgjengeliggjøring av åpne data",
         "norwegianPublicLicenseLink": "Norsk lisens for offentlig data",
         "validatorLink": "Validering av RDF-filer"
