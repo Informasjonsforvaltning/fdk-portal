@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link as RouteLink } from 'react-router-dom';
 
 import localization from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -30,27 +31,6 @@ interface Props {
   dataset: Partial<Dataset>;
 }
 
-function isDatasetOpen(accessRights: any, distribution: any): boolean {
-  return (
-    accessRights?.code === 'PUBLIC' &&
-    (distribution || []).filter((item: any) => !!item.openLicense).length > 0
-  );
-}
-
-const renderAccessRights = (accessRight: any) => {
-  if (accessRight?.code === 'PUBLIC') {
-    return (
-      <RoundedTag>
-        <PublicIconBase />
-        <span>
-          {localization.dataset.accessRights.authorityCode.publicDetailsLabel}
-        </span>
-      </RoundedTag>
-    );
-  }
-  return null;
-};
-
 export const DatasetItem: FC<Props> = ({
   dataset: {
     id,
@@ -67,6 +47,24 @@ export const DatasetItem: FC<Props> = ({
     inSeries
   }
 }) => {
+  const isDatasetOpen = (ar: any, dist: any): boolean =>
+    ar?.code === 'PUBLIC' &&
+    (dist || []).filter((item: any) => !!item.openLicense).length > 0;
+
+  const renderAccessRights = (accessRight: any) => {
+    if (accessRight?.code === 'PUBLIC') {
+      return (
+        <RoundedTag to={patchSearchQuery('accessrights', 'PUBLIC')}>
+          <PublicIconBase />
+          <span>
+            {localization.dataset.accessRights.authorityCode.publicDetailsLabel}
+          </span>
+        </RoundedTag>
+      );
+    }
+    return null;
+  };
+
   const formats = distribution?.reduce(
     (previous, { fdkFormat = [] }) => [...previous, ...fdkFormat],
     [] as MediaTypeOrExtent[]
@@ -123,7 +121,7 @@ export const DatasetItem: FC<Props> = ({
       {isDatasetOpen(accessRights, distribution) && (
         <SearchHitOpenData>
           <div title={localization.openDataTooltip}>
-            <RoundedTag>
+            <RoundedTag to={patchSearchQuery('opendata', 'true')}>
               <PublicIconBase />
               <span>{localization.openData}</span>
             </RoundedTag>
@@ -171,18 +169,23 @@ export const DatasetItem: FC<Props> = ({
       </SearchHitThemes>
 
       <SearchHitFormats>
-        {[
-          ...new Set(
-            formats
-              .filter(format => format.type !== MediaTypeOrExtentType.UNKNOWN)
-              .map(format => format.name)
+        {formats
+          .filter(
+            format =>
+              format.name && format.type !== MediaTypeOrExtentType.UNKNOWN
           )
-        ]
-          .sort()
+          .sort((a, b) => `${a.name}`.localeCompare(`${b.name}`))
           .map((format, index) => (
-            <span key={`format-${format}-${index}`}>{`${format}`}</span>
+            <RouteLink
+              key={`format-${format.name}-${index}`}
+              to={patchSearchQuery('format', `${format.type} ${format.code}`)}
+            >
+              <span>{`${format.name}`}</span>
+            </RouteLink>
           ))}
       </SearchHitFormats>
     </SearchHit>
   );
 };
+
+export default DatasetItem;

@@ -984,9 +984,11 @@
     "meetingTitle": "Møtetittel: ",
     "seeLatestComments": "Siste kommentarer i",
     "subtitle": {
-      "link": "datalandsbyen",
+      "link": "Datalandsbyen",
       "mention": " innlegg i ",
       "mentionPlural": " innlegg i ",
+      "showAllMentions": "Vis alle omtaler i Datalandsbyen",
+      "many": "mange",
       "empty": {
         "dataset": "Dette datasettet er ikke omtalt i ",
         "dataservice": "Denne datatjenesten er ikke omtalt i ",

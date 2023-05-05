@@ -10,19 +10,26 @@ import Topic from '../../../community/topic';
 import type { CommunityTopic } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
-const { FDK_COMMUNITY_BASE_URI } = env;
+const { FDK_COMMUNITY_BASE_URI, DATALANDSBYEN_URI } = env;
 
 interface Props {
   entityType: Entity;
   topics: CommunityTopic[];
+  fdkId: string | undefined;
+  multiplePages: boolean;
 }
 
-const CommunityTopics: FC<Props> = ({ entityType, topics }) =>
+const CommunityTopics: FC<Props> = ({
+  entityType,
+  topics,
+  fdkId,
+  multiplePages
+}) =>
   topics.length > 0 ? (
     <>
       <span>
         {translations.community.subtitle.content[entityType]}
-        {topics.length}
+        {multiplePages ? translations.community.subtitle.many : topics.length}
         {topics.length === 1
           ? translations.community.subtitle.mention
           : translations.community.subtitle.mentionPlural}
@@ -33,6 +40,14 @@ const CommunityTopics: FC<Props> = ({ entityType, topics }) =>
       {topics.map(topic => (
         <Topic key={`topic_${topic.tid}`} topic={topic} />
       ))}
+      {fdkId && multiplePages && (
+        <FdkLink
+          href={`${DATALANDSBYEN_URI}/search?term=${fdkId}&sortBy=topic.lastposttime&sortDirection=desc`}
+          external
+        >
+          {translations.community.subtitle.showAllMentions}
+        </FdkLink>
+      )}
     </>
   ) : (
     <span>

@@ -10,7 +10,6 @@ interface Props {
   title?: string;
   boxStyle?: boolean;
   entityIcon?: Entity;
-  entityTheme?: Entity;
   truncate?: boolean;
 }
 
@@ -38,7 +37,6 @@ const ContentSection: FC<PropsWithChildren<Props>> = ({
   title,
   boxStyle = true,
   entityIcon,
-  entityTheme,
   truncate,
   children
 }) => (
@@ -53,11 +51,7 @@ const ContentSection: FC<PropsWithChildren<Props>> = ({
     )}
 
     {truncate ? (
-      <TruncatedText
-        visibleLines={4}
-        lineHeight={20}
-        entityTheme={entityTheme ?? Entity.DATASET}
-      >
+      <TruncatedText visibleLines={4} lineHeight={20}>
         {children}
       </TruncatedText>
     ) : (

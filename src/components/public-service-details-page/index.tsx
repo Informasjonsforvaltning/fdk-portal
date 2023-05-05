@@ -319,7 +319,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               title={
                 translations.detailsPage.sectionTitles.publicService.description
               }
-              entityTheme={Entity.PUBLIC_SERVICE}
               truncate
             >
               <Markdown>{description}</Markdown>

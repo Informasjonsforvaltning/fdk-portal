@@ -312,7 +312,6 @@ const ConceptDetailsPage: FC<Props> = ({
           <ContentSection
             id='description'
             title={translations.detailsPage.sectionTitles.concept.definition}
-            entityTheme={Entity.CONCEPT}
             truncate
           >
             <MultiLingualField

@@ -110,6 +110,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   themes = [],
   languages = [],
   topics,
+  multiplePages,
   referenceData: { los: losThemes, themes: euThemes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   datasetScoresActions: { getDatasetScoresRequested: getDatasetScores },
@@ -178,7 +179,12 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
   const communitySection = (
     <ContentSection id='community_section' title={translations.community.title}>
-      <CommunityTopics entityType={entity} topics={topics} />
+      <CommunityTopics
+        entityType={entity}
+        topics={topics}
+        fdkId={entityId}
+        multiplePages={multiplePages}
+      />
     </ContentSection>
   );
 

@@ -1003,6 +1003,7 @@ export interface CommunityPost {
   replies: number;
   index: number;
   page?: number;
+  multiplePages: boolean;
 }
 
 export interface CommunityTeaser {

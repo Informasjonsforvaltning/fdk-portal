@@ -9,9 +9,11 @@ import {
 } from '../../../constants/constants';
 
 import { CompareTerms } from '../compare-terms/compare-terms.component';
-import { getTranslateText } from '../../../lib/translateText';
+import {
+  getTranslateText,
+  getTranslateText as translate
+} from '../../../lib/translateText';
 import localization from '../../../lib/localization';
-import { getTranslateText as translate } from '../../../lib/translateText';
 
 interface Props {
   conceptsCompareList: Partial<Concept>[];

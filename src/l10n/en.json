@@ -932,9 +932,11 @@
         "title": "Good to know about dataset descriptions",
         "description": "It is a good idea to have a look at the links below before publishing data in Felles Datakatalog.",
         "datasetsStandardLink": "Standard for describing datasets",
+        "datasetServiceCatalogGuidanceLink": "Guide for the description of datasets, data services and data catalogues",
         "registrationGuidanceLink": "Guidance for registering data",
         "norwegianPublicLicenseLink": "Norwegian license for public data",
-        "validatorLink": "Validation of RDF files"
+        "validatorLink": "Validation of RDF files",
+        "datasetServiceCatalogGuidanceLink": "Veileder for beskrivelse av datasett, datatjenester og datakataloger"
       }
     }
   },
@@ -984,6 +986,8 @@
     "meetingTitle": "Meeting title: ",
     "subtitle": {
       "link": "our data community",
+      "showAllMentions": "Show all mentions in Datalandsbyen",
+      "many": "many",
       "mention": " thread in our ",
       "mentionPlural": " threads in our ",
       "empty": {

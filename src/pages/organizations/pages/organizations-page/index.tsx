@@ -87,7 +87,7 @@ const OrganizationsPage: FC<Props> = ({
   }, []);
 
   return organizations.length > 0 ? (
-    <main className='container'>
+    <main id='content' className='container'>
       <div className='row mb-5'>
         <div className='col-12'>
           <SC.Header>{localization.searchOrganizations}</SC.Header>

@@ -20,7 +20,8 @@ function* searchTopicsRequested({
   payload: { queryTerm }
 }: ReturnType<typeof actions.searchTopicsRequested>) {
   try {
-    const postHits: CommunityPost[] = yield call(searchCommunity, queryTerm);
+    const postHits: CommunityPost = yield call(searchCommunity, queryTerm);
+    const { multiplePages } = postHits;
     const topics: CommunityTopic[] = (
       (yield all(
         extractTopicsFromSearch(postHits).map(({ tid }) =>
@@ -30,7 +31,7 @@ function* searchTopicsRequested({
     ).filter(Boolean);
 
     if (topics.length > 0) {
-      yield put(actions.searchTopicsSucceeded(topics));
+      yield put(actions.searchTopicsSucceeded(topics, multiplePages));
     } else {
       yield put(actions.searchTopicsFailed(''));
     }
