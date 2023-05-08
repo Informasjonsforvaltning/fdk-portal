@@ -178,7 +178,7 @@ export const DatasetItem: FC<Props> = ({
           .map((format, index) => (
             <RouteLink
               key={`format-${format.name}-${index}`}
-              to={patchSearchQuery('format', `${format.type} ${format.code}`)}
+              to={patchSearchQuery('format', `${format.type} ${format.name}`)}
             >
               <span>{`${format.name}`}</span>
             </RouteLink>
