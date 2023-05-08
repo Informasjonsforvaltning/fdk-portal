@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
+import { Link as RouteLink } from 'react-router-dom';
 
 import type { DataService } from '../../types';
 import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';
+import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 import {
   SearchHit,
   SearchHitFormats,
@@ -49,16 +51,19 @@ export const DataServiceItem: FC<Props> = ({
     )}
     {fdkFormat && (
       <SearchHitFormats>
-        {[
-          ...new Set(
-            fdkFormat
-              .filter(format => format.type !== MediaTypeOrExtentType.UNKNOWN)
-              .map(format => format.name)
+        {fdkFormat
+          .filter(
+            format =>
+              format.name && format.type !== MediaTypeOrExtentType.UNKNOWN
           )
-        ]
-          .sort()
+          .sort((a, b) => `${a.name}`.localeCompare(`${b.name}`))
           .map((format, index) => (
-            <span key={`format-${format}-${index}`}>{`${format}`}</span>
+            <RouteLink
+              key={`format-${format.name}-${index}`}
+              to={patchSearchQuery('format', `${format.type} ${format.name}`)}
+            >
+              <span>{`${format.name}`}</span>
+            </RouteLink>
           ))}
       </SearchHitFormats>
     )}
