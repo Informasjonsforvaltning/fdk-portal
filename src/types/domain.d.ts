@@ -815,6 +815,7 @@ export interface OrganizationCountsAndRating {
     sectorCode: string;
     industryCode: string;
     homepage: string;
+    numberOfEmployees: number;
   };
   datasets: {
     totalCount: number;

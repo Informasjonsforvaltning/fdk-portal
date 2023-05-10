@@ -944,7 +944,8 @@
     "dataserviceDescription": "API-beskrivelser",
     "conceptsDescription": "begrepsbeskrivelser",
     "informationModelsDescription": "informasjonsmodellbeskrivelser",
-    "organization": "Virksomhet"
+    "organization": "Virksomhet",
+    "numberOfEmployees": "Antall ansatte"
   },
   "truncatedText": {
     "expanded": "Skjul beskrivelsen",

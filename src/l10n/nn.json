@@ -944,7 +944,8 @@
     "dataserviceDescription": "API-beskrivingar",
     "conceptsDescription": "omgrepsbeskrivingar",
     "informationModelsDescription": "informasjonsmodellbeskrivingar",
-    "organization": "Verksemd"
+    "organization": "Verksemd",
+    "numberOfEmployees": "Talet på tilsette"
   },
   "truncatedText": {
     "expanded": "Skjul beskrivinga",
