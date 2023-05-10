@@ -206,6 +206,16 @@ const OrganizationPage: FC<Props> = ({
                   </span>
                 </li>
               )}
+              {rating.organization.numberOfEmployees && (
+                <li>
+                  <span>
+                    {translations.organizationsPage.numberOfEmployees}
+                  </span>
+                  <span>
+                    {rating.organization.numberOfEmployees.toLocaleString()}
+                  </span>
+                </li>
+              )}
               <li>
                 <span>
                   {translations.metadataQualityPage.organisationMoreInfo}

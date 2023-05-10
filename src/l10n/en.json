@@ -943,7 +943,8 @@
     "dataserviceDescription": "dataservice descriptions",
     "conceptsDescription": "concept descriptions",
     "informationModelsDescription": "information model descriptions",
-    "organization": "Organization"
+    "organization": "Organization",
+    "numberOfEmployees": "Number of employees"
   },
   "truncatedText": {
     "expanded": "Hide description",
