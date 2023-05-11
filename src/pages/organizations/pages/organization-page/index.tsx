@@ -48,6 +48,7 @@ import {
 } from '../../../../types/enums';
 import Spinner from '../../../../components/spinner';
 import { mapScoreToRatingCategory } from '../../../../utils/metadata-quality';
+import NumberFormatter from '../../../../components/number-formatter';
 
 interface RouteParams {
   organizationId: string;
@@ -212,7 +213,9 @@ const OrganizationPage: FC<Props> = ({
                     {translations.organizationsPage.numberOfEmployees}
                   </span>
                   <span>
-                    {rating.organization.numberOfEmployees.toLocaleString()}
+                    <NumberFormatter
+                      number={rating.organization.numberOfEmployees}
+                    />
                   </span>
                 </li>
               )}
