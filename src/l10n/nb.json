@@ -945,7 +945,8 @@
     "conceptsDescription": "begrepsbeskrivelser",
     "informationModelsDescription": "informasjonsmodellbeskrivelser",
     "organization": "Virksomhet",
-    "numberOfEmployees": "Antall ansatte"
+    "numberOfEmployees": "Antall ansatte",
+    "onlyShowOrganizationsWithContent": "Vis kun virksomheter med innhold i katalogene"
   },
   "truncatedText": {
     "expanded": "Skjul beskrivelsen",
