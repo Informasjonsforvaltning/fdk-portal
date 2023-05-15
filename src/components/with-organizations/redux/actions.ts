@@ -7,11 +7,15 @@ import {
 
 import { SortOrder } from '../../../types/enums';
 
-export function getOrganizationsRequested(filter?: string) {
+export function getOrganizationsRequested(
+  filter?: string,
+  includeEmpty?: string
+) {
   return {
     type: GET_ORGANIZATIONS_REQUESTED,
     payload: {
-      filter
+      filter,
+      includeEmpty
     }
   };
 }
