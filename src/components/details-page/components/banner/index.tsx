@@ -100,12 +100,14 @@ const Banner: FC<Props> = ({
             />
           )}
           <SC.Title>
-            {translate(
-              title,
-              languages.filter(({ selected }) => selected)?.length === 1
-                ? languages.filter(({ selected }) => selected).shift()?.code
-                : undefined
-            )}
+            <span>
+              {translate(
+                title,
+                languages.filter(({ selected }) => selected)?.length === 1
+                  ? languages.filter(({ selected }) => selected).shift()?.code
+                  : undefined
+              )}
+            </span>
             {isAuthoritative && (
               <div title={translations.authoritativeDatasetTooltip}>
                 <AuthoritativeIcon />
