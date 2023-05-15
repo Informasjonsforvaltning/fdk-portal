@@ -935,8 +935,7 @@
         "datasetServiceCatalogGuidanceLink": "Guide for the description of datasets, data services and data catalogues",
         "registrationGuidanceLink": "Guidance for registering data",
         "norwegianPublicLicenseLink": "Norwegian license for public data",
-        "validatorLink": "Validation of RDF files",
-        "datasetServiceCatalogGuidanceLink": "Veileder for beskrivelse av datasett, datatjenester og datakataloger"
+        "validatorLink": "Validation of RDF files"
       }
     }
   },
@@ -946,7 +945,8 @@
     "conceptsDescription": "concept descriptions",
     "informationModelsDescription": "information model descriptions",
     "organization": "Organization",
-    "numberOfEmployees": "Number of employees"
+    "numberOfEmployees": "Number of employees",
+    "onlyShowOrganizationsWithContent": "Only show organizations with content in the catalogs"
   },
   "truncatedText": {
     "expanded": "Hide description",

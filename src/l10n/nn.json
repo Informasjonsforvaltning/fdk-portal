@@ -945,7 +945,8 @@
     "conceptsDescription": "omgrepsbeskrivingar",
     "informationModelsDescription": "informasjonsmodellbeskrivingar",
     "organization": "Verksemd",
-    "numberOfEmployees": "Talet på tilsette"
+    "numberOfEmployees": "Talet på tilsette",
+    "onlyShowOrganizationsWithContent": "Vis berre verksemder med innhald i katalogane"
   },
   "truncatedText": {
     "expanded": "Skjul beskrivinga",

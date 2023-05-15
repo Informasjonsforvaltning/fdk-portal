@@ -1,6 +1,6 @@
 import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
-import type { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { getConfig } from '../../../../config';
 
@@ -19,6 +19,11 @@ import SC from './styled';
 
 import type { OrganizationSummary } from '../../../../types';
 import { Entity, SortOrder } from '../../../../types/enums';
+import CheckBox from '../../../../components/checkbox';
+import {
+  historyPushSearchParams,
+  parseSearchParams
+} from '../../../../lib/location-history-helper';
 
 interface Props extends OrganizationsProps, RouteComponentProps {}
 
@@ -28,7 +33,9 @@ const OrganizationsPage: FC<Props> = ({
     getOrganizationsRequested: getOrganizations,
     sortOrganizations
   },
-  match: { url }
+  match: { url },
+  location,
+  history
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -82,9 +89,27 @@ const OrganizationsPage: FC<Props> = ({
     return <SC.CaretBoth />;
   };
 
+  const locationSearch = parseSearchParams(location);
+  const [includeEmptyOrganizations, setIncludeEmptyOrganizations] = useState(
+    locationSearch.includeEmpty
+      ? locationSearch.includeEmpty.toString() === 'true'
+      : true
+  );
+
+  const toggleShowEmptyOrganizations = () => {
+    const active = !includeEmptyOrganizations;
+    setIncludeEmptyOrganizations(active);
+    historyPushSearchParams(history, {
+      includeEmpty: active.toString()
+    });
+  };
+
   useEffect(() => {
-    getOrganizations(isTransportportal ? 'transportportal' : undefined);
-  }, []);
+    getOrganizations(
+      isTransportportal ? 'transportportal' : undefined,
+      includeEmptyOrganizations.toString()
+    );
+  }, [includeEmptyOrganizations]);
 
   return organizations.length > 0 ? (
     <main id='content' className='container'>
@@ -114,6 +139,17 @@ const OrganizationsPage: FC<Props> = ({
             </button>
           </SC.Filter>
         </SC.SearchBox>
+      </div>
+      <div className='row mb-5'>
+        <CheckBox
+          id='showAllCheckbox'
+          active={!includeEmptyOrganizations}
+          onClick={toggleShowEmptyOrganizations}
+          textLabel={
+            localization.organizationsPage.onlyShowOrganizationsWithContent
+          }
+          displayClass='col-12'
+        />
       </div>
       <div className='row'>
         <SC.SortRow className='col-12'>
@@ -235,5 +271,6 @@ const OrganizationsPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withOrganizations,
+  withRouter,
   withErrorBoundary(ErrorPage)
 )(OrganizationsPage);
