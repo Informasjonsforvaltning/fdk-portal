@@ -25,6 +25,8 @@ import {
   parseSearchParams
 } from '../../../../lib/location-history-helper';
 
+import SortButtons from './category-buttons';
+
 interface Props extends OrganizationsProps, RouteComponentProps {}
 
 const OrganizationsPage: FC<Props> = ({
@@ -151,6 +153,7 @@ const OrganizationsPage: FC<Props> = ({
           displayClass='col-12'
         />
       </div>
+      <SortButtons />
       <div className='row'>
         <SC.SortRow className='col-12'>
           <SC.Title>

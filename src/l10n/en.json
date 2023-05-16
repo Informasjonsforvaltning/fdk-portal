@@ -945,8 +945,7 @@
     "conceptsDescription": "concept descriptions",
     "informationModelsDescription": "information model descriptions",
     "organization": "Organization",
-    "numberOfEmployees": "Number of employees",
-    "onlyShowOrganizationsWithContent": "Only show organizations with content in the catalogs"
+    "numberOfEmployees": "Number of employees"
   },
   "truncatedText": {
     "expanded": "Hide description",

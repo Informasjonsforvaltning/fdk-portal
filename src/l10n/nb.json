@@ -946,7 +946,12 @@
     "informationModelsDescription": "informasjonsmodellbeskrivelser",
     "organization": "Virksomhet",
     "numberOfEmployees": "Antall ansatte",
-    "onlyShowOrganizationsWithContent": "Vis kun virksomheter med innhold i katalogene"
+    "onlyShowOrganizationsWithContent": "Vis kun virksomheter med innhold i katalogene",
+    "category": {
+      "state": "Stat",
+      "municipality": "Kommune",
+      "all": "Alle"
+    }
   },
   "truncatedText": {
     "expanded": "Skjul beskrivelsen",

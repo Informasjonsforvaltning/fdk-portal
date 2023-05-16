@@ -946,7 +946,12 @@
     "informationModelsDescription": "informasjonsmodellbeskrivingar",
     "organization": "Verksemd",
     "numberOfEmployees": "Talet på tilsette",
-    "onlyShowOrganizationsWithContent": "Vis berre verksemder med innhald i katalogane"
+    "onlyShowOrganizationsWithContent": "Vis berre verksemder med innhald i katalogane",
+    "category": {
+      "state": "Stat",
+      "municipality": "Kommune",
+      "all": "Alle"
+    }
   },
   "truncatedText": {
     "expanded": "Skjul beskrivinga",
