@@ -12,7 +12,7 @@ import {
 } from '../../../../../lib/location-history-helper';
 
 export interface Props extends RouteComponentProps {
-  onCategoryChange: (category?: string) => void;
+  onCategoryChange: (category?: 'state' | 'municipality' | undefined) => void;
 }
 
 const CategoryButtons: FC<Props> = ({
@@ -24,7 +24,9 @@ const CategoryButtons: FC<Props> = ({
     parseSearchParams(location).category
   );
 
-  const handleOnClick = (changeToValue?: string) => {
+  const handleOnClick = (
+    changeToValue?: 'state' | 'municipality' | undefined
+  ) => {
     setCategory(changeToValue);
     const searchParams = {
       category: changeToValue

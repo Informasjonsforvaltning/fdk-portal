@@ -30,12 +30,14 @@ import {
   parseSearchParams
 } from '../../../../lib/location-history-helper';
 
-import SortButtons from './category-buttons';
+import CategoryButtons from './category-buttons';
 
 interface Props
   extends OrganizationsProps,
     OrganizationCategoriesProps,
     RouteComponentProps {}
+
+type OrganizationCategoryType = 'state' | 'municipality' | undefined;
 
 const OrganizationsPage: FC<Props> = ({
   organizations,
@@ -118,15 +120,23 @@ const OrganizationsPage: FC<Props> = ({
     });
   };
 
-  useEffect(() => {
-    getOrganizations(
-      isTransportportal ? 'transportportal' : undefined,
-      includeEmptyOrganizations.toString()
-    );
-    getOrganizationCategories('municipality', true);
-  }, [includeEmptyOrganizations]);
+  const [currentCategory, setCurrentCategory] =
+    useState<OrganizationCategoryType>(undefined);
 
-  return organizations.length > 0 ? (
+  const switchCategory = (category: OrganizationCategoryType) => {
+    setCurrentCategory(category);
+  };
+
+  useEffect(() => {
+    currentCategory
+      ? getOrganizationCategories(currentCategory, includeEmptyOrganizations)
+      : getOrganizations(
+          isTransportportal ? 'transportportal' : undefined,
+          includeEmptyOrganizations.toString()
+        );
+  }, [includeEmptyOrganizations, currentCategory]);
+
+  return organizations.length > 0 || organizationCategories.length > 0 ? (
     <main id='content' className='container'>
       <div className='row mb-5'>
         <div className='col-12'>
@@ -155,6 +165,7 @@ const OrganizationsPage: FC<Props> = ({
           </SC.Filter>
         </SC.SearchBox>
       </div>
+      <CategoryButtons onCategoryChange={switchCategory} />
       <div className='row mb-5'>
         <CheckBox
           id='showAllCheckbox'
@@ -166,7 +177,6 @@ const OrganizationsPage: FC<Props> = ({
           displayClass='col-12'
         />
       </div>
-      <SortButtons onCategoryChange={() => {}} />
       <div className='row'>
         <SC.SortRow className='col-12'>
           <SC.Title>
@@ -287,5 +297,7 @@ const OrganizationsPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withOrganizations,
+  withOrganizationCategories,
+  withRouter,
   withErrorBoundary(ErrorPage)
 )(OrganizationsPage);

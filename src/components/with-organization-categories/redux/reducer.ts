@@ -16,8 +16,9 @@ const initialState = fromJS({
 });
 
 export default function reducer(
-  action: Actions<typeof actions>,
-  state: any = initialState
+  // eslint-disable-next-line default-param-last
+  state: any = initialState,
+  action: Actions<typeof actions>
 ) {
   switch (action?.type) {
     case GET_ORGANIZATION_CATEGORIES_REQUESTED:
