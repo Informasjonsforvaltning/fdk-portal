@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import ButtonToggleSC from './button-toggle/styled';
 
-const SortButtons = styled.div`
+const CategoryButtons = styled.div`
   display: flex;
   justify-content: center;
 
@@ -22,4 +22,4 @@ const SortButtons = styled.div`
   }
 `;
 
-export default { SortButtons };
+export default { CategoryButtons };

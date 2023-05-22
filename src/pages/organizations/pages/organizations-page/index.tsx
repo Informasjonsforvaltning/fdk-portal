@@ -10,6 +10,11 @@ import { getTranslateText as translate } from '../../../../lib/translateText';
 import withOrganizations, {
   Props as OrganizationsProps
 } from '../../../../components/with-organizations';
+
+import withOrganizationCategories, {
+  Props as OrganizationCategoriesProps
+} from '../../../../components/with-organization-categories';
+
 import Spinner from '../../../../components/spinner';
 import withErrorBoundary from '../../../../components/with-error-boundary';
 
@@ -17,7 +22,7 @@ import ErrorPage from '../../../../components/error-page';
 
 import SC from './styled';
 
-import type { OrganizationSummary } from '../../../../types';
+import type { OrganizationCatalogSummary } from '../../../../types';
 import { Entity, SortOrder } from '../../../../types/enums';
 import CheckBox from '../../../../components/checkbox';
 import {
@@ -27,7 +32,10 @@ import {
 
 import SortButtons from './category-buttons';
 
-interface Props extends OrganizationsProps, RouteComponentProps {}
+interface Props
+  extends OrganizationsProps,
+    OrganizationCategoriesProps,
+    RouteComponentProps {}
 
 const OrganizationsPage: FC<Props> = ({
   organizations,
@@ -35,9 +43,13 @@ const OrganizationsPage: FC<Props> = ({
     getOrganizationsRequested: getOrganizations,
     sortOrganizations
   },
-  match: { url },
+  organizationCategories,
+  organizationCategoriesActions: {
+    getOrganizationCategoriesRequested: getOrganizationCategories
+  },
   location,
-  history
+  history,
+  match: { url }
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -111,6 +123,7 @@ const OrganizationsPage: FC<Props> = ({
       isTransportportal ? 'transportportal' : undefined,
       includeEmptyOrganizations.toString()
     );
+    getOrganizationCategories('municipality', true);
   }, [includeEmptyOrganizations]);
 
   return organizations.length > 0 ? (
@@ -153,7 +166,7 @@ const OrganizationsPage: FC<Props> = ({
           displayClass='col-12'
         />
       </div>
-      <SortButtons />
+      <SortButtons onCategoryChange={() => {}} />
       <div className='row'>
         <SC.SortRow className='col-12'>
           <SC.Title>
@@ -218,7 +231,7 @@ const OrganizationsPage: FC<Props> = ({
               informationmodelCount
             },
             index: number,
-            organizationSummaries: OrganizationSummary[]
+            organizationSummaries: OrganizationCatalogSummary[]
           ) => {
             let sortLabel = '';
             const previousOrganizationName =
@@ -274,6 +287,5 @@ const OrganizationsPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withOrganizations,
-  withRouter,
   withErrorBoundary(ErrorPage)
 )(OrganizationsPage);

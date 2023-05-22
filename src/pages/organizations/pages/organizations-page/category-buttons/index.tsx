@@ -11,25 +11,32 @@ import {
   parseSearchParams
 } from '../../../../../lib/location-history-helper';
 
-const CategoryButtons: FC<RouteComponentProps> = ({ history, location }) => {
+export interface Props extends RouteComponentProps {
+  onCategoryChange: (category?: string) => void;
+}
+
+const CategoryButtons: FC<Props> = ({
+  history,
+  location,
+  onCategoryChange
+}) => {
   const [category, setCategory] = useState(
     parseSearchParams(location).category
   );
 
-  const getModifiedCategoryClickHandler = (changeToValue?: string) =>
-    // eslint-disable-next-line func-names
-    function () {
-      setCategory(changeToValue);
-      const searchParams = {
-        category: changeToValue
-      };
-      historyPushSearchParams(history, searchParams);
+  const handleOnClick = (changeToValue?: string) => {
+    setCategory(changeToValue);
+    const searchParams = {
+      category: changeToValue
     };
+    historyPushSearchParams(history, searchParams);
+    onCategoryChange(changeToValue);
+  };
 
   return (
-    <SC.SortButtons>
+    <SC.CategoryButtons>
       <ButtonToggleSC.ButtonToggle
-        onClick={getModifiedCategoryClickHandler(undefined)}
+        onClick={() => handleOnClick(undefined)}
         selected={category === undefined}
         borderLeft
       >
@@ -37,21 +44,21 @@ const CategoryButtons: FC<RouteComponentProps> = ({ history, location }) => {
         {localization.organizationsPage.category.all}
       </ButtonToggleSC.ButtonToggle>
       <ButtonToggleSC.ButtonToggle
-        onClick={getModifiedCategoryClickHandler('state')}
+        onClick={() => handleOnClick('state')}
         selected={category === 'state'}
       >
         {category === 'state' && <ButtonToggleSC.CheckIcon />}
         {localization.organizationsPage.category.state}
       </ButtonToggleSC.ButtonToggle>
       <ButtonToggleSC.ButtonToggle
-        onClick={getModifiedCategoryClickHandler('municipality')}
+        onClick={() => handleOnClick('municipality')}
         selected={category === 'municipality'}
         borderRight
       >
         {category === 'municipality' && <ButtonToggleSC.CheckIcon />}
         {localization.organizationsPage.category.municipality}
       </ButtonToggleSC.ButtonToggle>
-    </SC.SortButtons>
+    </SC.CategoryButtons>
   );
 };
 
