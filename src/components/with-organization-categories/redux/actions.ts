@@ -1,11 +1,8 @@
 import {
   GET_ORGANIZATION_CATEGORIES_REQUESTED,
   GET_ORGANIZATION_CATEGORIES_SUCCEEDED,
-  GET_ORGANIZATION_CATEGORIES_FAILED,
-  SORT_ORGANIZATION_CATEGORIES
+  GET_ORGANIZATION_CATEGORIES_FAILED
 } from './action-types';
-
-import { SortOrder } from '../../../types/enums';
 
 export function getOrganizationCategoriesRequested(
   type: 'state' | 'municipality',
@@ -34,19 +31,6 @@ export function getOrganizationCategoriesFailed(message: string) {
     type: GET_ORGANIZATION_CATEGORIES_FAILED,
     payload: {
       message
-    }
-  };
-}
-
-export function sortOrganizationCategories(
-  selector: string[],
-  order: SortOrder
-) {
-  return {
-    type: SORT_ORGANIZATION_CATEGORIES,
-    payload: {
-      selector,
-      order
     }
   };
 }

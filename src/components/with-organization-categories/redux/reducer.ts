@@ -3,11 +3,8 @@ import { fromJS } from 'immutable';
 import * as actions from './actions';
 import {
   GET_ORGANIZATION_CATEGORIES_REQUESTED,
-  GET_ORGANIZATION_CATEGORIES_SUCCEEDED,
-  SORT_ORGANIZATION_CATEGORIES
+  GET_ORGANIZATION_CATEGORIES_SUCCEEDED
 } from './action-types';
-
-import { sortOrganizationCategories } from './utils';
 
 import type { Actions } from '../../../types';
 
@@ -24,19 +21,9 @@ export default function reducer(
     case GET_ORGANIZATION_CATEGORIES_REQUESTED:
       return state.set('organizationCategories', fromJS([]));
     case GET_ORGANIZATION_CATEGORIES_SUCCEEDED:
-      return state
-        .set('organizationCategories', fromJS(action.payload.categories))
-        .update(
-          'organizationCategories',
-          sortOrganizationCategories(['prefLabel'])
-        );
-    case SORT_ORGANIZATION_CATEGORIES:
-      return state.update(
+      return state.set(
         'organizationCategories',
-        sortOrganizationCategories(
-          action.payload.selector,
-          action.payload.order
-        )
+        fromJS(action.payload.categories)
       );
     default:
       return state;
