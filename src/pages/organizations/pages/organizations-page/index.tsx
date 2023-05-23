@@ -5,11 +5,15 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { getConfig } from '../../../../config';
 
 import localization from '../../../../lib/localization';
-import { getTranslateText as translate } from '../../../../lib/translateText';
 
 import withOrganizations, {
   Props as OrganizationsProps
 } from '../../../../components/with-organizations';
+
+import withOrganizationCategories, {
+  Props as OrganizationCategoriesProps
+} from '../../../../components/with-organization-categories';
+
 import Spinner from '../../../../components/spinner';
 import withErrorBoundary from '../../../../components/with-error-boundary';
 
@@ -17,15 +21,23 @@ import ErrorPage from '../../../../components/error-page';
 
 import SC from './styled';
 
-import type { OrganizationSummary } from '../../../../types';
-import { Entity, SortOrder } from '../../../../types/enums';
+import { SortOrder } from '../../../../types/enums';
 import CheckBox from '../../../../components/checkbox';
 import {
   historyPushSearchParams,
   parseSearchParams
 } from '../../../../lib/location-history-helper';
 
-interface Props extends OrganizationsProps, RouteComponentProps {}
+import CategoryButtons from './category-buttons';
+import OrganizationList from './organization-list';
+import OrganizationCategoriesList from './organization-category-list';
+
+interface Props
+  extends OrganizationsProps,
+    OrganizationCategoriesProps,
+    RouteComponentProps {}
+
+type OrganizationCategoryType = 'state' | 'municipality' | undefined;
 
 const OrganizationsPage: FC<Props> = ({
   organizations,
@@ -33,10 +45,18 @@ const OrganizationsPage: FC<Props> = ({
     getOrganizationsRequested: getOrganizations,
     sortOrganizations
   },
-  match: { url },
+  organizationCategories,
+  organizationCategoriesActions: {
+    getOrganizationCategoriesRequested: getOrganizationCategories
+  },
   location,
-  history
+  history,
+  match
 }) => {
+  const isTransportportal = getConfig().themeNap;
+
+  const locationSearch = parseSearchParams(location);
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const [sortState, setSortState] = useState<{
@@ -47,49 +67,6 @@ const OrganizationsPage: FC<Props> = ({
     order: SortOrder.ASC
   });
 
-  const determineNextSortOrder = (nextSelector: string[]) => {
-    const { selector, order } = sortState;
-    const isSameSelector = selector.every(i => nextSelector.includes(i));
-
-    if (!isSameSelector && !nextSelector.includes('prefLabel')) {
-      return SortOrder.DSC;
-    }
-
-    return isSameSelector && order === SortOrder.ASC
-      ? SortOrder.DSC
-      : SortOrder.ASC;
-  };
-
-  const applySort = (selector: string[], nextOrder?: SortOrder) => () => {
-    const order = nextOrder ?? determineNextSortOrder(selector);
-
-    sortOrganizations(selector, order);
-    setSortState({ selector, order });
-  };
-
-  const isTransportportal = getConfig().themeNap;
-
-  const filterOrganizationsByName = (query: string) =>
-    query
-      ? organizations.filter(({ prefLabel, name }) =>
-          (translate(prefLabel) ?? name ?? '')
-            .toLowerCase()
-            .includes(query.toLowerCase())
-        )
-      : organizations;
-
-  const renderCaret = (selector: string[]) => {
-    if (sortState.selector.every(i => selector.includes(i))) {
-      return sortState.order === SortOrder.ASC ? (
-        <SC.CaretUp />
-      ) : (
-        <SC.CaretDown />
-      );
-    }
-    return <SC.CaretBoth />;
-  };
-
-  const locationSearch = parseSearchParams(location);
   const [includeEmptyOrganizations, setIncludeEmptyOrganizations] = useState(
     locationSearch.includeEmpty
       ? locationSearch.includeEmpty.toString() === 'true'
@@ -99,19 +76,45 @@ const OrganizationsPage: FC<Props> = ({
   const toggleShowEmptyOrganizations = () => {
     const active = !includeEmptyOrganizations;
     setIncludeEmptyOrganizations(active);
-    historyPushSearchParams(history, {
+    const oldSearchParams = parseSearchParams(location);
+    const searchParams = {
+      ...oldSearchParams,
       includeEmpty: active.toString()
-    });
+    };
+    historyPushSearchParams(history, searchParams);
+  };
+
+  const [currentCategory, setCurrentCategory] =
+    useState<OrganizationCategoryType>(
+      locationSearch.category === 'state' ||
+        locationSearch.category === 'municipality'
+        ? locationSearch.category
+        : undefined
+    );
+
+  const onCategoryChange = (category: OrganizationCategoryType) => {
+    setCurrentCategory(category);
+    const oldSearchParams = parseSearchParams(location);
+    const searchParams = {
+      ...oldSearchParams,
+      category
+    };
+    historyPushSearchParams(history, searchParams);
   };
 
   useEffect(() => {
-    getOrganizations(
-      isTransportportal ? 'transportportal' : undefined,
-      includeEmptyOrganizations.toString()
-    );
-  }, [includeEmptyOrganizations]);
+    currentCategory
+      ? getOrganizationCategories(currentCategory, includeEmptyOrganizations)
+      : getOrganizations(
+          isTransportportal ? 'transportportal' : undefined,
+          includeEmptyOrganizations.toString()
+        );
+  }, [includeEmptyOrganizations, currentCategory]);
 
-  return organizations.length > 0 ? (
+  const entries = () =>
+    currentCategory ? organizationCategories : organizations;
+
+  return entries().length > 0 ? (
     <main id='content' className='container'>
       <div className='row mb-5'>
         <div className='col-12'>
@@ -140,6 +143,10 @@ const OrganizationsPage: FC<Props> = ({
           </SC.Filter>
         </SC.SearchBox>
       </div>
+      <CategoryButtons
+        selectedCategory={currentCategory}
+        onCategoryChange={onCategoryChange}
+      />
       <div className='row mb-5'>
         <CheckBox
           id='showAllCheckbox'
@@ -151,117 +158,26 @@ const OrganizationsPage: FC<Props> = ({
           displayClass='col-12'
         />
       </div>
-      <div className='row'>
-        <SC.SortRow className='col-12'>
-          <SC.Title>
-            <SC.TitleSortButton
-              type='button'
-              onClick={applySort(['prefLabel'])}
-            >
-              {localization.organizationsPage.organization}
-              {renderCaret(['prefLabel'])}
-            </SC.TitleSortButton>
-          </SC.Title>
-          <SC.Info>
-            <SC.SortButton
-              type='button'
-              onClick={applySort(['datasetCount'])}
-              title={localization.organizationsPage.datasetsDescription}
-            >
-              <SC.DatasetIcon />
-              {renderCaret(['datasetCount'])}
-            </SC.SortButton>
-            {!isTransportportal && (
-              <>
-                <SC.SortButton
-                  type='button'
-                  onClick={applySort(['dataserviceCount'])}
-                  title={localization.organizationsPage.dataserviceDescription}
-                >
-                  <SC.ApiIcon />
-                  {renderCaret(['dataserviceCount'])}
-                </SC.SortButton>
-                <SC.SortButton
-                  type='button'
-                  onClick={applySort(['conceptCount'])}
-                  title={localization.organizationsPage.conceptsDescription}
-                >
-                  <SC.ConceptIcon />
-                  {renderCaret(['conceptCount'])}
-                </SC.SortButton>
-                <SC.SortButton
-                  type='button'
-                  onClick={applySort(['informationmodelCount'])}
-                  title={
-                    localization.organizationsPage.informationModelsDescription
-                  }
-                >
-                  <SC.InfomodelIcon />
-                  {renderCaret(['informationmodelCount'])}
-                </SC.SortButton>
-              </>
-            )}
-          </SC.Info>
-        </SC.SortRow>
-        {filterOrganizationsByName(searchQuery).map(
-          (
-            {
-              id,
-              name,
-              prefLabel,
-              datasetCount,
-              dataserviceCount,
-              conceptCount,
-              informationmodelCount
-            },
-            index: number,
-            organizationSummaries: OrganizationSummary[]
-          ) => {
-            let sortLabel = '';
-            const previousOrganizationName =
-              translate(organizationSummaries[index - 1]?.prefLabel) ||
-              organizationSummaries[index - 1]?.name;
-            const currentOrganizationName = translate(prefLabel) || name;
-
-            if (
-              sortState.selector.includes('prefLabel') &&
-              (index === 0 ||
-                (index > 0 &&
-                  previousOrganizationName &&
-                  currentOrganizationName &&
-                  previousOrganizationName.charAt(0) !==
-                    currentOrganizationName.charAt(0)))
-            ) {
-              sortLabel = currentOrganizationName.charAt(0);
-            }
-
-            return (
-              <SC.Box key={id} className='col-12' to={`${url}/${id}`}>
-                <SC.SortLabel>{sortLabel}</SC.SortLabel>
-                <SC.Title>{translate(prefLabel) || name}</SC.Title>
-                <SC.Info>
-                  <SC.CountTag type={Entity.DATASET}>
-                    {datasetCount}
-                  </SC.CountTag>
-                  {!isTransportportal && (
-                    <>
-                      <SC.CountTag type={Entity.DATA_SERVICE}>
-                        {dataserviceCount}
-                      </SC.CountTag>
-                      <SC.CountTag type={Entity.CONCEPT}>
-                        {conceptCount}
-                      </SC.CountTag>
-                      <SC.CountTag type={Entity.INFORMATION_MODEL}>
-                        {informationmodelCount}
-                      </SC.CountTag>
-                    </>
-                  )}
-                </SC.Info>
-              </SC.Box>
-            );
-          }
-        )}
-      </div>
+      {currentCategory ? (
+        <OrganizationCategoriesList
+          organizationCategories={organizationCategories}
+          searchQuery={searchQuery}
+          history={history}
+          location={location}
+          match={match}
+        />
+      ) : (
+        <OrganizationList
+          organizations={organizations}
+          sortState={sortState}
+          setSortState={setSortState}
+          sort={sortOrganizations}
+          searchQuery={searchQuery}
+          history={history}
+          location={location}
+          match={match}
+        />
+      )}
     </main>
   ) : (
     <Spinner />
@@ -271,6 +187,7 @@ const OrganizationsPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withOrganizations,
+  withOrganizationCategories,
   withRouter,
   withErrorBoundary(ErrorPage)
 )(OrganizationsPage);

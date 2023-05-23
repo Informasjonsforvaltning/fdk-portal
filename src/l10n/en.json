@@ -946,7 +946,12 @@
     "informationModelsDescription": "information model descriptions",
     "organization": "Organization",
     "numberOfEmployees": "Number of employees",
-    "onlyShowOrganizationsWithContent": "Only show organizations with content in the catalogs"
+    "onlyShowOrganizationsWithContent": "Only show organizations with content in the catalogs",
+    "category": {
+      "state": "State",
+      "municipality": "Municipality",
+      "all": "All"
+    }
   },
   "truncatedText": {
     "expanded": "Hide description",

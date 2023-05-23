@@ -4,22 +4,24 @@ import { connect } from 'react-redux';
 
 import * as actions from './redux/actions';
 
-import type { OrganizationCatalogSummary } from '../../types';
+import type { OrganizationCategory } from '../../types';
 
 export interface Props {
-  organizations: OrganizationCatalogSummary[];
-  organizationsActions: typeof actions;
+  organizationCategories: OrganizationCategory[];
+  organizationCategoriesActions: typeof actions;
 }
 
-const withOrganizations = (Component: ComponentType<any>) => {
+const withOrganizationCategories = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    organizations: state.OrganizationsReducer.get('organizations').toJS()
+    organizationCategories: state.OrganizationCategoriesReducer.get(
+      'organizationCategories'
+    ).toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
-    organizationsActions: bindActionCreators(actions, dispatch)
+    organizationCategoriesActions: bindActionCreators(actions, dispatch)
   });
 
   return compose<FC>(
@@ -28,4 +30,4 @@ const withOrganizations = (Component: ComponentType<any>) => {
   )(WrappedComponent);
 };
 
-export default withOrganizations;
+export default withOrganizationCategories;

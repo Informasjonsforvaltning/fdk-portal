@@ -16,6 +16,7 @@ import DatasetsReducer from '../components/with-datasets/redux/reducer';
 import DataServicesReducer from '../components/with-data-services/redux/reducer';
 import DataServiceReducer from '../components/with-data-service/redux/reducer';
 import EntitiesReducer from '../components/with-entities/redux/reducer';
+import OrganizationCategoriesReducer from '../components/with-organization-categories/redux/reducer';
 import OrganizationsReducer from '../components/with-organizations/redux/reducer';
 import OrganizationReducer from '../components/with-organization/redux/reducer';
 import ReportReducer from '../components/with-report/redux/reducer';
@@ -54,6 +55,7 @@ export const rootReducer = combineReducers({
   DataServicesReducer,
   DataServiceReducer,
   EntitiesReducer,
+  OrganizationCategoriesReducer,
   OrganizationsReducer,
   OrganizationReducer,
   ReportReducer,
