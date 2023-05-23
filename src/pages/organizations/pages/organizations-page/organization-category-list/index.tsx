@@ -68,7 +68,7 @@ const OrganizationCategoriesList: FC<Props> = ({
           organizations
         }) => (
           <>
-            <SC.CategoryBox key={id} className='col-12' to={`${url}/${id}`}>
+            <SC.CategoryBox key={id} className='col-12'>
               <SC.Title>{translate(prefLabel) || name}</SC.Title>
               <SC.Info>
                 <SC.CountTag type={Entity.DATASET}>{datasetCount}</SC.CountTag>

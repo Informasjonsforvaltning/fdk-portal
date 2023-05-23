@@ -1,26 +1,28 @@
 import styled from 'styled-components';
+import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
 import parentStyledComponents from '../styled';
 
 const InfoIcon = styled.span`
-  display: flex;
-  flex-direction: row;
-  align-items: end;
-  color: #fff;
-  background-color: transparent;
-  border: none;
   width: 50px;
 
   &:nth-of-type(n + 2) {
     margin-left: 1.5em;
   }
-
-  &:hover > svg > path {
-    fill: #fff;
-  }
 `;
 
-const CategoryBox = styled(parentStyledComponents.Box)`
+const CategoryBox = styled.div`
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000 !important;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.5em;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+
   & ${parentStyledComponents.Title} {
+    font-size: ${themeFDK.fontSize('FS20', Unit.REM)};
     font-weight: 550;
   }
 `;
