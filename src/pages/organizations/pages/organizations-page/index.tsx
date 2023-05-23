@@ -53,6 +53,10 @@ const OrganizationsPage: FC<Props> = ({
   history,
   match
 }) => {
+  const isTransportportal = getConfig().themeNap;
+
+  const locationSearch = parseSearchParams(location);
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const [sortState, setSortState] = useState<{
@@ -63,9 +67,6 @@ const OrganizationsPage: FC<Props> = ({
     order: SortOrder.ASC
   });
 
-  const isTransportportal = getConfig().themeNap;
-
-  const locationSearch = parseSearchParams(location);
   const [includeEmptyOrganizations, setIncludeEmptyOrganizations] = useState(
     locationSearch.includeEmpty
       ? locationSearch.includeEmpty.toString() === 'true'
@@ -75,16 +76,30 @@ const OrganizationsPage: FC<Props> = ({
   const toggleShowEmptyOrganizations = () => {
     const active = !includeEmptyOrganizations;
     setIncludeEmptyOrganizations(active);
-    historyPushSearchParams(history, {
+    const oldSearchParams = parseSearchParams(location);
+    const searchParams = {
+      ...oldSearchParams,
       includeEmpty: active.toString()
-    });
+    };
+    historyPushSearchParams(history, searchParams);
   };
 
   const [currentCategory, setCurrentCategory] =
-    useState<OrganizationCategoryType>(undefined);
+    useState<OrganizationCategoryType>(
+      locationSearch.category === 'state' ||
+        locationSearch.category === 'municipality'
+        ? locationSearch.category
+        : undefined
+    );
 
-  const switchCategory = (category: OrganizationCategoryType) => {
+  const onCategoryChange = (category: OrganizationCategoryType) => {
     setCurrentCategory(category);
+    const oldSearchParams = parseSearchParams(location);
+    const searchParams = {
+      ...oldSearchParams,
+      category
+    };
+    historyPushSearchParams(history, searchParams);
   };
 
   useEffect(() => {
@@ -128,7 +143,10 @@ const OrganizationsPage: FC<Props> = ({
           </SC.Filter>
         </SC.SearchBox>
       </div>
-      <CategoryButtons onCategoryChange={switchCategory} />
+      <CategoryButtons
+        selectedCategory={currentCategory}
+        onCategoryChange={onCategoryChange}
+      />
       <div className='row mb-5'>
         <CheckBox
           id='showAllCheckbox'

@@ -91,7 +91,7 @@ const OrganizationCategoriesList: FC<Props> = ({
               ({
                 id: orgId,
                 name: orgName,
-                prefLabel: orgPefLabel,
+                prefLabel: orgPrefLabel,
                 datasetCount: orgDatasetCount,
                 dataserviceCount: orgDataserviceCount,
                 conceptCount: orgConceptCount,
@@ -102,7 +102,7 @@ const OrganizationCategoriesList: FC<Props> = ({
                   className='col-12'
                   to={`${url}/${orgId}`}
                 >
-                  <SC.Title>{translate(orgPefLabel) || orgName}</SC.Title>
+                  <SC.Title>{translate(orgPrefLabel) || orgName}</SC.Title>
                   <SC.Info>
                     <SC.CountTag type={Entity.DATASET}>
                       {orgDatasetCount}
