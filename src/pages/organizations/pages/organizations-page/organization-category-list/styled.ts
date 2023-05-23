@@ -25,6 +25,10 @@ const CategoryBox = styled.div`
     font-size: ${themeFDK.fontSize('FS20', Unit.REM)};
     font-weight: 550;
   }
+
+  & ${parentStyledComponents.CountTag} {
+    font-weight: 700;
+  }
 `;
 
 const OrgBox = styled(parentStyledComponents.Box)`

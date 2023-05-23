@@ -159,16 +159,27 @@ const OrganizationList: FC<Props> = ({
               <SC.SortLabel>{sortLabel}</SC.SortLabel>
               <SC.Title>{translate(prefLabel) || name}</SC.Title>
               <SC.Info>
-                <SC.CountTag type={Entity.DATASET}>{datasetCount}</SC.CountTag>
+                <SC.CountTag $type={Entity.DATASET} $zero={datasetCount <= 0}>
+                  {datasetCount}
+                </SC.CountTag>
                 {!isTransportportal && (
                   <>
-                    <SC.CountTag type={Entity.DATA_SERVICE}>
+                    <SC.CountTag
+                      $type={Entity.DATA_SERVICE}
+                      $zero={dataserviceCount <= 0}
+                    >
                       {dataserviceCount}
                     </SC.CountTag>
-                    <SC.CountTag type={Entity.CONCEPT}>
+                    <SC.CountTag
+                      $type={Entity.CONCEPT}
+                      $zero={conceptCount <= 0}
+                    >
                       {conceptCount}
                     </SC.CountTag>
-                    <SC.CountTag type={Entity.INFORMATION_MODEL}>
+                    <SC.CountTag
+                      $type={Entity.INFORMATION_MODEL}
+                      $zero={informationmodelCount <= 0}
+                    >
                       {informationmodelCount}
                     </SC.CountTag>
                   </>

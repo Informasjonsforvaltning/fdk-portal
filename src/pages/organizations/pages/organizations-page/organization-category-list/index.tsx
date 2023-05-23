@@ -71,16 +71,27 @@ const OrganizationCategoriesList: FC<Props> = ({
             <SC.CategoryBox key={id} className='col-12'>
               <SC.Title>{translate(prefLabel) || name}</SC.Title>
               <SC.Info>
-                <SC.CountTag type={Entity.DATASET}>{datasetCount}</SC.CountTag>
+                <SC.CountTag $type={Entity.DATASET} $zero={datasetCount <= 0}>
+                  {datasetCount}
+                </SC.CountTag>
                 {!isTransportportal && (
                   <>
-                    <SC.CountTag type={Entity.DATA_SERVICE}>
+                    <SC.CountTag
+                      $type={Entity.DATA_SERVICE}
+                      $zero={dataserviceCount <= 0}
+                    >
                       {dataserviceCount}
                     </SC.CountTag>
-                    <SC.CountTag type={Entity.CONCEPT}>
+                    <SC.CountTag
+                      $type={Entity.CONCEPT}
+                      $zero={conceptCount <= 0}
+                    >
                       {conceptCount}
                     </SC.CountTag>
-                    <SC.CountTag type={Entity.INFORMATION_MODEL}>
+                    <SC.CountTag
+                      $type={Entity.INFORMATION_MODEL}
+                      $zero={informationmodelCount <= 0}
+                    >
                       {informationmodelCount}
                     </SC.CountTag>
                   </>
@@ -104,18 +115,30 @@ const OrganizationCategoriesList: FC<Props> = ({
                 >
                   <SC.Title>{translate(orgPrefLabel) || orgName}</SC.Title>
                   <SC.Info>
-                    <SC.CountTag type={Entity.DATASET}>
+                    <SC.CountTag
+                      $type={Entity.DATASET}
+                      $zero={orgDatasetCount <= 0}
+                    >
                       {orgDatasetCount}
                     </SC.CountTag>
                     {!isTransportportal && (
                       <>
-                        <SC.CountTag type={Entity.DATA_SERVICE}>
+                        <SC.CountTag
+                          $type={Entity.DATA_SERVICE}
+                          $zero={orgDataserviceCount <= 0}
+                        >
                           {orgDataserviceCount}
                         </SC.CountTag>
-                        <SC.CountTag type={Entity.CONCEPT}>
+                        <SC.CountTag
+                          $type={Entity.CONCEPT}
+                          $zero={orgConceptCount <= 0}
+                        >
                           {orgConceptCount}
                         </SC.CountTag>
-                        <SC.CountTag type={Entity.INFORMATION_MODEL}>
+                        <SC.CountTag
+                          $type={Entity.INFORMATION_MODEL}
+                          $zero={orgInformationmodelCount <= 0}
+                        >
                           {orgInformationmodelCount}
                         </SC.CountTag>
                       </>
