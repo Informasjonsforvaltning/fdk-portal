@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import StyledComponents from '../styled';
+import parentStyledComponents from '../styled';
 
 const InfoIcon = styled.span`
   display: flex;
@@ -19,4 +19,21 @@ const InfoIcon = styled.span`
   }
 `;
 
-export default { InfoIcon, ...StyledComponents };
+const CategoryBox = styled(parentStyledComponents.Box)`
+  & ${parentStyledComponents.Title} {
+    font-weight: 550;
+  }
+`;
+
+const OrgBox = styled(parentStyledComponents.Box)`
+  & ${parentStyledComponents.Title} {
+    padding-left: 1.5em;
+  }
+`;
+
+export default {
+  InfoIcon,
+  CategoryBox,
+  OrgBox,
+  ...parentStyledComponents
+};

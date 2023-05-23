@@ -21,7 +21,7 @@ const OrganizationCategoriesList: FC<Props> = ({
 }) => {
   const isTransportportal = getConfig().themeNap;
 
-  const filterByOrganizationName = (query: string) =>
+  const filterInCategoryByOrganizationName = (query: string) =>
     query
       ? organizationCategories
           .map(({ category, organizations }) => ({
@@ -34,8 +34,6 @@ const OrganizationCategoriesList: FC<Props> = ({
           }))
           .filter(({ organizations }) => organizations.length > 0)
       : organizationCategories;
-
-  const dummySortLabel = ' ';
 
   return (
     <div className='row'>
@@ -56,22 +54,21 @@ const OrganizationCategoriesList: FC<Props> = ({
           </SC.InfoIcon>
         </SC.Info>
       </SC.SortRow>
-      <ol>
-        {filterByOrganizationName(searchQuery).map(
-          ({
-            //   organizations,
-            category: {
-              id,
-              name,
-              prefLabel,
-              datasetCount,
-              dataserviceCount,
-              conceptCount,
-              informationmodelCount
-            }
-          }) => (
-            <SC.Box key={id} className='col-12' to={`${url}/${id}`}>
-              <SC.SortLabel>{dummySortLabel}</SC.SortLabel>
+      {filterInCategoryByOrganizationName(searchQuery).map(
+        ({
+          category: {
+            id,
+            name,
+            prefLabel,
+            datasetCount,
+            dataserviceCount,
+            conceptCount,
+            informationmodelCount
+          },
+          organizations
+        }) => (
+          <>
+            <SC.CategoryBox key={id} className='col-12' to={`${url}/${id}`}>
               <SC.Title>{translate(prefLabel) || name}</SC.Title>
               <SC.Info>
                 <SC.CountTag type={Entity.DATASET}>{datasetCount}</SC.CountTag>
@@ -89,52 +86,47 @@ const OrganizationCategoriesList: FC<Props> = ({
                   </>
                 )}
               </SC.Info>
-            </SC.Box>
-          )
-        )}
-      </ol>
-      {/* {filterByOrganizationName(searchQuery).map(
-            (
-            {
-                {
-                id,
-                name,
-                prefLabel,
-                datasetCount,
-                dataserviceCount,
-                conceptCount,
-                informationmodelCount
-                } = category,
-            },
-            index: number,
-            organizationSummaries: OrganizationCatalogSummary[]
-            ) => {
-            const currentOrganizationName = translate(prefLabel) || name;
-
-            return (
-                <SC.Box key={id} className='col-12' to={`${url}/${id}`}>
-                <SC.SortLabel>{sortLabel}</SC.SortLabel>
-                <SC.Title>{translate(prefLabel) || name}</SC.Title>
-                <SC.Info>
-                    <SC.CountTag type={Entity.DATASET}>{datasetCount}</SC.CountTag>
+            </SC.CategoryBox>
+            {organizations.map(
+              ({
+                id: orgId,
+                name: orgName,
+                prefLabel: orgPefLabel,
+                datasetCount: orgDatasetCount,
+                dataserviceCount: orgDataserviceCount,
+                conceptCount: orgConceptCount,
+                informationmodelCount: orgInformationmodelCount
+              }) => (
+                <SC.OrgBox
+                  key={orgId}
+                  className='col-12'
+                  to={`${url}/${orgId}`}
+                >
+                  <SC.Title>{translate(orgPefLabel) || orgName}</SC.Title>
+                  <SC.Info>
+                    <SC.CountTag type={Entity.DATASET}>
+                      {orgDatasetCount}
+                    </SC.CountTag>
                     {!isTransportportal && (
-                    <>
+                      <>
                         <SC.CountTag type={Entity.DATA_SERVICE}>
-                        {dataserviceCount}
+                          {orgDataserviceCount}
                         </SC.CountTag>
                         <SC.CountTag type={Entity.CONCEPT}>
-                        {conceptCount}
+                          {orgConceptCount}
                         </SC.CountTag>
                         <SC.CountTag type={Entity.INFORMATION_MODEL}>
-                        {informationmodelCount}
+                          {orgInformationmodelCount}
                         </SC.CountTag>
-                    </>
+                      </>
                     )}
-                </SC.Info>
-                </SC.Box>
-            );
-            }
-        )} */}
+                  </SC.Info>
+                </SC.OrgBox>
+              )
+            )}
+          </>
+        )
+      )}
     </div>
   );
 };
