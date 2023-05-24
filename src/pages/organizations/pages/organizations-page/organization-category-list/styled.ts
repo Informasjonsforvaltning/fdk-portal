@@ -3,7 +3,7 @@ import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
 import parentStyledComponents from '../styled';
 
 const InfoIcon = styled.span`
-  width: 50px;
+  width: 55px;
 
   &:nth-of-type(n + 2) {
     margin-left: 1.5em;
@@ -24,6 +24,10 @@ const CategoryBox = styled.div`
   & ${parentStyledComponents.Title} {
     font-size: ${themeFDK.fontSize('FS20', Unit.REM)};
     font-weight: 550;
+  }
+
+  & ${parentStyledComponents.CountTag} {
+    font-weight: 700;
   }
 `;
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
+import { Colour, Unit, theme as themeFDK } from '@fellesdatakatalog/theme';
 import ClearIconBase from '../../../../images/icon-clear.svg';
 import DatasetIconBase from '../../../../images/icon-catalog-dataset-lg.svg';
 import ApiIconBase from '../../../../images/icon-catalog-api-lg.svg';
@@ -114,17 +114,23 @@ const Info = styled.div`
   }
 `;
 
-const CountTag = styled.div<{ type?: Entity }>`
-  color: ${({ theme }) => theme.extendedColors.neutralDarker};
+const CountTag = styled.div<{
+  $type?: Entity;
+  $zero?: boolean;
+}>`
+  color: ${({ theme, $zero }) =>
+    $zero
+      ? themeFDK.colour(Colour.NEUTRAL, 'N60')
+      : theme.extendedColors.neutralDarker};
   text-align: center;
-  background-color: ${({ type, theme }) =>
-    type
-      ? theme.extendedColors[type]?.light
-      : theme.extendedColors.neutralLighter};
+  background-color: ${({ $type, theme, $zero }) =>
+    $type && !$zero
+      ? theme.extendedColors[$type]?.light
+      : themeFDK.colour(Colour.NEUTRAL, 'N0')};
   border-radius: 20px;
   border: none;
   padding: 0.3em 0.6em;
-  width: 50px;
+  width: 55px;
 
   &:nth-of-type(n + 2) {
     margin-left: 1.5em;
@@ -202,7 +208,7 @@ const SortButton = styled.button`
   color: #fff;
   background-color: transparent;
   border: none;
-  width: 50px;
+  width: 55px;
 
   &:nth-of-type(n + 2) {
     margin-left: 1.5em;
