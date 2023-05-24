@@ -48,6 +48,7 @@ import {
 } from '../../../../types/enums';
 import Spinner from '../../../../components/spinner';
 import { mapScoreToRatingCategory } from '../../../../utils/metadata-quality';
+import NumberFormatter from '../../../../components/number-formatter';
 
 interface RouteParams {
   organizationId: string;
@@ -203,6 +204,18 @@ const OrganizationPage: FC<Props> = ({
                     >
                       {rating.organization.homepage.replace(/\/$/, '')}
                     </Link>
+                  </span>
+                </li>
+              )}
+              {rating.organization.numberOfEmployees && (
+                <li>
+                  <span>
+                    {translations.organizationsPage.numberOfEmployees}
+                  </span>
+                  <span>
+                    <NumberFormatter
+                      number={rating.organization.numberOfEmployees}
+                    />
                   </span>
                 </li>
               )}

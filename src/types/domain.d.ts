@@ -713,10 +713,16 @@ export interface News extends NewsItemAttributes {
   links: Partial<Links>;
 }
 
-export interface OrganizationSummary {
+export interface OrganizationCategory {
+  category: OrganizationCatalogSummary;
+  organizations: OrganizationCatalogSummary[];
+}
+
+export interface OrganizationCatalogSummary {
   id: string;
   name: string;
   prefLabel: Partial<TextLanguage>;
+  orgPath: string;
   datasetCount: number;
   conceptCount: number;
   dataserviceCount: number;
@@ -815,6 +821,7 @@ export interface OrganizationCountsAndRating {
     sectorCode: string;
     industryCode: string;
     homepage: string;
+    numberOfEmployees: number;
   };
   datasets: {
     totalCount: number;

@@ -944,7 +944,14 @@
     "dataserviceDescription": "API-beskrivelser",
     "conceptsDescription": "begrepsbeskrivelser",
     "informationModelsDescription": "informasjonsmodellbeskrivelser",
-    "organization": "Virksomhet"
+    "organization": "Virksomhet",
+    "numberOfEmployees": "Antall ansatte",
+    "onlyShowOrganizationsWithContent": "Vis kun virksomheter med innhold i katalogene",
+    "category": {
+      "state": "Stat",
+      "municipality": "Kommune",
+      "all": "Alle"
+    }
   },
   "truncatedText": {
     "expanded": "Skjul beskrivelsen",
