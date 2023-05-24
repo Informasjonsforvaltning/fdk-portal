@@ -40,16 +40,24 @@ const OrganizationCategoriesList: FC<Props> = ({
       <SC.SortRow className='col-12'>
         <SC.Title>{localization.organizationsPage.organization}</SC.Title>
         <SC.Info>
-          <SC.InfoIcon>
+          <SC.InfoIcon
+            title={localization.organizationsPage.datasetsDescription}
+          >
             <SC.DatasetIcon />
           </SC.InfoIcon>
-          <SC.InfoIcon>
+          <SC.InfoIcon
+            title={localization.organizationsPage.dataserviceDescription}
+          >
             <SC.ApiIcon />
           </SC.InfoIcon>
-          <SC.InfoIcon>
+          <SC.InfoIcon
+            title={localization.organizationsPage.conceptsDescription}
+          >
             <SC.ConceptIcon />
           </SC.InfoIcon>
-          <SC.InfoIcon>
+          <SC.InfoIcon
+            title={localization.organizationsPage.informationModelsDescription}
+          >
             <SC.InfomodelIcon />
           </SC.InfoIcon>
         </SC.Info>

@@ -130,7 +130,7 @@ const CountTag = styled.div<{
   border-radius: 20px;
   border: none;
   padding: 0.3em 0.6em;
-  width: 50px;
+  width: 55px;
 
   &:nth-of-type(n + 2) {
     margin-left: 1.5em;
@@ -208,7 +208,7 @@ const SortButton = styled.button`
   color: #fff;
   background-color: transparent;
   border: none;
-  width: 50px;
+  width: 55px;
 
   &:nth-of-type(n + 2) {
     margin-left: 1.5em;
