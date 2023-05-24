@@ -10,12 +10,9 @@ import store from '../redux/store';
 import GlobalStyles from '../styles';
 import Router from '../router';
 
-import Analytics from '../../../components/analytics';
-
 const App: FC = () => (
   <ThemeProvider>
     <GlobalStyles />
-    <Analytics />
     <TranslationsProvider>
       <ReduxProvider store={store}>
         <Router />

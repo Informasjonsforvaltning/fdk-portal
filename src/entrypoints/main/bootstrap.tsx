@@ -16,7 +16,6 @@ import { getConfig } from '../../config';
 import { themeFDK, themeNAP } from '../../app/theme';
 import GlobalStyles from '../../app/styles';
 
-import Analytics from '../../components/analytics';
 import { store } from '../../redux/store';
 
 const client = new ApolloClient({
@@ -31,7 +30,6 @@ render(
     <GlobalStyles />
     <AuthProvider>
       <LoggingProvider>
-        <Analytics />
         <ApolloProvider client={client}>
           <Provider store={store}>
             <BrowserRouter>
