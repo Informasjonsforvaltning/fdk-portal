@@ -2,6 +2,7 @@ import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
+import Link from '@fellesdatakatalog/link';
 import { getConfig } from '../../../../config';
 
 import localization from '../../../../lib/localization';
@@ -31,6 +32,9 @@ import {
 import CategoryButtons from './category-buttons';
 import OrganizationList from './organization-list';
 import OrganizationCategoriesList from './organization-category-list';
+import env from '../../../../env';
+
+const { FDK_COMMUNITY_BASE_URI } = env;
 
 interface Props
   extends OrganizationsProps,
@@ -147,7 +151,7 @@ const OrganizationsPage: FC<Props> = ({
         selectedCategory={currentCategory}
         onCategoryChange={onCategoryChange}
       />
-      <div className='row mb-5'>
+      <SC.CheckBoxAndLinkWrapper>
         <CheckBox
           id='showAllCheckbox'
           active={!includeEmptyOrganizations}
@@ -155,9 +159,15 @@ const OrganizationsPage: FC<Props> = ({
           textLabel={
             localization.organizationsPage.onlyShowOrganizationsWithContent
           }
-          displayClass='col-12'
+          displayClass=''
         />
-      </div>
+        <Link
+          href={`${FDK_COMMUNITY_BASE_URI}/topic/56/tips-til-å-etterspørre-datasett-og-api-er`}
+          external
+        >
+          {localization.organizationsPage.requestsLink}
+        </Link>
+      </SC.CheckBoxAndLinkWrapper>
       {currentCategory ? (
         <OrganizationCategoriesList
           organizationCategories={organizationCategories}
