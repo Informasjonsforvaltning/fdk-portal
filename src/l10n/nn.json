@@ -951,7 +951,8 @@
       "state": "Stat",
       "municipality": "Kommune",
       "all": "Alle"
-    }
+    },
+    "requestsLink": "Saknar du noko i katalogane? Etterspør her"
   },
   "truncatedText": {
     "expanded": "Skjul beskrivinga",

@@ -223,6 +223,20 @@ const TitleSortButton = styled(SortButton)`
   width: auto;
 `;
 
+const CheckBoxAndLinkWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    & > * {
+      padding-bottom: 1em;
+    }
+  }
+  padding-bottom: 1em;
+`;
+
 export default {
   Header,
   SearchBox,
@@ -242,5 +256,6 @@ export default {
   InfomodelIcon,
   CaretUp,
   CaretDown,
-  CaretBoth
+  CaretBoth,
+  CheckBoxAndLinkWrapper
 };
