@@ -19,7 +19,6 @@ export default validateEnv(
       'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/cloud-logging',
     FDK_COMMUNITY_BASE_URI:
       'https://community.staging.fellesdatakatalog.digdir.no',
-    DATALANDSBYEN_URI: 'https://datalandsbyen.norge.no/',
     FDK_CMS_BASE_URI: 'https://cms.fellesdatakatalog.digdir.no',
     FDK_SPARQL_API_BASE_URI:
       'https://sparql.staging.fellesdatakatalog.digdir.no',

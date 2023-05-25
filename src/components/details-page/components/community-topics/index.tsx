@@ -10,7 +10,7 @@ import Topic from '../../../community/topic';
 import type { CommunityTopic } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
-const { FDK_COMMUNITY_BASE_URI, DATALANDSBYEN_URI } = env;
+const { FDK_COMMUNITY_BASE_URI } = env;
 
 interface Props {
   entityType: Entity;
@@ -42,7 +42,7 @@ const CommunityTopics: FC<Props> = ({
       ))}
       {fdkId && multiplePages && (
         <FdkLink
-          href={`${DATALANDSBYEN_URI}/search?term=${fdkId}&sortBy=topic.lastposttime&sortDirection=desc`}
+          href={`${FDK_COMMUNITY_BASE_URI}/search?term=${fdkId}&sortBy=topic.lastposttime&sortDirection=desc`}
           external
         >
           {translations.community.subtitle.showAllMentions}
