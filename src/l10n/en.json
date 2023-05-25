@@ -951,7 +951,8 @@
       "state": "State",
       "municipality": "Municipality",
       "all": "All"
-    }
+    },
+    "requestsLink": "Missing something? Request data/API here (text in norwegian)"
   },
   "truncatedText": {
     "expanded": "Hide description",
