@@ -108,7 +108,7 @@
     "react-scroll": "^1.8.9",
     "react-select": "^5.7.0",
     "reactstrap": "^9.1.5",
-    "redux": "^4.2.0",
+    "redux": "^4.2.1",
     "redux-api-middleware": "^3.2.1",
     "redux-localstorage": "^0.4.1",
     "redux-logger": "^3.0.6",
