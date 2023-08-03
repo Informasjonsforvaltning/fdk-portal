@@ -11,13 +11,15 @@ function* getDatasetPreviewRequested({
   payload: { url, rows }
 }: ReturnType<typeof actions.getDatasetPreviewRequested>) {
   try {
-    const csrf: string = yield call(getCsrf);
+    const csrf: {
+      token: string;
+    } = yield call(getCsrf);
 
     const datasetPreview: DatasetPreview = yield call(
       getDatasetPreview,
       url,
       rows,
-      csrf
+      csrf.token
     );
 
     if (datasetPreview) {
