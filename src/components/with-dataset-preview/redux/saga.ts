@@ -5,18 +5,21 @@ import * as actions from './actions';
 
 import type { DatasetPreview } from '../../../types';
 
-import { getDatasetPreview, setCsrf } from '../../../api/datasetPreview';
+import { getDatasetPreview, getCsrf } from '../../../api/datasetPreview';
 
 function* getDatasetPreviewRequested({
   payload: { url, rows }
 }: ReturnType<typeof actions.getDatasetPreviewRequested>) {
   try {
-    yield call(setCsrf);
+    const csrf: {
+      token: string;
+    } = yield call(getCsrf);
 
     const datasetPreview: DatasetPreview = yield call(
       getDatasetPreview,
       url,
-      rows
+      rows,
+      csrf.token
     );
 
     if (datasetPreview) {

@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import some from 'lodash/some';
-import Link from '@fellesdatakatalog/link';
 
 import SC from './styled';
 import { Concept, ConceptDefinition, TextLanguage } from '../../types';
@@ -41,27 +40,18 @@ const renderSource = ({
       </div>
     );
   }
-
   if (sources && sources.length > 0) {
     return (
       <div>
         <span>
           {`${localization.compare.source}: ${getSourceRelationshipLabel(
             sourceRelationship
-          )}`}
+          )} `}
         </span>
 
         {sources.map(
           ({ text, uri }: any, index: number) =>
-            `${index > 0 ? ',' : ''} ${
-              uri ? (
-                <Link href={uri} external>
-                  {text || uri}
-                </Link>
-              ) : (
-                getTranslateText(text)
-              )
-            }`
+            `${index > 0 ? ',' : ''} ${text ? getTranslateText(text) : uri}`
         )}
       </div>
     );

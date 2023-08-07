@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { getConfig } from '../config';
 import env from '../env';
-import { cookieValue } from '../utils/common';
 
 const { FDK_DATASET_PREVIEW_API_KEY } = env;
 
-export const setCsrf = () =>
+export const getCsrf = () =>
   axios
-    .get('/dataset/preview', {
+    .get('/dataset/preview/csrf', {
       ...getConfig().searchHost.config,
       withCredentials: true,
       headers: {
@@ -16,7 +15,7 @@ export const setCsrf = () =>
     })
     .then(r => r.data);
 
-export const getDatasetPreview = (url, rows) =>
+export const getDatasetPreview = (url, rows, csrf) =>
   axios
     .post(
       '/dataset/preview',
@@ -26,7 +25,7 @@ export const getDatasetPreview = (url, rows) =>
         withCredentials: true,
         headers: {
           'X-API-KEY': FDK_DATASET_PREVIEW_API_KEY,
-          'X-XSRF-TOKEN': cookieValue('DATASET-PREVIEW-CSRF-TOKEN')
+          'X-XSRF-TOKEN': csrf
         }
       }
     )
