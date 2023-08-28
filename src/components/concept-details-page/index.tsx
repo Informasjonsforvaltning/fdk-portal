@@ -1,9 +1,10 @@
-import React, { memo, FC, useState, useEffect } from 'react';
+import type { FC } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { compose } from 'redux';
-import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
+import type { RouteComponentProps } from 'react-router-dom';
+import { Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
-
 import translations from '../../lib/localization';
 import {
   dateStringToDate,
@@ -18,15 +19,16 @@ import { themeFDK } from '../../app/theme';
 
 import { PATHNAME_CONCEPTS } from '../../constants/constants';
 
-import withConcept, { Props as ConceptProps } from '../with-concept';
-import withDatasets, { Props as DatasetsProps } from '../with-datasets';
-import withInformationModels, {
-  Props as InformationModelsProps
-} from '../with-information-models';
-import withConcepts, { Props as ConceptsProps } from '../with-concepts';
-import withPublicServices, {
-  Props as PublicServicesProps
-} from '../with-public-services';
+import type { Props as ConceptProps } from '../with-concept';
+import withConcept from '../with-concept';
+import type { Props as DatasetsProps } from '../with-datasets';
+import withDatasets from '../with-datasets';
+import type { Props as InformationModelsProps } from '../with-information-models';
+import withInformationModels from '../with-information-models';
+import type { Props as ConceptsProps } from '../with-concepts';
+import withConcepts from '../with-concepts';
+import type { Props as PublicServicesProps } from '../with-public-services';
+import withPublicServices from '../with-public-services';
 import withErrorBoundary from '../with-error-boundary';
 
 import DetailsPage, {
@@ -36,12 +38,14 @@ import DetailsPage, {
 } from '../details-page';
 import ErrorPage from '../error-page';
 import MultiLingualField from '../multilingual-field';
-import RelationList, { ItemWithRelationType } from '../relation-list';
+import type { ItemWithRelationType } from '../relation-list';
+import RelationList from '../relation-list';
 
 import SC from './styled';
 
 import type { Theme, Language, TextLanguage } from '../../types';
 import { Entity } from '../../types/enums';
+import { formatISO } from '../../utils/date';
 
 interface RouteParams {
   conceptId: string;
@@ -243,7 +247,10 @@ const ConceptDetailsPage: FC<Props> = ({
   const altLabels = concept?.altLabel ?? [];
   const hiddenLabels = concept?.hiddenLabel ?? [];
   const example = concept?.example;
-  const subject = concept?.subject;
+  const subjectLabels =
+    concept?.subject
+      ?.map(s => s.label)
+      ?.filter((element): element is Partial<TextLanguage> => !!element) ?? [];
   const applications = concept?.application ?? [];
   const range = translate(concept?.definition?.range?.text);
   const rangeUri = concept?.definition?.range?.uri;
@@ -259,6 +266,7 @@ const ConceptDetailsPage: FC<Props> = ({
   const contactPoint = concept?.contactPoint;
   const seeAlso = concept?.seeAlso ?? [];
   const themes: Theme[] = [];
+  const created = concept?.created ?? '';
 
   const renderSources = () => {
     if (sourceRelationship === 'egendefinert') {
@@ -308,6 +316,22 @@ const ConceptDetailsPage: FC<Props> = ({
         themes={themes}
         languages={selectedLanguages}
       >
+        <ContentSection
+          id='concept-info'
+          title={translations.detailsPage.sectionTitles.concept.conceptInfo}
+          truncate
+        >
+          <KeyValueList>
+            <KeyValueListItem
+              property={`${translations.dateCreated}:`}
+              value={formatISO(created, {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric'
+              })}
+            />
+          </KeyValueList>
+        </ContentSection>
         {description && (
           <ContentSection
             id='description'
@@ -404,7 +428,8 @@ const ConceptDetailsPage: FC<Props> = ({
             <MultiLingualField languages={selectedLanguages} text={example} />
           </ContentSection>
         )}
-        {((subject && hasFieldSelectedLanguage([subject])) ||
+        {((subjectLabels.length > 0 &&
+          hasFieldSelectedLanguage(subjectLabels)) ||
           hasFieldSelectedLanguage(applications)) && (
           <ContentSection
             id='domain'
@@ -414,16 +439,19 @@ const ConceptDetailsPage: FC<Props> = ({
             }
           >
             <KeyValueList>
-              {subject && hasFieldSelectedLanguage([subject]) && (
+              {subjectLabels && hasFieldSelectedLanguage(subjectLabels) && (
                 <KeyValueListItem
                   property={translations.concept.subject}
-                  value={
-                    <MultiLingualField
-                      languages={selectedLanguages}
-                      text={subject}
-                      useFallback={false}
-                    />
-                  }
+                  value={languageSorter(subjectLabels).map(
+                    (subjectLabel, index) => (
+                      <MultiLingualField
+                        key={index}
+                        languages={selectedLanguages}
+                        text={subjectLabel}
+                        useFallback={false}
+                      />
+                    )
+                  )}
                 />
               )}
               {applications.length > 0 &&

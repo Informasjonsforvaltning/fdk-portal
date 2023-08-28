@@ -263,7 +263,7 @@ export interface Concept {
   definition?: ConceptDefinition;
   publisher: Partial<Organization>;
   example: Partial<TextLanguage>;
-  subject?: Partial<TextLanguage>;
+  subject?: Partial<ConceptSubject>[];
   application?: Partial<TextLanguage>[];
   harvest?: Partial<Harvest>;
   contactPoint?: Partial<ConceptContactPoint>;
@@ -275,6 +275,7 @@ export interface Concept {
   associativeRelation?: Partial<AssociativeRelation>[];
   partitiveRelation?: Partial<PartitiveRelation>[];
   genericRelation?: Partial<GenericRelation>[];
+  created?: string;
 }
 
 export interface ConceptDefinition {
@@ -283,6 +284,10 @@ export interface ConceptDefinition {
   sources?: Array<{ text?: string; uri?: stirng }>;
   range?: { text?: Partial<TextLanguage>; uri?: stirng };
   sourceRelationship?: string;
+}
+
+export interface ConceptSubject {
+  label?: Partial<TextLanguage>;
 }
 
 export interface PublicServiceType {
