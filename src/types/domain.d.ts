@@ -275,6 +275,7 @@ export interface Concept {
   associativeRelation?: Partial<AssociativeRelation>[];
   partitiveRelation?: Partial<PartitiveRelation>[];
   genericRelation?: Partial<GenericRelation>[];
+  created?: string;
 }
 
 export interface ConceptDefinition {

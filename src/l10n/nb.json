@@ -96,6 +96,7 @@
   "requiredBy": "Krevd av",
   "relatedBy": "Relatert av",
   "collaborationBetween": "Et samarbeid mellom:",
+  "dateCreated": "Dato opprettet",
   "head": {
     "title": "Felles datakatalog",
     "description": "Felles datakatalog – data.norge.no er det offentlige nettstedet som gir oversikt over beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet blir levert av ulike virksomheter, offentlige og private. Det er Digitaliseringsdirektoratet som er ansvarlig for drift og utvikling av nettstedet."
@@ -694,6 +695,7 @@
         "informationModelReferences": "Informasjonsmodeller"
       },
       "concept": {
+        "conceptInfo": "Begrepsinformasjon",
         "description": "Beskrivelse",
         "definition": "Definisjon",
         "validity": "Gyldighet",

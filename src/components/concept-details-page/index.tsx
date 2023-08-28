@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
-
 import translations from '../../lib/localization';
 import {
   dateStringToDate,
@@ -259,6 +258,7 @@ const ConceptDetailsPage: FC<Props> = ({
   const contactPoint = concept?.contactPoint;
   const seeAlso = concept?.seeAlso ?? [];
   const themes: Theme[] = [];
+  const created = concept?.created ?? '';
 
   const renderSources = () => {
     if (sourceRelationship === 'egendefinert') {
@@ -308,6 +308,18 @@ const ConceptDetailsPage: FC<Props> = ({
         themes={themes}
         languages={selectedLanguages}
       >
+        <ContentSection
+          id='concept-info'
+          title={translations.detailsPage.sectionTitles.concept.conceptInfo}
+          truncate
+        >
+          <KeyValueList>
+            <KeyValueListItem
+              property={`${translations.dateCreated}:`}
+              value={`${created}`}
+            />
+          </KeyValueList>
+        </ContentSection>
         {description && (
           <ContentSection
             id='description'
