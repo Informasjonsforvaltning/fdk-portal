@@ -316,22 +316,23 @@ const ConceptDetailsPage: FC<Props> = ({
         themes={themes}
         languages={selectedLanguages}
       >
-        <ContentSection
-          id='concept-info'
-          title={translations.detailsPage.sectionTitles.concept.conceptInfo}
-          truncate
-        >
-          <KeyValueList>
-            <KeyValueListItem
-              property={`${translations.dateCreated}:`}
-              value={formatISO(created, {
-                year: 'numeric',
-                month: 'numeric',
-                day: 'numeric'
-              })}
-            />
-          </KeyValueList>
-        </ContentSection>
+        {created && (
+          <ContentSection
+            id='concept-info'
+            title={translations.detailsPage.sectionTitles.concept.conceptInfo}
+            truncate
+          >
+            {created && (
+              <KeyValueList>
+                <KeyValueListItem
+                  property={`${translations.dateCreated}:`}
+                  value={formatISO(created)}
+                />
+              </KeyValueList>
+            )}
+          </ContentSection>
+        )}
+
         {description && (
           <ContentSection
             id='description'
