@@ -2,22 +2,14 @@ import type { FC } from 'react';
 import React, { memo, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
-import { Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Link from '@fellesdatakatalog/link';
 import translations from '../../lib/localization';
-import {
-  dateStringToDate,
-  formatDate,
-  isDateBeforeToday,
-  isDateAfterToday
-} from '../../lib/date-utils';
+import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { deepKeys } from '../../lib/deep-keys';
 import { languageSorter } from '../../lib/languageSorter';
 import { themeFDK } from '../../app/theme';
-
-import { PATHNAME_CONCEPTS } from '../../constants/constants';
 
 import type { Props as ConceptProps } from '../with-concept';
 import withConcept from '../with-concept';
@@ -46,6 +38,7 @@ import SC from './styled';
 import type { Theme, Language, TextLanguage } from '../../types';
 import { Entity } from '../../types/enums';
 import { formatISO } from '../../utils/date';
+import RelatedConcepts from './RelatedConcepts';
 
 interface RouteParams {
   conceptId: string;
@@ -121,57 +114,6 @@ const ConceptDetailsPage: FC<Props> = ({
     };
   }, [conceptId]);
 
-  const associativeRelations = concept?.associativeRelation ?? [];
-  const partitiveRelations = concept?.partitiveRelation ?? [];
-  const genericRelations = concept?.genericRelation ?? [];
-
-  const associativeRelationsUris: string[] = associativeRelations?.map(
-    ({ related = '' }) => related
-  );
-
-  const partitiveRelationsUris: string[] = partitiveRelations?.map(
-    ({ isPartOf = '', hasPart = '' }) => isPartOf ?? hasPart
-  );
-
-  const genericRelationsUris: string[] = genericRelations?.map(
-    ({ generalizes = '', specializes = '' }) => generalizes ?? specializes
-  );
-
-  const isReplacedBy = concept?.isReplacedBy ?? [];
-
-  useEffect(() => {
-    if (concept?.identifier) {
-      if (
-        (Array.isArray(concept?.seeAlso) && concept?.seeAlso.length > 0) ||
-        (Array.isArray(associativeRelationsUris) &&
-          associativeRelationsUris.length > 0) ||
-        (Array.isArray(partitiveRelationsUris) &&
-          partitiveRelationsUris.length > 0) ||
-        (Array.isArray(genericRelationsUris) &&
-          genericRelationsUris.length > 0) ||
-        (Array.isArray(isReplacedBy) && isReplacedBy.length > 0)
-      ) {
-        getConcepts({
-          identifiers: [
-            ...(concept?.seeAlso ?? []),
-            ...associativeRelationsUris,
-            ...partitiveRelationsUris,
-            ...genericRelationsUris,
-            ...isReplacedBy
-          ],
-          size: 1000
-        });
-      }
-
-      getConceptsRelations({ seeAlso: concept.identifier });
-      getDatasetsRelations({ subject: concept.identifier });
-      getInformationmodelsRelations({
-        conceptIdentifiers: [concept.identifier]
-      });
-      getPublicServicesRelations({ isClassifiedBy: concept.identifier });
-    }
-  }, [concept?.identifier]);
-
   const publicServicesRelationsWithRelationType: ItemWithRelationType[] =
     publicServicesRelations.map(relation => ({
       relation,
@@ -230,11 +172,6 @@ const ConceptDetailsPage: FC<Props> = ({
     }
   }, [concept, translations.getLanguage()]);
 
-  const conceptReferencesMap = conceptReferences?.reduce(
-    (previous, current) => ({ ...previous, [current.identifier]: current }),
-    {} as Record<string, any>
-  );
-
   const entityId = concept?.id;
   const entityUri = concept?.uri;
   const identifier = concept?.identifier;
@@ -264,9 +201,16 @@ const ConceptDetailsPage: FC<Props> = ({
     dateStringToDate(concept?.validToIncluding)
   );
   const contactPoint = concept?.contactPoint;
-  const seeAlso = concept?.seeAlso ?? [];
+
   const themes: Theme[] = [];
   const created = concept?.created ?? '';
+  const hasRelatedConcepts =
+    concept?.associativeRelation ||
+    concept?.partitiveRelation ||
+    concept?.genericRelation ||
+    concept?.isReplacedBy ||
+    concept?.memberOf ||
+    concept?.seeAlso;
 
   const renderSources = () => {
     if (sourceRelationship === 'egendefinert') {
@@ -332,7 +276,6 @@ const ConceptDetailsPage: FC<Props> = ({
             )}
           </ContentSection>
         )}
-
         {description && (
           <ContentSection
             id='description'
@@ -492,203 +435,16 @@ const ConceptDetailsPage: FC<Props> = ({
             {identifier}
           </ContentSection>
         )}
-        {(associativeRelations.length > 0 ||
-          partitiveRelations.length > 0 ||
-          genericRelations.length > 0 ||
-          seeAlso.length > 0) && (
-          <ContentSection
-            id='concept-references'
-            title={
-              translations.formatString(
-                translations.detailsPage.sectionTitles.concept
-                  .conceptReferences,
-                {
-                  conceptCount: [
-                    ...associativeRelations,
-                    ...partitiveRelations,
-                    ...genericRelations,
-                    ...seeAlso,
-                    ...isReplacedBy
-                  ].length
-                }
-              ) as string
-            }
-            entityIcon={Entity.CONCEPT}
-            boxStyle
-          >
-            <KeyValueList>
-              {associativeRelations.map(
-                ({ description: associativeDescription, related = '' }) =>
-                  conceptReferencesMap?.[related] && (
-                    <KeyValueListItem
-                      key={conceptReferencesMap[related].id}
-                      property={
-                        <Link
-                          to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[related].id}`}
-                          as={RouteLink}
-                        >
-                          {translate(conceptReferencesMap[related].prefLabel)}
-                        </Link>
-                      }
-                      value={
-                        <div>
-                          <div>
-                            <span>
-                              {translations.conceptReferences.associative}
-                              .&nbsp;
-                            </span>
-                          </div>
-                          <div>
-                            <span>{translate(associativeDescription)}</span>
-                          </div>
-                        </div>
-                      }
-                    />
-                  )
-              )}
-              {partitiveRelations.map(
-                ({
-                  description: partitiveDescription,
-                  hasPart = '',
-                  isPartOf = ''
-                }) => {
-                  const conceptReferenceUri = hasPart ?? isPartOf;
-                  return (
-                    conceptReferencesMap?.[conceptReferenceUri] && (
-                      <KeyValueListItem
-                        key={conceptReferencesMap[conceptReferenceUri].id}
-                        property={
-                          <Link
-                            to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[conceptReferenceUri].id}`}
-                            as={RouteLink}
-                          >
-                            {translate(
-                              conceptReferencesMap[conceptReferenceUri]
-                                .prefLabel
-                            )}
-                          </Link>
-                        }
-                        value={
-                          <div>
-                            <div>
-                              <span>
-                                {translations.conceptReferences.partitive}
-                                .&nbsp;
-                                {isPartOf
-                                  ? translations.conceptReferences.isPartOf
-                                  : translations.conceptReferences.hasPart}
-                              </span>
-                            </div>
-                            <div>
-                              <span>{translate(partitiveDescription)}</span>
-                            </div>
-                          </div>
-                        }
-                      />
-                    )
-                  );
-                }
-              )}
-              {genericRelations.map(
-                ({ divisioncriterion, generalizes = '', specializes = '' }) => {
-                  const conceptReferenceUri = generalizes ?? specializes;
-                  return (
-                    conceptReferencesMap?.[conceptReferenceUri] && (
-                      <KeyValueListItem
-                        key={conceptReferencesMap[conceptReferenceUri].id}
-                        property={
-                          <Link
-                            to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[conceptReferenceUri].id}`}
-                            as={RouteLink}
-                          >
-                            {translate(
-                              conceptReferencesMap[conceptReferenceUri]
-                                .prefLabel
-                            )}
-                          </Link>
-                        }
-                        value={
-                          <div>
-                            <div>
-                              <span>
-                                {translations.conceptReferences.generic}
-                                .&nbsp;
-                                {generalizes
-                                  ? translations.conceptReferences.generalizes
-                                  : translations.conceptReferences.specializes}
-                              </span>
-                            </div>
-                            <div>
-                              <span>{translate(divisioncriterion)}</span>
-                            </div>
-                          </div>
-                        }
-                      />
-                    )
-                  );
-                }
-              )}
-              {seeAlso.map(uri => {
-                const isExpired = isDateBeforeToday(
-                  dateStringToDate(validToIncluding)
-                );
-                const isWillBeValid = isDateAfterToday(
-                  dateStringToDate(validFromIncluding)
-                );
-
-                return conceptReferencesMap?.[uri] ? (
-                  <KeyValueListItem
-                    key={conceptReferencesMap[uri].id}
-                    property={
-                      <Link
-                        to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
-                        as={RouteLink}
-                      >
-                        {translate(conceptReferencesMap[uri].prefLabel)}
-                        {isExpired && (
-                          <>&nbsp;({translations.validity.expired})</>
-                        )}
-                        {!isExpired && isWillBeValid && (
-                          <>&nbsp;({translations.validity.willBeValid})</>
-                        )}
-                      </Link>
-                    }
-                    value={translations.conceptReferences.seeAlso}
-                  />
-                ) : (
-                  <KeyValueListItem
-                    key={uri}
-                    property={translations.conceptReferences.seeAlso}
-                    value={uri}
-                  />
-                );
-              })}
-              {isReplacedBy.map(uri =>
-                conceptReferencesMap?.[uri] ? (
-                  <KeyValueListItem
-                    key={conceptReferencesMap[uri].id}
-                    property={
-                      <Link
-                        to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
-                        as={RouteLink}
-                      >
-                        {translate(conceptReferencesMap[uri].prefLabel)}
-                      </Link>
-                    }
-                    value={`${
-                      translations.conceptReferences.isReplacedBy
-                    } ${translate(title)}`}
-                  />
-                ) : (
-                  <KeyValueListItem
-                    key={uri}
-                    property={translations.conceptReferences.seeAlso}
-                    value={uri}
-                  />
-                )
-              )}
-            </KeyValueList>
-          </ContentSection>
+        {hasRelatedConcepts && (
+          <RelatedConcepts
+            concept={concept}
+            conceptReferences={conceptReferences}
+            getConcepts={getConcepts}
+            getConceptsRelations={getConceptsRelations}
+            getDatasetsRelations={getDatasetsRelations}
+            getInformationmodelsRelations={getInformationmodelsRelations}
+            getPublicServicesRelations={getPublicServicesRelations}
+          />
         )}
         {(conceptsRelations.length > 0 ||
           datasetsRelations.length > 0 ||
