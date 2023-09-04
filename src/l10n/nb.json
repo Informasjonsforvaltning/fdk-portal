@@ -112,7 +112,8 @@
     "generalizes": "Underordnet",
     "specializes": "Overordnet",
     "isPartOf": "Er en del av",
-    "hasPart": "Omfatter"
+    "hasPart": "Omfatter",
+    "memberOf": "Medlem av"
   },
   "validity": {
     "validFromIncluding": "Gyldig fra og med",
