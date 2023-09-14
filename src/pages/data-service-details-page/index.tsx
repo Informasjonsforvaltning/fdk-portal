@@ -17,30 +17,32 @@ import { themeFDK } from '../../app/theme';
 
 import withDataService, {
   Props as DataServiceProps
-} from '../with-data-service';
+} from '../../components/with-data-service';
 import withReferenceData, {
   Props as ReferenceDataProps
-} from '../with-reference-data';
-import withDatasets, { Props as DatasetsProps } from '../with-datasets';
+} from '../../components/with-reference-data';
+import withDatasets, {
+  Props as DatasetsProps
+} from '../../components/with-datasets';
 import withInformationModels, {
   Props as InformationModelsProps
-} from '../with-information-models';
-import withErrorBoundary from '../with-error-boundary';
+} from '../../components/with-information-models';
+import withErrorBoundary from '../../components/with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
   KeyValueList,
   KeyValueListItem,
   InlineList
-} from '../details-page';
+} from '../../components/details-page';
 import ErrorPage from '../error-page';
-import RelationList from '../relation-list';
+import RelationList from '../../components/relation-list';
 
 import SC from './styled';
 
 import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
-import Markdown from '../markdown';
+import Markdown from '../../components/markdown';
 
 interface RouteParams {
   dataServiceId: string;

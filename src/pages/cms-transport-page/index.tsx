@@ -11,7 +11,7 @@ import { useGetTransportArticleQuery } from '../../api/generated/cms/graphql';
 
 import { PATHNAME_TRANSPORT } from '../../constants/constants';
 
-import ErrorPage from '../../components/error-page';
+import ErrorPage from '../error-page';
 
 import {
   isBasicImage,

@@ -5,7 +5,7 @@ import {
   ContentSection,
   KeyValueList,
   KeyValueListItem
-} from '../../details-page';
+} from '../../../components/details-page';
 import translations from '../../../lib/localization';
 import { Entity } from '../../../types/enums';
 import { PATHNAME_CONCEPTS } from '../../../constants/constants';

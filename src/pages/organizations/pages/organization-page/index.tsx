@@ -14,7 +14,7 @@ import withReport, {
   Props as ReportProps
 } from '../../../../components/with-report';
 import withErrorBoundary from '../../../../components/with-error-boundary';
-import ErrorPage from '../../../../components/error-page';
+import ErrorPage from '../../../error-page';
 
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';

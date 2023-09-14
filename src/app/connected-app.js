@@ -4,7 +4,7 @@ import { App } from './app';
 import { setLanguageAction } from '../redux/modules/settings';
 
 import withErrorBoundary from '../components/with-error-boundary';
-import ErrorPage from '../components/error-page';
+import ErrorPage from '../pages/error-page';
 
 const mapStateToProps = state => ({
   // react-localization module designed to be stateful, so we have to re-render the app when the selected language is changed

@@ -17,15 +17,21 @@ import { themeFDK } from '../../app/theme';
 
 import withPublicService, {
   Props as PublicServiceProps
-} from '../with-public-service';
+} from '../../components/with-public-service';
 import withPublicServices, {
   Props as PublicServicesProps
-} from '../with-public-services';
-import withConcepts, { Props as ConceptsProps } from '../with-concepts';
-import withDatasets, { Props as DatasetsProps } from '../with-datasets';
-import withEvents, { Props as EventsProps } from '../with-events';
-import withKartverket, { Props as KartverketProps } from '../with-kartverket';
-import withErrorBoundary from '../with-error-boundary';
+} from '../../components/with-public-services';
+import withConcepts, {
+  Props as ConceptsProps
+} from '../../components/with-concepts';
+import withDatasets, {
+  Props as DatasetsProps
+} from '../../components/with-datasets';
+import withEvents, { Props as EventsProps } from '../../components/with-events';
+import withKartverket, {
+  Props as KartverketProps
+} from '../../components/with-kartverket';
+import withErrorBoundary from '../../components/with-error-boundary';
 
 import DetailsPage, {
   CatalogTypeBox,
@@ -34,9 +40,11 @@ import DetailsPage, {
   List,
   KeyValueList,
   KeyValueListItem
-} from '../details-page';
+} from '../../components/details-page';
 import ErrorPage from '../error-page';
-import RelationList, { ItemWithRelationType } from '../relation-list';
+import RelationList, {
+  ItemWithRelationType
+} from '../../components/relation-list';
 
 import type { TextLanguage, Theme } from '../../types';
 import { Entity, Vocabulary } from '../../types/enums';
@@ -49,7 +57,7 @@ import {
   PATHNAME_PUBLIC_SERVICES_AND_EVENTS
 } from '../../constants/constants';
 import SC from './styled';
-import Markdown from '../markdown';
+import Markdown from '../../components/markdown';
 
 interface RouteParams {
   publicServiceId: string;

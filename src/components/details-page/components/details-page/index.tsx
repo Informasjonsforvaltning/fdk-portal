@@ -60,7 +60,7 @@ import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
 import Aside from '../aside';
-import RelationsContainer from '../../../concept-details-page/RelatedConcepts';
+import RelationsContainer from '../../../../pages/concept-details-page/RelatedConcepts';
 
 interface ExternalProps {
   entity: Entity;
