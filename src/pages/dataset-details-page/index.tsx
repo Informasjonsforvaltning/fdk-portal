@@ -22,41 +22,51 @@ import {
 
 import { themeFDK, themeNAP } from '../../app/theme';
 
-import withDataset, { Props as DatasetProps } from '../with-dataset';
+import withDataset, {
+  Props as DatasetProps
+} from '../../components/with-dataset';
 import withReferenceData, {
   Props as ReferenceDataProps
-} from '../with-reference-data';
-import withConcepts, { Props as ConceptsProps } from '../with-concepts';
-import withDatasets, { Props as DatasetsProps } from '../with-datasets';
+} from '../../components/with-reference-data';
+import withConcepts, {
+  Props as ConceptsProps
+} from '../../components/with-concepts';
+import withDatasets, {
+  Props as DatasetsProps
+} from '../../components/with-datasets';
 import withPublicServices, {
   Props as PublicServicesProps
-} from '../with-public-services';
+} from '../../components/with-public-services';
 import withDataServices, {
   Props as DataServicesProps
-} from '../with-data-services';
-import withKartverket, { Props as KartverketProps } from '../with-kartverket';
-import withErrorBoundary from '../with-error-boundary';
+} from '../../components/with-data-services';
+import withKartverket, {
+  Props as KartverketProps
+} from '../../components/with-kartverket';
+import withErrorBoundary from '../../components/with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
   InlineList,
   KeyValueList,
   KeyValueListItem
-} from '../details-page';
+} from '../../components/details-page';
 import ErrorPage from '../error-page';
-import DatasetDistribution from '../dataset-distribution';
-import RelationList, { ItemWithRelationType } from '../relation-list';
+import DatasetDistribution from '../../components/dataset-distribution';
+import RelationList, {
+  ItemWithRelationType
+} from '../../components/relation-list';
 
 import DownloadIcon from '../../images/icon-download-sm.svg';
 import EyeIcon from '../../images/icon-eye.svg';
 
-import Preview from '../dataset-distribution/components/preview';
+import Preview from '../../components/dataset-distribution/components/preview';
 
 import SC from './styled';
 
 import { Entity } from '../../types/enums';
 import { AccessService, Distribution, MediaTypeOrExtent } from '../../types';
-import Markdown from '../markdown';
+import Markdown from '../../components/markdown';
 
 interface RouteParams {
   datasetId?: string;

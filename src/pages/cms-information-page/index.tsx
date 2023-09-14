@@ -16,7 +16,7 @@ import {
   PATHNAME_ABOUT_INFORMATIONMODELS
 } from '../../constants/constants';
 
-import ErrorPage from '../../components/error-page';
+import ErrorPage from '../error-page';
 
 import { isBasicImage, isBasicParagraph } from '../../lib/strapi';
 import Markdown from '../../components/markdown';
