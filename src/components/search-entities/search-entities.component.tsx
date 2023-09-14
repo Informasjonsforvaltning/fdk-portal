@@ -12,7 +12,7 @@ import { InformationModelItem } from '../informationmodel-item/informationmodel-
 import { PublicServiceItem } from '../public-service-item/public-service-item';
 import EventItem from '../event-item';
 import withErrorBoundary from '../with-error-boundary';
-import ErrorPage from '../error-page';
+import ErrorPage from '../../pages/error-page';
 
 import type { Entity as EntityType, Concept } from '../../types';
 import { Entity } from '../../types/enums';

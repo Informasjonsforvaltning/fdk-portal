@@ -14,7 +14,7 @@ import withOrganization, {
   Props as OrganizationProps
 } from '../../../../components/with-organization';
 import withErrorBoundary from '../../../../components/with-error-boundary';
-import ErrorPage from '../../../../components/error-page';
+import ErrorPage from '../../../error-page';
 
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';

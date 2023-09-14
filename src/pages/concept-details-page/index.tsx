@@ -11,27 +11,27 @@ import { deepKeys } from '../../lib/deep-keys';
 import { languageSorter } from '../../lib/languageSorter';
 import { themeFDK } from '../../app/theme';
 
-import type { Props as ConceptProps } from '../with-concept';
-import withConcept from '../with-concept';
-import type { Props as DatasetsProps } from '../with-datasets';
-import withDatasets from '../with-datasets';
-import type { Props as InformationModelsProps } from '../with-information-models';
-import withInformationModels from '../with-information-models';
-import type { Props as ConceptsProps } from '../with-concepts';
-import withConcepts from '../with-concepts';
-import type { Props as PublicServicesProps } from '../with-public-services';
-import withPublicServices from '../with-public-services';
-import withErrorBoundary from '../with-error-boundary';
+import type { Props as ConceptProps } from '../../components/with-concept';
+import withConcept from '../../components/with-concept';
+import type { Props as DatasetsProps } from '../../components/with-datasets';
+import withDatasets from '../../components/with-datasets';
+import type { Props as InformationModelsProps } from '../../components/with-information-models';
+import withInformationModels from '../../components/with-information-models';
+import type { Props as ConceptsProps } from '../../components/with-concepts';
+import withConcepts from '../../components/with-concepts';
+import type { Props as PublicServicesProps } from '../../components/with-public-services';
+import withPublicServices from '../../components/with-public-services';
+import withErrorBoundary from '../../components/with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
   KeyValueList,
   KeyValueListItem
-} from '../details-page';
+} from '../../components/details-page';
 import ErrorPage from '../error-page';
-import MultiLingualField from '../multilingual-field';
-import type { ItemWithRelationType } from '../relation-list';
-import RelationList from '../relation-list';
+import MultiLingualField from '../../components/multilingual-field';
+import type { ItemWithRelationType } from '../../components/relation-list';
+import RelationList from '../../components/relation-list';
 
 import SC from './styled';
 
