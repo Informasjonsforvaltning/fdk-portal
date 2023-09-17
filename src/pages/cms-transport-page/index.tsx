@@ -7,21 +7,15 @@ import { CircularProgress } from '@mui/material';
 import env from '../../env';
 import localization from '../../lib/localization';
 
-import { useGetFancyArticleQuery } from '../../api/generated/cms/graphql';
+import { useGetTransportArticleQuery } from '../../api/generated/cms/graphql';
 
-import {
-  PATHNAME_ABOUT_CONCEPTS,
-  PATHNAME_ABOUT_DATA_SERVICES,
-  PATHNAME_ABOUT_DATASETS,
-  PATHNAME_ABOUT_INFORMATIONMODELS
-} from '../../constants/constants';
+import { PATHNAME_TRANSPORT } from '../../constants/constants';
 
 import ErrorPage from '../../components/error-page';
 
 import { isBasicImage, isBasicParagraph } from '../../lib/strapi';
 import Markdown from '../../components/markdown';
-import { themeFDK } from '../../app/theme';
-import { Entity } from '../../types/enums';
+import { themeNAP } from '../../app/theme';
 
 import SC from './styled';
 
@@ -30,32 +24,12 @@ interface Props extends RouteComponentProps {}
 const { FDK_CMS_BASE_URI } = env;
 
 const articleIds: { [pathname: string]: string } = {
-  [PATHNAME_ABOUT_DATASETS]: '7',
-  [PATHNAME_ABOUT_CONCEPTS]: '6',
-  [PATHNAME_ABOUT_DATA_SERVICES]: '5',
-  [PATHNAME_ABOUT_INFORMATIONMODELS]: '8'
-};
-
-const getEntityFromPath = (pathname: string) => {
-  switch (pathname) {
-    case PATHNAME_ABOUT_DATASETS:
-      return Entity.DATASET;
-    case PATHNAME_ABOUT_DATA_SERVICES:
-      return Entity.DATA_SERVICE;
-    case PATHNAME_ABOUT_CONCEPTS:
-      return Entity.CONCEPT;
-    case PATHNAME_ABOUT_INFORMATIONMODELS:
-      return Entity.INFORMATION_MODEL;
-    default:
-      return Entity.DATASET;
-  }
+  [PATHNAME_TRANSPORT]: '3'
 };
 
 const InformationPage: FC<Props> = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [isSticky, setSticky] = useState(false);
-
-  const entity = getEntityFromPath(location.pathname);
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -78,23 +52,7 @@ const InformationPage: FC<Props> = () => {
     };
   }, [debounce, handleScroll]);
 
-  useEffect(() => {
-    const appRoot = document.querySelector('#root > div');
-    appRoot?.classList.add(entity);
-    return () => appRoot?.classList.remove(entity);
-  });
-
-  Object.entries(articleIds).map((id, i) =>
-    i !== 0
-      ? useGetFancyArticleQuery({
-          variables: {
-            id: articleIds[id[0]]
-          }
-        })
-      : ''
-  );
-
-  const { data, loading, error } = useGetFancyArticleQuery({
+  const { data, loading, error } = useGetTransportArticleQuery({
     variables: {
       id: articleIds[location.pathname]
     }
@@ -109,22 +67,22 @@ const InformationPage: FC<Props> = () => {
       );
     }
 
-    if (error?.name !== undefined || !data || !data.fancyArticle) {
+    if (error?.name !== undefined || !data || !data.transportArticle) {
       return <ErrorPage errorCode='404' />;
     }
 
     const {
-      fancyArticle: { data: fancyArticleEntity }
+      transportArticle: { data: transportArticleEntity }
     } = data;
 
-    const fancyArticle = fancyArticleEntity?.attributes;
+    const transportArticle = transportArticleEntity?.attributes;
 
     return (
-      fancyArticle && (
+      transportArticle && (
         <SC.Article>
-          <SC.Title>{fancyArticle.title}</SC.Title>
-          <SC.Description>{fancyArticle.subtitle}</SC.Description>
-          {fancyArticle.Content?.map(
+          <SC.Title>{transportArticle.title}</SC.Title>
+          <SC.Description>{transportArticle.subtitle}</SC.Description>
+          {transportArticle.Content?.map(
             component =>
               (isBasicParagraph(component) && (
                 <SC.Content>
@@ -153,25 +111,13 @@ const InformationPage: FC<Props> = () => {
 
   const menuItems = [
     {
-      id: PATHNAME_ABOUT_DATASETS,
-      title: localization.menu.aboutDatasets
-    },
-    {
-      id: PATHNAME_ABOUT_DATA_SERVICES,
-      title: localization.menu.aboutDataServices
-    },
-    {
-      id: PATHNAME_ABOUT_CONCEPTS,
-      title: localization.menu.aboutConcepts
-    },
-    {
-      id: PATHNAME_ABOUT_INFORMATIONMODELS,
-      title: localization.menu.aboutInformationModels
+      id: PATHNAME_TRANSPORT,
+      title: 'Transport'
     }
   ];
 
   return (
-    <ThemeProvider theme={themeFDK.extendedColors[entity]}>
+    <ThemeProvider theme={themeNAP.extendedColors}>
       <SC.InformationPage id='content' className='container'>
         <SC.Aside>
           <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
