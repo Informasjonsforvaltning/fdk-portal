@@ -28,6 +28,10 @@ query GetTransportArticle($id: ID!) {
                   }
                   style
                 }
+                ... on ComponentBasicYoutube {
+                  __typename
+                  url
+                }
               }
             }
           }
@@ -49,6 +53,10 @@ query GetTransportArticle($id: ID!) {
               }
             }
             style
+          }
+          ... on ComponentBasicYoutube {
+            __typename
+            url
           }
         }
       }
