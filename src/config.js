@@ -7,18 +7,18 @@ const env = window.env || {
 };
 
 // override all env variables to staging (inspired by https://www.staging.fellesdatakatalog.digdir.no/config.js)
-env.SEARCH_API_HOST = 'https://staging.fellesdatakatalog.digdir.no';
-env.SEARCH_HOST = 'https://staging.fellesdatakatalog.digdir.no';
-env.SEARCH_FULLTEXT_HOST = 'https://search.staging.fellesdatakatalog.digdir.no';
-env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
-env.ORGANIZATION_HOST =
-  'https://organization-bff.staging.fellesdatakatalog.digdir.no';
-env.ORGANIZATION_CATALOG_URI =
-  'https://organization-catalog.staging.fellesdatakatalog.digdir.no';
-env.REPORT_API_HOST = 'https://reports-bff.staging.fellesdatakatalog.digdir.no';
-env.FDK_MQA_API_BASE_URI =
-  'https://metadata-quality.staging.fellesdatakatalog.digdir.no';
-env.USE_DEMO_LOGO = true;
+// env.SEARCH_API_HOST = 'https://staging.fellesdatakatalog.digdir.no';
+// env.SEARCH_HOST = 'https://staging.fellesdatakatalog.digdir.no';
+// env.SEARCH_FULLTEXT_HOST = 'https://search.staging.fellesdatakatalog.digdir.no';
+// env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
+// env.ORGANIZATION_HOST =
+//   'https://organization-bff.staging.fellesdatakatalog.digdir.no';
+// env.ORGANIZATION_CATALOG_URI =
+//   'https://organization-catalog.staging.fellesdatakatalog.digdir.no';
+// env.REPORT_API_HOST = 'https://reports-bff.staging.fellesdatakatalog.digdir.no';
+// env.FDK_MQA_API_BASE_URI =
+//   'https://metadata-quality.staging.fellesdatakatalog.digdir.no';
+// env.USE_DEMO_LOGO = true;
 
 const searchApi = {
   host: env.SEARCH_API_HOST || '',

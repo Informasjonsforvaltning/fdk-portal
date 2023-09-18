@@ -13,11 +13,16 @@ import { PATHNAME_TRANSPORT } from '../../constants/constants';
 
 import ErrorPage from '../../components/error-page';
 
-import { isBasicImage, isBasicParagraph } from '../../lib/strapi';
+import {
+  isBasicImage,
+  isBasicParagraph,
+  isBasicYoutube
+} from '../../lib/strapi';
 import Markdown from '../../components/markdown';
 import { themeNAP } from '../../app/theme';
 
 import SC from './styled';
+import YoutubeEmbed from '../../components/youtube-embed';
 
 interface Props extends RouteComponentProps {}
 
@@ -102,6 +107,9 @@ const InformationPage: FC<Props> = () => {
                     </SC.ImageText>
                   )}
                 </SC.ImageWrapper>
+              )) ||
+              (isBasicYoutube(component) && (
+                <YoutubeEmbed key={component?.id} url={component?.url} />
               ))
           )}
         </SC.Article>
