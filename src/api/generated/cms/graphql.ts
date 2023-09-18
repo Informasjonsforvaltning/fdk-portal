@@ -1644,7 +1644,7 @@ export type GetTransportArticleQuery = {
                     Content?: string | null;
                   }
                 | { __typename?: 'ComponentBasicQuote' }
-                | { __typename?: 'ComponentBasicYoutube' }
+                | { __typename: 'ComponentBasicYoutube'; url?: string | null }
                 | { __typename?: 'Error' }
                 | null
               > | null;
@@ -1670,7 +1670,7 @@ export type GetTransportArticleQuery = {
             }
           | { __typename: 'ComponentBasicParagraph'; Content?: string | null }
           | { __typename?: 'ComponentBasicQuote' }
-          | { __typename?: 'ComponentBasicYoutube' }
+          | { __typename: 'ComponentBasicYoutube'; url?: string | null }
           | { __typename?: 'Error' }
           | null
         > | null;
@@ -2170,6 +2170,10 @@ export const GetTransportArticleDocument = gql`
                     }
                     style
                   }
+                  ... on ComponentBasicYoutube {
+                    __typename
+                    url
+                  }
                 }
               }
             }
@@ -2191,6 +2195,10 @@ export const GetTransportArticleDocument = gql`
                 }
               }
               style
+            }
+            ... on ComponentBasicYoutube {
+              __typename
+              url
             }
           }
         }
