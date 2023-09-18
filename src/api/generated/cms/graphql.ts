@@ -147,6 +147,12 @@ export type ComponentBasicQuote = {
   id: Scalars['ID']['output'];
 };
 
+export type ComponentBasicYoutube = {
+  __typename?: 'ComponentBasicYoutube';
+  id: Scalars['ID']['output'];
+  url?: Maybe<Scalars['String']['output']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
@@ -302,6 +308,7 @@ export type GenericMorph =
   | ComponentBasicImage
   | ComponentBasicParagraph
   | ComponentBasicQuote
+  | ComponentBasicYoutube
   | FancyArticle
   | I18NLocale
   | ServiceMessage
@@ -950,6 +957,7 @@ export type TransportArticleContentDynamicZone =
   | ComponentBasicImage
   | ComponentBasicParagraph
   | ComponentBasicQuote
+  | ComponentBasicYoutube
   | Error;
 
 export type TransportArticleEntity = {
@@ -1636,6 +1644,7 @@ export type GetTransportArticleQuery = {
                     Content?: string | null;
                   }
                 | { __typename?: 'ComponentBasicQuote' }
+                | { __typename?: 'ComponentBasicYoutube' }
                 | { __typename?: 'Error' }
                 | null
               > | null;
@@ -1661,6 +1670,7 @@ export type GetTransportArticleQuery = {
             }
           | { __typename: 'ComponentBasicParagraph'; Content?: string | null }
           | { __typename?: 'ComponentBasicQuote' }
+          | { __typename?: 'ComponentBasicYoutube' }
           | { __typename?: 'Error' }
           | null
         > | null;
