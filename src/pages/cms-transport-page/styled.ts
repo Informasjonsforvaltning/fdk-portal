@@ -56,7 +56,6 @@ const Description = styled.p`
 const Content = styled.p`
   & > div {
     & > h2 {
-      border-bottom: 1px solid ${({ theme: t }) => t.light};
       font-size: ${theme.fontSize('FS32', Unit.REM)};
       font-weight: ${theme.fontWeight('FW700')};
       padding: ${theme.spacing('S6')};
