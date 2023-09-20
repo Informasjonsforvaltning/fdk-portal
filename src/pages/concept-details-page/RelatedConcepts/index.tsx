@@ -81,8 +81,7 @@ const RelatedConcepts = ({
             ...associativeRelationsUris,
             ...partitiveRelationsUris,
             ...genericRelationsUris,
-            ...isReplacedBy,
-            ...memberOf
+            ...isReplacedBy
           ],
           size: 1000
         });
@@ -289,31 +288,15 @@ const RelatedConcepts = ({
             />
           )
         )}
-        {memberOf &&
-          memberOf.map(uri =>
-            conceptReferencesMap?.[uri] ? (
-              <KeyValueListItem
-                key={conceptReferencesMap[uri].id}
-                property={
-                  <Link
-                    to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
-                    as={RouteLink}
-                  >
-                    {translate(conceptReferencesMap[uri].prefLabel)}
-                  </Link>
-                }
-                value={`${translations.conceptReferences.memberOf} ${translate(
-                  title
-                )}`}
-              />
-            ) : (
-              <KeyValueListItem
-                key={uri}
-                property={translations.conceptReferences.memberOf}
-                value={uri}
-              />
-            )
-          )}
+        {memberOf && (
+          <KeyValueListItem
+            key={`${translations.conceptReferences.memberOf}`}
+            property={`${translations.conceptReferences.memberOf}`}
+            value={memberOf.map(uri => (
+              <p>{uri}</p>
+            ))}
+          />
+        )}
       </KeyValueList>
     </ContentSection>
   );
