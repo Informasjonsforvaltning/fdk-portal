@@ -96,6 +96,7 @@
   "requiredBy": "Required by",
   "relatedBy": "Related by",
   "collaborationBetween": "A collaboration between:",
+  "dateCreated": "Date created",
   "head": {
     "title": "National Data Catalog",
     "description": "The National Data Catalog – data.norge.no is the public website providing an overview of descriptions of datasets, concepts, APIs and information models. The content is supplied by various establishments, both public and private. The Digitalization Agency is responsible for the operation and development of the website."
@@ -111,7 +112,8 @@
     "generalizes": "Subordinate",
     "specializes": "Overall",
     "isPartOf": "Part of",
-    "hasPart": "Includes"
+    "hasPart": "Includes",
+    "memberOf": "Member of"
   },
   "validity": {
     "validFromIncluding": "Valid from and including",
@@ -706,7 +708,8 @@
         "datasetReferences": "References to datasets",
         "informationModelReferences": "References to information models",
         "conceptReferences": "Related concepts ({conceptCount})",
-        "contactInformation": "Contact information"
+        "contactInformation": "Contact information",
+        "conceptInfo": "Concept information"
       },
       "informationModel": {
         "description": "Description",

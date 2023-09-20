@@ -24,7 +24,6 @@ function* getConceptsRequested({
       searchConcepts,
       paramsToSearchBody({ identifiers, size, seeAlso })
     );
-
     if (data) {
       yield put(
         actions.getConceptsSucceeded(extractConcepts(data) as Concept[])
