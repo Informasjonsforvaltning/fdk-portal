@@ -1,22 +1,14 @@
 import React, { useEffect } from 'react';
-import Link from '@fellesdatakatalog/link';
-import { Link as RouteLink } from 'react-router-dom';
-import {
-  ContentSection,
-  KeyValueList,
-  KeyValueListItem
-} from '../../../components/details-page';
+import { ContentSection, KeyValueList } from '../../../components/details-page';
 import translations from '../../../lib/localization';
 import { Entity } from '../../../types/enums';
-import { PATHNAME_CONCEPTS } from '../../../constants/constants';
-import { getTranslateText as translate } from '../../../lib/translateText';
-import {
-  dateStringToDate,
-  formatDate,
-  isDateAfterToday,
-  isDateBeforeToday
-} from '../../../lib/date-utils';
 import { Concept } from '../../../types';
+import AssociativeRelations from './AssociativeRelations';
+import PartitiveRelations from './PartitiveRelations';
+import GenericRelations from './GenericRelations';
+import SeeAlso from './SeeAlso';
+import IsReplacedBy from './IsReplacedBy';
+import MemberOf from './MemberOf';
 
 interface Props {
   concept: Concept | null;
@@ -51,15 +43,15 @@ const RelatedConcepts = ({
   );
 
   const associativeRelationsUris: string[] = associativeRelations?.map(
-    ({ related = '' }) => related
+    ({ related }) => related ?? ''
   );
 
   const partitiveRelationsUris: string[] = partitiveRelations?.map(
-    ({ isPartOf = '', hasPart = '' }) => isPartOf ?? hasPart
+    ({ isPartOf, hasPart }) => isPartOf ?? hasPart ?? ''
   );
 
   const genericRelationsUris: string[] = genericRelations?.map(
-    ({ generalizes = '', specializes = '' }) => generalizes ?? specializes
+    ({ generalizes, specializes }) => generalizes ?? specializes ?? ''
   );
 
   useEffect(() => {
@@ -118,185 +110,40 @@ const RelatedConcepts = ({
       boxStyle
     >
       <KeyValueList>
-        {associativeRelations.map(
-          ({ description: associativeDescription, related = '' }) =>
-            conceptReferencesMap?.[related] && (
-              <KeyValueListItem
-                key={conceptReferencesMap[related].id}
-                property={
-                  <Link
-                    to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[related].id}`}
-                    as={RouteLink}
-                  >
-                    {translate(conceptReferencesMap[related].prefLabel)}
-                  </Link>
-                }
-                value={
-                  <div>
-                    <div>
-                      <span>
-                        {translations.conceptReferences.associative}
-                        .&nbsp;
-                      </span>
-                    </div>
-                    <div>
-                      <span>{translate(associativeDescription)}</span>
-                    </div>
-                  </div>
-                }
-              />
-            )
-        )}
-        {partitiveRelations.map(
-          ({
-            description: partitiveDescription,
-            hasPart = '',
-            isPartOf = ''
-          }) => {
-            const conceptReferenceUri = hasPart ?? isPartOf;
-            return (
-              conceptReferencesMap?.[conceptReferenceUri] && (
-                <KeyValueListItem
-                  key={conceptReferencesMap[conceptReferenceUri].id}
-                  property={
-                    <Link
-                      to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[conceptReferenceUri].id}`}
-                      as={RouteLink}
-                    >
-                      {translate(
-                        conceptReferencesMap[conceptReferenceUri].prefLabel
-                      )}
-                    </Link>
-                  }
-                  value={
-                    <div>
-                      <div>
-                        <span>
-                          {translations.conceptReferences.partitive}
-                          .&nbsp;
-                          {isPartOf
-                            ? translations.conceptReferences.isPartOf
-                            : translations.conceptReferences.hasPart}
-                        </span>
-                      </div>
-                      <div>
-                        <span>{translate(partitiveDescription)}</span>
-                      </div>
-                    </div>
-                  }
-                />
-              )
-            );
-          }
-        )}
-        {genericRelations.map(
-          ({ divisioncriterion, generalizes = '', specializes = '' }) => {
-            const conceptReferenceUri = generalizes ?? specializes;
-            return (
-              conceptReferencesMap?.[conceptReferenceUri] && (
-                <KeyValueListItem
-                  key={conceptReferencesMap[conceptReferenceUri].id}
-                  property={
-                    <Link
-                      to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[conceptReferenceUri].id}`}
-                      as={RouteLink}
-                    >
-                      {translate(
-                        conceptReferencesMap[conceptReferenceUri].prefLabel
-                      )}
-                    </Link>
-                  }
-                  value={
-                    <div>
-                      <div>
-                        <span>
-                          {translations.conceptReferences.generic}
-                          .&nbsp;
-                          {generalizes
-                            ? translations.conceptReferences.generalizes
-                            : translations.conceptReferences.specializes}
-                        </span>
-                      </div>
-                      <div>
-                        <span>{translate(divisioncriterion)}</span>
-                      </div>
-                    </div>
-                  }
-                />
-              )
-            );
-          }
-        )}
-        {seeAlso.map(uri => {
-          const hasExpired = isDateBeforeToday(
-            dateStringToDate(
-              formatDate(dateStringToDate(concept?.validToIncluding))
-            )
-          );
-          const willBeValid = isDateAfterToday(
-            dateStringToDate(
-              formatDate(dateStringToDate(concept?.validFromIncluding))
-            )
-          );
-
-          return conceptReferencesMap?.[uri] ? (
-            <KeyValueListItem
-              key={conceptReferencesMap[uri].id}
-              property={
-                <Link
-                  to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
-                  as={RouteLink}
-                >
-                  {translate(conceptReferencesMap[uri].prefLabel)}
-                  {hasExpired && <>&nbsp;({translations.validity.expired})</>}
-                  {!hasExpired && willBeValid && (
-                    <>&nbsp;({translations.validity.willBeValid})</>
-                  )}
-                </Link>
-              }
-              value={translations.conceptReferences.seeAlso}
-            />
-          ) : (
-            <KeyValueListItem
-              key={uri}
-              property={translations.conceptReferences.seeAlso}
-              value={uri}
-            />
-          );
-        })}
-        {isReplacedBy.map(uri =>
-          conceptReferencesMap?.[uri] ? (
-            <KeyValueListItem
-              key={conceptReferencesMap[uri].id}
-              property={
-                <Link
-                  to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
-                  as={RouteLink}
-                >
-                  {translate(conceptReferencesMap[uri].prefLabel)}
-                </Link>
-              }
-              value={`${
-                translations.conceptReferences.isReplacedBy
-              } ${translate(title)}`}
-            />
-          ) : (
-            <KeyValueListItem
-              key={uri}
-              property={translations.conceptReferences.seeAlso}
-              value={uri}
-            />
-          )
-        )}
-        {memberOf && (
-          <KeyValueListItem
-            key={`${translations.conceptReferences.memberOf}`}
-            property={`${translations.conceptReferences.memberOf}`}
-            value={memberOf.map(uri => (
-              <p>{uri}</p>
-            ))}
+        {associativeRelations.length > 0 && (
+          <AssociativeRelations
+            associativeRelations={associativeRelations}
+            conceptReferencesMap={conceptReferencesMap}
           />
         )}
+        {partitiveRelations.length > 0 && (
+          <PartitiveRelations
+            partitiveRelations={partitiveRelations}
+            conceptReferencesMap={conceptReferencesMap}
+          />
+        )}
+        {genericRelations.length > 0 && (
+          <GenericRelations
+            genericRelations={genericRelations}
+            conceptReferencesMap={conceptReferencesMap}
+          />
+        )}
+        {seeAlso.length > 0 && (
+          <SeeAlso
+            seeAlso={seeAlso}
+            validToIncluding={concept?.validToIncluding}
+            validFromIncluding={concept?.validFromIncluding}
+            conceptReferencesMap={conceptReferencesMap}
+          />
+        )}
+        {isReplacedBy.length > 0 && (
+          <IsReplacedBy
+            title={title}
+            isReplacedBy={isReplacedBy}
+            conceptReferencesMap={conceptReferencesMap}
+          />
+        )}
+        {memberOf.length > 0 && <MemberOf memberOf={memberOf} />}
       </KeyValueList>
     </ContentSection>
   );
