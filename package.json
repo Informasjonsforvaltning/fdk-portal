@@ -76,7 +76,7 @@
     "core-js-pure": "^3.27.1",
     "deserialize-json-api": "^1.4.0",
     "eslint-import-resolver-typescript": "^3.5.3",
-    "graphql": "^16.8.0",
+    "graphql": "^16.8.1",
     "highlight.js": "^11.7.0",
     "html-react-parser": "^3.0.9",
     "immutable": "^4.2.4",
