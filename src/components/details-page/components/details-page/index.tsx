@@ -60,7 +60,6 @@ import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
 import Aside from '../aside';
-import RelationsContainer from '../../../../pages/concept-details-page/RelatedConcepts';
 
 interface ExternalProps {
   entity: Entity;
@@ -213,13 +212,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
   const renderContentSections = () =>
     contentSections
-      .map(
-        child =>
-          isValidElement(child) &&
-          (child.type === ContentSection || child.type === RelationsContainer
-            ? child
-            : null)
-      )
+      .map(child => (isValidElement(child) ? child : null))
       ?.filter(Boolean);
 
   const renderAside = () =>

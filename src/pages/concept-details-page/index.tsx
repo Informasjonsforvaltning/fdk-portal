@@ -3,12 +3,10 @@ import React, { memo, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import Link from '@fellesdatakatalog/link';
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { deepKeys } from '../../lib/deep-keys';
-import { languageSorter } from '../../lib/languageSorter';
 import { themeFDK } from '../../app/theme';
 
 import type { Props as ConceptProps } from '../../components/with-concept';
@@ -23,22 +21,23 @@ import type { Props as PublicServicesProps } from '../../components/with-public-
 import withPublicServices from '../../components/with-public-services';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
-  ContentSection,
-  KeyValueList,
-  KeyValueListItem
-} from '../../components/details-page';
+import DetailsPage from '../../components/details-page';
 import ErrorPage from '../error-page';
-import MultiLingualField from '../../components/multilingual-field';
-import type { ItemWithRelationType } from '../../components/relation-list';
-import RelationList from '../../components/relation-list';
-
-import SC from './styled';
 
 import type { Theme, Language, TextLanguage } from '../../types';
 import { Entity } from '../../types/enums';
-import { formatISO } from '../../utils/date';
 import RelatedConcepts from './RelatedConcepts';
+import ContactPoint from './ContactPoint';
+import Created from './Created';
+import Description from './Description';
+import Validity from './Validity';
+import Remark from './Remark';
+import Terms from './Terms';
+import Example from './Example';
+import SubjectAndApplication from './SubjectAndApplication';
+import Range from './Range';
+import Identifier from './Identifier';
+import RelationsList from './RelationsList';
 
 interface RouteParams {
   conceptId: string;
@@ -113,12 +112,6 @@ const ConceptDetailsPage: FC<Props> = ({
       resetPublicServicesRelations();
     };
   }, [conceptId]);
-
-  const publicServicesRelationsWithRelationType: ItemWithRelationType[] =
-    publicServicesRelations.map(relation => ({
-      relation,
-      relationType: translations.sampleData
-    }));
 
   const translatableFields = [
     'prefLabel',
@@ -211,37 +204,18 @@ const ConceptDetailsPage: FC<Props> = ({
     concept?.isReplacedBy ||
     concept?.memberOf ||
     concept?.seeAlso;
-
-  const renderSources = () => {
-    if (sourceRelationship === 'egendefinert') {
-      return `${translations.compare.source}: ${translations.sourceRelationship[sourceRelationship]}`;
-    }
-
-    return sources?.length ? (
-      <>
-        <span>
-          {`${translations.compare.source}: ${
-            sourceRelationship
-              ? translations.sourceRelationship[sourceRelationship]
-              : ''
-          }`}
-        </span>
-        {sources.map(({ text, uri }, index) => (
-          <span key={`${text}-${uri}-${index}`}>
-            {index > 0 && ','}
-            &nbsp;
-            {uri ? (
-              <Link href={uri} external>
-                {translate(text) || uri}
-              </Link>
-            ) : (
-              translate(text)
-            )}
-          </span>
-        ))}
-      </>
-    ) : null;
-  };
+  const hasRelationsList =
+    conceptsRelations.length > 0 ||
+    datasetsRelations.length > 0 ||
+    publicServicesRelations.length > 0 ||
+    informationModelsRelations.length > 0;
+  const hasSubjectAndApplication =
+    (subjectLabels.length > 0 && hasFieldSelectedLanguage(subjectLabels)) ||
+    hasFieldSelectedLanguage(applications);
+  const hasValidity = validFromIncluding || validToIncluding;
+  const hasTerms =
+    hasFieldSelectedLanguage(altLabels) ||
+    (hiddenLabels.length > 0 && hasFieldSelectedLanguage(hiddenLabels));
 
   return renderPage ? (
     <ThemeProvider theme={theme}>
@@ -260,181 +234,45 @@ const ConceptDetailsPage: FC<Props> = ({
         themes={themes}
         languages={selectedLanguages}
       >
-        {created && (
-          <ContentSection
-            id='concept-info'
-            title={translations.detailsPage.sectionTitles.concept.conceptInfo}
-            truncate
-          >
-            {created && (
-              <KeyValueList>
-                <KeyValueListItem
-                  property={`${translations.dateCreated}:`}
-                  value={formatISO(created)}
-                />
-              </KeyValueList>
-            )}
-          </ContentSection>
-        )}
+        {created && <Created created={created} />}
         {description && (
-          <ContentSection
-            id='description'
-            title={translations.detailsPage.sectionTitles.concept.definition}
-            truncate
-          >
-            <MultiLingualField
-              languages={selectedLanguages}
-              text={description}
-              convertToMarkUp
-            />
-            <SC.Sources>{renderSources()}</SC.Sources>
-          </ContentSection>
+          <Description
+            description={description}
+            selectedLanguages={selectedLanguages}
+            sources={sources}
+            sourceRelationship={sourceRelationship}
+          />
         )}
-        {(validFromIncluding || validToIncluding) && (
-          <ContentSection
-            id='validity'
-            title={translations.detailsPage.sectionTitles.concept.validity}
-          >
-            <KeyValueList>
-              {(validFromIncluding || validToIncluding) && (
-                <KeyValueListItem
-                  property={translations.concept.valid}
-                  value={`${
-                    validFromIncluding
-                      ? `${translations.concept.from} ${validFromIncluding} `
-                      : ''
-                  }${
-                    validToIncluding
-                      ? `${translations.concept.to} ${validToIncluding}`
-                      : ''
-                  }`}
-                />
-              )}
-            </KeyValueList>
-          </ContentSection>
+        {hasValidity && (
+          <Validity
+            validFromIncluding={validFromIncluding}
+            validToIncluding={validToIncluding}
+          />
         )}
         {remark && (
-          <ContentSection
-            id='remark'
-            title={translations.detailsPage.sectionTitles.concept.remark}
-          >
-            <MultiLingualField
-              languages={selectedLanguages}
-              text={remark}
-              convertToMarkUp
-            />
-          </ContentSection>
+          <Remark remark={remark} selectedLanguages={selectedLanguages} />
         )}
-        {(hasFieldSelectedLanguage(altLabels) ||
-          (hiddenLabels.length > 0 &&
-            hasFieldSelectedLanguage(hiddenLabels))) && (
-          <ContentSection
-            id='terms'
-            title={translations.detailsPage.sectionTitles.concept.terms}
-          >
-            <KeyValueList>
-              {hasFieldSelectedLanguage(altLabels) && (
-                <KeyValueListItem
-                  property={translations.concept.altLabel}
-                  value={languageSorter(altLabels).map((altLabel, index) => (
-                    <MultiLingualField
-                      key={index}
-                      languages={selectedLanguages}
-                      text={altLabel}
-                      useFallback={false}
-                    />
-                  ))}
-                />
-              )}
-              {hasFieldSelectedLanguage(hiddenLabels) && (
-                <KeyValueListItem
-                  property={translations.concept.hiddenLabel}
-                  value={languageSorter(hiddenLabels).map(
-                    (hiddenLabel, index) => (
-                      <MultiLingualField
-                        key={index}
-                        languages={selectedLanguages}
-                        text={hiddenLabel}
-                        useFallback={false}
-                      />
-                    )
-                  )}
-                />
-              )}
-            </KeyValueList>
-          </ContentSection>
+        {hasTerms && (
+          <Terms
+            altLabels={altLabels}
+            hiddenLabels={hiddenLabels}
+            hasFieldSelectedLanguage={hasFieldSelectedLanguage}
+            selectedLanguages={selectedLanguages}
+          />
         )}
         {example && (
-          <ContentSection
-            id='example'
-            title={translations.detailsPage.sectionTitles.concept.example}
-          >
-            <MultiLingualField languages={selectedLanguages} text={example} />
-          </ContentSection>
+          <Example example={example} selectedLanguages={selectedLanguages} />
         )}
-        {((subjectLabels.length > 0 &&
-          hasFieldSelectedLanguage(subjectLabels)) ||
-          hasFieldSelectedLanguage(applications)) && (
-          <ContentSection
-            id='domain'
-            title={
-              translations.detailsPage.sectionTitles.concept
-                .subjectAndApplication
-            }
-          >
-            <KeyValueList>
-              {subjectLabels && hasFieldSelectedLanguage(subjectLabels) && (
-                <KeyValueListItem
-                  property={translations.concept.subject}
-                  value={languageSorter(subjectLabels).map(
-                    (subjectLabel, index) => (
-                      <MultiLingualField
-                        key={index}
-                        languages={selectedLanguages}
-                        text={subjectLabel}
-                        useFallback={false}
-                      />
-                    )
-                  )}
-                />
-              )}
-              {applications.length > 0 &&
-                hasFieldSelectedLanguage(applications) && (
-                  <KeyValueListItem
-                    property={translations.concept.application}
-                    value={languageSorter(applications).map(
-                      (application, index) => (
-                        <MultiLingualField
-                          key={index}
-                          languages={selectedLanguages}
-                          text={application}
-                          useFallback={false}
-                        />
-                      )
-                    )}
-                  />
-                )}
-            </KeyValueList>
-          </ContentSection>
+        {hasSubjectAndApplication && (
+          <SubjectAndApplication
+            applications={applications}
+            subjectLabels={subjectLabels}
+            hasFieldSelectedLanguage={hasFieldSelectedLanguage}
+            selectedLanguages={selectedLanguages}
+          />
         )}
-        {range && (
-          <ContentSection
-            id='range'
-            title={translations.detailsPage.sectionTitles.concept.range}
-          >
-            <Link href={rangeUri} external>
-              {range}
-            </Link>
-          </ContentSection>
-        )}
-        {identifier && (
-          <ContentSection
-            id='identifier'
-            title={translations.detailsPage.sectionTitles.concept.identifier}
-          >
-            {identifier}
-          </ContentSection>
-        )}
+        {range && <Range range={range} rangeUri={rangeUri} />}
+        {identifier && <Identifier identifier={identifier} />}
         {hasRelatedConcepts && (
           <RelatedConcepts
             concept={concept}
@@ -446,53 +284,17 @@ const ConceptDetailsPage: FC<Props> = ({
             getPublicServicesRelations={getPublicServicesRelations}
           />
         )}
-        {(conceptsRelations.length > 0 ||
-          datasetsRelations.length > 0 ||
-          publicServicesRelations.length > 0 ||
-          informationModelsRelations.length > 0) && (
-          <ContentSection
-            id='relationList'
-            title={translations.detailsPage.relationList.title.concept}
-          >
-            <RelationList
-              parentIdentifier={concept?.identifier}
-              concepts={conceptsRelations}
-              datasets={datasetsRelations}
-              publicServices={publicServicesRelationsWithRelationType}
-              informationModels={informationModelsRelations}
-            />
-          </ContentSection>
+        {hasRelationsList && (
+          <RelationsList
+            identifier={concept?.identifier}
+            conceptsRelations={conceptsRelations}
+            datasetsRelations={datasetsRelations}
+            publicServicesRelations={publicServicesRelations}
+            informationModelsRelations={informationModelsRelations}
+          />
         )}
         {(contactPoint?.email || contactPoint?.telephone) && (
-          <ContentSection
-            id='contact-information'
-            title={
-              translations.detailsPage.sectionTitles.concept.contactInformation
-            }
-          >
-            <KeyValueList>
-              {contactPoint.email && (
-                <KeyValueListItem
-                  property={translations.email}
-                  value={
-                    <a
-                      title={contactPoint.email}
-                      href={`mailto:${contactPoint.email}`}
-                      rel='noopener noreferrer'
-                    >
-                      {contactPoint.email}
-                    </a>
-                  }
-                />
-              )}
-              {contactPoint.telephone && (
-                <KeyValueListItem
-                  property={translations.phone}
-                  value={contactPoint.telephone}
-                />
-              )}
-            </KeyValueList>
-          </ContentSection>
+          <ContactPoint contactPoint={contactPoint} />
         )}
       </DetailsPage>
     </ThemeProvider>
