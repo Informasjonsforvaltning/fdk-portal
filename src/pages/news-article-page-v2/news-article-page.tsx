@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { compose } from 'redux';
 import Moment from 'react-moment';
 import { useGetArticleQuery } from '../../api/generated/cms/graphql';
-import ErrorPage from '../../components/error-page';
+import ErrorPage from '../error-page';
 import withErrorBoundary from '../../components/with-error-boundary';
 import localization from '../../lib/localization';
 // import Article from '../../components/article/components/article/article.component';

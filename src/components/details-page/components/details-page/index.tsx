@@ -55,7 +55,7 @@ import { Entity } from '../../../../types/enums';
 import {
   calculateRatingPercentage,
   determineRatingIcon
-} from '../../../../pages/organizations/pages/datasets-page/index';
+} from '../../../../pages/organizations/pages/datasets-page';
 import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
@@ -212,9 +212,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
   const renderContentSections = () =>
     contentSections
-      .map(child =>
-        isValidElement(child) && child.type === ContentSection ? child : null
-      )
+      .map(child => (isValidElement(child) ? child : null))
       ?.filter(Boolean);
 
   const renderAside = () =>

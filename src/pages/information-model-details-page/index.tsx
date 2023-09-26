@@ -18,33 +18,37 @@ import { themeFDK } from '../../app/theme';
 
 import withInformationModel, {
   Props as InformationModelProps
-} from '../with-information-model';
-import withConcepts, { Props as ConceptsProps } from '../with-concepts';
+} from '../../components/with-information-model';
+import withConcepts, {
+  Props as ConceptsProps
+} from '../../components/with-concepts';
 import withInformationModels, {
   Props as InformationModelsProps
-} from '../with-information-models';
-import withDatasets, { Props as DatasetProps } from '../with-datasets';
+} from '../../components/with-information-models';
+import withDatasets, {
+  Props as DatasetProps
+} from '../../components/with-datasets';
 import withDataServices, {
   Props as DataServicesProps
-} from '../with-data-services';
-import withErrorBoundary from '../with-error-boundary';
+} from '../../components/with-data-services';
+import withErrorBoundary from '../../components/with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
   InlineList,
   KeyValueList,
   KeyValueListItem
-} from '../details-page';
+} from '../../components/details-page';
 import ErrorPage from '../error-page';
-import InfoModelStructure from '../infomodel-structure';
-import RelationList from '../relation-list';
+import InfoModelStructure from '../../components/infomodel-structure';
+import RelationList from '../../components/relation-list';
 
 import SC from './styled';
 
 import type { InformationModel } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
 import { getConfig } from '../../config';
-import Markdown from '../markdown';
+import Markdown from '../../components/markdown';
 
 interface RouteParams {
   informationModelId: string;

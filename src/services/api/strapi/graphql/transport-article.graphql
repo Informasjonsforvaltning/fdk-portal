@@ -1,0 +1,83 @@
+query GetTransportArticle($id: ID!) {
+  transportArticle(id: $id) {
+    data {
+      attributes {
+        title
+        subtitle
+        locale
+        localizations {
+          data {
+            attributes {
+              title
+              subtitle
+              Content {
+                ... on ComponentBasicParagraph {
+                  __typename
+                  Content
+                }
+                ... on ComponentBasicImage {
+                  __typename
+                  media {
+                    data {
+                      attributes {
+                        alternativeText
+                        url
+                        caption
+                      }
+                    }
+                  }
+                  style
+                }
+                ... on ComponentBasicYoutube {
+                  __typename
+                  url
+                }
+              }
+            }
+          }
+        }
+        Content {
+          ... on ComponentBasicParagraph {
+            __typename
+            Content
+          }
+          ... on ComponentBasicImage {
+            __typename
+            media {
+              data {
+                attributes {
+                  alternativeText
+                  url
+                  caption
+                }
+              }
+            }
+            style
+          }
+          ... on ComponentBasicYoutube {
+            __typename
+            url
+          }
+        }
+      }
+    }
+  }
+}
+
+query GetTransportArticleTitle($id: ID!) {
+  transportArticle(id: $id) {
+    data {
+      attributes {
+        title
+        localizations {
+          data {
+            id
+            attributes {
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+}

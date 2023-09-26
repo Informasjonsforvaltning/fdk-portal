@@ -16,7 +16,7 @@ import {
   PATHNAME_ABOUT_INFORMATIONMODELS
 } from '../../constants/constants';
 
-import ErrorPage from '../../components/error-page';
+import ErrorPage from '../error-page';
 
 import { isBasicImage, isBasicParagraph } from '../../lib/strapi';
 import Markdown from '../../components/markdown';
@@ -87,7 +87,9 @@ const InformationPage: FC<Props> = () => {
   Object.entries(articleIds).map((id, i) =>
     i !== 0
       ? useGetFancyArticleQuery({
-          variables: { id: articleIds[id[0]] }
+          variables: {
+            id: articleIds[id[0]]
+          }
         })
       : ''
   );

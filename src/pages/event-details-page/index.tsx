@@ -11,26 +11,28 @@ import { dateStringToDate, formatDate } from '../../lib/date-utils';
 
 import { themeFDK } from '../../app/theme';
 
-import withEvent, { Props as EventProps } from '../with-event';
+import withEvent, { Props as EventProps } from '../../components/with-event';
 import withPublicServices, {
   Props as PublicServicesProps
-} from '../with-public-services';
-import withErrorBoundary from '../with-error-boundary';
+} from '../../components/with-public-services';
+import withErrorBoundary from '../../components/with-error-boundary';
 
 import DetailsPage, {
   ContentSection,
   KeyValueList,
   KeyValueListItem
-} from '../details-page';
+} from '../../components/details-page';
 import ErrorPage from '../error-page';
-import RelationList, { ItemWithRelationType } from '../relation-list';
+import RelationList, {
+  ItemWithRelationType
+} from '../../components/relation-list';
 
 import type { Theme } from '../../types';
 import { Entity, SpecializedEventType } from '../../types/enums';
 
 import { PATHNAME_PUBLIC_SERVICES } from '../../constants/constants';
 import SC from './styled';
-import Markdown from '../markdown';
+import Markdown from '../../components/markdown';
 
 interface RouteParams {
   eventId: string;

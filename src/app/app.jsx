@@ -6,16 +6,16 @@ import cx from 'classnames';
 import localization from '../lib/localization';
 import { MainPage } from '../pages/main-page/main-page';
 import { SearchPage } from '../pages/search-page/search-page';
-import DatasetDetailsPage from '../components/dataset-details-page';
-import DataServiceDetailsPage from '../components/data-service-details-page';
-import ConceptDetailsPage from '../components/concept-details-page';
-import InformationModelDetailsPage from '../components/information-model-details-page';
-import PublicServiceDetailsPage from '../components/public-service-details-page';
-import EventDetailsPage from '../components/event-details-page';
+import DatasetDetailsPage from '../pages/dataset-details-page';
+import DataServiceDetailsPage from '../pages/data-service-details-page';
+import ConceptDetailsPage from '../pages/concept-details-page';
+import InformationModelDetailsPage from '../pages/information-model-details-page';
+import PublicServiceDetailsPage from '../pages/public-service-details-page';
+import EventDetailsPage from '../pages/event-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
 import { ReportPage } from '../pages/report-page/report-page';
-import ErrorPage from '../components/error-page';
-import SparqlPage from '../components/sparql-page';
+import ErrorPage from '../pages/error-page';
+import SparqlPage from '../pages/sparql-page';
 import Header from '../components/header';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import Footer from '../components/footer';
@@ -45,7 +45,8 @@ import {
   PATHNAME_ABOUT_DATA_SERVICES,
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
-  PATHNAME_AI
+  PATHNAME_AI,
+  PATHNAME_TRANSPORT
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
@@ -56,6 +57,7 @@ import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-pa
 import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import InformationPage from '../pages/cms-information-page';
+import TransportPage from '../pages/cms-transport-page';
 import { AiProjectPage } from '../pages/ai-project-page';
 import { parseSearchParams } from '../lib/location-history-helper';
 import routes from '../routes';
@@ -110,7 +112,8 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_DATA_SERVICES]: InformationPage,
     [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
     [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage,
-    [PATHNAME_AI]: AiProjectPage
+    [PATHNAME_AI]: AiProjectPage,
+    [PATHNAME_TRANSPORT]: TransportPage
   };
 
   return (

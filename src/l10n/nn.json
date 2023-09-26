@@ -96,6 +96,7 @@
   "requiredBy": "Påkrevd av",
   "relatedBy": "Relatert av",
   "collaborationBetween": "Eit samarbeid mellom:",
+  "dateCreated": "Dato oppretta",
   "head": {
     "title": "Felles datakatalog",
     "description": "Felles datakatalog – data.norge.no er den offentlege nettstaden som gir oversikt over beskrivingar av datasett, omgrep, API-ar og informasjonsmodellar. Innhaldet blir levert av ulike verksemder, offentlege og private. Det er Digitaliseringsdirektoratet som er ansvarleg for drift og utvikling av nettstaden."
@@ -111,7 +112,8 @@
     "generalizes": "Underordna",
     "specializes": "Overordna",
     "isPartOf": "Er ein del av",
-    "hasPart": "Omfattar"
+    "hasPart": "Omfattar",
+    "memberOf": "Medlem av"
   },
   "validity": {
     "validFromIncluding": "Gyldig frå og med",
@@ -682,7 +684,8 @@
         "keywords": "Emneord",
         "qualifiedAttributions": "Innhaldsleverandørar",
         "restrictions": "Avgrensningar",
-        "contactInformation": "Kontaktinformasjon"
+        "contactInformation": "Kontaktinformasjon",
+        "conceptInfo": "Concept information"
       },
       "dataService": {
         "description": "Beskriving",
@@ -706,7 +709,8 @@
         "datasetReferences": "Brukt i datasett",
         "informationModelReferences": "Brukt i informasjonsmodell",
         "conceptReferences": "Relaterte omgrep ({conceptCount})",
-        "contactInformation": "Kontaktinformasjon"
+        "contactInformation": "Kontaktinformasjon",
+        "conceptInfo": "Begrepsinformasjon"
       },
       "informationModel": {
         "description": "Beskriving",

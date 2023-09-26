@@ -18,7 +18,7 @@ import withOrganizationCategories, {
 import Spinner from '../../../../components/spinner';
 import withErrorBoundary from '../../../../components/with-error-boundary';
 
-import ErrorPage from '../../../../components/error-page';
+import ErrorPage from '../../../error-page';
 
 import SC from './styled';
 

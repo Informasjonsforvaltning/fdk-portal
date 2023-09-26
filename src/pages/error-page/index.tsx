@@ -8,8 +8,8 @@ import Error400 from './components/error-400';
 import Error500 from './components/error-500';
 
 import SC from './styled';
-import Header from '../header';
-import Footer from '../footer';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
 
 interface Props {
   errorCode?: string;

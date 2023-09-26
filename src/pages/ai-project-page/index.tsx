@@ -4,7 +4,7 @@ import SvgIcon from '@fellesdatakatalog/icons';
 import Button, { Variant } from '@fellesdatakatalog/button';
 import Link from '@fellesdatakatalog/link';
 import Spinner from '../../components/spinner';
-import ErrorPage from '../../components/error-page';
+import ErrorPage from '../error-page';
 import withErrorBoundary from '../../components/with-error-boundary';
 import Project from './components/project';
 import localization from '../../lib/localization';
