@@ -106,7 +106,7 @@
     "react-router-breadcrumbs-hoc": "^4.1.0",
     "react-router-dom": "^5.3.4",
     "react-scroll": "^1.8.9",
-    "react-select": "^5.7.4",
+    "react-select": "^5.7.5",
     "reactstrap": "^9.1.5",
     "redux": "^4.2.1",
     "redux-api-middleware": "^3.2.1",
