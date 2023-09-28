@@ -150,7 +150,7 @@ function PureBreadcrumbs({ breadcrumbs }) {
     return (
       <div className='fdk-p-path'>
         <div className='container'>
-          <p className='row col-12 col-xs-12 my-2'>
+          <p className='col-12 col-xs-12 my-2'>
             {breadcrumbs.map(({ key, match, breadcrumb }, index) => (
               <span key={key}>
                 {index < breadcrumbs.length - 1 && (
