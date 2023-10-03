@@ -46,7 +46,8 @@ import {
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
   PATHNAME_AI,
-  PATHNAME_TRANSPORT
+  PATHNAME_TRANSPORT,
+  PATHNAME_REQUESTS
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
@@ -58,6 +59,7 @@ import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import InformationPage from '../pages/cms-information-page';
 import TransportPage from '../pages/cms-transport-page';
+import RequestsPage from '../pages/requests';
 import { AiProjectPage } from '../pages/ai-project-page';
 import { parseSearchParams } from '../lib/location-history-helper';
 import routes from '../routes';
@@ -113,7 +115,8 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
     [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage,
     [PATHNAME_AI]: AiProjectPage,
-    [PATHNAME_TRANSPORT]: TransportPage
+    [PATHNAME_TRANSPORT]: TransportPage,
+    [PATHNAME_REQUESTS]: RequestsPage
   };
 
   return (
