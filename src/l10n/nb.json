@@ -198,7 +198,8 @@
     "apiTab": "API-er",
     "termTab": "Begreper",
     "informationModelTab": "Informasjonsmodeller",
-    "serviceTab": "Tjenester og hendelser"
+    "serviceTab": "Tjenester og hendelser",
+    "requests": "Etterspørsler"
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API-er, {2} begreper og {3} informasjonsmodeller",

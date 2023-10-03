@@ -198,7 +198,8 @@
     "apiTab": "API ",
     "termTab": "Omgrep",
     "informationModelTab": "Informasjonsmodellar",
-    "serviceTab": "Tenester og hendingar"
+    "serviceTab": "Tenester og hendingar",
+    "requests": "Etterspurnadar"
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API, {2} omgrep og {3} informasjonsmodellar",
