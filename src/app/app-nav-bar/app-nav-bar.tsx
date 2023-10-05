@@ -70,7 +70,7 @@ const fdkItems = () => [
   <SC.ListItem key={localization.menu.about}>
     <DropdownMenu
       openOnHover
-      chevron={false}
+      chevron
       mobileView={false}
       title={localization.menu.about}
     >
@@ -104,7 +104,7 @@ const fdkItems = () => [
   <SC.ListItem key={localization.menu.tools}>
     <DropdownMenu
       openOnHover
-      chevron={false}
+      chevron
       mobileView={false}
       title={localization.menu.tools}
     >
