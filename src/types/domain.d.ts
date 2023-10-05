@@ -1019,6 +1019,27 @@ export interface CommunityPost {
   multiplePages: boolean;
 }
 
+export interface CommunityRequestCategory {
+  description: string;
+  name: string;
+  post_count: number;
+  topics: CommunityRequest[];
+}
+
+export interface CommunityRequest {
+  cid: number;
+  timestamp: number;
+  lastposttime: number;
+  lastposttimeISO: Date;
+  timestampISO: Date;
+  postcount: number;
+  title: string;
+  viewcount: number;
+  postercount: number;
+  downvotes: number;
+  upvotes: number;
+}
+
 export interface CommunityTeaser {
   pid: number;
   uid: number;
