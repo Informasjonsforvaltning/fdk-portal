@@ -6,10 +6,17 @@ import {
   GET_RECENT_POSTS_SUCCEEDED,
   GET_RECENT_POSTS_FAILED,
   RESET_TOPICS,
-  RESET_POSTS
+  RESET_POSTS,
+  GET_REQUESTS,
+  GET_REQUESTS_FAILED,
+  GET_REQUESTS_SUCCEEDED
 } from './action-types';
 
-import type { CommunityPost, CommunityTopic } from '../../../types';
+import type {
+  CommunityPost,
+  CommunityRequestCategory,
+  CommunityTopic
+} from '../../../types';
 import { CommunityTerm } from '../../../types/enums';
 
 export function searchTopicsRequested(queryTerm: string) {
@@ -64,6 +71,31 @@ export function getRecentPostsSucceeded(posts: CommunityPost[]) {
 export function getRecentPostsFailed(message: string) {
   return {
     type: GET_RECENT_POSTS_FAILED,
+    payload: {
+      message
+    }
+  };
+}
+export function getCommunityRequests() {
+  return {
+    type: GET_REQUESTS
+  };
+}
+
+export function getCommunityRequestsSucceeded(
+  requests: CommunityRequestCategory
+) {
+  return {
+    type: GET_REQUESTS_SUCCEEDED,
+    payload: {
+      requests
+    }
+  };
+}
+
+export function getCommunityRequestsFailed(message: string) {
+  return {
+    type: GET_REQUESTS_FAILED,
     payload: {
       message
     }

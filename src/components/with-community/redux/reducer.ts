@@ -9,7 +9,9 @@ import {
   GET_RECENT_POSTS_SUCCEEDED,
   GET_RECENT_POSTS_FAILED,
   RESET_TOPICS,
-  RESET_POSTS
+  RESET_POSTS,
+  GET_REQUESTS,
+  GET_REQUESTS_SUCCEEDED
 } from './action-types';
 
 import type { Actions } from '../../../types';
@@ -17,7 +19,8 @@ import type { Actions } from '../../../types';
 const initialState = fromJS({
   topics: [],
   multiplePages: false,
-  posts: []
+  posts: [],
+  requests: {}
 });
 
 export default function reducer(
@@ -41,6 +44,10 @@ export default function reducer(
     case GET_RECENT_POSTS_FAILED:
     case RESET_POSTS:
       return state.set('posts', fromJS([]));
+    case GET_REQUESTS:
+      return state.set('requests', fromJS([]));
+    case GET_REQUESTS_SUCCEEDED:
+      return state.set('requests', fromJS(action.payload.requests));
     default:
       return state;
   }
