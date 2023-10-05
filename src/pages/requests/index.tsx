@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from 'react';
+import { compose } from 'redux';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
-import { compose } from 'redux';
 import withErrorBoundary from '../../components/with-error-boundary';
 import ErrorPage from '../error-page';
 import SC from './styled';
@@ -35,6 +35,7 @@ const RequestsPage: FC<Props> = ({
             </SC.RequestInfo>
             <SC.RequestInfo>{topic.upvotes}</SC.RequestInfo>
             <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
+            <p>test</p>
           </SC.RequestRow>
         ))}
     </main>
