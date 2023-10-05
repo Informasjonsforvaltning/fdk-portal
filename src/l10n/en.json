@@ -198,7 +198,8 @@
     "apiTab": "APIs",
     "termTab": "Concepts",
     "informationModelTab": "Information models",
-    "serviceTab": "Services and events"
+    "serviceTab": "Services and events",
+    "requests": "Requests"
   },
   "hitstats": {
     "nosearch": "Search among {0} datasets, {1} APIs, {2} concepts and {3} information models",
