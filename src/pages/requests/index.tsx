@@ -35,7 +35,6 @@ const RequestsPage: FC<Props> = ({
             </SC.RequestInfo>
             <SC.RequestInfo>{topic.upvotes}</SC.RequestInfo>
             <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
-            <p>test</p>
           </SC.RequestRow>
         ))}
     </main>
