@@ -1,12 +1,15 @@
 import React, { FC, useEffect } from 'react';
+import { compose } from 'redux';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
-import { compose } from 'redux';
 import withErrorBoundary from '../../components/with-error-boundary';
 import ErrorPage from '../error-page';
 import SC from './styled';
 import { formatDate } from '../../lib/date-utils';
+import env from '../../env';
+
+const { FDK_COMMUNITY_BASE_URI } = env;
 
 interface Props extends CommunityProps {}
 
@@ -18,6 +21,10 @@ const RequestsPage: FC<Props> = ({
     getCommunityRequests();
   }, []);
 
+  const notDeletedRequests = requests?.topics?.filter(
+    topic => topic.deleted === 0
+  );
+
   return (
     <main id='content' className='container'>
       <SC.RequestsTitleRow>
@@ -26,10 +33,14 @@ const RequestsPage: FC<Props> = ({
         <SC.RequestInfo>Antall stemmer</SC.RequestInfo>
         <SC.RequestInfo>Antall visninger</SC.RequestInfo>
       </SC.RequestsTitleRow>
-      {requests?.topics &&
-        requests.topics.map(topic => (
+      {notDeletedRequests &&
+        notDeletedRequests.map(topic => (
           <SC.RequestRow key={topic.cid}>
-            <SC.RequestTitle>{topic.title}</SC.RequestTitle>
+            <SC.RequestLink
+              href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}
+            >
+              {topic.title}
+            </SC.RequestLink>
             <SC.RequestInfo>
               {formatDate(new Date(topic.timestampISO))}
             </SC.RequestInfo>
