@@ -2,7 +2,8 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import {
   SEARCH_TOPICS_REQUESTED,
-  GET_RECENT_POSTS_REQUESTED
+  GET_RECENT_POSTS_REQUESTED,
+  GET_REQUESTS
 } from './action-types';
 import * as actions from './actions';
 
@@ -11,10 +12,15 @@ import {
   getRecentPosts,
   getTopicById,
   pruneNodebbTemplateTags,
-  searchCommunity
+  searchCommunity,
+  getRequests
 } from '../../../api/community-api/search';
 
-import type { CommunityPost, CommunityTopic } from '../../../types';
+import type {
+  CommunityPost,
+  CommunityRequestCategory,
+  CommunityTopic
+} from '../../../types';
 
 function* searchTopicsRequested({
   payload: { queryTerm }
@@ -60,9 +66,24 @@ function* recentPostsRequested({
   }
 }
 
+function* getCommunityRequests() {
+  try {
+    const requests: CommunityRequestCategory = yield call(getRequests);
+
+    if (requests !== null && requests !== undefined) {
+      yield put(actions.getCommunityRequestsSucceeded(requests));
+    } else {
+      yield put(actions.getCommunityRequestsFailed(''));
+    }
+  } catch (e: any) {
+    yield put(actions.getCommunityRequestsFailed(e.message));
+  }
+}
+
 export default function* saga() {
   yield all([
     takeLatest(SEARCH_TOPICS_REQUESTED, searchTopicsRequested),
-    takeLatest(GET_RECENT_POSTS_REQUESTED, recentPostsRequested)
+    takeLatest(GET_RECENT_POSTS_REQUESTED, recentPostsRequested),
+    takeLatest(GET_REQUESTS, getCommunityRequests)
   ]);
 }
