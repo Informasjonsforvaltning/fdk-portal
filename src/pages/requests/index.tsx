@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { compose } from 'redux';
 import Link from '@fellesdatakatalog/link';
+import Button from '@fellesdatakatalog/button';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
@@ -41,6 +42,13 @@ const RequestsPage: FC<Props> = ({
           })}
         </p>
       </SC.InfoText>
+      <Button
+        onClick={() => {
+          window.location.href = `${FDK_COMMUNITY_BASE_URI}/category/6`;
+        }}
+      >
+        Lag etterspørsel
+      </Button>
       <SC.RequestsTitleRow>
         <SC.RequestTitle>{localization.requestsPage.requests}</SC.RequestTitle>
         <SC.RequestInfo>{localization.date}</SC.RequestInfo>
@@ -62,6 +70,21 @@ const RequestsPage: FC<Props> = ({
             <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
           </SC.RequestRow>
         ))}
+      <div>
+        <h3>Etterspør data</h3>
+        <p>
+          Kort beskrivende tekst på hva som skjer når du trykker på knappen.
+          Ønsker du å etterspørre data, APIer eller annet du kan gjøre her. Du
+          blir sendt til datalandsbyen.no.
+        </p>
+        <Button
+          onClick={() => {
+            window.location.href = `${FDK_COMMUNITY_BASE_URI}/category/6`;
+          }}
+        >
+          Lag etterspørsler
+        </Button>
+      </div>
     </main>
   );
 };
