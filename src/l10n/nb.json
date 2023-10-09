@@ -97,6 +97,7 @@
   "relatedBy": "Relatert av",
   "collaborationBetween": "Et samarbeid mellom:",
   "dateCreated": "Dato opprettet",
+  "date": "Dato",
   "head": {
     "title": "Felles datakatalog",
     "description": "Felles datakatalog – data.norge.no er det offentlige nettstedet som gir oversikt over beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet blir levert av ulike virksomheter, offentlige og private. Det er Digitaliseringsdirektoratet som er ansvarlig for drift og utvikling av nettstedet."
@@ -1172,5 +1173,12 @@
     "email": "E-post:",
     "submitNewProject": "Her kan du melde inn nye prosjekter:",
     "submit": "Meld inn"
+  },
+  "requestsPage": {
+    "title": "Etterspørsler",
+    "ingress": "Her finner du en oversikt over alle etterspørsler publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspørsler.",
+    "requests": "Etterspørsler fra Datalandsbyen",
+    "votes": "Antall stemmer",
+    "views": "Antall visninger"
   }
 }

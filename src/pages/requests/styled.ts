@@ -43,10 +43,19 @@ const RequestInfo = styled.div`
   justify-content: center;
 `;
 
+const InfoText = styled.div`
+  display: flex;
+  max-width: 50%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 1.6rem !important;
+`;
+
 export default {
   RequestRow,
   RequestsTitleRow,
   RequestTitle,
   RequestInfo,
-  RequestLink
+  RequestLink,
+  InfoText
 };

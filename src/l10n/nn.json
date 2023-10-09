@@ -1173,5 +1173,12 @@
     "email": "E-post:",
     "submitNewProject": "Her kan du melde inn nye prosjekt:",
     "submit": "Meld inn"
+  },
+  "requestsPage": {
+    "title": "Etterspurnadar",
+    "ingress": "Her finn du ei oversikt over alle etterspurnadar publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspurnadar.",
+    "requests": "Etterspurnadar frå Datalandsbyen",
+    "votes": "Antall stemmer",
+    "views": "Antall visningar"
   }
 }
