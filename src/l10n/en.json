@@ -97,6 +97,7 @@
   "relatedBy": "Related by",
   "collaborationBetween": "A collaboration between:",
   "dateCreated": "Date created",
+  "date": "Date",
   "head": {
     "title": "National Data Catalog",
     "description": "The National Data Catalog – data.norge.no is the public website providing an overview of descriptions of datasets, concepts, APIs and information models. The content is supplied by various establishments, both public and private. The Digitalization Agency is responsible for the operation and development of the website."
@@ -1172,5 +1173,12 @@
     "email": "E-mail:",
     "submitNewProject": "You can register new projects here:",
     "submit": "Register"
+  },
+  "requestsPage": {
+    "title": "Requests",
+    "ingress": "Here you will find an overview of all requests published in the {lenke}. You can subscribe to, vote on, or comment on requests.",
+    "requests": "Requests from the Data Community",
+    "votes": "Number of Votes",
+    "views": "Number of Views"
   }
 }

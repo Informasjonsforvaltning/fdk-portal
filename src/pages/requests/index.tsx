@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { compose } from 'redux';
+import { Ingress, Link } from '@digdir/design-system-react';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
@@ -7,10 +8,11 @@ import withErrorBoundary from '../../components/with-error-boundary';
 import ErrorPage from '../error-page';
 import SC from './styled';
 import { formatDate } from '../../lib/date-utils';
+import Banner from '../../components/banner';
+import localization from '../../lib/localization';
 import env from '../../env';
 
 const { FDK_COMMUNITY_BASE_URI } = env;
-
 interface Props extends CommunityProps {}
 
 const RequestsPage: FC<Props> = ({
@@ -27,11 +29,23 @@ const RequestsPage: FC<Props> = ({
 
   return (
     <main id='content' className='container'>
+      <Banner title={localization.requestsPage.title} />
+      <SC.InfoText>
+        <Ingress size='medium'>
+          {localization.formatString(localization.requestsPage.ingress, {
+            lenke: (
+              <Link href={FDK_COMMUNITY_BASE_URI} eksternal>
+                {localization.community.title}
+              </Link>
+            )
+          })}
+        </Ingress>
+      </SC.InfoText>
       <SC.RequestsTitleRow>
-        <SC.RequestTitle>Etterspørsler fra Datalandsbyen</SC.RequestTitle>
-        <SC.RequestInfo>Dato</SC.RequestInfo>
-        <SC.RequestInfo>Antall stemmer</SC.RequestInfo>
-        <SC.RequestInfo>Antall visninger</SC.RequestInfo>
+        <SC.RequestTitle>{localization.requestsPage.requests}</SC.RequestTitle>
+        <SC.RequestInfo>{localization.date}</SC.RequestInfo>
+        <SC.RequestInfo>{localization.requestsPage.votes}</SC.RequestInfo>
+        <SC.RequestInfo>{localization.requestsPage.views}</SC.RequestInfo>
       </SC.RequestsTitleRow>
       {notDeletedRequests &&
         notDeletedRequests.map(topic => (
