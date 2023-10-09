@@ -23,11 +23,18 @@ const RequestsTitleRow = styled.div`
   padding-left: 37px;
   padding-right: 37px;
   font-weight: bold;
+  margin-bottom: 5px;
 `;
 
 const RequestTitle = styled.div`
   width: 50%;
   font-weight: bold;
+`;
+const RequestLink = styled.a`
+  width: 50%;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #111 !important;
 `;
 
 const RequestInfo = styled.div`
@@ -40,5 +47,6 @@ export default {
   RequestRow,
   RequestsTitleRow,
   RequestTitle,
-  RequestInfo
+  RequestInfo,
+  RequestLink
 };

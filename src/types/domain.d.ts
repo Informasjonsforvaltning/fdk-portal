@@ -1038,6 +1038,8 @@ export interface CommunityRequest {
   postercount: number;
   downvotes: number;
   upvotes: number;
+  deleted: 1 | 0;
+  slug: string;
 }
 
 export interface CommunityTeaser {
