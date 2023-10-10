@@ -1,6 +1,5 @@
 import React from 'react';
 import type { FC } from 'react';
-import { Heading } from '@digdir/design-system-react';
 import SC from './styled';
 
 import EllipseSVG from './svg/ellipse-1.svg';
@@ -16,7 +15,7 @@ const Banner: FC<Props> = ({ title }) => (
       <EllipseSVG />
     </SC.SvgEllipse>
     <SC.TitleContainer>
-      <Heading size='xlarge'>{title}</Heading>
+      <h1>{title}</h1>
     </SC.TitleContainer>
     <SC.SvgRectangle>
       <RectangleSVG />

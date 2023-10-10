@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { compose } from 'redux';
-import { Ingress, Link } from '@digdir/design-system-react';
+import Link from '@fellesdatakatalog/link';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
@@ -31,15 +31,15 @@ const RequestsPage: FC<Props> = ({
     <main id='content' className='container'>
       <Banner title={localization.requestsPage.title} />
       <SC.InfoText>
-        <Ingress size='medium'>
+        <p>
           {localization.formatString(localization.requestsPage.ingress, {
             lenke: (
-              <Link href={FDK_COMMUNITY_BASE_URI} eksternal>
+              <Link href={FDK_COMMUNITY_BASE_URI} external>
                 {localization.community.title}
               </Link>
             )
           })}
-        </Ingress>
+        </p>
       </SC.InfoText>
       <SC.RequestsTitleRow>
         <SC.RequestTitle>{localization.requestsPage.requests}</SC.RequestTitle>
@@ -49,7 +49,7 @@ const RequestsPage: FC<Props> = ({
       </SC.RequestsTitleRow>
       {notDeletedRequests &&
         notDeletedRequests.map(topic => (
-          <SC.RequestRow key={topic.cid}>
+          <SC.RequestRow role='table' key={topic.cid}>
             <SC.RequestLink
               href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}
             >
