@@ -18,6 +18,7 @@ const TitleContainer = styled.div`
   flex-grow: 1;
   align-self: center;
   justify-content: center;
+  font-size: 30px;
 `;
 
 const SvgEllipse = styled.div`

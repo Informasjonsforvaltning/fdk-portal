@@ -48,7 +48,6 @@ const InfoText = styled.div`
   max-width: 50%;
   margin-top: 50px;
   margin-bottom: 50px;
-  font-size: 1.6rem !important;
 `;
 
 export default {
