@@ -9,7 +9,10 @@ import {
   RESET_POSTS,
   GET_REQUESTS,
   GET_REQUESTS_FAILED,
-  GET_REQUESTS_SUCCEEDED
+  GET_REQUESTS_SUCCEEDED,
+  SEARCH_REQUESTS_REQUESTED,
+  SEARCH_REQUESTS_SUCCEEDED,
+  SEARCH_REQUESTS_FAILED
 } from './action-types';
 
 import type {
@@ -44,6 +47,37 @@ export function searchTopicsSucceeded(
 export function searchTopicsFailed(message: string) {
   return {
     type: SEARCH_TOPICS_FAILED,
+    payload: {
+      message
+    }
+  };
+}
+
+export function searchRequestsRequested(queryTerm: string) {
+  return {
+    type: SEARCH_REQUESTS_REQUESTED,
+    payload: {
+      queryTerm
+    }
+  };
+}
+
+export function searchRequestsSucceeded(
+  topics: CommunityTopic[],
+  multiplePages: boolean
+) {
+  return {
+    type: SEARCH_REQUESTS_SUCCEEDED,
+    payload: {
+      topics,
+      multiplePages
+    }
+  };
+}
+
+export function searchRequestsFailed(message: string) {
+  return {
+    type: SEARCH_REQUESTS_FAILED,
     payload: {
       message
     }

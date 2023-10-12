@@ -11,7 +11,10 @@ import {
   RESET_TOPICS,
   RESET_POSTS,
   GET_REQUESTS,
-  GET_REQUESTS_SUCCEEDED
+  GET_REQUESTS_SUCCEEDED,
+  SEARCH_REQUESTS_REQUESTED,
+  SEARCH_REQUESTS_SUCCEEDED,
+  SEARCH_REQUESTS_FAILED
 } from './action-types';
 
 import type { Actions } from '../../../types';
@@ -34,11 +37,11 @@ export default function reducer(
       return state
         .set('topics', fromJS(action.payload.topics))
         .set('multiplePages', fromJS(action.payload.multiplePages));
+    case SEARCH_TOPICS_FAILED:
     case GET_RECENT_POSTS_REQUESTED:
       return state.set('posts', fromJS([]));
     case GET_RECENT_POSTS_SUCCEEDED:
       return state.set('posts', fromJS(action.payload.posts));
-    case SEARCH_TOPICS_FAILED:
     case RESET_TOPICS:
       return state.set('topics', fromJS([]));
     case GET_RECENT_POSTS_FAILED:
@@ -48,6 +51,13 @@ export default function reducer(
       return state.set('requests', fromJS([]));
     case GET_REQUESTS_SUCCEEDED:
       return state.set('requests', fromJS(action.payload.requests));
+    case SEARCH_REQUESTS_REQUESTED:
+      return state.set('topics', fromJS([]));
+    case SEARCH_REQUESTS_SUCCEEDED:
+      return state
+        .set('topics', fromJS(action.payload.topics))
+        .set('multiplePages', fromJS(action.payload.multiplePages));
+    case SEARCH_REQUESTS_FAILED:
     default:
       return state;
   }

@@ -3,7 +3,8 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import {
   SEARCH_TOPICS_REQUESTED,
   GET_RECENT_POSTS_REQUESTED,
-  GET_REQUESTS
+  GET_REQUESTS,
+  SEARCH_REQUESTS_REQUESTED
 } from './action-types';
 import * as actions from './actions';
 
@@ -13,6 +14,7 @@ import {
   getTopicById,
   pruneNodebbTemplateTags,
   searchCommunity,
+  searchCommunityRequests,
   getRequests
 } from '../../../api/community-api/search';
 
@@ -27,6 +29,33 @@ function* searchTopicsRequested({
 }: ReturnType<typeof actions.searchTopicsRequested>) {
   try {
     const postHits: CommunityPost = yield call(searchCommunity, queryTerm);
+    const { multiplePages } = postHits;
+    const topics: CommunityTopic[] = (
+      (yield all(
+        extractTopicsFromSearch(postHits).map(({ tid }) =>
+          call(getTopicById, tid)
+        )
+      )) as CommunityTopic[]
+    ).filter(Boolean);
+
+    if (topics.length > 0) {
+      yield put(actions.searchTopicsSucceeded(topics, multiplePages));
+    } else {
+      yield put(actions.searchTopicsFailed(''));
+    }
+  } catch (e: any) {
+    yield put(actions.searchTopicsFailed(e.message));
+  }
+}
+
+function* searchRequestsRequested({
+  payload: { queryTerm }
+}: ReturnType<typeof actions.searchRequestsRequested>) {
+  try {
+    const postHits: CommunityPost = yield call(
+      searchCommunityRequests,
+      queryTerm
+    );
     const { multiplePages } = postHits;
     const topics: CommunityTopic[] = (
       (yield all(
@@ -84,6 +113,7 @@ export default function* saga() {
   yield all([
     takeLatest(SEARCH_TOPICS_REQUESTED, searchTopicsRequested),
     takeLatest(GET_RECENT_POSTS_REQUESTED, recentPostsRequested),
-    takeLatest(GET_REQUESTS, getCommunityRequests)
+    takeLatest(GET_REQUESTS, getCommunityRequests),
+    takeLatest(SEARCH_REQUESTS_REQUESTED, searchRequestsRequested)
   ]);
 }
