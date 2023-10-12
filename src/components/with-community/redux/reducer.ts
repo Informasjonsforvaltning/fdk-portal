@@ -10,8 +10,6 @@ import {
   GET_RECENT_POSTS_FAILED,
   RESET_TOPICS,
   RESET_POSTS,
-  GET_REQUESTS,
-  GET_REQUESTS_SUCCEEDED,
   SEARCH_REQUESTS_REQUESTED,
   SEARCH_REQUESTS_SUCCEEDED,
   SEARCH_REQUESTS_FAILED
@@ -47,10 +45,6 @@ export default function reducer(
     case GET_RECENT_POSTS_FAILED:
     case RESET_POSTS:
       return state.set('posts', fromJS([]));
-    case GET_REQUESTS:
-      return state.set('requests', fromJS([]));
-    case GET_REQUESTS_SUCCEEDED:
-      return state.set('requests', fromJS(action.payload.requests));
     case SEARCH_REQUESTS_REQUESTED:
       return state.set('topics', fromJS([]));
     case SEARCH_REQUESTS_SUCCEEDED:
