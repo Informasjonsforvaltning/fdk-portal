@@ -1179,6 +1179,9 @@
     "ingress": "Her finn du ei oversikt over alle etterspurnadar publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspurnadar.",
     "requests": "Etterspurnadar frå Datalandsbyen",
     "votes": "Antall stemmer",
-    "views": "Antall visningar"
+    "views": "Antall visningar",
+    "createRequest": "Lag etterspurnad",
+    "requestData": "Etterspør data",
+    "requestDataInfo": "Ynskjer du å etterspørre data, APIer eller anna kan du gjere det her. Du blir sendt til datalandsbyen.no."
   }
 }

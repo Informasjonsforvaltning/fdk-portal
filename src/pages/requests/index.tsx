@@ -29,63 +29,69 @@ const RequestsPage: FC<Props> = ({
   );
 
   return (
-    <main id='content' className='container'>
+    <>
       <Banner title={localization.requestsPage.title} />
-      <SC.InfoText>
-        <p>
-          {localization.formatString(localization.requestsPage.ingress, {
-            lenke: (
-              <Link href={FDK_COMMUNITY_BASE_URI} external>
-                {localization.community.title}
-              </Link>
-            )
-          })}
-        </p>
-      </SC.InfoText>
-      <Button
-        onClick={() => {
-          window.location.href = `${FDK_COMMUNITY_BASE_URI}/category/6`;
-        }}
-      >
-        Lag etterspørsel
-      </Button>
-      <SC.RequestsTitleRow>
-        <SC.RequestTitle>{localization.requestsPage.requests}</SC.RequestTitle>
-        <SC.RequestInfo>{localization.date}</SC.RequestInfo>
-        <SC.RequestInfo>{localization.requestsPage.votes}</SC.RequestInfo>
-        <SC.RequestInfo>{localization.requestsPage.views}</SC.RequestInfo>
-      </SC.RequestsTitleRow>
-      {notDeletedRequests &&
-        notDeletedRequests.map(topic => (
-          <SC.RequestRow role='table' key={topic.cid}>
-            <SC.RequestLink
-              href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}
+      <main id='content' className='container'>
+        <SC.Row>
+          <SC.InfoText>
+            <p>
+              {localization.formatString(localization.requestsPage.ingress, {
+                lenke: (
+                  <Link href={FDK_COMMUNITY_BASE_URI} external>
+                    {localization.community.title}
+                  </Link>
+                )
+              })}
+            </p>
+          </SC.InfoText>
+          <SC.Button>
+            <Button
+              onClick={() => {
+                window.location.href = `${FDK_COMMUNITY_BASE_URI}/category/6`;
+              }}
             >
-              {topic.title}
-            </SC.RequestLink>
-            <SC.RequestInfo>
-              {formatDate(new Date(topic.timestampISO))}
-            </SC.RequestInfo>
-            <SC.RequestInfo>{topic.upvotes}</SC.RequestInfo>
-            <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
-          </SC.RequestRow>
-        ))}
-      <div>
-        <h3>Etterspør data</h3>
-        <p>
-          Kort beskrivende tekst på hva som skjer når du trykker på knappen.
-          Ønsker du å etterspørre data, APIer eller annet du kan gjøre her. Du
-          blir sendt til datalandsbyen.no.
-        </p>
-        <Button
-          onClick={() => {
-            window.location.href = `${FDK_COMMUNITY_BASE_URI}/category/6`;
-          }}
-        >
-          Lag etterspørsler
-        </Button>
-      </div>
-    </main>
+              {localization.requestsPage.createRequest}
+            </Button>
+          </SC.Button>
+        </SC.Row>
+        <SC.RequestsTitleRow>
+          <SC.RequestTitle>
+            {localization.requestsPage.requests}
+          </SC.RequestTitle>
+          <SC.RequestInfo>{localization.date}</SC.RequestInfo>
+          <SC.RequestInfo>{localization.requestsPage.votes}</SC.RequestInfo>
+          <SC.RequestInfo>{localization.requestsPage.views}</SC.RequestInfo>
+        </SC.RequestsTitleRow>
+        {notDeletedRequests &&
+          notDeletedRequests.map(topic => (
+            <SC.RequestRow role='table' key={topic.cid}>
+              <SC.RequestLink
+                href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}
+              >
+                {topic.title}
+              </SC.RequestLink>
+              <SC.RequestInfo>
+                {formatDate(new Date(topic.timestampISO))}
+              </SC.RequestInfo>
+              <SC.RequestInfo>{topic.upvotes}</SC.RequestInfo>
+              <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
+            </SC.RequestRow>
+          ))}
+        <SC.InfoBox>
+          <SC.Text>
+            <h3>{localization.requestsPage.requestData}</h3>
+            <p>{localization.requestsPage.requestDataInfo}</p>
+          </SC.Text>
+          <Button
+            onClick={() => {
+              window.location.href = `${FDK_COMMUNITY_BASE_URI}/category/6`;
+            }}
+          >
+            {localization.requestsPage.createRequest}
+          </Button>
+        </SC.InfoBox>
+      </main>
+    </>
   );
 };
 
