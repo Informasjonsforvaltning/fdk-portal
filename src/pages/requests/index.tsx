@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import Link from '@fellesdatakatalog/link';
 import Button from '@fellesdatakatalog/button';
@@ -17,16 +17,15 @@ const { FDK_COMMUNITY_BASE_URI } = env;
 interface Props extends CommunityProps {}
 
 const RequestsPage: FC<Props> = ({
-  requests,
-  communityActions: { getCommunityRequests }
+  topics,
+  communityActions: { searchRequestsRequested }
 }) => {
   useEffect(() => {
-    getCommunityRequests();
+    searchRequestsRequested('');
   }, []);
 
-  const notDeletedRequests = requests?.topics?.filter(
-    topic => topic.deleted === 0
-  );
+  const notDeletedRequests = topics?.filter(topic => topic.deleted === 0);
+  const [search, setSearch] = useState('');
 
   return (
     <>
@@ -54,6 +53,13 @@ const RequestsPage: FC<Props> = ({
             </Button>
           </SC.Button>
         </SC.Row>
+        <SC.Button>
+          <input
+            type='text'
+            onChange={event => setSearch(event.target.value)}
+          ></input>
+          <Button onClick={() => searchRequestsRequested(search)}>Søk</Button>
+        </SC.Button>
         <SC.RequestsTitleRow>
           <SC.RequestTitle>
             {localization.requestsPage.requests}

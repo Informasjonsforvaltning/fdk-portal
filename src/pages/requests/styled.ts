@@ -58,6 +58,7 @@ const Row = styled.div`
 
 const Button = styled.div`
   height: fit-content;
+  display: flex;
 `;
 
 const InfoBox = styled.div`
