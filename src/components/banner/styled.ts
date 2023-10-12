@@ -37,27 +37,7 @@ const SvgEllipse = styled.div`
     }
 `;
 
-const SvgRectangle = styled.div`
-  position: absolute;
-  right: 100px;
-  padding-bottom: 1.6rem;
-
-  @media screen and (max-width: 940px) {
-    .svgRectangle {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 940px) {
-    .svgRectangle {
-      display: none;
-      position: relative;
-    }
-  }
-`;
-
 export default {
-  SvgRectangle,
   SvgEllipse,
   Container,
   TitleContainer

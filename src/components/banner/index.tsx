@@ -17,9 +17,9 @@ const Banner: FC<Props> = ({ title }) => (
     <SC.TitleContainer>
       <h1>{title}</h1>
     </SC.TitleContainer>
-    <SC.SvgRectangle>
+    <div>
       <RectangleSVG />
-    </SC.SvgRectangle>
+    </div>
   </SC.Container>
 );
 
