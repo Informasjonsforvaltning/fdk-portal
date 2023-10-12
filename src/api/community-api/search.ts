@@ -24,10 +24,6 @@ export const getRecentPosts = (term: CommunityTerm) =>
     .get(`${FDK_COMMUNITY_BASE_URI}/api/recent/posts/${term}`)
     .then(({ data }) => data);
 
-export const getRequests = () =>
-  axios
-    .get(`${FDK_COMMUNITY_BASE_URI}/api/category/6`)
-    .then(({ data }) => data);
 export const extractTopicsFromSearch = (
   searchResponse: any
 ): CommunityTopic[] => {

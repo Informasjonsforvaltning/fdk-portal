@@ -9,10 +9,6 @@ export const GET_RECENT_POSTS_FAILED = 'GET_RECENT_POSTS_FAILED' as const;
 export const RESET_TOPICS = 'RESET_TOPICS' as const;
 export const RESET_POSTS = 'RESET_POSTS' as const;
 
-export const GET_REQUESTS = 'GET_REQUESTS' as const;
-export const GET_REQUESTS_SUCCEEDED = 'GET_REQUESTS_SUCCEEDED' as const;
-export const GET_REQUESTS_FAILED = 'GET_REQUESTS_FAILED' as const;
-
 export const SEARCH_REQUESTS_REQUESTED = 'SEARCH_REQUESTS_REQUESTED' as const;
 export const SEARCH_REQUESTS_SUCCEEDED = 'SEARCH_REQUESTS_SUCCEEDED' as const;
 export const SEARCH_REQUESTS_FAILED = 'SEARCH_REQUESTS_FAILED' as const;
