@@ -50,11 +50,37 @@ const InfoText = styled.div`
   margin-bottom: 50px;
 `;
 
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Button = styled.div`
+  height: fit-content;
+`;
+
+const InfoBox = styled.div`
+  padding-top: 37px;
+`;
+
+const Text = styled.div`
+  padding-bottom: 20px;
+
+  & > h3 {
+    font-size: 24px;
+  }
+`;
+
 export default {
   RequestRow,
   RequestsTitleRow,
   RequestTitle,
   RequestInfo,
   RequestLink,
-  InfoText
+  InfoText,
+  Row,
+  Button,
+  InfoBox,
+  Text
 };

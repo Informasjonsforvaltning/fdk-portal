@@ -1179,6 +1179,9 @@
     "ingress": "Here you will find an overview of all requests published in the {lenke}. You can subscribe to, vote on, or comment on requests.",
     "requests": "Requests from the Data Community",
     "votes": "Number of Votes",
-    "views": "Number of Views"
+    "views": "Number of Views",
+    "createRequest": "Create request",
+    "requestData": "Request data",
+    "requestDataInfo": "Do you want to request data, APIs, or anything else you can do it here. You will be redirected to datalandsbyen.no."
   }
 }
