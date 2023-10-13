@@ -40,18 +40,22 @@ export const extractTopicsFromSearch = (
   return uniqueTopics;
 };
 
-export const searchCommunityRequests = (queryTerm: string) => {
+export const searchCommunityRequests = (
+  queryTerm: string,
+  sortOption?: string
+) => {
   if (queryTerm.length > 0) {
     return axios
       .get(
-        `${FDK_COMMUNITY_BASE_URI}/api/search?term=${queryTerm}&in=titles&matchWords=all&category=6`
+        `${FDK_COMMUNITY_BASE_URI}/api/search?term=${queryTerm}&in=titles&matchWords=all&categories[]=6&sortBy=${sortOption}&sortDirection=desc`
       )
       .then(({ data }) => data);
-  } else {
-    return axios
-      .get(`${FDK_COMMUNITY_BASE_URI}/api/search?&category=6`)
-      .then(({ data }) => data);
   }
+  return axios
+    .get(
+      `${FDK_COMMUNITY_BASE_URI}/api/search?&categories[]=6&sortBy=${sortOption}&sortDirection=desc`
+    )
+    .then(({ data }) => data);
 };
 
 export const pruneNodebbTemplateTags = (raw_text: string) =>

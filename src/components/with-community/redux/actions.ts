@@ -46,11 +46,15 @@ export function searchTopicsFailed(message: string) {
   };
 }
 
-export function searchRequestsRequested(queryTerm: string) {
+export function searchRequestsRequested(
+  queryTerm: string,
+  sortOption?: string
+) {
   return {
     type: SEARCH_REQUESTS_REQUESTED,
     payload: {
-      queryTerm
+      queryTerm,
+      sortOption
     }
   };
 }

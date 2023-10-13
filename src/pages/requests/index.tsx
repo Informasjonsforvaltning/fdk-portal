@@ -31,7 +31,7 @@ const RequestsPage: FC<Props> = ({
     <>
       <Banner title={localization.requestsPage.title} />
       <main id='content' className='container'>
-        <SC.Row>
+        <SC.FirstRow>
           <SC.InfoText>
             <p>
               {localization.formatString(localization.requestsPage.ingress, {
@@ -52,14 +52,31 @@ const RequestsPage: FC<Props> = ({
               {localization.requestsPage.createRequest}
             </Button>
           </SC.Button>
-        </SC.Row>
-        <SC.Button>
-          <input
-            type='text'
-            onChange={event => setSearch(event.target.value)}
-          ></input>
-          <Button onClick={() => searchRequestsRequested(search)}>Søk</Button>
-        </SC.Button>
+        </SC.FirstRow>
+        <SC.FirstRow>
+          <SC.Row>
+            <Button
+              onClick={() => searchRequestsRequested(search, 'timestamp')}
+            >
+              {localization.requestsPage.newestToOldest}
+            </Button>
+            <Button onClick={() => searchRequestsRequested(search, 'upvotes')}>
+              {localization.requestsPage.mostVotes}
+            </Button>
+            <Button
+              onClick={() => searchRequestsRequested(search, 'topic.viewcount')}
+            >
+              {localization.requestsPage.mostViews}
+            </Button>
+          </SC.Row>
+          <SC.Row>
+            <input
+              type='text'
+              onChange={event => setSearch(event.target.value)}
+            />
+            <Button onClick={() => searchRequestsRequested(search)}>Søk</Button>
+          </SC.Row>
+        </SC.FirstRow>
         <SC.RequestsTitleRow>
           <SC.RequestTitle>
             {localization.requestsPage.requests}
