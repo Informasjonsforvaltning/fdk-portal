@@ -50,15 +50,19 @@ const InfoText = styled.div`
   margin-bottom: 50px;
 `;
 
-const Row = styled.div`
+const FirstRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 17px;
+`;
+
+const Row = styled.div`
+  display: flex;
 `;
 
 const Button = styled.div`
   height: fit-content;
-  display: flex;
 `;
 
 const InfoBox = styled.div`
@@ -83,5 +87,6 @@ export default {
   Row,
   Button,
   InfoBox,
-  Text
+  Text,
+  FirstRow
 };

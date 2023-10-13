@@ -1182,6 +1182,9 @@
     "views": "Antall visninger",
     "createRequest": "Lag etterspørsel",
     "requestData": "Etterspør data",
-    "requestDataInfo": "Ønsker du å etterspørre data, APIer eller annet du kan gjøre det her. Du blir sendt til datalandsbyen.no."
+    "requestDataInfo": "Ønsker du å etterspørre data, APIer eller annet du kan gjøre det her. Du blir sendt til datalandsbyen.no.",
+    "newestToOldest": "Nyeste til eldste",
+    "mostVotes": "Flest stemmer",
+    "mostViews": "Flest visninger"
   }
 }

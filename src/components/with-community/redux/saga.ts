@@ -43,12 +43,13 @@ function* searchTopicsRequested({
 }
 
 function* searchRequestsRequested({
-  payload: { queryTerm }
+  payload: { queryTerm, sortOption }
 }: ReturnType<typeof actions.searchRequestsRequested>) {
   try {
     const postHits: CommunityPost = yield call(
       searchCommunityRequests,
-      queryTerm
+      queryTerm,
+      sortOption
     );
     const { multiplePages } = postHits;
     const topics: CommunityTopic[] = (
