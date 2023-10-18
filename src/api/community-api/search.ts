@@ -42,18 +42,19 @@ export const extractTopicsFromSearch = (
 
 export const searchCommunityRequests = (
   queryTerm: string,
+  page: number,
   sortOption?: string
 ) => {
   if (queryTerm.length > 0) {
     return axios
       .get(
-        `${FDK_COMMUNITY_BASE_URI}/api/search?term=${queryTerm}&in=titles&matchWords=all&categories[]=6&sortBy=${sortOption}&sortDirection=desc`
+        `${FDK_COMMUNITY_BASE_URI}/api/search?term=${queryTerm}&in=titles&matchWords=all&categories[]=6&sortBy=${sortOption}&sortDirection=desc&page=${page}`
       )
       .then(({ data }) => data);
   }
   return axios
     .get(
-      `${FDK_COMMUNITY_BASE_URI}/api/search?&categories[]=6&sortBy=${sortOption}&sortDirection=desc`
+      `${FDK_COMMUNITY_BASE_URI}/api/search?&categories[]=6&sortBy=${sortOption}&sortDirection=desc&page=${page}`
     )
     .then(({ data }) => data);
 };

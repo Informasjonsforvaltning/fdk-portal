@@ -21,7 +21,8 @@ const initialState = fromJS({
   topics: [],
   multiplePages: false,
   posts: [],
-  requests: {}
+  requests: [],
+  pagination: {}
 });
 
 export default function reducer(
@@ -49,8 +50,8 @@ export default function reducer(
       return state.set('topics', fromJS([]));
     case SEARCH_REQUESTS_SUCCEEDED:
       return state
-        .set('topics', fromJS(action.payload.topics))
-        .set('multiplePages', fromJS(action.payload.multiplePages));
+        .set('requests', fromJS(action.payload.requests))
+        .set('pagination', fromJS(action.payload.pagination));
     case SEARCH_REQUESTS_FAILED:
     default:
       return state;

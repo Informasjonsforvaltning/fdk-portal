@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import ArrowRightIconBase from '@fellesdatakatalog/icons/assets/svg/arrow-right-stroke.svg';
+import ArrowLeftIconBase from '@fellesdatakatalog/icons/assets/svg/arrow-left-stroke.svg';
 
 const RequestRow = styled.div`
   display: flex;
@@ -77,6 +79,36 @@ const Text = styled.div`
   }
 `;
 
+const ArrowRightIcon = styled(ArrowRightIconBase)`
+  width: 16px;
+  height: 16px;
+  margin-left: 0.25em;
+  & * {
+    stroke: #0069a5;
+  }
+`;
+
+const ArrowLeftIcon = styled(ArrowLeftIconBase)`
+  width: 16px;
+  height: 16px;
+  margin-right: 0.25em;
+  & * {
+    stroke: #0069a5;
+  }
+`;
+
+const Pagination = styled.div`
+  & > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & > ul > li {
+    padding: 10px;
+  }
+`;
+
 export default {
   RequestRow,
   RequestsTitleRow,
@@ -88,5 +120,8 @@ export default {
   Button,
   InfoBox,
   Text,
-  FirstRow
+  FirstRow,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  Pagination
 };

@@ -43,16 +43,17 @@ function* searchTopicsRequested({
 }
 
 function* searchRequestsRequested({
-  payload: { queryTerm, sortOption }
+  payload: { queryTerm, sortOption, page }
 }: ReturnType<typeof actions.searchRequestsRequested>) {
   try {
     const postHits: CommunityPost = yield call(
       searchCommunityRequests,
       queryTerm,
+      page,
       sortOption
     );
-    const { multiplePages } = postHits;
-    const topics: CommunityTopic[] = (
+    const { pagination } = postHits;
+    const requests: CommunityTopic[] = (
       (yield all(
         extractTopicsFromSearch(postHits).map(({ tid }) =>
           call(getTopicById, tid)
@@ -60,13 +61,13 @@ function* searchRequestsRequested({
       )) as CommunityTopic[]
     ).filter(Boolean);
 
-    if (topics.length > 0) {
-      yield put(actions.searchTopicsSucceeded(topics, multiplePages));
+    if (requests.length > 0) {
+      yield put(actions.searchRequestsSucceeded(requests, pagination));
     } else {
       yield put(actions.searchTopicsFailed(''));
     }
   } catch (e: any) {
-    yield put(actions.searchTopicsFailed(e.message));
+    yield put(actions.searchRequestsFailed(e.message));
   }
 }
 

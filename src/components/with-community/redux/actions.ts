@@ -12,7 +12,7 @@ import {
   SEARCH_REQUESTS_FAILED
 } from './action-types';
 
-import type { CommunityPost, CommunityTopic } from '../../../types';
+import type { CommunityPost, CommunityTopic, Pagination } from '../../../types';
 import { CommunityTerm } from '../../../types/enums';
 
 export function searchTopicsRequested(queryTerm: string) {
@@ -48,26 +48,28 @@ export function searchTopicsFailed(message: string) {
 
 export function searchRequestsRequested(
   queryTerm: string,
+  page: string | undefined,
   sortOption?: string
 ) {
   return {
     type: SEARCH_REQUESTS_REQUESTED,
     payload: {
       queryTerm,
-      sortOption
+      sortOption,
+      page
     }
   };
 }
 
 export function searchRequestsSucceeded(
-  topics: CommunityTopic[],
-  multiplePages: boolean
+  requests: CommunityTopic[],
+  pagination: Pagination
 ) {
   return {
     type: SEARCH_REQUESTS_SUCCEEDED,
     payload: {
-      topics,
-      multiplePages
+      requests,
+      pagination
     }
   };
 }

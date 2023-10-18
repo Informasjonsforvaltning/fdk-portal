@@ -1017,13 +1017,12 @@ export interface CommunityPost {
   index: number;
   page?: number;
   multiplePages: boolean;
+  pagination: Pagination;
 }
 
-export interface CommunityRequestCategory {
-  description: string;
-  name: string;
-  post_count: number;
-  topics: CommunityRequest[];
+export interface Pagination {
+  currentPage: number;
+  pageCount: number;
 }
 
 export interface CommunityRequest {

@@ -14,19 +14,21 @@ import Banner from '../../components/banner';
 import localization from '../../lib/localization';
 import env from '../../env';
 import { SelectOption } from '../../types';
+import ReactPaginate from 'react-paginate';
 
 const { FDK_COMMUNITY_BASE_URI } = env;
 interface Props extends CommunityProps {}
 
 const RequestsPage: FC<Props> = ({
-  topics,
+  requests,
+  pagination,
   communityActions: { searchRequestsRequested }
 }) => {
   useEffect(() => {
-    searchRequestsRequested('');
+    searchRequestsRequested('', '1', undefined);
   }, []);
 
-  const notDeletedRequests = topics?.filter(topic => topic.deleted === 0);
+  const notDeletedRequests = requests?.filter(topic => topic.deleted === 0);
   const [search, setSearch] = useState('');
 
   const sortOptions: SelectOption[] = [
@@ -75,7 +77,9 @@ const RequestsPage: FC<Props> = ({
             <p>{localization.requestsPage.view}</p>
             <Select
               options={sortOptions}
-              onChange={value => searchRequestsRequested(search, value?.value)}
+              onChange={value =>
+                searchRequestsRequested(search, value?.value, undefined)
+              }
               defaultValue={sortOptions[0]}
             />
           </div>
@@ -86,7 +90,11 @@ const RequestsPage: FC<Props> = ({
                 type='text'
                 onChange={event => setSearch(event.target.value)}
               />
-              <Button onClick={() => searchRequestsRequested(search)}>
+              <Button
+                onClick={() =>
+                  searchRequestsRequested(search, undefined, undefined)
+                }
+              >
                 Søk
               </Button>
             </SC.Row>
@@ -115,6 +123,28 @@ const RequestsPage: FC<Props> = ({
               <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
             </SC.RequestRow>
           ))}
+        <SC.Pagination>
+          <ReactPaginate
+            pageCount={pagination.pageCount}
+            activeClassName='active'
+            onPageChange={data => {
+              searchRequestsRequested(search, (data.selected + 1).toString());
+            }}
+            previousLabel={
+              <>
+                <SC.ArrowLeftIcon />
+                {localization.page.prev}
+              </>
+            }
+            nextLabel={
+              <>
+                {localization.page.next}
+                <SC.ArrowRightIcon />
+              </>
+            }
+          />
+        </SC.Pagination>
+
         <SC.InfoBox>
           <SC.Text>
             <h3>{localization.requestsPage.requestData}</h3>
