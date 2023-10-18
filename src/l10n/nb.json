@@ -1185,6 +1185,7 @@
     "requestDataInfo": "Ønsker du å etterspørre data, APIer eller annet du kan gjøre det her. Du blir sendt til datalandsbyen.no.",
     "newestToOldest": "Nyeste til eldste",
     "mostVotes": "Flest stemmer",
-    "mostViews": "Flest visninger"
+    "mostViews": "Flest visninger",
+    "view": "Visning"
   }
 }

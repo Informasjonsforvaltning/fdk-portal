@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import Link from '@fellesdatakatalog/link';
 import Button from '@fellesdatakatalog/button';
+import Select from 'react-select';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
@@ -12,6 +13,7 @@ import { formatDate } from '../../lib/date-utils';
 import Banner from '../../components/banner';
 import localization from '../../lib/localization';
 import env from '../../env';
+import { SelectOption } from '../../types';
 
 const { FDK_COMMUNITY_BASE_URI } = env;
 interface Props extends CommunityProps {}
@@ -26,6 +28,21 @@ const RequestsPage: FC<Props> = ({
 
   const notDeletedRequests = topics?.filter(topic => topic.deleted === 0);
   const [search, setSearch] = useState('');
+
+  const sortOptions: SelectOption[] = [
+    {
+      value: 'timestamp',
+      label: localization.requestsPage.newestToOldest
+    },
+    {
+      value: 'upvotes',
+      label: localization.requestsPage.mostVotes
+    },
+    {
+      value: 'topic.viewcount',
+      label: localization.requestsPage.mostViews
+    }
+  ];
 
   return (
     <>
@@ -54,28 +71,26 @@ const RequestsPage: FC<Props> = ({
           </SC.Button>
         </SC.FirstRow>
         <SC.FirstRow>
-          <SC.Row>
-            <Button
-              onClick={() => searchRequestsRequested(search, 'timestamp')}
-            >
-              {localization.requestsPage.newestToOldest}
-            </Button>
-            <Button onClick={() => searchRequestsRequested(search, 'upvotes')}>
-              {localization.requestsPage.mostVotes}
-            </Button>
-            <Button
-              onClick={() => searchRequestsRequested(search, 'topic.viewcount')}
-            >
-              {localization.requestsPage.mostViews}
-            </Button>
-          </SC.Row>
-          <SC.Row>
-            <input
-              type='text'
-              onChange={event => setSearch(event.target.value)}
+          <div>
+            <p>{localization.requestsPage.view}</p>
+            <Select
+              options={sortOptions}
+              onChange={value => searchRequestsRequested(search, value?.value)}
+              defaultValue={sortOptions[0]}
             />
-            <Button onClick={() => searchRequestsRequested(search)}>Søk</Button>
-          </SC.Row>
+          </div>
+          <div>
+            <p>Fritekssøk i titler</p>
+            <SC.Row>
+              <input
+                type='text'
+                onChange={event => setSearch(event.target.value)}
+              />
+              <Button onClick={() => searchRequestsRequested(search)}>
+                Søk
+              </Button>
+            </SC.Row>
+          </div>
         </SC.FirstRow>
         <SC.RequestsTitleRow>
           <SC.RequestTitle>
