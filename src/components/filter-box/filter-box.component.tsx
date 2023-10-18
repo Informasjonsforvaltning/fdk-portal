@@ -10,7 +10,7 @@ import localization from '../../lib/localization';
 import { FilterOption } from '../filter-option/filter-option.component';
 import './filter-box.scss';
 
-import { FilterSearchOption } from '../../types';
+import { SelectOption } from '../../types';
 
 interface Props {
   htmlKey?: number;
@@ -197,7 +197,7 @@ export class FilterBox extends React.Component<Props, State> {
           label: label || localization.facet.formatType.UNKNOWN
         };
       })
-      .sort((a: FilterSearchOption, b: FilterSearchOption) =>
+      .sort((a: SelectOption, b: SelectOption) =>
         a.label.localeCompare(b.label)
       );
 

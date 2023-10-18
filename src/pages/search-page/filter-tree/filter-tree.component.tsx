@@ -12,7 +12,7 @@ import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
 import './filter-tree.scss';
 
-import type { FilterSearchOption } from '../../../types';
+import type { SelectOption } from '../../../types';
 import type { FilterChange } from '../../../components/filter-box/filter-box.component';
 import TreeView from '../../../components/treeview';
 
@@ -271,13 +271,13 @@ export const FilterTree: FC<Props> = ({
     label: `${getNameFromNode(node, referenceDataItems)}`
   });
 
-  const mapNodeToFilterSearchOptions = (node: any): FilterSearchOption[] =>
+  const mapNodeToFilterSearchOptions = (node: any): SelectOption[] =>
     node.children
       ? [
           getFilterSearchOption(node),
           ...(node.children.flatMap(
             mapNodeToFilterSearchOptions
-          ) as FilterSearchOption[])
+          ) as SelectOption[])
         ]
       : [getFilterSearchOption(node)];
 
