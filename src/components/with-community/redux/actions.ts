@@ -47,16 +47,16 @@ export function searchTopicsFailed(message: string) {
 }
 
 export function searchRequestsRequested(
-  queryTerm: string,
+  queryTerm: string | undefined,
   page: string | undefined,
-  sortOption?: string
+  sortOption: string | undefined
 ) {
   return {
     type: SEARCH_REQUESTS_REQUESTED,
     payload: {
       queryTerm,
-      sortOption,
-      page
+      page,
+      sortOption
     }
   };
 }

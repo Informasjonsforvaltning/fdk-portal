@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import Link from '@fellesdatakatalog/link';
 import Button from '@fellesdatakatalog/button';
 import Select from 'react-select';
+import ReactPaginate from 'react-paginate';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
@@ -14,7 +15,6 @@ import Banner from '../../components/banner';
 import localization from '../../lib/localization';
 import env from '../../env';
 import { SelectOption } from '../../types';
-import ReactPaginate from 'react-paginate';
 
 const { FDK_COMMUNITY_BASE_URI } = env;
 interface Props extends CommunityProps {}
@@ -25,11 +25,12 @@ const RequestsPage: FC<Props> = ({
   communityActions: { searchRequestsRequested }
 }) => {
   useEffect(() => {
-    searchRequestsRequested('', '1', undefined);
+    searchRequestsRequested(undefined, '1', undefined);
   }, []);
 
   const notDeletedRequests = requests?.filter(topic => topic.deleted === 0);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState<string>();
+  const [sortOption, setSortOption] = useState<string>();
 
   const sortOptions: SelectOption[] = [
     {
@@ -77,9 +78,10 @@ const RequestsPage: FC<Props> = ({
             <p>{localization.requestsPage.view}</p>
             <Select
               options={sortOptions}
-              onChange={value =>
-                searchRequestsRequested(search, value?.value, undefined)
-              }
+              onChange={value => {
+                searchRequestsRequested(search, undefined, value?.value);
+                setSortOption(value?.value);
+              }}
               defaultValue={sortOptions[0]}
             />
           </div>
@@ -125,10 +127,14 @@ const RequestsPage: FC<Props> = ({
           ))}
         <SC.Pagination>
           <ReactPaginate
-            pageCount={pagination.pageCount}
+            pageCount={pagination.pageCount ? pagination.pageCount : 0}
             activeClassName='active'
             onPageChange={data => {
-              searchRequestsRequested(search, (data.selected + 1).toString());
+              searchRequestsRequested(
+                search,
+                (data.selected + 1).toString(),
+                sortOption
+              );
             }}
             previousLabel={
               <>

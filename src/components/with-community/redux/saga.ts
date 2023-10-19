@@ -9,6 +9,7 @@ import * as actions from './actions';
 
 import {
   extractTopicsFromSearch,
+  getAllRequests,
   getRecentPosts,
   getTopicById,
   pruneNodebbTemplateTags,
@@ -16,7 +17,11 @@ import {
   searchCommunityRequests
 } from '../../../api/community-api/search';
 
-import type { CommunityPost, CommunityTopic } from '../../../types';
+import type {
+  CommunityCategory,
+  CommunityPost,
+  CommunityTopic
+} from '../../../types';
 
 function* searchTopicsRequested({
   payload: { queryTerm }
@@ -53,13 +58,19 @@ function* searchRequestsRequested({
       sortOption
     );
     const { pagination } = postHits;
+
+    const allRequestTopics: CommunityCategory = yield call(getAllRequests);
+    const { topics } = allRequestTopics;
+
     const requests: CommunityTopic[] = (
       (yield all(
-        extractTopicsFromSearch(postHits).map(({ tid }) =>
-          call(getTopicById, tid)
+        postHits.posts.map(({ tid }) =>
+          topics.filter(topic => topic.tid === tid)
         )
       )) as CommunityTopic[]
-    ).filter(Boolean);
+    )
+      .filter(Boolean)
+      .flat();
 
     if (requests.length > 0) {
       yield put(actions.searchRequestsSucceeded(requests, pagination));
