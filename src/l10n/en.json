@@ -192,8 +192,8 @@
   },
   "page": {
     "navigation": "Sidenavigering",
-    "next": "Neste side",
-    "prev": "Forrige side",
+    "next": "Next page",
+    "prev": "Previous page",
     "resultsTab": "All",
     "datasetTab": "Datasets",
     "apiTab": "APIs",
@@ -224,6 +224,7 @@
     "standard": "Standard",
     "showmore": "Show more",
     "showfewer": "Show fewer",
+    "showAll": "Show all",
     "publishers": {
       "STAT": "Central authority",
       "FYLKE": "County",

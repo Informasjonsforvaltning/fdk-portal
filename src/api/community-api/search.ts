@@ -68,7 +68,7 @@ export const searchCommunityRequests = (
     )
     .then(({ data }) => data);
 
-export const getAllRequests = () =>
+export const getRequestCategory = () =>
   axios
     .get(`${FDK_COMMUNITY_BASE_URI}/api/category/6`)
     .then(({ data }) => data);
