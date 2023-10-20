@@ -3,14 +3,15 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import {
   SEARCH_TOPICS_REQUESTED,
   GET_RECENT_POSTS_REQUESTED,
-  SEARCH_REQUESTS_REQUESTED
+  SEARCH_REQUESTS_REQUESTED,
+  GET_REQUEST_CATEGORY_REQUESTED
 } from './action-types';
 import * as actions from './actions';
 
 import {
   extractTopicsFromSearch,
-  getAllRequests,
   getRecentPosts,
+  getRequestCategory,
   getTopicById,
   pruneNodebbTemplateTags,
   searchCommunity,
@@ -47,6 +48,20 @@ function* searchTopicsRequested({
   }
 }
 
+function* getRequestCategoryRequested() {
+  try {
+    const requestCategory: CommunityCategory = yield call(getRequestCategory);
+
+    if (requestCategory !== null && requestCategory !== undefined) {
+      yield put(actions.getRequestCategorySucceeded(requestCategory));
+    } else {
+      yield put(actions.getRequestCategoryFailed(''));
+    }
+  } catch (e: any) {
+    yield put(actions.getRequestCategoryFailed(e.message));
+  }
+}
+
 function* searchRequestsRequested({
   payload: { queryTerm, sortOption, page }
 }: ReturnType<typeof actions.searchRequestsRequested>) {
@@ -59,7 +74,7 @@ function* searchRequestsRequested({
     );
     const { pagination } = postHits;
 
-    const allRequestTopics: CommunityCategory = yield call(getAllRequests);
+    const allRequestTopics: CommunityCategory = yield call(getRequestCategory);
     const { topics } = allRequestTopics;
 
     const requests: CommunityTopic[] = (
@@ -106,6 +121,7 @@ export default function* saga() {
   yield all([
     takeLatest(SEARCH_TOPICS_REQUESTED, searchTopicsRequested),
     takeLatest(GET_RECENT_POSTS_REQUESTED, recentPostsRequested),
-    takeLatest(SEARCH_REQUESTS_REQUESTED, searchRequestsRequested)
+    takeLatest(SEARCH_REQUESTS_REQUESTED, searchRequestsRequested),
+    takeLatest(GET_REQUEST_CATEGORY_REQUESTED, getRequestCategoryRequested)
   ]);
 }

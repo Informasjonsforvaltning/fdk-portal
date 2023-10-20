@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import ArrowRightIconBase from '@fellesdatakatalog/icons/assets/svg/arrow-right-stroke.svg';
 import ArrowLeftIconBase from '@fellesdatakatalog/icons/assets/svg/arrow-left-stroke.svg';
+import ChevronDown from '@fellesdatakatalog/icons/assets/svg/chevron-double-down-stroke.svg';
+import ChevronUp from '@fellesdatakatalog/icons/assets/svg/chevron-double-up-stroke.svg';
 
 const RequestRow = styled.div`
   display: flex;
@@ -65,6 +67,9 @@ const Row = styled.div`
 
 const Button = styled.div`
   height: fit-content;
+  width: fit-content;
+  padding-bottom: 20px;
+  padding-top: 20px;
 `;
 
 const InfoBox = styled.div`
@@ -97,7 +102,29 @@ const ArrowLeftIcon = styled(ArrowLeftIconBase)`
   }
 `;
 
+const ChevronDownIcon = styled(ChevronDown)`
+  width: 16px;
+  height: 16px;
+  margin-left: 0.25em;
+  & * {
+    stroke: #fff;
+  }
+`;
+
+const ChevronUpIcon = styled(ChevronUp)`
+  width: 16px;
+  height: 16px;
+  margin-left: 0.25em;
+  & * {
+    stroke: #fff;
+  }
+`;
+
 const Pagination = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   & > ul {
     display: flex;
     justify-content: center;
@@ -107,6 +134,10 @@ const Pagination = styled.div`
   & > ul > li {
     padding: 10px;
   }
+`;
+
+const Banner = styled.div`
+  padding-top: 20px;
 `;
 
 export default {
@@ -123,5 +154,8 @@ export default {
   FirstRow,
   ArrowLeftIcon,
   ArrowRightIcon,
-  Pagination
+  Pagination,
+  Banner,
+  ChevronDownIcon,
+  ChevronUpIcon
 };

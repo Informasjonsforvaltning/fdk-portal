@@ -12,7 +12,10 @@ import {
   RESET_POSTS,
   SEARCH_REQUESTS_REQUESTED,
   SEARCH_REQUESTS_SUCCEEDED,
-  SEARCH_REQUESTS_FAILED
+  SEARCH_REQUESTS_FAILED,
+  GET_REQUEST_CATEGORY_REQUESTED,
+  GET_REQUEST_CATEGORY_SUCCEEDED,
+  GET_REQUEST_CATEGORY_FAILED
 } from './action-types';
 
 import type { Actions } from '../../../types';
@@ -22,7 +25,8 @@ const initialState = fromJS({
   multiplePages: false,
   posts: [],
   requests: [],
-  pagination: {}
+  pagination: {},
+  requestCategory: {}
 });
 
 export default function reducer(
@@ -47,12 +51,21 @@ export default function reducer(
     case RESET_POSTS:
       return state.set('posts', fromJS([]));
     case SEARCH_REQUESTS_REQUESTED:
-      return state.set('topics', fromJS([]));
+      return state.set('requests', fromJS([]));
     case SEARCH_REQUESTS_SUCCEEDED:
       return state
         .set('requests', fromJS(action.payload.requests))
         .set('pagination', fromJS(action.payload.pagination));
     case SEARCH_REQUESTS_FAILED:
+    case GET_REQUEST_CATEGORY_REQUESTED:
+      return state.set('requestCategory', fromJS([]));
+    case GET_REQUEST_CATEGORY_SUCCEEDED:
+      return state.set(
+        'requestCategory',
+        fromJS(action.payload.requestCategory)
+      );
+    case GET_REQUEST_CATEGORY_FAILED:
+
     default:
       return state;
   }

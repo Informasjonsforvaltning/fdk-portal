@@ -14,7 +14,8 @@ import { formatDate } from '../../lib/date-utils';
 import Banner from '../../components/banner';
 import localization from '../../lib/localization';
 import env from '../../env';
-import { SelectOption } from '../../types';
+import { CommunityTopic, SelectOption } from '../../types';
+import { SearchField } from '../../components/search-field/search-field';
 
 const { FDK_COMMUNITY_BASE_URI } = env;
 interface Props extends CommunityProps {}
@@ -22,15 +23,20 @@ interface Props extends CommunityProps {}
 const RequestsPage: FC<Props> = ({
   requests,
   pagination,
-  communityActions: { searchRequestsRequested }
+  requestCategory,
+  communityActions: { searchRequestsRequested, getRequestCategoryRequested }
 }) => {
   useEffect(() => {
     searchRequestsRequested(undefined, '1', undefined);
+    getRequestCategoryRequested();
   }, []);
 
-  const notDeletedRequests = requests?.filter(topic => topic.deleted === 0);
+  const notDeletedRequests = (topics: CommunityTopic[]) =>
+    topics?.filter(topic => topic.deleted === 0);
+
   const [search, setSearch] = useState<string>();
   const [sortOption, setSortOption] = useState<string>();
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const sortOptions: SelectOption[] = [
     {
@@ -49,7 +55,9 @@ const RequestsPage: FC<Props> = ({
 
   return (
     <>
-      <Banner title={localization.requestsPage.title} />
+      <SC.Banner>
+        <Banner title={localization.requestsPage.title} />
+      </SC.Banner>
       <main id='content' className='container'>
         <SC.FirstRow>
           <SC.InfoText>
@@ -88,17 +96,14 @@ const RequestsPage: FC<Props> = ({
           <div>
             <p>Fritekssøk i titler</p>
             <SC.Row>
-              <input
-                type='text'
-                onChange={event => setSearch(event.target.value)}
+              <SearchField
+                onSearchSubmit={s => {
+                  searchRequestsRequested(s, undefined, sortOption);
+                  setSearch(s);
+                }}
+                ariaLabel={localization.facet.search}
+                placeholder={localization.facet.search}
               />
-              <Button
-                onClick={() =>
-                  searchRequestsRequested(search, undefined, undefined)
-                }
-              >
-                Søk
-              </Button>
             </SC.Row>
           </div>
         </SC.FirstRow>
@@ -110,46 +115,65 @@ const RequestsPage: FC<Props> = ({
           <SC.RequestInfo>{localization.requestsPage.votes}</SC.RequestInfo>
           <SC.RequestInfo>{localization.requestsPage.views}</SC.RequestInfo>
         </SC.RequestsTitleRow>
-        {notDeletedRequests &&
-          notDeletedRequests.map(topic => (
-            <SC.RequestRow role='table' key={topic.cid}>
-              <SC.RequestLink
-                href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}
-              >
-                {topic.title}
-              </SC.RequestLink>
-              <SC.RequestInfo>
-                {formatDate(new Date(topic.timestampISO))}
-              </SC.RequestInfo>
-              <SC.RequestInfo>{topic.upvotes}</SC.RequestInfo>
-              <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
-            </SC.RequestRow>
-          ))}
-        <SC.Pagination>
-          <ReactPaginate
-            pageCount={pagination.pageCount ? pagination.pageCount : 0}
-            activeClassName='active'
-            onPageChange={data => {
-              searchRequestsRequested(
-                search,
-                (data.selected + 1).toString(),
-                sortOption
-              );
-            }}
-            previousLabel={
-              <>
-                <SC.ArrowLeftIcon />
-                {localization.page.prev}
-              </>
-            }
-            nextLabel={
-              <>
-                {localization.page.next}
-                <SC.ArrowRightIcon />
-              </>
-            }
-          />
-        </SC.Pagination>
+        {notDeletedRequests(showAll ? requestCategory.topics : requests)
+          .length > 0 &&
+          notDeletedRequests(showAll ? requestCategory.topics : requests).map(
+            topic => (
+              <SC.RequestRow role='table' key={topic.cid}>
+                <SC.RequestLink
+                  href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}
+                >
+                  {topic.title}
+                </SC.RequestLink>
+                <SC.RequestInfo>
+                  {formatDate(new Date(topic.timestampISO))}
+                </SC.RequestInfo>
+                <SC.RequestInfo>{topic.upvotes}</SC.RequestInfo>
+                <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
+              </SC.RequestRow>
+            )
+          )}
+        {showAll && (
+          <SC.Pagination>
+            <Button onClick={() => setShowAll(false)}>
+              {localization.facet.showfewer} <SC.ChevronUpIcon />
+            </Button>
+          </SC.Pagination>
+        )}
+        {!showAll && (
+          <SC.Pagination>
+            <SC.Button>
+              <Button onClick={() => setShowAll(true)}>
+                {localization.facet.showAll}
+                <SC.ChevronDownIcon />
+              </Button>
+            </SC.Button>
+
+            <ReactPaginate
+              pageCount={pagination.pageCount ? pagination.pageCount : 0}
+              activeClassName='active'
+              onPageChange={data => {
+                searchRequestsRequested(
+                  search,
+                  (data.selected + 1).toString(),
+                  sortOption
+                );
+              }}
+              previousLabel={
+                <>
+                  <SC.ArrowLeftIcon />
+                  {localization.page.prev}
+                </>
+              }
+              nextLabel={
+                <>
+                  {localization.page.next}
+                  <SC.ArrowRightIcon />
+                </>
+              }
+            />
+          </SC.Pagination>
+        )}
 
         <SC.InfoBox>
           <SC.Text>
