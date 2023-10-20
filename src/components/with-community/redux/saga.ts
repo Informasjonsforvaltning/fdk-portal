@@ -9,6 +9,7 @@ import * as actions from './actions';
 
 import {
   extractTopicsFromSearch,
+  getAllRequests,
   getRecentPosts,
   getTopicById,
   pruneNodebbTemplateTags,
@@ -16,7 +17,11 @@ import {
   searchCommunityRequests
 } from '../../../api/community-api/search';
 
-import type { CommunityPost, CommunityTopic } from '../../../types';
+import type {
+  CommunityCategory,
+  CommunityPost,
+  CommunityTopic
+} from '../../../types';
 
 function* searchTopicsRequested({
   payload: { queryTerm }
@@ -43,30 +48,37 @@ function* searchTopicsRequested({
 }
 
 function* searchRequestsRequested({
-  payload: { queryTerm, sortOption }
+  payload: { queryTerm, sortOption, page }
 }: ReturnType<typeof actions.searchRequestsRequested>) {
   try {
     const postHits: CommunityPost = yield call(
       searchCommunityRequests,
       queryTerm,
+      page,
       sortOption
     );
-    const { multiplePages } = postHits;
-    const topics: CommunityTopic[] = (
+    const { pagination } = postHits;
+
+    const allRequestTopics: CommunityCategory = yield call(getAllRequests);
+    const { topics } = allRequestTopics;
+
+    const requests: CommunityTopic[] = (
       (yield all(
-        extractTopicsFromSearch(postHits).map(({ tid }) =>
-          call(getTopicById, tid)
+        postHits.posts.map(({ tid }) =>
+          topics.filter(topic => topic.tid === tid)
         )
       )) as CommunityTopic[]
-    ).filter(Boolean);
+    )
+      .filter(Boolean)
+      .flat();
 
-    if (topics.length > 0) {
-      yield put(actions.searchTopicsSucceeded(topics, multiplePages));
+    if (requests.length > 0) {
+      yield put(actions.searchRequestsSucceeded(requests, pagination));
     } else {
       yield put(actions.searchTopicsFailed(''));
     }
   } catch (e: any) {
-    yield put(actions.searchTopicsFailed(e.message));
+    yield put(actions.searchRequestsFailed(e.message));
   }
 }
 

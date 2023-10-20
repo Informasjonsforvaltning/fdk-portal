@@ -4,18 +4,15 @@ import { connect } from 'react-redux';
 
 import * as actions from './redux/actions';
 
-import type {
-  CommunityPost,
-  CommunityRequestCategory,
-  CommunityTopic
-} from '../../types';
+import type { CommunityPost, CommunityTopic, Pagination } from '../../types';
 
 export interface Props {
   topics: CommunityTopic[];
   multiplePages: boolean;
   posts: CommunityPost[];
   communityActions: typeof actions;
-  requests: CommunityRequestCategory;
+  requests: CommunityTopic[];
+  pagination: Pagination;
 }
 
 const withCommunity = (Component: ComponentType<any>) => {
@@ -25,7 +22,8 @@ const withCommunity = (Component: ComponentType<any>) => {
     topics: state.CommunityReducer.get('topics').toJS(),
     multiplePages: state.CommunityReducer.get('multiplePages'),
     posts: state.CommunityReducer.get('posts').toJS(),
-    requests: state.CommunityReducer.get('requests').toJS()
+    requests: state.CommunityReducer.get('requests').toJS(),
+    pagination: state.CommunityReducer.get('pagination').toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

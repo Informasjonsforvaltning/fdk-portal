@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import Link from '@fellesdatakatalog/link';
 import Button from '@fellesdatakatalog/button';
 import Select from 'react-select';
+import ReactPaginate from 'react-paginate';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
@@ -19,15 +20,17 @@ const { FDK_COMMUNITY_BASE_URI } = env;
 interface Props extends CommunityProps {}
 
 const RequestsPage: FC<Props> = ({
-  topics,
+  requests,
+  pagination,
   communityActions: { searchRequestsRequested }
 }) => {
   useEffect(() => {
-    searchRequestsRequested('');
+    searchRequestsRequested(undefined, '1', undefined);
   }, []);
 
-  const notDeletedRequests = topics?.filter(topic => topic.deleted === 0);
-  const [search, setSearch] = useState('');
+  const notDeletedRequests = requests?.filter(topic => topic.deleted === 0);
+  const [search, setSearch] = useState<string>();
+  const [sortOption, setSortOption] = useState<string>();
 
   const sortOptions: SelectOption[] = [
     {
@@ -75,7 +78,10 @@ const RequestsPage: FC<Props> = ({
             <p>{localization.requestsPage.view}</p>
             <Select
               options={sortOptions}
-              onChange={value => searchRequestsRequested(search, value?.value)}
+              onChange={value => {
+                searchRequestsRequested(search, undefined, value?.value);
+                setSortOption(value?.value);
+              }}
               defaultValue={sortOptions[0]}
             />
           </div>
@@ -86,7 +92,11 @@ const RequestsPage: FC<Props> = ({
                 type='text'
                 onChange={event => setSearch(event.target.value)}
               />
-              <Button onClick={() => searchRequestsRequested(search)}>
+              <Button
+                onClick={() =>
+                  searchRequestsRequested(search, undefined, undefined)
+                }
+              >
                 Søk
               </Button>
             </SC.Row>
@@ -115,6 +125,32 @@ const RequestsPage: FC<Props> = ({
               <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
             </SC.RequestRow>
           ))}
+        <SC.Pagination>
+          <ReactPaginate
+            pageCount={pagination.pageCount ? pagination.pageCount : 0}
+            activeClassName='active'
+            onPageChange={data => {
+              searchRequestsRequested(
+                search,
+                (data.selected + 1).toString(),
+                sortOption
+              );
+            }}
+            previousLabel={
+              <>
+                <SC.ArrowLeftIcon />
+                {localization.page.prev}
+              </>
+            }
+            nextLabel={
+              <>
+                {localization.page.next}
+                <SC.ArrowRightIcon />
+              </>
+            }
+          />
+        </SC.Pagination>
+
         <SC.InfoBox>
           <SC.Text>
             <h3>{localization.requestsPage.requestData}</h3>

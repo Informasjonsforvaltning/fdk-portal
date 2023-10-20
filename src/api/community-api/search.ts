@@ -40,23 +40,38 @@ export const extractTopicsFromSearch = (
   return uniqueTopics;
 };
 
-export const searchCommunityRequests = (
-  queryTerm: string,
-  sortOption?: string
+const buildCommunityRequestsQueryParams = (
+  queryTerm: string | undefined,
+  page: string | undefined,
+  sortOption: string | undefined
 ) => {
-  if (queryTerm.length > 0) {
-    return axios
-      .get(
-        `${FDK_COMMUNITY_BASE_URI}/api/search?term=${queryTerm}&in=titles&matchWords=all&categories[]=6&sortBy=${sortOption}&sortDirection=desc`
-      )
-      .then(({ data }) => data);
-  }
-  return axios
+  const params = new URLSearchParams();
+
+  if (queryTerm) params.append('term', queryTerm);
+  if (page) params.append('page', page);
+  if (sortOption) params.append('sortBy', sortOption);
+
+  return params.toString();
+};
+export const searchCommunityRequests = (
+  queryTerm: string | undefined,
+  page: string | undefined,
+  sortOption: string | undefined
+) =>
+  axios
     .get(
-      `${FDK_COMMUNITY_BASE_URI}/api/search?&categories[]=6&sortBy=${sortOption}&sortDirection=desc`
+      `${FDK_COMMUNITY_BASE_URI}/api/search?categories[]=6&sortDirection=desc&in=titles&matchWords=all&showAs=topics&${buildCommunityRequestsQueryParams(
+        queryTerm,
+        page,
+        sortOption
+      )}`
     )
     .then(({ data }) => data);
-};
+
+export const getAllRequests = () =>
+  axios
+    .get(`${FDK_COMMUNITY_BASE_URI}/api/category/6`)
+    .then(({ data }) => data);
 
 export const pruneNodebbTemplateTags = (raw_text: string) =>
   raw_text.replace(
