@@ -1188,6 +1188,7 @@
     "newestToOldest": "Newest to Oldest",
     "mostVotes": "Most Votes",
     "mostViews": "Most Views",
-    "view": "View"
+    "view": "View",
+    "search": "Free text search in titles"
   }
 }

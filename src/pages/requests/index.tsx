@@ -95,7 +95,7 @@ const RequestsPage: FC<Props> = ({
             />
           </div>
           <div>
-            <p>Fritekssøk i titler</p>
+            <p>{localization.requestsPage.search}</p>
             <SC.Row>
               <SearchField
                 onSearchSubmit={s => {

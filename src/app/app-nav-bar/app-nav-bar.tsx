@@ -21,7 +21,8 @@ import {
   PATHNAME_SPARQL,
   PATHNAME_ABOUT_DATASETS,
   PATHNAME_GUIDANCE,
-  PATHNAME_NEWS_ARCHIVE
+  PATHNAME_NEWS_ARCHIVE,
+  PATHNAME_REQUESTS
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
@@ -120,6 +121,9 @@ const fdkItems = () => [
       </SC.ListItem>
       <SC.ListItem key={localization.menu.sparql}>
         <Link href={PATHNAME_SPARQL}>{localization.menu.sparql}</Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.requests}>
+        <Link href={PATHNAME_REQUESTS}>{localization.menu.requests}</Link>
       </SC.ListItem>
     </DropdownMenu>
   </SC.ListItem>,
