@@ -85,6 +85,7 @@ const RequestsPage: FC<Props> = ({
           <div>
             <p>{localization.requestsPage.view}</p>
             <Select
+              aria-label={localization.requestsPage.view}
               options={sortOptions}
               onChange={value => {
                 searchRequestsRequested(search, undefined, value?.value);
