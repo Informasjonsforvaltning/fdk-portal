@@ -74,7 +74,7 @@ const RequestsPage: FC<Props> = ({
           <SC.Button>
             <Button
               onClick={() => {
-                window.location.href = `${FDK_COMMUNITY_BASE_URI}/category/6`;
+                window.open(`${FDK_COMMUNITY_BASE_URI}/category/6`);
               }}
             >
               {localization.requestsPage.createRequest}
@@ -182,7 +182,7 @@ const RequestsPage: FC<Props> = ({
           </SC.Text>
           <Button
             onClick={() => {
-              window.location.href = `${FDK_COMMUNITY_BASE_URI}/category/6`;
+              window.open(`${FDK_COMMUNITY_BASE_URI}/category/6`);
             }}
           >
             {localization.requestsPage.createRequest}
