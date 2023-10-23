@@ -166,7 +166,8 @@
     "aboutDataServices": "Om API-katalogen",
     "aboutConcepts": "Om begrepskatalogen",
     "aboutInformationModels": "Om informasjonsmodell-katalogen",
-    "ai": "Kunstig intelligens"
+    "ai": "Kunstig intelligens",
+    "requests": "Etterspørsler"
   },
   "query": {
     "intro": "Eksempel: kollektivtransport",

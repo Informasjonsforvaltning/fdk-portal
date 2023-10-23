@@ -166,7 +166,8 @@
     "aboutDataServices": "About data service catalog",
     "aboutConcepts": "About concept catalog",
     "aboutInformationModels": "About information model catalog",
-    "ai": "Artificial intelligence"
+    "ai": "Artificial intelligence",
+    "requests": "Requests"
   },
   "query": {
     "intro": "Example: public transport",

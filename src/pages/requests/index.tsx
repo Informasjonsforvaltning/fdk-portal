@@ -4,6 +4,7 @@ import Link from '@fellesdatakatalog/link';
 import Button from '@fellesdatakatalog/button';
 import Select from 'react-select';
 import ReactPaginate from 'react-paginate';
+import { Breadcrumb } from 'reactstrap';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
@@ -55,9 +56,8 @@ const RequestsPage: FC<Props> = ({
 
   return (
     <>
-      <SC.Banner>
-        <Banner title={localization.requestsPage.title} />
-      </SC.Banner>
+      <Breadcrumb />
+      <Banner title={localization.requestsPage.title} />
       <main id='content' className='container'>
         <SC.FirstRow>
           <SC.InfoText>
