@@ -24,7 +24,8 @@ import {
   PATHNAME_ABOUT_DATA_SERVICES,
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
-  PATHNAME_AI
+  PATHNAME_AI,
+  PATHNAME_REQUESTS
 } from '../../constants/constants';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import DataServiceBreadcrumb from './data-service-breadcrumb';
@@ -135,6 +136,10 @@ const routes = [
   {
     path: PATHNAME_AI,
     breadcrumb: () => <PathNameBreadcrumb pathName='ai' />
+  },
+  {
+    path: PATHNAME_REQUESTS,
+    breadcrumb: () => <PathNameBreadcrumb pathName='requests' />
   }
 ];
 
