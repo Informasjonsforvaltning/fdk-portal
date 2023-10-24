@@ -180,7 +180,6 @@
     "transportProviders": "For data providers",
     "transportAddData": "Add data",
     "transportDeclarationOfCompliance": "Declaration of Compliance"
-
   },
   "query": {
     "intro": "Example: public transport",
@@ -1186,5 +1185,20 @@
     "email": "E-mail:",
     "submitNewProject": "You can register new projects here:",
     "submit": "Register"
+  },
+  "requestsPage": {
+    "title": "Requests",
+    "ingress": "Here you will find an overview of all requests published in the {lenke}. You can subscribe to, vote on, or comment on requests.",
+    "requests": "Requests from the Data Community",
+    "votes": "Number of Votes",
+    "views": "Number of Views",
+    "createRequest": "Create request",
+    "requestData": "Request data",
+    "requestDataInfo": "Do you want to request data, APIs, or anything else you can do it here. You will be redirected to datalandsbyen.no.",
+    "newestToOldest": "Newest to Oldest",
+    "mostVotes": "Most Votes",
+    "mostViews": "Most Views",
+    "sort": "Sorting",
+    "search": "Free text search in titles"
   }
 }

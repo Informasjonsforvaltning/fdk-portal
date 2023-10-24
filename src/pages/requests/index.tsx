@@ -74,7 +74,9 @@ const RequestsPage: FC<Props> = ({
           <SC.Button>
             <Button
               onClick={() => {
-                window.open(`${FDK_COMMUNITY_BASE_URI}/category/6`);
+                window.open(
+                  `${FDK_COMMUNITY_BASE_URI}/topic/56/etterspørr-data-api`
+                );
               }}
             >
               {localization.requestsPage.createRequest}
@@ -83,9 +85,9 @@ const RequestsPage: FC<Props> = ({
         </SC.FirstRow>
         <SC.FirstRow>
           <div>
-            <p>{localization.requestsPage.view}</p>
+            <p>{localization.requestsPage.sort}</p>
             <Select
-              aria-label={localization.requestsPage.view}
+              aria-label={localization.requestsPage.sort}
               options={sortOptions}
               onChange={value => {
                 searchRequestsRequested(search, undefined, value?.value);
@@ -101,6 +103,7 @@ const RequestsPage: FC<Props> = ({
                 onSearchSubmit={s => {
                   searchRequestsRequested(s, undefined, sortOption);
                   setSearch(s);
+                  setShowAll(false);
                 }}
                 ariaLabel={localization.facet.search}
                 placeholder={localization.facet.search}
@@ -141,7 +144,7 @@ const RequestsPage: FC<Props> = ({
             </Button>
           </SC.Pagination>
         )}
-        {!showAll && (
+        {!showAll && !search && (
           <SC.Pagination>
             <SC.Button>
               <Button onClick={() => setShowAll(true)}>
@@ -183,7 +186,9 @@ const RequestsPage: FC<Props> = ({
           </SC.Text>
           <Button
             onClick={() => {
-              window.open(`${FDK_COMMUNITY_BASE_URI}/category/6`);
+              window.open(
+                `${FDK_COMMUNITY_BASE_URI}/topic/56/etterspørr-data-api`
+              );
             }}
           >
             {localization.requestsPage.createRequest}
