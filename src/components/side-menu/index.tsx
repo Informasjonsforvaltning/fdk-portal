@@ -4,8 +4,9 @@ import { NavLink as RouteLink } from 'react-router-dom';
 import SC from './styled';
 
 interface MenuItem {
-  id: string;
+  id?: string;
   title: string;
+  items?: MenuItem[];
 }
 
 interface Props {
@@ -16,10 +17,25 @@ interface Props {
 const SideMenu: FC<Props> = ({ menuItems = [], isSticky, ...props }) => (
   <SC.Menu $isSticky={isSticky} {...props}>
     <ul>
-      {menuItems.map(({ id, title: menuItemTitle }) => (
-        <SC.MenuItem key={id}>
-          <RouteLink to={id}>{menuItemTitle}</RouteLink>
-        </SC.MenuItem>
+      {menuItems.map(({ id, title: menuItemTitle, items }) => (
+        <>
+          <SC.MenuItem key={id} isGroup={items && items.length > 0}>
+            {id ? (
+              <RouteLink to={id}>{menuItemTitle}</RouteLink>
+            ) : (
+              menuItemTitle
+            )}
+          </SC.MenuItem>
+          {items?.map(({ id: subId, title: subMenuItemTitle }) => (
+            <SC.SubMenuItem key={subId}>
+              {subId ? (
+                <RouteLink to={subId}>{subMenuItemTitle}</RouteLink>
+              ) : (
+                subMenuItemTitle
+              )}
+            </SC.SubMenuItem>
+          ))}
+        </>
       ))}
     </ul>
   </SC.Menu>

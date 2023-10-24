@@ -24,7 +24,16 @@ import {
   PATHNAME_ABOUT_DATA_SERVICES,
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
-  PATHNAME_AI
+  PATHNAME_AI,
+  PATHNAME_TRANSPORT_GENERAL_INFO_ABOUT_THE_PORTAL,
+  PATHNAME_TRANSPORT_GENERAL_ITS,
+  PATHNAME_TRANSPORT_GENERAL_ROLES,
+  PATHNAME_TRANSPORT_USERS_NEWS,
+  PATHNAME_TRANSPORT_USERS_WHERE,
+  PATHNAME_TRANSPORT_USERS_WHAT,
+  PATHNAME_TRANSPORT_USERS_DATA_IN_NAP,
+  PATHNAME_TRANSPORT_PROVIDERS_ADD,
+  PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE
 } from '../../constants/constants';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import DataServiceBreadcrumb from './data-service-breadcrumb';
@@ -135,6 +144,54 @@ const routes = [
   {
     path: PATHNAME_AI,
     breadcrumb: () => <PathNameBreadcrumb pathName='ai' />
+  },
+  {
+    path: PATHNAME_TRANSPORT_GENERAL_ROLES,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='transportRolesAndResponsibilies' />
+    )
+  },
+  {
+    path: PATHNAME_TRANSPORT_GENERAL_ITS,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='transportItsDirectiveAndDelegatedRegulations' />
+    )
+  },
+  {
+    path: PATHNAME_TRANSPORT_GENERAL_INFO_ABOUT_THE_PORTAL,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='transportInformationAboutThePortal' />
+    )
+  },
+  {
+    path: PATHNAME_TRANSPORT_USERS_NEWS,
+    breadcrumb: () => <PathNameBreadcrumb pathName='transportNews' />
+  },
+  {
+    path: PATHNAME_TRANSPORT_USERS_WHERE,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='transportWhereDoIFindTheData' />
+    )
+  },
+  {
+    path: PATHNAME_TRANSPORT_USERS_WHAT,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='transportWhatDataIsAvailable' />
+    )
+  },
+  {
+    path: PATHNAME_TRANSPORT_USERS_DATA_IN_NAP,
+    breadcrumb: () => <PathNameBreadcrumb pathName='transportDataInNap' />
+  },
+  {
+    path: PATHNAME_TRANSPORT_PROVIDERS_ADD,
+    breadcrumb: () => <PathNameBreadcrumb pathName='transportAddData' />
+  },
+  {
+    path: PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='transportDeclarationOfCompliance' />
+    )
   }
 ];
 
