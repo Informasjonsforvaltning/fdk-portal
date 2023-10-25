@@ -84,7 +84,7 @@ const ImageText = styled.span`
 `;
 
 const SideMenu = styled(SideMenuBase)`
-  min-width: 180px;
+  min-width: 260px;
   ${onMobileView} {
     display: none;
     width: auto;

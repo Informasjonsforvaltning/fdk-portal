@@ -167,7 +167,20 @@
     "aboutConcepts": "About concept catalog",
     "aboutInformationModels": "About information model catalog",
     "ai": "Artificial intelligence",
-    "requests": "Requests"
+    "requests": "Requests",
+    "transportGeneral": "General information",
+    "transportInformationAboutThePortal": "Information about the portal",
+    "transportRolesAndResponsibilies": "Roles and responsibilities",
+    "transportItsDirectiveAndDelegatedRegulations": "ITS directive and delegated regulations",
+    "transportUsers": "For data users",
+    "transportNews": "News",
+    "transportWhereDoIFindTheData": "Where do I find the data?",
+    "transportWhatDataIsAvailable": "What data is available?",
+    "transportDataInNap": "Data in NAP",
+    "transportProviders": "For data providers",
+    "transportAddData": "Add data",
+    "transportDeclarationOfCompliance": "Declaration of Compliance"
+
   },
   "query": {
     "intro": "Example: public transport",
@@ -193,15 +206,14 @@
   },
   "page": {
     "navigation": "Sidenavigering",
-    "next": "Next page",
-    "prev": "Previous page",
+    "next": "Neste side",
+    "prev": "Forrige side",
     "resultsTab": "All",
     "datasetTab": "Datasets",
     "apiTab": "APIs",
     "termTab": "Concepts",
     "informationModelTab": "Information models",
-    "serviceTab": "Services and events",
-    "requests": "Requests"
+    "serviceTab": "Services and events"
   },
   "hitstats": {
     "nosearch": "Search among {0} datasets, {1} APIs, {2} concepts and {3} information models",
@@ -225,7 +237,6 @@
     "standard": "Standard",
     "showmore": "Show more",
     "showfewer": "Show fewer",
-    "showAll": "Show all",
     "publishers": {
       "STAT": "Central authority",
       "FYLKE": "County",
@@ -1175,20 +1186,5 @@
     "email": "E-mail:",
     "submitNewProject": "You can register new projects here:",
     "submit": "Register"
-  },
-  "requestsPage": {
-    "title": "Requests",
-    "ingress": "Here you will find an overview of all requests published in the {lenke}. You can subscribe to, vote on, or comment on requests.",
-    "requests": "Requests from the Data Community",
-    "votes": "Number of Votes",
-    "views": "Number of Views",
-    "createRequest": "Create request",
-    "requestData": "Request data",
-    "requestDataInfo": "Do you want to request data, APIs, or anything else you can do it here. You will be redirected to datalandsbyen.no.",
-    "newestToOldest": "Newest to Oldest",
-    "mostVotes": "Most Votes",
-    "mostViews": "Most Views",
-    "view": "View",
-    "search": "Free text search in titles"
   }
 }
