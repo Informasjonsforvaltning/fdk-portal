@@ -32,6 +32,7 @@ const RequestsPage: FC<Props> = ({
     getRequestCategoryRequested();
   }, []);
 
+  const requestDataGuideUri = 'topic/56/etterspørr-data-api';
   const notDeletedRequests = (topics: CommunityTopic[]) =>
     topics?.filter(topic => topic.deleted === 0);
 
@@ -74,9 +75,7 @@ const RequestsPage: FC<Props> = ({
           <SC.Button>
             <Button
               onClick={() => {
-                window.open(
-                  `${FDK_COMMUNITY_BASE_URI}/topic/56/etterspørr-data-api`
-                );
+                window.open(`${FDK_COMMUNITY_BASE_URI}/${requestDataGuideUri}`);
               }}
             >
               {localization.requestsPage.createRequest}
@@ -186,9 +185,7 @@ const RequestsPage: FC<Props> = ({
           </SC.Text>
           <Button
             onClick={() => {
-              window.open(
-                `${FDK_COMMUNITY_BASE_URI}/topic/56/etterspørr-data-api`
-              );
+              window.open(`${FDK_COMMUNITY_BASE_URI}/${requestDataGuideUri}}`);
             }}
           >
             {localization.requestsPage.createRequest}
