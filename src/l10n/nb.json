@@ -1185,5 +1185,20 @@
     "email": "E-post:",
     "submitNewProject": "Her kan du melde inn nye prosjekter:",
     "submit": "Meld inn"
+  },
+  "requestsPage": {
+    "title": "Etterspørsler",
+    "ingress": "Her finner du en oversikt over alle etterspørsler publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspørsler.",
+    "requests": "Etterspørsler fra Datalandsbyen",
+    "votes": "Antall stemmer",
+    "views": "Antall visninger",
+    "createRequest": "Lag etterspørsel",
+    "requestData": "Etterspør data",
+    "requestDataInfo": "Ønsker du å etterspørre data, API-er eller annet du kan gjøre det her. Du blir sendt til Datalandsbyen.",
+    "newestToOldest": "Nyeste til eldste",
+    "mostVotes": "Flest stemmer",
+    "mostViews": "Flest visninger",
+    "sort": "Sortering",
+    "search": "Fritekstsøk i titler"
   }
 }
