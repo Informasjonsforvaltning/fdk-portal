@@ -46,8 +46,17 @@ import {
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
   PATHNAME_AI,
-  PATHNAME_TRANSPORT,
-  PATHNAME_REQUESTS
+  PATHNAME_REQUESTS,
+  PATHNAME_TRANSPORT_GENERAL,
+  PATHNAME_TRANSPORT_GENERAL_INFO_ABOUT_THE_PORTAL,
+  PATHNAME_TRANSPORT_GENERAL_ITS,
+  PATHNAME_TRANSPORT_GENERAL_ROLES,
+  PATHNAME_TRANSPORT_USERS_NEWS,
+  PATHNAME_TRANSPORT_USERS_DATA_IN_NAP,
+  PATHNAME_TRANSPORT_USERS_WHAT,
+  PATHNAME_TRANSPORT_USERS_WHERE,
+  PATHNAME_TRANSPORT_PROVIDERS_ADD,
+  PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
@@ -59,8 +68,8 @@ import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import InformationPage from '../pages/cms-information-page';
 import TransportPage from '../pages/cms-transport-page';
-import RequestsPage from '../pages/requests';
 import { AiProjectPage } from '../pages/ai-project-page';
+import RequestsPage from '../pages/requests';
 import { parseSearchParams } from '../lib/location-history-helper';
 import routes from '../routes';
 
@@ -115,8 +124,17 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
     [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage,
     [PATHNAME_AI]: AiProjectPage,
-    [PATHNAME_TRANSPORT]: TransportPage,
-    [PATHNAME_REQUESTS]: RequestsPage
+    [PATHNAME_REQUESTS]: RequestsPage,
+    [PATHNAME_TRANSPORT_GENERAL]: TransportPage,
+    [PATHNAME_TRANSPORT_GENERAL_INFO_ABOUT_THE_PORTAL]: TransportPage,
+    [PATHNAME_TRANSPORT_GENERAL_ITS]: TransportPage,
+    [PATHNAME_TRANSPORT_GENERAL_ROLES]: TransportPage,
+    [PATHNAME_TRANSPORT_USERS_NEWS]: TransportPage,
+    [PATHNAME_TRANSPORT_USERS_DATA_IN_NAP]: TransportPage,
+    [PATHNAME_TRANSPORT_USERS_WHAT]: TransportPage,
+    [PATHNAME_TRANSPORT_USERS_WHERE]: TransportPage,
+    [PATHNAME_TRANSPORT_PROVIDERS_ADD]: TransportPage,
+    [PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE]: TransportPage
   };
 
   return (

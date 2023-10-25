@@ -167,6 +167,18 @@
     "aboutConcepts": "Om begrepskatalogen",
     "aboutInformationModels": "Om informasjonsmodell-katalogen",
     "ai": "Kunstig intelligens",
+    "transportGeneral": "Generell informasjon",
+    "transportInformationAboutThePortal": "Informasjon om portalen",
+    "transportRolesAndResponsibilies": "Roller og ansvar",
+    "transportItsDirectiveAndDelegatedRegulations": "ITS direktivet og forordninger",
+    "transportUsers": "For databrukere",
+    "transportNews": "Nyheter",
+    "transportWhereDoIFindTheData": "Hvor finner jeg data",
+    "transportWhatDataIsAvailable": "Hva finnes av data",
+    "transportDataInNap": "Data i NAP",
+    "transportProviders": "For datatilbydere",
+    "transportAddData": "Tilby data",
+    "transportDeclarationOfCompliance": "Samsvarserklæring",
     "requests": "Etterspørsler"
   },
   "query": {
@@ -200,8 +212,7 @@
     "apiTab": "API-er",
     "termTab": "Begreper",
     "informationModelTab": "Informasjonsmodeller",
-    "serviceTab": "Tjenester og hendelser",
-    "requests": "Etterspørsler"
+    "serviceTab": "Tjenester og hendelser"
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API-er, {2} begreper og {3} informasjonsmodeller",
@@ -225,7 +236,6 @@
     "standard": "Standard",
     "showmore": "Vis flere",
     "showfewer": "Vis færre",
-    "showAll": "Vis alt",
     "publishers": {
       "STAT": "Stat",
       "FYLKE": "Fylke",
@@ -1175,20 +1185,5 @@
     "email": "E-post:",
     "submitNewProject": "Her kan du melde inn nye prosjekter:",
     "submit": "Meld inn"
-  },
-  "requestsPage": {
-    "title": "Etterspørsler",
-    "ingress": "Her finner du en oversikt over alle etterspørsler publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspørsler.",
-    "requests": "Etterspørsler fra Datalandsbyen",
-    "votes": "Antall stemmer",
-    "views": "Antall visninger",
-    "createRequest": "Lag etterspørsel",
-    "requestData": "Etterspør data",
-    "requestDataInfo": "Ønsker du å etterspørre data, APIer eller annet du kan gjøre det her. Du blir sendt til datalandsbyen.no.",
-    "newestToOldest": "Nyeste til eldste",
-    "mostVotes": "Flest stemmer",
-    "mostViews": "Flest visninger",
-    "view": "Visning",
-    "search": "Fritekssøk i titler"
   }
 }

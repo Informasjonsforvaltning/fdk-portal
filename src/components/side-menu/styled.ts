@@ -38,10 +38,23 @@ const Menu = styled.nav<Props>`
     `}
 `;
 
-const MenuItem = styled.li`
+const MenuItem = styled.li<{ isGroup?: boolean }>`
   align-items: center;
   display: flex;
   list-style: none;
+
+  ${({ isGroup = false }) =>
+    isGroup
+      ? css`
+          font-weight: ${t.fontWeight('FW500')};
+        `
+      : css`
+          &:hover {
+            background-color: ${({ theme }) => theme.light};
+            border-radius: 5px;
+            flex: 1;
+          }
+        `}
 
   & > a {
     color: ${({ theme }) => theme.dark};
@@ -57,16 +70,14 @@ const MenuItem = styled.li`
     flex: 1;
   }
 
-  &:hover {
-    background-color: ${({ theme }) => theme.light};
-    border-radius: 5px;
-    flex: 1;
-  }
-
   ${onMobileView} {
     margin: 0;
     padding: 12px 0;
   }
 `;
 
-export default { Menu, MenuItem };
+const SubMenuItem = styled(MenuItem)`
+  margin-left: 1em;
+`;
+
+export default { Menu, MenuItem, SubMenuItem };

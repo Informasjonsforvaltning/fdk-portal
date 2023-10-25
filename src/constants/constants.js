@@ -33,8 +33,20 @@ export const PATHNAME_COMMUNITY_COMMENTS = '/category/12/kommentartråder';
 export const PATHNAME_AI = '/kunstig-intelligens';
 export const EXTERNAL_AI_PAGE =
   'https://www.digdir.no/kunstig-intelligens/kunstig-intelligens-i-offentlig-sektor/4276';
-export const PATHNAME_TRANSPORT = '/transport';
 export const PATHNAME_REQUESTS = '/requests';
+export const PATHNAME_TRANSPORT = '/transport';
+export const PATHNAME_TRANSPORT_GENERAL = `${PATHNAME_TRANSPORT}/general`;
+export const PATHNAME_TRANSPORT_GENERAL_ROLES = `${PATHNAME_TRANSPORT_GENERAL}/roles-and-responsibilities`;
+export const PATHNAME_TRANSPORT_GENERAL_ITS = `${PATHNAME_TRANSPORT_GENERAL}/its-directive-and-delegated-regulations`;
+export const PATHNAME_TRANSPORT_GENERAL_INFO_ABOUT_THE_PORTAL = `${PATHNAME_TRANSPORT_GENERAL}/information-about-the-portal`;
+export const PATHNAME_TRANSPORT_USERS = `${PATHNAME_TRANSPORT}/users`;
+export const PATHNAME_TRANSPORT_USERS_NEWS = `${PATHNAME_TRANSPORT_USERS}/news`;
+export const PATHNAME_TRANSPORT_USERS_WHERE = `${PATHNAME_TRANSPORT_USERS}/where-do-i-find-the-data`;
+export const PATHNAME_TRANSPORT_USERS_WHAT = `${PATHNAME_TRANSPORT_USERS}/what-data-is-available`;
+export const PATHNAME_TRANSPORT_USERS_DATA_IN_NAP = `${PATHNAME_TRANSPORT_USERS}/data-in-nap`;
+export const PATHNAME_TRANSPORT_PROVIDERS = `${PATHNAME_TRANSPORT}/providers`;
+export const PATHNAME_TRANSPORT_PROVIDERS_ADD = `${PATHNAME_TRANSPORT_PROVIDERS}/add-data`;
+export const PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE = `${PATHNAME_TRANSPORT_PROVIDERS}/declaration-of-compliance`;
 
 export const PARAGRAPH__BODY = 'paragraph--body';
 export const PARAGRAPH__IMAGE = 'paragraph--image';
