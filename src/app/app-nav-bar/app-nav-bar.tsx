@@ -13,7 +13,6 @@ import {
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
-  PATHNAME_ABOUT_NAP,
   PATHNAME_AI,
   PATHNAME_HOME_NAP,
   PATHNAME_ORGANIZATIONS,
@@ -21,7 +20,9 @@ import {
   PATHNAME_SPARQL,
   PATHNAME_ABOUT_DATASETS,
   PATHNAME_GUIDANCE,
-  PATHNAME_NEWS_ARCHIVE
+  PATHNAME_NEWS_ARCHIVE,
+  PATHNAME_REQUESTS,
+  PATHNAME_ABOUT_NAP
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
@@ -70,7 +71,7 @@ const fdkItems = () => [
   <SC.ListItem key={localization.menu.about}>
     <DropdownMenu
       openOnHover
-      chevron={false}
+      chevron
       mobileView={false}
       title={localization.menu.about}
     >
@@ -104,7 +105,7 @@ const fdkItems = () => [
   <SC.ListItem key={localization.menu.tools}>
     <DropdownMenu
       openOnHover
-      chevron={false}
+      chevron
       mobileView={false}
       title={localization.menu.tools}
     >
@@ -120,6 +121,9 @@ const fdkItems = () => [
       </SC.ListItem>
       <SC.ListItem key={localization.menu.sparql}>
         <Link href={PATHNAME_SPARQL}>{localization.menu.sparql}</Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.requests}>
+        <Link href={PATHNAME_REQUESTS}>{localization.menu.requests}</Link>
       </SC.ListItem>
     </DropdownMenu>
   </SC.ListItem>,

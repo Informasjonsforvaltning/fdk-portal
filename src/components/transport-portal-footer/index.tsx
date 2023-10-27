@@ -3,6 +3,7 @@ import { Link as RouteLink } from 'react-router-dom';
 import Link from '@fellesdatakatalog/link';
 
 import {
+  PATHNAME_ABOUT_NAP,
   PATHNAME_ABOUT_REGISTRATION,
   PATHNAME_DATASETS
 } from '../../constants/constants';
@@ -31,9 +32,7 @@ const TransportPortalFooter: FC<Props> = () => (
           <Link to={PATHNAME_DATASETS} as={RouteLink}>
             {translations.footer.searchDatasets}
           </Link>
-          <Link href='https://transportportal.atlas.vegvesen.no/no/gen/about/'>
-            {translations.menu.aboutNap}
-          </Link>
+          <Link href={PATHNAME_ABOUT_NAP}>{translations.menu.aboutNap}</Link>
           <Link to={PATHNAME_ABOUT_REGISTRATION} as={RouteLink}>
             {translations.footer.guideToRegister}
           </Link>

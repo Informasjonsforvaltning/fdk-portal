@@ -40,6 +40,39 @@ export const extractTopicsFromSearch = (
   return uniqueTopics;
 };
 
+const buildCommunityRequestsQueryParams = (
+  queryTerm: string | undefined,
+  page: string | undefined,
+  sortOption: string | undefined
+) => {
+  const params = new URLSearchParams();
+
+  if (queryTerm) params.append('term', queryTerm);
+  if (page) params.append('page', page);
+  if (sortOption) params.append('sortBy', sortOption);
+
+  return params.toString();
+};
+export const searchCommunityRequests = (
+  queryTerm: string | undefined,
+  page: string | undefined,
+  sortOption: string | undefined
+) =>
+  axios
+    .get(
+      `${FDK_COMMUNITY_BASE_URI}/api/search?categories[]=6&sortDirection=desc&in=titles&matchWords=all&showAs=topics&${buildCommunityRequestsQueryParams(
+        queryTerm,
+        page,
+        sortOption
+      )}`
+    )
+    .then(({ data }) => data);
+
+export const getRequestCategory = () =>
+  axios
+    .get(`${FDK_COMMUNITY_BASE_URI}/api/category/6`)
+    .then(({ data }) => data);
+
 export const pruneNodebbTemplateTags = (raw_text: string) =>
   raw_text.replace(
     /(?:\|\s)(?:\[{2})(.*?)(?:\]{2}:)(.*?)(?:\s\|)/g,

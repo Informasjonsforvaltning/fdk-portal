@@ -97,6 +97,7 @@
   "relatedBy": "Relatert av",
   "collaborationBetween": "Et samarbeid mellom:",
   "dateCreated": "Dato opprettet",
+  "date": "Dato",
   "head": {
     "title": "Felles datakatalog",
     "description": "Felles datakatalog – data.norge.no er det offentlige nettstedet som gir oversikt over beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet blir levert av ulike virksomheter, offentlige og private. Det er Digitaliseringsdirektoratet som er ansvarlig for drift og utvikling av nettstedet."
@@ -165,7 +166,20 @@
     "aboutDataServices": "Om API-katalogen",
     "aboutConcepts": "Om begrepskatalogen",
     "aboutInformationModels": "Om informasjonsmodell-katalogen",
-    "ai": "Kunstig intelligens"
+    "ai": "Kunstig intelligens",
+    "transportGeneral": "Generell informasjon",
+    "transportInformationAboutThePortal": "Informasjon om portalen",
+    "transportRolesAndResponsibilies": "Roller og ansvar",
+    "transportItsDirectiveAndDelegatedRegulations": "ITS direktivet og forordninger",
+    "transportUsers": "For databrukere",
+    "transportNews": "Nyheter",
+    "transportWhereDoIFindTheData": "Hvor finner jeg data",
+    "transportWhatDataIsAvailable": "Hva finnes av data",
+    "transportDataInNap": "Data i NAP",
+    "transportProviders": "For datatilbydere",
+    "transportAddData": "Tilby data",
+    "transportDeclarationOfCompliance": "Samsvarserklæring",
+    "requests": "Etterspørsler"
   },
   "query": {
     "intro": "Eksempel: kollektivtransport",
@@ -1171,5 +1185,20 @@
     "email": "E-post:",
     "submitNewProject": "Her kan du melde inn nye prosjekter:",
     "submit": "Meld inn"
+  },
+  "requestsPage": {
+    "title": "Etterspørsler",
+    "ingress": "Her finner du en oversikt over alle etterspørsler publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspørsler.",
+    "requests": "Etterspørsler fra Datalandsbyen",
+    "votes": "Antall stemmer",
+    "views": "Antall visninger",
+    "createRequest": "Lag etterspørsel",
+    "requestData": "Etterspør data",
+    "requestDataInfo": "Ønsker du å etterspørre data, API-er eller annet du kan gjøre det her. Du blir sendt til Datalandsbyen.",
+    "newestToOldest": "Nyeste til eldste",
+    "mostVotes": "Flest stemmer",
+    "mostViews": "Flest visninger",
+    "sort": "Sortering",
+    "search": "Fritekstsøk i titler"
   }
 }

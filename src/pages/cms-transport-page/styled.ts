@@ -9,8 +9,7 @@ import HamburgerIconBase from '../../images/hamburger-menu-stroke.svg';
 const onMobileView = '@media (max-width: 900px)';
 const customBreakingPoint = '@media (max-width: 992px)';
 
-const InformationPage = styled.article`
-  background-color: ${({ theme: t }) => t.lighter};
+const TransportPage = styled.article`
   display: flex;
   gap: ${theme.spacing('S16', Unit.EM)};
   word-break: break-word;
@@ -41,6 +40,7 @@ const Article = styled.main`
   flex-direction: column;
   gap: ${theme.spacing('S10')};
   z-index: 5;
+  overflow: hidden;
 `;
 
 const Title = styled.h1`
@@ -83,7 +83,7 @@ const ImageText = styled.span`
 `;
 
 const SideMenu = styled(SideMenuBase)`
-  min-width: 180px;
+  min-width: 260px;
   ${onMobileView} {
     display: none;
     width: auto;
@@ -107,10 +107,14 @@ const SideMenuSmall = styled(SideMenuBase)`
         a {
           background-color: transparent !important;
           color: ${({ theme: t }) => t.dark};
-          margin-left: 20px;
           &.active {
             color: ${({ theme: t }) => t.dark} !important;
           }
+        }
+
+        a,
+        span {
+          margin-left: 20px;
         }
       }
     }
@@ -154,7 +158,7 @@ const HamburgerIcon = styled(HamburgerIconBase)`
 `;
 
 export default {
-  InformationPage,
+  TransportPage,
   Aside,
   Article,
   Title,

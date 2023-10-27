@@ -165,7 +165,20 @@
     "aboutDataServices": "Om API-katalogen",
     "aboutConcepts": "Om omgrepskatalogen",
     "aboutInformationModels": "Om informasjonsmodellkatalogen",
-    "ai": "Kunstig intelligens"
+    "ai": "Kunstig intelligens",
+    "requests": "Etterspurnadar",
+    "transportGeneral": "Generell informasjon",
+    "transportInformationAboutThePortal": "Informasjon om portalen",
+    "transportRolesAndResponsibilies": "Roller og ansvar",
+    "transportItsDirectiveAndDelegatedRegulations": "ITS direktivet og forordninger",
+    "transportUsers": "For databrukere",
+    "transportNews": "Nyheter",
+    "transportWhereDoIFindTheData": "Hvor finner jeg data",
+    "transportWhatDataIsAvailable": "Hva finnes av data",
+    "transportDataInNap": "Data i NAP",
+    "transportProviders": "For datatilbydere",
+    "transportAddData": "Tilby data",
+    "transportDeclarationOfCompliance": "Samsvarserklæring"
   },
   "query": {
     "intro": "Eksempel: offentleg transport",
@@ -1172,5 +1185,20 @@
     "email": "E-post:",
     "submitNewProject": "Her kan du melde inn nye prosjekt:",
     "submit": "Meld inn"
+  },
+  "requestsPage": {
+    "title": "Etterspurnadar",
+    "ingress": "Her finn du ei oversikt over alle etterspurnadar publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspurnadar.",
+    "requests": "Etterspurnadar frå Datalandsbyen",
+    "votes": "Antall stemmer",
+    "views": "Antall visningar",
+    "createRequest": "Lag etterspurnad",
+    "requestData": "Etterspør data",
+    "requestDataInfo": "Ynskjer du å etterspørre data, APIer eller anna kan du gjere det her. Du blir sendt til datalandsbyen.no.",
+    "newestToOldest": "Nyeste til eldste",
+    "mostVotes": "Flest stemmer",
+    "mostViews": "Flest visningar",
+    "sort": "Sortering",
+    "search": "Fritekstsøk i titler"
   }
 }

@@ -929,6 +929,7 @@ export interface CommunityCategory {
   bgColor: string;
   color: string;
   disabled: number;
+  topics: CommunityTopic[];
 }
 
 export interface UserFeedbackPagination {
@@ -949,7 +950,7 @@ export interface CommunityTopic {
   viewcount: number;
   postercount: number;
   scheduled: number;
-  deleted: number;
+  deleted: 1 | 0;
   deleterUid: number;
   titleRaw: string;
   locked: number;
@@ -999,7 +1000,7 @@ export interface CommunityUser {
 
 export interface CommunityPost {
   pid: string;
-  tid: string;
+  tid: number;
   toPid?: string;
   content: string;
   uid: string | number;
@@ -1017,6 +1018,13 @@ export interface CommunityPost {
   index: number;
   page?: number;
   multiplePages: boolean;
+  pagination: Pagination;
+  posts: CommunityPost[];
+}
+
+export interface Pagination {
+  currentPage: number;
+  pageCount: number;
 }
 
 export interface CommunityTeaser {
@@ -1094,7 +1102,7 @@ export interface CommentThread {
   timestamp: string;
   content: string;
 }
-export interface FilterSearchOption {
+export interface SelectOption {
   value: string;
   label: string;
 }
