@@ -11,6 +11,7 @@ const env = window.env || {
 // env.SEARCH_HOST = 'https://staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_FULLTEXT_HOST = 'https://search.staging.fellesdatakatalog.digdir.no';
 // env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
+// env.FDK_CMS_BASE_URI = 'https://cms.staging.fellesdatakatalog.digdir.no';
 // env.ORGANIZATION_HOST =
 //   'https://organization-bff.staging.fellesdatakatalog.digdir.no';
 // env.ORGANIZATION_CATALOG_URI =
