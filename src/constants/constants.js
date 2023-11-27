@@ -13,6 +13,7 @@ export const PATHNAME_EVENTS = '/events';
 export const PATHNAME_REPORTS = '/reports';
 export const PATHNAME_ABOUT = '/about';
 export const PATHNAME_ABOUT_REGISTRATION = '/about-registration';
+export const PATHNAME_FANCY_ARTICLE_V2 = '/fancy-article-v2';
 export const PATHNAME_NEWS_ARTICLE = '/news';
 export const PATHNAME_NEWS_ARTICLE_V2 = '/news-v2';
 export const PATHNAME_NEWS_ARCHIVE = '/news-archive';
