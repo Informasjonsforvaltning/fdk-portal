@@ -697,7 +697,8 @@ const DatasetDetailsPage: FC<Props> = ({
             </KeyValueList>
           </ContentSection>
         )}
-        {referencedConcepts.length > 0 && (
+        {(referencedConcepts.length > 0 ||
+          subjectsNotInRefConcepts.length > 0) && (
           <ContentSection
             id='concept-references'
             title={
