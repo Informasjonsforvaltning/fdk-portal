@@ -35,6 +35,7 @@ import {
   PATHNAME_EVENTS,
   PATHNAME_NEWS_ARTICLE,
   PATHNAME_NEWS_ARTICLE_V2,
+  PATHNAME_FANCY_ARTICLE_V2,
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
@@ -64,6 +65,7 @@ import '../assets/css/bootstrap-override.scss';
 import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-page';
+import { FancyArticlePageV2 } from '../pages/fancy-article-page-v2/fancy-article-page';
 import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import InformationPage from '../pages/cms-information-page';
@@ -113,6 +115,7 @@ export function App({ language, onChangeLanguage }) {
     [`${PATHNAME_EVENTS}/:eventId`]: EventDetailsPage,
     [`${PATHNAME_NEWS_ARTICLE}/:id`]: NewsArticle,
     [`${PATHNAME_NEWS_ARTICLE_V2}/:id`]: NewsArticlePageV2,
+    [`${PATHNAME_FANCY_ARTICLE_V2}/:id`]: FancyArticlePageV2,
     [PATHNAME_REPORTS]: ReportPage,
     [PATHNAME_ABOUT]: CmsArticlePage,
     [PATHNAME_ABOUT_REGISTRATION]: CmsArticlePage,

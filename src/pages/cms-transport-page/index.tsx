@@ -4,7 +4,6 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { CircularProgress } from '@mui/material';
-import env from '../../env';
 import localization from '../../lib/localization';
 
 import { useGetTransportArticleQuery } from '../../api/generated/cms/graphql';
@@ -35,10 +34,11 @@ import { themeNAP } from '../../app/theme';
 import SC from './styled';
 import YoutubeEmbed from '../../components/youtube-embed';
 import { Entity } from '../../types/enums';
+import { getConfig } from '../../config';
 
 interface Props extends RouteComponentProps {}
 
-const { FDK_CMS_BASE_URI } = env;
+const FDK_CMS_BASE_URI = getConfig().cmsV2Api.host;
 
 const articleIds: { [pathname: string]: string } = {
   [PATHNAME_TRANSPORT_GENERAL]: '2',
