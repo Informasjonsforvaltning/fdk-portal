@@ -13,7 +13,6 @@ import SC from './styled';
 import withAiProjects, {
   Props as AiProjectProps
 } from '../../components/with-ai-projects';
-import { EXTERNAL_AI_PAGE } from '../../constants/constants';
 
 interface Props extends AiProjectProps {}
 
@@ -40,12 +39,7 @@ const Page: FC<Props> = ({
         </div>
       </div>
       <SC.TextBox>
-        <p>
-          {localization.aiPage.aiPreamble}
-          <Link href={EXTERNAL_AI_PAGE} external>
-            {localization.aiPage.guidancePages}
-          </Link>
-        </p>
+        <p>{localization.aiPage.aiPreamble}</p>
       </SC.TextBox>
 
       <div className='row mb-5'>
