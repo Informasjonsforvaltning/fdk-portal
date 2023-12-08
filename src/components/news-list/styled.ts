@@ -10,7 +10,7 @@ const NewsList = styled.div`
 
 const Link = styled(LinkBase)`
   font-size: ${themeFDK.fontSize('FS16', Unit.REM)};
-  font-weight: ${themeFDK.fontWeight('FW700')};
+  font-weight: ${themeFDK.fontWeight('FW500')};
   margin-top: ${themeFDK.spacing('S8')};
 `;
 

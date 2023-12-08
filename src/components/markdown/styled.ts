@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ReactMarkdownBase from 'react-markdown';
 
 const ReactMarkdown = styled(ReactMarkdownBase)`
-  p {
+  & > p {
     padding-bottom: 1em;
   }
 

@@ -22,7 +22,7 @@ const CommunityPosts = styled.div`
 const Link = styled(LinkBase)`
   padding-left: ${theme.spacing('S10')};
   font-size: ${theme.fontSize('FS16', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
   margin-top: ${theme.spacing('S8')};
 `;
 

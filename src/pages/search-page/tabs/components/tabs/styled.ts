@@ -101,7 +101,7 @@ const BetaRibbon = styled.span`
   transform: rotate(45deg);
   padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
   font-size: ${theme.fontSize('FS14', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
   color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   background: ${theme.colour(Colour.YELLOW, 'Y30')};
 `;

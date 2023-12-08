@@ -119,7 +119,7 @@ const BetaRibbon = styled.span<InvertedColorProps>`
   transform: rotate(45deg);
   padding: ${fdkTheme.spacing('S4')} ${fdkTheme.spacing('S40')};
   font-size: ${fdkTheme.fontSize('FS12', Unit.REM)};
-  font-weight: ${fdkTheme.fontWeight('FW700')};
+  font-weight: ${fdkTheme.fontWeight('FW500')};
   color: ${({ inverted }) =>
     inverted
       ? fdkTheme.colour(Colour.RED, 'R60')

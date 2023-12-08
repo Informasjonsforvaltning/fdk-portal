@@ -15,7 +15,7 @@ export default css`
   }
 
   body {
-    background: ${theme.colour(Colour.NEUTRAL, 'N15')};
+    background: ${theme.colour(Colour.NEUTRAL, 'N0')};
   }
 
   * {

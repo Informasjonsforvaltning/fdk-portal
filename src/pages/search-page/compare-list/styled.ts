@@ -11,7 +11,7 @@ const CompareList = styled.div`
 const BoxHeader = styled.h3`
   margin-bottom: ${theme.spacing('S10')};
   font-size: ${theme.fontSize('FS20', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
 `;
 
 const CompareLink = styled(Link)`
