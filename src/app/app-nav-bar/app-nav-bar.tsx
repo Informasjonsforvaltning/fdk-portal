@@ -13,12 +13,15 @@ import {
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
+  PATHNAME_ABOUT_DATASETS,
+  PATHNAME_ABOUT_DATA_SERVICES,
+  PATHNAME_ABOUT_CONCEPTS,
+  PATHNAME_ABOUT_INFORMATIONMODELS,
   PATHNAME_AI,
   PATHNAME_HOME_NAP,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLISHING,
   PATHNAME_SPARQL,
-  PATHNAME_ABOUT_DATASETS,
   PATHNAME_GUIDANCE,
   PATHNAME_NEWS_ARCHIVE,
   PATHNAME_REQUESTS,
@@ -80,9 +83,24 @@ const fdkItems = () => [
           {localization.menu.about}
         </Link>
       </SC.ListItem>
-      <SC.ListItem key={localization.menu.aboutCatalogs}>
+      <SC.ListItem key={localization.menu.aboutDatasets}>
         <Link as={RouteLink} to={PATHNAME_ABOUT_DATASETS}>
-          {localization.menu.aboutCatalogs}
+          {localization.menu.aboutDatasets}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.aboutDataServices}>
+        <Link as={RouteLink} to={PATHNAME_ABOUT_DATA_SERVICES}>
+          {localization.menu.aboutDataServices}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.aboutConcepts}>
+        <Link as={RouteLink} to={PATHNAME_ABOUT_CONCEPTS}>
+          {localization.menu.aboutConcepts}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.aboutInformationModels}>
+        <Link as={RouteLink} to={PATHNAME_ABOUT_INFORMATIONMODELS}>
+          {localization.menu.aboutInformationModels}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.guidance}>
@@ -226,43 +244,47 @@ const Logo = getConfig().useDemoLogo ? <SC.DemoLogo /> : <SC.Logo />;
 export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => (
   <ThemeProvider theme={isTransportportal ? themeNAP : themeFDK}>
     <SC.Header>
-      <SC.Container role='navigation'>
-        <Link
-          title={
-            isTransportportal ? localization.linkToNap : localization.linkToFdk
-          }
-          href={isTransportportal ? PATHNAME_HOME_NAP : '/'}
-        >
-          {isTransportportal ? <SC.NapLogo /> : Logo}
-        </Link>
-        <SC.ContentWrapper>
-          <SC.NavigationLinks>
-            {isTransportportal ? transportItems() : fdkItems()}
-          </SC.NavigationLinks>
-
-          <DropdownMenu
-            ariaLabel='language navigation'
-            mobileView={false}
-            chevron
-            title={localization.lang.chosenLanguage}
-            titleLang={localization.getLanguage() === 'en' ? 'no' : 'en'}
+      <div className='container'>
+        <SC.Nav role='navigation'>
+          <Link
+            title={
+              isTransportportal
+                ? localization.linkToNap
+                : localization.linkToFdk
+            }
+            href={isTransportportal ? PATHNAME_HOME_NAP : '/'}
           >
-            {languageButtons({ onChangeLanguage })}
+            {isTransportportal ? <SC.NapLogo /> : Logo}
+          </Link>
+          <SC.ContentWrapper>
+            <SC.NavigationLinks>
+              {isTransportportal ? transportItems() : fdkItems()}
+            </SC.NavigationLinks>
+
+            <DropdownMenu
+              ariaLabel='language navigation'
+              mobileView={false}
+              chevron
+              title={localization.lang.chosenLanguage}
+              titleLang={localization.getLanguage() === 'en' ? 'no' : 'en'}
+            >
+              {languageButtons({ onChangeLanguage })}
+            </DropdownMenu>
+          </SC.ContentWrapper>
+          <DropdownMenu
+            ariaLabel='mobile navigation'
+            mobileView
+            chevron={false}
+            title={localization.app.menu}
+          >
+            {isTransportportal ? transportItems() : fdkItemsMobile()}
+            <SC.ListItem>
+              {localization.lang.chosenLanguage}
+              <ul>{languageButtons({ onChangeLanguage })}</ul>
+            </SC.ListItem>
           </DropdownMenu>
-        </SC.ContentWrapper>
-        <DropdownMenu
-          ariaLabel='mobile navigation'
-          mobileView
-          chevron={false}
-          title={localization.app.menu}
-        >
-          {isTransportportal ? transportItems() : fdkItemsMobile()}
-          <SC.ListItem>
-            {localization.lang.chosenLanguage}
-            <ul>{languageButtons({ onChangeLanguage })}</ul>
-          </SC.ListItem>
-        </DropdownMenu>
-      </SC.Container>
+        </SC.Nav>
+      </div>
     </SC.Header>
   </ThemeProvider>
 );

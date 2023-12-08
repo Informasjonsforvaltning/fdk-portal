@@ -21,14 +21,14 @@ const BetaRibbon = styled.span`
   right: -33px;
   transform: rotate(45deg);
   padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
   color: ${theme.colour(Colour.BLUE, 'B60')};
   background: ${theme.colour(Colour.YELLOW, 'Y30')};
 `;
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
 
   @media (max-width: 900px) {
     & {
@@ -40,7 +40,7 @@ const Title = styled.h1`
 
 const Subtitle = styled.h2`
   font-size: ${theme.fontSize('FS24', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
 `;
 
 const Section = styled.section`
@@ -62,7 +62,7 @@ const MetadataCellContents = styled.div`
   & > span {
     min-width: 40px;
     margin-left: ${theme.spacing('S8')};
-    font-weight: ${theme.fontWeight('FW700')};
+    font-weight: ${theme.fontWeight('FW500')};
   }
 `;
 
@@ -111,7 +111,7 @@ const Table = styled.table`
     }
 
     color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-    font-weight: ${theme.fontWeight('FW700')};
+    font-weight: ${theme.fontWeight('FW500')};
 
     ${() =>
       isTransportportal
@@ -271,7 +271,7 @@ const RatingSummary = styled.div`
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
   border-radius: 4px;
   font-size: ${theme.fontSize('FS20', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
 
   & > div {
     flex: 1;
@@ -310,7 +310,7 @@ const Question = styled.div`
 
   & > h3 {
     font-size: ${theme.fontSize('FS24', Unit.REM)};
-    font-weight: ${theme.fontWeight('FW700')};
+    font-weight: ${theme.fontWeight('FW500')};
   }
 
   & > p {

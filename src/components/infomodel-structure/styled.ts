@@ -38,7 +38,7 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
 
   ${SC.ExpansionPanel.HeadContent} {
     font-size: ${theme.fontSize('FS20', Unit.REM)};
-    font-weight: ${theme.fontWeight('FW700')};
+    font-weight: ${theme.fontWeight('FW500')};
     color: ${theme.colour(Colour.VIOLET, 'V50')};
 
     ${({ showWithoutHeadAndPadding }) =>

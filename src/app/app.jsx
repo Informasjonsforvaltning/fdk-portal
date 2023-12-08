@@ -39,13 +39,13 @@ import {
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
-  PATHNAME_GUIDANCE,
-  PATHNAME_GUIDANCE_METADATA,
-  PATHNAME_SPARQL,
   PATHNAME_ABOUT_DATASETS,
   PATHNAME_ABOUT_DATA_SERVICES,
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
+  PATHNAME_GUIDANCE,
+  PATHNAME_GUIDANCE_METADATA,
+  PATHNAME_SPARQL,
   PATHNAME_AI,
   PATHNAME_REQUESTS,
   PATHNAME_TRANSPORT_GENERAL,
@@ -57,7 +57,8 @@ import {
   PATHNAME_TRANSPORT_USERS_WHAT,
   PATHNAME_TRANSPORT_USERS_WHERE,
   PATHNAME_TRANSPORT_PROVIDERS_ADD,
-  PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE
+  PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE,
+  PATHNAME_ABOUT_HARVESTING
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
@@ -66,7 +67,6 @@ import { NewsArticle } from '../pages/news-article-page/news-article-page';
 import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-page';
 import { FancyArticlePageV2 } from '../pages/fancy-article-page-v2/fancy-article-page';
-import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import InformationPage from '../pages/cms-information-page';
 import TransportPage from '../pages/cms-transport-page';
@@ -117,15 +117,16 @@ export function App({ language, onChangeLanguage }) {
     [`${PATHNAME_NEWS_ARTICLE_V2}/:id`]: NewsArticlePageV2,
     [`${PATHNAME_FANCY_ARTICLE_V2}/:id`]: FancyArticlePageV2,
     [PATHNAME_REPORTS]: ReportPage,
-    [PATHNAME_ABOUT]: CmsArticlePage,
-    [PATHNAME_ABOUT_REGISTRATION]: CmsArticlePage,
-    [PATHNAME_GUIDANCE]: CmsArticlePage,
-    [PATHNAME_GUIDANCE_METADATA]: CmsArticlePage,
+    [PATHNAME_ABOUT]: InformationPage,
+    [PATHNAME_ABOUT_REGISTRATION]: InformationPage,
+    [PATHNAME_GUIDANCE]: InformationPage,
+    [PATHNAME_GUIDANCE_METADATA]: InformationPage,
     [PATHNAME_ORGANIZATIONS]: OrganizationsRouter,
     [PATHNAME_ABOUT_DATASETS]: InformationPage,
     [PATHNAME_ABOUT_DATA_SERVICES]: InformationPage,
     [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
     [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage,
+    [PATHNAME_ABOUT_HARVESTING]: InformationPage,
     [PATHNAME_AI]: AiProjectPage,
     [PATHNAME_REQUESTS]: RequestsPage,
     [PATHNAME_TRANSPORT_GENERAL]: TransportPage,

@@ -8,7 +8,7 @@ const ContainerHeader = styled.h4`
   border-radius: 3px;
 
   background-color: ${theme.colour(Colour.NEUTRAL, 'N15')};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
   font-size: ${theme.fontSize('FS20', Unit.REM)}
   line-height: 2.4;
   font-family: ${theme.fontFamily()};

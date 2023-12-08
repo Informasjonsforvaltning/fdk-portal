@@ -31,7 +31,7 @@ const Info = styled.div`
 `;
 
 const TopicTitle = styled.a`
-  font-weight: ${themeFDK.fontWeight('FW700')};
+  font-weight: ${themeFDK.fontWeight('FW500')};
   text-decoration: underline;
 
   &:hover {
@@ -56,7 +56,7 @@ const Statistics = styled.ul`
 `;
 
 const BigNumber = styled.span`
-  font-weight: ${themeFDK.fontWeight('FW700')};
+  font-weight: ${themeFDK.fontWeight('FW500')};
   font-size: ${theme.fontSize('FS16', Unit.REM)};
 `;
 

@@ -17,7 +17,7 @@ const PublishingPage = styled.article`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
 `;
 
 const Description = styled.p`
@@ -60,7 +60,7 @@ const MethodContainer = styled.div`
 
   & > h2 {
     font-size: ${theme.fontSize('FS28', Unit.REM)};
-    font-weight: ${theme.fontWeight('FW700')};
+    font-weight: ${theme.fontWeight('FW500')};
   }
 
   & > p {
@@ -171,7 +171,7 @@ const RegisterIllustration = styled(RegisterIllustrationSVG)`
 `;
 
 const HarvestData = styled(MethodContainer)`
-  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  background: ${theme.colour(Colour.NEUTRAL, 'N15')};
 `;
 
 const HarvestIllustration = styled(HarvestIllustrationSVG)`
@@ -246,7 +246,7 @@ const InformationBox = styled.div`
 
   & > h3 {
     font-size: ${theme.fontSize('FS20', Unit.REM)};
-    font-weight: ${theme.fontWeight('FW700')};
+    font-weight: ${theme.fontWeight('FW500')};
     border-bottom: 2px solid ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
 

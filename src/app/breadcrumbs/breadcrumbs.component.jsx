@@ -35,7 +35,11 @@ import {
   PATHNAME_TRANSPORT_USERS_DATA_IN_NAP,
   PATHNAME_TRANSPORT_PROVIDERS_ADD,
   PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE,
-  PATHNAME_REQUESTS
+  PATHNAME_REQUESTS,
+  PATHNAME_ABOUT_HARVESTING,
+  PATHNAME_ABOUT_REGISTRATION,
+  PATHNAME_TERMS_OF_USE,
+  PATHNAME_PUBLISHING
 } from '../../constants/constants';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import DataServiceBreadcrumb from './data-service-breadcrumb';
@@ -75,10 +79,6 @@ const routes = [
     breadcrumb: InformationModelBreadcrumb
   },
   { path: '/about', breadcrumb: () => <PathNameBreadcrumb pathName='about' /> },
-  {
-    path: '/about-registration',
-    breadcrumb: () => <PathNameBreadcrumb pathName='aboutRegistration' />
-  },
   {
     path: PATHNAME_REPORTS,
     breadcrumb: () => <PathNameBreadcrumb pathName='reports' />
@@ -142,6 +142,30 @@ const routes = [
   {
     path: PATHNAME_ABOUT_INFORMATIONMODELS,
     breadcrumb: () => <PathNameBreadcrumb pathName='aboutInformationModels' />
+  },
+  {
+    path: PATHNAME_ABOUT_HARVESTING,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='aboutHarvestingDataEndpoints' />
+    )
+  },
+  {
+    path: `${PATHNAME_PUBLISHING}${PATHNAME_ABOUT_HARVESTING}`,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='aboutHarvestingDataEndpoints' />
+    )
+  },
+  {
+    path: PATHNAME_ABOUT_REGISTRATION,
+    breadcrumb: () => <PathNameBreadcrumb pathName='aboutRegistration' />
+  },
+  {
+    path: `${PATHNAME_PUBLISHING}${PATHNAME_ABOUT_REGISTRATION}`,
+    breadcrumb: () => <PathNameBreadcrumb pathName='aboutRegistration' />
+  },
+  {
+    path: `${PATHNAME_PUBLISHING}${PATHNAME_TERMS_OF_USE}`,
+    breadcrumb: () => <PathNameBreadcrumb pathName='termsOfUse' />
   },
   {
     path: PATHNAME_AI,

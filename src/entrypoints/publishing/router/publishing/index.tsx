@@ -8,10 +8,10 @@ import { PATHNAME_PUBLISHING } from '../../../../constants/constants';
 const components: any = {
   [PATHNAME_PUBLISHING]: lazyWithRetry(() => import(`./pages/publishing-page`)),
   [`${PATHNAME_PUBLISHING}/about-registration`]: lazyWithRetry(
-    () => import(`./pages/about-registration-page`)
+    () => import('./pages/about-registration-page')
   ),
   [`${PATHNAME_PUBLISHING}/about-harvesting`]: lazyWithRetry(
-    () => import(`./pages/about-harvesting-page`)
+    () => import('./pages/about-harvesting-page')
   ),
   [`${PATHNAME_PUBLISHING}/terms-of-use`]: lazyWithRetry(
     () => import(`./pages/terms-of-use-page`)

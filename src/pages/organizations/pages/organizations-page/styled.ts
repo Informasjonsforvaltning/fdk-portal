@@ -150,7 +150,7 @@ const SortRow = styled.div`
 
   & ${Title} {
     padding-left: 1.5em;
-    font-weight: 700;
+    font-weight: 500;
   }
 `;
 

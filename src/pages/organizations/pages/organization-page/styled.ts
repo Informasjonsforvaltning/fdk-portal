@@ -12,7 +12,7 @@ const OrganizationPage = styled.article`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
 
   @media (max-width: 900px) {
     & {
@@ -76,7 +76,7 @@ const OrganizationInformation = styled.div`
     & > span {
       &:first-of-type {
         width: 225px;
-        font-weight: ${theme.fontWeight('FW700')};
+        font-weight: ${theme.fontWeight('FW500')};
       }
 
       & a > div {
@@ -97,7 +97,7 @@ const CataloguesStatistics = styled.div`
     padding: ${theme.spacing('S12')};
     border-radius: 4px;
     font-size: ${theme.fontSize('FS24', Unit.REM)};
-    font-weight: ${theme.fontWeight('FW700')};
+    font-weight: ${theme.fontWeight('FW500')};
 
     & > svg {
       height: 40px;
@@ -209,7 +209,7 @@ const Question = styled.div`
 
   & > h3 {
     font-size: ${theme.fontSize('FS24', Unit.REM)};
-    font-weight: ${theme.fontWeight('FW700')};
+    font-weight: ${theme.fontWeight('FW500')};
   }
 
   & > p {

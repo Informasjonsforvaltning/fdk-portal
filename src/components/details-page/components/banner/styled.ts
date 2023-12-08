@@ -44,7 +44,7 @@ const Content = styled.div`
 
   & > ${SC.MultiLingualField.MultiLingualField} {
     font-size: ${theme.fontSize('FS20', Unit.EM)};
-    font-weight: ${theme.fontWeight('FW700')};
+    font-weight: ${theme.fontWeight('FW500')};
   }
 `;
 
@@ -120,7 +120,7 @@ const BetaRibbon = styled.span<InvertedColorProps>`
   transform: rotate(45deg);
   padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
   font-size: 1rem;
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
   color: ${({ inverted }) =>
     inverted
       ? theme.colour(Colour.RED, 'R60')

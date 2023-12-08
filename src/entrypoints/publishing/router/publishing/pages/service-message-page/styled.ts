@@ -22,7 +22,7 @@ const ServiceMessage = styled.div`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32', Unit.EM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
   margin-bottom: ${theme.spacing('S16')};
 `;
 
