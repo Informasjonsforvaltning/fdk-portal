@@ -28,12 +28,10 @@ import {
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
-  PATHNAME_NEWS_ARCHIVE,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_CONCEPTS_COMPARE,
   PATHNAME_DATASET_DETAILS,
   PATHNAME_EVENTS,
-  PATHNAME_NEWS_ARTICLE,
   PATHNAME_NEWS_ARTICLE_V2,
   PATHNAME_FANCY_ARTICLE_V2,
   PATHNAME_REPORTS,
@@ -63,8 +61,6 @@ import {
 import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
-import { NewsArticle } from '../pages/news-article-page/news-article-page';
-import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-page';
 import { FancyArticlePageV2 } from '../pages/fancy-article-page-v2/fancy-article-page';
 import OrganizationsRouter from '../pages/organizations';
@@ -101,7 +97,6 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_CONCEPTS]: SearchPage,
     [PATHNAME_INFORMATIONMODELS]: SearchPage,
     [PATHNAME_PUBLIC_SERVICES_AND_EVENTS]: SearchPage,
-    [PATHNAME_NEWS_ARCHIVE]: NewsArchivePage,
     [`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`]:
       ConnectedConceptComparePage,
     [`${PATHNAME_DATASET_DETAILS}/:datasetId`]: DatasetDetailsPage,
@@ -113,7 +108,6 @@ export function App({ language, onChangeLanguage }) {
     [`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}/:publicServiceId`]:
       PublicServiceDetailsPage,
     [`${PATHNAME_EVENTS}/:eventId`]: EventDetailsPage,
-    [`${PATHNAME_NEWS_ARTICLE}/:id`]: NewsArticle,
     [`${PATHNAME_NEWS_ARTICLE_V2}/:id`]: NewsArticlePageV2,
     [`${PATHNAME_FANCY_ARTICLE_V2}/:id`]: FancyArticlePageV2,
     [PATHNAME_REPORTS]: ReportPage,
@@ -177,7 +171,6 @@ export function App({ language, onChangeLanguage }) {
               PATHNAME_CONCEPTS,
               PATHNAME_INFORMATIONMODELS,
               PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
-              PATHNAME_NEWS_ARCHIVE,
               PATHNAME_ORGANIZATIONS
             ].includes(path)
           )
@@ -210,7 +203,6 @@ export function App({ language, onChangeLanguage }) {
                   PATHNAME_CONCEPTS,
                   PATHNAME_INFORMATIONMODELS,
                   PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
-                  PATHNAME_NEWS_ARCHIVE,
                   PATHNAME_ORGANIZATIONS
                 ].includes(path)
             )

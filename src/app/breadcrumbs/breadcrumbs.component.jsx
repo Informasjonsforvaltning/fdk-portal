@@ -13,8 +13,6 @@ import {
   PATHNAME_GUIDANCE_METADATA,
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_MAIN_PAGE,
-  PATHNAME_NEWS_ARCHIVE,
-  PATHNAME_NEWS_ARTICLE,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_EVENTS,
@@ -47,7 +45,6 @@ import ConceptBreadcrumb from './concept-breadcrumb';
 import InformationModelBreadcrumb from './informationModel-breadbrumb';
 import PathNameBreadcrumb from './pathname-breadcrumb';
 import './breadcrumbs.scss';
-import NewsBreadcrumb from './news-breadcrumb';
 import OrganizationBreadcrumb from './organization-breadcrumb';
 import PublicServiceBreadcrumb from './public-service-breadcrumb';
 import EventBreadcrumb from './event-breadcrumb';
@@ -82,14 +79,6 @@ const routes = [
   {
     path: PATHNAME_REPORTS,
     breadcrumb: () => <PathNameBreadcrumb pathName='reports' />
-  },
-  {
-    path: PATHNAME_NEWS_ARCHIVE,
-    breadcrumb: () => <PathNameBreadcrumb pathName='newsArchive' />
-  },
-  {
-    path: `${PATHNAME_NEWS_ARTICLE}/:id`,
-    breadcrumb: NewsBreadcrumb
   },
   {
     path: PATHNAME_GUIDANCE,
