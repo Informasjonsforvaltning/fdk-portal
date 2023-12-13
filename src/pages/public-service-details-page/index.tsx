@@ -150,6 +150,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   const languages = publicService?.language ?? [];
   const sectors = publicService?.sector ?? [];
   const hasCompetentAuthority = publicService?.hasCompetentAuthority ?? [];
+  const ownedBy = publicService?.ownedBy ?? [];
   const keywords =
     (publicService?.keyword
       ?.map(keyword =>
@@ -309,7 +310,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
         <DetailsPage
           entity={entity}
           title={title}
-          publisher={publicService?.hasCompetentAuthority?.[0]}
+          publisher={hasCompetentAuthority[0] || ownedBy[0]}
           entityId={publicService?.id}
           entityUri={publicService?.uri}
           lastPublished={lastPublished}

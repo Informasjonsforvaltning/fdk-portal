@@ -113,7 +113,6 @@ const EventDetailsPage: FC<Props> = ({
         <DetailsPage
           entity={entity}
           title={title}
-          publisher={event?.hasCompetentAuthority?.[0]}
           entityId={event?.id}
           entityUri={event?.uri}
           lastPublished={lastPublished}
