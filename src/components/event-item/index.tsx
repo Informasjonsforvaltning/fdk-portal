@@ -17,7 +17,6 @@ const EventItem: FC<Props> = ({
     id = '',
     title = {},
     description = {},
-    hasCompetentAuthority = [],
     specialized_type: specializedType
   }
 }) => (
@@ -25,7 +24,6 @@ const EventItem: FC<Props> = ({
     id={id}
     type={SearchTypes.event}
     title={title}
-    publisher={hasCompetentAuthority?.[0]}
     description={description}
     subtitle={localization.event}
     beta

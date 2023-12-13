@@ -413,6 +413,7 @@ export interface PublicService {
   isDescribedAt?: Partial<PublicService>[];
   isGroupedBy?: string[];
   hasCompetentAuthority?: Partial<Organization>[];
+  ownedBy?: Partial<Organization>[];
   admsStatus?: PublicServiceLanguage;
   harvest?: Partial<Harvest>;
   keyword?: Partial<TextLanguage>[];
@@ -452,7 +453,6 @@ export interface Event {
   description: Partial<TextLanguage>;
   type: EntityEnum.EVENT;
   dctType?: SkosConcept[];
-  hasCompetentAuthority?: Partial<Organization>[];
   harvest?: Partial<Harvest>;
   relation?: string[];
   specialized_type?: SpecializedEventType;
