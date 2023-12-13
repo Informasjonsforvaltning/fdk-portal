@@ -6,8 +6,7 @@ import { useGetArticleQuery } from '../../api/generated/cms/graphql';
 import ErrorPage from '../error-page';
 import withErrorBoundary from '../../components/with-error-boundary';
 import localization from '../../lib/localization';
-// import Article from '../../components/article/components/article/article.component';
-import SC from '../../components/article/components/article/styled';
+import SC from '../../components/article/styled';
 import Markdown from '../../components/markdown';
 
 const NewsArticlePage: FC = () => {

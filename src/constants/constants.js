@@ -21,9 +21,7 @@ export const PATHNAME_ABOUT_HARVESTING = '/about-harvesting';
 export const PATHNAME_SERVICE_MESSAGES = '/service-messages';
 export const PATHNAME_TERMS_OF_USE = '/terms-of-use';
 export const PATHNAME_FANCY_ARTICLE_V2 = '/fancy-article-v2';
-export const PATHNAME_NEWS_ARTICLE = '/news';
 export const PATHNAME_NEWS_ARTICLE_V2 = '/news-v2';
-export const PATHNAME_NEWS_ARCHIVE = '/news-archive';
 export const PATHNAME_HOME_NAP =
   'https://transportportal.atlas.vegvesen.no/no/';
 export const PATHNAME_ABOUT_NAP =

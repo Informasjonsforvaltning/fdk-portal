@@ -23,7 +23,6 @@ import {
   PATHNAME_PUBLISHING,
   PATHNAME_SPARQL,
   PATHNAME_GUIDANCE,
-  PATHNAME_NEWS_ARCHIVE,
   PATHNAME_REQUESTS,
   PATHNAME_ABOUT_NAP
 } from '../../constants/constants';
@@ -108,11 +107,6 @@ const fdkItems = () => [
           {localization.menu.guidance}
         </Link>
       </SC.ListItem>
-      <SC.ListItem key={localization.menu.newsArchive}>
-        <Link as={RouteLink} to={PATHNAME_NEWS_ARCHIVE}>
-          {localization.menu.newsArchive}
-        </Link>
-      </SC.ListItem>
     </DropdownMenu>
   </SC.ListItem>,
   <SC.ListItem key={localization.menu.organizations}>
@@ -174,11 +168,6 @@ const fdkItemsMobile = () => [
       <SC.ListItem key={localization.menu.guidance}>
         <Link as={RouteLink} to={PATHNAME_GUIDANCE}>
           {localization.menu.guidance}
-        </Link>
-      </SC.ListItem>
-      <SC.ListItem key={localization.menu.newsArchive}>
-        <Link as={RouteLink} to={PATHNAME_NEWS_ARCHIVE}>
-          {localization.menu.newsArchive}
         </Link>
       </SC.ListItem>
     </ul>
