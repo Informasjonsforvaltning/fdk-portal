@@ -10,6 +10,7 @@ query GetFancyArticle($id: ID!) {
             attributes {
               title
               subtitle
+              locale
               Content {
                 ... on ComponentBasicParagraph {
                   __typename
@@ -49,24 +50,6 @@ query GetFancyArticle($id: ID!) {
               }
             }
             style
-          }
-        }
-      }
-    }
-  }
-}
-
-query GetFancyArticleTitle($id: ID!) {
-  fancyArticle(id: $id) {
-    data {
-      attributes {
-        title
-        localizations {
-          data {
-            id
-            attributes {
-              title
-            }
           }
         }
       }

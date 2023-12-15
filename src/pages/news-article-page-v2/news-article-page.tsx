@@ -2,12 +2,17 @@ import React, { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { compose } from 'redux';
 import Moment from 'react-moment';
-import { useGetArticleQuery } from '../../api/generated/cms/graphql';
+import {
+  Article,
+  ArticleEntity,
+  useGetArticleQuery
+} from '../../api/generated/cms/graphql';
 import ErrorPage from '../error-page';
 import withErrorBoundary from '../../components/with-error-boundary';
 import localization from '../../lib/localization';
 import SC from '../../components/article/styled';
 import Markdown from '../../components/markdown';
+import { getLocalizedAttributes } from '../../lib/strapi';
 
 const NewsArticlePage: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -28,7 +33,10 @@ const NewsArticlePage: FC = () => {
     article: { data: entity }
   } = data;
 
-  const article = entity ? entity.attributes : null;
+  const article = getLocalizedAttributes<ArticleEntity, Article>(
+    entity as ArticleEntity,
+    localization.getLanguage()
+  );
 
   return (
     <main id='content' className='container'>

@@ -6,7 +6,11 @@ import { ThemeProvider } from 'styled-components';
 import { CircularProgress } from '@mui/material';
 import localization from '../../lib/localization';
 
-import { useGetTransportArticleQuery } from '../../api/generated/cms/graphql';
+import {
+  TransportArticle,
+  TransportArticleEntity,
+  useGetTransportArticleQuery
+} from '../../api/generated/cms/graphql';
 
 import {
   PATHNAME_TRANSPORT_GENERAL,
@@ -24,6 +28,7 @@ import {
 import ErrorPage from '../error-page';
 
 import {
+  getLocalizedAttributes,
   isBasicImage,
   isBasicParagraph,
   isBasicYoutube
@@ -101,14 +106,20 @@ const TransportPage: FC<Props> = () => {
       transportArticle: { data: transportArticleEntity }
     } = data;
 
-    const transportArticle = transportArticleEntity?.attributes;
+    const transportArticle = getLocalizedAttributes<
+      TransportArticleEntity,
+      TransportArticle
+    >(
+      transportArticleEntity as TransportArticleEntity,
+      localization.getLanguage()
+    );
 
     return (
       transportArticle && (
         <SC.Article>
-          <SC.Title>{transportArticle.title}</SC.Title>
-          <SC.Description>{transportArticle.subtitle}</SC.Description>
-          {transportArticle.Content?.map(
+          <SC.Title>{transportArticle?.title}</SC.Title>
+          <SC.Description>{transportArticle?.subtitle}</SC.Description>
+          {transportArticle?.Content?.map(
             component =>
               (isBasicParagraph(component) && (
                 <SC.Content>

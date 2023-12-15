@@ -19,6 +19,7 @@ query GetArticle($id: ID!) {
             attributes {
               title
               content
+              locale
             }
           }
         }
