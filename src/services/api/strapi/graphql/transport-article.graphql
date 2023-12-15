@@ -10,6 +10,7 @@ query GetTransportArticle($id: ID!) {
             attributes {
               title
               subtitle
+              locale
               Content {
                 ... on ComponentBasicParagraph {
                   __typename

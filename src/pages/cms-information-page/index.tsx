@@ -3,7 +3,11 @@ import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import localization from '../../lib/localization';
 
-import { useGetFancyArticleQuery } from '../../api/generated/cms/graphql';
+import {
+  FancyArticle,
+  FancyArticleEntity,
+  useGetFancyArticleQuery
+} from '../../api/generated/cms/graphql';
 
 import {
   PATHNAME_ABOUT_CONCEPTS,
@@ -22,6 +26,7 @@ import {
 import ErrorPage from '../error-page';
 
 import {
+  getLocalizedAttributes,
   isBasicImage,
   isBasicParagraph,
   isBasicYoutube
@@ -88,14 +93,17 @@ const InformationPage: FC<Props> = () => {
       fancyArticle: { data: fancyArticleEntity }
     } = data;
 
-    const fancyArticle = fancyArticleEntity?.attributes;
+    const fancyArticle = getLocalizedAttributes<
+      FancyArticleEntity,
+      FancyArticle
+    >(fancyArticleEntity as FancyArticleEntity, localization.getLanguage());
 
     return (
       fancyArticle && (
         <SC.Article>
-          <SC.Title>{fancyArticle.title}</SC.Title>
-          <SC.Description>{fancyArticle.subtitle}</SC.Description>
-          {fancyArticle.Content?.map(
+          <SC.Title>{fancyArticle?.title}</SC.Title>
+          <SC.Description>{fancyArticle?.subtitle}</SC.Description>
+          {fancyArticle?.Content?.map(
             component =>
               (isBasicParagraph(component) && (
                 <SC.Content>

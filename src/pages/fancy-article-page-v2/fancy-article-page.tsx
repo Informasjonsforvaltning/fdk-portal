@@ -2,13 +2,18 @@ import React, { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { compose } from 'redux';
 import { CircularProgress } from '@mui/material';
-import { useGetFancyArticleQuery } from '../../api/generated/cms/graphql';
+import {
+  FancyArticle,
+  FancyArticleEntity,
+  useGetFancyArticleQuery
+} from '../../api/generated/cms/graphql';
 import ErrorPage from '../error-page';
 import withErrorBoundary from '../../components/with-error-boundary';
 import localization from '../../lib/localization';
 import SC from './styled';
 import Markdown from '../../components/markdown';
 import {
+  getLocalizedAttributes,
   isBasicImage,
   isBasicParagraph,
   isBasicYoutube
@@ -41,15 +46,18 @@ const FancyArticlePage: FC = () => {
     fancyArticle: { data: fancyArticleEntity }
   } = data;
 
-  const fancyArticle = fancyArticleEntity?.attributes;
+  const fancyArticle = getLocalizedAttributes<FancyArticleEntity, FancyArticle>(
+    fancyArticleEntity as FancyArticleEntity,
+    localization.getLanguage()
+  );
 
   return (
     <main id='content' className='container'>
       {fancyArticle && (
         <SC.Article>
-          <SC.Title>{fancyArticle.title}</SC.Title>
-          <SC.Description>{fancyArticle.subtitle}</SC.Description>
-          {fancyArticle.Content?.map(
+          <SC.Title>{fancyArticle?.title}</SC.Title>
+          <SC.Description>{fancyArticle?.subtitle}</SC.Description>
+          {fancyArticle?.Content?.map(
             component =>
               (isBasicParagraph(component) && (
                 <SC.Content>
