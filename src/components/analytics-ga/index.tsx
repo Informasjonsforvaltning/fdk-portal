@@ -8,21 +8,13 @@ import {
   GoogleTagManagerId
 } from '../../types/enums';
 
-const Analytics: FC = () => {
+const AnalyticsGA: FC = () => {
   const { hostname, pathname, search } = location;
 
-  const isFellesDatakatalog = [
-    'data.norge.no',
-    'fellesdatakatalog.digdir.no'
-  ].includes(hostname);
   const isTransportPortal = ['data.transportportal.no'].includes(hostname);
   const isLocalhost = ['localhost'].includes(hostname);
 
   const configureAnalytics = () => {
-    if (isFellesDatakatalog) {
-      ReactGA.initialize(GoogleAnalyticsTrackingId.FELLESDATAKATALOG);
-    }
-
     if (isTransportPortal) {
       ReactGA.initialize(GoogleAnalyticsTrackingId.TRANSPORTPORTAL);
       GoogleTagManager.initialize({
@@ -38,7 +30,7 @@ const Analytics: FC = () => {
   };
 
   const registerPageView = () => {
-    if (isFellesDatakatalog || isTransportPortal || isLocalhost) {
+    if (isTransportPortal || isLocalhost) {
       const page = `${pathname}${search}`;
 
       ReactGA.set({ page });
@@ -54,4 +46,4 @@ const Analytics: FC = () => {
   return null;
 };
 
-export default compose<FC>(memo)(Analytics);
+export default compose<FC>(memo)(AnalyticsGA);
