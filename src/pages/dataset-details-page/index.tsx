@@ -359,7 +359,7 @@ const DatasetDetailsPage: FC<Props> = ({
             <Markdown>{objective}</Markdown>
           </ContentSection>
         )}
-        {distributions.length > 0 && (
+        {(distributions.length > 0 || dataServicesRelations.length > 0) && (
           <ContentSection
             id='distributions'
             title={`${
