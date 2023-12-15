@@ -18,13 +18,17 @@ import {
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
   PATHNAME_AI,
-  PATHNAME_HOME_NAP,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLISHING,
   PATHNAME_SPARQL,
   PATHNAME_GUIDANCE,
   PATHNAME_REQUESTS,
-  PATHNAME_ABOUT_NAP
+  PATHNAME_TRANSPORT_GENERAL,
+  PATHNAME_TRANSPORT_ROLES,
+  PATHNAME_TRANSPORT_ITS,
+  PATHNAME_TRANSPORT_ADD,
+  PATHNAME_TRANSPORT_NEWS,
+  PATHNAME_TRANSPORT_COMPLIANCE
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
@@ -41,16 +45,49 @@ interface Props {
 
 const transportItems = () => [
   <SC.ListItem key={localization.menu.aboutNap}>
-    <Link href={PATHNAME_ABOUT_NAP}>{localization.menu.aboutNap}</Link>
+    <DropdownMenu
+      openOnHover
+      chevron
+      mobileView={false}
+      title={localization.menu.aboutNap}
+    >
+      <SC.ListItem key={localization.menu.transportGeneral}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_GENERAL}>
+          {localization.menu.transportGeneral}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.transportRolesAndResponsibilies}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_ROLES}>
+          {localization.menu.transportRolesAndResponsibilies}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem
+        key={localization.menu.transportItsDirectiveAndDelegatedRegulations}
+      >
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_ITS}>
+          {localization.menu.transportItsDirectiveAndDelegatedRegulations}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.transportNews}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_NEWS}>
+          {localization.menu.transportNews}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.transportAddData}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_ADD}>
+          {localization.menu.transportAddData}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.transportDeclarationOfCompliance}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_COMPLIANCE}>
+          {localization.menu.transportDeclarationOfCompliance}
+        </Link>
+      </SC.ListItem>
+    </DropdownMenu>
   </SC.ListItem>,
   <SC.ListItem key={localization.menu.aboutRegistration}>
     <Link as={RouteLink} to={PATHNAME_ABOUT_REGISTRATION}>
       {localization.menu.aboutRegistration}
-    </Link>
-  </SC.ListItem>,
-  <SC.ListItem key={localization.menu.organizations}>
-    <Link as={RouteLink} to={PATHNAME_ORGANIZATIONS}>
-      {localization.menu.organizations}
     </Link>
   </SC.ListItem>,
   <SC.ListItem key={localization.menu.reports}>
@@ -151,6 +188,65 @@ const fdkItems = () => [
   </SC.ListItem>
 ];
 
+const transportItemsMobile = () => [
+  <SC.ListItem key={localization.menu.aboutNap}>
+    {localization.menu.aboutNap}
+    <ul>
+      <SC.ListItem key={localization.menu.transportGeneral}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_GENERAL}>
+          {localization.menu.transportGeneral}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.transportRolesAndResponsibilies}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_ROLES}>
+          {localization.menu.transportRolesAndResponsibilies}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem
+        key={localization.menu.transportItsDirectiveAndDelegatedRegulations}
+      >
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_ITS}>
+          {localization.menu.transportItsDirectiveAndDelegatedRegulations}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.transportNews}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_NEWS}>
+          {localization.menu.transportNews}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.transportAddData}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_ADD}>
+          {localization.menu.transportAddData}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.transportDeclarationOfCompliance}>
+        <Link as={RouteLink} to={PATHNAME_TRANSPORT_COMPLIANCE}>
+          {localization.menu.transportDeclarationOfCompliance}
+        </Link>
+      </SC.ListItem>
+    </ul>
+  </SC.ListItem>,
+  <SC.ListItem key={localization.menu.aboutRegistration}>
+    <Link as={RouteLink} to={PATHNAME_ABOUT_REGISTRATION}>
+      {localization.menu.aboutRegistration}
+    </Link>
+  </SC.ListItem>,
+  <SC.ListItem key={localization.menu.reports}>
+    <Link as={RouteLink} to={PATHNAME_REPORTS}>
+      {localization.menu.reports}
+    </Link>
+  </SC.ListItem>,
+  <SC.ListItem key={localization.menu.community}>
+    <Link
+      href={FDK_COMMUNITY_BASE_URI}
+      external
+      aria-label={localization.externalLink}
+    >
+      {localization.menu.community}
+    </Link>
+  </SC.ListItem>
+];
+
 const fdkItemsMobile = () => [
   <SC.ListItem key={localization.menu.about}>
     {localization.menu.about}
@@ -160,9 +256,24 @@ const fdkItemsMobile = () => [
           {localization.menu.about}
         </Link>
       </SC.ListItem>
-      <SC.ListItem key={localization.menu.aboutCatalogs}>
+      <SC.ListItem key={localization.menu.aboutDatasets}>
         <Link as={RouteLink} to={PATHNAME_ABOUT_DATASETS}>
-          {localization.menu.aboutCatalogs}
+          {localization.menu.aboutDatasets}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.aboutDataServices}>
+        <Link as={RouteLink} to={PATHNAME_ABOUT_DATA_SERVICES}>
+          {localization.menu.aboutDataServices}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.aboutConcepts}>
+        <Link as={RouteLink} to={PATHNAME_ABOUT_CONCEPTS}>
+          {localization.menu.aboutConcepts}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.aboutInformationModels}>
+        <Link as={RouteLink} to={PATHNAME_ABOUT_INFORMATIONMODELS}>
+          {localization.menu.aboutInformationModels}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.guidance}>
@@ -241,7 +352,7 @@ export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => (
                 ? localization.linkToNap
                 : localization.linkToFdk
             }
-            href={isTransportportal ? PATHNAME_HOME_NAP : '/'}
+            href='/'
           >
             {isTransportportal ? <SC.NapLogo /> : Logo}
           </Link>
@@ -266,7 +377,7 @@ export const AppNavBar: FC<Props> = ({ onChangeLanguage }) => (
             chevron={false}
             title={localization.app.menu}
           >
-            {isTransportportal ? transportItems() : fdkItemsMobile()}
+            {isTransportportal ? transportItemsMobile() : fdkItemsMobile()}
             <SC.ListItem>
               {localization.lang.chosenLanguage}
               <ul>{languageButtons({ onChangeLanguage })}</ul>

@@ -44,7 +44,6 @@ interface DropdownMenuProps {
 const ToggleButton = styled.button`
   font-size: ${theme.fontSize('FS16', Unit.REM)};
   border: none;
-  color: currentColor !important;
 
   &:focus {
     outline-offset: 3px;
@@ -59,6 +58,7 @@ const ToggleButton = styled.button`
         `
       : css`
           background-color: ${extendedTheme.extendedColors.headerBg};
+          color: currentColor !important;
         `}
 `;
 
@@ -140,11 +140,17 @@ const Dropdown = styled.ul<dropdownProps>`
     }
 
     > a {
-      color: currentColor;
+      ${() =>
+        isTransportportal
+          ? css`
+              color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+            `
+          : css`
+              color: currentColor !important;
+            `}
     }
 
     > button {
-      color: currentColor;
       border: none;
       background-color: transparent;
       width: 100%;
