@@ -16,7 +16,9 @@ import { getConfig } from '../../config';
 import { themeFDK, themeNAP } from '../../app/theme';
 import GlobalStyles from '../../app/styles';
 
-import Analytics from '../../components/analytics';
+import AnalyticsGA from '../../components/analytics-ga';
+import AnalyticsSiteImprove from '../../components/analytics-siteimprove';
+import AnalyticsMonsido from '../../components/analytics-monsido';
 import { store } from '../../redux/store';
 
 const client = new ApolloClient({
@@ -31,7 +33,9 @@ render(
     <GlobalStyles />
     <AuthProvider>
       <LoggingProvider>
-        <Analytics />
+        <AnalyticsGA />
+        <AnalyticsSiteImprove />
+        <AnalyticsMonsido />
         <ApolloProvider client={client}>
           <Provider store={store}>
             <BrowserRouter>
