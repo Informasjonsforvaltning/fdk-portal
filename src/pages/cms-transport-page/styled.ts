@@ -13,6 +13,7 @@ const TransportPage = styled.article`
   display: flex;
   gap: ${theme.spacing('S16', Unit.EM)};
   word-break: break-word;
+  width: 790px;
 
   ${customBreakingPoint} {
     && {

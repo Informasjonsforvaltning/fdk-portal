@@ -78,7 +78,7 @@ const NavigationLinks = styled.ul`
   margin-right: 1em;
   font-size: ${theme.fontSize('FS16', Unit.REM)};
 
-  & li {
+  & > li {
     ${() =>
       isTransportportal
         ? css`
