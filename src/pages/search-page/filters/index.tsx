@@ -26,7 +26,6 @@ import {
 import { getConfig } from '../../../config';
 import type { EventType } from '../../../types';
 import { keyPrefixForest } from '../../../lib/key-prefix-forest';
-import { eventTypesKeyPrefixForest } from '../../../lib/event-type-key-prefix-forest';
 
 interface Props extends RouteComponentProps {
   themesItems?: any;
@@ -55,8 +54,7 @@ const FiltersPure: FC<Props> = ({
     theme: themeParam,
     spatial: spatialParam,
     provenance: provenanceParam,
-    format: formatParam,
-    eventType: eventTypeParam
+    format: formatParam
   } = searchParams;
 
   const handleFilterThemes = ({ value, checked }: FilterChange) => {
@@ -102,16 +100,6 @@ const FiltersPure: FC<Props> = ({
 
   const handleFilterLos = ({ value, checked }: FilterChange) => {
     setMultiselectFilterValue(history, location, 'losTheme', value, checked);
-  };
-
-  const handleFilterEventType = ({
-    value,
-    checked
-  }: {
-    value: string;
-    checked: boolean;
-  }) => {
-    setMultiselectFilterValue(history, location, 'eventType', value, checked);
   };
 
   const getFilters = () => {
@@ -290,28 +278,16 @@ const FiltersPure: FC<Props> = ({
         );
       case PATHNAME_PUBLIC_SERVICES_AND_EVENTS:
         return (
-          <>
-            <FilterTree
-              title={localization.facet.events}
-              aggregationsForest={eventTypesKeyPrefixForest(
-                aggregations?.associatedBroaderTypesByEvents?.buckets,
-                eventTypes
-              )}
-              handleFiltering={handleFilterEventType}
-              activeFilter={eventTypeParam?.toString()}
-              referenceDataItems={eventTypes}
-            />
-            <FilterTree
-              title={localization.provider}
-              aggregationsForest={keyPrefixForest(
-                aggregations?.hasCompetentAuthority?.buckets
-              )}
-              handleFiltering={handleFilterPublisherHierarchy}
-              activeFilter={orgPathFilterParam?.toString()}
-              referenceDataItems={publishers}
-              searchable
-            />
-          </>
+          <FilterTree
+            title={localization.provider}
+            aggregationsForest={keyPrefixForest(
+              aggregations?.hasCompetentAuthority?.buckets
+            )}
+            handleFiltering={handleFilterPublisherHierarchy}
+            activeFilter={orgPathFilterParam?.toString()}
+            referenceDataItems={publishers}
+            searchable
+          />
         );
       default:
         return null;

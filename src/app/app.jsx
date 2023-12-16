@@ -28,45 +28,37 @@ import {
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
-  PATHNAME_NEWS_ARCHIVE,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_CONCEPTS_COMPARE,
   PATHNAME_DATASET_DETAILS,
   PATHNAME_EVENTS,
-  PATHNAME_NEWS_ARTICLE,
   PATHNAME_NEWS_ARTICLE_V2,
   PATHNAME_FANCY_ARTICLE_V2,
   PATHNAME_REPORTS,
   PATHNAME_ABOUT,
   PATHNAME_ABOUT_REGISTRATION,
-  PATHNAME_GUIDANCE,
-  PATHNAME_GUIDANCE_METADATA,
-  PATHNAME_SPARQL,
   PATHNAME_ABOUT_DATASETS,
   PATHNAME_ABOUT_DATA_SERVICES,
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
+  PATHNAME_GUIDANCE,
+  PATHNAME_GUIDANCE_METADATA,
+  PATHNAME_SPARQL,
   PATHNAME_AI,
   PATHNAME_REQUESTS,
   PATHNAME_TRANSPORT_GENERAL,
-  PATHNAME_TRANSPORT_GENERAL_INFO_ABOUT_THE_PORTAL,
-  PATHNAME_TRANSPORT_GENERAL_ITS,
-  PATHNAME_TRANSPORT_GENERAL_ROLES,
-  PATHNAME_TRANSPORT_USERS_NEWS,
-  PATHNAME_TRANSPORT_USERS_DATA_IN_NAP,
-  PATHNAME_TRANSPORT_USERS_WHAT,
-  PATHNAME_TRANSPORT_USERS_WHERE,
-  PATHNAME_TRANSPORT_PROVIDERS_ADD,
-  PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE
+  PATHNAME_TRANSPORT_ITS,
+  PATHNAME_TRANSPORT_ROLES,
+  PATHNAME_TRANSPORT_NEWS,
+  PATHNAME_TRANSPORT_ADD,
+  PATHNAME_TRANSPORT_COMPLIANCE,
+  PATHNAME_ABOUT_HARVESTING
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
 import '../assets/css/bootstrap-override.scss';
-import { NewsArticle } from '../pages/news-article-page/news-article-page';
-import { NewsArchivePage } from '../pages/news-archive-page/news-archive-page';
 import { NewsArticlePageV2 } from '../pages/news-article-page-v2/news-article-page';
 import { FancyArticlePageV2 } from '../pages/fancy-article-page-v2/fancy-article-page';
-import { CmsArticlePage } from '../pages/cms-article-page/cms-article-page';
 import OrganizationsRouter from '../pages/organizations';
 import InformationPage from '../pages/cms-information-page';
 import TransportPage from '../pages/cms-transport-page';
@@ -101,7 +93,6 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_CONCEPTS]: SearchPage,
     [PATHNAME_INFORMATIONMODELS]: SearchPage,
     [PATHNAME_PUBLIC_SERVICES_AND_EVENTS]: SearchPage,
-    [PATHNAME_NEWS_ARCHIVE]: NewsArchivePage,
     [`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`]:
       ConnectedConceptComparePage,
     [`${PATHNAME_DATASET_DETAILS}/:datasetId`]: DatasetDetailsPage,
@@ -113,31 +104,27 @@ export function App({ language, onChangeLanguage }) {
     [`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}/:publicServiceId`]:
       PublicServiceDetailsPage,
     [`${PATHNAME_EVENTS}/:eventId`]: EventDetailsPage,
-    [`${PATHNAME_NEWS_ARTICLE}/:id`]: NewsArticle,
     [`${PATHNAME_NEWS_ARTICLE_V2}/:id`]: NewsArticlePageV2,
     [`${PATHNAME_FANCY_ARTICLE_V2}/:id`]: FancyArticlePageV2,
     [PATHNAME_REPORTS]: ReportPage,
-    [PATHNAME_ABOUT]: CmsArticlePage,
-    [PATHNAME_ABOUT_REGISTRATION]: CmsArticlePage,
-    [PATHNAME_GUIDANCE]: CmsArticlePage,
-    [PATHNAME_GUIDANCE_METADATA]: CmsArticlePage,
+    [PATHNAME_ABOUT]: InformationPage,
+    [PATHNAME_ABOUT_REGISTRATION]: InformationPage,
+    [PATHNAME_GUIDANCE]: InformationPage,
+    [PATHNAME_GUIDANCE_METADATA]: InformationPage,
     [PATHNAME_ORGANIZATIONS]: OrganizationsRouter,
     [PATHNAME_ABOUT_DATASETS]: InformationPage,
     [PATHNAME_ABOUT_DATA_SERVICES]: InformationPage,
     [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
     [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage,
+    [PATHNAME_ABOUT_HARVESTING]: InformationPage,
     [PATHNAME_AI]: AiProjectPage,
     [PATHNAME_REQUESTS]: RequestsPage,
     [PATHNAME_TRANSPORT_GENERAL]: TransportPage,
-    [PATHNAME_TRANSPORT_GENERAL_INFO_ABOUT_THE_PORTAL]: TransportPage,
-    [PATHNAME_TRANSPORT_GENERAL_ITS]: TransportPage,
-    [PATHNAME_TRANSPORT_GENERAL_ROLES]: TransportPage,
-    [PATHNAME_TRANSPORT_USERS_NEWS]: TransportPage,
-    [PATHNAME_TRANSPORT_USERS_DATA_IN_NAP]: TransportPage,
-    [PATHNAME_TRANSPORT_USERS_WHAT]: TransportPage,
-    [PATHNAME_TRANSPORT_USERS_WHERE]: TransportPage,
-    [PATHNAME_TRANSPORT_PROVIDERS_ADD]: TransportPage,
-    [PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE]: TransportPage
+    [PATHNAME_TRANSPORT_ITS]: TransportPage,
+    [PATHNAME_TRANSPORT_ROLES]: TransportPage,
+    [PATHNAME_TRANSPORT_NEWS]: TransportPage,
+    [PATHNAME_TRANSPORT_ADD]: TransportPage,
+    [PATHNAME_TRANSPORT_COMPLIANCE]: TransportPage
   };
 
   return (
@@ -176,7 +163,6 @@ export function App({ language, onChangeLanguage }) {
               PATHNAME_CONCEPTS,
               PATHNAME_INFORMATIONMODELS,
               PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
-              PATHNAME_NEWS_ARCHIVE,
               PATHNAME_ORGANIZATIONS
             ].includes(path)
           )
@@ -209,7 +195,6 @@ export function App({ language, onChangeLanguage }) {
                   PATHNAME_CONCEPTS,
                   PATHNAME_INFORMATIONMODELS,
                   PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
-                  PATHNAME_NEWS_ARCHIVE,
                   PATHNAME_ORGANIZATIONS
                 ].includes(path)
             )

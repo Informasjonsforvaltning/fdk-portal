@@ -5,7 +5,7 @@ const TextLanguageLabel = styled.span<{ $whiteBackground: boolean }>`
   border-radius: 2px;
   padding: 0 ${fdkTheme.spacing('S4')};
   font-size: ${fdkTheme.fontSize('FS14', Unit.REM)};
-  font-weight: ${fdkTheme.fontWeight('FW700')};
+  font-weight: ${fdkTheme.fontWeight('FW500')};
   background: ${({ $whiteBackground, theme }) =>
     $whiteBackground
       ? fdkTheme.colour(Colour.NEUTRAL, 'N15')

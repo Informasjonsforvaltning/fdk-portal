@@ -3,9 +3,9 @@ import { Link as RouteLink } from 'react-router-dom';
 import Link from '@fellesdatakatalog/link';
 
 import {
-  PATHNAME_ABOUT_NAP,
   PATHNAME_ABOUT_REGISTRATION,
-  PATHNAME_DATASETS
+  PATHNAME_DATASETS,
+  PATHNAME_TRANSPORT_GENERAL
 } from '../../constants/constants';
 import translations from '../../lib/localization';
 
@@ -32,7 +32,9 @@ const TransportPortalFooter: FC<Props> = () => (
           <Link to={PATHNAME_DATASETS} as={RouteLink}>
             {translations.footer.searchDatasets}
           </Link>
-          <Link href={PATHNAME_ABOUT_NAP}>{translations.menu.aboutNap}</Link>
+          <Link to={PATHNAME_TRANSPORT_GENERAL} as={RouteLink}>
+            {translations.menu.aboutNap}
+          </Link>
           <Link to={PATHNAME_ABOUT_REGISTRATION} as={RouteLink}>
             {translations.footer.guideToRegister}
           </Link>

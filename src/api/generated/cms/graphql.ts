@@ -1397,6 +1397,7 @@ export type GetFancyArticleQuery = {
               __typename?: 'FancyArticle';
               title?: string | null;
               subtitle?: string | null;
+              locale?: string | null;
               Content?: Array<
                 | {
                     __typename: 'ComponentBasicImage';
@@ -1452,35 +1453,6 @@ export type GetFancyArticleQuery = {
   } | null;
 };
 
-export type GetFancyArticleTitleQueryVariables = Exact<{
-  id: Scalars['ID']['input'];
-}>;
-
-export type GetFancyArticleTitleQuery = {
-  __typename?: 'Query';
-  fancyArticle?: {
-    __typename?: 'FancyArticleEntityResponse';
-    data?: {
-      __typename?: 'FancyArticleEntity';
-      attributes?: {
-        __typename?: 'FancyArticle';
-        title?: string | null;
-        localizations?: {
-          __typename?: 'FancyArticleRelationResponseCollection';
-          data: Array<{
-            __typename?: 'FancyArticleEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'FancyArticle';
-              title?: string | null;
-            } | null;
-          }>;
-        } | null;
-      } | null;
-    } | null;
-  } | null;
-};
-
 export type GetArticleQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
@@ -1513,6 +1485,7 @@ export type GetArticleQuery = {
               __typename?: 'Article';
               title: string;
               content: string;
+              locale?: string | null;
             } | null;
           }>;
         } | null;
@@ -1622,6 +1595,7 @@ export type GetTransportArticleQuery = {
               __typename?: 'TransportArticle';
               title?: string | null;
               subtitle?: string | null;
+              locale?: string | null;
               Content?: Array<
                 | {
                     __typename: 'ComponentBasicImage';
@@ -1721,6 +1695,7 @@ export const GetFancyArticleDocument = gql`
               attributes {
                 title
                 subtitle
+                locale
                 Content {
                   ... on ComponentBasicParagraph {
                     __typename
@@ -1818,76 +1793,6 @@ export type GetFancyArticleQueryResult = Apollo.QueryResult<
   GetFancyArticleQuery,
   GetFancyArticleQueryVariables
 >;
-export const GetFancyArticleTitleDocument = gql`
-  query GetFancyArticleTitle($id: ID!) {
-    fancyArticle(id: $id) {
-      data {
-        attributes {
-          title
-          localizations {
-            data {
-              id
-              attributes {
-                title
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-/**
- * __useGetFancyArticleTitleQuery__
- *
- * To run a query within a React component, call `useGetFancyArticleTitleQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFancyArticleTitleQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetFancyArticleTitleQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetFancyArticleTitleQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetFancyArticleTitleQuery,
-    GetFancyArticleTitleQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    GetFancyArticleTitleQuery,
-    GetFancyArticleTitleQueryVariables
-  >(GetFancyArticleTitleDocument, options);
-}
-export function useGetFancyArticleTitleLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetFancyArticleTitleQuery,
-    GetFancyArticleTitleQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetFancyArticleTitleQuery,
-    GetFancyArticleTitleQueryVariables
-  >(GetFancyArticleTitleDocument, options);
-}
-export type GetFancyArticleTitleQueryHookResult = ReturnType<
-  typeof useGetFancyArticleTitleQuery
->;
-export type GetFancyArticleTitleLazyQueryHookResult = ReturnType<
-  typeof useGetFancyArticleTitleLazyQuery
->;
-export type GetFancyArticleTitleQueryResult = Apollo.QueryResult<
-  GetFancyArticleTitleQuery,
-  GetFancyArticleTitleQueryVariables
->;
 export const GetArticleDocument = gql`
   query GetArticle($id: ID!) {
     article(id: $id) {
@@ -1910,6 +1815,7 @@ export const GetArticleDocument = gql`
               attributes {
                 title
                 content
+                locale
               }
             }
           }
@@ -2152,6 +2058,7 @@ export const GetTransportArticleDocument = gql`
               attributes {
                 title
                 subtitle
+                locale
                 Content {
                   ... on ComponentBasicParagraph {
                     __typename

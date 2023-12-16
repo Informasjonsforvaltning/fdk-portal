@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
-import ArticleItemSC from '../../../article-item/styled';
+import ArticleItemSC from '../article-item/styled';
 
 const Article = styled.article`
   display: flex;

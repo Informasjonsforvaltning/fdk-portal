@@ -22,6 +22,7 @@ const PublicServiceItemPure: FC<Props> = ({
     title = {},
     description = {},
     hasCompetentAuthority = [],
+    ownedBy = [],
     associatedBroaderTypesByEvents = []
   },
   eventTypes,
@@ -47,7 +48,7 @@ const PublicServiceItemPure: FC<Props> = ({
       id={id}
       type={SearchTypes.publicService}
       title={title}
-      publisher={hasCompetentAuthority?.[0]}
+      publisher={hasCompetentAuthority?.[0] || ownedBy?.[0]}
       description={description}
       subtitle={localization.service}
       beta

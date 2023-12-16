@@ -13,8 +13,6 @@ import {
   PATHNAME_GUIDANCE_METADATA,
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_MAIN_PAGE,
-  PATHNAME_NEWS_ARCHIVE,
-  PATHNAME_NEWS_ARTICLE,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_EVENTS,
@@ -26,16 +24,16 @@ import {
   PATHNAME_ABOUT_INFORMATIONMODELS,
   PATHNAME_AI,
   PATHNAME_TRANSPORT_GENERAL,
-  PATHNAME_TRANSPORT_GENERAL_INFO_ABOUT_THE_PORTAL,
-  PATHNAME_TRANSPORT_GENERAL_ITS,
-  PATHNAME_TRANSPORT_GENERAL_ROLES,
-  PATHNAME_TRANSPORT_USERS_NEWS,
-  PATHNAME_TRANSPORT_USERS_WHERE,
-  PATHNAME_TRANSPORT_USERS_WHAT,
-  PATHNAME_TRANSPORT_USERS_DATA_IN_NAP,
-  PATHNAME_TRANSPORT_PROVIDERS_ADD,
-  PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE,
-  PATHNAME_REQUESTS
+  PATHNAME_TRANSPORT_ITS,
+  PATHNAME_TRANSPORT_ROLES,
+  PATHNAME_TRANSPORT_NEWS,
+  PATHNAME_TRANSPORT_ADD,
+  PATHNAME_TRANSPORT_COMPLIANCE,
+  PATHNAME_REQUESTS,
+  PATHNAME_ABOUT_HARVESTING,
+  PATHNAME_ABOUT_REGISTRATION,
+  PATHNAME_TERMS_OF_USE,
+  PATHNAME_PUBLISHING
 } from '../../constants/constants';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import DataServiceBreadcrumb from './data-service-breadcrumb';
@@ -43,7 +41,6 @@ import ConceptBreadcrumb from './concept-breadcrumb';
 import InformationModelBreadcrumb from './informationModel-breadbrumb';
 import PathNameBreadcrumb from './pathname-breadcrumb';
 import './breadcrumbs.scss';
-import NewsBreadcrumb from './news-breadcrumb';
 import OrganizationBreadcrumb from './organization-breadcrumb';
 import PublicServiceBreadcrumb from './public-service-breadcrumb';
 import EventBreadcrumb from './event-breadcrumb';
@@ -76,20 +73,8 @@ const routes = [
   },
   { path: '/about', breadcrumb: () => <PathNameBreadcrumb pathName='about' /> },
   {
-    path: '/about-registration',
-    breadcrumb: () => <PathNameBreadcrumb pathName='aboutRegistration' />
-  },
-  {
     path: PATHNAME_REPORTS,
     breadcrumb: () => <PathNameBreadcrumb pathName='reports' />
-  },
-  {
-    path: PATHNAME_NEWS_ARCHIVE,
-    breadcrumb: () => <PathNameBreadcrumb pathName='newsArchive' />
-  },
-  {
-    path: `${PATHNAME_NEWS_ARTICLE}/:id`,
-    breadcrumb: NewsBreadcrumb
   },
   {
     path: PATHNAME_GUIDANCE,
@@ -144,6 +129,30 @@ const routes = [
     breadcrumb: () => <PathNameBreadcrumb pathName='aboutInformationModels' />
   },
   {
+    path: PATHNAME_ABOUT_HARVESTING,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='aboutHarvestingDataEndpoints' />
+    )
+  },
+  {
+    path: `${PATHNAME_PUBLISHING}${PATHNAME_ABOUT_HARVESTING}`,
+    breadcrumb: () => (
+      <PathNameBreadcrumb pathName='aboutHarvestingDataEndpoints' />
+    )
+  },
+  {
+    path: PATHNAME_ABOUT_REGISTRATION,
+    breadcrumb: () => <PathNameBreadcrumb pathName='aboutRegistration' />
+  },
+  {
+    path: `${PATHNAME_PUBLISHING}${PATHNAME_ABOUT_REGISTRATION}`,
+    breadcrumb: () => <PathNameBreadcrumb pathName='aboutRegistration' />
+  },
+  {
+    path: `${PATHNAME_PUBLISHING}${PATHNAME_TERMS_OF_USE}`,
+    breadcrumb: () => <PathNameBreadcrumb pathName='termsOfUse' />
+  },
+  {
     path: PATHNAME_AI,
     breadcrumb: () => <PathNameBreadcrumb pathName='ai' />
   },
@@ -152,49 +161,27 @@ const routes = [
     breadcrumb: () => <PathNameBreadcrumb pathName='transportGeneral' />
   },
   {
-    path: PATHNAME_TRANSPORT_GENERAL_ROLES,
+    path: PATHNAME_TRANSPORT_ROLES,
     breadcrumb: () => (
       <PathNameBreadcrumb pathName='transportRolesAndResponsibilies' />
     )
   },
   {
-    path: PATHNAME_TRANSPORT_GENERAL_ITS,
+    path: PATHNAME_TRANSPORT_ITS,
     breadcrumb: () => (
       <PathNameBreadcrumb pathName='transportItsDirectiveAndDelegatedRegulations' />
     )
   },
   {
-    path: PATHNAME_TRANSPORT_GENERAL_INFO_ABOUT_THE_PORTAL,
-    breadcrumb: () => (
-      <PathNameBreadcrumb pathName='transportInformationAboutThePortal' />
-    )
-  },
-  {
-    path: PATHNAME_TRANSPORT_USERS_NEWS,
+    path: PATHNAME_TRANSPORT_NEWS,
     breadcrumb: () => <PathNameBreadcrumb pathName='transportNews' />
   },
   {
-    path: PATHNAME_TRANSPORT_USERS_WHERE,
-    breadcrumb: () => (
-      <PathNameBreadcrumb pathName='transportWhereDoIFindTheData' />
-    )
-  },
-  {
-    path: PATHNAME_TRANSPORT_USERS_WHAT,
-    breadcrumb: () => (
-      <PathNameBreadcrumb pathName='transportWhatDataIsAvailable' />
-    )
-  },
-  {
-    path: PATHNAME_TRANSPORT_USERS_DATA_IN_NAP,
-    breadcrumb: () => <PathNameBreadcrumb pathName='transportDataInNap' />
-  },
-  {
-    path: PATHNAME_TRANSPORT_PROVIDERS_ADD,
+    path: PATHNAME_TRANSPORT_ADD,
     breadcrumb: () => <PathNameBreadcrumb pathName='transportAddData' />
   },
   {
-    path: PATHNAME_TRANSPORT_PROVIDERS_COMPLIANCE,
+    path: PATHNAME_TRANSPORT_COMPLIANCE,
     breadcrumb: () => (
       <PathNameBreadcrumb pathName='transportDeclarationOfCompliance' />
     )

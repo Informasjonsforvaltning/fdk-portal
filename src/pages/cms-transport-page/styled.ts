@@ -13,6 +13,7 @@ const TransportPage = styled.article`
   display: flex;
   gap: ${theme.spacing('S16', Unit.EM)};
   word-break: break-word;
+  width: 790px;
 
   ${customBreakingPoint} {
     && {
@@ -45,7 +46,7 @@ const Article = styled.main`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
   padding-left: 0;
 `;
 
@@ -57,7 +58,7 @@ const Content = styled.p`
   & > div {
     & > h2 {
       font-size: ${theme.fontSize('FS32', Unit.REM)};
-      font-weight: ${theme.fontWeight('FW700')};
+      font-weight: ${theme.fontWeight('FW500')};
       padding: ${theme.spacing('S6')};
       padding-left: 0;
       margin-bottom: ${theme.spacing('S10', Unit.EM)};

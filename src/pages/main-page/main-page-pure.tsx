@@ -19,20 +19,13 @@ import CommunityContainer from '../../components/community/community-container';
 import ContainerHeader from '../../components/community/container-header';
 import ContainerFooter from '../../components/community/container-footer';
 import Divider from '../../components/divider';
-import NewsItem from '../../components/community/news-item';
-import {
-  PATHNAME_COMMUNITY_COMMENTS,
-  PATHNAME_NEWS_ARCHIVE
-} from '../../constants/constants';
+import { PATHNAME_COMMUNITY_COMMENTS } from '../../constants/constants';
 
 const { FDK_COMMUNITY_BASE_URI, NAMESPACE } = env;
 
-interface Props extends EntitiesProps, ReferenceDataProps, CommunityProps {
-  news?: any;
-}
+interface Props extends EntitiesProps, ReferenceDataProps, CommunityProps {}
 
 const MainPage: FC<Props> = ({
-  news,
   entities,
   posts,
   entitiesActions: { getEntitiesRequested: getEntities },
@@ -106,23 +99,6 @@ const MainPage: FC<Props> = ({
                   ))}
                   <ContainerFooter href={`${FDK_COMMUNITY_BASE_URI}/recent`}>
                     {localization.community.seeAllPosts}
-                  </ContainerFooter>
-                </SC.CommunityPosts>
-              ) : null}
-            </CommunityContainer>
-
-            <CommunityContainer>
-              <ContainerHeader>{localization.news}</ContainerHeader>
-              {news.length > 0 ? (
-                <SC.CommunityPosts>
-                  {news.slice(0, 3).map((newsItem: any) => (
-                    <>
-                      <NewsItem {...newsItem} />
-                      <Divider />
-                    </>
-                  ))}
-                  <ContainerFooter href={PATHNAME_NEWS_ARCHIVE}>
-                    {localization.community.seeAllBlogArticles}
                   </ContainerFooter>
                 </SC.CommunityPosts>
               ) : null}

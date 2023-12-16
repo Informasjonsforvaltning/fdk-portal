@@ -27,17 +27,12 @@ const Header = styled.header`
         `}
 `;
 
-const Container = styled.nav`
+const Nav = styled.nav`
   align-items: center;
   display: flex;
   justify-content: space-between;
   overflow-wrap: break-word;
-  padding: 0px 15px;
   width: 100%;
-
-  @media (min-width: 768px) {
-    max-width: 1140px;
-  }
 `;
 
 const Logo = styled(LogoSVG)`
@@ -83,7 +78,7 @@ const NavigationLinks = styled.ul`
   margin-right: 1em;
   font-size: ${theme.fontSize('FS16', Unit.REM)};
 
-  & li {
+  & > li {
     ${() =>
       isTransportportal
         ? css`
@@ -117,7 +112,7 @@ const Button = styled.button`
 
 export default {
   Header,
-  Container,
+  Nav,
   Logo,
   DemoLogo,
   NapLogo,

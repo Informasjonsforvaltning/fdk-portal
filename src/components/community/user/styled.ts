@@ -18,7 +18,7 @@ const Icon = styled.div<{ colour: string }>`
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   background-color: ${({ colour }) => colour};
   font-size: ${theme.fontSize('FS16', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
   width: 23px;
   height: 23px;
   border-radius: 50%;
@@ -39,7 +39,7 @@ const Picture = styled.img`
 
 const Name = styled.span`
   color: ${theme.colour(Colour.NEUTRAL, 'N60')};
-  font-weight: ${theme.fontWeight('FW700')};
+  font-weight: ${theme.fontWeight('FW500')};
   margin-right: 5px;
 
   &:hover {
