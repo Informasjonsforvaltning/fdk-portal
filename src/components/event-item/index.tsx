@@ -26,7 +26,6 @@ const EventItem: FC<Props> = ({
     title={title}
     description={description}
     subtitle={localization.event}
-    beta
   >
     <SearchHitEvents>
       <RoundedTag>

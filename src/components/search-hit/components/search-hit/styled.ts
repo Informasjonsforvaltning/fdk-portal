@@ -3,7 +3,6 @@ import { Colour, Unit, theme as fdkTheme } from '@fellesdatakatalog/theme';
 
 import Link from '@fellesdatakatalog/link';
 import RoundedTagSC from '../../../rounded-tag/styled';
-import type { InvertedColorProps } from '../../../../types';
 
 const SearchHit = styled.article`
   background-color: #fff;
@@ -112,24 +111,6 @@ const Data = styled.div`
   margin-bottom: 1em;
 `;
 
-const BetaRibbon = styled.span<InvertedColorProps>`
-  position: absolute;
-  top: 20px;
-  right: -35px;
-  transform: rotate(45deg);
-  padding: ${fdkTheme.spacing('S4')} ${fdkTheme.spacing('S40')};
-  font-size: ${fdkTheme.fontSize('FS12', Unit.REM)};
-  font-weight: ${fdkTheme.fontWeight('FW500')};
-  color: ${({ inverted }) =>
-    inverted
-      ? fdkTheme.colour(Colour.RED, 'R60')
-      : fdkTheme.colour(Colour.RED, 'R30')};
-  background: ${({ inverted }) =>
-    inverted
-      ? fdkTheme.colour(Colour.RED, 'R30')
-      : fdkTheme.colour(Colour.RED, 'R60')};
-`;
-
 const SearchHitMetaData = styled.div`
   display: flex;
   justify-content: space-between;
@@ -146,6 +127,5 @@ export default {
   Event,
   Format,
   Data,
-  BetaRibbon,
   SearchHitMetaData
 };

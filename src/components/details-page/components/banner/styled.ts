@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colour, theme, Unit } from '@fellesdatakatalog/theme';
+import { theme, Unit } from '@fellesdatakatalog/theme';
 import Link from '@fellesdatakatalog/link';
 
 import { SC } from '../../../multilingual-field';
@@ -113,24 +113,6 @@ const Dot = styled.p`
   font-size: ${theme.fontSize('FS20', Unit.REM)};
 `;
 
-const BetaRibbon = styled.span<InvertedColorProps>`
-  position: absolute;
-  top: 25px;
-  right: -40px;
-  transform: rotate(45deg);
-  padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
-  font-size: 1rem;
-  font-weight: ${theme.fontWeight('FW500')};
-  color: ${({ inverted }) =>
-    inverted
-      ? theme.colour(Colour.RED, 'R60')
-      : theme.colour(Colour.RED, 'R30')};
-  background: ${({ inverted }) =>
-    inverted
-      ? theme.colour(Colour.RED, 'R30')
-      : theme.colour(Colour.RED, 'R60')};
-`;
-
 export default {
   Banner,
   Content,
@@ -138,7 +120,6 @@ export default {
   Title,
   LastPublishedInfo,
   PublisherLink,
-  BetaRibbon,
   Status,
   BannerInfo,
   Dot
