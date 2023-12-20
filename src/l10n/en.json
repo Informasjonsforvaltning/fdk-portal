@@ -127,12 +127,6 @@
   "app": {
     "menu": "Menu"
   },
-  "beta": {
-    "header": "This is a beta version. ",
-    "first": "Please give us ",
-    "second": "feedback",
-    "last": "about the application!"
-  },
   "lang": {
     "choose": "Choose language",
     "chosenLanguage": "Språk",
@@ -199,9 +193,9 @@
     "technical": "Technical information"
   },
   "page": {
-    "navigation": "Sidenavigering",
-    "next": "Neste side",
-    "prev": "Forrige side",
+    "navigation": "Page navigation",
+    "next": "Next page",
+    "prev": "Previous page",
     "resultsTab": "All",
     "datasetTab": "Datasets",
     "apiTab": "APIs",
@@ -995,7 +989,6 @@
     "notFound": "No title",
     "sparql": "Sparql tool"
   },
-  "sampleData": "Example data",
   "community": {
     "title": "Data Community",
     "seeLatest": "Latests posts from the ",

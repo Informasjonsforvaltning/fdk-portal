@@ -15,17 +15,6 @@ const DatasetsPage = styled.article`
   overflow: hidden;
 `;
 
-const BetaRibbon = styled.span`
-  position: absolute;
-  top: 8px;
-  right: -33px;
-  transform: rotate(45deg);
-  padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
-  font-weight: ${theme.fontWeight('FW500')};
-  color: ${theme.colour(Colour.BLUE, 'B60')};
-  background: ${theme.colour(Colour.YELLOW, 'Y30')};
-`;
-
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS48', Unit.REM)};
   font-weight: ${theme.fontWeight('FW500')};
@@ -324,7 +313,6 @@ const Question = styled.div`
 
 export default {
   DatasetsPage,
-  BetaRibbon,
   Title,
   Subtitle,
   Section,

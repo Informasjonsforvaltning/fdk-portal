@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { Colour, Unit, theme } from '@fellesdatakatalog/theme';
 import AllIconBase from '../../../../../images/icon-catalog-all-md.svg';
 import DatasetIconBase from '../../../../../images/icon-catalog-dataset-md.svg';
 import ApiIconBase from '../../../../../images/icon-catalog-api-md.svg';
@@ -94,18 +93,6 @@ const ServiceIcon = styled(ServiceIconBase)`
   }
 `;
 
-const BetaRibbon = styled.span`
-  position: absolute;
-  top: 2px;
-  right: -40px;
-  transform: rotate(45deg);
-  padding: ${theme.spacing('S4')} ${theme.spacing('S40')};
-  font-size: ${theme.fontSize('FS14', Unit.REM)};
-  font-weight: ${theme.fontWeight('FW500')};
-  color: ${theme.colour(Colour.NEUTRAL, 'N60')};
-  background: ${theme.colour(Colour.YELLOW, 'Y30')};
-`;
-
 export default {
   Tabs,
   Label,
@@ -115,6 +102,5 @@ export default {
   ApiIcon,
   ConceptIcon,
   InfomodIcon,
-  ServiceIcon,
-  BetaRibbon
+  ServiceIcon
 };

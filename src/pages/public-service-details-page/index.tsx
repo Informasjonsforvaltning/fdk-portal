@@ -306,7 +306,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
   return renderPage ? (
     publicService && (
       <ThemeProvider theme={theme}>
-        <SC.BetaRibbon>BETA</SC.BetaRibbon>
         <DetailsPage
           entity={entity}
           title={title}

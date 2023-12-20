@@ -50,17 +50,6 @@ const Banner = styled.header`
         `}
 `;
 
-const BetaRibbon = styled.span`
-  position: absolute;
-  top: 8px;
-  right: -33px;
-  transform: rotate(45deg);
-  padding: ${theme.spacing('S6')} ${theme.spacing('S40')};
-  font-weight: ${theme.fontWeight('FW500')};
-  color: ${theme.colour(Colour.BLUE, 'B60')};
-  background: ${theme.colour(Colour.YELLOW, 'Y30')};
-`;
-
 const DatasetIcon = styled(DatasetSVG)`
   height: 42px;
   width: 42px;
@@ -469,7 +458,6 @@ const MetricDescription = styled.p`
 
 export default {
   DatasetPage,
-  BetaRibbon,
   Banner,
   DatasetIcon,
   BannerRating,
