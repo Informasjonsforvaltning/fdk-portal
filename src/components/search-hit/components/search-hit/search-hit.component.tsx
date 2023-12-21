@@ -24,7 +24,6 @@ interface Props {
   description?: Partial<TextLanguage> | null;
   publisher?: Partial<Organization>;
   isAuthoritative?: boolean;
-  beta?: boolean;
 }
 
 function getPublisherLabel(type: SearchTypes) {
@@ -54,7 +53,6 @@ export const SearchHit: FC<Props> = ({
   description,
   publisher,
   isAuthoritative = false,
-  beta = false,
   children
 }) => {
   const {
@@ -112,11 +110,6 @@ export const SearchHit: FC<Props> = ({
 
   return (
     <SC.SearchHit>
-      {beta && (
-        <SC.BetaRibbon inverted={type === SearchTypes.event}>
-          {localization.dataset.sample.sampleData}
-        </SC.BetaRibbon>
-      )}
       <SearchHitHead
         id={id}
         type={type}

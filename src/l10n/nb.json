@@ -127,12 +127,6 @@
   "app": {
     "menu": "Meny"
   },
-  "beta": {
-    "header": "Dette er en beta-versjon. ",
-    "first": "Gi oss gjerne ",
-    "second": "tilbakemeldinger",
-    "last": "om hva du synes!"
-  },
   "lang": {
     "choose": "Velg språk",
     "chosenLanguage": "Language",
@@ -303,7 +297,6 @@
   },
   "search_hit": {
     "owned": "Eier: ",
-    "sample": "Eksempeldata tilgjengelig",
     "NationalBuildingBlock": "Autoritativ kilde",
     "bruker": "Brukerinnsamlede data",
     "tredjepart": "Tredjepart",
@@ -690,7 +683,6 @@
         "distributions": "Distribusjoner ({count})",
         "dataservices": "og datatjenester ({count})",
         "usage": "Bruk av datasettet",
-        "sample": "Eksempeldata",
         "provenance": "Opphav og oppdatering",
         "quality": "Kvalitet på innhold",
         "conceptReferences": "Begreper brukt i datasett",
@@ -1001,7 +993,6 @@
     "notFound": "Ingen tittel",
     "sparql": "Sparql verktøy"
   },
-  "sampleData": "Eksempeldata",
   "community": {
     "title": "Datalandsbyen",
     "seeLatest": "Siste saker i",

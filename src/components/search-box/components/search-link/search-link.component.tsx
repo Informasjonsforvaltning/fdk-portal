@@ -18,10 +18,9 @@ interface Props {
     | Entity.CONCEPT
     | Entity.INFORMATION_MODEL
     | Entity.PUBLIC_SERVICE;
-  beta?: boolean;
 }
 
-const SearchLink: FC<Props> = ({ entity, beta = false }) => {
+const SearchLink: FC<Props> = ({ entity }) => {
   const categoriesLink = {
     [Entity.DATASET]: {
       path: PATHNAME_DATASETS,
@@ -61,7 +60,6 @@ const SearchLink: FC<Props> = ({ entity, beta = false }) => {
       title={capitalizedTranslation}
       $smallWidth
     >
-      {beta && <SC.BetaRibbon>BETA</SC.BetaRibbon>}
       <Icon />
       <span>{localization.showOnly}&nbsp;</span>
       <span>{translation.toLowerCase()}&nbsp;</span>

@@ -126,12 +126,6 @@
   "app": {
     "menu": "Meny"
   },
-  "beta": {
-    "header": "Dette er ein beta-versjon. ",
-    "first": "Gi oss gjerne ",
-    "second": "tilbakemeldingar",
-    "last": "om kva du synes!"
-  },
   "lang": {
     "choose": "Vel språk",
     "chosenLanguage": "Language",
@@ -689,7 +683,6 @@
         "distributions": "Distribusjonar ({count})",
         "dataservices": "og datatenester ({count})",
         "usage": "Bruk av datasettet",
-        "sample": "Eksempeldata",
         "provenance": "Opphav og oppdatering",
         "quality": "Kvalitet på innhald",
         "conceptReferences": "Omgrep brukt i datasett",
@@ -1001,7 +994,6 @@
     "notFound": "Ingen tittel",
     "sparql": "Sparql verktøy"
   },
-  "sampleData": "Eksempeldata",
   "community": {
     "title": "Datalandsbyen",
     "seeLatest": "Siste saker i",

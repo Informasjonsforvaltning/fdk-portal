@@ -51,7 +51,6 @@ const PublicServiceItemPure: FC<Props> = ({
       publisher={hasCompetentAuthority?.[0] || ownedBy?.[0]}
       description={description}
       subtitle={localization.service}
-      beta
     >
       <SearchHitEvents>
         {uniqueAssociatedBroaderTypesByEvents.map(uri =>

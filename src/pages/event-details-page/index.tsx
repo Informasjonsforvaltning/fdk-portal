@@ -31,7 +31,6 @@ import type { Theme } from '../../types';
 import { Entity, SpecializedEventType } from '../../types/enums';
 
 import { PATHNAME_PUBLIC_SERVICES } from '../../constants/constants';
-import SC from './styled';
 import Markdown from '../../components/markdown';
 
 interface RouteParams {
@@ -109,7 +108,6 @@ const EventDetailsPage: FC<Props> = ({
   return renderPage ? (
     event && (
       <ThemeProvider theme={theme}>
-        <SC.BetaRibbon>BETA</SC.BetaRibbon>
         <DetailsPage
           entity={entity}
           title={title}
