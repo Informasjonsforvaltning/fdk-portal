@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import Link from '@fellesdatakatalog/link';
 import Button from '@fellesdatakatalog/button';
 import Select from 'react-select';
-import ReactPaginate from 'react-paginate';
 import { Breadcrumb } from 'reactstrap';
 import withCommunity, {
   Props as CommunityProps
@@ -17,6 +16,7 @@ import localization from '../../lib/localization';
 import env from '../../env';
 import { CommunityTopic, SelectOption } from '../../types';
 import { SearchField } from '../../components/search-field/search-field';
+import { Pagination } from '../../components/pagination';
 
 const { FDK_COMMUNITY_BASE_URI } = env;
 interface Props extends CommunityProps {}
@@ -54,6 +54,10 @@ const RequestsPage: FC<Props> = ({
       label: localization.requestsPage.mostViews
     }
   ];
+
+  const onPageChange = (page: number) => {
+    searchRequestsRequested(search, page.toString(), sortOption);
+  };
 
   return (
     <>
@@ -152,28 +156,10 @@ const RequestsPage: FC<Props> = ({
               </Button>
             </SC.Button>
 
-            <ReactPaginate
-              pageCount={pagination.pageCount ? pagination.pageCount : 0}
-              activeClassName='active'
-              onPageChange={data => {
-                searchRequestsRequested(
-                  search,
-                  (data.selected + 1).toString(),
-                  sortOption
-                );
-              }}
-              previousLabel={
-                <>
-                  <SC.ArrowLeftIcon />
-                  {localization.page.prev}
-                </>
-              }
-              nextLabel={
-                <>
-                  {localization.page.next}
-                  <SC.ArrowRightIcon />
-                </>
-              }
+            <Pagination
+              totalPages={pagination.pageCount ? pagination.pageCount : 0}
+              currentPage={Number(pagination.currentPage)}
+              onChange={onPageChange}
             />
           </SC.Pagination>
         )}
