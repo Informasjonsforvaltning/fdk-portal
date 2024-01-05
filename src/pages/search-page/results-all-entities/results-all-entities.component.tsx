@@ -1,7 +1,6 @@
 import React, { FC, memo, PropsWithChildren, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import ReactPaginate from 'react-paginate';
 import keyBy from 'lodash/keyBy';
 
 import env from '../../../env';
@@ -34,6 +33,7 @@ import type { Entity as EntityType, Concept, EventType } from '../../../types';
 import { FeedType } from '../../../types/enums';
 import { PATHNAME_DATASETS } from '../../../constants/constants';
 import Spinner from '../../../components/spinner';
+import { Pagination } from '../../../components/pagination';
 
 const { SEARCH_API_HOST } = env;
 
@@ -95,8 +95,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   const { page: pageSearchParam = 0 } = searchParams;
   const { totalPages } = page;
 
-  const onPageChange = (data: any) => {
-    setPage(history, location, data.selected);
+  const onPageChange = (pageNr: any) => {
+    setPage(history, location, pageNr - 1);
     window.scrollTo(0, 0);
   };
 
@@ -138,29 +138,10 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 <span className='uu-invisible' aria-hidden='false'>
                   Sidepaginering.
                 </span>
-                <ReactPaginate
-                  pageCount={parseInt(totalPages || 0, 10)}
-                  pageRangeDisplayed={2}
-                  marginPagesDisplayed={1}
-                  previousLabel={
-                    <>
-                      <SC.ArrowLeftIcon />
-                      {localization.page.prev}
-                    </>
-                  }
-                  nextLabel={
-                    <>
-                      {localization.page.next}
-                      <SC.ArrowRightIcon />
-                    </>
-                  }
-                  breakLabel='...'
-                  breakClassName='break-me'
-                  containerClassName='pagination'
-                  onPageChange={onPageChange}
-                  activeClassName='active'
-                  forcePage={parseInt(pageSearchParam?.toString(), 10)}
-                  disableInitialCallback
+                <Pagination
+                  totalPages={totalPages}
+                  currentPage={Number(pageSearchParam) + 1}
+                  onChange={onPageChange}
                 />
                 {path === PATHNAME_DATASETS && (
                   <SC.FeedLinks>
