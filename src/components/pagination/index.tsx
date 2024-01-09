@@ -18,6 +18,7 @@ const Pagination = ({
   className
 }: Props) => (
   <DSPagination
+    size='large'
     className={cn(className)}
     currentPage={currentPage}
     totalPages={totalPages}
