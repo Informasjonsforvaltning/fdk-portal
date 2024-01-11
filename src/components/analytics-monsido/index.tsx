@@ -17,8 +17,18 @@ const AnalyticsMonsido: FC = () => {
             window._monsido = window._monsido || {
               token: ${
                 isTransportPortal
-                  ? 'H7pMv_I-KwnWIR1nkiCXuw'
-                  : 'xAbTzhYnF9PHMK5X7XE-8g'
+                  ? '"H7pMv_I-KwnWIR1nkiCXuw"'
+                  : '"xAbTzhYnF9PHMK5X7XE-8g"'
+              },
+              statistics: {
+                enabled: true,
+                cookieLessTracking: false,
+                documentTracking: {
+                    enabled: false,
+                    documentCls: "monsido_download",
+                    documentIgnoreCls: "monsido_ignore_download",
+                    documentExt: ["pdf","doc","ppt","docx","pptx"],
+                },
               },
               heatmap: { enabled: true }
             };
