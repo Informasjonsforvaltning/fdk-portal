@@ -210,6 +210,6 @@
     "webpack-merge": "^5.8.0"
   },
   "optionalDependencies": {
-    "fsevents": "^2.3.2"
+    "fsevents": "^2.3.3"
   }
 }
