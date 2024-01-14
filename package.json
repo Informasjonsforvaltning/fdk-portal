@@ -56,7 +56,7 @@
     "@digdir/design-system-react": "^0.44.0",
     "@digdir/design-system-tokens": "^0.11.2",
     "@emotion/styled": "^11.10.5",
-    "@fellesdatakatalog/alert": "^0.3.6",
+    "@fellesdatakatalog/alert": "^0.3.8",
     "@fellesdatakatalog/button": "^0.2.10",
     "@fellesdatakatalog/expansion-panel": "^0.2.7",
     "@fellesdatakatalog/external-footer": "^0.4.0",
