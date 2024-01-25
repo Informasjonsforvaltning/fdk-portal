@@ -621,6 +621,7 @@ export interface Dataset {
   specializedType?: SpecializedDatasetType;
   datasetsInSeries?: string[];
   inSeries?: InSeries;
+  isOpenData: boolean;
 }
 
 export interface DataService {
@@ -673,7 +674,6 @@ export interface Distribution {
   description: Partial<TextLanguage>;
   fdkFormat: MediaTypeOrExtent[];
   license: License[];
-  openLicense: boolean;
   accessURL: string[];
   downloadURL: string[];
   conformsTo: ConformsTo[];

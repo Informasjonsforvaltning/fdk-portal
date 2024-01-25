@@ -205,10 +205,8 @@ const DatasetDetailsPage: FC<Props> = ({
   };
 
   const isAuthoritative = dataset?.provenance?.code === 'NASJONAL';
-  const isOpenData =
-    dataset?.accessRights?.code === 'PUBLIC' &&
-    dataset?.distribution?.some(({ openLicense }) => openLicense);
-  const isPublicData = dataset?.accessRights?.code === 'PUBLIC' && !isOpenData;
+  const isPublicData =
+    dataset?.accessRights?.code === 'PUBLIC' && !dataset?.isOpenData;
   const isRestrictedData = dataset?.accessRights?.code === 'RESTRICTED';
   const isNonPublicData = dataset?.accessRights?.code === 'NON_PUBLIC';
 
@@ -336,7 +334,7 @@ const DatasetDetailsPage: FC<Props> = ({
         entityUri={dataset?.uri}
         lastPublished={lastPublished}
         isAuthoritative={isAuthoritative}
-        isOpenData={isOpenData}
+        isOpenData={dataset?.isOpenData || false}
         isPublicData={isPublicData}
         isRestrictedData={isRestrictedData}
         isNonPublicData={isNonPublicData}
@@ -386,7 +384,6 @@ const DatasetDetailsPage: FC<Props> = ({
                   uri,
                   type,
                   description: dataserviceDescription,
-                  isOpenLicense,
                   fdkFormat,
                   endpointURL,
                   endpointDescription,
@@ -406,7 +403,6 @@ const DatasetDetailsPage: FC<Props> = ({
                         format => format?.code
                       ) as MediaTypeOrExtent[]) ?? [],
                     description: dataserviceDescription,
-                    openLicense: isOpenLicense,
                     accessURL: endpointURL
                   }}
                   accessServices={[
