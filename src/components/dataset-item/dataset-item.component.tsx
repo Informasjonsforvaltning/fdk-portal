@@ -44,13 +44,10 @@ export const DatasetItem: FC<Props> = ({
     provenance,
     specializedType,
     datasetsInSeries,
-    inSeries
+    inSeries,
+    isOpenData
   }
 }) => {
-  const isDatasetOpen = (ar: any, dist: any): boolean =>
-    ar?.code === 'PUBLIC' &&
-    (dist || []).filter((item: any) => !!item.openLicense).length > 0;
-
   const renderAccessRights = (accessRight: any) => {
     if (accessRight?.code === 'PUBLIC') {
       return (
@@ -118,7 +115,7 @@ export const DatasetItem: FC<Props> = ({
       description={description}
       isAuthoritative={provenance?.code === 'NASJONAL'}
     >
-      {isDatasetOpen(accessRights, distribution) && (
+      {isOpenData && (
         <SearchHitOpenData>
           <div title={localization.openDataTooltip}>
             <RoundedTag to={patchSearchQuery('opendata', 'true')}>
@@ -129,7 +126,7 @@ export const DatasetItem: FC<Props> = ({
         </SearchHitOpenData>
       )}
 
-      {!isDatasetOpen(accessRights, distribution) && (
+      {!isOpenData && (
         <SearchHitAccessRights>
           <div title={localization.publicDatasetTooltip}>
             {renderAccessRights(accessRights)}
