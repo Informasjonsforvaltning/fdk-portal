@@ -32,9 +32,9 @@ const onDeleteConcept = (
 const renderTitle = (label: any, items: any, field: any) => (
   <thead className='sticky'>
     <tr>
-      <th>{label}</th>
+      <th scope='col'>{label}</th>
       {Object.keys(items).map((item, index) => (
-        <th key={`row-title-${field}-${index}`}>
+        <th scope='col' key={`row-title-${field}-${index}`}>
           <h3>{getTranslateText(_.get(items[item], field))}</h3>
         </th>
       ))}
