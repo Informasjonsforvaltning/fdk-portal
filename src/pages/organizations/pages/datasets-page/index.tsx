@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import Link from '@fellesdatakatalog/link';
 import type { RouteComponentProps } from 'react-router-dom';
 
-// import { getConfig } from '../../../../config';
 import withDatasets, {
   Props as DatasetsProps
 } from '../../../../components/with-datasets';
@@ -180,19 +179,27 @@ const DatasetsPage: FC<Props> = ({
         <SC.Table>
           <SC.TableHead>
             <tr>
-              <th>{translations.metadataQualityPage.datasetTitle}</th>
-              <th>{translations.metadataQualityPage.metadataQuality}</th>
-              <th>
+              <th scope='col'>
+                {translations.metadataQualityPage.datasetTitle}
+              </th>
+              <th scope='col'>
+                {translations.metadataQualityPage.metadataQuality}
+              </th>
+              <th scope='col'>
                 {translations.metadataQualityPage.dimension.accessibility}
               </th>
-              <th>{translations.metadataQualityPage.dimension.findability}</th>
-              <th>
+              <th scope='col'>
+                {translations.metadataQualityPage.dimension.findability}
+              </th>
+              <th scope='col'>
                 {translations.metadataQualityPage.dimension.interoperability}
               </th>
-              <th>
+              <th scope='col'>
                 {translations.metadataQualityPage.dimension.contextuality}
               </th>
-              <th>{translations.metadataQualityPage.dimension.reusability}</th>
+              <th scope='col'>
+                {translations.metadataQualityPage.dimension.reusability}
+              </th>
             </tr>
           </SC.TableHead>
           {datasetScores && (

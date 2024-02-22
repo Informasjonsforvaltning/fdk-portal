@@ -290,7 +290,7 @@ const DatasetPage: FC<Props> = ({
         <SC.Table>
           <SC.TableHead>
             <tr>
-              <th>
+              <th scope='col'>
                 <p>{translations.metadataQualityPage.criterion}</p>
                 <p>{translations.metadataQualityPage.metadataQuality}</p>
               </th>
