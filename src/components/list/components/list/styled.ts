@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CollapseIconBase from '../../../../images/icon-collapse-md.svg';
 import ExpandIconBase from '../../../../images/icon-expand-md.svg';
 
-const ListHeader = styled.div`
+const ListHeader = styled.li`
   align-items: center;
   background-color: ${({ theme }) => theme.extendedColors.neutralDarkest};
   border-radius: 2px;
@@ -17,7 +17,7 @@ const ListHeader = styled.div`
 
 const HeaderText = styled.span``;
 
-const List = styled.div`
+const List = styled.ul`
   display: flex;
   flex-flow: column;
   margin-top: 1.5em;

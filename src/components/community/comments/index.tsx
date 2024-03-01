@@ -123,24 +123,26 @@ const CommentSection: FC<Props> = ({ entityId, authService }) => {
           />
         ))}
         {page > 0 && (
-          <SC.ButtonContainer>
-            {hasMoreComments && page !== pageCount && (
-              <Buttons.UnderlineButton
-                variant={Variant.TERTIARY}
-                onClick={() => setPage(page + 1)}
-              >
-                {translations.community.comments.buttons.expandComments}
-              </Buttons.UnderlineButton>
-            )}
-            {page > 1 && (
-              <Buttons.UnderlineButton
-                variant={Variant.TERTIARY}
-                onClick={() => setPage(1)}
-              >
-                {translations.community.comments.buttons.collapseComments}
-              </Buttons.UnderlineButton>
-            )}
-          </SC.ButtonContainer>
+          <li>
+            <SC.ButtonContainer>
+              {hasMoreComments && page !== pageCount && (
+                <Buttons.UnderlineButton
+                  variant={Variant.TERTIARY}
+                  onClick={() => setPage(page + 1)}
+                >
+                  {translations.community.comments.buttons.expandComments}
+                </Buttons.UnderlineButton>
+              )}
+              {page > 1 && (
+                <Buttons.UnderlineButton
+                  variant={Variant.TERTIARY}
+                  onClick={() => setPage(1)}
+                >
+                  {translations.community.comments.buttons.collapseComments}
+                </Buttons.UnderlineButton>
+              )}
+            </SC.ButtonContainer>
+          </li>
         )}
       </SC.Comments>
     </>
