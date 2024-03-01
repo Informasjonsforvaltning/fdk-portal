@@ -49,19 +49,21 @@ const List: FC<Props> = ({
         )}
 
       {listItems.length > expandItemsDefault && (
-        <SC.Expansion onClick={toggleExpansion}>
-          {isExpanded ? (
-            <div>
-              <SC.CollapseIcon />
-              {showLessLabel}
-            </div>
-          ) : (
-            <div>
-              <SC.ExpandIcon />
-              {showMoreLabel}
-            </div>
-          )}
-        </SC.Expansion>
+        <li>
+          <SC.Expansion onClick={toggleExpansion}>
+            {isExpanded ? (
+              <div>
+                <SC.CollapseIcon />
+                {showLessLabel}
+              </div>
+            ) : (
+              <div>
+                <SC.ExpandIcon />
+                {showMoreLabel}
+              </div>
+            )}
+          </SC.Expansion>
+        </li>
       )}
     </SC.List>
   );

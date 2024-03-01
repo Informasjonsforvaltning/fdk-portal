@@ -91,13 +91,13 @@ const DatasetReport: FC<Props> = ({
 
   const accessRightsPublic =
     accessRights?.find((item: KeyWithCountObject) => item.key === 'PUBLIC')
-      ?.count || 0;
+      ?.count ?? 0;
   const accessRightsRestriced =
     accessRights?.find((item: KeyWithCountObject) => item.key === 'RESTRICTED')
-      ?.count || 0;
+      ?.count ?? 0;
   const accessRightsNonPublic =
     accessRights?.find((item: KeyWithCountObject) => item.key === 'NON_PUBLIC')
-      ?.count || 0;
+      ?.count ?? 0;
 
   const accessRightsUnknown =
     totalObjects -
@@ -183,7 +183,7 @@ const DatasetReport: FC<Props> = ({
           </div>
         </div>
 
-        {timeSeriesData?.length > 0 && timeSeriesData?.length > 0 && (
+        {timeSeriesData?.length > 0 && (
           <div className='row'>
             <div className='col-12'>
               <BoxRegular
@@ -205,211 +205,231 @@ const DatasetReport: FC<Props> = ({
             <div className='row'>
               <div className='col-12'>
                 <BoxRegular header={localization.accessLevel}>
-                  <StatisticsRegular
-                    to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                      Filter.OPENDATA,
-                      'true'
-                    )}`}
-                  >
-                    <IllustrationWithCount
-                      variant={FlowVariant.COLUMN}
-                      chart={
-                        <PieChart
-                          data={[
-                            {
-                              value: Number(opendata),
-                              color: theme.extendedColors[Entity.DATASET].dark
-                            },
-                            {
-                              value: Number(totalObjects) - Number(opendata),
-                              color: theme.extendedColors[Entity.DATASET].light
-                            }
-                          ]}
-                          startAngle={-90}
-                          lineWidth={40}
-                          animate
-                          label={({ dataIndex }) => (
-                            <NapLockOpenStrokeIconSC
-                              key={dataIndex}
-                              x={30}
-                              y={30}
-                              viewBox='0 0 40 40'
+                  <ul>
+                    <li>
+                      <StatisticsRegular
+                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
+                          Filter.OPENDATA,
+                          'true'
+                        )}`}
+                      >
+                        <IllustrationWithCount
+                          variant={FlowVariant.COLUMN}
+                          chart={
+                            <PieChart
+                              data={[
+                                {
+                                  value: Number(opendata),
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].dark
+                                },
+                                {
+                                  value:
+                                    Number(totalObjects) - Number(opendata),
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].light
+                                }
+                              ]}
+                              startAngle={-90}
+                              lineWidth={40}
+                              animate
+                              label={({ dataIndex }) => (
+                                <NapLockOpenStrokeIconSC
+                                  key={dataIndex}
+                                  x={30}
+                                  y={30}
+                                  viewBox='0 0 40 40'
+                                />
+                              )}
                             />
-                          )}
+                          }
+                          count={opendata}
                         />
-                      }
-                      count={opendata}
-                    />
-                    <SC.StatisticsRegular.Label>
-                      {localization.report.opendata}
-                    </SC.StatisticsRegular.Label>
-                  </StatisticsRegular>
-
-                  <StatisticsRegular
-                    to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                      Filter.ACCESSRIGHTS,
-                      'PUBLIC'
-                    )}`}
-                  >
-                    <IllustrationWithCount
-                      variant={FlowVariant.COLUMN}
-                      chart={
-                        <PieChart
-                          data={[
-                            {
-                              value: Number(accessRightsPublic),
-                              color: theme.extendedColors[Entity.DATASET].dark
-                            },
-                            {
-                              value:
-                                Number(totalObjects) -
-                                Number(accessRightsPublic),
-                              color: theme.extendedColors[Entity.DATASET].light
-                            }
-                          ]}
-                          startAngle={-90}
-                          lineWidth={40}
-                          animate
-                          label={({ dataIndex }) => (
-                            <NapLockOpenStrokeIconSC
-                              key={dataIndex}
-                              x={30}
-                              y={30}
-                              viewBox='0 0 40 40'
+                        <SC.StatisticsRegular.Label>
+                          {localization.report.opendata}
+                        </SC.StatisticsRegular.Label>
+                      </StatisticsRegular>
+                    </li>
+                    <li>
+                      <StatisticsRegular
+                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
+                          Filter.ACCESSRIGHTS,
+                          'PUBLIC'
+                        )}`}
+                      >
+                        <IllustrationWithCount
+                          variant={FlowVariant.COLUMN}
+                          chart={
+                            <PieChart
+                              data={[
+                                {
+                                  value: Number(accessRightsPublic),
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].dark
+                                },
+                                {
+                                  value:
+                                    Number(totalObjects) -
+                                    Number(accessRightsPublic),
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].light
+                                }
+                              ]}
+                              startAngle={-90}
+                              lineWidth={40}
+                              animate
+                              label={({ dataIndex }) => (
+                                <NapLockOpenStrokeIconSC
+                                  key={dataIndex}
+                                  x={30}
+                                  y={30}
+                                  viewBox='0 0 40 40'
+                                />
+                              )}
                             />
-                          )}
+                          }
+                          count={accessRightsPublic}
                         />
-                      }
-                      count={accessRightsPublic}
-                    />
-                    <SC.StatisticsRegular.Label>
-                      {localization.report.public}
-                    </SC.StatisticsRegular.Label>
-                  </StatisticsRegular>
-
-                  <StatisticsRegular
-                    to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                      Filter.ACCESSRIGHTS,
-                      'RESTRICTED'
-                    )}`}
-                  >
-                    <IllustrationWithCount
-                      variant={FlowVariant.COLUMN}
-                      chart={
-                        <PieChart
-                          data={[
-                            {
-                              value: Number(accessRightsRestriced),
-                              color: theme.extendedColors[Entity.DATASET].dark
-                            },
-                            {
-                              value:
-                                Number(totalObjects) -
-                                Number(accessRightsRestriced),
-                              color: theme.extendedColors[Entity.DATASET].light
-                            }
-                          ]}
-                          startAngle={-90}
-                          lineWidth={40}
-                          animate
-                          label={({ dataIndex }) => (
-                            <NapLockSemiOpenStrokeIconSC
-                              key={dataIndex}
-                              x={30}
-                              y={30}
-                              viewBox='0 0 40 40'
+                        <SC.StatisticsRegular.Label>
+                          {localization.report.public}
+                        </SC.StatisticsRegular.Label>
+                      </StatisticsRegular>
+                    </li>
+                    <li>
+                      <StatisticsRegular
+                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
+                          Filter.ACCESSRIGHTS,
+                          'RESTRICTED'
+                        )}`}
+                      >
+                        <IllustrationWithCount
+                          variant={FlowVariant.COLUMN}
+                          chart={
+                            <PieChart
+                              data={[
+                                {
+                                  value: Number(accessRightsRestriced),
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].dark
+                                },
+                                {
+                                  value:
+                                    Number(totalObjects) -
+                                    Number(accessRightsRestriced),
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].light
+                                }
+                              ]}
+                              startAngle={-90}
+                              lineWidth={40}
+                              animate
+                              label={({ dataIndex }) => (
+                                <NapLockSemiOpenStrokeIconSC
+                                  key={dataIndex}
+                                  x={30}
+                                  y={30}
+                                  viewBox='0 0 40 40'
+                                />
+                              )}
                             />
-                          )}
+                          }
+                          count={accessRightsRestriced}
                         />
-                      }
-                      count={accessRightsRestriced}
-                    />
-                    <SC.StatisticsRegular.Label>
-                      {localization.report.restricted}
-                    </SC.StatisticsRegular.Label>
-                  </StatisticsRegular>
-
-                  <StatisticsRegular
-                    to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                      Filter.ACCESSRIGHTS,
-                      'NON_PUBLIC'
-                    )}`}
-                  >
-                    <IllustrationWithCount
-                      variant={FlowVariant.COLUMN}
-                      chart={
-                        <PieChart
-                          data={[
-                            {
-                              value: Number(accessRightsNonPublic),
-                              color: theme.extendedColors[Entity.DATASET].dark
-                            },
-                            {
-                              value:
-                                Number(totalObjects) -
-                                Number(accessRightsNonPublic),
-                              color: theme.extendedColors[Entity.DATASET].light
-                            }
-                          ]}
-                          startAngle={-90}
-                          lineWidth={40}
-                          animate
-                          label={({ dataIndex }) => (
-                            <NapLockLockedStrokeIconSC
-                              key={dataIndex}
-                              x={30}
-                              y={30}
-                              viewBox='0 0 40 40'
+                        <SC.StatisticsRegular.Label>
+                          {localization.report.restricted}
+                        </SC.StatisticsRegular.Label>
+                      </StatisticsRegular>
+                    </li>
+                    <li>
+                      <StatisticsRegular
+                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
+                          Filter.ACCESSRIGHTS,
+                          'NON_PUBLIC'
+                        )}`}
+                      >
+                        <IllustrationWithCount
+                          variant={FlowVariant.COLUMN}
+                          chart={
+                            <PieChart
+                              data={[
+                                {
+                                  value: Number(accessRightsNonPublic),
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].dark
+                                },
+                                {
+                                  value:
+                                    Number(totalObjects) -
+                                    Number(accessRightsNonPublic),
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].light
+                                }
+                              ]}
+                              startAngle={-90}
+                              lineWidth={40}
+                              animate
+                              label={({ dataIndex }) => (
+                                <NapLockLockedStrokeIconSC
+                                  key={dataIndex}
+                                  x={30}
+                                  y={30}
+                                  viewBox='0 0 40 40'
+                                />
+                              )}
                             />
-                          )}
+                          }
+                          count={accessRightsNonPublic}
                         />
-                      }
-                      count={accessRightsNonPublic}
-                    />
-                    <SC.StatisticsRegular.Label>
-                      {localization.report.nonPublic}
-                    </SC.StatisticsRegular.Label>
-                  </StatisticsRegular>
-
-                  <StatisticsRegular
-                    to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                      Filter.ACCESSRIGHTS,
-                      'Ukjent'
-                    )}`}
-                  >
-                    <IllustrationWithCount
-                      variant={FlowVariant.COLUMN}
-                      chart={
-                        <PieChart
-                          data={[
-                            {
-                              value: accessRightsUnknown,
-                              color: theme.extendedColors[Entity.DATASET].dark
-                            },
-                            {
-                              value: Number(totalObjects) - accessRightsUnknown,
-                              color: theme.extendedColors[Entity.DATASET].light
-                            }
-                          ]}
-                          startAngle={-90}
-                          lineWidth={40}
-                          animate
-                          label={({ dataIndex }) => (
-                            <AccessUnknownIcon
-                              key={dataIndex}
-                              x={35}
-                              y={35}
-                              viewBox='0 0 100 100'
+                        <SC.StatisticsRegular.Label>
+                          {localization.report.nonPublic}
+                        </SC.StatisticsRegular.Label>
+                      </StatisticsRegular>
+                    </li>
+                    <li>
+                      <StatisticsRegular
+                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
+                          Filter.ACCESSRIGHTS,
+                          'Ukjent'
+                        )}`}
+                      >
+                        <IllustrationWithCount
+                          variant={FlowVariant.COLUMN}
+                          chart={
+                            <PieChart
+                              data={[
+                                {
+                                  value: accessRightsUnknown,
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].dark
+                                },
+                                {
+                                  value:
+                                    Number(totalObjects) - accessRightsUnknown,
+                                  color:
+                                    theme.extendedColors[Entity.DATASET].light
+                                }
+                              ]}
+                              startAngle={-90}
+                              lineWidth={40}
+                              animate
+                              label={({ dataIndex }) => (
+                                <AccessUnknownIcon
+                                  key={dataIndex}
+                                  x={35}
+                                  y={35}
+                                  viewBox='0 0 100 100'
+                                />
+                              )}
                             />
-                          )}
+                          }
+                          count={accessRightsUnknown}
                         />
-                      }
-                      count={accessRightsUnknown}
-                    />
-                    <SC.StatisticsRegular.Label>
-                      {localization.report.unknown}
-                    </SC.StatisticsRegular.Label>
-                  </StatisticsRegular>
+                        <SC.StatisticsRegular.Label>
+                          {localization.report.unknown}
+                        </SC.StatisticsRegular.Label>
+                      </StatisticsRegular>
+                    </li>
+                  </ul>
                 </BoxRegular>
               </div>
             </div>

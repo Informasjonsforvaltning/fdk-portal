@@ -58,7 +58,7 @@ const AccessRight = styled.div`
   }
 `;
 
-const Theme = styled.div`
+const Theme = styled.li`
   display: flex;
   margin-bottom: 1em;
   flex-wrap: wrap;
@@ -88,7 +88,7 @@ const Event = styled.div`
   }
 `;
 
-const Format = styled.div`
+const Format = styled.li`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1em;

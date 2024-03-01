@@ -39,6 +39,18 @@ const TopicTitle = styled.a`
   }
 `;
 
+const TopicTags = styled.ul`
+  display: flex;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  flex-wrap: wrap;
+
+  & > li {
+    margin-right: 5px;
+  }
+`;
+
 const Statistics = styled.ul`
   display: flex;
   list-style-type: none;
@@ -52,7 +64,7 @@ const Statistics = styled.ul`
 
   @media (max-width: 990px) {
     display: none;
-  } ;
+  }
 `;
 
 const BigNumber = styled.span`
@@ -60,4 +72,4 @@ const BigNumber = styled.span`
   font-size: ${theme.fontSize('FS16', Unit.REM)};
 `;
 
-export default { Topic, Info, TopicTitle, Statistics, BigNumber };
+export default { Topic, Info, TopicTitle, Statistics, BigNumber, TopicTags };

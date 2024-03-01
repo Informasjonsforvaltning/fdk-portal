@@ -263,7 +263,7 @@ const OrganizationPage: FC<Props> = ({
                     count={rating?.datasets?.totalCount ?? 0}
                   />
                   <StatisticsRegularSC.StatisticsRegular.Label>
-                    {translations.metadataQualityPage.descriptionsTotal}
+                    {`${translations.metadataQualityPage.datasetCatalogStatistics} ${translations.metadataQualityPage.total}`}
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
               </SC.Box>
@@ -281,6 +281,7 @@ const OrganizationPage: FC<Props> = ({
                   <StatisticsRegularSC.StatisticsRegular.Label>
                     {translations.formatString(
                       translations.metadataQualityPage.newDescriptions,
+                      translations.metadataQualityPage.datasetCatalogStatistics,
                       translations.metadataQualityPage.lastWeek
                     )}
                   </StatisticsRegularSC.StatisticsRegular.Label>
@@ -364,7 +365,7 @@ const OrganizationPage: FC<Props> = ({
                         count={rating?.dataservices?.totalCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
-                        {translations.metadataQualityPage.descriptionsTotal}
+                        {`${translations.metadataQualityPage.dataserviceCatalogStatistics} ${translations.metadataQualityPage.total}`}
                       </StatisticsRegularSC.StatisticsRegular.Label>
                     </StatisticsRegular>
                   </SC.Box>
@@ -382,6 +383,8 @@ const OrganizationPage: FC<Props> = ({
                       <StatisticsRegularSC.StatisticsRegular.Label>
                         {translations.formatString(
                           translations.metadataQualityPage.newDescriptions,
+                          translations.metadataQualityPage
+                            .dataserviceCatalogStatistics,
                           translations.metadataQualityPage.lastWeek
                         )}
                       </StatisticsRegularSC.StatisticsRegular.Label>
@@ -409,7 +412,7 @@ const OrganizationPage: FC<Props> = ({
                         count={rating?.concepts?.totalCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
-                        {translations.metadataQualityPage.descriptionsTotal}
+                        {`${translations.metadataQualityPage.conceptCatalogStatistics} ${translations.metadataQualityPage.total}`}
                       </StatisticsRegularSC.StatisticsRegular.Label>
                     </StatisticsRegular>
                   </SC.Box>
@@ -427,6 +430,8 @@ const OrganizationPage: FC<Props> = ({
                       <StatisticsRegularSC.StatisticsRegular.Label>
                         {translations.formatString(
                           translations.metadataQualityPage.newDescriptions,
+                          translations.metadataQualityPage
+                            .conceptCatalogStatistics,
                           translations.metadataQualityPage.lastWeek
                         )}
                       </StatisticsRegularSC.StatisticsRegular.Label>
@@ -459,7 +464,7 @@ const OrganizationPage: FC<Props> = ({
                         count={rating?.informationmodels?.totalCount ?? 0}
                       />
                       <StatisticsRegularSC.StatisticsRegular.Label>
-                        {translations.metadataQualityPage.descriptionsTotal}
+                        {`${translations.metadataQualityPage.informationModelCatalogStatistics} ${translations.metadataQualityPage.total}`}
                       </StatisticsRegularSC.StatisticsRegular.Label>
                     </StatisticsRegular>
                   </SC.Box>
@@ -479,6 +484,8 @@ const OrganizationPage: FC<Props> = ({
                       <StatisticsRegularSC.StatisticsRegular.Label>
                         {translations.formatString(
                           translations.metadataQualityPage.newDescriptions,
+                          translations.metadataQualityPage
+                            .informationModelCatalogStatistics,
                           translations.metadataQualityPage.lastWeek
                         )}
                       </StatisticsRegularSC.StatisticsRegular.Label>

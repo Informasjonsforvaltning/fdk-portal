@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import _ from 'lodash';
 import translations from '../../../lib/localization';
 import env from '../../../env';
 
@@ -27,9 +28,15 @@ const Topic: FC<Props> = ({ topic }) => {
           </SC.TopicTitle>
         </h3>
         <div>
-          {topic?.tags?.map((tag, index) => (
-            <Tag key={`tag_${index}`} {...tag} />
-          ))}
+          {topic && (
+            <SC.TopicTags>
+              {topic.tags?.map(tag => (
+                <li key={_.uniqueId('li-')}>
+                  <Tag key={_.uniqueId('tag-')} {...tag} />
+                </li>
+              ))}
+            </SC.TopicTags>
+          )}
           <TimeAgo startTime={topic.timestamp} />
           <User user={topicOwner} />
         </div>

@@ -13,7 +13,7 @@ const Tabs = styled(TabsBase)`
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
 `;
 
-const Tab = styled.span`
+const Tab = styled.li`
   padding: ${theme.spacing('S6')} ${theme.spacing('S12')};
 
   &.active,

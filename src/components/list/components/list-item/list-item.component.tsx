@@ -9,10 +9,12 @@ interface Props {
 }
 
 const ListItem: FC<Props> = ({ to, text1, text2, ...props }) => (
-  <SC.ListItem to={to} {...props}>
-    <SC.Text>{text1}</SC.Text>
-    <SC.Text>{text2}</SC.Text>
-  </SC.ListItem>
+  <li>
+    <SC.ListItem to={to} {...props}>
+      <SC.Text>{text1}</SC.Text>
+      <SC.Text>{text2}</SC.Text>
+    </SC.ListItem>
+  </li>
 );
 
 export default memo(ListItem);

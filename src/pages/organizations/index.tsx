@@ -1,5 +1,6 @@
 import React, { memo, FC, Suspense } from 'react';
 import { Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom';
+import _ from 'lodash';
 import { PATHNAME_ORGANIZATIONS } from '../../constants/constants';
 import lazyWithRetry from '../../lib/lazyWithRetry';
 import routes from '../../routes';
@@ -22,7 +23,12 @@ const OrganizationsRouter: FC<RouteComponentProps> = ({ match: { url } }) => (
   <Suspense fallback={null}>
     <Switch>
       {routes.organizations.map((path: string) => (
-        <Route exact path={path} component={components[path]} />
+        <Route
+          key={_.uniqueId('route-')}
+          exact
+          path={path}
+          component={components[path]}
+        />
       ))}
       <Redirect to={url} />
     </Switch>
