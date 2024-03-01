@@ -119,7 +119,7 @@
     "regenerator-runtime": "^0.14.1",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
-    "sanitize-html": "^2.8.1",
+    "sanitize-html": "^2.12.1",
     "sass": "^1.62.1",
     "styled-components": "^5.3.6",
     "turndown": "^7.1.1",
