@@ -73,14 +73,14 @@ const RatingIcon = styled.div`
   }
 `;
 
-const Themes = styled.div`
+const Themes = styled.ul`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 5px;
   margin-right: -10px;
 
-  & > * {
+  & > li > * {
     padding: 1px 10px;
     border-radius: 20px;
     margin-top: 10px;
@@ -89,7 +89,7 @@ const Themes = styled.div`
     cursor: default;
   }
 
-  & > a {
+  & > li > a {
     display: inline-flex;
     align-items: center;
     color: ${({ theme }) => theme.entityColours.dark} !important;
@@ -140,6 +140,8 @@ const Themes = styled.div`
     }
   }
 `;
+
+const ThemeItem = styled.li``;
 
 const Page = styled.div`
   display: flex;
@@ -230,6 +232,7 @@ export default {
   SubBanner,
   MetadataQuality,
   Themes,
+  ThemeItem,
   Page,
   MenuToggle,
   SideMenu,

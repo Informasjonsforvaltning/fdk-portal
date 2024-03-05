@@ -43,7 +43,11 @@ const Header = styled.div`
 const Title = styled.h2`
   font-size: ${themeFDK.fontSize('FS24', Unit.REM)};
   font-weight: 600;
-  margin-bottom: 0;
+  margin-bottom: ${themeFDK.spacing('S10')};
+  border-bottom: solid 2px;
+  :hover {
+    border-color: transparent;
+  }
 `;
 
 const Type = styled.div`

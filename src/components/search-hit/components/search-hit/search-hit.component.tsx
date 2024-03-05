@@ -1,5 +1,6 @@
 import React, { Children, FC, isValidElement } from 'react';
 
+import _ from 'lodash';
 import SC from './styled';
 import type { Organization, TextLanguage } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
@@ -78,19 +79,32 @@ export const SearchHit: FC<Props> = ({
       ) : null
     )?.shift();
 
-  const renderSearchHitThemes = () =>
-    Children.map(children, child =>
+  const renderSearchHitThemes = () => {
+    const searchHitThemes = Children.map(children, child =>
       isValidElement(child) && child.type === SearchHitThemes ? (
         <SC.Theme>{child}</SC.Theme>
-      ) : null
-    )?.shift();
+      ) : (
+        []
+      )
+    );
 
-  const renderSearchHitFormats = () =>
-    Children.map(children, child =>
+    return _.isEmpty(searchHitThemes) ? undefined : (
+      <ul>{searchHitThemes?.shift()}</ul>
+    );
+  };
+
+  const renderSearchHitFormats = () => {
+    const searchHitFormats = Children.map(children, child =>
       isValidElement(child) && child.type === SearchHitFormats ? (
         <SC.Format>{child}</SC.Format>
-      ) : null
-    )?.shift();
+      ) : (
+        []
+      )
+    );
+    return _.isEmpty(searchHitFormats) ? undefined : (
+      <ul>{searchHitFormats?.shift()}</ul>
+    );
+  };
 
   const renderSearchHitEvents = () =>
     Children.map(children, child =>

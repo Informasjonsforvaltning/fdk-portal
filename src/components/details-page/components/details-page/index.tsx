@@ -240,7 +240,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     : null;
 
   return (
-    <SC.DetailsPage className='container'>
+    <SC.DetailsPage className='container' id='content'>
       <Banner
         entity={entity}
         title={title}
@@ -265,48 +265,60 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       )}
       <SC.Themes>
         {isOpenData && (
-          <Link to={`${rootPaths[entity]}?opendata=true`} className='open-data'>
-            <OpenAccessIcon />
-            {translations.detailsPage.openData}
-          </Link>
+          <SC.ThemeItem>
+            <Link
+              to={`${rootPaths[entity]}?opendata=true`}
+              className='open-data'
+            >
+              <OpenAccessIcon />
+              {translations.detailsPage.openData}
+            </Link>
+          </SC.ThemeItem>
         )}
         {isPublicData && (
-          <Link
-            to={`${rootPaths[entity]}?accessrights=PUBLIC`}
-            className='public-data'
-          >
-            <OpenAccessIcon />
-            {translations.detailsPage.publicData}
-          </Link>
+          <SC.ThemeItem>
+            <Link
+              to={`${rootPaths[entity]}?accessrights=PUBLIC`}
+              className='public-data'
+            >
+              <OpenAccessIcon />
+              {translations.detailsPage.publicData}
+            </Link>
+          </SC.ThemeItem>
         )}
         {isRestrictedData && (
-          <Link
-            to={`${rootPaths[entity]}?accessrights=RESTRICTED`}
-            className='restricted-data'
-          >
-            <RestrictedAccessIcon />
-            {translations.detailsPage.restrictedData}
-          </Link>
+          <SC.ThemeItem>
+            <Link
+              to={`${rootPaths[entity]}?accessrights=RESTRICTED`}
+              className='restricted-data'
+            >
+              <RestrictedAccessIcon />
+              {translations.detailsPage.restrictedData}
+            </Link>
+          </SC.ThemeItem>
         )}
         {isNonPublicData && (
-          <Link
-            to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
-            className='non-public-data'
-          >
-            <NotOpenAccessIcon />
-            {translations.detailsPage.nonPublicData}
-          </Link>
+          <SC.ThemeItem>
+            <Link
+              to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
+              className='non-public-data'
+            >
+              <NotOpenAccessIcon />
+              {translations.detailsPage.nonPublicData}
+            </Link>
+          </SC.ThemeItem>
         )}
         {themes.map(theme => {
           if (isLosTheme(theme)) {
             const { uri, name, losPaths: [losPath] = [] } = theme;
             return (
-              <Link key={uri} to={`${rootPaths[entity]}?losTheme=${losPath}`}>
-                {translate(name)}
-              </Link>
+              <SC.ThemeItem key={uri}>
+                <Link key={uri} to={`${rootPaths[entity]}?losTheme=${losPath}`}>
+                  {translate(name)}
+                </Link>
+              </SC.ThemeItem>
             );
           }
-
           if (isEuTheme(theme)) {
             const { id, title: themeTitle, label: themeLabel, code } = theme;
             return (
@@ -315,7 +327,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
               </Link>
             );
           }
-
           return null;
         })}
       </SC.Themes>
@@ -326,7 +337,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         </SC.MenuToggle>
         <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
         {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
-
         <SC.Content>{renderContentSections()}</SC.Content>
         {renderAside()}
       </SC.Page>
