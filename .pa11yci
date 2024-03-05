@@ -5,7 +5,8 @@
     "chromeLaunchConfig": {
       "args": [
         "--no-sandbox"
-      ]
+      ],
+      "executablePath": "/opt/hostedtoolcache/node/18.19.1/x64"
     },
     "ignore": [
       "WCAG2A.Principle4.Guideline4_1.4_1_1.F77",
@@ -16,11 +17,7 @@
     ]
   },
   "urls": [
-    "https://staging.fellesdatakatalog.digdir.no/public-services-and-events?q=Skjenkebevilling",
     "https://staging.fellesdatakatalog.digdir.no/informationmodels/7e6ef541-86bd-398d-8cd3-fad2838a1726",
-    "https://staging.fellesdatakatalog.digdir.no/concepts/5d358e0e-52f8-420c-b5af-23703e1ecd6c",
-    "https://staging.fellesdatakatalog.digdir.no/dataservices/a0350cbc-19c8-3c13-a196-2ae8f5aadf2e",
-    "https://staging.fellesdatakatalog.digdir.no/datasets/2d1d37c9-6388-3ba7-9a7d-1ae5627a79a8",
     "https://staging.fellesdatakatalog.digdir.no/requests"
   ]
 }

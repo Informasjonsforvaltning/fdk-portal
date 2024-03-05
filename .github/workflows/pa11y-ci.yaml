@@ -2,18 +2,21 @@ name: Accessibility tests with Pa11y
 on:
   pull_request:
       branches:
-        - main
+        - "**"
 
 jobs: 
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: latest
       - uses: actions/checkout@v4
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - name: Install dependencies.
         run: npm install
       - name: Run pa11y
-        run: npm run pa11y-ci
+        run: npm run pa11y-ci --defaults.executablePath.chromeLaunchConfig ${{ steps['setup-chrome'].outputs['chrome-path'] }}
