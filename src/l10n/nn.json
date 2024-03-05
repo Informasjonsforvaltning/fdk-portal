@@ -199,6 +199,7 @@
   },
   "page": {
     "navigation": "Sidenavigering",
+    "navigateTo": "Naviger til side",
     "next": "Neste side",
     "prev": "Forrige side",
     "resultsTab": "Alle",

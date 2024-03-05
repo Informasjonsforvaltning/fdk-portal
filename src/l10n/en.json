@@ -194,6 +194,7 @@
   },
   "page": {
     "navigation": "Page navigation",
+    "navigateTo": "Navigate to page",
     "next": "Next page",
     "prev": "Previous page",
     "resultsTab": "All",
