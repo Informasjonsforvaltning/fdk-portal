@@ -3,7 +3,7 @@ name: Deploy to staging
 on:
   push:
     branches:
-      - develop
+      - feat/use-fdk-search-service
   workflow_dispatch:
 
 jobs:
