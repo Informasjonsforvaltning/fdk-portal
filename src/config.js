@@ -9,7 +9,8 @@ const env = window.env || {
 // override all env variables to staging (inspired by https://www.staging.fellesdatakatalog.digdir.no/config.js)
 // env.SEARCH_API_HOST = 'https://staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_HOST = 'https://staging.fellesdatakatalog.digdir.no';
-// env.SEARCH_FULLTEXT_HOST = 'https://search.staging.fellesdatakatalog.digdir.no';
+// env.SEARCH_SERVICE_HOST =
+//   'https://search.api.staging.fellesdatakatalog.digdir.no';
 // env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
 // env.FDK_CMS_BASE_URI = 'https://cms.staging.fellesdatakatalog.digdir.no';
 // env.ORGANIZATION_HOST =
@@ -44,7 +45,7 @@ const config = {
   referenceDataApi: defaultToSearchApi(env.REFERENCE_DATA_HOST),
   searchHost: defaultToSearchApi(env.SEARCH_HOST),
   useDemoLogo: env.USE_DEMO_LOGO,
-  searchFullTextApi: { host: env.SEARCH_FULLTEXT_HOST },
+  searchFullTextApi: { host: env.SEARCH_SERVICE_HOST },
   cmsApi: { host: env.CMS_API_HOST },
   cmsV2Api: { host: env.FDK_CMS_BASE_URI },
   organizationsApi: { host: env.ORGANIZATION_HOST },
