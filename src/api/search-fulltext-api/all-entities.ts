@@ -1,7 +1,7 @@
 import { searchFullTextApiPost, searchFullTextApiGet } from './host';
 
 export const searchAllEntities = (body: any) =>
-  searchFullTextApiPost('/search', body);
+  searchFullTextApiPost('', body);
 
 export const getRecentEntities = () => searchFullTextApiGet('/recent');
 
