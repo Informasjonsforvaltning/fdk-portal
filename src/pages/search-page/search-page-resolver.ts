@@ -50,7 +50,9 @@ const mapProps = {
         ? {
             q,
             ...(filters.length > 0 && { filters }),
-            ...(page && { page: parseInt(page.toString(), 10) }),
+            ...(page && {
+              pagination: { page: parseInt(page.toString(), 10) }
+            }),
             ...(sortfield && {
               sorting: { field: sortfield, direction: 'DESC' }
             })

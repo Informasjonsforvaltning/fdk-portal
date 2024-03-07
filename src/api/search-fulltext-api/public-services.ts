@@ -100,8 +100,10 @@ export const searchPublicServices = (body: any) =>
 
 export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   q,
-  page: page ? Number(page) : undefined,
-  size,
+  pagination: {
+    page: page ? Number(page) : undefined,
+    size: size ? Number(size) : undefined
+  },
   sorting: mapSorting(params),
   filters: mapFilters(params)
 });
