@@ -34,7 +34,7 @@ const renderEntity = (
     removeConcept
   }: Pick<Props, 'compareConceptList' | 'addConcept' | 'removeConcept'>
 ) => {
-  switch (entity.type) {
+  switch (entity.searchType) {
     case Entity.DATASET:
       return (
         <ThemeProvider

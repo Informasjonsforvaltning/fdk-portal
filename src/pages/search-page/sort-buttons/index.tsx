@@ -24,11 +24,11 @@ const SortButtons: FC<RouteComponentProps> = ({ history, location }) => {
     historyPushSearchParams(history, searchParams);
   };
   const onSortByModifiedClick = () => {
-    setSortField('harvest.firstHarvested');
+    setSortField('FIRST_HARVESTED');
     const oldSearchParams = parseSearchParams(location);
     const searchParams = {
       ...oldSearchParams,
-      sortfield: 'harvest.firstHarvested',
+      sortfield: 'FIRST_HARVESTED',
       page: null
     };
     historyPushSearchParams(history, searchParams);
@@ -53,12 +53,12 @@ const SortButtons: FC<RouteComponentProps> = ({ history, location }) => {
       </ButtonToggleSC.ButtonToggle>
       <ButtonToggleSC.ButtonToggle
         onClick={onSortByModifiedClick}
-        selected={sortField === 'harvest.firstHarvested'}
+        selected={sortField === 'FIRST_HARVESTED'}
         borderRight
       >
-        {sortField === 'harvest.firstHarvested' && <ButtonToggleSC.CheckIcon />}
+        {sortField === 'FIRST_HARVESTED' && <ButtonToggleSC.CheckIcon />}
         {localization.formatString(
-          sortField === 'harvest.firstHarvested'
+          sortField === 'FIRST_HARVESTED'
             ? localization.sort.sortedBy
             : localization.sort.sortBy,
           {

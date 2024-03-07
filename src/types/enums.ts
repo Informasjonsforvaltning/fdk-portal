@@ -25,12 +25,12 @@ export enum SearchTypes {
 }
 
 export enum Entity {
-  DATASET = 'dataset',
-  DATA_SERVICE = 'dataservice',
-  CONCEPT = 'concept',
-  INFORMATION_MODEL = 'informationmodel',
-  PUBLIC_SERVICE = 'public_service',
-  EVENT = 'event'
+  DATASET = 'DATASET',
+  DATA_SERVICE = 'DATA_SERVICE',
+  CONCEPT = 'CONCEPT',
+  INFORMATION_MODEL = 'INFORMATION_MODEL',
+  PUBLIC_SERVICE = 'PUBLIC_SERVICE',
+  EVENT = 'EVENT'
 }
 
 export enum DataFormat {

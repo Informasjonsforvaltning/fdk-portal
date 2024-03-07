@@ -52,7 +52,7 @@ const mapProps = {
             ...(filters.length > 0 && { filters }),
             ...(page && { page: parseInt(page.toString(), 10) }),
             ...(sortfield && {
-              sorting: { field: sortfield, direction: 'desc' }
+              sorting: { field: sortfield, direction: 'DESC' }
             })
           }
         : { q };

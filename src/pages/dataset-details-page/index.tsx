@@ -382,7 +382,7 @@ const DatasetDetailsPage: FC<Props> = ({
                   id,
                   title: dataserviceTitle,
                   uri,
-                  type,
+                  searchType,
                   description: dataserviceDescription,
                   fdkFormat,
                   endpointURL,
@@ -396,7 +396,7 @@ const DatasetDetailsPage: FC<Props> = ({
                   datasetTitle={title}
                   distribution={{
                     title: dataserviceTitle,
-                    type,
+                    searchType,
                     conformsTo,
                     fdkFormat:
                       (fdkFormat?.filter(

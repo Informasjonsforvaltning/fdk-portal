@@ -8,7 +8,7 @@ import {
 
 export interface InformationModel {
   id: string;
-  type: EntityEnum.INFORMATION_MODEL;
+  searchType: EntityEnum.INFORMATION_MODEL;
   uri: string;
   identifier?: string;
   publisher?: Partial<Organization>;
@@ -254,7 +254,7 @@ export interface GenericRelation {
 
 export interface Concept {
   id: string;
-  type: EntityEnum.CONCEPT;
+  searchType: EntityEnum.CONCEPT;
   uri: string;
   identifier: string;
   prefLabel: Partial<TextLanguage>;
@@ -405,7 +405,7 @@ interface PublicServiceContactPoint {
 
 export interface PublicService {
   id: string;
-  type: EntityEnum.PUBLIC_SERVICE;
+  searchType: EntityEnum.PUBLIC_SERVICE;
   uri: string;
   identifier: string;
   title: Partial<TextLanguage>;
@@ -451,7 +451,7 @@ export interface Event {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  type: EntityEnum.EVENT;
+  searchType: EntityEnum.EVENT;
   dctType?: SkosConcept[];
   harvest?: Partial<Harvest>;
   relation?: string[];
@@ -580,7 +580,7 @@ interface InSeries {
 
 export interface Dataset {
   id: string;
-  type: EntityEnum.DATASET;
+  searchType: EntityEnum.DATASET;
   uri: string;
   publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
@@ -626,7 +626,7 @@ export interface Dataset {
 
 export interface DataService {
   id: string;
-  type: EntityEnum.DATA_SERVICE;
+  searchType: EntityEnum.DATA_SERVICE;
   uri: string;
   publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
@@ -669,7 +669,7 @@ export interface AccessService {
 
 export interface Distribution {
   uri: string;
-  type: string;
+  searchType: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   fdkFormat: MediaTypeOrExtent[];

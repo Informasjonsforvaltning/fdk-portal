@@ -5,7 +5,7 @@ exports[`SearchLink component must render correct structure 1`] = `
   $smallWidth={true}
   title="Dataset"
   to="/datasets"
-  type="dataset"
+  type="DATASET"
 >
   <Styled(SvgIconCatalogDatasetLg) />
   <span>
