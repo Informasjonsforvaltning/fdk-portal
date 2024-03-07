@@ -16,7 +16,6 @@ import { getLinkForTab } from '../../../search-location-helper';
 import { Entity } from '../../../../../types/enums';
 
 interface Props {
-  countResults?: number;
   countDatasets: number;
   countConcepts: number;
   countApis: number;
@@ -25,7 +24,6 @@ interface Props {
 }
 
 const Tabs: FC<Props & RouteComponentProps> = ({
-  countResults,
   countDatasets,
   countApis,
   countConcepts,
@@ -37,14 +35,12 @@ const Tabs: FC<Props & RouteComponentProps> = ({
     <Tab
       active={location.pathname === PATHNAME_SEARCH}
       tabLink={getLinkForTab(location, PATHNAME_SEARCH)}
-      label={`${localization.page.resultsTab} (${countResults})`}
+      label={`${localization.page.resultsTab}`}
     >
       <SC.IconPlaceholder>
         <SC.AllIcon />
       </SC.IconPlaceholder>
-      <SC.Label>
-        {localization.page.resultsTab}&nbsp;({countResults})
-      </SC.Label>
+      <SC.Label>{localization.page.resultsTab}</SC.Label>
     </Tab>
     <Tab
       active={location.pathname === PATHNAME_DATASETS}

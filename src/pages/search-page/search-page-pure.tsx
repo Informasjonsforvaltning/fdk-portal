@@ -178,7 +178,6 @@ const SearchPage: FC<Props> = ({
             />
           </SearchBoxHeader>
           <Tabs
-            countResults={searchAllEntities?.page?.totalElements || 0}
             countDatasets={datasetTotal || 0}
             countConcepts={conceptTotal || 0}
             countApis={dataServiceTotal || 0}
