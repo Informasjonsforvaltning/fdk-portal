@@ -15,7 +15,7 @@ describe('Tab component', () => {
   const countApis = 200;
   const countConcepts = 300;
   const countInformationModels = 400;
-  const countPublicServices = 500;
+  const countPublicServicesAndEvents = 500;
 
   it(Expectation.STRUCTURE, () => {
     const container = shallow(
@@ -24,7 +24,7 @@ describe('Tab component', () => {
         countApis={countApis}
         countConcepts={countConcepts}
         countInformationModels={countInformationModels}
-        countPublicServices={countPublicServices}
+        countPublicServicesAndEvents={countPublicServicesAndEvents}
       />
     );
     expect(container).toMatchSnapshot();

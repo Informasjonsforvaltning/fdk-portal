@@ -20,7 +20,7 @@ interface Props {
   countConcepts: number;
   countApis: number;
   countInformationModels: number;
-  countPublicServices: number;
+  countPublicServicesAndEvents: number;
 }
 
 const Tabs: FC<Props & RouteComponentProps> = ({
@@ -28,7 +28,7 @@ const Tabs: FC<Props & RouteComponentProps> = ({
   countApis,
   countConcepts,
   countInformationModels,
-  countPublicServices,
+  countPublicServicesAndEvents,
   location
 }) => (
   <SC.Tabs>
@@ -98,14 +98,14 @@ const Tabs: FC<Props & RouteComponentProps> = ({
     <Tab
       active={location.pathname === PATHNAME_PUBLIC_SERVICES_AND_EVENTS}
       tabLink={getLinkForTab(location, PATHNAME_PUBLIC_SERVICES_AND_EVENTS)}
-      label={`${localization.page.serviceTab} (${countPublicServices})`}
+      label={`${localization.page.serviceTab} (${countPublicServicesAndEvents})`}
     >
       <SC.IconPlaceholder type={Entity.PUBLIC_SERVICE}>
         <SC.ServiceIcon />
       </SC.IconPlaceholder>
       <SC.Label>
         {localization.page.serviceTab}&nbsp;(
-        {countPublicServices})
+        {countPublicServicesAndEvents})
       </SC.Label>
     </Tab>
   </SC.Tabs>
