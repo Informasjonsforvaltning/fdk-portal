@@ -175,6 +175,9 @@ const SearchPage: FC<Props> = ({
               countApis={dataServiceTotal ?? 0}
               countTerms={conceptTotal ?? 0}
               countInformationModels={informationModelTotal ?? 0}
+              countPublicServicesAndEvents={
+                publicServicesAndEventsPage?.totalElements || 0
+              }
             />
           </SearchBoxHeader>
           <Tabs
@@ -183,7 +186,7 @@ const SearchPage: FC<Props> = ({
             countConcepts={conceptTotal || 0}
             countApis={dataServiceTotal || 0}
             countInformationModels={informationModelTotal || 0}
-            countPublicServices={
+            countPublicServicesAndEvents={
               publicServicesAndEventsPage?.totalElements || 0
             }
           />

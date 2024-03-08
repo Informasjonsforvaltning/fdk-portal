@@ -212,7 +212,7 @@
   },
   "hitstats": {
     "nosearch": "Søk blant {0} datasett, {1} API-er, {2} begreper og {3} informasjonsmodeller",
-    "search": "Søket ga {0} treff i datasett, {1} treff i API-er, {2} treff i begreper og {3} treff i informasjonsmodeller",
+    "search": "Søket ga {0} treff i datasett, {1} treff i API-er, {2} treff i begreper, {3} treff i informasjonsmodeller og {4} treff i tjenester og hendelser.",
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket ga {0} treff i datasett",
     "nohits": "Søket ga dessverre ingen treff",
