@@ -11,22 +11,8 @@ import { Tabs } from '../../../tabs';
 afterEach(cleanup);
 
 describe('Tab component', () => {
-  const countDatasets = 100;
-  const countApis = 200;
-  const countConcepts = 300;
-  const countInformationModels = 400;
-  const countPublicServicesAndEvents = 500;
-
   it(Expectation.STRUCTURE, () => {
-    const container = shallow(
-      <Tabs
-        countDatasets={countDatasets}
-        countApis={countApis}
-        countConcepts={countConcepts}
-        countInformationModels={countInformationModels}
-        countPublicServicesAndEvents={countPublicServicesAndEvents}
-      />
-    );
+    const container = shallow(<Tabs />);
     expect(container).toMatchSnapshot();
   });
 });
