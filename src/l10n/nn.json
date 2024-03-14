@@ -200,8 +200,8 @@
   "page": {
     "navigation": "Sidenavigering",
     "navigateTo": "Naviger til side",
-    "next": "Neste side",
-    "prev": "Forrige side",
+    "next": "Neste",
+    "prev": "Forrige",
     "resultsTab": "Alle",
     "datasetTab": "Datasett",
     "apiTab": "API ",
