@@ -582,7 +582,7 @@ export interface Dataset {
   id: string;
   searchType: EntityEnum.DATASET;
   uri: string;
-  publisher: Partial<Organization>;
+  organization: Partial<Organization>;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   descriptionFormatted: Partial<TextLanguage>;

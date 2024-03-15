@@ -329,7 +329,7 @@ const DatasetDetailsPage: FC<Props> = ({
       <DetailsPage
         entity={entity}
         title={title}
-        publisher={dataset?.publisher}
+        publisher={dataset?.organization}
         entityId={dataset?.id}
         entityUri={dataset?.uri}
         lastPublished={lastPublished}

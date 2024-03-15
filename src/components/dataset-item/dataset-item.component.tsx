@@ -36,7 +36,7 @@ export const DatasetItem: FC<Props> = ({
     id,
     title,
     description,
-    publisher,
+    organization,
     losTheme: losThemes,
     theme: euThemes,
     distribution = [],
@@ -111,7 +111,7 @@ export const DatasetItem: FC<Props> = ({
       type={SearchTypes.dataset}
       title={title}
       subtitle={subtitle()}
-      publisher={publisher}
+      publisher={organization}
       description={description}
       isAuthoritative={provenance?.code === 'NASJONAL'}
     >
