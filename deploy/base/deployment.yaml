@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fdk-portal-new-search
+  labels:
+    app: fdk-portal-new-search
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fdk-portal-new-search
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: fdk-portal-new-search
+      annotations:
+        prometheus.io/scrape: "false"
+    spec:
+      containers:
+        - name: fdk-portal-new-search
+          image: fdk-portal-new-search
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 100m
+            limits:
+              memory: 100Mi
+      restartPolicy: Always
