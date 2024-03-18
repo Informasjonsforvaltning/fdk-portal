@@ -1,4 +1,10 @@
-import type { EnvironmentVariables, EuTheme, LosTheme } from '../../types';
+import type {
+  EnvironmentVariables,
+  EuDataTheme,
+  EuTheme,
+  LosNode,
+  LosTheme
+} from '../../types';
 import localization from '../../lib/localization';
 
 function assertIsDefined<T>(
@@ -17,14 +23,21 @@ export const validateEnv = (
   return env;
 };
 
-export const isEuTheme = (theme: EuTheme | LosTheme): theme is EuTheme => {
+export const isEuTheme = (
+  theme: EuDataTheme | LosNode | EuTheme | LosTheme
+): theme is EuTheme => {
   const { id, label, title, code } = theme as EuTheme;
   return !!id && !!code && (!!label || !!title);
 };
 
 export const isLosTheme = (theme: EuTheme | LosTheme): theme is LosTheme => {
-  const { uri, name, losPaths } = theme as LosTheme;
-  return !!uri && !!name && !!losPaths;
+  const { name, losPaths } = theme as LosTheme;
+  return !!name && !!losPaths;
+};
+
+export const isLosNode = (theme: EuDataTheme | LosNode): theme is LosNode => {
+  const { name, losPaths } = theme as LosNode;
+  return !!name && !!losPaths;
 };
 
 export const translatePrefixedFormat = (format: string) => {

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link as RouteLink } from 'react-router-dom';
+// import { Link as RouteLink } from 'react-router-dom';
 
 import localization from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -8,19 +8,26 @@ import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 import {
   SearchHit,
-  SearchHitFormats,
+  // SearchHitFormats,
   SearchHitThemes,
   SearchHitAccessRights,
   SearchHitOpenData
 } from '../search-hit/search-hit';
 
-import { isLosTheme, isEuTheme } from '../../utils/common';
+import {
+  // isLosTheme,
+  isEuTheme,
+  isLosNode
+} from '../../utils/common';
 
 import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
 
-import type { Dataset, MediaTypeOrExtent } from '../../types';
+import type {
+  // Dataset, MediaTypeOrExtent,
+  SearchObject
+} from '../../types';
 import {
-  MediaTypeOrExtentType,
+  // MediaTypeOrExtentType,
   SearchTypes,
   SpecializedDatasetType
 } from '../../types/enums';
@@ -28,7 +35,7 @@ import {
 import SC from './dataset-item.styled';
 
 interface Props {
-  dataset: Partial<Dataset>;
+  dataset: Partial<SearchObject>;
 }
 
 export const DatasetItem: FC<Props> = ({
@@ -38,13 +45,11 @@ export const DatasetItem: FC<Props> = ({
     description,
     organization,
     losTheme: losThemes,
-    theme: euThemes,
-    distribution = [],
+    dataTheme: euThemes,
+    // distribution = [], fdkFormatPrefixed
     accessRights,
     provenance,
     specializedType,
-    datasetsInSeries,
-    inSeries,
     isOpenData
   }
 }) => {
@@ -62,43 +67,22 @@ export const DatasetItem: FC<Props> = ({
     return null;
   };
 
-  const formats = distribution?.reduce(
-    (previous, { fdkFormat = [] }) => [...previous, ...fdkFormat],
-    [] as MediaTypeOrExtent[]
-  );
+  // const formats = distribution?.reduce(
+  //   (previous, { fdkFormat = [] }) => [...previous, ...fdkFormat],
+  //   [] as MediaTypeOrExtent[]
+  // );
 
   const themes = [...(losThemes ?? []), ...(euThemes ?? [])];
 
   const subtitle = () => {
     if (specializedType === SpecializedDatasetType.DATASET_SERIES) {
-      let containsText = localization.datasetsInSeriesEmpty;
-      const count = datasetsInSeries?.length ?? 0;
-      if (count > 0) {
-        containsText = localization.formatString(
-          count === 1
-            ? localization.datasetsInSeriesSingular
-            : localization.datasetsInSeries,
-          count
-        );
-      }
+      const containsText = localization.datasetsInSeriesEmpty;
+
       return (
         <SC.Subtitle>
           {localization.datasetSeriesLabel}
           <SC.Dot>•</SC.Dot>
           {containsText}
-        </SC.Subtitle>
-      );
-    }
-    if (inSeries?.title) {
-      const containedInText = localization.formatString(
-        localization.datasetIsInSeries,
-        inSeries.title
-      );
-      return (
-        <SC.Subtitle>
-          {localization.datasetLabel}
-          <SC.Dot>•</SC.Dot>
-          {containedInText}
         </SC.Subtitle>
       );
     }
@@ -136,10 +120,13 @@ export const DatasetItem: FC<Props> = ({
 
       <SearchHitThemes>
         {themes.map(theme => {
-          if (isLosTheme(theme)) {
-            const { uri, name, losPaths: [losPath] = [] } = theme;
+          if (isLosNode(theme)) {
+            const { name, losPaths: [losPath] = [] } = theme;
             return (
-              <RoundedTag key={uri} to={patchSearchQuery('losTheme', losPath)}>
+              <RoundedTag
+                key={`losTheme-${name}`}
+                to={patchSearchQuery('losTheme', losPath)}
+              >
                 <span>{translate(name)}</span>
               </RoundedTag>
             );
@@ -165,7 +152,7 @@ export const DatasetItem: FC<Props> = ({
         })}
       </SearchHitThemes>
 
-      <SearchHitFormats>
+      {/* <SearchHitFormats>
         {formats
           .filter(
             format =>
@@ -180,7 +167,7 @@ export const DatasetItem: FC<Props> = ({
               <span>{`${format.name}`}</span>
             </RouteLink>
           ))}
-      </SearchHitFormats>
+      </SearchHitFormats> */}
     </SearchHit>
   );
 };

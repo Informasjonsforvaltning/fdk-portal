@@ -12,7 +12,7 @@ import {
   paramsToSearchBody
 } from '../../../api/search-fulltext-api/events';
 
-import type { Event } from '../../../types';
+import type { Event, SearchObject } from '../../../types';
 
 function* getEventsRequested({
   payload: {
@@ -26,7 +26,9 @@ function* getEventsRequested({
     );
 
     if (data) {
-      yield put(actions.getEventsSucceeded(extractEvents(data) as Event[]));
+      yield put(
+        actions.getEventsSucceeded(extractEvents(data) as SearchObject[])
+      );
     } else {
       yield put(actions.getEventsFailed(''));
     }

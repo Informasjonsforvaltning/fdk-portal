@@ -9,7 +9,7 @@ import {
   RESET_INFORMATION_MODELS_RELATIONS
 } from './action-types';
 
-import type { InformationModel } from '../../../types';
+import type { InformationModel, SearchObject } from '../../../types';
 
 interface GetInformationModelsParams {
   conceptIdentifiers?: string[];
@@ -31,7 +31,7 @@ export function getInformationModelsRequested(
 }
 
 export function getInformationModelsSucceeded(
-  informationModels: InformationModel[]
+  informationModels: SearchObject[]
 ) {
   return {
     type: GET_INFORMATION_MODELS_SUCCEEDED,

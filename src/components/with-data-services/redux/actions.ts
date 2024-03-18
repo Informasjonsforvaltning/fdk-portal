@@ -9,7 +9,7 @@ import {
   RESET_DATA_SERVICES_RELATIONS
 } from './action-types';
 
-import { DataService } from '../../../types';
+import { DataService, SearchObject } from '../../../types';
 
 interface GetDataServicesParams {
   dataseturi?: string;
@@ -28,7 +28,7 @@ export function getDataServicesRequested(params: GetDataServicesParams) {
   };
 }
 
-export function getDataServicesSucceeded(dataServices: DataService[]) {
+export function getDataServicesSucceeded(dataServices: SearchObject[]) {
   return {
     type: GET_DATA_SERVICES_SUCCEEDED,
     payload: {

@@ -11,7 +11,7 @@ import {
   paramsToSearchBody
 } from '../../../api/search-fulltext-api/dataservices';
 
-import type { DataService } from '../../../types';
+import type { DataService, SearchObject } from '../../../types';
 
 function* getDataServicesRequested({
   payload: {
@@ -32,7 +32,7 @@ function* getDataServicesRequested({
     });
     const data: Record<string, any> = yield call(searchDataServices, body);
     if (data?.hits) {
-      yield put(actions.getDataServicesSucceeded(data?.hits as DataService[]));
+      yield put(actions.getDataServicesSucceeded(data?.hits as SearchObject[]));
     } else {
       yield put(actions.getDataServicesFailed(''));
     }

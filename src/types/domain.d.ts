@@ -3,8 +3,43 @@ import {
   Entity as EntityEnum,
   AdministrativeUnitType,
   SpecializedEventType,
-  LanguageCodes
+  LanguageCodes,
+  SearchObjectRelationType
 } from './enums';
+
+export interface SearchObject {
+  id: string;
+  uri: string;
+  accessRights?: ReferenceDataCode;
+  catalog?: Catalog;
+  dataTheme?: EuDataTheme[];
+  description?: Partial<TextLanguage>;
+  fdkFormatPrefixed?: string[];
+  metadata?: Metadata;
+  isOpenData?: boolean;
+  keyword?: Partial<TextLanguage>[];
+  losTheme?: LosNode[];
+  organization?: Organization;
+  provenance?: ReferenceDataCode;
+  searchType: EntityEnum;
+  specializedType?: SpecializedDatasetType | SpecializedEventType;
+  spatial?: ReferenceDataCode[];
+  title?: Partial<TextLanguage>;
+  relations?: Relation[];
+}
+
+interface Catalog {
+  description?: Partial<TextLanguage>;
+  id?: string;
+  publisher?: Organization;
+  title?: Partial<TextLanguage>;
+  uri?: string;
+}
+
+export interface Relation {
+  uri?: string;
+  type?: SearchObjectRelationType;
+}
 
 export interface InformationModel {
   id: string;
@@ -198,8 +233,20 @@ export interface Harvest {
   lastHarvested: string;
 }
 
+interface Metadata {
+  firstHarvested?: string;
+  changed?: string[];
+  deleted?: boolean;
+  timestamp?: number;
+}
+
 export interface LosNodes {
   losNodes: LosTheme[];
+}
+
+export interface LosNode {
+  name?: Partial<TextLanguage>;
+  losPaths?: string;
 }
 export interface LosTheme {
   uri: string;
@@ -483,6 +530,11 @@ interface Provenance {
   prefLabel: Partial<TextLanguage>;
 }
 
+interface EuDataTheme {
+  title?: Partial<TextLanguage>;
+  code?: string;
+}
+
 interface AccessRights {
   code: string;
 }
@@ -695,7 +747,11 @@ export interface ReferenceData {
   apispecifications?: ApiSpecifications;
 }
 
-export interface ReferenceDataCode {}
+export interface ReferenceDataCode {
+  uri?: string;
+  code?: string;
+  prefLabel?: Partial<TextLanguage>;
+}
 
 export interface Link {
   href: string;

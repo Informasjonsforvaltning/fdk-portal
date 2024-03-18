@@ -12,7 +12,7 @@ import {
   extractInformationModels
 } from '../../../api/search-fulltext-api/informationmodels';
 
-import type { InformationModel } from '../../../types';
+import type { InformationModel, SearchObject } from '../../../types';
 
 function* getInformationModelsRequested({
   payload: {
@@ -40,7 +40,7 @@ function* getInformationModelsRequested({
     if (data) {
       yield put(
         actions.getInformationModelsSucceeded(
-          extractInformationModels(data) as InformationModel[]
+          extractInformationModels(data) as SearchObject[]
         )
       );
     } else {

@@ -9,7 +9,7 @@ import {
   RESET_CONCEPTS_RELATIONS
 } from './action-types';
 
-import { Concept } from '../../../types';
+import { Concept, SearchObject } from '../../../types';
 
 interface GetConceptsParams {
   identifiers?: string[];
@@ -26,7 +26,7 @@ export function getConceptsRequested(params: GetConceptsParams) {
   };
 }
 
-export function getConceptsSucceeded(concepts: Concept[]) {
+export function getConceptsSucceeded(concepts: SearchObject[]) {
   return {
     type: GET_CONCEPTS_SUCCEEDED,
     payload: {

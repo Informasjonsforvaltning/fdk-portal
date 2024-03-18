@@ -12,7 +12,7 @@ import {
   searchConcepts
 } from '../../../api/search-fulltext-api/concepts';
 
-import type { Concept } from '../../../types';
+import type { Concept, SearchObject } from '../../../types';
 
 function* getConceptsRequested({
   payload: {
@@ -26,7 +26,7 @@ function* getConceptsRequested({
     );
     if (data) {
       yield put(
-        actions.getConceptsSucceeded(extractConcepts(data) as Concept[])
+        actions.getConceptsSucceeded(extractConcepts(data) as SearchObject[])
       );
     } else {
       yield put(actions.getConceptsFailed(''));

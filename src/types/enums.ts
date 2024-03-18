@@ -194,6 +194,35 @@ export enum RelationType {
   OMFATTER = 'omfatter'
 }
 
+export enum SearchObjectRelationType {
+  associativeRelation = 'associativeRelation',
+  closeMatch = 'closeMatch',
+  exactMatch = 'exactMatch',
+  generalizes = 'generalizes',
+  specializes = 'specializes',
+  isReplacedBy = 'isReplacedBy',
+  memberOf = 'memberOf',
+  replaces = 'replaces',
+  seeAlso = 'seeAlso',
+  conformsTo = 'conformsTo',
+  servesDataset = 'servesDataset',
+  inSeries = 'inSeries',
+  subject = 'subject',
+  hasPart = 'hasPart',
+  isPartOf = 'isPartOf',
+  isGroupedBy = 'isGroupedBy',
+  isClassifiedBy = 'isClassifiedBy',
+  isDescribedAt = 'isDescribedAt',
+  relation = 'relation',
+  hasVersion = 'hasVersion',
+  isVersionOf = 'isVersionOf',
+  references = 'references',
+  isReferencedBy = 'isReferencedBy',
+  requires = 'requires',
+  isRequiredBy = 'isRequiredBy',
+  source = 'source'
+}
+
 export enum MomentFormat {
   DD_MM_YYYY_HH_mm = 'DD.MM.YYYY HH:mm'
 }
