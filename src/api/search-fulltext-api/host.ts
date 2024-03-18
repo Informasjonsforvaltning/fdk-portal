@@ -11,7 +11,7 @@ interface Props {
 
 export const searchFullTextApi = ({ path, method, data, params }: Props) =>
   axios({
-    url: `${getConfig().searchFullTextApi.host}/search${path}`,
+    url: `${getConfig().searchApi.host}/search${path}`,
     method,
     data,
     params
