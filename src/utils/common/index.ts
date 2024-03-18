@@ -54,3 +54,9 @@ export const cookieValue = (name: string) =>
     .split('; ')
     .filter(row => row.startsWith(`${name}=`))
     .map(c => c.split('=')[1])[0];
+
+export const buildFirstHarvestSortBody = ({ sortfield }: any) => {
+  sortfield === 'FIRST_HARVESTED'
+    ? { field: 'FIRST_HARVESTED', direction: 'DESC' }
+    : undefined;
+};

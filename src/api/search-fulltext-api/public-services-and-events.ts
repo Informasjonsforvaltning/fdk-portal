@@ -1,10 +1,6 @@
 import { searchFullTextApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
-
-const mapSorting = ({ sortfield }: any) =>
-  sortfield === 'FIRST_HARVESTED'
-    ? { field: 'FIRST_HARVESTED', direction: 'DESC' }
-    : undefined;
+import { buildFirstHarvestSortBody } from '../../utils/common';
 
 const mapFilters = ({
   id,
@@ -64,7 +60,7 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
     page: page ? Number(page) : undefined,
     size: size ? Number(size) : undefined
   },
-  sorting: mapSorting(params),
+  sorting: buildFirstHarvestSortBody(params),
   filters: mapFilters(params)
 });
 
