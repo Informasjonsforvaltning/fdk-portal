@@ -25,12 +25,12 @@ export enum SearchTypes {
 }
 
 export enum Entity {
-  DATASET = 'dataset',
-  DATA_SERVICE = 'dataservice',
-  CONCEPT = 'concept',
-  INFORMATION_MODEL = 'informationmodel',
-  PUBLIC_SERVICE = 'public_service',
-  EVENT = 'event'
+  DATASET = 'DATASET',
+  DATA_SERVICE = 'DATA_SERVICE',
+  CONCEPT = 'CONCEPT',
+  INFORMATION_MODEL = 'INFORMATION_MODEL',
+  PUBLIC_SERVICE = 'SERVICE',
+  EVENT = 'EVENT'
 }
 
 export enum DataFormat {
@@ -192,6 +192,35 @@ export enum RelationType {
   UNDERORDNET = 'underordnet',
   ER_DEL_AV = 'erDelAv',
   OMFATTER = 'omfatter'
+}
+
+export enum SearchObjectRelationType {
+  associativeRelation = 'associativeRelation',
+  closeMatch = 'closeMatch',
+  exactMatch = 'exactMatch',
+  generalizes = 'generalizes',
+  specializes = 'specializes',
+  isReplacedBy = 'isReplacedBy',
+  memberOf = 'memberOf',
+  replaces = 'replaces',
+  seeAlso = 'seeAlso',
+  conformsTo = 'conformsTo',
+  servesDataset = 'servesDataset',
+  inSeries = 'inSeries',
+  subject = 'subject',
+  hasPart = 'hasPart',
+  isPartOf = 'isPartOf',
+  isGroupedBy = 'isGroupedBy',
+  isClassifiedBy = 'isClassifiedBy',
+  isDescribedAt = 'isDescribedAt',
+  relation = 'relation',
+  hasVersion = 'hasVersion',
+  isVersionOf = 'isVersionOf',
+  references = 'references',
+  isReferencedBy = 'isReferencedBy',
+  requires = 'requires',
+  isRequiredBy = 'isRequiredBy',
+  source = 'source'
 }
 
 export enum MomentFormat {

@@ -45,7 +45,7 @@ const config = {
   referenceDataApi: defaultToSearchApi(env.REFERENCE_DATA_HOST),
   searchHost: defaultToSearchApi(env.SEARCH_HOST),
   useDemoLogo: env.USE_DEMO_LOGO,
-  searchFullTextApi: { host: env.SEARCH_SERVICE_HOST },
+  searchApi: { host: env.SEARCH_SERVICE_HOST },
   cmsApi: { host: env.CMS_API_HOST },
   cmsV2Api: { host: env.FDK_CMS_BASE_URI },
   organizationsApi: { host: env.ORGANIZATION_HOST },

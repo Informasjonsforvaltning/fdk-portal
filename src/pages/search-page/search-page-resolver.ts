@@ -1,7 +1,7 @@
 import memoize from 'lodash/memoize';
 import { resolve } from 'react-resolver';
 
-import { searchAllEntities } from '../../api/search-fulltext-api/all-entities';
+import { searchAllEntities } from '../../api/search-api/all-entities';
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { PATHNAME_SEARCH } from '../../constants/constants';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
@@ -50,9 +50,11 @@ const mapProps = {
         ? {
             q,
             ...(filters.length > 0 && { filters }),
-            ...(page && { page: parseInt(page.toString(), 10) }),
+            ...(page && {
+              pagination: { page: parseInt(page.toString(), 10) }
+            }),
             ...(sortfield && {
-              sorting: { field: sortfield, direction: 'desc' }
+              sorting: { field: sortfield, direction: 'DESC' }
             })
           }
         : { q };

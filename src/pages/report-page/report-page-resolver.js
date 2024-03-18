@@ -18,7 +18,7 @@ import {
   extractConcepts,
   searchConcepts,
   paramsToSearchBody
-} from '../../api/search-fulltext-api/concepts';
+} from '../../api/search-api/concepts';
 
 const memoizedGetDatasetsReport = memoize(getDatasetsReport);
 const memoizedGetDatasetsTimeseries = memoize(getDatasetsTimeseries);

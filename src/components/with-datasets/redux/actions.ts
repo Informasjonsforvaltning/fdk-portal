@@ -9,7 +9,7 @@ import {
   RESET_DATASETS_RELATIONS
 } from './action-types';
 
-import type { Dataset } from '../../../types';
+import type { Dataset, SearchObject } from '../../../types';
 
 interface GetDatasetsParams {
   uris?: string[];
@@ -33,7 +33,7 @@ export function getDatasetsRequested(params?: GetDatasetsParams) {
   };
 }
 
-export function getDatasetsSucceeded(datasets: Dataset[]) {
+export function getDatasetsSucceeded(datasets: SearchObject[]) {
   return {
     type: GET_DATASETS_SUCCEEDED,
     payload: {

@@ -7,7 +7,7 @@ import {
   extractDataServices,
   extractDataServicesTotal,
   paramsToSearchBody
-} from '../../api/search-fulltext-api/dataservices';
+} from '../../api/search-api/dataservices';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
 
 export const DATA_SERVICES_REQUEST = 'DATA_SERVICES_REQUEST';

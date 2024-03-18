@@ -329,7 +329,7 @@ const DatasetDetailsPage: FC<Props> = ({
       <DetailsPage
         entity={entity}
         title={title}
-        publisher={dataset?.publisher}
+        publisher={dataset?.organization}
         entityId={dataset?.id}
         entityUri={dataset?.uri}
         lastPublished={lastPublished}
@@ -382,7 +382,7 @@ const DatasetDetailsPage: FC<Props> = ({
                   id,
                   title: dataserviceTitle,
                   uri,
-                  type,
+                  searchType,
                   description: dataserviceDescription,
                   fdkFormat,
                   endpointURL,
@@ -396,7 +396,7 @@ const DatasetDetailsPage: FC<Props> = ({
                   datasetTitle={title}
                   distribution={{
                     title: dataserviceTitle,
-                    type,
+                    searchType,
                     conformsTo,
                     fdkFormat:
                       (fdkFormat?.filter(

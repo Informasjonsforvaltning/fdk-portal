@@ -1,11 +1,7 @@
-import { searchFullTextApiPost } from './host';
+import { searchApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { Concept } from '../../types';
-
-const mapSorting = ({ sortfield }: any) =>
-  sortfield === 'harvest.firstHarvested'
-    ? { field: 'harvest.firstHarvested', direction: 'desc' }
-    : undefined;
+import { buildFirstHarvestSortBody } from '../../utils/common';
 
 const mapFilters = ({
   id,
@@ -50,8 +46,7 @@ const mapFilters = ({
   return filters.length > 0 ? filters : undefined;
 };
 
-export const searchConcepts = (body: any) =>
-  searchFullTextApiPost('/concepts', body);
+export const searchConcepts = (body: any) => searchApiPost('/concepts', body);
 
 export const extractConcepts = (searchResponse: any) =>
   searchResponse?.hits ?? [];
@@ -64,9 +59,11 @@ export const extractConceptsTotal = (searchResponse: any) =>
 
 export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   q,
-  page: page ? Number(page) : undefined,
-  size,
-  sorting: mapSorting(params),
+  pagination: {
+    page: page ? Number(page) : undefined,
+    size: size ? Number(size) : undefined
+  },
+  sorting: buildFirstHarvestSortBody(params),
   filters: mapFilters(params)
 });
 

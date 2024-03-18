@@ -1,14 +1,10 @@
-import { searchFullTextApiPost } from './host';
+import { searchApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { InformationModel } from '../../types';
+import { buildFirstHarvestSortBody } from '../../utils/common';
 
 export const searchInformationModels = (body: any) =>
-  searchFullTextApiPost('/informationmodels', body);
-
-const mapSorting = ({ sortfield }: any) =>
-  sortfield === 'harvest.firstHarvested'
-    ? { field: 'harvest.firstHarvested', direction: 'desc' }
-    : undefined;
+  searchApiPost('/informationmodels', body);
 
 const mapFilters = ({
   id,
@@ -83,9 +79,11 @@ const mapFilters = ({
 export const paramsToSearchBody = ({ q, page, size, ...params }: any) => {
   const body = {
     q,
-    page: page ? Number(page) : undefined,
-    size,
-    sorting: mapSorting(params),
+    pagination: {
+      page: page ? Number(page) : undefined,
+      size: size ? Number(size) : undefined
+    },
+    sorting: buildFirstHarvestSortBody(params),
     filters: mapFilters(params)
   };
   return body;
