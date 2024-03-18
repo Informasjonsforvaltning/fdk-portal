@@ -4,7 +4,11 @@ import ArrowLeftIconBase from '@fellesdatakatalog/icons/assets/svg/arrow-left-st
 import ChevronDown from '@fellesdatakatalog/icons/assets/svg/chevron-double-down-stroke.svg';
 import ChevronUp from '@fellesdatakatalog/icons/assets/svg/chevron-double-up-stroke.svg';
 
-const RequestRow = styled.div`
+const Table = styled.table`
+  width: 100%;
+`;
+
+const RequestRow = styled.tr`
   display: flex;
   background-color: white;
   width: 100%;
@@ -18,7 +22,7 @@ const RequestRow = styled.div`
   font-size: 18px;
 `;
 
-const RequestsTitleRow = styled.div`
+const RequestsTitleRow = styled.tr`
   background-color: #d2eafd;
   height: 57px;
   border-radius: 8px;
@@ -30,10 +34,17 @@ const RequestsTitleRow = styled.div`
   margin-bottom: 5px;
 `;
 
-const RequestTitle = styled.div`
+const RequestTitle = styled.th`
   width: 50%;
   font-weight: bold;
 `;
+
+const RequestTitleData = styled.th`
+  width: 16%;
+  display: flex;
+  justify-content: center;
+`;
+
 const RequestLink = styled.a`
   width: 50%;
   font-weight: bold;
@@ -41,7 +52,12 @@ const RequestLink = styled.a`
   color: #111 !important;
 `;
 
-const RequestInfo = styled.div`
+const TableDataLink = styled.td`
+  width: 50%;
+  font-weight: bold;
+`;
+
+const RequestInfo = styled.td`
   width: 16%;
   display: flex;
   justify-content: center;
@@ -144,6 +160,7 @@ export default {
   RequestRow,
   RequestsTitleRow,
   RequestTitle,
+  RequestTitleData,
   RequestInfo,
   RequestLink,
   InfoText,
@@ -157,5 +174,7 @@ export default {
   Pagination,
   Banner,
   ChevronDownIcon,
-  ChevronUpIcon
+  ChevronUpIcon,
+  Table,
+  TableDataLink
 };

@@ -15,102 +15,71 @@ import {
 import { getLinkForTab } from '../../../search-location-helper';
 import { Entity } from '../../../../../types/enums';
 
-interface Props {
-  countResults?: number;
-  countDatasets: number;
-  countConcepts: number;
-  countApis: number;
-  countInformationModels: number;
-  countPublicServices: number;
-}
-
-const Tabs: FC<Props & RouteComponentProps> = ({
-  countResults,
-  countDatasets,
-  countApis,
-  countConcepts,
-  countInformationModels,
-  countPublicServices,
-  location
-}) => (
+const Tabs: FC<RouteComponentProps> = ({ location }) => (
   <SC.Tabs>
     <Tab
       active={location.pathname === PATHNAME_SEARCH}
       tabLink={getLinkForTab(location, PATHNAME_SEARCH)}
-      label={`${localization.page.resultsTab} (${countResults})`}
+      label={`${localization.page.resultsTab}`}
     >
       <SC.IconPlaceholder>
         <SC.AllIcon />
       </SC.IconPlaceholder>
-      <SC.Label>
-        {localization.page.resultsTab}&nbsp;({countResults})
-      </SC.Label>
+      <SC.Label>{localization.page.resultsTab}</SC.Label>
     </Tab>
     <Tab
       active={location.pathname === PATHNAME_DATASETS}
       tabLink={getLinkForTab(location, PATHNAME_DATASETS)}
-      label={`${localization.page.datasetTab} (${countDatasets})`}
+      label={`${localization.page.datasetTab}`}
     >
       <SC.IconPlaceholder type={Entity.DATASET}>
         <SC.DatasetIcon />
       </SC.IconPlaceholder>
-      <SC.Label>
-        {localization.page.datasetTab}&nbsp;({countDatasets})
-      </SC.Label>
+      <SC.Label>{localization.page.datasetTab}</SC.Label>
     </Tab>
 
     <Tab
       active={location.pathname === PATHNAME_DATA_SERVICES}
       tabLink={getLinkForTab(location, PATHNAME_DATA_SERVICES)}
-      label={`${localization.page.apiTab} (${countApis})`}
+      label={`${localization.page.apiTab}`}
     >
       <SC.IconPlaceholder type={Entity.DATA_SERVICE}>
         <SC.ApiIcon />
       </SC.IconPlaceholder>
-      <SC.Label>
-        {localization.page.apiTab}&nbsp;({countApis})
-      </SC.Label>
+      <SC.Label>{localization.page.apiTab}</SC.Label>
     </Tab>
 
     <Tab
       active={location.pathname === PATHNAME_CONCEPTS}
       tabLink={getLinkForTab(location, PATHNAME_CONCEPTS)}
-      label={`${localization.page.termTab} (${countConcepts})`}
+      label={`${localization.page.termTab}`}
     >
       <SC.IconPlaceholder type={Entity.CONCEPT}>
         <SC.ConceptIcon />
       </SC.IconPlaceholder>
-      <SC.Label>
-        {localization.page.termTab}&nbsp;({countConcepts})
-      </SC.Label>
+      <SC.Label>{localization.page.termTab}</SC.Label>
     </Tab>
 
     <Tab
       active={location.pathname === PATHNAME_INFORMATIONMODELS}
       tabLink={getLinkForTab(location, PATHNAME_INFORMATIONMODELS)}
       label={`${localization.page.informationModelTab} (
-        ${countInformationModels})`}
+        `}
     >
       <SC.IconPlaceholder type={Entity.INFORMATION_MODEL}>
         <SC.InfomodIcon />
       </SC.IconPlaceholder>
-      <SC.Label>
-        {localization.page.informationModelTab}&nbsp;(
-        {countInformationModels})
-      </SC.Label>
+      <SC.Label>{localization.page.informationModelTab}</SC.Label>
     </Tab>
     <Tab
       active={location.pathname === PATHNAME_PUBLIC_SERVICES_AND_EVENTS}
       tabLink={getLinkForTab(location, PATHNAME_PUBLIC_SERVICES_AND_EVENTS)}
-      label={`${localization.page.serviceTab} (${countPublicServices})`}
+      label={`${localization.page.serviceTab} `}
     >
       <SC.IconPlaceholder type={Entity.PUBLIC_SERVICE}>
         <SC.ServiceIcon />
       </SC.IconPlaceholder>
-      <SC.Label>
-        {localization.page.serviceTab}&nbsp;(
-        {countPublicServices})
-      </SC.Label>
+      <SC.Label>{localization.page.serviceTab}</SC.Label>
     </Tab>
   </SC.Tabs>
 );

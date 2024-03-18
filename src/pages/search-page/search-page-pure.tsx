@@ -175,18 +175,12 @@ const SearchPage: FC<Props> = ({
               countApis={dataServiceTotal ?? 0}
               countTerms={conceptTotal ?? 0}
               countInformationModels={informationModelTotal ?? 0}
+              countPublicServicesAndEvents={
+                publicServicesAndEventsPage?.totalElements || 0
+              }
             />
           </SearchBoxHeader>
-          <Tabs
-            countResults={searchAllEntities?.page?.totalElements || 0}
-            countDatasets={datasetTotal || 0}
-            countConcepts={conceptTotal || 0}
-            countApis={dataServiceTotal || 0}
-            countInformationModels={informationModelTotal || 0}
-            countPublicServices={
-              publicServicesAndEventsPage?.totalElements || 0
-            }
-          />
+          <Tabs />
         </SearchBox>
       )}
       {getConfig().themeNap && (

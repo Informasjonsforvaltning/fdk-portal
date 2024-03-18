@@ -114,32 +114,41 @@ const RequestsPage: FC<Props> = ({
             </SC.Row>
           </div>
         </SC.FirstRow>
-        <SC.RequestsTitleRow>
-          <SC.RequestTitle>
-            {localization.requestsPage.requests}
-          </SC.RequestTitle>
-          <SC.RequestInfo>{localization.date}</SC.RequestInfo>
-          <SC.RequestInfo>{localization.requestsPage.votes}</SC.RequestInfo>
-          <SC.RequestInfo>{localization.requestsPage.views}</SC.RequestInfo>
-        </SC.RequestsTitleRow>
-        {notDeletedRequests(showAll ? requestCategory.topics : requests)
-          .length > 0 &&
-          notDeletedRequests(showAll ? requestCategory.topics : requests).map(
-            topic => (
-              <SC.RequestRow role='table' key={topic.cid}>
-                <SC.RequestLink
-                  href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}
-                >
-                  {topic.title}
-                </SC.RequestLink>
-                <SC.RequestInfo>
-                  {formatDate(new Date(topic.timestampISO))}
-                </SC.RequestInfo>
-                <SC.RequestInfo>{topic.upvotes}</SC.RequestInfo>
-                <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
-              </SC.RequestRow>
-            )
-          )}
+
+        <SC.Table>
+          <SC.RequestsTitleRow>
+            <SC.RequestTitle>
+              {localization.requestsPage.requests}
+            </SC.RequestTitle>
+            <SC.RequestTitleData>{localization.date}</SC.RequestTitleData>
+            <SC.RequestTitleData>
+              {localization.requestsPage.votes}
+            </SC.RequestTitleData>
+            <SC.RequestTitleData>
+              {localization.requestsPage.views}
+            </SC.RequestTitleData>
+          </SC.RequestsTitleRow>
+          {notDeletedRequests(showAll ? requestCategory.topics : requests)
+            .length > 0 &&
+            notDeletedRequests(showAll ? requestCategory.topics : requests).map(
+              topic => (
+                <SC.RequestRow key={topic.cid}>
+                  <SC.TableDataLink>
+                    <SC.RequestLink
+                      href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}
+                    >
+                      {topic.title}
+                    </SC.RequestLink>
+                  </SC.TableDataLink>
+                  <SC.RequestInfo>
+                    {formatDate(new Date(topic.timestampISO))}
+                  </SC.RequestInfo>
+                  <SC.RequestInfo>{topic.upvotes}</SC.RequestInfo>
+                  <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
+                </SC.RequestRow>
+              )
+            )}
+        </SC.Table>
         {showAll && (
           <SC.Pagination>
             <Button onClick={() => setShowAll(false)}>

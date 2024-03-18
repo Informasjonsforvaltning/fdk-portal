@@ -8,7 +8,6 @@ import env from '../../../env';
 import localization from '../../../lib/localization';
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { getLosByKeys } from '../../../lib/los/los-helper';
-import { setPage } from '../search-location-helper';
 
 import withOrganizations, {
   Props as OrganizationsProps
@@ -33,7 +32,7 @@ import type { Entity as EntityType, Concept, EventType } from '../../../types';
 import { FeedType } from '../../../types/enums';
 import { PATHNAME_DATASETS } from '../../../constants/constants';
 import Spinner from '../../../components/spinner';
-import { Pagination } from '../../../components/pagination';
+import { LinkPagination } from '../../../components/pagination';
 
 const { SEARCH_API_HOST } = env;
 
@@ -95,11 +94,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   const { page: pageSearchParam = 0 } = searchParams;
   const { totalPages } = page;
 
-  const onPageChange = (pageNr: any) => {
-    setPage(history, location, pageNr - 1);
-    window.scrollTo(0, 0);
-  };
-
   return (
     <main id='content'>
       {(entities && entities.length > 0) || isLoading ? (
@@ -138,10 +132,11 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 <span className='uu-invisible' aria-hidden='false'>
                   Sidepaginering.
                 </span>
-                <Pagination
+                <LinkPagination
                   totalPages={totalPages}
-                  currentPage={Number(pageSearchParam) + 1}
-                  onChange={onPageChange}
+                  currentPage={Number(pageSearchParam)}
+                  history={history}
+                  location={location}
                 />
                 {path === PATHNAME_DATASETS && (
                   <SC.FeedLinks>

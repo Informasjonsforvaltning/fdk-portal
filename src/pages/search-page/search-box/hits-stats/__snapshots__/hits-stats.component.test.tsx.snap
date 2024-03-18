@@ -8,6 +8,6 @@ exports[`should render HitsStats correctly when no hits 1`] = `
 
 exports[`should render HitsStats correctly with hits  1`] = `
 <span>
-  Search gave 100 hit(s) among datasets, 100 hit(s) among APIs, 100 hit(s) among concepts 100 hit(s) among information models
+  Search gave 100 hit(s) among datasets, 100 hit(s) among APIs, 100 hit(s) among concepts 100 hit(s) among information models and 100 hit(s) among services and events
 </span>
 `;

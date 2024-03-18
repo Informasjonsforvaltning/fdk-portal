@@ -199,8 +199,9 @@
   },
   "page": {
     "navigation": "Sidenavigering",
-    "next": "Neste side",
-    "prev": "Forrige side",
+    "navigateTo": "Naviger til side",
+    "next": "Neste",
+    "prev": "Forrige",
     "resultsTab": "Alle",
     "datasetTab": "Datasett",
     "apiTab": "API ",
@@ -209,8 +210,8 @@
     "serviceTab": "Tenester og hendingar"
   },
   "hitstats": {
-    "nosearch": "Søk blant {0} datasett, {1} API, {2} omgrep og {3} informasjonsmodellar",
-    "search": "Søket gav {0} treff i datasett, {1} treff i API, {2} treff i omgrep og {3} treff i informasjonsmodellar",
+    "nosearch": "Søk blant {0} datasett, {1} API, {2} omgrep, {3} informasjonsmodellar og {4} tenester og hendingar",
+    "search": "Søket gav {0} treff i datasett, {1} treff i API, {2} treff i omgrep, {3} treff i informasjonsmodellar og {4} treff i tenester og hendingar",
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket gav {0} treff i datasett",
     "nohits": "Søket ga dessverre ingen treff",
