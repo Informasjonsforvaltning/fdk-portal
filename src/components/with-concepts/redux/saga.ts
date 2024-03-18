@@ -10,7 +10,7 @@ import {
   extractConcepts,
   paramsToSearchBody,
   searchConcepts
-} from '../../../api/search-fulltext-api/concepts';
+} from '../../../api/search-api/concepts';
 
 import type { Concept, SearchObject } from '../../../types';
 

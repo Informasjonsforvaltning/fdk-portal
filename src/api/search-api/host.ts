@@ -9,7 +9,7 @@ interface Props {
   params?: URLSearchParams;
 }
 
-export const searchFullTextApi = ({ path, method, data, params }: Props) =>
+export const searchApi = ({ path, method, data, params }: Props) =>
   axios({
     url: `${getConfig().searchApi.host}/search${path}`,
     method,
@@ -19,8 +19,8 @@ export const searchFullTextApi = ({ path, method, data, params }: Props) =>
     .then(response => cleanDeep(response.data))
     .catch(() => null);
 
-export const searchFullTextApiPost = (path: string, body: any) =>
-  searchFullTextApi({ path, method: 'POST', data: body });
+export const searchApiPost = (path: string, body: any) =>
+  searchApi({ path, method: 'POST', data: body });
 
-export const searchFullTextApiGet = (path: string, params?: URLSearchParams) =>
-  searchFullTextApi({ path, method: 'GET', params });
+export const searchApiGet = (path: string, params?: URLSearchParams) =>
+  searchApi({ path, method: 'GET', params });

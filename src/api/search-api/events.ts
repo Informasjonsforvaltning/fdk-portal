@@ -1,4 +1,4 @@
-import { searchFullTextApiPost } from './host';
+import { searchApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { Event } from '../../types';
 import { buildFirstHarvestSortBody } from '../../utils/common';
@@ -27,8 +27,7 @@ const mapFilters = ({ id, relation, uris }: any) => {
   return filters.length > 0 ? filters : undefined;
 };
 
-export const searchEvents = (body: any) =>
-  searchFullTextApiPost('/events', body);
+export const searchEvents = (body: any) => searchApiPost('/events', body);
 
 export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   q,

@@ -14,7 +14,7 @@ import {
   extractPublicServicesPage,
   paramsToSearchBody,
   searchPublicServices
-} from '../../../api/search-fulltext-api/public-services';
+} from '../../../api/search-api/public-services';
 
 import type { PublicService, SearchObject } from '../../../types';
 

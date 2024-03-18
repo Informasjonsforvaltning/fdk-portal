@@ -9,7 +9,7 @@ import * as actions from './actions';
 import {
   searchDataServices,
   paramsToSearchBody
-} from '../../../api/search-fulltext-api/dataservices';
+} from '../../../api/search-api/dataservices';
 
 import type { DataService, SearchObject } from '../../../types';
 

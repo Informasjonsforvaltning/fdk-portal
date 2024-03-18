@@ -10,7 +10,7 @@ import {
   extractDatasets,
   paramsToSearchBody,
   searchDatasets
-} from '../../../api/search-fulltext-api/datasets';
+} from '../../../api/search-api/datasets';
 
 import type { Dataset, SearchObject } from '../../../types';
 

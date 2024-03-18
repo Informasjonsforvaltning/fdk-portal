@@ -10,7 +10,7 @@ import {
   searchInformationModels,
   paramsToSearchBody,
   extractInformationModels
-} from '../../../api/search-fulltext-api/informationmodels';
+} from '../../../api/search-api/informationmodels';
 
 import type { InformationModel, SearchObject } from '../../../types';
 

@@ -1,10 +1,10 @@
-import { searchFullTextApiPost } from './host';
+import { searchApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { InformationModel } from '../../types';
 import { buildFirstHarvestSortBody } from '../../utils/common';
 
 export const searchInformationModels = (body: any) =>
-  searchFullTextApiPost('/informationmodels', body);
+  searchApiPost('/informationmodels', body);
 
 const mapFilters = ({
   id,

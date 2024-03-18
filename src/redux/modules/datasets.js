@@ -8,7 +8,7 @@ import {
   extractDatasets,
   extractDatasetsTotal,
   paramsToSearchBody
-} from '../../api/search-fulltext-api/datasets';
+} from '../../api/search-api/datasets';
 
 export const DATASETS_REQUEST = 'DATASETS_REQUEST';
 export const DATASETS_SUCCESS = 'DATASETS_SUCCESS';

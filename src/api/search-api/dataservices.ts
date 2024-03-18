@@ -1,4 +1,4 @@
-import { searchFullTextApiPost } from './host';
+import { searchApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { DataService } from '../../types';
 import { buildFirstHarvestSortBody } from '../../utils/common';
@@ -79,7 +79,7 @@ const mapFilters = ({
 };
 
 export const searchDataServices = (body: any) =>
-  searchFullTextApiPost('/dataservices', body);
+  searchApiPost('/dataservices', body);
 
 export const extractDataServices = (searchResponse: any) =>
   searchResponse?.hits ?? [];

@@ -10,7 +10,7 @@ import {
   extractEvents,
   searchEvents,
   paramsToSearchBody
-} from '../../../api/search-fulltext-api/events';
+} from '../../../api/search-api/events';
 
 import type { Event, SearchObject } from '../../../types';
 

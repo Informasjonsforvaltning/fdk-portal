@@ -1,15 +1,15 @@
-import { searchFullTextApiPost } from './host';
+import { searchApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
-import { Concept } from '../../types';
 import { buildFirstHarvestSortBody } from '../../utils/common';
 
 const mapFilters = ({
   id,
   identifiers,
   uri,
-  orgPath,
   last_x_days,
-  seeAlso
+  orgPath,
+  event,
+  eventType
 }: any) => {
   const filters = [];
   if (id) {
@@ -31,32 +31,28 @@ const mapFilters = ({
       }
     });
   }
-  if (orgPath) {
-    filters.push({ orgPath });
-  }
   if (last_x_days) {
     filters.push({ last_x_days });
   }
-  if (seeAlso) {
+  if (orgPath) {
     filters.push({
-      'seeAlso.keyword': seeAlso
+      collection: {
+        field: 'hasCompetentAuthority.orgPath',
+        values: [orgPath]
+      }
     });
   }
-
+  if (event) {
+    filters.push({ event: event.split(',') });
+  }
+  if (eventType) {
+    filters.push({ eventType: eventType.split(',') });
+  }
   return filters.length > 0 ? filters : undefined;
 };
 
-export const searchConcepts = (body: any) =>
-  searchFullTextApiPost('/concepts', body);
-
-export const extractConcepts = (searchResponse: any) =>
-  searchResponse?.hits ?? [];
-
-export const extractConceptAggregations = (searchResponse: any) =>
-  normalizeAggregations(searchResponse).aggregations ?? [];
-
-export const extractConceptsTotal = (searchResponse: any) =>
-  searchResponse?.page?.totalElements ?? 0;
+export const searchPublicServicesAndEvents = (body: any) =>
+  searchApiPost('/public-services-and-events', body);
 
 export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   q,
@@ -68,5 +64,12 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   filters: mapFilters(params)
 });
 
-export const extractFirstConcept = (searchResponse: any): Concept | undefined =>
-  searchResponse?.hits?.[0];
+export const extractPublicServicesAndEvents = (searchResponse: any) =>
+  searchResponse?.hits ?? [];
+
+export const extractPublicServicesAndEventsAggregations = (
+  searchResponse: any
+) => normalizeAggregations(searchResponse).aggregations ?? {};
+
+export const extractPublicServicesAndEventsPage = (searchResponse: any) =>
+  searchResponse.page ?? {};

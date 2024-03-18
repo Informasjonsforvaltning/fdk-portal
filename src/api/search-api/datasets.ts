@@ -1,11 +1,10 @@
-import { searchFullTextApiPost } from './host';
+import { searchApiPost } from './host';
 import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { getConfig } from '../../config';
 import { Dataset } from '../../types';
 import { buildFirstHarvestSortBody } from '../../utils/common';
 
-export const searchDatasets = (body: any) =>
-  searchFullTextApiPost('/datasets', body);
+export const searchDatasets = (body: any) => searchApiPost('/datasets', body);
 
 const mapFilters = ({
   id,
