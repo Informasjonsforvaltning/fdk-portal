@@ -64,11 +64,6 @@ const SearchForm = styled.form`
       outline-offset: 3px;
       outline: 2px solid orange;
     }
-
-    & > img {
-      margin-right: 0.2em;
-      width: 1em;
-    }
   }
 `;
 
