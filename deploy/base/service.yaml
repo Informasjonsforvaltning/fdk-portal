@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    fdk.service: fdk-portal-new-search
+  name: fdk-portal-new-search
+spec:
+  selector:
+    app: fdk-portal-new-search
+  ports:
+    - name: "8080"
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort
