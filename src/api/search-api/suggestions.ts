@@ -1,5 +1,5 @@
 import { SuggestionIndexEnum } from '../../types/enums';
-import { searchFullTextApiGet } from './host';
+import { searchApiGet } from './host';
 
 export const getSearchSuggestions = (
   q: string,
@@ -12,7 +12,7 @@ export const getSearchSuggestions = (
           SuggestionIndexEnum[searchEntity as keyof typeof SuggestionIndexEnum]
         }`
       : '/suggestion';
-  return searchFullTextApiGet(
+  return searchApiGet(
     searchPath,
     new URLSearchParams({
       q: encodeURI(q),

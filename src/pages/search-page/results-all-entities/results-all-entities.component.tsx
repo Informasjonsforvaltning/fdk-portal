@@ -28,7 +28,7 @@ import SortButtons from '../sort-buttons';
 
 import SC from './styled';
 
-import type { Entity as EntityType, Concept, EventType } from '../../../types';
+import type { Concept, EventType, SearchObject } from '../../../types';
 import { FeedType } from '../../../types/enums';
 import { PATHNAME_DATASETS } from '../../../constants/constants';
 import Spinner from '../../../components/spinner';
@@ -37,11 +37,11 @@ import { LinkPagination } from '../../../components/pagination';
 const { SEARCH_API_HOST } = env;
 
 interface ExternalProps {
-  entities: Partial<EntityType>[];
+  entities: Partial<SearchObject>[];
   aggregations?: any;
   page?: any;
   compareConceptList?: Concept[];
-  addConcept?: (concept: Partial<Concept>) => void;
+  addConcept?: (concept: Partial<SearchObject>) => void;
   removeConcept?: (id?: string) => void;
   isLoading: boolean;
 }

@@ -10,9 +10,9 @@ import {
   extractDatasets,
   paramsToSearchBody,
   searchDatasets
-} from '../../../api/search-fulltext-api/datasets';
+} from '../../../api/search-api/datasets';
 
-import type { Dataset } from '../../../types';
+import type { Dataset, SearchObject } from '../../../types';
 
 function* getDatasetsRequested({
   payload: {
@@ -47,7 +47,7 @@ function* getDatasetsRequested({
 
     if (data) {
       yield put(
-        actions.getDatasetsSucceeded(extractDatasets(data) as Dataset[])
+        actions.getDatasetsSucceeded(extractDatasets(data) as SearchObject[])
       );
     } else {
       yield put(actions.getDatasetsFailed(''));

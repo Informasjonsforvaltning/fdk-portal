@@ -6,7 +6,7 @@ import * as actions from './actions';
 import {
   extractSuggestions,
   getSearchSuggestions
-} from '../../../api/search-fulltext-api/suggestions';
+} from '../../../api/search-api/suggestions';
 
 import type { SearchSuggestion } from '../../../types';
 

@@ -26,7 +26,7 @@ const AiProject = styled(ExpansionPanel)`
       margin-left: 24px;
 
       & > svg > path {
-        stroke: ${({ theme: t }) => t.extendedColors.dataset.dark};
+        stroke: ${({ theme: t }) => t.extendedColors.dataset?.dark};
       }
     }
   }

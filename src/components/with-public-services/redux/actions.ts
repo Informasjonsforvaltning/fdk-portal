@@ -17,7 +17,7 @@ import {
   RESET_PUBLIC_SERVICES_RELATIONS
 } from './action-types';
 
-import type { PublicService } from '../../../types';
+import type { PublicService, SearchObject } from '../../../types';
 
 interface GetPublicServicesParams {
   q?: string;
@@ -80,7 +80,7 @@ export function getPublicServicesRequiredByRequested(
 }
 
 export function getPublicServicesRequiredBySucceeded(
-  publicServiceData: PublicService[]
+  publicServiceData: SearchObject[]
 ) {
   return {
     type: GET_PUBLIC_SERVICES_REQUIRED_BY_SUCCEEDED,

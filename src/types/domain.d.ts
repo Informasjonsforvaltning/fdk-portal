@@ -3,12 +3,47 @@ import {
   Entity as EntityEnum,
   AdministrativeUnitType,
   SpecializedEventType,
-  LanguageCodes
+  LanguageCodes,
+  SearchObjectRelationType
 } from './enums';
+
+export interface SearchObject {
+  id: string;
+  uri: string;
+  accessRights?: ReferenceDataCode;
+  catalog?: Catalog;
+  dataTheme?: EuDataTheme[];
+  description?: Partial<TextLanguage>;
+  fdkFormatPrefixed?: string[];
+  metadata?: Metadata;
+  isOpenData?: boolean;
+  keyword?: Partial<TextLanguage>[];
+  losTheme?: LosNode[];
+  organization?: Organization;
+  provenance?: ReferenceDataCode;
+  searchType: EntityEnum;
+  specializedType?: SpecializedDatasetType | SpecializedEventType;
+  spatial?: ReferenceDataCode[];
+  title?: Partial<TextLanguage>;
+  relations?: Relation[];
+}
+
+interface Catalog {
+  description?: Partial<TextLanguage>;
+  id?: string;
+  publisher?: Organization;
+  title?: Partial<TextLanguage>;
+  uri?: string;
+}
+
+export interface Relation {
+  uri?: string;
+  type?: SearchObjectRelationType;
+}
 
 export interface InformationModel {
   id: string;
-  type: EntityEnum.INFORMATION_MODEL;
+  searchType: EntityEnum.INFORMATION_MODEL;
   uri: string;
   identifier?: string;
   publisher?: Partial<Organization>;
@@ -198,8 +233,20 @@ export interface Harvest {
   lastHarvested: string;
 }
 
+interface Metadata {
+  firstHarvested?: string;
+  changed?: string[];
+  deleted?: boolean;
+  timestamp?: number;
+}
+
 export interface LosNodes {
   losNodes: LosTheme[];
+}
+
+export interface LosNode {
+  name?: Partial<TextLanguage>;
+  losPaths?: string;
 }
 export interface LosTheme {
   uri: string;
@@ -254,7 +301,7 @@ export interface GenericRelation {
 
 export interface Concept {
   id: string;
-  type: EntityEnum.CONCEPT;
+  searchType: EntityEnum.CONCEPT;
   uri: string;
   identifier: string;
   prefLabel: Partial<TextLanguage>;
@@ -405,7 +452,7 @@ interface PublicServiceContactPoint {
 
 export interface PublicService {
   id: string;
-  type: EntityEnum.PUBLIC_SERVICE;
+  searchType: EntityEnum.PUBLIC_SERVICE;
   uri: string;
   identifier: string;
   title: Partial<TextLanguage>;
@@ -451,7 +498,7 @@ export interface Event {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  type: EntityEnum.EVENT;
+  searchType: EntityEnum.EVENT;
   dctType?: SkosConcept[];
   harvest?: Partial<Harvest>;
   relation?: string[];
@@ -481,6 +528,11 @@ export interface ESPage {
 interface Provenance {
   code: string;
   prefLabel: Partial<TextLanguage>;
+}
+
+interface EuDataTheme {
+  title?: Partial<TextLanguage>;
+  code?: string;
 }
 
 interface AccessRights {
@@ -580,9 +632,9 @@ interface InSeries {
 
 export interface Dataset {
   id: string;
-  type: EntityEnum.DATASET;
+  searchType: EntityEnum.DATASET;
   uri: string;
-  publisher: Partial<Organization>;
+  organization: Partial<Organization>;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   descriptionFormatted: Partial<TextLanguage>;
@@ -626,7 +678,7 @@ export interface Dataset {
 
 export interface DataService {
   id: string;
-  type: EntityEnum.DATA_SERVICE;
+  searchType: EntityEnum.DATA_SERVICE;
   uri: string;
   publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
@@ -669,7 +721,7 @@ export interface AccessService {
 
 export interface Distribution {
   uri: string;
-  type: string;
+  searchType: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   fdkFormat: MediaTypeOrExtent[];
@@ -695,7 +747,11 @@ export interface ReferenceData {
   apispecifications?: ApiSpecifications;
 }
 
-export interface ReferenceDataCode {}
+export interface ReferenceDataCode {
+  uri?: string;
+  code?: string;
+  prefLabel?: Partial<TextLanguage>;
+}
 
 export interface Link {
   href: string;

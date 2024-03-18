@@ -7,7 +7,7 @@ import {
   searchInformationModels,
   paramsToSearchBody,
   extractInformationModelsAggregations
-} from '../../api/search-fulltext-api/informationmodels';
+} from '../../api/search-api/informationmodels';
 
 export const INFORMATIONMODELS_REQUEST = 'INFORMATIONMODELS_REQUEST';
 export const INFORMATIONMODELS_SUCCESS = 'INFORMATIONMODELS_SUCCESS';

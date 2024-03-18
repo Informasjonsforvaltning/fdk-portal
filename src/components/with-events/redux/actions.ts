@@ -9,7 +9,7 @@ import {
   RESET_EVENTS_RELATIONS
 } from './action-types';
 
-import type { Event } from '../../../types';
+import type { Event, SearchObject } from '../../../types';
 
 interface GetEventsParams {
   size?: number;
@@ -26,7 +26,7 @@ export function getEventsRequested(params: GetEventsParams) {
   };
 }
 
-export function getEventsSucceeded(events: Event[]) {
+export function getEventsSucceeded(events: SearchObject[]) {
   return {
     type: GET_EVENTS_SUCCEEDED,
     payload: {

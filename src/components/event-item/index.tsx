@@ -4,21 +4,16 @@ import { SearchHit, SearchHitEvents } from '../search-hit/search-hit';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 import translations from '../../lib/localization';
 
-import type { Event } from '../../types';
+import type { SearchObject } from '../../types';
 import { SearchTypes, SpecializedEventType } from '../../types/enums';
 import localization from '../../lib/localization';
 
 interface Props {
-  event: Partial<Event>;
+  event: Partial<SearchObject>;
 }
 
 const EventItem: FC<Props> = ({
-  event: {
-    id = '',
-    title = {},
-    description = {},
-    specialized_type: specializedType
-  }
+  event: { id = '', title = {}, description = {}, specializedType }
 }) => (
   <SearchHit
     id={id}

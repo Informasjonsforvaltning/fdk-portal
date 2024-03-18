@@ -6,7 +6,7 @@ import {
   extractConcepts,
   extractConceptsTotal,
   paramsToSearchBody
-} from '../../api/search-fulltext-api/concepts';
+} from '../../api/search-api/concepts';
 import {
   informationmodelsSearch,
   extractInformationmodels

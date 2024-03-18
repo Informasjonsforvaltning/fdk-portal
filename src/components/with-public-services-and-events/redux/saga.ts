@@ -9,7 +9,7 @@ import {
   extractPublicServicesAndEventsPage,
   paramsToSearchBody,
   searchPublicServicesAndEvents
-} from '../../../api/search-fulltext-api/public-services-and-events';
+} from '../../../api/search-api/public-services-and-events';
 
 function* getPublicServicesAndEventsRequested({
   payload: {

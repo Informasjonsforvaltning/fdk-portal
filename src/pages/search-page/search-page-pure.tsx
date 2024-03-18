@@ -32,19 +32,10 @@ import withPublicServicesAndEvents, {
 } from '../../components/with-public-services-and-events';
 import { generateQueryKey, shouldFetch } from './lib/fetch-helper';
 
-import type {
-  Concept,
-  DataService,
-  Dataset,
-  InformationModel
-} from '../../types';
+import type { SearchObject } from '../../types';
 
 interface AllEntities {
-  hits:
-    | Partial<Dataset>[]
-    | Partial<DataService>[]
-    | Partial<Concept>[]
-    | Partial<InformationModel>[];
+  hits: Partial<SearchObject>[];
   page: any;
   aggregations: any;
 }
@@ -54,20 +45,20 @@ interface Props extends PublicServicesAndEventsProps, RouteComponentProps {
   fetchDataServicesIfNeeded: (params: any) => void;
   fetchConceptsIfNeeded: (params: any) => void;
   fetchInformationModelsIfNeeded: (params: any) => void;
-  datasetItems: Partial<Dataset>[];
+  datasetItems: Partial<SearchObject>[];
   datasetAggregations: any;
   datasetTotal: any;
-  dataServiceItems: Partial<DataService>[];
+  dataServiceItems: Partial<SearchObject>[];
   dataServiceAggregations: any;
   dataServiceTotal: any;
-  conceptItems: Partial<Concept>[];
+  conceptItems: Partial<SearchObject>[];
   conceptAggregations: any;
   conceptTotal: any;
-  informationModelItems: Partial<InformationModel>[];
+  informationModelItems: Partial<SearchObject>[];
   informationModelAggregations: any;
   informationModelTotal: any;
   conceptsCompare: any;
-  addConcept: (concept: Partial<Concept>) => void;
+  addConcept: (concept: Partial<SearchObject>) => void;
   removeConcept: (id?: string | undefined) => void;
   searchAllEntities: AllEntities;
   isFetchingDatasets: boolean;

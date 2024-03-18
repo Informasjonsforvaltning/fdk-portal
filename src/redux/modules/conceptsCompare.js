@@ -4,7 +4,7 @@ import {
   extractFirstConcept,
   paramsToSearchBody,
   searchConcepts
-} from '../../api/search-fulltext-api/concepts';
+} from '../../api/search-api/concepts';
 
 export const CONCEPTSCOMPARE_REQUEST = 'CONCEPTSCOMPARE_REQUEST';
 export const CONCEPTSCOMPARE_SUCCESS = 'CONCEPTSCOMPARE_SUCCESS';

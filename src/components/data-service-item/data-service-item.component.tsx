@@ -1,20 +1,23 @@
 import React, { FC } from 'react';
-import { Link as RouteLink } from 'react-router-dom';
+// import { Link as RouteLink } from 'react-router-dom';
 
-import type { DataService } from '../../types';
-import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';
-import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
+import type { SearchObject } from '../../types';
 import {
-  SearchHit,
-  SearchHitFormats,
-  SearchHitOpenData
+  // MediaTypeOrExtentType,
+  SearchTypes
+} from '../../types/enums';
+// import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
+import {
+  SearchHit
+  // SearchHitFormats,
+  // SearchHitOpenData
 } from '../search-hit/search-hit';
-import { RoundedTag } from '../rounded-tag/rounded-tag.component';
-import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
+// import { RoundedTag } from '../rounded-tag/rounded-tag.component';
+// import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
 import localization from '../../lib/localization';
 
 interface Props {
-  dataService: Partial<DataService>;
+  dataService: Partial<SearchObject>;
 }
 
 export const DataServiceItem: FC<Props> = ({
@@ -22,33 +25,19 @@ export const DataServiceItem: FC<Props> = ({
     id,
     title,
     description,
-    fdkFormat,
-    publisher,
-    nationalComponent,
-    isOpenAccess,
-    isOpenLicense,
-    isFree
+    // fdkFormatPrefixed,
+    organization
   }
 }) => (
   <SearchHit
     id={id}
     type={SearchTypes.dataservice}
     title={title}
-    publisher={publisher}
+    publisher={organization}
     description={description || null}
-    isAuthoritative={nationalComponent}
     subtitle={localization.apiLabel}
   >
-    {isOpenAccess && isOpenLicense && isFree && (
-      <SearchHitOpenData>
-        <div title={String(localization.openDataTooltip)}>
-          <RoundedTag>
-            <PublicIconBase />
-            <span>{localization.openApi}</span>
-          </RoundedTag>
-        </div>
-      </SearchHitOpenData>
-    )}
+    {/* 
     {fdkFormat && (
       <SearchHitFormats>
         {fdkFormat
@@ -66,6 +55,6 @@ export const DataServiceItem: FC<Props> = ({
             </RouteLink>
           ))}
       </SearchHitFormats>
-    )}
+    )} */}
   </SearchHit>
 );

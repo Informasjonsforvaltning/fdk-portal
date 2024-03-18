@@ -129,7 +129,7 @@ const DatasetsPage: FC<Props> = ({
   useLayoutEffect(() => {
     if (
       organization &&
-      organization.organizationId !== datasets?.[0]?.publisher.organizationId
+      organization.organizationId !== datasets?.[0]?.organization.organizationId
     ) {
       getDatasets({ orgPath: organization.orgPath, size: 10000 });
     }

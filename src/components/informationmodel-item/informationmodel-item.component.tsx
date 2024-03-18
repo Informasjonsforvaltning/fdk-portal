@@ -6,14 +6,14 @@ import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 import { SearchHit, SearchHitThemes } from '../search-hit/search-hit';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 
-import { isLosTheme, isEuTheme } from '../../utils/common';
+import { isEuTheme, isLosNode } from '../../utils/common';
 
-import type { InformationModel } from '../../types';
+import type { SearchObject } from '../../types';
 import { SearchTypes } from '../../types/enums';
 import localization from '../../lib/localization';
 
 interface Props {
-  informationModel: Partial<InformationModel>;
+  informationModel: Partial<SearchObject>;
 }
 
 export const InformationModelItem: FC<Props> = ({
@@ -21,9 +21,9 @@ export const InformationModelItem: FC<Props> = ({
     id,
     title = {},
     description,
-    publisher = {},
+    organization = {},
     losTheme: losThemes,
-    theme: euThemes
+    dataTheme: euThemes
   }
 }) => {
   const themes = [...(losThemes ?? []), ...(euThemes ?? [])];
@@ -33,18 +33,18 @@ export const InformationModelItem: FC<Props> = ({
       id={id}
       type={SearchTypes.informationModel}
       title={title}
-      publisher={publisher}
+      publisher={organization}
       description={description}
       subtitle={localization.informationModelLabel}
     >
       {Array.isArray(losThemes) && (
         <SearchHitThemes>
           {themes.map(theme => {
-            if (isLosTheme(theme)) {
-              const { uri, name, losPaths: [losPath] = [] } = theme;
+            if (isLosNode(theme)) {
+              const { name, losPaths: [losPath] = [] } = theme;
               return (
                 <RoundedTag
-                  key={uri}
+                  key={`los-${name}`}
                   to={patchSearchQuery('losTheme', losPath)}
                 >
                   <span>{translate(name)}</span>

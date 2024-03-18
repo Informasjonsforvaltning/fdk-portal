@@ -14,9 +14,9 @@ import {
   extractPublicServicesPage,
   paramsToSearchBody,
   searchPublicServices
-} from '../../../api/search-fulltext-api/public-services';
+} from '../../../api/search-api/public-services';
 
-import type { PublicService } from '../../../types';
+import type { PublicService, SearchObject } from '../../../types';
 
 function* getPublicServicesRequested({
   payload: {
@@ -86,7 +86,7 @@ function* getPublicServicesRequiredByRequested({
     if (data) {
       yield put(
         actions.getPublicServicesRequiredBySucceeded(
-          extractPublicServices(data) as PublicService[]
+          extractPublicServices(data) as SearchObject[]
         )
       );
     } else {
