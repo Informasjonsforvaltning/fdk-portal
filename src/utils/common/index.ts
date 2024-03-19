@@ -49,6 +49,30 @@ export const translatePrefixedFormat = (format: string) => {
     : format;
 };
 
+interface Format {
+  type: string;
+  name: string;
+}
+
+export const parseFormats = (inputList: string[] | undefined): Format[] => {
+  if (!inputList || inputList.length === 0) {
+    return [];
+  }
+
+  return inputList
+    .map(translatePrefixedFormat)
+    .filter(format => {
+      const splitItem = format.split(' ');
+      return splitItem.length >= 2 && splitItem[1] !== 'null';
+    })
+    .map(format => {
+      const splitItem = format.split(' ');
+      const type = splitItem.shift()!;
+      const name = splitItem.join(' ');
+      return { type, name };
+    });
+};
+
 export const cookieValue = (name: string) =>
   document.cookie
     .split('; ')
