@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-// import { Link as RouteLink } from 'react-router-dom';
+import { Link as RouteLink } from 'react-router-dom';
 
 import localization from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -8,26 +8,19 @@ import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
 import {
   SearchHit,
-  // SearchHitFormats,
+  SearchHitFormats,
   SearchHitThemes,
   SearchHitAccessRights,
   SearchHitOpenData
 } from '../search-hit/search-hit';
 
-import {
-  // isLosTheme,
-  isEuTheme,
-  isLosNode
-} from '../../utils/common';
+import { isEuTheme, isLosNode, parseFormats } from '../../utils/common';
 
 import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
 
-import type {
-  // Dataset, MediaTypeOrExtent,
-  SearchObject
-} from '../../types';
+import type { SearchObject } from '../../types';
 import {
-  // MediaTypeOrExtentType,
+  MediaTypeOrExtentType,
   SearchTypes,
   SpecializedDatasetType
 } from '../../types/enums';
@@ -46,13 +39,15 @@ export const DatasetItem: FC<Props> = ({
     organization,
     losTheme: losThemes,
     dataTheme: euThemes,
-    // distribution = [], fdkFormatPrefixed
+    fdkFormatPrefixed,
     accessRights,
     provenance,
     specializedType,
     isOpenData
   }
 }) => {
+  const parsedFormats = parseFormats(fdkFormatPrefixed);
+
   const renderAccessRights = (accessRight: any) => {
     if (accessRight?.code === 'PUBLIC') {
       return (
@@ -66,11 +61,6 @@ export const DatasetItem: FC<Props> = ({
     }
     return null;
   };
-
-  // const formats = distribution?.reduce(
-  //   (previous, { fdkFormat = [] }) => [...previous, ...fdkFormat],
-  //   [] as MediaTypeOrExtent[]
-  // );
 
   const themes = [...(losThemes ?? []), ...(euThemes ?? [])];
 
@@ -152,8 +142,8 @@ export const DatasetItem: FC<Props> = ({
         })}
       </SearchHitThemes>
 
-      {/* <SearchHitFormats>
-        {formats
+      <SearchHitFormats>
+        {parsedFormats
           .filter(
             format =>
               format.name && format.type !== MediaTypeOrExtentType.UNKNOWN
@@ -167,7 +157,7 @@ export const DatasetItem: FC<Props> = ({
               <span>{`${format.name}`}</span>
             </RouteLink>
           ))}
-      </SearchHitFormats> */}
+      </SearchHitFormats>
     </SearchHit>
   );
 };
