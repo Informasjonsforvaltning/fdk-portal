@@ -5,7 +5,7 @@ import * as actions from './actions';
 
 import LoggingService, { Severity } from '../../../services/logging';
 
-import { getDataService } from '../../../services/api/harvester-bff';
+import { getDataService } from '../../../services/api/resource';
 import { DataService } from '../../../types';
 
 function* getDataServiceRequested({
