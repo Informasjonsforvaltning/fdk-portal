@@ -1,10 +1,6 @@
 import _ from 'lodash';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
-import {
-  extractFirstConcept,
-  paramsToSearchBody,
-  searchConcepts
-} from '../../api/search-api/concepts';
+import { searchServiceApiGet } from '../../api/search-service-api/host';
 
 export const CONCEPTSCOMPARE_REQUEST = 'CONCEPTSCOMPARE_REQUEST';
 export const CONCEPTSCOMPARE_SUCCESS = 'CONCEPTSCOMPARE_SUCCESS';
@@ -29,7 +25,7 @@ export function fetchConceptsToCompareIfNeededAction(iDs) {
       .forEach(id => {
         if (shouldFetch(_.get(getState(), ['conceptsCompare', 'meta', id]))) {
           dispatch(
-            reduxFsaThunk(() => searchConcepts(paramsToSearchBody({ id })), {
+            reduxFsaThunk(() => searchServiceApiGet(`concepts/${id}`), {
               onBeforeStart: { type: CONCEPTSCOMPARE_REQUEST, meta: { id } },
               onSuccess: { type: CONCEPTSCOMPARE_SUCCESS, meta: { id } },
               onError: { type: CONCEPTSCOMPARE_FAILURE, meta: { id } }
@@ -59,6 +55,7 @@ const initialState = {
   meta: {}
 };
 
+// eslint-disable-next-line default-param-last
 export function conceptsCompareReducer(state = initialState, action) {
   switch (action.type) {
     case CONCEPTSCOMPARE_REQUEST:
@@ -69,14 +66,14 @@ export function conceptsCompareReducer(state = initialState, action) {
         },
         meta: {
           ...state.meta,
-          [action.meta.id]: { isFetching: false, lastFetch: Date.now() }
+          [action.meta.id]: { isFetching: true, lastFetch: Date.now() }
         }
       };
     case CONCEPTSCOMPARE_SUCCESS:
       return {
         items: {
           ...state.items,
-          [action.meta.id]: extractFirstConcept(action.payload)
+          [action.meta.id]: action.payload
         },
         meta: {
           ...state.meta,
