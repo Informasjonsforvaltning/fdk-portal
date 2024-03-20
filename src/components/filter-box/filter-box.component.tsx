@@ -15,7 +15,7 @@ import { SelectOption } from '../../types';
 interface Props {
   htmlKey?: number;
   title?: string;
-  filter: Record<string, any>;
+  filter: BucketItem[];
   groupByPrefix?: string[];
   searchable?: boolean;
   onClick: (change: FilterChange) => void;
@@ -130,8 +130,8 @@ export class FilterBox extends React.Component<Props, State> {
         );
       });
 
-    if (filter?.buckets) {
-      return Object.entries(groupByPrefixes(filter.buckets))
+    if (filter) {
+      return Object.entries(groupByPrefixes(filter))
         .filter(
           ([group]) => groupByPrefix.length === 0 || group !== DEFAULT_GROUP
         )
@@ -188,18 +188,20 @@ export class FilterBox extends React.Component<Props, State> {
       capitalizeOption = true
     } = this.props;
 
-    const filterSearchOptions = filter?.buckets
-      ?.map((item: BucketItem) => {
-        const group = this._getGroup(item, groupByPrefix);
-        const label = item.key.replace(new RegExp(`${group}\\s?`), '');
-        return {
-          value: item.key,
-          label: label || localization.facet.formatType.UNKNOWN
-        };
-      })
-      .sort((a: SelectOption, b: SelectOption) =>
-        a.label.localeCompare(b.label)
-      );
+    const filterSearchOptions =
+      filter &&
+      filter
+        .map((item: BucketItem) => {
+          const group = this._getGroup(item, groupByPrefix);
+          const label = item.key.replace(new RegExp(`${group}\\s?`), '');
+          return {
+            value: item.key,
+            label: label || localization.facet.formatType.UNKNOWN
+          };
+        })
+        .sort((a: SelectOption, b: SelectOption) =>
+          a.label.localeCompare(b.label)
+        );
 
     const handleOnClick = ({
       target: { value, checked }
@@ -210,7 +212,7 @@ export class FilterBox extends React.Component<Props, State> {
       }
     };
 
-    if (_.get(filter, 'buckets', []).length > 0) {
+    if (filter?.length > 0) {
       return (
         <div className='fdk-panel--filter'>
           <div className='fdk-panel__header'>

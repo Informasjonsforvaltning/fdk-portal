@@ -1,5 +1,4 @@
 import { searchApiPost } from './host';
-import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { Concept } from '../../types';
 import { buildFirstHarvestSortBody } from '../../utils/common';
 
@@ -52,7 +51,7 @@ export const extractConcepts = (searchResponse: any) =>
   searchResponse?.hits ?? [];
 
 export const extractConceptAggregations = (searchResponse: any) =>
-  normalizeAggregations(searchResponse).aggregations ?? [];
+  searchResponse.aggregations ?? [];
 
 export const extractConceptsTotal = (searchResponse: any) =>
   searchResponse?.page?.totalElements ?? 0;

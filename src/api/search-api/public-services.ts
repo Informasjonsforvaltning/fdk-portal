@@ -1,5 +1,4 @@
 import { searchApiPost } from './host';
-import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { PublicService } from '../../types';
 import { buildFirstHarvestSortBody } from '../../utils/common';
 
@@ -108,7 +107,7 @@ export const extractPublicServices = (searchResponse: any) =>
   searchResponse?.hits ?? [];
 
 export const extractPublicServicesAggregations = (searchResponse: any) =>
-  normalizeAggregations(searchResponse).aggregations ?? {};
+  searchResponse.aggregations ?? {};
 
 export const extractPublicServicesPage = (searchResponse: any) =>
   searchResponse.page ?? {};

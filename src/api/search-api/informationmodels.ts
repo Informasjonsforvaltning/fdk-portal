@@ -1,5 +1,4 @@
 import { searchApiPost } from './host';
-import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { InformationModel } from '../../types';
 import { buildFirstHarvestSortBody } from '../../utils/common';
 
@@ -93,7 +92,7 @@ export const extractInformationModels = (searchResponse: any) =>
   searchResponse?.hits ?? [];
 
 export const extractInformationModelsAggregations = (searchResponse: any) =>
-  normalizeAggregations(searchResponse).aggregations ?? [];
+  searchResponse.aggregations ?? [];
 
 export const extractFirstInformationModel = (
   searchResponse: any

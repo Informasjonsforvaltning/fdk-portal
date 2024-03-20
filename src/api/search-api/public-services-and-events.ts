@@ -1,5 +1,4 @@
 import { searchApiPost } from './host';
-import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { buildFirstHarvestSortBody } from '../../utils/common';
 
 const mapFilters = ({
@@ -69,7 +68,7 @@ export const extractPublicServicesAndEvents = (searchResponse: any) =>
 
 export const extractPublicServicesAndEventsAggregations = (
   searchResponse: any
-) => normalizeAggregations(searchResponse).aggregations ?? {};
+) => searchResponse.aggregations ?? {};
 
 export const extractPublicServicesAndEventsPage = (searchResponse: any) =>
   searchResponse.page ?? {};

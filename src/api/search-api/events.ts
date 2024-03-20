@@ -1,5 +1,4 @@
 import { searchApiPost } from './host';
-import { normalizeAggregations } from '../../lib/normalizeAggregations';
 import { Event } from '../../types';
 import { buildFirstHarvestSortBody } from '../../utils/common';
 
@@ -43,7 +42,7 @@ export const extractEvents = (searchResponse: any) =>
   searchResponse?.hits ?? [];
 
 export const extractEventsAggregations = (searchResponse: any) =>
-  normalizeAggregations(searchResponse).aggregations ?? {};
+  searchResponse.aggregations ?? {};
 
 export const extractEventsPage = (searchResponse: any) =>
   searchResponse.page ?? {};
