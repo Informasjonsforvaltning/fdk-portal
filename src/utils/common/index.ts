@@ -81,12 +81,10 @@ export const cookieValue = (name: string) =>
     .filter(row => row.startsWith(`${name}=`))
     .map(c => c.split('=')[1])[0];
 
-const buildFirstHarvestSortBody = ({ sortfield }: any) => {
+const buildFirstHarvestSortBody = ({ sortfield }: any) =>
   sortfield === 'FIRST_HARVESTED'
     ? { field: 'FIRST_HARVESTED', direction: 'DESC' }
     : undefined;
-};
-
 const buildFilterSearchBody = ({
   opendata,
   accessrights,
@@ -131,6 +129,6 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
     page: page ? Number(page) : undefined,
     size: size ? Number(size) : undefined
   },
-  sorting: buildFirstHarvestSortBody(params),
+  sort: buildFirstHarvestSortBody(params),
   filters: buildFilterSearchBody(params)
 });
