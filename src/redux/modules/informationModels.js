@@ -5,9 +5,9 @@ import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
 import {
   extractInformationModels,
   searchInformationModels,
-  paramsToSearchBody,
   extractInformationModelsAggregations
 } from '../../api/search-api/informationmodels';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 export const INFORMATIONMODELS_REQUEST = 'INFORMATIONMODELS_REQUEST';
 export const INFORMATIONMODELS_SUCCESS = 'INFORMATIONMODELS_SUCCESS';

@@ -3,9 +3,11 @@ import type {
   EuDataTheme,
   EuTheme,
   LosNode,
-  LosTheme
+  LosTheme,
+  SearchFilters
 } from '../../types';
 import localization from '../../lib/localization';
+import { commaSeparatedStringToList } from '../../lib/stringUtils';
 
 function assertIsDefined<T>(
   key: string,
@@ -55,8 +57,56 @@ export const cookieValue = (name: string) =>
     .filter(row => row.startsWith(`${name}=`))
     .map(c => c.split('=')[1])[0];
 
-export const buildFirstHarvestSortBody = ({ sortfield }: any) => {
+const buildFirstHarvestSortBody = ({ sortfield }: any) => {
   sortfield === 'FIRST_HARVESTED'
     ? { field: 'FIRST_HARVESTED', direction: 'DESC' }
     : undefined;
 };
+
+const buildFilterSearchBody = ({
+  opendata,
+  accessrights,
+  theme,
+  spatial,
+  provenance,
+  losTheme,
+  orgPath,
+  format,
+  relations,
+  lastXDays,
+  uris,
+  uri
+}: SearchFilters) => {
+  const filters: Record<string, any> = {};
+
+  const addFilter = (key: string, value: any) => {
+    if (value !== undefined && value !== null && value !== '') {
+      filters[key] = { value };
+    }
+  };
+
+  addFilter('openData', opendata);
+  addFilter('accessRights', accessrights);
+  addFilter('dataTheme', commaSeparatedStringToList(theme));
+  addFilter('spatial', commaSeparatedStringToList(spatial));
+  addFilter('provenance', commaSeparatedStringToList(provenance));
+  addFilter('losTheme', commaSeparatedStringToList(losTheme));
+  addFilter('orgPath', orgPath);
+  addFilter('formats', commaSeparatedStringToList(format));
+  addFilter('relations', relations);
+  addFilter('lastXDays', lastXDays);
+  addFilter('uri', uris);
+  addFilter('uri', uri);
+
+  return Object.keys(filters).length > 0 ? filters : undefined;
+};
+
+export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
+  q,
+  pagination: {
+    page: page ? Number(page) : undefined,
+    size: size ? Number(size) : undefined
+  },
+  sorting: buildFirstHarvestSortBody(params),
+  filters: buildFilterSearchBody(params)
+});

@@ -6,12 +6,10 @@ import {
 } from './action-types';
 import * as actions from './actions';
 
-import {
-  searchDataServices,
-  paramsToSearchBody
-} from '../../../api/search-api/dataservices';
+import { searchDataServices } from '../../../api/search-api/dataservices';
 
 import type { DataService, SearchObject } from '../../../types';
+import { paramsToSearchBody } from '../../../utils/common';
 
 function* getDataServicesRequested({
   payload: {

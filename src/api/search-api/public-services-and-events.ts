@@ -1,67 +1,7 @@
 import { searchApiPost } from './host';
-import { buildFirstHarvestSortBody } from '../../utils/common';
-
-const mapFilters = ({
-  id,
-  identifiers,
-  uri,
-  last_x_days,
-  orgPath,
-  event,
-  eventType
-}: any) => {
-  const filters = [];
-  if (id) {
-    filters.push({ _id: id });
-  }
-  if (identifiers) {
-    filters.push({
-      collection: {
-        field: 'identifier.keyword',
-        values: identifiers
-      }
-    });
-  }
-  if (uri) {
-    filters.push({
-      collection: {
-        field: 'uri',
-        values: uri
-      }
-    });
-  }
-  if (last_x_days) {
-    filters.push({ last_x_days });
-  }
-  if (orgPath) {
-    filters.push({
-      collection: {
-        field: 'hasCompetentAuthority.orgPath',
-        values: [orgPath]
-      }
-    });
-  }
-  if (event) {
-    filters.push({ event: event.split(',') });
-  }
-  if (eventType) {
-    filters.push({ eventType: eventType.split(',') });
-  }
-  return filters.length > 0 ? filters : undefined;
-};
 
 export const searchPublicServicesAndEvents = (body: any) =>
   searchApiPost('/public-services-and-events', body);
-
-export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
-  q,
-  pagination: {
-    page: page ? Number(page) : undefined,
-    size: size ? Number(size) : undefined
-  },
-  sorting: buildFirstHarvestSortBody(params),
-  filters: mapFilters(params)
-});
 
 export const extractPublicServicesAndEvents = (searchResponse: any) =>
   searchResponse?.hits ?? [];

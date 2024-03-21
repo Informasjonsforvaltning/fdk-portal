@@ -38,3 +38,6 @@ export function truncateTextWithEllipsis(str, length = 100, ending = '...') {
   }
   return str;
 }
+
+export const commaSeparatedStringToList = str =>
+  str?.split(',').map(item => item.trim()) ?? undefined;

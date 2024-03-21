@@ -12,11 +12,11 @@ import {
   extractPublicServices,
   extractPublicServicesAggregations,
   extractPublicServicesPage,
-  paramsToSearchBody,
   searchPublicServices
 } from '../../../api/search-api/public-services';
 
 import type { PublicService, SearchObject } from '../../../types';
+import { paramsToSearchBody } from '../../../utils/common';
 
 function* getPublicServicesRequested({
   payload: {
@@ -127,21 +127,7 @@ function* getPublicServicesRelatedByRequested({
 
 function* getPublicServicesRelationsRequested({
   payload: {
-    params: {
-      page,
-      sortfield,
-      size,
-      q,
-      orgPath,
-      isGroupedBy,
-      keywords,
-      publicServiceIdentifiers,
-      requiredByServiceUri,
-      relatedByServiceUri,
-      isDescribedAt,
-      isClassifiedBy,
-      requiresOrRelates
-    }
+    params: { page, sortfield, size, q, orgPath, keywords }
   }
 }: ReturnType<typeof actions.getPublicServicesRelationsRequested>) {
   try {
@@ -153,14 +139,7 @@ function* getPublicServicesRelationsRequested({
         size,
         q,
         orgPath,
-        isGroupedBy,
-        keywords,
-        publicServiceIdentifiers,
-        requiredByServiceUri,
-        relatedByServiceUri,
-        isDescribedAt,
-        isClassifiedBy,
-        requiresOrRelates
+        keywords
       })
     );
 

@@ -6,9 +6,9 @@ import {
   extractDatasetAggregations,
   searchDatasets,
   extractDatasets,
-  extractDatasetsTotal,
-  paramsToSearchBody
+  extractDatasetsTotal
 } from '../../api/search-api/datasets';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 export const DATASETS_REQUEST = 'DATASETS_REQUEST';
 export const DATASETS_SUCCESS = 'DATASETS_SUCCESS';
