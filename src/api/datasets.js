@@ -1,6 +1,5 @@
 import axios from 'axios';
 import get from 'lodash/get';
-import { normalizeAggregations } from '../lib/normalizeAggregations';
 import { getConfig } from '../config';
 
 export const datasetsUrlBase = () =>
@@ -47,6 +46,4 @@ export const extractDatasets = searchResponse =>
 export const extractTotal = searchResponse => get(searchResponse, 'hits.total');
 
 export const extractAggregations = searchResponse =>
-  searchResponse &&
-  searchResponse.aggregations &&
-  normalizeAggregations(searchResponse).aggregations;
+  searchResponse && searchResponse.aggregations;

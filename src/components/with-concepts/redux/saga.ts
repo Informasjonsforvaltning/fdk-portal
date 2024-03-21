@@ -8,11 +8,11 @@ import * as actions from './actions';
 
 import {
   extractConcepts,
-  paramsToSearchBody,
   searchConcepts
 } from '../../../api/search-api/concepts';
 
 import type { Concept, SearchObject } from '../../../types';
+import { paramsToSearchBody } from '../../../utils/common';
 
 function* getConceptsRequested({
   payload: {

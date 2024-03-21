@@ -2,9 +2,9 @@ import _ from 'lodash';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
 import {
   extractFirstConcept,
-  paramsToSearchBody,
   searchConcepts
 } from '../../api/search-api/concepts';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 export const CONCEPTSCOMPARE_REQUEST = 'CONCEPTSCOMPARE_REQUEST';
 export const CONCEPTSCOMPARE_SUCCESS = 'CONCEPTSCOMPARE_SUCCESS';

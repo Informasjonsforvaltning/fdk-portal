@@ -242,7 +242,10 @@ export const FilterTree: FC<Props> = ({
   };
 
   const onClickArrow = (e: any) => {
-    const classNames = e.target.className.split(' ');
+    if (typeof e.target.className !== 'string') {
+      return;
+    }
+    const classNames = e.target.className?.split(' ');
     if (_.includes(classNames, 'tree-view_arrow-collapsed')) {
       setOpenArrows([...openArrows, classNames[0]]);
     } else {
