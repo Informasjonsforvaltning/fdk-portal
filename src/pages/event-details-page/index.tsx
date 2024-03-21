@@ -103,7 +103,7 @@ const EventDetailsPage: FC<Props> = ({
   const relation = new Set(event?.relation ?? []);
   const relatedServices = publicServices.filter(({ uri }) => relation.has(uri));
   const dctTypes = event?.dctType ?? [];
-  const specializedType = event?.specialized_type;
+  const specializedType = event?.specializedType;
 
   return renderPage ? (
     event && (
