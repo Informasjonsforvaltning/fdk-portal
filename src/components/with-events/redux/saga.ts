@@ -6,13 +6,10 @@ import {
 } from './action-types';
 import * as actions from './actions';
 
-import {
-  extractEvents,
-  searchEvents,
-  paramsToSearchBody
-} from '../../../api/search-api/events';
+import { extractEvents, searchEvents } from '../../../api/search-api/events';
 
 import type { Event, SearchObject } from '../../../types';
+import { paramsToSearchBody } from '../../../utils/common';
 
 function* getEventsRequested({
   payload: {

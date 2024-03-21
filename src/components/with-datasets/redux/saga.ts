@@ -8,11 +8,11 @@ import * as actions from './actions';
 
 import {
   extractDatasets,
-  paramsToSearchBody,
   searchDatasets
 } from '../../../api/search-api/datasets';
 
 import type { Dataset, SearchObject } from '../../../types';
+import { paramsToSearchBody } from '../../../utils/common';
 
 function* getDatasetsRequested({
   payload: {

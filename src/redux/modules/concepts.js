@@ -4,14 +4,14 @@ import {
   extractConceptAggregations,
   searchConcepts,
   extractConcepts,
-  extractConceptsTotal,
-  paramsToSearchBody
+  extractConceptsTotal
 } from '../../api/search-api/concepts';
 import {
   informationmodelsSearch,
   extractInformationmodels
 } from '../../api/informationmodels';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 export const CONCEPTS_REQUEST = 'CONCEPTS_REQUEST';
 export const CONCEPTS_SUCCESS = 'CONCEPTS_SUCCESS';

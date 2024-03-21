@@ -4,7 +4,6 @@ import { resolve } from 'react-resolver';
 import { searchAllEntities } from '../../api/search-api/all-entities';
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { PATHNAME_SEARCH } from '../../constants/constants';
-import { normalizeAggregations } from '../../lib/normalizeAggregations';
 
 const memoizedSearchAllEntities = memoize(searchAllEntities);
 
@@ -59,9 +58,7 @@ const mapProps = {
           }
         : { q };
 
-    return memoizedSearchAllEntities(searchAllEntitiesParams)
-      .then(response => normalizeAggregations(response))
-      .catch(() => null);
+    return memoizedSearchAllEntities(searchAllEntitiesParams);
   }
 };
 

@@ -14,11 +14,8 @@ import {
 } from '../../api/report-api/timeseries';
 import { parseSearchParams } from '../../lib/location-history-helper';
 
-import {
-  extractConcepts,
-  searchConcepts,
-  paramsToSearchBody
-} from '../../api/search-api/concepts';
+import { extractConcepts, searchConcepts } from '../../api/search-api/concepts';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 const memoizedGetDatasetsReport = memoize(getDatasetsReport);
 const memoizedGetDatasetsTimeseries = memoize(getDatasetsTimeseries);

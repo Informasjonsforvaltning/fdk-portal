@@ -55,7 +55,6 @@ exports[`should handle toggleFilter 1`] = `
             key="/STAT|0"
             nodeLabel={
               <FilterOption
-                count={716}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Stat"
@@ -71,7 +70,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417858|0"
               nodeLabel={
                 <FilterOption
-                  count={175}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kommunal- og moderniserings- departementet"
@@ -81,7 +79,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={124}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/971040238|0"
@@ -90,7 +87,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417858/971040238"
               />
               <FilterOption
-                count={36}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/991825827|1"
@@ -99,7 +95,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417858/991825827"
               />
               <FilterOption
-                count={5}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/974763907|2"
@@ -108,7 +103,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417858/974763907"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/916132727|3"
@@ -117,7 +111,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417858/916132727"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/942114184|4"
@@ -132,7 +125,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417874|1"
               nodeLabel={
                 <FilterOption
-                  count={152}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Landbruks- og matdepartementet"
@@ -142,7 +134,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={75}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/988983837|0"
@@ -151,7 +142,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417874/988983837"
               />
               <FilterOption
-                count={62}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/981544315|1"
@@ -160,7 +150,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417874/981544315"
               />
               <FilterOption
-                count={15}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/985399077|2"
@@ -175,7 +164,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/977161630|2"
               nodeLabel={
                 <FilterOption
-                  count={76}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/977161630"
@@ -185,7 +173,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={43}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/977161630/970205039|0"
@@ -194,7 +181,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/977161630/970205039"
               />
               <FilterOption
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/977161630/870917732|1"
@@ -209,7 +195,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417882|3"
               nodeLabel={
                 <FilterOption
-                  count={73}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417882"
@@ -219,7 +204,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={28}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/999601391|0"
@@ -228,7 +212,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417882/999601391"
               />
               <FilterOption
-                count={25}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/971022264|1"
@@ -237,7 +220,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417882/971022264"
               />
               <FilterOption
-                count={12}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/974760819|2"
@@ -246,7 +228,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417882/974760819"
               />
               <FilterOption
-                count={8}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/919666102|3"
@@ -261,7 +242,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/912660680|4"
               nodeLabel={
                 <FilterOption
-                  count={53}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Nærings- og fiskeridepartementet"
@@ -271,7 +251,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={26}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/970188290|0"
@@ -280,7 +259,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/912660680/970188290"
               />
               <FilterOption
-                count={10}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/971203420|1"
@@ -289,7 +267,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/912660680/971203420"
               />
               <FilterOption
-                count={9}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/974760673|2"
@@ -298,7 +275,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/912660680/974760673"
               />
               <FilterOption
-                count={6}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/971349077|3"
@@ -307,7 +283,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/912660680/971349077"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/886028482|4"
@@ -316,7 +291,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/912660680/886028482"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/974760282|5"
@@ -331,7 +305,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417904|5"
               nodeLabel={
                 <FilterOption
-                  count={47}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417904"
@@ -341,7 +314,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/971032081|0"
@@ -350,7 +322,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417904/971032081"
               />
               <FilterOption
-                count={13}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/874783242|1"
@@ -359,7 +330,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417904/874783242"
               />
               <FilterOption
-                count={7}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/974446871|2"
@@ -374,7 +344,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/872417842|6"
               nodeLabel={
                 <FilterOption
-                  count={35}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kunnskapsdepartementet"
@@ -384,7 +353,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={11}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/971274042|0"
@@ -393,7 +361,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/872417842/971274042"
               />
               <FilterOption
-                count={11}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/986339523|1"
@@ -402,7 +369,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/872417842/986339523"
               />
               <FilterOption
-                count={10}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/970018131|2"
@@ -411,7 +377,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/872417842/970018131"
               />
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/874789542|3"
@@ -420,7 +385,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/872417842/874789542"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/974767880|4"
@@ -435,7 +399,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417807|7"
               nodeLabel={
                 <FilterOption
-                  count={34}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Finansdepartementet"
@@ -445,7 +408,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417807/971526920|0"
@@ -454,7 +416,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417807/971526920"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417807/986252932|1"
@@ -469,7 +430,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/983887457|8"
               nodeLabel={
                 <FilterOption
-                  count={28}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Arbeids- og sosialdepartementet"
@@ -479,7 +439,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={26}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/983887457/889640782|0"
@@ -488,7 +447,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/983887457/889640782"
               />
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/983887457/974761211|1"
@@ -503,7 +461,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417866|9"
               nodeLabel={
                 <FilterOption
-                  count={9}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kulturdepartementet"
@@ -513,7 +470,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={4}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/971527412|0"
@@ -522,7 +478,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417866/971527412"
               />
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/961181399|1"
@@ -531,7 +486,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417866/961181399"
               />
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/982391490|2"
@@ -546,7 +500,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/983887406|10"
               nodeLabel={
                 <FilterOption
-                  count={9}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Helse- og omsorgsdepartementet"
@@ -561,7 +514,6 @@ exports[`should handle toggleFilter 1`] = `
                 key="/STAT/983887406/983544622|0"
                 nodeLabel={
                   <FilterOption
-                    count={3}
                     displayClass="inline-block"
                     itemKey={0.5}
                     labelRaw="Helsedirektoratet"
@@ -571,7 +523,6 @@ exports[`should handle toggleFilter 1`] = `
                 }
               >
                 <FilterOption
-                  count={2}
                   displayClass=""
                   itemKey={0.5}
                   key="/STAT/983887406/983544622/867668292|0"
@@ -581,7 +532,6 @@ exports[`should handle toggleFilter 1`] = `
                 />
               </TreeView>
               <FilterOption
-                count={3}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/983744516|1"
@@ -590,7 +540,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/983887406/983744516"
               />
               <FilterOption
-                count={2}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/915933149|2"
@@ -599,7 +548,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/983887406/915933149"
               />
               <FilterOption
-                count={1}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/974761122|3"
@@ -614,7 +562,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417831|11"
               nodeLabel={
                 <FilterOption
-                  count={6}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417831"
@@ -624,7 +571,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={6}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417831/974760983|0"
@@ -639,7 +585,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417920|12"
               nodeLabel={
                 <FilterOption
-                  count={5}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417920"
@@ -649,7 +594,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={5}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417920/971277882|0"
@@ -664,7 +608,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417823|13"
               nodeLabel={
                 <FilterOption
-                  count={4}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417823"
@@ -674,7 +617,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={3}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417823/975950662|0"
@@ -683,7 +625,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417823/975950662"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417823/986105174|1"
@@ -693,7 +634,6 @@ exports[`should handle toggleFilter 1`] = `
               />
             </TreeView>
             <FilterOption
-              count={3}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/917082308|14"
@@ -707,7 +647,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/STAT/972417793|15"
               nodeLabel={
                 <FilterOption
-                  count={3}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417793"
@@ -717,7 +656,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417793/987879696|0"
@@ -726,7 +664,6 @@ exports[`should handle toggleFilter 1`] = `
                 value="/STAT/972417793/987879696"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417793/986128433|1"
@@ -736,7 +673,6 @@ exports[`should handle toggleFilter 1`] = `
               />
             </TreeView>
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/937884117|16"
@@ -745,7 +681,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/STAT/937884117"
             />
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/966056258|17"
@@ -754,7 +689,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/STAT/966056258"
             />
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/971524960|18"
@@ -763,7 +697,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/STAT/971524960"
             />
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/983609155|19"
@@ -784,7 +717,6 @@ exports[`should handle toggleFilter 1`] = `
             key="/KOMMUNE|1"
             nodeLabel={
               <FilterOption
-                count={236}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Kommune"
@@ -795,7 +727,6 @@ exports[`should handle toggleFilter 1`] = `
             onClick={[Function]}
           >
             <FilterOption
-              count={147}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964965226|0"
@@ -804,7 +735,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/964965226"
             />
             <FilterOption
-              count={22}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/958935420|1"
@@ -813,7 +743,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/958935420"
             />
             <FilterOption
-              count={12}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/940101808|2"
@@ -822,7 +751,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/940101808"
             />
             <FilterOption
-              count={10}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964338531|3"
@@ -831,7 +759,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/964338531"
             />
             <FilterOption
-              count={9}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/988913898|4"
@@ -840,7 +767,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/988913898"
             />
             <FilterOption
-              count={8}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964978573|5"
@@ -849,7 +775,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/964978573"
             />
             <FilterOption
-              count={4}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964968063|6"
@@ -858,7 +783,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/964968063"
             />
             <FilterOption
-              count={3}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/840029212|7"
@@ -867,7 +791,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/840029212"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/936401651|8"
@@ -876,7 +799,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/936401651"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942953119|9"
@@ -885,7 +807,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/942953119"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/944020977|10"
@@ -894,7 +815,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/944020977"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964967725|11"
@@ -903,7 +823,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/964967725"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964968896|12"
@@ -912,7 +831,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/964968896"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/840894312|13"
@@ -921,7 +839,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/840894312"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/842566142|14"
@@ -930,7 +847,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/842566142"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/844458312|15"
@@ -939,7 +855,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/844458312"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/934945514|16"
@@ -948,7 +863,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/934945514"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/938772924|17"
@@ -957,7 +871,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/938772924"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942110286|18"
@@ -966,7 +879,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/942110286"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942110464|19"
@@ -975,7 +887,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/942110464"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/945578564|20"
@@ -984,7 +895,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/945578564"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/963923511|21"
@@ -993,7 +903,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/963923511"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964979367|22"
@@ -1002,7 +911,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/KOMMUNE/964979367"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/972417971|23"
@@ -1023,7 +931,6 @@ exports[`should handle toggleFilter 1`] = `
             key="/PRIVAT|2"
             nodeLabel={
               <FilterOption
-                count={19}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Privat"
@@ -1034,7 +941,6 @@ exports[`should handle toggleFilter 1`] = `
             onClick={[Function]}
           >
             <FilterOption
-              count={9}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/985198292|0"
@@ -1043,7 +949,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/PRIVAT/985198292"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/914749360|1"
@@ -1052,7 +957,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/PRIVAT/914749360"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/917422575|2"
@@ -1061,7 +965,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/PRIVAT/917422575"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/971273003|3"
@@ -1070,7 +973,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/PRIVAT/971273003"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/974442167|4"
@@ -1079,7 +981,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/PRIVAT/974442167"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/976390512|5"
@@ -1088,7 +989,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/PRIVAT/976390512"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/979469241|6"
@@ -1097,7 +997,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/PRIVAT/979469241"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/984661185|7"
@@ -1106,7 +1005,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/PRIVAT/984661185"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/991609407|8"
@@ -1115,7 +1013,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/PRIVAT/991609407"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/994686011|9"
@@ -1136,7 +1033,6 @@ exports[`should handle toggleFilter 1`] = `
             key="/ANNET|3"
             nodeLabel={
               <FilterOption
-                count={10}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Annet"
@@ -1147,7 +1043,6 @@ exports[`should handle toggleFilter 1`] = `
             onClick={[Function]}
           >
             <FilterOption
-              count={3}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/9747678801|0"
@@ -1156,7 +1051,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/ANNET/9747678801"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/Fylkeskommunene|1"
@@ -1165,7 +1059,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/ANNET/Fylkeskommunene"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/910244132|2"
@@ -1174,7 +1067,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/ANNET/910244132"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/916285515|3"
@@ -1183,7 +1075,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/ANNET/916285515"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/971036028|4"
@@ -1192,7 +1083,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/ANNET/971036028"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/974652366|5"
@@ -1201,7 +1091,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/ANNET/974652366"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/991467645|6"
@@ -1222,7 +1111,6 @@ exports[`should handle toggleFilter 1`] = `
             key="/FYLKE|4"
             nodeLabel={
               <FilterOption
-                count={4}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Fylke"
@@ -1238,7 +1126,6 @@ exports[`should handle toggleFilter 1`] = `
               key="/FYLKE/941388841|0"
               nodeLabel={
                 <FilterOption
-                  count={2}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/fylke/941388841"
@@ -1248,7 +1135,6 @@ exports[`should handle toggleFilter 1`] = `
               }
             >
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/FYLKE/941388841/974783231|0"
@@ -1258,7 +1144,6 @@ exports[`should handle toggleFilter 1`] = `
               />
             </TreeView>
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/FYLKE/938626367|1"
@@ -1267,7 +1152,6 @@ exports[`should handle toggleFilter 1`] = `
               value="/FYLKE/938626367"
             />
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/FYLKE/958381492|2"
@@ -1339,7 +1223,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={true}
-                count={716}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Stat"
@@ -1356,7 +1239,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={175}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kommunal- og moderniserings- departementet"
@@ -1367,7 +1249,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={124}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/971040238|0"
@@ -1377,7 +1258,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={36}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/991825827|1"
@@ -1387,7 +1267,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={5}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/974763907|2"
@@ -1397,7 +1276,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/916132727|3"
@@ -1407,7 +1285,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/942114184|4"
@@ -1423,7 +1300,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={152}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Landbruks- og matdepartementet"
@@ -1434,7 +1310,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={75}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/988983837|0"
@@ -1444,7 +1319,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={62}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/981544315|1"
@@ -1454,7 +1328,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={15}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/985399077|2"
@@ -1470,7 +1343,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={76}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/977161630"
@@ -1481,7 +1353,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={43}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/977161630/970205039|0"
@@ -1491,7 +1362,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/977161630/870917732|1"
@@ -1507,7 +1377,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={73}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417882"
@@ -1518,7 +1387,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={28}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/999601391|0"
@@ -1528,7 +1396,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={25}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/971022264|1"
@@ -1538,7 +1405,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={12}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/974760819|2"
@@ -1548,7 +1414,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={8}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/919666102|3"
@@ -1564,7 +1429,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={53}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Nærings- og fiskeridepartementet"
@@ -1575,7 +1439,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={26}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/970188290|0"
@@ -1585,7 +1448,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={10}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/971203420|1"
@@ -1595,7 +1457,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={9}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/974760673|2"
@@ -1605,7 +1466,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={6}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/971349077|3"
@@ -1615,7 +1475,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/886028482|4"
@@ -1625,7 +1484,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/974760282|5"
@@ -1641,7 +1499,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={47}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417904"
@@ -1652,7 +1509,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/971032081|0"
@@ -1662,7 +1518,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={13}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/874783242|1"
@@ -1672,7 +1527,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={7}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/974446871|2"
@@ -1688,7 +1542,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={35}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kunnskapsdepartementet"
@@ -1699,7 +1552,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={11}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/971274042|0"
@@ -1709,7 +1561,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={11}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/986339523|1"
@@ -1719,7 +1570,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={10}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/970018131|2"
@@ -1729,7 +1579,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/874789542|3"
@@ -1739,7 +1588,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/974767880|4"
@@ -1755,7 +1603,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={34}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Finansdepartementet"
@@ -1766,7 +1613,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417807/971526920|0"
@@ -1776,7 +1622,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417807/986252932|1"
@@ -1792,7 +1637,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={28}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Arbeids- og sosialdepartementet"
@@ -1803,7 +1647,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={26}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/983887457/889640782|0"
@@ -1813,7 +1656,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/983887457/974761211|1"
@@ -1829,7 +1671,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={9}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kulturdepartementet"
@@ -1840,7 +1681,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={4}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/971527412|0"
@@ -1850,7 +1690,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/961181399|1"
@@ -1860,7 +1699,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/982391490|2"
@@ -1876,7 +1714,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={9}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Helse- og omsorgsdepartementet"
@@ -1892,7 +1729,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
                 nodeLabel={
                   <FilterOption
                     active={false}
-                    count={3}
                     displayClass="inline-block"
                     itemKey={0.5}
                     labelRaw="Helsedirektoratet"
@@ -1903,7 +1739,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               >
                 <FilterOption
                   active={false}
-                  count={2}
                   displayClass=""
                   itemKey={0.5}
                   key="/STAT/983887406/983544622/867668292|0"
@@ -1914,7 +1749,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               </TreeView>
               <FilterOption
                 active={false}
-                count={3}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/983744516|1"
@@ -1924,7 +1758,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/915933149|2"
@@ -1934,7 +1767,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/974761122|3"
@@ -1950,7 +1782,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={6}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417831"
@@ -1961,7 +1792,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={6}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417831/974760983|0"
@@ -1977,7 +1807,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={5}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417920"
@@ -1988,7 +1817,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={5}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417920/971277882|0"
@@ -2004,7 +1832,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={4}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417823"
@@ -2015,7 +1842,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={3}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417823/975950662|0"
@@ -2025,7 +1851,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417823/986105174|1"
@@ -2036,7 +1861,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             </TreeView>
             <FilterOption
               active={false}
-              count={3}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/917082308|14"
@@ -2051,7 +1875,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={3}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417793"
@@ -2062,7 +1885,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417793/987879696|0"
@@ -2072,7 +1894,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417793/986128433|1"
@@ -2083,7 +1904,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             </TreeView>
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/937884117|16"
@@ -2093,7 +1913,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/966056258|17"
@@ -2103,7 +1922,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/971524960|18"
@@ -2113,7 +1931,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/983609155|19"
@@ -2135,7 +1952,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={false}
-                count={236}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Kommune"
@@ -2147,7 +1963,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
           >
             <FilterOption
               active={false}
-              count={147}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964965226|0"
@@ -2157,7 +1972,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={22}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/958935420|1"
@@ -2167,7 +1981,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={12}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/940101808|2"
@@ -2177,7 +1990,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={10}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964338531|3"
@@ -2187,7 +1999,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={9}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/988913898|4"
@@ -2197,7 +2008,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={8}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964978573|5"
@@ -2207,7 +2017,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={4}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964968063|6"
@@ -2217,7 +2026,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={3}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/840029212|7"
@@ -2227,7 +2035,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/936401651|8"
@@ -2237,7 +2044,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942953119|9"
@@ -2247,7 +2053,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/944020977|10"
@@ -2257,7 +2062,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964967725|11"
@@ -2267,7 +2071,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964968896|12"
@@ -2277,7 +2080,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/840894312|13"
@@ -2287,7 +2089,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/842566142|14"
@@ -2297,7 +2098,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/844458312|15"
@@ -2307,7 +2107,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/934945514|16"
@@ -2317,7 +2116,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/938772924|17"
@@ -2327,7 +2125,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942110286|18"
@@ -2337,7 +2134,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942110464|19"
@@ -2347,7 +2143,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/945578564|20"
@@ -2357,7 +2152,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/963923511|21"
@@ -2367,7 +2161,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964979367|22"
@@ -2377,7 +2170,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/972417971|23"
@@ -2399,7 +2191,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={false}
-                count={19}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Privat"
@@ -2411,7 +2202,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
           >
             <FilterOption
               active={false}
-              count={9}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/985198292|0"
@@ -2421,7 +2211,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/914749360|1"
@@ -2431,7 +2220,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/917422575|2"
@@ -2441,7 +2229,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/971273003|3"
@@ -2451,7 +2238,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/974442167|4"
@@ -2461,7 +2247,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/976390512|5"
@@ -2471,7 +2256,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/979469241|6"
@@ -2481,7 +2265,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/984661185|7"
@@ -2491,7 +2274,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/991609407|8"
@@ -2501,7 +2283,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/994686011|9"
@@ -2523,7 +2304,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={false}
-                count={10}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Annet"
@@ -2535,7 +2315,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
           >
             <FilterOption
               active={false}
-              count={3}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/9747678801|0"
@@ -2545,7 +2324,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/Fylkeskommunene|1"
@@ -2555,7 +2333,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/910244132|2"
@@ -2565,7 +2342,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/916285515|3"
@@ -2575,7 +2351,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/971036028|4"
@@ -2585,7 +2360,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/974652366|5"
@@ -2595,7 +2369,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/991467645|6"
@@ -2617,7 +2390,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={false}
-                count={4}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Fylke"
@@ -2634,7 +2406,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={2}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/fylke/941388841"
@@ -2645,7 +2416,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/FYLKE/941388841/974783231|0"
@@ -2656,7 +2426,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             </TreeView>
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/FYLKE/938626367|1"
@@ -2666,7 +2435,6 @@ exports[`should render FilterTree correctly with active filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/FYLKE/958381492|2"
@@ -2738,7 +2506,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={false}
-                count={716}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Stat"
@@ -2755,7 +2522,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={175}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kommunal- og moderniserings- departementet"
@@ -2766,7 +2532,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={124}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/971040238|0"
@@ -2776,7 +2541,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={36}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/991825827|1"
@@ -2786,7 +2550,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={5}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/974763907|2"
@@ -2796,7 +2559,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/916132727|3"
@@ -2806,7 +2568,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/942114184|4"
@@ -2822,7 +2583,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={152}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Landbruks- og matdepartementet"
@@ -2833,7 +2593,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={75}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/988983837|0"
@@ -2843,7 +2602,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={62}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/981544315|1"
@@ -2853,7 +2611,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={15}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/985399077|2"
@@ -2869,7 +2626,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={76}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/977161630"
@@ -2880,7 +2636,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={43}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/977161630/970205039|0"
@@ -2890,7 +2645,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/977161630/870917732|1"
@@ -2906,7 +2660,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={73}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417882"
@@ -2917,7 +2670,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={28}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/999601391|0"
@@ -2927,7 +2679,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={25}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/971022264|1"
@@ -2937,7 +2688,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={12}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/974760819|2"
@@ -2947,7 +2697,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={8}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/919666102|3"
@@ -2963,7 +2712,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={53}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Nærings- og fiskeridepartementet"
@@ -2974,7 +2722,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={26}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/970188290|0"
@@ -2984,7 +2731,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={10}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/971203420|1"
@@ -2994,7 +2740,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={9}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/974760673|2"
@@ -3004,7 +2749,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={6}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/971349077|3"
@@ -3014,7 +2758,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/886028482|4"
@@ -3024,7 +2767,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/974760282|5"
@@ -3040,7 +2782,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={47}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417904"
@@ -3051,7 +2792,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/971032081|0"
@@ -3061,7 +2801,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={13}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/874783242|1"
@@ -3071,7 +2810,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={7}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/974446871|2"
@@ -3087,7 +2825,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={35}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kunnskapsdepartementet"
@@ -3098,7 +2835,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={11}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/971274042|0"
@@ -3108,7 +2844,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={11}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/986339523|1"
@@ -3118,7 +2853,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={10}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/970018131|2"
@@ -3128,7 +2862,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/874789542|3"
@@ -3138,7 +2871,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/974767880|4"
@@ -3154,7 +2886,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={34}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Finansdepartementet"
@@ -3165,7 +2896,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417807/971526920|0"
@@ -3175,7 +2905,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417807/986252932|1"
@@ -3191,7 +2920,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={28}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Arbeids- og sosialdepartementet"
@@ -3202,7 +2930,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={26}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/983887457/889640782|0"
@@ -3212,7 +2939,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/983887457/974761211|1"
@@ -3228,7 +2954,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={9}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kulturdepartementet"
@@ -3239,7 +2964,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={4}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/971527412|0"
@@ -3249,7 +2973,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/961181399|1"
@@ -3259,7 +2982,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/982391490|2"
@@ -3275,7 +2997,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={9}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Helse- og omsorgsdepartementet"
@@ -3291,7 +3012,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
                 nodeLabel={
                   <FilterOption
                     active={false}
-                    count={3}
                     displayClass="inline-block"
                     itemKey={0.5}
                     labelRaw="Helsedirektoratet"
@@ -3302,7 +3022,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               >
                 <FilterOption
                   active={false}
-                  count={2}
                   displayClass=""
                   itemKey={0.5}
                   key="/STAT/983887406/983544622/867668292|0"
@@ -3313,7 +3032,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               </TreeView>
               <FilterOption
                 active={false}
-                count={3}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/983744516|1"
@@ -3323,7 +3041,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={2}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/915933149|2"
@@ -3333,7 +3050,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/974761122|3"
@@ -3349,7 +3065,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={6}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417831"
@@ -3360,7 +3075,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={6}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417831/974760983|0"
@@ -3376,7 +3090,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={5}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417920"
@@ -3387,7 +3100,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={5}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417920/971277882|0"
@@ -3403,7 +3115,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={4}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417823"
@@ -3414,7 +3125,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={3}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417823/975950662|0"
@@ -3424,7 +3134,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417823/986105174|1"
@@ -3435,7 +3144,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             </TreeView>
             <FilterOption
               active={false}
-              count={3}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/917082308|14"
@@ -3450,7 +3158,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={3}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417793"
@@ -3461,7 +3168,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417793/987879696|0"
@@ -3471,7 +3177,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               />
               <FilterOption
                 active={false}
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417793/986128433|1"
@@ -3482,7 +3187,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             </TreeView>
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/937884117|16"
@@ -3492,7 +3196,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/966056258|17"
@@ -3502,7 +3205,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/971524960|18"
@@ -3512,7 +3214,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/983609155|19"
@@ -3534,7 +3235,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={false}
-                count={236}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Kommune"
@@ -3546,7 +3246,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
           >
             <FilterOption
               active={false}
-              count={147}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964965226|0"
@@ -3556,7 +3255,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={22}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/958935420|1"
@@ -3566,7 +3264,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={12}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/940101808|2"
@@ -3576,7 +3273,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={10}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964338531|3"
@@ -3586,7 +3282,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={9}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/988913898|4"
@@ -3596,7 +3291,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={8}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964978573|5"
@@ -3606,7 +3300,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={4}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964968063|6"
@@ -3616,7 +3309,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={3}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/840029212|7"
@@ -3626,7 +3318,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/936401651|8"
@@ -3636,7 +3327,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942953119|9"
@@ -3646,7 +3336,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/944020977|10"
@@ -3656,7 +3345,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964967725|11"
@@ -3666,7 +3354,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964968896|12"
@@ -3676,7 +3363,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/840894312|13"
@@ -3686,7 +3372,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/842566142|14"
@@ -3696,7 +3381,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/844458312|15"
@@ -3706,7 +3390,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/934945514|16"
@@ -3716,7 +3399,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/938772924|17"
@@ -3726,7 +3408,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942110286|18"
@@ -3736,7 +3417,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942110464|19"
@@ -3746,7 +3426,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/945578564|20"
@@ -3756,7 +3435,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/963923511|21"
@@ -3766,7 +3444,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964979367|22"
@@ -3776,7 +3453,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/972417971|23"
@@ -3798,7 +3474,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={false}
-                count={19}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Privat"
@@ -3810,7 +3485,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
           >
             <FilterOption
               active={false}
-              count={9}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/985198292|0"
@@ -3820,7 +3494,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/914749360|1"
@@ -3830,7 +3503,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/917422575|2"
@@ -3840,7 +3512,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/971273003|3"
@@ -3850,7 +3521,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/974442167|4"
@@ -3860,7 +3530,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/976390512|5"
@@ -3870,7 +3539,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/979469241|6"
@@ -3880,7 +3548,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/984661185|7"
@@ -3890,7 +3557,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/991609407|8"
@@ -3900,7 +3566,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/994686011|9"
@@ -3922,7 +3587,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={false}
-                count={10}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Annet"
@@ -3934,7 +3598,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
           >
             <FilterOption
               active={false}
-              count={3}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/9747678801|0"
@@ -3944,7 +3607,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/Fylkeskommunene|1"
@@ -3954,7 +3616,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/910244132|2"
@@ -3964,7 +3625,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/916285515|3"
@@ -3974,7 +3634,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/971036028|4"
@@ -3984,7 +3643,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/974652366|5"
@@ -3994,7 +3652,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/991467645|6"
@@ -4016,7 +3673,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             nodeLabel={
               <FilterOption
                 active={false}
-                count={4}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Fylke"
@@ -4033,7 +3689,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
               nodeLabel={
                 <FilterOption
                   active={false}
-                  count={2}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/fylke/941388841"
@@ -4044,7 +3699,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             >
               <FilterOption
                 active={false}
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/FYLKE/941388841/974783231|0"
@@ -4055,7 +3709,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             </TreeView>
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/FYLKE/938626367|1"
@@ -4065,7 +3718,6 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
             <FilterOption
               active={false}
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/FYLKE/958381492|2"
@@ -4138,7 +3790,6 @@ exports[`should render FilterTree correctly with props 1`] = `
             key="/STAT|0"
             nodeLabel={
               <FilterOption
-                count={716}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Stat"
@@ -4154,7 +3805,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417858|0"
               nodeLabel={
                 <FilterOption
-                  count={175}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kommunal- og moderniserings- departementet"
@@ -4164,7 +3814,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={124}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/971040238|0"
@@ -4173,7 +3822,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417858/971040238"
               />
               <FilterOption
-                count={36}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/991825827|1"
@@ -4182,7 +3830,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417858/991825827"
               />
               <FilterOption
-                count={5}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/974763907|2"
@@ -4191,7 +3838,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417858/974763907"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/916132727|3"
@@ -4200,7 +3846,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417858/916132727"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417858/942114184|4"
@@ -4215,7 +3860,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417874|1"
               nodeLabel={
                 <FilterOption
-                  count={152}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Landbruks- og matdepartementet"
@@ -4225,7 +3869,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={75}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/988983837|0"
@@ -4234,7 +3877,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417874/988983837"
               />
               <FilterOption
-                count={62}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/981544315|1"
@@ -4243,7 +3885,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417874/981544315"
               />
               <FilterOption
-                count={15}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417874/985399077|2"
@@ -4258,7 +3899,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/977161630|2"
               nodeLabel={
                 <FilterOption
-                  count={76}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/977161630"
@@ -4268,7 +3908,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={43}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/977161630/970205039|0"
@@ -4277,7 +3916,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/977161630/970205039"
               />
               <FilterOption
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/977161630/870917732|1"
@@ -4292,7 +3930,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417882|3"
               nodeLabel={
                 <FilterOption
-                  count={73}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417882"
@@ -4302,7 +3939,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={28}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/999601391|0"
@@ -4311,7 +3947,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417882/999601391"
               />
               <FilterOption
-                count={25}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/971022264|1"
@@ -4320,7 +3955,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417882/971022264"
               />
               <FilterOption
-                count={12}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/974760819|2"
@@ -4329,7 +3963,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417882/974760819"
               />
               <FilterOption
-                count={8}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417882/919666102|3"
@@ -4344,7 +3977,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/912660680|4"
               nodeLabel={
                 <FilterOption
-                  count={53}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Nærings- og fiskeridepartementet"
@@ -4354,7 +3986,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={26}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/970188290|0"
@@ -4363,7 +3994,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/912660680/970188290"
               />
               <FilterOption
-                count={10}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/971203420|1"
@@ -4372,7 +4002,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/912660680/971203420"
               />
               <FilterOption
-                count={9}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/974760673|2"
@@ -4381,7 +4010,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/912660680/974760673"
               />
               <FilterOption
-                count={6}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/971349077|3"
@@ -4390,7 +4018,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/912660680/971349077"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/886028482|4"
@@ -4399,7 +4026,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/912660680/886028482"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/912660680/974760282|5"
@@ -4414,7 +4040,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417904|5"
               nodeLabel={
                 <FilterOption
-                  count={47}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417904"
@@ -4424,7 +4049,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/971032081|0"
@@ -4433,7 +4057,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417904/971032081"
               />
               <FilterOption
-                count={13}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/874783242|1"
@@ -4442,7 +4065,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417904/874783242"
               />
               <FilterOption
-                count={7}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417904/974446871|2"
@@ -4457,7 +4079,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/872417842|6"
               nodeLabel={
                 <FilterOption
-                  count={35}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kunnskapsdepartementet"
@@ -4467,7 +4088,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={11}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/971274042|0"
@@ -4476,7 +4096,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/872417842/971274042"
               />
               <FilterOption
-                count={11}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/986339523|1"
@@ -4485,7 +4104,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/872417842/986339523"
               />
               <FilterOption
-                count={10}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/970018131|2"
@@ -4494,7 +4112,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/872417842/970018131"
               />
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/874789542|3"
@@ -4503,7 +4120,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/872417842/874789542"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/872417842/974767880|4"
@@ -4518,7 +4134,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417807|7"
               nodeLabel={
                 <FilterOption
-                  count={34}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Finansdepartementet"
@@ -4528,7 +4143,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={27}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417807/971526920|0"
@@ -4537,7 +4151,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417807/971526920"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417807/986252932|1"
@@ -4552,7 +4165,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/983887457|8"
               nodeLabel={
                 <FilterOption
-                  count={28}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Arbeids- og sosialdepartementet"
@@ -4562,7 +4174,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={26}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/983887457/889640782|0"
@@ -4571,7 +4182,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/983887457/889640782"
               />
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/983887457/974761211|1"
@@ -4586,7 +4196,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417866|9"
               nodeLabel={
                 <FilterOption
-                  count={9}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Kulturdepartementet"
@@ -4596,7 +4205,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={4}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/971527412|0"
@@ -4605,7 +4213,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417866/971527412"
               />
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/961181399|1"
@@ -4614,7 +4221,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417866/961181399"
               />
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417866/982391490|2"
@@ -4629,7 +4235,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/983887406|10"
               nodeLabel={
                 <FilterOption
-                  count={9}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="Helse- og omsorgsdepartementet"
@@ -4644,7 +4249,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 key="/STAT/983887406/983544622|0"
                 nodeLabel={
                   <FilterOption
-                    count={3}
                     displayClass="inline-block"
                     itemKey={0.5}
                     labelRaw="Helsedirektoratet"
@@ -4654,7 +4258,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 }
               >
                 <FilterOption
-                  count={2}
                   displayClass=""
                   itemKey={0.5}
                   key="/STAT/983887406/983544622/867668292|0"
@@ -4664,7 +4267,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 />
               </TreeView>
               <FilterOption
-                count={3}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/983744516|1"
@@ -4673,7 +4275,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/983887406/983744516"
               />
               <FilterOption
-                count={2}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/915933149|2"
@@ -4682,7 +4283,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/983887406/915933149"
               />
               <FilterOption
-                count={1}
                 displayClass="indent"
                 itemKey={0.5}
                 key="/STAT/983887406/974761122|3"
@@ -4697,7 +4297,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417831|11"
               nodeLabel={
                 <FilterOption
-                  count={6}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417831"
@@ -4707,7 +4306,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={6}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417831/974760983|0"
@@ -4722,7 +4320,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417920|12"
               nodeLabel={
                 <FilterOption
-                  count={5}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417920"
@@ -4732,7 +4329,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={5}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417920/971277882|0"
@@ -4747,7 +4343,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417823|13"
               nodeLabel={
                 <FilterOption
-                  count={4}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417823"
@@ -4757,7 +4352,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={3}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417823/975950662|0"
@@ -4766,7 +4360,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417823/975950662"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417823/986105174|1"
@@ -4776,7 +4369,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               />
             </TreeView>
             <FilterOption
-              count={3}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/917082308|14"
@@ -4790,7 +4382,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/STAT/972417793|15"
               nodeLabel={
                 <FilterOption
-                  count={3}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/stat/972417793"
@@ -4800,7 +4391,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417793/987879696|0"
@@ -4809,7 +4399,6 @@ exports[`should render FilterTree correctly with props 1`] = `
                 value="/STAT/972417793/987879696"
               />
               <FilterOption
-                count={1}
                 displayClass=""
                 itemKey={0.5}
                 key="/STAT/972417793/986128433|1"
@@ -4819,7 +4408,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               />
             </TreeView>
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/937884117|16"
@@ -4828,7 +4416,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/STAT/937884117"
             />
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/966056258|17"
@@ -4837,7 +4424,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/STAT/966056258"
             />
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/971524960|18"
@@ -4846,7 +4432,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/STAT/971524960"
             />
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/STAT/983609155|19"
@@ -4867,7 +4452,6 @@ exports[`should render FilterTree correctly with props 1`] = `
             key="/KOMMUNE|1"
             nodeLabel={
               <FilterOption
-                count={236}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Kommune"
@@ -4878,7 +4462,6 @@ exports[`should render FilterTree correctly with props 1`] = `
             onClick={[Function]}
           >
             <FilterOption
-              count={147}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964965226|0"
@@ -4887,7 +4470,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/964965226"
             />
             <FilterOption
-              count={22}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/958935420|1"
@@ -4896,7 +4478,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/958935420"
             />
             <FilterOption
-              count={12}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/940101808|2"
@@ -4905,7 +4486,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/940101808"
             />
             <FilterOption
-              count={10}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964338531|3"
@@ -4914,7 +4494,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/964338531"
             />
             <FilterOption
-              count={9}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/988913898|4"
@@ -4923,7 +4502,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/988913898"
             />
             <FilterOption
-              count={8}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964978573|5"
@@ -4932,7 +4510,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/964978573"
             />
             <FilterOption
-              count={4}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964968063|6"
@@ -4941,7 +4518,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/964968063"
             />
             <FilterOption
-              count={3}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/840029212|7"
@@ -4950,7 +4526,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/840029212"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/936401651|8"
@@ -4959,7 +4534,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/936401651"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942953119|9"
@@ -4968,7 +4542,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/942953119"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/944020977|10"
@@ -4977,7 +4550,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/944020977"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964967725|11"
@@ -4986,7 +4558,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/964967725"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964968896|12"
@@ -4995,7 +4566,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/964968896"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/840894312|13"
@@ -5004,7 +4574,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/840894312"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/842566142|14"
@@ -5013,7 +4582,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/842566142"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/844458312|15"
@@ -5022,7 +4590,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/844458312"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/934945514|16"
@@ -5031,7 +4598,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/934945514"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/938772924|17"
@@ -5040,7 +4606,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/938772924"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942110286|18"
@@ -5049,7 +4614,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/942110286"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/942110464|19"
@@ -5058,7 +4622,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/942110464"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/945578564|20"
@@ -5067,7 +4630,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/945578564"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/963923511|21"
@@ -5076,7 +4638,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/963923511"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/964979367|22"
@@ -5085,7 +4646,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/KOMMUNE/964979367"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/KOMMUNE/972417971|23"
@@ -5106,7 +4666,6 @@ exports[`should render FilterTree correctly with props 1`] = `
             key="/PRIVAT|2"
             nodeLabel={
               <FilterOption
-                count={19}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Privat"
@@ -5117,7 +4676,6 @@ exports[`should render FilterTree correctly with props 1`] = `
             onClick={[Function]}
           >
             <FilterOption
-              count={9}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/985198292|0"
@@ -5126,7 +4684,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/PRIVAT/985198292"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/914749360|1"
@@ -5135,7 +4692,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/PRIVAT/914749360"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/917422575|2"
@@ -5144,7 +4700,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/PRIVAT/917422575"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/971273003|3"
@@ -5153,7 +4708,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/PRIVAT/971273003"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/974442167|4"
@@ -5162,7 +4716,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/PRIVAT/974442167"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/976390512|5"
@@ -5171,7 +4724,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/PRIVAT/976390512"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/979469241|6"
@@ -5180,7 +4732,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/PRIVAT/979469241"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/984661185|7"
@@ -5189,7 +4740,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/PRIVAT/984661185"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/991609407|8"
@@ -5198,7 +4748,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/PRIVAT/991609407"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/PRIVAT/994686011|9"
@@ -5219,7 +4768,6 @@ exports[`should render FilterTree correctly with props 1`] = `
             key="/ANNET|3"
             nodeLabel={
               <FilterOption
-                count={10}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Annet"
@@ -5230,7 +4778,6 @@ exports[`should render FilterTree correctly with props 1`] = `
             onClick={[Function]}
           >
             <FilterOption
-              count={3}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/9747678801|0"
@@ -5239,7 +4786,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/ANNET/9747678801"
             />
             <FilterOption
-              count={2}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/Fylkeskommunene|1"
@@ -5248,7 +4794,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/ANNET/Fylkeskommunene"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/910244132|2"
@@ -5257,7 +4802,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/ANNET/910244132"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/916285515|3"
@@ -5266,7 +4810,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/ANNET/916285515"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/971036028|4"
@@ -5275,7 +4818,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/ANNET/971036028"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/974652366|5"
@@ -5284,7 +4826,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/ANNET/974652366"
             />
             <FilterOption
-              count={1}
               displayClass=""
               itemKey={0.5}
               key="/ANNET/991467645|6"
@@ -5305,7 +4846,6 @@ exports[`should render FilterTree correctly with props 1`] = `
             key="/FYLKE|4"
             nodeLabel={
               <FilterOption
-                count={4}
                 displayClass="inline-block"
                 itemKey={0.5}
                 label="Fylke"
@@ -5321,7 +4861,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               key="/FYLKE/941388841|0"
               nodeLabel={
                 <FilterOption
-                  count={2}
                   displayClass="inline-block"
                   itemKey={0.5}
                   labelRaw="/fylke/941388841"
@@ -5331,7 +4870,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               }
             >
               <FilterOption
-                count={2}
                 displayClass=""
                 itemKey={0.5}
                 key="/FYLKE/941388841/974783231|0"
@@ -5341,7 +4879,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               />
             </TreeView>
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/FYLKE/938626367|1"
@@ -5350,7 +4887,6 @@ exports[`should render FilterTree correctly with props 1`] = `
               value="/FYLKE/938626367"
             />
             <FilterOption
-              count={1}
               displayClass="indent"
               itemKey={0.5}
               key="/FYLKE/958381492|2"
