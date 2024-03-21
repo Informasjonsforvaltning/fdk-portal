@@ -6,10 +6,11 @@ import localization from '../../../lib/localization';
 import { getTranslateText } from '../../../lib/translateText';
 
 import './compare-terms.scss';
+import { TextLanguage } from '../../../types';
 
 interface Props {
   uri?: string;
-  prefLabel?: Record<string, any>;
+  title?: Partial<TextLanguage>;
   creator?: string;
   onDeleteTerm: (id: string) => void;
 }
@@ -22,13 +23,13 @@ const capitalCase = (label?: string) =>
 
 export const CompareTerms: FC<Props> = ({
   uri,
-  prefLabel,
+  title,
   creator,
   onDeleteTerm
 }) => (
   <div className='fdk-container p-4 fdk-container-compare-terms'>
     <div className='d-flex align-items-baseline justify-content-between'>
-      <h3 className=''>{capitalCase(getTranslateText(prefLabel))}</h3>
+      <h3 className=''>{capitalCase(getTranslateText(title))}</h3>
       <button
         type='button'
         className='btn fdk-text-size-15 fdk-color-link bg-transparent nowrap'
