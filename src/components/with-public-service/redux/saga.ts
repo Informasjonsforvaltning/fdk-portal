@@ -5,7 +5,7 @@ import * as actions from './actions';
 
 import LoggingService, { Severity } from '../../../services/logging';
 
-import { getPublicService } from '../../../services/api/harvester-bff';
+import { getPublicService } from '../../../services/api/resource';
 import { PublicService } from '../../../types';
 
 function* getPublicServiceRequested({

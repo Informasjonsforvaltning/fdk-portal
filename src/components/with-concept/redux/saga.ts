@@ -5,7 +5,7 @@ import * as actions from './actions';
 
 import LoggingService, { Severity } from '../../../services/logging';
 
-import { getConcept } from '../../../services/api/harvester-bff';
+import { getConcept } from '../../../services/api/resource';
 import { Concept } from '../../../types';
 
 function* getConceptRequested({
