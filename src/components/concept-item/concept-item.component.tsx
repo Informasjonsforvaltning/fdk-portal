@@ -6,6 +6,7 @@ import { Concept, SearchObject } from '../../types';
 import { SearchTypes } from '../../types/enums';
 import { SearchHit, SearchHitData } from '../search-hit/search-hit';
 import localization from '../../lib/localization';
+import { PATHNAME_CONCEPTS } from '../../constants/constants';
 
 interface Props {
   concept: Partial<SearchObject>;
@@ -52,6 +53,8 @@ export const ConceptItem: FC<Props> = ({
   onAddConcept,
   onDeleteConcept
 }) => {
+  const path = location.pathname;
+
   const { id, uri, title, description, organization } = concept;
   let showCompareButton = true;
   if (concepts) {
@@ -69,17 +72,19 @@ export const ConceptItem: FC<Props> = ({
       description={description}
       subtitle={localization.conceptLabel}
     >
-      <SearchHitData>
-        {concepts &&
-          onAddConcept &&
-          onDeleteConcept &&
-          renderAddRemoveCompareButton(
-            concept,
-            showCompareButton,
-            onAddConcept,
-            onDeleteConcept
-          )}
-      </SearchHitData>
+      {path === PATHNAME_CONCEPTS && (
+        <SearchHitData>
+          {concepts &&
+            onAddConcept &&
+            onDeleteConcept &&
+            renderAddRemoveCompareButton(
+              concept,
+              showCompareButton,
+              onAddConcept,
+              onDeleteConcept
+            )}
+        </SearchHitData>
+      )}
     </SearchHit>
   );
 };
