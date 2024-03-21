@@ -7,9 +7,9 @@ import {
   extractPublicServicesAndEvents,
   extractPublicServicesAndEventsAggregations,
   extractPublicServicesAndEventsPage,
-  paramsToSearchBody,
   searchPublicServicesAndEvents
 } from '../../../api/search-api/public-services-and-events';
+import { paramsToSearchBody } from '../../../utils/common';
 
 function* getPublicServicesAndEventsRequested({
   payload: {

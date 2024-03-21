@@ -1183,3 +1183,19 @@ export interface AiProject {
   modellutvikling?: string;
   klassifisering?: string;
 }
+export interface SearchFilters {
+  id?: string;
+  opendata?: boolean;
+  accessrights?: string;
+  theme?: string;
+  spatial?: string;
+  provenance?: string;
+  losTheme?: string;
+  orgPath?: string;
+  format?: string;
+  relations?: string;
+  lastXDays?: number;
+  uris?: string[];
+  uri?: string;
+  keyword?: string[];
+}

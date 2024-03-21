@@ -131,7 +131,7 @@ const SearchEntities: FC<Props> = ({
 }) =>
   Array.isArray(entities) ? (
     <div>
-      {entities.map(entity =>
+      {entities?.map(entity =>
         renderEntity(entity, {
           compareConceptList,
           addConcept,

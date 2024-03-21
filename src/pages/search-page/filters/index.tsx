@@ -109,9 +109,7 @@ const FiltersPure: FC<Props> = ({
           <>
             <FilterTree
               title={localization.publisher}
-              aggregationsForest={keyPrefixForest(
-                aggregations?.orgPath?.buckets
-              )}
+              aggregationsForest={keyPrefixForest(aggregations?.orgPath)}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}
@@ -120,10 +118,7 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.facet.theme}
               aggregationsForest={keyPrefixForest(
-                filterLosThemesFromAggregation(
-                  aggregations?.los?.buckets,
-                  losItems
-                )
+                filterLosThemesFromAggregation(aggregations?.losTheme, losItems)
               )}
               handleFiltering={handleFilterLos}
               activeFilter={losThemeFilterParam?.toString()}
@@ -133,7 +128,7 @@ const FiltersPure: FC<Props> = ({
             <FilterBox
               htmlKey={1}
               title={localization.facet.themeEU}
-              filter={aggregations?.theme}
+              filter={aggregations?.dataTheme}
               onClick={handleFilterThemes}
               activeFilter={themeParam}
               referenceDataItems={themesItems}
@@ -146,10 +141,7 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.facet.theme}
               aggregationsForest={keyPrefixForest(
-                filterLosThemesFromAggregation(
-                  aggregations?.los?.buckets,
-                  losItems
-                )
+                filterLosThemesFromAggregation(aggregations?.losTheme, losItems)
               )}
               handleFiltering={handleFilterLos}
               activeFilter={losThemeFilterParam?.toString()}
@@ -160,7 +152,7 @@ const FiltersPure: FC<Props> = ({
               <FilterBox
                 htmlKey={1}
                 title={localization.facet.themeEU}
-                filter={aggregations?.theme}
+                filter={aggregations?.dataTheme}
                 onClick={handleFilterThemes}
                 activeFilter={themeParam}
                 referenceDataItems={themesItems}
@@ -178,9 +170,7 @@ const FiltersPure: FC<Props> = ({
             )}
             <FilterTree
               title={localization.facet.organisation}
-              aggregationsForest={keyPrefixForest(
-                aggregations?.orgPath?.buckets
-              )}
+              aggregationsForest={keyPrefixForest(aggregations?.orgPath)}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}
@@ -217,9 +207,7 @@ const FiltersPure: FC<Props> = ({
           <>
             <FilterTree
               title={localization.provider}
-              aggregationsForest={keyPrefixForest(
-                aggregations?.orgPath?.buckets
-              )}
+              aggregationsForest={keyPrefixForest(aggregations?.orgPath)}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}
@@ -241,7 +229,7 @@ const FiltersPure: FC<Props> = ({
         return (
           <FilterTree
             title={localization.responsible}
-            aggregationsForest={keyPrefixForest(aggregations?.orgPath?.buckets)}
+            aggregationsForest={keyPrefixForest(aggregations?.orgPath)}
             handleFiltering={handleFilterPublisherHierarchy}
             activeFilter={orgPathFilterParam?.toString()}
             referenceDataItems={publishers}
@@ -254,10 +242,7 @@ const FiltersPure: FC<Props> = ({
             <FilterTree
               title={localization.facet.theme}
               aggregationsForest={keyPrefixForest(
-                filterLosThemesFromAggregation(
-                  aggregations?.los?.buckets,
-                  losItems
-                )
+                filterLosThemesFromAggregation(aggregations?.losTheme, losItems)
               )}
               handleFiltering={handleFilterLos}
               activeFilter={losThemeFilterParam?.toString()}
@@ -266,9 +251,7 @@ const FiltersPure: FC<Props> = ({
             />
             <FilterTree
               title={localization.responsible}
-              aggregationsForest={keyPrefixForest(
-                aggregations?.orgPath?.buckets
-              )}
+              aggregationsForest={keyPrefixForest(aggregations?.orgPath)}
               handleFiltering={handleFilterPublisherHierarchy}
               activeFilter={orgPathFilterParam?.toString()}
               referenceDataItems={publishers}
@@ -280,9 +263,7 @@ const FiltersPure: FC<Props> = ({
         return (
           <FilterTree
             title={localization.provider}
-            aggregationsForest={keyPrefixForest(
-              aggregations?.hasCompetentAuthority?.buckets
-            )}
+            aggregationsForest={keyPrefixForest(aggregations?.orgPath)}
             handleFiltering={handleFilterPublisherHierarchy}
             activeFilter={orgPathFilterParam?.toString()}
             referenceDataItems={publishers}

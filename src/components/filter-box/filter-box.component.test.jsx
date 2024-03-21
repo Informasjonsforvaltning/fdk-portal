@@ -36,7 +36,7 @@ test('should render FilterBox correctly with activeFilter', () => {
 
 test('should render FilterBox correctly with empty filter', () => {
   wrapper.setProps({
-    filter: {}
+    filter: []
   });
   expect(wrapper).toMatchSnapshot();
 });

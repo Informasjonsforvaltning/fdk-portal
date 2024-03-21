@@ -8,11 +8,11 @@ import * as actions from './actions';
 
 import {
   searchInformationModels,
-  paramsToSearchBody,
   extractInformationModels
 } from '../../../api/search-api/informationmodels';
 
 import type { InformationModel, SearchObject } from '../../../types';
+import { paramsToSearchBody } from '../../../utils/common';
 
 function* getInformationModelsRequested({
   payload: {
