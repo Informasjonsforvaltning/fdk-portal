@@ -502,7 +502,7 @@ export interface Event {
   dctType?: SkosConcept[];
   harvest?: Partial<Harvest>;
   relation?: string[];
-  specialized_type?: SpecializedEventType;
+  specializedType?: SpecializedEventType;
 }
 
 export interface EventType {
