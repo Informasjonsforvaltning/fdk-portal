@@ -6,12 +6,13 @@ export const getSearchSuggestions = (
   transport?: boolean,
   searchEntity?: string
 ) => {
+  console.log(searchEntity);
   const searchPath =
     searchEntity != null && searchEntity in SuggestionIndexEnum
-      ? `/suggestion${
+      ? `suggestions${
           SuggestionIndexEnum[searchEntity as keyof typeof SuggestionIndexEnum]
         }`
-      : '/suggestion';
+      : 'suggestions';
   return searchApiGet(
     searchPath,
     new URLSearchParams({

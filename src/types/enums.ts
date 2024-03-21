@@ -170,7 +170,7 @@ export enum SuggestionIndexEnum {
   '/dataservices' = '/dataservices',
   '/concepts' = '/concepts',
   '/informationmodels' = '/informationmodels',
-  '/public-services-and-events' = '/public_services_and_events'
+  '/public-services-and-events' = '/public-services-and-events'
 }
 
 export enum LanguageCodes {
