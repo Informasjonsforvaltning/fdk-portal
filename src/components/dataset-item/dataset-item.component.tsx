@@ -41,9 +41,9 @@ export const DatasetItem: FC<Props> = ({
     dataTheme: euThemes,
     fdkFormatPrefixed,
     accessRights,
-    provenance,
     specializedType,
-    isOpenData
+    isOpenData,
+    isAuthoritative
   }
 }) => {
   const parsedFormats = parseFormats(fdkFormatPrefixed);
@@ -87,7 +87,7 @@ export const DatasetItem: FC<Props> = ({
       subtitle={subtitle()}
       publisher={organization}
       description={description}
-      isAuthoritative={provenance?.code === 'NASJONAL'}
+      isAuthoritative={isAuthoritative}
     >
       {isOpenData && (
         <SearchHitOpenData>
