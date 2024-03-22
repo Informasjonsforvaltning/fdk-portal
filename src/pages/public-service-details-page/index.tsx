@@ -1227,7 +1227,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 {keywords.map((keyword, index) => (
                   <Link
                     as={RouterLink}
-                    to={`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}?keywords=${encodeURIComponent(
+                    to={`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}?q=${encodeURIComponent(
                       keyword ?? ''
                     )}`}
                     key={`${keyword}-${index}`}
