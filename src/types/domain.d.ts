@@ -1137,10 +1137,12 @@ export interface PreviewTableRow {
 }
 
 export interface SearchSuggestion {
-  index: SearchIndex;
-  prefLabel?: Partial<TextLanguage>;
-  title?: Partial<TextLanguage>;
   id: string;
+  title?: Partial<TextLanguage>;
+  description?: Partial<TextLanguage>;
+  uri?: string;
+  organization?: Organization;
+  searchType: EntityEnum;
 }
 
 export interface Comment {

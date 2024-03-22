@@ -2,7 +2,7 @@ import { searchApiPost } from './host';
 import { InformationModel } from '../../types';
 
 export const searchInformationModels = (body: any) =>
-  searchApiPost('/informationmodels', body);
+  searchApiPost('search/informationmodels', body);
 
 export const extractInformationModels = (searchResponse: any) =>
   searchResponse?.hits ?? [];

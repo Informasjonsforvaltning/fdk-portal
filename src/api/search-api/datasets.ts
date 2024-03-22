@@ -1,7 +1,8 @@
 import { searchApiPost } from './host';
 import { Dataset } from '../../types';
 
-export const searchDatasets = (body: any) => searchApiPost('/datasets', body);
+export const searchDatasets = (body: any) =>
+  searchApiPost('search/datasets', body);
 
 export const extractDatasets = (searchResponse: any) =>
   searchResponse?.hits ?? [];

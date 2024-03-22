@@ -2,7 +2,7 @@ import { searchApiPost } from './host';
 import { DataService } from '../../types';
 
 export const searchDataServices = (body: any) =>
-  searchApiPost('/dataservices', body);
+  searchApiPost('search/dataservices', body);
 
 export const extractDataServices = (searchResponse: any) =>
   searchResponse?.hits ?? [];
