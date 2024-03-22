@@ -26,6 +26,7 @@ export interface SearchObject {
   spatial?: ReferenceDataCode[];
   title?: Partial<TextLanguage>;
   relations?: Relation[];
+  isAuthoritative?: boolean;
 }
 
 interface Catalog {
