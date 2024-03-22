@@ -804,9 +804,7 @@ const DatasetDetailsPage: FC<Props> = ({
               {keywords.map((keyword, index) => (
                 <Link
                   key={`${keyword}-${index}`}
-                  to={`${PATHNAME_DATASETS}?keywords=${encodeURIComponent(
-                    keyword
-                  )}`}
+                  to={`${PATHNAME_DATASETS}?q=${encodeURIComponent(keyword)}`}
                   as={RouteLink}
                 >
                   {keyword}

@@ -680,7 +680,7 @@ const InformationModelDetailsPage: FC<Props> = ({
             <InlineList>
               {keywords.map((keyword, index) => (
                 <SC.Link
-                  to={`${PATHNAME_INFORMATIONMODELS}?keywords=${encodeURIComponent(
+                  to={`${PATHNAME_INFORMATIONMODELS}?q=${encodeURIComponent(
                     keyword
                   )}`}
                   key={`${keyword}-${index}`}
