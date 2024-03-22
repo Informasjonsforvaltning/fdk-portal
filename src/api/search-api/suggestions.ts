@@ -6,7 +6,6 @@ export const getSearchSuggestions = (
   transport?: boolean,
   searchEntity?: string
 ) => {
-  console.log(searchEntity);
   const searchPath =
     searchEntity != null && searchEntity in SuggestionIndexEnum
       ? `suggestions${
