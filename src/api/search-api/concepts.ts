@@ -1,7 +1,8 @@
 import { searchApiPost } from './host';
 import { Concept } from '../../types';
 
-export const searchConcepts = (body: any) => searchApiPost('/concepts', body);
+export const searchConcepts = (body: any) =>
+  searchApiPost('search/concepts', body);
 
 export const extractConcepts = (searchResponse: any) =>
   searchResponse?.hits ?? [];

@@ -11,7 +11,7 @@ interface Props {
 
 export const searchApi = ({ path, method, data, params }: Props) =>
   axios({
-    url: `${getConfig().searchApi.host}/search${path}`,
+    url: `${getConfig().searchApi.host}/${path}`,
     method,
     data,
     params

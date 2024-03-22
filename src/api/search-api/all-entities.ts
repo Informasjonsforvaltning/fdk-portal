@@ -1,9 +1,9 @@
 import { searchApiPost } from './host';
 
-export const searchAllEntities = (body: any) => searchApiPost('', body);
+export const searchAllEntities = (body: any) => searchApiPost('search', body);
 
 export const getRecentEntities = () =>
-  searchApiPost('', {
+  searchApiPost('search', {
     pagination: { size: 5, page: 0 },
     sort: {
       field: 'FIRST_HARVESTED',

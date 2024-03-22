@@ -8,10 +8,10 @@ export const getSearchSuggestions = (
 ) => {
   const searchPath =
     searchEntity != null && searchEntity in SuggestionIndexEnum
-      ? `/suggestion${
+      ? `suggestions${
           SuggestionIndexEnum[searchEntity as keyof typeof SuggestionIndexEnum]
         }`
-      : '/suggestion';
+      : 'suggestions';
   return searchApiGet(
     searchPath,
     new URLSearchParams({

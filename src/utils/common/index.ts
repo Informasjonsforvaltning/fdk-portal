@@ -126,7 +126,7 @@ const buildFilterSearchBody = ({
 };
 
 export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
-  q,
+  query: q,
   pagination: {
     page: page ? Number(page) : undefined,
     size: size ? Number(size) : undefined
