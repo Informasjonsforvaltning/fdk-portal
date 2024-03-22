@@ -167,10 +167,10 @@ export enum CommunityTerm {
 
 export enum SuggestionIndexEnum {
   '/datasets' = '/datasets',
-  '/dataservices' = '/dataservices',
+  '/dataservices' = '/data-services',
   '/concepts' = '/concepts',
-  '/informationmodels' = '/informationmodels',
-  '/public-services-and-events' = '/public_services_and_events'
+  '/informationmodels' = '/information-models',
+  '/public-services-and-events' = '/services-and-events'
 }
 
 export enum LanguageCodes {
