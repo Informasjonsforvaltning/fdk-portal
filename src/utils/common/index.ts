@@ -8,6 +8,7 @@ import type {
 } from '../../types';
 import localization from '../../lib/localization';
 import { commaSeparatedStringToList } from '../../lib/stringUtils';
+import { getConfig } from '../../config';
 
 function assertIsDefined<T>(
   key: string,
@@ -130,5 +131,6 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
     size: size ? Number(size) : undefined
   },
   sort: buildFirstHarvestSortBody(params),
-  filters: buildFilterSearchBody(params)
+  filters: buildFilterSearchBody(params),
+  ...(!!getConfig().filterTransportDatasets && { profile: 'TRANSPORT' })
 });
