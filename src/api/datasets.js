@@ -9,8 +9,7 @@ export const datasetsUrlBase = () =>
 const transportProfileIfNeeded = () =>
   getConfig().filterTransportDatasets
     ? {
-        accessrights: 'PUBLIC',
-        themeprofile: 'transport'
+        profile: 'TRANSPORT'
       }
     : undefined;
 

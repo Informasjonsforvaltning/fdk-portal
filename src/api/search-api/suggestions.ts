@@ -16,7 +16,7 @@ export const getSearchSuggestions = (
     searchPath,
     new URLSearchParams({
       q: encodeURI(q),
-      ...(!!transport && { transport: 'true' })
+      ...(!!transport && { profile: 'TRANSPORT' })
     })
   );
 };
