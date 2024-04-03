@@ -235,7 +235,7 @@ export interface Harvest {
 
 interface Metadata {
   firstHarvested?: string;
-  changed?: string[];
+  modified?: string;
   deleted?: boolean;
   timestamp?: number;
 }
