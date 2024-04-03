@@ -4,6 +4,7 @@ import { settingsReducer } from './modules/settings';
 import { catalogsReducer } from './modules/catalogs';
 import { referenceDataReducer } from './modules/referenceData';
 import { conceptsCompareReducer } from './modules/conceptsCompare';
+import { fullConceptsCompareReducer } from './modules/fullConceptsCompare';
 import { datasetsReducer } from './modules/datasets';
 import { dataServicesReducer } from './modules/dataservices';
 import { conceptReducer } from './modules/concepts';
@@ -43,6 +44,7 @@ export const rootReducer = combineReducers({
   catalogs: catalogsReducer,
   referenceData: referenceDataReducer,
   conceptsCompare: conceptsCompareReducer,
+  fullConceptsCompare: fullConceptsCompareReducer,
   datasets: datasetsReducer,
   dataServices: dataServicesReducer,
   concepts: conceptReducer,
