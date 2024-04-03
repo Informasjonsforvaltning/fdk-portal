@@ -1,7 +1,6 @@
 import axios from 'axios';
 import cleanDeep from 'clean-deep';
 
-import env from '../../../env';
 import {
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
@@ -9,8 +8,7 @@ import {
   PATHNAME_EVENTS,
   PATHNAME_PUBLIC_SERVICES
 } from '../../../constants/constants';
-
-const { RESOURCE_API_HOST } = env;
+import { getConfig } from '../../../config';
 
 interface Props {
   path: string;
@@ -19,7 +17,9 @@ interface Props {
 
 export const resourceApi = ({ path, method }: Props) =>
   axios({
-    url: `${RESOURCE_API_HOST}${path}`,
+    url: `${getConfig().resourceApi.host}${
+      path.startsWith('/') ? '' : '/'
+    }${path}`,
     method
   })
     .then(({ data }) => cleanDeep(data))

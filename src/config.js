@@ -53,7 +53,7 @@ const config = {
   organizationsApi: { host: env.ORGANIZATION_HOST },
   organizationsCatalogApi: { host: env.ORGANIZATION_CATALOG_URI },
   reportApi: { host: env.REPORT_API_HOST },
-  resourceApi: { host: env.RESOURCE_API_HOST },
+  resourceApi: defaultToSearchApi(env.RESOURCE_API_HOST),
   metadataQualityAssessmentApi: {
     host: env.FDK_MQA_API_BASE_URI
   }
