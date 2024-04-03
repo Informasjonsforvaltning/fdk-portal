@@ -1,17 +1,13 @@
 import _ from 'lodash';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
-import {
-  extractFirstConcept,
-  searchConcepts
-} from '../../api/search-api/concepts';
-import { paramsToSearchBody } from '../../utils/common/index';
+import { resourceServiceApiGet } from '../../api/resource-service-api/host';
 
-export const CONCEPTSCOMPARE_REQUEST = 'CONCEPTSCOMPARE_REQUEST';
-export const CONCEPTSCOMPARE_SUCCESS = 'CONCEPTSCOMPARE_SUCCESS';
-export const CONCEPTSCOMPARE_FAILURE = 'CONCEPTSCOMPARE_FAILURE';
+export const FULL_CONCEPTSCOMPARE_REQUEST = 'FULL_CONCEPTSCOMPARE_REQUEST';
+export const FULL_CONCEPTSCOMPARE_SUCCESS = 'FULL_CONCEPTSCOMPARE_SUCCESS';
+export const FULL_CONCEPTSCOMPARE_FAILURE = 'FULL_CONCEPTSCOMPARE_FAILURE';
 
-export const ADD_CONCEPT_TO_COMPARE = 'ADD_CONCEPT_TO_COMPARE';
-export const REMOVE_CONCEPT_TO_COMPARE = 'REMOVE_CONCEPT_TO_COMPARE';
+export const ADD_FULL_CONCEPT_TO_COMPARE = 'ADD_FULL_CONCEPT_TO_COMPARE';
+export const REMOVE_FULL_CONCEPT_TO_COMPARE = 'REMOVE_FULL_CONCEPT_TO_COMPARE';
 
 function shouldFetch(metaState) {
   const threshold = 60 * 1000; // seconds
@@ -22,17 +18,23 @@ function shouldFetch(metaState) {
   );
 }
 
-export function fetchConceptsToCompareIfNeededAction(iDs) {
+export function fetchFullConceptsToCompareIfNeededAction() {
   return (dispatch, getState) => {
-    iDs
+    const ids = Object.keys(getState().conceptsCompare.items);
+    ids
       .filter(id => !!id)
       .forEach(id => {
-        if (shouldFetch(_.get(getState(), ['conceptsCompare', 'meta', id]))) {
+        if (
+          shouldFetch(_.get(getState(), ['fullConceptsCompare', 'meta', id]))
+        ) {
           dispatch(
-            reduxFsaThunk(() => searchConcepts(paramsToSearchBody({ id })), {
-              onBeforeStart: { type: CONCEPTSCOMPARE_REQUEST, meta: { id } },
-              onSuccess: { type: CONCEPTSCOMPARE_SUCCESS, meta: { id } },
-              onError: { type: CONCEPTSCOMPARE_FAILURE, meta: { id } }
+            reduxFsaThunk(() => resourceServiceApiGet(`concepts/${id}`), {
+              onBeforeStart: {
+                type: FULL_CONCEPTSCOMPARE_REQUEST,
+                meta: { id }
+              },
+              onSuccess: { type: FULL_CONCEPTSCOMPARE_SUCCESS, meta: { id } },
+              onError: { type: FULL_CONCEPTSCOMPARE_FAILURE, meta: { id } }
             })
           );
         }
@@ -40,16 +42,16 @@ export function fetchConceptsToCompareIfNeededAction(iDs) {
   };
 }
 
-export function addConceptAction(item) {
+export function addFullConceptAction(item) {
   return {
-    type: ADD_CONCEPT_TO_COMPARE,
+    type: ADD_FULL_CONCEPT_TO_COMPARE,
     conceptItem: item
   };
 }
 
-export function removeConceptAction(id) {
+export function removeFullConceptAction(id) {
   return {
-    type: REMOVE_CONCEPT_TO_COMPARE,
+    type: REMOVE_FULL_CONCEPT_TO_COMPARE,
     id
   };
 }
@@ -60,9 +62,20 @@ const initialState = {
 };
 
 // eslint-disable-next-line default-param-last
-export function conceptsCompareReducer(state = initialState, action) {
+export function fullConceptsCompareReducer(state = initialState, action) {
   switch (action.type) {
-    case CONCEPTSCOMPARE_REQUEST:
+    case FULL_CONCEPTSCOMPARE_REQUEST:
+      return {
+        items: {
+          ...state.items,
+          [action.meta.id]: action.payload
+        },
+        meta: {
+          ...state.meta,
+          [action.meta.id]: { isFetching: true, lastFetch: Date.now() }
+        }
+      };
+    case FULL_CONCEPTSCOMPARE_SUCCESS:
       return {
         items: {
           ...state.items,
@@ -73,18 +86,7 @@ export function conceptsCompareReducer(state = initialState, action) {
           [action.meta.id]: { isFetching: false, lastFetch: Date.now() }
         }
       };
-    case CONCEPTSCOMPARE_SUCCESS:
-      return {
-        items: {
-          ...state.items,
-          [action.meta.id]: extractFirstConcept(action.payload)
-        },
-        meta: {
-          ...state.meta,
-          [action.meta.id]: { isFetching: false, lastFetch: Date.now() }
-        }
-      };
-    case CONCEPTSCOMPARE_FAILURE:
+    case FULL_CONCEPTSCOMPARE_FAILURE:
       return {
         items: {
           ...state.items,
@@ -95,7 +97,7 @@ export function conceptsCompareReducer(state = initialState, action) {
           [action.meta.id]: { isFetching: false, lastFetch: null }
         }
       };
-    case ADD_CONCEPT_TO_COMPARE:
+    case ADD_FULL_CONCEPT_TO_COMPARE:
       return {
         items: {
           ...state.items,
@@ -106,7 +108,7 @@ export function conceptsCompareReducer(state = initialState, action) {
           [action.conceptItem.id]: { isFetching: false, lastFetch: Date.now() }
         }
       };
-    case REMOVE_CONCEPT_TO_COMPARE:
+    case REMOVE_FULL_CONCEPT_TO_COMPARE:
       return {
         items: Object.keys(state.items).reduce((accumulator, key) => {
           if (key !== action.id) {
