@@ -16,4 +16,5 @@ export interface EnvironmentVariables {
   FDK_CMS_BASE_URI: string;
   AI_PROJECT_SERVICE_BASE_URI: string;
   RESOURCE_API_HOST: string;
+  INFORMATIONMODEL_HARVESTER_HOST: string;
 }
