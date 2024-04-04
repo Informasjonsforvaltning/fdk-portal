@@ -26,6 +26,8 @@ export default validateEnv(
     AI_PROJECT_SERVICE_BASE_URI:
       'https://ai-project.staging.fellesdatakatalog.digdir.no',
     RESOURCE_API_HOST:
-      'https://resource.api.staging.fellesdatakatalog.digdir.no'
+      'https://resource.api.staging.fellesdatakatalog.digdir.no',
+    INFORMATIONMODEL_HARVESTER_HOST:
+      'https://informationmodels.staging.fellesdatakatalog.digdir.no'
   }
 );

@@ -6,7 +6,7 @@ import {
   PATHNAME_DATASETS,
   PATHNAME_DATA_SERVICES,
   PATHNAME_EVENTS,
-  PATHNAME_PUBLIC_SERVICES
+  PATHNAME_SERVICES
 } from '../../../constants/constants';
 import { getConfig } from '../../../config';
 
@@ -35,7 +35,7 @@ export const getDataService = (id: string) =>
   resourceApi({ path: `${PATHNAME_DATA_SERVICES}/${id}`, method: 'GET' });
 
 export const getPublicService = (id: string) =>
-  resourceApi({ path: `${PATHNAME_PUBLIC_SERVICES}/${id}`, method: 'GET' });
+  resourceApi({ path: `${PATHNAME_SERVICES}/${id}`, method: 'GET' });
 
 export const getEvent = (id: string) =>
   resourceApi({ path: `${PATHNAME_EVENTS}/${id}`, method: 'GET' });
