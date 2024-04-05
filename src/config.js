@@ -21,7 +21,7 @@ const env = window.env || {
 // env.RESOURCE_API_HOST =
 //   'https://resource.api.staging.fellesdatakatalog.digdir.no';
 // env.FDK_MQA_API_BASE_URI =
-//   'https://metadata-quality.staging.fellesdatakatalog.digdir.no';
+//   'https://mqa-scoring-api.staging.fellesdatakatalog.digdir.no';
 // env.USE_DEMO_LOGO = true;
 
 const searchApi = {
