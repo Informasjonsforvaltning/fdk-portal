@@ -43,7 +43,6 @@ export interface Relation {
 
 export interface InformationModel {
   id: string;
-  type: EntityEnum.INFORMATION_MODEL;
   uri: string;
   identifier?: string;
   publisher?: Partial<Organization>;
@@ -301,7 +300,6 @@ export interface GenericRelation {
 
 export interface Concept {
   id: string;
-  type: EntityEnum.CONCEPT;
   uri: string;
   identifier: string;
   prefLabel: Partial<TextLanguage>;
@@ -498,7 +496,6 @@ export interface Event {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  type: EntityEnum.EVENT;
   dctType?: SkosConcept[];
   harvest?: Partial<Harvest>;
   relation?: string[];
@@ -632,7 +629,6 @@ interface InSeries {
 
 export interface Dataset {
   id: string;
-  type: EntityEnum.DATASET;
   uri: string;
   publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
@@ -678,7 +674,6 @@ export interface Dataset {
 
 export interface DataService {
   id: string;
-  type: EntityEnum.DATA_SERVICE;
   uri: string;
   publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
