@@ -1,7 +1,8 @@
 import {
   GET_DATASET_SCORES_REQUESTED,
   GET_DATASET_SCORES_SUCCEEDED,
-  GET_DATASET_SCORES_FAILED
+  GET_DATASET_SCORES_FAILED,
+  RESET_DATASET_SCORES
 } from './action-types';
 
 import type { DatasetScores, DatasetScoresRequest } from '../../../types';
@@ -30,5 +31,11 @@ export function getDatasetScoresFailed(message: string) {
     payload: {
       message
     }
+  };
+}
+
+export function resetDatasetScores() {
+  return {
+    type: RESET_DATASET_SCORES
   };
 }
