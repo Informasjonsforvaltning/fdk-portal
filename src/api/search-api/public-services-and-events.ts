@@ -1,7 +1,7 @@
 import { searchApiPost } from './host';
 
 export const searchPublicServicesAndEvents = (body: any) =>
-  searchApiPost('search/public-services-and-events', body);
+  searchApiPost('search/services-and-events', body);
 
 export const extractPublicServicesAndEvents = (searchResponse: any) =>
   searchResponse?.hits ?? [];

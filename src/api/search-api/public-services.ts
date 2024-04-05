@@ -2,7 +2,7 @@ import { searchApiPost } from './host';
 import { PublicService } from '../../types';
 
 export const searchPublicServices = (body: any) =>
-  searchApiPost('search/public-services', body);
+  searchApiPost('search/services', body);
 
 export const extractPublicServices = (searchResponse: any) =>
   searchResponse?.hits ?? [];
