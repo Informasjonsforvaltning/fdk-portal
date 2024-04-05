@@ -167,9 +167,9 @@ export enum CommunityTerm {
 
 export enum SuggestionIndexEnum {
   '/datasets' = '/datasets',
-  '/dataservices' = '/data-services',
+  '/data-services' = '/data-services',
   '/concepts' = '/concepts',
-  '/informationmodels' = '/information-models',
+  '/information-models' = '/information-models',
   '/public-services-and-events' = '/services-and-events'
 }
 
