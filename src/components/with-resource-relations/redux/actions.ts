@@ -12,13 +12,18 @@ interface GetResoruceRelationsParams {
   relations: string;
 }
 
+const defaultSize: number = 100;
+
 export function getResourceRelationsRequested(
   params: GetResoruceRelationsParams
 ) {
   return {
     type: GET_RESOURCE_RELATIONS_REQUESTED,
     payload: {
-      params
+      params: {
+        ...params,
+        size: params.size ?? defaultSize
+      }
     }
   };
 }
