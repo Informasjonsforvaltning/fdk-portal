@@ -43,6 +43,10 @@ import SC from './styled';
 import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations } from '../../utils/common';
 
 interface RouteParams {
   dataServiceId: string;
@@ -53,6 +57,7 @@ interface Props
     ReferenceDataProps,
     DatasetsProps,
     InformationModelsProps,
+    ResourceRelationsProps,
     RouteComponentProps<RouteParams> {}
 
 const DataserviceDetailsPage: FC<Props> = ({
@@ -61,17 +66,16 @@ const DataserviceDetailsPage: FC<Props> = ({
   referenceData: { apispecifications },
   datasets,
   informationModels,
-  datasetsRelations,
+  relations,
   dataServiceActions: { getDataServiceRequested: getDataService },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  datasetsActions: {
-    getDatasetsRequested: getDatasets,
-    getDatasetsRelationsRequested: getDatasetsRelations,
-    resetDatasets,
-    resetDatasetsRelations
-  },
+  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
   informationModelsActions: {
     getInformationModelsRequested: getInformationModels
+  },
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   match: {
     params: { dataServiceId }
@@ -118,10 +122,10 @@ const DataserviceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (dataService?.uri) {
-      getDatasetsRelations({ referencesSource: dataService.uri });
+      getRelations({ relations: dataService.uri });
     }
     return () => {
-      resetDatasetsRelations();
+      resetResourceRelations();
     };
   }, [dataService?.uri]);
 
@@ -284,7 +288,7 @@ const DataserviceDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
-        {datasetsRelations.length > 0 && (
+        {relations.length > 0 && (
           <ContentSection
             id='relationList'
             title={translations.detailsPage.relationList.title.dataservice}
@@ -293,7 +297,7 @@ const DataserviceDetailsPage: FC<Props> = ({
           >
             <RelationList
               parentIdentifier={dataService?.uri}
-              datasets={datasetsRelations}
+              datasets={filterRelations(relations, Entity.DATASET)}
             />
           </ContentSection>
         )}
@@ -388,5 +392,6 @@ export default compose<FC>(
   withReferenceData,
   withDatasets,
   withInformationModels,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(DataserviceDetailsPage);

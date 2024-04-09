@@ -67,6 +67,10 @@ import SC from './styled';
 import { Entity } from '../../types/enums';
 import { AccessService, Distribution, MediaTypeOrExtent } from '../../types';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations, parseFormats } from '../../utils/common';
 
 interface RouteParams {
   datasetId?: string;
@@ -80,6 +84,7 @@ interface Props
     DataServicesProps,
     KartverketProps,
     PublicServicesProps,
+    ResourceRelationsProps,
     RouteComponentProps<RouteParams> {}
 
 const DatasetDetailsPage: FC<Props> = ({
@@ -89,10 +94,8 @@ const DatasetDetailsPage: FC<Props> = ({
   concepts,
   datasets,
   administrativeUnits,
-  datasetsRelations,
-  publicServicesRelations,
   dataServices,
-  dataServicesRelations,
+  relations,
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
@@ -100,21 +103,14 @@ const DatasetDetailsPage: FC<Props> = ({
     listAdministrativeUnitsRequested: listAdministrativeUnits,
     resetAdministrativeUnits
   },
-  datasetsActions: {
-    getDatasetsRequested: getDatasets,
-    resetDatasets,
-    getDatasetsRelationsRequested: getDatasetsRelations,
-    resetDatasetsRelations
-  },
+  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
   dataServicesActions: {
     getDataServicesRequested: getDataServices,
-    resetDataServices,
-    getDataServicesRelationsRequested: getDataServicesRelations,
-    resetDataServicesRelations
+    resetDataServices
   },
-  publicServicesActions: {
-    getPublicServicesRelationsRequested: getPublicServicesRelations,
-    resetPublicServicesRelations
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   match: {
     params: { datasetId }
@@ -140,9 +136,7 @@ const DatasetDetailsPage: FC<Props> = ({
       resetAdministrativeUnits();
       resetDatasets();
       resetDataServices();
-      resetDatasetsRelations();
-      resetDataServicesRelations();
-      resetPublicServicesRelations();
+      resetResourceRelations();
     };
   }, [datasetId, getDataset]);
 
@@ -175,9 +169,7 @@ const DatasetDetailsPage: FC<Props> = ({
       }
 
       if (dataset?.uri) {
-        getDatasetsRelations({ referencesSource: dataset.uri });
-        getDataServicesRelations({ dataseturi: dataset.uri });
-        getPublicServicesRelations({ isDescribedAt: dataset.uri });
+        getRelations({ relations: dataset.uri });
       }
 
       const accessUris =
@@ -191,7 +183,7 @@ const DatasetDetailsPage: FC<Props> = ({
   }, [dataset?.id, isMounted]);
 
   const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
-    publicServicesRelations.map(relation => ({
+    relations.map(relation => ({
       relation,
       relationType: translate(translations.sampleData)
     }));
@@ -324,6 +316,12 @@ const DatasetDetailsPage: FC<Props> = ({
 
   const themes = [...(dataset?.losTheme ?? []), ...(dataset?.theme ?? [])];
 
+  const dataServicesRelations = filterRelations(relations, Entity.DATA_SERVICE);
+  const datasetsRelations = filterRelations(relations, Entity.DATASET);
+  const publicServicesRelations = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE
+  );
   return renderPage ? (
     <ThemeProvider theme={theme}>
       <DetailsPage
@@ -383,10 +381,7 @@ const DatasetDetailsPage: FC<Props> = ({
                   title: dataserviceTitle,
                   uri,
                   description: dataserviceDescription,
-                  fdkFormat,
-                  endpointURL,
-                  endpointDescription,
-                  conformsTo
+                  fdkFormatPrefixed
                 },
                 index
               ) => (
@@ -394,21 +389,21 @@ const DatasetDetailsPage: FC<Props> = ({
                   key={`${uri || 'distribution-data-service'}-${index}`}
                   datasetTitle={title}
                   distribution={{
-                    conformsTo,
+                    title: dataserviceTitle,
                     fdkFormat:
-                      (fdkFormat?.filter(
-                        format => format?.code
+                      (parseFormats(fdkFormatPrefixed)?.filter(
+                        format => format?.name
                       ) as MediaTypeOrExtent[]) ?? [],
-                    description: dataserviceDescription,
-                    accessURL: endpointURL
+                    description: dataserviceDescription
                   }}
-                  accessServices={[
-                    {
-                      uri: `${PATHNAME_DATA_SERVICES}/${id}`,
-                      description: dataserviceTitle
-                    }
-                  ]}
-                  endpointDescriptions={endpointDescription}
+                  accessServices={
+                    dataserviceTitle && [
+                      {
+                        uri: `${PATHNAME_DATA_SERVICES}/${id}`,
+                        description: dataserviceTitle
+                      }
+                    ]
+                  }
                 />
               )
             )}
@@ -947,5 +942,6 @@ export default compose(
   withDataServices,
   withPublicServices,
   withKartverket,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(DatasetDetailsPage);

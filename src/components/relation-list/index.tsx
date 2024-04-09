@@ -5,11 +5,6 @@ import Link from '@fellesdatakatalog/link';
 
 import SC from './styled';
 
-import {
-  dateStringToDate,
-  isDateAfterToday,
-  isDateBeforeToday
-} from '../../lib/date-utils';
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 
@@ -28,26 +23,21 @@ import {
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 
-import type {
-  Event,
-  Concept,
-  DataService,
-  Dataset,
-  InformationModel,
-  PublicService
-} from '../../types';
+import type { SearchObject } from '../../types';
+import { filterRelations } from '../../utils/common';
+import { Entity } from '../../types/enums';
 
 export interface ItemWithRelationType {
-  relation: Partial<Event> | Partial<PublicService>;
+  relation: SearchObject;
   relationType?: string;
 }
 
 interface RelationProps {
   parentIdentifier?: string;
-  datasets?: Dataset[];
-  dataServices?: DataService[];
-  concepts?: Concept[];
-  informationModels?: InformationModel[];
+  datasets?: SearchObject[];
+  dataServices?: SearchObject[];
+  concepts?: SearchObject[];
+  informationModels?: SearchObject[];
   publicServices?: ItemWithRelationType[];
   events?: ItemWithRelationType[];
 }
@@ -75,12 +65,6 @@ const renderReferenceString = (
   return null;
 };
 
-const isExpired = (validToIncluding?: string) =>
-  isDateBeforeToday(dateStringToDate(validToIncluding));
-
-const isWillBeValid = (validFromIncluding?: string) =>
-  isDateAfterToday(dateStringToDate(validFromIncluding));
-
 const RelationsList: FC<Props> = ({
   parentIdentifier,
   datasets,
@@ -101,13 +85,16 @@ const RelationsList: FC<Props> = ({
         </SC.Banner>
 
         <SC.RelationLinks>
-          {datasets.map(({ uri, title, id, references }) =>
+          {datasets.map(({ uri, title, id }) =>
             uri && id && title ? (
               <span>
                 <Link as={RouterLink} to={`${PATHNAME_DATASETS}/${id}`}>
                   {translate(title ?? uri)}
                 </Link>
-                {renderReferenceString(parentIdentifier, references)}
+                {renderReferenceString(
+                  parentIdentifier,
+                  filterRelations(datasets, Entity.DATASET, 'reference', uri)
+                )}
               </span>
             ) : null
           )}
@@ -146,24 +133,16 @@ const RelationsList: FC<Props> = ({
         </SC.Banner>
 
         <SC.RelationLinks>
-          {concepts.map(
-            ({ uri, prefLabel, id, validToIncluding, validFromIncluding }) =>
-              uri && id && prefLabel ? (
-                <Link
-                  key={id ?? uri}
-                  as={RouterLink}
-                  to={`${PATHNAME_CONCEPTS}/${id}`}
-                >
-                  {translate(prefLabel ?? uri)}
-                  {isExpired(validToIncluding) && (
-                    <>&nbsp;({translations.validity.expired})</>
-                  )}
-                  {!isExpired(validToIncluding) &&
-                    isWillBeValid(validFromIncluding) && (
-                      <>&nbsp;({translations.validity.willBeValid})</>
-                    )}
-                </Link>
-              ) : null
+          {concepts.map(({ uri, title, id }) =>
+            uri && id && title ? (
+              <Link
+                key={id ?? uri}
+                as={RouterLink}
+                to={`${PATHNAME_CONCEPTS}/${id}`}
+              >
+                {translate(title ?? uri)}
+              </Link>
+            ) : null
           )}
         </SC.RelationLinks>
       </SC.Relation>

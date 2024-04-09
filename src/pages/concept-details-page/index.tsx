@@ -38,6 +38,10 @@ import SubjectAndApplication from './SubjectAndApplication';
 import Range from './Range';
 import Identifier from './Identifier';
 import RelationsList from './RelationsList';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations } from '../../utils/common';
 
 interface RouteParams {
   conceptId: string;
@@ -49,34 +53,19 @@ interface Props
     InformationModelsProps,
     ConceptsProps,
     PublicServicesProps,
+    ResourceRelationsProps,
     RouteComponentProps<RouteParams> {}
 
 const ConceptDetailsPage: FC<Props> = ({
   concept,
   concepts: conceptReferences,
+  relations,
   isLoadingConcept,
-  datasetsRelations,
-  publicServicesRelations,
-  conceptsRelations,
-  informationModelsRelations,
   conceptActions: { getConceptRequested: getConcept },
-  conceptsActions: {
-    getConceptsRequested: getConcepts,
-    getConceptsRelationsRequested: getConceptsRelations,
-    resetConcepts,
-    resetConceptsRelations
-  },
-  datasetsActions: {
-    getDatasetsRelationsRequested: getDatasetsRelations,
-    resetDatasetsRelations
-  },
-  informationModelsActions: {
-    getInformationModelsRelationsRequested: getInformationmodelsRelations,
-    resetInformationModelsRelations
-  },
-  publicServicesActions: {
-    getPublicServicesRelationsRequested: getPublicServicesRelations,
-    resetPublicServicesRelations
+  conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   match: {
     params: { conceptId }
@@ -96,6 +85,15 @@ const ConceptDetailsPage: FC<Props> = ({
   const theme = { entityColours: themeFDK.extendedColors[entity] };
 
   useEffect(() => {
+    if (concept?.uri) {
+      getRelations({ relations: concept.uri });
+    }
+    return () => {
+      resetResourceRelations();
+    };
+  }, [concept?.uri]);
+
+  useEffect(() => {
     if (concept?.id !== conceptId) {
       getConcept(conceptId);
     }
@@ -106,10 +104,7 @@ const ConceptDetailsPage: FC<Props> = ({
       setIsMounted(false);
       setSelectedLanguages([{ code: 'nb' }, { code: 'nn' }, { code: 'en' }]);
       resetConcepts();
-      resetConceptsRelations();
-      resetDatasetsRelations();
-      resetInformationModelsRelations();
-      resetPublicServicesRelations();
+      resetResourceRelations();
     };
   }, [conceptId]);
 
@@ -204,11 +199,7 @@ const ConceptDetailsPage: FC<Props> = ({
     concept?.isReplacedBy ||
     concept?.memberOf ||
     concept?.seeAlso;
-  const hasRelationsList =
-    conceptsRelations.length > 0 ||
-    datasetsRelations.length > 0 ||
-    publicServicesRelations.length > 0 ||
-    informationModelsRelations.length > 0;
+  const hasRelationsList = relations.length > 0;
   const hasSubjectAndApplication =
     (subjectLabels.length > 0 && hasFieldSelectedLanguage(subjectLabels)) ||
     hasFieldSelectedLanguage(applications);
@@ -278,19 +269,26 @@ const ConceptDetailsPage: FC<Props> = ({
             concept={concept}
             conceptReferences={conceptReferences}
             getConcepts={getConcepts}
-            getConceptsRelations={getConceptsRelations}
-            getDatasetsRelations={getDatasetsRelations}
-            getInformationmodelsRelations={getInformationmodelsRelations}
-            getPublicServicesRelations={getPublicServicesRelations}
+            getRelations={getRelations}
           />
         )}
-        {hasRelationsList && (
+        {concept && hasRelationsList && (
           <RelationsList
             identifier={concept?.identifier}
-            conceptsRelations={conceptsRelations}
-            datasetsRelations={datasetsRelations}
-            publicServicesRelations={publicServicesRelations}
-            informationModelsRelations={informationModelsRelations}
+            conceptsRelations={filterRelations(
+              relations,
+              Entity.CONCEPT,
+              concept.uri
+            )}
+            datasetsRelations={filterRelations(relations, Entity.DATASET)}
+            publicServicesRelations={filterRelations(
+              relations,
+              Entity.PUBLIC_SERVICE
+            )}
+            informationModelsRelations={filterRelations(
+              relations,
+              Entity.INFORMATION_MODEL
+            )}
           />
         )}
         {(contactPoint?.email || contactPoint?.telephone) && (
@@ -310,5 +308,6 @@ export default compose<FC>(
   withInformationModels,
   withConcepts,
   withPublicServices,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(ConceptDetailsPage);
