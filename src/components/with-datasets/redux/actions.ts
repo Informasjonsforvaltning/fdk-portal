@@ -8,16 +8,9 @@ import {
 import type { SearchObject } from '../../../types';
 
 interface GetDatasetsParams {
-  uris?: string[];
+  uri?: string[];
   size?: number;
   orgPath?: string;
-  subject?: string;
-  info_model?: string;
-  referencesSource?: string;
-  accessService?: string;
-  conformsTo?: string;
-  relatedToInfoModel?: string;
-  nap?: boolean;
 }
 
 export function getDatasetsRequested(params?: GetDatasetsParams) {

@@ -6,19 +6,11 @@ import {
 } from './action-types';
 
 interface GetPublicServicesParams {
-  q?: string;
   page?: string;
-  sortfield?: string;
   size?: number;
+  sortfield?: string;
   orgPath?: string;
-  isGroupedBy?: string;
-  keywords?: string;
-  publicServiceIdentifiers?: string[];
-  requiredByServiceUri?: string;
-  relatedByServiceUri?: string;
-  isDescribedAt?: string;
-  isClassifiedBy?: string;
-  requiresOrRelates?: string;
+  uri?: string[];
 }
 
 export function getPublicServicesRequested(params: GetPublicServicesParams) {

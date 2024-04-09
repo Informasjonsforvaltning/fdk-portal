@@ -62,7 +62,7 @@ const RelatedConcepts = ({
         (Array.isArray(concept?.memberOf) && concept?.memberOf.length > 0)
       ) {
         getConcepts({
-          identifiers: [
+          uri: [
             ...(concept?.seeAlso ?? []),
             ...associativeRelationsUris,
             ...partitiveRelationsUris,

@@ -149,7 +149,7 @@ const DatasetDetailsPage: FC<Props> = ({
 
       if (conceptIdentifiers.length > 0) {
         getConcepts({
-          identifiers: conceptIdentifiers as string[],
+          uri: conceptIdentifiers as string[],
           size: 1000
         });
       }
@@ -160,7 +160,7 @@ const DatasetDetailsPage: FC<Props> = ({
         [] as string[]
       );
       if (datasetUris && datasetUris.length > 0) {
-        getDatasets({ uris: datasetUris, size: 1000 });
+        getDatasets({ uri: datasetUris, size: 1000 });
       }
 
       const spatialUris = dataset?.spatial?.map(({ uri }) => uri) ?? [];
@@ -177,7 +177,7 @@ const DatasetDetailsPage: FC<Props> = ({
           ?.flatMap(({ accessService }) => accessService?.map(({ uri }) => uri))
           ?.filter((accessUri): accessUri is string => !!accessUri) ?? [];
       if (accessUris.length > 0) {
-        getDataServices({ uris: accessUris });
+        getDataServices({ uri: accessUris });
       }
     }
   }, [dataset?.id, isMounted]);

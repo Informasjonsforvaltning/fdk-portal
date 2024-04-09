@@ -100,7 +100,6 @@ const buildFilterSearchBody = ({
   format,
   relations,
   lastXDays,
-  uris,
   uri
 }: SearchFilters) => {
   const filters: Record<string, any> = {};
@@ -121,7 +120,6 @@ const buildFilterSearchBody = ({
   addFilter('formats', commaSeparatedStringToList(format));
   addFilter('relations', relations);
   addFilter('lastXDays', lastXDays);
-  addFilter('uri', uris);
   addFilter('uri', uri);
 
   return Object.keys(filters).length > 0 ? filters : undefined;

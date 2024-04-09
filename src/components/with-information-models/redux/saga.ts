@@ -12,23 +12,13 @@ import type { SearchObject } from '../../../types';
 import { paramsToSearchBody } from '../../../utils/common';
 
 function* getInformationModelsRequested({
-  payload: {
-    params: {
-      conceptIdentifiers,
-      informationModelIdentifiers,
-      hasFormat,
-      size,
-      relations
-    } = {}
-  }
+  payload: { params: { uri, size, relations } = {} }
 }: ReturnType<typeof actions.getInformationModelsRequested>) {
   try {
     const data: Record<string, any> = yield call(
       searchInformationModels,
       paramsToSearchBody({
-        conceptIdentifiers,
-        informationModelIdentifiers,
-        hasFormat,
+        uri,
         size,
         relations
       })
