@@ -47,8 +47,12 @@ import SC from './styled';
 
 import type { InformationModel } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
-import { getConfig } from '../../config';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations } from '../../utils/common';
+import { getConfig } from '../../config';
 
 interface RouteParams {
   informationModelId: string;
@@ -60,6 +64,7 @@ interface Props
     InformationModelsProps,
     RouteComponentProps<RouteParams>,
     DatasetProps,
+    ResourceRelationsProps,
     DataServicesProps {}
 
 const InformationModelDetailsPage: FC<Props> = ({
@@ -69,9 +74,7 @@ const InformationModelDetailsPage: FC<Props> = ({
   informationModels,
   isLoadingInformationModel,
   isLoadingInformationModelRdfRepresentations,
-  datasetsRelations,
-  dataServicesRelations,
-  informationModelsRelations,
+  relations,
   informationModelActions: {
     getInformationModelRequested: getInformationModel,
     getInformationModelRdfRepresentationsRequested:
@@ -80,17 +83,11 @@ const InformationModelDetailsPage: FC<Props> = ({
   },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
   informationModelsActions: {
-    getInformationModelsRequested: getInformationModels,
-    getInformationModelsRelationsRequested: getInformationmodelsRelations,
-    resetInformationModelsRelations
+    getInformationModelsRequested: getInformationModels
   },
-  datasetsActions: {
-    getDatasetsRelationsRequested: getDatasetsRelations,
-    resetDatasetsRelations
-  },
-  dataServicesActions: {
-    getDataServicesRelationsRequested: getDataServicesRelations,
-    resetDataServicesRelations
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   match: {
     params: { informationModelId }
@@ -219,31 +216,29 @@ const InformationModelDetailsPage: FC<Props> = ({
   }, [informationModelIdentifiers.join()]);
 
   useEffect(() => {
-    const formats =
-      informationModel?.hasFormat?.reduce(
-        (accumulator, { uri }) => (uri ? [...accumulator, uri] : accumulator),
-        [] as string[]
-      ) ?? [];
-    if (formats.length > 0) {
-      getDataServicesRelations({ endpointDescription: formats });
-    }
     if (informationModel?.uri) {
-      getInformationmodelsRelations({ relations: informationModel.uri });
+      getRelations({ relations: informationModel.uri });
     }
     return () => {
-      resetDataServicesRelations();
-      resetInformationModelsRelations();
+      resetResourceRelations();
     };
   }, [informationModel?.uri]);
 
+  const datasetsRelations = filterRelations(relations, Entity.DATASET);
+  const dataServicesRelations = filterRelations(relations, Entity.DATA_SERVICE);
+  const informationModelsRelations = filterRelations(
+    relations,
+    Entity.INFORMATION_MODEL
+  );
+
   useEffect(() => {
     if (informationModel?.id) {
-      getDatasetsRelations({
-        relatedToInfoModel: getConfig().searchHost.host + location.pathname
+      getRelations({
+        relations: getConfig().searchHost.host + location.pathname
       });
     }
     return () => {
-      resetDatasetsRelations();
+      resetResourceRelations();
     };
   }, [informationModel?.id]);
 
@@ -871,5 +866,6 @@ export default compose<FC>(
   withInformationModels,
   withDatasets,
   withDataServices,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(InformationModelDetailsPage);

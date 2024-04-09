@@ -37,6 +37,7 @@ import DatasetPreviewReducer from '../components/with-dataset-preview/redux/redu
 import SuggestionsReducer from '../components/with-suggestions/redux/reducer';
 import AiProjectsReducer from '../components/with-ai-projects/redux/reducer';
 import { commentsApi } from '../api/user-feedback-api/comments';
+import ResourceRelationsReducer from '../components/with-resource-relations/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -50,6 +51,7 @@ export const rootReducer = combineReducers({
   concepts: conceptReducer,
   informationModels: informationModelsReducer,
   DatasetReducer,
+  ResourceRelationsReducer,
   ReferenceDataReducer,
   ConceptsReducer,
   ConceptReducer,

@@ -4,19 +4,14 @@ import translations from '../../../lib/localization';
 import RelationList, {
   ItemWithRelationType
 } from '../../../components/relation-list';
-import {
-  Concept,
-  Dataset,
-  InformationModel,
-  PublicService
-} from '../../../types';
+import { SearchObject } from '../../../types';
 
 interface Props {
   identifier: string | undefined;
-  conceptsRelations: Concept[];
-  datasetsRelations: Dataset[];
-  publicServicesRelations: PublicService[];
-  informationModelsRelations: InformationModel[];
+  conceptsRelations: SearchObject[];
+  datasetsRelations: SearchObject[];
+  publicServicesRelations: SearchObject[];
+  informationModelsRelations: SearchObject[];
 }
 
 const RelationsList = ({

@@ -58,6 +58,10 @@ import {
 } from '../../constants/constants';
 import SC from './styled';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations } from '../../utils/common';
 
 interface RouteParams {
   publicServiceId: string;
@@ -70,6 +74,7 @@ interface Props
     PublicServicesProps,
     EventsProps,
     KartverketProps,
+    ResourceRelationsProps,
     RouteComponentProps<RouteParams> {}
 
 const PublicServiceDetailsPage: FC<Props> = ({
@@ -79,28 +84,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
   datasets,
   publicService,
   publicServices,
-  publicServicesRequiredBy,
-  publicServicesRelatedBy,
-  eventsRelations,
+  relations,
   publicServiceActions: {
     getPublicServiceRequested: getPublicService,
     resetPublicService
   },
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
-    resetPublicServices,
-    getPublicServicesRequiredByRequested: getPublicServicesRequiredBy,
-    resetPublicServicesRequiredBy,
-    getPublicServicesRelatedByRequested: getPublicServicesRelatedBy,
-    resetPublicServicesRelatedBy
+    resetPublicServices
   },
   conceptsActions: { getConceptsRequested: getConcepts },
   datasetsActions: { getDatasetsRequested: getDatasets },
-  eventsActions: {
-    getEventsRequested: getEvents,
-    resetEvents,
-    getEventsRelationsRequested: getEventsRelations,
-    resetEventsRelations
+  eventsActions: { getEventsRequested: getEvents, resetEvents },
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   administrativeUnits,
   kartverketActions: {
@@ -130,17 +128,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
       setIsMounted(false);
       resetPublicService();
       resetPublicServices();
-      resetPublicServicesRequiredBy();
-      resetPublicServicesRelatedBy();
     };
   }, [publicServiceId]);
-
-  useEffect(() => {
-    if (publicService?.uri) {
-      getPublicServicesRequiredBy({ requiredByServiceUri: publicService.uri });
-      getPublicServicesRelatedBy({ relatedByServiceUri: publicService.uri });
-    }
-  }, [publicService?.uri]);
 
   const title = publicService?.title ?? {};
   const description = translate(publicService?.description);
@@ -237,13 +226,13 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (publicService?.uri) {
-      getEventsRelations({ relation: publicService.uri });
+      getRelations({ relations: publicService.uri });
     }
     if (spatial.length > 0) {
       listAdministrativeUnits(spatial);
     }
     return () => {
-      resetEventsRelations();
+      resetResourceRelations();
       resetAdministrativeUnits();
     };
   }, [publicService?.uri]);
@@ -253,11 +242,27 @@ const PublicServiceDetailsPage: FC<Props> = ({
     {} as Record<string, any>
   );
 
-  const eventsRelationsWithRelationType: ItemWithRelationType[] =
-    eventsRelations.map(eventRelation => ({
+  const eventRelations = filterRelations(relations, Entity.EVENT);
+  const eventsRelationsWithRelationType: ItemWithRelationType[] = relations.map(
+    eventRelation => ({
       relation: eventRelation,
       relationType: translations.relatedBy
-    }));
+    })
+  );
+
+  const publicServicesRequiredBy = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE,
+    'requires',
+    publicService?.uri
+  );
+
+  const publicServicesRelatedBy = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE,
+    'relation',
+    publicService?.uri
+  );
 
   const publicServicesRequiredByWithRelationType: ItemWithRelationType[] =
     publicServicesRequiredBy.map(publicServiceRelation => ({
@@ -1267,7 +1272,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </List>
             </ContentSection>
           )}
-          {(eventsRelations.length > 0 ||
+          {(eventRelations.length > 0 ||
             publicServicesRequiredBy.length > 0 ||
             publicServicesRelatedBy.length > 0) && (
             <ContentSection
@@ -1387,5 +1392,6 @@ export default compose(
   withPublicServices,
   withEvents,
   withKartverket,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(PublicServiceDetailsPage);
