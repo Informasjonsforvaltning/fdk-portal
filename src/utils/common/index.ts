@@ -4,11 +4,14 @@ import type {
   EuTheme,
   LosNode,
   LosTheme,
-  SearchFilters
+  Relation,
+  SearchFilters,
+  SearchObject
 } from '../../types';
 import localization from '../../lib/localization';
 import { commaSeparatedStringToList } from '../../lib/stringUtils';
 import { getConfig } from '../../config';
+import { Entity } from '../../types/enums';
 
 function assertIsDefined<T>(
   key: string,
@@ -134,3 +137,27 @@ export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
   filters: buildFilterSearchBody(params),
   ...(!!getConfig().filterTransportDatasets && { profile: 'TRANSPORT' })
 });
+
+const getRelationType = (
+  uri: string,
+  relations?: Relation[]
+): string | undefined => {
+  const currentRelation =
+    relations && relations.find(relation => relation.uri === uri);
+  return currentRelation ? currentRelation.type : undefined;
+};
+
+export const filterRelations = (
+  relations: SearchObject[],
+  searchType: Entity,
+  relationType?: string,
+  parentUri?: string
+): SearchObject[] =>
+  relations.filter(
+    relation =>
+      !searchType ||
+      (relation.searchType === searchType &&
+        (!relationType ||
+          !parentUri ||
+          getRelationType(parentUri, relation.relations) === relationType))
+  );

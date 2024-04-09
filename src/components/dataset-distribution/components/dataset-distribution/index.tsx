@@ -37,7 +37,6 @@ interface ExternalProps {
   accessServices?: AccessService[];
   datasetTitle: Partial<TextLanguage>;
   distribution: Partial<Distribution>;
-  endpointDescriptions?: string[];
 }
 
 interface Props extends ExternalProps {}
@@ -51,13 +50,9 @@ const DatasetDistribution: FC<Props> = ({
     fdkFormat: formats = [],
     downloadURL: [downloadURL] = [],
     accessURL: [accessURL] = [],
-    conformsTo: [
-      { uri: conformsToUri = null, prefLabel: conformsToPrefLabel = null } = {}
-    ] = [],
     page: [{ uri: pageUri = null } = {}] = []
   },
-  accessServices = [],
-  endpointDescriptions = []
+  accessServices = []
 }) => {
   const [showPreview, setShowPreview] = useState(false);
 
@@ -102,6 +97,7 @@ const DatasetDistribution: FC<Props> = ({
             property={translations.dataset.distribution.format}
             value={formats
               .map(format => format.name || format.code)
+              .filter(Boolean)
               .sort()
               .join(', ')}
             data-testid={testIds.detail}
@@ -140,17 +136,6 @@ const DatasetDistribution: FC<Props> = ({
           }
           data-testid={testIds.detail}
         />
-        {conformsToUri && (
-          <Detail
-            property={translations.dataset.distribution.conformsTo}
-            value={
-              <LinkExternal href={conformsToUri} external>
-                {translate(conformsToPrefLabel) || conformsToUri}
-              </LinkExternal>
-            }
-            data-testid={testIds.detail}
-          />
-        )}
         {accessServices.length > 0 && (
           <Detail
             property={translations.dataset.distribution.dataService}
@@ -168,27 +153,6 @@ const DatasetDistribution: FC<Props> = ({
                     </SC.ColumnRow>
                   )
                 )}
-              </SC.ColumnData>
-            }
-            data-testid={testIds.detail}
-          />
-        )}
-        {endpointDescriptions.length > 0 && (
-          <Detail
-            property={translations.dataset.distribution.endpointDescription}
-            value={
-              <SC.ColumnData>
-                {endpointDescriptions?.map(endpointDescription => (
-                  <SC.ColumnRow>
-                    <LinkExternal
-                      href={endpointDescription}
-                      key={endpointDescription}
-                      external
-                    >
-                      {endpointDescription}
-                    </LinkExternal>
-                  </SC.ColumnRow>
-                ))}
               </SC.ColumnData>
             }
             data-testid={testIds.detail}

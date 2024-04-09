@@ -14,20 +14,14 @@ interface Props {
   concept: Concept | null;
   conceptReferences: Concept[];
   getConcepts: (params: any) => void;
-  getConceptsRelations: (params: any) => void;
-  getDatasetsRelations: (params: any) => void;
-  getInformationmodelsRelations: (params: any) => void;
-  getPublicServicesRelations: (params: any) => void;
+  getRelations: (params: any) => void;
 }
 
 const RelatedConcepts = ({
   concept,
   conceptReferences,
   getConcepts,
-  getConceptsRelations,
-  getDatasetsRelations,
-  getPublicServicesRelations,
-  getInformationmodelsRelations
+  getRelations
 }: Props) => {
   const title = concept?.prefLabel ?? {};
   const associativeRelations = concept?.associativeRelation ?? [];
@@ -79,12 +73,7 @@ const RelatedConcepts = ({
         });
       }
 
-      getConceptsRelations({ seeAlso: concept.identifier });
-      getDatasetsRelations({ subject: concept.identifier });
-      getInformationmodelsRelations({
-        conceptIdentifiers: [concept.identifier]
-      });
-      getPublicServicesRelations({ isClassifiedBy: concept.identifier });
+      getRelations({ relations: concept.identifier });
     }
   }, [concept?.identifier]);
 
