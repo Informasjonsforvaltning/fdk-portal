@@ -150,7 +150,7 @@ const DatasetDetailsPage: FC<Props> = ({
       if (conceptIdentifiers.length > 0) {
         getConcepts({
           uri: conceptIdentifiers as string[],
-          size: 1000
+          size: conceptIdentifiers.length
         });
       }
 
@@ -159,10 +159,10 @@ const DatasetDetailsPage: FC<Props> = ({
           source?.uri ? [...accumulator, source.uri] : accumulator,
         [] as string[]
       );
-      if (datasetUris && datasetUris.length > 0) {
-        getDatasets({ uri: datasetUris, size: 1000 });
-      }
 
+      if (datasetUris && datasetUris.length > 0) {
+        getDatasets({ uri: datasetUris, size: datasetUris.length });
+      }
       const spatialUris = dataset?.spatial?.map(({ uri }) => uri) ?? [];
       if (spatialUris.length > 0) {
         listAdministrativeUnits(spatialUris);
@@ -177,7 +177,7 @@ const DatasetDetailsPage: FC<Props> = ({
           ?.flatMap(({ accessService }) => accessService?.map(({ uri }) => uri))
           ?.filter((accessUri): accessUri is string => !!accessUri) ?? [];
       if (accessUris.length > 0) {
-        getDataServices({ uri: accessUris });
+        getDataServices({ uri: accessUris, size: accessUris.length });
       }
     }
   }, [dataset?.id, isMounted]);

@@ -202,13 +202,16 @@ const InformationModelDetailsPage: FC<Props> = ({
     if (containedSubjects.length + informationModelSubjects.length > 0) {
       getConcepts({
         uri: [...containedSubjects, ...informationModelSubjects] as string[],
-        size: 1000
+        size: containedSubjects.length + informationModelSubjects.length
       });
     }
   }, [[...containedSubjects, ...informationModelSubjects].join()]);
   useEffect(() => {
     if (informationModelIdentifiers.length > 0) {
-      getInformationModels({ uri: informationModelIdentifiers, size: 4 });
+      getInformationModels({
+        uri: informationModelIdentifiers,
+        size: informationModelIdentifiers.length
+      });
     }
   }, [informationModelIdentifiers.join()]);
 

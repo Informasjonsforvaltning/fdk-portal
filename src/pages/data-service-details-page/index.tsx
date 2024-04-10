@@ -104,7 +104,10 @@ const DataserviceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (dataService?.servesDataset && dataService?.servesDataset.length > 0) {
-      getDatasets({ uri: dataService.servesDataset, size: 1000 });
+      getDatasets({
+        uri: dataService.servesDataset,
+        size: dataService.servesDataset.length
+      });
     }
 
     return () => {

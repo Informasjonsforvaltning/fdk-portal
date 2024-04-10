@@ -199,25 +199,31 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (publicServiceIdentifiers.length > 0) {
-      getPublicServices({ uri: publicServiceIdentifiers, size: 1000 });
+      getPublicServices({
+        uri: publicServiceIdentifiers,
+        size: publicServiceIdentifiers.length
+      });
     }
   }, [publicServiceIdentifiers.join()]);
 
   useEffect(() => {
     if (conceptsIdentifiers.length > 0) {
-      getConcepts({ uri: conceptsIdentifiers, size: 1000 });
+      getConcepts({
+        uri: conceptsIdentifiers,
+        size: conceptsIdentifiers.length
+      });
     }
   }, [conceptsIdentifiers.join()]);
 
   useEffect(() => {
     if (datasetsUris.length > 0) {
-      getDatasets({ uri: datasetsUris, size: 1000 });
+      getDatasets({ uri: datasetsUris, size: datasetsUris.length });
     }
   }, [datasetsUris.join()]);
 
   useEffect(() => {
     if (isGroupedBy.length > 0) {
-      getEvents({ uri: isGroupedBy });
+      getEvents({ uri: isGroupedBy, size: isGroupedBy.length });
     }
     return () => {
       resetEvents();
