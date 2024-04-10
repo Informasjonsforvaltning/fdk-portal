@@ -6,7 +6,7 @@ import {
 } from './action-types';
 
 interface GetPublicServicesParams {
-  page?: string;
+  page?: number;
   size?: number;
   sortfield?: string;
   orgPath?: string;

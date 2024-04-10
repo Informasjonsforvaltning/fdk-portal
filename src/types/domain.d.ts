@@ -1180,6 +1180,20 @@ export interface AiProject {
   modellutvikling?: string;
   klassifisering?: string;
 }
+
+export interface SearchSort {
+  field: string;
+  direction: string;
+}
+
+export interface SearchQuery {
+  q?: string | undefined;
+  page?: number | undefined;
+  size?: number | undefined;
+  sort?: SearchSort | undefined;
+  filters?: SearchFilters | undefined;
+}
+
 export interface SearchFilters {
   id?: string;
   opendata?: boolean;
@@ -1192,7 +1206,6 @@ export interface SearchFilters {
   format?: string;
   relations?: string;
   lastXDays?: number;
-  uris?: string[];
-  uri?: string;
+  uri?: string[];
   keyword?: string[];
 }

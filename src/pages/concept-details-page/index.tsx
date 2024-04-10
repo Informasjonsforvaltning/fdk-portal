@@ -21,12 +21,12 @@ import type { Props as PublicServicesProps } from '../../components/with-public-
 import withPublicServices from '../../components/with-public-services';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage from '../../components/details-page';
+import { DetailsPage } from '../../components/details-page';
 import ErrorPage from '../error-page';
 
 import type { Theme, Language, TextLanguage } from '../../types';
 import { Entity } from '../../types/enums';
-import RelatedConcepts from './RelatedConcepts';
+import RelatedConcepts from '../../components/details-page/components/RelatedConcepts';
 import ContactPoint from './ContactPoint';
 import Created from './Created';
 import Description from './Description';

@@ -9,7 +9,7 @@ const skos = Namespace('http://www.w3.org/2004/02/skos/core#');
 export const getEventTypes = async (): Promise<EventType[]> => {
   const fetcher = new Fetcher(graph(), {});
 
-  await fetcher.load(`${getConfig().searchHost.host}/api/events`, {
+  await fetcher.load(`${getConfig().fdkPortalBaseUri.host}/api/events`, {
     withCredentials: false
   });
 

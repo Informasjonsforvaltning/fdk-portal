@@ -13,17 +13,7 @@ import { paramsToSearchBody } from '../../../utils/common';
 
 function* getPublicServicesAndEventsRequested({
   payload: {
-    params: {
-      page,
-      sortfield,
-      size,
-      q,
-      orgPath,
-      event,
-      keywords,
-      publicServiceAndEventIdentifiers,
-      eventType
-    }
+    params: { page, size, q, sortfield, orgPath, keyword, uri }
   }
 }: ReturnType<typeof actions.getPublicServicesAndEventsRequested>) {
   try {
@@ -31,14 +21,19 @@ function* getPublicServicesAndEventsRequested({
       searchPublicServicesAndEvents,
       paramsToSearchBody({
         page,
-        sortfield,
         size,
         q,
-        orgPath,
-        event,
-        keywords,
-        publicServiceAndEventIdentifiers,
-        eventType
+        sort: sortfield
+          ? {
+              field: sortfield,
+              direction: 'desc'
+            }
+          : undefined,
+        filters: {
+          orgPath,
+          keyword,
+          uri
+        }
       })
     );
 

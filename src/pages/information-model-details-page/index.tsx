@@ -33,7 +33,8 @@ import withDataServices, {
 } from '../../components/with-data-services';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   ContentSection,
   InlineList,
   KeyValueList,
@@ -52,7 +53,6 @@ import withResourceRelations, {
   ResourceRelationsProps
 } from '../../components/with-resource-relations';
 import { filterRelations } from '../../utils/common';
-import { getConfig } from '../../config';
 
 interface RouteParams {
   informationModelId: string;
@@ -230,17 +230,6 @@ const InformationModelDetailsPage: FC<Props> = ({
     relations,
     Entity.INFORMATION_MODEL
   );
-
-  useEffect(() => {
-    if (informationModel?.id) {
-      getRelations({
-        relations: getConfig().searchHost.host + location.pathname
-      });
-    }
-    return () => {
-      resetResourceRelations();
-    };
-  }, [informationModel?.id]);
 
   const uriIsSkolemized = (uri: string) => /.well-known\/skolem/.test(uri);
 

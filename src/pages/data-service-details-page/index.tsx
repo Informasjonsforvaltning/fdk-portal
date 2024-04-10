@@ -29,7 +29,8 @@ import withInformationModels, {
 } from '../../components/with-information-models';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   ContentSection,
   KeyValueList,
   KeyValueListItem,

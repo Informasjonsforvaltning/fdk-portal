@@ -21,14 +21,19 @@ const mapProps = {
     } = parseSearchParams(location);
 
     const searchAllEntitiesSearchBody = paramsToSearchBody({
-      q,
-      page,
-      orgPath,
-      losTheme,
-      sortfield,
-      accessrights,
-      opendata,
-      theme
+      q: `${q}`,
+      page: Number(page),
+      sort: {
+        field: `${sortfield}`,
+        direction: 'desc'
+      },
+      filters: {
+        orgPath: `${orgPath}`,
+        losTheme: `${losTheme}`,
+        accessrights: `${accessrights}`,
+        opendata: opendata === 'true',
+        theme: `${theme}`
+      }
     });
 
     return memoizedSearchAllEntities(searchAllEntitiesSearchBody);
