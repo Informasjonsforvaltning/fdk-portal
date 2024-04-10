@@ -14,19 +14,7 @@ import { paramsToSearchBody } from '../../../utils/common';
 
 function* getPublicServicesRequested({
   payload: {
-    params: {
-      page,
-      sortfield,
-      size,
-      q,
-      orgPath,
-      isGroupedBy,
-      keywords,
-      publicServiceIdentifiers,
-      isDescribedAt,
-      isClassifiedBy,
-      requiresOrRelates
-    }
+    params: { page, sortfield, size, orgPath, uri }
   }
 }: ReturnType<typeof actions.getPublicServicesRequested>) {
   try {
@@ -36,14 +24,8 @@ function* getPublicServicesRequested({
         page,
         sortfield,
         size,
-        q,
         orgPath,
-        isGroupedBy,
-        keywords,
-        publicServiceIdentifiers,
-        isDescribedAt,
-        isClassifiedBy,
-        requiresOrRelates
+        uri
       })
     );
 

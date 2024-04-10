@@ -8,9 +8,8 @@ import {
 import { SearchObject } from '../../../types';
 
 interface GetConceptsParams {
-  identifiers?: string[];
+  uri: string[];
   size?: number;
-  seeAlso?: string;
 }
 
 export function getConceptsRequested(params: GetConceptsParams) {

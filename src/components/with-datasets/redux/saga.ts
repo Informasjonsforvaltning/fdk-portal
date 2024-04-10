@@ -12,33 +12,15 @@ import type { SearchObject } from '../../../types';
 import { paramsToSearchBody } from '../../../utils/common';
 
 function* getDatasetsRequested({
-  payload: {
-    params: {
-      uris,
-      size,
-      orgPath,
-      subject,
-      info_model,
-      referencesSource,
-      accessService,
-      conformsTo,
-      relatedToInfoModel
-    } = {}
-  }
+  payload: { params: { uri, size, orgPath } = {} }
 }: ReturnType<typeof actions.getDatasetsRequested>) {
   try {
     const data: Record<string, any> = yield call(
       searchDatasets,
       paramsToSearchBody({
-        uris,
+        uri,
         size,
-        orgPath,
-        subject,
-        info_model,
-        referencesSource,
-        accessService,
-        conformsTo,
-        relatedToInfoModel
+        orgPath
       })
     );
 

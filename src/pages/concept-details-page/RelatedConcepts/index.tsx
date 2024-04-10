@@ -48,6 +48,14 @@ const RelatedConcepts = ({
     ({ generalizes, specializes }) => generalizes ?? specializes ?? ''
   );
 
+  const uris = [
+    ...(concept?.seeAlso ?? []),
+    ...associativeRelationsUris,
+    ...partitiveRelationsUris,
+    ...genericRelationsUris,
+    ...isReplacedBy
+  ];
+
   useEffect(() => {
     if (concept?.identifier) {
       if (
@@ -62,14 +70,8 @@ const RelatedConcepts = ({
         (Array.isArray(concept?.memberOf) && concept?.memberOf.length > 0)
       ) {
         getConcepts({
-          identifiers: [
-            ...(concept?.seeAlso ?? []),
-            ...associativeRelationsUris,
-            ...partitiveRelationsUris,
-            ...genericRelationsUris,
-            ...isReplacedBy
-          ],
-          size: 1000
+          uri: uris,
+          size: uris.length
         });
       }
 

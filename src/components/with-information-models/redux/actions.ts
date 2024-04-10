@@ -8,11 +8,9 @@ import {
 import type { SearchObject } from '../../../types';
 
 interface GetInformationModelsParams {
-  conceptIdentifiers?: string[];
-  informationModelIdentifiers?: string[];
-  hasFormat?: string[];
   size?: number;
   relations?: string;
+  uri?: string[];
 }
 
 export function getInformationModelsRequested(

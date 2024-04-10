@@ -104,7 +104,10 @@ const DataserviceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (dataService?.servesDataset && dataService?.servesDataset.length > 0) {
-      getDatasets({ uris: dataService.servesDataset, size: 1000 });
+      getDatasets({
+        uri: dataService.servesDataset,
+        size: dataService.servesDataset.length
+      });
     }
 
     return () => {
@@ -114,9 +117,7 @@ const DataserviceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (dataService?.endpointDescription) {
-      getInformationModels({
-        hasFormat: dataService.endpointDescription
-      });
+      getInformationModels();
     }
   }, [dataService?.endpointDescription?.join()]);
 
@@ -189,7 +190,10 @@ const DataserviceDetailsPage: FC<Props> = ({
             id='formats'
             title={translations.detailsPage.sectionTitles.dataService.formats}
           >
-            {formats.map(format => format.name || format.code).join(', ')}
+            {formats
+              .map(format => format.name || format.uri)
+              .filter(Boolean)
+              .join(', ')}
           </ContentSection>
         )}
         {(endpointUrls.length > 0 ||

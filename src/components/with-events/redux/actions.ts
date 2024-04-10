@@ -9,8 +9,8 @@ import type { SearchObject } from '../../../types';
 
 interface GetEventsParams {
   size?: number;
-  relation?: string;
-  uris?: string[];
+  relations?: string;
+  uri?: string[];
 }
 
 export function getEventsRequested(params: GetEventsParams) {
