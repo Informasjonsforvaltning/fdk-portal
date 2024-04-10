@@ -10,20 +10,13 @@ import { paramsToSearchBody } from '../../../utils/common';
 
 function* getDataServicesRequested({
   payload: {
-    params: { dataseturi, size, endpointDescription, servesDataset, uris }
+    params: { size, uri }
   }
 }: ReturnType<typeof actions.getDataServicesRequested>) {
-  if (!dataseturi && !endpointDescription && !uris) {
-    return;
-  }
-
   try {
     const body = paramsToSearchBody({
-      dataseturi,
       size,
-      endpointDescription,
-      servesDataset,
-      uris
+      uri
     });
     const data: Record<string, any> = yield call(searchDataServices, body);
     if (data?.hits) {

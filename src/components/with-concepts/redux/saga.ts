@@ -13,13 +13,13 @@ import { paramsToSearchBody } from '../../../utils/common';
 
 function* getConceptsRequested({
   payload: {
-    params: { identifiers, size, seeAlso }
+    params: { uri, size }
   }
 }: ReturnType<typeof actions.getConceptsRequested>) {
   try {
     const data: Record<string, any> = yield call(
       searchConcepts,
-      paramsToSearchBody({ identifiers, size, seeAlso })
+      paramsToSearchBody({ uri, size })
     );
     if (data) {
       yield put(

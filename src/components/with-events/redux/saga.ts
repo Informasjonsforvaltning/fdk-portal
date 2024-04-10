@@ -10,13 +10,13 @@ import { paramsToSearchBody } from '../../../utils/common';
 
 function* getEventsRequested({
   payload: {
-    params: { size, relation, uris }
+    params: { size, relations, uri }
   }
 }: ReturnType<typeof actions.getEventsRequested>) {
   try {
     const data: Record<string, any> = yield call(
       searchEvents,
-      paramsToSearchBody({ size, relation, uris })
+      paramsToSearchBody({ size, relations, uri })
     );
 
     if (data) {

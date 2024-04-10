@@ -8,11 +8,8 @@ import {
 import { SearchObject } from '../../../types';
 
 interface GetDataServicesParams {
-  dataseturi?: string;
   size?: number;
-  endpointDescription?: string[];
-  servesDataset?: string;
-  uris?: string[];
+  uri?: string[];
 }
 
 export function getDataServicesRequested(params: GetDataServicesParams) {
