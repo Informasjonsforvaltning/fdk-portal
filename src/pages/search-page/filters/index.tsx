@@ -61,6 +61,17 @@ const FiltersPure: FC<Props> = ({
     setMultiselectFilterValue(history, location, 'theme', value, checked);
   };
 
+  const accessRights = aggregations?.accessRights || [];
+  const openData = (aggregations?.openData || []).filter(
+    (item: { key: string }) => item.key === 'true'
+  );
+
+  const openDataTransformed = openData.map((item: { count: number }) => ({
+    key: 'OPEN_DATA',
+    count: item.count,
+    label: 'OPEN_DATA'
+  }));
+
   const handleDatasetFilterAccessRights = ({
     value,
     checked
@@ -162,7 +173,7 @@ const FiltersPure: FC<Props> = ({
               <FilterBox
                 htmlKey={2}
                 title={localization.facet.accessRight}
-                filter={aggregations?.accessRights}
+                filter={[...openDataTransformed, ...accessRights]}
                 onClick={handleDatasetFilterAccessRights}
                 activeFilter={accessrightsParam}
                 filters={searchParams}
