@@ -19,7 +19,7 @@ function* getConceptsRequested({
   try {
     const data: Record<string, any> = yield call(
       searchConcepts,
-      paramsToSearchBody({ size, filters: { uri } }) // TODO JERE: Add seeAlso to filters
+      paramsToSearchBody({ size, filters: { uri } })
     );
 
     if (data) {
