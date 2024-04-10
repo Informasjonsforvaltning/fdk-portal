@@ -33,7 +33,8 @@ import withKartverket, {
 } from '../../components/with-kartverket';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   CatalogTypeBox,
   ContentSection,
   InlineList,

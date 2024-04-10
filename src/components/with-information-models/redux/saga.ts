@@ -18,9 +18,11 @@ function* getInformationModelsRequested({
     const data: Record<string, any> = yield call(
       searchInformationModels,
       paramsToSearchBody({
-        uri,
         size,
-        relations
+        filters: {
+          uri,
+          relations
+        }
       })
     );
 

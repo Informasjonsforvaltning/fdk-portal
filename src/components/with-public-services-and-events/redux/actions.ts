@@ -9,14 +9,12 @@ import {
 
 interface GetPublicServicesAndEventsParams {
   q?: string;
-  page?: string;
+  page?: number;
   sortfield?: string;
   size?: number;
   orgPath?: string;
-  event?: string;
-  keywords?: string;
-  publicServiceAndEventIdentifiers?: string[];
-  eventType?: string;
+  keyword?: string[];
+  uri?: string[];
 }
 
 export function getPublicServicesAndEventsRequested(

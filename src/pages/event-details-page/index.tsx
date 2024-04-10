@@ -17,7 +17,8 @@ import withPublicServices, {
 } from '../../components/with-public-services';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   ContentSection,
   KeyValueList,
   KeyValueListItem

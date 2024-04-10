@@ -1,6 +1,6 @@
 import React from 'react';
-import { KeyValueListItem } from '../../../../components/details-page';
-import translations from '../../../../lib/localization';
+import KeyValueListItem from '../../key-value-list-item';
+import translations from '../../../../../lib/localization';
 
 interface Props {
   memberOf: string[];

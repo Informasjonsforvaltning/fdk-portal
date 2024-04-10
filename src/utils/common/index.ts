@@ -6,7 +6,8 @@ import type {
   LosTheme,
   Relation,
   SearchFilters,
-  SearchObject
+  SearchObject,
+  SearchQuery
 } from '../../types';
 import localization from '../../lib/localization';
 import { commaSeparatedStringToList } from '../../lib/stringUtils';
@@ -85,10 +86,6 @@ export const cookieValue = (name: string) =>
     .filter(row => row.startsWith(`${name}=`))
     .map(c => c.split('=')[1])[0];
 
-const buildFirstHarvestSortBody = ({ sortfield }: any) =>
-  sortfield === 'FIRST_HARVESTED'
-    ? { field: 'FIRST_HARVESTED', direction: 'DESC' }
-    : undefined;
 const buildFilterSearchBody = ({
   opendata,
   accessrights,
@@ -101,7 +98,7 @@ const buildFilterSearchBody = ({
   relations,
   lastXDays,
   uri
-}: SearchFilters) => {
+}: SearchFilters = {}) => {
   const filters: Record<string, any> = {};
 
   const addFilter = (key: string, value: any) => {
@@ -125,14 +122,20 @@ const buildFilterSearchBody = ({
   return Object.keys(filters).length > 0 ? filters : undefined;
 };
 
-export const paramsToSearchBody = ({ q, page, size, ...params }: any) => ({
+export const paramsToSearchBody = ({
+  q,
+  page,
+  size,
+  sort,
+  filters
+}: SearchQuery) => ({
   query: q,
   pagination: {
     page: page ? Number(page) : undefined,
     size: size ? Number(size) : undefined
   },
-  sort: buildFirstHarvestSortBody(params),
-  filters: buildFilterSearchBody(params),
+  sort,
+  filters: buildFilterSearchBody(filters),
   ...(!!getConfig().filterTransportDatasets && { profile: 'TRANSPORT' })
 });
 
