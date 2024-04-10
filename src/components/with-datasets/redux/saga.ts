@@ -18,9 +18,11 @@ function* getDatasetsRequested({
     const data: Record<string, any> = yield call(
       searchDatasets,
       paramsToSearchBody({
-        uri,
         size,
-        orgPath
+        filters: {
+          uri,
+          orgPath
+        }
       })
     );
 

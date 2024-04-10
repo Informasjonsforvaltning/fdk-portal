@@ -1,11 +1,11 @@
 import Link from '@fellesdatakatalog/link';
 import { Link as RouteLink } from 'react-router-dom';
 import React from 'react';
-import { KeyValueListItem } from '../../../../components/details-page';
-import translations from '../../../../lib/localization';
-import { getTranslateText as translate } from '../../../../lib/translateText';
-import { PATHNAME_CONCEPTS } from '../../../../constants/constants';
-import { AssociativeRelation } from '../../../../types';
+import KeyValueListItem from '../../key-value-list-item';
+import translations from '../../../../../lib/localization';
+import { getTranslateText as translate } from '../../../../../lib/translateText';
+import { PATHNAME_CONCEPTS } from '../../../../../constants/constants';
+import { AssociativeRelation } from '../../../../../types';
 
 interface Props {
   associativeRelations: Partial<AssociativeRelation>[];

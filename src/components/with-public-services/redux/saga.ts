@@ -22,10 +22,17 @@ function* getPublicServicesRequested({
       searchPublicServices,
       paramsToSearchBody({
         page,
-        sortfield,
         size,
-        orgPath,
-        uri
+        sort: sortfield
+          ? {
+              field: sortfield,
+              direction: 'desc'
+            }
+          : undefined,
+        filters: {
+          orgPath,
+          uri
+        }
       })
     );
 

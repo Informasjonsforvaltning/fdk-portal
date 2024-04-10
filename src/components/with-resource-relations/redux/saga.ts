@@ -18,7 +18,7 @@ function* getResourceRelationsRequested({
   try {
     const data: Record<string, any> = yield call(
       searchAllEntities,
-      paramsToSearchBody({ size, relations })
+      paramsToSearchBody({ size, filters: { relations } })
     );
 
     if (data) {

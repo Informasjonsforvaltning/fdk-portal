@@ -1,16 +1,16 @@
 import Link from '@fellesdatakatalog/link';
 import { Link as RouteLink } from 'react-router-dom';
 import React from 'react';
-import { KeyValueListItem } from '../../../../components/details-page';
-import translations from '../../../../lib/localization';
-import { getTranslateText as translate } from '../../../../lib/translateText';
-import { PATHNAME_CONCEPTS } from '../../../../constants/constants';
+import KeyValueListItem from '../../key-value-list-item';
+import translations from '../../../../../lib/localization';
+import { getTranslateText as translate } from '../../../../../lib/translateText';
+import { PATHNAME_CONCEPTS } from '../../../../../constants/constants';
 import {
   dateStringToDate,
   formatDate,
   isDateAfterToday,
   isDateBeforeToday
-} from '../../../../lib/date-utils';
+} from '../../../../../lib/date-utils';
 
 interface Props {
   seeAlso: string[];

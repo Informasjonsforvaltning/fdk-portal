@@ -15,7 +15,7 @@ const LogOut: FC<AuthProps> = ({ authService }) => {
     <SC.LogOutContainer>
       {currentUser?.username && (
         <span>
-          {translations.community.comments.session + currentUser?.username}{' '}
+          {`${translations.community.comments.session} ${currentUser?.username} `}
           &bull;{' '}
         </span>
       )}

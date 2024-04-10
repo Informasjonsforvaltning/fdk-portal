@@ -16,7 +16,7 @@ function* getDataServicesRequested({
   try {
     const body = paramsToSearchBody({
       size,
-      uri
+      filters: { uri }
     });
     const data: Record<string, any> = yield call(searchDataServices, body);
     if (data?.hits) {

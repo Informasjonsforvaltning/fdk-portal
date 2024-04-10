@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { ContentSection, KeyValueList } from '../../../components/details-page';
-import translations from '../../../lib/localization';
-import { Entity } from '../../../types/enums';
-import { Concept } from '../../../types';
+import ContentSection from '../content-section';
+import KeyValueList from '../key-value-list';
+import translations from '../../../../lib/localization';
+import { Entity } from '../../../../types/enums';
+import { Concept } from '../../../../types';
 import AssociativeRelations from './AssociativeRelations';
 import PartitiveRelations from './PartitiveRelations';
 import GenericRelations from './GenericRelations';

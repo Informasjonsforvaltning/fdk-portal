@@ -19,8 +19,9 @@ function* getConceptsRequested({
   try {
     const data: Record<string, any> = yield call(
       searchConcepts,
-      paramsToSearchBody({ uri, size })
+      paramsToSearchBody({ size, filters: { uri } }) // TODO JERE: Add seeAlso to filters
     );
+
     if (data) {
       yield put(
         actions.getConceptsSucceeded(extractConcepts(data) as SearchObject[])
