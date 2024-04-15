@@ -183,8 +183,21 @@ const DatasetDetailsPage: FC<Props> = ({
     }
   }, [dataset?.id, isMounted]);
 
+  const dataServicesRelations = filterRelations(relations, Entity.DATA_SERVICE);
+  const datasetsRelations = filterRelations(relations, Entity.DATASET);
+  const publicServicesRelations = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE
+  );
+
+  const isDescribedAtServiceRelations = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE,
+    'isDescribedAt'
+  );
+
   const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
-    relations.map(relation => ({
+    isDescribedAtServiceRelations.map(relation => ({
       relation,
       relationType: translate(translations.sampleData)
     }));
@@ -315,12 +328,6 @@ const DatasetDetailsPage: FC<Props> = ({
 
   const themes = [...(dataset?.losTheme ?? []), ...(dataset?.theme ?? [])];
 
-  const dataServicesRelations = filterRelations(relations, Entity.DATA_SERVICE);
-  const datasetsRelations = filterRelations(relations, Entity.DATASET);
-  const publicServicesRelations = filterRelations(
-    relations,
-    Entity.PUBLIC_SERVICE
-  );
   return renderPage ? (
     <ThemeProvider theme={theme}>
       <DetailsPage
