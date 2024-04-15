@@ -184,7 +184,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   ).filter(Boolean);
 
   const conceptsMap = concepts?.reduce(
-    (previous, current) => ({ ...previous, [current.identifier]: current }),
+    (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, any>
   );
 

@@ -8,7 +8,7 @@ import {
 } from './action-types';
 
 interface GetPublicServicesAndEventsParams {
-  q?: string;
+  q?: any;
   page?: number;
   sortfield?: string;
   size?: number;

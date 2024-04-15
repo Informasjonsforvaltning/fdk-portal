@@ -20,7 +20,7 @@ import type {
   InformationModelElement,
   InformationModelProperty,
   ModelCodeElement,
-  Concept
+  SearchObject
 } from '../../../../types';
 import { ModelElementType } from '../../../../types/enums';
 
@@ -39,7 +39,7 @@ interface ExternalProps {
   property: Partial<InformationModelProperty>;
   code: Partial<ModelCodeElement>;
   modelElements: Record<string, Partial<InformationModelElement>>;
-  concepts: Record<string, Concept>;
+  concepts: Record<string, SearchObject>;
   type: ModelElementType;
 }
 

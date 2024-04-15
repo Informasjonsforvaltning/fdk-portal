@@ -23,8 +23,8 @@ import SC from './styled';
 import type {
   InformationModelElement,
   InformationModelProperty,
-  Concept,
-  ModelCodeElement
+  ModelCodeElement,
+  SearchObject
 } from '../../types';
 import { ModelElementType } from '../../types/enums';
 import ExpansionIndicatorDefault from '../expansion-indicator-default';
@@ -32,7 +32,7 @@ import ExpansionIndicatorDefault from '../expansion-indicator-default';
 interface ExternalProps {
   modelElements: Record<string, Partial<InformationModelElement>>;
   modelProperties: Record<string, Partial<InformationModelProperty>>;
-  concepts: Concept[];
+  concepts: SearchObject[];
 }
 
 interface Props extends ExternalProps {}
@@ -192,8 +192,8 @@ const InfoModelStructure: FC<Props> = ({
         : previous;
     }, [] as Partial<InformationModelProperty>[]);
 
-  const conceptMap = concepts.reduce<Record<string, Concept>>(
-    (previous, current) => ({ ...previous, [current.identifier]: current }),
+  const conceptMap = concepts.reduce<Record<string, SearchObject>>(
+    (previous, current) => ({ ...previous, [current.uri]: current }),
     {}
   );
 

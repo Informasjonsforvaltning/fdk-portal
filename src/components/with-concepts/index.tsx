@@ -4,10 +4,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import * as actions from './redux/actions';
 
-import { Concept } from '../../types';
+import { SearchObject } from '../../types';
 
 export interface Props {
-  concepts: Concept[];
+  concepts: SearchObject[];
   conceptsActions: typeof actions;
 }
 
