@@ -21,18 +21,22 @@ const mapProps = {
     } = parseSearchParams(location);
 
     const searchAllEntitiesSearchBody = paramsToSearchBody({
-      q: `${q}`,
-      page: Number(page),
-      sort: {
-        field: `${sortfield}`,
-        direction: 'desc'
-      },
+      q: q ? `${q}` : undefined,
+      page: page ? Number(page) : undefined,
+      ...(sortfield
+        ? {
+            sort: {
+              field: `${sortfield}`,
+              direction: 'desc'
+            }
+          }
+        : {}),
       filters: {
-        orgPath: `${orgPath}`,
-        losTheme: `${losTheme}`,
-        accessrights: `${accessrights}`,
-        opendata: opendata === 'true',
-        theme: `${theme}`
+        orgPath: orgPath ? `${orgPath}` : undefined,
+        losTheme: losTheme ? `${losTheme}` : undefined,
+        accessrights: accessrights ? `${accessrights}` : undefined,
+        opendata: opendata !== undefined ? opendata === 'true' : undefined,
+        theme: theme ? `${theme}` : undefined
       }
     });
 
