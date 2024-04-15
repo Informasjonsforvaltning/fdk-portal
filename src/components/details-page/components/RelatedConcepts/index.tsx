@@ -3,7 +3,7 @@ import ContentSection from '../content-section';
 import KeyValueList from '../key-value-list';
 import translations from '../../../../lib/localization';
 import { Entity } from '../../../../types/enums';
-import { Concept } from '../../../../types';
+import { Concept, SearchObject } from '../../../../types';
 import AssociativeRelations from './AssociativeRelations';
 import PartitiveRelations from './PartitiveRelations';
 import GenericRelations from './GenericRelations';
@@ -13,7 +13,7 @@ import MemberOf from './MemberOf';
 
 interface Props {
   concept: Concept | null;
-  conceptReferences: Concept[];
+  conceptReferences: SearchObject[];
   getConcepts: (params: any) => void;
   getRelations: (params: any) => void;
 }
@@ -33,7 +33,7 @@ const RelatedConcepts = ({
   const seeAlso = concept?.seeAlso ?? [];
 
   const conceptReferencesMap = conceptReferences?.reduce(
-    (previous, current) => ({ ...previous, [current.identifier]: current }),
+    (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, any>
   );
 
