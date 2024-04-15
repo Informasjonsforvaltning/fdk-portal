@@ -295,9 +295,7 @@ const DatasetDetailsPage: FC<Props> = ({
     if (!uri) {
       return true;
     }
-    return !referencedConcepts.find(
-      concept => concept.uri === uri || concept.identifier === uri
-    );
+    return !referencedConcepts.find(concept => concept.uri === uri);
   };
 
   const subjectsNotInRefConcepts =
@@ -698,16 +696,19 @@ const DatasetDetailsPage: FC<Props> = ({
           >
             <KeyValueList>
               {referencedConcepts.map(
-                ({ id, prefLabel, definition }, index) =>
+                (
+                  { id, title: conceptTitle, description: conceptDescription },
+                  index
+                ) =>
                   id && (
                     <KeyValueListItem
                       key={`${id}-${index}`}
                       property={
                         <Link to={`${PATHNAME_CONCEPTS}/${id}`} as={RouteLink}>
-                          {translate(prefLabel)}
+                          {translate(conceptTitle)}
                         </Link>
                       }
-                      value={translate(definition?.text)}
+                      value={translate(conceptDescription)}
                     />
                   )
               )}

@@ -631,11 +631,18 @@ const InformationModelDetailsPage: FC<Props> = ({
           >
             <KeyValueList>
               {concepts
-                .filter(({ identifier: subjectIdentifier }) =>
+                .filter(({ uri: subjectIdentifier }) =>
                   informationModelSubjects.includes(subjectIdentifier)
                 )
                 .map(
-                  ({ id, prefLabel, definition }, index) =>
+                  (
+                    {
+                      id,
+                      title: conceptTitle,
+                      description: conceptDescription
+                    },
+                    index
+                  ) =>
                     id && (
                       <KeyValueListItem
                         key={`${id}-${index}`}
@@ -644,10 +651,10 @@ const InformationModelDetailsPage: FC<Props> = ({
                             to={`${PATHNAME_CONCEPTS}/${id}`}
                             as={RouteLink}
                           >
-                            {translate(prefLabel)}
+                            {translate(conceptTitle)}
                           </SC.Link>
                         }
-                        value={translate(definition?.text)}
+                        value={translate(conceptDescription)}
                       />
                     )
                 )}
