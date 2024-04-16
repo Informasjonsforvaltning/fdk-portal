@@ -20,7 +20,6 @@ function shouldFetch(metaState) {
 
 export function fetchFullConceptsToCompareIfNeededAction(iDs) {
   return (dispatch, getState) => {
-    console.log('iDs', iDs);
     const ids = iDs.filter(
       id =>
         !!id &&
@@ -61,8 +60,6 @@ const initialState = {
 // eslint-disable-next-line default-param-last
 export function fullConceptsCompareReducer(state, action) {
   state = state || initialState;
-
-  console.log('Action', action);
   switch (action.type) {
     case FULL_CONCEPTSCOMPARE_REQUEST:
       return {
