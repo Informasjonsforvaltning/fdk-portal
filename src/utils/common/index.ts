@@ -135,7 +135,7 @@ export const paramsToSearchBody = ({
     page: page ? Number(page) : undefined,
     size: size ? Number(size) : undefined
   },
-  sort: sortfield ? { field: sortfield, direction: 'desc' } : undefined,
+  sort: sortfield ? { field: sortfield, direction: 'DESC' } : undefined,
   filters: buildFilterSearchBody(filters),
   ...(!!getConfig().filterTransportDatasets && { profile: 'TRANSPORT' })
 });
