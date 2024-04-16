@@ -16,7 +16,7 @@ function* getEventsRequested({
   try {
     const data: Record<string, any> = yield call(
       searchEvents,
-      paramsToSearchBody({ size, filters: { relations, uri } })
+      paramsToSearchBody({ size, relations, uri })
     );
 
     if (data) {

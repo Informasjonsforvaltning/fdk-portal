@@ -23,16 +23,9 @@ function* getPublicServicesRequested({
       paramsToSearchBody({
         page,
         size,
-        sort: sortfield
-          ? {
-              field: sortfield,
-              direction: 'desc'
-            }
-          : undefined,
-        filters: {
-          orgPath,
-          uri
-        }
+        sortfield: sortfield ?? undefined,
+        orgPath,
+        uri
       })
     );
 

@@ -23,21 +23,12 @@ const mapProps = {
     const searchAllEntitiesSearchBody = paramsToSearchBody({
       q: q ? `${q}` : undefined,
       page: page ? Number(page) : undefined,
-      ...(sortfield
-        ? {
-            sort: {
-              field: `${sortfield}`,
-              direction: 'desc'
-            }
-          }
-        : {}),
-      filters: {
-        orgPath: orgPath ? `${orgPath}` : undefined,
-        losTheme: losTheme ? `${losTheme}` : undefined,
-        accessrights: accessrights ? `${accessrights}` : undefined,
-        opendata: opendata !== undefined ? opendata === 'true' : undefined,
-        theme: theme ? `${theme}` : undefined
-      }
+      sortfield: sortfield ? `${sortfield}` : undefined,
+      orgPath: orgPath ? `${orgPath}` : undefined,
+      losTheme: losTheme ? `${losTheme}` : undefined,
+      accessrights: accessrights ? `${accessrights}` : undefined,
+      opendata: opendata !== undefined ? opendata === 'true' : undefined,
+      theme: theme ? `${theme}` : undefined
     });
 
     return memoizedSearchAllEntities(searchAllEntitiesSearchBody);

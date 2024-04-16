@@ -35,7 +35,10 @@ export function fetchPublishersIfNeededAction() {
 
 const initialState = { meta: {}, publisherItems: {} };
 
-export function publishersReducer(state = initialState, action) {
+export function publishersReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case PUBLISHERS_REQUEST: {
       return {

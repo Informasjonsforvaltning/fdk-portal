@@ -19,10 +19,8 @@ function* getDatasetsRequested({
       searchDatasets,
       paramsToSearchBody({
         size,
-        filters: {
-          uri,
-          orgPath
-        }
+        uri,
+        orgPath
       })
     );
 

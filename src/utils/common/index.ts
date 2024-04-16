@@ -126,15 +126,15 @@ export const paramsToSearchBody = ({
   q,
   page,
   size,
-  sort,
-  filters
+  sortfield,
+  ...filters
 }: SearchQuery) => ({
   query: q,
   pagination: {
     page: page ? Number(page) : undefined,
     size: size ? Number(size) : undefined
   },
-  sort,
+  sort: sortfield ? { field: sortfield, direction: 'desc' } : undefined,
   filters: buildFilterSearchBody(filters),
   ...(!!getConfig().filterTransportDatasets && { profile: 'TRANSPORT' })
 });
