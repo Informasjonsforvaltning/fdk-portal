@@ -47,7 +47,7 @@ const getNameFromNode = (node: any, referenceDataItems: any) => {
     }
   }
 
-  if (name?.toUpperCase() === 'UKJENT' || name?.toUpperCase() === 'MISSING') {
+  if (name?.toUpperCase() === 'NULL') {
     name = localization.unknown;
   } else if (name?.toUpperCase()?.startsWith('/ANNET')) {
     name = _.capitalize(name.substr(name.lastIndexOf('/') + 1, name.length));
@@ -170,7 +170,7 @@ const mainTree = ({
         displayClass={hasSomeChildren(node) ? 'inline-block' : ''}
       />
     );
-    if (node.key !== 'ukjent' && node.key !== 'MISSING') {
+    if (node.key !== 'null') {
       if (!hasSomeChildren(node)) {
         return label;
       }
