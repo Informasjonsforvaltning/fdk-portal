@@ -43,7 +43,10 @@ export function fetchDataServicesIfNeededAction(query) {
 
 const initialState = {};
 
-export function dataServicesReducer(state = initialState, action) {
+export function dataServicesReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case DATA_SERVICES_REQUEST:
       return {

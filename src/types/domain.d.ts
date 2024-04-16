@@ -1186,14 +1186,6 @@ export interface SearchSort {
   direction: string;
 }
 
-export interface SearchQuery {
-  q?: string | undefined;
-  page?: number | undefined;
-  size?: number | undefined;
-  sort?: SearchSort | undefined;
-  filters?: SearchFilters | undefined;
-}
-
 export interface SearchFilters {
   id?: string;
   opendata?: boolean;
@@ -1209,3 +1201,10 @@ export interface SearchFilters {
   uri?: string[];
   keyword?: string[];
 }
+
+export type SearchQuery = {
+  q?: string | undefined;
+  page?: number | undefined;
+  size?: number | undefined;
+  sortfield?: string | undefined;
+} & SearchFilters;

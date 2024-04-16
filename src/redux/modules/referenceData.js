@@ -45,7 +45,10 @@ const initialState = {
   meta: {}
 };
 
-export function referenceDataReducer(state = initialState, action) {
+export function referenceDataReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case REFERENCEEDATA_REQUEST:
       return {

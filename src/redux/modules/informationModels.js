@@ -42,7 +42,10 @@ export function fetchInformationModelsIfNeededAction(query) {
 
 const initialState = {};
 
-export function informationModelsReducer(state = initialState, action) {
+export function informationModelsReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case INFORMATIONMODELS_REQUEST:
       return {
