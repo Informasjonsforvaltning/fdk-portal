@@ -13,7 +13,7 @@ import { getTranslateText } from '../../lib/translateText';
 import './concept-compare.scss';
 
 interface Props {
-  fetchFullConceptsToCompareIfNeeded: () => void;
+  fetchFullConceptsToCompareIfNeeded: (ids: string[]) => void;
   removeConcept?: (id: string) => void;
   removeFullConcept?: (id: string) => void;
   fullConceptsCompare?: Record<string, any>;
@@ -158,7 +158,9 @@ export const ConceptComparePage: FC<Props> = ({
   });
 
   useEffect(() => {
-    fetchFullConceptsToCompareIfNeeded();
+    fetchFullConceptsToCompareIfNeeded(
+      (searchParameters?.compare as string)?.split(',') || []
+    );
   }, [searchParameters?.compare]);
 
   return (
@@ -176,7 +178,7 @@ export const ConceptComparePage: FC<Props> = ({
             {fullConceptsCompare && (
               <>
                 <h1 className='title'>
-                  {localization.menu.fullConceptsCompare} (
+                  {localization.menu.conceptsCompare} (
                   {Object.keys(fullConceptsCompare).length})
                 </h1>
 

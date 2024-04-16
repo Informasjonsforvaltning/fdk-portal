@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
-import { resourceServiceApiGet } from '../../api/resource-service-api/host';
+import { resourceServiceApiPost } from '../../api/resource-service-api/host';
 
 export const FULL_CONCEPTSCOMPARE_REQUEST = 'FULL_CONCEPTSCOMPARE_REQUEST';
 export const FULL_CONCEPTSCOMPARE_SUCCESS = 'FULL_CONCEPTSCOMPARE_SUCCESS';
@@ -18,27 +18,24 @@ function shouldFetch(metaState) {
   );
 }
 
-export function fetchFullConceptsToCompareIfNeededAction() {
+export function fetchFullConceptsToCompareIfNeededAction(iDs) {
   return (dispatch, getState) => {
-    const ids = Object.keys(getState().conceptsCompare.items);
-    ids
-      .filter(id => !!id)
-      .forEach(id => {
-        if (
-          shouldFetch(_.get(getState(), ['fullConceptsCompare', 'meta', id]))
-        ) {
-          dispatch(
-            reduxFsaThunk(() => resourceServiceApiGet(`concepts/${id}`), {
-              onBeforeStart: {
-                type: FULL_CONCEPTSCOMPARE_REQUEST,
-                meta: { id }
-              },
-              onSuccess: { type: FULL_CONCEPTSCOMPARE_SUCCESS, meta: { id } },
-              onError: { type: FULL_CONCEPTSCOMPARE_FAILURE, meta: { id } }
-            })
-          );
-        }
-      });
+    console.log('iDs', iDs);
+    const ids = iDs.filter(
+      id =>
+        !!id &&
+        shouldFetch(_.get(getState(), ['fullConceptsCompare', 'meta', id]))
+    );
+    dispatch(
+      reduxFsaThunk(() => resourceServiceApiPost(`concepts`, { ids }), {
+        onBeforeStart: {
+          type: FULL_CONCEPTSCOMPARE_REQUEST,
+          meta: { ids }
+        },
+        onSuccess: { type: FULL_CONCEPTSCOMPARE_SUCCESS, meta: { ids } },
+        onError: { type: FULL_CONCEPTSCOMPARE_FAILURE, meta: { ids } }
+      })
+    );
   };
 }
 
@@ -62,39 +59,57 @@ const initialState = {
 };
 
 // eslint-disable-next-line default-param-last
-export function fullConceptsCompareReducer(state = initialState, action) {
+export function fullConceptsCompareReducer(state, action) {
+  state = state || initialState;
+
+  console.log('Action', action);
   switch (action.type) {
     case FULL_CONCEPTSCOMPARE_REQUEST:
       return {
         items: {
           ...state.items,
-          [action.meta.id]: action.payload
+          ...action.meta.ids.reduce((acc, id) => {
+            acc[id] = action.payload?.find(item => item.id === id);
+            return acc;
+          }, {})
         },
-        meta: {
-          ...state.meta,
-          [action.meta.id]: { isFetching: true, lastFetch: Date.now() }
-        }
+        ...action.meta.ids.reduce((acc, id) => {
+          acc[id] = { isFetching: true, lastFetch: Date.now() };
+          return acc;
+        }, {})
       };
     case FULL_CONCEPTSCOMPARE_SUCCESS:
       return {
         items: {
           ...state.items,
-          [action.meta.id]: action.payload
+          ...action.meta.ids.reduce((acc, id) => {
+            acc[id] = action.payload?.find(item => item.id === id);
+            return acc;
+          }, {})
         },
         meta: {
           ...state.meta,
-          [action.meta.id]: { isFetching: false, lastFetch: Date.now() }
+          ...action.meta.ids.reduce((acc, id) => {
+            acc[id] = { isFetching: false, lastFetch: Date.now() };
+            return acc;
+          }, {})
         }
       };
     case FULL_CONCEPTSCOMPARE_FAILURE:
       return {
         items: {
           ...state.items,
-          [action.meta.id]: undefined
+          ...action.meta.ids.reduce((acc, id) => {
+            acc[id] = undefined;
+            return acc;
+          }, {})
         },
         meta: {
           ...state.meta,
-          [action.meta.id]: { isFetching: false, lastFetch: null }
+          ...action.meta.ids.reduce((acc, id) => {
+            acc[id] = { isFetching: false, lastFetch: null };
+            return acc;
+          }, {})
         }
       };
     case ADD_FULL_CONCEPT_TO_COMPARE:
