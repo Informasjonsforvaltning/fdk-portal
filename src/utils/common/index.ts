@@ -4,6 +4,7 @@ import type {
   EuTheme,
   LosNode,
   LosTheme,
+  MediaTypeOrExtent,
   Relation,
   SearchFilters,
   SearchObject,
@@ -56,18 +57,14 @@ export const translatePrefixedFormat = (format: string) => {
     : format;
 };
 
-interface Format {
-  type: string;
-  name: string;
-}
-
-export const parseFormats = (inputList: string[] | undefined): Format[] => {
+export const parseFormats = (
+  inputList: string[] | undefined
+): MediaTypeOrExtent[] => {
   if (!inputList || inputList.length === 0) {
     return [];
   }
 
   return inputList
-    .map(translatePrefixedFormat)
     .filter(format => {
       const splitItem = format.split(' ');
       return splitItem.length >= 2 && splitItem[1] !== 'null';
@@ -76,7 +73,7 @@ export const parseFormats = (inputList: string[] | undefined): Format[] => {
       const splitItem = format.split(' ');
       const type = splitItem.shift()!;
       const name = splitItem.join(' ');
-      return { type, name };
+      return { type, name, code: name };
     });
 };
 
