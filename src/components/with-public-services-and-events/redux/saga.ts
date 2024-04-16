@@ -23,17 +23,10 @@ function* getPublicServicesAndEventsRequested({
         page,
         size,
         q,
-        sort: sortfield
-          ? {
-              field: sortfield,
-              direction: 'desc'
-            }
-          : undefined,
-        filters: {
-          orgPath,
-          keyword,
-          uri
-        }
+        sortfield: sortfield ?? undefined,
+        orgPath,
+        keyword,
+        uri
       })
     );
 

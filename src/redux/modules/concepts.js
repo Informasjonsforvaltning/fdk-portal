@@ -92,7 +92,10 @@ export function fetchInformationModelReferencesAction(query) {
 
 const initialState = {};
 
-export function conceptReducer(state = initialState, action) {
+export function conceptReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case CONCEPTS_REQUEST:
       return {

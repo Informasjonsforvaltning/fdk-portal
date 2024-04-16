@@ -19,10 +19,8 @@ function* getInformationModelsRequested({
       searchInformationModels,
       paramsToSearchBody({
         size,
-        filters: {
-          uri,
-          relations
-        }
+        uri,
+        relations
       })
     );
 
