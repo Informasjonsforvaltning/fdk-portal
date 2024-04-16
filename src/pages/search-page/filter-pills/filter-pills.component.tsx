@@ -34,10 +34,7 @@ const getFilterLabel = (
   filterValue: string,
   referenceDataItems: any
 ) => {
-  if (
-    filterValue.toUpperCase() === 'UKJENT' ||
-    filterValue.toUpperCase() === 'MISSING'
-  ) {
+  if (filterValue.toUpperCase() === 'NULL') {
     return localization.unknown;
   }
 

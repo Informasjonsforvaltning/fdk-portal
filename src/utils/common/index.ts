@@ -103,7 +103,11 @@ const buildFilterSearchBody = ({
 
   const addFilter = (key: string, value: any) => {
     if (value !== undefined && value !== null && value !== '') {
-      filters[key] = { value };
+      if (value === 'null') {
+        filters[key] = { value: null };
+      } else {
+        filters[key] = { value };
+      }
     }
   };
 
