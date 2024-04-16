@@ -112,7 +112,7 @@ const buildFilterSearchBody = ({
   addFilter('accessRights', accessrights);
   addFilter('dataTheme', commaSeparatedStringToList(theme));
   addFilter('spatial', commaSeparatedStringToList(spatial));
-  addFilter('provenance', commaSeparatedStringToList(provenance));
+  addFilter('provenance', provenance);
   addFilter('losTheme', commaSeparatedStringToList(losTheme));
   addFilter('orgPath', orgPath);
   addFilter('formats', commaSeparatedStringToList(format));
