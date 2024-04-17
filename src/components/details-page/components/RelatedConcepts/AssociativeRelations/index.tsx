@@ -40,7 +40,7 @@ const AssociativeRelations = ({
                 to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[related].id}`}
                 as={RouteLink}
               >
-                {translate(conceptReferencesMap[related].prefLabel)}
+                {translate(conceptReferencesMap[related].title)}
               </Link>
             }
           />

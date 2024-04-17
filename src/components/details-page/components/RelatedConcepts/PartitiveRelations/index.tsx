@@ -45,9 +45,7 @@ const PartitiveRelations = ({
                   to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[conceptReferenceUri].id}`}
                   as={RouteLink}
                 >
-                  {translate(
-                    conceptReferencesMap[conceptReferenceUri].prefLabel
-                  )}
+                  {translate(conceptReferencesMap[conceptReferenceUri].title)}
                 </Link>
               }
             />
