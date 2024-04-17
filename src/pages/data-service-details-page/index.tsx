@@ -66,14 +66,11 @@ const DataserviceDetailsPage: FC<Props> = ({
   isLoadingDataService,
   referenceData: { apispecifications },
   datasets,
-  informationModels,
   relations,
   dataServiceActions: { getDataServiceRequested: getDataService },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
-  informationModelsActions: {
-    getInformationModelsRequested: getInformationModels
-  },
+
   resourceRelationsActions: {
     getResourceRelationsRequested: getRelations,
     resetResourceRelations
@@ -117,12 +114,6 @@ const DataserviceDetailsPage: FC<Props> = ({
   }, [dataService?.id]);
 
   useEffect(() => {
-    if (dataService?.endpointDescription) {
-      getInformationModels();
-    }
-  }, [dataService?.endpointDescription?.join()]);
-
-  useEffect(() => {
     if (dataService?.uri) {
       getRelations({ relations: dataService.uri });
     }
@@ -147,6 +138,10 @@ const DataserviceDetailsPage: FC<Props> = ({
   const endpointDescriptions = dataService?.endpointDescription ?? [];
   const page = dataService?.page ?? [];
   const landingPage = dataService?.landingPage?.[0];
+  const informationModelRelations = filterRelations(
+    relations,
+    Entity.INFORMATION_MODEL
+  );
 
   const conformsTo =
     dataService?.conformsTo
@@ -358,7 +353,7 @@ const DataserviceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-        {informationModels?.length > 0 && (
+        {informationModelRelations?.length > 0 && (
           <ContentSection
             id='informationModel-relations'
             title={
@@ -369,7 +364,7 @@ const DataserviceDetailsPage: FC<Props> = ({
             boxStyle
           >
             <InlineList column>
-              {informationModels.map(
+              {informationModelRelations.map(
                 ({ id, uri, title: informationModelTitle }) =>
                   uri && (
                     <SC.Link
