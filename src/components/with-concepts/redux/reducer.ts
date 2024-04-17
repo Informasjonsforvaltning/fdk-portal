@@ -13,10 +13,8 @@ const initialState = fromJS({
   concepts: []
 });
 
-export default function reducer(
-  state: any = initialState,
-  action: Actions<typeof actions>
-) {
+export default function reducer(state: any, action: Actions<typeof actions>) {
+  state = state || initialState;
   switch (action.type) {
     case GET_CONCEPTS_REQUESTED:
       return state.set('concepts', fromJS([]));

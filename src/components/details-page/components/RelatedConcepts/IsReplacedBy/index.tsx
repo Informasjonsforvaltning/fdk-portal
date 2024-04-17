@@ -24,7 +24,7 @@ const IsReplacedBy = ({ title, isReplacedBy, conceptReferencesMap }: Props) => (
               to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
               as={RouteLink}
             >
-              {translate(conceptReferencesMap[uri].prefLabel)}
+              {translate(conceptReferencesMap[uri].title)}
             </Link>
           }
           value={`${translations.conceptReferences.isReplacedBy} ${translate(
