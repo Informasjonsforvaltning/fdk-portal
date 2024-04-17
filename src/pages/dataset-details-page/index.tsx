@@ -54,9 +54,7 @@ import {
 } from '../../components/details-page';
 import ErrorPage from '../error-page';
 import DatasetDistribution from '../../components/dataset-distribution';
-import RelationList, {
-  ItemWithRelationType
-} from '../../components/relation-list';
+import RelationList from '../../components/relation-list';
 
 import DownloadIcon from '../../images/icon-download-sm.svg';
 import EyeIcon from '../../images/icon-eye.svg';
@@ -189,18 +187,6 @@ const DatasetDetailsPage: FC<Props> = ({
     relations,
     Entity.PUBLIC_SERVICE
   );
-
-  const isDescribedAtServiceRelations = filterRelations(
-    relations,
-    Entity.PUBLIC_SERVICE,
-    'isDescribedAt'
-  );
-
-  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
-    isDescribedAtServiceRelations.map(relation => ({
-      relation,
-      relationType: translate(translations.sampleData)
-    }));
 
   const entity = Entity.DATASET;
 
@@ -877,7 +863,7 @@ const DatasetDetailsPage: FC<Props> = ({
             <RelationList
               parentIdentifier={dataset?.uri}
               datasets={datasetsRelations}
-              publicServices={publicServicesRelatedByWithRelationType}
+              publicServices={publicServicesRelations}
             />
           </ContentSection>
         )}

@@ -24,13 +24,8 @@ import {
 } from '../../constants/constants';
 
 import type { SearchObject } from '../../types';
-import { filterRelations } from '../../utils/common';
+import { filterRelations, getRelationType } from '../../utils/common';
 import { Entity } from '../../types/enums';
-
-export interface ItemWithRelationType {
-  relation: SearchObject;
-  relationType?: string;
-}
 
 interface RelationProps {
   parentIdentifier?: string;
@@ -38,8 +33,8 @@ interface RelationProps {
   dataServices?: SearchObject[];
   concepts?: SearchObject[];
   informationModels?: SearchObject[];
-  publicServices?: ItemWithRelationType[];
-  events?: ItemWithRelationType[];
+  publicServices?: SearchObject[];
+  events?: SearchObject[];
 }
 
 interface Props extends RelationProps {}
@@ -183,22 +178,15 @@ const RelationsList: FC<Props> = ({
         </SC.Banner>
 
         <SC.RelationLinks>
-          {publicServices.map(
-            ({
-              relation: { id, title, uri },
-              relationType
-            }: ItemWithRelationType) =>
-              uri && id && title ? (
-                <span>
-                  <Link
-                    as={RouterLink}
-                    to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}
-                  >
-                    {translate(title ?? uri)}
-                  </Link>
-                  ({relationType})
-                </span>
-              ) : null
+          {publicServices.map(({ id, title, uri }) =>
+            uri && id && title ? (
+              <span>
+                <Link as={RouterLink} to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}>
+                  {translate(title ?? uri)}
+                </Link>
+                ({getRelationType(uri, publicServices)})
+              </span>
+            ) : null
           )}
         </SC.RelationLinks>
       </SC.Relation>
@@ -214,19 +202,15 @@ const RelationsList: FC<Props> = ({
         </SC.Banner>
 
         <SC.RelationLinks>
-          {events.map(
-            ({
-              relation: { id, title, uri },
-              relationType
-            }: ItemWithRelationType) =>
-              uri && id && title ? (
-                <span>
-                  <Link as={RouterLink} to={`${PATHNAME_EVENTS}/${id}`}>
-                    {translate(title ?? uri)}
-                  </Link>
-                  ({relationType})
-                </span>
-              ) : null
+          {events.map(({ id, title, uri }) =>
+            uri && id && title ? (
+              <span>
+                <Link as={RouterLink} to={`${PATHNAME_EVENTS}/${id}`}>
+                  {translate(title ?? uri)}
+                </Link>
+                ({getRelationType(uri, publicServices)})
+              </span>
+            ) : null
           )}
         </SC.RelationLinks>
       </SC.Relation>
