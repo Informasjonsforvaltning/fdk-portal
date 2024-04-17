@@ -43,7 +43,7 @@ const SeeAlso = ({
               to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[uri].id}`}
               as={RouteLink}
             >
-              {translate(conceptReferencesMap[uri].prefLabel)}
+              {translate(conceptReferencesMap[uri].title)}
               {hasExpired && <>&nbsp;({translations.validity.expired})</>}
               {!hasExpired && willBeValid && (
                 <>&nbsp;({translations.validity.willBeValid})</>
