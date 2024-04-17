@@ -1,9 +1,7 @@
 import React from 'react';
 import { ContentSection } from '../../../components/details-page';
 import translations from '../../../lib/localization';
-import RelationList, {
-  ItemWithRelationType
-} from '../../../components/relation-list';
+import RelationList from '../../../components/relation-list';
 import { SearchObject } from '../../../types';
 
 interface Props {
@@ -20,27 +18,19 @@ const RelationsList = ({
   datasetsRelations,
   publicServicesRelations,
   informationModelsRelations
-}: Props) => {
-  const publicServicesRelationsWithRelationType: ItemWithRelationType[] =
-    publicServicesRelations.map(relation => ({
-      relation,
-      relationType: translations.sampleData
-    }));
-
-  return (
-    <ContentSection
-      id='relationList'
-      title={translations.detailsPage.relationList.title.concept}
-    >
-      <RelationList
-        parentIdentifier={identifier}
-        concepts={conceptsRelations}
-        datasets={datasetsRelations}
-        publicServices={publicServicesRelationsWithRelationType}
-        informationModels={informationModelsRelations}
-      />
-    </ContentSection>
-  );
-};
+}: Props) => (
+  <ContentSection
+    id='relationList'
+    title={translations.detailsPage.relationList.title.concept}
+  >
+    <RelationList
+      parentIdentifier={identifier}
+      concepts={conceptsRelations}
+      datasets={datasetsRelations}
+      publicServices={publicServicesRelations}
+      informationModels={informationModelsRelations}
+    />
+  </ContentSection>
+);
 
 export default RelationsList;

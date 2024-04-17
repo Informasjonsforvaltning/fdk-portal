@@ -24,9 +24,7 @@ import {
   KeyValueListItem
 } from '../../components/details-page';
 import ErrorPage from '../error-page';
-import RelationList, {
-  ItemWithRelationType
-} from '../../components/relation-list';
+import RelationList from '../../components/relation-list';
 
 import type { Theme } from '../../types';
 import { Entity, SpecializedEventType } from '../../types/enums';
@@ -100,12 +98,6 @@ const EventDetailsPage: FC<Props> = ({
     relations,
     Entity.PUBLIC_SERVICE
   );
-
-  const publicServicesRelationsWithRelationType: ItemWithRelationType[] =
-    publicServicesRelations.map(relation => ({
-      relation,
-      relationType: translations.relatedBy
-    }));
 
   const title = event?.title ?? {};
   const description = translate(event?.description);
@@ -219,7 +211,7 @@ const EventDetailsPage: FC<Props> = ({
             >
               <RelationList
                 parentIdentifier={event.uri}
-                publicServices={publicServicesRelationsWithRelationType}
+                publicServices={publicServicesRelations}
               />
             </ContentSection>
           )}

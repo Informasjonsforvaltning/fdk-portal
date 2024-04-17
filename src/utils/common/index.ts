@@ -140,7 +140,7 @@ export const paramsToSearchBody = ({
   ...(!!getConfig().filterTransportDatasets && { profile: 'TRANSPORT' })
 });
 
-const getRelationType = (
+export const getRelationType = (
   uri: string,
   relations?: Relation[]
 ): string | undefined => {

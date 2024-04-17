@@ -43,9 +43,7 @@ import {
   KeyValueListItem
 } from '../../components/details-page';
 import ErrorPage from '../error-page';
-import RelationList, {
-  ItemWithRelationType
-} from '../../components/relation-list';
+import RelationList from '../../components/relation-list';
 
 import type { TextLanguage, Theme } from '../../types';
 import { Entity, Vocabulary } from '../../types/enums';
@@ -250,12 +248,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
   );
 
   const eventRelations = filterRelations(relations, Entity.EVENT);
-  const eventsRelationsWithRelationType: ItemWithRelationType[] = relations.map(
-    eventRelation => ({
-      relation: eventRelation,
-      relationType: translations.relatedBy
-    })
-  );
 
   const publicServicesRequiredBy = filterRelations(
     relations,
@@ -270,18 +262,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
     'relation',
     publicService?.uri
   );
-
-  const publicServicesRequiredByWithRelationType: ItemWithRelationType[] =
-    publicServicesRequiredBy.map(publicServiceRelation => ({
-      relation: publicServiceRelation,
-      relationType: translations.requiredBy
-    }));
-
-  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
-    publicServicesRelatedBy.map(publicServiceRelation => ({
-      relation: publicServiceRelation,
-      relationType: translations.relatedBy
-    }));
 
   const getLink = (
     uri: string,
@@ -1288,10 +1268,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               <RelationList
                 parentIdentifier={publicService.uri}
-                events={eventsRelationsWithRelationType}
+                events={eventRelations}
                 publicServices={[
-                  ...publicServicesRequiredByWithRelationType,
-                  ...publicServicesRelatedByWithRelationType
+                  ...publicServicesRelatedBy,
+                  ...publicServicesRequiredBy
                 ]}
               />
             </ContentSection>
