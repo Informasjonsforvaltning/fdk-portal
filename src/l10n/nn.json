@@ -1009,20 +1009,20 @@
       "showAllMentions": "Vis alle omtaler i",
       "many": "mange",
       "empty": {
-        "dataset": "Dette datasettet er ikkje omtalt i ",
-        "dataservice": "Denne datatenesta er ikkje omtalt i ",
-        "concept": "Dette omgrepet er ikkje omtalt i ",
-        "informationmodel": "Denne informasjonsmodellen er ikkje omtalt i ",
-        "public_service": "Denne tenesta er ikkje omtalt i ",
-        "event": "Denne hendinga er ikkje omtalt i "
+        "DATASET": "Dette datasettet er ikkje omtalt i ",
+        "DATA_SERVICE": "Denne datatenesta er ikkje omtalt i ",
+        "CONCEPT": "Dette omgrepet er ikkje omtalt i ",
+        "INFORMATION_MODEL": "Denne informasjonsmodellen er ikkje omtalt i ",
+        "SERVICE": "Denne tenesta er ikkje omtalt i ",
+        "EVENT": "Denne hendinga er ikkje omtalt i "
       },
       "content": {
-        "dataset": "Dette datasettet er omtalt i ",
-        "dataservice": "Denne datatenesta er omtalt i ",
-        "concept": "Dette omgrepet er omtalt i ",
-        "informationmodel": "Denne informasjonsmodellen er omtalt i ",
-        "public_service": "Denne tenesta er omtalt i ",
-        "event": "Denne hendinga er omtalt i "
+        "DATASET": "Dette datasettet er omtalt i ",
+        "DATA_SERVICE": "Denne datatenesta er omtalt i ",
+        "CONCEPT": "Dette omgrepet er omtalt i ",
+        "INFORMATION_MODEL": "Denne informasjonsmodellen er omtalt i ",
+        "SERVICE": "Denne tenesta er omtalt i ",
+        "EVENT": "Denne hendinga er omtalt i "
       }
     },
     "timeago": {
@@ -1051,12 +1051,12 @@
       "sectionTitle": "Har du spørsmål eller kommentarar til {entityType}?",
       "session": "Du er innlogga som ",
       "entityTypes": {
-        "dataset": "datasettet",
-        "dataservice": "datatenesta",
-        "concept": "omgrepet",
-        "informationmodel": "informasjonsmodellen",
-        "public_service": "den offentlege tenesta",
-        "event": "hendinga"
+        "DATASET": "datasettet",
+        "DATA_SERVICE": "datatenesta",
+        "CONCEPT": "omgrepet",
+        "INFORMATION_MODEL": "informasjonsmodellen",
+        "SERVICE": "den offentlege tenesta",
+        "EVENT": "hendinga"
       },
       "ingress": "Kommentaren blir synleg for andre brukarar og blir svara på her.",
       "noCommunityUser": "Lag ein konto i Datalandsbyen for å kommentere",
