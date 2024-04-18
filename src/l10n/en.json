@@ -649,12 +649,12 @@
     "banner": {
       "lastPublishedInfo": "{entity} published in Felles datakatalog on {lastPublished}",
       "entity": {
-        "dataset": "Dataset description",
-        "dataservice": "Data service description",
-        "concept": "Concept description",
-        "infomod": "Information model description",
-        "publicservice": "Public service description",
-        "event": "Event description"
+        "DATASET": "Dataset description",
+        "DATA_SERVICE": "Data service description",
+        "CONCEPT": "Concept description",
+        "INFORMATION_MODEL": "Information model description",
+        "SERVICE": "Public service description",
+        "EVENT": "Event description"
       }
     },
     "owner": "Owner: {publisher}",

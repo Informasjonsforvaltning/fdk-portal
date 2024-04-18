@@ -1050,12 +1050,12 @@
       "sectionTitle": "Har du spørsmål eller kommentarer til {entityType}?",
       "session": "Du er innlogget som ",
       "entityTypes": {
-        "dataset": "datasettet",
-        "dataservice": "datatjenesten",
-        "concept": "begrepet",
-        "informationmodel": "informasjonsmodellen",
-        "public_service": "den offentlige tjenesten",
-        "event": "hendelsen"
+        "DATASET": "datasettet",
+        "DATA_SERVICE": "datatjenesten",
+        "CONCEPT": "begrepet",
+        "INFORMATION_MODEL": "informasjonsmodellen",
+        "SERVICE": "den offentlige tjenesten",
+        "EVENT": "hendelsen"
       },
       "ingress": "Kommentaren blir synlig for andre brukere og besvares her.",
       "noCommunityUser": "Lag en konto på Datalandsbyen for å kommentere",
