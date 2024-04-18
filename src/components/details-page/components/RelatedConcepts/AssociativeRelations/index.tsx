@@ -19,9 +19,13 @@ const AssociativeRelations = ({
   <>
     {associativeRelations.map(
       ({ description: associativeDescription, related = '' }) =>
-        conceptReferencesMap?.[related] && (
+        related && (
           <KeyValueListItem
-            key={conceptReferencesMap[related].id}
+            key={
+              conceptReferencesMap?.[related]
+                ? conceptReferencesMap[related].id
+                : `related-${related}`
+            }
             property={
               <div>
                 <div>
@@ -36,12 +40,16 @@ const AssociativeRelations = ({
               </div>
             }
             value={
-              <Link
-                to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[related].id}`}
-                as={RouteLink}
-              >
-                {translate(conceptReferencesMap[related].title)}
-              </Link>
+              conceptReferencesMap[related] ? (
+                <Link
+                  to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[related].id}`}
+                  as={RouteLink}
+                >
+                  {translate(conceptReferencesMap[related].title)}
+                </Link>
+              ) : (
+                <p>{related}</p>
+              )
             }
           />
         )
