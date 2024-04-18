@@ -654,12 +654,12 @@
     "banner": {
       "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
       "entity": {
-        "dataset": "Datasettbeskrivelse",
-        "dataservice": "Datatjenestebeskrivelse",
-        "concept": "Begrepsbeskrivelse",
-        "infomod": "Informasjonsmodellbeskrivelse",
-        "publicservice": "Tjenestebeskrivelse",
-        "event": "Hendelsesbeskrivelse"
+        "DATASET": "Datasettbeskrivelse",
+        "DATA_SERVICE": "Datatjenestebeskrivelse",
+        "CONCEPT": "Begrepsbeskrivelse",
+        "INFORMATION_MODEL": "Informasjonsmodellbeskrivelse",
+        "SERVICE": "Tjenestebeskrivelse",
+        "EVENT": "Hendelsesbeskrivelse"
       }
     },
     "owner": "Eier: {publisher}",
@@ -1008,20 +1008,20 @@
       "showAllMentions": "Vis alle omtaler i Datalandsbyen",
       "many": "mange",
       "empty": {
-        "dataset": "Dette datasettet er ikke omtalt i ",
-        "dataservice": "Denne datatjenesten er ikke omtalt i ",
-        "concept": "Dette begrepet er ikke omtalt i ",
-        "informationmodel": "Denne informasjonsmodellen er ikke omtalt i ",
-        "public_service": "Denne tjenesten er ikke omtalt i ",
-        "event": "Denne hendelsen er ikke omtalt i "
+        "DATASET": "Dette datasettet er ikke omtalt i ",
+        "DATA_SERVICE": "Denne datatjenesten er ikke omtalt i ",
+        "CONCEPT": "Dette begrepet er ikke omtalt i ",
+        "INFORMATION_MODEL": "Denne informasjonsmodellen er ikke omtalt i ",
+        "SERVICE": "Denne tjenesten er ikke omtalt i ",
+        "EVENT": "Denne hendelsen er ikke omtalt i "
       },
       "content": {
-        "dataset": "Dette datasettet er omtalt i ",
-        "dataservice": "Denne datatjenesten er omtalt i ",
-        "concept": "Dette begrepet er omtalt i ",
-        "informationmodel": "Denne informasjonsmodellen er omtalt i ",
-        "public_service": "Denne tjenesten er omtalt i ",
-        "event": "Denne hendelsen er omtalt i "
+        "DATASET": "Dette datasettet er omtalt i ",
+        "DATA_SERVICE": "Denne datatjenesten er omtalt i ",
+        "CONCEPT": "Dette begrepet er omtalt i ",
+        "INFORMATION_MODEL": "Denne informasjonsmodellen er omtalt i ",
+        "SERVICE": "Denne tjenesten er omtalt i ",
+        "EVENT": "Denne hendelsen er omtalt i "
       }
     },
     "timeago": {
