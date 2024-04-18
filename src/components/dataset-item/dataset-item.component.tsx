@@ -14,7 +14,12 @@ import {
   SearchHitOpenData
 } from '../search-hit/search-hit';
 
-import { isEuTheme, isLosNode, parseFormats } from '../../utils/common';
+import {
+  getLastWordAfterSlash,
+  isEuTheme,
+  isLosNode,
+  parseFormats
+} from '../../utils/common';
 
 import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
 
@@ -154,7 +159,9 @@ export const DatasetItem: FC<Props> = ({
               key={`format-${format.name}-${index}`}
               to={patchSearchQuery('format', `${format.type} ${format.name}`)}
             >
-              <span>{`${format.name}`}</span>
+              <span>
+                {format.name ? `${getLastWordAfterSlash(format?.name)}` : ''}
+              </span>
             </RouteLink>
           ))}
       </SearchHitFormats>

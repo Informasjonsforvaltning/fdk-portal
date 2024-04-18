@@ -163,3 +163,11 @@ export const filterRelations = (
           !parentUri ||
           getRelationType(parentUri, relation.relations) === relationType))
   );
+
+export const getLastWordAfterSlash = (string: string): string => {
+  const parts = string.split('/').filter(part => part.trim() !== '');
+  if (parts.length === 0) {
+    return string;
+  }
+  return parts[parts.length - 1].trim();
+};
