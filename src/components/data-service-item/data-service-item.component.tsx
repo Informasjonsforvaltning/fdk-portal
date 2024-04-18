@@ -6,7 +6,7 @@ import { MediaTypeOrExtentType, SearchTypes } from '../../types/enums';
 import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
 import { SearchHit, SearchHitFormats } from '../search-hit/search-hit';
 import localization from '../../lib/localization';
-import { parseFormats } from '../../utils/common';
+import { getLastWordAfterSlash, parseFormats } from '../../utils/common';
 
 interface Props {
   dataService: Partial<SearchObject>;
@@ -38,7 +38,9 @@ export const DataServiceItem: FC<Props> = ({
                 key={`format-${format.name}-${index}`}
                 to={patchSearchQuery('format', `${format.type} ${format.name}`)}
               >
-                <span>{`${format.name}`}</span>
+                <span>
+                  {format.name ? `${getLastWordAfterSlash(format?.name)}` : ''}
+                </span>
               </RouteLink>
             ))}
         </SearchHitFormats>
