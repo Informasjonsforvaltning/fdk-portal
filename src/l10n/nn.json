@@ -654,12 +654,12 @@
     "banner": {
       "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
       "entity": {
-        "dataset": "Datasettbeskriving",
-        "dataservice": "Datatenestebeskriving",
-        "concept": "Omgrepsbeskriving",
-        "infomod": "Informasjonsmodellbeskriving",
-        "publicservice": "Tenestebeskriving",
-        "event": "Hendingsbeskriving"
+        "DATASET": "Datasettbeskriving",
+        "DATA_SERVICE": "Datatenestebeskriving",
+        "CONCEPT": "Omgrepsbeskriving",
+        "INFORMATION_MODEL": "Informasjonsmodellbeskriving",
+        "SERVICE": "Tenestebeskriving",
+        "EVENT": "Hendingsbeskriving"
       }
     },
     "owner": "Eigar: {publisher}",
