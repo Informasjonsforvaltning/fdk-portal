@@ -5,6 +5,6 @@ resources:
   - deployment.yaml
   - service.yaml
 images:
-  - name: fdk-portal-new-search
-    newName: eu.gcr.io/digdir-fdk-infra/fdk-portal-new-search
+  - name: fdk-portal
+    newName: eu.gcr.io/digdir-fdk-infra/fdk-portal
     newTag: $(GIT_COMMIT_SHA)

@@ -3,13 +3,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    fdk.service: fdk-portal-new-search
-  name: fdk-portal-new-search
+    fdk.service: fdk-portal
+  name: fdk-portal
 spec:
   selector:
-    app: fdk-portal-new-search
+    app: fdk-portal
   ports:
-    - name: "8080"
+    - name: '8080'
       protocol: TCP
       port: 8080
       targetPort: 8080
