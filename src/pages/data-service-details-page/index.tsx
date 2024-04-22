@@ -47,7 +47,7 @@ import Markdown from '../../components/markdown';
 import withResourceRelations, {
   ResourceRelationsProps
 } from '../../components/with-resource-relations';
-import { filterRelations } from '../../utils/common';
+import { filterRelations, getLastWordAfterSlash } from '../../utils/common';
 
 interface RouteParams {
   dataServiceId: string;
@@ -187,7 +187,11 @@ const DataserviceDetailsPage: FC<Props> = ({
             title={translations.detailsPage.sectionTitles.dataService.formats}
           >
             {formats
-              .map(format => format.name || format.uri)
+              .map(
+                format =>
+                  format.name ||
+                  (format?.uri && getLastWordAfterSlash(format?.uri))
+              )
               .filter(Boolean)
               .join(', ')}
           </ContentSection>
