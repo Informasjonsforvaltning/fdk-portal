@@ -64,7 +64,7 @@ export enum SortOrder {
 }
 
 export enum Filter {
-  LASTXDAYS = 'last_x_days',
+  LASTXDAYS = 'lastXDays',
   OPENDATA = 'opendata',
   ACCESSRIGHTS = 'accessrights',
   PROVENANCE = 'provenance',
