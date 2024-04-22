@@ -11,6 +11,7 @@ import { FilterOption } from '../filter-option/filter-option.component';
 import './filter-box.scss';
 
 import { SelectOption } from '../../types';
+import { getLastWordAfterSlash } from '../../utils/common';
 
 interface Props {
   htmlKey?: number;
@@ -97,7 +98,8 @@ export class FilterBox extends React.Component<Props, State> {
       data.reduce((results: Record<string, BucketItem[]>, item) => {
         const group = this._getGroup(item, groupByPrefix);
         const label = item.key.replace(new RegExp(`${group}\\s?`), '');
-        item.label = label || localization.facet.formatType.UNKNOWN;
+        item.label =
+          getLastWordAfterSlash(label) || localization.facet.formatType.UNKNOWN;
         results[group] = results[group] || [];
         results[group].push(item);
         return results;
@@ -196,7 +198,9 @@ export class FilterBox extends React.Component<Props, State> {
           const label = item.key.replace(new RegExp(`${group}\\s?`), '');
           return {
             value: item.key,
-            label: label || localization.facet.formatType.UNKNOWN
+            label:
+              getLastWordAfterSlash(label) ||
+              localization.facet.formatType.UNKNOWN
           };
         })
         .sort((a: SelectOption, b: SelectOption) =>
