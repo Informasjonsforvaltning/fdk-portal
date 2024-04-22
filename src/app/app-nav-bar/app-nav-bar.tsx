@@ -28,7 +28,8 @@ import {
   PATHNAME_TRANSPORT_ITS,
   PATHNAME_TRANSPORT_ADD,
   PATHNAME_TRANSPORT_NEWS,
-  PATHNAME_TRANSPORT_COMPLIANCE
+  PATHNAME_TRANSPORT_COMPLIANCE,
+  PATHNAME_DATA_HUNTER
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
@@ -173,6 +174,9 @@ const fdkItems = () => [
       </SC.ListItem>
       <SC.ListItem key={localization.menu.requests}>
         <Link href={PATHNAME_REQUESTS}>{localization.menu.requests}</Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.datahunter}>
+        <Link href={PATHNAME_DATA_HUNTER}>{localization.menu.datahunter}</Link>
       </SC.ListItem>
     </DropdownMenu>
   </SC.ListItem>,

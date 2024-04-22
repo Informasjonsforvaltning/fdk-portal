@@ -28,6 +28,7 @@ export const PATHNAME_GUIDANCE_METADATA = '/guidance/metadata';
 export const PATHNAME_ORGANIZATIONS = '/organizations';
 export const PATHNAME_PUBLISHING = '/publishing';
 export const PATHNAME_SPARQL = '/sparql';
+export const PATHNAME_DATA_HUNTER = '/forms/data-hunter';
 
 export const PATHNAME_COMMUNITY_COMMENTS = '/category/12/kommentartråder';
 export const PATHNAME_AI = '/kunstig-intelligens';
