@@ -4,6 +4,7 @@ import { settingsReducer } from './modules/settings';
 import { catalogsReducer } from './modules/catalogs';
 import { referenceDataReducer } from './modules/referenceData';
 import { conceptsCompareReducer } from './modules/conceptsCompare';
+import { fullConceptsCompareReducer } from './modules/fullConceptsCompare';
 import { datasetsReducer } from './modules/datasets';
 import { dataServicesReducer } from './modules/dataservices';
 import { conceptReducer } from './modules/concepts';
@@ -36,6 +37,7 @@ import DatasetPreviewReducer from '../components/with-dataset-preview/redux/redu
 import SuggestionsReducer from '../components/with-suggestions/redux/reducer';
 import AiProjectsReducer from '../components/with-ai-projects/redux/reducer';
 import { commentsApi } from '../api/user-feedback-api/comments';
+import ResourceRelationsReducer from '../components/with-resource-relations/redux/reducer';
 
 export const rootReducer = combineReducers({
   publishers: publishersReducer,
@@ -43,11 +45,13 @@ export const rootReducer = combineReducers({
   catalogs: catalogsReducer,
   referenceData: referenceDataReducer,
   conceptsCompare: conceptsCompareReducer,
+  fullConceptsCompare: fullConceptsCompareReducer,
   datasets: datasetsReducer,
   dataServices: dataServicesReducer,
   concepts: conceptReducer,
   informationModels: informationModelsReducer,
   DatasetReducer,
+  ResourceRelationsReducer,
   ReferenceDataReducer,
   ConceptsReducer,
   ConceptReducer,

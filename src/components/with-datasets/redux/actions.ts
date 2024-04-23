@@ -2,26 +2,15 @@ import {
   GET_DATASETS_REQUESTED,
   GET_DATASETS_SUCCEEDED,
   GET_DATASETS_FAILED,
-  RESET_DATASETS,
-  GET_DATASETS_RELATIONS_REQUESTED,
-  GET_DATASETS_RELATIONS_SUCCEEDED,
-  GET_DATASETS_RELATIONS_FAILED,
-  RESET_DATASETS_RELATIONS
+  RESET_DATASETS
 } from './action-types';
 
-import type { Dataset } from '../../../types';
+import type { SearchObject } from '../../../types';
 
 interface GetDatasetsParams {
-  uris?: string[];
+  uri?: string[];
   size?: number;
   orgPath?: string;
-  subject?: string;
-  info_model?: string;
-  referencesSource?: string;
-  accessService?: string;
-  conformsTo?: string;
-  relatedToInfoModel?: string;
-  nap?: boolean;
 }
 
 export function getDatasetsRequested(params?: GetDatasetsParams) {
@@ -33,7 +22,7 @@ export function getDatasetsRequested(params?: GetDatasetsParams) {
   };
 }
 
-export function getDatasetsSucceeded(datasets: Dataset[]) {
+export function getDatasetsSucceeded(datasets: SearchObject[]) {
   return {
     type: GET_DATASETS_SUCCEEDED,
     payload: {
@@ -54,38 +43,5 @@ export function getDatasetsFailed(message: string) {
 export function resetDatasets() {
   return {
     type: RESET_DATASETS
-  };
-}
-
-export function getDatasetsRelationsRequested(params?: GetDatasetsParams) {
-  return {
-    type: GET_DATASETS_RELATIONS_REQUESTED,
-    payload: {
-      params
-    }
-  };
-}
-
-export function getDatasetsRelationsSucceeded(datasets: Dataset[]) {
-  return {
-    type: GET_DATASETS_RELATIONS_SUCCEEDED,
-    payload: {
-      datasets
-    }
-  };
-}
-
-export function getDatasetsRelationsFailed(message: string) {
-  return {
-    type: GET_DATASETS_RELATIONS_FAILED,
-    payload: {
-      message
-    }
-  };
-}
-
-export function resetDatasetsRelations() {
-  return {
-    type: RESET_DATASETS_RELATIONS
   };
 }

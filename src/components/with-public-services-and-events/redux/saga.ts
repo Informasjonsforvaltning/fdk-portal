@@ -7,23 +7,13 @@ import {
   extractPublicServicesAndEvents,
   extractPublicServicesAndEventsAggregations,
   extractPublicServicesAndEventsPage,
-  paramsToSearchBody,
   searchPublicServicesAndEvents
-} from '../../../api/search-fulltext-api/public-services-and-events';
+} from '../../../api/search-api/public-services-and-events';
+import { paramsToSearchBody } from '../../../utils/common';
 
 function* getPublicServicesAndEventsRequested({
   payload: {
-    params: {
-      page,
-      sortfield,
-      size,
-      q,
-      orgPath,
-      event,
-      keywords,
-      publicServiceAndEventIdentifiers,
-      eventType
-    }
+    params: { page, size, q, sortfield, orgPath, keyword, uri }
   }
 }: ReturnType<typeof actions.getPublicServicesAndEventsRequested>) {
   try {
@@ -31,14 +21,12 @@ function* getPublicServicesAndEventsRequested({
       searchPublicServicesAndEvents,
       paramsToSearchBody({
         page,
-        sortfield,
         size,
         q,
+        sortfield: sortfield ?? undefined,
         orgPath,
-        event,
-        keywords,
-        publicServiceAndEventIdentifiers,
-        eventType
+        keyword,
+        uri
       })
     );
 

@@ -33,7 +33,8 @@ import withKartverket, {
 } from '../../components/with-kartverket';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   CatalogTypeBox,
   ContentSection,
   InlineList,
@@ -42,9 +43,7 @@ import DetailsPage, {
   KeyValueListItem
 } from '../../components/details-page';
 import ErrorPage from '../error-page';
-import RelationList, {
-  ItemWithRelationType
-} from '../../components/relation-list';
+import RelationList from '../../components/relation-list';
 
 import type { TextLanguage, Theme } from '../../types';
 import { Entity, Vocabulary } from '../../types/enums';
@@ -58,6 +57,10 @@ import {
 } from '../../constants/constants';
 import SC from './styled';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations } from '../../utils/common';
 
 interface RouteParams {
   publicServiceId: string;
@@ -70,6 +73,7 @@ interface Props
     PublicServicesProps,
     EventsProps,
     KartverketProps,
+    ResourceRelationsProps,
     RouteComponentProps<RouteParams> {}
 
 const PublicServiceDetailsPage: FC<Props> = ({
@@ -79,28 +83,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
   datasets,
   publicService,
   publicServices,
-  publicServicesRequiredBy,
-  publicServicesRelatedBy,
-  eventsRelations,
+  relations,
   publicServiceActions: {
     getPublicServiceRequested: getPublicService,
     resetPublicService
   },
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
-    resetPublicServices,
-    getPublicServicesRequiredByRequested: getPublicServicesRequiredBy,
-    resetPublicServicesRequiredBy,
-    getPublicServicesRelatedByRequested: getPublicServicesRelatedBy,
-    resetPublicServicesRelatedBy
+    resetPublicServices
   },
   conceptsActions: { getConceptsRequested: getConcepts },
   datasetsActions: { getDatasetsRequested: getDatasets },
-  eventsActions: {
-    getEventsRequested: getEvents,
-    resetEvents,
-    getEventsRelationsRequested: getEventsRelations,
-    resetEventsRelations
+  eventsActions: { getEventsRequested: getEvents, resetEvents },
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   administrativeUnits,
   kartverketActions: {
@@ -130,17 +127,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
       setIsMounted(false);
       resetPublicService();
       resetPublicServices();
-      resetPublicServicesRequiredBy();
-      resetPublicServicesRelatedBy();
     };
   }, [publicServiceId]);
-
-  useEffect(() => {
-    if (publicService?.uri) {
-      getPublicServicesRequiredBy({ requiredByServiceUri: publicService.uri });
-      getPublicServicesRelatedBy({ relatedByServiceUri: publicService.uri });
-    }
-  }, [publicService?.uri]);
 
   const title = publicService?.title ?? {};
   const description = translate(publicService?.description);
@@ -194,7 +182,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   ).filter(Boolean);
 
   const conceptsMap = concepts?.reduce(
-    (previous, current) => ({ ...previous, [current.identifier]: current }),
+    (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, any>
   );
 
@@ -210,25 +198,31 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (publicServiceIdentifiers.length > 0) {
-      getPublicServices({ publicServiceIdentifiers, size: 1000 });
+      getPublicServices({
+        uri: publicServiceIdentifiers,
+        size: publicServiceIdentifiers.length
+      });
     }
   }, [publicServiceIdentifiers.join()]);
 
   useEffect(() => {
     if (conceptsIdentifiers.length > 0) {
-      getConcepts({ identifiers: conceptsIdentifiers, size: 1000 });
+      getConcepts({
+        uri: conceptsIdentifiers,
+        size: conceptsIdentifiers.length
+      });
     }
   }, [conceptsIdentifiers.join()]);
 
   useEffect(() => {
     if (datasetsUris.length > 0) {
-      getDatasets({ uris: datasetsUris, size: 1000 });
+      getDatasets({ uri: datasetsUris, size: datasetsUris.length });
     }
   }, [datasetsUris.join()]);
 
   useEffect(() => {
     if (isGroupedBy.length > 0) {
-      getEvents({ uris: isGroupedBy });
+      getEvents({ uri: isGroupedBy, size: isGroupedBy.length });
     }
     return () => {
       resetEvents();
@@ -237,13 +231,13 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (publicService?.uri) {
-      getEventsRelations({ relation: publicService.uri });
+      getRelations({ relations: publicService.uri });
     }
     if (spatial.length > 0) {
       listAdministrativeUnits(spatial);
     }
     return () => {
-      resetEventsRelations();
+      resetResourceRelations();
       resetAdministrativeUnits();
     };
   }, [publicService?.uri]);
@@ -253,23 +247,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
     {} as Record<string, any>
   );
 
-  const eventsRelationsWithRelationType: ItemWithRelationType[] =
-    eventsRelations.map(eventRelation => ({
-      relation: eventRelation,
-      relationType: translations.relatedBy
-    }));
+  const eventRelations = filterRelations(relations, Entity.EVENT);
 
-  const publicServicesRequiredByWithRelationType: ItemWithRelationType[] =
-    publicServicesRequiredBy.map(publicServiceRelation => ({
-      relation: publicServiceRelation,
-      relationType: translations.requiredBy
-    }));
+  const publicServicesRequiredBy = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE,
+    'requires',
+    publicService?.uri
+  );
 
-  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
-    publicServicesRelatedBy.map(publicServiceRelation => ({
-      relation: publicServiceRelation,
-      relationType: translations.relatedBy
-    }));
+  const publicServicesRelatedBy = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE,
+    'relation',
+    publicService?.uri
+  );
 
   const getLink = (
     uri: string,
@@ -1227,7 +1219,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 {keywords.map((keyword, index) => (
                   <Link
                     as={RouterLink}
-                    to={`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}?keywords=${encodeURIComponent(
+                    to={`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}?q=${encodeURIComponent(
                       keyword ?? ''
                     )}`}
                     key={`${keyword}-${index}`}
@@ -1267,7 +1259,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
               </List>
             </ContentSection>
           )}
-          {(eventsRelations.length > 0 ||
+          {(eventRelations.length > 0 ||
             publicServicesRequiredBy.length > 0 ||
             publicServicesRelatedBy.length > 0) && (
             <ContentSection
@@ -1276,10 +1268,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               <RelationList
                 parentIdentifier={publicService.uri}
-                events={eventsRelationsWithRelationType}
+                events={eventRelations}
                 publicServices={[
-                  ...publicServicesRequiredByWithRelationType,
-                  ...publicServicesRelatedByWithRelationType
+                  ...publicServicesRelatedBy,
+                  ...publicServicesRequiredBy
                 ]}
               />
             </ContentSection>
@@ -1387,5 +1379,6 @@ export default compose(
   withPublicServices,
   withEvents,
   withKartverket,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(PublicServiceDetailsPage);

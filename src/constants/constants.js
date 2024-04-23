@@ -2,13 +2,14 @@ export const PATHNAME_MAIN_PAGE = '/';
 export const PATHNAME_SEARCH = '/search-all';
 export const PATHNAME_DATASETS = '/datasets';
 export const PATHNAME_DATASET_DETAILS = '/datasets';
-export const PATHNAME_DATA_SERVICES = '/dataservices';
+export const PATHNAME_DATA_SERVICES = '/data-services';
 export const PATHNAME_CONCEPTS = '/concepts';
 export const PATHNAME_CONCEPTS_COMPARE = '/compare';
-export const PATHNAME_INFORMATIONMODELS = '/informationmodels';
+export const PATHNAME_INFORMATIONMODELS = '/information-models';
 export const PATHNAME_PUBLIC_SERVICES_AND_EVENTS =
   '/public-services-and-events';
 export const PATHNAME_PUBLIC_SERVICES = '/public-services';
+export const PATHNAME_SERVICES = '/services';
 export const PATHNAME_EVENTS = '/events';
 export const PATHNAME_REPORTS = '/reports';
 export const PATHNAME_ABOUT = '/about';

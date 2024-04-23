@@ -2,7 +2,7 @@ import React, { FC, memo } from 'react';
 import capitalize from 'lodash/capitalize';
 
 import SC from './styled';
-import { Concept } from '../../../types';
+import { Concept, SearchObject } from '../../../types';
 import {
   PATHNAME_CONCEPTS,
   PATHNAME_CONCEPTS_COMPARE
@@ -27,17 +27,17 @@ const CompareList: FC<Props> = ({
   const conceptIdsArray: string[] = [];
   const renderCompareConceptItems = (items: Partial<Concept>[]) =>
     Object.keys(items).map((el: any) => {
-      const { id, uri, prefLabel, publisher }: Partial<Concept> = items[el];
+      const { id, uri, title, organization }: Partial<SearchObject> = items[el];
       if (id && uri) {
         conceptIdsArray.push(id);
         return (
           <CompareTerms
             key={uri}
             uri={id}
-            prefLabel={prefLabel}
+            title={title}
             creator={
-              getTranslateText(publisher?.prefLabel) ??
-              capitalize(translate(publisher?.name))
+              getTranslateText(organization?.prefLabel) ??
+              capitalize(translate(organization?.name))
             }
             onDeleteTerm={removeConcept}
           />

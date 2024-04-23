@@ -14,27 +14,27 @@ import EventItem from '../event-item';
 import withErrorBoundary from '../with-error-boundary';
 import ErrorPage from '../../pages/error-page';
 
-import type { Entity as EntityType, Concept } from '../../types';
+import type { Concept, SearchObject } from '../../types';
 import { Entity } from '../../types/enums';
 
 interface ExternalProps {
-  entities: Partial<EntityType>[];
+  entities: Partial<SearchObject>[];
   compareConceptList?: Concept[];
-  addConcept?: (concept: Partial<Concept>) => void;
+  addConcept?: (concept: Partial<SearchObject>) => void;
   removeConcept?: (id?: string) => void;
 }
 
 interface Props extends ExternalProps {}
 
 const renderEntity = (
-  entity: Partial<EntityType>,
+  entity: Partial<SearchObject>,
   {
     compareConceptList,
     addConcept,
     removeConcept
   }: Pick<Props, 'compareConceptList' | 'addConcept' | 'removeConcept'>
 ) => {
-  switch (entity.type) {
+  switch (entity.searchType) {
     case Entity.DATASET:
       return (
         <ThemeProvider
@@ -131,7 +131,7 @@ const SearchEntities: FC<Props> = ({
 }) =>
   Array.isArray(entities) ? (
     <div>
-      {entities.map(entity =>
+      {entities?.map(entity =>
         renderEntity(entity, {
           compareConceptList,
           addConcept,

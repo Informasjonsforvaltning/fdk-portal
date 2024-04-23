@@ -29,7 +29,8 @@ import withInformationModels, {
 } from '../../components/with-information-models';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   ContentSection,
   KeyValueList,
   KeyValueListItem,
@@ -43,6 +44,10 @@ import SC from './styled';
 import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations, getLastWordAfterSlash } from '../../utils/common';
 
 interface RouteParams {
   dataServiceId: string;
@@ -53,6 +58,7 @@ interface Props
     ReferenceDataProps,
     DatasetsProps,
     InformationModelsProps,
+    ResourceRelationsProps,
     RouteComponentProps<RouteParams> {}
 
 const DataserviceDetailsPage: FC<Props> = ({
@@ -60,18 +66,14 @@ const DataserviceDetailsPage: FC<Props> = ({
   isLoadingDataService,
   referenceData: { apispecifications },
   datasets,
-  informationModels,
-  datasetsRelations,
+  relations,
   dataServiceActions: { getDataServiceRequested: getDataService },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  datasetsActions: {
-    getDatasetsRequested: getDatasets,
-    getDatasetsRelationsRequested: getDatasetsRelations,
-    resetDatasets,
-    resetDatasetsRelations
-  },
-  informationModelsActions: {
-    getInformationModelsRequested: getInformationModels
+  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
+
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   match: {
     params: { dataServiceId }
@@ -100,7 +102,10 @@ const DataserviceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (dataService?.servesDataset && dataService?.servesDataset.length > 0) {
-      getDatasets({ uris: dataService.servesDataset, size: 1000 });
+      getDatasets({
+        uri: dataService.servesDataset,
+        size: dataService.servesDataset.length
+      });
     }
 
     return () => {
@@ -109,19 +114,11 @@ const DataserviceDetailsPage: FC<Props> = ({
   }, [dataService?.id]);
 
   useEffect(() => {
-    if (dataService?.endpointDescription) {
-      getInformationModels({
-        hasFormat: dataService.endpointDescription
-      });
-    }
-  }, [dataService?.endpointDescription?.join()]);
-
-  useEffect(() => {
     if (dataService?.uri) {
-      getDatasetsRelations({ referencesSource: dataService.uri });
+      getRelations({ relations: dataService.uri });
     }
     return () => {
-      resetDatasetsRelations();
+      resetResourceRelations();
     };
   }, [dataService?.uri]);
 
@@ -141,6 +138,10 @@ const DataserviceDetailsPage: FC<Props> = ({
   const endpointDescriptions = dataService?.endpointDescription ?? [];
   const page = dataService?.page ?? [];
   const landingPage = dataService?.landingPage?.[0];
+  const informationModelRelations = filterRelations(
+    relations,
+    Entity.INFORMATION_MODEL
+  );
 
   const conformsTo =
     dataService?.conformsTo
@@ -185,7 +186,14 @@ const DataserviceDetailsPage: FC<Props> = ({
             id='formats'
             title={translations.detailsPage.sectionTitles.dataService.formats}
           >
-            {formats.map(format => format.name || format.code).join(', ')}
+            {formats
+              .map(
+                format =>
+                  format.name ||
+                  (format?.uri && getLastWordAfterSlash(format?.uri))
+              )
+              .filter(Boolean)
+              .join(', ')}
           </ContentSection>
         )}
         {(endpointUrls.length > 0 ||
@@ -284,7 +292,7 @@ const DataserviceDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
-        {datasetsRelations.length > 0 && (
+        {relations.length > 0 && (
           <ContentSection
             id='relationList'
             title={translations.detailsPage.relationList.title.dataservice}
@@ -293,7 +301,7 @@ const DataserviceDetailsPage: FC<Props> = ({
           >
             <RelationList
               parentIdentifier={dataService?.uri}
-              datasets={datasetsRelations}
+              datasets={filterRelations(relations, Entity.DATASET)}
             />
           </ContentSection>
         )}
@@ -349,7 +357,7 @@ const DataserviceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-        {informationModels?.length > 0 && (
+        {informationModelRelations?.length > 0 && (
           <ContentSection
             id='informationModel-relations'
             title={
@@ -360,7 +368,7 @@ const DataserviceDetailsPage: FC<Props> = ({
             boxStyle
           >
             <InlineList column>
-              {informationModels.map(
+              {informationModelRelations.map(
                 ({ id, uri, title: informationModelTitle }) =>
                   uri && (
                     <SC.Link
@@ -388,5 +396,6 @@ export default compose<FC>(
   withReferenceData,
   withDatasets,
   withInformationModels,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(DataserviceDetailsPage);

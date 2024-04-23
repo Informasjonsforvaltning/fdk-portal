@@ -33,7 +33,8 @@ import withDataServices, {
 } from '../../components/with-data-services';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   ContentSection,
   InlineList,
   KeyValueList,
@@ -47,8 +48,11 @@ import SC from './styled';
 
 import type { InformationModel } from '../../types';
 import { Entity, DataFormat } from '../../types/enums';
-import { getConfig } from '../../config';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations } from '../../utils/common';
 
 interface RouteParams {
   informationModelId: string;
@@ -60,6 +64,7 @@ interface Props
     InformationModelsProps,
     RouteComponentProps<RouteParams>,
     DatasetProps,
+    ResourceRelationsProps,
     DataServicesProps {}
 
 const InformationModelDetailsPage: FC<Props> = ({
@@ -69,9 +74,7 @@ const InformationModelDetailsPage: FC<Props> = ({
   informationModels,
   isLoadingInformationModel,
   isLoadingInformationModelRdfRepresentations,
-  datasetsRelations,
-  dataServicesRelations,
-  informationModelsRelations,
+  relations,
   informationModelActions: {
     getInformationModelRequested: getInformationModel,
     getInformationModelRdfRepresentationsRequested:
@@ -80,17 +83,11 @@ const InformationModelDetailsPage: FC<Props> = ({
   },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
   informationModelsActions: {
-    getInformationModelsRequested: getInformationModels,
-    getInformationModelsRelationsRequested: getInformationmodelsRelations,
-    resetInformationModelsRelations
+    getInformationModelsRequested: getInformationModels
   },
-  datasetsActions: {
-    getDatasetsRelationsRequested: getDatasetsRelations,
-    resetDatasetsRelations
-  },
-  dataServicesActions: {
-    getDataServicesRelationsRequested: getDataServicesRelations,
-    resetDataServicesRelations
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   match: {
     params: { informationModelId }
@@ -204,48 +201,35 @@ const InformationModelDetailsPage: FC<Props> = ({
   useEffect(() => {
     if (containedSubjects.length + informationModelSubjects.length > 0) {
       getConcepts({
-        identifiers: [
-          ...containedSubjects,
-          ...informationModelSubjects
-        ] as string[],
-        size: 1000
+        uri: [...containedSubjects, ...informationModelSubjects] as string[],
+        size: containedSubjects.length + informationModelSubjects.length
       });
     }
   }, [[...containedSubjects, ...informationModelSubjects].join()]);
   useEffect(() => {
     if (informationModelIdentifiers.length > 0) {
-      getInformationModels({ informationModelIdentifiers, size: 4 });
+      getInformationModels({
+        uri: informationModelIdentifiers,
+        size: informationModelIdentifiers.length
+      });
     }
   }, [informationModelIdentifiers.join()]);
 
   useEffect(() => {
-    const formats =
-      informationModel?.hasFormat?.reduce(
-        (accumulator, { uri }) => (uri ? [...accumulator, uri] : accumulator),
-        [] as string[]
-      ) ?? [];
-    if (formats.length > 0) {
-      getDataServicesRelations({ endpointDescription: formats });
-    }
     if (informationModel?.uri) {
-      getInformationmodelsRelations({ relations: informationModel.uri });
+      getRelations({ relations: informationModel.uri });
     }
     return () => {
-      resetDataServicesRelations();
-      resetInformationModelsRelations();
+      resetResourceRelations();
     };
   }, [informationModel?.uri]);
 
-  useEffect(() => {
-    if (informationModel?.id) {
-      getDatasetsRelations({
-        relatedToInfoModel: getConfig().searchHost.host + location.pathname
-      });
-    }
-    return () => {
-      resetDatasetsRelations();
-    };
-  }, [informationModel?.id]);
+  const datasetsRelations = filterRelations(relations, Entity.DATASET);
+  const dataServicesRelations = filterRelations(relations, Entity.DATA_SERVICE);
+  const informationModelsRelations = filterRelations(
+    relations,
+    Entity.INFORMATION_MODEL
+  );
 
   const uriIsSkolemized = (uri: string) => /.well-known\/skolem/.test(uri);
 
@@ -647,11 +631,18 @@ const InformationModelDetailsPage: FC<Props> = ({
           >
             <KeyValueList>
               {concepts
-                .filter(({ identifier: subjectIdentifier }) =>
+                .filter(({ uri: subjectIdentifier }) =>
                   informationModelSubjects.includes(subjectIdentifier)
                 )
                 .map(
-                  ({ id, prefLabel, definition }, index) =>
+                  (
+                    {
+                      id,
+                      title: conceptTitle,
+                      description: conceptDescription
+                    },
+                    index
+                  ) =>
                     id && (
                       <KeyValueListItem
                         key={`${id}-${index}`}
@@ -660,10 +651,10 @@ const InformationModelDetailsPage: FC<Props> = ({
                             to={`${PATHNAME_CONCEPTS}/${id}`}
                             as={RouteLink}
                           >
-                            {translate(prefLabel)}
+                            {translate(conceptTitle)}
                           </SC.Link>
                         }
-                        value={translate(definition?.text)}
+                        value={translate(conceptDescription)}
                       />
                     )
                 )}
@@ -680,7 +671,7 @@ const InformationModelDetailsPage: FC<Props> = ({
             <InlineList>
               {keywords.map((keyword, index) => (
                 <SC.Link
-                  to={`${PATHNAME_INFORMATIONMODELS}?keywords=${encodeURIComponent(
+                  to={`${PATHNAME_INFORMATIONMODELS}?q=${encodeURIComponent(
                     keyword
                   )}`}
                   key={`${keyword}-${index}`}
@@ -871,5 +862,6 @@ export default compose<FC>(
   withInformationModels,
   withDatasets,
   withDataServices,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(InformationModelDetailsPage);

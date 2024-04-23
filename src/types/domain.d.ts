@@ -3,12 +3,47 @@ import {
   Entity as EntityEnum,
   AdministrativeUnitType,
   SpecializedEventType,
-  LanguageCodes
+  LanguageCodes,
+  SearchObjectRelationType
 } from './enums';
+
+export interface SearchObject {
+  id: string;
+  uri: string;
+  accessRights?: ReferenceDataCode;
+  catalog?: Catalog;
+  dataTheme?: EuDataTheme[];
+  description?: Partial<TextLanguage>;
+  fdkFormatPrefixed?: string[];
+  metadata?: Metadata;
+  isOpenData?: boolean;
+  keyword?: Partial<TextLanguage>[];
+  losTheme?: LosNode[];
+  organization?: Organization;
+  provenance?: ReferenceDataCode;
+  searchType: EntityEnum;
+  specializedType?: SpecializedDatasetType | SpecializedEventType;
+  spatial?: ReferenceDataCode[];
+  title?: Partial<TextLanguage>;
+  relations?: Relation[];
+  isAuthoritative?: boolean;
+}
+
+interface Catalog {
+  description?: Partial<TextLanguage>;
+  id?: string;
+  publisher?: Organization;
+  title?: Partial<TextLanguage>;
+  uri?: string;
+}
+
+export interface Relation {
+  uri?: string;
+  type?: SearchObjectRelationType;
+}
 
 export interface InformationModel {
   id: string;
-  type: EntityEnum.INFORMATION_MODEL;
   uri: string;
   identifier?: string;
   publisher?: Partial<Organization>;
@@ -198,8 +233,20 @@ export interface Harvest {
   lastHarvested: string;
 }
 
+interface Metadata {
+  firstHarvested?: string;
+  modified?: string;
+  deleted?: boolean;
+  timestamp?: number;
+}
+
 export interface LosNodes {
   losNodes: LosTheme[];
+}
+
+export interface LosNode {
+  name?: Partial<TextLanguage>;
+  losPaths?: string;
 }
 export interface LosTheme {
   uri: string;
@@ -254,7 +301,6 @@ export interface GenericRelation {
 
 export interface Concept {
   id: string;
-  type: EntityEnum.CONCEPT;
   uri: string;
   identifier: string;
   prefLabel: Partial<TextLanguage>;
@@ -451,11 +497,10 @@ export interface Event {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  type: EntityEnum.EVENT;
   dctType?: SkosConcept[];
   harvest?: Partial<Harvest>;
   relation?: string[];
-  specialized_type?: SpecializedEventType;
+  specializedType?: SpecializedEventType;
 }
 
 export interface EventType {
@@ -481,6 +526,11 @@ export interface ESPage {
 interface Provenance {
   code: string;
   prefLabel: Partial<TextLanguage>;
+}
+
+interface EuDataTheme {
+  title?: Partial<TextLanguage>;
+  code?: string;
 }
 
 interface AccessRights {
@@ -580,7 +630,6 @@ interface InSeries {
 
 export interface Dataset {
   id: string;
-  type: EntityEnum.DATASET;
   uri: string;
   publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
@@ -626,7 +675,6 @@ export interface Dataset {
 
 export interface DataService {
   id: string;
-  type: EntityEnum.DATA_SERVICE;
   uri: string;
   publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
@@ -669,7 +717,6 @@ export interface AccessService {
 
 export interface Distribution {
   uri: string;
-  type: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   fdkFormat: MediaTypeOrExtent[];
@@ -695,7 +742,11 @@ export interface ReferenceData {
   apispecifications?: ApiSpecifications;
 }
 
-export interface ReferenceDataCode {}
+export interface ReferenceDataCode {
+  uri?: string;
+  code?: string;
+  prefLabel?: Partial<TextLanguage>;
+}
 
 export interface Link {
   href: string;
@@ -1081,10 +1132,12 @@ export interface PreviewTableRow {
 }
 
 export interface SearchSuggestion {
-  index: SearchIndex;
-  prefLabel?: Partial<TextLanguage>;
-  title?: Partial<TextLanguage>;
   id: string;
+  title?: Partial<TextLanguage>;
+  description?: Partial<TextLanguage>;
+  uri?: string;
+  organization?: Organization;
+  searchType: EntityEnum;
 }
 
 export interface Comment {
@@ -1127,3 +1180,31 @@ export interface AiProject {
   modellutvikling?: string;
   klassifisering?: string;
 }
+
+export interface SearchSort {
+  field: string;
+  direction: string;
+}
+
+export interface SearchFilters {
+  id?: string;
+  opendata?: boolean;
+  accessrights?: string;
+  theme?: string;
+  spatial?: string;
+  provenance?: string;
+  losTheme?: string;
+  orgPath?: string;
+  format?: string;
+  relations?: string;
+  lastXDays?: number;
+  uri?: string[];
+  keyword?: string[];
+}
+
+export type SearchQuery = {
+  q?: string | undefined;
+  page?: number | undefined;
+  size?: number | undefined;
+  sortfield?: string | undefined;
+} & SearchFilters;

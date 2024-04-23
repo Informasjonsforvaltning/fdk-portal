@@ -56,14 +56,7 @@ export const SearchHit: FC<Props> = ({
   isAuthoritative = false,
   children
 }) => {
-  const {
-    title: publisherTitle,
-    name,
-    identifier: pubIdentifier,
-    id: pubId
-  } = publisher || {};
-
-  const pubisherId = pubId || pubIdentifier;
+  const { title: publisherTitle, name, id: pubisherId } = publisher || {};
 
   const renderSearchHitOpenData = () =>
     Children.map(children, child =>

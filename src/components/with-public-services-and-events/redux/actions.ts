@@ -8,15 +8,13 @@ import {
 } from './action-types';
 
 interface GetPublicServicesAndEventsParams {
-  q?: string;
-  page?: string;
+  q?: any;
+  page?: number;
   sortfield?: string;
   size?: number;
   orgPath?: string;
-  event?: string;
-  keywords?: string;
-  publicServiceAndEventIdentifiers?: string[];
-  eventType?: string;
+  keyword?: string[];
+  uri?: string[];
 }
 
 export function getPublicServicesAndEventsRequested(

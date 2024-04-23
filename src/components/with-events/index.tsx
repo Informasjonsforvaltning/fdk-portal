@@ -7,7 +7,6 @@ import type { Event } from '../../types';
 
 export interface Props {
   events: Event[];
-  eventsRelations: Event[];
   eventsActions: typeof actions;
 }
 
@@ -15,8 +14,7 @@ const withEvents = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    events: state.EventsReducer.get('events')?.toJS(),
-    eventsRelations: state.EventsReducer.get('eventsRelations')?.toJS()
+    events: state.EventsReducer.get('events')?.toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

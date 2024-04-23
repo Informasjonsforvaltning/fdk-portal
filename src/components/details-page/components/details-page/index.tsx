@@ -113,7 +113,10 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   multiplePages,
   referenceData: { los: losThemes, themes: euThemes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  datasetScoresActions: { getDatasetScoresRequested: getDatasetScores },
+  datasetScoresActions: {
+    getDatasetScoresRequested: getDatasetScores,
+    resetDatasetScores
+  },
   communityActions: { searchTopicsRequested: searchTopics, resetTopics },
   children
 }) => {
@@ -143,16 +146,17 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   useEffect(() => {
     const appRoot = document.querySelector('#root > div');
     appRoot?.classList.add(entity);
-    return () => appRoot?.classList.remove(entity);
-  });
 
-  useEffect(() => {
     if (!losThemes) {
       getReferenceData('los');
     }
     if (!euThemes) {
       getReferenceData('themes');
     }
+
+    return () => {
+      appRoot?.classList.remove(entity);
+    };
   }, []);
 
   useEffect(() => {
@@ -172,6 +176,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     }
     return () => {
       resetTopics();
+      resetDatasetScores();
     };
   }, [entityId]);
 

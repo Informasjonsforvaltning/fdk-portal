@@ -1,38 +1,25 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
-import {
-  GET_INFORMATION_MODELS_REQUESTED,
-  GET_INFORMATION_MODELS_RELATIONS_REQUESTED
-} from './action-types';
+import { GET_INFORMATION_MODELS_REQUESTED } from './action-types';
 import * as actions from './actions';
 
 import {
   searchInformationModels,
-  paramsToSearchBody,
   extractInformationModels
-} from '../../../api/search-fulltext-api/informationmodels';
+} from '../../../api/search-api/informationmodels';
 
-import type { InformationModel } from '../../../types';
+import type { SearchObject } from '../../../types';
+import { paramsToSearchBody } from '../../../utils/common';
 
 function* getInformationModelsRequested({
-  payload: {
-    params: {
-      conceptIdentifiers,
-      informationModelIdentifiers,
-      hasFormat,
-      size,
-      relations
-    } = {}
-  }
+  payload: { params: { uri, size, relations } = {} }
 }: ReturnType<typeof actions.getInformationModelsRequested>) {
   try {
     const data: Record<string, any> = yield call(
       searchInformationModels,
       paramsToSearchBody({
-        conceptIdentifiers,
-        informationModelIdentifiers,
-        hasFormat,
         size,
+        uri,
         relations
       })
     );
@@ -40,7 +27,7 @@ function* getInformationModelsRequested({
     if (data) {
       yield put(
         actions.getInformationModelsSucceeded(
-          extractInformationModels(data) as InformationModel[]
+          extractInformationModels(data) as SearchObject[]
         )
       );
     } else {
@@ -51,47 +38,8 @@ function* getInformationModelsRequested({
   }
 }
 
-function* getInformationModelsRelationsRequested({
-  payload: {
-    params: {
-      conceptIdentifiers,
-      informationModelIdentifiers,
-      size,
-      relations
-    } = {}
-  }
-}: ReturnType<typeof actions.getInformationModelsRelationsRequested>) {
-  try {
-    const data: Record<string, any> = yield call(
-      searchInformationModels,
-      paramsToSearchBody({
-        conceptIdentifiers,
-        informationModelIdentifiers,
-        size,
-        relations
-      })
-    );
-
-    if (data) {
-      yield put(
-        actions.getInformationModelsRelationsSucceeded(
-          extractInformationModels(data) as InformationModel[]
-        )
-      );
-    } else {
-      yield put(actions.getInformationModelsRelationsFailed(''));
-    }
-  } catch (e: any) {
-    yield put(actions.getInformationModelsRelationsFailed(e.message));
-  }
-}
-
 export default function* saga() {
   yield all([
-    takeLatest(GET_INFORMATION_MODELS_REQUESTED, getInformationModelsRequested),
-    takeLatest(
-      GET_INFORMATION_MODELS_RELATIONS_REQUESTED,
-      getInformationModelsRelationsRequested
-    )
+    takeLatest(GET_INFORMATION_MODELS_REQUESTED, getInformationModelsRequested)
   ]);
 }

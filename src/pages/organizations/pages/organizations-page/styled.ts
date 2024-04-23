@@ -158,7 +158,7 @@ const DatasetIcon = styled(DatasetIconBase)`
   width: 30px;
   height: 30px;
   & > path {
-    fill: ${({ theme }) => theme.extendedColors.dataset.light};
+    fill: ${({ theme }) => theme.extendedColors[Entity.DATASET].light};
   }
 `;
 
@@ -166,7 +166,7 @@ const ApiIcon = styled(ApiIconBase)`
   width: 30px;
   height: 30px;
   & > path {
-    fill: ${({ theme }) => theme.extendedColors.dataservice.light};
+    fill: ${({ theme }) => theme.extendedColors[Entity.DATA_SERVICE].light};
   }
 `;
 
@@ -174,7 +174,7 @@ const ConceptIcon = styled(ConceptIconBase)`
   width: 30px;
   height: 30px;
   & > path {
-    fill: ${({ theme }) => theme.extendedColors.concept.light};
+    fill: ${({ theme }) => theme.extendedColors[Entity.CONCEPT].light};
   }
 `;
 
@@ -182,7 +182,8 @@ const InfomodelIcon = styled(InfomodelIconBase)`
   width: 30px;
   height: 30px;
   & > path {
-    fill: ${({ theme }) => theme.extendedColors.informationmodel.light};
+    fill: ${({ theme }) =>
+      theme.extendedColors[Entity.INFORMATION_MODEL].light};
   }
 `;
 

@@ -13,8 +13,9 @@ import LoggingService, { Severity } from '../../../services/logging';
 
 import type { InformationModel } from '../../../types';
 import { DataFormat } from '../../../types/enums';
+import { PATHNAME_INFORMATIONMODELS } from '../../../constants/constants';
 
-const { SEARCH_API_HOST, INFORMATIONMODEL_HARVESTER_HOST } = env;
+const { RESOURCE_API_HOST, INFORMATIONMODEL_HARVESTER_HOST } = env;
 
 function* getInformationModelRequested({
   payload: { id }
@@ -22,7 +23,7 @@ function* getInformationModelRequested({
   try {
     const { data } = yield call(
       axios.get,
-      `${SEARCH_API_HOST}/information-models/${id}`
+      `${RESOURCE_API_HOST}${PATHNAME_INFORMATIONMODELS}/${id}`
     );
     const informationModel = data as InformationModel;
 

@@ -5,10 +5,10 @@ import {
   extractDataServiceAggregations,
   searchDataServices,
   extractDataServices,
-  extractDataServicesTotal,
-  paramsToSearchBody
-} from '../../api/search-fulltext-api/dataservices';
+  extractDataServicesTotal
+} from '../../api/search-api/dataservices';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 export const DATA_SERVICES_REQUEST = 'DATA_SERVICES_REQUEST';
 export const DATA_SERVICES_SUCCESS = 'DATA_SERVICES_SUCCESS';
@@ -43,7 +43,10 @@ export function fetchDataServicesIfNeededAction(query) {
 
 const initialState = {};
 
-export function dataServicesReducer(state = initialState, action) {
+export function dataServicesReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case DATA_SERVICES_REQUEST:
       return {

@@ -17,21 +17,24 @@ import withPublicServices, {
 } from '../../components/with-public-services';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   ContentSection,
   KeyValueList,
   KeyValueListItem
 } from '../../components/details-page';
 import ErrorPage from '../error-page';
-import RelationList, {
-  ItemWithRelationType
-} from '../../components/relation-list';
+import RelationList from '../../components/relation-list';
 
 import type { Theme } from '../../types';
 import { Entity, SpecializedEventType } from '../../types/enums';
 
 import { PATHNAME_PUBLIC_SERVICES } from '../../constants/constants';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations } from '../../utils/common';
 
 interface RouteParams {
   eventId: string;
@@ -40,6 +43,7 @@ interface RouteParams {
 interface Props
   extends RouteComponentProps<RouteParams>,
     EventProps,
+    ResourceRelationsProps,
     PublicServicesProps {}
 
 const EventDetailsPage: FC<Props> = ({
@@ -50,12 +54,14 @@ const EventDetailsPage: FC<Props> = ({
   isLoadingEvent,
   eventActions: { getEventRequested: getEvent },
   publicServices,
-  publicServicesRelations,
+  relations,
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
-    resetPublicServices,
-    getPublicServicesRelationsRequested: getPublicServicesRelations,
-    resetPublicServicesRelations
+    resetPublicServices
+  },
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   }
 }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -81,18 +87,17 @@ const EventDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (event?.uri) {
-      getPublicServicesRelations({ isGroupedBy: event.uri });
+      getRelations({ relations: event.uri });
     }
     return () => {
-      resetPublicServicesRelations();
+      resetResourceRelations();
     };
   }, [event?.uri]);
 
-  const publicServicesRelationsWithRelationType: ItemWithRelationType[] =
-    publicServicesRelations.map(relation => ({
-      relation,
-      relationType: translations.relatedBy
-    }));
+  const publicServicesRelations = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE
+  );
 
   const title = event?.title ?? {};
   const description = translate(event?.description);
@@ -103,7 +108,7 @@ const EventDetailsPage: FC<Props> = ({
   const relation = new Set(event?.relation ?? []);
   const relatedServices = publicServices.filter(({ uri }) => relation.has(uri));
   const dctTypes = event?.dctType ?? [];
-  const specializedType = event?.specialized_type;
+  const specializedType = event?.specializedType;
 
   return renderPage ? (
     event && (
@@ -206,7 +211,7 @@ const EventDetailsPage: FC<Props> = ({
             >
               <RelationList
                 parentIdentifier={event.uri}
-                publicServices={publicServicesRelationsWithRelationType}
+                publicServices={publicServicesRelations}
               />
             </ContentSection>
           )}
@@ -222,5 +227,6 @@ export default compose(
   memo,
   withEvent,
   withPublicServices,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(EventDetailsPage);
