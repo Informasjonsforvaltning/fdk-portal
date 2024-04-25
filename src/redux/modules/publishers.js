@@ -44,8 +44,7 @@ export function publishersReducer(state, action) {
       return {
         ...state,
         meta: {
-          isFetching: true,
-          lastFetch: null
+          isFetching: true
         }
       };
     }
@@ -64,7 +63,7 @@ export function publishersReducer(state, action) {
         ...state,
         meta: {
           isFetching: false,
-          lastFetch: null
+          lastFetch: Date.now()
         },
         publisherItems: null
       };

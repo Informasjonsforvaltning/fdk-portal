@@ -71,7 +71,7 @@ export function fullConceptsCompareReducer(state, action) {
           }, {})
         },
         ...action.meta.ids.reduce((acc, id) => {
-          acc[id] = { isFetching: true, lastFetch: Date.now() };
+          acc[id] = { isFetching: true };
           return acc;
         }, {})
       };
@@ -104,7 +104,7 @@ export function fullConceptsCompareReducer(state, action) {
         meta: {
           ...state.meta,
           ...action.meta.ids.reduce((acc, id) => {
-            acc[id] = { isFetching: false, lastFetch: null };
+            acc[id] = { isFetching: false, lastFetch: Date.now() };
             return acc;
           }, {})
         }
