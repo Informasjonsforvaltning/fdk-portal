@@ -55,7 +55,7 @@ export function referenceDataReducer(state, action) {
         items: { ...state.items },
         meta: {
           ...state.meta,
-          [action.meta.path]: { isFetching: true, lastFetch: null }
+          [action.meta.path]: { isFetching: true }
         }
       };
 
@@ -79,7 +79,7 @@ export function referenceDataReducer(state, action) {
         },
         meta: {
           ...state.meta,
-          [action.meta.path]: { isFetching: false, lastFetch: null }
+          [action.meta.path]: { isFetching: false, lastFetch: Date.now() }
         }
       };
     }

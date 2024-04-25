@@ -36,8 +36,7 @@ export function catalogsReducer(state, action) {
     case CATALOGS_REQUEST: {
       return {
         ...state,
-        isFetching: true,
-        lastFetch: null
+        isFetching: true
       };
     }
     case CATALOGS_SUCCESS: {
@@ -52,7 +51,7 @@ export function catalogsReducer(state, action) {
       return {
         ...state,
         isFetching: false,
-        lastFetch: null,
+        lastFetch: Date.now(),
         items: null
       };
     }

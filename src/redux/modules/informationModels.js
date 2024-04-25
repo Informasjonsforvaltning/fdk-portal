@@ -52,7 +52,6 @@ export function informationModelsReducer(state, action) {
         ...state,
         meta: {
           isFetching: true,
-          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };
@@ -78,7 +77,7 @@ export function informationModelsReducer(state, action) {
         informationModelTotal: null,
         meta: {
           isFetching: false,
-          lastFetch: null, // retry on error
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey,
           error: action.payload
         }
