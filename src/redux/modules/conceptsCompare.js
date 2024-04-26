@@ -70,7 +70,7 @@ export function conceptsCompareReducer(state = initialState, action) {
         },
         meta: {
           ...state.meta,
-          [action.meta.id]: { isFetching: false, lastFetch: Date.now() }
+          [action.meta.id]: { isFetching: true }
         }
       };
     case CONCEPTSCOMPARE_SUCCESS:
@@ -92,7 +92,7 @@ export function conceptsCompareReducer(state = initialState, action) {
         },
         meta: {
           ...state.meta,
-          [action.meta.id]: { isFetching: false, lastFetch: null }
+          [action.meta.id]: { isFetching: false, lastFetch: Date.now() }
         }
       };
     case ADD_CONCEPT_TO_COMPARE:

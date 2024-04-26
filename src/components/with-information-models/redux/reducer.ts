@@ -13,10 +13,8 @@ const initialState = fromJS({
   informationModels: []
 });
 
-export default function reducer(
-  state: any = initialState,
-  action: Actions<typeof actions>
-) {
+export default function reducer(state: any, action: Actions<typeof actions>) {
+  state = state || initialState;
   switch (action.type) {
     case GET_INFORMATION_MODELS_REQUESTED:
       return state.set('informationModels', fromJS([]));

@@ -102,7 +102,6 @@ export function conceptReducer(state, action) {
         ...state,
         meta: {
           isFetching: true,
-          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };
@@ -126,7 +125,7 @@ export function conceptReducer(state, action) {
         conceptTotal: null,
         meta: {
           isFetching: false,
-          lastFetch: null, // retry on error
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey,
           error: action.payload
         }
@@ -137,7 +136,6 @@ export function conceptReducer(state, action) {
         conceptReferences: extractConcepts(action.payload),
         meta: {
           isFetching: true,
-          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };
@@ -157,7 +155,7 @@ export function conceptReducer(state, action) {
         conceptReferences: extractConcepts(action.payload),
         meta: {
           isFetching: false,
-          lastFetch: null,
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey
         }
       };
@@ -167,7 +165,6 @@ export function conceptReducer(state, action) {
         informationModelReferences: [],
         meta: {
           isFetching: true,
-          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };
@@ -187,7 +184,7 @@ export function conceptReducer(state, action) {
         informationModelReferences: [],
         meta: {
           isFetching: false,
-          lastFetch: null,
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey
         }
       };

@@ -78,7 +78,7 @@ export function datasetsReducer(state, action) {
         datasetTotal: null,
         meta: {
           isFetching: false,
-          lastFetch: null, // retry on error
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey,
           error: action.payload
         }
