@@ -60,7 +60,7 @@
     "@fellesdatakatalog/alert": "^0.3.8",
     "@fellesdatakatalog/button": "^0.2.10",
     "@fellesdatakatalog/expansion-panel": "^0.2.7",
-    "@fellesdatakatalog/external-footer": "^0.4.0",
+    "@fellesdatakatalog/external-footer": "^0.4.1",
     "@fellesdatakatalog/icons": "^0.8.2",
     "@fellesdatakatalog/internal-footer": "^0.5.0",
     "@fellesdatakatalog/link": "^0.2.15",
