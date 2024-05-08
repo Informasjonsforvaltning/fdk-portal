@@ -1208,3 +1208,8 @@ export type SearchQuery = {
   size?: number | undefined;
   sortfield?: string | undefined;
 } & SearchFilters;
+
+export type AccessRequest = {
+  id: string;
+  requestAddress: string;
+};

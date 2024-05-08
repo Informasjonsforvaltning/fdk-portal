@@ -663,6 +663,7 @@
         "EVENT": "Hendingsbeskriving"
       }
     },
+    "requestDataButton": "Be om tilgang",
     "owner": "Eigar: {publisher}",
     "provider": "Tilbydar: {publisher}",
     "responsible": "Ansvarleg: {publisher}",

@@ -11,6 +11,7 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import FdkLink from '@fellesdatakatalog/link';
 
+import Button from '@fellesdatakatalog/button';
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
@@ -60,6 +61,7 @@ import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
 import Aside from '../aside';
+import { accessRequestWhiteList } from '../../../../white-list';
 
 interface ExternalProps {
   entity: Entity;
@@ -121,6 +123,10 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   children
 }) => {
   const [isSticky, setSticky] = useState(false);
+
+  const accessRequest = accessRequestWhiteList.find(
+    item => item.id === entityId
+  );
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -335,6 +341,13 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           return null;
         })}
       </SC.Themes>
+      {accessRequest && (
+        <SC.AccessRequest>
+          <a href={accessRequest.requestAddress}>
+            <Button>{translations.detailsPage.requestDataButton}</Button>
+          </a>
+        </SC.AccessRequest>
+      )}
       <SC.Page>
         <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
           <SC.HamburgerIcon />

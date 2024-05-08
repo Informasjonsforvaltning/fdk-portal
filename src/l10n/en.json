@@ -658,6 +658,7 @@
         "EVENT": "Event description"
       }
     },
+    "requestDataButton": "Request access",
     "owner": "Owner: {publisher}",
     "provider": "Provider: {publisher}",
     "responsible": "Responsible: {publisher}",
