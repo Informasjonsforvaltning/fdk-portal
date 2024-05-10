@@ -343,7 +343,11 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       </SC.Themes>
       {accessRequest && (
         <SC.AccessRequest>
-          <a href={accessRequest.requestAddress}>
+          <a
+            href={accessRequest.requestAddress}
+            target='_blank'
+            rel='noreferrer'
+          >
             <Button>{translations.detailsPage.requestDataButton}</Button>
           </a>
         </SC.AccessRequest>
