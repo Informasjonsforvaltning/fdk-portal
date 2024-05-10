@@ -250,6 +250,91 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     ? Object.values(datasetScores.scores)[0]
     : null;
 
+  const renderThemeItems = () => {
+    let items = [];
+    if (isOpenData) {
+      items.push(
+        <SC.ThemeItem>
+          <Link
+            to={`${rootPaths[entity]}?opendata=true`}
+            className='open-data'
+          >
+            <OpenAccessIcon />
+            {translations.detailsPage.openData}
+          </Link>
+        </SC.ThemeItem>
+      );
+    }
+
+    if (isPublicData) {
+      items.push(
+        <SC.ThemeItem>
+          <Link
+            to={`${rootPaths[entity]}?accessrights=PUBLIC`}
+            className='public-data'
+          >
+            <OpenAccessIcon />
+            {translations.detailsPage.publicData}
+          </Link>
+        </SC.ThemeItem>
+      );
+    }
+
+    if (isRestrictedData) {
+      items.push(
+        <SC.ThemeItem>
+          <Link
+            to={`${rootPaths[entity]}?accessrights=RESTRICTED`}
+            className='restricted-data'
+          >
+            <RestrictedAccessIcon />
+            {translations.detailsPage.restrictedData}
+          </Link>
+        </SC.ThemeItem>
+      );
+    }
+
+    if (isNonPublicData) {
+      items.push(
+        <SC.ThemeItem>
+          <Link
+            to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
+            className='non-public-data'
+          >
+            <NotOpenAccessIcon />
+            {translations.detailsPage.nonPublicData}
+          </Link>
+        </SC.ThemeItem>
+      );
+    }
+
+    items = [
+      ...items,
+      ...themes.map(theme => {
+        if (isLosTheme(theme)) {
+          const { uri, name, losPaths: [losPath] = [] } = theme;
+          return (
+            <SC.ThemeItem key={uri}>
+              <Link key={uri} to={`${rootPaths[entity]}?losTheme=${losPath}`}>
+                {translate(name)}
+              </Link>
+            </SC.ThemeItem>
+          );
+        }
+        if (isEuTheme(theme)) {
+          const { id, title: themeTitle, label: themeLabel, code } = theme;
+          return (
+            <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
+              {themeTitle ? translate(themeTitle) : translate(themeLabel)}
+            </Link>
+          );
+        }
+        return null;
+      })
+    ];
+    return items.filter(Boolean);
+  };
+
   return (
     <SC.DetailsPage className='container' id='content'>
       <Banner
@@ -274,73 +359,12 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           </FdkLink>
         </SC.SubBanner>
       )}
-      <SC.Themes>
-        {isOpenData && (
-          <SC.ThemeItem>
-            <Link
-              to={`${rootPaths[entity]}?opendata=true`}
-              className='open-data'
-            >
-              <OpenAccessIcon />
-              {translations.detailsPage.openData}
-            </Link>
-          </SC.ThemeItem>
-        )}
-        {isPublicData && (
-          <SC.ThemeItem>
-            <Link
-              to={`${rootPaths[entity]}?accessrights=PUBLIC`}
-              className='public-data'
-            >
-              <OpenAccessIcon />
-              {translations.detailsPage.publicData}
-            </Link>
-          </SC.ThemeItem>
-        )}
-        {isRestrictedData && (
-          <SC.ThemeItem>
-            <Link
-              to={`${rootPaths[entity]}?accessrights=RESTRICTED`}
-              className='restricted-data'
-            >
-              <RestrictedAccessIcon />
-              {translations.detailsPage.restrictedData}
-            </Link>
-          </SC.ThemeItem>
-        )}
-        {isNonPublicData && (
-          <SC.ThemeItem>
-            <Link
-              to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
-              className='non-public-data'
-            >
-              <NotOpenAccessIcon />
-              {translations.detailsPage.nonPublicData}
-            </Link>
-          </SC.ThemeItem>
-        )}
-        {themes.map(theme => {
-          if (isLosTheme(theme)) {
-            const { uri, name, losPaths: [losPath] = [] } = theme;
-            return (
-              <SC.ThemeItem key={uri}>
-                <Link key={uri} to={`${rootPaths[entity]}?losTheme=${losPath}`}>
-                  {translate(name)}
-                </Link>
-              </SC.ThemeItem>
-            );
-          }
-          if (isEuTheme(theme)) {
-            const { id, title: themeTitle, label: themeLabel, code } = theme;
-            return (
-              <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
-                {themeTitle ? translate(themeTitle) : translate(themeLabel)}
-              </Link>
-            );
-          }
-          return null;
-        })}
-      </SC.Themes>
+      {
+        renderThemeItems().length > 0 &&
+        <SC.Themes>
+          {renderThemeItems()}
+        </SC.Themes>
+      }
       {accessRequest && (
         <SC.AccessRequest>
           <a

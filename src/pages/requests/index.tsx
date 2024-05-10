@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import Link from '@fellesdatakatalog/link';
 import Button from '@fellesdatakatalog/button';
 import Select from 'react-select';
-import { Breadcrumb } from 'reactstrap';
 import withCommunity, {
   Props as CommunityProps
 } from '../../components/with-community';
@@ -61,7 +60,6 @@ const RequestsPage: FC<Props> = ({
 
   return (
     <>
-      <Breadcrumb />
       <Banner title={localization.requestsPage.title} />
       <main id='content' className='container'>
         <SC.FirstRow>
