@@ -168,7 +168,7 @@ const ConceptDetailsPage: FC<Props> = ({
   const description = concept?.definition?.text;
   const sourceRelationship = concept?.definition?.sourceRelationship;
   const sources = concept?.definition?.sources ?? [];
-  const remark = concept?.definition?.remark;
+  const remark = concept?.remark ?? concept?.definition?.remark;
   const altLabels = concept?.altLabel ?? [];
   const hiddenLabels = concept?.hiddenLabel ?? [];
   const example = concept?.example;
@@ -177,8 +177,10 @@ const ConceptDetailsPage: FC<Props> = ({
       ?.map(s => s.label)
       ?.filter((element): element is Partial<TextLanguage> => !!element) ?? [];
   const applications = concept?.application ?? [];
-  const range = translate(concept?.definition?.range?.text);
-  const rangeUri = concept?.definition?.range?.uri;
+  const range =
+    translate(concept?.range?.text) ??
+    translate(concept?.definition?.range?.text);
+  const rangeUri = concept?.range?.uri ?? concept?.definition?.range?.uri;
   const lastPublished = formatDate(
     dateStringToDate(concept?.harvest?.firstHarvested)
   );
