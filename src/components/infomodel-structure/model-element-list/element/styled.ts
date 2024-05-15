@@ -40,6 +40,7 @@ const ElementTitle = styled.span`
   display: flex;
   align-items: center;
   align-self: start;
+  white-space: nowrap;
 `;
 
 const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
@@ -52,6 +53,10 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
   }
 
   ${({ type }) => applyBidirStyling(type)}
+
+  ${SC.ExpansionPanel.HeadExpansionIndicator} {
+    white-space: nowrap;
+  }
 
   ${SC.ExpansionPanel.HeadContent} {
     display: flex;
@@ -89,10 +94,12 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
 
 const ScrollLink = styled(Scroll.Link)`
   color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
+  white-space: nowrap;
 `;
 
 const MultiplicityRange = styled.span`
   align-self: flex-start;
+  white-space: nowrap;
 `;
 
 const ElementTypesContainer = styled.span<{ length: number }>`
