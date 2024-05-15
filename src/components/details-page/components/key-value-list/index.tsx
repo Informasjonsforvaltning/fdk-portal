@@ -15,21 +15,25 @@ import MemberOf from '../RelatedConcepts/MemberOf';
 import PartitiveRelations from '../RelatedConcepts/PartitiveRelations';
 import SeeAlso from '../RelatedConcepts/SeeAlso';
 
-const KeyValueList: FC<PropsWithChildren<any>> = ({ children, ...props }) => (
-  <SC.List {...props}>
-    {Children.map(children, child =>
-      isValidElement(child) &&
-      (child.type === KeyValueListItem ||
-        child.type === AssociativeRelations ||
-        child.type === GenericRelations ||
-        child.type === IsReplacedBy ||
-        child.type === MemberOf ||
-        child.type === PartitiveRelations ||
-        child.type === SeeAlso)
-        ? child
-        : null
-    )}
-  </SC.List>
-);
+const KeyValueList: FC<PropsWithChildren<any>> = ({ children, ...props }) => {
+  const hasChildren = React.Children.count(children) > 0;
+  if (!hasChildren) return (<></>);
+  return (
+    <SC.List {...props}>
+      {Children.map(children, child =>
+        isValidElement(child) &&
+        (child.type === KeyValueListItem ||
+          child.type === AssociativeRelations ||
+          child.type === GenericRelations ||
+          child.type === IsReplacedBy ||
+          child.type === MemberOf ||
+          child.type === PartitiveRelations ||
+          child.type === SeeAlso)
+          ? child
+          : null
+      )}
+    </SC.List>
+  );
+}
 
 export default memo(KeyValueList);
