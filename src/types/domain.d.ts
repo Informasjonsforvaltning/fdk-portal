@@ -307,6 +307,7 @@ export interface Concept {
   altLabel?: Partial<TextLanguage>[];
   hiddenLabel?: Partial<TextLanguage>[];
   definition?: ConceptDefinition;
+  definitions?: ConceptDefinition[];
   publisher: Partial<Organization>;
   example: Partial<TextLanguage>;
   subject?: Partial<ConceptSubject>[];
@@ -330,7 +331,8 @@ export interface Concept {
 export interface ConceptDefinition {
   text?: Partial<TextLanguage>;
   remark?: Partial<TextLanguage>; // @deprecated
-  sources?: Array<{ text?: string; uri?: stirng }>;
+  targetGroup?: string;
+  sources?: Array<{ text?: Partial<TextLanguage>; uri?: stirng }>;
   range?: { text?: Partial<TextLanguage>; uri?: stirng }; // @deprecated
   sourceRelationship?: string;
 }
@@ -742,6 +744,17 @@ export interface ReferenceData {
   themes?: EuThemes;
   referencetypes?: ReferenceTypes;
   apispecifications?: ApiSpecifications;
+  audiencetypes?: AudienceTypes;
+}
+
+export interface AudienceType {
+  uri: string;
+  code?: string;
+  label?: Partial<TextLanguage>;
+}
+
+export interface AudienceTypes {
+  audienceTypes: audienceType[];
 }
 
 export interface ReferenceDataCode {

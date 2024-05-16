@@ -1,40 +1,45 @@
 import React from 'react';
 import Link from '@fellesdatakatalog/link';
+import { Divider } from '@digdir/design-system-react';
 import { ContentSection } from '../../../components/details-page';
 import translations from '../../../lib/localization';
 import MultiLingualField from '../../../components/multilingual-field';
 import SC from './styled';
 import { getTranslateText as translate } from '../../../lib/translateText';
-import { Language } from '../../../types/domain';
+import {
+  AudienceTypes,
+  ConceptDefinition,
+  Language
+} from '../../../types/domain';
+import { capitalizeFirstLetter } from '../../../utils/common';
 
 interface Props {
-  description: Record<string, string>;
+  descriptions: ConceptDefinition[];
   selectedLanguages: Language[] | [];
-  sources: Array<{ text?: string; uri?: string }>;
-  sourceRelationship: string | undefined;
+  audienceTypes?: AudienceTypes;
 }
 
 const Description = ({
-  description,
-  sources,
-  sourceRelationship,
-  selectedLanguages
+  descriptions,
+  selectedLanguages,
+  audienceTypes
 }: Props) => {
-  const renderSources = () => {
-    if (sourceRelationship === 'egendefinert') {
-      return `${translations.compare.source}: ${translations.sourceRelationship[sourceRelationship]}`;
+  const renderSources = (description: ConceptDefinition) => {
+    if (description.sourceRelationship === 'egendefinert') {
+      return `${translations.compare.source}: ${
+        translations.sourceRelationship[description?.sourceRelationship]
+      }`;
     }
-
-    return sources?.length ? (
+    return description?.sources?.length ? (
       <>
         <span>
           {`${translations.compare.source}: ${
-            sourceRelationship
-              ? translations.sourceRelationship[sourceRelationship]
+            description.sourceRelationship
+              ? translations.sourceRelationship[description?.sourceRelationship]
               : ''
           }`}
         </span>
-        {sources.map(({ text, uri }, index) => (
+        {description.sources.map(({ text, uri }, index) => (
           <span key={`${text}-${uri}-${index}`}>
             {index > 0 && ','}
             &nbsp;
@@ -51,18 +56,48 @@ const Description = ({
     ) : null;
   };
 
+  const sortedDescriptions = descriptions.sort((a, b) => {
+    if (!a.targetGroup && b.targetGroup) {
+      return -1;
+    }
+    if (a.targetGroup && !b.targetGroup) {
+      return 1;
+    }
+    if (!a.targetGroup && !b.targetGroup) {
+      return 0;
+    }
+    return a.targetGroup!.localeCompare(b.targetGroup!);
+  });
+
   return (
     <ContentSection
       id='description'
       title={translations.detailsPage.sectionTitles.concept.definition}
       truncate
     >
-      <MultiLingualField
-        languages={selectedLanguages}
-        text={description}
-        convertToMarkUp
-      />
-      <SC.Sources>{renderSources()}</SC.Sources>
+      {sortedDescriptions.map((description, index) => (
+        <>
+          {description.targetGroup && (
+            <SC.AudienceType>
+              {capitalizeFirstLetter(
+                translate(
+                  audienceTypes?.audienceTypes?.find(
+                    audienceType => audienceType.uri === description.targetGroup
+                  )?.label
+                )
+              )}
+            </SC.AudienceType>
+          )}
+
+          <MultiLingualField
+            languages={selectedLanguages}
+            text={description.text}
+            convertToMarkUp
+          />
+          <SC.Sources>{renderSources(description)}</SC.Sources>
+          {index + 1 < sortedDescriptions.length && <Divider />}
+        </>
+      ))}
     </ContentSection>
   );
 };
