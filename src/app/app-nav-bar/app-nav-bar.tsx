@@ -36,7 +36,7 @@ import { themeFDK, themeNAP } from '../theme';
 import { getConfig } from '../../config';
 import SC from './styled';
 
-const isTransportportal = getConfig().themeNap;
+const isTransportportal = getConfig().isNapProfile;
 
 const { FDK_COMMUNITY_BASE_URI } = env;
 

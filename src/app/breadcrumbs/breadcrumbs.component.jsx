@@ -53,7 +53,7 @@ const routes = [
     path: PATHNAME_MAIN_PAGE,
     breadcrumb: () => (
       <PathNameBreadcrumb
-        pathName={getConfig().themeNap ? 'homeNAP' : 'home'}
+        pathName={getConfig().isNapProfile ? 'homeNAP' : 'home'}
       />
     )
   },

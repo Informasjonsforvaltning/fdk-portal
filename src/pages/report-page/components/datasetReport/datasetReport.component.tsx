@@ -118,7 +118,7 @@ const DatasetReport: FC<Props> = ({
     )
   ).slice(0, 10);
 
-  const theme = getConfig().themeNap ? themeNAP : themeFDK;
+  const theme = getConfig().isNapProfile ? themeNAP : themeFDK;
 
   return (
     <ThemeProvider theme={theme}>
@@ -171,7 +171,7 @@ const DatasetReport: FC<Props> = ({
                     {
                       catalog:
                         translate(
-                          getConfig().themeNap
+                          getConfig().isNapProfile
                             ? localization.nap
                             : localization.nationalDataCatalog
                         ) ?? ''

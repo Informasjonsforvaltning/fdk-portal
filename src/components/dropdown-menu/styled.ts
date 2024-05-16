@@ -6,7 +6,7 @@ import HamburgerMenuIconBase from '../../images/hamburger-menu-stroke.svg';
 
 import { getConfig } from '../../config';
 
-const isTransportportal = getConfig().themeNap;
+const isTransportportal = getConfig().isNapProfile;
 
 const onMobileView = '@media (max-width: 990px)';
 

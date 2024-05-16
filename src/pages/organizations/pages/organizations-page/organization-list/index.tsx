@@ -50,7 +50,7 @@ const OrganizationList: FC<Props> = ({
     setSortState({ selector, order });
   };
 
-  const isTransportportal = getConfig().themeNap;
+  const isTransportportal = getConfig().isNapProfile;
 
   const filterOrganizationsByName = (query: string) =>
     query

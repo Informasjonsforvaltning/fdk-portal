@@ -137,7 +137,7 @@ export const paramsToSearchBody = ({
   },
   sort: sortfield ? { field: sortfield, direction: 'DESC' } : undefined,
   filters: buildFilterSearchBody(filters),
-  ...(!!getConfig().filterTransportDatasets && { profile: 'TRANSPORT' })
+  ...(!!getConfig().isNapProfile && { profile: 'TRANSPORT' })
 });
 
 export const getRelationType = (

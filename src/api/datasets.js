@@ -5,9 +5,9 @@ import { getConfig } from '../config';
 export const datasetsUrlBase = () =>
   `${getConfig().datasetApi.host}/api/datasets`;
 
-// Filter out NAP data if filterTransportDatasets in conf is true
+// Filter out NAP data if isNapProfile in conf is true
 const transportProfileIfNeeded = () =>
-  getConfig().filterTransportDatasets
+  getConfig().isNapProfile
     ? {
         profile: 'TRANSPORT'
       }

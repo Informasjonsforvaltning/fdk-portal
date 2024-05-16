@@ -38,7 +38,7 @@ const IconPlaceholder = styled.div`
   border-radius: 50%;
   background-color: ${({ theme: t }) => t.entityColours.light};
   margin-right: ${theme.spacing('S16')};
-  padding: ${theme.spacing('S10', Unit.PX)}; ;
+  padding: ${theme.spacing('S10', Unit.PX)};
 `;
 
 const iconStyle = css`

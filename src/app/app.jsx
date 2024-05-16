@@ -81,8 +81,8 @@ export function App({ language, onChangeLanguage }) {
   localization.setLanguage(language);
 
   const themeClass = cx('position-relative overflow-hidden', {
-    'theme-nap': getConfig().themeNap,
-    'theme-fdk': !getConfig().themeNap
+    'theme-nap': getConfig().isNapProfile,
+    'theme-fdk': !getConfig().isNapProfile
   });
 
   const components = {
@@ -132,14 +132,18 @@ export function App({ language, onChangeLanguage }) {
       <Helmet>
         <html lang={language} />
         <title>
-          {getConfig().themeNap ? 'Transportportal' : localization.head.title}
+          {getConfig().isNapProfile
+            ? 'Transportportal'
+            : localization.head.title}
         </title>
 
         <meta name='description' content={localization.head.description} />
         <meta
           property='og:title'
           content={
-            getConfig().themeNap ? 'Transportportal' : localization.head.title
+            getConfig().isNapProfile
+              ? 'Transportportal'
+              : localization.head.title
           }
         />
         <meta
@@ -166,22 +170,13 @@ export function App({ language, onChangeLanguage }) {
               PATHNAME_ORGANIZATIONS
             ].includes(path)
           )
-          .map(path => {
-            if (getConfig().themeNap && path === PATHNAME_MAIN_PAGE) {
-              return (
-                <Route exact path={PATHNAME_MAIN_PAGE}>
-                  <Redirect to={PATHNAME_DATASETS} />;
-                </Route>
-              );
-            }
-            return (
-              <Route
-                exact={path !== PATHNAME_ORGANIZATIONS}
-                path={path}
-                component={components[path]}
-              />
-            );
-          })}
+          .map(path => (
+            <Route
+              exact={path !== PATHNAME_ORGANIZATIONS}
+              path={path}
+              component={components[path]}
+            />
+          ))}
 
         <ScrollToTop key='route-switch-2'>
           {routes.main

@@ -79,7 +79,7 @@ const OrganizationPage: FC<Props> = ({
 }) => {
   const [showOrganizationLogo, setShowOrganizationLogo] = useState(true);
 
-  const isTransportportal = getConfig().themeNap;
+  const isTransportportal = getConfig().isNapProfile;
   const theme = isTransportportal ? themeNAP : themeFDK;
 
   useLayoutEffect(() => {
