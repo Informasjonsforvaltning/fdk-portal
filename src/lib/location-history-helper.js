@@ -1,5 +1,10 @@
 import qs from 'qs';
-import { PATHNAME_MAIN_PAGE, PATHNAME_SEARCH } from '../constants/constants';
+import {
+  PATHNAME_DATASETS,
+  PATHNAME_MAIN_PAGE,
+  PATHNAME_SEARCH
+} from '../constants/constants';
+import { getConfig } from '../config';
 
 export const renderSearchParams = searchParams =>
   qs.stringify(searchParams, { skipNulls: true, addQueryPrefix: true });
@@ -10,7 +15,11 @@ export const historyPushSearchParams = (history, searchParams) => {
   }
 
   if (history.location.pathname === PATHNAME_MAIN_PAGE) {
-    return history.push(PATHNAME_SEARCH + renderSearchParams(searchParams));
+    const { isNapProfile } = getConfig();
+    return history.push(
+      (isNapProfile ? PATHNAME_DATASETS : PATHNAME_SEARCH) +
+        renderSearchParams(searchParams)
+    );
   }
 
   return history.push(

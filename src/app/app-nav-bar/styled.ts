@@ -6,7 +6,7 @@ import DemoLogoSVG from '../../images/fdk-logo-demo.svg';
 import NapLogoSVG from '../../images/logo-transport.svg';
 import { getConfig } from '../../config';
 
-const isTransportportal = getConfig().themeNap;
+const isTransportportal = getConfig().isNapProfile;
 
 const Header = styled.header`
   align-items: center;

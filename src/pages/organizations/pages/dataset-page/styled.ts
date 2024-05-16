@@ -15,7 +15,7 @@ import CheckSVG from '../../../../images/icon-checked-sm.svg';
 import CrossSVG from '../../../../images/icon-empty-search-sm.svg';
 import QuestionIconSVG from '../../../../images/icon-question-sm.svg';
 
-const isTransportportal = getConfig().themeNap;
+const isTransportportal = getConfig().isNapProfile;
 
 const DatasetPage = styled.main`
   flex: 1 0 auto;

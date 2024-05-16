@@ -3,7 +3,7 @@ import { Colour, Unit, theme } from '@fellesdatakatalog/theme';
 
 import { getConfig } from '../../../../config';
 
-const isTransportportal = getConfig().themeNap;
+const isTransportportal = getConfig().isNapProfile;
 
 const OrganizationPage = styled.article`
   flex: 1 0 auto;

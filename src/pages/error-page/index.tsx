@@ -28,8 +28,8 @@ const errorMessage = (errorCode?: string) => {
 };
 
 const themeClass = cx('position-relative overflow-hidden', {
-  'theme-nap': getConfig().themeNap,
-  'theme-fdk': !getConfig().themeNap
+  'theme-nap': getConfig().isNapProfile,
+  'theme-fdk': !getConfig().isNapProfile
 });
 
 const ErrorPage: FC<Props> = ({ errorCode, language, onChangeLanguage }) => {

@@ -100,7 +100,7 @@ export const ReportPagePure: FC<Props> = ({
   return (
     <ThemeProvider
       theme={
-        (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+        (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
           Entity.DATASET
         ]
       }
@@ -155,7 +155,7 @@ export const ReportPagePure: FC<Props> = ({
             </div>
             <div className='row mb-5'>
               <div className='col-12'>
-                {getConfig().themeNap ? (
+                {getConfig().isNapProfile ? (
                   <DatasetReport
                     datasetsReport={datasetsReport}
                     datasetsTimeSeries={datasetsTimeSeries}

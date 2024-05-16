@@ -159,7 +159,7 @@ const FiltersPure: FC<Props> = ({
               referenceDataItems={losItems}
               collapseItems
             />
-            {!getConfig().themeNap && (
+            {!getConfig().isNapProfile && (
               <FilterBox
                 htmlKey={1}
                 title={localization.facet.themeEU}
@@ -169,7 +169,7 @@ const FiltersPure: FC<Props> = ({
                 referenceDataItems={themesItems}
               />
             )}
-            {!getConfig().themeNap && (
+            {!getConfig().isNapProfile && (
               <FilterBox
                 htmlKey={2}
                 title={localization.facet.accessRight}

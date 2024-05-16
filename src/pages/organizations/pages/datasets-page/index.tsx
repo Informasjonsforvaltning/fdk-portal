@@ -118,7 +118,7 @@ const DatasetsPage: FC<Props> = ({
   },
   history: { push }
 }) => {
-  // const isTransportportal = getConfig().themeNap;
+  // const isTransportportal = getConfig().isNapProfile;
 
   useLayoutEffect(() => {
     if (organization?.organizationId !== organizationId) {

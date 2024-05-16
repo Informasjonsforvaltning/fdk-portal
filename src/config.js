@@ -37,7 +37,6 @@ const config = {
   conceptApi: defaultToFdkPortalBaseUri(env.CONCEPT_API_HOST),
   datasetApi: defaultToFdkPortalBaseUri(env.DATASET_API_HOST),
   fdkPortalBaseUri: defaultToFdkPortalBaseUri(),
-  filterTransportDatasets: isNapProfile(env.NAP_HOST),
   informationmodelApi: defaultToFdkPortalBaseUri(env.INFORMATIONMODEL_API_HOST),
   metadataQualityAssessmentApi: {
     host: env.FDK_MQA_API_BASE_URI
@@ -50,7 +49,7 @@ const config = {
   resourceApi: { host: env.RESOURCE_API_HOST },
   searchApi: { host: env.SEARCH_SERVICE_HOST },
   store: { useLogger: env.REDUX_LOG === 'true' },
-  themeNap: isNapProfile(env.NAP_HOST),
+  isNapProfile: isNapProfile(env.NAP_HOST),
   useDemoLogo: env.USE_DEMO_LOGO
 };
 
