@@ -105,7 +105,7 @@
     "react-markdown": "^8.0.4",
     "react-minimal-pie-chart": "^8.4.0",
     "react-moment": "^1.1.2",
-    "react-redux": "^8.0.5",
+    "react-redux": "^9.1.2",
     "react-resolver": "^3.1.2",
     "react-router-breadcrumbs-hoc": "^4.1.0",
     "react-router-dom": "^5.3.4",
