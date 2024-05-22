@@ -79,7 +79,7 @@ const OrganizationPage: FC<Props> = ({
 }) => {
   const [showOrganizationLogo, setShowOrganizationLogo] = useState(true);
 
-  const isTransportportal = getConfig().themeNap;
+  const isTransportportal = getConfig().isNapProfile;
   const theme = isTransportportal ? themeNAP : themeFDK;
 
   useLayoutEffect(() => {
@@ -145,7 +145,7 @@ const OrganizationPage: FC<Props> = ({
           <SC.OrganizationInformation>
             {showOrganizationLogo && organization.organizationId && (
               <img
-                src={`https://orglogo.difi.no/api/logo/org/${organization.organizationId}`}
+                src={`https://orglogo.digdir.no/api/logo/org/${organization.organizationId}`}
                 alt={`${organization.name} logo`}
                 onError={() => setShowOrganizationLogo(false)}
               />

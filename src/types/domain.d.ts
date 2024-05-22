@@ -323,13 +323,15 @@ export interface Concept {
   genericRelation?: Partial<GenericRelation>[];
   created?: string;
   memberOf?: string[];
+  remark?: Partial<TextLanguage>;
+  range?: { text?: Partial<TextLanguage>; uri?: stirng };
 }
 
 export interface ConceptDefinition {
   text?: Partial<TextLanguage>;
-  remark?: Partial<TextLanguage>;
+  remark?: Partial<TextLanguage>; // @deprecated
   sources?: Array<{ text?: string; uri?: stirng }>;
-  range?: { text?: Partial<TextLanguage>; uri?: stirng };
+  range?: { text?: Partial<TextLanguage>; uri?: stirng }; // @deprecated
   sourceRelationship?: string;
 }
 
@@ -1208,3 +1210,8 @@ export type SearchQuery = {
   size?: number | undefined;
   sortfield?: string | undefined;
 } & SearchFilters;
+
+export type AccessRequest = {
+  id: string;
+  requestAddress: string;
+};

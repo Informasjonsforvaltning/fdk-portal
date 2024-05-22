@@ -79,7 +79,7 @@ const AutosuggestSearchBar: FC<Props> = ({
   location,
   history
 }) => {
-  const isNap = getConfig().filterTransportDatasets;
+  const isNap = getConfig().isNapProfile;
   const [focusedSuggestionIndex, setFocusedSuggestionIndex] = useState(-1);
   const [openSuggestions, setOpenSuggestions] = useState(true);
   const [searchString, setSearchString] = useState('');

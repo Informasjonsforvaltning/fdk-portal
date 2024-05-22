@@ -384,40 +384,44 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               <List>
                 {requiredServices?.map(({ uri }, index) => (
-                  <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
-                    <span>
-                      {translations.requires}&nbsp;
-                      {publicServicesMap?.[uri] ? (
-                        <Link
-                          as={RouterLink}
-                          to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
-                          key={`${uri}-${index}`}
-                        >
-                          {translate(publicServicesMap[uri].title) ?? uri}
-                        </Link>
-                      ) : (
-                        uri
-                      )}
-                    </span>
-                  </CatalogTypeBox>
+                  <li key={`${uri}-${index}`}>
+                    <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
+                      <span>
+                        {translations.requires}&nbsp;
+                        {publicServicesMap?.[uri] ? (
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
+                            key={`${uri}-${index}`}
+                          >
+                            {translate(publicServicesMap[uri].title) ?? uri}
+                          </Link>
+                        ) : (
+                          uri
+                        )}
+                      </span>
+                    </CatalogTypeBox>
+                  </li>
                 ))}
                 {relation?.map(({ uri }, index) => (
-                  <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
-                    <span>
-                      {translations.isRelatedTo}&nbsp;
-                      {publicServicesMap?.[uri] ? (
-                        <Link
-                          as={RouterLink}
-                          to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
-                          key={`${uri}-${index}`}
-                        >
-                          {translate(publicServicesMap[uri].title) ?? uri}
-                        </Link>
-                      ) : (
-                        uri
-                      )}
-                    </span>
-                  </CatalogTypeBox>
+                  <li key={`${uri}-${index}`}>
+                    <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
+                      <span>
+                        {translations.isRelatedTo}&nbsp;
+                        {publicServicesMap?.[uri] ? (
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
+                            key={`${uri}-${index}`}
+                          >
+                            {translate(publicServicesMap[uri].title) ?? uri}
+                          </Link>
+                        ) : (
+                          uri
+                        )}
+                      </span>
+                    </CatalogTypeBox>
+                  </li>
                 ))}
               </List>
             </ContentSection>
@@ -431,23 +435,25 @@ const PublicServiceDetailsPage: FC<Props> = ({
               }
             >
               <List>
-                {isGroupedBy?.map(uri =>
+                {isGroupedBy?.map((uri, index) =>
                   eventsMap[uri] ? (
-                    <CatalogTypeBox key={uri} entity={Entity.EVENT}>
-                      <span>
-                        {translations.isGroupedBy}&nbsp;
-                        {eventsMap[uri].id ? (
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_EVENTS}/${eventsMap[uri].id}`}
-                          >
-                            {translate(eventsMap[uri].title ?? uri)}
-                          </Link>
-                        ) : (
-                          uri
-                        )}
-                      </span>
-                    </CatalogTypeBox>
+                    <li key={`${uri}-${index}`}>
+                      <CatalogTypeBox key={uri} entity={Entity.EVENT}>
+                        <span>
+                          {translations.isGroupedBy}&nbsp;
+                          {eventsMap[uri].id ? (
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_EVENTS}/${eventsMap[uri].id}`}
+                            >
+                              {translate(eventsMap[uri].title ?? uri)}
+                            </Link>
+                          ) : (
+                            uri
+                          )}
+                        </span>
+                      </CatalogTypeBox>
+                    </li>
                   ) : null
                 )}
               </List>
@@ -463,25 +469,27 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               <List>
                 {subject?.map(
-                  ({ uri, prefLabel }) =>
+                  ({ uri, prefLabel }, index) =>
                     uri && (
-                      <CatalogTypeBox entity={Entity.CONCEPT}>
-                        {conceptsMap[uri] ? (
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
-                          >
-                            {translate(conceptsMap[uri].prefLabel)}
-                          </Link>
-                        ) : (
-                          translate(prefLabel)
-                        )}
-                        <div>
-                          {conceptsMap[uri]
-                            ? translate(conceptsMap[uri].definition?.text)
-                            : uri}
-                        </div>
-                      </CatalogTypeBox>
+                      <li key={`${uri}-${index}`}>
+                        <CatalogTypeBox entity={Entity.CONCEPT}>
+                          {conceptsMap[uri] ? (
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
+                            >
+                              {translate(conceptsMap[uri].prefLabel)}
+                            </Link>
+                          ) : (
+                            translate(prefLabel)
+                          )}
+                          <div>
+                            {conceptsMap[uri]
+                              ? translate(conceptsMap[uri].definition?.text)
+                              : uri}
+                          </div>
+                        </CatalogTypeBox>
+                      </li>
                     )
                 )}
               </List>
@@ -1239,21 +1247,22 @@ const PublicServiceDetailsPage: FC<Props> = ({
               }
             >
               <List>
-                {datasetsUris?.map(
-                  uri =>
+                {datasetsUris?.map((uri, index) =>
                     uri && (
-                      <CatalogTypeBox entity={Entity.DATASET}>
-                        {datasetsMap[uri] ? (
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_DATASETS}/${datasetsMap[uri].id}`}
-                          >
-                            {translate(datasetsMap[uri].title)}
-                          </Link>
-                        ) : (
-                          translate(uri)
-                        )}
-                      </CatalogTypeBox>
+                      <li key={`${uri}-${index}`}>
+                        <CatalogTypeBox entity={Entity.DATASET}>
+                          {datasetsMap[uri] ? (
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_DATASETS}/${datasetsMap[uri].id}`}
+                            >
+                              {translate(datasetsMap[uri].title)}
+                            </Link>
+                          ) : (
+                            translate(uri)
+                          )}
+                        </CatalogTypeBox>
+                      </li>
                     )
                 )}
               </List>

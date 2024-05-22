@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme as t } from '@fellesdatakatalog/theme';
+import { Colour, theme as t } from '@fellesdatakatalog/theme';
 import HamburgerIconBase from '../../../../images/hamburger-menu-stroke.svg';
 
 import SideMenuBase from '../side-menu';
@@ -227,6 +227,16 @@ const HamburgerIcon = styled(HamburgerIconBase)`
   margin-right: 0.5em;
 `;
 
+const AccessRequest = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+
+  & button {
+    background-color: ${t.colour(Colour.BLUE, 'B60')};
+  }
+`;
+
 export default {
   DetailsPage,
   SubBanner,
@@ -239,5 +249,6 @@ export default {
   SideMenuSmall,
   Content,
   RatingIcon,
-  HamburgerIcon
+  HamburgerIcon,
+  AccessRequest
 };

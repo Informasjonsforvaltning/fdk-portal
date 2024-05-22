@@ -57,7 +57,7 @@ const OrganizationsPage: FC<Props> = ({
   history,
   match
 }) => {
-  const isTransportportal = getConfig().themeNap;
+  const isTransportportal = getConfig().isNapProfile;
 
   const locationSearch = parseSearchParams(location);
 

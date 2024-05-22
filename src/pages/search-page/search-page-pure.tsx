@@ -6,7 +6,7 @@ import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 import {
   SearchBox,
   SearchBoxHeader,
-  SC
+  SC as SearchBoxSC
 } from '../../components/search-box/search-box';
 
 import { HitsStats } from './search-box/hits-stats/hits-stats.component';
@@ -158,7 +158,7 @@ const SearchPage: FC<Props> = ({
 
   return (
     <div>
-      {!getConfig().themeNap && (
+      {!getConfig().isNapProfile && (
         <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
           <SearchBoxHeader>
             <HitsStats
@@ -174,12 +174,12 @@ const SearchPage: FC<Props> = ({
           <Tabs />
         </SearchBox>
       )}
-      {getConfig().themeNap && (
+      {getConfig().isNapProfile && (
         <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
           <SearchBoxHeader>
-            <SC.SearchBox.SearchHeaderLogosTitle>
+            <SearchBoxSC.SearchBox.SearchHeaderLogosTitle>
               {translations.collaborationBetween}
-            </SC.SearchBox.SearchHeaderLogosTitle>
+            </SearchBoxSC.SearchBox.SearchHeaderLogosTitle>
             <TransportPortalLogos />
           </SearchBoxHeader>
         </SearchBox>

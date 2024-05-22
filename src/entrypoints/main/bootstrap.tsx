@@ -26,7 +26,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const theme = getConfig().themeNap ? themeNAP : themeFDK;
+const theme = getConfig().isNapProfile ? themeNAP : themeFDK;
 
 render(
   <ThemeProvider theme={theme}>

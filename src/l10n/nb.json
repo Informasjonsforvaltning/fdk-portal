@@ -663,6 +663,7 @@
         "EVENT": "Hendelsesbeskrivelse"
       }
     },
+    "requestDataButton": "Be om tilgang",
     "owner": "Eier: {publisher}",
     "provider": "Tilbyder: {publisher}",
     "responsible": "Ansvarlig: {publisher}",

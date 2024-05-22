@@ -40,7 +40,7 @@ const renderEntity = (
         <ThemeProvider
           key={entity.id}
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+            (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
               Entity.DATASET
             ]
           }
@@ -53,7 +53,7 @@ const renderEntity = (
         <ThemeProvider
           key={entity.id}
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+            (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
               Entity.DATA_SERVICE
             ]
           }
@@ -66,7 +66,7 @@ const renderEntity = (
         <ThemeProvider
           key={entity.id}
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+            (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
               Entity.CONCEPT
             ]
           }
@@ -84,7 +84,7 @@ const renderEntity = (
         <ThemeProvider
           key={entity.id}
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+            (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
               Entity.INFORMATION_MODEL
             ]
           }
@@ -97,7 +97,7 @@ const renderEntity = (
         <ThemeProvider
           key={entity.id}
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+            (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
               Entity.PUBLIC_SERVICE
             ]
           }
@@ -110,7 +110,7 @@ const renderEntity = (
         <ThemeProvider
           key={entity.id}
           theme={
-            (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+            (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
               Entity.EVENT
             ]
           }
