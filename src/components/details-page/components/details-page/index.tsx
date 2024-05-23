@@ -62,6 +62,10 @@ import withCommunity, {
 } from '../../../with-community';
 import Aside from '../aside';
 import { accessRequestWhiteList } from '../../../../white-list';
+import {
+  MonsidoTrackEventParams,
+  monsidoTrackButtonClickEvent
+} from '../../../analytics-monsido/utils/events';
 
 interface ExternalProps {
   entity: Entity;
@@ -255,10 +259,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     if (isOpenData) {
       items.push(
         <SC.ThemeItem>
-          <Link
-            to={`${rootPaths[entity]}?opendata=true`}
-            className='open-data'
-          >
+          <Link to={`${rootPaths[entity]}?opendata=true`} className='open-data'>
             <OpenAccessIcon />
             {translations.detailsPage.openData}
           </Link>
@@ -359,12 +360,9 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           </FdkLink>
         </SC.SubBanner>
       )}
-      {
-        renderThemeItems().length > 0 &&
-        <SC.Themes>
-          {renderThemeItems()}
-        </SC.Themes>
-      }
+      {renderThemeItems().length > 0 && (
+        <SC.Themes>{renderThemeItems()}</SC.Themes>
+      )}
       {accessRequest && (
         <SC.AccessRequest>
           <a
@@ -372,7 +370,15 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
             target='_blank'
             rel='noreferrer'
           >
-            <Button>{translations.detailsPage.requestDataButton}</Button>
+            <Button
+              onClick={() =>
+                monsidoTrackButtonClickEvent(
+                  MonsidoTrackEventParams.Action.Click.Button.AccessRequest
+                )
+              }
+            >
+              {translations.detailsPage.requestDataButton}
+            </Button>
           </a>
         </SC.AccessRequest>
       )}

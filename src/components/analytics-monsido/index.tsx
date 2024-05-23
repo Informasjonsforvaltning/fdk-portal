@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react';
+import { getConfig } from '../../config';
 
 const AnalyticsMonsido: FC = () => {
   const { hostname } = location;
@@ -6,7 +7,7 @@ const AnalyticsMonsido: FC = () => {
     'data.norge.no',
     'fellesdatakatalog.digdir.no'
   ].includes(hostname);
-  const isTransportPortal = ['data.transportportal.no'].includes(hostname);
+  const isTransportPortal = getConfig().isNapProfile;
 
   useEffect(() => {
     const scriptInline = document.createElement('script');
