@@ -68,9 +68,12 @@ const ServiceMessagesPage: FC<Props> = () => {
     history.push(`${PATHNAME_PUBLISHING}/service-messages?all`);
   };
   const showAll = location.search.includes('all');
-  const serviceMessageEnv = window.location.hostname.match('localhost|staging')
-    ? Enum_Servicemessage_Environment.Staging
-    : Enum_Servicemessage_Environment.Production;
+  let serviceMessageEnv = Enum_Servicemessage_Environment.Production;
+  if (window.location.hostname.match('localhost|staging')) {
+    serviceMessageEnv = Enum_Servicemessage_Environment.Staging;
+  } else if (window.location.hostname.match('demo')) {
+    serviceMessageEnv = Enum_Servicemessage_Environment.Demo;
+  }
   const { data } = useGetServiceMessagesQuery({
     variables: showAll
       ? {

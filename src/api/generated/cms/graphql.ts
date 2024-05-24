@@ -186,6 +186,7 @@ export enum Enum_Componentbasicimage_Style {
 }
 
 export enum Enum_Servicemessage_Environment {
+  Demo = 'demo',
   Production = 'production',
   Staging = 'staging'
 }
