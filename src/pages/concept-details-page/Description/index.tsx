@@ -44,11 +44,11 @@ const Description = ({
         )
       );
     } else {
-      sourceType = `${translations.compare.source}: ${
-        description.sourceRelationship
-          ? translations.sourceRelationship[description?.sourceRelationship]
-          : ''
-      }`;
+      sourceType = description.sourceRelationship
+        ? `${translations.compare.source}: ${
+            translations.sourceRelationship[description?.sourceRelationship]
+          }`
+        : '';
     }
 
     return (
