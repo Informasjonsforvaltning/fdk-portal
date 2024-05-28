@@ -5,4 +5,8 @@ const Sources = styled.div`
   margin-top: ${theme.spacing('S12')};
 `;
 
-export default { Sources };
+const AudienceType = styled.h2`
+  padding-bottom: 1rem;
+`;
+
+export default { Sources, AudienceType };
