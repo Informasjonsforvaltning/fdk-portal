@@ -745,16 +745,21 @@ export interface ReferenceData {
   referencetypes?: ReferenceTypes;
   apispecifications?: ApiSpecifications;
   audiencetypes?: AudienceTypes;
+  relationshipwithsourcetypes?: RelationshipWithSourceTypes;
 }
 
-export interface AudienceType {
+export interface ReferenceDataType {
   uri: string;
   code?: string;
   label?: Partial<TextLanguage>;
 }
 
 export interface AudienceTypes {
-  audienceTypes: audienceType[];
+  audienceTypes: ReferenceDataType[];
+}
+
+export interface RelationshipWithSourceTypes {
+  relationshipWithSourceTypes: ReferenceDataType[];
 }
 
 export interface ReferenceDataCode {

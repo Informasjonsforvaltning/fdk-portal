@@ -9,7 +9,8 @@ import { getTranslateText as translate } from '../../../lib/translateText';
 import {
   AudienceTypes,
   ConceptDefinition,
-  Language
+  Language,
+  RelationshipWithSourceTypes
 } from '../../../types/domain';
 import { capitalizeFirstLetter } from '../../../utils/common';
 
@@ -17,43 +18,59 @@ interface Props {
   descriptions: ConceptDefinition[];
   selectedLanguages: Language[] | [];
   audienceTypes?: AudienceTypes;
+  relationshipWithSourceTypes?: RelationshipWithSourceTypes;
 }
 
 const Description = ({
   descriptions,
   selectedLanguages,
-  audienceTypes
+  audienceTypes,
+  relationshipWithSourceTypes
 }: Props) => {
   const renderSources = (description: ConceptDefinition) => {
-    if (description.sourceRelationship === 'egendefinert') {
-      return `${translations.compare.source}: ${
-        translations.sourceRelationship[description?.sourceRelationship]
+    let sourceType;
+    if (
+      relationshipWithSourceTypes?.relationshipWithSourceTypes?.find(
+        relationshipWithSourceType =>
+          relationshipWithSourceType.uri === description.sourceRelationship
+      )
+    ) {
+      sourceType = capitalizeFirstLetter(
+        translate(
+          relationshipWithSourceTypes?.relationshipWithSourceTypes?.find(
+            relationshipWithSourceType =>
+              relationshipWithSourceType.uri === description.sourceRelationship
+          )?.label
+        )
+      );
+    } else {
+      sourceType = `${translations.compare.source}: ${
+        description.sourceRelationship
+          ? translations.sourceRelationship[description?.sourceRelationship]
+          : ''
       }`;
     }
-    return description?.sources?.length ? (
+
+    return (
       <>
-        <span>
-          {`${translations.compare.source}: ${
-            description.sourceRelationship
-              ? translations.sourceRelationship[description?.sourceRelationship]
-              : ''
-          }`}
-        </span>
-        {description.sources.map(({ text, uri }, index) => (
-          <span key={`${text}-${uri}-${index}`}>
-            {index > 0 && ','}
-            &nbsp;
-            {uri ? (
-              <Link href={uri} external>
-                {translate(text) || uri}
-              </Link>
-            ) : (
-              translate(text)
-            )}
-          </span>
-        ))}
+        <span>{sourceType}</span>
+        {description?.sources?.length
+          ? description.sources.map(({ text, uri }, index) => (
+              <span key={`${text}-${uri}-${index}`}>
+                {index > 0 && ','}
+                &nbsp;
+                {uri ? (
+                  <Link href={uri} external>
+                    {translate(text) || uri}
+                  </Link>
+                ) : (
+                  translate(text)
+                )}
+              </span>
+            ))
+          : null}
       </>
-    ) : null;
+    );
   };
 
   const sortedDescriptions = descriptions.sort((a, b) => {

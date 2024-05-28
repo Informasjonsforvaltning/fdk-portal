@@ -70,7 +70,10 @@ const ConceptDetailsPage: FC<Props> = ({
   concepts: conceptReferences,
   relations,
   isLoadingConcept,
-  referenceData: { audiencetypes: audienceTypes },
+  referenceData: {
+    audiencetypes: audienceTypes,
+    relationshipwithsourcetypes: relationshipWithSourceTypes
+  },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptActions: { getConceptRequested: getConcept },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
@@ -97,6 +100,10 @@ const ConceptDetailsPage: FC<Props> = ({
 
   if (!audienceTypes) {
     getReferenceData('audiencetypes');
+  }
+
+  if (!relationshipWithSourceTypes) {
+    getReferenceData('relationshipwithsourcetypes');
   }
 
   useEffect(() => {
@@ -248,6 +255,7 @@ const ConceptDetailsPage: FC<Props> = ({
             descriptions={descriptions}
             selectedLanguages={selectedLanguages}
             audienceTypes={audienceTypes}
+            relationshipWithSourceTypes={relationshipWithSourceTypes}
           />
         )}
         {hasValidity && (
