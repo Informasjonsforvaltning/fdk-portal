@@ -34,7 +34,7 @@ import { PATHNAME_DATASETS } from '../../../constants/constants';
 import Spinner from '../../../components/spinner';
 import { LinkPagination } from '../../../components/pagination';
 
-const { SEARCH_API_HOST } = env;
+const { FDK_PORTAL_BASE_URI } = env;
 
 interface ExternalProps {
   entities: Partial<SearchObject>[];
@@ -143,7 +143,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                     {[FeedType.RSS, FeedType.ATOM].map(type => (
                       <SC.FeedLink
                         key={type}
-                        href={`${SEARCH_API_HOST}/datasets.${type}${location.search}`}
+                        href={`${FDK_PORTAL_BASE_URI}/datasets.${type}${location.search}`}
                       >
                         {localization.feedType[type]}
                         <SC.FeedIcon />
