@@ -20,11 +20,19 @@ import withConcepts from '../../components/with-concepts';
 import type { Props as PublicServicesProps } from '../../components/with-public-services';
 import withPublicServices from '../../components/with-public-services';
 import withErrorBoundary from '../../components/with-error-boundary';
+import withReferenceData, {
+  Props as ReferenceDataProps
+} from '../../components/with-reference-data';
 
 import { DetailsPage } from '../../components/details-page';
 import ErrorPage from '../error-page';
 
-import type { Theme, Language, TextLanguage } from '../../types';
+import type {
+  Theme,
+  Language,
+  TextLanguage,
+  ConceptDefinition
+} from '../../types';
 import { Entity } from '../../types/enums';
 import RelatedConcepts from '../../components/details-page/components/RelatedConcepts';
 import ContactPoint from './ContactPoint';
@@ -54,6 +62,7 @@ interface Props
     ConceptsProps,
     PublicServicesProps,
     ResourceRelationsProps,
+    ReferenceDataProps,
     RouteComponentProps<RouteParams> {}
 
 const ConceptDetailsPage: FC<Props> = ({
@@ -61,6 +70,11 @@ const ConceptDetailsPage: FC<Props> = ({
   concepts: conceptReferences,
   relations,
   isLoadingConcept,
+  referenceData: {
+    audiencetypes: audienceTypes,
+    relationshipwithsourcetypes: relationshipWithSourceTypes
+  },
+  referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptActions: { getConceptRequested: getConcept },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
   resourceRelationsActions: {
@@ -83,6 +97,14 @@ const ConceptDetailsPage: FC<Props> = ({
 
   const entity = Entity.CONCEPT;
   const theme = { entityColours: themeFDK.extendedColors[entity] };
+
+  if (!audienceTypes) {
+    getReferenceData('audiencetypes');
+  }
+
+  if (!relationshipWithSourceTypes) {
+    getReferenceData('relationshipwithsourcetypes');
+  }
 
   useEffect(() => {
     if (concept?.uri) {
@@ -165,9 +187,9 @@ const ConceptDetailsPage: FC<Props> = ({
   const identifier = concept?.identifier;
   const publisher = concept?.publisher;
   const title = concept?.prefLabel ?? {};
-  const description = concept?.definition?.text;
-  const sourceRelationship = concept?.definition?.sourceRelationship;
-  const sources = concept?.definition?.sources ?? [];
+  const descriptionAsList = concept?.definition ? [concept?.definition] : [];
+  const descriptions: ConceptDefinition[] =
+    concept?.definitions ?? descriptionAsList;
   const remark = concept?.remark ?? concept?.definition?.remark;
   const altLabels = concept?.altLabel ?? [];
   const hiddenLabels = concept?.hiddenLabel ?? [];
@@ -228,12 +250,12 @@ const ConceptDetailsPage: FC<Props> = ({
         languages={selectedLanguages}
       >
         {created && <Created created={created} />}
-        {description && (
+        {descriptions && descriptions.length > 0 && (
           <Description
-            description={description}
+            descriptions={descriptions}
             selectedLanguages={selectedLanguages}
-            sources={sources}
-            sourceRelationship={sourceRelationship}
+            audienceTypes={audienceTypes}
+            relationshipWithSourceTypes={relationshipWithSourceTypes}
           />
         )}
         {hasValidity && (
@@ -311,5 +333,6 @@ export default compose<FC>(
   withConcepts,
   withPublicServices,
   withResourceRelations,
+  withReferenceData,
   withErrorBoundary(ErrorPage)
 )(ConceptDetailsPage);

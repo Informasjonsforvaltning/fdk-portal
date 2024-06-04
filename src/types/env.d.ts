@@ -5,7 +5,7 @@ export interface EnvironmentVariables {
   OIDC_ISSUER: string;
   OIDC_CLIENT_SECRET: string;
   CONTAINER_IMAGE: string;
-  SEARCH_API_HOST: string;
+  FDK_PORTAL_BASE_URI: string;
   FDK_REGISTRATION_BASE_URI: string;
   ADMIN_GUI_BASE_URI: string;
   FDK_LOGGING_FUNCTION_URI: string;
