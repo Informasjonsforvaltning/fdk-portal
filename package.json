@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.10.4",
-    "@digdir/design-system-react": "^0.53.12",
+    "@digdir/design-system-react": "^0.51.1",
     "@digdir/design-system-tokens": "^0.13.0",
     "@emotion/styled": "^11.11.5",
     "@fellesdatakatalog/alert": "^0.3.9",
