@@ -22,11 +22,7 @@ import {
 import { getConfig } from '../../../../config';
 import { themeFDK, themeNAP } from '../../../../app/theme';
 import { Entity, Filter, MediaTypeOrExtentType } from '../../../../types/enums';
-import {
-  CatalogWithCountObject,
-  DatasetsReport,
-  KeyWithCountObject
-} from '../../../../types';
+import { DatasetsReport, KeyWithCountObject } from '../../../../types';
 
 import AccessUnknownIcon from '../../../../images/icon-access-unknown-md-v2.svg';
 import { List } from '../../../../components/list/list';
@@ -34,7 +30,6 @@ import { PATHNAME_DATASETS } from '../../../../constants/constants';
 import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import localization from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
-import { Line } from '../../../../components/charts';
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../components/with-reference-data';
@@ -43,7 +38,6 @@ import { translatePrefixedFormat } from '../../../../utils/common';
 import {
   ContainerPaneContent as ContainerPaneContentSC,
   ContainerBoxRegular as ContainerBoxRegularSC,
-  NapBookBookmarkStrokeIcon as NapBookBookmarkStrokeIconSC,
   NapLockLockedStrokeIcon as NapLockLockedStrokeIconSC,
   NapLockOpenStrokeIcon as NapLockOpenStrokeIconSC,
   NapLockSemiOpenStrokeIcon as NapLockSemiOpenStrokeIconSC,
@@ -54,7 +48,6 @@ import {
 
 interface ExternalProps {
   datasetsReport: Partial<DatasetsReport>;
-  datasetsTimeSeries: any;
 }
 
 interface Props
@@ -72,22 +65,17 @@ const DatasetReport: FC<Props> = ({
     newLastWeek = 0,
     organizationCount = 0,
     nationalComponent = 0,
-    withSubject = 0,
     opendata = 0,
     accessRights = [],
     formats = [],
-    themesAndTopicsCount = [],
-    catalogs = []
-  } = {},
-  datasetsTimeSeries: { timeSeriesData = [] } = {}
+    themesAndTopicsCount = []
+  } = {}
 }) => {
   useEffect(() => {
     if (!los) {
       getReferenceData('los');
     }
   }, []);
-
-  timeSeriesData.push([Date.now(), totalObjects]);
 
   const accessRightsPublic =
     accessRights?.find((item: KeyWithCountObject) => item.key === 'PUBLIC')
@@ -182,23 +170,6 @@ const DatasetReport: FC<Props> = ({
             </BoxRegular>
           </div>
         </div>
-
-        {timeSeriesData?.length > 0 && (
-          <div className='row'>
-            <div className='col-12'>
-              <BoxRegular
-                header={localization.report.growth}
-                subHeader={localization.report.growthFromFirstPublish}
-              >
-                <Line
-                  name={localization.datasetLabel}
-                  data={timeSeriesData}
-                  lineColor={theme.extendedColors[Entity.DATASET].dark}
-                />
-              </BoxRegular>
-            </div>
-          </div>
-        )}
 
         {Number(totalObjects) > 0 && (
           <div>
@@ -389,7 +360,7 @@ const DatasetReport: FC<Props> = ({
                       <StatisticsRegular
                         to={`${PATHNAME_DATASETS}${patchSearchQuery(
                           Filter.ACCESSRIGHTS,
-                          'Ukjent'
+                          'null'
                         )}`}
                       >
                         <IllustrationWithCount
@@ -455,52 +426,6 @@ const DatasetReport: FC<Props> = ({
               </div>
             </div>
 
-            <div className='row'>
-              <div className='col-12'>
-                <BoxRegular>
-                  <StatisticsRegular
-                    to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                      Filter.SUBJECTEXISTS,
-                      'true'
-                    )}`}
-                  >
-                    <IllustrationWithCount
-                      variant={FlowVariant.COLUMN}
-                      chart={
-                        <PieChart
-                          data={[
-                            {
-                              value: Number(withSubject),
-                              color: theme.extendedColors[Entity.DATASET].dark
-                            },
-                            {
-                              value: Number(totalObjects) - Number(withSubject),
-                              color: theme.extendedColors[Entity.DATASET].light
-                            }
-                          ]}
-                          startAngle={0}
-                          lineWidth={40}
-                          animate
-                          label={({ dataIndex }) => (
-                            <NapBookBookmarkStrokeIconSC
-                              key={dataIndex}
-                              x={30}
-                              y={30}
-                              viewBox='0 0 40 40'
-                            />
-                          )}
-                        />
-                      }
-                      count={withSubject}
-                    />
-                    <SC.StatisticsRegular.Label variant={FontVariant.LARGE}>
-                      {localization.report.useConcepts}
-                    </SC.StatisticsRegular.Label>
-                  </StatisticsRegular>
-                </BoxRegular>
-              </div>
-            </div>
-
             {Array.isArray(topMostUsedFormats) &&
               topMostUsedFormats?.length > 0 && (
                 <div className='row'>
@@ -555,34 +480,6 @@ const DatasetReport: FC<Props> = ({
                   </div>
                 </div>
               )}
-
-            <div className='row'>
-              <div className='col-12'>
-                <BoxRegular header={localization.report.datasetCatalogs}>
-                  {Array.isArray(catalogs) && catalogs?.length > 0 && (
-                    <List
-                      headerText1={localization.report.catalogName}
-                      headerText2={localization.report.countDataset}
-                      listItems={catalogs.map(
-                        (
-                          { title, count }: CatalogWithCountObject,
-                          index: any
-                        ) => ({
-                          id: index,
-                          path: `${PATHNAME_DATASETS}?${
-                            Filter.CATALOGNAME
-                          }=${encodeURIComponent(translate(title) ?? '')}`,
-                          text1: translate(title),
-                          text2: `${count}`
-                        })
-                      )}
-                      showMoreLabel={localization.report.showAllCatalogs}
-                      showLessLabel={localization.report.showLessCatalogs}
-                    />
-                  )}
-                </BoxRegular>
-              </div>
-            </div>
           </div>
         )}
       </main>
