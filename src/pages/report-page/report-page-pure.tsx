@@ -27,27 +27,19 @@ import { FilterChange } from '../../components/filter-box/filter-box.component';
 interface Props {
   fetchPublishersIfNeeded: () => void;
   publishers?: any;
-  datasetsTimeSeries?: any;
   dataServicesReport?: any;
-  dataServicesTimeSeries?: any;
   informationModelsReport?: any;
-  informationModelsTimeSeries?: any;
   datasetsReport?: any;
   conceptsReport?: any;
-  conceptsTimeSeries?: any;
 }
 
 export const ReportPagePure: FC<Props> = ({
   fetchPublishersIfNeeded,
   publishers = {},
   dataServicesReport,
-  dataServicesTimeSeries,
   informationModelsReport,
-  informationModelsTimeSeries,
   datasetsReport,
-  datasetsTimeSeries = {},
-  conceptsReport,
-  conceptsTimeSeries
+  conceptsReport
 }) => {
   const history = useHistory();
   const { search } = useLocation();
@@ -156,10 +148,7 @@ export const ReportPagePure: FC<Props> = ({
             <div className='row mb-5'>
               <div className='col-12'>
                 {getConfig().isNapProfile ? (
-                  <DatasetReport
-                    datasetsReport={datasetsReport}
-                    datasetsTimeSeries={datasetsTimeSeries}
-                  />
+                  <DatasetReport datasetsReport={datasetsReport} />
                 ) : (
                   <Tabs>
                     <Tab for='pane-1' active>
@@ -195,29 +184,19 @@ export const ReportPagePure: FC<Props> = ({
                       />
                     </Tab>
                     <Pane id='pane-1'>
-                      <DatasetReport
-                        datasetsReport={datasetsReport}
-                        datasetsTimeSeries={datasetsTimeSeries}
-                      />
+                      <DatasetReport datasetsReport={datasetsReport} />
                     </Pane>
                     <Pane id='pane-2'>
                       <DataserviceReport
                         dataServicesReport={dataServicesReport}
-                        dataServicesTimeSeries={dataServicesTimeSeries}
                       />
                     </Pane>
                     <Pane id='pane-3'>
-                      <ConceptReport
-                        conceptsReport={conceptsReport}
-                        conceptsTimeSeries={conceptsTimeSeries}
-                      />
+                      <ConceptReport conceptsReport={conceptsReport} />
                     </Pane>
                     <Pane id='pane-4'>
                       <InformationModelReport
                         informationModelsReport={informationModelsReport}
-                        informationModelsTimeSeries={
-                          informationModelsTimeSeries
-                        }
                       />
                     </Pane>
                   </Tabs>
