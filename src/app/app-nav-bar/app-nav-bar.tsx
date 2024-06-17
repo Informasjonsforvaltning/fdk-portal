@@ -308,6 +308,12 @@ const fdkItemsMobile = () => [
       <SC.ListItem key={localization.menu.sparql}>
         <Link href={PATHNAME_SPARQL}>{localization.menu.sparql}</Link>
       </SC.ListItem>
+      <SC.ListItem key={localization.menu.requests}>
+        <Link href={PATHNAME_REQUESTS}>{localization.menu.requests}</Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.datahunter}>
+        <Link href={PATHNAME_DATA_HUNTER}>{localization.menu.datahunter}</Link>
+      </SC.ListItem>
     </ul>
   </SC.ListItem>,
   <SC.ListItem key={localization.menu.community}>
