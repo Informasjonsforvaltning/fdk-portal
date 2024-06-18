@@ -737,6 +737,8 @@
       },
       "publicService": {
         "description": "Beskrivelse",
+        "mainActivity": "Hovedformål",
+        "serviceType": "Type",
         "usage": "Bruk av tjenesten",
         "keywords": "Søkeord",
         "relatedServices": "Relaterte tjenester",

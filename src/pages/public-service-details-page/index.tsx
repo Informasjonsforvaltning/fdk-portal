@@ -129,9 +129,9 @@ const PublicServiceDetailsPage: FC<Props> = ({
       resetPublicServices();
     };
   }, [publicServiceId]);
-
   const title = publicService?.title ?? {};
   const description = translate(publicService?.description);
+  const serviceTypeCodes = publicService?.dctType ?? [];
   const lastPublished = formatDate(
     dateStringToDate(publicService?.harvest?.firstHarvested)
   );
@@ -322,6 +322,23 @@ const PublicServiceDetailsPage: FC<Props> = ({
               truncate
             >
               <Markdown>{description}</Markdown>
+            </ContentSection>
+          )}
+          {serviceTypeCodes.length > 0 && (
+            <ContentSection
+              id='serviceType'
+              title={
+                publicService.specializedType === 'publicService'
+                  ? translations.detailsPage.sectionTitles.publicService
+                      .mainActivity
+                  : translations.detailsPage.sectionTitles.publicService
+                      .serviceType
+              }
+              truncate
+            >
+              {serviceTypeCodes.map(code =>
+                code.prefLabel ? translate(code.prefLabel) : code.uri
+              )}
             </ContentSection>
           )}
           {produces.length > 0 && (
@@ -588,7 +605,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-
           {holdsRequirement.length > 0 && (
             <ContentSection
               id='holdsRequirement'
@@ -634,7 +650,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-
           {follows.length > 0 && (
             <ContentSection
               id='follows'
@@ -834,7 +849,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           {translate(name)}
                         </SC.KeyValueListHeader>
                       )}
-
                       {dctType && (
                         <SC.KeyValueListSubHeader>
                           {dctType
@@ -845,7 +859,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                             .join(', ')}
                         </SC.KeyValueListSubHeader>
                       )}
-
                       <KeyValueList>
                         {hasInputDescription && (
                           <KeyValueListItem
@@ -893,7 +906,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-
           {hasChannel.length > 0 && (
             <ContentSection
               id='channels'
@@ -1247,7 +1259,8 @@ const PublicServiceDetailsPage: FC<Props> = ({
               }
             >
               <List>
-                {datasetsUris?.map((uri, index) =>
+                {datasetsUris?.map(
+                  (uri, index) =>
                     uri && (
                       <li key={`${uri}-${index}`}>
                         <CatalogTypeBox entity={Entity.DATASET}>
