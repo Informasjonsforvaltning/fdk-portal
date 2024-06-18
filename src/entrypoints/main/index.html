@@ -64,7 +64,7 @@
       href="https://data.norge.no/datasets.atom"
     />
     <script src="<%= webpackConfig.output.publicPath %>config.js"></script>
-    
+
     <style>
       .screenreader-text {
         position: absolute;
@@ -72,6 +72,7 @@
         width: 1px;
         height: 1px;
         top: auto;
+        scroll-behavior: smooth;
       }
 
       .screenreader-text:focus {
@@ -84,15 +85,19 @@
     </style>
   </head>
   <body>
-      <a
-        id='skip-to-content'
-        class='screenreader-text'
-        href='#content'
-        aria-hidden='false'
-        lang='en'
-      >
-        Skip to Content
-      </a>
+    <a
+      id="skip-to-content"
+      class="screenreader-text"
+      href="#content"
+      aria-hidden="false"
+      lang="en"
+      onclick="
+          event.preventDefault();
+          document.getElementById('content').scrollIntoView();
+        "
+    >
+      Skip to Content
+    </a>
     <div id="root"></div>
   </body>
 </html>
