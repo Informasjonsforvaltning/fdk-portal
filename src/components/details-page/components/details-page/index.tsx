@@ -53,10 +53,7 @@ import {
 } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
-import {
-  calculateRatingPercentage,
-  determineRatingIcon
-} from '../../../../pages/organizations/pages/datasets-page';
+import { calculateRatingPercentage } from '../../../../pages/organizations/pages/datasets-page';
 import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
@@ -220,8 +217,20 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     </ContentSection>
   );
 
+  const publishingDate = (
+    <SC.PublishingDate>
+      {translations.formatString(
+        translations.detailsPage.banner.lastPublishedInfo,
+        {
+          lastPublished
+        }
+      )}
+    </SC.PublishingDate>
+  );
+
   const contentSections = Children.toArray(children).concat([
     communitySection,
+    publishingDate,
     commentSection
   ]);
 
@@ -341,7 +350,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       <Banner
         entity={entity}
         title={title}
-        lastPublished={lastPublished}
         isAuthoritative={isAuthoritative}
         languages={languages}
         publisher={publisher}
@@ -351,11 +359,11 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         <SC.SubBanner>
           <FdkLink href={`/organizations/${publisher.id}/datasets/${entityId}`}>
             <SC.MetadataQuality>
-              <p>{translations.metadataQualityPage.metadataQuality}: </p>
-              <SC.RatingIcon>
-                {determineRatingIcon(datasetScore.dataset)}
-              </SC.RatingIcon>
-              <p>{calculateRatingPercentage(datasetScore.dataset)} %</p>
+              <p>
+                {`${
+                  translations.metadataQualityPage.metadataQuality
+                }: ${calculateRatingPercentage(datasetScore.dataset)} %`}
+              </p>
             </SC.MetadataQuality>
           </FdkLink>
         </SC.SubBanner>

@@ -11,7 +11,7 @@ import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
 
 import SC from './styled';
 
-import { Entity } from '../../../../types/enums';
+import { Entity, LanguageCodes } from '../../../../types/enums';
 import type {
   Language,
   PublicServiceLanguage,
@@ -19,13 +19,12 @@ import type {
   TextLanguage
 } from '../../../../types';
 import { getTranslateText as translate } from '../../../../lib/translateText';
-import MultiLingualField from '../../../multilingual-field/components/multilingual-field';
-import LanguageIndicator from '../../../language-indicator';
+
+type LanguageType = LanguageCodes.nb | LanguageCodes.nn | LanguageCodes.en;
 
 interface Props {
   entity: Entity;
   title: Partial<TextLanguage>;
-  lastPublished: string;
   isAuthoritative: boolean;
   languages?: Language[];
   publisher?: Partial<Organization>;
@@ -35,7 +34,6 @@ interface Props {
 const Banner: FC<Props> = ({
   entity,
   title,
-  lastPublished,
   publisher,
   admsStatus,
   isAuthoritative,
@@ -44,27 +42,27 @@ const Banner: FC<Props> = ({
   const entityDetails = {
     [Entity.DATASET]: {
       icon: DatasetIcon,
-      translation: translations.detailsPage.banner.entity.dataset
+      translation: translations.detailsPage.banner.entity.DATASET
     },
     [Entity.DATA_SERVICE]: {
       icon: ApiIcon,
-      translation: translations.detailsPage.banner.entity.dataservice
+      translation: translations.detailsPage.banner.entity.DATA_SERVICE
     },
     [Entity.CONCEPT]: {
       icon: ConceptIcon,
-      translation: translations.detailsPage.banner.entity.concept
+      translation: translations.detailsPage.banner.entity.CONCEPT
     },
     [Entity.INFORMATION_MODEL]: {
       icon: InformationModelIcon,
-      translation: translations.detailsPage.banner.entity.infomod
+      translation: translations.detailsPage.banner.entity.INFORMATION_MODEL
     },
     [Entity.PUBLIC_SERVICE]: {
       icon: PublicServiceIcon,
-      translation: translations.detailsPage.banner.entity.publicservice
+      translation: translations.detailsPage.banner.entity.SERVICE
     },
     [Entity.EVENT]: {
       icon: PublicServiceIcon,
-      translation: translations.detailsPage.banner.entity.event
+      translation: translations.detailsPage.banner.entity.EVENT
     }
   };
 
@@ -79,20 +77,12 @@ const Banner: FC<Props> = ({
 
   const publisherName = translate(publisher?.prefLabel || publisher?.name);
   const pubisherId = publisher?.identifier || publisher?.id;
-  const { icon: Icon, translation } = entityDetails[entity];
+  const { translation } = entityDetails[entity];
 
   return (
     <SC.Banner inverted={entity === Entity.EVENT}>
-      <Icon />
       <SC.Content>
         <SC.TitleWrapper>
-          {entity === Entity.CONCEPT && (
-            <LanguageIndicator
-              textLanguage={title}
-              selectedLanguage={translations.getLanguage()}
-              whiteBackground
-            />
-          )}
           <SC.Title>
             <span>
               {translate(
@@ -108,28 +98,46 @@ const Banner: FC<Props> = ({
               </div>
             )}
           </SC.Title>
+
+          {entity === Entity.CONCEPT &&
+            title[translations.getLanguage() as LanguageType] && (
+              <SC.TitleLanguage>
+                {`(${translations.shortLang[translations.getLanguage()]})`}
+              </SC.TitleLanguage>
+            )}
         </SC.TitleWrapper>
-        {entity === Entity.CONCEPT &&
-          languages.filter(({ selected }) => selected)?.length > 1 && (
-            <MultiLingualField
-              languages={languages}
-              text={title}
-              skippedLanguages={[translations.getLanguage()]}
-              iconAlignCenter
-              useFallback={false}
-            />
-          )}
+        {languages.filter(({ selected }) => selected).length > 1 && (
+          <SC.SecondTitlesWrapped>
+            {languages
+              .filter(
+                ({ code, selected }) =>
+                  code !== translations.getLanguage() && selected
+              )
+              .map(({ code }, index, array) => {
+                const typedCode = code as LanguageType;
+                const titleString = `${translations.shortLang[code]}: ${title[typedCode]}`;
+                const isLast = index === array.length - 1;
+                return (
+                  <>
+                    <SC.SecondTitles>{titleString}</SC.SecondTitles>
+                    {!isLast && <SC.Hyphen> - </SC.Hyphen>}
+                  </>
+                );
+              })}
+          </SC.SecondTitlesWrapped>
+        )}
 
         <SC.BannerInfo>
-          <SC.LastPublishedInfo>
-            {translations.formatString(
-              translations.detailsPage.banner.lastPublishedInfo,
-              {
-                entity: translation,
-                lastPublished
-              }
-            )}
-          </SC.LastPublishedInfo>
+          <SC.ResourceType>{translation}</SC.ResourceType>
+          {pubisherId && (
+            <p>
+              {`-  ${translations.formatString(publisherLabel[entity], {
+                publisher: publisherName ?? pubisherId
+              })}`}
+            </p>
+          )}
+        </SC.BannerInfo>
+        <SC.BannerInfo>
           {admsStatus && (
             <>
               <SC.Dot>•</SC.Dot>
@@ -137,14 +145,6 @@ const Banner: FC<Props> = ({
             </>
           )}
         </SC.BannerInfo>
-
-        {pubisherId && (
-          <SC.PublisherLink href={`/organizations/${pubisherId}`}>
-            {translations.formatString(publisherLabel[entity], {
-              publisher: publisherName ?? pubisherId
-            })}
-          </SC.PublisherLink>
-        )}
       </SC.Content>
     </SC.Banner>
   );
