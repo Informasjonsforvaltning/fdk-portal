@@ -9,13 +9,7 @@ const onMobileView = '@media (max-width: 768px)';
 
 const Banner = styled.header<InvertedColorProps>`
   display: flex;
-  width: 100%;
-  padding: 18px;
   border-radius: 5px;
-  color: ${({ theme: t, inverted }) =>
-    inverted ? t.entityColours.light : t.entityColours.dark};
-  background: ${({ theme: t, inverted }) =>
-    inverted ? t.entityColours.dark : t.entityColours.light};
   position: relative;
   overflow: hidden;
 
@@ -40,8 +34,6 @@ const Banner = styled.header<InvertedColorProps>`
 `;
 
 const Content = styled.div`
-  margin-left: 12px;
-
   & > ${SC.MultiLingualField.MultiLingualField} {
     font-size: ${theme.fontSize('FS20', Unit.EM)};
     font-weight: ${theme.fontWeight('FW500')};
@@ -79,14 +71,9 @@ const Title = styled.h1`
   }
 `;
 
-const LastPublishedInfo = styled.p`
-  margin: 0;
-  margin-top: 8px;
-  font-size: ${theme.fontSize('FS20', Unit.REM)};
-
-  ${onMobileView} {
-    font-size: ${theme.fontSize('FS16', Unit.REM)};
-  }
+const ResourceType = styled.h3`
+  font-weight: bold;
+  margin-right: 1rem;
 `;
 
 const PublisherLink = styled(Link)`
@@ -99,10 +86,17 @@ const PublisherLink = styled(Link)`
 
 const BannerInfo = styled.div`
   display: flex;
+  flex-direction: row;
+  margin: 0;
+  margin-top: 8px;
+  font-size: ${theme.fontSize('FS20', Unit.REM)};
+
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS16', Unit.REM)};
+  }
 `;
 
 const Status = styled.p`
-  font-weight: bold;
   margin-top: 8px;
   font-size: ${theme.fontSize('FS20', Unit.REM)};
 `;
@@ -113,14 +107,36 @@ const Dot = styled.p`
   font-size: ${theme.fontSize('FS20', Unit.REM)};
 `;
 
+const SecondTitles = styled.h2`
+  font-style: italic;
+  font-weight: normal;
+`;
+
+const SecondTitlesWrapped = styled.div`
+  display: flex;
+`;
+
+const TitleLanguage = styled.span`
+  padding-left: 1rem;
+`;
+
+const Hyphen = styled.span`
+  padding-left: 5px;
+  padding-right: 5px;
+`;
+
 export default {
   Banner,
   Content,
   TitleWrapper,
   Title,
-  LastPublishedInfo,
+  ResourceType,
   PublisherLink,
   Status,
   BannerInfo,
-  Dot
+  Dot,
+  SecondTitles,
+  TitleLanguage,
+  SecondTitlesWrapped,
+  Hyphen
 };

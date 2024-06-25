@@ -134,6 +134,11 @@
     "norwegian-nn": "Norsk (nynorsk)",
     "english-en": "English"
   },
+  "shortLang": {
+    "nb": "Bokmål",
+    "nn": "Nynorsk",
+    "en": "Engelsk"
+  },
   "menu": {
     "home": "Søk i Felles datakatalog",
     "homeNAP": "Søk i Transportportal.no",
@@ -653,7 +658,7 @@
   },
   "detailsPage": {
     "banner": {
-      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "lastPublishedInfo": "Publisert i Felles datakatalog {lastPublished}",
       "entity": {
         "DATASET": "Datasettbeskrivelse",
         "DATA_SERVICE": "Datatjenestebeskrivelse",
