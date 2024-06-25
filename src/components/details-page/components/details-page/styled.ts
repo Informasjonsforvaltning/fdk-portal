@@ -17,7 +17,6 @@ const DetailsPage = styled.article`
 
 const SubBanner = styled.div`
   margin: 0;
-  margin-top: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,9 +35,7 @@ const SubBanner = styled.div`
 
 const MetadataQuality = styled.div`
   display: flex;
-  justify-content: flex-end;
   white-space: nowrap;
-  align-items: center;
 
   & > p {
     font-size: 2rem;
@@ -237,6 +234,12 @@ const AccessRequest = styled.div`
   }
 `;
 
+const PublishingDate = styled.p`
+  padding-bottom: 2rem;
+  padding-top: 0.5rem;
+  font-style: italic;
+`;
+
 export default {
   DetailsPage,
   SubBanner,
@@ -250,5 +253,6 @@ export default {
   Content,
   RatingIcon,
   HamburgerIcon,
-  AccessRequest
+  AccessRequest,
+  PublishingDate
 };

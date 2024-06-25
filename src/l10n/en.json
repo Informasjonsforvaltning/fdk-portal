@@ -648,7 +648,7 @@
   },
   "detailsPage": {
     "banner": {
-      "lastPublishedInfo": "{entity} published in Felles datakatalog on {lastPublished}",
+      "lastPublishedInfo": "Published in Felles datakatalog on {lastPublished}",
       "entity": {
         "DATASET": "Dataset description",
         "DATA_SERVICE": "Data service description",

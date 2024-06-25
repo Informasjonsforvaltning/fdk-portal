@@ -25,7 +25,6 @@ import LanguageIndicator from '../../../language-indicator';
 interface Props {
   entity: Entity;
   title: Partial<TextLanguage>;
-  lastPublished: string;
   isAuthoritative: boolean;
   languages?: Language[];
   publisher?: Partial<Organization>;
@@ -35,7 +34,6 @@ interface Props {
 const Banner: FC<Props> = ({
   entity,
   title,
-  lastPublished,
   publisher,
   admsStatus,
   isAuthoritative,
@@ -44,27 +42,28 @@ const Banner: FC<Props> = ({
   const entityDetails = {
     [Entity.DATASET]: {
       icon: DatasetIcon,
-      translation: translations.detailsPage.banner.entity.dataset
+      translation: translations.detailsPage.relationList.subtitle.dataset
     },
     [Entity.DATA_SERVICE]: {
       icon: ApiIcon,
-      translation: translations.detailsPage.banner.entity.dataservice
+      translation: translations.detailsPage.relationList.subtitle.dataservice
     },
     [Entity.CONCEPT]: {
       icon: ConceptIcon,
-      translation: translations.detailsPage.banner.entity.concept
+      translation: translations.detailsPage.relationList.subtitle.concept
     },
     [Entity.INFORMATION_MODEL]: {
       icon: InformationModelIcon,
-      translation: translations.detailsPage.banner.entity.infomod
+      translation:
+        translations.detailsPage.relationList.subtitle.informationmodel
     },
     [Entity.PUBLIC_SERVICE]: {
       icon: PublicServiceIcon,
-      translation: translations.detailsPage.banner.entity.publicservice
+      translation: translations.detailsPage.relationList.subtitle.public_service
     },
     [Entity.EVENT]: {
       icon: PublicServiceIcon,
-      translation: translations.detailsPage.banner.entity.event
+      translation: translations.detailsPage.relationList.subtitle.event
     }
   };
 
@@ -79,11 +78,10 @@ const Banner: FC<Props> = ({
 
   const publisherName = translate(publisher?.prefLabel || publisher?.name);
   const pubisherId = publisher?.identifier || publisher?.id;
-  const { icon: Icon, translation } = entityDetails[entity];
+  const { translation } = entityDetails[entity];
 
   return (
     <SC.Banner inverted={entity === Entity.EVENT}>
-      <Icon />
       <SC.Content>
         <SC.TitleWrapper>
           {entity === Entity.CONCEPT && (
@@ -121,15 +119,16 @@ const Banner: FC<Props> = ({
           )}
 
         <SC.BannerInfo>
-          <SC.LastPublishedInfo>
-            {translations.formatString(
-              translations.detailsPage.banner.lastPublishedInfo,
-              {
-                entity: translation,
-                lastPublished
-              }
-            )}
-          </SC.LastPublishedInfo>
+          <SC.ResourceType>{translation}</SC.ResourceType>
+          {pubisherId && (
+            <p>
+              {`-  ${translations.formatString(publisherLabel[entity], {
+                publisher: publisherName ?? pubisherId
+              })}`}
+            </p>
+          )}
+        </SC.BannerInfo>
+        <SC.BannerInfo>
           {admsStatus && (
             <>
               <SC.Dot>•</SC.Dot>
@@ -137,14 +136,6 @@ const Banner: FC<Props> = ({
             </>
           )}
         </SC.BannerInfo>
-
-        {pubisherId && (
-          <SC.PublisherLink href={`/organizations/${pubisherId}`}>
-            {translations.formatString(publisherLabel[entity], {
-              publisher: publisherName ?? pubisherId
-            })}
-          </SC.PublisherLink>
-        )}
       </SC.Content>
     </SC.Banner>
   );

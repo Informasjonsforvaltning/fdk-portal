@@ -653,7 +653,7 @@
   },
   "detailsPage": {
     "banner": {
-      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "lastPublishedInfo": "Publisert i Felles datakatalog {lastPublished}",
       "entity": {
         "DATASET": "Datasettbeskriving",
         "DATA_SERVICE": "Datatenestebeskriving",
