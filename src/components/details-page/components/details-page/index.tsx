@@ -114,8 +114,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   languages = [],
   topics,
   multiplePages,
-  referenceData: { los: losThemes, themes: euThemes },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData },
   datasetScoresActions: {
     getDatasetScoresRequested: getDatasetScores,
     resetDatasetScores
@@ -149,22 +147,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       window.removeEventListener('scroll', () => handleScroll);
     };
   }, [debounce, handleScroll]);
-
-  useEffect(() => {
-    const appRoot = document.querySelector('#root > div');
-    appRoot?.classList.add(entity);
-
-    if (!losThemes) {
-      getReferenceData('los');
-    }
-    if (!euThemes) {
-      getReferenceData('themes');
-    }
-
-    return () => {
-      appRoot?.classList.remove(entity);
-    };
-  }, []);
 
   useEffect(() => {
     if (entityId) {

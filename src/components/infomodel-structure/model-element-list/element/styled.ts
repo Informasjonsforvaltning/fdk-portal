@@ -93,7 +93,6 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
 `;
 
 const ScrollLink = styled(Scroll.Link)`
-  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
   white-space: nowrap;
 `;
 
