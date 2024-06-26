@@ -456,10 +456,12 @@ interface PublicServiceContactPoint {
 export interface PublicService {
   id: string;
   type: EntityEnum.PUBLIC_SERVICE;
+  specializedType?: str | null;
   uri: string;
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
+  dctType?: PublicServiceType[];
   isDescribedAt?: Partial<PublicService>[];
   isGroupedBy?: string[];
   hasCompetentAuthority?: Partial<Organization>[];

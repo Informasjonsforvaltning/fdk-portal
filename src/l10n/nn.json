@@ -738,6 +738,8 @@
       },
       "publicService": {
         "description": "Beskriving",
+        "mainActivity": "Hovudformål",
+        "serviceType": "Type",
         "usage": "Bruk av tenesta",
         "keywords": "Emneord",
         "relatedServices": "Relaterte tenester",

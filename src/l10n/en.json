@@ -733,6 +733,8 @@
       },
       "publicService": {
         "description": "Description",
+        "mainActivity": "Main activity",
+        "serviceType": "Type",
         "usage": "Public service usage",
         "keywords": "Keywords",
         "relatedServices": "Related services",
