@@ -10,7 +10,6 @@ const DetailsPage = styled.article`
   flex: 1 0 auto;
 
   a {
-    color: ${({ theme }) => theme.entityColours.dark} !important;
     text-decoration: underline;
   }
 `;
@@ -20,10 +19,6 @@ const SubBanner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  & > a {
-    color: ${({ theme }) => theme.entityColours.dark} !important;
-  }
 
   ${onMobileView} {
     flex-direction: column;
@@ -50,26 +45,6 @@ const MetadataQuality = styled.div`
   }
 `;
 
-const RatingIcon = styled.div`
-  height: 18px;
-  width: 30px;
-  margin-left: 7px;
-  margin-right: 7px;
-
-  & > svg {
-    background-color: ${({ theme }) => theme.entityColours.lighter};
-    padding: 5px;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    position: relative;
-  }
-
-  ${onMobileView} {
-    width: 20px;
-  }
-`;
-
 const Themes = styled.ul`
   display: flex;
   align-items: center;
@@ -87,6 +62,7 @@ const Themes = styled.ul`
   }
 
   & > li > a {
+    //Tags
     display: inline-flex;
     align-items: center;
     color: ${({ theme }) => theme.entityColours.dark} !important;
@@ -251,7 +227,6 @@ export default {
   SideMenu,
   SideMenuSmall,
   Content,
-  RatingIcon,
   HamburgerIcon,
   AccessRequest,
   PublishingDate

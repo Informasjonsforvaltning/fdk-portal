@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import LinkBase from '@fellesdatakatalog/link';
 import TabsBase from '@fellesdatakatalog/tabs';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme } from '@fellesdatakatalog/theme';
 
-const Link = styled(LinkBase)`
-  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
-`;
+const Link = styled(LinkBase)``;
 
 const Tabs = styled(TabsBase)`
   padding: ${theme.spacing('S16')};
   border-radius: 5px;
-  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
 `;
 
 const Tab = styled.li`
@@ -19,11 +16,11 @@ const Tab = styled.li`
   &.active,
   &:before,
   &:after {
-    border-color: ${theme.colour(Colour.VIOLET, 'V30')};
+    border-color: ${({ theme: t }) => t.extendedColors.neutralLight};
   }
 
   &:not(.active) {
-    color: ${theme.colour(Colour.VIOLET, 'V60')};
+    color: ${({ theme: t }) => t.extendedColors.neutralDarker};
   }
 `;
 
