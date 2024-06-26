@@ -47,10 +47,10 @@
     }
   },
   "overrides": {
-    "json5": "2.2.2",
-    "axios": "^1.6.7",
-    "semver": "^7.5.4",
-    "puppeteer": "22.3.0"
+    "json5": "2.2.3",
+    "axios": "^1.7.2",
+    "semver": "^7.6.2",
+    "puppeteer": "22.12.0"
   },
   "dependencies": {
     "@apollo/client": "^3.10.4",
@@ -72,7 +72,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@types/react-document-meta": "^3.0.5",
     "apexcharts": "^3.49.1",
-    "axios": "^1.6.7",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",
     "caniuse-lite": "^1.0.30001627",
