@@ -20,5 +20,9 @@ export const accessRequestWhiteList: AccessRequest[] = [
   {
     id: 'a49ddd4a-8ccf-3054-8164-0bb9bfc9783c',
     requestAddress: 'https://kyv.apps.altinn.no/kyv/tilgangsoknad-pilot'
+  },
+  {
+    id: 'e281c8c6-b944-4662-861d-a475e973e393 ',
+    requestAddress: 'https://www.skatteetaten.no/deling/folkeregisteret/intro/'
   }
 ];
