@@ -45,6 +45,7 @@ import {
   NapSquareThreeStrokeIcon as NapSquareThreeStrokeIconSC,
   NapStarStrokeIcon as NapStarStrokeIconSC
 } from '../../styled';
+import { DatasetLineAreaChart } from '../../../../components/charts';
 
 interface ExternalProps {
   datasetsReport: Partial<DatasetsReport>;
@@ -167,6 +168,14 @@ const DatasetReport: FC<Props> = ({
                   )}
                 </SC.StatisticsRegular.Label>
               </StatisticsRegular>
+            </BoxRegular>
+          </div>
+        </div>
+
+        <div className='row'>
+          <div className='col-12'>
+            <BoxRegular header={localization.datasetsReportChartLabel}>
+              <DatasetLineAreaChart />
             </BoxRegular>
           </div>
         </div>
