@@ -6,7 +6,8 @@ module.exports = {
   },
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleNameMapper: {
-    '^.+\\.(css|less|scss)$': 'identity-obj-proxy'
+    '^.+\\.(css|less|scss)$': 'identity-obj-proxy',
+    '\\.(xlsx)$': '<rootDir>/__mocks__/fileMock.js'
   },
   coverageDirectory: 'coverage',
   collectCoverageFrom: [
@@ -16,6 +17,6 @@ module.exports = {
     '!coverage'
   ],
   transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\](?!(react-markdown|vfile|vfile-message|markdown-table|unist-.*|unified|bail|is-plain-obj|trough|remark-.*|mdast-util-.*|escape-string-regexp|micromark.*|decode-named-character-reference|character-entities|property-information|hast-util-whitespace|space-separated-tokens|comma-separated-tokens|pretty-bytes|ccount|trim-lines|rehype-raw|hast-.*|hastscript|web-namespaces|zwitch|html-void-elements)).+\\.(js|jsx|mjs|cjs|ts|tsx)$'
+    'node_modules/(?!(react-markdown|vfile|vfile-message|markdown-table|unist-.*|unified|bail|is-plain-obj|trough|remark-.*|mdast-util-.*|escape-string-regexp|micromark.*|decode-named-character-reference|character-entities|property-information|hast-util-whitespace|space-separated-tokens|comma-separated-tokens|pretty-bytes|ccount|trim-lines|rehype-raw|hast-.*|hastscript|web-namespaces|zwitch|html-void-elements|uuid)).+\\.(js|jsx|mjs|cjs|ts|tsx)$'
   ]
 };
