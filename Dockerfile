@@ -6,7 +6,7 @@ RUN npm set progress=false && \
   npm config set depth 0 && \
   npm ci --legacy-peer-deps
 RUN check-audit --omit=dev --audit-level=moderate
-COPY babel.config.js tsconfig.json tsconfig.test.json tsconfig.webpack.json jest.config.js ./
+COPY babel.config.js tsconfig.json tsconfig.test.json tsconfig.webpack.json jest.config.js dataset-statistics.xlsx ./
 COPY webpack ./webpack
 COPY test ./test
 COPY src ./src
