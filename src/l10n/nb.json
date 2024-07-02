@@ -239,7 +239,6 @@
     "standard": "Standard",
     "showmore": "Vis flere",
     "showfewer": "Vis færre",
-    "showAll": "Vis alle",
     "publishers": {
       "STAT": "Stat",
       "FYLKE": "Fylke",
@@ -1194,13 +1193,13 @@
     "ingress": "Her finner du en oversikt over alle etterspørsler publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspørsler.",
     "requests": "Etterspørsler fra Datalandsbyen",
     "votes": "Antall stemmer",
-    "views": "Antall visninger",
+    "comments": "Antall kommentarer",
     "createRequest": "Lag etterspørsel",
     "requestData": "Etterspør data",
     "requestDataInfo": "Ønsker du å etterspørre data, API-er eller annet du kan gjøre det her. Du blir sendt til Datalandsbyen.",
     "newestToOldest": "Nyeste til eldste",
     "mostVotes": "Flest stemmer",
-    "mostViews": "Flest visninger",
+    "mostComments": "Flest kommentarer",
     "sort": "Sortering",
     "search": "Fritekstsøk i titler"
   }

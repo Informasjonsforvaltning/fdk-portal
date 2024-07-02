@@ -13,7 +13,7 @@ import { formatDate } from '../../lib/date-utils';
 import Banner from '../../components/banner';
 import localization from '../../lib/localization';
 import env from '../../env';
-import { CommunityTopic, SelectOption } from '../../types';
+import { CommunityRequestPost, SelectOption } from '../../types';
 import { SearchField } from '../../components/search-field/search-field';
 import { Pagination } from '../../components/pagination';
 
@@ -23,7 +23,6 @@ interface Props extends CommunityProps {}
 const RequestsPage: FC<Props> = ({
   requests,
   pagination,
-  requestCategory,
   communityActions: { searchRequestsRequested, getRequestCategoryRequested }
 }) => {
   useEffect(() => {
@@ -32,8 +31,8 @@ const RequestsPage: FC<Props> = ({
   }, []);
 
   const requestDataGuideUri = 'topic/56/etterspørr-data-api';
-  const notDeletedRequests = (topics: CommunityTopic[]) =>
-    topics?.filter(topic => topic.deleted === 0);
+  const notDeletedRequests = (posts: CommunityRequestPost[]) =>
+    posts?.filter(post => post.deleted === false);
 
   const [search, setSearch] = useState<string>();
   const [sortOption, setSortOption] = useState<string>();
@@ -49,8 +48,8 @@ const RequestsPage: FC<Props> = ({
       label: localization.requestsPage.mostVotes
     },
     {
-      value: 'topic.viewcount',
-      label: localization.requestsPage.mostViews
+      value: 'topic.postcount',
+      label: localization.requestsPage.mostComments
     }
   ];
 
@@ -123,46 +122,30 @@ const RequestsPage: FC<Props> = ({
               {localization.requestsPage.votes}
             </SC.RequestTitleData>
             <SC.RequestTitleData>
-              {localization.requestsPage.views}
+              {localization.requestsPage.comments}
             </SC.RequestTitleData>
           </SC.RequestsTitleRow>
-          {notDeletedRequests(showAll ? requestCategory.topics : requests)
-            .length > 0 &&
-            notDeletedRequests(showAll ? requestCategory.topics : requests).map(
-              topic => (
-                <SC.RequestRow key={topic.cid}>
-                  <SC.TableDataLink>
-                    <SC.RequestLink
-                      href={`${FDK_COMMUNITY_BASE_URI}/topic/${topic.slug}`}
-                    >
-                      {topic.title}
-                    </SC.RequestLink>
-                  </SC.TableDataLink>
-                  <SC.RequestInfo>
-                    {formatDate(new Date(topic.timestampISO))}
-                  </SC.RequestInfo>
-                  <SC.RequestInfo>{topic.upvotes}</SC.RequestInfo>
-                  <SC.RequestInfo>{topic.viewcount}</SC.RequestInfo>
-                </SC.RequestRow>
-              )
-            )}
+          {requests.length > 0 &&
+            notDeletedRequests(requests) &&
+            requests.map(post => (
+              <SC.RequestRow key={post.pid}>
+                <SC.TableDataLink>
+                  <SC.RequestLink
+                    href={`${FDK_COMMUNITY_BASE_URI}/topic/${post.topic.slug}`}
+                  >
+                    {post.topic.title}
+                  </SC.RequestLink>
+                </SC.TableDataLink>
+                <SC.RequestInfo>
+                  {formatDate(new Date(post.timestampISO))}
+                </SC.RequestInfo>
+                <SC.RequestInfo>{post.upvotes}</SC.RequestInfo>
+                <SC.RequestInfo>{`${post.topic.postcount - 1}`}</SC.RequestInfo>
+              </SC.RequestRow>
+            ))}
         </SC.Table>
-        {showAll && (
-          <SC.Pagination>
-            <Button onClick={() => setShowAll(false)}>
-              {localization.facet.showfewer} <SC.ChevronUpIcon />
-            </Button>
-          </SC.Pagination>
-        )}
         {!showAll && !search && (
           <SC.Pagination>
-            <SC.Button>
-              <Button onClick={() => setShowAll(true)}>
-                {localization.facet.showAll}
-                <SC.ChevronDownIcon />
-              </Button>
-            </SC.Button>
-
             <Pagination
               totalPages={pagination.pageCount ? pagination.pageCount : 0}
               currentPage={Number(pagination.currentPage)}
