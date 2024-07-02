@@ -233,7 +233,6 @@
     "standard": "Standard",
     "showmore": "Vis fleire",
     "showfewer": "Vis færre",
-    "showAll": "Vis alle",
     "publishers": {
       "STAT": "Stat",
       "FYLKE": "Fylke",
@@ -1190,13 +1189,13 @@
     "ingress": "Her finn du ei oversikt over alle etterspurnadar publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspurnadar.",
     "requests": "Etterspurnadar frå Datalandsbyen",
     "votes": "Antall stemmer",
-    "views": "Antall visningar",
+    "comments": "Antall kommentarar",
     "createRequest": "Lag etterspurnad",
     "requestData": "Etterspør data",
     "requestDataInfo": "Ynskjer du å etterspørre data, APIer eller anna kan du gjere det her. Du blir sendt til datalandsbyen.no.",
     "newestToOldest": "Nyeste til eldste",
     "mostVotes": "Flest stemmer",
-    "mostViews": "Flest visningar",
+    "mostComments": "Flest kommentarar",
     "sort": "Sortering",
     "search": "Fritekstsøk i titler"
   }

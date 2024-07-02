@@ -6,6 +6,7 @@ import * as actions from './redux/actions';
 
 import type {
   CommunityCategory,
+  CommunityRequestPost,
   CommunityPost,
   CommunityTopic,
   Pagination
@@ -16,7 +17,7 @@ export interface Props {
   multiplePages: boolean;
   posts: CommunityPost[];
   communityActions: typeof actions;
-  requests: CommunityTopic[];
+  requests: CommunityRequestPost[];
   pagination: Pagination;
   requestCategory: CommunityCategory;
 }

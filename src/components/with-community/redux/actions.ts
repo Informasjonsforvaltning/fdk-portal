@@ -17,6 +17,7 @@ import {
 
 import type {
   CommunityCategory,
+  CommunityRequestPost,
   CommunityPost,
   CommunityTopic,
   Pagination
@@ -70,7 +71,7 @@ export function searchRequestsRequested(
 }
 
 export function searchRequestsSucceeded(
-  requests: CommunityTopic[],
+  requests: CommunityRequestPost[],
   pagination: Pagination
 ) {
   return {
