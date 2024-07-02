@@ -1092,7 +1092,24 @@ export interface CommunityPost {
   page?: number;
   multiplePages: boolean;
   pagination: Pagination;
-  posts: CommunityPost[];
+  posts: CommunityRequestPost[];
+}
+
+export interface CommunityRequestPost {
+  category: CommunityCategory;
+  deleted: boolean;
+  downvotes: number;
+  isMainPost: boolean;
+  pid: number;
+  replies: number;
+  tid: number;
+  timestap: number;
+  timestampISO: string;
+  topic: CommunityTopic;
+  uid: number;
+  upvotes: number;
+  votes: number;
+  user: CommunityUser;
 }
 
 export interface Pagination {

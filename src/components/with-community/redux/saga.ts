@@ -72,23 +72,10 @@ function* searchRequestsRequested({
       page,
       sortOption
     );
-    const { pagination } = postHits;
+    const { pagination, posts } = postHits;
 
-    const allRequestTopics: CommunityCategory = yield call(getRequestCategory);
-    const { topics } = allRequestTopics;
-
-    const requests: CommunityTopic[] = (
-      (yield all(
-        postHits.posts.map(({ tid }) =>
-          topics.filter(topic => topic.tid === tid)
-        )
-      )) as CommunityTopic[]
-    )
-      .filter(Boolean)
-      .flat();
-
-    if (requests.length > 0) {
-      yield put(actions.searchRequestsSucceeded(requests, pagination));
+    if (posts.length > 0) {
+      yield put(actions.searchRequestsSucceeded(posts, pagination));
     } else {
       yield put(actions.searchTopicsFailed(''));
     }
