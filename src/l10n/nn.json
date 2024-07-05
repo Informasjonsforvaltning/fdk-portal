@@ -664,9 +664,9 @@
       }
     },
     "requestDataButton": "Be om tilgang",
-    "owner": "Eigar: {publisher}",
-    "provider": "Tilbydar: {publisher}",
-    "responsible": "Ansvarleg: {publisher}",
+    "owner": "Eigar:",
+    "provider": "Tilbydar:",
+    "responsible": "Ansvarleg:",
     "openData": "Opne data",
     "publicData": "Allmenn tilgang",
     "restrictedData": "Tilgang på visse vilkår",

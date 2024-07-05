@@ -669,9 +669,9 @@
       }
     },
     "requestDataButton": "Be om tilgang",
-    "owner": "Eier: {publisher}",
-    "provider": "Tilbyder: {publisher}",
-    "responsible": "Ansvarlig: {publisher}",
+    "owner": "Eier:",
+    "provider": "Tilbyder:",
+    "responsible": "Ansvarlig:",
     "openData": "Åpne data",
     "publicData": "Allmenn tilgang",
     "restrictedData": "Betinget tilgang",

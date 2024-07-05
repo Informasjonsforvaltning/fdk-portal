@@ -35,7 +35,6 @@ const Banner = styled.header<InvertedColorProps>`
 `;
 
 const Content = styled.div`
-  align-items: space-between;
   & > ${SC.MultiLingualField.MultiLingualField} {
     font-size: ${theme.fontSize('FS20', Unit.EM)};
     font-weight: ${theme.fontWeight('FW500')};
@@ -75,7 +74,9 @@ const Title = styled.h1`
 
 const PublisherLink = styled(Link)`
   margin: 0;
-  font-size: ${theme.fontSize('FS20', Unit.REM)};
+  padding-left: 1rem;
+  color: var(--fds-semantic-text-action-default) !important;
+
   ${onMobileView} {
     font-size: ${theme.fontSize('FS16', Unit.REM)};
   }

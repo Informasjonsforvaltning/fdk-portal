@@ -82,11 +82,12 @@ const Banner: FC<Props> = ({
 
         <SC.BannerInfo>
           {pubisherId && (
-            <p>
-              {`-  ${translations.formatString(publisherLabel[entity], {
-                publisher: publisherName ?? pubisherId
-              })}`}
-            </p>
+            <>
+              <span>{publisherLabel[entity]}</span>
+              <SC.PublisherLink href={`/organizations/${pubisherId}`}>
+                {publisherName ?? pubisherId}
+              </SC.PublisherLink>
+            </>
           )}
         </SC.BannerInfo>
         <SC.BannerInfo />

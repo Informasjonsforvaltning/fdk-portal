@@ -659,9 +659,9 @@
       }
     },
     "requestDataButton": "Request access",
-    "owner": "Owner: {publisher}",
-    "provider": "Provider: {publisher}",
-    "responsible": "Responsible: {publisher}",
+    "owner": "Owner:",
+    "provider": "Provider:",
+    "responsible": "Responsible:",
     "openData": "Open data",
     "publicData": "Public data",
     "restrictedData": "Restricted data",

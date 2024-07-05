@@ -293,48 +293,54 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
   return (
     <SC.DetailsPage className='container' id='content'>
-      <Banner
-        entity={entity}
-        title={title}
-        isAuthoritative={isAuthoritative}
-        languages={languages}
-        publisher={publisher}
-      />
-      {publisher?.id && datasetScore && (
-        <SC.SubBanner>
-          <FdkLink href={`/organizations/${publisher.id}/datasets/${entityId}`}>
-            <SC.MetadataQuality>
-              <p>
-                {`${
-                  translations.metadataQualityPage.metadataQuality
-                }: ${calculateRatingPercentage(datasetScore.dataset)} %`}
-              </p>
-            </SC.MetadataQuality>
-          </FdkLink>
-        </SC.SubBanner>
-      )}
-      {renderThemeItems().length > 0 && (
-        <SC.Themes>{renderThemeItems()}</SC.Themes>
-      )}
-      {accessRequest && (
-        <SC.AccessRequest>
-          <a
-            href={accessRequest.requestAddress}
-            target='_blank'
-            rel='noreferrer'
-          >
-            <Button
-              onClick={() =>
-                monsidoTrackButtonClickEvent(
-                  MonsidoTrackEventParams.Action.Click.Button.AccessRequest
-                )
-              }
-            >
-              {translations.detailsPage.requestDataButton}
-            </Button>
-          </a>
-        </SC.AccessRequest>
-      )}
+      <SC.Heading>
+        <Banner
+          entity={entity}
+          title={title}
+          isAuthoritative={isAuthoritative}
+          languages={languages}
+          publisher={publisher}
+        />
+        <SC.HeadingLeft>
+          {publisher?.id && datasetScore && (
+            <SC.SubBanner>
+              <FdkLink
+                href={`/organizations/${publisher.id}/datasets/${entityId}`}
+              >
+                <SC.MetadataQuality>
+                  <p>
+                    {`${
+                      translations.metadataQualityPage.metadataQuality
+                    }: ${calculateRatingPercentage(datasetScore.dataset)} %`}
+                  </p>
+                </SC.MetadataQuality>
+              </FdkLink>
+            </SC.SubBanner>
+          )}
+          {renderThemeItems().length > 0 && (
+            <SC.Themes>{renderThemeItems()}</SC.Themes>
+          )}
+          {accessRequest && (
+            <SC.AccessRequest>
+              <a
+                href={accessRequest.requestAddress}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <Button
+                  onClick={() =>
+                    monsidoTrackButtonClickEvent(
+                      MonsidoTrackEventParams.Action.Click.Button.AccessRequest
+                    )
+                  }
+                >
+                  {translations.detailsPage.requestDataButton}
+                </Button>
+              </a>
+            </SC.AccessRequest>
+          )}
+        </SC.HeadingLeft>
+      </SC.Heading>
       <Divider color='strong' />
       <SC.Page>
         <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>

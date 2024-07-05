@@ -14,6 +14,16 @@ const DetailsPage = styled.article`
   }
 `;
 
+const Heading = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const HeadingLeft = styled.div`
+  display: flex;
+  align-items: end;
+`;
+
 const SubBanner = styled.div`
   margin: 0;
   display: flex;
@@ -31,10 +41,8 @@ const SubBanner = styled.div`
 const MetadataQuality = styled.div`
   display: flex;
   white-space: nowrap;
-
-  & > p {
-    font-size: 2rem;
-  }
+  padding-bottom: 0.3rem;
+  padding-right: 1.5rem;
 
   ${onMobileView} {
     margin-top: 10px;
@@ -72,23 +80,33 @@ const Themes = styled.ul`
 
     &.open-data {
       color: white !important;
-      background: ${({ theme }) => theme.entityColours.dark};
+      background: var(--fds-semantic-surface-success-default);
     }
 
     &.public-data {
-      background: ${({ theme }) => theme.entityColours.light};
+      color: white !important;
+      background: var(--fds-semantic-surface-success-default);
 
       & > svg > path {
-        fill: ${({ theme }) => theme.entityColours.dark} !important;
+        fill: white !important;
       }
     }
 
-    &.restricted-data,
-    &.non-public-data {
-      background: white;
+    &.restricted-data {
+      color: white !important;
+      background: var(--fds-semantic-border-warning-default);
 
       & > svg > path {
-        fill: ${({ theme }) => theme.entityColours.dark} !important;
+        fill: white !important;
+      }
+    }
+
+    &.non-public-data {
+      color: white !important;
+      background: var(--fds-semantic-surface-danger-default);
+
+      & > svg > path {
+        fill: white !important;
       }
     }
 
@@ -229,5 +247,7 @@ export default {
   Content,
   HamburgerIcon,
   AccessRequest,
-  PublishingDate
+  PublishingDate,
+  Heading,
+  HeadingLeft
 };
