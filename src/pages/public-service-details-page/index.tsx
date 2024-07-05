@@ -308,7 +308,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
           isPublicData={false}
           isRestrictedData={false}
           isNonPublicData={false}
-          admsStatus={admsStatus}
         >
           {description && (
             <ContentSection
@@ -1203,6 +1202,12 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         )
                       )
                       .filter(Boolean)}
+                  />
+                )}
+                {admsStatus?.prefLabel && (
+                  <KeyValueListItem
+                    property='Status for tjenesten'
+                    value={translate(admsStatus.prefLabel)}
                   />
                 )}
               </KeyValueList>

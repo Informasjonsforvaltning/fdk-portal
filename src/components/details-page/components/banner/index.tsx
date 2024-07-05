@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react';
 
+import { Divider } from '@digdir/design-system-react';
 import translations from '../../../../lib/localization';
 
 import DatasetIcon from '../../../../images/icon-catalog-dataset-lg.svg';
@@ -12,12 +13,7 @@ import AuthoritativeIcon from '../../../../images/icon-authoritative-md.svg';
 import SC from './styled';
 
 import { Entity, LanguageCodes } from '../../../../types/enums';
-import type {
-  Language,
-  PublicServiceLanguage,
-  Organization,
-  TextLanguage
-} from '../../../../types';
+import type { Language, Organization, TextLanguage } from '../../../../types';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
 type LanguageType = LanguageCodes.nb | LanguageCodes.nn | LanguageCodes.en;
@@ -28,14 +24,12 @@ interface Props {
   isAuthoritative: boolean;
   languages?: Language[];
   publisher?: Partial<Organization>;
-  admsStatus?: PublicServiceLanguage;
 }
 
 const Banner: FC<Props> = ({
   entity,
   title,
   publisher,
-  admsStatus,
   isAuthoritative,
   languages = []
 }) => {
@@ -137,15 +131,9 @@ const Banner: FC<Props> = ({
             </p>
           )}
         </SC.BannerInfo>
-        <SC.BannerInfo>
-          {admsStatus && (
-            <>
-              <SC.Dot>•</SC.Dot>
-              <SC.Status>{translate(admsStatus.prefLabel)}</SC.Status>
-            </>
-          )}
-        </SC.BannerInfo>
+        <SC.BannerInfo />
       </SC.Content>
+      <Divider color='strong' />
     </SC.Banner>
   );
 };

@@ -42,12 +42,7 @@ import NotOpenAccessIcon from '../../../../images/icon-access-not-open-md-v2.svg
 
 import SC from './styled';
 
-import {
-  Language,
-  PublicServiceLanguage,
-  Organization,
-  TextLanguage
-} from '../../../../types';
+import { Language, Organization, TextLanguage } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
 import { calculateRatingPercentage } from '../../../../pages/organizations/pages/datasets-page';
@@ -65,7 +60,6 @@ interface ExternalProps {
   entity: Entity;
   title: Partial<TextLanguage>;
   publisher?: Partial<Organization>;
-  admsStatus?: PublicServiceLanguage;
   entityId?: string;
   entityUri?: string;
   lastPublished: string;
@@ -74,7 +68,6 @@ interface ExternalProps {
   isPublicData: boolean;
   isRestrictedData: boolean;
   isNonPublicData: boolean;
-  // themes: Theme[];
   languages?: Language[];
 }
 
@@ -97,7 +90,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   entity,
   title,
   publisher,
-  admsStatus,
   datasetScores,
   entityId,
   entityUri,
@@ -307,7 +299,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         isAuthoritative={isAuthoritative}
         languages={languages}
         publisher={publisher}
-        admsStatus={admsStatus}
       />
       {publisher?.id && datasetScore && (
         <SC.SubBanner>
