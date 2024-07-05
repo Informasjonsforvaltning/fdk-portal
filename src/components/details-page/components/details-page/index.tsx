@@ -36,8 +36,6 @@ import ContentSection from '../content-section';
 import CommunityTopics from '../community-topics';
 import EntityComments from '../../../community/comments';
 
-import { isEuTheme, isLosTheme } from '../../../../utils/common';
-
 import OpenAccessIcon from '../../../../images/icon-access-open-md-v2.svg';
 import RestrictedAccessIcon from '../../../../images/icon-access-restricted-md-v2.svg';
 import NotOpenAccessIcon from '../../../../images/icon-access-not-open-md-v2.svg';
@@ -48,8 +46,7 @@ import {
   Language,
   PublicServiceLanguage,
   Organization,
-  TextLanguage,
-  Theme
+  TextLanguage
 } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
@@ -77,7 +74,7 @@ interface ExternalProps {
   isPublicData: boolean;
   isRestrictedData: boolean;
   isNonPublicData: boolean;
-  themes: Theme[];
+  // themes: Theme[];
   languages?: Language[];
 }
 
@@ -110,7 +107,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   isPublicData,
   isRestrictedData,
   isNonPublicData,
-  themes = [],
+  // themes = [],
   languages = [],
   topics,
   multiplePages,
@@ -246,7 +243,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     : null;
 
   const renderThemeItems = () => {
-    let items = [];
+    const items = [];
     if (isOpenData) {
       items.push(
         <SC.ThemeItem>
@@ -299,31 +296,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         </SC.ThemeItem>
       );
     }
-
-    items = [
-      ...items,
-      ...themes.map(theme => {
-        if (isLosTheme(theme)) {
-          const { uri, name, losPaths: [losPath] = [] } = theme;
-          return (
-            <SC.ThemeItem key={uri}>
-              <Link key={uri} to={`${rootPaths[entity]}?losTheme=${losPath}`}>
-                {translate(name)}
-              </Link>
-            </SC.ThemeItem>
-          );
-        }
-        if (isEuTheme(theme)) {
-          const { id, title: themeTitle, label: themeLabel, code } = theme;
-          return (
-            <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
-              {themeTitle ? translate(themeTitle) : translate(themeLabel)}
-            </Link>
-          );
-        }
-        return null;
-      })
-    ];
     return items.filter(Boolean);
   };
 

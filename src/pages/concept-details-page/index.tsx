@@ -27,12 +27,7 @@ import withReferenceData, {
 import { DetailsPage } from '../../components/details-page';
 import ErrorPage from '../error-page';
 
-import type {
-  Theme,
-  Language,
-  TextLanguage,
-  ConceptDefinition
-} from '../../types';
+import type { Language, TextLanguage, ConceptDefinition } from '../../types';
 import { Entity } from '../../types/enums';
 import RelatedConcepts from '../../components/details-page/components/RelatedConcepts';
 import ContactPoint from './ContactPoint';
@@ -214,7 +209,6 @@ const ConceptDetailsPage: FC<Props> = ({
   );
   const contactPoint = concept?.contactPoint;
 
-  const themes: Theme[] = [];
   const created = concept?.created ?? '';
   const hasRelatedConcepts =
     concept?.associativeRelation ||
@@ -246,7 +240,6 @@ const ConceptDetailsPage: FC<Props> = ({
         isPublicData={false}
         isRestrictedData={false}
         isNonPublicData={false}
-        themes={themes}
         languages={selectedLanguages}
       >
         {created && <Created created={created} />}

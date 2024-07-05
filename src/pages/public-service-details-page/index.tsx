@@ -45,7 +45,7 @@ import {
 import ErrorPage from '../error-page';
 import RelationList from '../../components/relation-list';
 
-import type { TextLanguage, Theme } from '../../types';
+import type { TextLanguage } from '../../types';
 import { Entity, Vocabulary } from '../../types/enums';
 
 import {
@@ -293,8 +293,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
     );
   };
 
-  const themes: Theme[] = [];
-
   return renderPage ? (
     publicService && (
       <ThemeProvider theme={theme}>
@@ -310,7 +308,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
           isPublicData={false}
           isRestrictedData={false}
           isNonPublicData={false}
-          themes={themes}
           admsStatus={admsStatus}
         >
           {description && (

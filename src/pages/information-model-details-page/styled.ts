@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import LinkBase from '@fellesdatakatalog/link';
 import TabsBase from '@fellesdatakatalog/tabs';
 import { theme } from '@fellesdatakatalog/theme';
-
-const Link = styled(LinkBase)``;
 
 const Tabs = styled(TabsBase)`
   padding: ${theme.spacing('S16')};
@@ -69,7 +66,6 @@ const ValueListColumn = styled.div`
 `;
 
 export default {
-  Link,
   Tabs,
   Tab,
   Pane,
