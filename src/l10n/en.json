@@ -772,7 +772,8 @@
         "webAddress": "Web address",
         "competentAuthority": "Competent authority",
         "homepage": "Home page",
-        "spatialCoverage": "Spatial coverage"
+        "spatialCoverage": "Spatial coverage",
+        "status": "Status of the service"
       },
       "event": {
         "description": "Description",

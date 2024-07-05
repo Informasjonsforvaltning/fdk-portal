@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import FdkLink from '@fellesdatakatalog/link';
 
 import Button from '@fellesdatakatalog/button';
+import { Divider } from '@digdir/design-system-react';
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
@@ -99,7 +100,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   isPublicData,
   isRestrictedData,
   isNonPublicData,
-  // themes = [],
   languages = [],
   topics,
   multiplePages,
@@ -335,6 +335,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           </a>
         </SC.AccessRequest>
       )}
+      <Divider color='strong' />
       <SC.Page>
         <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
           <SC.HamburgerIcon />

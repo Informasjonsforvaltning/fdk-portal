@@ -777,7 +777,8 @@
         "webAddress": "Nettaddresse",
         "competentAuthority": "Kompetent organ",
         "homepage": "Heimeside",
-        "spatialCoverage": "Dekningsområde"
+        "spatialCoverage": "Dekningsområde",
+        "status": "Status til tenesta"
       },
       "event": {
         "description": "Beskriving",

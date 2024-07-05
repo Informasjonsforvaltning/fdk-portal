@@ -781,7 +781,8 @@
         "webAddress": "Nettaddresse",
         "competentAuthority": "Kompetent organ",
         "homepage": "Hjemmeside",
-        "spatialCoverage": "Dekningsområde"
+        "spatialCoverage": "Dekningsområde",
+        "status": "Status til tjenesten"
       },
       "event": {
         "description": "Beskrivelse",
