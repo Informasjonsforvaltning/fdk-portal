@@ -74,67 +74,69 @@ const Banner: FC<Props> = ({
   const { translation } = entityDetails[entity];
 
   return (
-    <SC.Banner inverted={entity === Entity.EVENT}>
-      <SC.Content>
-        <SC.TitleWrapper>
-          <SC.Title>
-            <span>
-              {translate(
-                title,
-                languages.filter(({ selected }) => selected)?.length === 1
-                  ? languages.filter(({ selected }) => selected).shift()?.code
-                  : undefined
+    <>
+      <SC.Banner inverted={entity === Entity.EVENT}>
+        <SC.Content>
+          <SC.TitleWrapper>
+            <SC.Title>
+              <span>
+                {translate(
+                  title,
+                  languages.filter(({ selected }) => selected)?.length === 1
+                    ? languages.filter(({ selected }) => selected).shift()?.code
+                    : undefined
+                )}
+              </span>
+              {isAuthoritative && (
+                <div title={translations.authoritativeDatasetTooltip}>
+                  <AuthoritativeIcon />
+                </div>
               )}
-            </span>
-            {isAuthoritative && (
-              <div title={translations.authoritativeDatasetTooltip}>
-                <AuthoritativeIcon />
-              </div>
-            )}
-          </SC.Title>
+            </SC.Title>
 
-          {entity === Entity.CONCEPT &&
-            title[translations.getLanguage() as LanguageType] && (
-              <SC.TitleLanguage>
-                {`(${translations.shortLang[translations.getLanguage()]})`}
-              </SC.TitleLanguage>
-            )}
-        </SC.TitleWrapper>
-        {languages.filter(({ selected }) => selected).length > 1 && (
-          <SC.SecondTitlesWrapped>
-            {languages
-              .filter(
-                ({ code, selected }) =>
-                  code !== translations.getLanguage() && selected
-              )
-              .map(({ code }, index, array) => {
-                const typedCode = code as LanguageType;
-                const titleString = `${translations.shortLang[code]}: ${title[typedCode]}`;
-                const isLast = index === array.length - 1;
-                return (
-                  <>
-                    <SC.SecondTitles>{titleString}</SC.SecondTitles>
-                    {!isLast && <SC.Hyphen> - </SC.Hyphen>}
-                  </>
-                );
-              })}
-          </SC.SecondTitlesWrapped>
-        )}
-
-        <SC.BannerInfo>
-          <SC.ResourceType>{translation}</SC.ResourceType>
-          {pubisherId && (
-            <p>
-              {`-  ${translations.formatString(publisherLabel[entity], {
-                publisher: publisherName ?? pubisherId
-              })}`}
-            </p>
+            {entity === Entity.CONCEPT &&
+              title[translations.getLanguage() as LanguageType] && (
+                <SC.TitleLanguage>
+                  {`(${translations.shortLang[translations.getLanguage()]})`}
+                </SC.TitleLanguage>
+              )}
+          </SC.TitleWrapper>
+          {languages.filter(({ selected }) => selected).length > 1 && (
+            <SC.SecondTitlesWrapped>
+              {languages
+                .filter(
+                  ({ code, selected }) =>
+                    code !== translations.getLanguage() && selected
+                )
+                .map(({ code }, index, array) => {
+                  const typedCode = code as LanguageType;
+                  const titleString = `${translations.shortLang[code]}: ${title[typedCode]}`;
+                  const isLast = index === array.length - 1;
+                  return (
+                    <>
+                      <SC.SecondTitles>{titleString}</SC.SecondTitles>
+                      {!isLast && <SC.Hyphen> - </SC.Hyphen>}
+                    </>
+                  );
+                })}
+            </SC.SecondTitlesWrapped>
           )}
-        </SC.BannerInfo>
-        <SC.BannerInfo />
-      </SC.Content>
+
+          <SC.BannerInfo>
+            <SC.ResourceType>{translation}</SC.ResourceType>
+            {pubisherId && (
+              <p>
+                {`-  ${translations.formatString(publisherLabel[entity], {
+                  publisher: publisherName ?? pubisherId
+                })}`}
+              </p>
+            )}
+          </SC.BannerInfo>
+          <SC.BannerInfo />
+        </SC.Content>
+      </SC.Banner>
       <Divider color='strong' />
-    </SC.Banner>
+    </>
   );
 };
 
