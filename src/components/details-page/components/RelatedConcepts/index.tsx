@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import ContentSection from '../content-section';
 import KeyValueList from '../key-value-list';
 import translations from '../../../../lib/localization';
-import { Entity } from '../../../../types/enums';
 import { Concept, SearchObject } from '../../../../types';
 import AssociativeRelations from './AssociativeRelations';
 import PartitiveRelations from './PartitiveRelations';
@@ -98,7 +97,6 @@ const RelatedConcepts = ({
           }
         ) as string
       }
-      entityIcon={Entity.CONCEPT}
       boxStyle
     >
       <KeyValueList>
