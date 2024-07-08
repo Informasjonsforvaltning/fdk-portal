@@ -13,25 +13,6 @@ interface Props {
   truncate?: boolean;
 }
 
-const icon = (entity?: Entity) => {
-  switch (entity) {
-    case Entity.DATASET:
-      return <SC.DatasetIcon />;
-    case Entity.DATA_SERVICE:
-      return <SC.ApiIcon />;
-    case Entity.CONCEPT:
-      return <SC.ConceptIcon />;
-    case Entity.INFORMATION_MODEL:
-      return <SC.InfomodIcon />;
-    case Entity.PUBLIC_SERVICE:
-      return <SC.ServiceIcon />;
-    case Entity.EVENT:
-      return <SC.ServiceIcon />;
-    default:
-      return null;
-  }
-};
-
 const ContentSection: FC<PropsWithChildren<Props>> = ({
   id,
   title,
@@ -43,9 +24,6 @@ const ContentSection: FC<PropsWithChildren<Props>> = ({
   <SC.ContentSection id={id} boxStyle={boxStyle}>
     {(title || entityIcon) && (
       <SC.Header>
-        {entityIcon && (
-          <SC.IconPlaceholder>{icon(entityIcon)}</SC.IconPlaceholder>
-        )}
         <SC.Title>{title}</SC.Title>
       </SC.Header>
     )}

@@ -34,8 +34,8 @@ export const validateEnv = (
 export const isEuTheme = (
   theme: EuDataTheme | LosNode | EuTheme | LosTheme
 ): theme is EuTheme => {
-  const { id, label, title, code } = theme as EuTheme;
-  return !!id && !!code && (!!label || !!title);
+  const { label, title, code } = theme as EuTheme;
+  return !!code && (!!label || !!title);
 };
 
 export const isLosTheme = (theme: EuTheme | LosTheme): theme is LosTheme => {

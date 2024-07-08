@@ -25,8 +25,6 @@ import {
 } from '../../components/details-page';
 import ErrorPage from '../error-page';
 import RelationList from '../../components/relation-list';
-
-import type { Theme } from '../../types';
 import { Entity, SpecializedEventType } from '../../types/enums';
 
 import { PATHNAME_PUBLIC_SERVICES } from '../../constants/constants';
@@ -104,7 +102,6 @@ const EventDetailsPage: FC<Props> = ({
   const lastPublished = formatDate(
     dateStringToDate(event?.harvest?.firstHarvested)
   );
-  const themes: Theme[] = [];
   const relation = new Set(event?.relation ?? []);
   const relatedServices = publicServices.filter(({ uri }) => relation.has(uri));
   const dctTypes = event?.dctType ?? [];
@@ -124,7 +121,6 @@ const EventDetailsPage: FC<Props> = ({
           isPublicData={false}
           isRestrictedData={false}
           isNonPublicData={false}
-          themes={themes}
         >
           {description && (
             <ContentSection

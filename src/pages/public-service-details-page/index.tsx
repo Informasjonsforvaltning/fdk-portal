@@ -45,7 +45,7 @@ import {
 import ErrorPage from '../error-page';
 import RelationList from '../../components/relation-list';
 
-import type { TextLanguage, Theme } from '../../types';
+import type { TextLanguage } from '../../types';
 import { Entity, Vocabulary } from '../../types/enums';
 
 import {
@@ -61,6 +61,7 @@ import withResourceRelations, {
   ResourceRelationsProps
 } from '../../components/with-resource-relations';
 import { filterRelations } from '../../utils/common';
+import localization from '../../lib/localization';
 
 interface RouteParams {
   publicServiceId: string;
@@ -293,8 +294,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
     );
   };
 
-  const themes: Theme[] = [];
-
   return renderPage ? (
     publicService && (
       <ThemeProvider theme={theme}>
@@ -310,8 +309,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
           isPublicData={false}
           isRestrictedData={false}
           isNonPublicData={false}
-          themes={themes}
-          admsStatus={admsStatus}
         >
           {description && (
             <ContentSection
@@ -1206,6 +1203,15 @@ const PublicServiceDetailsPage: FC<Props> = ({
                         )
                       )
                       .filter(Boolean)}
+                  />
+                )}
+                {admsStatus?.prefLabel && (
+                  <KeyValueListItem
+                    property={
+                      localization.detailsPage.sectionTitles.publicService
+                        .status
+                    }
+                    value={translate(admsStatus.prefLabel)}
                   />
                 )}
               </KeyValueList>

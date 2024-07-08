@@ -12,6 +12,7 @@ const Banner = styled.header<InvertedColorProps>`
   border-radius: 5px;
   position: relative;
   overflow: hidden;
+  justify-content: space-between;
 
   & svg > path {
     fill: ${({ theme: t, inverted }) =>
@@ -71,14 +72,11 @@ const Title = styled.h1`
   }
 `;
 
-const ResourceType = styled.h3`
-  font-weight: bold;
-  margin-right: 1rem;
-`;
-
 const PublisherLink = styled(Link)`
   margin: 0;
-  font-size: ${theme.fontSize('FS20', Unit.REM)};
+  padding-left: 1rem;
+  color: var(--fds-semantic-text-action-default) !important;
+
   ${onMobileView} {
     font-size: ${theme.fontSize('FS16', Unit.REM)};
   }
@@ -86,7 +84,6 @@ const PublisherLink = styled(Link)`
 
 const BannerInfo = styled.div`
   display: flex;
-  flex-direction: row;
   margin: 0;
   margin-top: 8px;
   font-size: ${theme.fontSize('FS20', Unit.REM)};
@@ -94,17 +91,6 @@ const BannerInfo = styled.div`
   ${onMobileView} {
     font-size: ${theme.fontSize('FS16', Unit.REM)};
   }
-`;
-
-const Status = styled.p`
-  margin-top: 8px;
-  font-size: ${theme.fontSize('FS20', Unit.REM)};
-`;
-
-const Dot = styled.p`
-  margin: 8px ${theme.spacing('S6')} 0px ${theme.spacing('S6')};
-  font-weight: bold;
-  font-size: ${theme.fontSize('FS20', Unit.REM)};
 `;
 
 const SecondTitles = styled.h2`
@@ -120,9 +106,9 @@ const TitleLanguage = styled.span`
   padding-left: 1rem;
 `;
 
-const Hyphen = styled.span`
-  padding-left: 5px;
-  padding-right: 5px;
+const Publisher = styled.div`
+  display: flex;
+  align-items: flex-end;
 `;
 
 export default {
@@ -130,13 +116,10 @@ export default {
   Content,
   TitleWrapper,
   Title,
-  ResourceType,
-  PublisherLink,
-  Status,
-  BannerInfo,
-  Dot,
-  SecondTitles,
   TitleLanguage,
   SecondTitlesWrapped,
-  Hyphen
+  SecondTitles,
+  BannerInfo,
+  PublisherLink,
+  Publisher
 };
