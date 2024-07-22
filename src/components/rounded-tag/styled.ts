@@ -6,7 +6,7 @@ const RoundedTagWithLink = styled(Link)`
   border-radius: 20px;
   border: none;
   display: flex;
-  padding: 0.3em 0.6em;
+  padding: 0.1em 0.6em;
 `;
 
 const RoundedTag = styled.div`
@@ -14,7 +14,7 @@ const RoundedTag = styled.div`
   border-radius: 20px;
   border: none;
   display: flex;
-  padding: 0.3em 0.6em;
+  padding: 0.1em 0.6em;
 `;
 
 export default { RoundedTagWithLink, RoundedTag };

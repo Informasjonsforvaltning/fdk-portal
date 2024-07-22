@@ -21,8 +21,6 @@ import {
   parseFormats
 } from '../../utils/common';
 
-import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
-
 import type { SearchObject } from '../../types';
 import {
   MediaTypeOrExtentType,
@@ -57,7 +55,6 @@ export const DatasetItem: FC<Props> = ({
     if (accessRight?.code === 'PUBLIC') {
       return (
         <RoundedTag to={patchSearchQuery('accessrights', 'PUBLIC')}>
-          <PublicIconBase />
           <span>
             {localization.dataset.accessRights.authorityCode.publicDetailsLabel}
           </span>
@@ -98,7 +95,6 @@ export const DatasetItem: FC<Props> = ({
         <SearchHitOpenData>
           <div title={localization.openDataTooltip}>
             <RoundedTag to={patchSearchQuery('opendata', 'true')}>
-              <PublicIconBase />
               <span>{localization.openData}</span>
             </RoundedTag>
           </div>
