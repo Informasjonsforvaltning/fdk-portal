@@ -4,10 +4,7 @@ exports[`SearchHitHead component should render with properties 1`] = `
 <styled.div
   inverted={false}
 >
-  <styled.div>
-    <Styled(SvgIconCatalogDatasetLg) />
-  </styled.div>
-  <styled.div>
+  <div>
     <styled.div>
       <styled.h2>
         <Link
@@ -17,6 +14,6 @@ exports[`SearchHitHead component should render with properties 1`] = `
         </Link>
       </styled.h2>
     </styled.div>
-  </styled.div>
+  </div>
 </styled.div>
 `;

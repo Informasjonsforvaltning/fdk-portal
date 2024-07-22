@@ -5,6 +5,15 @@ exports[`SearchHit component should render with properties 1`] = `
   <SearchHitHead
     id="123"
     isAuthoritative={false}
+    publisher={
+      Object {
+        "id": "9999",
+        "name": Object {
+          "nb": "Test direktorat",
+        },
+        "uri": "111",
+      }
+    }
     subtitle="Test subtitle"
     title={
       Object {
@@ -13,26 +22,6 @@ exports[`SearchHit component should render with properties 1`] = `
     }
     type={0}
   />
-  <styled.div>
-    <Styled(f)
-      href="/organizations/9999"
-    >
-      <span>
-        Owner: 
-         
-      </span>
-      <span>
-        <Component />
-      </span>
-    </Styled(f)>
-    <Memo(LanguageIndicator)
-      textLanguage={
-        Object {
-          "nb": "Test datasett",
-        }
-      }
-    />
-  </styled.div>
   <styled.div>
     <TruncatedText
       lineHeight={20}
@@ -43,5 +32,6 @@ exports[`SearchHit component should render with properties 1`] = `
       </Component>
     </TruncatedText>
   </styled.div>
+  <styled.ul />
 </styled.article>
 `;

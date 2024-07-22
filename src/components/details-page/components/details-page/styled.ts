@@ -17,6 +17,7 @@ const DetailsPage = styled.article`
 const Heading = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const HeadingLeft = styled.div`
@@ -61,8 +62,8 @@ const Themes = styled.ul`
   margin-right: -10px;
 
   & > li > * {
-    padding: 1px 10px;
-    border-radius: 20px;
+    padding: 8px;
+    border-radius: var(--fds-border_radius-small);
     margin-top: 10px;
     margin-right: 10px;
     user-select: none;
@@ -79,34 +80,38 @@ const Themes = styled.ul`
     cursor: pointer;
 
     &.open-data {
-      color: white !important;
-      background: var(--fds-semantic-surface-success-default);
+      color: black !important;
+      background: var(--fds-semantic-surface-success-subtle);
+
+      & > svg > path {
+        fill: black !important;
+      }
     }
 
     &.public-data {
-      color: white !important;
-      background: var(--fds-semantic-surface-success-default);
+      color: black !important;
+      background: var(--fds-semantic-surface-success-subtle);
 
       & > svg > path {
-        fill: white !important;
+        fill: black !important;
       }
     }
 
     &.restricted-data {
-      color: white !important;
-      background: var(--fds-semantic-border-warning-default);
+      color: black !important;
+      background: var(--fds-semantic-surface-warning-default);
 
       & > svg > path {
-        fill: white !important;
+        fill: black !important;
       }
     }
 
     &.non-public-data {
-      color: white !important;
-      background: var(--fds-semantic-surface-danger-default);
+      color: black !important;
+      background: var(--fds-semantic-surface-danger-subtle);
 
       & > svg > path {
-        fill: white !important;
+        fill: black !important;
       }
     }
 

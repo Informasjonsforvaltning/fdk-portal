@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import SC from './styled';
-import type { TextLanguage } from '../../../../types';
+import type { Organization, TextLanguage } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
 import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
@@ -21,6 +21,7 @@ interface Props {
   title?: Partial<TextLanguage>;
   subtitle?: React.ReactNode;
   isAuthoritative?: boolean;
+  publisher?: Partial<Organization>;
 }
 
 const detailLinks = {
@@ -37,33 +38,36 @@ export const SearchHitHead: FC<Props> = ({
   type,
   title,
   subtitle,
-  isAuthoritative = false
-}) => (
-  <SC.Head inverted={type === SearchTypes.event}>
-    <SC.HeadTypeIndicator>
-      {type === SearchTypes.dataset && <SC.DatasetIcon />}
-      {type === SearchTypes.dataservice && <SC.ApiIcon />}
-      {type === SearchTypes.concept && <SC.ConceptIcon />}
-      {type === SearchTypes.informationModel && <SC.InfomodIcon />}
-      {type === SearchTypes.publicService && <SC.ServiceIcon />}
-      {type === SearchTypes.event && <SC.ServiceIcon />}
-    </SC.HeadTypeIndicator>
-    <SC.HeadInformation>
-      <SC.Header>
-        {title && (
-          <SC.Title>
-            <Link to={`${detailLinks[type]}/${id}`}>
-              {getTranslateText(title)}
-            </Link>
-          </SC.Title>
+  isAuthoritative = false,
+  publisher
+}) => {
+  const { title: publisherTitle, name } = publisher || {};
+
+  return (
+    <SC.Head inverted={type === SearchTypes.event}>
+      <div>
+        <SC.Header>
+          {title && (
+            <SC.Title>
+              <Link to={`${detailLinks[type]}/${id}`}>
+                {getTranslateText(title)}
+              </Link>
+            </SC.Title>
+          )}
+          {isAuthoritative && (
+            <div title={localization.authoritativeDatasetTooltip}>
+              <SC.AuthoritativeIcon />
+            </div>
+          )}
+        </SC.Header>
+        {subtitle && <SC.Type>{subtitle}</SC.Type>}
+        {(publisherTitle || name) && (
+          <>
+            <span>{subtitle ? ' - ' : ''}</span>
+            <span>{getTranslateText(publisherTitle) || name}</span>
+          </>
         )}
-        {isAuthoritative && (
-          <div title={localization.authoritativeDatasetTooltip}>
-            <SC.AuthoritativeIcon />
-          </div>
-        )}
-      </SC.Header>
-      {subtitle && <SC.Type>{subtitle}</SC.Type>}
-    </SC.HeadInformation>
-  </SC.Head>
-);
+      </div>
+    </SC.Head>
+  );
+};

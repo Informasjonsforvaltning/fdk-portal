@@ -14,7 +14,7 @@ const Section = styled.div`
 
 const DownloadLink = styled(Link)`
   margin-right: ${theme.spacing('S16')};
-  background-color: ${theme.colour(Colour.BLUE, 'B30')};
+  border: solid 2px ${theme.colour(Colour.NEUTRAL, 'N20')};
   padding: ${theme.spacing('S16')};
   border-radius: 5px;
 
