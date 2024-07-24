@@ -17,7 +17,7 @@ const ButtonToggle = styled.button<{
   borderLeft?: boolean;
   borderRight?: boolean;
 }>`
-  background-color: ${({ theme }) => theme.extendedColors.neutralLight};
+  background-color: white;
   border: none;
   padding: 0.5em;
 
