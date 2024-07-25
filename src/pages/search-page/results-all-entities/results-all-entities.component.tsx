@@ -28,11 +28,17 @@ import SortButtons from '../sort-buttons';
 
 import SC from './styled';
 
-import type { Concept, EventType, SearchObject } from '../../../types';
+import type {
+  Concept,
+  EventType,
+  LosTheme,
+  SearchObject
+} from '../../../types';
 import { FeedType } from '../../../types/enums';
 import { PATHNAME_DATASETS } from '../../../constants/constants';
 import Spinner from '../../../components/spinner';
 import { LinkPagination } from '../../../components/pagination';
+import { FilterPills } from '../filter-pills/filter-pills.component';
 
 const { FDK_PORTAL_BASE_URI } = env;
 
@@ -100,18 +106,23 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     <main id='content'>
       {(entities && entities.length > 0) || isLoading ? (
         <>
-          <SortButtons />
           <SC.Row>
-            <section className='col-lg-4' />
-            <section className='col-12 col-lg-8'>
-              <SC.SearchHitCount>
-                {localization.formatString(
-                  localization.hitstats.searchHits,
-                  <SC.Bold>{searchHitCount}</SC.Bold>
-                )}
-              </SC.SearchHitCount>
-            </section>
+            <SC.SearchHitCount>
+              {localization.formatString(
+                localization.hitstats.searchHits,
+                <SC.Bold>{searchHitCount}</SC.Bold>
+              )}
+            </SC.SearchHitCount>
+            <SortButtons />
           </SC.Row>
+          <FilterPills
+            themesItems={keyBy(themes?.dataThemes, 'code')}
+            publishers={keyBy(organizations, 'orgPath')}
+            losItems={
+              getLosByKeys(los?.losNodes) as Record<string, Partial<LosTheme>>
+            }
+            eventTypes={eventTypesMap}
+          />
 
           <SC.Content className='row'>
             <SC.Filters className='col-lg-4'>
@@ -123,7 +134,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 themesItems={keyBy(themes?.dataThemes, 'code')}
                 publishers={keyBy(organizations, 'orgPath')}
                 losItems={getLosByKeys(los?.losNodes)}
-                eventTypes={eventTypesMap}
               />
               <CompareList
                 conceptsCompareList={compareConceptList}
