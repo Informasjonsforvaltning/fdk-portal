@@ -184,7 +184,7 @@
     "requests": "Etterspørsler"
   },
   "query": {
-    "intro": "Eksempel: kollektivtransport",
+    "intro": "Søk etter databeskrivelser",
     "reset": "Nullstill",
     "do": "Søk",
     "clear": "Nullstill alle filter"
@@ -218,14 +218,13 @@
     "serviceTab": "Tjenester og hendelser"
   },
   "hitstats": {
-    "nosearch": "Søk blant {0} datasett, {1} API-er, {2} begreper, {3} informasjonsmodeller og {4} tjenester og hendelser",
-    "search": "Søket ga {0} treff i datasett, {1} treff i API-er, {2} treff i begreper, {3} treff i informasjonsmodeller og {4} treff i tjenester og hendelser",
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket ga {0} treff i datasett",
     "nohits": "Søket ga dessverre ingen treff",
     "nohitsDescription": "Kontroller at du har skrevet riktig, eller prøv med andre søkeord.",
     "nohitsCommunityText": "Du kan også",
-    "nohitsCommunityLink": "etterspørre data i Datalandsbyen"
+    "nohitsCommunityLink": "etterspørre data i Datalandsbyen",
+    "searchHits": "Søket ga {0} treff"
   },
   "facet": {
     "organisation": "Eier",
