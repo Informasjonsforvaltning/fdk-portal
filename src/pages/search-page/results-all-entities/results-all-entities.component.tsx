@@ -44,6 +44,7 @@ interface ExternalProps {
   addConcept?: (concept: Partial<SearchObject>) => void;
   removeConcept?: (id?: string) => void;
   isLoading: boolean;
+  searchHitCount: number;
 }
 interface Props
   extends ExternalProps,
@@ -67,7 +68,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   eventTypes,
   eventTypesActions: { getEventTypesRequested: getEventTypes },
-  isLoading
+  isLoading,
+  searchHitCount
 }) => {
   useEffect(() => {
     if (!los) {
@@ -99,6 +101,18 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
       {(entities && entities.length > 0) || isLoading ? (
         <>
           <SortButtons />
+          <SC.Row>
+            <section className='col-lg-4' />
+            <section className='col-12 col-lg-8'>
+              <SC.SearchHitCount>
+                {localization.formatString(
+                  localization.hitstats.searchHits,
+                  <SC.Bold>{searchHitCount}</SC.Bold>
+                )}
+              </SC.SearchHitCount>
+            </section>
+          </SC.Row>
+
           <SC.Content className='row'>
             <SC.Filters className='col-lg-4'>
               <span className='uu-invisible' aria-hidden='false'>

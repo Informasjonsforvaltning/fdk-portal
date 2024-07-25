@@ -9,7 +9,6 @@ import {
   SC as SearchBoxSC
 } from '../../components/search-box/search-box';
 
-import { HitsStats } from './search-box/hits-stats/hits-stats.component';
 import { getConfig } from '../../config';
 
 import './search-page.scss';
@@ -33,6 +32,7 @@ import withPublicServicesAndEvents, {
 import { generateQueryKey, shouldFetch } from './lib/fetch-helper';
 
 import type { SearchObject } from '../../types';
+import localization from '../../lib/localization';
 
 interface AllEntities {
   hits: Partial<SearchObject>[];
@@ -159,23 +159,12 @@ const SearchPage: FC<Props> = ({
   return (
     <div>
       {!getConfig().isNapProfile && (
-        <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
-          <SearchBoxHeader>
-            <HitsStats
-              countDatasets={datasetTotal ?? 0}
-              countApis={dataServiceTotal ?? 0}
-              countTerms={conceptTotal ?? 0}
-              countInformationModels={informationModelTotal ?? 0}
-              countPublicServicesAndEvents={
-                publicServicesAndEventsPage?.totalElements || 0
-              }
-            />
-          </SearchBoxHeader>
+        <SearchBox placeholder={localization.query.intro} autosuggest>
           <Tabs />
         </SearchBox>
       )}
       {getConfig().isNapProfile && (
-        <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
+        <SearchBox placeholder={localization.query.intro} autosuggest>
           <SearchBoxHeader>
             <SearchBoxSC.SearchBox.SearchHeaderLogosTitle>
               {translations.collaborationBetween}
@@ -192,6 +181,11 @@ const SearchPage: FC<Props> = ({
               entities={searchAllEntitiesHits}
               aggregations={allResultsEntititesAggregations}
               page={searchAllEntitiesPage}
+              searchHitCount={
+                searchAllEntitiesPage.totalElements > 9999
+                  ? '10,000+'
+                  : searchAllEntitiesPage.totalElements
+              }
             />
           </Route>
           <Route exact path={PATHNAME_DATASETS}>
@@ -202,6 +196,7 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((datasetTotal || 1) / HITS_PER_PAGE)
               }}
+              searchHitCount={datasetTotal ?? 0}
             />
           </Route>
           <Route exact path={PATHNAME_DATA_SERVICES}>
@@ -212,6 +207,7 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((dataServiceTotal || 1) / HITS_PER_PAGE)
               }}
+              searchHitCount={dataServiceTotal ?? 0}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
@@ -225,6 +221,7 @@ const SearchPage: FC<Props> = ({
               compareConceptList={conceptsCompare}
               addConcept={addConcept}
               removeConcept={removeConcept}
+              searchHitCount={conceptTotal ?? 0}
             />
           </Route>
           <Route exact path={PATHNAME_INFORMATIONMODELS}>
@@ -237,6 +234,7 @@ const SearchPage: FC<Props> = ({
                   (informationModelTotal || 1) / HITS_PER_PAGE
                 )
               }}
+              searchHitCount={informationModelTotal ?? 0}
             />
           </Route>
           <Route exact path={PATHNAME_PUBLIC_SERVICES_AND_EVENTS}>
@@ -245,6 +243,7 @@ const SearchPage: FC<Props> = ({
               entities={publicServicesAndEvents}
               aggregations={publicServicesAndEventsAggregations ?? {}}
               page={publicServicesAndEventsPage ?? {}}
+              searchHitCount={publicServicesAndEventsPage?.totalElements || 0}
             />
           </Route>
         </Switch>

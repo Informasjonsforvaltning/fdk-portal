@@ -173,7 +173,7 @@
     "transportDeclarationOfCompliance": "Declaration of Compliance"
   },
   "query": {
-    "intro": "Example: public transport",
+    "intro": "Search for data descriptions",
     "reset": "Clear",
     "do": "Search",
     "clear": "Clear all filters"
@@ -207,14 +207,13 @@
     "serviceTab": "Services and events"
   },
   "hitstats": {
-    "nosearch": "Search among {0} datasets, {1} APIs, {2} concepts, {3} information models and {4} services and events",
-    "search": "Search gave {0} hit(s) among datasets, {1} hit(s) among APIs, {2} hit(s) among concepts {3} hit(s) among information models and {4} hit(s) among services and events",
     "nosearchNap": "Search among {0} datasets",
     "searchNap": "Search gave {0} hit(s) among datasets",
     "nohits": "Sorry, no hits",
     "nohitsDescription": "Please check the spelling, or use different keywords.",
     "nohitsCommunityText": "You may also",
-    "nohitsCommunityLink": "request data in our Data Community"
+    "nohitsCommunityLink": "request data in our Data Community",
+    "searchHits": "{0} hits found"
   },
   "facet": {
     "organisation": "Owner",
