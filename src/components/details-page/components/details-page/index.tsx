@@ -345,8 +345,12 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           <SC.HamburgerIcon />
           {translations.detailsPage.navMenuButton[navOpen ? 'open' : 'closed']}
         </SC.MenuToggle>
-        <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
-        {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
+        {entity !== Entity.CONCEPT && (
+          <>
+            <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
+            {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
+          </>
+        )}
         <SC.Content>{renderContentSections()}</SC.Content>
         {renderAside()}
       </SC.Page>
