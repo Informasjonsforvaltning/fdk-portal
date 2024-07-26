@@ -795,12 +795,12 @@
         "event": "Andre ressursar med relasjonar til denne hendinga"
       },
       "subtitle": {
-        "dataset": "Datasett",
-        "dataservice": "Datateneste",
-        "concept": "Omgrep",
-        "informationmodel": "Informasjonsmodell",
-        "public_service": "Teneste",
-        "event": "Hending"
+        "dataset": "Datasett:",
+        "dataservice": "Datateneste:",
+        "concept": "Omgrep:",
+        "informationmodel": "Informasjonsmodell:",
+        "public_service": "Teneste:",
+        "event": "Hending:"
       },
       "referenceType": "relasjonstype"
     }

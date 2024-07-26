@@ -790,12 +790,12 @@
         "event": "Other resources with relations to this event"
       },
       "subtitle": {
-        "dataset": "Dataset",
-        "dataservice": "Data service",
-        "concept": "Concept",
-        "informationmodel": "Information model",
-        "public_service": "Public service",
-        "event": "Event"
+        "dataset": "Dataset:",
+        "dataservice": "Data service:",
+        "concept": "Concept:",
+        "informationmodel": "Information model:",
+        "public_service": "Public service:",
+        "event": "Event:"
       },
       "referenceType": "relation type"
     }
