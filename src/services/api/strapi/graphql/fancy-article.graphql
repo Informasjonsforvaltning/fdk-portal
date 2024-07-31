@@ -56,3 +56,62 @@ query GetFancyArticle($id: ID!) {
     }
   }
 }
+
+query GetFancyArticleBySlug($slug: String!) {
+  fancyArticles(filters: { slug: { eq: $slug } }) {
+    data {
+      attributes {
+        title
+        subtitle
+        locale
+        localizations {
+          data {
+            attributes {
+              title
+              subtitle
+              locale
+              Content {
+                ... on ComponentBasicParagraph {
+                  __typename
+                  Content
+                }
+                ... on ComponentBasicImage {
+                  __typename
+                  media {
+                    data {
+                      attributes {
+                        alternativeText
+                        url
+                        caption
+                      }
+                    }
+                  }
+                  style
+                }
+              }
+            }
+          }
+        }
+        Content {
+          ... on ComponentBasicParagraph {
+            __typename
+            Content
+          }
+          ... on ComponentBasicImage {
+            __typename
+            media {
+              data {
+                attributes {
+                  alternativeText
+                  url
+                  caption
+                }
+              }
+            }
+            style
+          }
+        }
+      }
+    }
+  }
+}
