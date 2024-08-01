@@ -27,6 +27,17 @@ export const PATHNAME_GUIDANCE = '/guidance';
 export const PATHNAME_GUIDANCE_METADATA = '/guidance/metadata';
 export const PATHNAME_ORGANIZATIONS = '/organizations';
 export const PATHNAME_PUBLISHING = '/publishing';
+export const PATHNAME_ABOUT_PUBLISHING_INTRO =
+  '/getting-started/publishing-intro';
+export const PATHNAME_ABOUT_CREATING_DESCRIPTIONS_SELF =
+  '/getting-started/creating-descriptions-self';
+export const PATHNAME_ABOUT_CREATING_DESCRIPTIONS_REGISTRATION =
+  '/getting-started/creating-descriptions-registration';
+export const PATHNAME_ABOUT_PUBLISHING_DESCRIPTIONS =
+  '/getting-started/publishing-descriptions';
+export const PATHNAME_ABOUT_TRIGGERING_HARVEST =
+  '/getting-started/triggering-harvest';
+export const PATHNAME_ABOUT_RESOURCES = '/getting-started/resources';
 export const PATHNAME_SPARQL = '/sparql';
 export const PATHNAME_DATA_HUNTER = '/forms/data-hunter';
 
