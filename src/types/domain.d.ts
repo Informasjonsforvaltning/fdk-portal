@@ -616,6 +616,12 @@ interface AccrualPeriodicity {
   prefLabel: Partial<TextLanguage>;
 }
 
+interface DatasetType {
+  uri: string;
+  code: string;
+  prefLabel: Partial<TextLanguage>;
+}
+
 interface Sample {
   description?: Partial<TextLanguage>;
   format: DataFormat[];
@@ -672,7 +678,7 @@ export interface Dataset {
   landingPage: string[];
   qualifiedAttributions: QualifiedAttribution[];
   assessment?: Assessment;
-  dctType?: string;
+  dctType?: DatasetType | string;
   specializedType?: SpecializedDatasetType;
   datasetsInSeries?: string[];
   inSeries?: InSeries;
