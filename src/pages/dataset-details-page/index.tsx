@@ -64,7 +64,12 @@ import Preview from '../../components/dataset-distribution/components/preview';
 import SC from './styled';
 
 import { Entity } from '../../types/enums';
-import { AccessService, Distribution, MediaTypeOrExtent } from '../../types';
+import {
+  AccessService,
+  DatasetType,
+  Distribution,
+  MediaTypeOrExtent
+} from '../../types';
 import Markdown from '../../components/markdown';
 import withResourceRelations, {
   ResourceRelationsProps
@@ -211,6 +216,15 @@ const DatasetDetailsPage: FC<Props> = ({
     dataset?.descriptionFormatted ?? dataset?.description
   );
 
+  const datasetType = (
+    dctType: DatasetType | string | undefined
+  ): string | undefined => {
+    if (typeof dctType === 'string' || typeof dctType === 'undefined') {
+      return dctType;
+    }
+    const label = translate(dctType.prefLabel);
+    return label || dctType.uri;
+  };
   const lastPublished = formatDate(
     dateStringToDate(dataset?.harvest?.firstHarvested)
   );
@@ -220,7 +234,7 @@ const DatasetDetailsPage: FC<Props> = ({
     legalBasisForRestriction: dataset?.legalBasisForRestriction ?? [],
     legalBasisForProcessing: dataset?.legalBasisForProcessing ?? [],
     legalBasisForAccess: dataset?.legalBasisForAccess ?? [],
-    type: dataset?.dctType,
+    type: datasetType(dataset?.dctType),
     standards: dataset?.conformsTo ?? [],
     informationModelReferences: dataset?.informationModel ?? [],
     languages: dataset?.language ?? [],
