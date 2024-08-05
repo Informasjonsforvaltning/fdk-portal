@@ -143,7 +143,7 @@
   "menu": {
     "home": "Søk i Felles datakatalog",
     "homeNAP": "Søk i Transportportal.no",
-    "about": "Om Felles datakatalog",
+    "about": "Om Data.norge.no",
     "aboutRegistration": "Hjelp til å registrere",
     "tools": "Verktøy",
     "reports": "Rapporter",
@@ -162,7 +162,8 @@
     "searchInFdk": "Søk i Felles datakatalog",
     "publishing": "Publisere",
     "aboutCatalogs": "Om katalogene",
-    "guidance": "Veiledning",
+    "findingData": "Hvordan finne data",
+    "publishingData": "Hvordan publisere data",
     "aboutDatasets": "Om datasettkatalogen",
     "aboutDataServices": "Om API-katalogen",
     "aboutConcepts": "Om begrepskatalogen",
@@ -190,7 +191,7 @@
     "clear": "Nullstill alle filter"
   },
   "about": {
-    "about": "Om Felles Datakatalog",
+    "about": "Om Data.norge.no",
     "title": "Om Felles datakatalog",
     "titleSub": "\n",
     "ingress": "Felles datakatalog – data.norge.no er det offentlige nettstedet som gir oversikt over beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet blir levert av ulike virksomheter, offentlige og private. Det er Digitaliseringsdirektoratet som er ansvarlig for drift og utvikling av nettstedet.",
