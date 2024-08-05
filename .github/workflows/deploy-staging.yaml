@@ -1,14 +1,15 @@
 name: Deploy to staging
 
 on:
-  push:
+  pull_request:
+    types: [ready_for_review, opened, reopened, synchronize]
     branches:
-      - develop
+      - main
   workflow_dispatch:
 
 jobs:
   build-staging:
-    name: Call reusable workflow on merge to develop
+    name: Build image
     if: github.event.pull_request.draft == false
     uses: Informasjonsforvaltning/workflows/.github/workflows/build-push.yaml@main
     with:
@@ -19,7 +20,8 @@ jobs:
       GCP_SA_DIGDIR_FDK_GCR_KEY: ${{ secrets.GCP_SA_DIGDIR_FDK_GCR_KEY }}
 
   deploy:
-    name: Deploy staging environment
+    name: Deploy to staging environment
+    if: github.actor != 'dependabot[bot]'
     needs: build-staging
     uses: Informasjonsforvaltning/workflows/.github/workflows/kustomize-deploy.yaml@main
     with:
