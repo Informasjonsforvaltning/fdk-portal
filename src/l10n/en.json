@@ -138,7 +138,7 @@
   "menu": {
     "home": "Search in The National Data Catalog",
     "homeNAP": "Search in The National Access Point for Transport Data ",
-    "about": "About",
+    "about": "About Data.norge.no",
     "aboutRegistration": "Register data",
     "tools": "Tools",
     "reports": "Reports",
@@ -157,7 +157,8 @@
     "searchInFdk": "Search in Felles datakatalog",
     "publishing": "Publish",
     "aboutCatalogs": "About catalogs",
-    "guidance": "Guidance",
+    "findingData": "How to find data",
+    "publishingDescriptions": "How to publish data",
     "aboutDatasets": "About dataset catalog",
     "aboutDataServices": "About data service catalog",
     "aboutConcepts": "About concept catalog",
