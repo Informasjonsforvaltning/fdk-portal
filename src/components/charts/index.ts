@@ -1,1 +1,1 @@
-export { default as DatasetLineAreaChart } from './components/area/area.component';
+export { default as Line } from './components/line/line.component';

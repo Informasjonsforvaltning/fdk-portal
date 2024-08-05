@@ -127,17 +127,6 @@ const configuration: Configuration = mergeWithCustomize({
         test: /\.(woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
         exclude: [resolve(__dirname, '..', 'src', 'images')]
-      },
-      {
-        test: /\.(xls|xlsx)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]'
-            }
-          }
-        ]
       }
     ]
   },
