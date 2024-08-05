@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Call reusable workflow on merge to main
+    name: Build image
     uses: Informasjonsforvaltning/workflows/.github/workflows/build-push.yaml@main
     with:
       app_name: fdk-portal
