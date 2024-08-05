@@ -58,7 +58,8 @@ import {
   PATHNAME_ABOUT_CREATING_DESCRIPTIONS_REGISTRATION,
   PATHNAME_ABOUT_PUBLISHING_DESCRIPTIONS,
   PATHNAME_ABOUT_TRIGGERING_HARVEST,
-  PATHNAME_ABOUT_RESOURCES
+  PATHNAME_ABOUT_RESOURCES,
+  PATHNAME_FINDING_DATA
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
@@ -129,6 +130,7 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_CREATING_DESCRIPTIONS_SELF]: InformationPage,
     [PATHNAME_ABOUT_PUBLISHING_DESCRIPTIONS]: InformationPage,
     [PATHNAME_ABOUT_RESOURCES]: InformationPage,
+    [PATHNAME_FINDING_DATA]: InformationPage,
     [PATHNAME_AI]: AiProjectPage,
     [PATHNAME_REQUESTS]: RequestsPage,
     [PATHNAME_TRANSPORT_GENERAL]: TransportPage,
