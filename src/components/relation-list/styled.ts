@@ -8,12 +8,11 @@ const Relation = styled.div`
   }
 `;
 
-const RelationLinks = styled.div`
+const RelationLinks = styled.ul`
   display: flex;
   flex-direction: column;
 
   margin-bottom: ${theme.spacing('S4')};
-  margin-left: 35px;
 
   & a {
     margin-top: ${theme.spacing('S4')};
@@ -32,24 +31,9 @@ const Banner = styled.div`
   margin-top: ${theme.spacing('S8')};
 
   & > h3 {
-    margin-left: 10px;
     font-size: ${theme.fontSize('FS16', Unit.REM)};
-    font-weight: ${theme.fontWeight('FW500')};
+    font-weight: bold;
   }
 `;
 
-const IconBackground = styled.span`
-  display: flex;
-  padding: 5px;
-  border-radius: 50%;
-  height: 25px;
-  width: 25px;
-  background-color: ${({ theme: t }) => t.entityColours.light};
-
-  & path {
-    fill: ${({ theme: t }) => t.entityColours.dark};
-    color: ${({ theme: t }) => t.entityColours.dark};
-  }
-`;
-
-export default { Relation, RelationLinks, Banner, IconBackground };
+export default { Relation, RelationLinks, Banner };

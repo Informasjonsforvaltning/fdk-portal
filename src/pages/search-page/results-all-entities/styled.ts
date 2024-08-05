@@ -67,9 +67,9 @@ const ArrowLeftIcon = styled(ArrowLeftIconBase)`
 `;
 
 const SearchHitCount = styled.h2`
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   font-weight: normal;
-  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  padding-bottom: 0.5rem;
 `;
 
 const Bold = styled.span`
@@ -78,6 +78,8 @@ const Bold = styled.span`
 
 const Row = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 `;
 
 export default {

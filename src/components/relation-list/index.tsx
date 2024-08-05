@@ -8,12 +8,6 @@ import SC from './styled';
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 
-import ConceptIcon from '../../images/icon-catalog-concept-lg.svg';
-import DatasetIcon from '../../images/icon-catalog-dataset-lg.svg';
-import DataServiceIcon from '../../images/icon-catalog-api-lg.svg';
-import InformationModelIcon from '../../images/icon-catalog-infomod-lg.svg';
-import PublicServiceIcon from '../../images/icon-catalog-service-lg.svg';
-
 import {
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
@@ -73,9 +67,6 @@ const RelationsList: FC<Props> = ({
     {datasets && datasets.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <DatasetIcon />
-          </SC.IconBackground>
           <h3>{translations.detailsPage.relationList.subtitle.dataset}</h3>
         </SC.Banner>
 
@@ -100,9 +91,6 @@ const RelationsList: FC<Props> = ({
     {dataServices && dataServices.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <DataServiceIcon />
-          </SC.IconBackground>
           <h3>{translations.detailsPage.relationList.subtitle.dataservice}</h3>
         </SC.Banner>
 
@@ -121,9 +109,6 @@ const RelationsList: FC<Props> = ({
     {concepts && concepts.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <ConceptIcon />
-          </SC.IconBackground>
           <h3>{translations.detailsPage.relationList.subtitle.concept}</h3>
         </SC.Banner>
 
@@ -146,9 +131,6 @@ const RelationsList: FC<Props> = ({
     {informationModels && informationModels.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <InformationModelIcon />
-          </SC.IconBackground>
           <h3>
             {translations.detailsPage.relationList.subtitle.informationmodel}
           </h3>
@@ -169,9 +151,6 @@ const RelationsList: FC<Props> = ({
     {publicServices && publicServices.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <PublicServiceIcon />
-          </SC.IconBackground>
           <h3>
             {translations.detailsPage.relationList.subtitle.public_service}
           </h3>
@@ -195,9 +174,6 @@ const RelationsList: FC<Props> = ({
     {events && events.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <PublicServiceIcon />
-          </SC.IconBackground>
           <h3>{translations.detailsPage.relationList.subtitle.event}</h3>
         </SC.Banner>
 

@@ -121,32 +121,29 @@ const FilterPillsPure: FC<Props> = ({
   };
 
   return (
-    <div>
-      <SC.Heading>{localization.activeFilter}</SC.Heading>
-      <SC.Pills>
-        {Object.keys(
-          omit(locationSearch, [Filter.Q, Filter.PAGE, Filter.SORTFIELD])
+    <SC.Pills>
+      {Object.keys(
+        omit(locationSearch, [Filter.Q, Filter.PAGE, Filter.SORTFIELD])
+      )
+        .filter((filterName: string) =>
+          Object.values(Filter).includes(filterName as Filter)
         )
-          .filter((filterName: string) =>
-            Object.values(Filter).includes(filterName as Filter)
+        .map((filterName: string) =>
+          renderFilterValuesPills(
+            filterName,
+            locationSearch[filterName]?.split(','),
+            history,
+            location,
+            referenceDataItems[filterName]
           )
-          .map((filterName: string) =>
-            renderFilterValuesPills(
-              filterName,
-              locationSearch[filterName]?.split(','),
-              history,
-              location,
-              referenceDataItems[filterName]
-            )
-          )}
-      </SC.Pills>
+        )}
       <SC.ClearButton
         onClick={() => clearFilters(history, location)}
         type='button'
       >
         {localization.query.clear}
       </SC.ClearButton>
-    </div>
+    </SC.Pills>
   );
 };
 

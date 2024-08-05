@@ -799,12 +799,12 @@
         "event": "Andre ressurser med relasjoner til denne hendelsen"
       },
       "subtitle": {
-        "dataset": "Datasett",
-        "dataservice": "Datatjeneste",
-        "concept": "Begrep",
-        "informationmodel": "Informasjonsmodell",
-        "public_service": "Tjeneste",
-        "event": "Hendelse"
+        "dataset": "Datasett:",
+        "dataservice": "Datatjeneste:",
+        "concept": "Begrep:",
+        "informationmodel": "Informasjonsmodell:",
+        "public_service": "Tjeneste:",
+        "event": "Hendelse:"
       },
       "referenceType": "relasjonstype"
     }
