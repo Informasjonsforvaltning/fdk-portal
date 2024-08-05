@@ -36,27 +36,16 @@ import ContentSection from '../content-section';
 import CommunityTopics from '../community-topics';
 import EntityComments from '../../../community/comments';
 
-import { isEuTheme, isLosTheme } from '../../../../utils/common';
-
 import OpenAccessIcon from '../../../../images/icon-access-open-md-v2.svg';
 import RestrictedAccessIcon from '../../../../images/icon-access-restricted-md-v2.svg';
 import NotOpenAccessIcon from '../../../../images/icon-access-not-open-md-v2.svg';
 
 import SC from './styled';
 
-import {
-  Language,
-  PublicServiceLanguage,
-  Organization,
-  TextLanguage,
-  Theme
-} from '../../../../types';
+import { Language, Organization, TextLanguage } from '../../../../types';
 import { Entity } from '../../../../types/enums';
 
-import {
-  calculateRatingPercentage,
-  determineRatingIcon
-} from '../../../../pages/organizations/pages/datasets-page';
+import { calculateRatingPercentage } from '../../../../pages/organizations/pages/datasets-page';
 import withCommunity, {
   Props as CommunityProps
 } from '../../../with-community';
@@ -71,7 +60,6 @@ interface ExternalProps {
   entity: Entity;
   title: Partial<TextLanguage>;
   publisher?: Partial<Organization>;
-  admsStatus?: PublicServiceLanguage;
   entityId?: string;
   entityUri?: string;
   lastPublished: string;
@@ -80,7 +68,6 @@ interface ExternalProps {
   isPublicData: boolean;
   isRestrictedData: boolean;
   isNonPublicData: boolean;
-  themes: Theme[];
   languages?: Language[];
 }
 
@@ -103,7 +90,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   entity,
   title,
   publisher,
-  admsStatus,
   datasetScores,
   entityId,
   entityUri,
@@ -113,12 +99,9 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   isPublicData,
   isRestrictedData,
   isNonPublicData,
-  themes = [],
   languages = [],
   topics,
   multiplePages,
-  referenceData: { los: losThemes, themes: euThemes },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData },
   datasetScoresActions: {
     getDatasetScoresRequested: getDatasetScores,
     resetDatasetScores
@@ -152,22 +135,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
       window.removeEventListener('scroll', () => handleScroll);
     };
   }, [debounce, handleScroll]);
-
-  useEffect(() => {
-    const appRoot = document.querySelector('#root > div');
-    appRoot?.classList.add(entity);
-
-    if (!losThemes) {
-      getReferenceData('los');
-    }
-    if (!euThemes) {
-      getReferenceData('themes');
-    }
-
-    return () => {
-      appRoot?.classList.remove(entity);
-    };
-  }, []);
 
   useEffect(() => {
     if (entityId) {
@@ -220,8 +187,20 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     </ContentSection>
   );
 
+  const publishingDate = (
+    <SC.PublishingDate>
+      {translations.formatString(
+        translations.detailsPage.banner.lastPublishedInfo,
+        {
+          lastPublished
+        }
+      )}
+    </SC.PublishingDate>
+  );
+
   const contentSections = Children.toArray(children).concat([
     communitySection,
+    publishingDate,
     commentSection
   ]);
 
@@ -255,7 +234,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     : null;
 
   const renderThemeItems = () => {
-    let items = [];
+    const items = [];
     if (isOpenData) {
       items.push(
         <SC.ThemeItem>
@@ -308,87 +287,70 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         </SC.ThemeItem>
       );
     }
-
-    items = [
-      ...items,
-      ...themes.map(theme => {
-        if (isLosTheme(theme)) {
-          const { uri, name, losPaths: [losPath] = [] } = theme;
-          return (
-            <SC.ThemeItem key={uri}>
-              <Link key={uri} to={`${rootPaths[entity]}?losTheme=${losPath}`}>
-                {translate(name)}
-              </Link>
-            </SC.ThemeItem>
-          );
-        }
-        if (isEuTheme(theme)) {
-          const { id, title: themeTitle, label: themeLabel, code } = theme;
-          return (
-            <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
-              {themeTitle ? translate(themeTitle) : translate(themeLabel)}
-            </Link>
-          );
-        }
-        return null;
-      })
-    ];
     return items.filter(Boolean);
   };
 
   return (
     <SC.DetailsPage className='container' id='content'>
-      <Banner
-        entity={entity}
-        title={title}
-        lastPublished={lastPublished}
-        isAuthoritative={isAuthoritative}
-        languages={languages}
-        publisher={publisher}
-        admsStatus={admsStatus}
-      />
-      {publisher?.id && datasetScore && (
-        <SC.SubBanner>
-          <FdkLink href={`/organizations/${publisher.id}/datasets/${entityId}`}>
-            <SC.MetadataQuality>
-              <p>{translations.metadataQualityPage.metadataQuality}: </p>
-              <SC.RatingIcon>
-                {determineRatingIcon(datasetScore.dataset)}
-              </SC.RatingIcon>
-              <p>{calculateRatingPercentage(datasetScore.dataset)} %</p>
-            </SC.MetadataQuality>
-          </FdkLink>
-        </SC.SubBanner>
-      )}
-      {renderThemeItems().length > 0 && (
-        <SC.Themes>{renderThemeItems()}</SC.Themes>
-      )}
-      {accessRequest && (
-        <SC.AccessRequest>
-          <a
-            href={accessRequest.requestAddress}
-            target='_blank'
-            rel='noreferrer'
-          >
-            <Button
-              onClick={() =>
-                monsidoTrackButtonClickEvent(
-                  MonsidoTrackEventParams.Action.Click.Button.AccessRequest
-                )
-              }
-            >
-              {translations.detailsPage.requestDataButton}
-            </Button>
-          </a>
-        </SC.AccessRequest>
-      )}
+      <SC.Heading>
+        <Banner
+          entity={entity}
+          title={title}
+          isAuthoritative={isAuthoritative}
+          languages={languages}
+          publisher={publisher}
+        />
+        <SC.HeadingLeft>
+          {publisher?.id && datasetScore && (
+            <SC.SubBanner>
+              <FdkLink
+                href={`/organizations/${publisher.id}/datasets/${entityId}`}
+              >
+                <SC.MetadataQuality>
+                  <p>
+                    {`${
+                      translations.metadataQualityPage.metadataQuality
+                    }: ${calculateRatingPercentage(datasetScore.dataset)} %`}
+                  </p>
+                </SC.MetadataQuality>
+              </FdkLink>
+            </SC.SubBanner>
+          )}
+          {renderThemeItems().length > 0 && (
+            <SC.Themes>{renderThemeItems()}</SC.Themes>
+          )}
+          {accessRequest && (
+            <SC.AccessRequest>
+              <a
+                href={accessRequest.requestAddress}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <Button
+                  onClick={() =>
+                    monsidoTrackButtonClickEvent(
+                      MonsidoTrackEventParams.Action.Click.Button.AccessRequest
+                    )
+                  }
+                >
+                  {translations.detailsPage.requestDataButton}
+                </Button>
+              </a>
+            </SC.AccessRequest>
+          )}
+        </SC.HeadingLeft>
+      </SC.Heading>
       <SC.Page>
         <SC.MenuToggle onClick={() => setNavOpen(!navOpen)}>
           <SC.HamburgerIcon />
           {translations.detailsPage.navMenuButton[navOpen ? 'open' : 'closed']}
         </SC.MenuToggle>
-        <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
-        {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
+        {entity !== Entity.CONCEPT && (
+          <>
+            <SC.SideMenu isSticky={isSticky} menuItems={menuItems} />
+            {navOpen && <SC.SideMenuSmall menuItems={menuItems} />}
+          </>
+        )}
         <SC.Content>{renderContentSections()}</SC.Content>
         {renderAside()}
       </SC.Page>

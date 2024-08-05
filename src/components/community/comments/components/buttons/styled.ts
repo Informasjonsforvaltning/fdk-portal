@@ -2,15 +2,6 @@ import styled from 'styled-components';
 import Button from '@fellesdatakatalog/button';
 
 const BigButton = styled(Button)`
-  background-color: ${({ theme: t }) => t.entityColours.dark};
-  &:hover {
-    color: ${({ theme: t }) => t.entityColours.dark};
-    background-color: ${({ theme: t }) => t.entityColours.light};
-    & path {
-      stroke: ${({ theme: t }) => t.entityColours.dark};
-    }
-  }
-
   &:focus {
     outline-offset: 3px;
     outline: 2px solid orange;
@@ -19,10 +10,10 @@ const BigButton = styled(Button)`
 
 const UnderlineButton = styled(Button)`
   white-space: nowrap;
-  border-bottom: 2px solid ${({ theme: t }) => t.entityColours.dark};
+  border-bottom: 2px solid ${({ theme }) => theme.extendedColors.neutralDarkest};
 
   & path {
-    stroke: ${({ theme: t }) => t.entityColours.dark};
+    stroke: ${({ theme }) => theme.extendedColors.neutralDarkest};
   }
 
   &:hover {

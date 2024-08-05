@@ -137,7 +137,7 @@
   "menu": {
     "home": "Search in The National Data Catalog",
     "homeNAP": "Search in The National Access Point for Transport Data ",
-    "about": "About",
+    "about": "About Data.norge.no",
     "aboutRegistration": "Register data",
     "tools": "Tools",
     "reports": "Reports",
@@ -156,7 +156,8 @@
     "searchInFdk": "Search in Felles datakatalog",
     "publishing": "Publish",
     "aboutCatalogs": "About catalogs",
-    "guidance": "Guidance",
+    "findingData": "How to find data",
+    "publishingDescriptions": "How to publish data",
     "aboutDatasets": "About dataset catalog",
     "aboutDataServices": "About data service catalog",
     "aboutConcepts": "About concept catalog",
@@ -172,7 +173,7 @@
     "transportDeclarationOfCompliance": "Declaration of Compliance"
   },
   "query": {
-    "intro": "Example: public transport",
+    "intro": "Search for data descriptions",
     "reset": "Clear",
     "do": "Search",
     "clear": "Clear all filters"
@@ -206,14 +207,13 @@
     "serviceTab": "Services and events"
   },
   "hitstats": {
-    "nosearch": "Search among {0} datasets, {1} APIs, {2} concepts, {3} information models and {4} services and events",
-    "search": "Search gave {0} hit(s) among datasets, {1} hit(s) among APIs, {2} hit(s) among concepts {3} hit(s) among information models and {4} hit(s) among services and events",
     "nosearchNap": "Search among {0} datasets",
     "searchNap": "Search gave {0} hit(s) among datasets",
     "nohits": "Sorry, no hits",
     "nohitsDescription": "Please check the spelling, or use different keywords.",
     "nohitsCommunityText": "You may also",
-    "nohitsCommunityLink": "request data in our Data Community"
+    "nohitsCommunityLink": "request data in our Data Community",
+    "searchHits": "{0} hits found"
   },
   "facet": {
     "organisation": "Owner",
@@ -227,7 +227,6 @@
     "standard": "Standard",
     "showmore": "Show more",
     "showfewer": "Show fewer",
-    "showAll": "Show all",
     "publishers": {
       "STAT": "Central authority",
       "FYLKE": "County",
@@ -648,7 +647,7 @@
   },
   "detailsPage": {
     "banner": {
-      "lastPublishedInfo": "{entity} published in Felles datakatalog on {lastPublished}",
+      "lastPublishedInfo": "Published in Felles datakatalog on {lastPublished}",
       "entity": {
         "DATASET": "Dataset description",
         "DATA_SERVICE": "Data service description",
@@ -659,9 +658,9 @@
       }
     },
     "requestDataButton": "Request access",
-    "owner": "Owner: {publisher}",
-    "provider": "Provider: {publisher}",
-    "responsible": "Responsible: {publisher}",
+    "owner": "Owner:",
+    "provider": "Provider:",
+    "responsible": "Responsible:",
     "openData": "Open data",
     "publicData": "Public data",
     "restrictedData": "Restricted data",
@@ -772,7 +771,8 @@
         "webAddress": "Web address",
         "competentAuthority": "Competent authority",
         "homepage": "Home page",
-        "spatialCoverage": "Spatial coverage"
+        "spatialCoverage": "Spatial coverage",
+        "status": "Status of the service"
       },
       "event": {
         "description": "Description",
@@ -790,12 +790,12 @@
         "event": "Other resources with relations to this event"
       },
       "subtitle": {
-        "dataset": "Dataset",
-        "dataservice": "Data service",
-        "concept": "Concept",
-        "informationmodel": "Information model",
-        "public_service": "Public service",
-        "event": "Event"
+        "dataset": "Dataset:",
+        "dataservice": "Data service:",
+        "concept": "Concept:",
+        "informationmodel": "Information model:",
+        "public_service": "Public service:",
+        "event": "Event:"
       },
       "referenceType": "relation type"
     }
@@ -1184,13 +1184,13 @@
     "ingress": "Here you will find an overview of all requests published in the {lenke}. You can subscribe to, vote on, or comment on requests.",
     "requests": "Requests from the Data Community",
     "votes": "Number of Votes",
-    "views": "Number of Views",
+    "comments": "Number of Comments",
     "createRequest": "Create request",
     "requestData": "Request data",
     "requestDataInfo": "Do you want to request data, APIs, or anything else you can do it here. You will be redirected to datalandsbyen.no.",
     "newestToOldest": "Newest to Oldest",
     "mostVotes": "Most Votes",
-    "mostViews": "Most Views",
+    "mostComments": "Most Comments",
     "sort": "Sorting",
     "search": "Free text search in titles"
   }

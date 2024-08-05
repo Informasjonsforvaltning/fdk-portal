@@ -210,6 +210,7 @@ export type FancyArticle = {
   locale?: Maybe<Scalars['String']['output']>;
   localizations?: Maybe<FancyArticleRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -254,6 +255,7 @@ export type FancyArticleFiltersInput = {
   not?: InputMaybe<FancyArticleFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<FancyArticleFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
   subtitle?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
@@ -264,6 +266,7 @@ export type FancyArticleInput = {
     Array<Scalars['FancyArticleContentDynamicZoneInput']['input']>
   >;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1454,6 +1457,85 @@ export type GetFancyArticleQuery = {
   } | null;
 };
 
+export type GetFancyArticleBySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+export type GetFancyArticleBySlugQuery = {
+  __typename?: 'Query';
+  fancyArticles?: {
+    __typename?: 'FancyArticleEntityResponseCollection';
+    data: Array<{
+      __typename?: 'FancyArticleEntity';
+      attributes?: {
+        __typename?: 'FancyArticle';
+        title?: string | null;
+        subtitle?: string | null;
+        locale?: string | null;
+        localizations?: {
+          __typename?: 'FancyArticleRelationResponseCollection';
+          data: Array<{
+            __typename?: 'FancyArticleEntity';
+            attributes?: {
+              __typename?: 'FancyArticle';
+              title?: string | null;
+              subtitle?: string | null;
+              locale?: string | null;
+              Content?: Array<
+                | {
+                    __typename: 'ComponentBasicImage';
+                    style?: Enum_Componentbasicimage_Style | null;
+                    media?: {
+                      __typename?: 'UploadFileEntityResponse';
+                      data?: {
+                        __typename?: 'UploadFileEntity';
+                        attributes?: {
+                          __typename?: 'UploadFile';
+                          alternativeText?: string | null;
+                          url: string;
+                          caption?: string | null;
+                        } | null;
+                      } | null;
+                    } | null;
+                  }
+                | {
+                    __typename: 'ComponentBasicParagraph';
+                    Content?: string | null;
+                  }
+                | { __typename?: 'ComponentBasicQuote' }
+                | { __typename?: 'Error' }
+                | null
+              > | null;
+            } | null;
+          }>;
+        } | null;
+        Content?: Array<
+          | {
+              __typename: 'ComponentBasicImage';
+              style?: Enum_Componentbasicimage_Style | null;
+              media?: {
+                __typename?: 'UploadFileEntityResponse';
+                data?: {
+                  __typename?: 'UploadFileEntity';
+                  attributes?: {
+                    __typename?: 'UploadFile';
+                    alternativeText?: string | null;
+                    url: string;
+                    caption?: string | null;
+                  } | null;
+                } | null;
+              } | null;
+            }
+          | { __typename: 'ComponentBasicParagraph'; Content?: string | null }
+          | { __typename?: 'ComponentBasicQuote' }
+          | { __typename?: 'Error' }
+          | null
+        > | null;
+      } | null;
+    }>;
+  } | null;
+};
+
 export type GetArticleQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
@@ -1793,6 +1875,117 @@ export type GetFancyArticleLazyQueryHookResult = ReturnType<
 export type GetFancyArticleQueryResult = Apollo.QueryResult<
   GetFancyArticleQuery,
   GetFancyArticleQueryVariables
+>;
+export const GetFancyArticleBySlugDocument = gql`
+  query GetFancyArticleBySlug($slug: String!) {
+    fancyArticles(filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          title
+          subtitle
+          locale
+          localizations {
+            data {
+              attributes {
+                title
+                subtitle
+                locale
+                Content {
+                  ... on ComponentBasicParagraph {
+                    __typename
+                    Content
+                  }
+                  ... on ComponentBasicImage {
+                    __typename
+                    media {
+                      data {
+                        attributes {
+                          alternativeText
+                          url
+                          caption
+                        }
+                      }
+                    }
+                    style
+                  }
+                }
+              }
+            }
+          }
+          Content {
+            ... on ComponentBasicParagraph {
+              __typename
+              Content
+            }
+            ... on ComponentBasicImage {
+              __typename
+              media {
+                data {
+                  attributes {
+                    alternativeText
+                    url
+                    caption
+                  }
+                }
+              }
+              style
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetFancyArticleBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetFancyArticleBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFancyArticleBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetFancyArticleBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetFancyArticleBySlugQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetFancyArticleBySlugQuery,
+    GetFancyArticleBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetFancyArticleBySlugQuery,
+    GetFancyArticleBySlugQueryVariables
+  >(GetFancyArticleBySlugDocument, options);
+}
+export function useGetFancyArticleBySlugLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetFancyArticleBySlugQuery,
+    GetFancyArticleBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetFancyArticleBySlugQuery,
+    GetFancyArticleBySlugQueryVariables
+  >(GetFancyArticleBySlugDocument, options);
+}
+export type GetFancyArticleBySlugQueryHookResult = ReturnType<
+  typeof useGetFancyArticleBySlugQuery
+>;
+export type GetFancyArticleBySlugLazyQueryHookResult = ReturnType<
+  typeof useGetFancyArticleBySlugLazyQuery
+>;
+export type GetFancyArticleBySlugQueryResult = Apollo.QueryResult<
+  GetFancyArticleBySlugQuery,
+  GetFancyArticleBySlugQueryVariables
 >;
 export const GetArticleDocument = gql`
   query GetArticle($id: ID!) {

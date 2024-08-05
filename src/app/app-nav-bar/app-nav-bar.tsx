@@ -29,7 +29,9 @@ import {
   PATHNAME_TRANSPORT_ADD,
   PATHNAME_TRANSPORT_NEWS,
   PATHNAME_TRANSPORT_COMPLIANCE,
-  PATHNAME_DATA_HUNTER
+  PATHNAME_DATA_HUNTER,
+  PATHNAME_FINDING_DATA,
+  PATHNAME_ABOUT_PUBLISHING_INTRO
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
@@ -120,6 +122,17 @@ const fdkItems = () => [
           {localization.menu.about}
         </Link>
       </SC.ListItem>
+      <SC.ListItem key={localization.menu.findingData}>
+        <Link as={RouteLink} to={PATHNAME_FINDING_DATA}>
+          {localization.menu.findingData}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.publishingData}>
+        <Link as={RouteLink} to={PATHNAME_ABOUT_PUBLISHING_INTRO}>
+          {localization.menu.publishingData}
+        </Link>
+      </SC.ListItem>
+
       <SC.ListItem key={localization.menu.aboutDatasets}>
         <Link as={RouteLink} to={PATHNAME_ABOUT_DATASETS}>
           {localization.menu.aboutDatasets}
@@ -138,11 +151,6 @@ const fdkItems = () => [
       <SC.ListItem key={localization.menu.aboutInformationModels}>
         <Link as={RouteLink} to={PATHNAME_ABOUT_INFORMATIONMODELS}>
           {localization.menu.aboutInformationModels}
-        </Link>
-      </SC.ListItem>
-      <SC.ListItem key={localization.menu.guidance}>
-        <Link as={RouteLink} to={PATHNAME_GUIDANCE}>
-          {localization.menu.guidance}
         </Link>
       </SC.ListItem>
     </DropdownMenu>

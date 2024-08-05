@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { Alignment } from '@fellesdatakatalog/theme';
 import { Tab, Pane } from '@fellesdatakatalog/tabs';
 
+import Link from '@fellesdatakatalog/link';
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -52,7 +53,7 @@ import Markdown from '../../components/markdown';
 import withResourceRelations, {
   ResourceRelationsProps
 } from '../../components/with-resource-relations';
-import { filterRelations } from '../../utils/common';
+import { filterRelations, isEuTheme, isLosTheme } from '../../utils/common';
 
 interface RouteParams {
   informationModelId: string;
@@ -247,7 +248,6 @@ const InformationModelDetailsPage: FC<Props> = ({
         isPublicData={false}
         isRestrictedData={false}
         isNonPublicData={false}
-        themes={themes}
       >
         {description && (
           <ContentSection
@@ -380,9 +380,9 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.license}
                   value={licenses.map(({ uri, code, prefLabel }) => (
                     <Fragment key={code}>
-                      <SC.Link href={uri} external>
+                      <Link href={uri} external>
                         {translate(prefLabel) || uri}
-                      </SC.Link>
+                      </Link>
                       <br />
                     </Fragment>
                   ))}
@@ -415,9 +415,9 @@ const InformationModelDetailsPage: FC<Props> = ({
                     }) => (
                       <SC.Format key={uri}>
                         {formatSeeAlso && !uriIsSkolemized(formatSeeAlso) ? (
-                          <SC.Link href={formatSeeAlso} external>
+                          <Link href={formatSeeAlso} external>
                             {translate(formatTitle) ?? formatSeeAlso}
-                          </SC.Link>
+                          </Link>
                         ) : (
                           translate(formatTitle) ?? uri
                         )}
@@ -447,9 +447,9 @@ const InformationModelDetailsPage: FC<Props> = ({
                     }) => (
                       <SC.ValueListColumn key={uri}>
                         {uri && !uriIsSkolemized(uri) ? (
-                          <SC.Link href={uri} external>
+                          <Link href={uri} external>
                             {translate(isProfileOfTitle) ?? uri}
-                          </SC.Link>
+                          </Link>
                         ) : (
                           translate(isProfileOfTitle) ?? uri
                         )}
@@ -464,9 +464,9 @@ const InformationModelDetailsPage: FC<Props> = ({
                             <div>{translations.infoMod.seeAlso}:</div>
                           )}
                         {isProfileOfSeeAlso?.map(seeAlsoUri => (
-                          <SC.Link key={seeAlsoUri} href={seeAlsoUri} external>
+                          <Link key={seeAlsoUri} href={seeAlsoUri} external>
                             {seeAlsoUri}
-                          </SC.Link>
+                          </Link>
                         ))}
                       </SC.ValueListColumn>
                     )
@@ -485,9 +485,9 @@ const InformationModelDetailsPage: FC<Props> = ({
                     }) => (
                       <SC.ValueListColumn key={uri}>
                         {uri && !uriIsSkolemized(uri) ? (
-                          <SC.Link href={uri} external>
+                          <Link href={uri} external>
                             {translate(conformsToTitle) ?? uri}
-                          </SC.Link>
+                          </Link>
                         ) : (
                           translate(conformsToTitle) ?? uri
                         )}
@@ -501,9 +501,9 @@ const InformationModelDetailsPage: FC<Props> = ({
                           <div>{translations.infoMod.seeAlso}:</div>
                         )}
                         {conformsToSeeAlso?.map(seeAlsoUri => (
-                          <SC.Link key={seeAlsoUri} href={seeAlsoUri} external>
+                          <Link key={seeAlsoUri} href={seeAlsoUri} external>
                             {seeAlsoUri}
-                          </SC.Link>
+                          </Link>
                         ))}
                       </SC.ValueListColumn>
                     )
@@ -514,9 +514,9 @@ const InformationModelDetailsPage: FC<Props> = ({
                 <KeyValueListItem
                   property={translations.infoMod.seeAlso}
                   value={
-                    <SC.Link href={seeAlso} external>
+                    <Link href={seeAlso} external>
                       {translations.infoMod.moreInfo}
-                    </SC.Link>
+                    </Link>
                   }
                 />
               )}
@@ -647,18 +647,57 @@ const InformationModelDetailsPage: FC<Props> = ({
                       <KeyValueListItem
                         key={`${id}-${index}`}
                         property={
-                          <SC.Link
+                          <Link
                             to={`${PATHNAME_CONCEPTS}/${id}`}
                             as={RouteLink}
                           >
                             {translate(conceptTitle)}
-                          </SC.Link>
+                          </Link>
                         }
                         value={translate(conceptDescription)}
                       />
                     )
                 )}
             </KeyValueList>
+          </ContentSection>
+        )}
+        {themes.length > 0 && (
+          <ContentSection id='themes' title={translations.facet.theme}>
+            <InlineList>
+              {themes.map(dataTheme => {
+                if (isLosTheme(dataTheme)) {
+                  const { uri, name, losPaths: [losPath] = [] } = dataTheme;
+                  return (
+                    <Link
+                      key={uri}
+                      to={`${PATHNAME_INFORMATIONMODELS}?losTheme=${losPath}`}
+                      as={RouteLink}
+                    >
+                      {translate(name)}
+                    </Link>
+                  );
+                }
+                if (isEuTheme(dataTheme)) {
+                  const {
+                    title: themeTitle,
+                    label: themeLabel,
+                    code
+                  } = dataTheme;
+                  return (
+                    <Link
+                      key={dataTheme.code}
+                      to={`${PATHNAME_INFORMATIONMODELS}?theme=${code}`}
+                      as={RouteLink}
+                    >
+                      {themeTitle
+                        ? translate(themeTitle)
+                        : translate(themeLabel)}
+                    </Link>
+                  );
+                }
+                return null;
+              })}
+            </InlineList>
           </ContentSection>
         )}
         {keywords.length > 0 && (
@@ -670,15 +709,15 @@ const InformationModelDetailsPage: FC<Props> = ({
           >
             <InlineList>
               {keywords.map((keyword, index) => (
-                <SC.Link
+                <Link
                   to={`${PATHNAME_INFORMATIONMODELS}?q=${encodeURIComponent(
                     keyword
                   )}`}
                   key={`${keyword}-${index}`}
-                  forwardedAs={RouteLink}
+                  as={RouteLink}
                 >
                   {keyword}
-                </SC.Link>
+                </Link>
               ))}
             </InlineList>
           </ContentSection>
@@ -696,12 +735,12 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.isPartOf}
                   value={
                     informationModelsMap[isPartOf] ? (
-                      <SC.Link
+                      <Link
                         to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[isPartOf].id}`}
-                        forwardedAs={RouteLink}
+                        as={RouteLink}
                       >
                         {translate(informationModelsMap[isPartOf].title)}
-                      </SC.Link>
+                      </Link>
                     ) : (
                       isPartOf
                     )
@@ -713,12 +752,12 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.hasPart}
                   value={
                     informationModelsMap[hasPart] ? (
-                      <SC.Link
+                      <Link
                         to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[hasPart].id}`}
-                        forwardedAs={RouteLink}
+                        as={RouteLink}
                       >
                         {translate(informationModelsMap[hasPart].title)}
-                      </SC.Link>
+                      </Link>
                     ) : (
                       hasPart
                     )
@@ -730,12 +769,12 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.isReplacedBy}
                   value={
                     informationModelsMap[isReplacedBy] ? (
-                      <SC.Link
+                      <Link
                         to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[isReplacedBy].id}`}
-                        forwardedAs={RouteLink}
+                        as={RouteLink}
                       >
                         {translate(informationModelsMap[isReplacedBy].title)}
-                      </SC.Link>
+                      </Link>
                     ) : (
                       isReplacedBy
                     )
@@ -747,12 +786,12 @@ const InformationModelDetailsPage: FC<Props> = ({
                   property={translations.infoMod.replaces}
                   value={
                     informationModelsMap[replaces] ? (
-                      <SC.Link
+                      <Link
                         to={`${PATHNAME_INFORMATIONMODELS}/${informationModelsMap[replaces].id}`}
-                        forwardedAs={RouteLink}
+                        as={RouteLink}
                       >
                         {translate(informationModelsMap[replaces].title)}
-                      </SC.Link>
+                      </Link>
                     ) : (
                       replaces
                     )
@@ -772,9 +811,9 @@ const InformationModelDetailsPage: FC<Props> = ({
           >
             <InlineList>
               {spatialRestrictions.map(({ uri, prefLabel }) => (
-                <SC.Link href={uri} key={uri} external>
+                <Link href={uri} key={uri} external>
                   {translate(prefLabel) ?? uri}
-                </SC.Link>
+                </Link>
               ))}
             </InlineList>
           </ContentSection>
@@ -828,12 +867,12 @@ const InformationModelDetailsPage: FC<Props> = ({
                     <KeyValueListItem
                       property={translations.email}
                       value={
-                        <SC.Link
+                        <Link
                           href={`mailto:${email}`}
                           rel='noopener noreferrer'
                         >
                           {email}
-                        </SC.Link>
+                        </Link>
                       }
                     />
                   )}

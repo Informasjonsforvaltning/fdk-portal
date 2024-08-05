@@ -616,6 +616,12 @@ interface AccrualPeriodicity {
   prefLabel: Partial<TextLanguage>;
 }
 
+interface DatasetType {
+  uri: string;
+  code: string;
+  prefLabel: Partial<TextLanguage>;
+}
+
 interface Sample {
   description?: Partial<TextLanguage>;
   format: DataFormat[];
@@ -672,7 +678,7 @@ export interface Dataset {
   landingPage: string[];
   qualifiedAttributions: QualifiedAttribution[];
   assessment?: Assessment;
-  dctType?: string;
+  dctType?: DatasetType | string;
   specializedType?: SpecializedDatasetType;
   datasetsInSeries?: string[];
   inSeries?: InSeries;
@@ -1092,7 +1098,24 @@ export interface CommunityPost {
   page?: number;
   multiplePages: boolean;
   pagination: Pagination;
-  posts: CommunityPost[];
+  posts: CommunityRequestPost[];
+}
+
+export interface CommunityRequestPost {
+  category: CommunityCategory;
+  deleted: boolean;
+  downvotes: number;
+  isMainPost: boolean;
+  pid: number;
+  replies: number;
+  tid: number;
+  timestap: number;
+  timestampISO: string;
+  topic: CommunityTopic;
+  uid: number;
+  upvotes: number;
+  votes: number;
+  user: CommunityUser;
 }
 
 export interface Pagination {

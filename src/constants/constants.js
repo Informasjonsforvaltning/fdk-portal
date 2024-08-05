@@ -19,6 +19,7 @@ export const PATHNAME_ABOUT_DATA_SERVICES = '/om-api-katalogen';
 export const PATHNAME_ABOUT_INFORMATIONMODELS = '/om-informasjonskatalogen';
 export const PATHNAME_ABOUT_REGISTRATION = '/about-registration';
 export const PATHNAME_ABOUT_HARVESTING = '/about-harvesting';
+export const PATHNAME_FINDING_DATA = '/getting-started/finding-data';
 export const PATHNAME_SERVICE_MESSAGES = '/service-messages';
 export const PATHNAME_TERMS_OF_USE = '/terms-of-use';
 export const PATHNAME_FANCY_ARTICLE_V2 = '/fancy-article-v2';
@@ -27,6 +28,17 @@ export const PATHNAME_GUIDANCE = '/guidance';
 export const PATHNAME_GUIDANCE_METADATA = '/guidance/metadata';
 export const PATHNAME_ORGANIZATIONS = '/organizations';
 export const PATHNAME_PUBLISHING = '/publishing';
+export const PATHNAME_ABOUT_PUBLISHING_INTRO =
+  '/getting-started/publishing-intro';
+export const PATHNAME_ABOUT_CREATING_DESCRIPTIONS_SELF =
+  '/getting-started/creating-descriptions-self';
+export const PATHNAME_ABOUT_CREATING_DESCRIPTIONS_REGISTRATION =
+  '/getting-started/creating-descriptions-registration';
+export const PATHNAME_ABOUT_PUBLISHING_DESCRIPTIONS =
+  '/getting-started/publishing-descriptions';
+export const PATHNAME_ABOUT_TRIGGERING_HARVEST =
+  '/getting-started/triggering-harvest';
+export const PATHNAME_ABOUT_RESOURCES = '/getting-started/resources';
 export const PATHNAME_SPARQL = '/sparql';
 export const PATHNAME_DATA_HUNTER = '/forms/data-hunter';
 

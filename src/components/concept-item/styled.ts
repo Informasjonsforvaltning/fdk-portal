@@ -7,7 +7,6 @@ const ButtonCompare = styled.button`
   background-color: transparent;
   border-radius: 5px;
   border: 1px dashed;
-  color: ${({ theme: themeFDK }) => themeFDK.dark};
 `;
 
 const CircleMinusIcon = styled(CircleMinusIconBase)`
@@ -23,9 +22,6 @@ const CirclePlusIcon = styled(CirclePlusIconBase)`
   width: 16px;
   height: 16px;
   margin-right: ${theme.spacing('S4')};
-  & * {
-    stroke: ${({ theme: themeFDK }) => themeFDK.dark};
-  }
 `;
 
 export default {

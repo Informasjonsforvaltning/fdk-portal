@@ -66,6 +66,22 @@ const ArrowLeftIcon = styled(ArrowLeftIconBase)`
   }
 `;
 
+const SearchHitCount = styled.h2`
+  font-size: 2.5rem;
+  font-weight: normal;
+  padding-bottom: 0.5rem;
+`;
+
+const Bold = styled.span`
+  font-weight: bold;
+`;
+
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`;
+
 export default {
   Content,
   Filters,
@@ -75,5 +91,8 @@ export default {
   FeedLink,
   FeedIcon,
   ArrowRightIcon,
-  ArrowLeftIcon
+  ArrowLeftIcon,
+  SearchHitCount,
+  Bold,
+  Row
 };

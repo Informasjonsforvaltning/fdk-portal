@@ -11,7 +11,6 @@ import {
 } from '../../../constants/constants';
 import SC from './styled';
 import localization from '../../../lib/localization';
-import { FilterPills } from '../filter-pills/filter-pills.component';
 import { FilterTree } from '../filter-tree/filter-tree.component';
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import {
@@ -24,7 +23,6 @@ import {
   FilterChange
 } from '../../../components/filter-box/filter-box.component';
 import { getConfig } from '../../../config';
-import type { EventType } from '../../../types';
 import { keyPrefixForest } from '../../../lib/key-prefix-forest';
 
 interface Props extends RouteComponentProps {
@@ -32,7 +30,6 @@ interface Props extends RouteComponentProps {
   publishers?: any;
   losItems?: any;
   aggregations: any;
-  eventTypes?: Record<string, EventType>;
 }
 
 const FiltersPure: FC<Props> = ({
@@ -41,8 +38,7 @@ const FiltersPure: FC<Props> = ({
   losItems = [],
   aggregations = {},
   history,
-  location: { pathname } = {},
-  eventTypes = {}
+  location: { pathname } = {}
 }) => {
   const [filterOpen, setFilterOpen] = useState(false);
 
@@ -292,12 +288,6 @@ const FiltersPure: FC<Props> = ({
         {localization.openFilter}
       </SC.FilterToggle>
       {filterOpen && <SC.FiltersSmall>{getFilters()}</SC.FiltersSmall>}
-      <FilterPills
-        themesItems={themesItems}
-        publishers={publishers}
-        losItems={losItems}
-        eventTypes={eventTypes}
-      />
       <SC.Filters>{getFilters()}</SC.Filters>
     </>
   );

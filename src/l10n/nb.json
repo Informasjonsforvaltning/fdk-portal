@@ -134,10 +134,15 @@
     "norwegian-nn": "Norsk (nynorsk)",
     "english-en": "English"
   },
+  "shortLang": {
+    "nb": "Bokmål",
+    "nn": "Nynorsk",
+    "en": "Engelsk"
+  },
   "menu": {
     "home": "Søk i Felles datakatalog",
     "homeNAP": "Søk i Transportportal.no",
-    "about": "Om Felles datakatalog",
+    "about": "Om Data.norge.no",
     "aboutRegistration": "Hjelp til å registrere",
     "tools": "Verktøy",
     "reports": "Rapporter",
@@ -156,7 +161,8 @@
     "searchInFdk": "Søk i Felles datakatalog",
     "publishing": "Publisere",
     "aboutCatalogs": "Om katalogene",
-    "guidance": "Veiledning",
+    "findingData": "Hvordan finne data",
+    "publishingData": "Hvordan publisere data",
     "aboutDatasets": "Om datasettkatalogen",
     "aboutDataServices": "Om API-katalogen",
     "aboutConcepts": "Om begrepskatalogen",
@@ -178,13 +184,13 @@
     "requests": "Etterspørsler"
   },
   "query": {
-    "intro": "Eksempel: kollektivtransport",
+    "intro": "Søk etter databeskrivelser",
     "reset": "Nullstill",
     "do": "Søk",
     "clear": "Nullstill alle filter"
   },
   "about": {
-    "about": "Om Felles Datakatalog",
+    "about": "Om Data.norge.no",
     "title": "Om Felles datakatalog",
     "titleSub": "\n",
     "ingress": "Felles datakatalog – data.norge.no er det offentlige nettstedet som gir oversikt over beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet blir levert av ulike virksomheter, offentlige og private. Det er Digitaliseringsdirektoratet som er ansvarlig for drift og utvikling av nettstedet.",
@@ -212,14 +218,13 @@
     "serviceTab": "Tjenester og hendelser"
   },
   "hitstats": {
-    "nosearch": "Søk blant {0} datasett, {1} API-er, {2} begreper, {3} informasjonsmodeller og {4} tjenester og hendelser",
-    "search": "Søket ga {0} treff i datasett, {1} treff i API-er, {2} treff i begreper, {3} treff i informasjonsmodeller og {4} treff i tjenester og hendelser",
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket ga {0} treff i datasett",
     "nohits": "Søket ga dessverre ingen treff",
     "nohitsDescription": "Kontroller at du har skrevet riktig, eller prøv med andre søkeord.",
     "nohitsCommunityText": "Du kan også",
-    "nohitsCommunityLink": "etterspørre data i Datalandsbyen"
+    "nohitsCommunityLink": "etterspørre data i Datalandsbyen",
+    "searchHits": "Søket ga {0} treff"
   },
   "facet": {
     "organisation": "Eier",
@@ -233,7 +238,6 @@
     "standard": "Standard",
     "showmore": "Vis flere",
     "showfewer": "Vis færre",
-    "showAll": "Vis alle",
     "publishers": {
       "STAT": "Stat",
       "FYLKE": "Fylke",
@@ -653,7 +657,7 @@
   },
   "detailsPage": {
     "banner": {
-      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "lastPublishedInfo": "Publisert i Felles datakatalog {lastPublished}",
       "entity": {
         "DATASET": "Datasettbeskrivelse",
         "DATA_SERVICE": "Datatjenestebeskrivelse",
@@ -664,9 +668,9 @@
       }
     },
     "requestDataButton": "Be om tilgang",
-    "owner": "Eier: {publisher}",
-    "provider": "Tilbyder: {publisher}",
-    "responsible": "Ansvarlig: {publisher}",
+    "owner": "Eier:",
+    "provider": "Tilbyder:",
+    "responsible": "Ansvarlig:",
     "openData": "Åpne data",
     "publicData": "Allmenn tilgang",
     "restrictedData": "Betinget tilgang",
@@ -776,7 +780,8 @@
         "webAddress": "Nettaddresse",
         "competentAuthority": "Kompetent organ",
         "homepage": "Hjemmeside",
-        "spatialCoverage": "Dekningsområde"
+        "spatialCoverage": "Dekningsområde",
+        "status": "Status til tjenesten"
       },
       "event": {
         "description": "Beskrivelse",
@@ -794,12 +799,12 @@
         "event": "Andre ressurser med relasjoner til denne hendelsen"
       },
       "subtitle": {
-        "dataset": "Datasett",
-        "dataservice": "Datatjeneste",
-        "concept": "Begrep",
-        "informationmodel": "Informasjonsmodell",
-        "public_service": "Tjeneste",
-        "event": "Hendelse"
+        "dataset": "Datasett:",
+        "dataservice": "Datatjeneste:",
+        "concept": "Begrep:",
+        "informationmodel": "Informasjonsmodell:",
+        "public_service": "Tjeneste:",
+        "event": "Hendelse:"
       },
       "referenceType": "relasjonstype"
     }
@@ -1188,13 +1193,13 @@
     "ingress": "Her finner du en oversikt over alle etterspørsler publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspørsler.",
     "requests": "Etterspørsler fra Datalandsbyen",
     "votes": "Antall stemmer",
-    "views": "Antall visninger",
+    "comments": "Antall kommentarer",
     "createRequest": "Lag etterspørsel",
     "requestData": "Etterspør data",
     "requestDataInfo": "Ønsker du å etterspørre data, API-er eller annet du kan gjøre det her. Du blir sendt til Datalandsbyen.",
     "newestToOldest": "Nyeste til eldste",
     "mostVotes": "Flest stemmer",
-    "mostViews": "Flest visninger",
+    "mostComments": "Flest kommentarer",
     "sort": "Sortering",
     "search": "Fritekstsøk i titler"
   }

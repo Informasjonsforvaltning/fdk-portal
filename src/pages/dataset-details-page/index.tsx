@@ -64,12 +64,22 @@ import Preview from '../../components/dataset-distribution/components/preview';
 import SC from './styled';
 
 import { Entity } from '../../types/enums';
-import { AccessService, Distribution, MediaTypeOrExtent } from '../../types';
+import {
+  AccessService,
+  DatasetType,
+  Distribution,
+  MediaTypeOrExtent
+} from '../../types';
 import Markdown from '../../components/markdown';
 import withResourceRelations, {
   ResourceRelationsProps
 } from '../../components/with-resource-relations';
-import { filterRelations, parseFormats } from '../../utils/common';
+import {
+  filterRelations,
+  isEuTheme,
+  isLosTheme,
+  parseFormats
+} from '../../utils/common';
 
 interface RouteParams {
   datasetId?: string;
@@ -206,6 +216,15 @@ const DatasetDetailsPage: FC<Props> = ({
     dataset?.descriptionFormatted ?? dataset?.description
   );
 
+  const datasetType = (
+    dctType: DatasetType | string | undefined
+  ): string | undefined => {
+    if (typeof dctType === 'string' || typeof dctType === 'undefined') {
+      return dctType;
+    }
+    const label = translate(dctType.prefLabel);
+    return label || dctType.uri;
+  };
   const lastPublished = formatDate(
     dateStringToDate(dataset?.harvest?.firstHarvested)
   );
@@ -215,7 +234,7 @@ const DatasetDetailsPage: FC<Props> = ({
     legalBasisForRestriction: dataset?.legalBasisForRestriction ?? [],
     legalBasisForProcessing: dataset?.legalBasisForProcessing ?? [],
     legalBasisForAccess: dataset?.legalBasisForAccess ?? [],
-    type: dataset?.dctType,
+    type: datasetType(dataset?.dctType),
     standards: dataset?.conformsTo ?? [],
     informationModelReferences: dataset?.informationModel ?? [],
     languages: dataset?.language ?? [],
@@ -327,7 +346,6 @@ const DatasetDetailsPage: FC<Props> = ({
         isPublicData={isPublicData}
         isRestrictedData={isRestrictedData}
         isNonPublicData={isNonPublicData}
-        themes={themes}
       >
         {description && (
           <ContentSection
@@ -778,6 +796,45 @@ const DatasetDetailsPage: FC<Props> = ({
                   {translate(source?.prefLabel ?? source?.uri)}
                 </Link>
               ))}
+            </InlineList>
+          </ContentSection>
+        )}
+        {themes.length > 0 && (
+          <ContentSection id='themes' title={translations.facet.theme}>
+            <InlineList>
+              {themes.map(dataTheme => {
+                if (isLosTheme(dataTheme)) {
+                  const { uri, name, losPaths: [losPath] = [] } = dataTheme;
+                  return (
+                    <Link
+                      key={uri}
+                      to={`${PATHNAME_DATASETS}?losTheme=${losPath}`}
+                      as={RouteLink}
+                    >
+                      {translate(name)}
+                    </Link>
+                  );
+                }
+                if (isEuTheme(dataTheme)) {
+                  const {
+                    title: themeTitle,
+                    label: themeLabel,
+                    code
+                  } = dataTheme;
+                  return (
+                    <Link
+                      key={`euTheme-${dataTheme.code}`}
+                      to={`${PATHNAME_DATASETS}?theme=${code}`}
+                      as={RouteLink}
+                    >
+                      {themeTitle
+                        ? translate(themeTitle)
+                        : translate(themeLabel)}
+                    </Link>
+                  );
+                }
+                return null;
+              })}
             </InlineList>
           </ContentSection>
         )}

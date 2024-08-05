@@ -41,7 +41,6 @@ import RelationList from '../../components/relation-list';
 
 import SC from './styled';
 
-import type { Theme } from '../../types';
 import { Entity } from '../../types/enums';
 import Markdown from '../../components/markdown';
 import withResourceRelations, {
@@ -152,7 +151,6 @@ const DataserviceDetailsPage: FC<Props> = ({
       )
       .filter(Boolean) ?? [];
   const contactPoint = dataService?.contactPoint ?? [];
-  const themes: Theme[] = [];
 
   return renderPage ? (
     <ThemeProvider theme={theme}>
@@ -168,7 +166,6 @@ const DataserviceDetailsPage: FC<Props> = ({
         isPublicData={false}
         isRestrictedData={false}
         isNonPublicData={false}
-        themes={themes}
       >
         {description && (
           <ContentSection

@@ -39,17 +39,14 @@ const Menu = styled.nav<Props>`
   }
 
   & > ul > li > a {
-    color: ${({ theme }) => theme.entityColours.dark} !important;
     padding: ${t.spacing('S10')};
     &.active {
-      background-color: ${({ theme }) => theme.entityColours.dark} !important;
       border-radius: 5px;
-      color: white !important;
       flex: 1;
       transition: background-color 200ms ease-in;
     }
     &:hover {
-      background-color: ${({ theme }) => theme.entityColours.light};
+      background-color: ${({ theme }) => theme.extendedColors.neutralLighter};
       border-radius: 5px;
       flex: 1;
     }

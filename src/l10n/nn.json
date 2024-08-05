@@ -136,7 +136,7 @@
   "menu": {
     "home": "Søk i Felles datakatalog",
     "homeNAP": "Søk i Transportportal.no",
-    "about": "Om Felles datakatalog",
+    "about": "Om Data.norge.no",
     "aboutRegistration": "Hjelp til å registrere",
     "tools": "Verktøy",
     "reports": "Rapportar",
@@ -155,7 +155,8 @@
     "searchInFdk": "Søk i Felles datakatalog",
     "publishing": "Publisere",
     "aboutCatalogs": "Om katalogane",
-    "guidance": "Rettleiing",
+    "findingData": "Korleis finne data",
+    "publishingData": "Korleis publisere data",
     "aboutDatasets": "Om datasettkatalogen",
     "aboutDataServices": "Om API-katalogen",
     "aboutConcepts": "Om omgrepskatalogen",
@@ -169,15 +170,15 @@
     "transportItsDirectiveAndDelegatedRegulations": "ITS direktivet og forordninger",
     "transportUsers": "For databrukere",
     "transportNews": "Nyheter",
-    "transportWhereDoIFindTheData": "Hvor finner jeg data",
-    "transportWhatDataIsAvailable": "Hva finnes av data",
+    "transportWhereDoIFindTheData": "Kvar finn eg data",
+    "transportWhatDataIsAvailable": "Kva finst av data",
     "transportDataInNap": "Data i NAP",
     "transportProviders": "For datatilbydere",
     "transportAddData": "Tilby data",
     "transportDeclarationOfCompliance": "Samsvarserklæring"
   },
   "query": {
-    "intro": "Eksempel: offentleg transport",
+    "intro": "Søk etter dataskildringar",
     "reset": "Nullstill",
     "do": "Søk",
     "clear": "Nullstill alle filter"
@@ -211,14 +212,13 @@
     "serviceTab": "Tenester og hendingar"
   },
   "hitstats": {
-    "nosearch": "Søk blant {0} datasett, {1} API, {2} omgrep, {3} informasjonsmodellar og {4} tenester og hendingar",
-    "search": "Søket gav {0} treff i datasett, {1} treff i API, {2} treff i omgrep, {3} treff i informasjonsmodellar og {4} treff i tenester og hendingar",
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket gav {0} treff i datasett",
     "nohits": "Søket ga dessverre ingen treff",
     "nohitsDescription": "Kontroller at du har skrive rett, eller prøv med andre søkeord.",
     "nohitsCommunityText": "Du kan også",
-    "nohitsCommunityLink": "etterspørja data i Datalandsbyen"
+    "nohitsCommunityLink": "etterspørja data i Datalandsbyen",
+    "searchHits": "Søket gav {0} treff"
   },
   "facet": {
     "organisation": "Eigar",
@@ -232,7 +232,6 @@
     "standard": "Standard",
     "showmore": "Vis fleire",
     "showfewer": "Vis færre",
-    "showAll": "Vis alle",
     "publishers": {
       "STAT": "Stat",
       "FYLKE": "Fylke",
@@ -653,7 +652,7 @@
   },
   "detailsPage": {
     "banner": {
-      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "lastPublishedInfo": "Publisert i Felles datakatalog {lastPublished}",
       "entity": {
         "DATASET": "Datasettbeskriving",
         "DATA_SERVICE": "Datatenestebeskriving",
@@ -664,9 +663,9 @@
       }
     },
     "requestDataButton": "Be om tilgang",
-    "owner": "Eigar: {publisher}",
-    "provider": "Tilbydar: {publisher}",
-    "responsible": "Ansvarleg: {publisher}",
+    "owner": "Eigar:",
+    "provider": "Tilbydar:",
+    "responsible": "Ansvarleg:",
     "openData": "Opne data",
     "publicData": "Allmenn tilgang",
     "restrictedData": "Tilgang på visse vilkår",
@@ -777,7 +776,8 @@
         "webAddress": "Nettaddresse",
         "competentAuthority": "Kompetent organ",
         "homepage": "Heimeside",
-        "spatialCoverage": "Dekningsområde"
+        "spatialCoverage": "Dekningsområde",
+        "status": "Status til tenesta"
       },
       "event": {
         "description": "Beskriving",
@@ -795,12 +795,12 @@
         "event": "Andre ressursar med relasjonar til denne hendinga"
       },
       "subtitle": {
-        "dataset": "Datasett",
-        "dataservice": "Datateneste",
-        "concept": "Omgrep",
-        "informationmodel": "Informasjonsmodell",
-        "public_service": "Teneste",
-        "event": "Hending"
+        "dataset": "Datasett:",
+        "dataservice": "Datateneste:",
+        "concept": "Omgrep:",
+        "informationmodel": "Informasjonsmodell:",
+        "public_service": "Teneste:",
+        "event": "Hending:"
       },
       "referenceType": "relasjonstype"
     }
@@ -1189,13 +1189,13 @@
     "ingress": "Her finn du ei oversikt over alle etterspurnadar publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspurnadar.",
     "requests": "Etterspurnadar frå Datalandsbyen",
     "votes": "Antall stemmer",
-    "views": "Antall visningar",
+    "comments": "Antall kommentarar",
     "createRequest": "Lag etterspurnad",
     "requestData": "Etterspør data",
     "requestDataInfo": "Ynskjer du å etterspørre data, APIer eller anna kan du gjere det her. Du blir sendt til datalandsbyen.no.",
     "newestToOldest": "Nyeste til eldste",
     "mostVotes": "Flest stemmer",
-    "mostViews": "Flest visningar",
+    "mostComments": "Flest kommentarar",
     "sort": "Sortering",
     "search": "Fritekstsøk i titler"
   }

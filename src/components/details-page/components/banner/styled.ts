@@ -9,15 +9,10 @@ const onMobileView = '@media (max-width: 768px)';
 
 const Banner = styled.header<InvertedColorProps>`
   display: flex;
-  width: 100%;
-  padding: 18px;
   border-radius: 5px;
-  color: ${({ theme: t, inverted }) =>
-    inverted ? t.entityColours.light : t.entityColours.dark};
-  background: ${({ theme: t, inverted }) =>
-    inverted ? t.entityColours.dark : t.entityColours.light};
   position: relative;
   overflow: hidden;
+  justify-content: space-between;
 
   & svg > path {
     fill: ${({ theme: t, inverted }) =>
@@ -40,8 +35,6 @@ const Banner = styled.header<InvertedColorProps>`
 `;
 
 const Content = styled.div`
-  margin-left: 12px;
-
   & > ${SC.MultiLingualField.MultiLingualField} {
     font-size: ${theme.fontSize('FS20', Unit.EM)};
     font-weight: ${theme.fontWeight('FW500')};
@@ -79,19 +72,11 @@ const Title = styled.h1`
   }
 `;
 
-const LastPublishedInfo = styled.p`
-  margin: 0;
-  margin-top: 8px;
-  font-size: ${theme.fontSize('FS20', Unit.REM)};
-
-  ${onMobileView} {
-    font-size: ${theme.fontSize('FS16', Unit.REM)};
-  }
-`;
-
 const PublisherLink = styled(Link)`
   margin: 0;
-  font-size: ${theme.fontSize('FS20', Unit.REM)};
+  padding-left: 1rem;
+  color: var(--fds-semantic-text-action-default) !important;
+
   ${onMobileView} {
     font-size: ${theme.fontSize('FS16', Unit.REM)};
   }
@@ -99,18 +84,31 @@ const PublisherLink = styled(Link)`
 
 const BannerInfo = styled.div`
   display: flex;
-`;
-
-const Status = styled.p`
-  font-weight: bold;
+  margin: 0;
   margin-top: 8px;
   font-size: ${theme.fontSize('FS20', Unit.REM)};
+
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS16', Unit.REM)};
+  }
 `;
 
-const Dot = styled.p`
-  margin: 8px ${theme.spacing('S6')} 0px ${theme.spacing('S6')};
-  font-weight: bold;
-  font-size: ${theme.fontSize('FS20', Unit.REM)};
+const SecondTitles = styled.h2`
+  font-style: italic;
+  font-weight: normal;
+`;
+
+const SecondTitlesWrapped = styled.div`
+  display: flex;
+`;
+
+const TitleLanguage = styled.span`
+  padding-left: 1rem;
+`;
+
+const Publisher = styled.div`
+  display: flex;
+  align-items: flex-end;
 `;
 
 export default {
@@ -118,9 +116,10 @@ export default {
   Content,
   TitleWrapper,
   Title,
-  LastPublishedInfo,
-  PublisherLink,
-  Status,
+  TitleLanguage,
+  SecondTitlesWrapped,
+  SecondTitles,
   BannerInfo,
-  Dot
+  PublisherLink,
+  Publisher
 };

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { theme, Colour, Unit } from '@fellesdatakatalog/theme';
+import { theme, Unit } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
 import ExpansionPanelBase, { SC } from '@fellesdatakatalog/expansion-panel';
 
@@ -23,7 +23,7 @@ const Section = styled.section`
 const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
   padding: ${theme.spacing('S16')};
   border-radius: 5px;
-  background: ${theme.colour(Colour.VIOLET, 'V20')};
+  border: solid 1px ${({ theme: t }) => t.extendedColors.neutralLight};
 
   &:nth-of-type(n + 2) {
     margin-top: ${theme.spacing('S8')};
@@ -39,7 +39,6 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
   ${SC.ExpansionPanel.HeadContent} {
     font-size: ${theme.fontSize('FS20', Unit.REM)};
     font-weight: ${theme.fontWeight('FW500')};
-    color: ${theme.colour(Colour.VIOLET, 'V50')};
 
     ${({ showWithoutHeadAndPadding }) =>
       showWithoutHeadAndPadding &&
@@ -50,7 +49,7 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
 
   ${SC.ExpansionPanel.HeadExpansionIndicator} {
     & > button > svg > * {
-      stroke: ${theme.colour(Colour.VIOLET, 'V50')};
+      stroke: ${({ theme: t }) => t.extendedColors.neutralDarker};
     }
   }
 
@@ -60,7 +59,7 @@ const ExpansionPanel = styled(ExpansionPanelBase)<ExpansionPanelProps>`
 `;
 
 const Link = styled(LinkBase)`
-  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
+  color: ${({ theme: t }) => t.extendedColors.neutralDarker} !important;
 `;
 
 export default {
