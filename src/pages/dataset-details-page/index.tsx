@@ -151,15 +151,15 @@ const DatasetDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (isMounted) {
-      const conceptIdentifiers =
+      const conceptURIs =
         dataset?.subject
-          ?.map(({ identifier, uri }) => identifier || uri)
+          ?.map(({ identifier, uri }) => uri || identifier)
           .filter(Boolean) ?? [];
 
-      if (conceptIdentifiers.length > 0) {
+      if (conceptURIs.length > 0) {
         getConcepts({
-          uri: conceptIdentifiers as string[],
-          size: conceptIdentifiers.length
+          uri: conceptURIs as string[],
+          size: conceptURIs.length
         });
       }
 
