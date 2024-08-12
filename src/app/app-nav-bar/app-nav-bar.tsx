@@ -31,7 +31,8 @@ import {
   PATHNAME_TRANSPORT_COMPLIANCE,
   PATHNAME_DATA_HUNTER,
   PATHNAME_FINDING_DATA,
-  PATHNAME_ABOUT_PUBLISHING_INTRO
+  PATHNAME_ABOUT_PUBLISHING_INTRO,
+  EXTERNAL_SHARING_DATA_INFOPAGE
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
@@ -127,9 +128,18 @@ const fdkItems = () => [
           {localization.menu.findingData}
         </Link>
       </SC.ListItem>
-      <SC.ListItem key={localization.menu.publishingData}>
+      <SC.ListItem key={localization.menu.publishingDescriptions}>
         <Link as={RouteLink} to={PATHNAME_ABOUT_PUBLISHING_INTRO}>
-          {localization.menu.publishingData}
+          {localization.menu.publishingDescriptions}
+        </Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.sharingData}>
+        <Link
+          href={EXTERNAL_SHARING_DATA_INFOPAGE}
+          external
+          aria-label={localization.externalLink}
+        >
+          {localization.menu.sharingData}
         </Link>
       </SC.ListItem>
 
