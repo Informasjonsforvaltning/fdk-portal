@@ -36,6 +36,8 @@ export const PATHNAME_ABOUT_CREATING_DESCRIPTIONS_REGISTRATION =
   '/getting-started/creating-descriptions-registration';
 export const PATHNAME_ABOUT_PUBLISHING_DESCRIPTIONS =
   '/getting-started/publishing-descriptions';
+export const EXTERNAL_SHARING_DATA_INFOPAGE =
+  'https://www.digdir.no/datadeling/dele-data-med-andre/2252';
 export const PATHNAME_ABOUT_TRIGGERING_HARVEST =
   '/getting-started/triggering-harvest';
 export const PATHNAME_ABOUT_RESOURCES = '/getting-started/resources';
