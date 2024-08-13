@@ -20,6 +20,7 @@ export const PATHNAME_ABOUT_INFORMATIONMODELS = '/om-informasjonskatalogen';
 export const PATHNAME_ABOUT_REGISTRATION = '/about-registration';
 export const PATHNAME_ABOUT_HARVESTING = '/about-harvesting';
 export const PATHNAME_FINDING_DATA = '/getting-started/finding-data';
+export const PATHNAME_CONTACT_PAGE = '/contact';
 export const PATHNAME_SERVICE_MESSAGES = '/service-messages';
 export const PATHNAME_TERMS_OF_USE = '/terms-of-use';
 export const PATHNAME_FANCY_ARTICLE_V2 = '/fancy-article-v2';
