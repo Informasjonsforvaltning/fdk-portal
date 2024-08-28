@@ -337,6 +337,11 @@
       "decision": "ignore",
       "madeAt": 1724770343419,
       "expiresAt": 1727362323894
+    },
+    "1098664|webpack": {
+      "decision": "ignore",
+      "madeAt": 1724846374721,
+      "expiresAt": 1727438362509
     }
   },
   "rules": {},
