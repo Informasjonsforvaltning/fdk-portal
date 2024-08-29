@@ -342,6 +342,16 @@
       "decision": "ignore",
       "madeAt": 1724846374721,
       "expiresAt": 1727438362509
+    },
+    "1098681|lint-staged>micromatch": {
+      "decision": "ignore",
+      "madeAt": 1724909684743,
+      "expiresAt": 1727501662597
+    },
+    "1098681|micromatch": {
+      "decision": "ignore",
+      "madeAt": 1724909874928,
+      "expiresAt": 1727501853805
     }
   },
   "rules": {},
