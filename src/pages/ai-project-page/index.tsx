@@ -150,9 +150,7 @@ const Page: FC<Props> = ({
         <p>{localization.aiPage.emailFeedback}</p>
         <SC.EmailWrapper>
           <p>{localization.aiPage.email} &nbsp; </p>
-          <Link href='mailto:kunstigintelligens@digdir.no'>
-            kunstigintelligens@digdir.no
-          </Link>
+          <Link href='mailto:postmottak@digdir.no'>postmottak@digdir.no</Link>
         </SC.EmailWrapper>
       </SC.ContactInfoText>
 
