@@ -10,7 +10,7 @@ import SC from './styled';
 import { PATHNAME_PUBLISHING } from '../../../../constants/constants';
 import localization from '../../../../lib/localization';
 
-const { FDK_REGISTRATION_BASE_URI, ADMIN_GUI_BASE_URI } = env;
+const { ADMIN_GUI_BASE_URI, CATALOG_PORTAL_BASE_URI } = env;
 
 const Header: FC = () => {
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
@@ -27,7 +27,7 @@ const Header: FC = () => {
         </a>
         <SC.NavigationLinks>
           <li>
-            <SC.Link href={FDK_REGISTRATION_BASE_URI}>
+            <SC.Link href={CATALOG_PORTAL_BASE_URI}>
               <Translation id='menu.registerData' />
             </SC.Link>
           </li>
@@ -59,7 +59,7 @@ const Header: FC = () => {
           <Menu>
             <SC.Menu>
               <li>
-                <SC.Link href={FDK_REGISTRATION_BASE_URI}>
+                <SC.Link href={CATALOG_PORTAL_BASE_URI}>
                   <Translation id='menu.registerData' />
                 </SC.Link>
               </li>
