@@ -22,4 +22,5 @@ services:
       - REPORT_API_HOST=https://reports-bff.staging.fellesdatakatalog.digdir.no
       - RESOURCE_API_HOST=https://resource.api.staging.fellesdatakatalog.digdir.no
       - SEARCH_SERVICE_HOST=https://search.api.staging.fellesdatakatalog.digdir.no
+      - CATALOG_PORTAL_BASE_URI=https://catalog.portal.staging.fellesdatakatalog.digdir.no
 

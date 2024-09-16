@@ -28,6 +28,8 @@ export default validateEnv(
     RESOURCE_API_HOST:
       'https://resource.api.staging.fellesdatakatalog.digdir.no',
     INFORMATIONMODEL_HARVESTER_HOST:
-      'https://informationmodels.staging.fellesdatakatalog.digdir.no'
+      'https://informationmodels.staging.fellesdatakatalog.digdir.no',
+    CATALOG_PORTAL_BASE_URI:
+      'https://catalog-portal.staging.fellesdatakatalog.digdir.no'
   }
 );

@@ -17,4 +17,5 @@ export interface EnvironmentVariables {
   AI_PROJECT_SERVICE_BASE_URI: string;
   RESOURCE_API_HOST: string;
   INFORMATIONMODEL_HARVESTER_HOST: string;
+  CATALOG_PORTAL_BASE_URI: string;
 }

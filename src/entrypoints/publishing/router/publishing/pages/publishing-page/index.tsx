@@ -16,7 +16,7 @@ import ServiceMessages from '../../../../../../components/service-messages';
 
 import SC from './styled';
 
-const { FDK_REGISTRATION_BASE_URI, ADMIN_GUI_BASE_URI } = env;
+const { ADMIN_GUI_BASE_URI, CATALOG_PORTAL_BASE_URI } = env;
 
 interface Props extends RouteComponentProps {}
 
@@ -64,7 +64,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
           <p>
             <Translation id='publishingPage.methodSections.register.description' />
           </p>
-          <a href={FDK_REGISTRATION_BASE_URI}>
+          <a href={CATALOG_PORTAL_BASE_URI}>
             <Translation id='publishingPage.methodSections.register.cta' />
           </a>
           <p>
