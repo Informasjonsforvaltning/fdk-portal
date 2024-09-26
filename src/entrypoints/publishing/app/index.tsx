@@ -10,12 +10,12 @@ import store from '../redux/store';
 import GlobalStyles from '../styles';
 import Router from '../router';
 
-import AnalyticsMonsido from '../../../components/analytics-monsido';
+import AnalyticsSiteImprove from '../../../components/analytics-siteimprove';
 
 const App: FC = () => (
   <ThemeProvider>
     <GlobalStyles />
-    <AnalyticsMonsido />
+    <AnalyticsSiteImprove />
     <TranslationsProvider>
       <ReduxProvider store={store}>
         <Router />
