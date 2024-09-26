@@ -51,6 +51,11 @@ import withCommunity, {
 } from '../../../with-community';
 import Aside from '../aside';
 import { accessRequestWhiteList } from '../../../../white-list';
+import {
+  EventAction,
+  EventCategory,
+  trackSiteImproveEvent
+} from '../../../analytics-siteimprove/utils';
 
 interface ExternalProps {
   entity: Entity;
@@ -322,7 +327,17 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
                 target='_blank'
                 rel='noreferrer'
               >
-                <Button>{translations.detailsPage.requestDataButton}</Button>
+                <Button
+                  onClick={() =>
+                    trackSiteImproveEvent({
+                      category: EventCategory.DETAILS_PAGE,
+                      action: EventAction.REQUEST_ACCESS,
+                      label: entityId
+                    })
+                  }
+                >
+                  {translations.detailsPage.requestDataButton}
+                </Button>
               </a>
             </SC.AccessRequest>
           )}
