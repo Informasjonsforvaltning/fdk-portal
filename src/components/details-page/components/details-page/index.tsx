@@ -51,10 +51,6 @@ import withCommunity, {
 } from '../../../with-community';
 import Aside from '../aside';
 import { accessRequestWhiteList } from '../../../../white-list';
-import {
-  MonsidoTrackEventParams,
-  monsidoTrackButtonClickEvent
-} from '../../../analytics-monsido/utils/events';
 
 interface ExternalProps {
   entity: Entity;
@@ -326,15 +322,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
                 target='_blank'
                 rel='noreferrer'
               >
-                <Button
-                  onClick={() =>
-                    monsidoTrackButtonClickEvent(
-                      MonsidoTrackEventParams.Action.Click.Button.AccessRequest
-                    )
-                  }
-                >
-                  {translations.detailsPage.requestDataButton}
-                </Button>
+                <Button>{translations.detailsPage.requestDataButton}</Button>
               </a>
             </SC.AccessRequest>
           )}
