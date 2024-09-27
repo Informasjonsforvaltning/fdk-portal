@@ -12,17 +12,19 @@ type SiteImproveEventProps = {
   label?: string | undefined;
 };
 
-export const trackSiteImproveEvent =
-  ({ category, action, label }: SiteImproveEventProps) =>
-  () => {
-    if (window._sz === undefined) {
-      // eslint-disable-next-line no-console
-      console.error('Unable to find Site Improve event library.');
-    }
+export const trackSiteImproveEvent = ({
+  category,
+  action,
+  label
+}: SiteImproveEventProps) => {
+  if (window._sz === undefined) {
+    // eslint-disable-next-line no-console
+    console.error('Unable to find Site Improve event library.');
+  }
 
-    if (label) {
-      window._sz.push(['event', category, action, label]);
-    } else {
-      window._sz.push(['event', category, action]);
-    }
-  };
+  if (label) {
+    window._sz.push(['event', category, action, label]);
+  } else {
+    window._sz.push(['event', category, action]);
+  }
+};
