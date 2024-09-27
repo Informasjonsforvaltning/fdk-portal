@@ -13,6 +13,11 @@ export const accessRequestWhiteList: AccessRequest[] = [
     requestAddress: 'https://digdir.apps.tt02.altinn.no/digdir/tilgangssoknad/'
   },
   {
+    id: '86e664de-e8b4-355a-bdec-56724eb07900',
+    requestAddress:
+      'https://digdir.apps.tt02.altinn.no/digdir/tilgangsoknad-svv/'
+  },
+  {
     id: '8f305377-a3a3-3dde-be33-d5b5d0b8f818',
     requestAddress: 'https://forms.gle/VnBnZwvsWSu51a3V6'
   },
