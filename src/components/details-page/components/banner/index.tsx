@@ -72,10 +72,16 @@ const Banner: FC<Props> = ({
                 ({ code, selected }) =>
                   code !== translations.getLanguage() && selected
               )
-              .map(({ code }) => {
+              .map(({ code }, index) => {
                 const typedCode = code as LanguageType;
-                const titleString = `${translations.shortLang[code]}: ${title[typedCode]}`;
-                return <SC.SecondTitles>{titleString}</SC.SecondTitles>;
+                return (
+                  <SC.SecondTitles>
+                    {`${index > 0 ? ', ' : ''}${
+                      translations.shortLang[code]
+                    }: `}
+                    <i>{title[typedCode]}</i>
+                  </SC.SecondTitles>
+                );
               })}
           </SC.SecondTitlesWrapped>
         )}

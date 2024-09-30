@@ -94,7 +94,6 @@ const BannerInfo = styled.div`
 `;
 
 const SecondTitles = styled.h2`
-  font-style: italic;
   font-weight: normal;
 `;
 
