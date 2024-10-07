@@ -5,22 +5,21 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import Translation from '../translation';
 
-import { ServiceMessageEntity } from '../../api/generated/cms/graphql';
+import { ServiceMessage } from '../../api/generated/cms/graphql';
 
 import SC from './styled';
 import { PATHNAME_PUBLISHING } from '../../constants/constants';
 
 interface Props {
-  serviceMessages: ServiceMessageEntity[] | null;
+  serviceMessages: ServiceMessage[] | null;
 }
 
-const renderServiceMessage = (entity: ServiceMessageEntity | undefined) => {
-  const { id, attributes } = entity || {};
-  if (attributes) {
-    const { message_type, title, short_description } = attributes;
+const renderServiceMessage = (entity: ServiceMessage | undefined) => {
+  if (entity) {
+    const { documentId, message_type, title, short_description } = entity;
     return (
       <SC.Alert
-        key={id}
+        key={documentId}
         severity={Severity[message_type as keyof typeof Severity]}
       >
         <SC.Content>
@@ -28,7 +27,7 @@ const renderServiceMessage = (entity: ServiceMessageEntity | undefined) => {
           <SC.Description>
             <SC.Text>{short_description}</SC.Text>
             <SC.Link
-              to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
+              to={`${PATHNAME_PUBLISHING}/service-messages/${documentId}`}
               forwardedAs={RouterLink}
             >
               <Translation id='serviceMessagesPage.goToDetailsPage' />
@@ -43,7 +42,7 @@ const renderServiceMessage = (entity: ServiceMessageEntity | undefined) => {
 
 const ServiceMessages: FC<Props> = ({ serviceMessages = [] }) => {
   const [extendedServiceMessages, setExtendedServiceMessages] = useState<
-    ServiceMessageEntity[] | null
+    ServiceMessage[] | null
   >();
 
   useEffect(() => {

@@ -1,13 +1,10 @@
 import {
   Article,
-  ArticleEntity,
   ComponentBasicImage,
   ComponentBasicParagraph,
   ComponentBasicYoutube,
   FancyArticle,
-  FancyArticleEntity,
-  TransportArticle,
-  TransportArticleEntity
+  TransportArticle
 } from '../../api/generated/cms/graphql';
 
 export function isBasicParagraph(obj?: any): obj is ComponentBasicParagraph {
@@ -23,9 +20,8 @@ export function isBasicYoutube(obj?: any): obj is ComponentBasicYoutube {
 }
 
 export function getLocalizedAttributes<
-  T extends ArticleEntity | FancyArticleEntity | TransportArticleEntity,
-  R extends Article | FancyArticle | TransportArticle
->(entity: T | null | undefined, language?: string): R | null | undefined {
+  T extends Article | FancyArticle | TransportArticle
+>(entity: T | null | undefined, language?: string): T | null | undefined {
   let locale = 'nb-NO';
   if (language === 'nn') {
     locale = 'nn-NO';
@@ -36,29 +32,23 @@ export function getLocalizedAttributes<
   }
 
   let localization = null;
-  if (entity?.__typename === 'ArticleEntity') {
-    localization = (
-      entity as ArticleEntity
-    )?.attributes?.localizations?.data.find(
-      (loc: any) => loc.attributes?.locale === locale
+  if (entity?.__typename === 'Article') {
+    localization = (entity as Article)?.localizations?.find(
+      (loc: any) => loc.locale === locale
     );
-  } else if (entity?.__typename === 'FancyArticleEntity') {
-    localization = (
-      entity as FancyArticleEntity
-    )?.attributes?.localizations?.data.find(
-      (loc: any) => loc.attributes?.locale === locale
+  } else if (entity?.__typename === 'FancyArticle') {
+    localization = (entity as FancyArticle)?.localizations?.find(
+      (loc: any) => loc.locale === locale
     );
-  } else if (entity?.__typename === 'TransportArticleEntity') {
-    localization = (
-      entity as TransportArticleEntity
-    )?.attributes?.localizations?.data.find(
-      (loc: any) => loc.attributes?.locale === locale
+  } else if (entity?.__typename === 'TransportArticle') {
+    localization = (entity as TransportArticle)?.localizations?.find(
+      (loc: any) => loc.locale === locale
     );
   }
 
   if (localization) {
-    return localization.attributes as R;
+    return localization as T;
   }
 
-  return entity?.attributes as R;
+  return entity as T;
 }

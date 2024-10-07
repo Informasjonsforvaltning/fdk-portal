@@ -11,55 +11,39 @@ query GetServiceMessages(
       environment: { eq: $env }
     }
     sort: "valid_from:desc"
-  ) {
-    data {
-      id
-      attributes {
-        title
-        valid_from
-        valid_to
-        message_type
-        short_description
-        description
-        environment
-        channel_publiseringportal
-        locale
-        localizations {
-          data {
-            attributes {
-              title
-              short_description
-              description
-            }  
-          }  
-        }
-      }
-    }
+  ) {    
+    documentId    
+    title
+    valid_from
+    valid_to
+    message_type
+    short_description
+    description
+    environment
+    channel_publiseringportal
+    locale
+    localizations {     
+      title
+      short_description
+      description
+    }  
   }
 }
 
 query GetServiceMessage($id: ID!) {
-  serviceMessage(id: $id) {
-    data {
-      id
-      attributes {
-        title
-        valid_from
-        valid_to
-        message_type
-        short_description
-        description
-        locale
-        localizations {
-          data {
-            attributes {
-              title
-              short_description
-              description
-            }
-          }
-        }
-      }
-    }
+  serviceMessage(documentId: $id) {
+    documentId
+    title
+    valid_from
+    valid_to
+    message_type
+    short_description
+    description
+    locale
+    localizations {
+      title
+      short_description
+      description
+    }    
   }
 }
