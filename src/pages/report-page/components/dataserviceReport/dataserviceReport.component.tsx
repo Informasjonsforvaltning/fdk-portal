@@ -25,6 +25,7 @@ import { PATHNAME_DATA_SERVICES } from '../../../../constants/constants';
 import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import localization from '../../../../lib/localization';
 import { DataServiceReport, KeyWithCountObject } from '../../../../types';
+import { Line } from '../../../../components/charts';
 import { List } from '../../../../components/list/list';
 import { sortKeyWithCount } from '../../sort-helper';
 import { translatePrefixedFormat } from '../../../../utils/common';
@@ -32,6 +33,7 @@ import { ContainerBoxRegular, ContainerPaneContent } from '../../styled';
 
 interface ExternalProps {
   dataServicesReport?: Partial<DataServiceReport>;
+  dataServicesTimeSeries?: any;
 }
 
 interface Props extends ExternalProps, RouteComponentProps {}
@@ -43,9 +45,11 @@ const DataserviceReport: FC<Props> = ({
     newLastWeek = 0,
     organizationCount = 0,
     formats = []
-  } = {}
+  } = {},
+  dataServicesTimeSeries = []
 }) => {
   const { search: searchParams } = location;
+  dataServicesTimeSeries.push([Date.now(), totalObjects]);
 
   const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
     .filter(
@@ -105,6 +109,26 @@ const DataserviceReport: FC<Props> = ({
             </BoxRegular>
           </div>
         </div>
+
+        {dataServicesTimeSeries?.length > 0 &&
+          dataServicesTimeSeries?.length > 0 && (
+            <div className='row'>
+              <div className='col-12'>
+                <BoxRegular
+                  header={localization.report.growth}
+                  subHeader={
+                    localization.report.dataServiceGrowthFromFirstPublish
+                  }
+                >
+                  <Line
+                    name={localization.dataServiceLabel}
+                    data={dataServicesTimeSeries}
+                    lineColor={theme.extendedColors[Entity.DATA_SERVICE].dark}
+                  />
+                </BoxRegular>
+              </div>
+            </div>
+          )}
 
         {Array.isArray(topMostUsedFormats) &&
           topMostUsedFormats?.length > 0 && (
