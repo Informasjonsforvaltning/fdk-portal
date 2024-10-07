@@ -5,7 +5,6 @@ import localization from '../../lib/localization';
 
 import {
   FancyArticle,
-  FancyArticleEntity,
   useGetFancyArticleBySlugQuery
 } from '../../api/generated/cms/graphql';
 
@@ -41,23 +40,21 @@ const InformationPage: FC<Props> = () => {
     }
   });
 
-  const fancyArticleEntity = (
-    data?.fancyArticles?.data as FancyArticleEntity[]
-  )?.[0];
+  const firstArticle = (data?.fancyArticles as FancyArticle[])?.[0];
 
   const page = () => {
     if (loading) {
       return <Spinner />;
     }
 
-    if (error?.name !== undefined || !fancyArticleEntity) {
+    if (error?.name !== undefined || !firstArticle) {
       return <ErrorPage errorCode='404' />;
     }
 
-    const fancyArticle = getLocalizedAttributes<
-      FancyArticleEntity,
-      FancyArticle
-    >(fancyArticleEntity as FancyArticleEntity, localization.getLanguage());
+    const fancyArticle = getLocalizedAttributes<FancyArticle>(
+      firstArticle,
+      localization.getLanguage()
+    );
 
     return (
       fancyArticle && (
@@ -74,13 +71,13 @@ const InformationPage: FC<Props> = () => {
               (isBasicImage(component) && (
                 <SC.ImageWrapper key={component?.id}>
                   <SC.Image
-                    alt={`${component?.media?.data?.attributes?.alternativeText}`}
-                    src={`${FDK_CMS_BASE_URI}${component?.media?.data?.attributes?.url}`}
+                    alt={`${component?.media?.alternativeText}`}
+                    src={`${FDK_CMS_BASE_URI}${component?.media?.url}`}
                   />
-                  {component?.media?.data?.attributes?.caption && (
+                  {component?.media?.caption && (
                     <SC.ImageText>
                       {localization.informationPage.imageText}
-                      {component?.media?.data?.attributes?.caption}
+                      {component?.media?.caption}
                     </SC.ImageText>
                   )}
                 </SC.ImageWrapper>

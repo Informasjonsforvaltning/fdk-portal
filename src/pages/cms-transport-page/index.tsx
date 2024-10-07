@@ -8,7 +8,6 @@ import localization from '../../lib/localization';
 
 import {
   TransportArticle,
-  TransportArticleEntity,
   useGetTransportArticleQuery
 } from '../../api/generated/cms/graphql';
 
@@ -70,15 +69,8 @@ const TransportPage: FC<Props> = () => {
       return <ErrorPage errorCode='404' />;
     }
 
-    const {
-      transportArticle: { data: transportArticleEntity }
-    } = data;
-
-    const transportArticle = getLocalizedAttributes<
-      TransportArticleEntity,
-      TransportArticle
-    >(
-      transportArticleEntity as TransportArticleEntity,
+    const transportArticle = getLocalizedAttributes<TransportArticle>(
+      data.transportArticle as TransportArticle,
       localization.getLanguage()
     );
 
@@ -97,13 +89,13 @@ const TransportPage: FC<Props> = () => {
               (isBasicImage(component) && (
                 <SC.ImageWrapper key={component?.id}>
                   <SC.Image
-                    alt={`${component?.media?.data?.attributes?.alternativeText}`}
-                    src={`${FDK_CMS_BASE_URI}${component?.media?.data?.attributes?.url}`}
+                    alt={`${component?.media?.alternativeText}`}
+                    src={`${FDK_CMS_BASE_URI}${component?.media?.url}`}
                   />
-                  {component?.media?.data?.attributes?.caption && (
+                  {component?.media?.caption && (
                     <SC.ImageText>
                       {localization.informationPage.imageText}
-                      {component?.media?.data?.attributes?.caption}
+                      {component?.media?.caption}
                     </SC.ImageText>
                   )}
                 </SC.ImageWrapper>

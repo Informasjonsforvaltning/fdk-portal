@@ -2,7 +2,7 @@ import React, { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import {
-  ServiceMessageEntity,
+  ServiceMessage,
   useGetServiceMessageQuery
 } from '../../../../../../api/generated/cms/graphql';
 
@@ -11,10 +11,9 @@ import Markdown from '../../../../../../components/markdown';
 
 interface Props {}
 
-const renderServiceMessage = (entity: ServiceMessageEntity | undefined) => {
-  const { attributes } = entity || {};
-  if (attributes) {
-    const { title, short_description, description } = attributes;
+const renderServiceMessage = (entity: ServiceMessage | undefined) => {
+  if (entity) {
+    const { title, short_description, description } = entity;
     return (
       <SC.ServiceMessagePage>
         <SC.Title>{title}</SC.Title>
@@ -35,7 +34,7 @@ const ServiceMessagePage: FC<Props> = () => {
   const { id } = useParams<{ id: string }>();
   const { data } = useGetServiceMessageQuery({ variables: { id } });
   return renderServiceMessage(
-    data?.serviceMessage?.data as ServiceMessageEntity | undefined
+    data?.serviceMessage as ServiceMessage | undefined
   );
 };
 
