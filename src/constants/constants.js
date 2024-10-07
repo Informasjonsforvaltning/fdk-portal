@@ -1,3 +1,5 @@
+import { getConfig } from '../config';
+
 export const PATHNAME_MAIN_PAGE = '/';
 export const PATHNAME_SEARCH = '/search-all';
 export const PATHNAME_DATASETS = '/datasets';
@@ -12,14 +14,23 @@ export const PATHNAME_PUBLIC_SERVICES = '/public-services';
 export const PATHNAME_SERVICES = '/services';
 export const PATHNAME_EVENTS = '/events';
 export const PATHNAME_REPORTS = '/reports';
-export const PATHNAME_ABOUT = '/about';
-export const PATHNAME_ABOUT_DATASETS = '/om-datasettkatalogen';
-export const PATHNAME_ABOUT_CONCEPTS = '/om-begrepskatalogen';
-export const PATHNAME_ABOUT_DATA_SERVICES = '/om-api-katalogen';
-export const PATHNAME_ABOUT_INFORMATIONMODELS = '/om-informasjonskatalogen';
+export const PATHNAME_ABOUT = `${
+  getConfig().fdkPortalBaseUri.host
+}/:lang/about`;
+export const PATHNAME_ABOUT_DATASETS = `${
+  getConfig().fdkPortalBaseUri.host
+}/:lang/catalogs/datasets`;
+export const PATHNAME_ABOUT_CONCEPTS = `${
+  getConfig().fdkPortalBaseUri.host
+}/:lang/catalogs/concepts`;
+export const PATHNAME_ABOUT_DATA_SERVICES = `${
+  getConfig().fdkPortalBaseUri.host
+}/:lang/catalogs/data-services`;
+export const PATHNAME_ABOUT_INFORMATIONMODELS = `${
+  getConfig().fdkPortalBaseUri.host
+}/:lang/catalogs/information-models`;
 export const PATHNAME_ABOUT_REGISTRATION = '/about-registration';
 export const PATHNAME_ABOUT_HARVESTING = '/about-harvesting';
-export const PATHNAME_FINDING_DATA = '/getting-started/finding-data';
 export const PATHNAME_CONTACT_PAGE = '/contact';
 export const PATHNAME_SERVICE_MESSAGES = '/service-messages';
 export const PATHNAME_TERMS_OF_USE = '/terms-of-use';
@@ -29,16 +40,12 @@ export const PATHNAME_GUIDANCE = '/guidance';
 export const PATHNAME_GUIDANCE_METADATA = '/guidance/metadata';
 export const PATHNAME_ORGANIZATIONS = '/organizations';
 export const PATHNAME_PUBLISHING = '/publishing';
-export const PATHNAME_ABOUT_PUBLISHING_INTRO =
-  '/getting-started/publishing-intro';
 export const PATHNAME_ABOUT_CREATING_DESCRIPTIONS_SELF =
   '/getting-started/creating-descriptions-self';
 export const PATHNAME_ABOUT_CREATING_DESCRIPTIONS_REGISTRATION =
   '/getting-started/creating-descriptions-registration';
 export const PATHNAME_ABOUT_PUBLISHING_DESCRIPTIONS =
   '/getting-started/publishing-descriptions';
-export const EXTERNAL_SHARING_DATA_INFOPAGE =
-  'https://www.digdir.no/datadeling/dele-data-med-andre/2252';
 export const PATHNAME_ABOUT_TRIGGERING_HARVEST =
   '/getting-started/triggering-harvest';
 export const PATHNAME_ABOUT_RESOURCES = '/getting-started/resources';
@@ -57,6 +64,10 @@ export const PATHNAME_TRANSPORT_ITS = `${PATHNAME_TRANSPORT}/its-directive-and-d
 export const PATHNAME_TRANSPORT_NEWS = `${PATHNAME_TRANSPORT}/news`;
 export const PATHNAME_TRANSPORT_ADD = `${PATHNAME_TRANSPORT}/add-data`;
 export const PATHNAME_TRANSPORT_COMPLIANCE = `${PATHNAME_TRANSPORT}/declaration-of-compliance`;
+
+export const PATHNAME_GETTING_STARTED = `${
+  getConfig().fdkPortalBaseUri.host
+}/:lang/docs`;
 
 export const PARAGRAPH__BODY = 'paragraph--body';
 export const PARAGRAPH__IMAGE = 'paragraph--image';
