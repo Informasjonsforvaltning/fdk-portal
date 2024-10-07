@@ -30,6 +30,7 @@ import { PATHNAME_DATASETS } from '../../../../constants/constants';
 import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
 import localization from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
+import { Line } from '../../../../components/charts';
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../components/with-reference-data';
@@ -48,6 +49,7 @@ import {
 
 interface ExternalProps {
   datasetsReport: Partial<DatasetsReport>;
+  datasetsTimeSeries: any;
 }
 
 interface Props
@@ -69,7 +71,8 @@ const DatasetReport: FC<Props> = ({
     accessRights = [],
     formats = [],
     themesAndTopicsCount = []
-  } = {}
+  } = {},
+  datasetsTimeSeries = []
 }) => {
   useEffect(() => {
     if (!los) {
@@ -77,6 +80,7 @@ const DatasetReport: FC<Props> = ({
     }
   }, []);
 
+  datasetsTimeSeries.push([Date.now(), totalObjects]);
   const accessRightsPublic =
     accessRights?.find((item: KeyWithCountObject) => item.key === 'PUBLIC')
       ?.count ?? 0;
@@ -170,6 +174,23 @@ const DatasetReport: FC<Props> = ({
             </BoxRegular>
           </div>
         </div>
+
+        {datasetsTimeSeries?.length > 0 && datasetsTimeSeries?.length > 0 && (
+          <div className='row'>
+            <div className='col-12'>
+              <BoxRegular
+                header={localization.report.growth}
+                subHeader={localization.report.growthFromFirstPublish}
+              >
+                <Line
+                  name={localization.datasetLabel}
+                  data={datasetsTimeSeries}
+                  lineColor={theme.extendedColors[Entity.DATASET].dark}
+                />
+              </BoxRegular>
+            </div>
+          </div>
+        )}
 
         {Number(totalObjects) > 0 && (
           <div>

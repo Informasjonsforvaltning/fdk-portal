@@ -31,6 +31,10 @@ interface Props {
   informationModelsReport?: any;
   datasetsReport?: any;
   conceptsReport?: any;
+  datasetsTimeSeries?: any;
+  dataServicesTimeSeries?: any;
+  informationModelsTimeSeries?: any;
+  conceptsTimeSeries?: any;
 }
 
 export const ReportPagePure: FC<Props> = ({
@@ -39,7 +43,11 @@ export const ReportPagePure: FC<Props> = ({
   dataServicesReport,
   informationModelsReport,
   datasetsReport,
-  conceptsReport
+  conceptsReport,
+  datasetsTimeSeries,
+  dataServicesTimeSeries,
+  informationModelsTimeSeries,
+  conceptsTimeSeries
 }) => {
   const history = useHistory();
   const { search } = useLocation();
@@ -148,7 +156,10 @@ export const ReportPagePure: FC<Props> = ({
             <div className='row mb-5'>
               <div className='col-12'>
                 {getConfig().isNapProfile ? (
-                  <DatasetReport datasetsReport={datasetsReport} />
+                  <DatasetReport
+                    datasetsReport={datasetsReport}
+                    datasetsTimeSeries={datasetsTimeSeries}
+                  />
                 ) : (
                   <Tabs>
                     <Tab for='pane-1' active>
@@ -184,19 +195,29 @@ export const ReportPagePure: FC<Props> = ({
                       />
                     </Tab>
                     <Pane id='pane-1'>
-                      <DatasetReport datasetsReport={datasetsReport} />
+                      <DatasetReport
+                        datasetsReport={datasetsReport}
+                        datasetsTimeSeries={datasetsTimeSeries}
+                      />
                     </Pane>
                     <Pane id='pane-2'>
                       <DataserviceReport
                         dataServicesReport={dataServicesReport}
+                        dataServicesTimeSeries={dataServicesTimeSeries}
                       />
                     </Pane>
                     <Pane id='pane-3'>
-                      <ConceptReport conceptsReport={conceptsReport} />
+                      <ConceptReport
+                        conceptsReport={conceptsReport}
+                        conceptsTimeSeries={conceptsTimeSeries}
+                      />
                     </Pane>
                     <Pane id='pane-4'>
                       <InformationModelReport
                         informationModelsReport={informationModelsReport}
+                        informationModelsTimeSeries={
+                          informationModelsTimeSeries
+                        }
                       />
                     </Pane>
                   </Tabs>
