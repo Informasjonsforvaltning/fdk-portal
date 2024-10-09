@@ -34,18 +34,12 @@ const mapProps = {
     const { orgPath, losTheme: los } = parseSearchParams(location);
     return memoizedGetDatasetsReport({ orgPath, los });
   },
-  datasetsTimeSeries: ({ location }) => {
-    const { orgPath } = parseSearchParams(location);
-    return memoizedGetDatasetsTimeSeries(orgPath);
-  },
+  datasetsTimeSeries: () => memoizedGetDatasetsTimeSeries(),
   dataServicesReport: ({ location }) => {
     const { orgPath } = parseSearchParams(location);
     return memoizedGetDataServicesReport({ orgPath });
   },
-  dataServicesTimeSeries: ({ location }) => {
-    const { orgPath } = parseSearchParams(location);
-    return memoizedGetDataServicesTimeSeries(orgPath);
-  },
+  dataServicesTimeSeries: () => memoizedGetDataServicesTimeSeries(),
   conceptsReport: async ({ location }) => {
     const { orgPath, losTheme: los } = parseSearchParams(location);
 
@@ -59,18 +53,12 @@ const mapProps = {
 
     return { ...reportItems, allReferencedConcepts };
   },
-  conceptsTimeSeries: ({ location }) => {
-    const { orgPath } = parseSearchParams(location);
-    return memoizedGetConceptsTimeSeries(orgPath);
-  },
+  conceptsTimeSeries: () => memoizedGetConceptsTimeSeries(),
   informationModelsReport: ({ location }) => {
     const { orgPath, losTheme: los } = parseSearchParams(location);
     return memoizedGetInformationModelsReport({ orgPath, los });
   },
-  informationModelsTimeSeries: ({ location }) => {
-    const { orgPath } = parseSearchParams(location);
-    return memoizedGetInformationModelsTimeSeries(orgPath);
-  }
+  informationModelsTimeSeries: () => memoizedGetInformationModelsTimeSeries()
 };
 
 export const reportPageResolver = resolve(mapProps);

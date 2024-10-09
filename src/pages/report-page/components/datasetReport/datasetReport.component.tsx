@@ -110,6 +110,8 @@ const DatasetReport: FC<Props> = ({
     )
   ).slice(0, 10);
 
+  const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
+
   const theme = getConfig().isNapProfile ? themeNAP : themeFDK;
 
   return (
@@ -175,22 +177,24 @@ const DatasetReport: FC<Props> = ({
           </div>
         </div>
 
-        {datasetsTimeSeries?.length > 0 && datasetsTimeSeries?.length > 0 && (
-          <div className='row'>
-            <div className='col-12'>
-              <BoxRegular
-                header={localization.report.growth}
-                subHeader={localization.report.growthFromFirstPublish}
-              >
-                <Line
-                  name={localization.datasetLabel}
-                  data={datasetsTimeSeries}
-                  lineColor={theme.extendedColors[Entity.DATASET].dark}
-                />
-              </BoxRegular>
+        {datasetsTimeSeries?.length > 0 &&
+          datasetsTimeSeries?.length > 0 &&
+          !hasOrgPath && (
+            <div className='row'>
+              <div className='col-12'>
+                <BoxRegular
+                  header={localization.report.growth}
+                  subHeader={localization.report.growthFromFirstPublish}
+                >
+                  <Line
+                    name={localization.datasetLabel}
+                    data={datasetsTimeSeries}
+                    lineColor={theme.extendedColors[Entity.DATASET].dark}
+                  />
+                </BoxRegular>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {Number(totalObjects) > 0 && (
           <div>
