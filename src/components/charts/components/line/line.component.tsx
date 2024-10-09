@@ -41,6 +41,7 @@ const LineChart: FC<Props> = ({
         formatter: (val: any) => moment(new Date(val)).format('DD MMM YY')
       }
     },
+    yaxis: { min: 0 },
     legend: {
       horizontalAlign: 'left' as const
     },
