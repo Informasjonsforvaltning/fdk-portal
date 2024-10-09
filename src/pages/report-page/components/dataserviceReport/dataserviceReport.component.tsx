@@ -51,6 +51,8 @@ const DataserviceReport: FC<Props> = ({
   const { search: searchParams } = location;
   dataServicesTimeSeries.push([Date.now(), totalObjects]);
 
+  const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
+
   const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
     .filter(
       ({ key }: KeyWithCountObject) =>
@@ -111,7 +113,8 @@ const DataserviceReport: FC<Props> = ({
         </div>
 
         {dataServicesTimeSeries?.length > 0 &&
-          dataServicesTimeSeries?.length > 0 && (
+          dataServicesTimeSeries?.length > 0 &&
+          !hasOrgPath && (
             <div className='row'>
               <div className='col-12'>
                 <BoxRegular

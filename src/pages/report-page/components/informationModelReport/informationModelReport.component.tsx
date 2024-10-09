@@ -41,6 +41,9 @@ const InformationModelReport: FC<Props> = ({
   informationModelsTimeSeries = []
 }) => {
   informationModelsTimeSeries.push([Date.now(), totalObjects]);
+
+  const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
+
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.INFORMATION_MODEL]}>
       <main id='content'>
@@ -94,7 +97,8 @@ const InformationModelReport: FC<Props> = ({
         </div>
 
         {informationModelsTimeSeries?.length > 0 &&
-          informationModelsTimeSeries?.length > 0 && (
+          informationModelsTimeSeries?.length > 0 &&
+          !hasOrgPath && (
             <div className='row'>
               <div className='col-12'>
                 <BoxRegular

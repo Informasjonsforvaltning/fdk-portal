@@ -55,22 +55,22 @@ const extractLabelsAndData = (
 const timeSeriesRequest = (body: TimeSeriesRequest) =>
   statisticsApiPost('time-series', body);
 
-export const conceptTimeSeriesRequest = (orgPath: string | undefined) =>
-  timeSeriesRequest(timeSeriesBody('CONCEPT', orgPath)).then(
+export const conceptTimeSeriesRequest = () =>
+  timeSeriesRequest(timeSeriesBody('CONCEPT', undefined)).then(
     extractLabelsAndData
   );
 
-export const dataServiceTimeSeriesRequest = (orgPath: string | undefined) =>
-  timeSeriesRequest(timeSeriesBody('DATA_SERVICE', orgPath)).then(
+export const dataServiceTimeSeriesRequest = () =>
+  timeSeriesRequest(timeSeriesBody('DATA_SERVICE', undefined)).then(
     extractLabelsAndData
   );
 
-export const datasetTimeSeriesRequest = (orgPath: string | undefined) =>
-  timeSeriesRequest(timeSeriesBody('DATASET', orgPath)).then(
+export const datasetTimeSeriesRequest = () =>
+  timeSeriesRequest(timeSeriesBody('DATASET', undefined)).then(
     extractLabelsAndData
   );
 
-export const infoModelTimeSeriesRequest = (orgPath: string | undefined) =>
-  timeSeriesRequest(timeSeriesBody('INFORMATION_MODEL', orgPath)).then(
+export const infoModelTimeSeriesRequest = () =>
+  timeSeriesRequest(timeSeriesBody('INFORMATION_MODEL', undefined)).then(
     extractLabelsAndData
   );
