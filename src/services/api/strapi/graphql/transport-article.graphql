@@ -49,6 +49,57 @@ query GetTransportArticle($id: ID!) {
   }
 }
 
+query GetTransportArticleBySlug($slug: String!) {
+  transportArticles(filters: { slug: { eq: $slug } }) {
+    title
+    subtitle
+    locale
+    localizations {
+      title
+      subtitle
+      locale
+      Content {
+        ... on ComponentBasicParagraph {
+          __typename
+          Content
+        }
+        ... on ComponentBasicImage {
+          __typename
+          media {
+            alternativeText
+            url
+            caption             
+          }
+          style
+        }
+        ... on ComponentBasicYoutube {
+          __typename
+          url
+        }
+      }
+    }
+    Content {
+      ... on ComponentBasicParagraph {
+        __typename
+        Content
+      }
+      ... on ComponentBasicImage {
+        __typename
+        media {          
+          alternativeText
+          url
+          caption
+        }
+        style
+      }
+      ... on ComponentBasicYoutube {
+        __typename
+        url
+      }
+    }
+  }
+}
+
 query GetTransportArticleTitle($id: ID!) {
   transportArticle(documentId: $id) {
     title
