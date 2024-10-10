@@ -1161,6 +1161,7 @@ export type TransportArticle = {
   localizations: Array<Maybe<TransportArticle>>;
   localizations_connection?: Maybe<TransportArticleRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1200,6 +1201,7 @@ export type TransportArticleFiltersInput = {
   not?: InputMaybe<TransportArticleFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<TransportArticleFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
   subtitle?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
@@ -1210,6 +1212,7 @@ export type TransportArticleInput = {
     Array<Scalars['TransportArticleContentDynamicZoneInput']['input']>
   >;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1802,6 +1805,60 @@ export type GetTransportArticleQuery = {
   } | null;
 };
 
+export type GetTransportArticleBySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+export type GetTransportArticleBySlugQuery = {
+  __typename?: 'Query';
+  transportArticles: Array<{
+    __typename?: 'TransportArticle';
+    title?: string | null;
+    subtitle?: string | null;
+    locale?: string | null;
+    localizations: Array<{
+      __typename?: 'TransportArticle';
+      title?: string | null;
+      subtitle?: string | null;
+      locale?: string | null;
+      Content?: Array<
+        | {
+            __typename: 'ComponentBasicImage';
+            style?: Enum_Componentbasicimage_Style | null;
+            media?: {
+              __typename?: 'UploadFile';
+              alternativeText?: string | null;
+              url: string;
+              caption?: string | null;
+            } | null;
+          }
+        | { __typename: 'ComponentBasicParagraph'; Content?: string | null }
+        | { __typename?: 'ComponentBasicQuote' }
+        | { __typename: 'ComponentBasicYoutube'; url?: string | null }
+        | { __typename?: 'Error' }
+        | null
+      > | null;
+    } | null>;
+    Content?: Array<
+      | {
+          __typename: 'ComponentBasicImage';
+          style?: Enum_Componentbasicimage_Style | null;
+          media?: {
+            __typename?: 'UploadFile';
+            alternativeText?: string | null;
+            url: string;
+            caption?: string | null;
+          } | null;
+        }
+      | { __typename: 'ComponentBasicParagraph'; Content?: string | null }
+      | { __typename?: 'ComponentBasicQuote' }
+      | { __typename: 'ComponentBasicYoutube'; url?: string | null }
+      | { __typename?: 'Error' }
+      | null
+    > | null;
+  } | null>;
+};
+
 export type GetTransportArticleTitleQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
@@ -2335,6 +2392,109 @@ export type GetTransportArticleLazyQueryHookResult = ReturnType<
 export type GetTransportArticleQueryResult = Apollo.QueryResult<
   GetTransportArticleQuery,
   GetTransportArticleQueryVariables
+>;
+export const GetTransportArticleBySlugDocument = gql`
+  query GetTransportArticleBySlug($slug: String!) {
+    transportArticles(filters: { slug: { eq: $slug } }) {
+      title
+      subtitle
+      locale
+      localizations {
+        title
+        subtitle
+        locale
+        Content {
+          ... on ComponentBasicParagraph {
+            __typename
+            Content
+          }
+          ... on ComponentBasicImage {
+            __typename
+            media {
+              alternativeText
+              url
+              caption
+            }
+            style
+          }
+          ... on ComponentBasicYoutube {
+            __typename
+            url
+          }
+        }
+      }
+      Content {
+        ... on ComponentBasicParagraph {
+          __typename
+          Content
+        }
+        ... on ComponentBasicImage {
+          __typename
+          media {
+            alternativeText
+            url
+            caption
+          }
+          style
+        }
+        ... on ComponentBasicYoutube {
+          __typename
+          url
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetTransportArticleBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetTransportArticleBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTransportArticleBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTransportArticleBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetTransportArticleBySlugQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetTransportArticleBySlugQuery,
+    GetTransportArticleBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetTransportArticleBySlugQuery,
+    GetTransportArticleBySlugQueryVariables
+  >(GetTransportArticleBySlugDocument, options);
+}
+export function useGetTransportArticleBySlugLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetTransportArticleBySlugQuery,
+    GetTransportArticleBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetTransportArticleBySlugQuery,
+    GetTransportArticleBySlugQueryVariables
+  >(GetTransportArticleBySlugDocument, options);
+}
+export type GetTransportArticleBySlugQueryHookResult = ReturnType<
+  typeof useGetTransportArticleBySlugQuery
+>;
+export type GetTransportArticleBySlugLazyQueryHookResult = ReturnType<
+  typeof useGetTransportArticleBySlugLazyQuery
+>;
+export type GetTransportArticleBySlugQueryResult = Apollo.QueryResult<
+  GetTransportArticleBySlugQuery,
+  GetTransportArticleBySlugQueryVariables
 >;
 export const GetTransportArticleTitleDocument = gql`
   query GetTransportArticleTitle($id: ID!) {
