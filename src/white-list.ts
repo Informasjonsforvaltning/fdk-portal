@@ -29,5 +29,9 @@ export const accessRequestWhiteList: AccessRequest[] = [
   {
     id: 'e281c8c6-b944-4662-861d-a475e973e393',
     requestAddress: 'https://www.skatteetaten.no/deling/folkeregisteret/intro/'
+  },
+  {
+    id: '95b9c74d-1dd4-3f92-aef2-a6a587b03fb3',
+    requestAddress: 'https://digdir.apps.altinn.no/digdir/tilgangssoknad-tenor/'
   }
 ];
