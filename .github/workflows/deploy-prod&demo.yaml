@@ -33,7 +33,7 @@ jobs:
   deploy-to-demo:
     needs: deploy
     name: Deploy to demo if prod-deploy is successful
-    uses: Informasjonsforvaltning/workflows/.github/workflows/deploy.yaml@main
+    uses: Informasjonsforvaltning/workflows/.github/workflows/kustomize-deploy.yaml@main
     with:
       app_name: fdk-portal
       environment: demo
