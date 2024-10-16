@@ -10,8 +10,6 @@ import React, {
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import FdkLink from '@fellesdatakatalog/link';
-
-import Button from '@fellesdatakatalog/button';
 import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
@@ -51,11 +49,7 @@ import withCommunity, {
 } from '../../../with-community';
 import Aside from '../aside';
 import { accessRequestWhiteList } from '../../../../white-list';
-import {
-  EventAction,
-  EventCategory,
-  trackSiteImproveEvent
-} from '../../../analytics-siteimprove/utils';
+import { AccessRequestButton } from './accessRequestButton';
 
 interface ExternalProps {
   entity: Entity;
@@ -320,27 +314,11 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           {renderThemeItems().length > 0 && (
             <SC.Themes>{renderThemeItems()}</SC.Themes>
           )}
-          {accessRequest && (
-            <SC.AccessRequest>
-              <a
-                href={accessRequest.requestAddress}
-                target='_blank'
-                rel='noreferrer'
-              >
-                <Button
-                  onClick={() =>
-                    trackSiteImproveEvent({
-                      category: EventCategory.DETAILS_PAGE,
-                      action: EventAction.REQUEST_ACCESS,
-                      label: entityId
-                    })
-                  }
-                >
-                  {translations.detailsPage.requestDataButton}
-                </Button>
-              </a>
-            </SC.AccessRequest>
-          )}
+          <AccessRequestButton
+            accessRequest={accessRequest}
+            entityId={entityId}
+            entity={entity}
+          />
         </SC.HeadingLeft>
       </SC.Heading>
       <SC.Page>
