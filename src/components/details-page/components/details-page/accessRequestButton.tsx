@@ -45,7 +45,7 @@ const createAccessRequestUrl = async (
   const accessRequestApi = env.ACCESS_REQUEST_API_HOST;
   const entityPath = entityToPath(entity);
 
-  const input = `${accessRequestApi}/access-request/${translations._language}${entityPath}/${id}`;
+  const input = `${accessRequestApi}/access-request/${translations.getLanguage()}${entityPath}/${id}`;
   const response = await fetch(input, {
     method: 'POST'
   });
