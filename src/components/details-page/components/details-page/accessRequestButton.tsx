@@ -70,6 +70,7 @@ export function AccessRequestButton({
     });
   };
 
+  // TODO - remove this when all access requests are routed through the access request api
   if (entityId && accessRequest?.requestAddress === 'https://soknad.kudaf.no') {
     return (
       <SC.AccessRequest>
