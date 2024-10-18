@@ -20,9 +20,7 @@ export const trackSiteImproveEvent = ({
   if (window._sz === undefined) {
     // eslint-disable-next-line no-console
     console.error('Unable to find Site Improve event library.');
-  }
-
-  if (label) {
+  } else if (label) {
     window._sz.push(['event', category, action, label]);
   } else {
     window._sz.push(['event', category, action]);
