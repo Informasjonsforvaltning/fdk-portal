@@ -22,6 +22,8 @@ const env = window.env || {
 // env.FDK_MQA_API_BASE_URI =
 //   'https://mqa-scoring-api.staging.fellesdatakatalog.digdir.no';
 // env.USE_DEMO_LOGO = true;
+// env.ACCESS_REQUEST_API_HOST =
+//   'https://access-request.api.staging.fellesdatakatalog.digdir.no';
 
 const fdkPortalBaseUri = {
   host: env.FDK_PORTAL_BASE_URI || ''
@@ -50,7 +52,8 @@ const config = {
   searchApi: { host: env.SEARCH_SERVICE_HOST },
   store: { useLogger: env.REDUX_LOG === 'true' },
   isNapProfile: isNapProfile(env.NAP_HOST),
-  useDemoLogo: env.USE_DEMO_LOGO
+  useDemoLogo: env.USE_DEMO_LOGO,
+  accessRequestApi: env.ACCESS_REQUEST_API_HOST
 };
 
 export const getConfig = () => config;

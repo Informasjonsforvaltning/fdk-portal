@@ -30,6 +30,8 @@ export default validateEnv(
     INFORMATIONMODEL_HARVESTER_HOST:
       'https://informationmodels.staging.fellesdatakatalog.digdir.no',
     CATALOG_PORTAL_BASE_URI:
-      'https://catalog-portal.staging.fellesdatakatalog.digdir.no'
+      'https://catalog-portal.staging.fellesdatakatalog.digdir.no',
+    ACCESS_REQUEST_API_HOST:
+      'https://access-request.api.staging.fellesdatakatalog.digdir.no'
   }
 );

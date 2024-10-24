@@ -18,4 +18,5 @@ export interface EnvironmentVariables {
   RESOURCE_API_HOST: string;
   INFORMATIONMODEL_HARVESTER_HOST: string;
   CATALOG_PORTAL_BASE_URI: string;
+  ACCESS_REQUEST_API_HOST: string;
 }

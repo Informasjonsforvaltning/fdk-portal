@@ -40,4 +40,4 @@ Adding new environment variables can be done by adding them to the `src/config.j
 - docker-compose.yml for use in local development
 
 ## Optional: Fetch sample data from the staging environment
-Uncomment lines 10 to 21 in the `src/config.js` file
+Uncomment lines 10 to 26 in the `src/config.js` file
