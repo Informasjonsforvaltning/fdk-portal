@@ -10,6 +10,8 @@ const env = window.env || {
 // env.FDK_PORTAL_BASE_URI = 'https://staging.fellesdatakatalog.digdir.no';
 // env.SEARCH_SERVICE_HOST =
 //   'https://search.api.staging.fellesdatakatalog.digdir.no';
+// env.STATISTICS_SERVICE_HOST =
+//   'https://statistics.api.staging.fellesdatakatalog.digdir.no';
 // env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
 // env.FDK_CMS_BASE_URI = 'https://cms.staging.fellesdatakatalog.digdir.no';
 // env.ORGANIZATION_HOST =
@@ -50,6 +52,7 @@ const config = {
   reportApi: { host: env.REPORT_API_HOST },
   resourceApi: { host: env.RESOURCE_API_HOST },
   searchApi: { host: env.SEARCH_SERVICE_HOST },
+  statisticsApi: { host: env.STATISTICS_SERVICE_HOST },
   store: { useLogger: env.REDUX_LOG === 'true' },
   isNapProfile: isNapProfile(env.NAP_HOST),
   useDemoLogo: env.USE_DEMO_LOGO,

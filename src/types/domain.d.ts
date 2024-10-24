@@ -819,9 +819,22 @@ interface QualifiedAttribution {
   role: string;
 }
 
-export interface DataPoint {
-  xAxis: string;
-  yAxis: string;
+export interface TimeSeriesPoint {
+  date: string;
+  count: number;
+}
+
+export interface TimeSeriesRequest {
+  start: string;
+  end: string;
+  interval: string;
+  filters: TimeSeriesFilters;
+}
+
+interface TimeSeriesFilters {
+  resourceType: { value: string } | null;
+  orgPath: { value: string } | null;
+  transport: { value: boolean } | null;
 }
 
 interface Report {
