@@ -72,6 +72,7 @@ const Banner: FC<Props> = ({
                 ({ code, selected }) =>
                   code !== translations.getLanguage() &&
                   selected &&
+                  (code as LanguageType) in title &&
                   title[code as LanguageType]
               )
               .map(({ code }, index) => (
