@@ -70,19 +70,16 @@ const Banner: FC<Props> = ({
             {languages
               .filter(
                 ({ code, selected }) =>
-                  code !== translations.getLanguage() && selected
+                  code !== translations.getLanguage() &&
+                  selected &&
+                  title[code as LanguageType]
               )
-              .map(({ code }, index) => {
-                const typedCode = code as LanguageType;
-                return (
-                  <SC.SecondTitles>
-                    {`${index > 0 ? ', ' : ''}${
-                      translations.shortLang[code]
-                    }: `}
-                    <i>{title[typedCode]}</i>
-                  </SC.SecondTitles>
-                );
-              })}
+              .map(({ code }, index) => (
+                <SC.SecondTitles>
+                  {`${index > 0 ? ', ' : ''}${translations.shortLang[code]}: `}
+                  <i>{title[code as LanguageType]}</i>
+                </SC.SecondTitles>
+              ))}
           </SC.SecondTitlesWrapped>
         )}
 
