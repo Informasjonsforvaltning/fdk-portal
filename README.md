@@ -1,4 +1,4 @@
-# fdk-portal
+# fdk-portal 
 
 Provides query and filtering capabilities for searching a collection of DCAT catalogs, concepts and information-models.
 
