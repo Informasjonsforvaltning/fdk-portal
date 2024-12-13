@@ -29,6 +29,10 @@ export const accessRequestWhiteList: AccessRequest[] = [
     id: 'ecdbd6d4-7026-3731-bd8e-2f15e26221a2',
     requestAddress: 'https://soknad.kudaf.no'
   },
+  {
+    id: '26a075d7-f92a-381f-8831-291ae8aa63a4',
+    requestAddress: 'https://soknad.kudaf.no'
+  },
   // Production
   {
     id: 'a49ddd4a-8ccf-3054-8164-0bb9bfc9783c',
