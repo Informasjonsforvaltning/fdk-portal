@@ -35,10 +35,6 @@ export const accessRequestWhiteList: AccessRequest[] = [
   },
   // Production
   {
-    id: 'a49ddd4a-8ccf-3054-8164-0bb9bfc9783c',
-    requestAddress: 'https://digdir.apps.altinn.no/digdir/tilgangssoknad/'
-  },
-  {
     id: 'e281c8c6-b944-4662-861d-a475e973e393',
     requestAddress: 'https://www.skatteetaten.no/deling/folkeregisteret/intro/'
   },
