@@ -325,7 +325,7 @@ const OrganizationPage: FC<Props> = ({
                   </StatisticsRegularSC.StatisticsRegular.Label>
                 </StatisticsRegular>
               </SC.Box>
-              {rating && (
+              {rating?.datasets?.quality && (
                 <SC.Box>
                   <StatisticsRegular to={`${url}/datasets`}>
                     <StatisticsRegularSC.StatisticsRegular.Label>
