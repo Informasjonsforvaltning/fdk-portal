@@ -50,7 +50,7 @@ export const PATHNAME_ABOUT_TRIGGERING_HARVEST =
   '/getting-started/triggering-harvest';
 export const PATHNAME_ABOUT_RESOURCES = '/getting-started/resources';
 export const PATHNAME_SPARQL = '/sparql';
-export const PATHNAME_DATA_HUNTER = '/forms/data-hunter';
+export const PATHNAME_DATA_HUNTER = '/nb/data-hunter';
 
 export const PATHNAME_COMMUNITY_COMMENTS = '/category/12/kommentartråder';
 export const PATHNAME_AI = '/kunstig-intelligens';
