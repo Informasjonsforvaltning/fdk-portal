@@ -37,6 +37,37 @@ export const accessRequestWhiteList: AccessRequest[] = [
     id: '57cd0ad7-2602-3a3a-894e-fde19b29980e',
     requestAddress: 'https://soknad.kudaf.no'
   },
+
+  // interessemelding Avinor
+  {
+    id: '28a705ef-aaec-33e4-a44b-8262d71e14e5',
+    requestAddress: 'https://soknad.kudaf.no'
+  },
+  {
+    id: '5833471e-8426-37c6-84eb-d2e929563648',
+    requestAddress: 'https://soknad.kudaf.no'
+  },
+  {
+    id: 'a6de97b4-ed88-3e1e-9d5c-98b4516c3de8',
+    requestAddress: 'https://soknad.kudaf.no'
+  },
+  {
+    id: '37714e4c-9a99-369a-b666-42a1faf6dcbf',
+    requestAddress: 'https://soknad.kudaf.no'
+  },
+  {
+    id: '09394578-89ef-30cd-b07f-35fc4e85d963',
+    requestAddress: 'https://soknad.kudaf.no'
+  },
+  {
+    id: '0d44eccf-40ba-37e5-ab66-1b9cfbd38776',
+    requestAddress: 'https://soknad.kudaf.no'
+  },
+  {
+    id: 'b706e0a2-ae43-32af-9ccb-5e2c84d8dd4c',
+    requestAddress: 'https://soknad.kudaf.no'
+  },
+
   // Production
   {
     id: 'a49ddd4a-8ccf-3054-8164-0bb9bfc9783c',
