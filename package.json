@@ -49,6 +49,7 @@
     "json5": "2.2.3",
     "axios": "^1.7.3",
     "semver": "^7.6.2",
+    "serialize-javascript": "^6.0.2",
     "puppeteer": "22.12.0",
     "micromatch": "^4.0.8",
     "serialize-javascript": "^6.0.2"
