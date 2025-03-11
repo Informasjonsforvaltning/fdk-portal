@@ -1,7 +1,6 @@
 import React, { memo, useLayoutEffect, Fragment, useEffect } from 'react';
 import type { FC } from 'react';
 import { compose } from 'redux';
-import { Link as RouteLink } from 'react-router-dom';
 
 import Link from '@fellesdatakatalog/link';
 import ExpansionPanel, {
@@ -38,6 +37,9 @@ import {
   determineRatingIcon
 } from '../datasets-page';
 import ExpansionIndicatorDefault from '../../../../components/expansion-indicator-default';
+import env from '../../../../env';
+
+const { FDK_PORTAL_BASE_URI } = env;
 
 interface RouteParams {
   organizationId: string;
@@ -282,7 +284,9 @@ const DatasetPage: FC<Props> = ({
         </div>
       </SC.Banner>
       <SC.DatasetLink>
-        <Link to={`${PATHNAME_DATASET_DETAILS}/${datasetId}`} as={RouteLink}>
+        <Link
+          href={`${FDK_PORTAL_BASE_URI}${PATHNAME_DATASET_DETAILS}/${datasetId}`}
+        >
           {translations.metadataQualityPage.goToDataset}
         </Link>
       </SC.DatasetLink>

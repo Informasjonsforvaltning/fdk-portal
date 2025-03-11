@@ -1,6 +1,4 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
-
 import SC from './styled';
 import type { Organization, TextLanguage } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
@@ -14,6 +12,9 @@ import {
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_EVENTS
 } from '../../../../constants/constants';
+import env from '../../../../env';
+
+const { FDK_PORTAL_BASE_URI } = env;
 
 interface Props {
   id?: string;
@@ -25,7 +26,7 @@ interface Props {
 }
 
 const detailLinks = {
-  [SearchTypes.dataset]: PATHNAME_DATASETS,
+  [SearchTypes.dataset]: `${FDK_PORTAL_BASE_URI}${PATHNAME_DATASETS}`,
   [SearchTypes.dataservice]: PATHNAME_DATA_SERVICES,
   [SearchTypes.concept]: PATHNAME_CONCEPTS,
   [SearchTypes.informationModel]: PATHNAME_INFORMATIONMODELS,
@@ -49,9 +50,9 @@ export const SearchHitHead: FC<Props> = ({
         <SC.Header>
           {title && (
             <SC.Title>
-              <Link to={`${detailLinks[type]}/${id}`}>
+              <a href={`${detailLinks[type]}/${id}`}>
                 {getTranslateText(title)}
-              </Link>
+              </a>
             </SC.Title>
           )}
           {isAuthoritative && (
