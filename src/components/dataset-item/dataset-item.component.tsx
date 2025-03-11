@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { Link } from 'react-router-dom';
 import localization from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
 import { patchSearchQuery } from '../../lib/addOrReplaceUrlParam';
@@ -150,14 +151,14 @@ export const DatasetItem: FC<Props> = ({
           )
           .sort((a, b) => `${a.name}`.localeCompare(`${b.name}`))
           .map((format, index) => (
-            <a
+            <Link
               key={`format-${format.name}-${index}`}
-              href={patchSearchQuery('format', `${format.type} ${format.name}`)}
+              to={patchSearchQuery('format', `${format.type} ${format.name}`)}
             >
               <span>
                 {format.name ? `${getLastWordAfterSlash(format?.name)}` : ''}
               </span>
-            </a>
+            </Link>
           ))}
       </SearchHitFormats>
     </SearchHit>

@@ -80,6 +80,9 @@ import {
   isLosTheme,
   parseFormats
 } from '../../utils/common';
+import env from '../../env';
+
+const { FDK_PORTAL_BASE_URI } = env;
 
 interface RouteParams {
   datasetId?: string;
@@ -765,8 +768,7 @@ const DatasetDetailsPage: FC<Props> = ({
                     )}
                     value={
                       <Link
-                        to={`${PATHNAME_DATASET_DETAILS}/${id}`}
-                        as={RouteLink}
+                        href={`${FDK_PORTAL_BASE_URI}${PATHNAME_DATASET_DETAILS}/${id}`}
                       >
                         {translate(datasetTitle)}
                       </Link>
