@@ -6,7 +6,6 @@ import cx from 'classnames';
 import localization from '../lib/localization';
 import { MainPage } from '../pages/main-page/main-page';
 import { SearchPage } from '../pages/search-page/search-page';
-import DatasetDetailsPage from '../pages/dataset-details-page';
 import DataServiceDetailsPage from '../pages/data-service-details-page';
 import ConceptDetailsPage from '../pages/concept-details-page';
 import InformationModelDetailsPage from '../pages/information-model-details-page';
@@ -30,7 +29,6 @@ import {
   PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_CONCEPTS_COMPARE,
-  PATHNAME_DATASET_DETAILS,
   PATHNAME_EVENTS,
   PATHNAME_NEWS_ARTICLE_V2,
   PATHNAME_FANCY_ARTICLE_V2,
@@ -101,7 +99,7 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_PUBLIC_SERVICES_AND_EVENTS]: SearchPage,
     [`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`]:
       ConnectedConceptComparePage,
-    [`${PATHNAME_DATASET_DETAILS}/:datasetId`]: DatasetDetailsPage,
+    // [`${PATHNAME_DATASET_DETAILS}/:datasetId`]: DatasetDetailsPage, This route is not used and replaced by fdk-frontend
     [`${PATHNAME_CONCEPTS}/:conceptId`]: ConceptDetailsPage,
     [`${PATHNAME_INFORMATIONMODELS}/:informationModelId`]:
       InformationModelDetailsPage,
