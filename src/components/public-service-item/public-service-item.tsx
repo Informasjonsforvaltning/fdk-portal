@@ -4,14 +4,13 @@ import { compose } from 'redux';
 import { SearchObject } from '../../types';
 import { SearchTypes } from '../../types/enums';
 import { SearchHit } from '../search-hit/search-hit';
-import withEventTypes, { Props as EventTypesProps } from '../with-event-types';
 import localization from '../../lib/localization';
 
 interface ExternalProps {
   publicService: Partial<SearchObject>;
 }
 
-interface Props extends ExternalProps, EventTypesProps {}
+interface Props extends ExternalProps {}
 
 const PublicServiceItemPure: FC<Props> = ({
   publicService: { id = '', title = {}, description = {}, organization }
@@ -26,6 +25,6 @@ const PublicServiceItemPure: FC<Props> = ({
   />
 );
 
-export const PublicServiceItem = compose<FC<ExternalProps>>(withEventTypes)(
+export const PublicServiceItem = compose<FC<ExternalProps>>()(
   PublicServiceItemPure
 );
