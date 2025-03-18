@@ -31,7 +31,6 @@ import PublicServicesAndEventsReducer from '../components/with-public-services-a
 import EventReducer from '../components/with-event/redux/reducer';
 import EventsReducer from '../components/with-events/redux/reducer';
 import KartverketReducer from '../components/with-kartverket/redux/reducer';
-import EventTypesReducer from '../components/with-event-types/redux/reducer';
 import CommunityReducer from '../components/with-community/redux/reducer';
 import DatasetPreviewReducer from '../components/with-dataset-preview/redux/reducer';
 import SuggestionsReducer from '../components/with-suggestions/redux/reducer';
@@ -73,7 +72,6 @@ export const rootReducer = combineReducers({
   EventReducer,
   EventsReducer,
   KartverketReducer,
-  EventTypesReducer,
   CommunityReducer,
   DatasetPreviewReducer,
   SuggestionsReducer,

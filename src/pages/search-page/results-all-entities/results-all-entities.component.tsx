@@ -15,9 +15,6 @@ import withOrganizations, {
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../components/with-reference-data';
-import withEventTypes, {
-  Props as EventTypesProps
-} from '../../../components/with-event-types';
 
 import SearchEntities from '../../../components/search-entities/search-entities.component';
 import EmptyHits from '../../../components/empty-hits/empty.component';
@@ -28,12 +25,7 @@ import SortButtons from '../sort-buttons';
 
 import SC from './styled';
 
-import type {
-  Concept,
-  EventType,
-  LosTheme,
-  SearchObject
-} from '../../../types';
+import type { Concept, LosTheme, SearchObject } from '../../../types';
 import { FeedType } from '../../../types/enums';
 import { PATHNAME_DATASETS } from '../../../constants/constants';
 import Spinner from '../../../components/spinner';
@@ -55,7 +47,6 @@ interface ExternalProps {
 interface Props
   extends ExternalProps,
     OrganizationsProps,
-    EventTypesProps,
     RouteComponentProps<any>,
     ReferenceDataProps {}
 
@@ -72,8 +63,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
   referenceData: { los, themes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  eventTypes,
-  eventTypesActions: { getEventTypesRequested: getEventTypes },
   isLoading,
   searchHitCount
 }) => {
@@ -87,15 +76,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     if (organizations.length === 0) {
       getOrganizations();
     }
-    if (eventTypes.length === 0) {
-      getEventTypes();
-    }
   }, []);
-
-  const eventTypesMap = eventTypes?.reduce(
-    (previous, current) => ({ ...previous, [current.uri]: current }),
-    {} as Record<string, EventType>
-  );
 
   const searchParams = parseSearchParams(location);
   const path = location.pathname;
@@ -121,7 +102,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
             losItems={
               getLosByKeys(los?.losNodes) as Record<string, Partial<LosTheme>>
             }
-            eventTypes={eventTypesMap}
           />
 
           <SC.Content className='row'>
@@ -194,6 +174,5 @@ export default compose<FC<ExternalProps>>(
   memo,
   withOrganizations,
   withReferenceData,
-  withEventTypes,
   withRouter
 )(ResultsPage);
