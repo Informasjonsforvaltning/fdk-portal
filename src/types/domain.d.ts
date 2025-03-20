@@ -313,7 +313,7 @@ export interface Concept {
   subject?: Partial<ConceptSubject>[];
   application?: Partial<TextLanguage>[];
   harvest?: Partial<Harvest>;
-  contactPoint?: Partial<ConceptContactPoint>;
+  contactPoint?: Partial<ContactPoint>;
   validFromIncluding?: string;
   validToIncluding?: string;
   seeAlso?: string[];

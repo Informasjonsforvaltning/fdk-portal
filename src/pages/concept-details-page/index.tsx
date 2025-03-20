@@ -308,7 +308,7 @@ const ConceptDetailsPage: FC<Props> = ({
             )}
           />
         )}
-        {(contactPoint?.email || contactPoint?.telephone) && (
+        {(contactPoint?.email || contactPoint?.hasTelephone) && (
           <ContactPoint contactPoint={contactPoint} />
         )}
       </DetailsPage>
