@@ -2,11 +2,7 @@ import React, { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { compose } from 'redux';
 import Moment from 'react-moment';
-import {
-  Article,
-  ArticleEntity,
-  useGetArticleQuery
-} from '../../api/generated/cms/graphql';
+import { Article, useGetArticleQuery } from '../../api/generated/cms/graphql';
 import ErrorPage from '../error-page';
 import withErrorBoundary from '../../components/with-error-boundary';
 import localization from '../../lib/localization';
@@ -29,12 +25,8 @@ const NewsArticlePage: FC = () => {
     return <div>404</div>;
   }
 
-  const {
-    article: { data: entity }
-  } = data;
-
-  const article = getLocalizedAttributes<ArticleEntity, Article>(
-    entity as ArticleEntity,
+  const article = getLocalizedAttributes<Article>(
+    data.article as Article,
     localization.getLanguage()
   );
 

@@ -131,6 +131,12 @@ export const setPage = (history: any, location: any, page: number) => {
   historyPushSearchParams(history, searchParams);
 };
 
+export const getPath = (history: any, location: any, page: number) => {
+  const oldSearchParams = parseSearchParams(location);
+  const searchParams = { ...oldSearchParams, page };
+  return history.location.pathname + renderSearchParams(searchParams);
+};
+
 // todo type change
 // reset all - page, sortfield, size, filters
 // keep q

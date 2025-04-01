@@ -3,10 +3,10 @@ import { compose, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import * as actions from './redux/actions';
-import type { ESPage, PublicService, Event } from '../../types';
+import type { ESPage, SearchObject } from '../../types';
 
 export interface Props {
-  publicServicesAndEvents: (PublicService | Event)[];
+  publicServicesAndEvents: Partial<SearchObject>[];
   publicServicesAndEventsAggregations: any;
   publicServicesAndEventsPage: ESPage;
   publicServicesAndEventsActions: typeof actions;

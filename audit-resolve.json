@@ -317,6 +317,41 @@
       "decision": "ignore",
       "madeAt": 1701094662550,
       "expiresAt": 1703686616934
+    },
+    "1098582|@skatteetaten/frontend-components>axios": {
+      "decision": "ignore",
+      "madeAt": 1723533880948,
+      "expiresAt": 1726125854345
+    },
+    "1098582|axios": {
+      "decision": "ignore",
+      "madeAt": 1723533880948,
+      "expiresAt": 1726125854345
+    },
+    "1098583|axios": {
+      "decision": "ignore",
+      "madeAt": 1724770337975,
+      "expiresAt": 1727362323894
+    },
+    "1098618|lint-staged>micromatch": {
+      "decision": "ignore",
+      "madeAt": 1724770343419,
+      "expiresAt": 1727362323894
+    },
+    "1098664|webpack": {
+      "decision": "ignore",
+      "madeAt": 1724846374721,
+      "expiresAt": 1727438362509
+    },
+    "1098681|lint-staged>micromatch": {
+      "decision": "ignore",
+      "madeAt": 1724909684743,
+      "expiresAt": 1727501662597
+    },
+    "1098681|micromatch": {
+      "decision": "ignore",
+      "madeAt": 1724909874928,
+      "expiresAt": 1727501853805
     }
   },
   "rules": {},

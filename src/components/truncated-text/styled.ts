@@ -61,7 +61,6 @@ type expandButtonProps = {
 };
 
 const ExpandButton = styled(ButtonBase)<expandButtonProps>`
-  color: ${({ theme }) => theme?.entityColours?.neutralDarker ?? theme.dark};
   background-color: ${({ theme, entity }) =>
     entity ? theme.extendedColors[entity].lighter : '#FFF'};
 `;

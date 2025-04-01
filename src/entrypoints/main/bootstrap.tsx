@@ -16,9 +16,7 @@ import { getConfig } from '../../config';
 import { themeFDK, themeNAP } from '../../app/theme';
 import GlobalStyles from '../../app/styles';
 
-import AnalyticsGA from '../../components/analytics-ga';
 import AnalyticsSiteImprove from '../../components/analytics-siteimprove';
-import AnalyticsMonsido from '../../components/analytics-monsido';
 import { store } from '../../redux/store';
 
 const client = new ApolloClient({
@@ -26,16 +24,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const theme = getConfig().themeNap ? themeNAP : themeFDK;
+const theme = getConfig().isNapProfile ? themeNAP : themeFDK;
 
 render(
   <ThemeProvider theme={theme}>
     <GlobalStyles />
     <AuthProvider>
       <LoggingProvider>
-        <AnalyticsGA />
         <AnalyticsSiteImprove />
-        <AnalyticsMonsido />
         <ApolloProvider client={client}>
           <Provider store={store}>
             <BrowserRouter>

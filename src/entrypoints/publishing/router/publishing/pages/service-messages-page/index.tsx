@@ -7,7 +7,7 @@ import moment from 'moment';
 import Translation from '../../../../../../components/translation';
 import {
   Enum_Servicemessage_Environment,
-  ServiceMessageEntity,
+  ServiceMessage,
   useGetServiceMessagesQuery
 } from '../../../../../../api/generated/cms/graphql';
 
@@ -17,11 +17,16 @@ import { MomentFormat } from '../../../../../../types/enums';
 
 interface Props {}
 
-const renderServiceMessage = (entity: ServiceMessageEntity | undefined) => {
-  const { id, attributes } = entity || {};
-  if (attributes) {
-    const { message_type, title, short_description, valid_from, valid_to } =
-      attributes;
+const renderServiceMessage = (entity: ServiceMessage | undefined) => {
+  if (entity) {
+    const {
+      documentId,
+      message_type,
+      title,
+      short_description,
+      valid_from,
+      valid_to
+    } = entity;
 
     const from = (
       <Moment format={MomentFormat.DD_MM_YYYY_HH_mm}>{valid_from}</Moment>
@@ -32,12 +37,12 @@ const renderServiceMessage = (entity: ServiceMessageEntity | undefined) => {
 
     return (
       <SC.ServiceMessage
-        key={id}
+        key={documentId}
         severity={Severity[message_type as keyof typeof Severity]}
       >
         <SC.Content>
           <SC.ServiceMessageTitle
-            to={`${PATHNAME_PUBLISHING}/service-messages/${id}`}
+            to={`${PATHNAME_PUBLISHING}/service-messages/${documentId}`}
             forwardedAs={RouteLink}
           >
             {title}
@@ -68,9 +73,12 @@ const ServiceMessagesPage: FC<Props> = () => {
     history.push(`${PATHNAME_PUBLISHING}/service-messages?all`);
   };
   const showAll = location.search.includes('all');
-  const serviceMessageEnv = window.location.hostname.match('localhost|staging')
-    ? Enum_Servicemessage_Environment.Staging
-    : Enum_Servicemessage_Environment.Production;
+  let serviceMessageEnv = Enum_Servicemessage_Environment.Production;
+  if (window.location.hostname.match('localhost|staging')) {
+    serviceMessageEnv = Enum_Servicemessage_Environment.Staging;
+  } else if (window.location.hostname.match('demo')) {
+    serviceMessageEnv = Enum_Servicemessage_Environment.Demo;
+  }
   const { data } = useGetServiceMessagesQuery({
     variables: showAll
       ? {
@@ -83,7 +91,7 @@ const ServiceMessagesPage: FC<Props> = () => {
     skip: false
   });
 
-  const serviceMessages = data?.serviceMessages?.data as ServiceMessageEntity[];
+  const serviceMessages = data?.serviceMessages as ServiceMessage[];
 
   return (
     <SC.ServiceMessagesPage>

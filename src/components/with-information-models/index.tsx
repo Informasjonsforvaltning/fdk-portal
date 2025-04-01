@@ -8,7 +8,6 @@ import type { InformationModel } from '../../types';
 
 export interface Props {
   informationModels: InformationModel[];
-  informationModelsRelations: InformationModel[];
   informationModelsActions: typeof actions;
 }
 
@@ -17,10 +16,7 @@ const withInformationModels = (Component: ComponentType<any>) => {
 
   const mapStateToProps = (state: any) => ({
     informationModels:
-      state.InformationModelsReducer.get('informationModels').toJS(),
-    informationModelsRelations: state.InformationModelsReducer.get(
-      'informationModelsRelations'
-    ).toJS()
+      state.InformationModelsReducer.get('informationModels').toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

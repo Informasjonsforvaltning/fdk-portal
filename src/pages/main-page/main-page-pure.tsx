@@ -6,7 +6,8 @@ import localization from '../../lib/localization';
 import {
   SearchBox,
   SearchBoxHeader,
-  SearchLink
+  SearchLink,
+  SC as SearchBoxSC
 } from '../../components/search-box/search-box';
 import HeaderSC from './components/header/styled';
 import SearchEntities from '../../components/search-entities/search-entities.component';
@@ -20,6 +21,8 @@ import ContainerHeader from '../../components/community/container-header';
 import ContainerFooter from '../../components/community/container-footer';
 import Divider from '../../components/divider';
 import { PATHNAME_COMMUNITY_COMMENTS } from '../../constants/constants';
+import { getConfig } from '../../config';
+import TransportPortalLogos from '../../components/transport-portal-logos';
 
 const { FDK_COMMUNITY_BASE_URI, NAMESPACE } = env;
 
@@ -44,16 +47,28 @@ const MainPage: FC<Props> = ({
 
   return (
     <div>
-      <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
-        <SearchBoxHeader as='h1' large>
-          {localization.searchBoxHeader}
-        </SearchBoxHeader>
-        <SearchLink entity={Entity.DATASET} />
-        <SearchLink entity={Entity.DATA_SERVICE} />
-        <SearchLink entity={Entity.CONCEPT} />
-        <SearchLink entity={Entity.INFORMATION_MODEL} />
-        <SearchLink entity={Entity.PUBLIC_SERVICE} />
-      </SearchBox>
+      {!getConfig().isNapProfile && (
+        <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
+          <SearchBoxHeader as='h1' large>
+            {localization.searchBoxHeader}
+          </SearchBoxHeader>
+          <SearchLink entity={Entity.DATASET} />
+          <SearchLink entity={Entity.DATA_SERVICE} />
+          <SearchLink entity={Entity.CONCEPT} />
+          <SearchLink entity={Entity.INFORMATION_MODEL} />
+          <SearchLink entity={Entity.PUBLIC_SERVICE} />
+        </SearchBox>
+      )}
+      {getConfig().isNapProfile && (
+        <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
+          <SearchBoxHeader>
+            <SearchBoxSC.SearchBox.SearchHeaderLogosTitle>
+              {localization.collaborationBetween}
+            </SearchBoxSC.SearchBox.SearchHeaderLogosTitle>
+            <TransportPortalLogos />
+          </SearchBoxHeader>
+        </SearchBox>
+      )}
       <main id='content' className='container'>
         <SC.Content className='row'>
           <section className='col-12 col-lg-8'>

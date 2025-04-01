@@ -42,10 +42,7 @@ export const FilterOption: FC<Props> = ({
     } else {
       textLabel = localization.unknown;
     }
-  } else if (
-    optionLabel?.toUpperCase() === 'UKJENT' ||
-    optionLabel?.toUpperCase() === 'MISSING'
-  ) {
+  } else if (optionLabel?.toUpperCase() === 'NULL') {
     textLabel = localization.unknown;
   } else if (optionLabel?.toUpperCase()?.startsWith('/ANNET')) {
     textLabel = _capitalize(

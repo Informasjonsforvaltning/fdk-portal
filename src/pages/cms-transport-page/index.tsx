@@ -8,18 +8,8 @@ import localization from '../../lib/localization';
 
 import {
   TransportArticle,
-  TransportArticleEntity,
-  useGetTransportArticleQuery
+  useGetTransportArticleBySlugQuery
 } from '../../api/generated/cms/graphql';
-
-import {
-  PATHNAME_TRANSPORT_GENERAL,
-  PATHNAME_TRANSPORT_ITS,
-  PATHNAME_TRANSPORT_ROLES,
-  PATHNAME_TRANSPORT_ADD,
-  PATHNAME_TRANSPORT_COMPLIANCE,
-  PATHNAME_TRANSPORT_NEWS
-} from '../../constants/constants';
 
 import ErrorPage from '../error-page';
 
@@ -41,19 +31,10 @@ interface Props extends RouteComponentProps {}
 
 const FDK_CMS_BASE_URI = getConfig().cmsV2Api.host;
 
-const articleIds: { [pathname: string]: string } = {
-  [PATHNAME_TRANSPORT_GENERAL]: '2',
-  [PATHNAME_TRANSPORT_ROLES]: '3',
-  [PATHNAME_TRANSPORT_ITS]: '4',
-  [PATHNAME_TRANSPORT_NEWS]: '6',
-  [PATHNAME_TRANSPORT_COMPLIANCE]: '9',
-  [PATHNAME_TRANSPORT_ADD]: '10'
-};
-
 const TransportPage: FC<Props> = () => {
-  const { data, loading, error } = useGetTransportArticleQuery({
+  const { data, loading, error } = useGetTransportArticleBySlugQuery({
     variables: {
-      id: articleIds[location.pathname]
+      slug: location.pathname
     }
   });
 
@@ -66,19 +47,14 @@ const TransportPage: FC<Props> = () => {
       );
     }
 
-    if (error?.name !== undefined || !data || !data.transportArticle) {
+    const firstArticle = (data?.transportArticles as TransportArticle[])?.[0];
+
+    if (error?.name !== undefined || !firstArticle) {
       return <ErrorPage errorCode='404' />;
     }
 
-    const {
-      transportArticle: { data: transportArticleEntity }
-    } = data;
-
-    const transportArticle = getLocalizedAttributes<
-      TransportArticleEntity,
-      TransportArticle
-    >(
-      transportArticleEntity as TransportArticleEntity,
+    const transportArticle = getLocalizedAttributes<TransportArticle>(
+      firstArticle,
       localization.getLanguage()
     );
 
@@ -97,13 +73,13 @@ const TransportPage: FC<Props> = () => {
               (isBasicImage(component) && (
                 <SC.ImageWrapper key={component?.id}>
                   <SC.Image
-                    alt={`${component?.media?.data?.attributes?.alternativeText}`}
-                    src={`${FDK_CMS_BASE_URI}${component?.media?.data?.attributes?.url}`}
+                    alt={`${component?.media?.alternativeText}`}
+                    src={`${FDK_CMS_BASE_URI}${component?.media?.url}`}
                   />
-                  {component?.media?.data?.attributes?.caption && (
+                  {component?.media?.caption && (
                     <SC.ImageText>
                       {localization.informationPage.imageText}
-                      {component?.media?.data?.attributes?.caption}
+                      {component?.media?.caption}
                     </SC.ImageText>
                   )}
                 </SC.ImageWrapper>

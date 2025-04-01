@@ -52,7 +52,13 @@ import {
   PATHNAME_TRANSPORT_NEWS,
   PATHNAME_TRANSPORT_ADD,
   PATHNAME_TRANSPORT_COMPLIANCE,
-  PATHNAME_ABOUT_HARVESTING
+  PATHNAME_ABOUT_HARVESTING,
+  PATHNAME_ABOUT_CREATING_DESCRIPTIONS_SELF,
+  PATHNAME_ABOUT_CREATING_DESCRIPTIONS_REGISTRATION,
+  PATHNAME_ABOUT_PUBLISHING_DESCRIPTIONS,
+  PATHNAME_ABOUT_TRIGGERING_HARVEST,
+  PATHNAME_ABOUT_RESOURCES,
+  PATHNAME_CONTACT_PAGE
 } from '../constants/constants';
 import ScrollToTop from '../components/scroll-to-top';
 import { getConfig } from '../config';
@@ -81,8 +87,8 @@ export function App({ language, onChangeLanguage }) {
   localization.setLanguage(language);
 
   const themeClass = cx('position-relative overflow-hidden', {
-    'theme-nap': getConfig().themeNap,
-    'theme-fdk': !getConfig().themeNap
+    'theme-nap': getConfig().isNapProfile,
+    'theme-fdk': !getConfig().isNapProfile
   });
 
   const components = {
@@ -117,6 +123,12 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_ABOUT_CONCEPTS]: InformationPage,
     [PATHNAME_ABOUT_INFORMATIONMODELS]: InformationPage,
     [PATHNAME_ABOUT_HARVESTING]: InformationPage,
+    [PATHNAME_ABOUT_TRIGGERING_HARVEST]: InformationPage,
+    [PATHNAME_ABOUT_CREATING_DESCRIPTIONS_REGISTRATION]: InformationPage,
+    [PATHNAME_ABOUT_CREATING_DESCRIPTIONS_SELF]: InformationPage,
+    [PATHNAME_ABOUT_PUBLISHING_DESCRIPTIONS]: InformationPage,
+    [PATHNAME_ABOUT_RESOURCES]: InformationPage,
+    [PATHNAME_CONTACT_PAGE]: InformationPage,
     [PATHNAME_AI]: AiProjectPage,
     [PATHNAME_REQUESTS]: RequestsPage,
     [PATHNAME_TRANSPORT_GENERAL]: TransportPage,
@@ -132,14 +144,18 @@ export function App({ language, onChangeLanguage }) {
       <Helmet>
         <html lang={language} />
         <title>
-          {getConfig().themeNap ? 'Transportportal' : localization.head.title}
+          {getConfig().isNapProfile
+            ? 'Transportportal'
+            : localization.head.title}
         </title>
 
         <meta name='description' content={localization.head.description} />
         <meta
           property='og:title'
           content={
-            getConfig().themeNap ? 'Transportportal' : localization.head.title
+            getConfig().isNapProfile
+              ? 'Transportportal'
+              : localization.head.title
           }
         />
         <meta
@@ -166,22 +182,13 @@ export function App({ language, onChangeLanguage }) {
               PATHNAME_ORGANIZATIONS
             ].includes(path)
           )
-          .map(path => {
-            if (getConfig().themeNap && path === PATHNAME_MAIN_PAGE) {
-              return (
-                <Route exact path={PATHNAME_MAIN_PAGE}>
-                  <Redirect to={PATHNAME_DATASETS} />;
-                </Route>
-              );
-            }
-            return (
-              <Route
-                exact={path !== PATHNAME_ORGANIZATIONS}
-                path={path}
-                component={components[path]}
-              />
-            );
-          })}
+          .map(path => (
+            <Route
+              exact={path !== PATHNAME_ORGANIZATIONS}
+              path={path}
+              component={components[path]}
+            />
+          ))}
 
         <ScrollToTop key='route-switch-2'>
           {routes.main

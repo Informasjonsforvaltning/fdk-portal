@@ -46,10 +46,12 @@ const DataserviceReport: FC<Props> = ({
     organizationCount = 0,
     formats = []
   } = {},
-  dataServicesTimeSeries: { timeSeriesData = [] } = {}
+  dataServicesTimeSeries = []
 }) => {
   const { search: searchParams } = location;
-  timeSeriesData.push([Date.now(), totalObjects]);
+  dataServicesTimeSeries.push([Date.now(), totalObjects]);
+
+  const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
 
   const topMostUsedFormats: KeyWithCountObject[] = sortKeyWithCount(formats)
     .filter(
@@ -110,24 +112,26 @@ const DataserviceReport: FC<Props> = ({
           </div>
         </div>
 
-        {timeSeriesData?.length > 0 && timeSeriesData?.length > 0 && (
-          <div className='row'>
-            <div className='col-12'>
-              <BoxRegular
-                header={localization.report.growth}
-                subHeader={
-                  localization.report.dataServiceGrowthFromFirstPublish
-                }
-              >
-                <Line
-                  name={localization.dataServiceLabel}
-                  data={timeSeriesData}
-                  lineColor={theme.extendedColors[Entity.DATA_SERVICE].dark}
-                />
-              </BoxRegular>
+        {dataServicesTimeSeries?.length > 0 &&
+          dataServicesTimeSeries?.length > 0 &&
+          !hasOrgPath && (
+            <div className='row'>
+              <div className='col-12'>
+                <BoxRegular
+                  header={localization.report.growth}
+                  subHeader={
+                    localization.report.dataServiceGrowthFromFirstPublish
+                  }
+                >
+                  <Line
+                    name={localization.dataServiceLabel}
+                    data={dataServicesTimeSeries}
+                    lineColor={theme.extendedColors[Entity.DATA_SERVICE].dark}
+                  />
+                </BoxRegular>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {Array.isArray(topMostUsedFormats) &&
           topMostUsedFormats?.length > 0 && (

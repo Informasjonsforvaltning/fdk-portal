@@ -2,37 +2,15 @@ import {
   GET_PUBLIC_SERVICES_REQUESTED,
   GET_PUBLIC_SERVICES_SUCCEEDED,
   GET_PUBLIC_SERVICES_FAILED,
-  RESET_PUBLIC_SERVICES,
-  GET_PUBLIC_SERVICES_REQUIRED_BY_REQUESTED,
-  GET_PUBLIC_SERVICES_REQUIRED_BY_SUCCEEDED,
-  GET_PUBLIC_SERVICES_REQUIRED_BY_FAILED,
-  RESET_PUBLIC_SERVICES_REQUIRED_BY,
-  GET_PUBLIC_SERVICES_RELATED_BY_REQUESTED,
-  GET_PUBLIC_SERVICES_RELATED_BY_SUCCEEDED,
-  GET_PUBLIC_SERVICES_RELATED_BY_FAILED,
-  RESET_PUBLIC_SERVICES_RELATED_BY,
-  GET_PUBLIC_SERVICES_RELATIONS_REQUESTED,
-  GET_PUBLIC_SERVICES_RELATIONS_SUCCEEDED,
-  GET_PUBLIC_SERVICES_RELATIONS_FAILED,
-  RESET_PUBLIC_SERVICES_RELATIONS
+  RESET_PUBLIC_SERVICES
 } from './action-types';
 
-import type { PublicService } from '../../../types';
-
 interface GetPublicServicesParams {
-  q?: string;
-  page?: string;
-  sortfield?: string;
+  page?: number;
   size?: number;
+  sortfield?: string;
   orgPath?: string;
-  isGroupedBy?: string;
-  keywords?: string;
-  publicServiceIdentifiers?: string[];
-  requiredByServiceUri?: string;
-  relatedByServiceUri?: string;
-  isDescribedAt?: string;
-  isClassifiedBy?: string;
-  requiresOrRelates?: string;
+  uri?: string[];
 }
 
 export function getPublicServicesRequested(params: GetPublicServicesParams) {
@@ -65,116 +43,5 @@ export function getPublicServicesFailed(message: string) {
 export function resetPublicServices() {
   return {
     type: RESET_PUBLIC_SERVICES
-  };
-}
-
-export function getPublicServicesRequiredByRequested(
-  params: GetPublicServicesParams
-) {
-  return {
-    type: GET_PUBLIC_SERVICES_REQUIRED_BY_REQUESTED,
-    payload: {
-      params
-    }
-  };
-}
-
-export function getPublicServicesRequiredBySucceeded(
-  publicServiceData: PublicService[]
-) {
-  return {
-    type: GET_PUBLIC_SERVICES_REQUIRED_BY_SUCCEEDED,
-    payload: {
-      publicServiceData
-    }
-  };
-}
-
-export function getPublicServicesRequiredByFailed(message: string) {
-  return {
-    type: GET_PUBLIC_SERVICES_REQUIRED_BY_FAILED,
-    payload: {
-      message
-    }
-  };
-}
-
-export function resetPublicServicesRequiredBy() {
-  return {
-    type: RESET_PUBLIC_SERVICES_REQUIRED_BY
-  };
-}
-
-export function getPublicServicesRelatedByRequested(
-  params: GetPublicServicesParams
-) {
-  return {
-    type: GET_PUBLIC_SERVICES_RELATED_BY_REQUESTED,
-    payload: {
-      params
-    }
-  };
-}
-
-export function getPublicServicesRelatedBySucceeded(
-  publicServiceData: PublicService[]
-) {
-  return {
-    type: GET_PUBLIC_SERVICES_RELATED_BY_SUCCEEDED,
-    payload: {
-      publicServiceData
-    }
-  };
-}
-
-export function getPublicServicesRelatedByFailed(message: string) {
-  return {
-    type: GET_PUBLIC_SERVICES_RELATED_BY_FAILED,
-    payload: {
-      message
-    }
-  };
-}
-
-export function resetPublicServicesRelatedBy() {
-  return {
-    type: RESET_PUBLIC_SERVICES_RELATED_BY
-  };
-}
-
-export function getPublicServicesRelationsRequested(
-  params: GetPublicServicesParams
-) {
-  return {
-    type: GET_PUBLIC_SERVICES_RELATIONS_REQUESTED,
-    payload: {
-      params
-    }
-  };
-}
-
-export function getPublicServicesRelationsSucceeded(
-  publicServiceData: PublicService[]
-) {
-  return {
-    type: GET_PUBLIC_SERVICES_RELATIONS_SUCCEEDED,
-    payload: {
-      publicServiceData
-    }
-  };
-}
-
-export function getPublicServicesRelationsFailed(message: string) {
-  return {
-    type: GET_PUBLIC_SERVICES_RELATIONS_FAILED,
-    payload: {
-      message
-    }
-  };
-}
-
-export function resetPublicServicesRelations() {
-  return {
-    type: RESET_PUBLIC_SERVICES_RELATIONS
   };
 }

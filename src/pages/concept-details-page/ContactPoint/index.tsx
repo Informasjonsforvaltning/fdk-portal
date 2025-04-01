@@ -5,10 +5,10 @@ import {
   KeyValueListItem
 } from '../../../components/details-page';
 import translations from '../../../lib/localization';
-import { ConceptContactPoint } from '../../../types';
+import { ContactPoint } from '../../../types';
 
 interface Props {
-  contactPoint: Partial<ConceptContactPoint>;
+  contactPoint: Partial<ContactPoint>;
 }
 
 const ContactPoint = ({ contactPoint }: Props) => (
@@ -31,10 +31,10 @@ const ContactPoint = ({ contactPoint }: Props) => (
           }
         />
       )}
-      {contactPoint.telephone && (
+      {contactPoint.hasTelephone && (
         <KeyValueListItem
           property={translations.phone}
-          value={contactPoint.telephone}
+          value={contactPoint.hasTelephone}
         />
       )}
     </KeyValueList>

@@ -6,10 +6,9 @@ import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 import {
   SearchBox,
   SearchBoxHeader,
-  SC
+  SC as SearchBoxSC
 } from '../../components/search-box/search-box';
 
-import { HitsStats } from './search-box/hits-stats/hits-stats.component';
 import { getConfig } from '../../config';
 
 import './search-page.scss';
@@ -32,19 +31,11 @@ import withPublicServicesAndEvents, {
 } from '../../components/with-public-services-and-events';
 import { generateQueryKey, shouldFetch } from './lib/fetch-helper';
 
-import type {
-  Concept,
-  DataService,
-  Dataset,
-  InformationModel
-} from '../../types';
+import type { SearchObject } from '../../types';
+import localization from '../../lib/localization';
 
 interface AllEntities {
-  hits:
-    | Partial<Dataset>[]
-    | Partial<DataService>[]
-    | Partial<Concept>[]
-    | Partial<InformationModel>[];
+  hits: Partial<SearchObject>[];
   page: any;
   aggregations: any;
 }
@@ -54,20 +45,20 @@ interface Props extends PublicServicesAndEventsProps, RouteComponentProps {
   fetchDataServicesIfNeeded: (params: any) => void;
   fetchConceptsIfNeeded: (params: any) => void;
   fetchInformationModelsIfNeeded: (params: any) => void;
-  datasetItems: Partial<Dataset>[];
+  datasetItems: Partial<SearchObject>[];
   datasetAggregations: any;
   datasetTotal: any;
-  dataServiceItems: Partial<DataService>[];
+  dataServiceItems: Partial<SearchObject>[];
   dataServiceAggregations: any;
   dataServiceTotal: any;
-  conceptItems: Partial<Concept>[];
+  conceptItems: Partial<SearchObject>[];
   conceptAggregations: any;
   conceptTotal: any;
-  informationModelItems: Partial<InformationModel>[];
+  informationModelItems: Partial<SearchObject>[];
   informationModelAggregations: any;
   informationModelTotal: any;
   conceptsCompare: any;
-  addConcept: (concept: Partial<Concept>) => void;
+  addConcept: (concept: Partial<SearchObject>) => void;
   removeConcept: (id?: string | undefined) => void;
   searchAllEntities: AllEntities;
   isFetchingDatasets: boolean;
@@ -167,34 +158,17 @@ const SearchPage: FC<Props> = ({
 
   return (
     <div>
-      {!getConfig().themeNap && (
-        <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
-          <SearchBoxHeader>
-            <HitsStats
-              countDatasets={datasetTotal ?? 0}
-              countApis={dataServiceTotal ?? 0}
-              countTerms={conceptTotal ?? 0}
-              countInformationModels={informationModelTotal ?? 0}
-            />
-          </SearchBoxHeader>
-          <Tabs
-            countResults={searchAllEntities?.page?.totalElements || 0}
-            countDatasets={datasetTotal || 0}
-            countConcepts={conceptTotal || 0}
-            countApis={dataServiceTotal || 0}
-            countInformationModels={informationModelTotal || 0}
-            countPublicServices={
-              publicServicesAndEventsPage?.totalElements || 0
-            }
-          />
+      {!getConfig().isNapProfile && (
+        <SearchBox placeholder={localization.query.intro} autosuggest>
+          <Tabs />
         </SearchBox>
       )}
-      {getConfig().themeNap && (
-        <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
+      {getConfig().isNapProfile && (
+        <SearchBox placeholder={localization.query.intro} autosuggest>
           <SearchBoxHeader>
-            <SC.SearchBox.SearchHeaderLogosTitle>
+            <SearchBoxSC.SearchBox.SearchHeaderLogosTitle>
               {translations.collaborationBetween}
-            </SC.SearchBox.SearchHeaderLogosTitle>
+            </SearchBoxSC.SearchBox.SearchHeaderLogosTitle>
             <TransportPortalLogos />
           </SearchBoxHeader>
         </SearchBox>
@@ -207,6 +181,11 @@ const SearchPage: FC<Props> = ({
               entities={searchAllEntitiesHits}
               aggregations={allResultsEntititesAggregations}
               page={searchAllEntitiesPage}
+              searchHitCount={
+                searchAllEntitiesPage.totalElements > 9999
+                  ? '10,000+'
+                  : searchAllEntitiesPage.totalElements
+              }
             />
           </Route>
           <Route exact path={PATHNAME_DATASETS}>
@@ -217,6 +196,7 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((datasetTotal || 1) / HITS_PER_PAGE)
               }}
+              searchHitCount={datasetTotal ?? 0}
             />
           </Route>
           <Route exact path={PATHNAME_DATA_SERVICES}>
@@ -227,6 +207,7 @@ const SearchPage: FC<Props> = ({
               page={{
                 totalPages: Math.ceil((dataServiceTotal || 1) / HITS_PER_PAGE)
               }}
+              searchHitCount={dataServiceTotal ?? 0}
             />
           </Route>
           <Route exact path={PATHNAME_CONCEPTS}>
@@ -240,6 +221,7 @@ const SearchPage: FC<Props> = ({
               compareConceptList={conceptsCompare}
               addConcept={addConcept}
               removeConcept={removeConcept}
+              searchHitCount={conceptTotal ?? 0}
             />
           </Route>
           <Route exact path={PATHNAME_INFORMATIONMODELS}>
@@ -252,6 +234,7 @@ const SearchPage: FC<Props> = ({
                   (informationModelTotal || 1) / HITS_PER_PAGE
                 )
               }}
+              searchHitCount={informationModelTotal ?? 0}
             />
           </Route>
           <Route exact path={PATHNAME_PUBLIC_SERVICES_AND_EVENTS}>
@@ -260,6 +243,7 @@ const SearchPage: FC<Props> = ({
               entities={publicServicesAndEvents}
               aggregations={publicServicesAndEventsAggregations ?? {}}
               page={publicServicesAndEventsPage ?? {}}
+              searchHitCount={publicServicesAndEventsPage?.totalElements || 0}
             />
           </Route>
         </Switch>

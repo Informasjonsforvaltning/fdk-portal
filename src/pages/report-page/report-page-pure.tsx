@@ -27,13 +27,13 @@ import { FilterChange } from '../../components/filter-box/filter-box.component';
 interface Props {
   fetchPublishersIfNeeded: () => void;
   publishers?: any;
-  datasetsTimeSeries?: any;
   dataServicesReport?: any;
-  dataServicesTimeSeries?: any;
   informationModelsReport?: any;
-  informationModelsTimeSeries?: any;
   datasetsReport?: any;
   conceptsReport?: any;
+  datasetsTimeSeries?: any;
+  dataServicesTimeSeries?: any;
+  informationModelsTimeSeries?: any;
   conceptsTimeSeries?: any;
 }
 
@@ -41,12 +41,12 @@ export const ReportPagePure: FC<Props> = ({
   fetchPublishersIfNeeded,
   publishers = {},
   dataServicesReport,
-  dataServicesTimeSeries,
   informationModelsReport,
-  informationModelsTimeSeries,
   datasetsReport,
-  datasetsTimeSeries = {},
   conceptsReport,
+  datasetsTimeSeries,
+  dataServicesTimeSeries,
+  informationModelsTimeSeries,
   conceptsTimeSeries
 }) => {
   const history = useHistory();
@@ -100,7 +100,7 @@ export const ReportPagePure: FC<Props> = ({
   return (
     <ThemeProvider
       theme={
-        (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
+        (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
           Entity.DATASET
         ]
       }
@@ -155,7 +155,7 @@ export const ReportPagePure: FC<Props> = ({
             </div>
             <div className='row mb-5'>
               <div className='col-12'>
-                {getConfig().themeNap ? (
+                {getConfig().isNapProfile ? (
                   <DatasetReport
                     datasetsReport={datasetsReport}
                     datasetsTimeSeries={datasetsTimeSeries}

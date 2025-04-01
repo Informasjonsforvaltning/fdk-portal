@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { Link as RouteLink } from 'react-router-dom';
 
 import localization from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -14,11 +13,14 @@ import {
   SearchHitOpenData
 } from '../search-hit/search-hit';
 
-import { isLosTheme, isEuTheme } from '../../utils/common';
+import {
+  getLastWordAfterSlash,
+  isEuTheme,
+  isLosNode,
+  parseFormats
+} from '../../utils/common';
 
-import PublicIconBase from '../../images/icon-access-open-md-v2.svg';
-
-import type { Dataset, MediaTypeOrExtent } from '../../types';
+import type { SearchObject } from '../../types';
 import {
   MediaTypeOrExtentType,
   SearchTypes,
@@ -28,7 +30,7 @@ import {
 import SC from './dataset-item.styled';
 
 interface Props {
-  dataset: Partial<Dataset>;
+  dataset: Partial<SearchObject>;
 }
 
 export const DatasetItem: FC<Props> = ({
@@ -36,23 +38,22 @@ export const DatasetItem: FC<Props> = ({
     id,
     title,
     description,
-    publisher,
+    organization,
     losTheme: losThemes,
-    theme: euThemes,
-    distribution = [],
+    dataTheme: euThemes,
+    fdkFormatPrefixed,
     accessRights,
-    provenance,
     specializedType,
-    datasetsInSeries,
-    inSeries,
-    isOpenData
+    isOpenData,
+    isAuthoritative
   }
 }) => {
+  const parsedFormats = parseFormats(fdkFormatPrefixed);
+
   const renderAccessRights = (accessRight: any) => {
     if (accessRight?.code === 'PUBLIC') {
       return (
         <RoundedTag to={patchSearchQuery('accessrights', 'PUBLIC')}>
-          <PublicIconBase />
           <span>
             {localization.dataset.accessRights.authorityCode.publicDetailsLabel}
           </span>
@@ -62,43 +63,17 @@ export const DatasetItem: FC<Props> = ({
     return null;
   };
 
-  const formats = distribution?.reduce(
-    (previous, { fdkFormat = [] }) => [...previous, ...fdkFormat],
-    [] as MediaTypeOrExtent[]
-  );
-
   const themes = [...(losThemes ?? []), ...(euThemes ?? [])];
 
   const subtitle = () => {
     if (specializedType === SpecializedDatasetType.DATASET_SERIES) {
-      let containsText = localization.datasetsInSeriesEmpty;
-      const count = datasetsInSeries?.length ?? 0;
-      if (count > 0) {
-        containsText = localization.formatString(
-          count === 1
-            ? localization.datasetsInSeriesSingular
-            : localization.datasetsInSeries,
-          count
-        );
-      }
+      const containsText = localization.datasetsInSeriesEmpty;
+
       return (
         <SC.Subtitle>
           {localization.datasetSeriesLabel}
           <SC.Dot>•</SC.Dot>
           {containsText}
-        </SC.Subtitle>
-      );
-    }
-    if (inSeries?.title) {
-      const containedInText = localization.formatString(
-        localization.datasetIsInSeries,
-        inSeries.title
-      );
-      return (
-        <SC.Subtitle>
-          {localization.datasetLabel}
-          <SC.Dot>•</SC.Dot>
-          {containedInText}
         </SC.Subtitle>
       );
     }
@@ -111,15 +86,14 @@ export const DatasetItem: FC<Props> = ({
       type={SearchTypes.dataset}
       title={title}
       subtitle={subtitle()}
-      publisher={publisher}
+      publisher={organization}
       description={description}
-      isAuthoritative={provenance?.code === 'NASJONAL'}
+      isAuthoritative={isAuthoritative}
     >
       {isOpenData && (
         <SearchHitOpenData>
           <div title={localization.openDataTooltip}>
             <RoundedTag to={patchSearchQuery('opendata', 'true')}>
-              <PublicIconBase />
               <span>{localization.openData}</span>
             </RoundedTag>
           </div>
@@ -136,10 +110,13 @@ export const DatasetItem: FC<Props> = ({
 
       <SearchHitThemes>
         {themes.map(theme => {
-          if (isLosTheme(theme)) {
-            const { uri, name, losPaths: [losPath] = [] } = theme;
+          if (isLosNode(theme)) {
+            const { name, losPaths: [losPath] = [] } = theme;
             return (
-              <RoundedTag key={uri} to={patchSearchQuery('losTheme', losPath)}>
+              <RoundedTag
+                key={`losTheme-${name}`}
+                to={patchSearchQuery('losTheme', losPath)}
+              >
                 <span>{translate(name)}</span>
               </RoundedTag>
             );
@@ -166,19 +143,21 @@ export const DatasetItem: FC<Props> = ({
       </SearchHitThemes>
 
       <SearchHitFormats>
-        {formats
+        {parsedFormats
           .filter(
             format =>
               format.name && format.type !== MediaTypeOrExtentType.UNKNOWN
           )
           .sort((a, b) => `${a.name}`.localeCompare(`${b.name}`))
           .map((format, index) => (
-            <RouteLink
+            <a
               key={`format-${format.name}-${index}`}
-              to={patchSearchQuery('format', `${format.type} ${format.name}`)}
+              href={patchSearchQuery('format', `${format.type} ${format.name}`)}
             >
-              <span>{`${format.name}`}</span>
-            </RouteLink>
+              <span>
+                {format.name ? `${getLastWordAfterSlash(format?.name)}` : ''}
+              </span>
+            </a>
           ))}
       </SearchHitFormats>
     </SearchHit>

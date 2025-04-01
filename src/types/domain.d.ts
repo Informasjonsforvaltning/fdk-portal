@@ -3,12 +3,47 @@ import {
   Entity as EntityEnum,
   AdministrativeUnitType,
   SpecializedEventType,
-  LanguageCodes
+  LanguageCodes,
+  SearchObjectRelationType
 } from './enums';
+
+export interface SearchObject {
+  id: string;
+  uri: string;
+  accessRights?: ReferenceDataCode;
+  catalog?: Catalog;
+  dataTheme?: EuDataTheme[];
+  description?: Partial<TextLanguage>;
+  fdkFormatPrefixed?: string[];
+  metadata?: Metadata;
+  isOpenData?: boolean;
+  keyword?: Partial<TextLanguage>[];
+  losTheme?: LosNode[];
+  organization?: Organization;
+  provenance?: ReferenceDataCode;
+  searchType: EntityEnum;
+  specializedType?: SpecializedDatasetType | SpecializedEventType;
+  spatial?: ReferenceDataCode[];
+  title?: Partial<TextLanguage>;
+  relations?: Relation[];
+  isAuthoritative?: boolean;
+}
+
+interface Catalog {
+  description?: Partial<TextLanguage>;
+  id?: string;
+  publisher?: Organization;
+  title?: Partial<TextLanguage>;
+  uri?: string;
+}
+
+export interface Relation {
+  uri?: string;
+  type?: SearchObjectRelationType;
+}
 
 export interface InformationModel {
   id: string;
-  type: EntityEnum.INFORMATION_MODEL;
   uri: string;
   identifier?: string;
   publisher?: Partial<Organization>;
@@ -198,8 +233,20 @@ export interface Harvest {
   lastHarvested: string;
 }
 
+interface Metadata {
+  firstHarvested?: string;
+  modified?: string;
+  deleted?: boolean;
+  timestamp?: number;
+}
+
 export interface LosNodes {
   losNodes: LosTheme[];
+}
+
+export interface LosNode {
+  name?: Partial<TextLanguage>;
+  losPaths?: string;
 }
 export interface LosTheme {
   uri: string;
@@ -254,19 +301,19 @@ export interface GenericRelation {
 
 export interface Concept {
   id: string;
-  type: EntityEnum.CONCEPT;
   uri: string;
   identifier: string;
   prefLabel: Partial<TextLanguage>;
   altLabel?: Partial<TextLanguage>[];
   hiddenLabel?: Partial<TextLanguage>[];
   definition?: ConceptDefinition;
+  definitions?: ConceptDefinition[];
   publisher: Partial<Organization>;
   example: Partial<TextLanguage>;
   subject?: Partial<ConceptSubject>[];
   application?: Partial<TextLanguage>[];
   harvest?: Partial<Harvest>;
-  contactPoint?: Partial<ConceptContactPoint>;
+  contactPoint?: Partial<ContactPoint>;
   validFromIncluding?: string;
   validToIncluding?: string;
   seeAlso?: string[];
@@ -277,13 +324,16 @@ export interface Concept {
   genericRelation?: Partial<GenericRelation>[];
   created?: string;
   memberOf?: string[];
+  remark?: Partial<TextLanguage>;
+  range?: { text?: Partial<TextLanguage>; uri?: stirng };
 }
 
 export interface ConceptDefinition {
   text?: Partial<TextLanguage>;
-  remark?: Partial<TextLanguage>;
-  sources?: Array<{ text?: string; uri?: stirng }>;
-  range?: { text?: Partial<TextLanguage>; uri?: stirng };
+  remark?: Partial<TextLanguage>; // @deprecated
+  targetGroup?: string;
+  sources?: Array<{ text?: Partial<TextLanguage>; uri?: stirng }>;
+  range?: { text?: Partial<TextLanguage>; uri?: stirng }; // @deprecated
   sourceRelationship?: string;
 }
 
@@ -406,10 +456,12 @@ interface PublicServiceContactPoint {
 export interface PublicService {
   id: string;
   type: EntityEnum.PUBLIC_SERVICE;
+  specializedType?: str | null;
   uri: string;
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
+  dctType?: PublicServiceType[];
   isDescribedAt?: Partial<PublicService>[];
   isGroupedBy?: string[];
   hasCompetentAuthority?: Partial<Organization>[];
@@ -451,11 +503,10 @@ export interface Event {
   identifier: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  type: EntityEnum.EVENT;
   dctType?: SkosConcept[];
   harvest?: Partial<Harvest>;
   relation?: string[];
-  specialized_type?: SpecializedEventType;
+  specializedType?: SpecializedEventType;
 }
 
 export interface EventType {
@@ -481,6 +532,11 @@ export interface ESPage {
 interface Provenance {
   code: string;
   prefLabel: Partial<TextLanguage>;
+}
+
+interface EuDataTheme {
+  title?: Partial<TextLanguage>;
+  code?: string;
 }
 
 interface AccessRights {
@@ -560,6 +616,12 @@ interface AccrualPeriodicity {
   prefLabel: Partial<TextLanguage>;
 }
 
+interface DatasetType {
+  uri: string;
+  code: string;
+  prefLabel: Partial<TextLanguage>;
+}
+
 interface Sample {
   description?: Partial<TextLanguage>;
   format: DataFormat[];
@@ -580,7 +642,6 @@ interface InSeries {
 
 export interface Dataset {
   id: string;
-  type: EntityEnum.DATASET;
   uri: string;
   publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
@@ -617,7 +678,7 @@ export interface Dataset {
   landingPage: string[];
   qualifiedAttributions: QualifiedAttribution[];
   assessment?: Assessment;
-  dctType?: string;
+  dctType?: DatasetType | string;
   specializedType?: SpecializedDatasetType;
   datasetsInSeries?: string[];
   inSeries?: InSeries;
@@ -626,7 +687,6 @@ export interface Dataset {
 
 export interface DataService {
   id: string;
-  type: EntityEnum.DATA_SERVICE;
   uri: string;
   publisher: Partial<Organization>;
   title: Partial<TextLanguage>;
@@ -669,7 +729,6 @@ export interface AccessService {
 
 export interface Distribution {
   uri: string;
-  type: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
   fdkFormat: MediaTypeOrExtent[];
@@ -693,9 +752,29 @@ export interface ReferenceData {
   themes?: EuThemes;
   referencetypes?: ReferenceTypes;
   apispecifications?: ApiSpecifications;
+  audiencetypes?: AudienceTypes;
+  relationshipwithsourcetypes?: RelationshipWithSourceTypes;
 }
 
-export interface ReferenceDataCode {}
+export interface ReferenceDataType {
+  uri: string;
+  code?: string;
+  label?: Partial<TextLanguage>;
+}
+
+export interface AudienceTypes {
+  audienceTypes: ReferenceDataType[];
+}
+
+export interface RelationshipWithSourceTypes {
+  relationshipWithSourceTypes: ReferenceDataType[];
+}
+
+export interface ReferenceDataCode {
+  uri?: string;
+  code?: string;
+  prefLabel?: Partial<TextLanguage>;
+}
 
 export interface Link {
   href: string;
@@ -740,9 +819,22 @@ interface QualifiedAttribution {
   role: string;
 }
 
-export interface DataPoint {
-  xAxis: string;
-  yAxis: string;
+export interface TimeSeriesPoint {
+  date: string;
+  count: number;
+}
+
+export interface TimeSeriesRequest {
+  start: string;
+  end: string;
+  interval: string;
+  filters: TimeSeriesFilters;
+}
+
+interface TimeSeriesFilters {
+  resourceType: { value: string } | null;
+  orgPath: { value: string } | null;
+  transport: { value: boolean } | null;
 }
 
 interface Report {
@@ -1019,7 +1111,24 @@ export interface CommunityPost {
   page?: number;
   multiplePages: boolean;
   pagination: Pagination;
-  posts: CommunityPost[];
+  posts: CommunityRequestPost[];
+}
+
+export interface CommunityRequestPost {
+  category: CommunityCategory;
+  deleted: boolean;
+  downvotes: number;
+  isMainPost: boolean;
+  pid: number;
+  replies: number;
+  tid: number;
+  timestap: number;
+  timestampISO: string;
+  topic: CommunityTopic;
+  uid: number;
+  upvotes: number;
+  votes: number;
+  user: CommunityUser;
 }
 
 export interface Pagination {
@@ -1081,10 +1190,12 @@ export interface PreviewTableRow {
 }
 
 export interface SearchSuggestion {
-  index: SearchIndex;
-  prefLabel?: Partial<TextLanguage>;
-  title?: Partial<TextLanguage>;
   id: string;
+  title?: Partial<TextLanguage>;
+  description?: Partial<TextLanguage>;
+  uri?: string;
+  organization?: Organization;
+  searchType: EntityEnum;
 }
 
 export interface Comment {
@@ -1127,3 +1238,36 @@ export interface AiProject {
   modellutvikling?: string;
   klassifisering?: string;
 }
+
+export interface SearchSort {
+  field: string;
+  direction: string;
+}
+
+export interface SearchFilters {
+  id?: string;
+  opendata?: boolean;
+  accessrights?: string;
+  theme?: string;
+  spatial?: string;
+  provenance?: string;
+  losTheme?: string;
+  orgPath?: string;
+  format?: string;
+  relations?: string;
+  lastXDays?: number;
+  uri?: string[];
+  keyword?: string[];
+}
+
+export type SearchQuery = {
+  q?: string | undefined;
+  page?: number | undefined;
+  size?: number | undefined;
+  sortfield?: string | undefined;
+} & SearchFilters;
+
+export type AccessRequest = {
+  id: string;
+  requestAddress: string;
+};

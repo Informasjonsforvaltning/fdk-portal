@@ -9,8 +9,6 @@ const List = styled.ul<{ column: boolean }>`
   flex-direction: ${({ column }) => (column ? 'column' : 'row')};
   & > li {
     padding-top: ${({ column }) => (column ? '5px' : '0px')};
-    border-top: ${({ column, theme }) =>
-      column ? `1px solid ${theme.entityColours.light}` : 'none'};
   }
   & > :first-child {
     border-top: 0px;

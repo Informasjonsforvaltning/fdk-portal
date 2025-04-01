@@ -45,7 +45,8 @@ import withKartverket, {
 } from '../../components/with-kartverket';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   ContentSection,
   InlineList,
   KeyValueList,
@@ -53,9 +54,7 @@ import DetailsPage, {
 } from '../../components/details-page';
 import ErrorPage from '../error-page';
 import DatasetDistribution from '../../components/dataset-distribution';
-import RelationList, {
-  ItemWithRelationType
-} from '../../components/relation-list';
+import RelationList from '../../components/relation-list';
 
 import DownloadIcon from '../../images/icon-download-sm.svg';
 import EyeIcon from '../../images/icon-eye.svg';
@@ -65,8 +64,22 @@ import Preview from '../../components/dataset-distribution/components/preview';
 import SC from './styled';
 
 import { Entity } from '../../types/enums';
-import { AccessService, Distribution, MediaTypeOrExtent } from '../../types';
+import {
+  AccessService,
+  DatasetType,
+  Distribution,
+  MediaTypeOrExtent
+} from '../../types';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import {
+  filterRelations,
+  isEuTheme,
+  isLosTheme,
+  parseFormats
+} from '../../utils/common';
 
 interface RouteParams {
   datasetId?: string;
@@ -80,6 +93,7 @@ interface Props
     DataServicesProps,
     KartverketProps,
     PublicServicesProps,
+    ResourceRelationsProps,
     RouteComponentProps<RouteParams> {}
 
 const DatasetDetailsPage: FC<Props> = ({
@@ -89,10 +103,8 @@ const DatasetDetailsPage: FC<Props> = ({
   concepts,
   datasets,
   administrativeUnits,
-  datasetsRelations,
-  publicServicesRelations,
   dataServices,
-  dataServicesRelations,
+  relations,
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
@@ -100,21 +112,14 @@ const DatasetDetailsPage: FC<Props> = ({
     listAdministrativeUnitsRequested: listAdministrativeUnits,
     resetAdministrativeUnits
   },
-  datasetsActions: {
-    getDatasetsRequested: getDatasets,
-    resetDatasets,
-    getDatasetsRelationsRequested: getDatasetsRelations,
-    resetDatasetsRelations
-  },
+  datasetsActions: { getDatasetsRequested: getDatasets, resetDatasets },
   dataServicesActions: {
     getDataServicesRequested: getDataServices,
-    resetDataServices,
-    getDataServicesRelationsRequested: getDataServicesRelations,
-    resetDataServicesRelations
+    resetDataServices
   },
-  publicServicesActions: {
-    getPublicServicesRelationsRequested: getPublicServicesRelations,
-    resetPublicServicesRelations
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   match: {
     params: { datasetId }
@@ -140,23 +145,21 @@ const DatasetDetailsPage: FC<Props> = ({
       resetAdministrativeUnits();
       resetDatasets();
       resetDataServices();
-      resetDatasetsRelations();
-      resetDataServicesRelations();
-      resetPublicServicesRelations();
+      resetResourceRelations();
     };
   }, [datasetId, getDataset]);
 
   useEffect(() => {
     if (isMounted) {
-      const conceptIdentifiers =
+      const conceptURIs =
         dataset?.subject
-          ?.map(({ identifier, uri }) => identifier || uri)
+          ?.map(({ identifier, uri }) => uri || identifier)
           .filter(Boolean) ?? [];
 
-      if (conceptIdentifiers.length > 0) {
+      if (conceptURIs.length > 0) {
         getConcepts({
-          identifiers: conceptIdentifiers as string[],
-          size: 1000
+          uri: conceptURIs as string[],
+          size: conceptURIs.length
         });
       }
 
@@ -165,19 +168,17 @@ const DatasetDetailsPage: FC<Props> = ({
           source?.uri ? [...accumulator, source.uri] : accumulator,
         [] as string[]
       );
-      if (datasetUris && datasetUris.length > 0) {
-        getDatasets({ uris: datasetUris, size: 1000 });
-      }
 
+      if (datasetUris && datasetUris.length > 0) {
+        getDatasets({ uri: datasetUris, size: datasetUris.length });
+      }
       const spatialUris = dataset?.spatial?.map(({ uri }) => uri) ?? [];
       if (spatialUris.length > 0) {
         listAdministrativeUnits(spatialUris);
       }
 
       if (dataset?.uri) {
-        getDatasetsRelations({ referencesSource: dataset.uri });
-        getDataServicesRelations({ dataseturi: dataset.uri });
-        getPublicServicesRelations({ isDescribedAt: dataset.uri });
+        getRelations({ relations: dataset.uri });
       }
 
       const accessUris =
@@ -185,23 +186,23 @@ const DatasetDetailsPage: FC<Props> = ({
           ?.flatMap(({ accessService }) => accessService?.map(({ uri }) => uri))
           ?.filter((accessUri): accessUri is string => !!accessUri) ?? [];
       if (accessUris.length > 0) {
-        getDataServices({ uris: accessUris });
+        getDataServices({ uri: accessUris, size: accessUris.length });
       }
     }
   }, [dataset?.id, isMounted]);
 
-  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
-    publicServicesRelations.map(relation => ({
-      relation,
-      relationType: translate(translations.sampleData)
-    }));
+  const dataServicesRelations = filterRelations(relations, Entity.DATA_SERVICE);
+  const datasetsRelations = filterRelations(relations, Entity.DATASET);
+  const publicServicesRelations = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE
+  );
 
   const entity = Entity.DATASET;
 
   const theme = {
-    entityColours: (getConfig().themeNap ? themeNAP : themeFDK).extendedColors[
-      entity
-    ]
+    entityColours: (getConfig().isNapProfile ? themeNAP : themeFDK)
+      .extendedColors[entity]
   };
 
   const isAuthoritative = dataset?.provenance?.code === 'NASJONAL';
@@ -215,6 +216,15 @@ const DatasetDetailsPage: FC<Props> = ({
     dataset?.descriptionFormatted ?? dataset?.description
   );
 
+  const datasetType = (
+    dctType: DatasetType | string | undefined
+  ): string | undefined => {
+    if (typeof dctType === 'string' || typeof dctType === 'undefined') {
+      return dctType;
+    }
+    const label = translate(dctType.prefLabel);
+    return label || dctType.uri;
+  };
   const lastPublished = formatDate(
     dateStringToDate(dataset?.harvest?.firstHarvested)
   );
@@ -224,7 +234,7 @@ const DatasetDetailsPage: FC<Props> = ({
     legalBasisForRestriction: dataset?.legalBasisForRestriction ?? [],
     legalBasisForProcessing: dataset?.legalBasisForProcessing ?? [],
     legalBasisForAccess: dataset?.legalBasisForAccess ?? [],
-    type: dataset?.dctType,
+    type: datasetType(dataset?.dctType),
     standards: dataset?.conformsTo ?? [],
     informationModelReferences: dataset?.informationModel ?? [],
     languages: dataset?.language ?? [],
@@ -302,9 +312,7 @@ const DatasetDetailsPage: FC<Props> = ({
     if (!uri) {
       return true;
     }
-    return !referencedConcepts.find(
-      concept => concept.uri === uri || concept.identifier === uri
-    );
+    return !referencedConcepts.find(concept => concept.uri === uri);
   };
 
   const subjectsNotInRefConcepts =
@@ -338,7 +346,6 @@ const DatasetDetailsPage: FC<Props> = ({
         isPublicData={isPublicData}
         isRestrictedData={isRestrictedData}
         isNonPublicData={isNonPublicData}
-        themes={themes}
       >
         {description && (
           <ContentSection
@@ -382,12 +389,8 @@ const DatasetDetailsPage: FC<Props> = ({
                   id,
                   title: dataserviceTitle,
                   uri,
-                  type,
                   description: dataserviceDescription,
-                  fdkFormat,
-                  endpointURL,
-                  endpointDescription,
-                  conformsTo
+                  fdkFormatPrefixed
                 },
                 index
               ) => (
@@ -396,22 +399,20 @@ const DatasetDetailsPage: FC<Props> = ({
                   datasetTitle={title}
                   distribution={{
                     title: dataserviceTitle,
-                    type,
-                    conformsTo,
                     fdkFormat:
-                      (fdkFormat?.filter(
-                        format => format?.code
+                      (parseFormats(fdkFormatPrefixed)?.filter(
+                        format => format?.name
                       ) as MediaTypeOrExtent[]) ?? [],
-                    description: dataserviceDescription,
-                    accessURL: endpointURL
+                    description: dataserviceDescription
                   }}
-                  accessServices={[
-                    {
-                      uri: `${PATHNAME_DATA_SERVICES}/${id}`,
-                      description: dataserviceTitle
-                    }
-                  ]}
-                  endpointDescriptions={endpointDescription}
+                  accessServices={
+                    dataserviceTitle && [
+                      {
+                        uri: `${PATHNAME_DATA_SERVICES}/${id}`,
+                        description: dataserviceTitle
+                      }
+                    ]
+                  }
                 />
               )
             )}
@@ -705,16 +706,19 @@ const DatasetDetailsPage: FC<Props> = ({
           >
             <KeyValueList>
               {referencedConcepts.map(
-                ({ id, prefLabel, definition }, index) =>
+                (
+                  { id, title: conceptTitle, description: conceptDescription },
+                  index
+                ) =>
                   id && (
                     <KeyValueListItem
                       key={`${id}-${index}`}
                       property={
                         <Link to={`${PATHNAME_CONCEPTS}/${id}`} as={RouteLink}>
-                          {translate(prefLabel)}
+                          {translate(conceptTitle)}
                         </Link>
                       }
-                      value={translate(definition?.text)}
+                      value={translate(conceptDescription)}
                     />
                   )
               )}
@@ -795,6 +799,45 @@ const DatasetDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
+        {themes.length > 0 && (
+          <ContentSection id='themes' title={translations.facet.theme}>
+            <InlineList>
+              {themes.map(dataTheme => {
+                if (isLosTheme(dataTheme)) {
+                  const { uri, name, losPaths: [losPath] = [] } = dataTheme;
+                  return (
+                    <Link
+                      key={uri}
+                      to={`${PATHNAME_DATASETS}?losTheme=${losPath}`}
+                      as={RouteLink}
+                    >
+                      {translate(name)}
+                    </Link>
+                  );
+                }
+                if (isEuTheme(dataTheme)) {
+                  const {
+                    title: themeTitle,
+                    label: themeLabel,
+                    code
+                  } = dataTheme;
+                  return (
+                    <Link
+                      key={`euTheme-${dataTheme.code}`}
+                      to={`${PATHNAME_DATASETS}?theme=${code}`}
+                      as={RouteLink}
+                    >
+                      {themeTitle
+                        ? translate(themeTitle)
+                        : translate(themeLabel)}
+                    </Link>
+                  );
+                }
+                return null;
+              })}
+            </InlineList>
+          </ContentSection>
+        )}
         {keywords.length > 0 && (
           <ContentSection
             id='keywords'
@@ -804,9 +847,7 @@ const DatasetDetailsPage: FC<Props> = ({
               {keywords.map((keyword, index) => (
                 <Link
                   key={`${keyword}-${index}`}
-                  to={`${PATHNAME_DATASETS}?keywords=${encodeURIComponent(
-                    keyword
-                  )}`}
+                  to={`${PATHNAME_DATASETS}?q=${encodeURIComponent(keyword)}`}
                   as={RouteLink}
                 >
                   {keyword}
@@ -878,7 +919,7 @@ const DatasetDetailsPage: FC<Props> = ({
             <RelationList
               parentIdentifier={dataset?.uri}
               datasets={datasetsRelations}
-              publicServices={publicServicesRelatedByWithRelationType}
+              publicServices={publicServicesRelations}
             />
           </ContentSection>
         )}
@@ -952,5 +993,6 @@ export default compose(
   withDataServices,
   withPublicServices,
   withKartverket,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(DatasetDetailsPage);

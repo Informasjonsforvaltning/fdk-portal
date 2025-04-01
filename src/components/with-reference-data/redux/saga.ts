@@ -16,6 +16,10 @@ const endpoint = (category: keyof ReferenceData) => {
       return 'los/themes-and-words';
     case 'themes':
       return 'eu/data-themes';
+    case 'audiencetypes':
+      return 'digdir/audience-types';
+    case 'relationshipwithsourcetypes':
+      return 'digdir/relationship-with-source-types';
     default:
       throw Error('Category not implemented');
   }

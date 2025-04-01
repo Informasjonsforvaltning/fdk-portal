@@ -1,57 +1,84 @@
 query GetFancyArticle($id: ID!) {
-  fancyArticle(id: $id) {
-    data {
-      attributes {
-        title
-        subtitle
-        locale
-        localizations {
-          data {
-            attributes {
-              title
-              subtitle
-              locale
-              Content {
-                ... on ComponentBasicParagraph {
-                  __typename
-                  Content
-                }
-                ... on ComponentBasicImage {
-                  __typename
-                  media {
-                    data {
-                      attributes {
-                        alternativeText
-                        url
-                        caption
-                      }
-                    }
-                  }
-                  style
-                }
-              }
-            }
-          }
+  fancyArticle(documentId: $id) {
+    title
+    subtitle
+    locale
+    localizations {
+      title
+      subtitle
+      locale
+      Content {
+        ... on ComponentBasicParagraph {
+          __typename
+          Content
         }
-        Content {
-          ... on ComponentBasicParagraph {
-            __typename
-            Content
+        ... on ComponentBasicImage {
+          __typename
+          media {                
+            alternativeText
+            url
+            caption                 
           }
-          ... on ComponentBasicImage {
-            __typename
-            media {
-              data {
-                attributes {
-                  alternativeText
-                  url
-                  caption
-                }
-              }
-            }
-            style
-          }
+          style
         }
+      }
+    }
+    Content {
+      ... on ComponentBasicParagraph {
+        __typename
+        Content
+      }
+      ... on ComponentBasicImage {
+        __typename
+        media {
+          alternativeText
+          url
+          caption        
+        }
+        style
+      }
+    }
+  }
+}
+
+query GetFancyArticleBySlug($slug: String!) {
+  fancyArticles(filters: { slug: { eq: $slug } }) {
+    title
+    subtitle
+    locale
+    localizations {
+      title
+      subtitle
+      locale
+      Content {
+        ... on ComponentBasicParagraph {
+          __typename
+          Content
+        }
+        ... on ComponentBasicImage {
+          __typename
+          media {
+            alternativeText
+            url
+            caption                
+          }
+          style
+        }
+      }
+    }
+    Content {
+      ... on ComponentBasicParagraph {
+        __typename
+        Content
+      }
+      ... on ComponentBasicImage {
+        __typename
+        media {          
+          alternativeText
+          url
+          caption          
+        }
+        style
       }
     }
   }

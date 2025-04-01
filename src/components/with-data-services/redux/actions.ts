@@ -2,21 +2,14 @@ import {
   GET_DATA_SERVICES_REQUESTED,
   GET_DATA_SERVICES_SUCCEEDED,
   GET_DATA_SERVICES_FAILED,
-  RESET_DATA_SERVICES,
-  GET_DATA_SERVICES_RELATIONS_REQUESTED,
-  GET_DATA_SERVICES_RELATIONS_SUCCEEDED,
-  GET_DATA_SERVICES_RELATIONS_FAILED,
-  RESET_DATA_SERVICES_RELATIONS
+  RESET_DATA_SERVICES
 } from './action-types';
 
-import { DataService } from '../../../types';
+import { SearchObject } from '../../../types';
 
 interface GetDataServicesParams {
-  dataseturi?: string;
   size?: number;
-  endpointDescription?: string[];
-  servesDataset?: string;
-  uris?: string[];
+  uri?: string[];
 }
 
 export function getDataServicesRequested(params: GetDataServicesParams) {
@@ -28,7 +21,7 @@ export function getDataServicesRequested(params: GetDataServicesParams) {
   };
 }
 
-export function getDataServicesSucceeded(dataServices: DataService[]) {
+export function getDataServicesSucceeded(dataServices: SearchObject[]) {
   return {
     type: GET_DATA_SERVICES_SUCCEEDED,
     payload: {
@@ -49,40 +42,5 @@ export function getDataServicesFailed(message: string) {
 export function resetDataServices() {
   return {
     type: RESET_DATA_SERVICES
-  };
-}
-
-export function getDataServicesRelationsRequested(
-  params: GetDataServicesParams
-) {
-  return {
-    type: GET_DATA_SERVICES_RELATIONS_REQUESTED,
-    payload: {
-      params
-    }
-  };
-}
-
-export function getDataServicesRelationsSucceeded(dataServices: DataService[]) {
-  return {
-    type: GET_DATA_SERVICES_RELATIONS_SUCCEEDED,
-    payload: {
-      dataServices
-    }
-  };
-}
-
-export function getDataServicesRelationsFailed(message: string) {
-  return {
-    type: GET_DATA_SERVICES_RELATIONS_FAILED,
-    payload: {
-      message
-    }
-  };
-}
-
-export function resetDataServicesRelations() {
-  return {
-    type: RESET_DATA_SERVICES_RELATIONS
   };
 }

@@ -1,17 +1,15 @@
 import axios from 'axios';
 import get from 'lodash/get';
-import { normalizeAggregations } from '../lib/normalizeAggregations';
 import { getConfig } from '../config';
 
 export const datasetsUrlBase = () =>
   `${getConfig().datasetApi.host}/api/datasets`;
 
-// Filter out NAP data if filterTransportDatasets in conf is true
+// Filter out NAP data if isNapProfile in conf is true
 const transportProfileIfNeeded = () =>
-  getConfig().filterTransportDatasets
+  getConfig().isNapProfile
     ? {
-        accessrights: 'PUBLIC',
-        themeprofile: 'transport'
+        profile: 'TRANSPORT'
       }
     : undefined;
 
@@ -47,6 +45,4 @@ export const extractDatasets = searchResponse =>
 export const extractTotal = searchResponse => get(searchResponse, 'hits.total');
 
 export const extractAggregations = searchResponse =>
-  searchResponse &&
-  searchResponse.aggregations &&
-  normalizeAggregations(searchResponse).aggregations;
+  searchResponse && searchResponse.aggregations;

@@ -288,40 +288,34 @@ const DatasetPage: FC<Props> = ({
       </SC.DatasetLink>
       <SC.Section>
         <SC.Table>
-          <SC.TableHead>
+          <thead>
             <tr>
-              <th>
+              <th scope='col'>
                 <p>{translations.metadataQualityPage.criterion}</p>
+              </th>
+              <th scope='col'>
                 <p>{translations.metadataQualityPage.metadataQuality}</p>
               </th>
             </tr>
-          </SC.TableHead>
+          </thead>
           {datasetScore && (
-            <SC.TableBody>
+            <tbody>
               {datasetScore.dataset.dimensions?.map(dimensionScore => (
                 <Fragment key={dimensionScore.id}>
                   <tr className='section-row'>
-                    <td>
-                      <div>
-                        <SC.DimensionContainer>
-                          <p>
-                            {determineDimensionTranslation(dimensionScore.id)}
-                          </p>
-                          <div
-                            title={determineDimensionDescriptionTranslation(
-                              dimensionScore.id
-                            )}
-                            data-for={`${dimensionScore.id}_tooltip`}
-                          >
-                            <SC.QuestionIcon />
-                          </div>
-                        </SC.DimensionContainer>
-                        <div>
-                          <span>
-                            {calculateRatingPercentage(dimensionScore)}%
-                          </span>
-                        </div>
+                    <SC.DimensionContainer>
+                      <p>{determineDimensionTranslation(dimensionScore.id)}</p>
+                      <div
+                        title={determineDimensionDescriptionTranslation(
+                          dimensionScore.id
+                        )}
+                        data-for={`${dimensionScore.id}_tooltip`}
+                      >
+                        <SC.QuestionIcon />
                       </div>
+                    </SC.DimensionContainer>
+                    <td>
+                      <span>{calculateRatingPercentage(dimensionScore)}%</span>
                     </td>
                   </tr>
                   {dimensionScore.metrics.map(
@@ -330,51 +324,51 @@ const DatasetPage: FC<Props> = ({
                       score: metricScore,
                       max_score: metricMaxScore
                     }) => (
-                      <tr key={metricId}>
-                        <ExpansionPanel
-                          as='td'
-                          id={`expansion-metric-${metricId}`}
-                          expansionIndicator={{
-                            expand: <ExpansionIndicatorDefault />,
-                            collapse: (
-                              <ExpansionIndicatorDefault
-                                isExpanded
-                                aria-expanded='true'
-                                aria-controls={`expansion-metric-${metricId}`}
-                              />
-                            )
-                          }}
-                        >
-                          <ExpansionPanelHead>
-                            <span>
-                              {metricScore > 0 ? (
-                                <SC.CheckIcon />
-                              ) : (
-                                <SC.CrossIcon />
-                              )}
-                            </span>
-                            <p>
-                              {determineMetricTranslation(metricId) ?? metricId}
-                            </p>
-                          </ExpansionPanelHead>
-                          <ExpansionPanelBody>
-                            <SC.MetricDescription>
-                              {determineMetricDescriptionTranslation(metricId)}
-                            </SC.MetricDescription>
-                            <span>
-                              {translations.formatString(
-                                translations.metadataQualityPage.metricMaxScore,
-                                { metricMaxScore }
-                              )}
-                            </span>
-                          </ExpansionPanelBody>
-                        </ExpansionPanel>
-                      </tr>
+                      <ExpansionPanel
+                        key={metricId}
+                        as='tr'
+                        id={`expansion-metric-${metricId}`}
+                        expansionIndicator={{
+                          expand: <ExpansionIndicatorDefault />,
+                          collapse: (
+                            <ExpansionIndicatorDefault
+                              as='td'
+                              isExpanded
+                              aria-expanded='true'
+                              aria-controls={`expansion-metric-${metricId}`}
+                            />
+                          )
+                        }}
+                      >
+                        <ExpansionPanelHead>
+                          <span>
+                            {metricScore > 0 ? (
+                              <SC.CheckIcon />
+                            ) : (
+                              <SC.CrossIcon />
+                            )}
+                          </span>
+                          <p>
+                            {determineMetricTranslation(metricId) ?? metricId}
+                          </p>
+                        </ExpansionPanelHead>
+                        <ExpansionPanelBody>
+                          <SC.MetricDescription>
+                            {determineMetricDescriptionTranslation(metricId)}
+                          </SC.MetricDescription>
+                          <span>
+                            {translations.formatString(
+                              translations.metadataQualityPage.metricMaxScore,
+                              { metricMaxScore }
+                            )}
+                          </span>
+                        </ExpansionPanelBody>
+                      </ExpansionPanel>
                     )
                   )}
                 </Fragment>
               ))}
-            </SC.TableBody>
+            </tbody>
           )}
         </SC.Table>
       </SC.Section>

@@ -20,13 +20,16 @@ import withConcepts from '../../components/with-concepts';
 import type { Props as PublicServicesProps } from '../../components/with-public-services';
 import withPublicServices from '../../components/with-public-services';
 import withErrorBoundary from '../../components/with-error-boundary';
+import withReferenceData, {
+  Props as ReferenceDataProps
+} from '../../components/with-reference-data';
 
-import DetailsPage from '../../components/details-page';
+import { DetailsPage } from '../../components/details-page';
 import ErrorPage from '../error-page';
 
-import type { Theme, Language, TextLanguage } from '../../types';
+import type { Language, TextLanguage, ConceptDefinition } from '../../types';
 import { Entity } from '../../types/enums';
-import RelatedConcepts from './RelatedConcepts';
+import RelatedConcepts from '../../components/details-page/components/RelatedConcepts';
 import ContactPoint from './ContactPoint';
 import Created from './Created';
 import Description from './Description';
@@ -38,6 +41,10 @@ import SubjectAndApplication from './SubjectAndApplication';
 import Range from './Range';
 import Identifier from './Identifier';
 import RelationsList from './RelationsList';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations } from '../../utils/common';
 
 interface RouteParams {
   conceptId: string;
@@ -49,34 +56,25 @@ interface Props
     InformationModelsProps,
     ConceptsProps,
     PublicServicesProps,
+    ResourceRelationsProps,
+    ReferenceDataProps,
     RouteComponentProps<RouteParams> {}
 
 const ConceptDetailsPage: FC<Props> = ({
   concept,
   concepts: conceptReferences,
+  relations,
   isLoadingConcept,
-  datasetsRelations,
-  publicServicesRelations,
-  conceptsRelations,
-  informationModelsRelations,
+  referenceData: {
+    audiencetypes: audienceTypes,
+    relationshipwithsourcetypes: relationshipWithSourceTypes
+  },
+  referenceDataActions: { getReferenceDataRequested: getReferenceData },
   conceptActions: { getConceptRequested: getConcept },
-  conceptsActions: {
-    getConceptsRequested: getConcepts,
-    getConceptsRelationsRequested: getConceptsRelations,
-    resetConcepts,
-    resetConceptsRelations
-  },
-  datasetsActions: {
-    getDatasetsRelationsRequested: getDatasetsRelations,
-    resetDatasetsRelations
-  },
-  informationModelsActions: {
-    getInformationModelsRelationsRequested: getInformationmodelsRelations,
-    resetInformationModelsRelations
-  },
-  publicServicesActions: {
-    getPublicServicesRelationsRequested: getPublicServicesRelations,
-    resetPublicServicesRelations
+  conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   match: {
     params: { conceptId }
@@ -95,6 +93,23 @@ const ConceptDetailsPage: FC<Props> = ({
   const entity = Entity.CONCEPT;
   const theme = { entityColours: themeFDK.extendedColors[entity] };
 
+  if (!audienceTypes) {
+    getReferenceData('audiencetypes');
+  }
+
+  if (!relationshipWithSourceTypes) {
+    getReferenceData('relationshipwithsourcetypes');
+  }
+
+  useEffect(() => {
+    if (concept?.uri) {
+      getRelations({ relations: concept.uri });
+    }
+    return () => {
+      resetResourceRelations();
+    };
+  }, [concept?.uri]);
+
   useEffect(() => {
     if (concept?.id !== conceptId) {
       getConcept(conceptId);
@@ -106,10 +121,7 @@ const ConceptDetailsPage: FC<Props> = ({
       setIsMounted(false);
       setSelectedLanguages([{ code: 'nb' }, { code: 'nn' }, { code: 'en' }]);
       resetConcepts();
-      resetConceptsRelations();
-      resetDatasetsRelations();
-      resetInformationModelsRelations();
-      resetPublicServicesRelations();
+      resetResourceRelations();
     };
   }, [conceptId]);
 
@@ -170,10 +182,10 @@ const ConceptDetailsPage: FC<Props> = ({
   const identifier = concept?.identifier;
   const publisher = concept?.publisher;
   const title = concept?.prefLabel ?? {};
-  const description = concept?.definition?.text;
-  const sourceRelationship = concept?.definition?.sourceRelationship;
-  const sources = concept?.definition?.sources ?? [];
-  const remark = concept?.definition?.remark;
+  const descriptionAsList = concept?.definition ? [concept?.definition] : [];
+  const descriptions: ConceptDefinition[] =
+    concept?.definitions ?? descriptionAsList;
+  const remark = concept?.remark ?? concept?.definition?.remark;
   const altLabels = concept?.altLabel ?? [];
   const hiddenLabels = concept?.hiddenLabel ?? [];
   const example = concept?.example;
@@ -182,8 +194,10 @@ const ConceptDetailsPage: FC<Props> = ({
       ?.map(s => s.label)
       ?.filter((element): element is Partial<TextLanguage> => !!element) ?? [];
   const applications = concept?.application ?? [];
-  const range = translate(concept?.definition?.range?.text);
-  const rangeUri = concept?.definition?.range?.uri;
+  const range =
+    translate(concept?.range?.text) ??
+    translate(concept?.definition?.range?.text);
+  const rangeUri = concept?.range?.uri ?? concept?.definition?.range?.uri;
   const lastPublished = formatDate(
     dateStringToDate(concept?.harvest?.firstHarvested)
   );
@@ -195,7 +209,6 @@ const ConceptDetailsPage: FC<Props> = ({
   );
   const contactPoint = concept?.contactPoint;
 
-  const themes: Theme[] = [];
   const created = concept?.created ?? '';
   const hasRelatedConcepts =
     concept?.associativeRelation ||
@@ -204,11 +217,7 @@ const ConceptDetailsPage: FC<Props> = ({
     concept?.isReplacedBy ||
     concept?.memberOf ||
     concept?.seeAlso;
-  const hasRelationsList =
-    conceptsRelations.length > 0 ||
-    datasetsRelations.length > 0 ||
-    publicServicesRelations.length > 0 ||
-    informationModelsRelations.length > 0;
+  const hasRelationsList = relations.length > 0;
   const hasSubjectAndApplication =
     (subjectLabels.length > 0 && hasFieldSelectedLanguage(subjectLabels)) ||
     hasFieldSelectedLanguage(applications);
@@ -231,16 +240,15 @@ const ConceptDetailsPage: FC<Props> = ({
         isPublicData={false}
         isRestrictedData={false}
         isNonPublicData={false}
-        themes={themes}
         languages={selectedLanguages}
       >
         {created && <Created created={created} />}
-        {description && (
+        {descriptions && descriptions.length > 0 && (
           <Description
-            description={description}
+            descriptions={descriptions}
             selectedLanguages={selectedLanguages}
-            sources={sources}
-            sourceRelationship={sourceRelationship}
+            audienceTypes={audienceTypes}
+            relationshipWithSourceTypes={relationshipWithSourceTypes}
           />
         )}
         {hasValidity && (
@@ -278,22 +286,29 @@ const ConceptDetailsPage: FC<Props> = ({
             concept={concept}
             conceptReferences={conceptReferences}
             getConcepts={getConcepts}
-            getConceptsRelations={getConceptsRelations}
-            getDatasetsRelations={getDatasetsRelations}
-            getInformationmodelsRelations={getInformationmodelsRelations}
-            getPublicServicesRelations={getPublicServicesRelations}
+            getRelations={getRelations}
           />
         )}
-        {hasRelationsList && (
+        {concept && hasRelationsList && (
           <RelationsList
             identifier={concept?.identifier}
-            conceptsRelations={conceptsRelations}
-            datasetsRelations={datasetsRelations}
-            publicServicesRelations={publicServicesRelations}
-            informationModelsRelations={informationModelsRelations}
+            conceptsRelations={filterRelations(
+              relations,
+              Entity.CONCEPT,
+              concept.uri
+            )}
+            datasetsRelations={filterRelations(relations, Entity.DATASET)}
+            publicServicesRelations={filterRelations(
+              relations,
+              Entity.PUBLIC_SERVICE
+            )}
+            informationModelsRelations={filterRelations(
+              relations,
+              Entity.INFORMATION_MODEL
+            )}
           />
         )}
-        {(contactPoint?.email || contactPoint?.telephone) && (
+        {(contactPoint?.email || contactPoint?.hasTelephone) && (
           <ContactPoint contactPoint={contactPoint} />
         )}
       </DetailsPage>
@@ -310,5 +325,7 @@ export default compose<FC>(
   withInformationModels,
   withConcepts,
   withPublicServices,
+  withResourceRelations,
+  withReferenceData,
   withErrorBoundary(ErrorPage)
 )(ConceptDetailsPage);

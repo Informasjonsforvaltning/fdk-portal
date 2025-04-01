@@ -28,13 +28,15 @@ export function fetchCatalogsIfNeededAction() {
 
 const initialState = { isFetching: false, lastFetch: null, items: {} };
 
-export function catalogsReducer(state = initialState, action) {
+export function catalogsReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case CATALOGS_REQUEST: {
       return {
         ...state,
-        isFetching: true,
-        lastFetch: null
+        isFetching: true
       };
     }
     case CATALOGS_SUCCESS: {
@@ -49,7 +51,7 @@ export function catalogsReducer(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        lastFetch: null,
+        lastFetch: Date.now(),
         items: null
       };
     }

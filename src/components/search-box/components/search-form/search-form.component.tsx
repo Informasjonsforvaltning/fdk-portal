@@ -32,6 +32,7 @@ interface Props extends RouteComponentProps, ExternalProps {}
 const SearchForm: FC<PropsWithChildren<Props>> = ({
   history,
   location,
+  placeholder,
   onChange: change,
   onKeyDown,
   onClick
@@ -80,7 +81,7 @@ const SearchForm: FC<PropsWithChildren<Props>> = ({
         aria-label={localization.query.intro}
         autoComplete='off'
         id='searchBox'
-        placeholder={localization.query.intro}
+        placeholder={placeholder}
         type='search'
         value={searchQuery}
         onChange={onChange}

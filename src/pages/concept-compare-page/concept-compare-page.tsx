@@ -1,11 +1,11 @@
 import React, { FC, useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import _ from 'lodash';
-import qs from 'qs';
 import { Helmet } from 'react-helmet';
 
 import LinkExternal from '@fellesdatakatalog/link';
 import CircleMinusIcon from '@fellesdatakatalog/icons/assets/svg/circle-minus-stroke.svg';
+import qs from 'qs';
 
 import localization from '../../lib/localization';
 import { getTranslateText } from '../../lib/translateText';
@@ -13,18 +13,21 @@ import { getTranslateText } from '../../lib/translateText';
 import './concept-compare.scss';
 
 interface Props {
-  fetchConceptsToCompareIfNeeded?: (ids: string[]) => void;
+  fetchFullConceptsToCompareIfNeeded: (ids: string[]) => void;
   removeConcept?: (id: string) => void;
-  conceptsCompare?: Record<string, any>;
+  removeFullConcept?: (id: string) => void;
+  fullConceptsCompare?: Record<string, any>;
 }
 
 const onDeleteConcept = (
   id: string,
   history: any,
   conceptIdsArray: any[],
-  removeConcept: any
+  removeConcept: any,
+  removeFullConcept: any
 ) => {
   removeConcept(id);
+  removeFullConcept(id);
   const filteredConceptIds = conceptIdsArray.filter(item => item !== id);
   history.push(`?compare=${filteredConceptIds}`);
 };
@@ -32,9 +35,9 @@ const onDeleteConcept = (
 const renderTitle = (label: any, items: any, field: any) => (
   <thead className='sticky'>
     <tr>
-      <th>{label}</th>
+      <th scope='col'>{label}</th>
       {Object.keys(items).map((item, index) => (
-        <th key={`row-title-${field}-${index}`}>
+        <th scope='col' key={`row-title-${field}-${index}`}>
           <h3>{getTranslateText(_.get(items[item], field))}</h3>
         </th>
       ))}
@@ -112,8 +115,8 @@ const renderRowUrl = (label: any, items: any, fieldPath: any) =>
 const renderRemoveItem = (
   items: any,
   history: any,
-  conceptIdsArray: any[],
-  removeConcept: any
+  removeConcept: any,
+  removeFullConcept: any
 ) => (
   <tr>
     <td />
@@ -126,8 +129,9 @@ const renderRemoveItem = (
             onDeleteConcept(
               _.get(items, [item, 'id']),
               history,
-              conceptIdsArray,
-              removeConcept
+              Object.keys(items),
+              removeConcept,
+              removeFullConcept
             );
           }}
         >
@@ -141,9 +145,10 @@ const renderRemoveItem = (
 );
 
 export const ConceptComparePage: FC<Props> = ({
-  conceptsCompare,
-  fetchConceptsToCompareIfNeeded,
-  removeConcept
+  fullConceptsCompare,
+  fetchFullConceptsToCompareIfNeeded,
+  removeConcept,
+  removeFullConcept
 }) => {
   const history = useHistory();
   const { search } = useLocation();
@@ -151,12 +156,11 @@ export const ConceptComparePage: FC<Props> = ({
   const searchParameters = qs.parse(search, {
     ignoreQueryPrefix: true
   });
-  const conceptIdsArray = ((searchParameters?.compare ?? '') as string).split(
-    ','
-  );
 
   useEffect(() => {
-    fetchConceptsToCompareIfNeeded?.(conceptIdsArray);
+    fetchFullConceptsToCompareIfNeeded(
+      (searchParameters?.compare as string)?.split(',') || []
+    );
   }, [searchParameters?.compare]);
 
   return (
@@ -171,58 +175,58 @@ export const ConceptComparePage: FC<Props> = ({
                 content={localization.menu.conceptsCompare}
               />
             </Helmet>
-            {conceptsCompare && (
+            {fullConceptsCompare && (
               <>
                 <h1 className='title'>
                   {localization.menu.conceptsCompare} (
-                  {Object.keys(conceptsCompare).length})
+                  {Object.keys(fullConceptsCompare).length})
                 </h1>
 
                 <section className='scrollable'>
                   <table className='table'>
                     {renderTitle(
                       localization.facet.concept,
-                      conceptsCompare,
+                      fullConceptsCompare,
                       'prefLabel'
                     )}
                     <tbody>
                       {renderRow(
                         localization.responsible,
-                        conceptsCompare,
+                        fullConceptsCompare,
                         ['publisher', 'prefLabel'],
                         ['publisher', 'name']
                       )}
                       {renderRow(
                         localization.compare.definition,
-                        conceptsCompare,
+                        fullConceptsCompare,
                         ['definition', 'text']
                       )}
                       {renderRowUrl(
                         localization.compare.source,
-                        conceptsCompare,
+                        fullConceptsCompare,
                         ['definition', 'source']
                       )}
                       {renderRow(
                         localization.compare.subject,
-                        conceptsCompare,
+                        fullConceptsCompare,
                         ['subject']
                       )}
                       {renderRow(
                         localization.compare.altLabel,
-                        conceptsCompare,
+                        fullConceptsCompare,
                         ['altLabel']
                       )}
                       {renderRow(
                         localization.compare.hiddenLabel,
-                        conceptsCompare,
+                        fullConceptsCompare,
                         ['hiddenLabel']
                       )}
 
                       {renderRemoveItem(
-                        conceptsCompare,
+                        fullConceptsCompare,
                         history,
-                        conceptIdsArray,
-                        removeConcept
+                        removeConcept,
+                        removeFullConcept
                       )}
                     </tbody>
                   </table>

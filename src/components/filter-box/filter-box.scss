@@ -3,7 +3,7 @@
 .fdk-panel--filter,
 .fdk-filter-tree {
   @include themify($themes) {
-    background-color: themed('color-neutral-lighter');
+    background-color: white;
   }
   margin-bottom: 0.5em;
   border-radius: 5px;
@@ -42,6 +42,7 @@
   .fdk-panel__content {
     font-size: 1.5rem;
     padding: 0.5em 1.5em;
+    padding-bottom: 1.5rem;
 
     .fdk-items-list {
       .fdk-toggleList {
@@ -58,7 +59,7 @@
       }
 
       .checkbox_label {
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
         word-break: break-word;
       }
 

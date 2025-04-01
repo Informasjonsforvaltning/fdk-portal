@@ -4,11 +4,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import * as actions from './redux/actions';
 
-import { Concept } from '../../types';
+import { SearchObject } from '../../types';
 
 export interface Props {
-  concepts: Concept[];
-  conceptsRelations: Concept[];
+  concepts: SearchObject[];
   conceptsActions: typeof actions;
 }
 
@@ -16,8 +15,7 @@ const withConcepts = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    concepts: state.ConceptsReducer.get('concepts').toJS(),
-    conceptsRelations: state.ConceptsReducer.get('conceptsRelations').toJS()
+    concepts: state.ConceptsReducer.get('concepts').toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

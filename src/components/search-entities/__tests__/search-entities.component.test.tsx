@@ -8,7 +8,7 @@ import { shallow } from 'enzyme';
 import { Expectation } from '../../../../test/utils';
 import response from './mock-entities-response.json';
 import SearchEntities from '../search-entities.component';
-import { extractEntities } from '../../../api/search-fulltext-api/all-entities';
+import { extractEntities } from '../../../api/search-api/all-entities';
 
 afterEach(cleanup);
 

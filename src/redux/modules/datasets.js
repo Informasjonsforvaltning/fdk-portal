@@ -6,9 +6,9 @@ import {
   extractDatasetAggregations,
   searchDatasets,
   extractDatasets,
-  extractDatasetsTotal,
-  paramsToSearchBody
-} from '../../api/search-fulltext-api/datasets';
+  extractDatasetsTotal
+} from '../../api/search-api/datasets';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 export const DATASETS_REQUEST = 'DATASETS_REQUEST';
 export const DATASETS_SUCCESS = 'DATASETS_SUCCESS';
@@ -46,7 +46,8 @@ export function fetchDatasetsIfNeededAction(query) {
 
 const initialState = {};
 
-export function datasetsReducer(state = initialState, action) {
+export function datasetsReducer(state, action) {
+  state = state || initialState;
   switch (action.type) {
     case DATASETS_REQUEST:
       return {
@@ -77,7 +78,7 @@ export function datasetsReducer(state = initialState, action) {
         datasetTotal: null,
         meta: {
           isFetching: false,
-          lastFetch: null, // retry on error
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey,
           error: action.payload
         }

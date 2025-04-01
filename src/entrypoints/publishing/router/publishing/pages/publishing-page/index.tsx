@@ -8,7 +8,7 @@ import env from '../../../../../../env';
 import Translation from '../../../../../../components/translation';
 import {
   useGetServiceMessagesQuery,
-  ServiceMessageEntity,
+  ServiceMessage,
   Enum_Servicemessage_Environment
 } from '../../../../../../api/generated/cms/graphql';
 
@@ -16,9 +16,16 @@ import ServiceMessages from '../../../../../../components/service-messages';
 
 import SC from './styled';
 
-const { FDK_REGISTRATION_BASE_URI, ADMIN_GUI_BASE_URI } = env;
+const { ADMIN_GUI_BASE_URI, CATALOG_PORTAL_BASE_URI } = env;
 
 interface Props extends RouteComponentProps {}
+
+let serviceMessageEnv = Enum_Servicemessage_Environment.Production;
+if (window.location.hostname.match('localhost|staging')) {
+  serviceMessageEnv = Enum_Servicemessage_Environment.Staging;
+} else if (window.location.hostname.match('demo')) {
+  serviceMessageEnv = Enum_Servicemessage_Environment.Demo;
+}
 
 const PublishingPage: FC<Props> = ({ match: { url } }) => {
   const date = new Date();
@@ -34,12 +41,10 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
     variables: {
       today: new Date(now_utc),
       channelPubliseringPortal: true,
-      env: window.location.hostname.match('localhost|staging')
-        ? Enum_Servicemessage_Environment.Staging
-        : Enum_Servicemessage_Environment.Production
+      env: serviceMessageEnv
     }
   });
-  const serviceMessages = data?.serviceMessages?.data as ServiceMessageEntity[];
+  const serviceMessages = data?.serviceMessages as ServiceMessage[];
   return (
     <SC.PublishingPage>
       {serviceMessages?.length > 0 && (
@@ -59,7 +64,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
           <p>
             <Translation id='publishingPage.methodSections.register.description' />
           </p>
-          <a href={FDK_REGISTRATION_BASE_URI}>
+          <a href={CATALOG_PORTAL_BASE_URI}>
             <Translation id='publishingPage.methodSections.register.cta' />
           </a>
           <p>

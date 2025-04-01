@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Colour, Unit, theme as fdkTheme } from '@fellesdatakatalog/theme';
 
-import Link from '@fellesdatakatalog/link';
 import RoundedTagSC from '../../../rounded-tag/styled';
 
 const SearchHit = styled.article`
@@ -13,63 +12,65 @@ const SearchHit = styled.article`
   overflow: hidden;
 `;
 
-const PublisherLink = styled(Link)``;
-
 const Description = styled.div`
+  padding: 0.5em;
   & a {
     color: ${({ theme: t }) => t.dark};
     text-decoration: underline;
   }
 `;
 
-const OpenData = styled.div`
+const OpenData = styled.li`
   display: flex;
-  margin-bottom: 1em;
+  white-space: nowrap;
+  margin-bottom: 0.04em;
   svg {
     width: 20px;
     margin-right: 0.5em;
     path {
-      fill: #fff !important;
+      color: black !important;
     }
   }
 
   ${RoundedTagSC.RoundedTagWithLink} {
     text-decoration: none;
-    background-color: ${({ theme: t }) => t.dark};
-    color: #fff !important;
+    background-color: var(--fds-semantic-surface-success-subtle);
+    color: black !important;
   }
 `;
 
-const AccessRight = styled.div`
+const AccessRight = styled.li`
   display: flex;
+  white-space: nowrap;
   margin-bottom: 1em;
   svg {
     width: 20px;
     margin-right: 0.5em;
     path {
-      fill: ${({ theme: t }) => t.dark} !important;
+      color: black !important;
     }
   }
 
   ${RoundedTagSC.RoundedTagWithLink} {
     text-decoration: none;
-    background-color: ${({ theme: t }) => t.light};
-    color: ${({ theme: t }) => t.dark};
+    background-color: var(--fds-semantic-surface-warning-default);
+    color: black !important;
   }
 `;
 
-const Theme = styled.div`
+const Theme = styled.li`
   display: flex;
   margin-bottom: 1em;
   flex-wrap: wrap;
 
   ${RoundedTagSC.RoundedTagWithLink} {
     text-decoration: none;
-    background-color: ${({ theme: t }) => t.lighter};
-    color: ${({ theme: t }) => t.dark} !important;
+    background-color: ${({ theme }) => theme.extendedColors.neutralLightest};
+    color: ${({ theme }) => theme.extendedColors.neutralDarker} !important;
     margin-right: 0.5em;
     margin-bottom: 0.5em;
     padding: 0 0.6em;
+    border: solid 1px ${({ theme }) => theme.extendedColors.neutralLighter};
   }
 `;
 
@@ -88,17 +89,17 @@ const Event = styled.div`
   }
 `;
 
-const Format = styled.div`
+const Format = styled.li`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1em;
 
   & > a {
     text-decoration: none;
-    color: ${({ theme: t }) => t.dark} !important;
+    color: ${({ theme }) => theme.extendedColors.neutralDarker} !important;
 
     border: 1px solid;
-    border-color: ${({ theme: t }) => t.dark};
+    border-color: ${({ theme }) => theme.extendedColors.neutralDarker};
     border-radius: 5px;
     font-size: ${fdkTheme.fontSize('FS12', Unit.REM)};
     padding: 0.3em 0.8em;
@@ -107,19 +108,19 @@ const Format = styled.div`
   }
 `;
 
-const Data = styled.div`
+const Data = styled.li`
   margin-bottom: 1em;
 `;
 
-const SearchHitMetaData = styled.div`
+const Tags = styled.ul`
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5em;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1rem;
 `;
 
 export default {
   SearchHit,
-  PublisherLink,
   Description,
   OpenData,
   AccessRight,
@@ -127,5 +128,5 @@ export default {
   Event,
   Format,
   Data,
-  SearchHitMetaData
+  Tags
 };

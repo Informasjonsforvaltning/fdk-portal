@@ -5,23 +5,8 @@ import localization from '../../lib/localization';
 
 import {
   FancyArticle,
-  FancyArticleEntity,
-  useGetFancyArticleQuery
+  useGetFancyArticleBySlugQuery
 } from '../../api/generated/cms/graphql';
-
-import {
-  PATHNAME_ABOUT_CONCEPTS,
-  PATHNAME_ABOUT_DATA_SERVICES,
-  PATHNAME_ABOUT_DATASETS,
-  PATHNAME_ABOUT_INFORMATIONMODELS,
-  PATHNAME_ABOUT_HARVESTING,
-  PATHNAME_ABOUT_REGISTRATION,
-  PATHNAME_TERMS_OF_USE,
-  PATHNAME_PUBLISHING,
-  PATHNAME_GUIDANCE,
-  PATHNAME_GUIDANCE_METADATA,
-  PATHNAME_ABOUT
-} from '../../constants/constants';
 
 import ErrorPage from '../error-page';
 
@@ -42,21 +27,6 @@ export interface Props extends RouteComponentProps {}
 
 const FDK_CMS_BASE_URI = getConfig().cmsV2Api.host;
 
-const articleIds: { [pathname: string]: string } = {
-  [PATHNAME_ABOUT]: '26',
-  [PATHNAME_ABOUT_DATASETS]: '7',
-  [PATHNAME_ABOUT_CONCEPTS]: '6',
-  [PATHNAME_ABOUT_DATA_SERVICES]: '5',
-  [PATHNAME_ABOUT_INFORMATIONMODELS]: '8',
-  [PATHNAME_ABOUT_HARVESTING]: '29',
-  [PATHNAME_ABOUT_REGISTRATION]: '43',
-  [PATHNAME_GUIDANCE]: '23',
-  [PATHNAME_GUIDANCE_METADATA]: '21',
-  [`${PATHNAME_PUBLISHING}${PATHNAME_ABOUT_HARVESTING}`]: '29',
-  [`${PATHNAME_PUBLISHING}${PATHNAME_ABOUT_REGISTRATION}`]: '43',
-  [`${PATHNAME_PUBLISHING}${PATHNAME_TERMS_OF_USE}`]: '12'
-};
-
 const InformationPage: FC<Props> = () => {
   useEffect(() => {
     const appRoot = document.querySelector('#root > div');
@@ -64,39 +34,27 @@ const InformationPage: FC<Props> = () => {
     return () => appRoot?.classList.remove('white-bg');
   });
 
-  Object.entries(articleIds).map((id, i) =>
-    i !== 0
-      ? useGetFancyArticleQuery({
-          variables: {
-            id: articleIds[id[0]]
-          }
-        })
-      : ''
-  );
-
-  const { data, loading, error } = useGetFancyArticleQuery({
+  const { data, loading, error } = useGetFancyArticleBySlugQuery({
     variables: {
-      id: articleIds[location.pathname]
+      slug: location.pathname
     }
   });
+
+  const firstArticle = (data?.fancyArticles as FancyArticle[])?.[0];
 
   const page = () => {
     if (loading) {
       return <Spinner />;
     }
 
-    if (error?.name !== undefined || !data || !data.fancyArticle) {
+    if (error?.name !== undefined || !firstArticle) {
       return <ErrorPage errorCode='404' />;
     }
 
-    const {
-      fancyArticle: { data: fancyArticleEntity }
-    } = data;
-
-    const fancyArticle = getLocalizedAttributes<
-      FancyArticleEntity,
-      FancyArticle
-    >(fancyArticleEntity as FancyArticleEntity, localization.getLanguage());
+    const fancyArticle = getLocalizedAttributes<FancyArticle>(
+      firstArticle,
+      localization.getLanguage()
+    );
 
     return (
       fancyArticle && (
@@ -113,13 +71,13 @@ const InformationPage: FC<Props> = () => {
               (isBasicImage(component) && (
                 <SC.ImageWrapper key={component?.id}>
                   <SC.Image
-                    alt={`${component?.media?.data?.attributes?.alternativeText}`}
-                    src={`${FDK_CMS_BASE_URI}${component?.media?.data?.attributes?.url}`}
+                    alt={`${component?.media?.alternativeText}`}
+                    src={`${FDK_CMS_BASE_URI}${component?.media?.url}`}
                   />
-                  {component?.media?.data?.attributes?.caption && (
+                  {component?.media?.caption && (
                     <SC.ImageText>
                       {localization.informationPage.imageText}
-                      {component?.media?.data?.attributes?.caption}
+                      {component?.media?.caption}
                     </SC.ImageText>
                   )}
                 </SC.ImageWrapper>

@@ -33,7 +33,8 @@ import withKartverket, {
 } from '../../components/with-kartverket';
 import withErrorBoundary from '../../components/with-error-boundary';
 
-import DetailsPage, {
+import {
+  DetailsPage,
   CatalogTypeBox,
   ContentSection,
   InlineList,
@@ -42,11 +43,9 @@ import DetailsPage, {
   KeyValueListItem
 } from '../../components/details-page';
 import ErrorPage from '../error-page';
-import RelationList, {
-  ItemWithRelationType
-} from '../../components/relation-list';
+import RelationList from '../../components/relation-list';
 
-import type { TextLanguage, Theme } from '../../types';
+import type { TextLanguage } from '../../types';
 import { Entity, Vocabulary } from '../../types/enums';
 
 import {
@@ -58,6 +57,11 @@ import {
 } from '../../constants/constants';
 import SC from './styled';
 import Markdown from '../../components/markdown';
+import withResourceRelations, {
+  ResourceRelationsProps
+} from '../../components/with-resource-relations';
+import { filterRelations } from '../../utils/common';
+import localization from '../../lib/localization';
 
 interface RouteParams {
   publicServiceId: string;
@@ -70,6 +74,7 @@ interface Props
     PublicServicesProps,
     EventsProps,
     KartverketProps,
+    ResourceRelationsProps,
     RouteComponentProps<RouteParams> {}
 
 const PublicServiceDetailsPage: FC<Props> = ({
@@ -79,28 +84,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
   datasets,
   publicService,
   publicServices,
-  publicServicesRequiredBy,
-  publicServicesRelatedBy,
-  eventsRelations,
+  relations,
   publicServiceActions: {
     getPublicServiceRequested: getPublicService,
     resetPublicService
   },
   publicServicesActions: {
     getPublicServicesRequested: getPublicServices,
-    resetPublicServices,
-    getPublicServicesRequiredByRequested: getPublicServicesRequiredBy,
-    resetPublicServicesRequiredBy,
-    getPublicServicesRelatedByRequested: getPublicServicesRelatedBy,
-    resetPublicServicesRelatedBy
+    resetPublicServices
   },
   conceptsActions: { getConceptsRequested: getConcepts },
   datasetsActions: { getDatasetsRequested: getDatasets },
-  eventsActions: {
-    getEventsRequested: getEvents,
-    resetEvents,
-    getEventsRelationsRequested: getEventsRelations,
-    resetEventsRelations
+  eventsActions: { getEventsRequested: getEvents, resetEvents },
+  resourceRelationsActions: {
+    getResourceRelationsRequested: getRelations,
+    resetResourceRelations
   },
   administrativeUnits,
   kartverketActions: {
@@ -130,20 +128,11 @@ const PublicServiceDetailsPage: FC<Props> = ({
       setIsMounted(false);
       resetPublicService();
       resetPublicServices();
-      resetPublicServicesRequiredBy();
-      resetPublicServicesRelatedBy();
     };
   }, [publicServiceId]);
-
-  useEffect(() => {
-    if (publicService?.uri) {
-      getPublicServicesRequiredBy({ requiredByServiceUri: publicService.uri });
-      getPublicServicesRelatedBy({ relatedByServiceUri: publicService.uri });
-    }
-  }, [publicService?.uri]);
-
   const title = publicService?.title ?? {};
   const description = translate(publicService?.description);
+  const serviceTypeCodes = publicService?.dctType ?? [];
   const lastPublished = formatDate(
     dateStringToDate(publicService?.harvest?.firstHarvested)
   );
@@ -194,7 +183,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
   ).filter(Boolean);
 
   const conceptsMap = concepts?.reduce(
-    (previous, current) => ({ ...previous, [current.identifier]: current }),
+    (previous, current) => ({ ...previous, [current.uri]: current }),
     {} as Record<string, any>
   );
 
@@ -210,25 +199,31 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (publicServiceIdentifiers.length > 0) {
-      getPublicServices({ publicServiceIdentifiers, size: 1000 });
+      getPublicServices({
+        uri: publicServiceIdentifiers,
+        size: publicServiceIdentifiers.length
+      });
     }
   }, [publicServiceIdentifiers.join()]);
 
   useEffect(() => {
     if (conceptsIdentifiers.length > 0) {
-      getConcepts({ identifiers: conceptsIdentifiers, size: 1000 });
+      getConcepts({
+        uri: conceptsIdentifiers,
+        size: conceptsIdentifiers.length
+      });
     }
   }, [conceptsIdentifiers.join()]);
 
   useEffect(() => {
     if (datasetsUris.length > 0) {
-      getDatasets({ uris: datasetsUris, size: 1000 });
+      getDatasets({ uri: datasetsUris, size: datasetsUris.length });
     }
   }, [datasetsUris.join()]);
 
   useEffect(() => {
     if (isGroupedBy.length > 0) {
-      getEvents({ uris: isGroupedBy });
+      getEvents({ uri: isGroupedBy, size: isGroupedBy.length });
     }
     return () => {
       resetEvents();
@@ -237,13 +232,13 @@ const PublicServiceDetailsPage: FC<Props> = ({
 
   useEffect(() => {
     if (publicService?.uri) {
-      getEventsRelations({ relation: publicService.uri });
+      getRelations({ relations: publicService.uri });
     }
     if (spatial.length > 0) {
       listAdministrativeUnits(spatial);
     }
     return () => {
-      resetEventsRelations();
+      resetResourceRelations();
       resetAdministrativeUnits();
     };
   }, [publicService?.uri]);
@@ -253,23 +248,21 @@ const PublicServiceDetailsPage: FC<Props> = ({
     {} as Record<string, any>
   );
 
-  const eventsRelationsWithRelationType: ItemWithRelationType[] =
-    eventsRelations.map(eventRelation => ({
-      relation: eventRelation,
-      relationType: translations.relatedBy
-    }));
+  const eventRelations = filterRelations(relations, Entity.EVENT);
 
-  const publicServicesRequiredByWithRelationType: ItemWithRelationType[] =
-    publicServicesRequiredBy.map(publicServiceRelation => ({
-      relation: publicServiceRelation,
-      relationType: translations.requiredBy
-    }));
+  const publicServicesRequiredBy = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE,
+    'requires',
+    publicService?.uri
+  );
 
-  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
-    publicServicesRelatedBy.map(publicServiceRelation => ({
-      relation: publicServiceRelation,
-      relationType: translations.relatedBy
-    }));
+  const publicServicesRelatedBy = filterRelations(
+    relations,
+    Entity.PUBLIC_SERVICE,
+    'relation',
+    publicService?.uri
+  );
 
   const getLink = (
     uri: string,
@@ -301,8 +294,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
     );
   };
 
-  const themes: Theme[] = [];
-
   return renderPage ? (
     publicService && (
       <ThemeProvider theme={theme}>
@@ -318,8 +309,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
           isPublicData={false}
           isRestrictedData={false}
           isNonPublicData={false}
-          themes={themes}
-          admsStatus={admsStatus}
         >
           {description && (
             <ContentSection
@@ -330,6 +319,23 @@ const PublicServiceDetailsPage: FC<Props> = ({
               truncate
             >
               <Markdown>{description}</Markdown>
+            </ContentSection>
+          )}
+          {serviceTypeCodes.length > 0 && (
+            <ContentSection
+              id='serviceType'
+              title={
+                publicService.specializedType === 'publicService'
+                  ? translations.detailsPage.sectionTitles.publicService
+                      .mainActivity
+                  : translations.detailsPage.sectionTitles.publicService
+                      .serviceType
+              }
+              truncate
+            >
+              {serviceTypeCodes.map(code =>
+                code.prefLabel ? translate(code.prefLabel) : code.uri
+              )}
             </ContentSection>
           )}
           {produces.length > 0 && (
@@ -392,40 +398,44 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               <List>
                 {requiredServices?.map(({ uri }, index) => (
-                  <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
-                    <span>
-                      {translations.requires}&nbsp;
-                      {publicServicesMap?.[uri] ? (
-                        <Link
-                          as={RouterLink}
-                          to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
-                          key={`${uri}-${index}`}
-                        >
-                          {translate(publicServicesMap[uri].title) ?? uri}
-                        </Link>
-                      ) : (
-                        uri
-                      )}
-                    </span>
-                  </CatalogTypeBox>
+                  <li key={`${uri}-${index}`}>
+                    <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
+                      <span>
+                        {translations.requires}&nbsp;
+                        {publicServicesMap?.[uri] ? (
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
+                            key={`${uri}-${index}`}
+                          >
+                            {translate(publicServicesMap[uri].title) ?? uri}
+                          </Link>
+                        ) : (
+                          uri
+                        )}
+                      </span>
+                    </CatalogTypeBox>
+                  </li>
                 ))}
                 {relation?.map(({ uri }, index) => (
-                  <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
-                    <span>
-                      {translations.isRelatedTo}&nbsp;
-                      {publicServicesMap?.[uri] ? (
-                        <Link
-                          as={RouterLink}
-                          to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
-                          key={`${uri}-${index}`}
-                        >
-                          {translate(publicServicesMap[uri].title) ?? uri}
-                        </Link>
-                      ) : (
-                        uri
-                      )}
-                    </span>
-                  </CatalogTypeBox>
+                  <li key={`${uri}-${index}`}>
+                    <CatalogTypeBox entity={Entity.PUBLIC_SERVICE}>
+                      <span>
+                        {translations.isRelatedTo}&nbsp;
+                        {publicServicesMap?.[uri] ? (
+                          <Link
+                            as={RouterLink}
+                            to={`${PATHNAME_PUBLIC_SERVICES}/${publicServicesMap[uri].id}`}
+                            key={`${uri}-${index}`}
+                          >
+                            {translate(publicServicesMap[uri].title) ?? uri}
+                          </Link>
+                        ) : (
+                          uri
+                        )}
+                      </span>
+                    </CatalogTypeBox>
+                  </li>
                 ))}
               </List>
             </ContentSection>
@@ -439,23 +449,25 @@ const PublicServiceDetailsPage: FC<Props> = ({
               }
             >
               <List>
-                {isGroupedBy?.map(uri =>
+                {isGroupedBy?.map((uri, index) =>
                   eventsMap[uri] ? (
-                    <CatalogTypeBox key={uri} entity={Entity.EVENT}>
-                      <span>
-                        {translations.isGroupedBy}&nbsp;
-                        {eventsMap[uri].id ? (
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_EVENTS}/${eventsMap[uri].id}`}
-                          >
-                            {translate(eventsMap[uri].title ?? uri)}
-                          </Link>
-                        ) : (
-                          uri
-                        )}
-                      </span>
-                    </CatalogTypeBox>
+                    <li key={`${uri}-${index}`}>
+                      <CatalogTypeBox key={uri} entity={Entity.EVENT}>
+                        <span>
+                          {translations.isGroupedBy}&nbsp;
+                          {eventsMap[uri].id ? (
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_EVENTS}/${eventsMap[uri].id}`}
+                            >
+                              {translate(eventsMap[uri].title ?? uri)}
+                            </Link>
+                          ) : (
+                            uri
+                          )}
+                        </span>
+                      </CatalogTypeBox>
+                    </li>
                   ) : null
                 )}
               </List>
@@ -471,25 +483,27 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               <List>
                 {subject?.map(
-                  ({ uri, prefLabel }) =>
+                  ({ uri, prefLabel }, index) =>
                     uri && (
-                      <CatalogTypeBox entity={Entity.CONCEPT}>
-                        {conceptsMap[uri] ? (
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
-                          >
-                            {translate(conceptsMap[uri].prefLabel)}
-                          </Link>
-                        ) : (
-                          translate(prefLabel)
-                        )}
-                        <div>
-                          {conceptsMap[uri]
-                            ? translate(conceptsMap[uri].definition?.text)
-                            : uri}
-                        </div>
-                      </CatalogTypeBox>
+                      <li key={`${uri}-${index}`}>
+                        <CatalogTypeBox entity={Entity.CONCEPT}>
+                          {conceptsMap[uri] ? (
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_CONCEPTS}/${conceptsMap[uri].id}`}
+                            >
+                              {translate(conceptsMap[uri].prefLabel)}
+                            </Link>
+                          ) : (
+                            translate(prefLabel)
+                          )}
+                          <div>
+                            {conceptsMap[uri]
+                              ? translate(conceptsMap[uri].definition?.text)
+                              : uri}
+                          </div>
+                        </CatalogTypeBox>
+                      </li>
                     )
                 )}
               </List>
@@ -588,7 +602,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-
           {holdsRequirement.length > 0 && (
             <ContentSection
               id='holdsRequirement'
@@ -634,7 +647,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-
           {follows.length > 0 && (
             <ContentSection
               id='follows'
@@ -834,7 +846,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                           {translate(name)}
                         </SC.KeyValueListHeader>
                       )}
-
                       {dctType && (
                         <SC.KeyValueListSubHeader>
                           {dctType
@@ -845,7 +856,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
                             .join(', ')}
                         </SC.KeyValueListSubHeader>
                       )}
-
                       <KeyValueList>
                         {hasInputDescription && (
                           <KeyValueListItem
@@ -893,7 +903,6 @@ const PublicServiceDetailsPage: FC<Props> = ({
               )}
             </ContentSection>
           )}
-
           {hasChannel.length > 0 && (
             <ContentSection
               id='channels'
@@ -1196,6 +1205,15 @@ const PublicServiceDetailsPage: FC<Props> = ({
                       .filter(Boolean)}
                   />
                 )}
+                {admsStatus?.prefLabel && (
+                  <KeyValueListItem
+                    property={
+                      localization.detailsPage.sectionTitles.publicService
+                        .status
+                    }
+                    value={translate(admsStatus.prefLabel)}
+                  />
+                )}
               </KeyValueList>
             </ContentSection>
           )}
@@ -1227,7 +1245,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 {keywords.map((keyword, index) => (
                   <Link
                     as={RouterLink}
-                    to={`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}?keywords=${encodeURIComponent(
+                    to={`${PATHNAME_PUBLIC_SERVICES_AND_EVENTS}?q=${encodeURIComponent(
                       keyword ?? ''
                     )}`}
                     key={`${keyword}-${index}`}
@@ -1248,26 +1266,28 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               <List>
                 {datasetsUris?.map(
-                  uri =>
+                  (uri, index) =>
                     uri && (
-                      <CatalogTypeBox entity={Entity.DATASET}>
-                        {datasetsMap[uri] ? (
-                          <Link
-                            as={RouterLink}
-                            to={`${PATHNAME_DATASETS}/${datasetsMap[uri].id}`}
-                          >
-                            {translate(datasetsMap[uri].title)}
-                          </Link>
-                        ) : (
-                          translate(uri)
-                        )}
-                      </CatalogTypeBox>
+                      <li key={`${uri}-${index}`}>
+                        <CatalogTypeBox entity={Entity.DATASET}>
+                          {datasetsMap[uri] ? (
+                            <Link
+                              as={RouterLink}
+                              to={`${PATHNAME_DATASETS}/${datasetsMap[uri].id}`}
+                            >
+                              {translate(datasetsMap[uri].title)}
+                            </Link>
+                          ) : (
+                            translate(uri)
+                          )}
+                        </CatalogTypeBox>
+                      </li>
                     )
                 )}
               </List>
             </ContentSection>
           )}
-          {(eventsRelations.length > 0 ||
+          {(eventRelations.length > 0 ||
             publicServicesRequiredBy.length > 0 ||
             publicServicesRelatedBy.length > 0) && (
             <ContentSection
@@ -1276,10 +1296,10 @@ const PublicServiceDetailsPage: FC<Props> = ({
             >
               <RelationList
                 parentIdentifier={publicService.uri}
-                events={eventsRelationsWithRelationType}
+                events={eventRelations}
                 publicServices={[
-                  ...publicServicesRequiredByWithRelationType,
-                  ...publicServicesRelatedByWithRelationType
+                  ...publicServicesRelatedBy,
+                  ...publicServicesRequiredBy
                 ]}
               />
             </ContentSection>
@@ -1387,5 +1407,6 @@ export default compose(
   withPublicServices,
   withEvents,
   withKartverket,
+  withResourceRelations,
   withErrorBoundary(ErrorPage)
 )(PublicServiceDetailsPage);

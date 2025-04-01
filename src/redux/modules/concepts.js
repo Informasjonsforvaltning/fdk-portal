@@ -4,14 +4,14 @@ import {
   extractConceptAggregations,
   searchConcepts,
   extractConcepts,
-  extractConceptsTotal,
-  paramsToSearchBody
-} from '../../api/search-fulltext-api/concepts';
+  extractConceptsTotal
+} from '../../api/search-api/concepts';
 import {
   informationmodelsSearch,
   extractInformationmodels
 } from '../../api/informationmodels';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 export const CONCEPTS_REQUEST = 'CONCEPTS_REQUEST';
 export const CONCEPTS_SUCCESS = 'CONCEPTS_SUCCESS';
@@ -92,14 +92,16 @@ export function fetchInformationModelReferencesAction(query) {
 
 const initialState = {};
 
-export function conceptReducer(state = initialState, action) {
+export function conceptReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case CONCEPTS_REQUEST:
       return {
         ...state,
         meta: {
           isFetching: true,
-          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };
@@ -123,7 +125,7 @@ export function conceptReducer(state = initialState, action) {
         conceptTotal: null,
         meta: {
           isFetching: false,
-          lastFetch: null, // retry on error
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey,
           error: action.payload
         }
@@ -134,7 +136,6 @@ export function conceptReducer(state = initialState, action) {
         conceptReferences: extractConcepts(action.payload),
         meta: {
           isFetching: true,
-          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };
@@ -154,7 +155,7 @@ export function conceptReducer(state = initialState, action) {
         conceptReferences: extractConcepts(action.payload),
         meta: {
           isFetching: false,
-          lastFetch: null,
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey
         }
       };
@@ -164,7 +165,6 @@ export function conceptReducer(state = initialState, action) {
         informationModelReferences: [],
         meta: {
           isFetching: true,
-          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };
@@ -184,7 +184,7 @@ export function conceptReducer(state = initialState, action) {
         informationModelReferences: [],
         meta: {
           isFetching: false,
-          lastFetch: null,
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey
         }
       };

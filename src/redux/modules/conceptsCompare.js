@@ -2,9 +2,9 @@ import _ from 'lodash';
 import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
 import {
   extractFirstConcept,
-  paramsToSearchBody,
   searchConcepts
-} from '../../api/search-fulltext-api/concepts';
+} from '../../api/search-api/concepts';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 export const CONCEPTSCOMPARE_REQUEST = 'CONCEPTSCOMPARE_REQUEST';
 export const CONCEPTSCOMPARE_SUCCESS = 'CONCEPTSCOMPARE_SUCCESS';
@@ -59,6 +59,7 @@ const initialState = {
   meta: {}
 };
 
+// eslint-disable-next-line default-param-last
 export function conceptsCompareReducer(state = initialState, action) {
   switch (action.type) {
     case CONCEPTSCOMPARE_REQUEST:
@@ -69,7 +70,7 @@ export function conceptsCompareReducer(state = initialState, action) {
         },
         meta: {
           ...state.meta,
-          [action.meta.id]: { isFetching: false, lastFetch: Date.now() }
+          [action.meta.id]: { isFetching: true }
         }
       };
     case CONCEPTSCOMPARE_SUCCESS:
@@ -91,7 +92,7 @@ export function conceptsCompareReducer(state = initialState, action) {
         },
         meta: {
           ...state.meta,
-          [action.meta.id]: { isFetching: false, lastFetch: null }
+          [action.meta.id]: { isFetching: false, lastFetch: Date.now() }
         }
       };
     case ADD_CONCEPT_TO_COMPARE:

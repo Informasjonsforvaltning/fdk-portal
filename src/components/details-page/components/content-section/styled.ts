@@ -28,7 +28,7 @@ const Title = styled.h2`
 
 const Header = styled.div`
   align-items: center;
-  border-bottom: 1px solid ${({ theme: t }) => t.entityColours.light};
+  border-bottom: 1px solid ${({ theme: t }) => t.extendedColors.neutralLight};
   display: flex;
   margin-bottom: ${theme.spacing('S10')};
   padding-bottom: ${theme.spacing('S10')};
@@ -38,7 +38,7 @@ const IconPlaceholder = styled.div`
   border-radius: 50%;
   background-color: ${({ theme: t }) => t.entityColours.light};
   margin-right: ${theme.spacing('S16')};
-  padding: ${theme.spacing('S10', Unit.PX)}; ;
+  padding: ${theme.spacing('S10', Unit.PX)};
 `;
 
 const iconStyle = css`

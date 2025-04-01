@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme as t } from '@fellesdatakatalog/theme';
+import { Colour, theme as t } from '@fellesdatakatalog/theme';
 import HamburgerIconBase from '../../../../images/hamburger-menu-stroke.svg';
 
 import SideMenuBase from '../side-menu';
@@ -10,21 +10,26 @@ const DetailsPage = styled.article`
   flex: 1 0 auto;
 
   a {
-    color: ${({ theme }) => theme.entityColours.dark} !important;
     text-decoration: underline;
   }
 `;
 
+const Heading = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
+
+const HeadingLeft = styled.div`
+  display: flex;
+  align-items: end;
+`;
+
 const SubBanner = styled.div`
   margin: 0;
-  margin-top: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  & > a {
-    color: ${({ theme }) => theme.entityColours.dark} !important;
-  }
 
   ${onMobileView} {
     flex-direction: column;
@@ -36,13 +41,9 @@ const SubBanner = styled.div`
 
 const MetadataQuality = styled.div`
   display: flex;
-  justify-content: flex-end;
   white-space: nowrap;
-  align-items: center;
-
-  & > p {
-    font-size: 2rem;
-  }
+  padding-bottom: 0.3rem;
+  padding-right: 1.5rem;
 
   ${onMobileView} {
     margin-top: 10px;
@@ -53,43 +54,24 @@ const MetadataQuality = styled.div`
   }
 `;
 
-const RatingIcon = styled.div`
-  height: 18px;
-  width: 30px;
-  margin-left: 7px;
-  margin-right: 7px;
-
-  & > svg {
-    background-color: ${({ theme }) => theme.entityColours.lighter};
-    padding: 5px;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    position: relative;
-  }
-
-  ${onMobileView} {
-    width: 20px;
-  }
-`;
-
-const Themes = styled.div`
+const Themes = styled.ul`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 5px;
   margin-right: -10px;
 
-  & > * {
-    padding: 1px 10px;
-    border-radius: 20px;
+  & > li > * {
+    padding: 8px;
+    border-radius: var(--fds-border_radius-small);
     margin-top: 10px;
     margin-right: 10px;
     user-select: none;
     cursor: default;
   }
 
-  & > a {
+  & > li > a {
+    //Tags
     display: inline-flex;
     align-items: center;
     color: ${({ theme }) => theme.entityColours.dark} !important;
@@ -98,24 +80,38 @@ const Themes = styled.div`
     cursor: pointer;
 
     &.open-data {
-      color: white !important;
-      background: ${({ theme }) => theme.entityColours.dark};
-    }
-
-    &.public-data {
-      background: ${({ theme }) => theme.entityColours.light};
+      color: black !important;
+      background: var(--fds-semantic-surface-success-subtle);
 
       & > svg > path {
-        fill: ${({ theme }) => theme.entityColours.dark} !important;
+        fill: black !important;
       }
     }
 
-    &.restricted-data,
-    &.non-public-data {
-      background: white;
+    &.public-data {
+      color: black !important;
+      background: var(--fds-semantic-surface-success-subtle);
 
       & > svg > path {
-        fill: ${({ theme }) => theme.entityColours.dark} !important;
+        fill: black !important;
+      }
+    }
+
+    &.restricted-data {
+      color: black !important;
+      background: var(--fds-semantic-surface-warning-default);
+
+      & > svg > path {
+        fill: black !important;
+      }
+    }
+
+    &.non-public-data {
+      color: black !important;
+      background: var(--fds-semantic-surface-danger-subtle);
+
+      & > svg > path {
+        fill: black !important;
       }
     }
 
@@ -140,6 +136,8 @@ const Themes = styled.div`
     }
   }
 `;
+
+const ThemeItem = styled.li``;
 
 const Page = styled.div`
   display: flex;
@@ -225,16 +223,36 @@ const HamburgerIcon = styled(HamburgerIconBase)`
   margin-right: 0.5em;
 `;
 
+const AccessRequest = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+
+  & button {
+    background-color: ${t.colour(Colour.BLUE, 'B60')};
+  }
+`;
+
+const PublishingDate = styled.p`
+  padding-bottom: 2rem;
+  padding-top: 0.5rem;
+  font-style: italic;
+`;
+
 export default {
   DetailsPage,
   SubBanner,
   MetadataQuality,
   Themes,
+  ThemeItem,
   Page,
   MenuToggle,
   SideMenu,
   SideMenuSmall,
   Content,
-  RatingIcon,
-  HamburgerIcon
+  HamburgerIcon,
+  AccessRequest,
+  PublishingDate,
+  Heading,
+  HeadingLeft
 };

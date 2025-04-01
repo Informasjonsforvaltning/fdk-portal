@@ -5,19 +5,8 @@ import Link from '@fellesdatakatalog/link';
 
 import SC from './styled';
 
-import {
-  dateStringToDate,
-  isDateAfterToday,
-  isDateBeforeToday
-} from '../../lib/date-utils';
 import translations from '../../lib/localization';
 import { getTranslateText as translate } from '../../lib/translateText';
-
-import ConceptIcon from '../../images/icon-catalog-concept-lg.svg';
-import DatasetIcon from '../../images/icon-catalog-dataset-lg.svg';
-import DataServiceIcon from '../../images/icon-catalog-api-lg.svg';
-import InformationModelIcon from '../../images/icon-catalog-infomod-lg.svg';
-import PublicServiceIcon from '../../images/icon-catalog-service-lg.svg';
 
 import {
   PATHNAME_CONCEPTS,
@@ -28,28 +17,18 @@ import {
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 
-import type {
-  Event,
-  Concept,
-  DataService,
-  Dataset,
-  InformationModel,
-  PublicService
-} from '../../types';
-
-export interface ItemWithRelationType {
-  relation: Partial<Event> | Partial<PublicService>;
-  relationType?: string;
-}
+import type { SearchObject } from '../../types';
+import { filterRelations, getRelationType } from '../../utils/common';
+import { Entity } from '../../types/enums';
 
 interface RelationProps {
   parentIdentifier?: string;
-  datasets?: Dataset[];
-  dataServices?: DataService[];
-  concepts?: Concept[];
-  informationModels?: InformationModel[];
-  publicServices?: ItemWithRelationType[];
-  events?: ItemWithRelationType[];
+  datasets?: SearchObject[];
+  dataServices?: SearchObject[];
+  concepts?: SearchObject[];
+  informationModels?: SearchObject[];
+  publicServices?: SearchObject[];
+  events?: SearchObject[];
 }
 
 interface Props extends RelationProps {}
@@ -75,12 +54,6 @@ const renderReferenceString = (
   return null;
 };
 
-const isExpired = (validToIncluding?: string) =>
-  isDateBeforeToday(dateStringToDate(validToIncluding));
-
-const isWillBeValid = (validFromIncluding?: string) =>
-  isDateAfterToday(dateStringToDate(validFromIncluding));
-
 const RelationsList: FC<Props> = ({
   parentIdentifier,
   datasets,
@@ -94,20 +67,20 @@ const RelationsList: FC<Props> = ({
     {datasets && datasets.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <DatasetIcon />
-          </SC.IconBackground>
           <h3>{translations.detailsPage.relationList.subtitle.dataset}</h3>
         </SC.Banner>
 
         <SC.RelationLinks>
-          {datasets.map(({ uri, title, id, references }) =>
+          {datasets.map(({ uri, title, id }) =>
             uri && id && title ? (
               <span>
                 <Link as={RouterLink} to={`${PATHNAME_DATASETS}/${id}`}>
                   {translate(title ?? uri)}
                 </Link>
-                {renderReferenceString(parentIdentifier, references)}
+                {renderReferenceString(
+                  parentIdentifier,
+                  filterRelations(datasets, Entity.DATASET, 'reference', uri)
+                )}
               </span>
             ) : null
           )}
@@ -118,9 +91,6 @@ const RelationsList: FC<Props> = ({
     {dataServices && dataServices.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <DataServiceIcon />
-          </SC.IconBackground>
           <h3>{translations.detailsPage.relationList.subtitle.dataservice}</h3>
         </SC.Banner>
 
@@ -139,31 +109,20 @@ const RelationsList: FC<Props> = ({
     {concepts && concepts.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <ConceptIcon />
-          </SC.IconBackground>
           <h3>{translations.detailsPage.relationList.subtitle.concept}</h3>
         </SC.Banner>
 
         <SC.RelationLinks>
-          {concepts.map(
-            ({ uri, prefLabel, id, validToIncluding, validFromIncluding }) =>
-              uri && id && prefLabel ? (
-                <Link
-                  key={id ?? uri}
-                  as={RouterLink}
-                  to={`${PATHNAME_CONCEPTS}/${id}`}
-                >
-                  {translate(prefLabel ?? uri)}
-                  {isExpired(validToIncluding) && (
-                    <>&nbsp;({translations.validity.expired})</>
-                  )}
-                  {!isExpired(validToIncluding) &&
-                    isWillBeValid(validFromIncluding) && (
-                      <>&nbsp;({translations.validity.willBeValid})</>
-                    )}
-                </Link>
-              ) : null
+          {concepts.map(({ uri, title, id }) =>
+            uri && id && title ? (
+              <Link
+                key={id ?? uri}
+                as={RouterLink}
+                to={`${PATHNAME_CONCEPTS}/${id}`}
+              >
+                {translate(title ?? uri)}
+              </Link>
+            ) : null
           )}
         </SC.RelationLinks>
       </SC.Relation>
@@ -172,9 +131,6 @@ const RelationsList: FC<Props> = ({
     {informationModels && informationModels.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <InformationModelIcon />
-          </SC.IconBackground>
           <h3>
             {translations.detailsPage.relationList.subtitle.informationmodel}
           </h3>
@@ -195,31 +151,21 @@ const RelationsList: FC<Props> = ({
     {publicServices && publicServices.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <PublicServiceIcon />
-          </SC.IconBackground>
           <h3>
             {translations.detailsPage.relationList.subtitle.public_service}
           </h3>
         </SC.Banner>
 
         <SC.RelationLinks>
-          {publicServices.map(
-            ({
-              relation: { id, title, uri },
-              relationType
-            }: ItemWithRelationType) =>
-              uri && id && title ? (
-                <span>
-                  <Link
-                    as={RouterLink}
-                    to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}
-                  >
-                    {translate(title ?? uri)}
-                  </Link>
-                  ({relationType})
-                </span>
-              ) : null
+          {publicServices.map(({ id, title, uri }) =>
+            uri && id && title ? (
+              <span>
+                <Link as={RouterLink} to={`${PATHNAME_PUBLIC_SERVICES}/${id}`}>
+                  {translate(title ?? uri)}
+                </Link>
+                ({getRelationType(uri, publicServices)})
+              </span>
+            ) : null
           )}
         </SC.RelationLinks>
       </SC.Relation>
@@ -228,26 +174,19 @@ const RelationsList: FC<Props> = ({
     {events && events.length > 0 ? (
       <SC.Relation>
         <SC.Banner>
-          <SC.IconBackground>
-            <PublicServiceIcon />
-          </SC.IconBackground>
           <h3>{translations.detailsPage.relationList.subtitle.event}</h3>
         </SC.Banner>
 
         <SC.RelationLinks>
-          {events.map(
-            ({
-              relation: { id, title, uri },
-              relationType
-            }: ItemWithRelationType) =>
-              uri && id && title ? (
-                <span>
-                  <Link as={RouterLink} to={`${PATHNAME_EVENTS}/${id}`}>
-                    {translate(title ?? uri)}
-                  </Link>
-                  ({relationType})
-                </span>
-              ) : null
+          {events.map(({ id, title, uri }) =>
+            uri && id && title ? (
+              <span>
+                <Link as={RouterLink} to={`${PATHNAME_EVENTS}/${id}`}>
+                  {translate(title ?? uri)}
+                </Link>
+                ({getRelationType(uri, publicServices)})
+              </span>
+            ) : null
           )}
         </SC.RelationLinks>
       </SC.Relation>

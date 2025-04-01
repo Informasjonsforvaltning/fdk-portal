@@ -38,9 +38,12 @@ const InformationModelReport: FC<Props> = ({
     newLastWeek = 0,
     organizationCount = 0
   } = {},
-  informationModelsTimeSeries: { timeSeriesData = [] } = {}
+  informationModelsTimeSeries = []
 }) => {
-  timeSeriesData.push([Date.now(), totalObjects]);
+  informationModelsTimeSeries.push([Date.now(), totalObjects]);
+
+  const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
+
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.INFORMATION_MODEL]}>
       <main id='content'>
@@ -93,22 +96,28 @@ const InformationModelReport: FC<Props> = ({
           </div>
         </div>
 
-        <div className='row'>
-          <div className='col-12'>
-            <BoxRegular
-              header={localization.report.growth}
-              subHeader={
-                localization.report.informationModelGrowthFromFirstPublish
-              }
-            >
-              <Line
-                name={localization.informationModelLabel}
-                data={timeSeriesData}
-                lineColor={theme.extendedColors[Entity.INFORMATION_MODEL].dark}
-              />
-            </BoxRegular>
-          </div>
-        </div>
+        {informationModelsTimeSeries?.length > 0 &&
+          informationModelsTimeSeries?.length > 0 &&
+          !hasOrgPath && (
+            <div className='row'>
+              <div className='col-12'>
+                <BoxRegular
+                  header={localization.report.growth}
+                  subHeader={
+                    localization.report.informationModelGrowthFromFirstPublish
+                  }
+                >
+                  <Line
+                    name={localization.informationModelLabel}
+                    data={informationModelsTimeSeries}
+                    lineColor={
+                      theme.extendedColors[Entity.INFORMATION_MODEL].dark
+                    }
+                  />
+                </BoxRegular>
+              </div>
+            </div>
+          )}
       </main>
     </ThemeProvider>
   );

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, Colour } from '@fellesdatakatalog/theme';
+import { theme } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
 import Scroll from 'react-scroll';
 
@@ -21,11 +21,11 @@ const DescriptionField = styled.div`
 `;
 
 const Link = styled(LinkBase)`
-  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
+  color: ${({ theme: t }) => t.extendedColors.neutralDarkest};
 `;
 
 const ScrollLink = styled(Scroll.Link)`
-  color: ${theme.colour(Colour.VIOLET, 'V50')} !important;
+  color: ${({ theme: t }) => t.extendedColors.neutralDarkest};
 `;
 
 export default { ModelDescription, DescriptionField, Link, ScrollLink };

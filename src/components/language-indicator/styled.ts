@@ -11,7 +11,7 @@ const TextLanguageLabel = styled.span<{ $whiteBackground: boolean }>`
       ? fdkTheme.colour(Colour.NEUTRAL, 'N15')
       : theme?.entityColours?.light ?? theme.light};
 
-  color: ${({ theme }) => theme?.entityColours?.dark ?? theme.dark};
+  color: ${({ theme }) => theme.dark};
 `;
 
 const TextLanguageCodesContainer = styled.div<{ $whiteBackground: boolean }>`

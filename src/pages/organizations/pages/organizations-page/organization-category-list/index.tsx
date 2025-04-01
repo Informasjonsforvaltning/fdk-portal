@@ -19,7 +19,7 @@ const OrganizationCategoriesList: FC<Props> = ({
   searchQuery,
   match: { url }
 }) => {
-  const isTransportportal = getConfig().themeNap;
+  const isTransportportal = getConfig().isNapProfile;
 
   const filterInCategoryByOrganizationName = (query: string) =>
     query

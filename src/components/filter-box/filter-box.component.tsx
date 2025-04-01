@@ -11,11 +11,12 @@ import { FilterOption } from '../filter-option/filter-option.component';
 import './filter-box.scss';
 
 import { SelectOption } from '../../types';
+import { getLastWordAfterSlash } from '../../utils/common';
 
 interface Props {
   htmlKey?: number;
   title?: string;
-  filter: Record<string, any>;
+  filter: BucketItem[];
   groupByPrefix?: string[];
   searchable?: boolean;
   onClick: (change: FilterChange) => void;
@@ -97,7 +98,8 @@ export class FilterBox extends React.Component<Props, State> {
       data.reduce((results: Record<string, BucketItem[]>, item) => {
         const group = this._getGroup(item, groupByPrefix);
         const label = item.key.replace(new RegExp(`${group}\\s?`), '');
-        item.label = label || localization.facet.formatType.UNKNOWN;
+        item.label =
+          getLastWordAfterSlash(label) || localization.facet.formatType.UNKNOWN;
         results[group] = results[group] || [];
         results[group].push(item);
         return results;
@@ -130,8 +132,8 @@ export class FilterBox extends React.Component<Props, State> {
         );
       });
 
-    if (filter?.buckets) {
-      return Object.entries(groupByPrefixes(filter.buckets))
+    if (filter) {
+      return Object.entries(groupByPrefixes(filter))
         .filter(
           ([group]) => groupByPrefix.length === 0 || group !== DEFAULT_GROUP
         )
@@ -188,18 +190,22 @@ export class FilterBox extends React.Component<Props, State> {
       capitalizeOption = true
     } = this.props;
 
-    const filterSearchOptions = filter?.buckets
-      ?.map((item: BucketItem) => {
-        const group = this._getGroup(item, groupByPrefix);
-        const label = item.key.replace(new RegExp(`${group}\\s?`), '');
-        return {
-          value: item.key,
-          label: label || localization.facet.formatType.UNKNOWN
-        };
-      })
-      .sort((a: SelectOption, b: SelectOption) =>
-        a.label.localeCompare(b.label)
-      );
+    const filterSearchOptions =
+      filter &&
+      filter
+        .map((item: BucketItem) => {
+          const group = this._getGroup(item, groupByPrefix);
+          const label = item.key.replace(new RegExp(`${group}\\s?`), '');
+          return {
+            value: item.key,
+            label:
+              getLastWordAfterSlash(label) ||
+              localization.facet.formatType.UNKNOWN
+          };
+        })
+        .sort((a: SelectOption, b: SelectOption) =>
+          a.label.localeCompare(b.label)
+        );
 
     const handleOnClick = ({
       target: { value, checked }
@@ -210,7 +216,7 @@ export class FilterBox extends React.Component<Props, State> {
       }
     };
 
-    if (_.get(filter, 'buckets', []).length > 0) {
+    if (filter?.length > 0) {
       return (
         <div className='fdk-panel--filter'>
           <div className='fdk-panel__header'>

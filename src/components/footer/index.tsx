@@ -5,7 +5,7 @@ import { getConfig } from '../../config';
 import TransportPortalFooter from '../transport-portal-footer';
 import localization from '../../lib/localization';
 
-const isTransportPortal = getConfig().themeNap;
+const isTransportPortal = getConfig().isNapProfile;
 
 const Footer = () =>
   isTransportPortal ? (

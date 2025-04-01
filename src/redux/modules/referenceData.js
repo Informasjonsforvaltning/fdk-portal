@@ -45,14 +45,17 @@ const initialState = {
   meta: {}
 };
 
-export function referenceDataReducer(state = initialState, action) {
+export function referenceDataReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case REFERENCEEDATA_REQUEST:
       return {
         items: { ...state.items },
         meta: {
           ...state.meta,
-          [action.meta.path]: { isFetching: true, lastFetch: null }
+          [action.meta.path]: { isFetching: true }
         }
       };
 
@@ -76,7 +79,7 @@ export function referenceDataReducer(state = initialState, action) {
         },
         meta: {
           ...state.meta,
-          [action.meta.path]: { isFetching: false, lastFetch: null }
+          [action.meta.path]: { isFetching: false, lastFetch: Date.now() }
         }
       };
     }

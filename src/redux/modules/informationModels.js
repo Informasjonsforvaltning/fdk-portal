@@ -5,9 +5,9 @@ import { reduxFsaThunk } from '../../lib/redux-fsa-thunk';
 import {
   extractInformationModels,
   searchInformationModels,
-  paramsToSearchBody,
   extractInformationModelsAggregations
-} from '../../api/search-fulltext-api/informationmodels';
+} from '../../api/search-api/informationmodels';
+import { paramsToSearchBody } from '../../utils/common/index';
 
 export const INFORMATIONMODELS_REQUEST = 'INFORMATIONMODELS_REQUEST';
 export const INFORMATIONMODELS_SUCCESS = 'INFORMATIONMODELS_SUCCESS';
@@ -42,14 +42,16 @@ export function fetchInformationModelsIfNeededAction(query) {
 
 const initialState = {};
 
-export function informationModelsReducer(state = initialState, action) {
+export function informationModelsReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case INFORMATIONMODELS_REQUEST:
       return {
         ...state,
         meta: {
           isFetching: true,
-          lastFetch: null,
           queryKey: action.meta.queryKey
         }
       };
@@ -75,7 +77,7 @@ export function informationModelsReducer(state = initialState, action) {
         informationModelTotal: null,
         meta: {
           isFetching: false,
-          lastFetch: null, // retry on error
+          lastFetch: Date.now(),
           queryKey: action.meta.queryKey,
           error: action.payload
         }

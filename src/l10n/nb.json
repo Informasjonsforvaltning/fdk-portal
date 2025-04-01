@@ -134,15 +134,21 @@
     "norwegian-nn": "Norsk (nynorsk)",
     "english-en": "English"
   },
+  "shortLang": {
+    "nb": "Bokmål",
+    "nn": "Nynorsk",
+    "en": "Engelsk"
+  },
   "menu": {
     "home": "Søk i Felles datakatalog",
     "homeNAP": "Søk i Transportportal.no",
-    "about": "Om Felles datakatalog",
+    "about": "Om Data.norge.no",
     "aboutRegistration": "Hjelp til å registrere",
     "tools": "Verktøy",
     "reports": "Rapporter",
     "sparql": "SPARQL-spørring",
     "community": "Datalandsbyen",
+    "datahunter": "Datajegeren",
     "conceptsCompare": "Sammenlign begrep",
     "aboutNap": "Om Transportportal.no",
     "guidanceMetadata": "Metadata",
@@ -155,7 +161,10 @@
     "searchInFdk": "Søk i Felles datakatalog",
     "publishing": "Publisere",
     "aboutCatalogs": "Om katalogene",
-    "guidance": "Veiledning",
+    "findingData": "Hvordan finne data",
+    "publishingDescriptions": "Hvordan publisere beskrivelser",
+    "sharingData": "Hvordan dele data",
+    "gettingStarted": "Kom i gang",
     "aboutDatasets": "Om datasettkatalogen",
     "aboutDataServices": "Om API-katalogen",
     "aboutConcepts": "Om begrepskatalogen",
@@ -177,13 +186,13 @@
     "requests": "Etterspørsler"
   },
   "query": {
-    "intro": "Eksempel: kollektivtransport",
+    "intro": "Søk etter databeskrivelser",
     "reset": "Nullstill",
     "do": "Søk",
     "clear": "Nullstill alle filter"
   },
   "about": {
-    "about": "Om Felles Datakatalog",
+    "about": "Om Data.norge.no",
     "title": "Om Felles datakatalog",
     "titleSub": "\n",
     "ingress": "Felles datakatalog – data.norge.no er det offentlige nettstedet som gir oversikt over beskrivelser av datasett, begrep, api-er og informasjonsmodeller. Innholdet blir levert av ulike virksomheter, offentlige og private. Det er Digitaliseringsdirektoratet som er ansvarlig for drift og utvikling av nettstedet.",
@@ -200,8 +209,9 @@
   },
   "page": {
     "navigation": "Sidenavigering",
-    "next": "Neste side",
-    "prev": "Forrige side",
+    "navigateTo": "Naviger til side",
+    "next": "Neste",
+    "prev": "Forrige",
     "resultsTab": "Alle",
     "datasetTab": "Datasett",
     "apiTab": "API-er",
@@ -210,14 +220,13 @@
     "serviceTab": "Tjenester og hendelser"
   },
   "hitstats": {
-    "nosearch": "Søk blant {0} datasett, {1} API-er, {2} begreper og {3} informasjonsmodeller",
-    "search": "Søket ga {0} treff i datasett, {1} treff i API-er, {2} treff i begreper og {3} treff i informasjonsmodeller",
     "nosearchNap": "Søk blant {0} datasett",
     "searchNap": "Søket ga {0} treff i datasett",
     "nohits": "Søket ga dessverre ingen treff",
     "nohitsDescription": "Kontroller at du har skrevet riktig, eller prøv med andre søkeord.",
     "nohitsCommunityText": "Du kan også",
-    "nohitsCommunityLink": "etterspørre data i Datalandsbyen"
+    "nohitsCommunityLink": "etterspørre data i Datalandsbyen",
+    "searchHits": "Søket ga {0} treff"
   },
   "facet": {
     "organisation": "Eier",
@@ -231,7 +240,6 @@
     "standard": "Standard",
     "showmore": "Vis flere",
     "showfewer": "Vis færre",
-    "showAll": "Vis alle",
     "publishers": {
       "STAT": "Stat",
       "FYLKE": "Fylke",
@@ -391,7 +399,6 @@
       }
     },
     "sample": {
-      "sampleData": "Eksempeldata",
       "preview": "Se eksempeldata",
       "download": "Last ned eksempeldata"
     },
@@ -652,19 +659,20 @@
   },
   "detailsPage": {
     "banner": {
-      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "lastPublishedInfo": "Publisert i Felles datakatalog {lastPublished}",
       "entity": {
-        "dataset": "Datasettbeskrivelse",
-        "dataservice": "Datatjenestebeskrivelse",
-        "concept": "Begrepsbeskrivelse",
-        "infomod": "Informasjonsmodellbeskrivelse",
-        "publicservice": "Tjenestebeskrivelse",
-        "event": "Hendelsesbeskrivelse"
+        "DATASET": "Datasettbeskrivelse",
+        "DATA_SERVICE": "Datatjenestebeskrivelse",
+        "CONCEPT": "Begrepsbeskrivelse",
+        "INFORMATION_MODEL": "Informasjonsmodellbeskrivelse",
+        "SERVICE": "Tjenestebeskrivelse",
+        "EVENT": "Hendelsesbeskrivelse"
       }
     },
-    "owner": "Eier: {publisher}",
-    "provider": "Tilbyder: {publisher}",
-    "responsible": "Ansvarlig: {publisher}",
+    "requestDataButton": "Be om tilgang",
+    "owner": "Eier:",
+    "provider": "Tilbyder:",
+    "responsible": "Ansvarlig:",
     "openData": "Åpne data",
     "publicData": "Allmenn tilgang",
     "restrictedData": "Betinget tilgang",
@@ -735,6 +743,8 @@
       },
       "publicService": {
         "description": "Beskrivelse",
+        "mainActivity": "Hovedformål",
+        "serviceType": "Type",
         "usage": "Bruk av tjenesten",
         "keywords": "Søkeord",
         "relatedServices": "Relaterte tjenester",
@@ -772,7 +782,8 @@
         "webAddress": "Nettaddresse",
         "competentAuthority": "Kompetent organ",
         "homepage": "Hjemmeside",
-        "spatialCoverage": "Dekningsområde"
+        "spatialCoverage": "Dekningsområde",
+        "status": "Status til tjenesten"
       },
       "event": {
         "description": "Beskrivelse",
@@ -790,12 +801,12 @@
         "event": "Andre ressurser med relasjoner til denne hendelsen"
       },
       "subtitle": {
-        "dataset": "Datasett",
-        "dataservice": "Datatjeneste",
-        "concept": "Begrep",
-        "informationmodel": "Informasjonsmodell",
-        "public_service": "Tjeneste",
-        "event": "Hendelse"
+        "dataset": "Datasett:",
+        "dataservice": "Datatjeneste:",
+        "concept": "Begrep:",
+        "informationmodel": "Informasjonsmodell:",
+        "public_service": "Tjeneste:",
+        "event": "Hendelse:"
       },
       "referenceType": "relasjonstype"
     }
@@ -874,8 +885,8 @@
       "temporalAvailability": "Usage of temporal information would enable users for a timely based facetted search. It is checked whether the property is set or not."
     },
     "metricMaxScore": "Maks score: {metricMaxScore}",
-    "descriptionsTotal": "beskrivelser totalt",
-    "newDescriptions": "nye beskrivelser {0}",
+    "total": "totalt",
+    "newDescriptions": "Nye {0} {1}",
     "lastYear": "siste år",
     "lastMonth": "siste måned",
     "lastWeek": "siste uke",
@@ -884,7 +895,7 @@
     "metadataQualityIsSufficient": "Metadatakvaliteten er tilstrekkelig",
     "metadataQualityIsPoor": "Metadatakvaliteten er dårlig",
     "metaDataMiddle": "middels",
-    "datasetIs": "datasett som er {0}",
+    "datasetIs": "Datasett som er {0}",
     "authoritativeSources": "autoritative kilder",
     "open": "åpne",
     "metadataQualityCatalog": "metadatakvaliteten for datakatalogen er {0}",
@@ -1001,6 +1012,7 @@
     "seeAllBlogArticles": "Se alle bloggartikler",
     "meetingTitle": "Møtetittel: ",
     "seeLatestComments": "Siste kommentarer i",
+    "formerUser": "Tidligere bruker",
     "subtitle": {
       "link": "Datalandsbyen",
       "mention": " innlegg i ",
@@ -1008,20 +1020,20 @@
       "showAllMentions": "Vis alle omtaler i Datalandsbyen",
       "many": "mange",
       "empty": {
-        "dataset": "Dette datasettet er ikke omtalt i ",
-        "dataservice": "Denne datatjenesten er ikke omtalt i ",
-        "concept": "Dette begrepet er ikke omtalt i ",
-        "informationmodel": "Denne informasjonsmodellen er ikke omtalt i ",
-        "public_service": "Denne tjenesten er ikke omtalt i ",
-        "event": "Denne hendelsen er ikke omtalt i "
+        "DATASET": "Dette datasettet er ikke omtalt i ",
+        "DATA_SERVICE": "Denne datatjenesten er ikke omtalt i ",
+        "CONCEPT": "Dette begrepet er ikke omtalt i ",
+        "INFORMATION_MODEL": "Denne informasjonsmodellen er ikke omtalt i ",
+        "SERVICE": "Denne tjenesten er ikke omtalt i ",
+        "EVENT": "Denne hendelsen er ikke omtalt i "
       },
       "content": {
-        "dataset": "Dette datasettet er omtalt i ",
-        "dataservice": "Denne datatjenesten er omtalt i ",
-        "concept": "Dette begrepet er omtalt i ",
-        "informationmodel": "Denne informasjonsmodellen er omtalt i ",
-        "public_service": "Denne tjenesten er omtalt i ",
-        "event": "Denne hendelsen er omtalt i "
+        "DATASET": "Dette datasettet er omtalt i ",
+        "DATA_SERVICE": "Denne datatjenesten er omtalt i ",
+        "CONCEPT": "Dette begrepet er omtalt i ",
+        "INFORMATION_MODEL": "Denne informasjonsmodellen er omtalt i ",
+        "SERVICE": "Denne tjenesten er omtalt i ",
+        "EVENT": "Denne hendelsen er omtalt i "
       }
     },
     "timeago": {
@@ -1050,12 +1062,12 @@
       "sectionTitle": "Har du spørsmål eller kommentarer til {entityType}?",
       "session": "Du er innlogget som ",
       "entityTypes": {
-        "dataset": "datasettet",
-        "dataservice": "datatjenesten",
-        "concept": "begrepet",
-        "informationmodel": "informasjonsmodellen",
-        "public_service": "den offentlige tjenesten",
-        "event": "hendelsen"
+        "DATASET": "datasettet",
+        "DATA_SERVICE": "datatjenesten",
+        "CONCEPT": "begrepet",
+        "INFORMATION_MODEL": "informasjonsmodellen",
+        "SERVICE": "den offentlige tjenesten",
+        "EVENT": "hendelsen"
       },
       "ingress": "Kommentaren blir synlig for andre brukere og besvares her.",
       "noCommunityUser": "Lag en konto på Datalandsbyen for å kommentere",
@@ -1184,13 +1196,13 @@
     "ingress": "Her finner du en oversikt over alle etterspørsler publisert i {lenke}. Du kan abonnere på, stemme opp eller kommentere på etterspørsler.",
     "requests": "Etterspørsler fra Datalandsbyen",
     "votes": "Antall stemmer",
-    "views": "Antall visninger",
+    "comments": "Antall kommentarer",
     "createRequest": "Lag etterspørsel",
     "requestData": "Etterspør data",
     "requestDataInfo": "Ønsker du å etterspørre data, API-er eller annet du kan gjøre det her. Du blir sendt til Datalandsbyen.",
     "newestToOldest": "Nyeste til eldste",
     "mostVotes": "Flest stemmer",
-    "mostViews": "Flest visninger",
+    "mostComments": "Flest kommentarer",
     "sort": "Sortering",
     "search": "Fritekstsøk i titler"
   }

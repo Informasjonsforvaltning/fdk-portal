@@ -35,14 +35,16 @@ export function fetchPublishersIfNeededAction() {
 
 const initialState = { meta: {}, publisherItems: {} };
 
-export function publishersReducer(state = initialState, action) {
+export function publishersReducer(state, action) {
+  if (!state) {
+    state = initialState;
+  }
   switch (action.type) {
     case PUBLISHERS_REQUEST: {
       return {
         ...state,
         meta: {
-          isFetching: true,
-          lastFetch: null
+          isFetching: true
         }
       };
     }
@@ -61,7 +63,7 @@ export function publishersReducer(state = initialState, action) {
         ...state,
         meta: {
           isFetching: false,
-          lastFetch: null
+          lastFetch: Date.now()
         },
         publisherItems: null
       };

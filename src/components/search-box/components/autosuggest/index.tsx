@@ -17,6 +17,7 @@ import { getTranslateText } from '../../../../lib/translateText';
 import SearchForm from '../search-form/search-form.component';
 import type { SearchSuggestion } from '../../../../types';
 import { setSearchText } from '../../../../pages/search-page/search-location-helper';
+import { Entity } from '../../../../types/enums';
 
 const highlightSearchString = (
   searchString: string,
@@ -41,19 +42,19 @@ const highlightSearchString = (
   return <span>{resultString}</span>;
 };
 
-const renderIcon = (index: string) => {
+const renderIcon = (index: Entity) => {
   switch (index) {
-    case 'dataservices':
+    case Entity.DATA_SERVICE:
       return <SC.DataServiceIcon />;
-    case 'informationmodels':
+    case Entity.INFORMATION_MODEL:
       return <SC.InfomodelIcon />;
-    case 'concepts':
+    case Entity.CONCEPT:
       return <SC.ConceptIcon />;
-    case 'events':
+    case Entity.EVENT:
       return <SC.EventIcon />;
-    case 'public_services':
+    case Entity.PUBLIC_SERVICE:
       return <SC.PublicServiceIcon />;
-    case 'datasets':
+    case Entity.DATASET:
     default:
       return <SC.DatasetIcon />;
   }
@@ -78,7 +79,7 @@ const AutosuggestSearchBar: FC<Props> = ({
   location,
   history
 }) => {
-  const isNap = getConfig().filterTransportDatasets;
+  const isNap = getConfig().isNapProfile;
   const [focusedSuggestionIndex, setFocusedSuggestionIndex] = useState(-1);
   const [openSuggestions, setOpenSuggestions] = useState(true);
   const [searchString, setSearchString] = useState('');
@@ -105,9 +106,7 @@ const AutosuggestSearchBar: FC<Props> = ({
   const handleKeyPressed = (e: KeyboardEvent) => {
     const focusedSuggestion = searchSuggestions?.[focusedSuggestionIndex];
     const focusedSuggestionLabel =
-      getTranslateText(
-        focusedSuggestion?.prefLabel ?? focusedSuggestion?.title
-      ) ?? '';
+      getTranslateText(focusedSuggestion?.title) ?? '';
 
     setOpenSuggestions(true);
     switch (e.key) {
@@ -139,8 +138,7 @@ const AutosuggestSearchBar: FC<Props> = ({
 
   const renderSuggestions = (suggestionsList?: SearchSuggestion[]) =>
     suggestionsList?.map((suggestion, index) => {
-      const labelString =
-        getTranslateText(suggestion.prefLabel ?? suggestion.title) ?? '';
+      const labelString = getTranslateText(suggestion.title) ?? '';
       return (
         <SC.Suggestion
           $highlighted={index === focusedSuggestionIndex}
@@ -159,7 +157,7 @@ const AutosuggestSearchBar: FC<Props> = ({
             setSearchText(history, location, labelString);
           }}
         >
-          {!isNap && renderIcon(suggestion.index)}
+          {!isNap && renderIcon(suggestion?.searchType)}
           {highlightSearchString(searchString, labelString)}
         </SC.Suggestion>
       );

@@ -3,10 +3,9 @@ import { Colour, theme } from '@fellesdatakatalog/theme';
 import Link from '@fellesdatakatalog/link';
 
 import ExpansionPanel, { SC } from '@fellesdatakatalog/expansion-panel';
-import { Entity } from '../../../../types/enums';
 
 const DatasetDistribution = styled(ExpansionPanel)`
-  background: ${({ theme: t }) => t.extendedColors[Entity.DATASET].lighter};
+  border: solid ${({ theme: t }) => t.extendedColors.neutralLight} 1px;
   border-radius: 5px;
   overflow: hidden;
 
@@ -26,7 +25,7 @@ const DatasetDistribution = styled(ExpansionPanel)`
       margin-left: 24px;
 
       & > svg > path {
-        stroke: ${({ theme: t }) => t.extendedColors.dataset.dark};
+        stroke: ${({ theme: t }) => t.extendedColors.dataset?.dark};
       }
     }
   }

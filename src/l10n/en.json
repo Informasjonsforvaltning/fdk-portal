@@ -137,12 +137,13 @@
   "menu": {
     "home": "Search in The National Data Catalog",
     "homeNAP": "Search in The National Access Point for Transport Data ",
-    "about": "About",
+    "about": "About Data.norge.no",
     "aboutRegistration": "Register data",
     "tools": "Tools",
     "reports": "Reports",
     "sparql": "SPARQL query",
     "community": "Data Community",
+    "datahunter": "Data hunter",
     "conceptsCompare": "Compare concepts",
     "aboutNap": "About",
     "guidanceMetadata": "Metadata",
@@ -155,7 +156,10 @@
     "searchInFdk": "Search in Felles datakatalog",
     "publishing": "Publish",
     "aboutCatalogs": "About catalogs",
-    "guidance": "Guidance",
+    "findingData": "How to find data",
+    "publishingDescriptions": "How to publish descriptions",
+    "sharingData": "How to share data",
+    "gettingStarted": "Get started",
     "aboutDatasets": "About dataset catalog",
     "aboutDataServices": "About data service catalog",
     "aboutConcepts": "About concept catalog",
@@ -171,7 +175,7 @@
     "transportDeclarationOfCompliance": "Declaration of Compliance"
   },
   "query": {
-    "intro": "Example: public transport",
+    "intro": "Search for data descriptions",
     "reset": "Clear",
     "do": "Search",
     "clear": "Clear all filters"
@@ -194,8 +198,9 @@
   },
   "page": {
     "navigation": "Page navigation",
-    "next": "Next page",
-    "prev": "Previous page",
+    "navigateTo": "Navigate to page",
+    "next": "Next",
+    "prev": "Previous",
     "resultsTab": "All",
     "datasetTab": "Datasets",
     "apiTab": "APIs",
@@ -204,14 +209,13 @@
     "serviceTab": "Services and events"
   },
   "hitstats": {
-    "nosearch": "Search among {0} datasets, {1} APIs, {2} concepts and {3} information models",
-    "search": "Search gave {0} hit(s) among datasets, {1} hit(s) among APIs, {2} hit(s) among concepts {3} hit(s) among information models",
     "nosearchNap": "Search among {0} datasets",
     "searchNap": "Search gave {0} hit(s) among datasets",
     "nohits": "Sorry, no hits",
     "nohitsDescription": "Please check the spelling, or use different keywords.",
     "nohitsCommunityText": "You may also",
-    "nohitsCommunityLink": "request data in our Data Community"
+    "nohitsCommunityLink": "request data in our Data Community",
+    "searchHits": "{0} hits found"
   },
   "facet": {
     "organisation": "Owner",
@@ -225,7 +229,6 @@
     "standard": "Standard",
     "showmore": "Show more",
     "showfewer": "Show fewer",
-    "showAll": "Show all",
     "publishers": {
       "STAT": "Central authority",
       "FYLKE": "County",
@@ -386,7 +389,6 @@
       }
     },
     "sample": {
-      "sampleData": "Sample data",
       "preview": "Preview sample data",
       "download": "Download sample data"
     },
@@ -647,19 +649,20 @@
   },
   "detailsPage": {
     "banner": {
-      "lastPublishedInfo": "{entity} published in Felles datakatalog on {lastPublished}",
+      "lastPublishedInfo": "Published in Felles datakatalog on {lastPublished}",
       "entity": {
-        "dataset": "Dataset description",
-        "dataservice": "Data service description",
-        "concept": "Concept description",
-        "infomod": "Information model description",
-        "publicservice": "Public service description",
-        "event": "Event description"
+        "DATASET": "Dataset description",
+        "DATA_SERVICE": "Data service description",
+        "CONCEPT": "Concept description",
+        "INFORMATION_MODEL": "Information model description",
+        "SERVICE": "Public service description",
+        "EVENT": "Event description"
       }
     },
-    "owner": "Owner: {publisher}",
-    "provider": "Provider: {publisher}",
-    "responsible": "Responsible: {publisher}",
+    "requestDataButton": "Request access",
+    "owner": "Owner:",
+    "provider": "Provider:",
+    "responsible": "Responsible:",
     "openData": "Open data",
     "publicData": "Public data",
     "restrictedData": "Restricted data",
@@ -731,6 +734,8 @@
       },
       "publicService": {
         "description": "Description",
+        "mainActivity": "Main activity",
+        "serviceType": "Type",
         "usage": "Public service usage",
         "keywords": "Keywords",
         "relatedServices": "Related services",
@@ -768,7 +773,8 @@
         "webAddress": "Web address",
         "competentAuthority": "Competent authority",
         "homepage": "Home page",
-        "spatialCoverage": "Spatial coverage"
+        "spatialCoverage": "Spatial coverage",
+        "status": "Status of the service"
       },
       "event": {
         "description": "Description",
@@ -786,12 +792,12 @@
         "event": "Other resources with relations to this event"
       },
       "subtitle": {
-        "dataset": "Dataset",
-        "dataservice": "Data service",
-        "concept": "Concept",
-        "informationmodel": "Information model",
-        "public_service": "Public service",
-        "event": "Event"
+        "dataset": "Dataset:",
+        "dataservice": "Data service:",
+        "concept": "Concept:",
+        "informationmodel": "Information model:",
+        "public_service": "Public service:",
+        "event": "Event:"
       },
       "referenceType": "relation type"
     }
@@ -870,8 +876,8 @@
       "temporalAvailability": "Usage of temporal information would enable users for a timely based facetted search. It is checked whether the property is set or not."
     },
     "metricMaxScore": "Max score: {metricMaxScore}",
-    "descriptionsTotal": "descriptions in total",
-    "newDescriptions": "new descriptions {0}",
+    "total": "total",
+    "newDescriptions": "new {0} {1}",
     "lastYear": "last year",
     "lastMonth": "last month",
     "lastWeek": "last week",
@@ -880,7 +886,7 @@
     "metadataQualityIsSufficient": "The metadata quality is sufficient",
     "metadataQualityIsPoor": "The metadata quality is poor",
     "metaDataMiddle": "middle",
-    "datasetIs": "datasets are {0}",
+    "datasetIs": "Datasets that are {0}",
     "authoritativeSources": "authoritative sources",
     "open": "open",
     "metadataQualityCatalog": "the metadata quality for the data catalog is {0}",
@@ -997,6 +1003,7 @@
     "seeAllComments": "See all comments",
     "seeAllBlogArticles": "Se alle bloggartikler",
     "meetingTitle": "Meeting title: ",
+    "formerUser": "Former user",
     "subtitle": {
       "link": "our data community",
       "showAllMentions": "Show all mentions in Datalandsbyen",
@@ -1004,20 +1011,20 @@
       "mention": " thread in our ",
       "mentionPlural": " threads in our ",
       "empty": {
-        "dataset": "This dataset has no mentions in ",
-        "dataservice": "This data service has no mentions in ",
-        "concept": "This concept has no mentions in ",
-        "informationmodel": "This information model has no mentions in ",
-        "public_service": "This public service has no mentions in ",
-        "event": "This event has no mentions in "
+        "DATASET": "This dataset has no mentions in ",
+        "DATA_SERVICE": "This data service has no mentions in ",
+        "CONCEPT": "This concept has no mentions in ",
+        "INFORMATION_MODEL": "This information model has no mentions in ",
+        "SERVICE": "This public service has no mentions in ",
+        "EVENT": "This event has no mentions in "
       },
       "content": {
-        "dataset": "This dataset is mentioned in ",
-        "dataservice": "This data service is mentioned in ",
-        "concept": "This concept is mentioned in ",
-        "informationmodel": "This information model is mentioned in ",
-        "public_service": "This public service is mentioned in ",
-        "event": "This event is mentioned in "
+        "DATASET": "This dataset is mentioned in ",
+        "DATA_SERVICE": "This data service is mentioned in ",
+        "CONCEPT": "This concept is mentioned in ",
+        "INFORMATION_MODEL": "This information model is mentioned in ",
+        "SERVICE": "This public service is mentioned in ",
+        "EVENT": "This event is mentioned in "
       }
     },
     "timeago": {
@@ -1046,12 +1053,12 @@
       "sectionTitle": "Do you have questions or comments regarding the {entityType}?",
       "session": "You are logged in as ",
       "entityTypes": {
-        "dataset": "dataset",
-        "dataservice": "api",
-        "concept": "concept",
-        "informationmodel": "information model",
-        "public_service": "public service",
-        "event": "event"
+        "DATASET": "dataset",
+        "DATA_SERVICE": "api",
+        "CONCEPT": "concept",
+        "INFORMATION_MODEL": "information model",
+        "SERVICE": "public service",
+        "EVENT": "event"
       },
       "ingress": "The comment will be visible for others and may be answered here.",
       "noCommunityUser": "Create an account on Datalandsbyen to comment",
@@ -1180,13 +1187,13 @@
     "ingress": "Here you will find an overview of all requests published in the {lenke}. You can subscribe to, vote on, or comment on requests.",
     "requests": "Requests from the Data Community",
     "votes": "Number of Votes",
-    "views": "Number of Views",
+    "comments": "Number of Comments",
     "createRequest": "Create request",
     "requestData": "Request data",
     "requestDataInfo": "Do you want to request data, APIs, or anything else you can do it here. You will be redirected to datalandsbyen.no.",
     "newestToOldest": "Newest to Oldest",
     "mostVotes": "Most Votes",
-    "mostViews": "Most Views",
+    "mostComments": "Most Comments",
     "sort": "Sorting",
     "search": "Free text search in titles"
   }

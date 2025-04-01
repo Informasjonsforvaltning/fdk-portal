@@ -1,65 +1,37 @@
 import memoize from 'lodash/memoize';
 import { resolve } from 'react-resolver';
 
-import { searchAllEntities } from '../../api/search-fulltext-api/all-entities';
+import { searchAllEntities } from '../../api/search-api/all-entities';
 import { parseSearchParams } from '../../lib/location-history-helper';
-import { PATHNAME_SEARCH } from '../../constants/constants';
-import { normalizeAggregations } from '../../lib/normalizeAggregations';
+import { paramsToSearchBody } from '../../utils/common';
 
 const memoizedSearchAllEntities = memoize(searchAllEntities);
-
-const parseAvailabilityFilters = (availability: any, filters: any) => {
-  availability.split(',').forEach((item: any) => {
-    switch (item) {
-      case 'isFree':
-        return filters.push({ isFree: 'true' });
-      case 'isOpenAccess':
-        return filters.push({ isOpenAccess: 'true' });
-      case 'isOpenLicense':
-        return filters.push({ isOpenLicense: 'true' });
-      default:
-        return null;
-    }
-  });
-};
 
 const mapProps = {
   searchAllEntities: ({ location }: any) => {
     const {
       q,
       orgPath,
-      losTheme: los,
+      losTheme,
       page = 0,
       sortfield,
-      accessrights: accessRights,
-      availability,
+      accessrights,
       opendata,
       theme
     } = parseSearchParams(location);
 
-    const filters = [];
-    orgPath && filters.push({ orgPath });
-    los && filters.push({ los });
-    accessRights && filters.push({ accessRights });
-    availability && parseAvailabilityFilters(availability, filters);
-    opendata && filters.push({ opendata: 'true' });
-    theme && filters.push({ theme });
+    const searchAllEntitiesSearchBody = paramsToSearchBody({
+      q: q ? `${q}` : undefined,
+      page: page ? Number(page) : undefined,
+      sortfield: sortfield ? `${sortfield}` : undefined,
+      orgPath: orgPath ? `${orgPath}` : undefined,
+      losTheme: losTheme ? `${losTheme}` : undefined,
+      accessrights: accessrights ? `${accessrights}` : undefined,
+      opendata: opendata !== undefined ? opendata === 'true' : undefined,
+      theme: theme ? `${theme}` : undefined
+    });
 
-    const searchAllEntitiesParams =
-      location.pathname === PATHNAME_SEARCH
-        ? {
-            q,
-            ...(filters.length > 0 && { filters }),
-            ...(page && { page: parseInt(page.toString(), 10) }),
-            ...(sortfield && {
-              sorting: { field: sortfield, direction: 'desc' }
-            })
-          }
-        : { q };
-
-    return memoizedSearchAllEntities(searchAllEntitiesParams)
-      .then(response => normalizeAggregations(response))
-      .catch(() => null);
+    return memoizedSearchAllEntities(searchAllEntitiesSearchBody);
   }
 };
 

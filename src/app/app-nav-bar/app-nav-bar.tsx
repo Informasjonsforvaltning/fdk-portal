@@ -28,14 +28,16 @@ import {
   PATHNAME_TRANSPORT_ITS,
   PATHNAME_TRANSPORT_ADD,
   PATHNAME_TRANSPORT_NEWS,
-  PATHNAME_TRANSPORT_COMPLIANCE
+  PATHNAME_TRANSPORT_COMPLIANCE,
+  PATHNAME_DATA_HUNTER,
+  PATHNAME_GETTING_STARTED
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../theme';
 import { getConfig } from '../../config';
 import SC from './styled';
 
-const isTransportportal = getConfig().themeNap;
+const isTransportportal = getConfig().isNapProfile;
 
 const { FDK_COMMUNITY_BASE_URI } = env;
 
@@ -114,34 +116,61 @@ const fdkItems = () => [
       mobileView={false}
       title={localization.menu.about}
     >
+      <SC.ListItem key={localization.menu.gettingStarted}>
+        <Link
+          href={PATHNAME_GETTING_STARTED.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
+          {localization.menu.gettingStarted}
+        </Link>
+      </SC.ListItem>
       <SC.ListItem key={localization.menu.about}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT}>
+        <Link
+          href={PATHNAME_ABOUT.replace(':lang', localization.getLanguage())}
+        >
           {localization.menu.about}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.aboutDatasets}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT_DATASETS}>
+        <Link
+          href={PATHNAME_ABOUT_DATASETS.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
           {localization.menu.aboutDatasets}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.aboutDataServices}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT_DATA_SERVICES}>
+        <Link
+          href={PATHNAME_ABOUT_DATA_SERVICES.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
           {localization.menu.aboutDataServices}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.aboutConcepts}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT_CONCEPTS}>
+        <Link
+          href={PATHNAME_ABOUT_CONCEPTS.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
           {localization.menu.aboutConcepts}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.aboutInformationModels}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT_INFORMATIONMODELS}>
+        <Link
+          href={PATHNAME_ABOUT_INFORMATIONMODELS.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
           {localization.menu.aboutInformationModels}
-        </Link>
-      </SC.ListItem>
-      <SC.ListItem key={localization.menu.guidance}>
-        <Link as={RouteLink} to={PATHNAME_GUIDANCE}>
-          {localization.menu.guidance}
         </Link>
       </SC.ListItem>
     </DropdownMenu>
@@ -173,6 +202,9 @@ const fdkItems = () => [
       </SC.ListItem>
       <SC.ListItem key={localization.menu.requests}>
         <Link href={PATHNAME_REQUESTS}>{localization.menu.requests}</Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.datahunter}>
+        <Link href={PATHNAME_DATA_HUNTER}>{localization.menu.datahunter}</Link>
       </SC.ListItem>
     </DropdownMenu>
   </SC.ListItem>,
@@ -251,28 +283,60 @@ const fdkItemsMobile = () => [
   <SC.ListItem key={localization.menu.about}>
     {localization.menu.about}
     <ul>
+      <SC.ListItem key={localization.menu.gettingStarted}>
+        <Link
+          href={PATHNAME_GETTING_STARTED.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
+          {localization.menu.gettingStarted}
+        </Link>
+      </SC.ListItem>
       <SC.ListItem key={localization.menu.about}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT}>
+        <Link
+          href={PATHNAME_ABOUT.replace(':lang', localization.getLanguage())}
+        >
           {localization.menu.about}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.aboutDatasets}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT_DATASETS}>
+        <Link
+          href={PATHNAME_ABOUT_DATASETS.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
           {localization.menu.aboutDatasets}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.aboutDataServices}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT_DATA_SERVICES}>
+        <Link
+          href={PATHNAME_ABOUT_DATA_SERVICES.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
           {localization.menu.aboutDataServices}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.aboutConcepts}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT_CONCEPTS}>
+        <Link
+          href={PATHNAME_ABOUT_CONCEPTS.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
           {localization.menu.aboutConcepts}
         </Link>
       </SC.ListItem>
       <SC.ListItem key={localization.menu.aboutInformationModels}>
-        <Link as={RouteLink} to={PATHNAME_ABOUT_INFORMATIONMODELS}>
+        <Link
+          href={PATHNAME_ABOUT_INFORMATIONMODELS.replace(
+            ':lang',
+            localization.getLanguage()
+          )}
+        >
           {localization.menu.aboutInformationModels}
         </Link>
       </SC.ListItem>
@@ -303,6 +367,12 @@ const fdkItemsMobile = () => [
       </SC.ListItem>
       <SC.ListItem key={localization.menu.sparql}>
         <Link href={PATHNAME_SPARQL}>{localization.menu.sparql}</Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.requests}>
+        <Link href={PATHNAME_REQUESTS}>{localization.menu.requests}</Link>
+      </SC.ListItem>
+      <SC.ListItem key={localization.menu.datahunter}>
+        <Link href={PATHNAME_DATA_HUNTER}>{localization.menu.datahunter}</Link>
       </SC.ListItem>
     </ul>
   </SC.ListItem>,

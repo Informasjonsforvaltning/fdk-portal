@@ -15,9 +15,9 @@ import CheckSVG from '../../../../images/icon-checked-sm.svg';
 import CrossSVG from '../../../../images/icon-empty-search-sm.svg';
 import QuestionIconSVG from '../../../../images/icon-question-sm.svg';
 
-const isTransportportal = getConfig().themeNap;
+const isTransportportal = getConfig().isNapProfile;
 
-const DatasetPage = styled.article`
+const DatasetPage = styled.main`
   flex: 1 0 auto;
 `;
 
@@ -93,17 +93,11 @@ const BannerRating = styled.div`
     width: 35px;
 
     ${() =>
-      isTransportportal
-        ? css`
-            & > circle:first-of-type {
-              fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
-            }
-          `
-        : css`
-            & > circle:first-of-type {
-              fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
-            }
-          `}
+      css`
+        & > circle:first-of-type {
+          fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+        }
+      `}
   }
 
   & > p {
@@ -140,11 +134,16 @@ const Section = styled.section`
 
 const Table = styled.table`
   width: 100%;
-  border-spacing: 0 5px;
-  border-collapse: separate;
   table-layout: fixed;
 
+  thead {
+    width: 100%;
+  }
+
   tr {
+    margin: ${theme.spacing('S4')} 0;
+    border-radius: ${theme.spacing('S4')};
+    display: flex;
     text-align: left;
     background: ${theme.colour(Colour.NEUTRAL, 'N0')};
     padding: ${theme.spacing('S10')} 0;
@@ -167,12 +166,11 @@ const Table = styled.table`
     }
   }
 
-  th {
-    display: flex;
+  thead > tr {
     justify-content: space-between;
     padding: ${theme.spacing('S12')};
 
-    & > div {
+    & > th {
       position: relative;
       display: flex;
       align-items: center;
@@ -194,6 +192,8 @@ const Table = styled.table`
 
   tbody {
     & > tr {
+      display: flex;
+      flex-direction: column;
       ${() =>
         isTransportportal
           ? css`
@@ -203,19 +203,19 @@ const Table = styled.table`
               color: ${theme.colour(Colour.BLUE, 'B50')};
             `}
 
-      &.section-row > td > div {
-        display: flex;
+      &.section-row {
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         padding: ${theme.spacing('S12')};
         font-weight: ${theme.fontWeight('FW500')};
 
-        & > div {
+        td {
           display: flex;
           align-items: center;
           margin-right: 26px;
 
-          & > svg {
+          svg {
             height: 30px;
             width: 30px;
             min-height: 30px;
@@ -224,7 +224,7 @@ const Table = styled.table`
             margin-right: ${theme.spacing('S8')};
           }
 
-          & > span {
+          span {
             min-width: 40px;
           }
         }
@@ -275,10 +275,6 @@ const Table = styled.table`
     }
   }
 `;
-
-const TableHead = styled.thead``;
-
-const TableBody = styled.tbody``;
 
 const PoorQualityIcon = styled(MetadataQualityPoorSVG)`
   ${() =>
@@ -403,7 +399,7 @@ const QuestionIcon = styled(QuestionIconSVG)`
         `}
 `;
 
-const DimensionContainer = styled.div`
+const DimensionContainer = styled.td`
   display: flex;
 
   div {
@@ -465,8 +461,6 @@ export default {
   AuthoritativeIcon,
   Section,
   Table,
-  TableHead,
-  TableBody,
   PoorQualityIcon,
   SufficientQualityIcon,
   GoodQualityIcon,

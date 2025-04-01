@@ -8,7 +8,6 @@ import env from '../../../env';
 import localization from '../../../lib/localization';
 import { parseSearchParams } from '../../../lib/location-history-helper';
 import { getLosByKeys } from '../../../lib/los/los-helper';
-import { setPage } from '../search-location-helper';
 
 import withOrganizations, {
   Props as OrganizationsProps
@@ -16,9 +15,6 @@ import withOrganizations, {
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../components/with-reference-data';
-import withEventTypes, {
-  Props as EventTypesProps
-} from '../../../components/with-event-types';
 
 import SearchEntities from '../../../components/search-entities/search-entities.component';
 import EmptyHits from '../../../components/empty-hits/empty.component';
@@ -29,27 +25,28 @@ import SortButtons from '../sort-buttons';
 
 import SC from './styled';
 
-import type { Entity as EntityType, Concept, EventType } from '../../../types';
+import type { Concept, LosTheme, SearchObject } from '../../../types';
 import { FeedType } from '../../../types/enums';
 import { PATHNAME_DATASETS } from '../../../constants/constants';
 import Spinner from '../../../components/spinner';
-import { Pagination } from '../../../components/pagination';
+import { LinkPagination } from '../../../components/pagination';
+import { FilterPills } from '../filter-pills/filter-pills.component';
 
-const { SEARCH_API_HOST } = env;
+const { FDK_PORTAL_BASE_URI } = env;
 
 interface ExternalProps {
-  entities: Partial<EntityType>[];
+  entities: Partial<SearchObject>[];
   aggregations?: any;
   page?: any;
   compareConceptList?: Concept[];
-  addConcept?: (concept: Partial<Concept>) => void;
+  addConcept?: (concept: Partial<SearchObject>) => void;
   removeConcept?: (id?: string) => void;
   isLoading: boolean;
+  searchHitCount: number;
 }
 interface Props
   extends ExternalProps,
     OrganizationsProps,
-    EventTypesProps,
     RouteComponentProps<any>,
     ReferenceDataProps {}
 
@@ -66,9 +63,8 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
   organizationsActions: { getOrganizationsCatalogRequested: getOrganizations },
   referenceData: { los, themes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
-  eventTypes,
-  eventTypesActions: { getEventTypesRequested: getEventTypes },
-  isLoading
+  isLoading,
+  searchHitCount
 }) => {
   useEffect(() => {
     if (!los) {
@@ -80,31 +76,34 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
     if (organizations.length === 0) {
       getOrganizations();
     }
-    if (eventTypes.length === 0) {
-      getEventTypes();
-    }
   }, []);
-
-  const eventTypesMap = eventTypes?.reduce(
-    (previous, current) => ({ ...previous, [current.uri]: current }),
-    {} as Record<string, EventType>
-  );
 
   const searchParams = parseSearchParams(location);
   const path = location.pathname;
   const { page: pageSearchParam = 0 } = searchParams;
   const { totalPages } = page;
 
-  const onPageChange = (pageNr: any) => {
-    setPage(history, location, pageNr - 1);
-    window.scrollTo(0, 0);
-  };
-
   return (
     <main id='content'>
       {(entities && entities.length > 0) || isLoading ? (
         <>
-          <SortButtons />
+          <SC.Row>
+            <SC.SearchHitCount>
+              {localization.formatString(
+                localization.hitstats.searchHits,
+                <SC.Bold>{searchHitCount}</SC.Bold>
+              )}
+            </SC.SearchHitCount>
+            <SortButtons />
+          </SC.Row>
+          <FilterPills
+            themesItems={keyBy(themes?.dataThemes, 'code')}
+            publishers={keyBy(organizations, 'orgPath')}
+            losItems={
+              getLosByKeys(los?.losNodes) as Record<string, Partial<LosTheme>>
+            }
+          />
+
           <SC.Content className='row'>
             <SC.Filters className='col-lg-4'>
               <span className='uu-invisible' aria-hidden='false'>
@@ -115,7 +114,6 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 themesItems={keyBy(themes?.dataThemes, 'code')}
                 publishers={keyBy(organizations, 'orgPath')}
                 losItems={getLosByKeys(los?.losNodes)}
-                eventTypes={eventTypesMap}
               />
               <CompareList
                 conceptsCompareList={compareConceptList}
@@ -138,17 +136,18 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                 <span className='uu-invisible' aria-hidden='false'>
                   Sidepaginering.
                 </span>
-                <Pagination
+                <LinkPagination
                   totalPages={totalPages}
-                  currentPage={Number(pageSearchParam) + 1}
-                  onChange={onPageChange}
+                  currentPage={Number(pageSearchParam)}
+                  history={history}
+                  location={location}
                 />
                 {path === PATHNAME_DATASETS && (
                   <SC.FeedLinks>
                     {[FeedType.RSS, FeedType.ATOM].map(type => (
                       <SC.FeedLink
                         key={type}
-                        href={`${SEARCH_API_HOST}/datasets.${type}${location.search}`}
+                        href={`${FDK_PORTAL_BASE_URI}/datasets.${type}${location.search}`}
                       >
                         {localization.feedType[type]}
                         <SC.FeedIcon />
@@ -175,6 +174,5 @@ export default compose<FC<ExternalProps>>(
   memo,
   withOrganizations,
   withReferenceData,
-  withEventTypes,
   withRouter
 )(ResultsPage);

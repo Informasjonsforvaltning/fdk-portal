@@ -6,7 +6,7 @@ import * as actions from './actions';
 import {
   extractEntities,
   getRecentEntities
-} from '../../../api/search-fulltext-api/all-entities';
+} from '../../../api/search-api/all-entities';
 
 function* getEntitiesRequested() {
   try {

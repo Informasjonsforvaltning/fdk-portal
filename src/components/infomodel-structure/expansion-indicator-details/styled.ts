@@ -20,12 +20,12 @@ const ExpandIcon = styled(ExpandIconBase)`
   margin-right: ${theme.spacing('S8')};
 
   & > g {
-    fill: ${theme.colour(Colour.VIOLET, 'V50')};
+    fill: ${({ theme: t }) => t.extendedColors.neutralDarker};
   }
 `;
 
 const IndicatorText = styled.span`
-  color: ${theme.colour(Colour.VIOLET, 'V50')};
+  color: ${({ theme: t }) => t.extendedColors.neutralDarker};
 `;
 
 const IndicatorContainer = styled.button`

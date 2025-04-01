@@ -44,9 +44,12 @@ const ConceptReport: FC<Props> = ({
     organizationCount = 0,
     allReferencedConcepts = []
   } = {},
-  conceptsTimeSeries: { timeSeriesData = [] } = {}
+  conceptsTimeSeries = []
 }) => {
-  timeSeriesData.push([Date.now(), totalObjects]);
+  conceptsTimeSeries.push([Date.now(), totalObjects]);
+
+  const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
+
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.CONCEPT]}>
       <main id='content'>
@@ -97,22 +100,24 @@ const ConceptReport: FC<Props> = ({
           </div>
         </div>
 
-        {timeSeriesData?.length > 0 && timeSeriesData?.length > 0 && (
-          <div className='row'>
-            <div className='col-12'>
-              <BoxRegular
-                header={localization.report.growth}
-                subHeader={localization.report.conceptGrowthFromFirstPublish}
-              >
-                <Line
-                  name={localization.conceptLabel}
-                  data={timeSeriesData}
-                  lineColor={theme.extendedColors[Entity.CONCEPT].dark}
-                />
-              </BoxRegular>
+        {conceptsTimeSeries?.length > 0 &&
+          conceptsTimeSeries?.length > 0 &&
+          !hasOrgPath && (
+            <div className='row'>
+              <div className='col-12'>
+                <BoxRegular
+                  header={localization.report.growth}
+                  subHeader={localization.report.conceptGrowthFromFirstPublish}
+                >
+                  <Line
+                    name={localization.conceptLabel}
+                    data={conceptsTimeSeries}
+                    lineColor={theme.extendedColors[Entity.CONCEPT].dark}
+                  />
+                </BoxRegular>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {allReferencedConcepts?.length > 0 && (
           <div className='row'>

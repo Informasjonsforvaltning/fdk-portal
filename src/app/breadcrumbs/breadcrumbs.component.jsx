@@ -18,10 +18,6 @@ import {
   PATHNAME_EVENTS,
   PATHNAME_REPORTS,
   PATHNAME_SPARQL,
-  PATHNAME_ABOUT_DATASETS,
-  PATHNAME_ABOUT_DATA_SERVICES,
-  PATHNAME_ABOUT_CONCEPTS,
-  PATHNAME_ABOUT_INFORMATIONMODELS,
   PATHNAME_AI,
   PATHNAME_TRANSPORT_GENERAL,
   PATHNAME_TRANSPORT_ITS,
@@ -53,7 +49,7 @@ const routes = [
     path: PATHNAME_MAIN_PAGE,
     breadcrumb: () => (
       <PathNameBreadcrumb
-        pathName={getConfig().themeNap ? 'homeNAP' : 'home'}
+        pathName={getConfig().isNapProfile ? 'homeNAP' : 'home'}
       />
     )
   },
@@ -111,22 +107,6 @@ const routes = [
   {
     path: PATHNAME_SPARQL,
     breadcrumb: () => <SparqlPageBreadcrumb pathName='sparql' />
-  },
-  {
-    path: PATHNAME_ABOUT_DATASETS,
-    breadcrumb: () => <PathNameBreadcrumb pathName='aboutDatasets' />
-  },
-  {
-    path: PATHNAME_ABOUT_DATA_SERVICES,
-    breadcrumb: () => <PathNameBreadcrumb pathName='aboutDataServices' />
-  },
-  {
-    path: PATHNAME_ABOUT_CONCEPTS,
-    breadcrumb: () => <PathNameBreadcrumb pathName='aboutConcepts' />
-  },
-  {
-    path: PATHNAME_ABOUT_INFORMATIONMODELS,
-    breadcrumb: () => <PathNameBreadcrumb pathName='aboutInformationModels' />
   },
   {
     path: PATHNAME_ABOUT_HARVESTING,

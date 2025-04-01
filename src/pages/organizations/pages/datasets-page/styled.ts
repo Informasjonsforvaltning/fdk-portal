@@ -8,7 +8,7 @@ import MetadataQualityGoodSVG from '../../../../images/icon-quality-good-md.svg'
 import MetadataQualitySufficientSVG from '../../../../images/icon-quality-sufficient-md.svg';
 import MetadataQualityPoorSVG from '../../../../images/icon-quality-poor-md.svg';
 
-const isTransportportal = getConfig().themeNap;
+const isTransportportal = getConfig().isNapProfile;
 
 const DatasetsPage = styled.article`
   flex: 1 0 auto;

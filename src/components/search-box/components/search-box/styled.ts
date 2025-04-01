@@ -5,7 +5,7 @@ import SearchBoxHeaderSC from '../search-box-header/styled';
 import SearchBoxBackground from '../../../../img/illustration-search-dark.svg';
 import { getConfig } from '../../../../config';
 
-const isTransportPortal = getConfig().themeNap;
+const isTransportPortal = getConfig().isNapProfile;
 
 const SearchBox = styled.section`
   align-items: center;
