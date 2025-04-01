@@ -921,7 +921,7 @@
     "methodSections": {
       "register": {
         "title": "Register data",
-        "description": "Registration portal gives you access to registering dataset and concept descriptions along with records of processing activities.",
+        "description": "Registration portal gives you access to registering dataset, API, concept and service descriptions.",
         "cta": "Log in to register",
         "question": "Haven't registered in Felles datakatalog before?",
         "link": "Get started with registration"

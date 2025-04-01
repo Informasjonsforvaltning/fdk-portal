@@ -926,7 +926,7 @@
     "methodSections": {
       "register": {
         "title": "Registrere data",
-        "description": "Registreringsløysinga gir deg tilgang til å registrere beskrivingar av datasett, omgrep og behandlingsaktiviteter.",
+        "description": "Registreringsløysinga gir deg tilgang til å registrere beskrivingar av datasett, API, omgrep og teneste.",
         "cta": "Logg inn for å registrere",
         "question": "Ikke registrert i Felles datakatalog før?",
         "link": "Kom i gong med registrering"
