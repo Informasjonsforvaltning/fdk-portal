@@ -101,7 +101,6 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_PUBLIC_SERVICES_AND_EVENTS]: SearchPage,
     [`${PATHNAME_CONCEPTS}${PATHNAME_CONCEPTS_COMPARE}`]:
       ConnectedConceptComparePage,
-    [`${PATHNAME_DATASET_DETAILS}/:datasetId`]: DatasetDetailsPage,
     [`${PATHNAME_CONCEPTS}/:conceptId`]: ConceptDetailsPage,
     [`${PATHNAME_INFORMATIONMODELS}/:informationModelId`]:
       InformationModelDetailsPage,
@@ -136,7 +135,11 @@ export function App({ language, onChangeLanguage }) {
     [PATHNAME_TRANSPORT_ROLES]: TransportPage,
     [PATHNAME_TRANSPORT_NEWS]: TransportPage,
     [PATHNAME_TRANSPORT_ADD]: TransportPage,
-    [PATHNAME_TRANSPORT_COMPLIANCE]: TransportPage
+    [PATHNAME_TRANSPORT_COMPLIANCE]: TransportPage,
+
+    ...(getConfig().isNapProfile
+      ? { [`${PATHNAME_DATASET_DETAILS}/:datasetId`]: DatasetDetailsPage }
+      : {})
   };
 
   return (
