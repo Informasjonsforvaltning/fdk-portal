@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Link from '@fellesdatakatalog/link';
 import SC from './styled';
 import type { Organization, TextLanguage } from '../../../../types';
 import { SearchTypes } from '../../../../types/enums';
@@ -50,9 +51,9 @@ export const SearchHitHead: FC<Props> = ({
         <SC.Header>
           {title && (
             <SC.Title>
-              <a href={`${detailLinks[type]}/${id}`}>
+              <Link href={`${detailLinks[type]}/${id}`}>
                 {getTranslateText(title)}
-              </a>
+              </Link>
             </SC.Title>
           )}
           {isAuthoritative && (
