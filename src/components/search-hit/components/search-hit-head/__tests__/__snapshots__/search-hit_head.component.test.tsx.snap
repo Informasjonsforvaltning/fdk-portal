@@ -7,11 +7,11 @@ exports[`SearchHitHead component should render with properties 1`] = `
   <div>
     <styled.div>
       <styled.h2>
-        <f
-          href="https://staging.fellesdatakatalog.digdir.no/datasets/123"
+        <a
+          href="/datasets/123"
         >
           Test datasett
-        </f>
+        </a>
       </styled.h2>
     </styled.div>
   </div>
