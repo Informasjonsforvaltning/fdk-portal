@@ -19,36 +19,41 @@ const GenericRelations = ({
   <>
     {genericRelations.map(({ divisioncriterion, generalizes, specializes }) => {
       const conceptReferenceUri = generalizes ?? specializes ?? '';
-      return (
-        conceptReferencesMap?.[conceptReferenceUri] && (
-          <KeyValueListItem
-            key={conceptReferencesMap[conceptReferenceUri].id}
-            property={
-              <div>
-                <div>
-                  <span>
-                    {translations.conceptReferences.generic}
-                    .&nbsp;
-                    {generalizes
-                      ? translations.conceptReferences.generalizes
-                      : translations.conceptReferences.specializes}
-                  </span>
-                </div>
-                <div>
-                  <span>{translate(divisioncriterion)}</span>
-                </div>
-              </div>
-            }
-            value={
-              <Link
-                to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[conceptReferenceUri].id}`}
-                as={RouteLink}
-              >
-                {translate(conceptReferencesMap[conceptReferenceUri].title)}
-              </Link>
-            }
-          />
-        )
+      const property = (
+        <div>
+          <div>
+            <span>
+              {translations.conceptReferences.generic}
+              .&nbsp;
+              {generalizes
+                ? translations.conceptReferences.generalizes
+                : translations.conceptReferences.specializes}
+            </span>
+          </div>
+          <div>
+            <span>{translate(divisioncriterion)}</span>
+          </div>
+        </div>
+      );
+      return conceptReferencesMap?.[conceptReferenceUri] ? (
+        <KeyValueListItem
+          key={conceptReferencesMap[conceptReferenceUri].id}
+          property={property}
+          value={
+            <Link
+              to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[conceptReferenceUri].id}`}
+              as={RouteLink}
+            >
+              {translate(conceptReferencesMap[conceptReferenceUri].title)}
+            </Link>
+          }
+        />
+      ) : (
+        <KeyValueListItem
+          key={conceptReferenceUri}
+          property={property}
+          value={conceptReferenceUri}
+        />
       );
     })}
   </>

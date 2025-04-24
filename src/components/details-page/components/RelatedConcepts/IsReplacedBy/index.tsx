@@ -34,7 +34,7 @@ const IsReplacedBy = ({ title, isReplacedBy, conceptReferencesMap }: Props) => (
       ) : (
         <KeyValueListItem
           key={uri}
-          property={translations.conceptReferences.seeAlso}
+          property={translations.conceptReferences.isReplacedBy}
           value={uri}
         />
       )

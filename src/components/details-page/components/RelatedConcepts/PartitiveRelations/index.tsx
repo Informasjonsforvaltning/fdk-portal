@@ -20,36 +20,41 @@ const PartitiveRelations = ({
     {partitiveRelations.map(
       ({ description: partitiveDescription, hasPart, isPartOf }) => {
         const conceptReferenceUri = hasPart ?? isPartOf ?? '';
-        return (
-          conceptReferencesMap?.[conceptReferenceUri] && (
-            <KeyValueListItem
-              key={conceptReferencesMap[conceptReferenceUri].id}
-              property={
-                <div>
-                  <div>
-                    <span>
-                      {translations.conceptReferences.partitive}
-                      .&nbsp;
-                      {isPartOf
-                        ? translations.conceptReferences.isPartOf
-                        : translations.conceptReferences.hasPart}
-                    </span>
-                  </div>
-                  <div>
-                    <span>{translate(partitiveDescription)}</span>
-                  </div>
-                </div>
-              }
-              value={
-                <Link
-                  to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[conceptReferenceUri].id}`}
-                  as={RouteLink}
-                >
-                  {translate(conceptReferencesMap[conceptReferenceUri].title)}
-                </Link>
-              }
-            />
-          )
+        const property = (
+          <div>
+            <div>
+              <span>
+                {translations.conceptReferences.partitive}
+                .&nbsp;
+                {isPartOf
+                  ? translations.conceptReferences.isPartOf
+                  : translations.conceptReferences.hasPart}
+              </span>
+            </div>
+            <div>
+              <span>{translate(partitiveDescription)}</span>
+            </div>
+          </div>
+        );
+        return conceptReferencesMap?.[conceptReferenceUri] ? (
+          <KeyValueListItem
+            key={conceptReferencesMap[conceptReferenceUri].id}
+            property={property}
+            value={
+              <Link
+                to={`${PATHNAME_CONCEPTS}/${conceptReferencesMap[conceptReferenceUri].id}`}
+                as={RouteLink}
+              >
+                {translate(conceptReferencesMap[conceptReferenceUri].title)}
+              </Link>
+            }
+          />
+        ) : (
+          <KeyValueListItem
+            key={conceptReferenceUri}
+            property={property}
+            value={conceptReferenceUri}
+          />
         );
       }
     )}
