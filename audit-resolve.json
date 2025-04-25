@@ -352,6 +352,16 @@
       "decision": "ignore",
       "madeAt": 1724909874928,
       "expiresAt": 1727501853805
+    },
+    "1104031|react-router-dom>react-router": {
+      "decision": "ignore",
+      "madeAt": 1745568239687,
+      "expiresAt": 1748160226083
+    },
+    "1104032|react-router-dom>react-router": {
+      "decision": "ignore",
+      "madeAt": 1745568243470,
+      "expiresAt": 1748160226083
     }
   },
   "rules": {},
