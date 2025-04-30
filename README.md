@@ -1,43 +1,50 @@
-# fdk-portal
+# FDK Portal
 
-Provides query and filtering capabilities for searching a collection of DCAT catalogs, concepts and information-models.
+> ⚠️ **This repository is in maintenance mode.**
+> This codebase is still in use in production but is no longer receiving new features. All development efforts are 
+> being migrated to [fdk-frontend](https://github.com/Informasjonsforvaltning/fdk-frontend). Critical bug fixes will 
+> still be applied until migration is complete.
 
-## Universal design
-The design follows the WCAG 2.0 level A standard for the universal design of websites, see [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
+Web frontend for [data.norge.no](https://data.norge.no/). It includes the main web application and Nginx for reverse 
+proxying. 
 
-## Usage
+For a broader understanding of the system’s context, refer to the [architecture documentation](https://github.com/Informasjonsforvaltning/architecture-documentation) wiki. For more specific
+context on this application, see the [Portal](https://github.com/Informasjonsforvaltning/architecture-documentation/wiki/Architecture-documentation#portal) subsystem section.
 
-### Build
+## Getting started
 
-#### Requirements
-- node
+### Prerequisites
+- [Node.js](https://nodejs.org/en/download/) >=20.11.1
+- [npm](https://www.npmjs.com/get-npm) >=10.8.1
 
+### Running locally (development)
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Informasjonsforvaltning/fdk-portal.git
+cd fdk-portal
 ```
+
+Uncomment lines in the `src/config.js` file to enable the use of the local development environment. The lines are commented out by default to use the staging environment.
+
+Install dependencies:
+
+```bash
 npm install
 ```
-### Run
-```
+
+Start the development server:
+
+```bash
 npm run start
 ```
 
-### Test
+Go to http://localhost:8080
+
+### Run locally using docker compose
+```bash
+docker compose up -d --build
 ```
-% npm run test
-```
 
-## Run locally with a minimal set of dependencies
-```
-% docker-compose up --build
-```
-fdk-portal's external dependencies will in this setting be realized by our staging environment.
-
-
-Open your browser and point it to http://localhost:8080
-
-## Adding new environment variables
-Adding new environment variables can be done by adding them to the `src/config.js` file. The variables should also be added to the:
-- config.template.js to be validated 
-- docker-compose.yml for use in local development
-
-## Optional: Fetch sample data from the staging environment
-Uncomment lines 10 to 26 in the `src/config.js` file
+Go to http://localhost:8080
