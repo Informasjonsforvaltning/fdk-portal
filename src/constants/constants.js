@@ -1,6 +1,6 @@
 import { getConfig } from '../config';
 
-export const PATHNAME_MAIN_PAGE = '/';
+export const PATHNAME_MAIN_PAGE = '/no';
 export const PATHNAME_SEARCH = '/search-all';
 export const PATHNAME_DATASETS = '/datasets';
 export const PATHNAME_DATASET_DETAILS = '/datasets';
