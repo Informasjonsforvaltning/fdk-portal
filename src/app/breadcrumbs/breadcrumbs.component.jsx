@@ -46,7 +46,7 @@ import { getConfig } from '../../config';
 // define some custom breadcrumbs for certain routes (optional)
 const routes = [
   {
-    path: PATHNAME_MAIN_PAGE,
+    path: PATHNAME_MAIN_PAGE.concat('nb'), //`${PATHNAME_MAIN_PAGE}nb`,
     breadcrumb: () => (
       <PathNameBreadcrumb
         pathName={getConfig().isNapProfile ? 'homeNAP' : 'home'}
