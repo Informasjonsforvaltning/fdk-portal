@@ -46,7 +46,7 @@ import { getConfig } from '../../config';
 // define some custom breadcrumbs for certain routes (optional)
 const routes = [
   {
-    path: PATHNAME_MAIN_PAGE, //`${PATHNAME_MAIN_PAGE}nb`,
+    path: PATHNAME_MAIN_PAGE,
     breadcrumb: () => (
       <PathNameBreadcrumb
         pathName={getConfig().isNapProfile ? 'homeNAP' : 'home'}
@@ -189,7 +189,12 @@ function PureBreadcrumbs({ breadcrumbs }) {
               <span key={key}>
                 {index < breadcrumbs.length - 1 && (
                   <>
-                    <NavLink to={match.url === PATHNAME_MAIN_PAGE? `${PATHNAME_MAIN_PAGE}nb`: match.url}>
+                    {console.log('key', key)}
+                    {console.log('URL', match.url)}
+                    {
+                      console.log('New URL', match.url == PATHNAME_MAIN_PAGE? `${PATHNAME_MAIN_PAGE}nb`: match.url)
+                    }
+                    <NavLink to={match.url == PATHNAME_MAIN_PAGE? `${PATHNAME_MAIN_PAGE}nb`: match.url}>
                       {breadcrumb}
                     </NavLink>
                     <ChevronUpIcon className='fdk-path-chevron' />
