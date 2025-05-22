@@ -189,9 +189,7 @@ function PureBreadcrumbs({ breadcrumbs }) {
               <span key={key}>
                 {index < breadcrumbs.length - 1 && (
                   <>
-                    <Link href={match.url}>
-                      {breadcrumb}
-                    </Link>
+                    <Link href={match.url}>{breadcrumb}</Link>
                     <ChevronUpIcon className='fdk-path-chevron' />
                   </>
                 )}
