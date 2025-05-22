@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from '@fellesdatakatalog/link';
 import withBreadcrumbs from 'react-router-breadcrumbs-hoc';
 
 import ChevronUpIcon from '@fellesdatakatalog/icons/assets/svg/chevron-up-stroke.svg';
@@ -42,7 +42,6 @@ import PublicServiceBreadcrumb from './public-service-breadcrumb';
 import EventBreadcrumb from './event-breadcrumb';
 import SparqlPageBreadcrumb from './sparql-page-breadcrumb';
 import { getConfig } from '../../config';
-import localization from "../../lib/localization";
 
 // define some custom breadcrumbs for certain routes (optional)
 const routes = [
@@ -190,13 +189,7 @@ function PureBreadcrumbs({ breadcrumbs }) {
               <span key={key}>
                 {index < breadcrumbs.length - 1 && (
                   <>
-                    {console.log('key', key)}
-                    {console.log('URL', match.url)}
-                    {
-                      console.log('New URL', match.url == PATHNAME_MAIN_PAGE? `${PATHNAME_MAIN_PAGE}${localization.getLanguage()}`: match.url)
-                    }
-                    <Link to={match.url == PATHNAME_MAIN_PAGE?
-                      `${PATHNAME_MAIN_PAGE}${localization.getLanguage()}`: match.url}>
+                    <Link href={match.url}>
                       {breadcrumb}
                     </Link>
                     <ChevronUpIcon className='fdk-path-chevron' />
