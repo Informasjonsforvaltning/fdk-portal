@@ -1,5 +1,5 @@
 import React, { memo, FC } from 'react';
-import { NavLink as RouteLink } from 'react-router-dom';
+import RouteLink from '@fellesdatakatalog/link';
 
 import SC from './styled';
 

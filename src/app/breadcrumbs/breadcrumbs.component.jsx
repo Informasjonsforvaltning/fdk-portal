@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import Link from '@fellesdatakatalog/link';
 import withBreadcrumbs from 'react-router-breadcrumbs-hoc';
 
 import ChevronUpIcon from '@fellesdatakatalog/icons/assets/svg/chevron-up-stroke.svg';
@@ -189,7 +189,7 @@ function PureBreadcrumbs({ breadcrumbs }) {
               <span key={key}>
                 {index < breadcrumbs.length - 1 && (
                   <>
-                    <NavLink to={match.url}>{breadcrumb}</NavLink>
+                    <Link href={match.url}>{breadcrumb}</Link>
                     <ChevronUpIcon className='fdk-path-chevron' />
                   </>
                 )}
