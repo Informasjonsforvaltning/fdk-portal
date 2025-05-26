@@ -13,7 +13,6 @@ import translations from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 
 import {
-  PATHNAME_GUIDANCE_METADATA,
   PATHNAME_DATASET_DETAILS
 } from '../../../../constants/constants';
 
@@ -388,9 +387,6 @@ const DatasetPage: FC<Props> = ({
                   .whatIsMetadataQualityFaqDescription
               }
             </p>
-            <Link href={PATHNAME_GUIDANCE_METADATA}>
-              {translations.metadataQualityPage.whatIsMetadataQualityFaqLink}
-            </Link>
           </SC.Question>
         </SC.FrequentlyAskedQuestions>
       </SC.Section>

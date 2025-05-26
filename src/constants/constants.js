@@ -37,7 +37,6 @@ export const PATHNAME_TERMS_OF_USE = '/terms-of-use';
 export const PATHNAME_FANCY_ARTICLE_V2 = '/fancy-article-v2';
 export const PATHNAME_NEWS_ARTICLE_V2 = '/news-v2';
 export const PATHNAME_GUIDANCE = '/guidance';
-export const PATHNAME_GUIDANCE_METADATA = '/guidance/metadata';
 export const PATHNAME_ORGANIZATIONS = '/organizations';
 export const PATHNAME_PUBLISHING = '/publishing';
 export const PATHNAME_ABOUT_CREATING_DESCRIPTIONS_SELF =

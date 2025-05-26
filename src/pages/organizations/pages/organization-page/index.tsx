@@ -36,7 +36,6 @@ import {
   PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_INFORMATIONMODELS,
-  PATHNAME_GUIDANCE_METADATA
 } from '../../../../constants/constants';
 
 import { themeFDK, themeNAP } from '../../../../app/theme';
@@ -509,9 +508,6 @@ const OrganizationPage: FC<Props> = ({
                   .whatIsMetadataQualityFaqDescription
               }
             </p>
-            <Link href={PATHNAME_GUIDANCE_METADATA}>
-              {translations.metadataQualityPage.whatIsMetadataQualityFaqLink}
-            </Link>
           </SC.Question>
         </SC.FrequentlyAskedQuestions>
       </SC.Section>
