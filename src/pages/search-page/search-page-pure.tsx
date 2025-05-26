@@ -182,9 +182,9 @@ const SearchPage: FC<Props> = ({
               aggregations={allResultsEntititesAggregations}
               page={searchAllEntitiesPage}
               searchHitCount={
-                searchAllEntitiesPage.totalElements > 9999
+                searchAllEntitiesPage?.totalElements > 9999
                   ? '10,000+'
-                  : searchAllEntitiesPage.totalElements
+                  : searchAllEntitiesPage?.totalElements ?? 0
               }
             />
           </Route>
@@ -243,7 +243,7 @@ const SearchPage: FC<Props> = ({
               entities={publicServicesAndEvents}
               aggregations={publicServicesAndEventsAggregations ?? {}}
               page={publicServicesAndEventsPage ?? {}}
-              searchHitCount={publicServicesAndEventsPage?.totalElements || 0}
+              searchHitCount={publicServicesAndEventsPage?.totalElements ?? 0}
             />
           </Route>
         </Switch>
