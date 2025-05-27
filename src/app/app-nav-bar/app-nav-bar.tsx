@@ -21,7 +21,6 @@ import {
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLISHING,
   PATHNAME_SPARQL,
-  PATHNAME_GUIDANCE,
   PATHNAME_REQUESTS,
   PATHNAME_TRANSPORT_GENERAL,
   PATHNAME_TRANSPORT_ROLES,
@@ -338,11 +337,6 @@ const fdkItemsMobile = () => [
           )}
         >
           {localization.menu.aboutInformationModels}
-        </Link>
-      </SC.ListItem>
-      <SC.ListItem key={localization.menu.guidance}>
-        <Link as={RouteLink} to={PATHNAME_GUIDANCE}>
-          {localization.menu.guidance}
         </Link>
       </SC.ListItem>
     </ul>
