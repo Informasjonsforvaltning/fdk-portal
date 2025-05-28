@@ -1,5 +1,6 @@
 import React, { memo, FC, useLayoutEffect } from 'react';
 import { compose } from 'redux';
+import Link from '@fellesdatakatalog/link';
 import type { RouteComponentProps } from 'react-router-dom';
 
 import withDatasets, {
@@ -17,6 +18,7 @@ import ErrorPage from '../../../error-page';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';
 
+import { PATHNAME_GUIDANCE_METADATA } from '../../../../constants/constants';
 
 import SC from './styled';
 import {
@@ -307,6 +309,9 @@ const DatasetsPage: FC<Props> = ({
                   .whatIsMetadataQualityFaqDescription
               }
             </p>
+            <Link href={PATHNAME_GUIDANCE_METADATA}>
+              {translations.metadataQualityPage.whatIsMetadataQualityFaqLink}
+            </Link>
           </SC.Question>
         </SC.FrequentlyAskedQuestions>
       </SC.Section>
