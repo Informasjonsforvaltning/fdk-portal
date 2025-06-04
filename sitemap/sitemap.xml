@@ -40,10 +40,7 @@
         <loc>https://data.norge.no/about-registration</loc>
         <lastmod>2022-11-7</lastmod>
     </url><url>
-        <loc>https://data.norge.no/guidance</loc>
-        <lastmod>2022-11-7</lastmod>
-    </url><url>
-        <loc>https://data.norge.no/guidance/metadata</loc>
+        <loc>https://data.norge.no/docs/metadata-quality</loc>
         <lastmod>2022-11-7</lastmod>
     </url><url>
         <loc>https://data.norge.no/sparql</loc>

@@ -9,7 +9,7 @@ import {
   PATHNAME_DATA_SERVICES,
   PATHNAME_CONCEPTS,
   PATHNAME_CONCEPTS_COMPARE,
-  PATHNAME_GUIDANCE,
+  PATHNAME_DOCS,
   PATHNAME_GUIDANCE_METADATA,
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_MAIN_PAGE,
@@ -73,8 +73,8 @@ const routes = [
     breadcrumb: () => <PathNameBreadcrumb pathName='reports' />
   },
   {
-    path: PATHNAME_GUIDANCE,
-    breadcrumb: () => <PathNameBreadcrumb pathName='guidance' />
+    path: PATHNAME_DOCS,
+    breadcrumb: () => <PathNameBreadcrumb pathName='docs' />
   },
   {
     path: PATHNAME_GUIDANCE_METADATA,
