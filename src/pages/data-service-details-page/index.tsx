@@ -280,8 +280,7 @@ const DataserviceDetailsPage: FC<Props> = ({
               {datasets.map(dataset => (
                 <Link
                   key={dataset.id}
-                  to={`${PATHNAME_DATASETS}/${dataset.id}`}
-                  as={RouteLink}
+                  href={`${PATHNAME_DATASETS}/${dataset.id}`}
                 >
                   {translate(dataset.title)}
                 </Link>
