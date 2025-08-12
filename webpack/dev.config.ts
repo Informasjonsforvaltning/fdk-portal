@@ -8,7 +8,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import type { Configuration } from 'webpack';
-import ModuleFederationPlugin from 'webpack/lib/container/ModuleFederationPlugin';
 
 import baseConfig from './base.config';
 
@@ -130,22 +129,7 @@ const configuration: Configuration = mergeWithCustomize({
       }
     ]
   },
-  plugins: [
-    new ReactRefreshWebpackPlugin(),
-    new ForkTsCheckerWebpackPlugin(),
-    new ModuleFederationPlugin({
-      name: 'portal',
-      remotes: {
-        sparql_gui:
-          'sparql_gui@https://sparql.staging.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
-      },
-      shared: {
-        ...deps,
-        react: { singleton: true, requiredVersion: deps.react },
-        'react-dom': { singleton: true, requiredVersion: deps.react }
-      }
-    })
-  ]
+  plugins: [new ReactRefreshWebpackPlugin(), new ForkTsCheckerWebpackPlugin()]
 });
 
 export default configuration;

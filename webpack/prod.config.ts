@@ -1,6 +1,5 @@
 import { merge } from 'webpack-merge';
 import type { Configuration } from 'webpack';
-import ModuleFederationPlugin from 'webpack/lib/container/ModuleFederationPlugin';
 
 import baseConfig from './base.config';
 
@@ -15,22 +14,7 @@ const configuration: Configuration = merge(baseConfig, {
   output: {
     filename: '[name].[contenthash].js'
   },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'portal',
-      remotes: {
-        sparql_gui:
-          process.env.NAMESPACE === 'prod'
-            ? 'sparql_gui@https://sparql.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
-            : 'sparql_gui@https://sparql.staging.fellesdatakatalog.digdir.no/sparql/remoteEntry.js'
-      },
-      shared: {
-        ...deps,
-        react: { singleton: true, requiredVersion: deps.react },
-        'react-dom': { singleton: true, requiredVersion: deps.react }
-      }
-    })
-  ]
+  plugins: []
 });
 
 export default configuration;
