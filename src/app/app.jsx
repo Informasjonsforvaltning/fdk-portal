@@ -41,7 +41,6 @@ import {
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
   PATHNAME_GUIDANCE_METADATA,
-  PATHNAME_SPARQL,
   PATHNAME_AI,
   PATHNAME_REQUESTS,
   PATHNAME_TRANSPORT_GENERAL,
@@ -202,8 +201,7 @@ export function App({ language, onChangeLanguage }) {
                   PATHNAME_CONCEPTS,
                   PATHNAME_INFORMATIONMODELS,
                   PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
-                  PATHNAME_ORGANIZATIONS,
-                  PATHNAME_SPARQL
+                  PATHNAME_ORGANIZATIONS
                 ].includes(path)
             )
             .map(path => (
