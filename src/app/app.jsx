@@ -15,7 +15,6 @@ import EventDetailsPage from '../pages/event-details-page';
 import { ConnectedConceptComparePage } from '../pages/concept-compare-page/connected-concept-compare-page';
 import { ReportPage } from '../pages/report-page/report-page';
 import ErrorPage from '../pages/error-page';
-import SparqlPage from '../pages/sparql-page';
 import Header from '../components/header';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs.component';
 import Footer from '../components/footer';
@@ -203,20 +202,13 @@ export function App({ language, onChangeLanguage }) {
                   PATHNAME_CONCEPTS,
                   PATHNAME_INFORMATIONMODELS,
                   PATHNAME_PUBLIC_SERVICES_AND_EVENTS,
-                  PATHNAME_ORGANIZATIONS
+                  PATHNAME_ORGANIZATIONS,
+                  PATHNAME_SPARQL
                 ].includes(path)
             )
-            .map(path =>
-              path === PATHNAME_SPARQL ? (
-                <Route
-                  exact
-                  path={PATHNAME_SPARQL}
-                  render={() => <SparqlPage language={language} />}
-                />
-              ) : (
-                <Route exact path={path} component={components[path]} />
-              )
-            )}
+            .map(path => (
+              <Route exact path={path} component={components[path]} />
+            ))}
 
           <Route render={() => <ErrorPage errorCode='404' />} />
         </ScrollToTop>
