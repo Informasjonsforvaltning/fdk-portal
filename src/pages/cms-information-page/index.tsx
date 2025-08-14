@@ -1,6 +1,7 @@
 import React, { FC, memo, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import localization from '../../lib/localization';
 
 import {
@@ -93,6 +94,38 @@ const InformationPage: FC<Props> = () => {
 
   return (
     <SC.InformationPage id='content' className='container'>
+      <Helmet>
+        <title>
+          {firstArticle?.title
+            ? `${firstArticle.title} - data.norge.no`
+            : `${localization.head.title} - data.norge.no`}
+        </title>
+        <meta
+          name='description'
+          content={
+            firstArticle?.subtitle
+              ? firstArticle.subtitle.substring(0, 160)
+              : localization.head.description
+          }
+        />
+        <meta
+          property='og:title'
+          content={
+            firstArticle?.title
+              ? `${firstArticle.title} - data.norge.no`
+              : `${localization.head.title} - data.norge.no`
+          }
+        />
+        <meta
+          property='og:description'
+          content={
+            firstArticle?.subtitle
+              ? firstArticle.subtitle.substring(0, 160)
+              : localization.head.description
+          }
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       {page()}
     </SC.InformationPage>
   );

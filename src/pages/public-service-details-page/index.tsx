@@ -2,6 +2,7 @@ import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Helmet } from 'react-helmet';
 import Link from '@fellesdatakatalog/link';
 import moment from 'moment';
 import { Link as ScrollLink } from 'react-scroll';
@@ -297,6 +298,40 @@ const PublicServiceDetailsPage: FC<Props> = ({
   return renderPage ? (
     publicService && (
       <ThemeProvider theme={theme}>
+        <Helmet>
+          <title>
+            {publicService?.title
+              ? `${translate(publicService.title)} - data.norge.no`
+              : `${translations.head.title} - data.norge.no`}
+          </title>
+          <meta
+            name='description'
+            content={
+              publicService?.description
+                ? translate(publicService.description)?.substring(0, 160) ||
+                  translations.head.description
+                : translations.head.description
+            }
+          />
+          <meta
+            property='og:title'
+            content={
+              publicService?.title
+                ? `${translate(publicService.title)} - data.norge.no`
+                : `${translations.head.title} - data.norge.no`
+            }
+          />
+          <meta
+            property='og:description'
+            content={
+              publicService?.description
+                ? translate(publicService.description)?.substring(0, 160) ||
+                  translations.head.description
+                : translations.head.description
+            }
+          />
+          <meta property='og:type' content='website' />
+        </Helmet>
         <DetailsPage
           entity={entity}
           title={title}

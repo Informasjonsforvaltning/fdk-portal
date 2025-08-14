@@ -3,6 +3,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Helmet } from 'react-helmet';
 import translations from '../../lib/localization';
 import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import { getTranslateText as translate } from '../../lib/translateText';
@@ -228,6 +229,40 @@ const ConceptDetailsPage: FC<Props> = ({
 
   return renderPage ? (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <title>
+          {concept?.prefLabel
+            ? `${translate(concept.prefLabel)} - data.norge.no`
+            : `${translations.head.title} - data.norge.no`}
+        </title>
+        <meta
+          name='description'
+          content={
+            concept?.definition?.text
+              ? translate(concept.definition.text)?.substring(0, 160) ||
+                translations.head.description
+              : translations.head.description
+          }
+        />
+        <meta
+          property='og:title'
+          content={
+            concept?.prefLabel
+              ? `${translate(concept.prefLabel)} - data.norge.no`
+              : `${translations.head.title} - data.norge.no`
+          }
+        />
+        <meta
+          property='og:description'
+          content={
+            concept?.definition?.text
+              ? translate(concept.definition.text)?.substring(0, 160) ||
+                translations.head.description
+              : translations.head.description
+          }
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       <DetailsPage
         entity={entity}
         title={title}

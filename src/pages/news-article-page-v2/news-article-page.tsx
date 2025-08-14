@@ -1,6 +1,7 @@
 import React, { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { compose } from 'redux';
+import { Helmet } from 'react-helmet';
 import Moment from 'react-moment';
 import { Article, useGetArticleQuery } from '../../api/generated/cms/graphql';
 import ErrorPage from '../error-page';
@@ -32,6 +33,47 @@ const NewsArticlePage: FC = () => {
 
   return (
     <main id='content' className='container'>
+      <Helmet>
+        <title>
+          {article?.title
+            ? `${article.title} - data.norge.no`
+            : `${localization.head.title} - data.norge.no`}
+        </title>
+        <meta
+          name='description'
+          content={
+            article?.content
+              ? article.content.substring(0, 160)
+              : localization.head.description
+          }
+        />
+        <meta
+          property='og:title'
+          content={
+            article?.title
+              ? `${article.title} - data.norge.no`
+              : `${localization.head.title} - data.norge.no`
+          }
+        />
+        <meta
+          property='og:description'
+          content={
+            article?.content
+              ? article.content.substring(0, 160)
+              : localization.head.description
+          }
+        />
+        <meta property='og:type' content='article' />
+        {article?.publishedAt && (
+          <meta
+            property='article:published_time'
+            content={article.publishedAt}
+          />
+        )}
+        {article?.updatedAt && (
+          <meta property='article:modified_time' content={article.updatedAt} />
+        )}
+      </Helmet>
       <SC.Article>
         <div className='row'>
           <div className='col-12'>

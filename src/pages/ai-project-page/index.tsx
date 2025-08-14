@@ -1,5 +1,6 @@
 import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
+import { Helmet } from 'react-helmet';
 import SvgIcon from '@fellesdatakatalog/icons';
 import Button, { Variant } from '@fellesdatakatalog/button';
 import Link from '@fellesdatakatalog/link';
@@ -33,6 +34,19 @@ const Page: FC<Props> = ({
 
   return (
     <main id='content' className='container'>
+      <Helmet>
+        <title>{localization.menu.ai} - data.norge.no</title>
+        <meta name='description' content={localization.head.description} />
+        <meta
+          property='og:title'
+          content={`${localization.menu.ai} - data.norge.no`}
+        />
+        <meta
+          property='og:description'
+          content={localization.head.description}
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       <div className='row mb-5'>
         <div className='col-12'>
           <SC.Header>{localization.aiPage.artificialIntelligence}</SC.Header>

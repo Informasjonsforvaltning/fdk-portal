@@ -2,6 +2,7 @@ import React, { memo, FC, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import Link from '@fellesdatakatalog/link';
 
@@ -337,6 +338,40 @@ const DatasetDetailsPage: FC<Props> = ({
 
   return renderPage ? (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <title>
+          {dataset?.title
+            ? `${translate(dataset.title)} - data.norge.no`
+            : `${translations.head.title} - data.norge.no`}
+        </title>
+        <meta
+          name='description'
+          content={
+            dataset?.description
+              ? translate(dataset.description)?.substring(0, 160) ||
+                translations.head.description
+              : translations.head.description
+          }
+        />
+        <meta
+          property='og:title'
+          content={
+            dataset?.title
+              ? `${translate(dataset.title)} - data.norge.no`
+              : `${translations.head.title} - data.norge.no`
+          }
+        />
+        <meta
+          property='og:description'
+          content={
+            dataset?.description
+              ? translate(dataset.description)?.substring(0, 160) ||
+                translations.head.description
+              : translations.head.description
+          }
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       <DetailsPage
         entity={entity}
         title={title}
