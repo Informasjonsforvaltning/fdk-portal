@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { FC, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { Route, Switch, RouteComponentProps } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import {
   SearchBox,
@@ -156,8 +157,51 @@ const SearchPage: FC<Props> = ({
     }
   }, [publicServiceSearchParams]);
 
+  // Get current page number from URL (zero-based, convert to one-based for display)
+  const getCurrentPage = () => {
+    const searchParams = new URLSearchParams(location.search);
+    const pageFromUrl = parseInt(searchParams.get('page') || '0', 10);
+    return pageFromUrl + 1; // Convert from zero-based to one-based
+  };
+
+  // Get current entity type from pathname
+  const getEntityType = () => {
+    if (location.pathname === PATHNAME_DATASETS)
+      return localization.page.datasetTab;
+    if (location.pathname === PATHNAME_DATA_SERVICES)
+      return localization.page.apiTab;
+    if (location.pathname === PATHNAME_CONCEPTS)
+      return localization.page.termTab;
+    if (location.pathname === PATHNAME_INFORMATIONMODELS)
+      return localization.page.informationModelTab;
+    if (location.pathname === PATHNAME_PUBLIC_SERVICES_AND_EVENTS)
+      return localization.page.serviceTab;
+    return localization.page.resultsTab;
+  };
+
+  const currentPage = getCurrentPage();
+  const entityType = getEntityType();
+  const pageFromUrl = parseInt(
+    new URLSearchParams(location.search).get('page') || '0',
+    10
+  );
+  const pageTitle =
+    pageFromUrl > 0
+      ? `${entityType} (${localization.page.page} ${currentPage}) - data.norge.no`
+      : `${entityType} - data.norge.no`;
+
   return (
     <div>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name='description' content={localization.head.description} />
+        <meta property='og:title' content={pageTitle} />
+        <meta
+          property='og:description'
+          content={localization.head.description}
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       {!getConfig().isNapProfile && (
         <SearchBox placeholder={localization.query.intro} autosuggest>
           <Tabs />

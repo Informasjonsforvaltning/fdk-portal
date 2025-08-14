@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import qs from 'qs';
 import capitalize from 'lodash/capitalize';
 import Tabs, { Tab, Pane } from '@fellesdatakatalog/tabs';
@@ -105,6 +106,19 @@ export const ReportPagePure: FC<Props> = ({
         ]
       }
     >
+      <Helmet>
+        <title>{localization.menu.reports} - data.norge.no</title>
+        <meta name='description' content={localization.head.description} />
+        <meta
+          property='og:title'
+          content={`${localization.menu.reports} - data.norge.no`}
+        />
+        <meta
+          property='og:description'
+          content={localization.head.description}
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       <main id='content' className='container'>
         <div className='row'>
           <div className='col-md-4'>

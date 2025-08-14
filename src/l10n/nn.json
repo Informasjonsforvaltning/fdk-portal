@@ -206,6 +206,7 @@
     "navigateTo": "Naviger til side",
     "next": "Neste",
     "prev": "Forrige",
+    "page": "Side",
     "resultsTab": "Alle",
     "datasetTab": "Datasett",
     "apiTab": "API ",
@@ -981,7 +982,9 @@
     "atom": "Atom"
   },
   "errorPage": {
-    "serverError": {
+    "notFound": "Side ikkje funnen",
+    "serverError": "Serverfeil",
+    "serverErrorDetails": {
       "title": "Dette er flaut...",
       "content": "Det har visst skjedd noko teknisk krøll i vår ende. Vi jobbar med å rette opp feilen. Prøv igjen om ei lita stund. ",
       "content2": "Du kan også",

@@ -2,6 +2,7 @@ import React, { FC, memo } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import { CircularProgress } from '@mui/material';
 import localization from '../../lib/localization';
@@ -60,35 +61,69 @@ const TransportPage: FC<Props> = () => {
 
     return (
       transportArticle && (
-        <SC.Article>
-          <SC.Title>{transportArticle?.title}</SC.Title>
-          <SC.Description>{transportArticle?.subtitle}</SC.Description>
-          {transportArticle?.Content?.map(
-            component =>
-              (isBasicParagraph(component) && (
-                <SC.Content>
-                  <Markdown allowHtml>{component?.Content ?? ''}</Markdown>
-                </SC.Content>
-              )) ||
-              (isBasicImage(component) && (
-                <SC.ImageWrapper key={component?.id}>
-                  <SC.Image
-                    alt={`${component?.media?.alternativeText}`}
-                    src={`${FDK_CMS_BASE_URI}${component?.media?.url}`}
-                  />
-                  {component?.media?.caption && (
-                    <SC.ImageText>
-                      {localization.informationPage.imageText}
-                      {component?.media?.caption}
-                    </SC.ImageText>
-                  )}
-                </SC.ImageWrapper>
-              )) ||
-              (isBasicYoutube(component) && (
-                <YoutubeEmbed key={component?.id} url={component?.url} />
-              ))
-          )}
-        </SC.Article>
+        <>
+          <Helmet>
+            <title>
+              {transportArticle?.title
+                ? `${transportArticle.title} - data.norge.no`
+                : 'Transportportal - data.norge.no'}
+            </title>
+            <meta
+              name='description'
+              content={
+                transportArticle?.subtitle
+                  ? transportArticle.subtitle.substring(0, 160)
+                  : 'Transportportal'
+              }
+            />
+            <meta
+              property='og:title'
+              content={
+                transportArticle?.title
+                  ? `${transportArticle.title} - data.norge.no`
+                  : 'Transportportal - data.norge.no'
+              }
+            />
+            <meta
+              property='og:description'
+              content={
+                transportArticle?.subtitle
+                  ? transportArticle.subtitle.substring(0, 160)
+                  : 'Transportportal'
+              }
+            />
+            <meta property='og:type' content='website' />
+          </Helmet>
+          <SC.Article>
+            <SC.Title>{transportArticle?.title}</SC.Title>
+            <SC.Description>{transportArticle?.subtitle}</SC.Description>
+            {transportArticle?.Content?.map(
+              component =>
+                (isBasicParagraph(component) && (
+                  <SC.Content>
+                    <Markdown allowHtml>{component?.Content ?? ''}</Markdown>
+                  </SC.Content>
+                )) ||
+                (isBasicImage(component) && (
+                  <SC.ImageWrapper key={component?.id}>
+                    <SC.Image
+                      alt={`${component?.media?.alternativeText}`}
+                      src={`${FDK_CMS_BASE_URI}${component?.media?.url}`}
+                    />
+                    {component?.media?.caption && (
+                      <SC.ImageText>
+                        {localization.informationPage.imageText}
+                        {component?.media?.caption}
+                      </SC.ImageText>
+                    )}
+                  </SC.ImageWrapper>
+                )) ||
+                (isBasicYoutube(component) && (
+                  <YoutubeEmbed key={component?.id} url={component?.url} />
+                ))
+            )}
+          </SC.Article>
+        </>
       )
     );
   };

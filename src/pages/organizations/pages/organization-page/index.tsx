@@ -2,6 +2,7 @@ import React, { FC, memo, useState, useLayoutEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Helmet } from 'react-helmet';
 import Link from '@fellesdatakatalog/link';
 import SvgIcon from '@fellesdatakatalog/icons';
 
@@ -129,6 +130,33 @@ const OrganizationPage: FC<Props> = ({
 
   return organization && rating ? (
     <SC.OrganizationPage id='content' className='container'>
+      <Helmet>
+        <title>
+          {organization?.prefLabel || organization?.name
+            ? `${
+                translate(organization.prefLabel) ||
+                translate(organization.name)
+              } - data.norge.no`
+            : `${translations.head.title} - data.norge.no`}
+        </title>
+        <meta name='description' content={translations.head.description} />
+        <meta
+          property='og:title'
+          content={
+            organization?.prefLabel || organization?.name
+              ? `${
+                  translate(organization.prefLabel) ||
+                  translate(organization.name)
+                } - data.norge.no`
+              : `${translations.head.title} - data.norge.no`
+          }
+        />
+        <meta
+          property='og:description'
+          content={translations.head.description}
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       <SC.Title>
         {translations.formatString(
           translations.metadataQualityPage.organizationPageTitle,

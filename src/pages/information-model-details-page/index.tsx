@@ -2,6 +2,7 @@ import React, { memo, FC, useState, useEffect, Fragment } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, Link as RouteLink } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Helmet } from 'react-helmet';
 import { Alignment } from '@fellesdatakatalog/theme';
 import { Tab, Pane } from '@fellesdatakatalog/tabs';
 
@@ -236,6 +237,40 @@ const InformationModelDetailsPage: FC<Props> = ({
 
   return renderPage ? (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <title>
+          {informationModel?.title
+            ? `${translate(informationModel.title)} - data.norge.no`
+            : `${translations.head.title} - data.norge.no`}
+        </title>
+        <meta
+          name='description'
+          content={
+            informationModel?.description
+              ? translate(informationModel.description)?.substring(0, 160) ||
+                translations.head.description
+              : translations.head.description
+          }
+        />
+        <meta
+          property='og:title'
+          content={
+            informationModel?.title
+              ? `${translate(informationModel.title)} - data.norge.no`
+              : `${translations.head.title} - data.norge.no`
+          }
+        />
+        <meta
+          property='og:description'
+          content={
+            informationModel?.description
+              ? translate(informationModel.description)?.substring(0, 160) ||
+                translations.head.description
+              : translations.head.description
+          }
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       <DetailsPage
         entity={entity}
         title={title}

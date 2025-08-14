@@ -1,6 +1,7 @@
 import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Link from '@fellesdatakatalog/link';
 import { getConfig } from '../../../../config';
@@ -120,6 +121,19 @@ const OrganizationsPage: FC<Props> = ({
 
   return entries().length > 0 ? (
     <main id='content' className='container'>
+      <Helmet>
+        <title>{localization.menu.organizations} - data.norge.no</title>
+        <meta name='description' content={localization.head.description} />
+        <meta
+          property='og:title'
+          content={`${localization.menu.organizations} - data.norge.no`}
+        />
+        <meta
+          property='og:description'
+          content={localization.head.description}
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       <div className='row mb-5'>
         <div className='col-12'>
           <SC.Header>{localization.searchOrganizations}</SC.Header>

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Helmet } from 'react-helmet';
 import cx from 'classnames';
 
 import { getConfig } from '../../config';
@@ -37,8 +38,23 @@ const ErrorPage: FC<Props> = ({ errorCode, language, onChangeLanguage }) => {
     localization.setLanguage(language);
   }
 
+  const errorTitle =
+    errorCode === '404'
+      ? `${localization.errorPage.notFound} - data.norge.no`
+      : `${localization.errorPage.serverError} - data.norge.no`;
+
   return language && onChangeLanguage ? (
     <div className={themeClass}>
+      <Helmet>
+        <title>{errorTitle}</title>
+        <meta name='description' content={localization.head.description} />
+        <meta property='og:title' content={errorTitle} />
+        <meta
+          property='og:description'
+          content={localization.head.description}
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       <Header onChangeLanguage={onChangeLanguage} />
       <SC.ErrorPage>
         {errorMessage(errorCode)}
@@ -48,6 +64,16 @@ const ErrorPage: FC<Props> = ({ errorCode, language, onChangeLanguage }) => {
     </div>
   ) : (
     <SC.ErrorPage>
+      <Helmet>
+        <title>{errorTitle}</title>
+        <meta name='description' content={localization.head.description} />
+        <meta property='og:title' content={errorTitle} />
+        <meta
+          property='og:description'
+          content={localization.head.description}
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       {errorMessage(errorCode)}
       <SC.UpperRightBackground />
     </SC.ErrorPage>

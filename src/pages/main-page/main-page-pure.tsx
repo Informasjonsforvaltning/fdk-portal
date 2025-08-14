@@ -1,4 +1,5 @@
 import React, { FC, memo, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 import env from '../../env';
 import SC from './styled';
@@ -47,6 +48,27 @@ const MainPage: FC<Props> = ({
 
   return (
     <div>
+      <Helmet>
+        <title>
+          {getConfig().isNapProfile
+            ? 'Transportportal - data.norge.no'
+            : `${localization.head.title} - data.norge.no`}
+        </title>
+        <meta name='description' content={localization.head.description} />
+        <meta
+          property='og:title'
+          content={
+            getConfig().isNapProfile
+              ? 'Transportportal - data.norge.no'
+              : `${localization.head.title} - data.norge.no`
+          }
+        />
+        <meta
+          property='og:description'
+          content={localization.head.description}
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       {!getConfig().isNapProfile && (
         <SearchBox placeholder='Eksempel: kollektivtransport' autosuggest>
           <SearchBoxHeader as='h1' large>

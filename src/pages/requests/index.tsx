@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { compose } from 'redux';
+import { Helmet } from 'react-helmet';
 import Link from '@fellesdatakatalog/link';
 import Button from '@fellesdatakatalog/button';
 import Select from 'react-select';
@@ -59,6 +60,19 @@ const RequestsPage: FC<Props> = ({
 
   return (
     <>
+      <Helmet>
+        <title>{localization.menu.requests} - data.norge.no</title>
+        <meta name='description' content={localization.head.description} />
+        <meta
+          property='og:title'
+          content={`${localization.menu.requests} - data.norge.no`}
+        />
+        <meta
+          property='og:description'
+          content={localization.head.description}
+        />
+        <meta property='og:type' content='website' />
+      </Helmet>
       <Banner title={localization.requestsPage.title} />
       <main id='content' className='container'>
         <SC.FirstRow>
