@@ -201,6 +201,7 @@
     "navigateTo": "Navigate to page",
     "next": "Next",
     "prev": "Previous",
+    "page": "Page",
     "resultsTab": "All",
     "datasetTab": "Datasets",
     "apiTab": "APIs",
@@ -976,7 +977,9 @@
     "atom": "Atom"
   },
   "errorPage": {
-    "serverError": {
+    "notFound": "Page not found",
+    "serverError": "Server error",
+    "serverErrorDetails": {
       "title": "This is embarrasing...",
       "content": "There are some technical hiccups on our end. We are working on correcting the error. Try again in a little while. ",
       "content2": "You can also",

@@ -1,6 +1,7 @@
 import React, { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { compose } from 'redux';
+import { Helmet } from 'react-helmet';
 import { CircularProgress } from '@mui/material';
 import {
   FancyArticle,
@@ -48,6 +49,38 @@ const FancyArticlePage: FC = () => {
 
   return (
     <main id='content' className='container'>
+      <Helmet>
+        <title>
+          {fancyArticle?.title
+            ? `${fancyArticle.title} - ${localization.head.title}`
+            : localization.head.title}
+        </title>
+        <meta
+          name='description'
+          content={
+            fancyArticle?.subtitle
+              ? fancyArticle.subtitle.substring(0, 160)
+              : localization.head.description
+          }
+        />
+        <meta
+          property='og:title'
+          content={
+            fancyArticle?.title
+              ? `${fancyArticle.title} - ${localization.head.title}`
+              : localization.head.title
+          }
+        />
+        <meta
+          property='og:description'
+          content={
+            fancyArticle?.subtitle
+              ? fancyArticle.subtitle.substring(0, 160)
+              : localization.head.description
+          }
+        />
+        <meta property='og:type' content='article' />
+      </Helmet>
       {fancyArticle && (
         <SC.Article>
           <SC.Title>{fancyArticle?.title}</SC.Title>
