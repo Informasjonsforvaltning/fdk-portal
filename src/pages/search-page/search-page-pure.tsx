@@ -160,7 +160,7 @@ const SearchPage: FC<Props> = ({
   // Get current page number from URL (zero-based, convert to one-based for display)
   const getCurrentPage = () => {
     const searchParams = new URLSearchParams(location.search);
-    const pageFromUrl = parseInt(searchParams.get('page') || '1', 10);
+    const pageFromUrl = parseInt(searchParams.get('page') || '0', 10);
     return pageFromUrl + 1; // Convert from zero-based to one-based
   };
 
@@ -181,8 +181,12 @@ const SearchPage: FC<Props> = ({
 
   const currentPage = getCurrentPage();
   const entityType = getEntityType();
+  const pageFromUrl = parseInt(
+    new URLSearchParams(location.search).get('page') || '0',
+    10
+  );
   const pageTitle =
-    currentPage > 1
+    pageFromUrl > 0
       ? `${entityType} - ${localization.head.title} (${localization.page.page} ${currentPage})`
       : `${entityType} - ${localization.head.title}`;
 
