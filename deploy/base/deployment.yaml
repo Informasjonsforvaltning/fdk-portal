@@ -22,7 +22,7 @@ spec:
         - name: fdk-portal
           env:
             - name: CONTAINER_IMAGE
-              value: eu.gcr.io/digdir-fdk-infra/fdk-portal:$(GIT_COMMIT_SHA)
+              value: ghcr.io/informasjonsforvaltning/fdk-portal:$(GIT_COMMIT_SHA)
             - name: NODE_ENV
               valueFrom:
                 secretKeyRef:
