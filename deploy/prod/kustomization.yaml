@@ -5,6 +5,3 @@ namespace: prod
 
 resources:
   - ../base
-
-patchesStrategicMerge:
-  - env.yaml
