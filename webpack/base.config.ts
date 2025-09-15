@@ -21,7 +21,11 @@ const configuration: Configuration = {
   resolve: {
     alias: {
       'react/jsx-dev-runtime': 'react/jsx-dev-runtime.js',
-      'react/jsx-runtime': 'react/jsx-runtime.js'
+      'react/jsx-runtime': 'react/jsx-runtime.js',
+      // Force rdflib to use its CommonJS build to avoid ESM inheritance/runtime issues
+      rdflib: require.resolve('rdflib/lib/index.js'),
+      // Use CJS build of Digdir design system to avoid ESM named export issues in React 17
+      '@digdir/design-system-react': require.resolve('@digdir/design-system-react/dist/cjs/index.js')
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     fallback: {
