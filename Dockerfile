@@ -1,4 +1,4 @@
-FROM node:18.12.1-alpine AS build
+FROM node:22.14-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json audit-resolve.json ./
 RUN npm install -g npm-audit-resolver@next
