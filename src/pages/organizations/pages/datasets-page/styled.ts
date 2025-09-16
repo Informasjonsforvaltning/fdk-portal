@@ -108,7 +108,7 @@ const Table = styled.table`
             background: ${theme.colour(Colour.GREEN, 'G50')};
           `
         : css`
-            background: ${theme.colour(Colour.BLUE, 'B50')};
+            background: ${theme.colour(Colour.BLUE, 'B60')};
           `}
   }
 
@@ -130,7 +130,7 @@ const Table = styled.table`
             color: ${theme.colour(Colour.GREEN, 'G50')};
           `
         : css`
-            color: ${theme.colour(Colour.BLUE, 'B50')};
+            color: ${theme.colour(Colour.BLUE, 'B60')};
           `}
   }
 `;
@@ -162,14 +162,14 @@ const LoadMoreButton = styled.button`
           }
         `
       : css`
-          color: ${theme.colour(Colour.BLUE, 'B50')};
+          color: ${theme.colour(Colour.BLUE, 'B60')};
 
           &:hover {
-            border-color: ${theme.colour(Colour.BLUE, 'B50')};
+            border-color: ${theme.colour(Colour.BLUE, 'B60')};
           }
 
           & > svg > g {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
         `}
 
@@ -193,7 +193,7 @@ const PoorQualityIcon = styled(MetadataQualityPoorSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
         `}
 `;
@@ -212,7 +212,7 @@ const SufficientQualityIcon = styled(MetadataQualitySufficientSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
 
           & > circle:first-of-type {
@@ -231,7 +231,7 @@ const GoodQualityIcon = styled(MetadataQualityGoodSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50', 85)};
+            fill: ${theme.colour(Colour.BLUE, 'B60', 85)};
           }
         `}
 `;
@@ -246,7 +246,7 @@ const ExcellentQualityIcon = styled(MetadataQualityExcellentSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
         `}
 `;
@@ -267,7 +267,7 @@ const RatingSummary = styled.div`
     justify-content: center;
     align-items: center;
     padding: ${theme.spacing('S12')};
-    color: ${theme.colour(Colour.BLUE, 'B50')};
+    color: ${theme.colour(Colour.BLUE, 'B60')};
 
     ${() =>
       isTransportportal
@@ -275,7 +275,7 @@ const RatingSummary = styled.div`
             color: ${theme.colour(Colour.GREEN, 'G50')};
           `
         : css`
-            color: ${theme.colour(Colour.BLUE, 'B50')};
+            color: ${theme.colour(Colour.BLUE, 'B60')};
           `}
 
     &:first-of-type {
