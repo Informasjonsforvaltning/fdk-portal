@@ -65,7 +65,7 @@ const DatasetIcon = styled(DatasetSVG)`
         `
       : css`
           & path {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
         `}
 `;
@@ -186,7 +186,7 @@ const Table = styled.table`
             background: ${theme.colour(Colour.GREEN, 'G50')};
           `
         : css`
-            background: ${theme.colour(Colour.BLUE, 'B50')};
+            background: ${theme.colour(Colour.BLUE, 'B60')};
           `}
   }
 
@@ -200,7 +200,7 @@ const Table = styled.table`
               color: ${theme.colour(Colour.GREEN, 'G50')};
             `
           : css`
-              color: ${theme.colour(Colour.BLUE, 'B50')};
+              color: ${theme.colour(Colour.BLUE, 'B60')};
             `}
 
       &.section-row {
@@ -262,7 +262,7 @@ const Table = styled.table`
             `
           : css`
               & > svg > * {
-                stroke: ${theme.colour(Colour.BLUE, 'B50')};
+                stroke: ${theme.colour(Colour.BLUE, 'B60')};
               }
             `}
     }
@@ -286,7 +286,7 @@ const PoorQualityIcon = styled(MetadataQualityPoorSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
         `}
 `;
@@ -309,11 +309,11 @@ const SufficientQualityIcon = styled(MetadataQualitySufficientSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
 
           & > circle {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
 
           & > circle:first-of-type {
@@ -332,7 +332,7 @@ const GoodQualityIcon = styled(MetadataQualityGoodSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50', 85)};
+            fill: ${theme.colour(Colour.BLUE, 'B60', 85)};
           }
         `}
 `;
@@ -347,7 +347,7 @@ const ExcellentQualityIcon = styled(MetadataQualityExcellentSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
         `}
 `;
@@ -362,7 +362,7 @@ const CheckIcon = styled(CheckSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
         `}
 `;
@@ -377,7 +377,7 @@ const CrossIcon = styled(CrossSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B30')};
+            fill: ${theme.colour(Colour.BLUE, 'B45')};
           }
         `}
 `;
@@ -394,7 +394,7 @@ const QuestionIcon = styled(QuestionIconSVG)`
         `
       : css`
           & > path {
-            fill: ${theme.colour(Colour.BLUE, 'B50')};
+            fill: ${theme.colour(Colour.BLUE, 'B60')};
           }
         `}
 `;
@@ -444,7 +444,7 @@ const Question = styled.div`
 const DatasetLink = styled.div`
   margin-top: ${theme.spacing('S16')};
   & > a > * {
-    color: ${theme.colour(Colour.BLUE, 'B50')};
+    color: ${theme.colour(Colour.BLUE, 'B60')};
   }
 `;
 
