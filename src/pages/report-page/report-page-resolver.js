@@ -16,6 +16,7 @@ import { parseSearchParams } from '../../lib/location-history-helper';
 
 import { extractConcepts, searchConcepts } from '../../api/search-api/concepts';
 import { paramsToSearchBody } from '../../utils/common/index';
+import { sortKeyWithCount } from './sort-helper';
 
 const memoizedGetDatasetsReport = memoize(getDatasetsReport);
 const memoizedGetDatasetsTimeSeries = memoize(datasetTimeSeriesRequest);
@@ -46,9 +47,11 @@ const mapProps = {
     const reportItems = await memoizedGetConceptsReport({ orgPath, los });
 
     const { mostInUse = [] } = reportItems;
-    const allReferencedConceptIdentifiers = mostInUse.map(({ key }) => key);
+    const topReferencedConceptIdentifiers = sortKeyWithCount(mostInUse)
+      .slice(0, 10)
+      .map(({ key }) => key);
     const allReferencedConcepts = await memoizedSearchConcepts(
-      paramsToSearchBody({ uri: allReferencedConceptIdentifiers })
+      paramsToSearchBody({ uri: topReferencedConceptIdentifiers })
     ).then(result => extractConcepts(result));
 
     return { ...reportItems, allReferencedConcepts };

@@ -17,7 +17,7 @@ const transportProfileIfNeeded = () =>
 
 export const reportApi = ({ path, method, params }: Props) =>
   axios({
-    url: `${getConfig().reportApi.host}${path}`,
+    url: `${getConfig().organizationsApi.host}${path}`,
     method,
     params: {
       ...params,

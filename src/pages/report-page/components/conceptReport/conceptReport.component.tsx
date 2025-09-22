@@ -17,7 +17,7 @@ import {
 } from '../../../../components/statistics-regular/statistics-regular';
 import { themeFDK as theme } from '../../../../app/theme';
 import { Entity, Filter } from '../../../../types/enums';
-import { ConceptsReport, Concept } from '../../../../types';
+import { ConceptsReport, SearchObject } from '../../../../types';
 
 import ConceptIcon from '../../../../images/icon-catalog-concept-md.svg';
 import NewIcon from '../../../../images/icon-new-md.svg';
@@ -124,12 +124,12 @@ const ConceptReport: FC<Props> = ({
             <div className='col-12'>
               <BoxRegular header={localization.report.conceptReferenced}>
                 {allReferencedConcepts.map(
-                  ({ id, prefLabel }: Partial<Concept>) => (
+                  ({ id, title }: Partial<SearchObject>) => (
                     <ConceptReportSC.ConceptLink
                       key={id}
                       to={`/concepts/${id}`}
                     >
-                      {getTranslateText(prefLabel)}
+                      {getTranslateText(title)}
                     </ConceptReportSC.ConceptLink>
                   )
                 )}

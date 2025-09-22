@@ -59,7 +59,7 @@ interface Props
 
 // eslint-disable-next-line react/function-component-definition
 const DatasetReport: FC<Props> = ({
-  referenceData: { los },
+  referenceData: { los, themes },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   location: { search: searchParams } = {},
   datasetsReport: {
@@ -70,7 +70,7 @@ const DatasetReport: FC<Props> = ({
     opendata = 0,
     accessRights = [],
     formats = [],
-    themesAndTopicsCount = []
+    allThemes = []
   } = {},
   datasetsTimeSeries = []
 }) => {
@@ -78,18 +78,30 @@ const DatasetReport: FC<Props> = ({
     if (!los) {
       getReferenceData('los');
     }
+    if (!themes) {
+      getReferenceData('themes');
+    }
   }, []);
 
   datasetsTimeSeries.push([Date.now(), totalObjects]);
   const accessRightsPublic =
-    accessRights?.find((item: KeyWithCountObject) => item.key === 'PUBLIC')
-      ?.count ?? 0;
+    accessRights?.find(
+      (item: KeyWithCountObject) =>
+        item.key ===
+        'http://publications.europa.eu/resource/authority/access-right/PUBLIC'
+    )?.count ?? 0;
   const accessRightsRestriced =
-    accessRights?.find((item: KeyWithCountObject) => item.key === 'RESTRICTED')
-      ?.count ?? 0;
+    accessRights?.find(
+      (item: KeyWithCountObject) =>
+        item.key ===
+        'http://publications.europa.eu/resource/authority/access-right/RESTRICTED'
+    )?.count ?? 0;
   const accessRightsNonPublic =
-    accessRights?.find((item: KeyWithCountObject) => item.key === 'NON_PUBLIC')
-      ?.count ?? 0;
+    accessRights?.find(
+      (item: KeyWithCountObject) =>
+        item.key ===
+        'http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC'
+    )?.count ?? 0;
 
   const accessRightsUnknown =
     totalObjects -
@@ -102,12 +114,24 @@ const DatasetReport: FC<Props> = ({
       ({ key }: KeyWithCountObject) =>
         key !== 'MISSING' && key !== MediaTypeOrExtentType.UNKNOWN
     )
-    .slice(0, 10);
+    .slice(0, 10)
+    .map(format => {
+      const key = format.key
+        .replace('http://', '')
+        .replace('https://', '')
+        .replace(
+          'publications.europa.eu/resource/authority/file-type/',
+          'FILE_TYPE '
+        )
+        .replace('www.iana.org/assignments/media-types/', 'MEDIA_TYPE ');
+      if (key.startsWith('FILE_TYPE') || key.startsWith('MEDIA_TYPE')) {
+        format.key = key;
+      }
+      return format;
+    });
 
   const topMostUsedThemes: KeyWithCountObject[] = sortKeyWithCount(
-    themesAndTopicsCount.filter(
-      ({ key }: KeyWithCountObject) => key !== 'MISSING'
-    )
+    allThemes.filter(({ key }: KeyWithCountObject) => key !== 'MISSING')
   ).slice(0, 10);
 
   const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
@@ -487,18 +511,35 @@ const DatasetReport: FC<Props> = ({
                         headerText1={localization.report.themeAndTopic}
                         headerText2={localization.report.countDataset}
                         listItems={topMostUsedThemes?.map(
-                          ({ key, count }: KeyWithCountObject, index: any) => ({
-                            id: index,
-                            path: `${PATHNAME_DATASETS}?${
-                              Filter.LOS
-                            }=${encodeURIComponent(key)}`,
-                            text1: translate(
-                              los?.losNodes?.find((losTheme: any) =>
-                                losTheme.losPaths.includes(key)
-                              )?.name
-                            ),
-                            text2: `${count}`
-                          })
+                          ({ key, count }: KeyWithCountObject, index: any) => {
+                            const losNode = los?.losNodes?.find(
+                              (losTheme: any) => losTheme.uri === key
+                            );
+                            const dataTheme = themes?.dataThemes?.find(
+                              (euTheme: any) => euTheme.uri === key
+                            );
+                            return losNode
+                              ? {
+                                  id: index,
+                                  path: `${PATHNAME_DATASETS}?${
+                                    Filter.LOS
+                                  }=${encodeURIComponent(
+                                    losNode.losPaths?.at(0) ?? ''
+                                  )}`,
+                                  text1: translate(losNode.name),
+                                  text2: `${count}`
+                                }
+                              : {
+                                  id: index,
+                                  path: `${PATHNAME_DATASETS}?${
+                                    Filter.THEME
+                                  }=${encodeURIComponent(
+                                    dataTheme?.code ?? ''
+                                  )}`,
+                                  text1: translate(dataTheme?.label) ?? key,
+                                  text2: `${count}`
+                                };
+                          }
                         )}
                       />
                     </BoxRegular>

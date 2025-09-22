@@ -850,7 +850,7 @@ export interface DatasetsReport extends Report {
   opendata: number;
   withSubject: number;
   accessRights: KeyWithCountObject[];
-  themesAndTopicsCount: KeyWithCountObject[];
+  allThemes: KeyWithCountObject[];
 }
 
 export interface ConceptsReport extends Report {
