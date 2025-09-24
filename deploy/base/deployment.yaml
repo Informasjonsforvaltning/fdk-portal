@@ -69,11 +69,6 @@ spec:
                 secretKeyRef:
                   name: commonurl
                   key: ORGANIZATION_CATALOG_BASE_URI
-            - name: REPORT_API_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: commonurl
-                  key: FDK_REPORTS_BFF_BASE_URI
             - name: FDK_MQA_API_BASE_URI
               valueFrom:
                 secretKeyRef:

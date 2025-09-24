@@ -18,7 +18,6 @@ const env = window.env || {
 //   'https://organization-bff.staging.fellesdatakatalog.digdir.no';
 // env.ORGANIZATION_CATALOG_URI =
 //   'https://organization-catalog.staging.fellesdatakatalog.digdir.no';
-// env.REPORT_API_HOST = 'https://reports-bff.staging.fellesdatakatalog.digdir.no';
 // env.RESOURCE_API_HOST =
 //   'https://resource.api.staging.fellesdatakatalog.digdir.no';
 // env.FDK_MQA_API_BASE_URI =
@@ -49,7 +48,6 @@ const config = {
   organizationsCatalogApi: { host: env.ORGANIZATION_CATALOG_URI },
   publisherApi: defaultToFdkPortalBaseUri(env.PUBLISHER_API_HOST),
   referenceDataApi: defaultToFdkPortalBaseUri(env.REFERENCE_DATA_HOST),
-  reportApi: { host: env.REPORT_API_HOST },
   resourceApi: { host: env.RESOURCE_API_HOST },
   searchApi: { host: env.SEARCH_SERVICE_HOST },
   statisticsApi: { host: env.STATISTICS_SERVICE_HOST },

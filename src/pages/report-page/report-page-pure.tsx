@@ -6,6 +6,8 @@ import capitalize from 'lodash/capitalize';
 import Tabs, { Tab, Pane } from '@fellesdatakatalog/tabs';
 import ThemeProvider from '@fellesdatakatalog/theme';
 
+import Spinner from '../../components/spinner';
+
 import SC from './styled';
 import localization from '../../lib/localization';
 import { PublishersSelect } from './publishers-select/publishers-select.component';
@@ -36,6 +38,7 @@ interface Props {
   dataServicesTimeSeries?: any;
   informationModelsTimeSeries?: any;
   conceptsTimeSeries?: any;
+  resolved?: boolean;
 }
 
 export const ReportPagePure: FC<Props> = ({
@@ -48,7 +51,8 @@ export const ReportPagePure: FC<Props> = ({
   datasetsTimeSeries,
   dataServicesTimeSeries,
   informationModelsTimeSeries,
-  conceptsTimeSeries
+  conceptsTimeSeries,
+  resolved = false
 }) => {
   const history = useHistory();
   const { search } = useLocation();
@@ -97,6 +101,40 @@ export const ReportPagePure: FC<Props> = ({
     [Variant.PUBLIC_SERVICE]: [],
     [Variant.EVENT]: []
   };
+
+  // Show spinner while data is loading
+  if (!resolved) {
+    return (
+      <ThemeProvider
+        theme={
+          (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
+            Entity.DATASET
+          ]
+        }
+      >
+        <Helmet>
+          <title>{localization.menu.reports} - data.norge.no</title>
+          <meta name='description' content={localization.head.description} />
+          <meta
+            property='og:title'
+            content={`${localization.menu.reports} - data.norge.no`}
+          />
+          <meta
+            property='og:description'
+            content={localization.head.description}
+          />
+          <meta property='og:type' content='website' />
+        </Helmet>
+        <main id='content' className='container'>
+          <div className='row'>
+            <div className='col-12 text-center' style={{ padding: '4rem 0' }}>
+              <Spinner />
+            </div>
+          </div>
+        </main>
+      </ThemeProvider>
+    );
+  }
 
   return (
     <ThemeProvider

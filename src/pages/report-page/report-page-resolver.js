@@ -31,20 +31,33 @@ const memoizedGetInformationModelsTimeSeries = memoize(
 const memoizedSearchConcepts = memoize(searchConcepts);
 
 const mapProps = {
-  datasetsReport: ({ location }) => {
+  datasetsReport: async ({ location }) => {
     const { orgPath, losTheme: los } = parseSearchParams(location);
-    return memoizedGetDatasetsReport({ orgPath, los });
+    const result = await memoizedGetDatasetsReport({ orgPath, los });
+    return result || {};
   },
-  datasetsTimeSeries: () => memoizedGetDatasetsTimeSeries(),
-  dataServicesReport: ({ location }) => {
+  datasetsTimeSeries: async () => {
+    const result = await memoizedGetDatasetsTimeSeries();
+    return result || {};
+  },
+  dataServicesReport: async ({ location }) => {
     const { orgPath } = parseSearchParams(location);
-    return memoizedGetDataServicesReport({ orgPath });
+    const result = await memoizedGetDataServicesReport({ orgPath });
+    return result || {};
   },
-  dataServicesTimeSeries: () => memoizedGetDataServicesTimeSeries(),
+  dataServicesTimeSeries: async () => {
+    const result = await memoizedGetDataServicesTimeSeries();
+    return result || {};
+  },
   conceptsReport: async ({ location }) => {
     const { orgPath, losTheme: los } = parseSearchParams(location);
 
     const reportItems = await memoizedGetConceptsReport({ orgPath, los });
+
+    // Add null check for reportItems
+    if (!reportItems) {
+      return { mostInUse: [], allReferencedConcepts: [] };
+    }
 
     const { mostInUse = [] } = reportItems;
     const topReferencedConceptIdentifiers = sortKeyWithCount(mostInUse)
@@ -56,12 +69,19 @@ const mapProps = {
 
     return { ...reportItems, allReferencedConcepts };
   },
-  conceptsTimeSeries: () => memoizedGetConceptsTimeSeries(),
-  informationModelsReport: ({ location }) => {
-    const { orgPath, losTheme: los } = parseSearchParams(location);
-    return memoizedGetInformationModelsReport({ orgPath, los });
+  conceptsTimeSeries: async () => {
+    const result = await memoizedGetConceptsTimeSeries();
+    return result || {};
   },
-  informationModelsTimeSeries: () => memoizedGetInformationModelsTimeSeries()
+  informationModelsReport: async ({ location }) => {
+    const { orgPath, losTheme: los } = parseSearchParams(location);
+    const result = await memoizedGetInformationModelsReport({ orgPath, los });
+    return result || {};
+  },
+  informationModelsTimeSeries: async () => {
+    const result = await memoizedGetInformationModelsTimeSeries();
+    return result || {};
+  }
 };
 
 export const reportPageResolver = resolve(mapProps);
