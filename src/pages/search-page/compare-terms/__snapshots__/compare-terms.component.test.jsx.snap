@@ -15,7 +15,7 @@ exports[`should render CompareTerms correctly 1`] = `
       onClick={[Function]}
       type="button"
     >
-      <SvgCircleMinusStroke
+      <ForwardRef
         className="fdk-compare-icon"
       />
        

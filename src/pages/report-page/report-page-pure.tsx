@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import qs from 'qs';
@@ -58,6 +58,60 @@ export const ReportPagePure: FC<Props> = ({
   const { search } = useLocation();
 
   const [activeTab, setActiveTab] = useState(Variant.DATASET);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Debug: Log when component mounts
+  useEffect(() => {
+    console.log(
+      'Reports page: Component mounted, isLoading =',
+      isLoading,
+      'resolved =',
+      resolved
+    );
+  }, []);
+
+  // Hide spinner when resolved
+  useEffect(() => {
+    if (resolved) {
+      console.log('Reports page: resolved = true, hiding spinner');
+      setIsLoading(false);
+    }
+  }, [resolved]);
+
+  // Also hide spinner if we have any meaningful data (even if some requests failed)
+  useEffect(() => {
+    // Check if we have any non-empty data
+    const hasAnyData =
+      (datasetsReport && Object.keys(datasetsReport).length > 0) ||
+      (dataServicesReport && Object.keys(dataServicesReport).length > 0) ||
+      (conceptsReport && Object.keys(conceptsReport).length > 0) ||
+      (informationModelsReport &&
+        Object.keys(informationModelsReport).length > 0);
+
+    if (hasAnyData) {
+      console.log('Reports page: has data, hiding spinner', {
+        datasetsReport,
+        dataServicesReport,
+        conceptsReport,
+        informationModelsReport
+      });
+      setIsLoading(false);
+    }
+  }, [
+    datasetsReport,
+    dataServicesReport,
+    conceptsReport,
+    informationModelsReport
+  ]);
+
+  // Fallback timeout to hide spinner after 30 seconds (in case of unexpected issues)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 30000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   const selectPublisher = useCallback((publisher: any) => {
     const orgPath = publisher?.orgPath;
@@ -103,7 +157,7 @@ export const ReportPagePure: FC<Props> = ({
   };
 
   // Show spinner while data is loading
-  if (!resolved) {
+  if (isLoading) {
     return (
       <ThemeProvider
         theme={
