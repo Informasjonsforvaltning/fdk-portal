@@ -1,13 +1,13 @@
 import { reportApiGet } from './host';
 
 export const getDatasetsReport = (params: any = '') =>
-  reportApiGet('/report/datasets', params);
+  reportApiGet('/reports/datasets', params);
 
 export const getConceptsReport = (params: any = '') =>
-  reportApiGet('/report/concepts', params);
+  reportApiGet('/reports/concepts', params);
 
 export const getInformationModelsReport = (params: any = '') =>
-  reportApiGet('/report/informationmodels', params);
+  reportApiGet('/reports/information-models', params);
 
 export const getDataServicesReport = (params: any = '') =>
-  reportApiGet('/report/dataservices', params);
+  reportApiGet('/reports/data-services', params);

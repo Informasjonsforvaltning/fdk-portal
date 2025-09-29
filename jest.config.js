@@ -6,7 +6,8 @@ module.exports = {
   },
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleNameMapper: {
-    '^.+\\.(css|less|scss)$': 'identity-obj-proxy'
+    '^.+\\.(css|less|scss)$': 'identity-obj-proxy',
+    '^.+\\.svg$': '<rootDir>/test/utils/svgTransform.js'
   },
   coverageDirectory: 'coverage',
   collectCoverageFrom: [

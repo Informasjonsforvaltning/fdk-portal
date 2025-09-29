@@ -7,7 +7,7 @@ exports[`SearchLink component must render correct structure 1`] = `
   to="/datasets"
   type="DATASET"
 >
-  <Styled(SvgIconCatalogDatasetLg) />
+  <Styled(Component) />
   <span>
     Show only
      

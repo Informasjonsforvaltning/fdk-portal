@@ -58,7 +58,21 @@ const DataserviceReport: FC<Props> = ({
       ({ key }: KeyWithCountObject) =>
         key !== 'MISSING' && key !== MediaTypeOrExtentType.UNKNOWN
     )
-    .slice(0, 10);
+    .slice(0, 10)
+    .map(format => {
+      const key = format.key
+        .replace('http://', '')
+        .replace('https://', '')
+        .replace(
+          'publications.europa.eu/resource/authority/file-type/',
+          'FILE_TYPE '
+        )
+        .replace('www.iana.org/assignments/media-types/', 'MEDIA_TYPE ');
+      if (key.startsWith('FILE_TYPE') || key.startsWith('MEDIA_TYPE')) {
+        format.key = key;
+      }
+      return format;
+    });
 
   return (
     <ThemeProvider theme={theme.extendedColors[Entity.DATA_SERVICE]}>

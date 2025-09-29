@@ -1,10 +1,12 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import qs from 'qs';
 import capitalize from 'lodash/capitalize';
 import Tabs, { Tab, Pane } from '@fellesdatakatalog/tabs';
 import ThemeProvider from '@fellesdatakatalog/theme';
+
+import Spinner from '../../components/spinner';
 
 import SC from './styled';
 import localization from '../../lib/localization';
@@ -36,6 +38,7 @@ interface Props {
   dataServicesTimeSeries?: any;
   informationModelsTimeSeries?: any;
   conceptsTimeSeries?: any;
+  resolved?: boolean;
 }
 
 export const ReportPagePure: FC<Props> = ({
@@ -48,12 +51,67 @@ export const ReportPagePure: FC<Props> = ({
   datasetsTimeSeries,
   dataServicesTimeSeries,
   informationModelsTimeSeries,
-  conceptsTimeSeries
+  conceptsTimeSeries,
+  resolved = false
 }) => {
   const history = useHistory();
   const { search } = useLocation();
 
   const [activeTab, setActiveTab] = useState(Variant.DATASET);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Debug: Log when component mounts
+  useEffect(() => {
+    console.log(
+      'Reports page: Component mounted, isLoading =',
+      isLoading,
+      'resolved =',
+      resolved
+    );
+  }, []);
+
+  // Hide spinner when resolved
+  useEffect(() => {
+    if (resolved) {
+      console.log('Reports page: resolved = true, hiding spinner');
+      setIsLoading(false);
+    }
+  }, [resolved]);
+
+  // Also hide spinner if we have any meaningful data (even if some requests failed)
+  useEffect(() => {
+    // Check if we have any non-empty data
+    const hasAnyData =
+      (datasetsReport && Object.keys(datasetsReport).length > 0) ||
+      (dataServicesReport && Object.keys(dataServicesReport).length > 0) ||
+      (conceptsReport && Object.keys(conceptsReport).length > 0) ||
+      (informationModelsReport &&
+        Object.keys(informationModelsReport).length > 0);
+
+    if (hasAnyData) {
+      console.log('Reports page: has data, hiding spinner', {
+        datasetsReport,
+        dataServicesReport,
+        conceptsReport,
+        informationModelsReport
+      });
+      setIsLoading(false);
+    }
+  }, [
+    datasetsReport,
+    dataServicesReport,
+    conceptsReport,
+    informationModelsReport
+  ]);
+
+  // Fallback timeout to hide spinner after 30 seconds (in case of unexpected issues)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 30000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   const selectPublisher = useCallback((publisher: any) => {
     const orgPath = publisher?.orgPath;
@@ -97,6 +155,40 @@ export const ReportPagePure: FC<Props> = ({
     [Variant.PUBLIC_SERVICE]: [],
     [Variant.EVENT]: []
   };
+
+  // Show spinner while data is loading
+  if (isLoading) {
+    return (
+      <ThemeProvider
+        theme={
+          (getConfig().isNapProfile ? themeNAP : themeFDK).extendedColors[
+            Entity.DATASET
+          ]
+        }
+      >
+        <Helmet>
+          <title>{localization.menu.reports} - data.norge.no</title>
+          <meta name='description' content={localization.head.description} />
+          <meta
+            property='og:title'
+            content={`${localization.menu.reports} - data.norge.no`}
+          />
+          <meta
+            property='og:description'
+            content={localization.head.description}
+          />
+          <meta property='og:type' content='website' />
+        </Helmet>
+        <main id='content' className='container'>
+          <div className='row'>
+            <div className='col-12 text-center' style={{ padding: '4rem 0' }}>
+              <Spinner />
+            </div>
+          </div>
+        </main>
+      </ThemeProvider>
+    );
+  }
 
   return (
     <ThemeProvider
