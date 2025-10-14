@@ -3,7 +3,6 @@ import 'regenerator-runtime/runtime';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 import App from './app';
@@ -20,9 +19,7 @@ function run(): void {
   render(
     <LoggingProvider>
       <ApolloProvider client={client}>
-        <AppContainer>
-          <App />
-        </AppContainer>
+        <App />
       </ApolloProvider>
     </LoggingProvider>,
     document.getElementById('root')
