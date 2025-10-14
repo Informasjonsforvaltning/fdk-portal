@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { hot } from 'react-hot-loader/root';
 import { Provider as ReduxProvider } from 'react-redux';
 import ThemeProvider from '@fellesdatakatalog/theme';
 
@@ -24,4 +23,4 @@ const App: FC = () => (
   </ThemeProvider>
 );
 
-export default hot(App);
+export default App;
