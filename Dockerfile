@@ -14,7 +14,7 @@ RUN npm test
 ARG NAMESPACE
 RUN npm run build:prod
 
-FROM nginx:alpine
+FROM nginx:stable-alpine-slim
 WORKDIR /app
 RUN addgroup -g 1001 -S app && \
   adduser -u 1001 -S app -G app && \
