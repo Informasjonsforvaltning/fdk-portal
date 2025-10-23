@@ -122,8 +122,8 @@ spec:
             - name: OIDC_ISSUER
               valueFrom:
                 secretKeyRef:
-                  name: sso
-                  key: SSO_OIDC_ISSUER
+                  name: keycloak
+                  key: KEYCLOAK_OIDC_ISSUER
             - name: AI_PROJECT_SERVICE_BASE_URI
               valueFrom:
                 secretKeyRef:
