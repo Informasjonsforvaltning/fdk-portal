@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import SvgIcon from '@fellesdatakatalog/icons';
 import Button, { Variant } from '@fellesdatakatalog/button';
 import Link from '@fellesdatakatalog/link';
+import { Severity } from '@fellesdatakatalog/alert';
 import Spinner from '../../components/spinner';
 import ErrorPage from '../error-page';
 import withErrorBoundary from '../../components/with-error-boundary';
@@ -50,6 +51,14 @@ const Page: FC<Props> = ({
       <div className='row mb-5'>
         <div className='col-12'>
           <SC.Header>{localization.aiPage.artificialIntelligence}</SC.Header>
+        </div>
+      </div>
+      <div className='row mb-5'>
+        <div className='col-12'>
+          <SC.Alert severity={Severity.WARNING}>
+            Denne oversikten vedlikeholdes ikke lenger og kan inneholde utdatert
+            informasjon. Sist oppdatert 17. september 2024.
+          </SC.Alert>
         </div>
       </div>
       <SC.TextBox>

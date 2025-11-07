@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import AlertBase from '@fellesdatakatalog/alert';
 import { theme, Unit } from '@fellesdatakatalog/theme';
 
 const Header = styled.h1`
@@ -100,6 +101,10 @@ const EmailWrapper = styled.div`
   display: flex;
 `;
 
+const Alert = styled(AlertBase)`
+  margin-bottom: ${theme.spacing('S24')};
+`;
+
 export default {
   Header,
   SearchBox,
@@ -111,5 +116,6 @@ export default {
   TextBox,
   ContactInfoText,
   RegisterNewProjectText,
-  EmailWrapper
+  EmailWrapper,
+  Alert
 };
