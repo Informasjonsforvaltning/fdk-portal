@@ -362,6 +362,26 @@
       "decision": "ignore",
       "madeAt": 1745568243470,
       "expiresAt": 1748160226083
+    },
+    "1109754|@jest/reporters>@jest/transform>babel-plugin-istanbul>@istanbuljs/load-nyc-config>js-yaml": {
+      "decision": "postpone",
+      "madeAt": 1763384242308
+    },
+    "1109754|jest>@jest/core>@jest/reporters>@jest/transform>babel-plugin-istanbul>@istanbuljs/load-nyc-config>js-yaml": {
+      "decision": "postpone",
+      "madeAt": 1763384242309
+    },
+    "1109754|jest-cli>@jest/core>@jest/reporters>@jest/transform>babel-plugin-istanbul>@istanbuljs/load-nyc-config>js-yaml": {
+      "decision": "postpone",
+      "madeAt": 1763384242309
+    },
+    "1109754|jest-config>babel-jest>@jest/transform>babel-plugin-istanbul>@istanbuljs/load-nyc-config>js-yaml": {
+      "decision": "postpone",
+      "madeAt": 1763384242309
+    },
+    "1109754|jest-resolve-dependencies>jest-snapshot>@jest/transform>babel-plugin-istanbul>@istanbuljs/load-nyc-config>js-yaml": {
+      "decision": "postpone",
+      "madeAt": 1763384242309
     }
   },
   "rules": {},
