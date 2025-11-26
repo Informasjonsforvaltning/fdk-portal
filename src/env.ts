@@ -6,7 +6,7 @@ export default validateEnv(
   (window as any).env ?? {
     NAMESPACE: Namespace.DEVELOPMENT,
     OIDC_ISSUER:
-      'https://keycloak.staging.fellesdatakatalog.digdir.no/realms/fdk',
+      'https://auth.staging.fellesdatakatalog.digdir.no/realms/fdk',
     OIDC_CLIENT_SECRET: '',
     CONTAINER_IMAGE: 'eu.gcr.io/digdir-fdk-infra/fdk-portal:development',
     FDK_PORTAL_BASE_URI: 'https://staging.fellesdatakatalog.digdir.no',
