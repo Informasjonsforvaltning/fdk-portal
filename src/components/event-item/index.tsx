@@ -2,11 +2,10 @@ import React, { FC } from 'react';
 
 import { SearchHit, SearchHitEvents } from '../search-hit/search-hit';
 import { RoundedTag } from '../rounded-tag/rounded-tag.component';
-import translations from '../../lib/localization';
+import localization from '../../lib/localization';
 
 import type { SearchObject } from '../../types';
 import { SearchTypes, SpecializedEventType } from '../../types/enums';
-import localization from '../../lib/localization';
 
 interface Props {
   event: Partial<SearchObject>;
@@ -28,9 +27,9 @@ const EventItem: FC<Props> = ({
           {(() => {
             switch (specializedType) {
               case SpecializedEventType.LIFEEVENT:
-                return translations.lifeEvent;
+                return localization.lifeEvent;
               case SpecializedEventType.BUSINESSEVENT:
-                return translations.businessEvent;
+                return localization.businessEvent;
               default:
                 return '';
             }

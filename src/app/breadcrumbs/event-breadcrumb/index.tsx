@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import withEvent, { Props as EventProps } from '../../../components/with-event';
 
 import { getTranslateText as translate } from '../../../lib/translateText';
-import translations from '../../../lib/localization';
 import localization from '../../../lib/localization';
 
 interface Props extends EventProps {}
@@ -15,7 +14,7 @@ const EventBreadcrumb: FC<Props> = ({ event }) => (
   <>
     <Link to='/public-services-and-events'>{localization.page.serviceTab}</Link>
     <ChevronUpIcon className='fdk-path-chevron' />
-    <span>{translate(event?.title) ?? translations.breadcrumb.notFound}</span>
+    <span>{translate(event?.title) ?? localization.breadcrumb.notFound}</span>
   </>
 );
 

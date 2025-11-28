@@ -8,7 +8,6 @@ import withPublicService, {
 } from '../../../components/with-public-service';
 
 import { getTranslateText as translate } from '../../../lib/translateText';
-import translations from '../../../lib/localization';
 import localization from '../../../lib/localization';
 
 interface Props extends PublicServiceProps {}
@@ -18,7 +17,7 @@ const PublicServiceBreadcrumb: FC<Props> = ({ publicService }) => (
     <Link to='/public-services-and-events'>{localization.page.serviceTab}</Link>
     <ChevronUpIcon className='fdk-path-chevron' />
     <span>
-      {translate(publicService?.title ?? translations.breadcrumb.notFound)}
+      {translate(publicService?.title ?? localization.breadcrumb.notFound)}
     </span>
   </>
 );

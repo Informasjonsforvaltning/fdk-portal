@@ -22,7 +22,7 @@ import {
   HITS_PER_PAGE,
   PATHNAME_PUBLIC_SERVICES_AND_EVENTS
 } from '../../constants/constants';
-import translations from '../../lib/localization';
+import localization from '../../lib/localization';
 import { parseSearchParams } from '../../lib/location-history-helper';
 import { Tabs } from './tabs/tabs';
 import ResultsPage from './results-all-entities/results-all-entities.component';
@@ -33,7 +33,6 @@ import withPublicServicesAndEvents, {
 import { generateQueryKey, shouldFetch } from './lib/fetch-helper';
 
 import type { SearchObject } from '../../types';
-import localization from '../../lib/localization';
 
 interface AllEntities {
   hits: Partial<SearchObject>[];
@@ -211,7 +210,7 @@ const SearchPage: FC<Props> = ({
         <SearchBox placeholder={localization.query.intro} autosuggest>
           <SearchBoxHeader>
             <SearchBoxSC.SearchBox.SearchHeaderLogosTitle>
-              {translations.collaborationBetween}
+              {localization.collaborationBetween}
             </SearchBoxSC.SearchBox.SearchHeaderLogosTitle>
             <TransportPortalLogos />
           </SearchBoxHeader>
