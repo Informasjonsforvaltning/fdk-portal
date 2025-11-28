@@ -62,7 +62,6 @@ import withResourceRelations, {
   ResourceRelationsProps
 } from '../../components/with-resource-relations';
 import { filterRelations } from '../../utils/common';
-import localization from '../../lib/localization';
 
 interface RouteParams {
   publicServiceId: string;
@@ -1243,7 +1242,7 @@ const PublicServiceDetailsPage: FC<Props> = ({
                 {admsStatus?.prefLabel && (
                   <KeyValueListItem
                     property={
-                      localization.detailsPage.sectionTitles.publicService
+                      translations.detailsPage.sectionTitles.publicService
                         .status
                     }
                     value={translate(admsStatus.prefLabel)}
