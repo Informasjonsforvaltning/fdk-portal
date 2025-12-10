@@ -50,7 +50,10 @@ const DatasetDistribution: FC<Props> = ({
     fdkFormat: formats = [],
     downloadURL: [downloadURL] = [],
     accessURL: [accessURL] = [],
-    page: [{ uri: pageUri = null } = {}] = []
+    page: [{ uri: pageUri = null } = {}] = [],
+    status,
+    mobilityDataStandard,
+    rights
   },
   accessServices = []
 }) => {
@@ -114,6 +117,13 @@ const DatasetDistribution: FC<Props> = ({
             data-testid={testIds.detail}
           />
         )}
+        {status && (
+          <Detail
+            property={translations.dataset.distribution.status}
+            value={translate(status?.prefLabel) || status?.uri}
+            data-testid={testIds.detail}
+          />
+        )}
         {licenses?.map(
           ({ uri: licenseUri, prefLabel: licensePrefLabel }: License) => (
             <Detail
@@ -155,6 +165,23 @@ const DatasetDistribution: FC<Props> = ({
                 )}
               </SC.ColumnData>
             }
+            data-testid={testIds.detail}
+          />
+        )}
+        {mobilityDataStandard && (
+          <Detail
+            property={translations.dataset.distribution.mobilityDataStandard}
+            value={
+              translate(mobilityDataStandard?.prefLabel) ||
+              mobilityDataStandard?.uri
+            }
+            data-testid={testIds.detail}
+          />
+        )}
+        {rights?.type && (
+          <Detail
+            property={translations.dataset.distribution.rightsConditions}
+            value={translate(rights.type?.prefLabel) || rights.type?.uri}
             data-testid={testIds.detail}
           />
         )}

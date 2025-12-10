@@ -875,6 +875,20 @@ const DatasetDetailsPage: FC<Props> = ({
             </InlineList>
           </ContentSection>
         )}
+        {(dataset?.mobilityTheme?.length ?? 0) > 0 && (
+          <ContentSection
+            id='mobilityThemes'
+            title={translations.facet.themeMobility}
+          >
+            <InlineList>
+              {dataset?.mobilityTheme?.map(mobilityTheme => (
+                <span key={`mobilityTheme-${mobilityTheme.code}`}>
+                  {translate(mobilityTheme.prefLabel)}
+                </span>
+              ))}
+            </InlineList>
+          </ContentSection>
+        )}
         {keywords.length > 0 && (
           <ContentSection
             id='keywords'

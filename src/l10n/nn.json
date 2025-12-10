@@ -227,6 +227,7 @@
     "organisation": "Eigar",
     "theme": "Tema",
     "themeEU": "EU-tema",
+    "themeMobility": "Mobility-tema",
     "accessRight": "Tilgang",
     "concept": "Tilrådd term",
     "legal": "Heimel",
@@ -340,7 +341,10 @@
       "dataService": "Datateneste",
       "endpointDescription": "Endepunktsbeskriving",
       "preview": "Førehandsvising",
-      "previewFailure": "Orsak, det ser ut at distribusjonen ikkje fins eller inneheld ugyldige data."
+      "previewFailure": "Orsak, det ser ut at distribusjonen ikkje fins eller inneheld ugyldige data.",
+      "status": "Status",
+      "mobilityDataStandard": "Mobility-standard",
+      "rightsConditions": "Rettigheter for bruk"
     },
     "issued": "Utgjevingsdato",
     "quality": "Kvalitet på innhald",
