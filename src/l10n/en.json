@@ -222,6 +222,7 @@
     "organisation": "Owner",
     "theme": "Theme",
     "themeEU": "EU-theme",
+    "themeMobility": "Mobility theme",
     "accessRight": "Access",
     "concept": "Preferred term",
     "legal": "Legal",
@@ -335,7 +336,10 @@
       "dataService": "Data service",
       "endpointDescription": "Endpoint description",
       "preview": "Preview",
-      "previewFailure": "Sorry, it looks like the distribution does not exist or contains invalid data."
+      "previewFailure": "Sorry, it looks like the distribution does not exist or contains invalid data.",
+      "status": "Status",
+      "mobilityDataStandard": "Mobility standard",
+      "rightsConditions": "Rights for use"
     },
     "issued": "Issue date",
     "quality": "Quality",

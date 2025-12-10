@@ -233,6 +233,7 @@
     "organisation": "Eier",
     "theme": "Tema",
     "themeEU": "EU-tema",
+    "themeMobility": "Mobility-tema",
     "accessRight": "Tilgang",
     "concept": "Anbefalt term",
     "legal": "Hjemmel",
@@ -345,7 +346,10 @@
       "dataService": "Datatjeneste",
       "endpointDescription": "Endepunktsbeskrivelse",
       "preview": "Se forhåndsvisning",
-      "previewFailure": "Beklager, det ser ut at distribusjonen ikke finnes eller inneholder ugyldig data."
+      "previewFailure": "Beklager, det ser ut at distribusjonen ikke finnes eller inneholder ugyldig data.",
+      "status": "Status",
+      "mobilityDataStandard": "Mobility-standard",
+      "rightsConditions": "Rettigheter for bruk"
     },
     "issued": "Utgitt",
     "quality": "Kvalitet på innhold",
