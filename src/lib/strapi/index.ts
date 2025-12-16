@@ -8,15 +8,15 @@ import {
 } from '../../api/generated/cms/graphql';
 
 export function isBasicParagraph(obj?: any): obj is ComponentBasicParagraph {
-  return obj && obj?.__typename === 'ComponentBasicParagraph';
+  return obj && obj?.__component === 'basic.paragraph';
 }
 
 export function isBasicImage(obj?: any): obj is ComponentBasicImage {
-  return obj && obj?.__typename === 'ComponentBasicImage';
+  return obj && obj?.__component === 'basic.image';
 }
 
 export function isBasicYoutube(obj?: any): obj is ComponentBasicYoutube {
-  return obj && obj?.__typename === 'ComponentBasicYoutube';
+  return obj && obj?.__component === 'basic.youtube';
 }
 
 export function getLocalizedAttributes<
