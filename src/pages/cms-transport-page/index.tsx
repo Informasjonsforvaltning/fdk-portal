@@ -1,16 +1,13 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useState, useEffect } from 'react';
 import { compose } from 'redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Helmet } from 'react-helmet';
 
 import { CircularProgress } from '@mui/material';
 import localization from '../../lib/localization';
 
-import {
-  TransportArticle,
-  useGetTransportArticleBySlugQuery
-} from '../../api/generated/cms/graphql';
+import { TransportArticle } from '../../api/generated/cms/graphql';
 
 import ErrorPage from '../error-page';
 
@@ -27,17 +24,36 @@ import SC from './styled';
 import YoutubeEmbed from '../../components/youtube-embed';
 import { Entity } from '../../types/enums';
 import { getConfig } from '../../config';
+import { getTransportArticles } from '../../api/cms/transport';
 
 interface Props extends RouteComponentProps {}
 
 const FDK_CMS_BASE_URI = getConfig().cmsV2Api.host;
 
 const TransportPage: FC<Props> = () => {
-  const { data, loading, error } = useGetTransportArticleBySlugQuery({
-    variables: {
-      slug: location.pathname
-    }
-  });
+  const location = useLocation();
+  const [articles, setArticles] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await getTransportArticles({
+          'filters[slug][$eq]': location.pathname,
+          'populate[Content][populate]': '*'
+        });
+        setArticles(response);
+      } catch (err) {
+        setError(err as Error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [location.pathname]);
 
   const page = () => {
     if (loading) {
@@ -48,9 +64,9 @@ const TransportPage: FC<Props> = () => {
       );
     }
 
-    const firstArticle = (data?.transportArticles as TransportArticle[])?.[0];
+    const firstArticle = (articles?.data as TransportArticle[])?.[0];
 
-    if (error?.name !== undefined || !firstArticle) {
+    if (error !== null || !firstArticle) {
       return <ErrorPage errorCode='404' />;
     }
 
