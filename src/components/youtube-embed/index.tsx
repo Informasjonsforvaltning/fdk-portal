@@ -21,6 +21,7 @@ const YoutubeEmbed = ({ url, width = '853', height = '480' }: Props) => {
           height={height}
           src={`https://www.youtube.com/embed/${embedId}`}
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+          referrerPolicy='strict-origin-when-cross-origin'
           allowFullScreen
           title='Embedded youtube'
         />
