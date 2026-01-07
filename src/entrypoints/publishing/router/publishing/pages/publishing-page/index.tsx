@@ -1,13 +1,11 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { Link as RouteLink, RouteComponentProps } from 'react-router-dom';
 import Link from '@fellesdatakatalog/link';
-
 import env from '../../../../../../env';
 
 import Translation from '../../../../../../components/translation';
 import {
-  useGetServiceMessagesQuery,
   ServiceMessage,
   Enum_Servicemessage_Environment
 } from '../../../../../../api/generated/cms/graphql';
@@ -15,6 +13,7 @@ import {
 import ServiceMessages from '../../../../../../components/service-messages';
 
 import SC from './styled';
+import { getServiceMessages } from '../../../../../../api/cms/service-message';
 
 const { ADMIN_GUI_BASE_URI, CATALOG_PORTAL_BASE_URI } = env;
 
@@ -28,23 +27,36 @@ if (window.location.hostname.match('localhost|staging')) {
 }
 
 const PublishingPage: FC<Props> = ({ match: { url } }) => {
-  const date = new Date();
-  const now_utc = Date.UTC(
-    date.getUTCFullYear(),
-    date.getUTCMonth(),
-    date.getUTCDate(),
-    date.getUTCHours(),
-    date.getUTCMinutes(),
-    date.getUTCSeconds()
-  );
-  const { data } = useGetServiceMessagesQuery({
-    variables: {
-      today: new Date(now_utc),
-      channelPubliseringPortal: true,
-      env: serviceMessageEnv
-    }
-  });
-  const serviceMessages = data?.serviceMessages as ServiceMessage[];
+  const [serviceMessages, setServiceMessages] = useState<ServiceMessage[]>([]);
+
+  useEffect(() => {
+    const date = new Date();
+    const now_utc = Date.UTC(
+      date.getUTCFullYear(),
+      date.getUTCMonth(),
+      date.getUTCDate(),
+      date.getUTCHours(),
+      date.getUTCMinutes(),
+      date.getUTCSeconds()
+    );
+
+    const fetchMessages = async () => {
+      try {
+        const response = await getServiceMessages({
+          'filters[valid_from][$lte]': new Date(now_utc),
+          'filters[valid_to][$gte]': new Date(now_utc),
+          'filters[channel_publiseringportal][$eq]': true,
+          'filters[environment][$eq]': serviceMessageEnv
+        });
+        setServiceMessages(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMessages();
+  }, []);
+
   return (
     <SC.PublishingPage>
       {serviceMessages?.length > 0 && (

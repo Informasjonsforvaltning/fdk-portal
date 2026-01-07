@@ -1,19 +1,18 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import { Link as RouteLink, useHistory, useLocation } from 'react-router-dom';
 import Moment from 'react-moment';
 import { Severity } from '@fellesdatakatalog/alert';
-
 import moment from 'moment';
 import Translation from '../../../../../../components/translation';
 import {
   Enum_Servicemessage_Environment,
-  ServiceMessage,
-  useGetServiceMessagesQuery
+  ServiceMessage
 } from '../../../../../../api/generated/cms/graphql';
 
 import SC from './styled';
 import { PATHNAME_PUBLISHING } from '../../../../../../constants/constants';
 import { MomentFormat } from '../../../../../../types/enums';
+import { getServiceMessages } from '../../../../../../api/cms/service-message';
 
 interface Props {}
 
@@ -64,6 +63,7 @@ const renderServiceMessage = (entity: ServiceMessage | undefined) => {
 const ServiceMessagesPage: FC<Props> = () => {
   const history = useHistory();
   const location = useLocation();
+  const [serviceMessages, setServiceMessages] = useState<ServiceMessage[]>([]);
 
   const handleShowActive = () => {
     history.push(`${PATHNAME_PUBLISHING}/service-messages`);
@@ -73,25 +73,36 @@ const ServiceMessagesPage: FC<Props> = () => {
     history.push(`${PATHNAME_PUBLISHING}/service-messages?all`);
   };
   const showAll = location.search.includes('all');
-  let serviceMessageEnv = Enum_Servicemessage_Environment.Production;
-  if (window.location.hostname.match('localhost|staging')) {
-    serviceMessageEnv = Enum_Servicemessage_Environment.Staging;
-  } else if (window.location.hostname.match('demo')) {
-    serviceMessageEnv = Enum_Servicemessage_Environment.Demo;
-  }
-  const { data } = useGetServiceMessagesQuery({
-    variables: showAll
-      ? {
-          env: serviceMessageEnv
-        }
-      : {
-          today: moment(Date.now()).format(),
-          env: serviceMessageEnv
-        },
-    skip: false
-  });
 
-  const serviceMessages = data?.serviceMessages as ServiceMessage[];
+  useEffect(() => {
+    let serviceMessageEnv = Enum_Servicemessage_Environment.Production;
+    if (window.location.hostname.match('localhost|staging')) {
+      serviceMessageEnv = Enum_Servicemessage_Environment.Staging;
+    } else if (window.location.hostname.match('demo')) {
+      serviceMessageEnv = Enum_Servicemessage_Environment.Demo;
+    }
+
+    const fetchMessages = async () => {
+      try {
+        const response = await getServiceMessages(
+          showAll
+            ? {
+                'filters[environment][$eq]': serviceMessageEnv
+              }
+            : {
+                'filters[valid_from][$lte]': moment(Date.now()).format(),
+                'filters[valid_to][$gte]': moment(Date.now()).format(),
+                'filters[environment][$eq]': serviceMessageEnv
+              }
+        );
+        setServiceMessages(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMessages();
+  }, [showAll]);
 
   return (
     <SC.ServiceMessagesPage>

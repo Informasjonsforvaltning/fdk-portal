@@ -1,13 +1,11 @@
 import React, { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import {
-  ServiceMessage,
-  useGetServiceMessageQuery
-} from '../../../../../../api/generated/cms/graphql';
+import { ServiceMessage } from '../../../../../../api/generated/cms/graphql';
 
 import SC from './styled';
 import Markdown from '../../../../../../components/markdown';
+import { getServiceMessage } from '../../../../../../api/cms/service-message';
 
 interface Props {}
 
@@ -32,10 +30,26 @@ const renderServiceMessage = (entity: ServiceMessage | undefined) => {
 
 const ServiceMessagePage: FC<Props> = () => {
   const { id } = useParams<{ id: string }>();
-  const { data } = useGetServiceMessageQuery({ variables: { id } });
-  return renderServiceMessage(
-    data?.serviceMessage as ServiceMessage | undefined
-  );
+  const [serviceMessage, setServiceMessage] = React.useState<
+    ServiceMessage | undefined
+  >(undefined);
+
+  React.useEffect(() => {
+    if (!id) return;
+
+    const fetchMessage = async () => {
+      try {
+        const response = await getServiceMessage(id);
+        setServiceMessage(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMessage();
+  }, [id]);
+
+  return renderServiceMessage(serviceMessage);
 };
 
 export default memo(ServiceMessagePage);
