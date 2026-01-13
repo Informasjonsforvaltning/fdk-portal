@@ -8,15 +8,27 @@ import {
 } from '../../api/generated/cms/graphql';
 
 export function isBasicParagraph(obj?: any): obj is ComponentBasicParagraph {
-  return obj && obj?.__component === 'basic.paragraph';
+  return (
+    obj &&
+    (obj?.__component === 'basic.paragraph' ||
+      obj?.__typename === 'ComponentBasicParagraph')
+  );
 }
 
 export function isBasicImage(obj?: any): obj is ComponentBasicImage {
-  return obj && obj?.__component === 'basic.image';
+  return (
+    obj &&
+    (obj?.__component === 'basic.image' ||
+      obj?.__typename === 'ComponentBasicImage')
+  );
 }
 
 export function isBasicYoutube(obj?: any): obj is ComponentBasicYoutube {
-  return obj && obj?.__component === 'basic.youtube';
+  return (
+    obj &&
+    (obj?.__component === 'basic.youtube' ||
+      obj?.__typename === 'ComponentBasicYoutube')
+  );
 }
 
 export function getLocalizedAttributes<
