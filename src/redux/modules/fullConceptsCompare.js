@@ -26,7 +26,7 @@ export function fetchFullConceptsToCompareIfNeededAction(iDs) {
         shouldFetch(_.get(getState(), ['fullConceptsCompare', 'meta', id]))
     );
     dispatch(
-      reduxFsaThunk(() => resourceServiceApiPost(`concepts`, { ids }), {
+      reduxFsaThunk(() => resourceServiceApiPost(`v1/concepts`, { ids }), {
         onBeforeStart: {
           type: FULL_CONCEPTSCOMPARE_REQUEST,
           meta: { ids }
