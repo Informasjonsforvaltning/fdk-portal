@@ -55,6 +55,7 @@ const renderFieldValue = (
   item: any,
   fieldPath: string[],
   fieldPathFallback: string[],
+  arrayItemPath: string[],
   index: number
 ) => {
   const fieldValue = _.get(item, fieldPath) || _.get(item, fieldPathFallback);
@@ -64,7 +65,9 @@ const renderFieldValue = (
       {Array.isArray(fieldValue)
         ? fieldValue.map((value, fieldIndex) => (
             <span key={fieldIndex} className='mr-2'>
-              {getTranslateText(value)}
+              {getTranslateText(
+                arrayItemPath.length > 0 ? _.get(value, arrayItemPath) : value
+              )}
             </span>
           ))
         : getTranslateText(fieldValue)}
@@ -76,7 +79,8 @@ const renderRow = (
   label: any,
   items: any,
   fieldPath: string[],
-  fieldPathFallback: string[] = []
+  fieldPathFallback: string[] = [],
+  arrayItemPath: string[] = []
 ) =>
   existValuesOnAnyItem(items, fieldPath) ||
   existValuesOnAnyItem(items, fieldPathFallback) ? (
@@ -85,7 +89,13 @@ const renderRow = (
         <strong>{label}</strong>
       </td>
       {Object.values(items).map((item, index) =>
-        renderFieldValue(item, fieldPath, fieldPathFallback, index)
+        renderFieldValue(
+          item,
+          fieldPath,
+          fieldPathFallback,
+          arrayItemPath,
+          index
+        )
       )}
     </tr>
   ) : null;
@@ -209,7 +219,9 @@ export const ConceptComparePage: FC<Props> = ({
                       {renderRow(
                         localization.compare.subject,
                         fullConceptsCompare,
-                        ['subject']
+                        ['subject'],
+                        [],
+                        ['label']
                       )}
                       {renderRow(
                         localization.compare.altLabel,
