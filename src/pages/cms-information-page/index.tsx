@@ -1,13 +1,11 @@
-import React, { FC, memo, useEffect } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, useLocation, withRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import localization from '../../lib/localization';
 
-import {
-  FancyArticle,
-  useGetFancyArticleBySlugQuery
-} from '../../api/generated/cms/graphql';
+import { FancyArticle } from '../../api/generated/cms/graphql';
+import { getFancyArticleBySlug } from '../../api/cms/fancy-article';
 
 import ErrorPage from '../error-page';
 
@@ -29,26 +27,42 @@ export interface Props extends RouteComponentProps {}
 const FDK_CMS_BASE_URI = getConfig().cmsV2Api.host;
 
 const InformationPage: FC<Props> = () => {
+  const location = useLocation();
+  const [fancyArticles, setFancyArticles] = useState<FancyArticle[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
   useEffect(() => {
     const appRoot = document.querySelector('#root > div');
     appRoot?.classList.add('white-bg');
     return () => appRoot?.classList.remove('white-bg');
   });
 
-  const { data, loading, error } = useGetFancyArticleBySlugQuery({
-    variables: {
-      slug: location.pathname
-    }
-  });
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const articles = await getFancyArticleBySlug(location.pathname);
+        setFancyArticles(articles ?? []);
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error(String(err)));
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const firstArticle = (data?.fancyArticles as FancyArticle[])?.[0];
+    fetchArticle();
+  }, [location.pathname]);
+
+  const firstArticle = fancyArticles?.[0];
 
   const page = () => {
     if (loading) {
       return <Spinner />;
     }
 
-    if (error?.name !== undefined || !firstArticle) {
+    if (error || !firstArticle) {
       return <ErrorPage errorCode='404' />;
     }
 
