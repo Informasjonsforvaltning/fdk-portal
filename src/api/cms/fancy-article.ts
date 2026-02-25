@@ -23,5 +23,6 @@ export const getFancyArticleBySlug = (
 ) =>
   cmsApiGet('/api/fancy-articles', {
     'filters[slug][$eq]': slug,
+    'populate[Content][populate]': '*',
     ...params
   }).then(normalizeStrapiResponse);
