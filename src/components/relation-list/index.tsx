@@ -11,14 +11,17 @@ import { getTranslateText as translate } from '../../lib/translateText';
 import {
   PATHNAME_CONCEPTS,
   PATHNAME_DATASETS,
-  PATHNAME_DATA_SERVICES,
   PATHNAME_EVENTS,
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_PUBLIC_SERVICES
 } from '../../constants/constants';
 
 import type { SearchObject } from '../../types';
-import { filterRelations, getRelationType } from '../../utils/common';
+import {
+  filterRelations,
+  getDataServiceDetailUrl,
+  getRelationType
+} from '../../utils/common';
 import { Entity } from '../../types/enums';
 
 interface RelationProps {
@@ -97,7 +100,7 @@ const RelationsList: FC<Props> = ({
         <SC.RelationLinks>
           {dataServices.map(({ uri, title, id }) =>
             uri && id && title ? (
-              <Link as={RouterLink} to={`${PATHNAME_DATA_SERVICES}/${id}`}>
+              <Link href={getDataServiceDetailUrl(id)}>
                 {translate(title ?? uri)}
               </Link>
             ) : null

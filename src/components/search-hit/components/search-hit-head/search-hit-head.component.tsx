@@ -6,12 +6,12 @@ import { getTranslateText } from '../../../../lib/translateText';
 import localization from '../../../../lib/localization';
 import {
   PATHNAME_CONCEPTS,
-  PATHNAME_DATA_SERVICES,
   PATHNAME_DATASETS,
   PATHNAME_INFORMATIONMODELS,
   PATHNAME_PUBLIC_SERVICES,
   PATHNAME_EVENTS
 } from '../../../../constants/constants';
+import { getDataServiceDetailUrl } from '../../../../utils/common';
 
 interface Props {
   id?: string;
@@ -24,11 +24,17 @@ interface Props {
 
 const detailLinks = {
   [SearchTypes.dataset]: PATHNAME_DATASETS,
-  [SearchTypes.dataservice]: PATHNAME_DATA_SERVICES,
   [SearchTypes.concept]: PATHNAME_CONCEPTS,
   [SearchTypes.informationModel]: PATHNAME_INFORMATIONMODELS,
   [SearchTypes.publicService]: PATHNAME_PUBLIC_SERVICES,
   [SearchTypes.event]: PATHNAME_EVENTS
+};
+
+const buildDetailHref = (type: SearchTypes, id?: string): string => {
+  if (type === SearchTypes.dataservice) {
+    return getDataServiceDetailUrl(id ?? '');
+  }
+  return `${detailLinks[type as keyof typeof detailLinks]}/${id}`;
 };
 
 export const SearchHitHead: FC<Props> = ({
@@ -47,7 +53,7 @@ export const SearchHitHead: FC<Props> = ({
         <SC.Header>
           {title && (
             <SC.Title>
-              <a href={`${detailLinks[type]}/${id}`}>
+              <a href={buildDetailHref(type, id)}>
                 {getTranslateText(title)}
               </a>
             </SC.Title>
