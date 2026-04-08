@@ -1,14 +1,13 @@
 import React, { memo, useState } from 'react';
 import type { FC } from 'react';
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 import {
   ExpansionPanelHead,
   ExpansionPanelBody
 } from '@fellesdatakatalog/expansion-panel';
-import LinkExternal from '@fellesdatakatalog/link';
+import Link from '@fellesdatakatalog/link';
 
 import ExpansionIndicatorDefault from '../../../expansion-indicator-default';
 
@@ -110,9 +109,9 @@ const DatasetDistribution: FC<Props> = ({
           <Detail
             property={translations.dataset.distribution.accessUrl}
             value={
-              <LinkExternal href={accessURL} external>
+              <Link href={accessURL} external>
                 {accessURL}
-              </LinkExternal>
+              </Link>
             }
             data-testid={testIds.detail}
           />
@@ -130,9 +129,9 @@ const DatasetDistribution: FC<Props> = ({
               key={licenseUri}
               property={translations.dataset.distribution.licenseLinkDefault}
               value={
-                <LinkExternal href={licenseUri} external>
+                <Link href={licenseUri} external>
                   {translate(licensePrefLabel) || licenseUri}
-                </LinkExternal>
+                </Link>
               }
               data-testid={testIds.detail}
             />
@@ -157,7 +156,7 @@ const DatasetDistribution: FC<Props> = ({
                     uri: accessServiceUri
                   }) => (
                     <SC.ColumnRow>
-                      <Link to={accessServiceUri} key={accessServiceUri}>
+                      <Link href={accessServiceUri} key={accessServiceUri}>
                         {translate(accessServiceDescription)}
                       </Link>
                     </SC.ColumnRow>
@@ -187,13 +186,13 @@ const DatasetDistribution: FC<Props> = ({
         )}
         {pageUri && (
           <SC.Section>
-            <LinkExternal
+            <Link
               href={pageUri}
               external
               data-testid={testIds.moreInfo}
             >
               {translations.dataset.distribution.page}
-            </LinkExternal>
+            </Link>
           </SC.Section>
         )}
         {downloadURL && (

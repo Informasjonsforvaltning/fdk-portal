@@ -31,6 +31,11 @@ export const validateEnv = (
   return env;
 };
 
+export const getDataServiceDetailUrl = (id: string): string =>
+  `${
+    getConfig().fdkPortalBaseUri.host
+  }/${localization.getLanguage()}/data-services/${id}`;
+
 export const isEuTheme = (
   theme: EuDataTheme | LosNode | EuTheme | LosTheme
 ): theme is EuTheme => {

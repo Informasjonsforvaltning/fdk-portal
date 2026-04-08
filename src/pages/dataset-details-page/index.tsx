@@ -17,8 +17,7 @@ import { dateStringToDate, formatDate } from '../../lib/date-utils';
 import {
   PATHNAME_DATASETS,
   PATHNAME_DATASET_DETAILS,
-  PATHNAME_CONCEPTS,
-  PATHNAME_DATA_SERVICES
+  PATHNAME_CONCEPTS
 } from '../../constants/constants';
 
 import { themeFDK, themeNAP } from '../../app/theme';
@@ -77,6 +76,7 @@ import withResourceRelations, {
 } from '../../components/with-resource-relations';
 import {
   filterRelations,
+  getDataServiceDetailUrl,
   isEuTheme,
   isLosTheme,
   parseFormats
@@ -303,7 +303,7 @@ const DatasetDetailsPage: FC<Props> = ({
           ? accessServices.push({
               description: dataService.title,
               endpointDescription: dataService.endpointDescription,
-              uri: `${PATHNAME_DATA_SERVICES}/${dataService.id}`
+              uri: getDataServiceDetailUrl(dataService.id ?? '')
             })
           : accessServices.push({ description: { nb: uri }, uri });
       }
@@ -446,7 +446,7 @@ const DatasetDetailsPage: FC<Props> = ({
                   accessServices={
                     dataserviceTitle && [
                       {
-                        uri: `${PATHNAME_DATA_SERVICES}/${id}`,
+                        uri: getDataServiceDetailUrl(id ?? ''),
                         description: dataserviceTitle
                       }
                     ]
