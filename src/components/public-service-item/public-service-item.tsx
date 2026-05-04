@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { compose } from 'redux';
 
 import { SearchObject } from '../../types';
-import { SearchTypes } from '../../types/enums';
+import { SearchTypes, SpecializedPublicServiceType } from '../../types/enums';
 import { SearchHit } from '../search-hit/search-hit';
 import localization from '../../lib/localization';
 
@@ -13,7 +13,13 @@ interface ExternalProps {
 interface Props extends ExternalProps {}
 
 const PublicServiceItemPure: FC<Props> = ({
-  publicService: { id = '', title = {}, description = {}, organization }
+  publicService: {
+    id = '',
+    title = {},
+    description = {},
+    organization,
+    specializedType
+  }
 }) => (
   <SearchHit
     id={id}
@@ -21,7 +27,11 @@ const PublicServiceItemPure: FC<Props> = ({
     title={title}
     publisher={organization}
     description={description}
-    subtitle={localization.service}
+    subtitle={
+      specializedType === SpecializedPublicServiceType.PUBLIC_SERVICE
+        ? localization.publicService
+        : localization.service
+    }
   />
 );
 

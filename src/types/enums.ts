@@ -158,6 +158,11 @@ export enum SpecializedDatasetType {
   DATASET_SERIES = 'datasetSeries'
 }
 
+export enum SpecializedPublicServiceType {
+  SERVICE = 'service',
+  PUBLIC_SERVICE = 'publicService'
+}
+
 export enum CommunityTerm {
   DAY = 'day',
   WEEK = 'week',
