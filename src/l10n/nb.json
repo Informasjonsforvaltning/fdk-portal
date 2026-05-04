@@ -51,6 +51,7 @@
   "dataServiceLabel": "Datatjeneste",
   "serviceLabel": "Tjeneste og hendelse",
   "service": "Tjeneste",
+  "publicService": "Offentlig tjeneste",
   "event": "Hendelse",
   "activeFilter": "Aktive filtre",
   "goTo": "Gå til",

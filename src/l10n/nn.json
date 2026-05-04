@@ -51,6 +51,7 @@
   "dataServiceLabel": "Datateneste",
   "serviceLabel": "Teneste og hending",
   "service": "Teneste",
+  "publicService": "Offentleg teneste",
   "event": "Hending",
   "activeFilter": "Aktive filter",
   "goTo": "Gå til",

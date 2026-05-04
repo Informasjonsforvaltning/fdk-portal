@@ -2,7 +2,9 @@ import {
   DataFormat,
   Entity as EntityEnum,
   AdministrativeUnitType,
+  SpecializedDatasetType,
   SpecializedEventType,
+  SpecializedPublicServiceType,
   LanguageCodes,
   SearchObjectRelationType
 } from './enums';
@@ -22,7 +24,10 @@ export interface SearchObject {
   organization?: Organization;
   provenance?: ReferenceDataCode;
   searchType: EntityEnum;
-  specializedType?: SpecializedDatasetType | SpecializedEventType;
+  specializedType?:
+    | SpecializedDatasetType
+    | SpecializedEventType
+    | SpecializedPublicServiceType;
   spatial?: ReferenceDataCode[];
   title?: Partial<TextLanguage>;
   relations?: Relation[];
@@ -456,7 +461,7 @@ interface PublicServiceContactPoint {
 export interface PublicService {
   id: string;
   type: EntityEnum.PUBLIC_SERVICE;
-  specializedType?: str | null;
+  specializedType?: SpecializedPublicServiceType | null;
   uri: string;
   identifier: string;
   title: Partial<TextLanguage>;
