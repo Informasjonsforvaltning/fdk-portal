@@ -7,24 +7,24 @@ const env = window.env || {
 };
 
 // override all env variables to staging (inspired by https://www.staging.fellesdatakatalog.digdir.no/config.js)
-env.FDK_PORTAL_BASE_URI = 'https://staging.fellesdatakatalog.digdir.no';
-env.SEARCH_SERVICE_HOST =
-  'https://search.api.staging.fellesdatakatalog.digdir.no';
-env.STATISTICS_SERVICE_HOST =
-  'https://statistics.api.staging.fellesdatakatalog.digdir.no';
-env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
-env.FDK_CMS_BASE_URI = 'https://cms.staging.fellesdatakatalog.digdir.no';
-env.ORGANIZATION_HOST =
-  'https://organization-bff.staging.fellesdatakatalog.digdir.no';
-env.ORGANIZATION_CATALOG_URI =
-  'https://organization-catalog.staging.fellesdatakatalog.digdir.no';
-env.RESOURCE_API_HOST =
-  'https://resource.api.staging.fellesdatakatalog.digdir.no';
-env.FDK_MQA_API_BASE_URI =
-  'https://mqa-scoring-api.staging.fellesdatakatalog.digdir.no';
-env.USE_DEMO_LOGO = true;
-env.ACCESS_REQUEST_API_HOST =
-  'https://access-request.api.staging.fellesdatakatalog.digdir.no';
+// env.FDK_PORTAL_BASE_URI = 'https://staging.fellesdatakatalog.digdir.no';
+// env.SEARCH_SERVICE_HOST =
+//   'https://search.api.staging.fellesdatakatalog.digdir.no';
+// env.STATISTICS_SERVICE_HOST =
+//   'https://statistics.api.staging.fellesdatakatalog.digdir.no';
+// env.CMS_API_HOST = 'https://cms-fellesdatakatalog.digdir.no';
+// env.FDK_CMS_BASE_URI = 'https://cms.staging.fellesdatakatalog.digdir.no';
+// env.ORGANIZATION_HOST =
+//   'https://organization-bff.staging.fellesdatakatalog.digdir.no';
+// env.ORGANIZATION_CATALOG_URI =
+//   'https://organization-catalog.staging.fellesdatakatalog.digdir.no';
+// env.RESOURCE_API_HOST =
+//   'https://resource.api.staging.fellesdatakatalog.digdir.no';
+// env.FDK_MQA_API_BASE_URI =
+//   'https://mqa-scoring-api.staging.fellesdatakatalog.digdir.no';
+// env.USE_DEMO_LOGO = true;
+// env.ACCESS_REQUEST_API_HOST =
+//   'https://access-request.api.staging.fellesdatakatalog.digdir.no';
 
 const fdkPortalBaseUri = {
   host: env.FDK_PORTAL_BASE_URI || ''
