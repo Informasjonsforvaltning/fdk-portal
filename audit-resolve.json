@@ -382,6 +382,16 @@
     "1109754|jest-resolve-dependencies>jest-snapshot>@jest/transform>babel-plugin-istanbul>@istanbuljs/load-nyc-config>js-yaml": {
       "decision": "postpone",
       "madeAt": 1763384242309
+    },
+    "1115556|lint-staged>yaml": {
+      "decision": "ignore",
+      "madeAt": 1779951174283,
+      "expiresAt": 1782543095912
+    },
+    "1119441|webpack-dev-server>sockjs>uuid": {
+      "decision": "ignore",
+      "madeAt": 1779951183735,
+      "expiresAt": 1782543095912
     }
   },
   "rules": {},
