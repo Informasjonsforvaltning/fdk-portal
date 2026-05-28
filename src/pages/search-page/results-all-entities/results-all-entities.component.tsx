@@ -34,6 +34,35 @@ import { FilterPills } from '../filter-pills/filter-pills.component';
 
 const { FDK_PORTAL_BASE_URI } = env;
 
+const FEED_ALLOWED_PARAMS = new Set([
+  'q',
+  'query',
+  'lostheme',
+  'theme',
+  'datatheme',
+  'opendata',
+  'accessrights',
+  'orgpath',
+  'spatial',
+  'provenance',
+  'format',
+  'formats',
+  'lastxdays',
+  'lastxdaysmodified'
+]);
+
+const filterFeedParams = (search: string): string => {
+  const params = new URLSearchParams(search);
+  const filtered = new URLSearchParams();
+  params.forEach((value, key) => {
+    if (FEED_ALLOWED_PARAMS.has(key.toLowerCase())) {
+      filtered.append(key, value);
+    }
+  });
+  const result = filtered.toString();
+  return result ? `?${result}` : '';
+};
+
 interface ExternalProps {
   entities: Partial<SearchObject>[];
   aggregations?: any;
@@ -147,7 +176,7 @@ const ResultsPage: FC<PropsWithChildren<Props>> = ({
                     {[FeedType.RSS, FeedType.ATOM].map(type => (
                       <SC.FeedLink
                         key={type}
-                        href={`${FDK_PORTAL_BASE_URI}/datasets.${type}${location.search}`}
+                        href={`${FDK_PORTAL_BASE_URI}/datasets.${type}${filterFeedParams(location.search)}`}
                       >
                         {localization.feedType[type]}
                         <SC.FeedIcon />
