@@ -54,6 +54,7 @@
     "puppeteer": "22.12.0",
     "micromatch": "^4.0.8",
     "@tootallnate/once": "^2.0.1",
+    "uuid": "^11.1.1",
     "@ardatan/relay-compiler": {
       "immutable": "3.8.3"
     }
