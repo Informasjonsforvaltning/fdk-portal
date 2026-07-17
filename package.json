@@ -46,6 +46,7 @@
     }
   },
   "overrides": {
+    "websocket-driver": "^0.7.5",
     "json5": "2.2.3",
     "axios": "^1.15.2",
     "semver": "^7.6.2",
