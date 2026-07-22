@@ -48,7 +48,10 @@
   "overrides": {
     "websocket-driver": "^0.7.5",
     "json5": "2.2.3",
-    "axios": "^1.15.2",
+    "axios": "^1.18.0",
+    "graphql-config": {
+      "brace-expansion": "^5.0.7"
+    },
     "semver": "^7.6.2",
     "serialize-javascript": "^7.0.5",
     "lodash": "^4.18.1",
@@ -82,7 +85,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@types/react-document-meta": "^3.0.5",
     "apexcharts": "^3.54.1",
-    "axios": "^1.15.2",
+    "axios": "^1.18.0",
     "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",
     "caniuse-lite": "^1.0.30001690",
