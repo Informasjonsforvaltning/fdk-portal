@@ -17,6 +17,7 @@ import { themeFDK, themeNAP } from '../../app/theme';
 import GlobalStyles from '../../app/styles';
 
 import AnalyticsSiteImprove from '../../components/analytics-siteimprove';
+import CookieConsent from '../../components/cookie-consent';
 import { store } from '../../redux/store';
 
 const client = new ApolloClient({
@@ -32,6 +33,7 @@ render(
     <AuthProvider>
       <LoggingProvider>
         <AnalyticsSiteImprove />
+        <CookieConsent />
         <ApolloProvider client={client}>
           <Provider store={store}>
             <BrowserRouter>
