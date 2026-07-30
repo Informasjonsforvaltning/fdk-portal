@@ -1209,5 +1209,14 @@
     "mostComments": "Flest kommentarar",
     "sort": "Sortering",
     "search": "Fritekstsøk i titler"
+  },
+  "cookieConsent": {
+    "heading": "Vi brukar statistikk for å forbetre nettstaden",
+    "description": "For å forstå korleis nettstaden blir brukt samlar vi anonym statistikk. Dette lagrar informasjon i nettlesaren din. Du vel sjølv om du vil tillate det.",
+    "necessaryNote": "Vi lagrar også nødvendig informasjon som ikkje kan veljast bort, slik at nettstaden fungerer og er trygg.",
+    "readMore": "Les meir om informasjonskapslar",
+    "accept": "Godta",
+    "reject": "Avslå",
+    "manage": "Administrer informasjonskapslar"
   }
 }

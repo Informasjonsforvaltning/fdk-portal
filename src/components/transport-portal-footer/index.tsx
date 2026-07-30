@@ -8,6 +8,7 @@ import {
   PATHNAME_TRANSPORT_GENERAL
 } from '../../constants/constants';
 import translations from '../../lib/localization';
+import { openConsentBanner } from '../../lib/consent';
 
 import EmailIcon from '../../images/email.svg';
 
@@ -43,7 +44,13 @@ const TransportPortalFooter: FC<Props> = () => (
           <Link href='https://www.digdir.no/om-oss/personvernerklaering/706'>
             {translations.footer.privacyStatement}
           </Link>
-          <Link href='https://www.digdir.no/om-oss/informasjonskapsler/707'>
+          <Link
+            href='https://www.digdir.no/om-oss/informasjonskapsler/707'
+            onClick={(event: React.MouseEvent) => {
+              event.preventDefault();
+              openConsentBanner();
+            }}
+          >
             {translations.footer.informationCookies}
           </Link>
           <Link href='https://uustatus.no/nb/erklaringer/publisert/8020b962-b706-4cdf-ab8b-cdb5f480a696'>

@@ -17,10 +17,13 @@ export const trackSiteImproveEvent = ({
   action,
   label
 }: SiteImproveEventProps) => {
+  // Siteimprove only loads after statistics consent; without it `_sz` is undefined and
+  // events are silently dropped.
   if (window._sz === undefined) {
-    // eslint-disable-next-line no-console
-    console.error('Unable to find Site Improve event library.');
-  } else if (label) {
+    return;
+  }
+
+  if (label) {
     window._sz.push(['event', category, action, label]);
   } else {
     window._sz.push(['event', category, action]);

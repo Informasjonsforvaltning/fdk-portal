@@ -10,11 +10,13 @@ import GlobalStyles from '../styles';
 import Router from '../router';
 
 import AnalyticsSiteImprove from '../../../components/analytics-siteimprove';
+import CookieConsent from '../../../components/cookie-consent';
 
 const App: FC = () => (
   <ThemeProvider>
     <GlobalStyles />
     <AnalyticsSiteImprove />
+    <CookieConsent />
     <TranslationsProvider>
       <ReduxProvider store={store}>
         <Router />

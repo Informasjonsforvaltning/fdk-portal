@@ -1204,5 +1204,14 @@
     "mostComments": "Most Comments",
     "sort": "Sorting",
     "search": "Free text search in titles"
+  },
+  "cookieConsent": {
+    "heading": "We use statistics to improve this website",
+    "description": "To understand how the website is used, we collect anonymous statistics. This stores information in your browser. You decide whether to allow it.",
+    "necessaryNote": "We also store necessary information that cannot be turned off, so the website works and stays secure.",
+    "readMore": "Read more about cookies",
+    "accept": "Accept",
+    "reject": "Reject",
+    "manage": "Manage cookies"
   }
 }
