@@ -1,10 +1,11 @@
 import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
-import { Link as RouteLink, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import Link from '@fellesdatakatalog/link';
 import env from '../../../../../../env';
 
 import Translation from '../../../../../../components/translation';
+import { getDocsUrl } from '../../../../../../utils/common';
 import {
   ServiceMessage,
   Enum_Servicemessage_Environment
@@ -26,7 +27,7 @@ if (window.location.hostname.match('localhost|staging')) {
   serviceMessageEnv = Enum_Servicemessage_Environment.Demo;
 }
 
-const PublishingPage: FC<Props> = ({ match: { url } }) => {
+const PublishingPage: FC<Props> = () => {
   const [serviceMessages, setServiceMessages] = useState<ServiceMessage[]>([]);
 
   useEffect(() => {
@@ -82,7 +83,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
           <p>
             <Translation id='publishingPage.methodSections.register.question' />
           </p>
-          <Link to={`${url}/about-registration`} as={RouteLink}>
+          <Link href={getDocsUrl('/sharing-data/about-registration')}>
             <Translation id='publishingPage.methodSections.register.link' />
           </Link>
           <SC.RegisterIllustration />
@@ -100,7 +101,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
           <p>
             <Translation id='publishingPage.methodSections.harvest.question' />
           </p>
-          <Link to={`${url}/about-harvesting`} as={RouteLink}>
+          <Link href={getDocsUrl('/sharing-data/about-harvesting')}>
             <Translation id='publishingPage.methodSections.harvest.link' />
           </Link>
           <SC.HarvestIllustration />
@@ -109,21 +110,29 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
       <SC.InformationSection>
         <SC.InformationBox>
           <h3>
-            <RouteLink to={`${url}/about-registration`}>
+            <a href={getDocsUrl('/sharing-data/about-registration')}>
               <Translation id='publishingPage.informationSections.getStartedHelp.title' />
-            </RouteLink>
+            </a>
           </h3>
           <p>
             <Translation id='publishingPage.informationSections.getStartedHelp.description' />
           </p>
           <ul>
             <li>
-              <Link href={`${url}/about-registration#id-porten`}>
+              <Link
+                href={`${getDocsUrl(
+                  '/sharing-data/about-registration'
+                )}#innlogging-med-id-portenaltinn`}
+              >
                 <Translation id='publishingPage.informationSections.getStartedHelp.logInMethodIdPortenLink' />
               </Link>
             </li>
             <li>
-              <Link href={`${url}/about-registration#felles-brukerhandtering`}>
+              <Link
+                href={`${getDocsUrl(
+                  '/sharing-data/about-registration'
+                )}#innlogging-med-felles-brukerhandtering`}
+              >
                 <Translation id='publishingPage.informationSections.getStartedHelp.logInMethodFdkLink' />
               </Link>
             </li>
@@ -131,7 +140,7 @@ const PublishingPage: FC<Props> = ({ match: { url } }) => {
         </SC.InformationBox>
         <SC.InformationBox>
           <h3>
-            <a href='/guidance'>
+            <a href={getDocsUrl('/sharing-data/how-to-dataset')}>
               <Translation id='publishingPage.informationSections.usefulInfo.title' />
             </a>
           </h3>

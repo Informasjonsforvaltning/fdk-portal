@@ -36,6 +36,14 @@ export const getDataServiceDetailUrl = (id: string): string =>
     getConfig().fdkPortalBaseUri.host
   }/${localization.getLanguage()}/data-services/${id}`;
 
+/**
+ * Builds a link into the documentation, which is served by fdk-frontend on the
+ * same host under a locale prefix. Relative on purpose, so it resolves correctly
+ * in every environment.
+ */
+export const getDocsUrl = (path: string): string =>
+  `/${localization.getLanguage()}/docs${path}`;
+
 export const isEuTheme = (
   theme: EuDataTheme | LosNode | EuTheme | LosTheme
 ): theme is EuTheme => {
