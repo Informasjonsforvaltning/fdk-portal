@@ -36,11 +36,7 @@ export const getDataServiceDetailUrl = (id: string): string =>
     getConfig().fdkPortalBaseUri.host
   }/${localization.getLanguage()}/data-services/${id}`;
 
-/**
- * Builds a link into the documentation, which is served by fdk-frontend on the
- * same host under a locale prefix. Relative on purpose, so it resolves correctly
- * in every environment.
- */
+// Relative on purpose – fdk-frontend serves /docs on the same host as the portal.
 export const getDocsUrl = (path: string): string =>
   `/${localization.getLanguage()}/docs${path}`;
 
