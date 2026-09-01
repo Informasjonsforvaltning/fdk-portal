@@ -9,6 +9,7 @@ import { Trigger, Menu } from '../dropdown-menu';
 import SC from './styled';
 import { PATHNAME_PUBLISHING } from '../../../../constants/constants';
 import localization from '../../../../lib/localization';
+import { getDocsUrl } from '../../../../utils/common';
 
 const { ADMIN_GUI_BASE_URI, CATALOG_PORTAL_BASE_URI } = env;
 
@@ -37,7 +38,7 @@ const Header: FC = () => {
             </SC.Link>
           </li>
           <li>
-            <SC.Link href={`${PATHNAME_PUBLISHING}/terms-of-use`}>
+            <SC.Link href={getDocsUrl('/sharing-data/terms-of-use')}>
               <Translation id='menu.termsOfUse' />
             </SC.Link>
           </li>
@@ -69,7 +70,7 @@ const Header: FC = () => {
                 </SC.Link>
               </li>
               <li>
-                <SC.Link href={`${PATHNAME_PUBLISHING}/terms-of-use`}>
+                <SC.Link href={getDocsUrl('/sharing-data/terms-of-use')}>
                   <Translation id='menu.termsOfUse' />
                 </SC.Link>
               </li>

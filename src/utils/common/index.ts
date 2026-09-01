@@ -36,6 +36,10 @@ export const getDataServiceDetailUrl = (id: string): string =>
     getConfig().fdkPortalBaseUri.host
   }/${localization.getLanguage()}/data-services/${id}`;
 
+// Relative on purpose – fdk-frontend serves /docs on the same host as the portal.
+export const getDocsUrl = (path: string): string =>
+  `/${localization.getLanguage()}/docs${path}`;
+
 export const isEuTheme = (
   theme: EuDataTheme | LosNode | EuTheme | LosTheme
 ): theme is EuTheme => {
