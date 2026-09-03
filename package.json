@@ -112,7 +112,7 @@
     "oidc-client": "^1.11.5",
     "path-browserify": "^1.0.1",
     "prop-types": "^15.8.1",
-    "qs": "^6.13.1",
+    "qs": "^6.16.0",
     "rdflib": "^2.2.35",
     "react": "^17.0.2",
     "react-apexcharts": "^1.4.1",
