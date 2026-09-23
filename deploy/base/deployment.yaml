@@ -124,11 +124,6 @@ spec:
                 secretKeyRef:
                   name: keycloak
                   key: KEYCLOAK_OIDC_ISSUER
-            - name: AI_PROJECT_SERVICE_BASE_URI
-              valueFrom:
-                secretKeyRef:
-                  name: commonurl
-                  key: AI_PROJECT_SERVICE_BASE_URI
             - name: RESOURCE_API_HOST
               valueFrom:
                 secretKeyRef:

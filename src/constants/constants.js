@@ -53,9 +53,6 @@ export const PATHNAME_SPARQL = '/sparql';
 export const PATHNAME_DATA_HUNTER = '/nb/data-hunter';
 
 export const PATHNAME_COMMUNITY_COMMENTS = '/category/12/kommentartråder';
-export const PATHNAME_AI = '/kunstig-intelligens';
-export const EXTERNAL_AI_PAGE =
-  'https://www.digdir.no/kunstig-intelligens/kunstig-intelligens-i-offentlig-sektor/4276';
 export const PATHNAME_REQUESTS = '/requests';
 export const PATHNAME_TRANSPORT = '/transport';
 export const PATHNAME_TRANSPORT_GENERAL = `${PATHNAME_TRANSPORT}/general`;
