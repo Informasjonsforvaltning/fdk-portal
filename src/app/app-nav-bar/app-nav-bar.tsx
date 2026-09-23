@@ -17,7 +17,6 @@ import {
   PATHNAME_ABOUT_DATA_SERVICES,
   PATHNAME_ABOUT_CONCEPTS,
   PATHNAME_ABOUT_INFORMATIONMODELS,
-  PATHNAME_AI,
   PATHNAME_ORGANIZATIONS,
   PATHNAME_PUBLISHING,
   PATHNAME_SPARQL,
@@ -186,11 +185,6 @@ const fdkItems = () => [
       mobileView={false}
       title={localization.menu.tools}
     >
-      <SC.ListItem key={localization.menu.ai}>
-        <Link as={RouteLink} to={PATHNAME_AI}>
-          {localization.menu.ai}
-        </Link>
-      </SC.ListItem>
       <SC.ListItem key={localization.menu.tools.reports}>
         <Link as={RouteLink} to={PATHNAME_REPORTS}>
           {localization.menu.reports}
@@ -349,11 +343,6 @@ const fdkItemsMobile = () => [
   <SC.ListItem key={localization.menu.tools}>
     {localization.menu.tools}
     <ul>
-      <SC.ListItem key={localization.menu.ai}>
-        <Link as={RouteLink} to={PATHNAME_AI}>
-          {localization.menu.ai}
-        </Link>
-      </SC.ListItem>
       <SC.ListItem key={localization.menu.tools.reports}>
         <Link as={RouteLink} to={PATHNAME_REPORTS}>
           {localization.menu.reports}

@@ -18,7 +18,6 @@ import {
   PATHNAME_EVENTS,
   PATHNAME_REPORTS,
   PATHNAME_SPARQL,
-  PATHNAME_AI,
   PATHNAME_TRANSPORT_GENERAL,
   PATHNAME_TRANSPORT_ITS,
   PATHNAME_TRANSPORT_ROLES,
@@ -131,10 +130,6 @@ const routes = [
   {
     path: `${PATHNAME_PUBLISHING}${PATHNAME_TERMS_OF_USE}`,
     breadcrumb: () => <PathNameBreadcrumb pathName='termsOfUse' />
-  },
-  {
-    path: PATHNAME_AI,
-    breadcrumb: () => <PathNameBreadcrumb pathName='ai' />
   },
   {
     path: PATHNAME_TRANSPORT_GENERAL,

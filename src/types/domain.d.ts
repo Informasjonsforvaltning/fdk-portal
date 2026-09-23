@@ -1232,27 +1232,6 @@ export interface SelectOption {
   label: string;
 }
 
-export interface AiProject {
-  id: number;
-  prosjekteier: string;
-  prosjekttittel: string;
-  departement?: string;
-  eiertype?: string;
-  kontaktperson?: string;
-  prosjektBeskrivelse?: string;
-  prosjektFormaal?: string;
-  prosjektstart?: number;
-  prosjektslutt?: number;
-  tilknyttedeOrganisasjoner?: string;
-  innleideKonsulenter?: string;
-  lenkeTilProsjekt?: string;
-  status?: string;
-  typeData?: string;
-  datakilde?: string;
-  modellutvikling?: string;
-  klassifisering?: string;
-}
-
 export interface SearchSort {
   field: string;
   direction: string;

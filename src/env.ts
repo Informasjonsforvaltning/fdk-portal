@@ -5,8 +5,7 @@ import { Namespace } from './types/enums';
 export default validateEnv(
   (window as any).env ?? {
     NAMESPACE: Namespace.DEVELOPMENT,
-    OIDC_ISSUER:
-      'https://auth.staging.fellesdatakatalog.digdir.no/realms/fdk',
+    OIDC_ISSUER: 'https://auth.staging.fellesdatakatalog.digdir.no/realms/fdk',
     OIDC_CLIENT_SECRET: '',
     CONTAINER_IMAGE: 'eu.gcr.io/digdir-fdk-infra/fdk-portal:development',
     FDK_PORTAL_BASE_URI: 'https://staging.fellesdatakatalog.digdir.no',
@@ -21,8 +20,6 @@ export default validateEnv(
     FDK_DATASET_PREVIEW_API_KEY: '',
     FDK_USER_FEEDBACK_SERVICE_BASE_URI:
       'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/user-feedback-service-staging',
-    AI_PROJECT_SERVICE_BASE_URI:
-      'https://ai-project.staging.fellesdatakatalog.digdir.no',
     RESOURCE_API_HOST:
       'https://resource.api.staging.fellesdatakatalog.digdir.no',
     INFORMATIONMODEL_HARVESTER_HOST:
