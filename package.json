@@ -52,7 +52,7 @@
     "json5": "2.2.3",
     "svgo": "^3.3.5",
     "fast-uri": "^3.1.6",
-    "axios": "^1.18.0",
+    "axios": "^1.20.0",
     "graphql-config": {
       "brace-expansion": "^5.0.7"
     },
@@ -99,7 +99,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@types/react-document-meta": "^3.0.5",
     "apexcharts": "^3.54.1",
-    "axios": "^1.18.0",
+    "axios": "^1.20.0",
     "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",
     "caniuse-lite": "^1.0.30001690",
@@ -147,7 +147,7 @@
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "sanitize-html": "2.17.7",
-    "sass": "^1.77.4",
+    "sass": "^1.105.1",
     "styled-components": "^5.3.11",
     "turndown": "^7.2.0",
     "url": "^0.11.4",
