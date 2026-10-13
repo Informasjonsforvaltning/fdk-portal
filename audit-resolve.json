@@ -392,6 +392,71 @@
       "decision": "ignore",
       "madeAt": 1779951183735,
       "expiresAt": 1782543095912
+    },
+    "1240992|@graphql-codegen/cli>@graphql-tools/code-file-loader>globby>fast-glob>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|@graphql-tools/code-file-loader>globby>fast-glob>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|@jest/reporters>@jest/console>jest-message-util>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/typescript-estree>globby>fast-glob>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|@typescript-eslint/parser>@typescript-eslint/typescript-estree>globby>fast-glob>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|copy-webpack-plugin>fast-glob>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|jest>@jest/core>@jest/console>jest-message-util>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|jest-environment-jsdom>@jest/environment>@jest/fake-timers>jest-message-util>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|jest-resolve-dependencies>jest-snapshot>@jest/transform>jest-haste-map>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|lint-staged>micromatch>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1240992|webpack-dev-server>chokidar>braces": {
+      "decision": "ignore",
+      "madeAt": 1791895989011,
+      "expiresAt": 1794487941792
+    },
+    "1123977|body-parser": {
+      "decision": "ignore",
+      "madeAt": 1791895993023,
+      "expiresAt": 1794487941792
+    },
+    "1115556|lint-staged>micromatch>braces>yaml": {
+      "decision": "ignore",
+      "madeAt": 1791895997250,
+      "expiresAt": 1794487941792
     }
   },
   "rules": {},
