@@ -118,12 +118,12 @@ const buildFilterSearchBody = ({
   };
 
   addFilter('openData', opendata);
-  addFilter('accessRights', accessrights);
+  addFilter('accessRights', commaSeparatedStringToList(accessrights));
   addFilter('dataTheme', commaSeparatedStringToList(theme));
   addFilter('spatial', commaSeparatedStringToList(spatial));
-  addFilter('provenance', provenance);
+  addFilter('provenance', commaSeparatedStringToList(provenance));
   addFilter('losTheme', commaSeparatedStringToList(losTheme));
-  addFilter('orgPath', orgPath);
+  addFilter('orgPath', commaSeparatedStringToList(orgPath));
   addFilter('formats', commaSeparatedStringToList(format));
   addFilter('relations', relations);
   addFilter('lastXDays', lastXDays);
