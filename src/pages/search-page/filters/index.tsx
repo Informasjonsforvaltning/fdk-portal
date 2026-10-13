@@ -13,10 +13,7 @@ import SC from './styled';
 import localization from '../../../lib/localization';
 import { FilterTree } from '../filter-tree/filter-tree.component';
 import { parseSearchParams } from '../../../lib/location-history-helper';
-import {
-  setFilter,
-  setMultiselectFilterValue
-} from '../search-location-helper';
+import { setMultiselectFilterValue } from '../search-location-helper';
 import { filterLosThemesFromAggregation } from '../los-aggregations-helper';
 import {
   FilterBox,
@@ -86,11 +83,7 @@ const FiltersPure: FC<Props> = ({
   };
 
   const handleFilterPublisherHierarchy = ({ value, checked }: FilterChange) => {
-    if (checked) {
-      setFilter(history, location, { orgPath: value });
-    } else {
-      setFilter(history, location, { orgPath: null });
-    }
+    setMultiselectFilterValue(history, location, 'orgPath', value, checked);
   };
 
   const handleDatasetFilterProvenance = ({ value, checked }: FilterChange) => {

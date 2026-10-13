@@ -67,12 +67,12 @@ const isItemCollapsed = (
   openArrows: any
 ) => {
   if (chosenOrgPath) {
-    const parentOrgPath = chosenOrgPath.substr(
-      0,
-      chosenOrgPath.lastIndexOf('/')
-    );
+    const shouldExpand = chosenOrgPath.split(',').some((path: string) => {
+      const parentOrgPath = path.substr(0, path.lastIndexOf('/'));
+      return parentOrgPath?.includes(itemOrgPath);
+    });
 
-    if (parentOrgPath?.includes(itemOrgPath)) {
+    if (shouldExpand) {
       return false;
     }
   }
