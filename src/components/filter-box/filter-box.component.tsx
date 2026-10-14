@@ -7,6 +7,7 @@ import Button, { Variant } from '@fellesdatakatalog/button';
 import SvgIcon from '@fellesdatakatalog/icons';
 
 import localization from '../../lib/localization';
+import { ensureSelectedFilterBuckets } from '../../lib/ensure-selected-filter-buckets';
 import { FilterOption } from '../filter-option/filter-option.component';
 import './filter-box.scss';
 
@@ -190,22 +191,38 @@ export class FilterBox extends React.Component<Props, State> {
       capitalizeOption = true
     } = this.props;
 
-    const filterSearchOptions =
-      filter &&
-      filter
-        .map((item: BucketItem) => {
-          const group = this._getGroup(item, groupByPrefix);
-          const label = item.key.replace(new RegExp(`${group}\\s?`), '');
-          return {
-            value: item.key,
-            label:
-              getLastWordAfterSlash(label) ||
-              localization.facet.formatType.UNKNOWN
-          };
-        })
-        .sort((a: SelectOption, b: SelectOption) =>
-          a.label.localeCompare(b.label)
-        );
+    const filterWithSelected = ensureSelectedFilterBuckets(
+      filter,
+      activeFilter
+    );
+
+    if (filters && 'opendata' in filters) {
+      const hasOpenData = filterWithSelected.some(
+        item => item.key === 'OPEN_DATA'
+      );
+      if (!hasOpenData) {
+        filterWithSelected.push({
+          key: 'OPEN_DATA',
+          count: 0,
+          label: 'OPEN_DATA'
+        });
+      }
+    }
+
+    const filterSearchOptions = filterWithSelected
+      .map((item: BucketItem) => {
+        const group = this._getGroup(item, groupByPrefix);
+        const label = item.key.replace(new RegExp(`${group}\\s?`), '');
+        return {
+          value: item.key,
+          label:
+            getLastWordAfterSlash(label) ||
+            localization.facet.formatType.UNKNOWN
+        };
+      })
+      .sort((a: SelectOption, b: SelectOption) =>
+        a.label.localeCompare(b.label)
+      );
 
     const handleOnClick = ({
       target: { value, checked }
@@ -216,7 +233,7 @@ export class FilterBox extends React.Component<Props, State> {
       }
     };
 
-    if (filter?.length > 0) {
+    if (filterWithSelected.length > 0) {
       return (
         <div className='fdk-panel--filter'>
           <div className='fdk-panel__header'>
@@ -263,7 +280,7 @@ export class FilterBox extends React.Component<Props, State> {
               )}
               <div className='fdk-items-list'>
                 {this._renderOptions(
-                  filter,
+                  filterWithSelected,
                   handleOnClick,
                   activeFilter,
                   filters,
