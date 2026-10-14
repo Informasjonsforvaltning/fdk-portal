@@ -75,7 +75,7 @@ export const FilterOption: FC<Props> = ({
           value={value}
         />
         <span className='checkbox-replacement' />
-        {textLabel} {count ? `(${count})` : ''}
+        {textLabel} {typeof count === 'number' ? `(${count})` : ''}
       </label>
     </div>
   );

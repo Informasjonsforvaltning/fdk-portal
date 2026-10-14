@@ -3727,6 +3727,16 @@ exports[`should render FilterTree correctly with active sub filter 1`] = `
             />
           </TreeView>
         </div>
+        <FilterOption
+          active={true}
+          count={0}
+          displayClass=""
+          itemKey={0.5}
+          key="/KOMMUNE/958935420/974770482|5"
+          label="Oslo kommune byrådsavdeling for byutvikling"
+          onClick={[Function]}
+          value="/KOMMUNE/958935420/974770482"
+        />
       </div>
     </div>
   </Collapse>

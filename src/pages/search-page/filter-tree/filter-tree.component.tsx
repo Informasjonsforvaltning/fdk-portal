@@ -9,6 +9,7 @@ import Button, { Variant } from '@fellesdatakatalog/button';
 import SvgIcon from '@fellesdatakatalog/icons';
 import { FilterOption } from '../../../components/filter-option/filter-option.component';
 import localization from '../../../lib/localization';
+import { ensureSelectedFilterForest } from '../../../lib/ensure-selected-filter-buckets';
 import { getTranslateText } from '../../../lib/translateText';
 import './filter-tree.scss';
 
@@ -284,7 +285,12 @@ export const FilterTree: FC<Props> = ({
         ]
       : [getFilterSearchOption(node)];
 
-  return Array.isArray(aggregationsForest) && aggregationsForest.length > 0 ? (
+  const forestWithSelected = ensureSelectedFilterForest(
+    aggregationsForest,
+    activeFilter
+  );
+
+  return forestWithSelected.length > 0 ? (
     <div className='fdk-filter-tree'>
       <div className='fdk-panel__header'>
         <button
@@ -305,7 +311,7 @@ export const FilterTree: FC<Props> = ({
                 aria-label={`${
                   localization.facet.searchFor
                 } ${title?.toLowerCase()}`}
-                options={aggregationsForest
+                options={forestWithSelected
                   .flatMap(node => mapNodeToFilterSearchOptions(node))
                   .sort((a, b) => a.label.localeCompare(b.label))}
                 value={filterSearchValue}
@@ -332,20 +338,20 @@ export const FilterTree: FC<Props> = ({
           <div className='fdk-items-list'>
             {mainTree({
               aggregationsForest: collapseItems
-                ? aggregationsForest.slice(0, 5)
-                : aggregationsForest,
+                ? forestWithSelected.slice(0, 5)
+                : forestWithSelected,
               activeFilter,
               referenceDataItems,
               onClickFilter,
               onClickArrow,
               openArrows
             })}
-            {collapseItems && aggregationsForest.length > 5 && (
+            {collapseItems && forestWithSelected.length > 5 && (
               <div>
                 <Collapse isOpen={openList} id={listId}>
                   <div>
                     {mainTree({
-                      aggregationsForest: aggregationsForest.slice(5),
+                      aggregationsForest: forestWithSelected.slice(5),
                       activeFilter,
                       referenceDataItems,
                       onClickFilter,
