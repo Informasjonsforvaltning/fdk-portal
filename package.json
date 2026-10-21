@@ -83,7 +83,10 @@
     "proxy-addr": "^2.0.8",
     "compression": "^1.8.2",
     "@graphql-tools/utils": "^12.0.1",
-    "@graphql-tools/executor-legacy-ws": "^1.1.35"
+    "@graphql-tools/executor-legacy-ws": "^1.1.35",
+    "follow-redirects": "^1.16.1",
+    "launch-editor": "^2.14.2",
+    "sanitize-html": "2.18.0"
   },
   "dependencies": {
     "@apollo/client": "^3.12.4",
@@ -153,7 +156,7 @@
     "regenerator-runtime": "^0.14.1",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
-    "sanitize-html": "2.17.7",
+    "sanitize-html": "2.18.0",
     "sass": "^1.105.1",
     "styled-components": "^5.3.11",
     "turndown": "^7.2.0",
