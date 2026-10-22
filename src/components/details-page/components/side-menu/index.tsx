@@ -22,15 +22,15 @@ const SideMenu: FC<Props> = ({
 }) => (
   <SC.SideMenu data-testid={testIds.root} {...props}>
     <SC.Menu $isSticky={isSticky}>
-      <ul>
+      <ol>
         {menuItems.map(({ id, title: menuItemTitle }) => (
           <SC.MenuItem key={id}>
-            <Link to={id} smooth isDynamic spy>
+            <Link to={id} href={`#${id}`} smooth isDynamic spy>
               {menuItemTitle}
             </Link>
           </SC.MenuItem>
         ))}
-      </ul>
+      </ol>
     </SC.Menu>
   </SC.SideMenu>
 );

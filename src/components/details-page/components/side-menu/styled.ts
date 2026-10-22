@@ -32,13 +32,13 @@ export const slideDown = keyframes`
 const Menu = styled.nav<Props>`
   font-size: ${t.fontSize('FS14', Unit.REM)};
 
-  & > ul {
+  & > ol {
     display: flex;
     flex-direction: column;
     gap: ${t.spacing('S10')};
   }
 
-  & > ul > li > a {
+  & > ol > li > a {
     padding: ${t.spacing('S10')};
     &.active {
       border-radius: 5px;

@@ -190,7 +190,7 @@ const SideMenuSmall = styled(SideMenuBase)`
     nav {
       width: 100%;
 
-      ul > li {
+      ol > li {
         background-color: ${({ theme }) => theme.extendedColors.neutralLighter};
         border-radius: 5px;
         margin-top: 2px;
