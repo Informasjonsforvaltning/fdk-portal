@@ -23,7 +23,7 @@ const Username = ({ user }: { user: CommunityUser }) => {
 const User: FC<Props> = ({ user }) => (
   <SC.User href={`${FDK_COMMUNITY_BASE_URI}/user/${user.userslug}`}>
     {user.picture ? (
-      <SC.Picture src={`${FDK_COMMUNITY_BASE_URI}${user.picture}`} />
+      <SC.Picture src={`${FDK_COMMUNITY_BASE_URI}${user.picture}`} alt='' />
     ) : (
       <SC.Icon colour={user['icon:bgColor']}>{user['icon:text']}</SC.Icon>
     )}
