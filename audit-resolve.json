@@ -457,6 +457,11 @@
       "decision": "ignore",
       "madeAt": 1791895997250,
       "expiresAt": 1794487941792
+    },
+    "1242741|sanitize-html": {
+      "decision": "ignore",
+      "madeAt": 1792737314399,
+      "expiresAt": 1795329253007
     }
   },
   "rules": {},
