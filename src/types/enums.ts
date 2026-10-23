@@ -73,6 +73,7 @@ export enum Filter {
   LOS = 'losTheme',
   ORGPATH = 'orgPath',
   THEME = 'theme',
+  SPATIAL = 'spatial',
   Q = 'q',
   PAGE = 'page',
   SORTFIELD = 'sortfield',
