@@ -33,12 +33,16 @@ export const FilterOption: FC<Props> = ({
   const optionLabel = labelRaw || label;
 
   let textLabel;
+  // Prefer `value` (bucket key / URI): FilterBox may rewrite `label` (e.g. last path segment).
+  const referenceDataItem =
+    (value && referenceDataItems?.[value]) ||
+    (label && referenceDataItems?.[label]);
   // if themes, then choose text from themes array, else choose label from localization-file.
   if (referenceDataItems) {
-    if (referenceDataItems[`${label}`]) {
+    if (referenceDataItem) {
       textLabel =
-        getTranslateText(referenceDataItems[`${label}`].label) ||
-        getTranslateText(referenceDataItems[`${label}`].name);
+        getTranslateText(referenceDataItem.label) ||
+        getTranslateText(referenceDataItem.name);
     } else {
       textLabel = localization.unknown;
     }

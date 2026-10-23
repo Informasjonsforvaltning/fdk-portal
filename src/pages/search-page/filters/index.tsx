@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from 'react';
+import React, { FC, memo, useMemo, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import {
@@ -21,6 +21,7 @@ import {
 } from '../../../components/filter-box/filter-box.component';
 import { getConfig } from '../../../config';
 import { keyPrefixForest } from '../../../lib/key-prefix-forest';
+import { formatSpatialLabel, useSpatialLabels } from '../spatial';
 
 interface Props extends RouteComponentProps {
   themesItems?: any;
@@ -93,6 +94,29 @@ const FiltersPure: FC<Props> = ({
   const handleDatasetFilterSpatial = ({ value, checked }: FilterChange) => {
     setMultiselectFilterValue(history, location, 'spatial', value, checked);
   };
+
+  const selectedSpatial = useMemo(
+    () => (spatialParam ? String(spatialParam).split(',').filter(Boolean) : []),
+    [spatialParam]
+  );
+  const spatialUris = useMemo(
+    () => [
+      ...(aggregations?.spatial ?? []).map(({ key }: { key: string }) => key),
+      ...selectedSpatial
+    ],
+    [aggregations?.spatial, selectedSpatial]
+  );
+  const spatialLabels = useSpatialLabels(spatialUris);
+  const spatialReferenceDataItems = useMemo(
+    () =>
+      Object.fromEntries(
+        spatialUris.map(uri => [
+          uri,
+          { label: formatSpatialLabel(uri, spatialLabels) }
+        ])
+      ),
+    [spatialUris, spatialLabels]
+  );
 
   const handleFilterFormat = ({ value, checked }: FilterChange) => {
     setMultiselectFilterValue(history, location, 'format', value, checked);
@@ -192,6 +216,8 @@ const FiltersPure: FC<Props> = ({
               filter={aggregations?.spatial}
               onClick={handleDatasetFilterSpatial}
               activeFilter={spatialParam}
+              referenceDataItems={spatialReferenceDataItems}
+              capitalizeOption={false}
             />
             <FilterBox
               htmlKey={5}

@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useMemo } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import capitalize from 'lodash/capitalize';
 import get from 'lodash/get';
@@ -13,6 +13,7 @@ import {
   isFilterNotEmpty,
   setMultiselectFilterValue
 } from '../search-location-helper';
+import { formatSpatialLabel, useSpatialLabels } from '../spatial';
 
 import SC from './styled';
 import type { EuTheme, LosTheme, EventType } from '../../../types';
@@ -65,6 +66,8 @@ const getFilterLabel = (
       return `${localization.facet.formatType[filterValue.split(' ')[0]]} ${
         filterValue.split(' ')[1] ?? ''
       }`;
+    case Filter.SPATIAL:
+      return formatSpatialLabel(filterValue, referenceDataItems);
     case Filter.OPENDATA:
       return localization.open_data;
     case Filter.LASTXDAYS:
@@ -107,17 +110,24 @@ const FilterPillsPure: FC<Props> = ({
   losItems,
   eventTypes
 }) => {
+  const locationSearch: any = parseSearchParams(location);
+  const spatialParam = locationSearch[Filter.SPATIAL];
+  const selectedSpatial = useMemo(
+    () => (spatialParam ? String(spatialParam).split(',').filter(Boolean) : []),
+    [spatialParam]
+  );
+  const spatialLabels = useSpatialLabels(selectedSpatial);
+
   if (!isFilterNotEmpty(location)) {
     return null;
   }
-
-  const locationSearch: any = parseSearchParams(location);
 
   const referenceDataItems: ReferenceDataItems = {
     [Filter.THEME]: themesItems,
     [Filter.LOS]: losItems,
     [Filter.ORGPATH]: publishers,
-    [Filter.EVENT_TYPE]: eventTypes
+    [Filter.EVENT_TYPE]: eventTypes,
+    [Filter.SPATIAL]: spatialLabels
   };
 
   return (
