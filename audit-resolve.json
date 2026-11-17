@@ -462,6 +462,16 @@
       "decision": "ignore",
       "madeAt": 1792737314399,
       "expiresAt": 1795329253007
+    },
+    "1247710|@parcel/watcher>picomatch": {
+      "decision": "ignore",
+      "madeAt": 1794945523581,
+      "expiresAt": 1797537523581
+    },
+    "1247710|babel-plugin-styled-components>picomatch": {
+      "decision": "ignore",
+      "madeAt": 1794945523581,
+      "expiresAt": 1797537523581
     }
   },
   "rules": {},
