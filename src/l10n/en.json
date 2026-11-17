@@ -1056,35 +1056,11 @@
     "votes": "Votes",
     "replies": "Replies",
     "views": "Views",
-    "comments": {
-      "sectionTitle": "Do you have questions or comments regarding the {entityType}?",
-      "session": "You are logged in as ",
-      "entityTypes": {
-        "DATASET": "dataset",
-        "DATA_SERVICE": "api",
-        "CONCEPT": "concept",
-        "INFORMATION_MODEL": "information model",
-        "SERVICE": "public service",
-        "EVENT": "event"
-      },
-      "ingress": "The comment will be visible for others and may be answered here.",
-      "noCommunityUser": "Create an account on Datalandsbyen to comment",
-      "buttons": {
-        "feedback": "Post a question",
-        "logInFeedback": "Log in to post a question",
-        "logOutFeedback": "Log out",
-        "reply": "Post a reply",
-        "edit": "Edit",
-        "delete": "Delete",
-        "expandComments": "Load more posts",
-        "collapseComments": "Hide posts",
-        "expandReplies": "Show more replies",
-        "collapseReplies": "Hide answers"
-      },
-      "gif": {
-        "play": "Click to play GIF",
-        "pause": "Click to pause GIF"
-      }
+    "notice": {
+      "title": "What is Datalandsbyen?",
+      "body": "Datalandsbyen is our online forum where you can request data, share experiences, and ask for advice related to data sharing and information management.",
+      "gotoLink": "Go to Datalandsbyen",
+      "moreInfo": "More information"
     },
     "composer": {
       "commenter": "Commenting as ",

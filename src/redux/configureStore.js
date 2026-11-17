@@ -1,3 +1,5 @@
+// `module.hot` (webpack HMR) is misread as a CommonJS export by this rule.
+/* eslint-disable import/no-import-module-exports */
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import createSagaMiddleware from 'redux-saga';
@@ -5,7 +7,6 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import persistState from 'redux-localstorage';
 import { apiMiddleware } from 'redux-api-middleware';
-import { commentsApi } from '../api/user-feedback-api/comments';
 
 import { rootReducer } from './rootReducer';
 import RootSaga from './saga';
@@ -17,12 +18,7 @@ const sagaMiddleware = createSagaMiddleware({
 });
 
 export function configureStore(storeConfig) {
-  const middlewares = [
-    thunk,
-    apiMiddleware,
-    sagaMiddleware,
-    commentsApi.middleware
-  ];
+  const middlewares = [thunk, apiMiddleware, sagaMiddleware];
   if (storeConfig.reduxLog) {
     middlewares.push(createLogger());
   }
@@ -46,3 +42,4 @@ export function configureStore(storeConfig) {
 
   return store;
 }
+/* eslint-enable import/no-import-module-exports */

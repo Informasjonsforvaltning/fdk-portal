@@ -1065,35 +1065,11 @@
     "votes": "Stemmer",
     "replies": "Svar",
     "views": "Visninger",
-    "comments": {
-      "sectionTitle": "Har du spørsmål eller kommentarer til {entityType}?",
-      "session": "Du er innlogget som ",
-      "entityTypes": {
-        "DATASET": "datasettet",
-        "DATA_SERVICE": "datatjenesten",
-        "CONCEPT": "begrepet",
-        "INFORMATION_MODEL": "informasjonsmodellen",
-        "SERVICE": "den offentlige tjenesten",
-        "EVENT": "hendelsen"
-      },
-      "ingress": "Kommentaren blir synlig for andre brukere og besvares her.",
-      "noCommunityUser": "Lag en konto på Datalandsbyen for å kommentere",
-      "buttons": {
-        "feedback": "Still spørsmål",
-        "logInFeedback": "Logg inn for å stille spørsmål",
-        "logOutFeedback": "Logg ut",
-        "reply": "Skriv et svar",
-        "edit": "Rediger",
-        "delete": "Slett",
-        "expandComments": "Last inn flere tilbakemeldinger",
-        "collapseComments": "Skjul tilbakemeldinger",
-        "expandReplies": "Vis flere svar",
-        "collapseReplies": "Skjul svar"
-      },
-      "gif": {
-        "play": "Trykk for å spille av GIF",
-        "pause": "Trykk for å pause GIF"
-      }
+    "notice": {
+      "title": "Hva er Datalandsbyen?",
+      "body": "Datalandsbyen er vårt nettforum hvor du kan etterspørre data, dele erfaringer og spørre om råd som gjelder datadeling og informasjonsforvaltning.",
+      "gotoLink": "Gå til Datalandsbyen",
+      "moreInfo": "Mer informasjon"
     },
     "composer": {
       "commenter": "Kommenterer som ",

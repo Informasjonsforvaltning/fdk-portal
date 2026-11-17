@@ -34,7 +34,6 @@ import KartverketReducer from '../components/with-kartverket/redux/reducer';
 import CommunityReducer from '../components/with-community/redux/reducer';
 import DatasetPreviewReducer from '../components/with-dataset-preview/redux/reducer';
 import SuggestionsReducer from '../components/with-suggestions/redux/reducer';
-import { commentsApi } from '../api/user-feedback-api/comments';
 import ResourceRelationsReducer from '../components/with-resource-relations/redux/reducer';
 
 export const rootReducer = combineReducers({
@@ -73,6 +72,5 @@ export const rootReducer = combineReducers({
   KartverketReducer,
   CommunityReducer,
   DatasetPreviewReducer,
-  SuggestionsReducer,
-  [commentsApi.reducerPath]: commentsApi.reducer
+  SuggestionsReducer
 });
