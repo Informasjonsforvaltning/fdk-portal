@@ -26,8 +26,11 @@ import { DatasetsReport, KeyWithCountObject } from '../../../../types';
 
 import AccessUnknownIcon from '../../../../images/icon-access-unknown-md-v2.svg';
 import { List } from '../../../../components/list/list';
-import { PATHNAME_DATASETS } from '../../../../constants/constants';
-import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
+import {
+  buildSearchUrl,
+  parseSearchQuery,
+  SearchSet
+} from '../../../../lib/search-url';
 import localization from '../../../../lib/localization';
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import { Line } from '../../../../components/charts';
@@ -134,6 +137,8 @@ const DatasetReport: FC<Props> = ({
     allThemes.filter(({ key }: KeyWithCountObject) => key !== 'MISSING')
   ).slice(0, 10);
 
+  const searchQuery = parseSearchQuery(searchParams);
+
   const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
 
   const theme = getConfig().isNapProfile ? themeNAP : themeFDK;
@@ -144,7 +149,9 @@ const DatasetReport: FC<Props> = ({
         <ContainerPaneContentSC>
           <ContainerBoxRegularSC>
             <BoxRegular>
-              <StatisticsRegular to={`${PATHNAME_DATASETS}${searchParams}`}>
+              <StatisticsRegular
+                href={buildSearchUrl(SearchSet.DATASETS, searchQuery)}
+              >
                 <IllustrationWithCount
                   icon={<NapSquareThreeStrokeIconSC />}
                   count={totalObjects}
@@ -158,10 +165,10 @@ const DatasetReport: FC<Props> = ({
           <ContainerBoxRegularSC>
             <BoxRegular>
               <StatisticsRegular
-                to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                  Filter.LASTXDAYS,
-                  '7'
-                )}`}
+                href={buildSearchUrl(SearchSet.DATASETS, {
+                  ...searchQuery,
+                  [Filter.LASTXDAYS]: '7'
+                })}
               >
                 <IllustrationWithCount
                   icon={<NapPlusStrokeIconSC />}
@@ -228,10 +235,10 @@ const DatasetReport: FC<Props> = ({
                   <ul>
                     <li>
                       <StatisticsRegular
-                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                          Filter.OPENDATA,
-                          'true'
-                        )}`}
+                        href={buildSearchUrl(SearchSet.DATASETS, {
+                          ...searchQuery,
+                          [Filter.OPENDATA]: 'true'
+                        })}
                       >
                         <IllustrationWithCount
                           variant={FlowVariant.COLUMN}
@@ -272,10 +279,10 @@ const DatasetReport: FC<Props> = ({
                     </li>
                     <li>
                       <StatisticsRegular
-                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                          Filter.ACCESSRIGHTS,
-                          'PUBLIC'
-                        )}`}
+                        href={buildSearchUrl(SearchSet.DATASETS, {
+                          ...searchQuery,
+                          [Filter.ACCESSRIGHTS]: 'PUBLIC'
+                        })}
                       >
                         <IllustrationWithCount
                           variant={FlowVariant.COLUMN}
@@ -317,10 +324,10 @@ const DatasetReport: FC<Props> = ({
                     </li>
                     <li>
                       <StatisticsRegular
-                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                          Filter.ACCESSRIGHTS,
-                          'RESTRICTED'
-                        )}`}
+                        href={buildSearchUrl(SearchSet.DATASETS, {
+                          ...searchQuery,
+                          [Filter.ACCESSRIGHTS]: 'RESTRICTED'
+                        })}
                       >
                         <IllustrationWithCount
                           variant={FlowVariant.COLUMN}
@@ -362,10 +369,10 @@ const DatasetReport: FC<Props> = ({
                     </li>
                     <li>
                       <StatisticsRegular
-                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                          Filter.ACCESSRIGHTS,
-                          'NON_PUBLIC'
-                        )}`}
+                        href={buildSearchUrl(SearchSet.DATASETS, {
+                          ...searchQuery,
+                          [Filter.ACCESSRIGHTS]: 'NON_PUBLIC'
+                        })}
                       >
                         <IllustrationWithCount
                           variant={FlowVariant.COLUMN}
@@ -407,10 +414,10 @@ const DatasetReport: FC<Props> = ({
                     </li>
                     <li>
                       <StatisticsRegular
-                        to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                          Filter.ACCESSRIGHTS,
-                          'null'
-                        )}`}
+                        href={buildSearchUrl(SearchSet.DATASETS, {
+                          ...searchQuery,
+                          [Filter.ACCESSRIGHTS]: 'null'
+                        })}
                       >
                         <IllustrationWithCount
                           variant={FlowVariant.COLUMN}
@@ -458,10 +465,10 @@ const DatasetReport: FC<Props> = ({
               <div className='col-12'>
                 <BoxRegular>
                   <StatisticsRegular
-                    to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                      Filter.PROVENANCE,
-                      'NASJONAL'
-                    )}`}
+                    href={buildSearchUrl(SearchSet.DATASETS, {
+                      ...searchQuery,
+                      [Filter.PROVENANCE]: 'NASJONAL'
+                    })}
                   >
                     <IllustrationWithCount
                       icon={<NapStarStrokeIconSC />}
@@ -486,9 +493,9 @@ const DatasetReport: FC<Props> = ({
                         listItems={topMostUsedFormats?.map(
                           ({ key, count }: KeyWithCountObject, index: any) => ({
                             id: index,
-                            path: `${PATHNAME_DATASETS}?${
-                              Filter.FORMAT
-                            }=${encodeURIComponent(key)}`,
+                            path: buildSearchUrl(SearchSet.DATASETS, {
+                              [Filter.FORMAT]: key
+                            }),
                             text1: translatePrefixedFormat(key),
                             text2: `${count}`
                           })
@@ -521,21 +528,17 @@ const DatasetReport: FC<Props> = ({
                             return losNode
                               ? {
                                   id: index,
-                                  path: `${PATHNAME_DATASETS}?${
-                                    Filter.LOS
-                                  }=${encodeURIComponent(
-                                    losNode.losPaths?.at(0) ?? ''
-                                  )}`,
+                                  path: buildSearchUrl(SearchSet.DATASETS, {
+                                    [Filter.LOS]: losNode.losPaths?.at(0) ?? ''
+                                  }),
                                   text1: translate(losNode.name),
                                   text2: `${count}`
                                 }
                               : {
                                   id: index,
-                                  path: `${PATHNAME_DATASETS}?${
-                                    Filter.THEME
-                                  }=${encodeURIComponent(
-                                    dataTheme?.code ?? ''
-                                  )}`,
+                                  path: buildSearchUrl(SearchSet.DATASETS, {
+                                    [Filter.THEME]: dataTheme?.code ?? ''
+                                  }),
                                   text1: translate(dataTheme?.label) ?? key,
                                   text2: `${count}`
                                 };

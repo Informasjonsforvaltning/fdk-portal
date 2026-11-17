@@ -9,19 +9,27 @@ import { Link } from 'react-router-dom';
 
 import SC from './styled';
 
-export interface Props extends ComponentPropsWithoutRef<Link> {
+export interface Props extends Partial<ComponentPropsWithoutRef<Link>> {
   as?: keyof JSX.IntrinsicElements | ComponentType<any>;
+  href?: string;
 }
 
 const StatisticsRegular: FC<PropsWithChildren<Props>> = ({
   children,
   as,
+  href,
+  to = '',
   ...props
-}) => (
-  <SC.StatisticsRegular as={as} {...props}>
-    {children}
-  </SC.StatisticsRegular>
-);
+}) =>
+  href ? (
+    <SC.StatisticsRegular as='a' href={href} {...props}>
+      {children}
+    </SC.StatisticsRegular>
+  ) : (
+    <SC.StatisticsRegular as={as} to={to} {...props}>
+      {children}
+    </SC.StatisticsRegular>
+  );
 
 export default memo(StatisticsRegular);
 export { Variant } from './enums';

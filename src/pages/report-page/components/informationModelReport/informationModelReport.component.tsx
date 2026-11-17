@@ -19,8 +19,11 @@ import { Entity, Filter } from '../../../../types/enums';
 
 import InfoModIcon from '../../../../images/icon-catalog-infomod-md.svg';
 import NewIcon from '../../../../images/icon-new-md.svg';
-import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
-import { PATHNAME_INFORMATIONMODELS } from '../../../../constants/constants';
+import {
+  buildSearchUrl,
+  parseSearchQuery,
+  SearchSet
+} from '../../../../lib/search-url';
 import localization from '../../../../lib/localization';
 import { Line } from '../../../../components/charts';
 import { Report } from '../../../../types';
@@ -42,6 +45,8 @@ const InformationModelReport: FC<Props> = ({
 }) => {
   informationModelsTimeSeries.push([Date.now(), totalObjects]);
 
+  const searchQuery = parseSearchQuery(searchParams);
+
   const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
 
   return (
@@ -51,7 +56,7 @@ const InformationModelReport: FC<Props> = ({
           <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular
-                to={`${PATHNAME_INFORMATIONMODELS}${searchParams}`}
+                href={buildSearchUrl(SearchSet.INFORMATION_MODELS, searchQuery)}
               >
                 <IllustrationWithCount
                   icon={<InfoModIcon />}
@@ -66,10 +71,10 @@ const InformationModelReport: FC<Props> = ({
           <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular
-                to={`${PATHNAME_INFORMATIONMODELS}${patchSearchQuery(
-                  Filter.LASTXDAYS,
-                  '7'
-                )}`}
+                href={buildSearchUrl(SearchSet.INFORMATION_MODELS, {
+                  ...searchQuery,
+                  [Filter.LASTXDAYS]: '7'
+                })}
               >
                 <IllustrationWithCount icon={<NewIcon />} count={newLastWeek} />
                 <SC.StatisticsRegular.Label>

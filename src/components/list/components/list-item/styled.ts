@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { theme } from '@fellesdatakatalog/theme';
 
-const ListItem = styled(Link)`
+const ListItem = styled.a`
   align-items: center;
   background-color: ${({ theme: t }) => t.lighter};
   border-radius: 2px;

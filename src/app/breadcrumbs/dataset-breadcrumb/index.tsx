@@ -1,10 +1,10 @@
 import React, { memo, FC } from 'react';
 import { compose } from 'redux';
 
-import { Link } from 'react-router-dom';
 import ChevronUpIcon from '@fellesdatakatalog/icons/assets/svg/chevron-up-stroke.svg';
 import { getTranslateText as translate } from '../../../lib/translateText';
 import localization from '../../../lib/localization';
+import { buildSearchUrl, SearchSet } from '../../../lib/search-url';
 
 import withDataset, {
   Props as DatasetProps
@@ -14,7 +14,9 @@ interface Props extends DatasetProps {}
 
 const DatasetBreadcrumb: FC<Props> = ({ dataset }) => (
   <>
-    <Link to='/datasets'>{localization.page.datasetTab}</Link>
+    <a href={buildSearchUrl(SearchSet.DATASETS)}>
+      {localization.page.datasetTab}
+    </a>
     <ChevronUpIcon className='fdk-path-chevron' />
     <span>{translate(dataset?.title ?? localization.breadcrumb.notFound)}</span>
   </>

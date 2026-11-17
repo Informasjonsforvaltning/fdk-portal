@@ -21,8 +21,11 @@ import { Entity, Filter, MediaTypeOrExtentType } from '../../../../types/enums';
 import ApiIcon from '../../../../images/icon-catalog-api-md.svg';
 import NewIcon from '../../../../images/icon-new-md.svg';
 
-import { PATHNAME_DATA_SERVICES } from '../../../../constants/constants';
-import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
+import {
+  buildSearchUrl,
+  parseSearchQuery,
+  SearchSet
+} from '../../../../lib/search-url';
 import localization from '../../../../lib/localization';
 import { DataServiceReport, KeyWithCountObject } from '../../../../types';
 import { Line } from '../../../../components/charts';
@@ -50,6 +53,8 @@ const DataserviceReport: FC<Props> = ({
 }) => {
   const { search: searchParams } = location;
   dataServicesTimeSeries.push([Date.now(), totalObjects]);
+
+  const searchQuery = parseSearchQuery(searchParams);
 
   const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
 
@@ -81,7 +86,7 @@ const DataserviceReport: FC<Props> = ({
           <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular
-                to={`${PATHNAME_DATA_SERVICES}${searchParams}`}
+                href={buildSearchUrl(SearchSet.DATA_SERVICES, searchQuery)}
               >
                 <IllustrationWithCount
                   icon={<ApiIcon />}
@@ -96,10 +101,10 @@ const DataserviceReport: FC<Props> = ({
           <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular
-                to={`${PATHNAME_DATA_SERVICES}${patchSearchQuery(
-                  Filter.LASTXDAYS,
-                  '7'
-                )}`}
+                href={buildSearchUrl(SearchSet.DATA_SERVICES, {
+                  ...searchQuery,
+                  [Filter.LASTXDAYS]: '7'
+                })}
               >
                 <IllustrationWithCount icon={<NewIcon />} count={newLastWeek} />
                 <SC.StatisticsRegular.Label>
@@ -158,9 +163,9 @@ const DataserviceReport: FC<Props> = ({
                     listItems={topMostUsedFormats?.map(
                       ({ key, count }: KeyWithCountObject, index: any) => ({
                         id: index,
-                        path: `${PATHNAME_DATA_SERVICES}?${
-                          Filter.FORMAT
-                        }=${encodeURIComponent(key)}`,
+                        path: buildSearchUrl(SearchSet.DATA_SERVICES, {
+                          [Filter.FORMAT]: key
+                        }),
                         text1: translatePrefixedFormat(key),
                         text2: `${count}`
                       })
