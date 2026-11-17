@@ -14,7 +14,7 @@ export enum SearchSet {
 
 export type SearchQuery = Partial<Record<Filter, string | undefined>>;
 
-const SEARCH_LOCALES = ['nb', 'nn', 'en'];
+const FRONTEND_LOCALES = ['nb', 'nn', 'en'];
 
 const LIST_PARAMS: [Filter, string][] = [
   [Filter.ORGPATH, 'orgPath'],
@@ -25,9 +25,10 @@ const LIST_PARAMS: [Filter, string][] = [
   [Filter.THEME, 'dataTheme']
 ];
 
-const searchLocale = (): string => {
+/** Locale segment for links to pages served by fdk-frontend (`/{locale}/...`). */
+export const frontendLocale = (): string => {
   const language = localization.getLanguage();
-  return SEARCH_LOCALES.includes(language) ? language : 'nb';
+  return FRONTEND_LOCALES.includes(language) ? language : 'nb';
 };
 
 const splitValues = (value?: string): string[] =>
@@ -80,8 +81,8 @@ export const buildSearchUrl = (
   }
 
   const path = set
-    ? `/${searchLocale()}/search/${set}`
-    : `/${searchLocale()}/search`;
+    ? `/${frontendLocale()}/search/${set}`
+    : `/${frontendLocale()}/search`;
   const queryString = params.toString();
   return queryString ? `${path}?${queryString}` : path;
 };

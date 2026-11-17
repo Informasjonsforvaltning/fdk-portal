@@ -114,11 +114,6 @@ spec:
                 secretKeyRef:
                   name: common
                   key: FDK_DATASET_PREVIEW_API_KEY
-            - name: FDK_USER_FEEDBACK_SERVICE_BASE_URI
-              valueFrom:
-                secretKeyRef:
-                  name: commonurl
-                  key: FDK_USER_FEEDBACK_SERVICE_BASE_URI
             - name: OIDC_ISSUER
               valueFrom:
                 secretKeyRef:

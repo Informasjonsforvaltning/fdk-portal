@@ -32,7 +32,6 @@ import withDatasetScores, {
 import Banner from '../banner';
 import ContentSection from '../content-section';
 import CommunityTopics from '../community-topics';
-import EntityComments from '../../../community/comments';
 
 import OpenAccessIcon from '../../../../images/icon-access-open-md-v2.svg';
 import RestrictedAccessIcon from '../../../../images/icon-access-restricted-md-v2.svg';
@@ -165,23 +164,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     </ContentSection>
   );
 
-  const commentSection = (
-    <ContentSection
-      id='comment-section'
-      title={
-        translations.formatString(
-          translations.community.comments.sectionTitle,
-          {
-            entityType: translations.community.comments.entityTypes[entity]
-          }
-        ) as string
-      }
-      boxStyle={false}
-    >
-      <EntityComments entityId={entityId ?? ''} />
-    </ContentSection>
-  );
-
   const publishingDate = (
     <SC.PublishingDate>
       {translations.formatString(
@@ -195,8 +177,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
 
   const contentSections = Children.toArray(children).concat([
     communitySection,
-    publishingDate,
-    commentSection
+    publishingDate
   ]);
 
   const renderContentSections = () =>

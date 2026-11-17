@@ -1061,35 +1061,11 @@
     "votes": "Stemmer",
     "replies": "Svar",
     "views": "Visningar",
-    "comments": {
-      "sectionTitle": "Har du spørsmål eller kommentarar til {entityType}?",
-      "session": "Du er innlogga som ",
-      "entityTypes": {
-        "DATASET": "datasettet",
-        "DATA_SERVICE": "datatenesta",
-        "CONCEPT": "omgrepet",
-        "INFORMATION_MODEL": "informasjonsmodellen",
-        "SERVICE": "den offentlege tenesta",
-        "EVENT": "hendinga"
-      },
-      "ingress": "Kommentaren blir synleg for andre brukarar og blir svara på her.",
-      "noCommunityUser": "Lag ein konto i Datalandsbyen for å kommentere",
-      "buttons": {
-        "feedback": "Still spørsmål",
-        "logInFeedback": "Logg inn for å stille spørsmål",
-        "logOutFeedback": "Logg ut",
-        "reply": "Skriv eit svar",
-        "edit": "Rediger",
-        "delete": "Slett",
-        "expandComments": "Last inn fleire tilbakemeldingar",
-        "collapseComments": "Skjul tilbakemeldingar",
-        "expandReplies": "Vis fleire svar",
-        "collapseReplies": "Skjul svar"
-      },
-      "gif": {
-        "play": "Trykk for å spela av GIF",
-        "pause": "Trykk for å pause GIF"
-      }
+    "notice": {
+      "title": "Kva er Datalandsbyen?",
+      "body": "Datalandsbyen er vårt nettforum der du kan be om data, dele erfaringar og spørje om råd som gjeld deling av data og informasjonsforvalting.",
+      "gotoLink": "Gå til Datalandsbyen",
+      "moreInfo": "Meir informasjon"
     },
     "composer": {
       "commenter": "Kommenterar som ",

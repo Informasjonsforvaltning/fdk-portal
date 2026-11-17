@@ -13,13 +13,11 @@ export default validateEnv(
       'https://registrering.staging.fellesdatakatalog.digdir.no',
     ADMIN_GUI_BASE_URI: 'https://admin.staging.fellesdatakatalog.digdir.no',
     FDK_LOGGING_FUNCTION_URI:
-      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/cloud-logging',
+      'https://europe-north1-digdir-cloud-functions.cloudfunctions.net/cloud-logging-dev',
     FDK_COMMUNITY_BASE_URI:
       'https://community.staging.fellesdatakatalog.digdir.no',
     FDK_CMS_BASE_URI: 'https://cms.fellesdatakatalog.digdir.no',
     FDK_DATASET_PREVIEW_API_KEY: '',
-    FDK_USER_FEEDBACK_SERVICE_BASE_URI:
-      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/user-feedback-service-staging',
     RESOURCE_API_HOST:
       'https://resource.api.staging.fellesdatakatalog.digdir.no',
     INFORMATIONMODEL_HARVESTER_HOST:
