@@ -10,7 +10,7 @@ interface Props {
 
 const ListItem: FC<Props> = ({ to, text1, text2, ...props }) => (
   <li>
-    <SC.ListItem to={to} {...props}>
+    <SC.ListItem href={to} {...props}>
       <SC.Text>{text1}</SC.Text>
       <SC.Text>{text2}</SC.Text>
     </SC.ListItem>

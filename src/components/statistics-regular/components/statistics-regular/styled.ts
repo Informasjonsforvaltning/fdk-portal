@@ -39,7 +39,7 @@ const StatisticsRegular = styled(Link)<{ as?: string }>`
   text-decoration: none;
 
   ${({ as }) =>
-    !as &&
+    (!as || as === 'a') &&
     css`
       cursor: pointer;
 

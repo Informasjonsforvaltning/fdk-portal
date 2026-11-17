@@ -21,8 +21,11 @@ import { ConceptsReport, SearchObject } from '../../../../types';
 
 import ConceptIcon from '../../../../images/icon-catalog-concept-md.svg';
 import NewIcon from '../../../../images/icon-new-md.svg';
-import { PATHNAME_CONCEPTS } from '../../../../constants/constants';
-import { patchSearchQuery } from '../../../../lib/addOrReplaceUrlParam';
+import {
+  buildSearchUrl,
+  parseSearchQuery,
+  SearchSet
+} from '../../../../lib/search-url';
 import localization from '../../../../lib/localization';
 import { Line } from '../../../../components/charts';
 import { getTranslateText } from '../../../../lib/translateText';
@@ -48,6 +51,8 @@ const ConceptReport: FC<Props> = ({
 }) => {
   conceptsTimeSeries.push([Date.now(), totalObjects]);
 
+  const searchQuery = parseSearchQuery(searchParams);
+
   const hasOrgPath = searchParams ? searchParams.includes('orgPath') : false;
 
   return (
@@ -56,7 +61,9 @@ const ConceptReport: FC<Props> = ({
         <ContainerPaneContent>
           <ContainerBoxRegular>
             <BoxRegular>
-              <StatisticsRegular to={`${PATHNAME_CONCEPTS}${searchParams}`}>
+              <StatisticsRegular
+                href={buildSearchUrl(SearchSet.CONCEPTS, searchQuery)}
+              >
                 <IllustrationWithCount
                   icon={<ConceptIcon />}
                   count={totalObjects}
@@ -70,10 +77,10 @@ const ConceptReport: FC<Props> = ({
           <ContainerBoxRegular>
             <BoxRegular>
               <StatisticsRegular
-                to={`${PATHNAME_CONCEPTS}${patchSearchQuery(
-                  Filter.LASTXDAYS,
-                  '7'
-                )}`}
+                href={buildSearchUrl(SearchSet.CONCEPTS, {
+                  ...searchQuery,
+                  [Filter.LASTXDAYS]: '7'
+                })}
               >
                 <IllustrationWithCount icon={<NewIcon />} count={newLastWeek} />
                 <SC.StatisticsRegular.Label>

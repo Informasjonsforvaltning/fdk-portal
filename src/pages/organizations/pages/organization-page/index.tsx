@@ -19,10 +19,7 @@ import ErrorPage from '../../../error-page';
 
 import { getTranslateText as translate } from '../../../../lib/translateText';
 import translations from '../../../../lib/localization';
-import {
-  patchListOfSearchQuery,
-  patchSearchQuery
-} from '../../../../lib/addOrReplaceUrlParam';
+import { buildSearchUrl, SearchSet } from '../../../../lib/search-url';
 
 import {
   IllustrationWithCount,
@@ -32,13 +29,7 @@ import {
 
 import SC from './styled';
 
-import {
-  PATHNAME_DATASETS,
-  PATHNAME_DATA_SERVICES,
-  PATHNAME_CONCEPTS,
-  PATHNAME_INFORMATIONMODELS,
-  PATHNAME_GUIDANCE_METADATA
-} from '../../../../constants/constants';
+import { PATHNAME_GUIDANCE_METADATA } from '../../../../constants/constants';
 
 import { themeFDK, themeNAP } from '../../../../app/theme';
 
@@ -281,10 +272,9 @@ const OrganizationPage: FC<Props> = ({
             <div>
               <SC.Box>
                 <StatisticsRegular
-                  to={`${PATHNAME_DATASETS}${patchSearchQuery(
-                    Filter.ORGPATH,
-                    organization?.orgPath
-                  )}`}
+                  href={buildSearchUrl(SearchSet.DATASETS, {
+                    [Filter.ORGPATH]: organization?.orgPath
+                  })}
                 >
                   <IllustrationWithCount
                     icon={<SvgIcon name='squareThreeStroke' />}
@@ -297,10 +287,10 @@ const OrganizationPage: FC<Props> = ({
               </SC.Box>
               <SC.Box>
                 <StatisticsRegular
-                  to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                  href={buildSearchUrl(SearchSet.DATASETS, {
                     [Filter.ORGPATH]: organization?.orgPath,
                     [Filter.LASTXDAYS]: '7'
-                  })}`}
+                  })}
                 >
                   <IllustrationWithCount
                     icon={<SvgIcon name='plusStroke' />}
@@ -317,10 +307,10 @@ const OrganizationPage: FC<Props> = ({
               </SC.Box>
               <SC.Box>
                 <StatisticsRegular
-                  to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                  href={buildSearchUrl(SearchSet.DATASETS, {
                     [Filter.ORGPATH]: organization?.orgPath,
                     [Filter.PROVENANCE]: 'NASJONAL'
-                  })}`}
+                  })}
                 >
                   <IllustrationWithCount
                     icon={<SvgIcon name='starStroke' />}
@@ -336,10 +326,10 @@ const OrganizationPage: FC<Props> = ({
               </SC.Box>
               <SC.Box>
                 <StatisticsRegular
-                  to={`${PATHNAME_DATASETS}${patchListOfSearchQuery({
+                  href={buildSearchUrl(SearchSet.DATASETS, {
                     [Filter.ORGPATH]: organization?.orgPath,
                     [Filter.OPENDATA]: 'true'
-                  })}`}
+                  })}
                 >
                   <IllustrationWithCount
                     icon={<SvgIcon name='lockOpenStroke' />}
@@ -383,10 +373,9 @@ const OrganizationPage: FC<Props> = ({
                 <div>
                   <SC.Box>
                     <StatisticsRegular
-                      to={`${PATHNAME_DATA_SERVICES}${patchSearchQuery(
-                        Filter.ORGPATH,
-                        organization?.orgPath
-                      )}`}
+                      href={buildSearchUrl(SearchSet.DATA_SERVICES, {
+                        [Filter.ORGPATH]: organization?.orgPath
+                      })}
                     >
                       <IllustrationWithCount
                         icon={<SvgIcon name='gearStroke' />}
@@ -399,10 +388,10 @@ const OrganizationPage: FC<Props> = ({
                   </SC.Box>
                   <SC.Box>
                     <StatisticsRegular
-                      to={`${PATHNAME_DATA_SERVICES}${patchListOfSearchQuery({
+                      href={buildSearchUrl(SearchSet.DATA_SERVICES, {
                         [Filter.ORGPATH]: organization?.orgPath,
                         [Filter.LASTXDAYS]: '7'
-                      })}`}
+                      })}
                     >
                       <IllustrationWithCount
                         icon={<SvgIcon name='plusStroke' />}
@@ -430,10 +419,9 @@ const OrganizationPage: FC<Props> = ({
                 <div>
                   <SC.Box>
                     <StatisticsRegular
-                      to={`${PATHNAME_CONCEPTS}${patchSearchQuery(
-                        Filter.ORGPATH,
-                        organization?.orgPath
-                      )}`}
+                      href={buildSearchUrl(SearchSet.CONCEPTS, {
+                        [Filter.ORGPATH]: organization?.orgPath
+                      })}
                     >
                       <IllustrationWithCount
                         icon={<SvgIcon name='bookBookmarkStroke' />}
@@ -446,10 +434,10 @@ const OrganizationPage: FC<Props> = ({
                   </SC.Box>
                   <SC.Box>
                     <StatisticsRegular
-                      to={`${PATHNAME_CONCEPTS}${patchListOfSearchQuery({
+                      href={buildSearchUrl(SearchSet.CONCEPTS, {
                         [Filter.ORGPATH]: organization?.orgPath,
                         [Filter.LASTXDAYS]: '7'
-                      })}`}
+                      })}
                     >
                       <IllustrationWithCount
                         icon={<SvgIcon name='plusStroke' />}
@@ -482,10 +470,9 @@ const OrganizationPage: FC<Props> = ({
                 <div>
                   <SC.Box>
                     <StatisticsRegular
-                      to={`${PATHNAME_INFORMATIONMODELS}${patchSearchQuery(
-                        Filter.ORGPATH,
-                        organization?.orgPath
-                      )}`}
+                      href={buildSearchUrl(SearchSet.INFORMATION_MODELS, {
+                        [Filter.ORGPATH]: organization?.orgPath
+                      })}
                     >
                       <IllustrationWithCount
                         icon={<SvgIcon name='infoModelStroke' />}
@@ -498,12 +485,10 @@ const OrganizationPage: FC<Props> = ({
                   </SC.Box>
                   <SC.Box>
                     <StatisticsRegular
-                      to={`${PATHNAME_INFORMATIONMODELS}${patchListOfSearchQuery(
-                        {
-                          [Filter.ORGPATH]: organization?.orgPath,
-                          [Filter.LASTXDAYS]: '7'
-                        }
-                      )}`}
+                      href={buildSearchUrl(SearchSet.INFORMATION_MODELS, {
+                        [Filter.ORGPATH]: organization?.orgPath,
+                        [Filter.LASTXDAYS]: '7'
+                      })}
                     >
                       <IllustrationWithCount
                         icon={<SvgIcon name='plusStroke' />}
