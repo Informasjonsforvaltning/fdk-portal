@@ -35,6 +35,7 @@ describe('buildSearchUrl', () => {
       format: 'FILE_TYPE CSV',
       losTheme: 'helse-og-omsorg/helse',
       dataTheme: 'ECON',
+      lastXDays: '7',
       sort: 'firstHarvestedDesc'
     });
   });

@@ -76,7 +76,9 @@ export const buildSearchUrl = (
     appendValues(params, param, splitValues(query[filter]))
   );
 
-  if (query[Filter.LASTXDAYS]) {
+  const lastXDays = query[Filter.LASTXDAYS]?.trim();
+  if (lastXDays) {
+    params.set('lastXDays', lastXDays);
     params.set('sort', 'firstHarvestedDesc');
   }
 
